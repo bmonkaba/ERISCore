@@ -8,8 +8,7 @@
 
 // ERIS SD Graphics extention 
 // Implements 2d image transfer from an SD card to a RAM framebuffer viewport 
-//
-//using ILI9341_t3 = ILI9341_t3n;
+
 enum UIBLTAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};
 
 class ILI9341_t3_ERIS : public ILI9341_t3n {
@@ -22,9 +21,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void setPWMPin(uint8_t pin);
         void begin();
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type);  
-        void bltSDFullScreen(char *filename);
-        
-
+        void bltSDFullScreen(const char *filename);
 
     protected:
         SdFs *pSD;

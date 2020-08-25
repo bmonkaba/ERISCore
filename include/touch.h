@@ -16,13 +16,11 @@ class Touch : public XPT2046_Touchscreen {
             _raw_maxx = raw_maxx;
             _raw_maxy = raw_maxy;
          }
-
+        void update();
         TS_Point getPoint();
 
-        
-
     protected:
-        void update();
+        
         uint8_t csPin, tirqPin, rotation=1;
         uint32_t msraw=0x80000000;
         uint16_t _raw_minx;

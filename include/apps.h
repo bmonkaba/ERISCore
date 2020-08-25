@@ -4,11 +4,13 @@
 #include "HSI.h"
 #include "touch.h"
 #include "ILI9341_t3_ERIS.h"
+#include "AudioDirector.h"
 
 class AppManager;
 
 ILI9341_t3_ERIS tft(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 Touch touch(CS_TOUCH);
+AudioDirector ad;
 
 // Application Base Class
 //
@@ -42,7 +44,7 @@ class AppManager {
   private:
     static AppManager* obj; //make appManager a singleton
     SdFs sd;
-    FsFile file;
+    //FsFile file;
     AppBaseClass *root; //root linked list node
     uint16_t nextIDAssignment;
     uint16_t activeID; //active app
@@ -77,7 +79,6 @@ class AppManager {
       return obj;
     }
 
-    //ILI9341_t3_ERIS *tft; //will be created in the constructor
     TS_Point p;
     bool touch_state;
 
@@ -90,6 +91,7 @@ class AppManager {
         Serial.println("AppManager::update called without an application initalized");
         return;
       }
+      touch.update();
       AppBaseClass *node = root;
       //search the linked list
       do{

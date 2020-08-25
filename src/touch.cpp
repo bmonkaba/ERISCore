@@ -8,23 +8,13 @@
 
 bool Touch::begin(){
 	Serial.println("Touch:begin");
-    //SPI1.setCS(CS_TOUCH);
     SPI1.setMISO(SDI);
     SPI1.setMOSI(SDO);
     SPI1.setSCK(SCLK);
-
     SPI1.begin();
 	pinMode(csPin, OUTPUT);
 	digitalWrite(csPin, HIGH);
-
-	tirqPin = 255;
-    /*
-	if (255 != tirqPin) {
-		pinMode( tirqPin, INPUT );
-		attachInterrupt(digitalPinToInterrupt(tirqPin), isrPin, FALLING);
-		isrPinptr = this;
-	}
-    */
+	tirqPin = 255; //255 = not used
 	return true;
 }
 
@@ -114,7 +104,6 @@ void Touch::update()
 bool Touch::touched()
 {
 	//Serial.println("Touch:touched");
-	update();
 	return (zraw >= Z_THRESHOLD);
 }
 
@@ -123,22 +112,22 @@ TS_Point Touch::getPoint()
 	float fx,fy;
 	int16_t x,y;
 	//Serial.println("Touch:getPoint");
-	update();
+	//update();
 	
-	//additional dynamic calibration of the screen       
+	//dynamic calibration is supported by monitoring the raw touch limits
+	//which are used for the screen space translation calculations      
 	if (xraw < _raw_minx) _raw_minx = xraw;
 	if (xraw > _raw_maxx) _raw_maxx = xraw;
 	if (yraw < _raw_miny) _raw_miny = yraw;
 	if (yraw > _raw_maxy) _raw_maxy = yraw;
 
-	//translate the raw values to screen space
-	//tranlate raw touch readings to percentage of full scale (0 to 1)
+	//normalize the raw touch readings to percentage of full scale (0 to 1)
 	fx = (xraw - _raw_minx)/(1.0 * (_raw_maxx - _raw_minx));
 	fy = (yraw - _raw_miny)/(1.0 * (_raw_maxy - _raw_miny));
+	//convert normalized values to screen space
 	x = (int16_t)(fx * 320); 
 	y = (int16_t)(fy * 240);
 	(x < 0)?x=0:x=x;
-	(y < 0)?y=0:y=y;
-	
+	(y < 0)?y=0:y=y;	
 	return TS_Point(x, y, zraw);
 }

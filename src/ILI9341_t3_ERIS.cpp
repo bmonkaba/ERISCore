@@ -97,7 +97,7 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
   file.close();
 }
 
-void ILI9341_t3_ERIS::bltSDFullScreen(char *filename){
+void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   //full screen block transfer with no clipping - used for full screen images matching the screen resolution
   pSD->chdir("./I/U/W");
   file.open(filename, O_READ);
