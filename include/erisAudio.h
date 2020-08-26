@@ -8,33 +8,26 @@
 //
 class erisAudioStream:virtual public AudioStream{
 public:
-	erisAudioStream(void) : AudioStream() {  }
+	erisAudioStream(void) : AudioStream() {  };
 	const char* shortName;
 	const char* category;
 	uint8_t unum_inputs;
     uint8_t unum_outputs;
 	uint8_t instance;
+protected:
+	friend class erisAudioConnection;
 };
 
-class erisAudioConnection
+class erisAudioConnection:public AudioConnection
 {
 	public:
-		erisAudioConnection(){
-			pAudioConnection = NULL;
-		};
-		bool makeConnection(erisAudioStream &source, int sourceOutput, erisAudioStream &destination,int destinationInput){
-			if (NULL!=pAudioConnection) delete pAudioConnection;
-			pAudioConnection = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
-			return true;
-		}
+	erisAudioConnection(erisAudioStream &source, unsigned char sourceOutput,
+		erisAudioStream &destination, unsigned char destinationInput) : AudioConnection(source, sourceOutput,
+		destination, destinationInput){};
 
-		bool for_later;
-	
-	protected:
-		AudioConnection* pAudioConnection;
-
+	friend class erisAudioStream;
+	~erisAudioConnection();
 };
-
 
 ///
 // end hand code
