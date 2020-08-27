@@ -6,6 +6,7 @@
 
 // handcode
 //
+/*
 class erisAudioStream:virtual public AudioStream{
 public:
 	erisAudioStream(void) : AudioStream() {  };
@@ -15,26 +16,42 @@ public:
     uint8_t unum_outputs;
 	uint8_t instance;
 protected:
-	friend class erisAudioConnection;
+	//friend class AudioConnection;
 };
-
+*/
+/*
 class erisAudioConnection:public AudioConnection
 {
 	public:
-	erisAudioConnection(erisAudioStream &source, unsigned char sourceOutput,
-		erisAudioStream &destination, unsigned char destinationInput) : AudioConnection(source, sourceOutput,
-		destination, destinationInput){};
+		erisAudioConnection(erisAudioStream *psource, unsigned char sourceOutput, erisAudioStream *pdestination, unsigned char destinationInput): AudioConnection(psource, sourceOutput, pdestination, destinationInput){
+		};
 
-	friend class erisAudioStream;
-	~erisAudioConnection();
+		void rewire(erisAudioStream* psource, unsigned char sourceOutput,erisAudioStream* pdestination, unsigned char destinationInput){
+			//disconnect();
+			pSrc = psource;
+			pDst = pdestination;
+			src_index = sourceOutput;
+			dest_index = destinationInput;
+			reconnect();
+		};
+		void reconnect();
+
+		friend class erisAudioStream;
+		~erisAudioConnection();				
+	protected:
+
 };
+*/
+
+
 
 ///
 // end hand code
 ///
 
 // Wrapped classes (automated)
-class erisAudioInputI2S: public erisAudioStream, public AudioInputI2S{
+
+class erisAudioInputI2S:public AudioInputI2S{
 public:
 	erisAudioInputI2S():AudioInputI2S(){
 		shortName="i2s";
@@ -44,7 +61,7 @@ public:
 	}
 	void update(){this->AudioInputI2S::update();}
 };
-class erisAudioInputI2SQuad: public erisAudioStream, public AudioInputI2SQuad{
+class erisAudioInputI2SQuad:public AudioInputI2SQuad{
 public:
 	erisAudioInputI2SQuad():AudioInputI2SQuad(){
 		shortName="i2s_quad";
@@ -54,7 +71,7 @@ public:
 	}
 	void update(){this->AudioInputI2SQuad::update();}
 };
-class erisAudioInputI2SHex: public erisAudioStream, public AudioInputI2SHex{
+class erisAudioInputI2SHex:public AudioInputI2SHex{
 public:
 	erisAudioInputI2SHex():AudioInputI2SHex(){
 		shortName="i2s_hex";
@@ -64,7 +81,7 @@ public:
 	}
 	void update(){this->AudioInputI2SHex::update();}
 };
-class erisAudioInputI2SOct: public erisAudioStream, public AudioInputI2SOct{
+class erisAudioInputI2SOct:public AudioInputI2SOct{
 public:
 	erisAudioInputI2SOct():AudioInputI2SOct(){
 		shortName="i2s_oct";
@@ -74,7 +91,7 @@ public:
 	}
 	void update(){this->AudioInputI2SOct::update();}
 };
-class erisAudioInputI2Sslave: public erisAudioStream, public AudioInputI2Sslave{
+class erisAudioInputI2Sslave:public AudioInputI2Sslave{
 public:
 	erisAudioInputI2Sslave():AudioInputI2Sslave(){
 		shortName="i2sslave";
@@ -84,7 +101,7 @@ public:
 	}
 	void update(){this->AudioInputI2Sslave::update();}
 };
-class erisAudioInputI2S2: public erisAudioStream, public AudioInputI2S2{
+class erisAudioInputI2S2:public AudioInputI2S2{
 public:
 	erisAudioInputI2S2():AudioInputI2S2(){
 		shortName="i2s2";
@@ -94,7 +111,7 @@ public:
 	}
 	void update(){this->AudioInputI2S2::update();}
 };
-class erisAudioInputSPDIF3: public erisAudioStream, public AudioInputSPDIF3{
+class erisAudioInputSPDIF3:public AudioInputSPDIF3{
 public:
 	erisAudioInputSPDIF3():AudioInputSPDIF3(){
 		shortName="spdif3";
@@ -104,7 +121,7 @@ public:
 	}
 	void update(){this->AudioInputSPDIF3::update();}
 };
-class erisAsyncAudioInputSPDIF3: public erisAudioStream, public AsyncAudioInputSPDIF3{
+class erisAsyncAudioInputSPDIF3:public AsyncAudioInputSPDIF3{
 public:
 	erisAsyncAudioInputSPDIF3():AsyncAudioInputSPDIF3(){
 		shortName="spdif_async";
@@ -114,7 +131,7 @@ public:
 	}
 	void update(){this->AsyncAudioInputSPDIF3::update();}
 };
-class erisAudioInputAnalog: public erisAudioStream, public AudioInputAnalog{
+class erisAudioInputAnalog:public AudioInputAnalog{
 public:
 	erisAudioInputAnalog():AudioInputAnalog(){
 		shortName="adc";
@@ -124,7 +141,7 @@ public:
 	}
 	void update(){this->AudioInputAnalog::update();}
 };
-class erisAudioInputAnalogStereo: public erisAudioStream, public AudioInputAnalogStereo{
+class erisAudioInputAnalogStereo:public AudioInputAnalogStereo{
 public:
 	erisAudioInputAnalogStereo():AudioInputAnalogStereo(){
 		shortName="adcs";
@@ -134,7 +151,7 @@ public:
 	}
 	void update(){this->AudioInputAnalogStereo::update();}
 };
-class erisAudioInputPDM: public erisAudioStream, public AudioInputPDM{
+class erisAudioInputPDM:public AudioInputPDM{
 public:
 	erisAudioInputPDM():AudioInputPDM(){
 		shortName="pdm";
@@ -144,7 +161,7 @@ public:
 	}
 	void update(){this->AudioInputPDM::update();}
 };
-class erisAudioInputTDM: public erisAudioStream, public AudioInputTDM{
+class erisAudioInputTDM:public AudioInputTDM{
 public:
 	erisAudioInputTDM():AudioInputTDM(){
 		shortName="tdm";
@@ -154,7 +171,7 @@ public:
 	}
 	void update(){this->AudioInputTDM::update();}
 };
-class erisAudioInputTDM2: public erisAudioStream, public AudioInputTDM2{
+class erisAudioInputTDM2:public AudioInputTDM2{
 public:
 	erisAudioInputTDM2():AudioInputTDM2(){
 		shortName="tdm2";
@@ -164,7 +181,7 @@ public:
 	}
 	void update(){this->AudioInputTDM2::update();}
 };
-class erisAudioOutputI2S: public erisAudioStream, public AudioOutputI2S{
+class erisAudioOutputI2S:public AudioOutputI2S{
 public:
 	erisAudioOutputI2S():AudioOutputI2S(){
 		shortName="i2s";
@@ -174,7 +191,7 @@ public:
 	}
 	void update(){this->AudioOutputI2S::update();}
 };
-class erisAudioOutputI2SQuad: public erisAudioStream, public AudioOutputI2SQuad{
+class erisAudioOutputI2SQuad:public AudioOutputI2SQuad{
 public:
 	erisAudioOutputI2SQuad():AudioOutputI2SQuad(){
 		shortName="i2s_quad";
@@ -184,7 +201,7 @@ public:
 	}
 	void update(){this->AudioOutputI2SQuad::update();}
 };
-class erisAudioOutputI2SHex: public erisAudioStream, public AudioOutputI2SHex{
+class erisAudioOutputI2SHex:public AudioOutputI2SHex{
 public:
 	erisAudioOutputI2SHex():AudioOutputI2SHex(){
 		shortName="i2s_hex";
@@ -194,7 +211,7 @@ public:
 	}
 	void update(){this->AudioOutputI2SHex::update();}
 };
-class erisAudioOutputI2SOct: public erisAudioStream, public AudioOutputI2SOct{
+class erisAudioOutputI2SOct:public AudioOutputI2SOct{
 public:
 	erisAudioOutputI2SOct():AudioOutputI2SOct(){
 		shortName="i2s_oct";
@@ -204,7 +221,7 @@ public:
 	}
 	void update(){this->AudioOutputI2SOct::update();}
 };
-class erisAudioOutputI2Sslave: public erisAudioStream, public AudioOutputI2Sslave{
+class erisAudioOutputI2Sslave:public AudioOutputI2Sslave{
 public:
 	erisAudioOutputI2Sslave():AudioOutputI2Sslave(){
 		shortName="i2sslave";
@@ -214,7 +231,7 @@ public:
 	}
 	void update(){this->AudioOutputI2Sslave::update();}
 };
-class erisAudioOutputI2S2: public erisAudioStream, public AudioOutputI2S2{
+class erisAudioOutputI2S2:public AudioOutputI2S2{
 public:
 	erisAudioOutputI2S2():AudioOutputI2S2(){
 		shortName="i2s2";
@@ -224,7 +241,7 @@ public:
 	}
 	void update(){this->AudioOutputI2S2::update();}
 };
-class erisAudioOutputSPDIF: public erisAudioStream, public AudioOutputSPDIF{
+class erisAudioOutputSPDIF:public AudioOutputSPDIF{
 public:
 	erisAudioOutputSPDIF():AudioOutputSPDIF(){
 		shortName="spdif";
@@ -234,7 +251,7 @@ public:
 	}
 	void update(){this->AudioOutputSPDIF::update();}
 };
-class erisAudioOutputSPDIF2: public erisAudioStream, public AudioOutputSPDIF2{
+class erisAudioOutputSPDIF2:public AudioOutputSPDIF2{
 public:
 	erisAudioOutputSPDIF2():AudioOutputSPDIF2(){
 		shortName="spdif2";
@@ -244,7 +261,7 @@ public:
 	}
 	void update(){this->AudioOutputSPDIF2::update();}
 };
-class erisAudioOutputSPDIF3: public erisAudioStream, public AudioOutputSPDIF3{
+class erisAudioOutputSPDIF3:public AudioOutputSPDIF3{
 public:
 	erisAudioOutputSPDIF3():AudioOutputSPDIF3(){
 		shortName="spdif3";
@@ -254,7 +271,7 @@ public:
 	}
 	void update(){this->AudioOutputSPDIF3::update();}
 };
-class erisAudioOutputPT8211: public erisAudioStream, public AudioOutputPT8211{
+class erisAudioOutputPT8211:public AudioOutputPT8211{
 public:
 	erisAudioOutputPT8211():AudioOutputPT8211(){
 		shortName="pt8211";
@@ -264,7 +281,7 @@ public:
 	}
 	void update(){this->AudioOutputPT8211::update();}
 };
-class erisAudioOutputPT8211_2: public erisAudioStream, public AudioOutputPT8211_2{
+class erisAudioOutputPT8211_2:public AudioOutputPT8211_2{
 public:
 	erisAudioOutputPT8211_2():AudioOutputPT8211_2(){
 		shortName="pt8211_2";
@@ -274,7 +291,7 @@ public:
 	}
 	void update(){this->AudioOutputPT8211_2::update();}
 };
-class erisAudioOutputAnalog: public erisAudioStream, public AudioOutputAnalog{
+class erisAudioOutputAnalog:public AudioOutputAnalog{
 public:
 	erisAudioOutputAnalog():AudioOutputAnalog(){
 		shortName="dac";
@@ -284,7 +301,7 @@ public:
 	}
 	void update(){this->AudioOutputAnalog::update();}
 };
-class erisAudioOutputAnalogStereo: public erisAudioStream, public AudioOutputAnalogStereo{
+class erisAudioOutputAnalogStereo:public AudioOutputAnalogStereo{
 public:
 	erisAudioOutputAnalogStereo():AudioOutputAnalogStereo(){
 		shortName="dacs";
@@ -294,7 +311,7 @@ public:
 	}
 	void update(){this->AudioOutputAnalogStereo::update();}
 };
-class erisAudioOutputPWM: public erisAudioStream, public AudioOutputPWM{
+class erisAudioOutputPWM:public AudioOutputPWM{
 public:
 	erisAudioOutputPWM():AudioOutputPWM(){
 		shortName="pwm";
@@ -304,7 +321,7 @@ public:
 	}
 	void update(){this->AudioOutputPWM::update();}
 };
-class erisAudioOutputMQS: public erisAudioStream, public AudioOutputMQS{
+class erisAudioOutputMQS:public AudioOutputMQS{
 public:
 	erisAudioOutputMQS():AudioOutputMQS(){
 		shortName="mqs";
@@ -314,7 +331,7 @@ public:
 	}
 	void update(){this->AudioOutputMQS::update();}
 };
-class erisAudioOutputTDM: public erisAudioStream, public AudioOutputTDM{
+class erisAudioOutputTDM:public AudioOutputTDM{
 public:
 	erisAudioOutputTDM():AudioOutputTDM(){
 		shortName="tdm";
@@ -324,7 +341,7 @@ public:
 	}
 	void update(){this->AudioOutputTDM::update();}
 };
-class erisAudioOutputTDM2: public erisAudioStream, public AudioOutputTDM2{
+class erisAudioOutputTDM2:public AudioOutputTDM2{
 public:
 	erisAudioOutputTDM2():AudioOutputTDM2(){
 		shortName="tdm2";
@@ -334,7 +351,7 @@ public:
 	}
 	void update(){this->AudioOutputTDM2::update();}
 };
-class erisAudioOutputADAT: public erisAudioStream, public AudioOutputADAT{
+class erisAudioOutputADAT:public AudioOutputADAT{
 public:
 	erisAudioOutputADAT():AudioOutputADAT(){
 		shortName="adat";
@@ -344,7 +361,7 @@ public:
 	}
 	void update(){this->AudioOutputADAT::update();}
 };
-class erisAudioAmplifier: public erisAudioStream, public AudioAmplifier{
+class erisAudioAmplifier:public AudioAmplifier{
 public:
 	erisAudioAmplifier():AudioAmplifier(){
 		shortName="amp";
@@ -354,7 +371,7 @@ public:
 	}
 	void update(){this->AudioAmplifier::update();}
 };
-class erisAudioMixer4: public erisAudioStream, public AudioMixer4{
+class erisAudioMixer4:public AudioMixer4{
 public:
 	erisAudioMixer4():AudioMixer4(){
 		shortName="mixer";
@@ -364,7 +381,7 @@ public:
 	}
 	void update(){this->AudioMixer4::update();}
 };
-class erisAudioPlayMemory: public erisAudioStream, public AudioPlayMemory{
+class erisAudioPlayMemory:public AudioPlayMemory{
 public:
 	erisAudioPlayMemory():AudioPlayMemory(){
 		shortName="playMem";
@@ -374,7 +391,7 @@ public:
 	}
 	void update(){this->AudioPlayMemory::update();}
 };
-class erisAudioPlaySerialflashRaw: public erisAudioStream, public AudioPlaySerialflashRaw{
+class erisAudioPlaySerialflashRaw:public AudioPlaySerialflashRaw{
 public:
 	erisAudioPlaySerialflashRaw():AudioPlaySerialflashRaw(){
 		shortName="playFlashRaw";
@@ -384,7 +401,7 @@ public:
 	}
 	void update(){this->AudioPlaySerialflashRaw::update();}
 };
-class erisAudioPlayQueue: public erisAudioStream, public AudioPlayQueue{
+class erisAudioPlayQueue:public AudioPlayQueue{
 public:
 	erisAudioPlayQueue():AudioPlayQueue(){
 		shortName="queue";
@@ -394,7 +411,7 @@ public:
 	}
 	void update(){this->AudioPlayQueue::update();}
 };
-class erisAudioRecordQueue: public erisAudioStream, public AudioRecordQueue{
+class erisAudioRecordQueue:public AudioRecordQueue{
 public:
 	erisAudioRecordQueue():AudioRecordQueue(){
 		shortName="queue";
@@ -404,7 +421,7 @@ public:
 	}
 	void update(){this->AudioRecordQueue::update();}
 };
-class erisAudioSynthWavetable: public erisAudioStream, public AudioSynthWavetable{
+class erisAudioSynthWavetable:public AudioSynthWavetable{
 public:
 	erisAudioSynthWavetable():AudioSynthWavetable(){
 		shortName="wavetable";
@@ -414,7 +431,7 @@ public:
 	}
 	void update(){this->AudioSynthWavetable::update();}
 };
-class erisAudioSynthSimpleDrum: public erisAudioStream, public AudioSynthSimpleDrum{
+class erisAudioSynthSimpleDrum:public AudioSynthSimpleDrum{
 public:
 	erisAudioSynthSimpleDrum():AudioSynthSimpleDrum(){
 		shortName="drum";
@@ -424,7 +441,7 @@ public:
 	}
 	void update(){this->AudioSynthSimpleDrum::update();}
 };
-class erisAudioSynthKarplusStrong: public erisAudioStream, public AudioSynthKarplusStrong{
+class erisAudioSynthKarplusStrong:public AudioSynthKarplusStrong{
 public:
 	erisAudioSynthKarplusStrong():AudioSynthKarplusStrong(){
 		shortName="string";
@@ -434,7 +451,7 @@ public:
 	}
 	void update(){this->AudioSynthKarplusStrong::update();}
 };
-class erisAudioSynthWaveformSine: public erisAudioStream, public AudioSynthWaveformSine{
+class erisAudioSynthWaveformSine:public AudioSynthWaveformSine{
 public:
 	erisAudioSynthWaveformSine():AudioSynthWaveformSine(){
 		shortName="sine";
@@ -444,7 +461,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformSine::update();}
 };
-class erisAudioSynthWaveformSineHires: public erisAudioStream, public AudioSynthWaveformSineHires{
+class erisAudioSynthWaveformSineHires:public AudioSynthWaveformSineHires{
 public:
 	erisAudioSynthWaveformSineHires():AudioSynthWaveformSineHires(){
 		shortName="sine_hires";
@@ -454,7 +471,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformSineHires::update();}
 };
-class erisAudioSynthWaveformSineModulated: public erisAudioStream, public AudioSynthWaveformSineModulated{
+class erisAudioSynthWaveformSineModulated:public AudioSynthWaveformSineModulated{
 public:
 	erisAudioSynthWaveformSineModulated():AudioSynthWaveformSineModulated(){
 		shortName="sine_fm";
@@ -464,7 +481,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformSineModulated::update();}
 };
-class erisAudioSynthWaveform: public erisAudioStream, public AudioSynthWaveform{
+class erisAudioSynthWaveform:public AudioSynthWaveform{
 public:
 	erisAudioSynthWaveform():AudioSynthWaveform(){
 		shortName="waveform";
@@ -474,7 +491,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveform::update();}
 };
-class erisAudioSynthWaveformModulated: public erisAudioStream, public AudioSynthWaveformModulated{
+class erisAudioSynthWaveformModulated:public AudioSynthWaveformModulated{
 public:
 	erisAudioSynthWaveformModulated():AudioSynthWaveformModulated(){
 		shortName="waveformMod";
@@ -484,7 +501,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformModulated::update();}
 };
-class erisAudioSynthWaveformPWM: public erisAudioStream, public AudioSynthWaveformPWM{
+class erisAudioSynthWaveformPWM:public AudioSynthWaveformPWM{
 public:
 	erisAudioSynthWaveformPWM():AudioSynthWaveformPWM(){
 		shortName="pwm";
@@ -494,7 +511,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformPWM::update();}
 };
-class erisAudioSynthToneSweep: public erisAudioStream, public AudioSynthToneSweep{
+class erisAudioSynthToneSweep:public AudioSynthToneSweep{
 public:
 	erisAudioSynthToneSweep():AudioSynthToneSweep(){
 		shortName="tonesweep";
@@ -504,7 +521,7 @@ public:
 	}
 	void update(){this->AudioSynthToneSweep::update();}
 };
-class erisAudioSynthWaveformDc: public erisAudioStream, public AudioSynthWaveformDc{
+class erisAudioSynthWaveformDc:public AudioSynthWaveformDc{
 public:
 	erisAudioSynthWaveformDc():AudioSynthWaveformDc(){
 		shortName="dc";
@@ -514,7 +531,7 @@ public:
 	}
 	void update(){this->AudioSynthWaveformDc::update();}
 };
-class erisAudioSynthNoiseWhite: public erisAudioStream, public AudioSynthNoiseWhite{
+class erisAudioSynthNoiseWhite:public AudioSynthNoiseWhite{
 public:
 	erisAudioSynthNoiseWhite():AudioSynthNoiseWhite(){
 		shortName="noise";
@@ -524,7 +541,7 @@ public:
 	}
 	void update(){this->AudioSynthNoiseWhite::update();}
 };
-class erisAudioSynthNoisePink: public erisAudioStream, public AudioSynthNoisePink{
+class erisAudioSynthNoisePink:public AudioSynthNoisePink{
 public:
 	erisAudioSynthNoisePink():AudioSynthNoisePink(){
 		shortName="pink";
@@ -534,7 +551,7 @@ public:
 	}
 	void update(){this->AudioSynthNoisePink::update();}
 };
-class erisAudioEffectFade: public erisAudioStream, public AudioEffectFade{
+class erisAudioEffectFade:public AudioEffectFade{
 public:
 	erisAudioEffectFade():AudioEffectFade(){
 		shortName="fade";
@@ -544,7 +561,7 @@ public:
 	}
 	void update(){this->AudioEffectFade::update();}
 };
-class erisAudioEffectChorus: public erisAudioStream, public AudioEffectChorus{
+class erisAudioEffectChorus:public AudioEffectChorus{
 public:
 	erisAudioEffectChorus():AudioEffectChorus(){
 		shortName="chorus";
@@ -554,7 +571,7 @@ public:
 	}
 	void update(){this->AudioEffectChorus::update();}
 };
-class erisAudioEffectFlange: public erisAudioStream, public AudioEffectFlange{
+class erisAudioEffectFlange:public AudioEffectFlange{
 public:
 	erisAudioEffectFlange():AudioEffectFlange(){
 		shortName="flange";
@@ -564,7 +581,7 @@ public:
 	}
 	void update(){this->AudioEffectFlange::update();}
 };
-class erisAudioEffectReverb: public erisAudioStream, public AudioEffectReverb{
+class erisAudioEffectReverb:public AudioEffectReverb{
 public:
 	erisAudioEffectReverb():AudioEffectReverb(){
 		shortName="reverb";
@@ -574,7 +591,7 @@ public:
 	}
 	void update(){this->AudioEffectReverb::update();}
 };
-class erisAudioEffectFreeverb: public erisAudioStream, public AudioEffectFreeverb{
+class erisAudioEffectFreeverb:public AudioEffectFreeverb{
 public:
 	erisAudioEffectFreeverb():AudioEffectFreeverb(){
 		shortName="freeverb";
@@ -584,7 +601,7 @@ public:
 	}
 	void update(){this->AudioEffectFreeverb::update();}
 };
-class erisAudioEffectFreeverbStereo: public erisAudioStream, public AudioEffectFreeverbStereo{
+class erisAudioEffectFreeverbStereo:public AudioEffectFreeverbStereo{
 public:
 	erisAudioEffectFreeverbStereo():AudioEffectFreeverbStereo(){
 		shortName="freeverbs";
@@ -594,7 +611,7 @@ public:
 	}
 	void update(){this->AudioEffectFreeverbStereo::update();}
 };
-class erisAudioEffectEnvelope: public erisAudioStream, public AudioEffectEnvelope{
+class erisAudioEffectEnvelope:public AudioEffectEnvelope{
 public:
 	erisAudioEffectEnvelope():AudioEffectEnvelope(){
 		shortName="envelope";
@@ -604,7 +621,7 @@ public:
 	}
 	void update(){this->AudioEffectEnvelope::update();}
 };
-class erisAudioEffectMultiply: public erisAudioStream, public AudioEffectMultiply{
+class erisAudioEffectMultiply:public AudioEffectMultiply{
 public:
 	erisAudioEffectMultiply():AudioEffectMultiply(){
 		shortName="multiply";
@@ -614,7 +631,7 @@ public:
 	}
 	void update(){this->AudioEffectMultiply::update();}
 };
-class erisAudioEffectDelay: public erisAudioStream, public AudioEffectDelay{
+class erisAudioEffectDelay:public AudioEffectDelay{
 public:
 	erisAudioEffectDelay():AudioEffectDelay(){
 		shortName="delay";
@@ -624,7 +641,7 @@ public:
 	}
 	void update(){this->AudioEffectDelay::update();}
 };
-class erisAudioEffectDelayExternal: public erisAudioStream, public AudioEffectDelayExternal{
+class erisAudioEffectDelayExternal:public AudioEffectDelayExternal{
 public:
 	erisAudioEffectDelayExternal():AudioEffectDelayExternal(){
 		shortName="delayExt";
@@ -634,7 +651,7 @@ public:
 	}
 	void update(){this->AudioEffectDelayExternal::update();}
 };
-class erisAudioEffectBitcrusher: public erisAudioStream, public AudioEffectBitcrusher{
+class erisAudioEffectBitcrusher:public AudioEffectBitcrusher{
 public:
 	erisAudioEffectBitcrusher():AudioEffectBitcrusher(){
 		shortName="bitcrusher";
@@ -644,7 +661,7 @@ public:
 	}
 	void update(){this->AudioEffectBitcrusher::update();}
 };
-class erisAudioEffectMidSide: public erisAudioStream, public AudioEffectMidSide{
+class erisAudioEffectMidSide:public AudioEffectMidSide{
 public:
 	erisAudioEffectMidSide():AudioEffectMidSide(){
 		shortName="midside";
@@ -654,7 +671,7 @@ public:
 	}
 	void update(){this->AudioEffectMidSide::update();}
 };
-class erisAudioEffectWaveshaper: public erisAudioStream, public AudioEffectWaveshaper{
+class erisAudioEffectWaveshaper:public AudioEffectWaveshaper{
 public:
 	erisAudioEffectWaveshaper():AudioEffectWaveshaper(){
 		shortName="waveshape";
@@ -664,7 +681,7 @@ public:
 	}
 	void update(){this->AudioEffectWaveshaper::update();}
 };
-class erisAudioEffectGranular: public erisAudioStream, public AudioEffectGranular{
+class erisAudioEffectGranular:public AudioEffectGranular{
 public:
 	erisAudioEffectGranular():AudioEffectGranular(){
 		shortName="granular";
@@ -674,7 +691,7 @@ public:
 	}
 	void update(){this->AudioEffectGranular::update();}
 };
-class erisAudioEffectDigitalCombine: public erisAudioStream, public AudioEffectDigitalCombine{
+class erisAudioEffectDigitalCombine:public AudioEffectDigitalCombine{
 public:
 	erisAudioEffectDigitalCombine():AudioEffectDigitalCombine(){
 		shortName="combine";
@@ -684,7 +701,7 @@ public:
 	}
 	void update(){this->AudioEffectDigitalCombine::update();}
 };
-class erisAudioFilterBiquad: public erisAudioStream, public AudioFilterBiquad{
+class erisAudioFilterBiquad:public AudioFilterBiquad{
 public:
 	erisAudioFilterBiquad():AudioFilterBiquad(){
 		shortName="biquad";
@@ -694,7 +711,7 @@ public:
 	}
 	void update(){this->AudioFilterBiquad::update();}
 };
-class erisAudioFilterFIR: public erisAudioStream, public AudioFilterFIR{
+class erisAudioFilterFIR:public AudioFilterFIR{
 public:
 	erisAudioFilterFIR():AudioFilterFIR(){
 		shortName="fir";
@@ -704,7 +721,7 @@ public:
 	}
 	void update(){this->AudioFilterFIR::update();}
 };
-class erisAudioFilterStateVariable: public erisAudioStream, public AudioFilterStateVariable{
+class erisAudioFilterStateVariable:public AudioFilterStateVariable{
 public:
 	erisAudioFilterStateVariable():AudioFilterStateVariable(){
 		shortName="filter";
@@ -714,7 +731,7 @@ public:
 	}
 	void update(){this->AudioFilterStateVariable::update();}
 };
-class erisAudioAnalyzePeak: public erisAudioStream, public AudioAnalyzePeak{
+class erisAudioAnalyzePeak:public AudioAnalyzePeak{
 public:
 	erisAudioAnalyzePeak():AudioAnalyzePeak(){
 		shortName="peak";
@@ -724,7 +741,7 @@ public:
 	}
 	void update(){this->AudioAnalyzePeak::update();}
 };
-class erisAudioAnalyzeRMS: public erisAudioStream, public AudioAnalyzeRMS{
+class erisAudioAnalyzeRMS:public AudioAnalyzeRMS{
 public:
 	erisAudioAnalyzeRMS():AudioAnalyzeRMS(){
 		shortName="rms";
@@ -734,7 +751,7 @@ public:
 	}
 	void update(){this->AudioAnalyzeRMS::update();}
 };
-class erisAudioAnalyzeFFT256: public erisAudioStream, public AudioAnalyzeFFT256{
+class erisAudioAnalyzeFFT256:public AudioAnalyzeFFT256{
 public:
 	erisAudioAnalyzeFFT256():AudioAnalyzeFFT256(){
 		shortName="fft256";
@@ -744,7 +761,7 @@ public:
 	}
 	void update(){this->AudioAnalyzeFFT256::update();}
 };
-class erisAudioAnalyzeFFT1024: public erisAudioStream, public AudioAnalyzeFFT1024{
+class erisAudioAnalyzeFFT1024:public AudioAnalyzeFFT1024{
 public:
 	erisAudioAnalyzeFFT1024():AudioAnalyzeFFT1024(){
 		shortName="fft1024";
@@ -754,7 +771,7 @@ public:
 	}
 	void update(){this->AudioAnalyzeFFT1024::update();}
 };
-class erisAudioAnalyzeToneDetect: public erisAudioStream, public AudioAnalyzeToneDetect{
+class erisAudioAnalyzeToneDetect:public AudioAnalyzeToneDetect{
 public:
 	erisAudioAnalyzeToneDetect():AudioAnalyzeToneDetect(){
 		shortName="tone";
@@ -764,7 +781,7 @@ public:
 	}
 	void update(){this->AudioAnalyzeToneDetect::update();}
 };
-class erisAudioAnalyzeNoteFrequency: public erisAudioStream, public AudioAnalyzeNoteFrequency{
+class erisAudioAnalyzeNoteFrequency:public AudioAnalyzeNoteFrequency{
 public:
 	erisAudioAnalyzeNoteFrequency():AudioAnalyzeNoteFrequency(){
 		shortName="notefreq";
@@ -774,7 +791,7 @@ public:
 	}
 	void update(){this->AudioAnalyzeNoteFrequency::update();}
 };
-class erisAudioAnalyzePrint: public erisAudioStream, public AudioAnalyzePrint{
+class erisAudioAnalyzePrint:public AudioAnalyzePrint{
 public:
 	erisAudioAnalyzePrint():AudioAnalyzePrint(){
 		shortName="print";
@@ -784,4 +801,5 @@ public:
 	}
 	void update(){this->AudioAnalyzePrint::update();}
 };
+
 #endif

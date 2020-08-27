@@ -20,26 +20,26 @@ class AudioDirector{
   public:
     AudioDirector();
     void activateConnectionGroup(uint16_t group_id);
-    bool addAudioStreamObj(erisAudioStream* obj);
-    bool connect(erisAudioStream* source, int sourceOutput, erisAudioStream* destination,int destinationInput);
-    bool connect(char* from,uint8_t from_port,erisAudioStream* to,uint8_t to_port);
+    bool addAudioStreamObj(AudioStream* obj);
+    bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
+    bool connect(char* from,uint8_t from_port,char* to,uint8_t to_port);
     bool connect(const char* connectionString);
     void disconnect();
   protected:
-    erisAudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
-    erisAudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
-    erisAudioStream* pAudioStreamOutputPort; //DAC Audio Output(s)
+    AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
+    AudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
+    AudioStream* pAudioStreamOutputPort; //DAC Audio Output(s)
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    erisAudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
+    AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
     uint16_t activeConnectionGroup;  
     uint16_t objCount;
     uint16_t categoryCount;
     uint16_t shortNameQueryResultCount;
     char** categoryList[MAX_CATEGORIES];
     char* shortNameQueryResult[MAX_UNIQUE_NAMES_PER_CATEGORY];
-    erisAudioConnection* pCord[MAX_CONNECTIONS];
+    AudioConnection* pCord[MAX_CONNECTIONS];
     
     // GUItool: begin automatically generated code
 };
@@ -58,8 +58,8 @@ AudioDirector::AudioDirector(){
     categoryList[j] = (char**)&nullStr;
   }
 
-  pAudioStreamInputPort = new erisAudioInputI2S;
-  pAudioStreamOutputPort = new erisAudioOutputI2S2;
+  pAudioStreamInputPort = new erisAudioInputI2S();
+  pAudioStreamOutputPort = new erisAudioOutputI2S2();
   addAudioStreamObj(pAudioStreamInputPort);
   addAudioStreamObj(pAudioStreamOutputPort);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
@@ -86,7 +86,7 @@ AudioDirector::AudioDirector(){
   Serial.println(categoryCount);
   for (uint16_t j = 0; j < categoryCount; j++)Serial.println(*categoryList[j]);
 
-  erisAudioStream* test = getAudioStreamObjByName("mixer_2");
+  AudioStream* test = getAudioStreamObjByName("mixer_2");
   Serial.println("AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)");
   Serial.print(test->shortName);
   Serial.print("_");
@@ -97,10 +97,10 @@ AudioDirector::AudioDirector(){
   Serial.println("AudioDirector::AudioDirector() building AudioConnection pool");
   for(uint16_t i=0; i < MAX_CONNECTIONS;i++) pCord[i] = NULL;
   Serial.println("AudioDirector::AudioDirector() connecting AudioStreamInputPort to pAudioStreamOutputPort");
-  connect((erisAudioStream*)pAudioStreamInputPort,0,(erisAudioStream*)pAudioStreamOutputPort,0);
+  connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
 };
 
-bool AudioDirector::addAudioStreamObj(erisAudioStream* obj){
+bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   uint8_t count = 0; 
 
   if (obj !=0 && objCount < MAX_AUDIO_STREAM_OBJECTS){
@@ -138,7 +138,7 @@ void AudioDirector::generateCategoryList(){
   }
 }
 
-erisAudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjName){
+AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjName){
   //string name needs to be deccompsed to type and instance
   char *pch;
   char *ptr;
@@ -156,9 +156,9 @@ erisAudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamO
 }
 
 
-bool AudioDirector::connect(erisAudioStream* source, int sourceOutput, erisAudioStream* destination,int destinationInput){
+bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput){
   if (NULL==source||NULL==destination) return false;
-  //find free connection
+  //find a free connection from the pool
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
     if (NULL==pCord[i]){
@@ -167,7 +167,11 @@ bool AudioDirector::connect(erisAudioStream* source, int sourceOutput, erisAudio
       Serial.print(source->shortName);
       Serial.print(" -> ");
       Serial.println(destination->shortName);
-      //pCord[i] = new erisAudioConnection(*source, (unsigned char)sourceOutput,*destination, (unsigned char)destinationInput);
+      //need to rewire after creation as the reference based approach was bypassed 
+      //in favor of pointers in order to facilitate the extention of the audio connection base class
+      pCord[i] = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
+      pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
+
       return true; 
     }
   }
@@ -178,7 +182,7 @@ void AudioDirector::disconnect(){
   
 }
 
-bool AudioDirector::connect(char* from,uint8_t from_port,erisAudioStream* to,uint8_t to_port){
+bool AudioDirector::connect(char* from,uint8_t from_port,char* to,uint8_t to_port){
   return connect(getAudioStreamObjByName((char* )from),from_port,getAudioStreamObjByName((char* )from),to_port);
 }
 bool AudioDirector::connect(const char* connectionString){
@@ -186,6 +190,8 @@ bool AudioDirector::connect(const char* connectionString){
   //format: "SRCTYPE(CHAR)_INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR)_INSTANCE(INT) DESTPORT(INT)"
   //example: "MIXER_2 0 CHORUS_1 1"
   //the example above connects mixer instance 2 output 0 with chorus instance 1 input 1
+
+  //TODO implement
   return true;
 }
 
