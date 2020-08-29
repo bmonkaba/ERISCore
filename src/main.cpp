@@ -31,19 +31,22 @@ void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
 
   Serial.begin(256000);//9600
-  Serial.println("ERIS CORE: Initalizing");
+  Serial.println("Setup: Initalizing");
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
-  Serial.println("Loading Applications");
+  Serial.println("Setup: Loading Applications");
   app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();
   AppManager::getInstance()->switchAppFocus(app->getId()); //focus is requested by obj id
   //reset the i2c bus and config the external ADC
-  Serial.println("Configuring Audio Hardware");
+  Serial.println("Setup: Configuring Audio Hardware");
   I2CReset();
   ExtADCConfig();
   //run a quick 12c bus scan
   I2CBusScan();
-  Serial.println("Init Complete");
+  // set the connection goup
+  ad.activateConnectionGroup(0);
+  Serial.println("Setup: Configuring the sw audio block connections");
+  Serial.println("Setup: Init Complete");
 }
 
 void loop(void) {

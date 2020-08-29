@@ -54,7 +54,7 @@ class erisAudioConnection:public AudioConnection
 class erisAudioInputI2S:public AudioInputI2S{
 public:
 	erisAudioInputI2S():AudioInputI2S(){
-		shortName="i2s";
+		shortName="i2s-in";
 		unum_inputs=0;
 		unum_outputs=2;
 		category="input-function";
@@ -104,7 +104,7 @@ public:
 class erisAudioInputI2S2:public AudioInputI2S2{
 public:
 	erisAudioInputI2S2():AudioInputI2S2(){
-		shortName="i2s2";
+		shortName="i2s2-in";
 		unum_inputs=0;
 		unum_outputs=2;
 		category="input-function";
@@ -184,7 +184,7 @@ public:
 class erisAudioOutputI2S:public AudioOutputI2S{
 public:
 	erisAudioOutputI2S():AudioOutputI2S(){
-		shortName="i2s";
+		shortName="i2s-out";
 		unum_inputs=2;
 		unum_outputs=0;
 		category="output-function";
@@ -234,7 +234,7 @@ public:
 class erisAudioOutputI2S2:public AudioOutputI2S2{
 public:
 	erisAudioOutputI2S2():AudioOutputI2S2(){
-		shortName="i2s2";
+		shortName="i2s2-out";
 		unum_inputs=2;
 		unum_outputs=0;
 		category="output-function";

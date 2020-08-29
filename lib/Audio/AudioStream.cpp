@@ -232,6 +232,15 @@ void AudioConnection::disconnect(void)
 
 	if (!isConnected) return;
 	if (dest_index > pDst->num_inputs) return;
+	Serial.println(F("(eris)AudioConnection:disconnect()"));
+	Serial.print(F("\tsrc name:"));Serial.println(pSrc->shortName);
+	Serial.print(F("\tsrc ptr:"));Serial.println((uint32_t)pSrc);
+	Serial.print(F("\tsrc index:"));Serial.println((uint32_t)src_index);
+	Serial.print(F("\tdst name:"));Serial.println(pDst->shortName);
+	Serial.print(F("\tdst ptr:"));Serial.println((uint32_t)pDst);
+	Serial.print(F("\tdst index:"));Serial.println((uint32_t)dest_index);
+	Serial.print(F("\tpSrc->destination_list:"));Serial.println((uint32_t)pSrc->destination_list);
+	
 	__disable_irq();
 	// Remove destination from source list
 	p = pSrc->destination_list;
@@ -258,6 +267,7 @@ void AudioConnection::disconnect(void)
 			}
 			p = p->next_dest;
 		}
+		//Serial.println(F("(eris)AudioConnection:disconnect() complete"));
 	}
 //>>> PAH release the audio buffer properly
 	//Remove possible pending src block from destination
@@ -287,30 +297,34 @@ void AudioConnection::disconnect(void)
 
 //ADDED TO SUPPORT ERIS CORE
 void AudioConnection::reconnect(){
-	Serial.println("(eris)AudioConnection:reconnect() connecting by ptr");
-	Serial.print("src ptr:");Serial.println((long)pSrc);
-	Serial.print("src index:");Serial.println((long)src_index);
-	Serial.print("dst ptr:");Serial.println((long)pDst);
-	Serial.print("dst index:");Serial.println((long)dest_index);
-	Serial.print("pSrc->destination_list:");Serial.println((long)pSrc->destination_list);
+	Serial.println(F("(eris)AudioConnection:reconnect() connecting by ptr"));
+	Serial.print(F("\tsrc name:"));Serial.print(pSrc->shortName);
+	Serial.print(F("\tsrc index:"));Serial.print((uint32_t)src_index);
+	Serial.print(F("\tsrc ptr:"));Serial.println((uint32_t)pSrc);
+
+	Serial.print(F("\tdst name:"));Serial.print(pDst->shortName);
+	Serial.print(F("\tdst index:"));Serial.print((uint32_t)dest_index);
+	Serial.print(F("\tdst ptr:"));Serial.print((uint32_t)pDst);
+	Serial.print(F("\tpSrc->destination_list ptr:"));Serial.println((uint32_t)pSrc->destination_list);
 	AudioConnection *p;
 
-	if (isConnected) return;
-	Serial.println("(eris)AudioConnection:reconnect() accessing destination");
+	if (isConnected){
+		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Already Connected"));
+		return;
+	}
 	if (dest_index > pDst->num_inputs) return;
-	Serial.println("(eris)AudioConnection:reconnect() disable irq");
 	__disable_irq();
-	//Serial.println("(eris)AudioConnection:reconnect() accessing source");
 	p = pSrc->destination_list;
 	if (p == NULL) {
-		//Serial.println("(eris)AudioConnection:reconnect() (p == NULL)");
+		//Serial.println("(eris)AudioConnection:reconnect() making first connection");
 		pSrc->destination_list = this;
 	} else {
 		while (p->next_dest) {
-			//Serial.println("(eris)AudioConnection:reconnect() while (p->next_dest)");
+			//Serial.println("(eris)AudioConnection:reconnect() adding a connection");
 			if (p->pSrc == this->pSrc && p->pDst == this->pDst
 				&& p->src_index == this->src_index && p->dest_index == this->dest_index) {
 				//Source and destination already connected through another connection, abort
+				//Serial.println("(eris)AudioConnection:reconnect() abort as connection is already existing");
 				__enable_irq();
 				return;
 			}
@@ -328,7 +342,7 @@ void AudioConnection::reconnect(){
 	isConnected = true;
 
 	__enable_irq();
-	Serial.println("(eris)AudioConnection:reconnect() done");
+	Serial.println(F("(eris)AudioConnection:reconnect() connection complete"));
 }
 
 

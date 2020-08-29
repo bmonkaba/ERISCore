@@ -135,7 +135,7 @@ public:
 	AudioStream(){};
 	AudioStream(unsigned char ninput, audio_block_t **iqueue) :
 		num_inputs(ninput), inputQueue(iqueue) {
-			Serial.println("AudioStream:AudioStream constructor called");
+			//Serial.println("AudioStream:AudioStream constructor called");
 			active = false;
 			destination_list = NULL;
 			for (int i=0; i < num_inputs; i++) {

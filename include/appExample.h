@@ -11,21 +11,38 @@ class MyAppExample:public AppBaseClass {
     MyAppExample():AppBaseClass(){
       Serial.println("MyApp constructor called");
       id = 1;
-      tft.updateScreenAsync(true);
+      //tft.updateScreenAsync(true);
     } 
     //define event handlers
     void update(){
       //Serial.println("MyApp:update");
       int32_t x,y;
       uint16_t p;
-      for (int32_t i=0; i < 2; i++){
+      /*
+      for (int32_t i=0; i < 1; i++){
         x = random(0,320);
         y = random(0,240);
         p = tft.readPixel(x,y);
         tft.drawPixel(x,y,p);
         tft.drawPixel(x + random(0,2),y + random(0,2), p);
-        tft.drawPixel(x - random(0,2),y + random(0,2), p);
+        tft.drawPixel(x - random(0,2),y - random(0,2), p);
       }
+      */
+
+       //to use the objects they must be downcast to the correct object type
+        erisAudioAnalyzeFFT1024* fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
+        float n;
+
+        if (fft->available()) {
+          tft.waitUpdateAsyncComplete();
+          tft.bltSDFullScreen("bluehex.ile");
+          for (int16_t j=0; j<320; j++) {
+            n = fft->read(j);
+            tft.drawFastVLine(j,0,(int16_t)(log(n*200)*50),ILI9341_DARKGREY);
+            tft.drawPixel(j,(int16_t)(log(n*200)*50),ILI9341_DARKCYAN); 
+          }
+        }
+      tft.updateScreen();
       //tft.drawPixel(random(0,320),random(0,240),ILI9341_BLACK);
     }
     void onTouch(uint16_t x, uint16_t y){

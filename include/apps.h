@@ -29,7 +29,7 @@ class AppBaseClass {
   public:
     AppBaseClass();
     uint16_t getId(){return id;};
-    virtual void update(){Serial.println("AppBaseClass:update");};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
+    virtual void update(){Serial.println(F("AppBaseClass:update"));};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
     virtual void updateRT(){}; //will be called every loop and prior to a potential update call
     //Event handlers
     virtual void onFocus(){};
@@ -54,20 +54,20 @@ class AppManager {
       nextIDAssignment = 1; //id 0 is reserved
       //init the sd card
       if (!sd.begin(SdioConfig(FIFO_SDIO))){
-        Serial.println("AppManager: FATAL! SD Card Not Found ");
+        Serial.println(F("AppManager: FATAL! SD Card Not Found "));
         sd.initErrorHalt(&Serial);
-      } else {Serial.println("AppManager: SD Card FOUND");}
+      } else {Serial.println(F("AppManager: SD Card FOUND"));}
       //init the display
-      Serial.println("AppManager: Config display");
+      Serial.println(F("AppManager: Config display"));
       tft.setPWMPin(TFT_LED_PWM); //library will control the backlight
       tft.setSD(&sd); //provide a cd pointer to the sd class
-      Serial.println("AppManager: Init display");
+      Serial.println(F("AppManager: Init display"));
       tft.begin();
-      Serial.println("AppManager: Init touch controller");
+      Serial.println(F("AppManager: Init touch controller"));
       //init the touch coms
       touch.begin();
       touch_state = 0;
-      Serial.println("AppManager: Contructor complete");
+      Serial.println(F("AppManager: Contructor complete"));
     };
 
   public:
