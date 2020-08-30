@@ -12,13 +12,28 @@ ILI9341_t3_ERIS tft(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 Touch touch(CS_TOUCH);
 AudioDirector ad;
 
+
+typedef struct ApplicationMessageArgs{
+  int16_t i_a;
+  int16_t i_b;
+  int16_t i_c;
+  int16_t i_d;
+  float f_a;
+  float f_b;
+  float f_c;
+  float f_d;
+  const char *str;
+} ApplicationMessageArgs;
+
+
 // Application Base Class
 //
 class AppBaseClass {
   friend class AppManager;
   protected:
     AppBaseClass *parentNode;
-    AppBaseClass *childNode;
+    AppBaseClass *previousAppicationNode;
+    AppBaseClass *nextAppicationNode;
     ILI9341_t3_ERIS *_tft;
     uint16_t id; //app id for derived class instances
                   // 255 - reserved for the base class (unused)
@@ -27,8 +42,13 @@ class AppBaseClass {
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
   public:
+    int16_t origin_x;
+    int16_t origin_y;
+    int16_t width;
+    int16_t height;
     AppBaseClass();
     uint16_t getId(){return id;};
+    void setParent(AppBaseClass *parent){parentNode = parent;};
     virtual void update(){Serial.println(F("AppBaseClass:update"));};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
     virtual void updateRT(){}; //will be called every loop and prior to a potential update call
     //Event handlers
@@ -37,7 +57,7 @@ class AppBaseClass {
     virtual void onTouch(uint16_t x, uint16_t y){};
     virtual void onTouchDrag(uint16_t x, uint16_t y){};
     virtual void onTouchRelease(uint16_t x, uint16_t y){};
-
+    virtual void MessageHandler(AppBaseClass *sender, const char *message,ApplicationMessageArgs *args){};
 };
 
 class AppManager {
@@ -93,11 +113,14 @@ class AppManager {
       }
       touch.update();
       AppBaseClass *node = root;
+      bool isactive_child;
       //search the linked list
       do{
         node->updateRT(); //real time update (always called)
         //Serial.println("AppManager:: real time update");
-        if (node->id == activeID) {
+        isactive_child = false;
+        if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
+        if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //active app found - trigger any events and then call the update function
           if (touch.touched()) {
@@ -118,8 +141,10 @@ class AppManager {
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
         }
-        node=node->childNode;//check next node
+        node=node->nextAppicationNode;//check next node
       }while(node !=0);
+      //finally update the screen
+      if (!tft.busy()) tft.updateScreen();
     };
 
     void RegisterApp(AppBaseClass *app){
@@ -129,9 +154,9 @@ class AppManager {
       else{
         AppBaseClass *endNode = root;
         //add to the linked list
-        while(endNode->childNode !=0){endNode=endNode->childNode;}
-        endNode->childNode = app;
-        app->parentNode = endNode;
+        while(endNode->nextAppicationNode !=0){endNode=endNode->nextAppicationNode;}
+        endNode->nextAppicationNode = app;
+        app->previousAppicationNode = endNode;
       }
     };
 };
@@ -140,9 +165,14 @@ AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 
 AppBaseClass::AppBaseClass(){
   Serial.println("AppBaseClass constructor called");
+  parentNode=NULL;
+  nextAppicationNode=NULL;
+  previousAppicationNode=NULL;
+  origin_x=0;
+  origin_y=0;
+  width=320;
+  height=240;
   AppManager::getInstance()->RegisterApp(this); //self register on construction
-  parentNode=0;
-  childNode=0;
 }
 
 #endif

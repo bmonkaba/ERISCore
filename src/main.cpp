@@ -33,6 +33,7 @@ void setup() {
   Serial.begin(256000);//9600
   Serial.println("Setup: Initalizing");
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
+  touch.setRotation(3);
   Serial.println("Setup: Loading Applications");
   app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();

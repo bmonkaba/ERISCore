@@ -16,7 +16,7 @@ void ILI9341_t3_ERIS::begin(){
     fillScreen(ILI9341_BLACK);
     setTextColor(ILI9341_YELLOW);
     setTextSize(2);
-    setRotation(3);
+    setRotation(1);
     println("Online...");
     pFB = _pfbtft;          
     pSD->chdir("I/U/W");

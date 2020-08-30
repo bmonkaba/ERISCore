@@ -22,6 +22,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void begin();
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
+        bool busy(){return (_dma_state & ILI9341_DMA_ACTIVE);}
 
     protected:
         SdFs *pSD;

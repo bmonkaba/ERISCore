@@ -129,5 +129,5 @@ TS_Point Touch::getPoint()
 	y = (int16_t)(fy * 240);
 	(x < 0)?x=0:x=x;
 	(y < 0)?y=0:y=y;	
-	return TS_Point(x, y, zraw);
+	return TS_Point(320-x, 240-y, zraw);
 }

@@ -82,7 +82,7 @@ AudioDirector::AudioDirector(){
     addAudioStreamObj(new erisAudioFilterStateVariable);
   }
 
-  for (int i=0; i < 16; i++){
+  for (int i=0; i < 2; i++){
     addAudioStreamObj(new erisAudioMixer4);
     addAudioStreamObj(new erisAudioAnalyzePeak);
     addAudioStreamObj(new erisAudioAnalyzeRMS);
@@ -283,7 +283,6 @@ bool AudioDirector::disconnect(const char* connectionString){
 
 void AudioDirector::activateConnectionGroup(uint16_t group_id){
 //testing
-
   Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
   connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
   /*
@@ -294,9 +293,8 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   Serial.println(F("AudioDirector::activateConnectionGroup() test that a duplicate connnection requests will fail"));
   //connect("i2s-in_1 0 i2s2-out_1 0");
   */
-
   //connect a waveform object to the output and fft
-   connect("waveform_1 0 waveformMod_1 0");
+  connect("waveform_1 0 waveformMod_1 0");
   connect("waveformMod_1 0 fft1024_1 0");
   connect("waveformMod_1 0 i2s2-out_1 0");
   connect("waveformMod_1 0 i2s2-out_1 1");
@@ -310,8 +308,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
   wav->frequencyModulation(1.0);
-  wav->begin(1.0, 440, WAVEFORM_SINE);
-  
+  wav->begin(1.0, 440, WAVEFORM_SQUARE);
 
 }
 
