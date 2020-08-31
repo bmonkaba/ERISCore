@@ -35,6 +35,7 @@ class AppBaseClass {
     AppBaseClass *previousAppicationNode;
     AppBaseClass *nextAppicationNode;
     ILI9341_t3_ERIS *_tft;
+    bool touch_state;   //set by the app manager
     uint16_t id; //app id for derived class instances
                   // 255 - reserved for the base class (unused)
                   // 254 - dashboard widgets (dashboard active only)
@@ -126,14 +127,14 @@ class AppManager {
           if (touch.touched()) {
             p = touch.getPoint();
             //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
-            if (touch_state == 0){
+            if (node->touch_state == 0){
               node->onTouch(p.x, p.y);
-              touch_state=1;
+              node->touch_state=1;
             } else{
               node->onTouchDrag(p.x, p.y);
             }
-          } else if (touch_state==1){
-            touch_state=0;
+          } else if (node->touch_state==1){
+            node->touch_state=0;
             node->onTouchRelease(p.x, p.y);
           }
           //TODO: after integrating the UI class add automatic wallpaper & control rendering
@@ -168,6 +169,7 @@ AppBaseClass::AppBaseClass(){
   parentNode=NULL;
   nextAppicationNode=NULL;
   previousAppicationNode=NULL;
+  touch_state = false;
   origin_x=0;
   origin_y=0;
   width=320;

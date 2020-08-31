@@ -31,7 +31,6 @@ void ILI9341_t3_ERIS::begin(){
 }
 
 void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type){
-  SdFile file;
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -42,8 +41,19 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
   char str[16];      //char buffer
   char *c;           //char pointer
   bool toggle = false;
-  pSD->chdir(path);                //change file path
+  pSD->chdir();
+  if (!pSD->chdir(path)){ //change file path
+    Serial.print("ILI9341_t3_ERIS::bltSD Path not found: ");
+    Serial.println(path);
+    return;             
+  }
   file.open(filename, O_READ);        //open image to read
+  if (file.available() == 0){ //file not found
+    Serial.print("ILI9341_t3_ERIS::bltSD File Not Found: ");
+    Serial.println(filename);
+    pSD->ls();
+    return;
+  }
   file.fgets(str,sizeof(str)); //read the header data
   file.fgets(str,sizeof(str)); //to get the image dimensions
   strtok(str," ");             //convert dimension text to numbers
