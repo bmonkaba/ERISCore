@@ -12,20 +12,6 @@ ILI9341_t3_ERIS tft(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 Touch touch(CS_TOUCH);
 AudioDirector ad;
 
-
-typedef struct ApplicationMessageArgs{
-  int16_t i_a;
-  int16_t i_b;
-  int16_t i_c;
-  int16_t i_d;
-  float f_a;
-  float f_b;
-  float f_c;
-  float f_d;
-  const char *str;
-} ApplicationMessageArgs;
-
-
 // Application Base Class
 //
 class AppBaseClass {
@@ -58,14 +44,13 @@ class AppBaseClass {
     virtual void onTouch(uint16_t x, uint16_t y){};
     virtual void onTouchDrag(uint16_t x, uint16_t y){};
     virtual void onTouchRelease(uint16_t x, uint16_t y){};
-    virtual void MessageHandler(AppBaseClass *sender, const char *message,ApplicationMessageArgs *args){};
+    virtual void MessageHandler(AppBaseClass *sender, const char *message){};
 };
 
 class AppManager {
   private:
     static AppManager* obj; //make appManager a singleton
     SdFs sd;
-    //FsFile file;
     AppBaseClass *root; //root linked list node
     uint16_t nextIDAssignment;
     uint16_t activeID; //active app
@@ -166,10 +151,10 @@ AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 
 AppBaseClass::AppBaseClass(){
   Serial.println("AppBaseClass constructor called");
-  parentNode=NULL;
+  parentNode=NULL;          //set by the parent
   nextAppicationNode=NULL;
   previousAppicationNode=NULL;
-  touch_state = false;
+  touch_state = false;      //set by the application manager
   origin_x=0;
   origin_y=0;
   width=320;

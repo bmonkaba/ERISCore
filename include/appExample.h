@@ -1,10 +1,12 @@
 #include "AppManager.h"
 #include "AppButton.h"
+#include "AppSlider.h"
 // Example application
 //
 class MyAppExample:public AppBaseClass {
   public:
     AppButton *button;
+    AppSlider *slider;
     int16_t x_end,x_start;
     int16_t y_end,y_start;
     int16_t x_last,y_last;
@@ -17,12 +19,26 @@ class MyAppExample:public AppBaseClass {
       fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();
-      button = new AppButton();
-      button->origin_x=160;
-      button->origin_y=120;
-      button->width=160;
-      button->height=120;
-      button->setParent((AppBaseClass*)this);
+
+      slider = new AppSlider();
+      slider->origin_x=160;       //for testing
+      slider->origin_y=200;
+      slider->width=120;
+      slider->height=30;
+      slider->value=20;
+      slider->setParent(this);
+      
+      for (int x=160;x<320-40;x+=80){
+        for(int y=120; y<240-40;y+=40){
+          button = new AppButton(); //reuse the button var to create many instances
+          button->origin_x=x;       //for testing
+          button->origin_y=y;
+          button->width=60;
+          button->height=30;
+          button->setParent(this);
+        }
+      }
+      
     } 
     //define event handlers
     void update(){
@@ -99,5 +115,9 @@ class MyAppExample:public AppBaseClass {
         tft.drawLine(x_last,y_last,x,y,ILI9341_WHITE);
         x_last = x;
         y_last = y;
+    }
+    void MessageHandler(AppBaseClass *sender, const char *message){
+        Serial.println("MyApp: MessageHandler");
+        Serial.println(message);        
     }
 };
