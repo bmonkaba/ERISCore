@@ -11,17 +11,30 @@ class AppSlider:public AppBaseClass {
     }; 
     //define event handlers
     int16_t value;
+    char text[16];
   private:
     uint16_t last_x;
   protected:
     bool isPressed;
-    char text[16];
-    char name[16];
     void update(){
         int16_t marker = width*(value/100.0);
         //tft.drawFastVLine(marker,origin_y,height,ILI9341_MAGENTA);
-        tft.fillRoundRect(origin_x, origin_y, marker, height,4, ILI9341_DARKGREY);
+        tft.fillRoundRect(origin_x, origin_y, marker, height,4, CL(36, 54, 84));
         tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
+        tft.setTextColor(CL(0,0,0));
+        tft.setCursor(origin_x+(width/2)-1,origin_y+(height/2),true);
+        tft.print(text);
+        tft.setCursor(origin_x+(width/2)+1,origin_y+(height/2),true);
+        tft.print(text);
+        tft.setCursor(origin_x+(width/2),origin_y+(height/2)-1,true);
+        tft.print(text);
+        tft.setCursor(origin_x+(width/2),origin_y+(height/2)+1,true);
+        tft.print(text);
+        tft.setCursor(origin_x+(width/2)+1,origin_y+(height/2)+1,true);
+        tft.print(text);
+        tft.setCursor(origin_x+(width/2)-1,origin_y+(height/2)-1,true);
+        tft.print(text);
+        tft.setTextColor(CL(74, 143, 255));
         tft.setCursor(origin_x+(width/2),origin_y+(height/2),true);
         tft.print(text);
     };

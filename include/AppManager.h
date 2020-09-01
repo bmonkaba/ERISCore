@@ -4,7 +4,10 @@
 #include "HSI.h"
 #include "touch.h"
 #include "ILI9341_t3_ERIS.h"
+//#include "font_Arial.h"
 #include "AudioDirector.h"
+
+extern const ILI9341_t3_font_t Arial_9;
 
 class AppManager;
 
@@ -33,9 +36,18 @@ class AppBaseClass {
     int16_t origin_y;
     int16_t width;
     int16_t height;
+    char name[16];
     AppBaseClass();
     uint16_t getId(){return id;};
+    bool isName(const char * name_string){
+      bool is;
+      (0==strcmp(name,name_string))?is=true:is=false;
+      return is; 
+    };
+    void setName(const char* name_string){strcpy(name,name_string);}
     void setParent(AppBaseClass *parent){parentNode = parent;};
+    void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;}
+    void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;}
     virtual void update(){Serial.println(F("AppBaseClass:update"));};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
     virtual void updateRT(){}; //will be called every loop and prior to a potential update call
     //Event handlers
@@ -150,7 +162,7 @@ class AppManager {
 AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 
 AppBaseClass::AppBaseClass(){
-  Serial.println("AppBaseClass constructor called");
+  //Serial.println("AppBaseClass constructor called");
   parentNode=NULL;          //set by the parent
   nextAppicationNode=NULL;
   previousAppicationNode=NULL;
@@ -159,6 +171,7 @@ AppBaseClass::AppBaseClass(){
   origin_y=0;
   width=320;
   height=240;
+  strcpy(name,"NONE");
   AppManager::getInstance()->RegisterApp(this); //self register on construction
 }
 

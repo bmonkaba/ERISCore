@@ -14,7 +14,7 @@ void ILI9341_t3_ERIS::begin(){
     setClipRect();
     setOrigin();
     fillScreen(ILI9341_BLACK);
-    setTextColor(ILI9341_YELLOW);
+    setTextColor(CL(74, 143, 255));
     setTextSize(2);
     setRotation(1);
     println("Online...");

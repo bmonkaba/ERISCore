@@ -33,6 +33,7 @@ class AudioDirector{
     bool disconnect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
     bool disconnect(char* from,uint8_t from_port,char* to,uint8_t to_port);
     bool disconnect(const char* connectionString);
+    int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
   protected:
     AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
@@ -41,7 +42,8 @@ class AudioDirector{
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    uint16_t activeConnectionGroup;  
+    uint16_t activeConnectionGroup; 
+    uint16_t activeConnections; 
     uint16_t objCount;
     uint16_t categoryCount;
     uint16_t shortNameQueryResultCount;
@@ -55,6 +57,7 @@ class AudioDirector{
 
 AudioDirector::AudioDirector(){
   objCount=0;
+  activeConnections = 0;
   categoryCount=0;
   shortNameQueryResultCount=0;
   activeConnectionGroup=0;
@@ -173,7 +176,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     if(source==pCord[i]->pSrc && destination==pCord[i]->pDst && sourceOutput==pCord[i]->src_index && destinationInput==pCord[i]->dest_index){
       Serial.print(F("AudioDirector::connect() found existing connection; reconnecting at index  "));
       Serial.println(i);
-      pCord[i]->reconnect();
+      if(pCord[i]->reconnect()) activeConnections++;
       return true;
     }
   }
@@ -190,7 +193,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
         Serial.print(" -> ");
         Serial.print(destination->shortName);Serial.print(":");
         Serial.println(destinationInput);
-        pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
+        if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
         return true;
       }
     }
@@ -241,9 +244,10 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   token = strtok(NULL, " ");
   p->dst_port = atoi(token);
   
-  Serial.println(F("AudioDirector::ParseConnectString"));
-  Serial.print(p->src);Serial.println(" ");Serial.println(p->src_port);
-  Serial.print(p->dst);Serial.println(" ");Serial.println(p->dst_port);
+  Serial.print(F("AudioDirector::ParseConnectString "));
+  Serial.println(connectionString);
+  Serial.print("Source: ");Serial.print(p->src);Serial.print(" Port:");Serial.println(p->src_port);
+  Serial.print("Dest: ");Serial.print(p->dst);Serial.print(" Port:");Serial.println(p->dst_port);
 
   return;
 }
@@ -268,7 +272,7 @@ bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStrea
       Serial.print(F("AudioDirector::disconnect() found AudioConnection at index "));
       Serial.println(i);
       //disconnect the audio connection
-      pCord[i]->disconnect();
+      if(pCord[i]->disconnect()) activeConnections--;
       Serial.println(F("AudioDirector::disconnect() disconnect complete"));
       return true; 
     }

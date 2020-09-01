@@ -16,6 +16,7 @@ class MyAppExample:public AppBaseClass {
       Serial.println("MyApp constructor called");
       id = 1;
       t_lastupdate = micros();
+      //must downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();
@@ -27,15 +28,22 @@ class MyAppExample:public AppBaseClass {
       slider->height=30;
       slider->value=20;
       slider->setParent(this);
-      
+      slider->setName("FM OSC");
+      strcpy(slider->text,"FM OSC");
+      char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
+      uint8_t si = 0;
       for (int x=160;x<320-40;x+=80){
         for(int y=120; y<240-40;y+=40){
           button = new AppButton(); //reuse the button var to create many instances
-          button->origin_x=x;       //for testing
-          button->origin_y=y;
-          button->width=60;
-          button->height=30;
+          button->setPosition(x,y);
+          //button->origin_x=x;       //for testing
+          //button->origin_y=y;
+          button->setDimension(60,30);
+          //button->width=60;
+          //button->height=30;
           button->setParent(this);
+          button->setName(s[si]);
+          strcpy(button->text,s[si++]);
         }
       }
       
@@ -45,67 +53,59 @@ class MyAppExample:public AppBaseClass {
       //Serial.println("MyApp:update");
       int32_t x,y;
       uint16_t p;
-      /*
-      for (int32_t i=0; i < 1; i++){
-        x = random(0,320);
-        y = random(0,240);
-        p = tft.readPixel(x,y);
-        tft.drawPixel(x,y,p);
-        tft.drawPixel(x + random(0,2),y + random(0,2), p);
-        tft.drawPixel(x - random(0,2),y - random(0,2), p);
-      }
-      */
+      float n;
 
-       //to use the objects they must be downcast to the correct object type
-        //erisAudioAnalyzeFFT1024* fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
-        float n;
+      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
+      if (!tft.busy() & fft->available()) {
+        float fps = (float)(micros()-t_lastupdate)/1000000.0;
+        tft.setCursor(5,5);
+        //tft.println(1.0/fps);
+        tft.print("CPU: ");
+        tft.print(AudioProcessorUsageMax());
+        tft.print(" (");
+        tft.print(AudioProcessorUsage());
+        tft.print(")");
+        tft.setCursor(130,5);
+        tft.print("ABMEM: ");
+        tft.print(AudioMemoryUsageMax());
+        tft.print(" (");
+        tft.print(AudioMemoryUsage());
+        tft.print(")");
+        tft.setCursor(260,5);
+        tft.print("CON: ");
+        tft.print(ad.connectionCount());
 
-        if (!tft.busy() & fft->available()) {
-          float fps = (float)(micros()-t_lastupdate)/1000000.0;
-          tft.bltSDFullScreen("bluehex.ile");
-          tft.setCursor(10,10);
-          tft.println(1.0/fps);
-          tft.println("AUDIO CPU max(current):");
-          tft.print(AudioProcessorUsageMax());
-          tft.print(" (");
-          tft.print(AudioProcessorUsage());
-          tft.println(")");
-          tft.println("AUDIO MEM max(current):");
-          tft.print(AudioMemoryUsageMax());
-          tft.print(" (");
-          tft.print(AudioMemoryUsage());
-          tft.println(")");
-          t_lastupdate = micros(); 
-          int16_t last_y=0;
-          for (int16_t j=1; j<320/2; j+=1) {
-            n = fft->read(j/1);
-            //tft.drawFastVLine(j,0,(int16_t)(log(n*200)*50),ILI9341_DARKGREY);
-            //tft.drawPixel(j,(int16_t)(log(n*200)*50),ILI9341_DARKCYAN);
-            
-            tft.drawLine(j-1,240-last_y,j,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
-            last_y = (int16_t)(log(n*200)*50)/2;
-          }
-          //tft.updateScreen();
+        t_lastupdate = micros(); 
+        int16_t last_y=0;
+        for (int16_t j=1; j<320/2; j+=1) {
+          n = fft->read(j/1);
+          //tft.drawFastVLine(j,0,(int16_t)(log(n*200)*50),ILI9341_DARKGREY);
+          //tft.drawPixel(j,(int16_t)(log(n*200)*50),ILI9341_DARKCYAN);
+          
+          tft.drawLine(j-1,240-last_y,j,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
+          last_y = (int16_t)(log(n*200)*50)/2;
         }
+        //tft.updateScreen();
+      }
       //tft.drawPixel(random(0,320),random(0,240),ILI9341_BLACK);
       t_lastupdate = micros();
     }
     void onTouch(uint16_t x, uint16_t y){
-      Serial.println("MyApp:onTouch");
       x_start = x;
       y_start = y;
       x_last = x;
       y_last = y;
       tft.bltSDFullScreen("bluehex.ile");
     }
+
     void onTouchRelease(uint16_t x, uint16_t y){
-      //Serial.println("MyApp:onTouch");
       x_end = x;
       y_end = y;
       x_last = x;
       y_last = y;
       tft.drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);
     }
+
     void onTouchDrag(uint16_t x, uint16_t y){
       //Serial.println("MyApp:onTouchDrag");
         tft.drawPixel(x,y,ILI9341_BLUE);
@@ -116,8 +116,30 @@ class MyAppExample:public AppBaseClass {
         x_last = x;
         y_last = y;
     }
-    void MessageHandler(AppBaseClass *sender, const char *message){
-        Serial.println("MyApp: MessageHandler");
-        Serial.println(message);        
+    void MessageHandler(AppBaseClass *sender, const char *message){   
+        if (sender == slider){ //can detect sender by ptr...
+          erisAudioSynthWaveform* fm_mod = (erisAudioSynthWaveform*)(ad.getAudioStreamObjByName("waveform_1"));
+          fm_mod->begin(1.0, slider->value/10, WAVEFORM_TRIANGLE);
+        }
+        else if(sender->isName("BREAK")){ //...or, can detect sender by name
+          //disconnect the fft block
+          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
+          ad.disconnect(wav,0,fft,0);
+          Serial.println("BREAK!");
+        }
+        else if(sender->isName("MAKE")){ //...or, can detect sender by name
+          //disconnect the fft block
+          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
+          ad.connect(wav,0,fft,0);
+          Serial.println("BREAK!");
+        }
+        else if(sender->isName("SIN")){
+          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
+          wav->begin(1.0, 440, WAVEFORM_SINE);
+        }
+        else if(sender->isName("SQUARE")){
+          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
+          wav->begin(1.0, 440, WAVEFORM_SQUARE);
+        }
     }
 };

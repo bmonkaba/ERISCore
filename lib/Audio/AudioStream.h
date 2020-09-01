@@ -94,18 +94,18 @@ public:
 	~AudioConnection() {
 		disconnect();
 	}
-	void disconnect(void);//NOT USESD BY ERIS CORE
+	bool disconnect(void);
 	void connect(void);   //NOT USESD BY ERIS CORE
-	void reconnect(void); //ADDED TO SUPPORT ERIS CORE
+	bool reconnect(void); //ADDED TO SUPPORT ERIS CORE
 	//ADDED TO SUPPORT ERIS CORE
-	void rewire(AudioStream* psource, unsigned char sourceOutput,AudioStream* pdestination, unsigned char destinationInput){
-			//disconnect();
-			pSrc = psource;
-			pDst = pdestination;
-			src_index = sourceOutput;
-			dest_index = destinationInput;
-			reconnect();
-		};
+	bool rewire(AudioStream* psource, unsigned char sourceOutput,AudioStream* pdestination, unsigned char destinationInput){
+		//disconnect();
+		pSrc = psource;
+		pDst = pdestination;
+		src_index = sourceOutput;
+		dest_index = destinationInput;
+		return reconnect();
+	};
 //protected:
 	AudioStream *pSrc;//ADDED TO SUPPORT ERIS CORE
 	AudioStream *pDst;//ADDED TO SUPPORT ERIS CORE

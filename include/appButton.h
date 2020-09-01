@@ -10,12 +10,12 @@ class AppButton:public AppBaseClass {
         strcpy(text,"NONE");
         strcpy(name,"NONE");
     }; 
+    char text[16];
+    char name[16];
     //define event handlers
   protected:
     bool isPressed;
     unsigned long showActivatedUntil;
-    char text[16];
-    char name[16];
     void update(){
         if (showActivatedUntil > micros()){
             //tft.bltSD("/I/U/W","greenhex.ile",origin_x,origin_y,AT_NONE);
@@ -25,6 +25,7 @@ class AppButton:public AppBaseClass {
             tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
         }
         tft.setCursor(origin_x+(width/2),origin_y+(height/2),true);
+        tft.setFont(Arial_9);
         tft.print(text);
     };
     void onFocusLost(){isPressed=false;};
