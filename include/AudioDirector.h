@@ -2,6 +2,7 @@
 #define  __AudioDirector
 #include <String.h>
 #include "erisAudio.h"
+#include "eris_analyze_fft1024.h"
 
 #define MAX_AUDIO_STREAM_OBJECTS 70
 #define MAX_AUDIO_MEMORY_BLOCKS 100

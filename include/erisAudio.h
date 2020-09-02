@@ -761,9 +761,9 @@ public:
 	}
 	void update(){this->AudioAnalyzeFFT256::update();}
 };
-class erisAudioAnalyzeFFT1024:public AudioAnalyzeFFT1024{
+class __erisAudioAnalyzeFFT1024:public AudioAnalyzeFFT1024{ //standard libary version not used
 public:
-	erisAudioAnalyzeFFT1024():AudioAnalyzeFFT1024(){
+	__erisAudioAnalyzeFFT1024():AudioAnalyzeFFT1024(){
 		shortName="fft1024";
 		unum_inputs=1;
 		unum_outputs=0;

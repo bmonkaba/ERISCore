@@ -125,13 +125,11 @@ class MyAppExample:public AppBaseClass {
           //disconnect the fft block
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
           ad.disconnect(wav,0,fft,0);
-          Serial.println("BREAK!");
         }
         else if(sender->isName("MAKE")){ //...or, can detect sender by name
           //disconnect the fft block
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
           ad.connect(wav,0,fft,0);
-          Serial.println("BREAK!");
         }
         else if(sender->isName("SIN")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
