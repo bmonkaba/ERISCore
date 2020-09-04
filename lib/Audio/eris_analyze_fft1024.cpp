@@ -30,16 +30,28 @@
 #include "utility/dspinst.h"
 
 
+//Fat Audio - to add trailing zeros to fft buffer
+static void zero_to_fft_buffer(void *destination)
+{
+	uint32_t *dst = (uint32_t *)destination;
+	for (int i=0; i < AUDIO_BLOCK_SAMPLES; i++) {
+		*dst++ = 0;
+	}
+}
 // 140312 - PAH - slightly faster copy
-static void copy_to_fft_buffer(void *destination, const void *source)
+void erisAudioAnalyzeFFT1024::copy_to_fft_buffer(void *destination, const void *source,int subsample)
 {
 	const uint16_t *src = (const uint16_t *)source;
 	uint32_t *dst = (uint32_t *)destination;
-
-	for (int i=0; i < AUDIO_BLOCK_SAMPLES; i++) {
-		*dst++ = *src++;  // real sample plus a zero for imaginary
+	//Fat Audio - dumb downsample
+	for (; SAMPLING_INDEX < AUDIO_BLOCK_SAMPLES; SAMPLING_INDEX+=subsample) {
+		*dst++ = src[SAMPLING_INDEX];  // real sample plus a zero for imaginary
+		//Serial.println(src[SAMPLING_INDEX]);
+		//src += subsample; //FAT AUdio - dumb downsample
 	}
+	SAMPLING_INDEX -= AUDIO_BLOCK_SAMPLES;
 }
+
 
 static void apply_window_to_fft_buffer(void *buffer, const void *window)
 {
@@ -62,71 +74,52 @@ void erisAudioAnalyzeFFT1024::update(void)
 	block = receiveReadOnly();
 	if (!block) return;
 
-#if defined(__ARM_ARCH_7EM__)
-	switch (state) {
-	case 0:
-		blocklist[0] = block;
-		state = 1;
-		break;
-	case 1:
-		blocklist[1] = block;
-		state = 2;
-		break;
-	case 2:
-		blocklist[2] = block;
-		state = 3;
-		break;
-	case 3:
-		blocklist[3] = block;
-		state = 4;
-		break;
-	case 4:
-		blocklist[4] = block;
-		state = 5;
-		break;
-	case 5:
-		blocklist[5] = block;
-		state = 6;
-		break;
-	case 6:
-		blocklist[6] = block;
-		state = 7;
-		break;
-	case 7:
-		blocklist[7] = block;
-		// TODO: perhaps distribute the work over multiple update() ??
-		//       github pull requsts welcome......
-		copy_to_fft_buffer(buffer+0x000, blocklist[0]->data);
-		copy_to_fft_buffer(buffer+0x100, blocklist[1]->data);
-		copy_to_fft_buffer(buffer+0x200, blocklist[2]->data);
-		copy_to_fft_buffer(buffer+0x300, blocklist[3]->data);
-		copy_to_fft_buffer(buffer+0x400, blocklist[4]->data);
-		copy_to_fft_buffer(buffer+0x500, blocklist[5]->data);
-		copy_to_fft_buffer(buffer+0x600, blocklist[6]->data);
-		copy_to_fft_buffer(buffer+0x700, blocklist[7]->data);
-		if (window) apply_window_to_fft_buffer(buffer, window);
-		arm_cfft_radix4_q15(&fft_inst, buffer);
-		// TODO: support averaging multiple copies
-		for (int i=0; i < 512; i++) {
-			uint32_t tmp = *((uint32_t *)buffer + i); // real & imag
-			uint32_t magsq = multiply_16tx16t_add_16bx16b(tmp, tmp);
-			output[i] = sqrt_uint32_approx(magsq);
-		}
-		outputflag = true;
-		release(blocklist[0]);
-		release(blocklist[1]);
-		release(blocklist[2]);
-		release(blocklist[3]);
-		blocklist[0] = blocklist[4];
-		blocklist[1] = blocklist[5];
-		blocklist[2] = blocklist[6];
-		blocklist[3] = blocklist[7];
-		state = 4;
-		break;
+
+	//FAT Audio - add the ability to turn FFT on or OFF to save CPU
+	if (!enabled){
+		release(block);
+		return;
+	};
+
+	uint16_t ofs;
+	//calcuate active subsampling step and offset
+	if (ssr == SS_LOWFREQ){
+		MEM_STEP = subsample_lowfreqrange;
+		subsample_by = (int)subsample_lowfreqrange;
 	}
-#else
-	release(block);
-#endif
+	else if (ssr == SS_HIGHFREQ){
+		MEM_STEP = subsample_highfreqrange;
+		subsample_by = (int)subsample_highfreqrange;
+	}
+	BLOCKS_PER_FFT = (1024 / 128) * subsample_by;
+	BLOCK_REFRESH_SIZE = 8;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;//(BLOCKS_PER_FFT / (subsample_by * 2) - 1);//BLOCKS_PER_FFT / (subsample_by * 2);
+	ofs = 2 * (128/subsample_by) * sample_block;
+
+	if (sample_block < BLOCKS_PER_FFT - 1){
+		copy_to_fft_buffer(buffer+ofs, block->data,subsample_by);
+		release(block);
+		sample_block++;
+	} else{
+		copy_to_fft_buffer(buffer+ofs, block->data,subsample_by);
+		//copy_to_fft_buffer(tmp_buffer + ofs, block->data,SAMPLE_STEP);
+		release(block);
+		memcpy(tmp_buffer,buffer,2048 * sizeof(int16_t));
+		apply_window_to_fft_buffer(tmp_buffer, window);
+		arm_cfft_radix4_q15(&fft_inst, tmp_buffer);
+		outputflag = false; //output flag is false while updating the fft results
+
+		for (int i=0; i < 512; i++) {
+			uint32_t tmp = *((uint32_t *)tmp_buffer + i); // real & imag
+			uint32_t magsq = multiply_16tx16t_add_16bx16b(tmp, tmp);
+			output[i] = (output[i] * 0.5) + (0.5 *sqrt_uint32_approx(magsq));
+		}
+		if (sample_block!= 0){
+			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE;
+			//fft overlap - restore tmp cpy of last half to first half
+			memmove(buffer,&buffer[(128/subsample_by) * BLOCK_REFRESH_SIZE * 2], 2 * (128/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)* sizeof(int16_t));
+			outputflag = true;
+		}
+	}
 }
 
 

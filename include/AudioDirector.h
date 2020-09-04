@@ -3,6 +3,7 @@
 #include <String.h>
 #include "erisAudio.h"
 #include "eris_analyze_fft1024.h"
+#include "eris_analyze_scope.h"
 
 #define MAX_AUDIO_STREAM_OBJECTS 70
 #define MAX_AUDIO_MEMORY_BLOCKS 100
@@ -76,7 +77,11 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(pAudioStreamInputPort);
   addAudioStreamObj(pAudioStreamOutputPort);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
+  addAudioStreamObj(new erisAudioAnalyzeScope);
   addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
+  addAudioStreamObj(new erisAudioFilterStateVariable);
+  
+
   //generate audio component pool
   for (int i=0; i < 2; i++){
     addAudioStreamObj(new erisAudioEffectWaveshaper);
@@ -290,22 +295,18 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
 //testing
   Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
   connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
-  /*
-  Serial.println(F("AudioDirector::activateConnectionGroup() disconnecting AudioStreamInputPort from pAudioStreamOutputPort"));
-  //disconnect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
-  Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
-  connect("i2s-in_1 0 i2s2-out_1 0");
-  Serial.println(F("AudioDirector::activateConnectionGroup() test that a duplicate connnection requests will fail"));
-  //connect("i2s-in_1 0 i2s2-out_1 0");
-  */
+
   //connect a waveform object to the output and fft
   connect("waveform_1 0 waveformMod_1 0");
-  connect("waveformMod_1 0 fft1024_1 0");
   connect("waveformMod_1 0 i2s2-out_1 0");
   connect("waveformMod_1 0 i2s2-out_1 1");
 
   disconnect("waveformMod_1 0 i2s2-out_1 1");
   connect("waveform_2 0 i2s2-out_1 1");
+
+  connect("waveformMod_1 0 filter_1 0");
+  connect("filter_1 0 fft1024_1 0");
+  connect("filter_1 0 scope_1 0");
 
   //to use the objects they must be downcast
   erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));

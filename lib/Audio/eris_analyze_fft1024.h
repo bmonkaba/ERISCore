@@ -32,17 +32,60 @@
 #include "arm_math.h"
 #include "analyze_fft1024.h"
 
+enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
+
 class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  window(AudioWindowHanning1024), state(0), outputflag(false) {
+	  window(AudioWindowHamming1024), sample_block(0), outputflag(false) {
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
 		shortName="fft1024";
 		unum_inputs=1;
 		unum_outputs=0;
-		category="analyze-function";	
+		category="analyze-function";
+		enabled = false;
+		MEM_STEP = 0x010;
+		subsample_by = 16;
+		BLOCKS_PER_FFT = 128;
+		BLOCK_REFRESH_SIZE = 4; 
+		subsample_lowfreqrange = 48;
+		subsample_highfreqrange = 8;
+		ssr = SS_HIGHFREQ;
 	}
+	//FAT Audio
+	void enableFFT(bool enable_state){
+		sample_block=0;
+		SAMPLING_INDEX=0;
+		enabled = enable_state;
+	}
+
+	void configSubsample(uint16_t subsample,subsample_range range){
+		//subsampling provides more resolution in the lower frequency range
+		//...in exchange for lower bandwidth
+		//values between 16 (high range) & 48 (low range) are suitable for guitar
+		if (range == SS_LOWFREQ) subsample_lowfreqrange = subsample;
+		else if (range == SS_HIGHFREQ) subsample_highfreqrange = subsample;
+		outputflag = false;
+		sample_block=0;
+		SAMPLING_INDEX=0;
+	}
+
+	void setActiveRange(subsample_range range){
+		ssr = range;
+		outputflag = false;
+		sample_block=0;
+		SAMPLING_INDEX = 0;
+	}
+
+	void toggleActiveRange(){
+		if (ssr == SS_LOWFREQ) ssr = SS_HIGHFREQ;
+		else if (ssr == SS_HIGHFREQ) ssr = SS_LOWFREQ;
+		outputflag = false;
+		sample_block=0;
+		SAMPLING_INDEX = 0;
+	}
+
 	bool available() {
 		if (outputflag == true) {
 			outputflag = false;
@@ -80,12 +123,23 @@ public:
 	
 private:
 	void init(void);
+	void copy_to_fft_buffer(void *destination, const void *source,int subsample);
 	const int16_t *window;
-	audio_block_t *blocklist[8];
+	audio_block_t *blocklist[16];
 	int16_t buffer[2048] __attribute__ ((aligned (4)));
+	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
 	//uint32_t sum[512];
 	//uint8_t count;
-	uint8_t state;
+	uint8_t sample_block;
+	bool enabled; //FAT Audio
+	uint16_t MEM_STEP;
+	int subsample_by;
+	int SAMPLING_INDEX;
+	uint8_t BLOCKS_PER_FFT;
+	uint8_t BLOCK_REFRESH_SIZE;
+	uint16_t subsample_lowfreqrange;
+	uint16_t subsample_highfreqrange;
+	subsample_range ssr;
 	//uint8_t naverage;
 	volatile bool outputflag;
 	audio_block_t *inputQueueArray[1];

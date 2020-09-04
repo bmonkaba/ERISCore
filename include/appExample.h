@@ -9,15 +9,25 @@ class MyAppExample:public AppBaseClass {
     AppSlider *slider;
     int16_t x_end,x_start;
     int16_t y_end,y_start;
-    int16_t x_last,y_last;
+    int16_t x_last,y_last,y_last_scope;
     unsigned long t_lastupdate;
     erisAudioAnalyzeFFT1024* fft;
+    erisAudioAnalyzeScope* scope;
     MyAppExample():AppBaseClass(){
       Serial.println("MyApp constructor called");
       id = 1;
       t_lastupdate = micros();
       //must downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
+      fft->enableFFT(true);
+
+      erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
+      filter->frequency(12000);
+
+      scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
+      scope->trigger();
+
+      //fft->toggleActiveRange();
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();
 
@@ -56,7 +66,21 @@ class MyAppExample:public AppBaseClass {
       float n;
 
       if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
-      if (!tft.busy() & fft->available()) {
+      if (scope->available()){
+        for (int16_t i=0;i<320;i++){
+          int16_t v;
+          float f;
+          uint16_t ss;
+
+          v = scope->read(i);
+          f = ((v / 32768.0) + 1.0)/2;
+          ss = (uint16_t)(f * height / 2.0);
+          if (i>0) tft.drawLine(i-1,y_last_scope,i,ss,ILI9341_DARKGREY);
+          y_last_scope = ss;
+        }
+        scope->trigger();
+      }
+      if (!tft.busy() && fft->available()) {
         float fps = (float)(micros()-t_lastupdate)/1000000.0;
         tft.setCursor(5,5);
         //tft.println(1.0/fps);
@@ -77,19 +101,16 @@ class MyAppExample:public AppBaseClass {
 
         t_lastupdate = micros(); 
         int16_t last_y=0;
-        for (int16_t j=1; j<320/2; j+=1) {
-          n = fft->read(j/1);
-          //tft.drawFastVLine(j,0,(int16_t)(log(n*200)*50),ILI9341_DARKGREY);
-          //tft.drawPixel(j,(int16_t)(log(n*200)*50),ILI9341_DARKCYAN);
-          
+        for (int16_t j=2; j<319; j+=1) {
+          n = min(fft->read(j),fft->read(j-1));
+          n = min(fft->read(j+1),n);
           tft.drawLine(j-1,240-last_y,j,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
           last_y = (int16_t)(log(n*200)*50)/2;
         }
-        //tft.updateScreen();
       }
-      //tft.drawPixel(random(0,320),random(0,240),ILI9341_BLACK);
       t_lastupdate = micros();
     }
+
     void onTouch(uint16_t x, uint16_t y){
       x_start = x;
       y_start = y;
@@ -119,7 +140,7 @@ class MyAppExample:public AppBaseClass {
     void MessageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect sender by ptr...
           erisAudioSynthWaveform* fm_mod = (erisAudioSynthWaveform*)(ad.getAudioStreamObjByName("waveform_1"));
-          fm_mod->begin(1.0, slider->value/10, WAVEFORM_TRIANGLE);
+          fm_mod->begin(1.0, slider->value/200.0, WAVEFORM_SINE);
         }
         else if(sender->isName("BREAK")){ //...or, can detect sender by name
           //disconnect the fft block
