@@ -8,6 +8,8 @@ class AppSlider:public AppBaseClass {
         isPressed = false;
         strcpy(text,"NONE");
         strcpy(name,"NONE");
+        last_x = 0;
+        value = 0;
     }; 
     //define event handlers
     int16_t value;

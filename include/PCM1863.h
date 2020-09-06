@@ -105,7 +105,7 @@ void I2CBusScan()
   byte error, address;
   int nDevices;
 
-  Serial.println("Scanning...");
+  Serial.println("I2CBusScan: Scanning...");
 
   nDevices = 0;
   for(address = 1; address < 127; address++ )
@@ -118,7 +118,7 @@ void I2CBusScan()
 
     if (error == 0)
     {
-      Serial.print("I2C device found at address ");
+      Serial.print(F("I2CBusScan: I2C device found at address "));
       if (address<16)
         Serial.print("0");
       //Serial.print(address,HEX);
@@ -129,14 +129,14 @@ void I2CBusScan()
     }
     else if (error==4)
     {
-      Serial.print("Unknown error at address 0x");
+      Serial.print(F("I2CBusScan: Unknown error at address 0x"));
       if (address<16)
-        Serial.print("0");
+        Serial.print(F("0"));
       Serial.println(address,HEX);
     }
   }
   if (nDevices == 0)
-    Serial.println("No I2C devices found\n");
+    Serial.println(F("I2CBusScan: No I2C devices found\n"));
   else
-    Serial.println("done\n");
+    Serial.println(F("I2CBusScan: done\n"));
 }

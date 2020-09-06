@@ -45,9 +45,7 @@ void erisAudioAnalyzeFFT1024::copy_to_fft_buffer(void *destination, const void *
 	uint32_t *dst = (uint32_t *)destination;
 	//Fat Audio - dumb downsample
 	for (; SAMPLING_INDEX < AUDIO_BLOCK_SAMPLES; SAMPLING_INDEX+=subsample) {
-		*dst++ = src[SAMPLING_INDEX];  // real sample plus a zero for imaginary
-		//Serial.println(src[SAMPLING_INDEX]);
-		//src += subsample; //FAT AUdio - dumb downsample
+		if (SAMPLING_INDEX < AUDIO_BLOCK_SAMPLES) *dst++ = src[SAMPLING_INDEX];
 	}
 	SAMPLING_INDEX -= AUDIO_BLOCK_SAMPLES;
 }
@@ -92,7 +90,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = (1024 / 128) * subsample_by;
-	BLOCK_REFRESH_SIZE = 8;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;//(BLOCKS_PER_FFT / (subsample_by * 2) - 1);//BLOCKS_PER_FFT / (subsample_by * 2);
+	BLOCK_REFRESH_SIZE = 8;//8;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;//(BLOCKS_PER_FFT / (subsample_by * 2) - 1);//BLOCKS_PER_FFT / (subsample_by * 2);
 	ofs = 2 * (128/subsample_by) * sample_block;
 
 	if (sample_block < BLOCKS_PER_FFT - 1){
@@ -101,7 +99,6 @@ void erisAudioAnalyzeFFT1024::update(void)
 		sample_block++;
 	} else{
 		copy_to_fft_buffer(buffer+ofs, block->data,subsample_by);
-		//copy_to_fft_buffer(tmp_buffer + ofs, block->data,SAMPLE_STEP);
 		release(block);
 		memcpy(tmp_buffer,buffer,2048 * sizeof(int16_t));
 		apply_window_to_fft_buffer(tmp_buffer, window);

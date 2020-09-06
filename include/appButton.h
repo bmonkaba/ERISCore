@@ -11,7 +11,6 @@ class AppButton:public AppBaseClass {
         strcpy(name,"NONE");
     }; 
     char text[16];
-    char name[16];
     //define event handlers
   protected:
     bool isPressed;

@@ -69,6 +69,7 @@ class AppManager {
                       //TODO: implement an active id push/pop stack for nesting apps
     AppManager(){ //private constuctor (lazy singleton pattern)
       root = 0;
+      activeID = 0;
       nextIDAssignment = 1; //id 0 is reserved
       //init the sd card
       if (!sd.begin(SdioConfig(FIFO_SDIO))){

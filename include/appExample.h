@@ -12,6 +12,7 @@ class MyAppExample:public AppBaseClass {
     int16_t x_last,y_last,y_last_scope;
     unsigned long t_lastupdate;
     erisAudioAnalyzeFFT1024* fft;
+    erisAudioAnalyzeFFT1024* fft2;
     erisAudioAnalyzeScope* scope;
     MyAppExample():AppBaseClass(){
       Serial.println("MyApp constructor called");
@@ -21,8 +22,15 @@ class MyAppExample:public AppBaseClass {
       fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
       fft->enableFFT(true);
 
+      fft2 = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_2"));
+      fft2->toggleActiveRange();
+      fft2->enableFFT(true);
+
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(12000);
+      filter->frequency(2000);
+
+      erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
+      filter2->frequency(600);
 
       scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
       scope->trigger();
@@ -84,29 +92,62 @@ class MyAppExample:public AppBaseClass {
         float fps = (float)(micros()-t_lastupdate)/1000000.0;
         tft.setCursor(5,5);
         //tft.println(1.0/fps);
-        tft.print("CPU: ");
+        tft.print(F("CPU: "));
         tft.print(AudioProcessorUsageMax());
-        tft.print(" (");
+        tft.print(F(" ("));
         tft.print(AudioProcessorUsage());
-        tft.print(")");
+        tft.print(F(")"));
         tft.setCursor(130,5);
-        tft.print("ABMEM: ");
+        tft.print(F("ABMEM: "));
         tft.print(AudioMemoryUsageMax());
-        tft.print(" (");
+        tft.print(F(" ("));
         tft.print(AudioMemoryUsage());
-        tft.print(")");
+        tft.print(F(")"));
         tft.setCursor(260,5);
-        tft.print("CON: ");
+        tft.print(F("CON: "));
         tft.print(ad.connectionCount());
 
         t_lastupdate = micros(); 
         int16_t last_y=0;
-        for (int16_t j=2; j<319; j+=1) {
-          n = min(fft->read(j),fft->read(j-1));
-          n = min(fft->read(j+1),n);
-          tft.drawLine(j-1,240-last_y,j,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
+        int16_t peak1 = 0;
+        int16_t peak2 = 0;
+        int16_t plotx;
+        float max = -9999;
+        for (int16_t j=2; j<510; j+=1) {
+          n = min(fft2->read(j),fft2->read(j-1));
+          n = min(fft2->read(j+1),n);
+          if (n>max){max=n;peak2=j;}
+          plotx = (int16_t)(((float)j/512.0)*320);
+          //tft.drawLine(plotx-1,240-last_y,plotx,240-((int16_t)(log(n*200)*50)/2),ILI9341_MAROON);
           last_y = (int16_t)(log(n*200)*50)/2;
         }
+        max = -9999;
+        for (int16_t j=2; j<510; j+=1) {
+          n = min(fft->read(j/4),fft->read(j/4-1));
+          n = min(fft->read(j/4+1),n);
+          if (n>max){max=n;peak1=j;}
+          plotx = (int16_t)(((float)j/512.0)*320);
+          tft.drawLine(plotx-1,240-last_y,plotx,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
+          last_y = (int16_t)(log(n*200)*50)/2;
+        }
+        int16_t offset = (peak2-peak1)/2;
+
+        for (int16_t j=2; j<510; j+=1) {
+          if (j+offset > 1 && j+offset < 510){
+            n = min(fft2->read(j+offset),fft2->read(j+offset-1));
+            n = min(fft2->read(j+offset+1),n);
+            float signal_a = 240-((int16_t)(log(n*200)*50)/2);
+
+            n = min(fft->read(j/4),fft->read(j/4-1));
+            n = min(fft->read(j/4+1),n);
+            float signal_b = 240-((int16_t)(log(n*200)*50)/2);
+            signal_a = min(signal_a,signal_b);
+            plotx = (int16_t)(((float)j/512.0)*320);
+            tft.drawLine(plotx-1,last_y,plotx,signal_a,ILI9341_PURPLE);
+            last_y = signal_a;
+          }
+        }
+        
       }
       t_lastupdate = micros();
     }

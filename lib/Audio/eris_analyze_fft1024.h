@@ -38,7 +38,7 @@ class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  window(AudioWindowHamming1024), sample_block(0), outputflag(false) {
+	  window(AudioWindowHanning1024), sample_block(0), outputflag(false) {
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
 		shortName="fft1024";
 		unum_inputs=1;
@@ -46,17 +46,21 @@ public:
 		category="analyze-function";
 		enabled = false;
 		MEM_STEP = 0x010;
-		subsample_by = 16;
+		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 48;
-		subsample_highfreqrange = 8;
+		subsample_lowfreqrange = 8;//689hz
+		subsample_highfreqrange = 2;//2500hz
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
-	void enableFFT(bool enable_state){
+	void reset(){
 		sample_block=0;
 		SAMPLING_INDEX=0;
+	};
+
+	void enableFFT(bool enable_state){
+		reset();
 		enabled = enable_state;
 	}
 
@@ -67,23 +71,20 @@ public:
 		if (range == SS_LOWFREQ) subsample_lowfreqrange = subsample;
 		else if (range == SS_HIGHFREQ) subsample_highfreqrange = subsample;
 		outputflag = false;
-		sample_block=0;
-		SAMPLING_INDEX=0;
+		reset();
 	}
 
 	void setActiveRange(subsample_range range){
 		ssr = range;
 		outputflag = false;
-		sample_block=0;
-		SAMPLING_INDEX = 0;
+		reset();
 	}
 
 	void toggleActiveRange(){
 		if (ssr == SS_LOWFREQ) ssr = SS_HIGHFREQ;
 		else if (ssr == SS_HIGHFREQ) ssr = SS_LOWFREQ;
 		outputflag = false;
-		sample_block=0;
-		SAMPLING_INDEX = 0;
+		reset();
 	}
 
 	bool available() {
@@ -135,7 +136,7 @@ private:
 	uint16_t MEM_STEP;
 	int subsample_by;
 	int SAMPLING_INDEX;
-	uint8_t BLOCKS_PER_FFT;
+	uint16_t BLOCKS_PER_FFT;
 	uint8_t BLOCK_REFRESH_SIZE;
 	uint16_t subsample_lowfreqrange;
 	uint16_t subsample_highfreqrange;

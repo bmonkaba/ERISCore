@@ -5,7 +5,7 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
-#define MAX_AUDIO_STREAM_OBJECTS 70
+#define MAX_AUDIO_STREAM_OBJECTS 120
 #define MAX_AUDIO_MEMORY_BLOCKS 100
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
@@ -38,6 +38,8 @@ class AudioDirector{
     int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
   protected:
+    void*  heapStart;  //used to estamate total heap allocation size
+    void*  heapEnd;    //
     AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
     AudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
     AudioStream* pAudioStreamOutputPort; //DAC Audio Output(s)
@@ -73,9 +75,11 @@ AudioDirector::AudioDirector(){
   }
 
   pAudioStreamInputPort = new erisAudioInputI2S();
+  heapStart = pAudioStreamInputPort;
   pAudioStreamOutputPort = new erisAudioOutputI2S2();
   addAudioStreamObj(pAudioStreamInputPort);
   addAudioStreamObj(pAudioStreamOutputPort);
+  addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
   addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
@@ -83,7 +87,7 @@ AudioDirector::AudioDirector(){
   
 
   //generate audio component pool
-  for (int i=0; i < 2; i++){
+  for (int i=0; i < 16; i++){
     addAudioStreamObj(new erisAudioEffectWaveshaper);
     addAudioStreamObj(new erisAudioEffectEnvelope);
     addAudioStreamObj(new erisAudioSynthWaveformModulated);
@@ -112,7 +116,15 @@ AudioDirector::AudioDirector(){
   Serial.println(test->instance);
 
   Serial.println(F("AudioDirector::AudioDirector() building AudioConnection pool"));
-  for(uint16_t i=0; i < MAX_CONNECTIONS;i++) pCord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
+  for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
+    pCord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
+  }
+  heapEnd = pCord[MAX_CONNECTIONS-1] + (pCord[MAX_CONNECTIONS-1] - pCord[MAX_CONNECTIONS-2]);
+  Serial.print(F("AudioDirector::AudioDirector() Estimated Memory Useage: "));
+  long s = (uint32_t)heapStart;
+  long e = (uint32_t)heapEnd;
+  Serial.print(e-s);
+  Serial.println(" Bytes");
 
 };
 
@@ -129,12 +141,15 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
       for(uint16_t i=0; i < objCount;i++){
         if(strcmp(obj->shortName,pAudioStreamObjPool[i]->shortName)==0) count += 1;
       }
+    } else{
+      heapStart = (void *)obj;  
     }
     obj->instance = count;
     Serial.print(F(" instance: "));
     Serial.print(obj->instance);
     Serial.print(F(" ptr: "));
-    Serial.println((uint32_t)obj); 
+    Serial.println((uint32_t)obj);
+    heapEnd = (void *)obj;
     return true;
   }
   return false;
@@ -196,7 +211,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
         Serial.println(i);
         Serial.print(source->shortName);Serial.print(":");
         Serial.print(sourceOutput);
-        Serial.print(" -> ");
+        Serial.print(F(" -> "));
         Serial.print(destination->shortName);Serial.print(":");
         Serial.println(destinationInput);
         if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
@@ -206,10 +221,10 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     if (NULL==pCord[i]){
       Serial.print(F("AudioDirector::connect() making a new AudioConnection at index "));
       Serial.println(i);
-      Serial.print(source->shortName);Serial.print(":");
+      Serial.print(source->shortName);Serial.print(F(":"));
       Serial.print(sourceOutput);
-      Serial.print(" -> ");
-      Serial.print(destination->shortName);Serial.print(":");
+      Serial.print(F(" -> "));
+      Serial.print(destination->shortName);Serial.print(F(":"));
       Serial.println(destinationInput);
       //need to rewire after creation as the reference based approach was bypassed 
       //in favor of pointers in order to facilitate the extention of the audio connection base class
@@ -252,8 +267,8 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   
   Serial.print(F("AudioDirector::ParseConnectString "));
   Serial.println(connectionString);
-  Serial.print("Source: ");Serial.print(p->src);Serial.print(" Port:");Serial.println(p->src_port);
-  Serial.print("Dest: ");Serial.print(p->dst);Serial.print(" Port:");Serial.println(p->dst_port);
+  Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.println(p->src_port);
+  Serial.print(F("Dest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
 
   return;
 }
@@ -305,7 +320,9 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("waveform_2 0 i2s2-out_1 1");
 
   connect("waveformMod_1 0 filter_1 0");
+  connect("waveformMod_1 0 filter_2 0");
   connect("filter_1 0 fft1024_1 0");
+  connect("filter_2 0 fft1024_2 0");
   connect("filter_1 0 scope_1 0");
 
   //to use the objects they must be downcast
@@ -313,7 +330,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   mod->begin(1.0, 0.1, WAVEFORM_TRIANGLE);
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
-  wav->frequencyModulation(1.0);
+  wav->frequencyModulation(4.0);
   wav->begin(1.0, 440, WAVEFORM_SQUARE);
 
 }
