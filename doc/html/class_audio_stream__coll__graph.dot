@@ -1,0 +1,8 @@
+digraph "AudioStream"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{AudioStream\n|+ cpu_cycles\l+ cpu_cycles_max\l+ shortName\l+ category\l+ unum_inputs\l+ unum_outputs\l+ instance\l+ cpu_cycles_total\l+ cpu_cycles_total_max\l+ memory_used\l+ memory_used_max\l# active\l# num_inputs\l# numConnections\l|+ AudioStream()\l+ AudioStream()\l+ processorUsage()\l+ processorUsageMax()\l+ processorUsageMaxReset()\l+ isActive()\l+ initialize_memory()\l# transmit()\l# receiveReadOnly()\l# receiveWritable()\l# allocate()\l# release()\l# update_setup()\l# update_stop()\l# update_all()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

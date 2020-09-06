@@ -1,0 +1,8 @@
+digraph "SdSpiDriverBareUno"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{SdSpiDriverBareUno\n||+ activate()\l+ end()\l+ deactivate()\l+ begin()\l+ receive()\l+ receive()\l+ send()\l+ send()\l+ select()\l+ setSckSpeed()\l+ unselect()\l+ transfer()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Optimized SPI class for access to SD and SDHC flash memory cards."];
+}

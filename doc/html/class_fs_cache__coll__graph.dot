@@ -1,0 +1,8 @@
+digraph "FsCache"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{FsCache\n|+ CACHE_STATUS_DIRTY\l+ CACHE_STATUS_MASK\l+ CACHE_OPTION_NO_READ\l+ CACHE_FOR_READ\l+ CACHE_FOR_WRITE\l+ CACHE_RESERVE_FOR_WRITE\l|+ FsCache()\l+ cacheBuffer()\l+ clear()\l+ dirty()\l+ init()\l+ invalidate()\l+ isDirty()\l+ sector()\l+ get()\l+ sync()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Sector cache."];
+}

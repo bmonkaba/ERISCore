@@ -1,0 +1,8 @@
+digraph "DirUpcase_t"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{DirUpcase_t\n|+ type\l+ reserved1\l+ checksum\l+ reserved2\l+ firstCluster\l+ size\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

@@ -1,0 +1,8 @@
+digraph "DigitalPin&lt; PinNumber &gt;"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{DigitalPin\< PinNumber \>\n|+ level\l|+ DigitalPin()\l+ operator=()\l+ operator bool()\l+ __attribute__()\l+ __attribute__()\l+ __attribute__()\l+ __attribute__()\l+ __attribute__()\l+ __attribute__()\l+ __attribute__()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Fast digital port I/O."];
+}

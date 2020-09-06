@@ -1,0 +1,8 @@
+digraph "UICType"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{UICType\n|+ path_1\l+ path_2\l+ path_3\l+ path_4\l+ icon\l+ text\l+ key\l+ data_type\l+ list_type\l+ enum_data_type\land 13 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}
