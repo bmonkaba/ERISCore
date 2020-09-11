@@ -1,41 +1,50 @@
+#include "AudioUtilities.h"
 #include "AppManager.h"
 #include "AppButton.h"
 #include "AppSlider.h"
+#include "AppScope.h"
+#include "AppCQT.h"
+
 // Example application
 //
 class MyAppExample:public AppBaseClass {
   public:
+    AppCQT *cqt;
+    AppScope *oscope;
     AppButton *button;
     AppSlider *slider;
     int16_t x_end,x_start;
     int16_t y_end,y_start;
     int16_t x_last,y_last,y_last_scope;
-    unsigned long t_lastupdate;
+    uint32_t t_lastupdate;
     erisAudioAnalyzeFFT1024* fft;
     erisAudioAnalyzeFFT1024* fft2;
+    int16_t fft2AutoOffset;
     erisAudioAnalyzeScope* scope;
     MyAppExample():AppBaseClass(){
       Serial.println("MyApp constructor called");
       id = 1;
       t_lastupdate = micros();
-      //must downcast fetched objects to the correct type!
-      fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
-      fft->enableFFT(true);
-
-      fft2 = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_2"));
-      fft2->toggleActiveRange();
-      fft2->enableFFT(true);
 
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(2000);
+      filter->frequency(22050/2);
 
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(600);
+      filter2->frequency(22050/16);
 
-      scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
-      scope->trigger();
+      erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
+      filter3->frequency(22050/16);
 
-      //fft->toggleActiveRange();
+      oscope = new AppScope;
+      oscope->setPosition(10,20);
+      oscope->setDimension(290,100);
+      oscope->setParent(this);
+
+      cqt = new AppCQT;
+      cqt->setPosition(10,20);
+      cqt->setDimension(290,100);
+      cqt->setParent(this);
+
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();
 
@@ -54,11 +63,7 @@ class MyAppExample:public AppBaseClass {
         for(int y=120; y<240-40;y+=40){
           button = new AppButton(); //reuse the button var to create many instances
           button->setPosition(x,y);
-          //button->origin_x=x;       //for testing
-          //button->origin_y=y;
           button->setDimension(60,30);
-          //button->width=60;
-          //button->height=30;
           button->setParent(this);
           button->setName(s[si]);
           strcpy(button->text,s[si++]);
@@ -69,86 +74,22 @@ class MyAppExample:public AppBaseClass {
     //define event handlers
     void update(){
       //Serial.println("MyApp:update");
-      int32_t x,y;
-      uint16_t p;
-      float n;
-
-      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
-      if (scope->available()){
-        for (int16_t i=0;i<320;i++){
-          int16_t v;
-          float f;
-          uint16_t ss;
-
-          v = scope->read(i);
-          f = ((v / 32768.0) + 1.0)/2;
-          ss = (uint16_t)(f * height / 2.0);
-          if (i>0) tft.drawLine(i-1,y_last_scope,i,ss,ILI9341_DARKGREY);
-          y_last_scope = ss;
-        }
-        scope->trigger();
-      }
-      if (!tft.busy() && fft->available()) {
-        float fps = (float)(micros()-t_lastupdate)/1000000.0;
-        tft.setCursor(5,5);
-        //tft.println(1.0/fps);
-        tft.print(F("CPU: "));
-        tft.print(AudioProcessorUsageMax());
-        tft.print(F(" ("));
-        tft.print(AudioProcessorUsage());
-        tft.print(F(")"));
-        tft.setCursor(130,5);
-        tft.print(F("ABMEM: "));
-        tft.print(AudioMemoryUsageMax());
-        tft.print(F(" ("));
-        tft.print(AudioMemoryUsage());
-        tft.print(F(")"));
-        tft.setCursor(260,5);
-        tft.print(F("CON: "));
-        tft.print(ad.connectionCount());
-
-        t_lastupdate = micros(); 
-        int16_t last_y=0;
-        int16_t peak1 = 0;
-        int16_t peak2 = 0;
-        int16_t plotx;
-        float max = -9999;
-        for (int16_t j=2; j<510; j+=1) {
-          n = min(fft2->read(j),fft2->read(j-1));
-          n = min(fft2->read(j+1),n);
-          if (n>max){max=n;peak2=j;}
-          plotx = (int16_t)(((float)j/512.0)*320);
-          //tft.drawLine(plotx-1,240-last_y,plotx,240-((int16_t)(log(n*200)*50)/2),ILI9341_MAROON);
-          last_y = (int16_t)(log(n*200)*50)/2;
-        }
-        max = -9999;
-        for (int16_t j=2; j<510; j+=1) {
-          n = min(fft->read(j/4),fft->read(j/4-1));
-          n = min(fft->read(j/4+1),n);
-          if (n>max){max=n;peak1=j;}
-          plotx = (int16_t)(((float)j/512.0)*320);
-          tft.drawLine(plotx-1,240-last_y,plotx,240-((int16_t)(log(n*200)*50)/2),ILI9341_DARKGREY);
-          last_y = (int16_t)(log(n*200)*50)/2;
-        }
-        int16_t offset = (peak2-peak1)/2;
-
-        for (int16_t j=2; j<510; j+=1) {
-          if (j+offset > 1 && j+offset < 510){
-            n = min(fft2->read(j+offset),fft2->read(j+offset-1));
-            n = min(fft2->read(j+offset+1),n);
-            float signal_a = 240-((int16_t)(log(n*200)*50)/2);
-
-            n = min(fft->read(j/4),fft->read(j/4-1));
-            n = min(fft->read(j/4+1),n);
-            float signal_b = 240-((int16_t)(log(n*200)*50)/2);
-            signal_a = min(signal_a,signal_b);
-            plotx = (int16_t)(((float)j/512.0)*320);
-            tft.drawLine(plotx-1,last_y,plotx,signal_a,ILI9341_PURPLE);
-            last_y = signal_a;
-          }
-        }
-        
-      }
+      float fps = (float)(micros()-t_lastupdate)/1000000.0;
+      tft.setCursor(5,5);
+      tft.print(F("CPU: "));
+      tft.print(AudioProcessorUsageMax());
+      tft.print(F(" ("));
+      tft.print(AudioProcessorUsage());
+      tft.print(F(")"));
+      tft.setCursor(130,5);
+      tft.print(F("ABMEM: "));
+      tft.print(AudioMemoryUsageMax());
+      tft.print(F(" ("));
+      tft.print(AudioMemoryUsage());
+      tft.print(F(")"));
+      tft.setCursor(260,5);
+      tft.print(F("CON: "));
+      tft.print(ad.connectionCount());
       t_lastupdate = micros();
     }
 

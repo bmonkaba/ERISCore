@@ -5,13 +5,15 @@
 #include <SdFat-beta.h>
 #include "HSI.h"
 #include "SPI.h"
+#include "appTemplate.h"
 #include "appExample.h"
 #include "appReprogram.h"
 #include "PCM1863.h"
 
 uint16_t inc;
-MyAppExample *app;
+MyAppExample app;
 AppReprogram *appReprogram;
+AppTemplate appTemplate;
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
@@ -35,9 +37,9 @@ void setup() {
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
   touch.setRotation(3);
   Serial.println("Setup: Loading Applications");
-  app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
+  //app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();
-  AppManager::getInstance()->switchAppFocus(app->getId()); //focus is requested by obj id
+  AppManager::getInstance()->switchAppFocus(app.getId()); //focus is requested by obj id
   //reset the i2c bus and config the external ADC
   Serial.println("Setup: Configuring Audio Hardware");
   I2CReset();

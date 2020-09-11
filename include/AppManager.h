@@ -113,6 +113,7 @@ class AppManager {
       touch.update();
       AppBaseClass *node = root;
       bool isactive_child;
+      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
       //search the linked list
       do{
         node->updateRT(); //real time update (always called)
@@ -135,8 +136,7 @@ class AppManager {
             node->touch_state=0;
             node->onTouchRelease(p.x, p.y);
           }
-          //TODO: after integrating the UI class add automatic wallpaper & control rendering
-          node->update(); //update active window
+          if (!tft.busy()) node->update(); //update active window
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
         }

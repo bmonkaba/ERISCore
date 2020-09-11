@@ -321,8 +321,10 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
 
   connect("waveformMod_1 0 filter_1 0");
   connect("waveformMod_1 0 filter_2 0");
+  connect("filter_2 0 filter_3 0");
+  
   connect("filter_1 0 fft1024_1 0");
-  connect("filter_2 0 fft1024_2 0");
+  connect("filter_3 0 fft1024_2 0");
   connect("filter_1 0 scope_1 0");
 
   //to use the objects they must be downcast

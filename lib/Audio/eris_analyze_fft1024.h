@@ -49,8 +49,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 8;//689hz
-		subsample_highfreqrange = 2;//2500hz
+		subsample_lowfreqrange = 16;//689hz
+		subsample_highfreqrange = 1;//2500hz
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
@@ -106,11 +106,34 @@ public:
 		}
 		if (binFirst > 511) return 0.0;
 		if (binLast > 511) binLast = 511;
-		uint32_t sum = 0;
+		float maxf = 0;
+		float comp;
 		do {
-			sum += output[binFirst++];
+			comp = (float)output[binFirst++];
+			maxf = max(comp,maxf);
 		} while (binFirst <= binLast);
-		return (float)sum * (1.0 / 16384.0);
+		return maxf * (1.0 / 16384.0);
+	}
+	float read(float freq_from, float freq_to) {
+		//convert f to bin
+		float bw;
+		float bin_size;
+		unsigned int start_bin;
+		unsigned int stop_bin;
+
+		bw = (AUDIO_SAMPLE_RATE_EXACT * 0.5) / (float)subsample_by;
+		bin_size = bw/1024;
+		start_bin = (unsigned int)freq_from / bin_size;
+		stop_bin = (unsigned int)freq_to / bin_size;
+		/*
+		Serial.print(F("fft read: "));
+		Serial.print(subsample_by);Serial.print(F(","));
+		Serial.print(bw);Serial.print(F(","));
+		Serial.print(bin_size);Serial.print(F(","));
+		Serial.print(start_bin);Serial.print(F(","));
+		Serial.println(stop_bin);
+		*/
+		return read(start_bin,stop_bin);
 	}
 	void averageTogether(uint8_t n) {
 		// not implemented yet (may never be, 86 Hz output rate is ok)
