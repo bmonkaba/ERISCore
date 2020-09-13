@@ -6,10 +6,10 @@
 #include "eris_analyze_scope.h"
 
 #define MAX_AUDIO_STREAM_OBJECTS 120
-#define MAX_AUDIO_MEMORY_BLOCKS 100
+#define MAX_AUDIO_MEMORY_BLOCKS 40
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
-#define MAX_CONNECTIONS 200
+#define MAX_CONNECTIONS 80
 
 const char* nullStr = "NULL";
 
@@ -27,6 +27,7 @@ of the audio blocks, associated controllers and connection sets.
 class AudioDirector{
   public:
     AudioDirector();
+    AudioDirector(const AudioDirector &) = delete;	//delete the copy constructor
     void activateConnectionGroup(uint16_t group_id);
     bool addAudioStreamObj(AudioStream* obj);
     bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
@@ -289,7 +290,7 @@ bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStrea
   //find the connection within the pool
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
-    if (pCord[i]->pSrc == source && pCord[i]->pSrc == source && pCord[i]->src_index == sourceOutput && pCord[i]->dest_index == destinationInput){
+    if (pCord[i]->pSrc == source && pCord[i]->pDst == destination && pCord[i]->src_index == sourceOutput && pCord[i]->dest_index == destinationInput){
       Serial.print(F("AudioDirector::disconnect() found AudioConnection at index "));
       Serial.println(i);
       //disconnect the audio connection
@@ -316,24 +317,25 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("waveformMod_1 0 i2s2-out_1 0");
   connect("waveformMod_1 0 i2s2-out_1 1");
 
-  disconnect("waveformMod_1 0 i2s2-out_1 1");
-  connect("waveform_2 0 i2s2-out_1 1");
+  //disconnect("waveformMod_1 0 i2s2-out_1 1");
+  //connect("waveform_2 0 i2s2-out_1 1");
 
   connect("waveformMod_1 0 filter_1 0");
-  connect("waveformMod_1 0 filter_2 0");
-  connect("filter_2 0 filter_3 0");
+  connect("waveformMod_1 0 filter_3 0");
   
-  connect("filter_1 0 fft1024_1 0");
-  connect("filter_3 0 fft1024_2 0");
-  connect("filter_1 0 scope_1 0");
+  connect("filter_1 0 filter_2 0"); //lp filter
+  connect("filter_2 2 fft1024_1 0"); //hp filter
+  connect("filter_3 0 fft1024_2 0"); //lp filter
+  connect("waveformMod_1 0 scope_1 0");
+  connect("waveform_2 0 scope_1 1");
 
   //to use the objects they must be downcast
   erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));
   mod->begin(1.0, 0.1, WAVEFORM_TRIANGLE);
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
-  wav->frequencyModulation(4.0);
-  wav->begin(1.0, 440, WAVEFORM_SQUARE);
+  wav->frequencyModulation(3.0);
+  wav->begin(0.8, 440, WAVEFORM_SAWTOOTH);
 
 }
 

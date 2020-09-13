@@ -7,7 +7,15 @@
 class Touch : public XPT2046_Touchscreen {
     public:
         int16_t xraw=0, yraw=0, zraw=0;
-        Touch(uint8_t cspin, uint8_t tirq=255): XPT2046_Touchscreen(cspin,  tirq){csPin=cspin;tirqPin=tirq;};
+        Touch(uint8_t cspin, uint8_t tirq=255): XPT2046_Touchscreen(cspin,  tirq){
+            csPin=cspin;
+            tirqPin=tirq;
+            //default cal
+            _raw_minx = 500;
+            _raw_miny = 500;
+            _raw_maxx = 3800;
+            _raw_maxy = 3800;
+        };
         bool begin();
         bool touched();
         void setCalibrationInputs(uint16_t raw_minx,uint16_t raw_miny,uint16_t raw_maxx,uint16_t raw_maxy){

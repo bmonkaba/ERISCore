@@ -38,6 +38,7 @@ class AppBaseClass {
     int16_t height;
     char name[16];
     AppBaseClass();
+    AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
     uint16_t getId(){return id;};
     bool isName(const char * name_string){
       bool is;

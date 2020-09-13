@@ -35,11 +35,24 @@
 void erisAudioAnalyzeScope::update(void)
 {
 	audio_block_t *block;
-	uint32_t offset = 0;
-	uint32_t remain, n;
+	audio_block_t *blockb; //2nd channel (optional)
+	bool isDualChannel;
 
-	block = receiveReadOnly();
-	if (!block) return;
+	uint32_t offset = 0;
+	uint32_t remain;
+
+	//capture only if channel 0 is connected
+	block = receiveReadOnly(0);
+	if (!block){
+		blockb = receiveReadOnly(1); 
+		if (blockb) release(blockb);
+		return;
+	}
+	
+	blockb = receiveReadOnly(1);
+	if (!blockb) {
+		isDualChannel = false;
+	} else isDualChannel = true;
 
 	while (offset < AUDIO_BLOCK_SAMPLES) {
 		remain = AUDIO_BLOCK_SAMPLES - offset;
@@ -62,36 +75,31 @@ void erisAudioAnalyzeScope::update(void)
 			break;
 
 		  case STATE_PRINTING:
-			n = count;
-			if (n > remain) n = remain;
-			if (count == mem_length){
-				//try to find a pos zero crossing offset
+		  	//for the first sample try to find a zero crossing offset in the curernt audio block
+			if (count == mem_length){ 
 				bool found = false;
-				for(int8_t i=1;i < AUDIO_BLOCK_SAMPLES;i++){
+				for(int16_t i=1;i < AUDIO_BLOCK_SAMPLES-h_div;i++){
 					if (block->data[i] > 0 && block->data[i-1] < 0){
-						count--;
 						offset = i;
-						memory[mem_length - count - 1 ] = block->data[offset];
 						found = true;
 						break;
 					}
 				}
-				if(!found) offset = AUDIO_BLOCK_SAMPLES;
+				if(!found) {offset = AUDIO_BLOCK_SAMPLES;};
 			}
-			else{
-				while (n > 0 && count > 0) {
-					h_div_count++;
-					if(h_div_count==h_div){
-						h_div_count=0;
-						count--;
-						memory[mem_length - count - 1 ] = block->data[offset];
-						//sample(block->data[offset]);
-						//Serial.println(memory[mem_length - count - 1 ]);
-					}
-					n--;
-					offset++;
+			
+			while (offset < AUDIO_BLOCK_SAMPLES && count > 0){
+				h_div_count++;
+				if(h_div_count==h_div){
+					h_div_count=0;
+					count--;
+					memory[0][mem_length - count - 1 ] = block->data[offset];
+					if (isDualChannel){ memory[1][mem_length - count - 1 ] = blockb->data[offset];
+					}else memory[1][mem_length - count - 1 ] = 0;
 				}
+				offset++;
 			}
+			
 			if (count == 0) state = STATE_IDLE;
 			break;
 
@@ -101,15 +109,13 @@ void erisAudioAnalyzeScope::update(void)
 		}
 	}
 	release(block);
+	if(isDualChannel) release(blockb);
 }
 
-void erisAudioAnalyzeScope::sample(int16_t value){
-	memory[mem_length - count -1] = value;
-}
 
-int16_t erisAudioAnalyzeScope::read(uint16_t mem_index){
+int16_t erisAudioAnalyzeScope::read(int8_t channel, uint16_t mem_index){
 	if (mem_index > mem_length) return 0;
-	return memory[mem_index];
+	return memory[channel][mem_index];
 }
 
 void erisAudioAnalyzeScope::trigger(void)
@@ -121,7 +127,7 @@ void erisAudioAnalyzeScope::trigger(void)
 		state = 2;
 	} else {
 		count = mem_length;
-		state = 3;
+		state = STATE_PRINTING;
 	}
 }
 

@@ -49,8 +49,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 16;//689hz
-		subsample_highfreqrange = 1;//2500hz
+		subsample_lowfreqrange = 24;//689hz
+		subsample_highfreqrange = 2;//2500hz
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio

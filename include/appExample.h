@@ -27,40 +27,38 @@ class MyAppExample:public AppBaseClass {
       t_lastupdate = micros();
 
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(22050/2);
-
+      filter->frequency(22050/4);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(22050/16);
-
+      filter2->frequency(22050/48);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(22050/16);
+      filter3->frequency(22050/48);
 
       oscope = new AppScope;
-      oscope->setPosition(10,20);
-      oscope->setDimension(290,100);
+      oscope->setPosition(0,20);
+      oscope->setDimension(320,140);
       oscope->setParent(this);
 
       cqt = new AppCQT;
-      cqt->setPosition(10,20);
-      cqt->setDimension(290,100);
+      cqt->setPosition(0,20);
+      cqt->setDimension(320,140);
       cqt->setParent(this);
 
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();
 
       slider = new AppSlider();
-      slider->origin_x=160;       //for testing
-      slider->origin_y=200;
-      slider->width=120;
-      slider->height=30;
+      slider->origin_x=50;       //for testing
+      slider->origin_y=205;
+      slider->width=270;
+      slider->height=35;
       slider->value=20;
       slider->setParent(this);
       slider->setName("FM OSC");
       strcpy(slider->text,"FM OSC");
       char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
       uint8_t si = 0;
-      for (int x=160;x<320-40;x+=80){
-        for(int y=120; y<240-40;y+=40){
+      for (int x=0;x<320-40;x+=80){
+        for(int y=160; y<240-40;y+=40){
           button = new AppButton(); //reuse the button var to create many instances
           button->setPosition(x,y);
           button->setDimension(60,30);
@@ -136,11 +134,11 @@ class MyAppExample:public AppBaseClass {
         }
         else if(sender->isName("SIN")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(1.0, 440, WAVEFORM_SINE);
+          wav->begin(0.8, 440, WAVEFORM_SINE);
         }
         else if(sender->isName("SQUARE")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(1.0, 440, WAVEFORM_SQUARE);
+          wav->begin(0.8, 440, WAVEFORM_SQUARE);
         }
     }
 };

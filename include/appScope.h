@@ -6,6 +6,7 @@ class AppScope:public AppBaseClass {
   public:
     AppScope():AppBaseClass(){
         y_last_scope = 0;
+        y_last_scope_ch2 = 0;
         scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
         scope->trigger();    
     }; 
@@ -13,18 +14,27 @@ class AppScope:public AppBaseClass {
   protected:
     erisAudioAnalyzeScope* scope;
     uint16_t y_last_scope;
+    uint16_t y_last_scope_ch2;
     void update(){
-        if (scope->available()){
+        if (true || scope->available()){
             tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
             for (int16_t i=0;i<width;i++){
                 int16_t v;
                 float f;
                 uint16_t ss;
-                v = scope->read(i);
+                v = scope->read(0,i);
                 f = ((v / 32768.0) + 1.0)/2;
                 ss = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ss,ILI9341_DARKGREY);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ss,ILI9341_GREEN);
                 y_last_scope = ss;
+                
+                //draw the second channel
+                v = scope->read(1,i);
+                f = ((v / 32768.0) + 1.0)/2;
+                ss = origin_y + (uint16_t)(f * height);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ss,ILI9341_ORANGE);
+                y_last_scope_ch2 = ss;
+
             }
             scope->trigger();
         }
