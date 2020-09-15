@@ -28,14 +28,17 @@ class AppCQT:public AppBaseClass {
     erisAudioAnalyzeFFT1024* fft2;
     int16_t fft2AutoOffset;
     int16_t iPeakCQTBin;
+    FFTReadRange fftRVal;
+    FFTReadRange fftPeakHighRR;
+    FFTReadRange fftPeakLowRR;
     void update(){
       //draw cqt
-      uint16_t highRange = 125;
+      uint16_t highRange = 50;
       int16_t iPeakHigh = 0;
       int16_t iPeakLow = 0;
       float peakHigh = 0;
       float peakLow = 0;
-      
+
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         uint16_t nx;
         float signal;
@@ -51,14 +54,24 @@ class AppCQT:public AppBaseClass {
         float flow_offset = note_freq[i+fft2AutoOffset] - (note_freq[i+fft2AutoOffset] - note_freq[i+fft2AutoOffset-1])/2.0;
         float fhigh_offset = note_freq[i+fft2AutoOffset] + (note_freq[i+1+fft2AutoOffset] - note_freq[i+fft2AutoOffset])/2.0;
 
-        n = fft->read(flow,fhigh);
-        if (n > peakHigh) {peakHigh=n;iPeakHigh=i;}
+        n = fft->read(flow,fhigh,&fftRVal);
+        if (n > peakHigh) {
+          peakHigh=n;
+          iPeakHigh=i;
+          fftPeakHighRR.peakFrequency = fftRVal.peakFrequency;
+          fftPeakHighRR.peakValue = fftRVal.peakValue;
+        }
 
         signal = log(n*100)*0.707 * height/5;
         tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_DARKCYAN); 
 
-        n_low = fft2->read(flow_offset,fhigh_offset);
-        if (n_low > peakLow) {peakLow=n;iPeakLow=i;}
+        n_low = fft2->read(flow_offset,fhigh_offset,&fftRVal);
+        if (n_low > peakLow) {
+          peakLow=n_low;
+          iPeakLow=i;
+          fftPeakLowRR.peakFrequency = fftRVal.peakFrequency;
+          fftPeakLowRR.peakValue = fftRVal.peakValue;
+        }
         
         signal_low = log(n_low*100)*0.707 * height/5;
 
@@ -67,7 +80,7 @@ class AppCQT:public AppBaseClass {
         Serial.print(fhigh);Serial.print(F(","));
         Serial.println(signal);
         */
-        if (i < highRange) tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
+        tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
         if (i < highRange) tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal_low,2,(uint16_t)signal_low,1,ILI9341_CYAN);
         
         //fft2AutoOffset = iPeakHigh - iPeakLow;
@@ -77,20 +90,26 @@ class AppCQT:public AppBaseClass {
 
       tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
       AudioNoInterrupts();
-      if(peakHigh > peakLow * 1.4) {
-        if (iPeakCQTBin != iPeakHigh) sigGen->frequency(note_freq[iPeakHigh]*2);
+      if(peakHigh > peakLow && iPeakHigh > highRange && fftPeakHighRR.peakValue > 0.2) {
+        if (iPeakCQTBin != iPeakHigh) sigGen->frequency(fftPeakHighRR.peakFrequency);  //sigGen->frequency(note_freq[iPeakHigh]*2);
         iPeakCQTBin = iPeakHigh;
-      } else{
-        if (iPeakCQTBin != iPeakLow) sigGen->frequency(note_freq[iPeakLow]*2);
+        Serial.println(fftPeakHighRR.peakFrequency);
+      } else if (fftPeakLowRR.peakValue > 0.2){
+        if (iPeakCQTBin != iPeakLow) sigGen->frequency(fftPeakLowRR.peakFrequency); //sigGen->frequency(note_freq[iPeakLow]*2);
         iPeakCQTBin = iPeakLow;
+        Serial.println(fftPeakLowRR.peakFrequency);
       }
       AudioInterrupts();
       tft.setCursor(origin_x+20,origin_y+200);
       tft.drawRect(origin_x+2,origin_y+2,15,15,ILI9341_BLACK);
       tft.print(iPeakCQTBin);
-      Serial.print(note_freq[iPeakLow]);Serial.print(F(","));
-      Serial.println(note_freq[iPeakHigh]);
 
+      /*
+      Serial.print(fftPeakLowRR.peakFrequency);Serial.print(F(","));
+      Serial.print(fftPeakLowRR.peakValue);Serial.print(F(","));
+      Serial.print(fftPeakHighRR.peakFrequency);Serial.print(F(","));
+      Serial.println(fftPeakHighRR.peakValue);
+      */
 
     };    //called only when the app is active
     void updateRT(){}; //allways called even if app is not active

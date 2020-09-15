@@ -27,11 +27,12 @@ class MyAppExample:public AppBaseClass {
       t_lastupdate = micros();
 
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(22050/4);
+      filter->frequency(4000);
+      filter->resonance(0.706);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(22050/48);
+      filter2->frequency(100);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(22050/48);
+      filter3->frequency(380);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
@@ -134,11 +135,11 @@ class MyAppExample:public AppBaseClass {
         }
         else if(sender->isName("SIN")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.8, 440, WAVEFORM_SINE);
+          wav->begin(0.8, 220, WAVEFORM_SINE);
         }
         else if(sender->isName("SQUARE")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.8, 440, WAVEFORM_SQUARE);
+          wav->begin(0.8, 2200, WAVEFORM_SQUARE);
         }
     }
 };

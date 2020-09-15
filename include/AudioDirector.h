@@ -1,6 +1,6 @@
 #ifndef __AudioDirector
 #define  __AudioDirector
-#include <String.h>
+#include <string.h>
 #include "erisAudio.h"
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
@@ -335,7 +335,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
   wav->frequencyModulation(3.0);
-  wav->begin(0.8, 440, WAVEFORM_SAWTOOTH);
+  wav->begin(0.8, 1200, WAVEFORM_SAWTOOTH);
 
 }
 

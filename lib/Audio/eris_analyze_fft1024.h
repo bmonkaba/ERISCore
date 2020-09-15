@@ -34,6 +34,18 @@
 
 enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
+
+typedef struct FFTReadRangeStruct{
+	uint8_t startBin;
+	uint8_t stopBin;
+	uint8_t peakBin;
+	float startFrequency;
+	float stopFrequency;
+	float peakFrequency;
+	float peakValue;
+} FFTReadRange;
+
+
 class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
@@ -49,7 +61,7 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 24;//689hz
+		subsample_lowfreqrange = 18;//689hz
 		subsample_highfreqrange = 2;//2500hz
 		ssr = SS_HIGHFREQ;
 	}
@@ -98,11 +110,16 @@ public:
 		if (binNumber > 511) return 0.0;
 		return (float)(output[binNumber]) * (1.0 / 16384.0);
 	}
-	float read(unsigned int binFirst, unsigned int binLast) {
+	float read(unsigned int binFirst, unsigned int binLast,FFTReadRange *fftRR = NULL) {
 		if (binFirst > binLast) {
 			unsigned int tmp = binLast;
 			binLast = binFirst;
 			binFirst = tmp;
+		}
+		if(fftRR){
+			fftRR->peakBin = 0;
+			fftRR->peakFrequency = 0;
+			fftRR->peakValue = 0;
 		}
 		if (binFirst > 511) return 0.0;
 		if (binLast > 511) binLast = 511;
@@ -111,10 +128,14 @@ public:
 		do {
 			comp = (float)output[binFirst++];
 			maxf = max(comp,maxf);
+			if(fftRR) {
+				if (maxf > fftRR->peakValue) fftRR->peakBin = binFirst-1;
+			}
 		} while (binFirst <= binLast);
+		if(fftRR) fftRR->peakValue = maxf * (1.0 / 16384.0);
 		return maxf * (1.0 / 16384.0);
 	}
-	float read(float freq_from, float freq_to) {
+	float read(float freq_from, float freq_to, FFTReadRange *fftRR = NULL) {
 		//convert f to bin
 		float bw;
 		float bin_size;
@@ -122,9 +143,17 @@ public:
 		unsigned int stop_bin;
 
 		bw = (AUDIO_SAMPLE_RATE_EXACT * 0.5) / (float)subsample_by;
-		bin_size = bw/1024;
+		bin_size = bw/512;
 		start_bin = (unsigned int)freq_from / bin_size;
 		stop_bin = (unsigned int)freq_to / bin_size;
+		
+		if(fftRR){
+			fftRR->startBin = start_bin;
+			fftRR->stopBin = stop_bin;
+			fftRR->startFrequency = freq_from;
+			fftRR->stopFrequency = freq_to;
+		}
+		
 		/*
 		Serial.print(F("fft read: "));
 		Serial.print(subsample_by);Serial.print(F(","));
@@ -133,7 +162,12 @@ public:
 		Serial.print(start_bin);Serial.print(F(","));
 		Serial.println(stop_bin);
 		*/
-		return read(start_bin,stop_bin);
+		float rval = read(start_bin,stop_bin,fftRR);
+		if(fftRR){
+			//from the peak bin calc the freq
+			fftRR->peakFrequency = fftRR->peakBin * bin_size -  bin_size/2.0; 
+		}
+		return rval; 
 	}
 	void averageTogether(uint8_t n) {
 		// not implemented yet (may never be, 86 Hz output rate is ok)
