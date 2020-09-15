@@ -56,7 +56,7 @@ addons:
       name: "bmonkaba/ERISCore"
       description: "<Your project description here>"
     notification_email: brian.monkaba@gmail.com
-    build_command_prepend: cov-configure --comptype gcc --compiler /home/travis/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc
+    build_command_prepend: cov-configure -co arm-none-eabi-g++ -- -fno-exceptions -std=gnu++14 -mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
     build_command: platformio run -v
     branch_pattern: master
 
