@@ -46,6 +46,9 @@ env:
 
 addons:
   coverity_scan:
+    install:
+      - pip install -U platformio
+      - platformio update
     project:
       name: "bmonkaba/ERISCore"
       description: "<Your project description here>"
