@@ -56,11 +56,9 @@ addons:
       name: "bmonkaba/ERISCore"
       description: "<Your project description here>"
     notification_email: brian.monkaba@gmail.com
-    build_command_prepend: platformio clean
+    build_command_prepend: cov-configure --comptype gcc --compiler /home/travis/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc
     build_command: platformio run
     branch_pattern: master
-
-
 
 #
 # Template #2: The project is intended to be used as a library with examples.
