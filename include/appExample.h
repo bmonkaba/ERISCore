@@ -1,9 +1,9 @@
 #include "AudioUtilities.h"
 #include "AppManager.h"
-#include "AppButton.h"
-#include "AppSlider.h"
-#include "AppScope.h"
-#include "AppCQT.h"
+#include "appButton.h"
+#include "appSlider.h"
+#include "appScope.h"
+#include "appCQT.h"
 
 // Example application
 //
