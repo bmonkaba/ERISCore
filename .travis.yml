@@ -24,16 +24,19 @@
 # Template #1: General project. Test it using existing `platformio.ini`.
 #
 
- language: python
- python:
+language: python
+python:
      - "2.7"
- sudo: false
- cache:
+sudo: false
+cache:
      directories:
          - "~/.platformio"
 install:
      - pip install -U platformio
      - platformio update
+
+script:
+     - platformio run
 
 before_install:
   - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
@@ -53,12 +56,9 @@ addons:
       name: "bmonkaba/ERISCore"
       description: "<Your project description here>"
     notification_email: brian.monkaba@gmail.com
-    build_command_prepend: 
+    build_command_prepend: platformio clean
     build_command: platformio run
     branch_pattern: master
-
- script:
-     - platformio run
 
 
 
