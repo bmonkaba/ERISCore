@@ -4,7 +4,7 @@
 
 //block the following includes provided by Audio.h
 #define play_sd_raw_h_
-
+#define play_sd_wav_h_
 
 #include <Audio.h>
 #include <new>
