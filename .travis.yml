@@ -40,6 +40,25 @@
  script:
      - platformio run
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "IB+WTOoxnscsZurSE17DkyM5vNojKx03Jh3ul6LC0QPUJXnQKCSkj3YAenKfjyS+kjJBxfgqvGzZ9TQPo4cp1nNf70W9PLZTlKxirPK8tY/ErfR+ExMvHk4yMK8NLq5wKGxZND9Pa8uiPGCCimNN/+n55sCLGG/xFxH+liiBOj5sSPH8v3dF5ys1jB5yvmWDuRM0k5G1Pun9bWqE3nAX2EjW2Me5K4sj9x6EEC7OIVTwc8YZ00V4M5np7Pwv3TP7rrRJI2j//RZdeMkSbknJiU4f15c8VwDMYUV/RX9V6+X7wKMAARwltrpQM+59+oy6tsz9871c4fyrg4Ivsril9DKxb+gnAO6V/WEhi11qyPIzwmMfGdSQ21NPDB7aUaITAsnSHwAFtso8qVheoBIYPsMPHGWlaLeTtA3Bu3mVg7VDnP774lzsOCJwRP+gX3suhSFIUVf/EXZz2nwbM2D9F/8UXMvy406ZmpE2G4DlIDzdaTrBJr19bU7d9N6n9yKC3wqDinoJu1BVUpsAo3ZxTlvhMqRVdEX1OnTloA5O/WP89AQayeF4ts95fqotb17OFQlQvAE5lymDGAbFrz93eLpduAwK6uTZD6EkDSBFeGAdl2i2aCO8xgXFvi5I8di+QRN21aC9YN4FN0n3Vdu6xKVHr05mbf3hQnNXRaslBC8="
+
+before_install:
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+addons:
+  coverity_scan:
+    project:
+      name: "bmonkaba/ERISCore"
+      description: "<Your project description here>"
+    notification_email: brian.monkaba@gmail.com
+    build_command_prepend: "<Your build preprocessing command here>"
+    build_command: "<Your build command here>"
+    branch_pattern: coverity_scan
+    
 
 #
 # Template #2: The project is intended to be used as a library with examples.
