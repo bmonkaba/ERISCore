@@ -41,6 +41,7 @@ typedef struct FFTReadRangeStruct{
 	uint8_t peakBin;
 	float startFrequency;
 	float stopFrequency;
+	float estimatedFrequency;
 	float peakFrequency;
 	float peakValue;
 } FFTReadRange;
@@ -62,7 +63,7 @@ public:
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
 		subsample_lowfreqrange = 18;//689hz
-		subsample_highfreqrange = 2;//2500hz
+		subsample_highfreqrange = 3;//2500hz
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
@@ -165,7 +166,21 @@ public:
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
 			//from the peak bin calc the freq
-			fftRR->peakFrequency = fftRR->peakBin * bin_size -  bin_size/2.0; 
+			fftRR->peakFrequency = fftRR->peakBin * bin_size -  bin_size/2.0; //center of the bin
+			if (fftRR->peakBin > 1 && fftRR->peakBin < 511){
+				//from the balance of the side lobes, estimate the actual frequency
+				float ratio, lobeFrequency;
+				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0){
+					//pos lobe
+					ratio = output[fftRR->peakBin+1] / output[fftRR->peakBin];
+					lobeFrequency = (fftRR->peakBin+1) * bin_size -  bin_size/2.0;
+				 } else{ 
+					 //neg lobe
+					ratio = output[fftRR->peakBin-1] / output[fftRR->peakBin];
+				 	lobeFrequency = (fftRR->peakBin-1) * bin_size -  bin_size/2.0;
+				 }
+				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1.0-ratio)) + (lobeFrequency * ratio);
+			}
 		}
 		return rval; 
 	}

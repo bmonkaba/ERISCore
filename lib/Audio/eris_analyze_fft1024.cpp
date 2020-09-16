@@ -31,6 +31,7 @@
 
 
 //Fat Audio - to add trailing zeros to fft buffer
+/*
 static void zero_to_fft_buffer(void *destination)
 {
 	uint32_t *dst = (uint32_t *)destination;
@@ -38,6 +39,7 @@ static void zero_to_fft_buffer(void *destination)
 		*dst++ = 0;
 	}
 }
+*/
 // 140312 - PAH - slightly faster copy
 void erisAudioAnalyzeFFT1024::copy_to_fft_buffer(void *destination, const void *source,int subsample)
 {

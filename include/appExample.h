@@ -73,7 +73,7 @@ class MyAppExample:public AppBaseClass {
     //define event handlers
     void update(){
       //Serial.println("MyApp:update");
-      float fps = (float)(micros()-t_lastupdate)/1000000.0;
+      //float fps = (float)(micros()-t_lastupdate)/1000000.0;
       tft.setCursor(5,5);
       tft.print(F("CPU: "));
       tft.print(AudioProcessorUsageMax());

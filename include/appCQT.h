@@ -46,7 +46,7 @@ class AppCQT:public AppBaseClass {
         float n_low;
         float n;
 
-        float im = (width-1)/(sizeof(note_freq)/sizeof(note_freq[0]));
+        float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         nx = (uint16_t)(im*i);
 
         float flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
@@ -60,6 +60,7 @@ class AppCQT:public AppBaseClass {
           iPeakHigh=i;
           fftPeakHighRR.peakFrequency = fftRVal.peakFrequency;
           fftPeakHighRR.peakValue = fftRVal.peakValue;
+          fftPeakHighRR.estimatedFrequency = fftRVal.estimatedFrequency;
         }
 
         signal = log(n*100)*0.707 * height/5;
@@ -71,6 +72,7 @@ class AppCQT:public AppBaseClass {
           iPeakLow=i;
           fftPeakLowRR.peakFrequency = fftRVal.peakFrequency;
           fftPeakLowRR.peakValue = fftRVal.peakValue;
+          fftPeakLowRR.estimatedFrequency = fftRVal.estimatedFrequency;
         }
         
         signal_low = log(n_low*100)*0.707 * height/5;
@@ -91,18 +93,26 @@ class AppCQT:public AppBaseClass {
       tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
       AudioNoInterrupts();
       if(peakHigh > peakLow && iPeakHigh > highRange && fftPeakHighRR.peakValue > 0.2) {
-        if (iPeakCQTBin != iPeakHigh) sigGen->frequency(fftPeakHighRR.peakFrequency);  //sigGen->frequency(note_freq[iPeakHigh]*2);
+        if (iPeakCQTBin != iPeakHigh) sigGen->frequency(fftPeakHighRR.estimatedFrequency);  //sigGen->frequency(note_freq[iPeakHigh]*2);
         iPeakCQTBin = iPeakHigh;
-        Serial.println(fftPeakHighRR.peakFrequency);
+        //Serial.println(fftPeakHighRR.peakFrequency);
       } else if (fftPeakLowRR.peakValue > 0.2){
-        if (iPeakCQTBin != iPeakLow) sigGen->frequency(fftPeakLowRR.peakFrequency); //sigGen->frequency(note_freq[iPeakLow]*2);
+        if (iPeakCQTBin != iPeakLow) sigGen->frequency(fftPeakLowRR.estimatedFrequency); //sigGen->frequency(note_freq[iPeakLow]*2);
         iPeakCQTBin = iPeakLow;
-        Serial.println(fftPeakLowRR.peakFrequency);
+        //Serial.println(fftPeakLowRR.peakFrequency);
       }
       AudioInterrupts();
-      tft.setCursor(origin_x+20,origin_y+200);
-      tft.drawRect(origin_x+2,origin_y+2,15,15,ILI9341_BLACK);
-      tft.print(iPeakCQTBin);
+      tft.setTextColor(ILI9341_ORANGE);
+      tft.fillRect(origin_x + width - 60,origin_y+10,50,55,ILI9341_BLACK);
+      tft.setCursor(origin_x + width - 60,origin_y+10);
+      tft.println(fftPeakHighRR.peakFrequency);
+      tft.setCursor(origin_x + width - 60,origin_y+25);
+      tft.print(fftPeakLowRR.peakFrequency);
+      float error = 100.0 * abs(fftPeakLowRR.peakFrequency-fftPeakHighRR.peakFrequency)/max(fftPeakLowRR.peakFrequency,fftPeakHighRR.peakFrequency);
+      tft.setCursor(origin_x + width - 60,origin_y+40);
+      tft.print(error);
+      tft.setCursor(origin_x + width - 60,origin_y+55);
+      tft.println(fftPeakHighRR.estimatedFrequency);
 
       /*
       Serial.print(fftPeakLowRR.peakFrequency);Serial.print(F(","));

@@ -34,7 +34,7 @@ class erisAudioAnalyzeScope : public AudioStream
 {
 public:
 	erisAudioAnalyzeScope(void) : AudioStream(2, inputQueueArray),
-	  myname(NULL), state(0), trigger_edge(0), delay_length(0), mem_length(640) {
+	  myname(NULL), state(0), trigger_edge(0), delay_length(0), mem_length(320) {
 		shortName="scope";
 		unum_inputs=2;
 		unum_outputs=0;
@@ -54,7 +54,7 @@ public:
 private:
 	const char *myname;
 	uint8_t state;
-	int16_t memory[2][640];
+	int16_t memory[2][320];
 	int8_t h_div;
 	int8_t h_div_count;
 	uint8_t trigger_edge; // trigger type, 0=none, 2=RISING, 3=FALLING
