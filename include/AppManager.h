@@ -1,5 +1,8 @@
 #ifndef _AppBase_
 #define _AppBase_
+
+#define MAX_NAME_LENGTH 32
+
 #include <Arduino.h>
 #include "HSI.h"
 #include "touch.h"
@@ -23,7 +26,6 @@ class AppBaseClass {
     AppBaseClass *parentNode;
     AppBaseClass *previousAppicationNode;
     AppBaseClass *nextAppicationNode;
-    ILI9341_t3_ERIS *_tft;
     bool touch_state;   //set by the app manager
     uint16_t id; //app id for derived class instances
                   // 255 - reserved for the base class (unused)
@@ -36,7 +38,7 @@ class AppBaseClass {
     int16_t origin_y;
     int16_t width;
     int16_t height;
-    char name[16];
+    char name[MAX_NAME_LENGTH];
     AppBaseClass();
     AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
     uint16_t getId(){return id;};
@@ -45,7 +47,10 @@ class AppBaseClass {
       (0==strcmp(name,name_string))?is=true:is=false;
       return is; 
     };
-    void setName(const char* name_string){strcpy(name,name_string);}
+    void setName(const char* name_string){
+      if (strlen(name_string) < MAX_NAME_LENGTH){strcpy(name,name_string);
+      } else strncpy(name,name_string,MAX_NAME_LENGTH);
+    }
     void setParent(AppBaseClass *parent){parentNode = parent;};
     void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;}
     void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;}

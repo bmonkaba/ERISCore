@@ -58,6 +58,8 @@ public:
 		unum_outputs=0;
 		category="analyze-function";
 		enabled = false;
+		sample_block=0;
+		SAMPLING_INDEX=0;
 		MEM_STEP = 0x010;
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
@@ -167,7 +169,7 @@ public:
 		if(fftRR){
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = fftRR->peakBin * bin_size -  bin_size/2.0; //center of the bin
-			if (fftRR->peakBin > 1 && fftRR->peakBin < 511){
+			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 511)){
 				//from the balance of the side lobes, estimate the actual frequency
 				float ratio, lobeFrequency;
 				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0){
@@ -198,7 +200,6 @@ private:
 	void init(void);
 	void copy_to_fft_buffer(void *destination, const void *source,int subsample);
 	const int16_t *window;
-	audio_block_t *blocklist[16];
 	int16_t buffer[2048] __attribute__ ((aligned (4)));
 	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
 	//uint32_t sum[512];

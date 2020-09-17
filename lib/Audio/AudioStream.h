@@ -154,6 +154,10 @@ public:
 			cpu_cycles = 0;
 			cpu_cycles_max = 0;
 			numConnections = 0;
+
+			unum_inputs=0;
+			unum_outputs=0;
+
 		}
 	static void initialize_memory(audio_block_t *data, unsigned int num);
 	int processorUsage(void) { return CYCLE_COUNTER_APPROX_PERCENT(cpu_cycles); }

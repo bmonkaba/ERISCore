@@ -5,11 +5,12 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
-#define MAX_AUDIO_STREAM_OBJECTS 120
-#define MAX_AUDIO_MEMORY_BLOCKS 40
+#define MAX_AUDIO_STREAM_OBJECTS 128
+#define MAX_AUDIO_MEMORY_BLOCKS 32
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
-#define MAX_CONNECTIONS 80
+#define MAX_CONNECTIONS 64
+#define MAX_CONNECTION_STRING_LENGTH 128
 
 const char* nullStr = "NULL";
 
@@ -247,8 +248,10 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   //format: "SRCTYPE(CHAR)_INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR)_INSTANCE(INT) DESTPORT(INT)"
   //example: "MIXER_2 0 CHORUS_1 1"
   //the example above connects mixer instance 2 output 0 with chorus instance 1 input 1
-  char buffer[32];
+  char buffer[MAX_CONNECTION_STRING_LENGTH];
   char *token;
+
+  if(strlen(connectionString)>MAX_CONNECTION_STRING_LENGTH) return;
 
   memset(buffer, '\0', sizeof(buffer));
   memset(p->src, '\0', sizeof(p->src));
@@ -256,12 +259,15 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   strcpy(buffer,connectionString);
    
   token = strtok(buffer, " ");
+  if(strlen(token)>MAX_NAME_LENGTH) return;
   strcpy(p->src,token);
   
   token = strtok(NULL, " ");
+  if(strlen(token)>MAX_NAME_LENGTH) return;
   p->src_port = atoi(token);
   
   token = strtok(NULL, " ");
+  if(strlen(token)>MAX_NAME_LENGTH) return;
   strcpy(p->dst,token);
   token = strtok(NULL, " ");
   p->dst_port = atoi(token);

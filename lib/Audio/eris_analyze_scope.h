@@ -39,6 +39,8 @@ public:
 		unum_inputs=2;
 		unum_outputs=0;
 		category="analyze-function";
+		count = 0;
+		trigger_level = 0;
 		hdivide(1);
 	}
 

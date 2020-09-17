@@ -20,6 +20,11 @@ class AppCQT:public AppBaseClass {
       fft2->enableFFT(true);
       fft2AutoOffset = 0;
       iPeakCQTBin = 0;
+
+      memset(&fftRVal,0,sizeof(FFTReadRange));
+      memset(&fftPeakHighRR,0,sizeof(FFTReadRange));
+      memset(&fftPeakLowRR,0,sizeof(FFTReadRange));
+
     }; 
     //define event handlers
   protected:
@@ -38,6 +43,9 @@ class AppCQT:public AppBaseClass {
       int16_t iPeakLow = 0;
       float peakHigh = 0;
       float peakLow = 0;
+      memset(&fftRVal,0,sizeof(FFTReadRange));
+      memset(&fftPeakHighRR,0,sizeof(FFTReadRange));
+      memset(&fftPeakLowRR,0,sizeof(FFTReadRange));
 
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         uint16_t nx;
