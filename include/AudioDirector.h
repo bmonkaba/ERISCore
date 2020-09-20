@@ -15,8 +15,8 @@
 const char* nullStr = "NULL";
 
 typedef struct{
-  char src[16];
-  char dst[16];
+  char src[MAX_NAME_LENGTH];
+  char dst[MAX_NAME_LENGTH];
   uint8_t src_port;
   uint8_t dst_port;
 } ParsedConnection;
@@ -251,7 +251,7 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   char buffer[MAX_CONNECTION_STRING_LENGTH];
   char *token;
 
-  if(strlen(connectionString)>MAX_CONNECTION_STRING_LENGTH) return;
+  if(strlen(connectionString)>MAX_CONNECTION_STRING_LENGTH-1) return;
 
   memset(buffer, '\0', sizeof(buffer));
   memset(p->src, '\0', sizeof(p->src));
@@ -259,15 +259,15 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   strcpy(buffer,connectionString);
    
   token = strtok(buffer, " ");
-  if(strlen(token)>MAX_NAME_LENGTH) return;
+  if(strlen(token)>MAX_NAME_LENGTH-1) return;
   strcpy(p->src,token);
   
   token = strtok(NULL, " ");
-  if(strlen(token)>MAX_NAME_LENGTH) return;
+  if(strlen(token)>MAX_NAME_LENGTH-1) return;
   p->src_port = atoi(token);
   
   token = strtok(NULL, " ");
-  if(strlen(token)>MAX_NAME_LENGTH) return;
+  if(strlen(token)>MAX_NAME_LENGTH-1) return;
   strcpy(p->dst,token);
   token = strtok(NULL, " ");
   p->dst_port = atoi(token);
@@ -340,7 +340,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   mod->begin(1.0, 0.1, WAVEFORM_TRIANGLE);
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
-  wav->frequencyModulation(3.0);
+  wav->frequencyModulation(2);
   wav->begin(0.8, 1200, WAVEFORM_SAWTOOTH);
 
 }

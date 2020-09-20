@@ -158,6 +158,8 @@ public:
 			unum_inputs=0;
 			unum_outputs=0;
 
+			shortName = "AudioStreamBaseClass";
+			category = "invalid";
 		}
 	static void initialize_memory(audio_block_t *data, unsigned int num);
 	int processorUsage(void) { return CYCLE_COUNTER_APPROX_PERCENT(cpu_cycles); }

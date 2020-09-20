@@ -38,7 +38,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange fftPeakLowRR;
     void update(){
       //draw cqt
-      uint16_t highRange = 50;
+      uint16_t highRange = 80;
       int16_t iPeakHigh = 0;
       int16_t iPeakLow = 0;
       float peakHigh = 0;
@@ -59,69 +59,84 @@ class AppCQT:public AppBaseClass {
 
         float flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
         float fhigh = note_freq[i] + (note_freq[i+1] - note_freq[i])/2.0;
-        float flow_offset = note_freq[i+fft2AutoOffset] - (note_freq[i+fft2AutoOffset] - note_freq[i+fft2AutoOffset-1])/2.0;
-        float fhigh_offset = note_freq[i+fft2AutoOffset] + (note_freq[i+1+fft2AutoOffset] - note_freq[i+fft2AutoOffset])/2.0;
 
         n = fft->read(flow,fhigh,&fftRVal);
         if (n > peakHigh) {
           peakHigh=n;
           iPeakHigh=i;
-          fftPeakHighRR.peakFrequency = fftRVal.peakFrequency;
-          fftPeakHighRR.peakValue = fftRVal.peakValue;
-          fftPeakHighRR.estimatedFrequency = fftRVal.estimatedFrequency;
+          fftPeakHighRR = fftRVal;
         }
 
         signal = log(n*100)*0.707 * height/5;
         tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_DARKCYAN); 
 
-        n_low = fft2->read(flow_offset,fhigh_offset,&fftRVal);
+        n_low = fft2->read(flow,fhigh,&fftRVal);
         if (n_low > peakLow) {
           peakLow=n_low;
           iPeakLow=i;
-          fftPeakLowRR.peakFrequency = fftRVal.peakFrequency;
-          fftPeakLowRR.peakValue = fftRVal.peakValue;
-          fftPeakLowRR.estimatedFrequency = fftRVal.estimatedFrequency;
+          fftPeakLowRR = fftRVal;
         }
-        
         signal_low = log(n_low*100)*0.707 * height/5;
-
+        
+        tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
+        if (i < highRange) tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal_low,2,(uint16_t)signal_low,1,ILI9341_CYAN);
         /*
         Serial.print(flow);Serial.print(F(","));
         Serial.print(fhigh);Serial.print(F(","));
         Serial.println(signal);
         */
-        tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
-        if (i < highRange) tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal_low,2,(uint16_t)signal_low,1,ILI9341_CYAN);
-        
-        //fft2AutoOffset = iPeakHigh - iPeakLow;
-        //if (fft2AutoOffset>10) fft2AutoOffset = 10;
-        //if (fft2AutoOffset<-10) fft2AutoOffset = -10;
       }
 
       tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
       AudioNoInterrupts();
-      if(peakHigh > peakLow && iPeakHigh > highRange && fftPeakHighRR.peakValue > 0.2) {
+      if(peakHigh> peakLow) {
         if (iPeakCQTBin != iPeakHigh) sigGen->frequency(fftPeakHighRR.estimatedFrequency);  //sigGen->frequency(note_freq[iPeakHigh]*2);
         iPeakCQTBin = iPeakHigh;
+        tft.setTextColor(ILI9341_MAGENTA);
+        fftRVal = fftPeakHighRR;
         //Serial.println(fftPeakHighRR.peakFrequency);
-      } else if (fftPeakLowRR.peakValue > 0.2){
+      } else{
         if (iPeakCQTBin != iPeakLow) sigGen->frequency(fftPeakLowRR.estimatedFrequency); //sigGen->frequency(note_freq[iPeakLow]*2);
         iPeakCQTBin = iPeakLow;
+        tft.setTextColor(ILI9341_CYAN);
+        fftRVal = fftPeakLowRR;
         //Serial.println(fftPeakLowRR.peakFrequency);
       }
       AudioInterrupts();
-      tft.setTextColor(ILI9341_ORANGE);
-      tft.fillRect(origin_x + width - 60,origin_y+10,50,55,ILI9341_BLACK);
-      tft.setCursor(origin_x + width - 60,origin_y+10);
-      tft.println(fftPeakHighRR.peakFrequency);
-      tft.setCursor(origin_x + width - 60,origin_y+25);
-      tft.print(fftPeakLowRR.peakFrequency);
-      float error = 100.0 * abs(fftPeakLowRR.peakFrequency-fftPeakHighRR.peakFrequency)/max(fftPeakLowRR.peakFrequency,fftPeakHighRR.peakFrequency);
-      tft.setCursor(origin_x + width - 60,origin_y+40);
-      tft.print(error);
-      tft.setCursor(origin_x + width - 60,origin_y+55);
-      tft.println(fftPeakHighRR.estimatedFrequency);
+      
+      float error = 100.0 * abs(fftRVal.estimatedFrequency - note_freq[iPeakCQTBin]) / note_freq[iPeakCQTBin];
 
+      tft.fillRect(origin_x + width - 100,origin_y+20,100,110,ILI9341_BLACK);
+      tft.setCursor(origin_x + width - 100,origin_y+25);
+      tft.print("start: ");
+      tft.print(fftRVal.startFrequency);
+      
+      tft.setCursor(origin_x + width - 100,origin_y+40);
+      tft.print("peak: ");
+      tft.print(fftRVal.peakFrequency);
+      
+      tft.setCursor(origin_x + width - 100,origin_y+55);
+      tft.print("stop: ");
+      tft.println(fftRVal.stopFrequency);
+      
+      tft.setCursor(origin_x + width - 100,origin_y+70);
+      tft.print("est: ");
+      tft.print(fftRVal.estimatedFrequency);
+      
+      tft.setTextColor(ILI9341_ORANGE);
+      tft.setCursor(origin_x + width - 100,origin_y+85);
+      tft.print("note freq: ");
+      tft.print(note_freq[iPeakCQTBin]);
+      tft.setCursor(origin_x + width - 100,origin_y+100);
+      tft.print("error: ");
+      tft.print(error);
+      tft.setCursor(origin_x + width - 100,origin_y+115);
+      tft.print("fft bins: ");
+      tft.print((fftRVal.stopBin - fftRVal.startBin) +1);
+      
+      Serial.print(fftRVal.peakFrequency);
+      Serial.print(",");
+      Serial.println(fftRVal.estimatedFrequency);
       /*
       Serial.print(fftPeakLowRR.peakFrequency);Serial.print(F(","));
       Serial.print(fftPeakLowRR.peakValue);Serial.print(F(","));

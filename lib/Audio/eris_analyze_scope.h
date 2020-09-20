@@ -41,7 +41,9 @@ public:
 		category="analyze-function";
 		count = 0;
 		trigger_level = 0;
-		hdivide(1);
+		hdivide(5);
+		autoTrigger = false;
+		isAvailable = false;
 	}
 
 	virtual void update(void);
@@ -52,17 +54,21 @@ public:
 	void length(uint32_t num) { mem_length = num; }
 	int16_t read(int8_t channel, uint16_t mem_index);
 	bool available(void);
-	void hdivide(int8_t horizontal_division){h_div = horizontal_division;h_div_count=0;};
+	void hdivide(int8_t horizontal_division){h_div = horizontal_division;auto_h_div = h_div; h_div_count=0;};
 private:
 	const char *myname;
 	uint8_t state;
-	int16_t memory[2][320];
-	int8_t h_div;
+	int16_t memory[2][640];
+	bool autoTrigger;
+	bool isAvailable;
+	uint8_t h_div;
 	int8_t h_div_count;
+	int8_t auto_h_div;
 	uint8_t trigger_edge; // trigger type, 0=none, 2=RISING, 3=FALLING
 	int16_t trigger_level;
 	uint32_t delay_length; // number of samples between trigger and sampling
 	uint32_t mem_length; // number of samples to capture
+	uint32_t edgeCount;
 	uint32_t count;
 	audio_block_t *inputQueueArray[2];
 };

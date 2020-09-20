@@ -36,9 +36,9 @@ enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
 
 typedef struct FFTReadRangeStruct{
-	uint8_t startBin;
-	uint8_t stopBin;
-	uint8_t peakBin;
+	uint16_t startBin;
+	uint16_t stopBin;
+	uint16_t peakBin;
 	float startFrequency;
 	float stopFrequency;
 	float estimatedFrequency;
@@ -51,7 +51,7 @@ class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  window(AudioWindowHanning1024), sample_block(0), outputflag(false) {
+	  window(AudioWindowNuttall1024), sample_block(0), outputflag(false) {
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
 		shortName="fft1024";
 		unum_inputs=1;
@@ -64,8 +64,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 18;//689hz
-		subsample_highfreqrange = 3;//2500hz
+		subsample_lowfreqrange = 32;//689hz
+		subsample_highfreqrange = 4;//~2637 (24th fret)
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
@@ -147,8 +147,8 @@ public:
 
 		bw = (AUDIO_SAMPLE_RATE_EXACT * 0.5) / (float)subsample_by;
 		bin_size = bw/512;
-		start_bin = (unsigned int)freq_from / bin_size;
-		stop_bin = (unsigned int)freq_to / bin_size;
+		start_bin = (unsigned int)(freq_from / bin_size);
+		stop_bin = (unsigned int)(freq_to / bin_size);
 		
 		if(fftRR){
 			fftRR->startBin = start_bin;
@@ -168,20 +168,26 @@ public:
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
 			//from the peak bin calc the freq
-			fftRR->peakFrequency = fftRR->peakBin * bin_size -  bin_size/2.0; //center of the bin
-			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 511)){
+			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
+			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 510) && (output[fftRR->peakBin] > 0)){
 				//from the balance of the side lobes, estimate the actual frequency
-				float ratio, lobeFrequency;
-				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0){
+				float ratio = 1;
+				float lobeFrequency = 1;
+				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0.1){
 					//pos lobe
-					ratio = output[fftRR->peakBin+1] / output[fftRR->peakBin];
-					lobeFrequency = (fftRR->peakBin+1) * bin_size -  bin_size/2.0;
-				 } else{ 
+					ratio = (output[fftRR->peakBin+1]) / (1.0 * output[fftRR->peakBin]);
+					lobeFrequency = ((fftRR->peakBin+1) * bin_size) - bin_size/2;
+				 } else if (output[fftRR->peakBin-1] > 0.1){ 
 					 //neg lobe
-					ratio = output[fftRR->peakBin-1] / output[fftRR->peakBin];
-				 	lobeFrequency = (fftRR->peakBin-1) * bin_size -  bin_size/2.0;
+					ratio = (output[fftRR->peakBin-1]) / (1.0 * output[fftRR->peakBin]);
+				 	lobeFrequency = ((fftRR->peakBin-1) * bin_size)  - bin_size/2;
 				 }
-				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1.0-ratio)) + (lobeFrequency * ratio);
+				 ratio /=4;
+				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1-ratio)) + (lobeFrequency * ratio);
+				 //clamp estimate
+				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
+				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
+				  
 			}
 		}
 		return rval; 

@@ -1,7 +1,7 @@
 #ifndef _AppBase_
 #define _AppBase_
 
-#define MAX_NAME_LENGTH 32
+#define MAX_NAME_LENGTH 24
 
 #include <Arduino.h>
 #include "HSI.h"
@@ -48,8 +48,8 @@ class AppBaseClass {
       return is; 
     };
     void setName(const char* name_string){
-      if (strlen(name_string) < MAX_NAME_LENGTH){strcpy(name,name_string);
-      } else strncpy(name,name_string,MAX_NAME_LENGTH);
+      if (strlen(name_string) < MAX_NAME_LENGTH - 1){strcpy(name,name_string);
+      } else strncpy(name,name_string,MAX_NAME_LENGTH - 1);
     }
     void setParent(AppBaseClass *parent){parentNode = parent;};
     void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;}
@@ -119,7 +119,7 @@ class AppManager {
       touch.update();
       AppBaseClass *node = root;
       bool isactive_child;
-      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
+      //if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
       //search the linked list
       do{
         node->updateRT(); //real time update (always called)

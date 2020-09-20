@@ -16,24 +16,25 @@ class AppScope:public AppBaseClass {
     uint16_t y_last_scope;
     uint16_t y_last_scope_ch2;
     void update(){
-        if (true || scope->available()){
+        if (scope->available()){
             tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
             for (int16_t i=0;i<width;i++){
                 int16_t v;
                 float f;
-                uint16_t ss;
+                uint16_t ch1,ch2;
                 v = scope->read(0,i);
-                f = ((v / 32768.0) + 1.0)/2;
-                ss = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ss,ILI9341_GREEN);
-                y_last_scope = ss;
-                
+                f = ((v * 0.000030517578125) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
+                ch1 = origin_y + (uint16_t)(f * height);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ch1,ILI9341_RED);
                 //draw the second channel
                 v = scope->read(1,i);
-                f = ((v / 32768.0) + 1.0)/2;
-                ss = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ss,ILI9341_ORANGE);
-                y_last_scope_ch2 = ss;
+                f = ((v * 0.000030517578125) + 1.0) * 0.5;
+                ch2 = origin_y + (uint16_t)(f * height);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_BLUE);
+                //draw x-y plot
+                if (origin_x + i > 0) tft.drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
+                y_last_scope = ch1; 
+                y_last_scope_ch2 = ch2;
 
             }
             scope->trigger();

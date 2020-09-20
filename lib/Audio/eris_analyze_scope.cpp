@@ -38,7 +38,7 @@ void erisAudioAnalyzeScope::update(void)
 	audio_block_t *blockb; //2nd channel (optional)
 	bool isDualChannel;
 
-	uint32_t offset = 0;
+	uint32_t offset;
 	uint32_t remain;
 
 	//capture only if channel 0 is connected
@@ -54,6 +54,7 @@ void erisAudioAnalyzeScope::update(void)
 		isDualChannel = false;
 	} else isDualChannel = true;
 
+	offset = 0;
 	while (offset < AUDIO_BLOCK_SAMPLES) {
 		remain = AUDIO_BLOCK_SAMPLES - offset;
 		switch (state) {
@@ -86,21 +87,34 @@ void erisAudioAnalyzeScope::update(void)
 					}
 				}
 				if(!found) {offset = AUDIO_BLOCK_SAMPLES;};
+				edgeCount = 0;
 			}
 			
-			while (offset < AUDIO_BLOCK_SAMPLES && count > 0){
+			while ((offset < AUDIO_BLOCK_SAMPLES) && (count > 0)){
 				h_div_count++;
 				if(h_div_count==h_div){
 					h_div_count=0;
 					count--;
 					memory[0][mem_length - count - 1 ] = block->data[offset];
-					if (isDualChannel){ memory[1][mem_length - count - 1 ] = blockb->data[offset];
+					if (isDualChannel){ 
+						memory[1][mem_length - count - 1 ] = blockb->data[offset];
 					}else memory[1][mem_length - count - 1 ] = 0;
+
+					if ((offset >= h_div) && (block->data[offset] >= 0 ) && (block->data[offset-h_div] < 0)) edgeCount++;
 				}
 				offset++;
 			}
 			
-			if (count == 0) state = STATE_IDLE;
+			
+			if (count == 0){
+				//Serial.println(edgeCount);
+				if((edgeCount < 3) && (auto_h_div < 30)) auto_h_div++;
+				if((edgeCount > 3) && (auto_h_div > 2)) auto_h_div--;
+				isAvailable = true;
+				if (autoTrigger){
+					trigger();
+				}else state = STATE_IDLE;
+			}
 			break;
 
 		  default: // STATE_IDLE
@@ -122,6 +136,8 @@ void erisAudioAnalyzeScope::trigger(void)
 {
 	uint32_t n = delay_length;
 
+	h_div = auto_h_div;
+
 	if (n > 0) {
 		count = n;
 		state = 2;
@@ -132,7 +148,10 @@ void erisAudioAnalyzeScope::trigger(void)
 }
 
 bool erisAudioAnalyzeScope::available(){
-	if (count==0) return true;
-	else return false;
+	if (isAvailable){
+		isAvailable = false;
+		return true;
+	} 
+	return false;
 }
 
