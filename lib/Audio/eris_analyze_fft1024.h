@@ -132,7 +132,10 @@ public:
 			comp = (float)output[binFirst++];
 			maxf = max(comp,maxf);
 			if(fftRR) {
-				if (maxf > fftRR->peakValue) fftRR->peakBin = binFirst-1;
+				if (maxf > fftRR->peakValue) {
+					fftRR->peakBin = binFirst-1;
+					fftRR->peakValue = maxf;
+				}
 			}
 		} while (binFirst <= binLast);
 		if(fftRR) fftRR->peakValue = maxf * (1.0 / 16384.0);
@@ -175,15 +178,14 @@ public:
 				float lobeFrequency = 1;
 				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0.1){
 					//pos lobe
-					ratio = (output[fftRR->peakBin+1]) / (1.0 * output[fftRR->peakBin]);
+					ratio = (output[fftRR->peakBin+1] - output[fftRR->peakBin-1]) / (1.0 * output[fftRR->peakBin]);
 					lobeFrequency = ((fftRR->peakBin+1) * bin_size) - bin_size/2;
 				 } else if (output[fftRR->peakBin-1] > 0.1){ 
 					 //neg lobe
-					ratio = (output[fftRR->peakBin-1]) / (1.0 * output[fftRR->peakBin]);
+					ratio = (output[fftRR->peakBin-1]-output[fftRR->peakBin+1]) / (1.0 * output[fftRR->peakBin]);
 				 	lobeFrequency = ((fftRR->peakBin-1) * bin_size)  - bin_size/2;
 				 }
-				 ratio /=4;
-				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1-ratio)) + (lobeFrequency * ratio);
+				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1-ratio)) + (lobeFrequency * ratio); 
 				 //clamp estimate
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
