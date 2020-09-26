@@ -16,8 +16,8 @@ class AppScope:public AppBaseClass {
     uint16_t y_last_scope;
     uint16_t y_last_scope_ch2;
     void update(){
+        tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
         if (scope->available()){
-            tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
             for (int16_t i=0;i<width;i++){
                 int16_t v;
                 float f;
@@ -30,7 +30,7 @@ class AppScope:public AppBaseClass {
                 v = scope->read(1,i);
                 f = ((v * 0.000030517578125) + 1.0) * 0.5;
                 ch2 = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_BLUE);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_DARKCYAN);
                 //draw x-y plot
                 if (origin_x + i > 0) tft.drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
                 y_last_scope = ch1; 

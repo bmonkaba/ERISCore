@@ -31,25 +31,41 @@ void setup() {
             while(1);
   }
   //////////////////////////////////////////////////////////////////////////////////////
-
+  //reset the i2c bus and config the external ADC
   Serial.begin(256000);//9600
-  Serial.println("Setup: Initalizing");
+  Serial.println(F("Setup: Initalizing"));
+  Serial.println(F("Setup: Configuring Audio Hardware"));
+  I2CReset();
+  ExtADCConfig();
+  //I2CBusScan();
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
   touch.setRotation(3);
-  Serial.println("Setup: Loading Applications");
+  Serial.println(F("Setup: Loading Applications"));
   //app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();
   AppManager::getInstance()->switchAppFocus(app.getId()); //focus is requested by obj id
-  //reset the i2c bus and config the external ADC
-  Serial.println("Setup: Configuring Audio Hardware");
-  I2CReset();
-  ExtADCConfig();
-  //run a quick 12c bus scan
-  I2CBusScan();
   // set the connection goup
   ad.activateConnectionGroup(0);
-  Serial.println("Setup: Configuring the sw audio block connections");
-  Serial.println("Setup: Init Complete");
+  Serial.println(F("Setup: Configuring the sw audio block connections"));
+  Serial.println(F("Setup: Init Complete"));
+  Serial.print(F("Ext ADC Operating State (15:RUNNING): "));
+  Serial.println(ExtADCReadReg(114));
+  Serial.print(F("Ext ADC Sample Freq: "));
+  Serial.println(ExtADCReadReg(115));
+  Serial.print(F("Ext ADC BCLK Ratio: "));
+  Serial.println((ExtADCReadReg(116) >> 4) & 0x7);
+  Serial.print(F("Ext ADC SCLK Ratio: "));
+  Serial.println(ExtADCReadReg(116) & 0x7);
+  Serial.print(F("Ext ADC CLK Error Status (0:OK): "));
+  Serial.println(ExtADCReadReg(117));
+  Serial.print(F("Ext ADC Voltage Status (7:OK): "));
+  Serial.println(ExtADCReadReg(120));
+  for (int i =0; i < 12;i++){
+    Serial.print(F("Ext ADC CONF REG VALUE"));
+    Serial.print(i);
+    Serial.print(F(": "));
+    Serial.println(ExtADCReadReg(i),HEX);
+  }
 }
 
 void loop(void) {
@@ -57,5 +73,5 @@ void loop(void) {
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
   //calls updateRT for all apps 
-  AppManager::getInstance()->update();
+  AppManager::getInstance()->update();                                     
 }

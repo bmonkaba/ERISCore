@@ -108,8 +108,8 @@ void erisAudioAnalyzeScope::update(void)
 			
 			if (count == 0){
 				//Serial.println(edgeCount);
-				if((edgeCount < 3) && (auto_h_div < 30)) auto_h_div++;
-				if((edgeCount > 3) && (auto_h_div > 2)) auto_h_div--;
+				if((edgeCount < 3) && (auto_h_div < 4)) auto_h_div++;
+				if((edgeCount > 4) && (auto_h_div > 2)) auto_h_div--;
 				isAvailable = true;
 				if (autoTrigger){
 					trigger();

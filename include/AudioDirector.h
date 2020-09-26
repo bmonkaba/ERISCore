@@ -43,7 +43,7 @@ class AudioDirector{
     void*  heapStart;  //used to estamate total heap allocation size
     void*  heapEnd;    //
     AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
-    AudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
+    erisAudioInputI2S AudioStreamInputPort; //ADC Audio Input(s)
     AudioStream* pAudioStreamOutputPort; //DAC Audio Output(s)
     void unlinkAll();
     void linkGroup();
@@ -76,10 +76,9 @@ AudioDirector::AudioDirector(){
     categoryList[j] = (char**)&nullStr;
   }
 
-  pAudioStreamInputPort = new erisAudioInputI2S();
-  heapStart = pAudioStreamInputPort;
-  pAudioStreamOutputPort = new erisAudioOutputI2S2();
-  addAudioStreamObj(pAudioStreamInputPort);
+  pAudioStreamOutputPort = new erisAudioOutputI2S();
+  heapStart = pAudioStreamOutputPort;
+  addAudioStreamObj(&AudioStreamInputPort);
   addAudioStreamObj(pAudioStreamOutputPort);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
@@ -316,32 +315,35 @@ bool AudioDirector::disconnect(const char* connectionString){
 void AudioDirector::activateConnectionGroup(uint16_t group_id){
 //testing
   Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
-  connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
+  
+  //connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
 
   //connect a waveform object to the output and fft
-  connect("waveform_1 0 waveformMod_1 0");
-  connect("waveformMod_1 0 i2s2-out_1 0");
-  connect("waveformMod_1 0 i2s2-out_1 1");
-
-  //disconnect("waveformMod_1 0 i2s2-out_1 1");
-  //connect("waveform_2 0 i2s2-out_1 1");
-
-  connect("waveformMod_1 0 filter_1 0");
-  connect("waveformMod_1 0 filter_3 0");
+  //connect("waveform_1 0 waveformMod_1 0");
   
+
+  //connect("waveformMod_1 0 filter_1 0");
+  //connect("waveformMod_1 0 filter_3 0");
+  connect("i2s-in_1 1 filter_1 0");
   connect("filter_1 0 filter_2 0"); //lp filter
   connect("filter_2 2 fft1024_1 0"); //hp filter
+  
+  connect("i2s-in_1 1 filter_3 0");
   connect("filter_3 0 fft1024_2 0"); //lp filter
-  connect("waveformMod_1 0 scope_1 0");
-  connect("waveform_2 0 scope_1 1");
 
+  connect("i2s-in_1 1 scope_1 1");
+  connect("waveform_2 0 scope_1 0");
+
+  connect("waveform_2 0 i2s-out_1 0");
+  connect("i2s-in_1 1 i2s-out_1 1");
+  
   //to use the objects they must be downcast
   erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));
   mod->begin(1.0, 0.1, WAVEFORM_TRIANGLE);
 
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
   wav->frequencyModulation(2);
-  wav->begin(0.8, 1200, WAVEFORM_SAWTOOTH);
+  wav->begin(0.4, 1200, WAVEFORM_SAWTOOTH);
 
 }
 

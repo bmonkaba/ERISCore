@@ -27,21 +27,23 @@ class MyAppExample:public AppBaseClass {
       t_lastupdate = micros();
 
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(3000);
-      filter->resonance(0.706);
+      filter->frequency(2000);
+      filter->resonance(0.70);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(400);
+      filter2->frequency(200);
+      filter2->resonance(0.304);
+
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(800);
+      filter3->frequency(600);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
-      oscope->setDimension(320,220);
+      oscope->setDimension(320,140);
       oscope->setParent(this);
 
       cqt = new AppCQT;
       cqt->setPosition(0,20);
-      cqt->setDimension(320,220);
+      cqt->setDimension(320,140);
       cqt->setParent(this);
 
       AudioProcessorUsageMaxReset();
@@ -126,20 +128,20 @@ class MyAppExample:public AppBaseClass {
         else if(sender->isName("BREAK")){ //...or, can detect sender by name
           //disconnect the fft block
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          ad.disconnect(wav,0,fft,0);
+          //ad.disconnect(wav,0,fft,0);
         }
         else if(sender->isName("MAKE")){ //...or, can detect sender by name
           //disconnect the fft block
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.8, 440, WAVEFORM_SINE);
+          wav->begin(0.3, 440, WAVEFORM_SAWTOOTH);
         }
         else if(sender->isName("SIN")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.8, 29.14, WAVEFORM_SINE);
+          wav->begin(0.3, 220, WAVEFORM_SINE);
         }
         else if(sender->isName("SQUARE")){
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.8, 2637.02, WAVEFORM_SQUARE);
+          wav->begin(0.3, 2637.02, WAVEFORM_SQUARE);
         }
     }
 };

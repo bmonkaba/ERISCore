@@ -119,7 +119,7 @@ class AppManager {
       touch.update();
       AppBaseClass *node = root;
       bool isactive_child;
-      //if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
+      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
       //search the linked list
       do{
         node->updateRT(); //real time update (always called)

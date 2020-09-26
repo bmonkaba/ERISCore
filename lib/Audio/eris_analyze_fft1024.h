@@ -31,19 +31,26 @@
 #include "AudioStream.h"
 #include "arm_math.h"
 #include "analyze_fft1024.h"
+#include <stdlib.h>
+
 
 enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
 
 typedef struct FFTReadRangeStruct{
-	uint16_t startBin;
-	uint16_t stopBin;
-	uint16_t peakBin;
-	float startFrequency;
-	float stopFrequency;
+	uint16_t cqtBin;		// Provided by the caller
+	uint16_t startBin;		
+	uint16_t stopBin;		
+	uint16_t peakBin;		
+	float startFrequency;		// Provided by the caller
+	float stopFrequency;		// Provided by the caller
 	float estimatedFrequency;
 	float peakFrequency;
 	float peakValue;
+	float avgValueFast;				//used to calc moving average convergence / divergence (MACD) 
+	float avgValueSlow; 			//by comparing a short and long moving average; slow transient detection
+	float macdValue;
+	float transientValue;			//difference between the peak and fast peak values
 } FFTReadRange;
 
 
@@ -141,6 +148,10 @@ public:
 		if(fftRR) fftRR->peakValue = maxf * (1.0 / 16384.0);
 		return maxf * (1.0 / 16384.0);
 	}
+	float read(FFTReadRange *fftRR){
+		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);
+	}
+
 	float read(float freq_from, float freq_to, FFTReadRange *fftRR = NULL) {
 		//convert f to bin
 		float bw;
@@ -189,11 +200,37 @@ public:
 				 //clamp estimate
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
-				  
+
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.40) + (fftRR->peakValue * 0.60);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueSlow = (fftRR->avgValueFast * 0.90) + (fftRR->peakValue * 0.10); 	//by comparing a short and long moving average; slow transient detection
+				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
+				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;
 			}
 		}
 		return rval; 
 	}
+
+	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
+	static int compare_fftrr_value(const void *p, const void *q) {
+		if (((const FFTReadRange *)p)->peakValue > ((const FFTReadRange *)q)->peakValue) return -1;
+		return 1;
+	}
+
+	static int compare_fftrr_cqt_bin(const void *p, const void *q) {
+		if (((const FFTReadRange *)p)->cqtBin > ((const FFTReadRange *)q)->cqtBin) return -1;
+		return 1;
+	}
+
+	static void sort_fftrr_by_value(FFTReadRange *a, size_t n) {
+		//helper function used to sort FFTReadRange arrays (used for CQT)
+		qsort(a, n, sizeof(*a), compare_fftrr_value);
+	}
+
+	static void sort_fftrr_by_cqt_bin(FFTReadRange *a, size_t n) {
+		//helper function used to sort FFTReadRange arrays (used for CQT)
+		qsort(a, n, sizeof(*a), compare_fftrr_cqt_bin);
+	}
+
 	void averageTogether(uint8_t n) {
 		// not implemented yet (may never be, 86 Hz output rate is ok)
 	}

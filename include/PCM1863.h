@@ -43,7 +43,7 @@ void ExtADCConfig(){
   //Serial.print("\n");
   Wire.beginTransmission(74);Wire.write(11);Wire.write(76); //write config
   Wire.endTransmission(I2C_STOP);
-  delay(1);
+  delay(100);
   Wire.beginTransmission(74);Wire.write(11);
   Wire.endTransmission(I2C_NOSTOP);
   Wire.requestFrom(74, 1);
@@ -60,7 +60,7 @@ void ExtADCConfig(){
   // 0100 0010: VINL2[SE] 42
   // 0100 0100: VINL3[SE] 44
   // 0100 1000: VINL4[SE] 48 <-----
-  Wire.beginTransmission(74);Wire.write(6);Wire.write(48); //68
+  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x42); //68
   Wire.endTransmission(I2C_STOP);
 
   //ADC 1 Input Channel Select (ADC1R):
@@ -68,7 +68,7 @@ void ExtADCConfig(){
   //0100 0010: VINR2[SE] 42
   //0100 0100: VINR3[SE] 44
   //0100 1000: VINR4[SE] 48 <-----
-  Wire.beginTransmission(74);Wire.write(7);Wire.write(48); //68
+  Wire.beginTransmission(74);Wire.write(7);Wire.write(0x41); //68
   Wire.endTransmission(I2C_STOP);
 
   //ADC 2 Input Channel Select (ADC2L)
@@ -76,7 +76,7 @@ void ExtADCConfig(){
   //0100 0010: VINL2[SE] 42  <-----
   //0100 0100: VINL3[SE] 44
   //0100 1000: VINL4[SE] 48
-  Wire.beginTransmission(74);Wire.write(8);Wire.write(42); //72
+  Wire.beginTransmission(74);Wire.write(8);Wire.write(0x42); //72
   Wire.endTransmission(I2C_STOP);
 
   //ADC 2 Input Channel Select (ADC2R)
@@ -84,19 +84,19 @@ void ExtADCConfig(){
   //0100 0010: VINR2[SE] <-----
   //0100 0100: VINR3[SE]
   //0100 1000: VINR4[SE]
-  Wire.beginTransmission(74);Wire.write(9);Wire.write(42);//72
+  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x41);//72
   Wire.endTransmission(I2C_STOP);
 
   //PGA
   //Wire.beginTransmission(74);Wire.write(0);Wire.write(0);
   //Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(1);Wire.write(16); //6 * 0.5db = 3db gain
+  Wire.beginTransmission(74);Wire.write(1);Wire.write(24); //6 * 0.5db = 3db gain
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(2);Wire.write(12);
+  Wire.beginTransmission(74);Wire.write(2);Wire.write(24);
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(3);Wire.write(12);
+  Wire.beginTransmission(74);Wire.write(3);Wire.write(24);
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(4);Wire.write(12);
+  Wire.beginTransmission(74);Wire.write(4);Wire.write(24);
   Wire.endTransmission(I2C_STOP);
 }
 
@@ -105,7 +105,7 @@ void I2CBusScan()
   byte error, address;
   int nDevices;
 
-  Serial.println("I2CBusScan: Scanning...");
+  Serial.println("I2CBusScan: Scanning");
 
   nDevices = 0;
   for(address = 1; address < 127; address++ )
@@ -120,10 +120,9 @@ void I2CBusScan()
     {
       Serial.print(F("I2CBusScan: I2C device found at address "));
       if (address<16)
-        Serial.print("0");
+        Serial.print(F("0"));
       //Serial.print(address,HEX);
       Serial.print(address);
-      Serial.println("  !");
 
       nDevices++;
     }
@@ -137,6 +136,11 @@ void I2CBusScan()
   }
   if (nDevices == 0)
     Serial.println(F("I2CBusScan: No I2C devices found\n"));
-  else
-    Serial.println(F("I2CBusScan: done\n"));
+}
+
+uint8_t ExtADCReadReg(uint8_t control_register){
+    Wire.beginTransmission(74);Wire.write(control_register);
+    Wire.endTransmission(I2C_NOSTOP);
+    Wire.requestFrom(74, 1);
+    return Wire.read();
 }
