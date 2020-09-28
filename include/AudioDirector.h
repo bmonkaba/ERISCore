@@ -5,11 +5,11 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
-#define MAX_AUDIO_STREAM_OBJECTS 128
-#define MAX_AUDIO_MEMORY_BLOCKS 32
+#define MAX_AUDIO_STREAM_OBJECTS 150
+#define MAX_AUDIO_MEMORY_BLOCKS 80
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
-#define MAX_CONNECTIONS 64
+#define MAX_CONNECTIONS 64 
 #define MAX_CONNECTION_STRING_LENGTH 128
 
 const char* nullStr = "NULL";
@@ -84,19 +84,16 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
   addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
-  addAudioStreamObj(new erisAudioFilterStateVariable);
   
-
   //generate audio component pool
   for (int i=0; i < 16; i++){
-    addAudioStreamObj(new erisAudioEffectWaveshaper);
     addAudioStreamObj(new erisAudioEffectEnvelope);
     addAudioStreamObj(new erisAudioSynthWaveformModulated);
     addAudioStreamObj(new erisAudioSynthWaveform);
     addAudioStreamObj(new erisAudioFilterStateVariable);
   }
 
-  for (int i=0; i < 2; i++){
+  for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
     addAudioStreamObj(new erisAudioAnalyzePeak);
     addAudioStreamObj(new erisAudioAnalyzeRMS);
@@ -331,11 +328,38 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("i2s-in_1 1 filter_3 0");
   connect("filter_3 0 fft1024_2 0"); //lp filter
 
-  connect("i2s-in_1 1 scope_1 1");
-  connect("waveform_2 0 scope_1 0");
+  connect("i2s-in_1 1 scope_1 0");
+  connect("mixer_1 0 scope_1 1");
+  //connect("i2s-in_1 1 i2s-out_1 1");
 
-  connect("waveform_2 0 i2s-out_1 0");
-  connect("i2s-in_1 1 i2s-out_1 1");
+  //16 voice oscillator bank
+  connect("mixer_2 0 mixer_1 0");
+  connect("mixer_3 0 mixer_1 1");
+  connect("mixer_4 0 mixer_1 2");
+  connect("mixer_5 0 mixer_1 3");
+
+  connect("waveform_1 0 mixer_2 0");
+  connect("waveform_2 0 mixer_2 1");
+  connect("waveform_3 0 mixer_2 2");
+  connect("waveform_4 0 mixer_2 3");
+  
+  connect("waveform_5 0 mixer_3 0");
+  connect("waveform_6 0 mixer_3 1");
+  connect("waveform_7 0 mixer_3 2");
+  connect("waveform_8 0 mixer_3 3");
+  
+  connect("waveform_9 0 mixer_4 0");
+  connect("waveform_10 0 mixer_4 1");
+  connect("waveform_11 0 mixer_4 2");
+  connect("waveform_12 0 mixer_4 3");
+  
+  connect("waveform_13 0 mixer_5 0");
+  connect("waveform_14 0 mixer_5 1");
+  connect("waveform_15 0 mixer_5 2");
+  //connect("i2s-in_1 1 mixer_5 3");
+
+  connect("mixer_1 0 i2s-out_1 0");
+
   
   //to use the objects they must be downcast
   erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));

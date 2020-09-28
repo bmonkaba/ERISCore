@@ -68,10 +68,13 @@ void setup() {
   }
 }
 
+elapsedMillis loop_cycle_time;
 void loop(void) {
   //The appManager will... 
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
-  //calls updateRT for all apps 
-  AppManager::getInstance()->update();                                     
+  //calls updateRT for all apps
+  loop_cycle_time = 0; 
+  AppManager::getInstance()->update();
+  Serial.println(loop_cycle_time);                                     
 }

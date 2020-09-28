@@ -39,11 +39,13 @@ enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
 typedef struct FFTReadRangeStruct{
 	uint16_t cqtBin;		// Provided by the caller
+	float startFrequency;		// Provided by the caller
+	float stopFrequency;		// Provided by the caller
+	
 	uint16_t startBin;		
 	uint16_t stopBin;		
 	uint16_t peakBin;		
-	float startFrequency;		// Provided by the caller
-	float stopFrequency;		// Provided by the caller
+	uint32_t peakFFTResult;		//real and imag packed data can be used to calc phase 
 	float estimatedFrequency;
 	float peakFrequency;
 	float peakValue;
@@ -54,11 +56,14 @@ typedef struct FFTReadRangeStruct{
 } FFTReadRange;
 
 
+
+
+
 class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  window(AudioWindowNuttall1024), sample_block(0), outputflag(false) {
+	  window(AudioWindowFlattop1024), sample_block(0), outputflag(false) {
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
 		shortName="fft1024";
 		unum_inputs=1;
@@ -71,8 +76,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 32;//689hz
-		subsample_highfreqrange = 4;//~2637 (24th fret)
+		subsample_lowfreqrange = 22;//689hz
+		subsample_highfreqrange = 3;//~2637 (24th fret)
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
@@ -136,16 +141,18 @@ public:
 		float maxf = 0;
 		float comp;
 		do {
-			comp = (float)output[binFirst++];
+			comp = (float)output[binFirst];
 			maxf = max(comp,maxf);
 			if(fftRR) {
 				if (maxf > fftRR->peakValue) {
-					fftRR->peakBin = binFirst-1;
+					fftRR->peakBin = binFirst;
+					fftRR->peakFFTResult = output_packed[binFirst];
 					fftRR->peakValue = maxf;
 				}
 			}
+			binFirst++;
 		} while (binFirst <= binLast);
-		if(fftRR) fftRR->peakValue = maxf * (1.0 / 16384.0);
+		if(fftRR) fftRR->peakValue *= (1.0 / 16384.0);
 		return maxf * (1.0 / 16384.0);
 	}
 	float read(FFTReadRange *fftRR){
@@ -183,6 +190,7 @@ public:
 		if(fftRR){
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
+			if (fftRR->peakFrequency < 0) fftRR->peakFrequency = 0.01;
 			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 510) && (output[fftRR->peakBin] > 0)){
 				//from the balance of the side lobes, estimate the actual frequency
 				float ratio = 1;
@@ -202,7 +210,7 @@ public:
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
 				fftRR->avgValueFast = (fftRR->avgValueFast * 0.40) + (fftRR->peakValue * 0.60);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueFast * 0.90) + (fftRR->peakValue * 0.10); 	//by comparing a short and long moving average; slow transient detection
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->peakValue * 0.05); 	//by comparing a short and long moving average; slow transient detection
 				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;
 			}
@@ -217,8 +225,8 @@ public:
 	}
 
 	static int compare_fftrr_cqt_bin(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)->cqtBin > ((const FFTReadRange *)q)->cqtBin) return -1;
-		return 1;
+		if (((const FFTReadRange *)p)->cqtBin > ((const FFTReadRange *)q)->cqtBin) return 1;
+		return -1;
 	}
 
 	static void sort_fftrr_by_value(FFTReadRange *a, size_t n) {
@@ -239,8 +247,7 @@ public:
 	}
 	virtual void update(void);
 	uint16_t output[512] __attribute__ ((aligned (4)));
-
-	
+	uint32_t output_packed[512] __attribute__ ((aligned (4))); //16bit real and imag packed data 
 private:
 	void init(void);
 	void copy_to_fft_buffer(void *destination, const void *source,int subsample);

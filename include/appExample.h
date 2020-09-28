@@ -30,20 +30,20 @@ class MyAppExample:public AppBaseClass {
       filter->frequency(2000);
       filter->resonance(0.70);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(200);
-      filter2->resonance(0.304);
+      filter2->frequency(20);
+      filter2->resonance(0.604);
 
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(600);
+      filter3->frequency(800);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
-      oscope->setDimension(320,140);
+      oscope->setDimension(320,220);
       oscope->setParent(this);
 
       cqt = new AppCQT;
       cqt->setPosition(0,20);
-      cqt->setDimension(320,140);
+      cqt->setDimension(320,220);
       cqt->setParent(this);
 
       AudioProcessorUsageMaxReset();

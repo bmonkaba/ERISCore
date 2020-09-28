@@ -58,7 +58,7 @@ public:
 private:
 	const char *myname;
 	uint8_t state;
-	int16_t memory[2][640];
+	int16_t memory[2][640] __attribute__ ((aligned (4)));
 	bool autoTrigger;
 	bool isAvailable;
 	uint8_t h_div;

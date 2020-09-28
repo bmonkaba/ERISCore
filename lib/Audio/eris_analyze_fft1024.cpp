@@ -28,6 +28,7 @@
 #include "eris_analyze_fft1024.h"
 #include "sqrt_integer.h"
 #include "utility/dspinst.h"
+#include "arm_const_structs.h" //WILL BE NEEDED FOR IMPLEMENTING f32 FFT
 
 
 //Fat Audio - to add trailing zeros to fft buffer
@@ -110,7 +111,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		for (int i=0; i < 512; i++) {
 			uint32_t tmp = *((uint32_t *)tmp_buffer + i); // real & imag
 			uint32_t magsq = multiply_16tx16t_add_16bx16b(tmp, tmp);
-			output[i] = (output[i] * 0.5) + (0.5 *sqrt_uint32_approx(magsq));
+			output[i] = sqrt_uint32_approx(magsq);
+			output_packed[i] = tmp;//normalized_atan2((float)real,(float)imag)*180/PI;//atan2(imag,real)*180/PI;
 		}
 		if (sample_block!= 0){
 			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE;
