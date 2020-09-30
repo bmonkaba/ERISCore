@@ -76,5 +76,5 @@ void loop(void) {
   //calls updateRT for all apps
   loop_cycle_time = 0; 
   AppManager::getInstance()->update();
-  Serial.println(loop_cycle_time);                                     
+  //Serial.println(loop_cycle_time);                                     
 }

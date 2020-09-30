@@ -30,11 +30,11 @@ class MyAppExample:public AppBaseClass {
       filter->frequency(2000);
       filter->resonance(0.70);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(20);
+      filter2->frequency(600);
       filter2->resonance(0.604);
 
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(800);
+      filter3->frequency(600);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
@@ -56,8 +56,8 @@ class MyAppExample:public AppBaseClass {
       slider->height=35;
       slider->value=20;
       slider->setParent(this);
-      slider->setName("FM OSC");
-      strcpy(slider->text,"FM OSC");
+      slider->setName("SLIDER");
+      strcpy(slider->text,"Dry Mix");
       char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
       uint8_t si = 0;
       for (int x=0;x<320-40;x+=80){
@@ -122,8 +122,9 @@ class MyAppExample:public AppBaseClass {
     }
     void MessageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect sender by ptr...
-          erisAudioSynthWaveform* fm_mod = (erisAudioSynthWaveform*)(ad.getAudioStreamObjByName("waveform_1"));
-          fm_mod->begin(1.0, slider->value/2000.0, WAVEFORM_TRIANGLE);
+          erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_5"));
+          mix->gain(3,slider->value/100.0);
+          //fm_mod->begin(1.0, slider->value/2000.0, WAVEFORM_TRIANGLE);
         }
         else if(sender->isName("BREAK")){ //...or, can detect sender by name
           //disconnect the fft block

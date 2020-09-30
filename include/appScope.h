@@ -23,12 +23,12 @@ class AppScope:public AppBaseClass {
                 float f;
                 uint16_t ch1,ch2;
                 v = scope->read(0,i);
-                f = ((v * 0.000030517578125) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
+                f = ((v * 0.000030517578125 *2) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
                 ch1 = origin_y + (uint16_t)(f * height);
                 if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ch1,ILI9341_RED);
                 //draw the second channel
                 v = scope->read(1,i);
-                f = ((v * 0.000030517578125) + 1.0) * 0.5;
+                f = ((v * 0.000030517578125 * 2) + 1.0) * 0.5;
                 ch2 = origin_y + (uint16_t)(f * height);
                 if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_DARKCYAN);
                 //draw x-y plot

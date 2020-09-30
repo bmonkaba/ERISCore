@@ -76,8 +76,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 22;//689hz
-		subsample_highfreqrange = 3;//~2637 (24th fret)
+		subsample_lowfreqrange = 32;//689hz
+		subsample_highfreqrange = 8;//~2637 (24th fret)
 		ssr = SS_HIGHFREQ;
 	}
 	//FAT Audio
@@ -178,6 +178,22 @@ public:
 			fftRR->stopFrequency = freq_to;
 		}
 		
+		
+		if (freq_to > bw){
+			if(fftRR){
+				fftRR->startBin = 0;
+				fftRR->stopBin = 0;
+				fftRR->startFrequency = 0;
+				fftRR->stopFrequency = 0;
+				fftRR->peakFrequency = 0;
+				fftRR->estimatedFrequency = 0;
+				fftRR->peakValue = 0;
+				fftRR->avgValueSlow = 0;
+				fftRR->avgValueFast = 0;
+			}
+			return 0;
+		}
+	
 		/*
 		Serial.print(F("fft read: "));
 		Serial.print(subsample_by);Serial.print(F(","));
@@ -209,18 +225,22 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.40) + (fftRR->peakValue * 0.60);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->peakValue * 0.05); 	//by comparing a short and long moving average; slow transient detection
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.80) + (fftRR->peakValue * 0.20);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.995) + (fftRR->peakValue * 0.005); 	//by comparing a short and long moving average; slow transient detection
+				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
+				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = fftRR->peakValue;
+				
 				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;
 			}
 		}
+			
 		return rval; 
 	}
 
 	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
 	static int compare_fftrr_value(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)->peakValue > ((const FFTReadRange *)q)->peakValue) return -1;
+		if (((const FFTReadRange *)p)->avgValueSlow > ((const FFTReadRange *)q)->avgValueSlow) return -1;
 		return 1;
 	}
 
