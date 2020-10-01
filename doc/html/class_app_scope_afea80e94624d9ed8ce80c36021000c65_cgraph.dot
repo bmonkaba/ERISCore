@@ -1,0 +1,18 @@
+digraph "AppScope::update"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="AppScope::update",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="erisAudioAnalyzeScope\l::available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_scope.html#a86e2901f7e473ae224a2a17b8fb38d00",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="erisAudioAnalyzeScope\l::getPeakValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_scope.html#a9d865bd201a84115950c1810ba18971c",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="erisAudioAnalyzeScope\l::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_scope.html#a9b55a833ab606b7081bf2ecaac6626fa",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="tft",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="erisAudioAnalyzeScope\l::trigger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_scope.html#a5908af4a47b73f1850f106303ae071bd",tooltip=" "];
+}

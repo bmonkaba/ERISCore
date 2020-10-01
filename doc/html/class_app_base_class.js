@@ -1,6 +1,7 @@
 var class_app_base_class =
 [
     [ "AppBaseClass", "class_app_base_class.html#afc31089c73d88d7b768aa71cbabf0465", null ],
+    [ "AppBaseClass", "class_app_base_class.html#a5528b67a6df75a6e6d1f3d8ac671a493", null ],
     [ "getId", "class_app_base_class.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
     [ "isName", "class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "MessageHandler", "class_app_base_class.html#ae84fb7d2e79a6e050cfa11d8e04cbae9", null ],
@@ -16,10 +17,9 @@ var class_app_base_class =
     [ "update", "class_app_base_class.html#a0c2ee195056463d26b529f8c5218e8b9", null ],
     [ "updateRT", "class_app_base_class.html#ad94e41c748692bda9c38b25c876bc3e6", null ],
     [ "AppManager", "class_app_base_class.html#a5b776c7b1b77453a24c6b0b2f9d2da8e", null ],
-    [ "_tft", "class_app_base_class.html#ac9c6971cd5dd0e751d746af6f19e575a", null ],
     [ "height", "class_app_base_class.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "id", "class_app_base_class.html#a3682f17759610f58e60351fe96daa6b2", null ],
-    [ "name", "class_app_base_class.html#ab043cc71dd876a185bf1b6adf8bf656b", null ],
+    [ "name", "class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2", null ],
     [ "nextAppicationNode", "class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873", null ],
     [ "origin_x", "class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8", null ],
     [ "origin_y", "class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed", null ],

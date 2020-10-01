@@ -1,0 +1,16 @@
+digraph "vfprintf"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="vfprintf",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="fmtDouble",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_fmt_number_8cpp.html#a29e6f245d52c13dc1b1d0ed44eac22b0",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="fmtUnsigned",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_fmt_number_8cpp.html#a734e1abae6b77a32b040375e741b8d58",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="fmtBase10",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="nf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d",tooltip=" "];
+}

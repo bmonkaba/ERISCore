@@ -1,0 +1,42 @@
+digraph "C:/Users/Shadow/Documents/GitHub/ERISCore/lib/SdFat-beta-master/src/SdCard/SdSpiCard.cpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="C:/Users/Shadow/Documents\l/GitHub/ERISCore/lib/SdFat\l-beta-master/src/SdCard/SdSpiCard.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SdSpiCard.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_spi_card_8h.html",tooltip="SdSpiCard class for V2 SD/SDHC cards."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="stddef.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="../common/SysCall.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sys_call_8h.html",tooltip="SysCall class."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="stdint.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="../SdFatConfig.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_fat_config_8h.html",tooltip="configuration definitions"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Arduino.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="SdCardInfo.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_card_info_8h.html",tooltip=" "];
+  Node8 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="SdCardInterface.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_card_interface_8h.html",tooltip=" "];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="../common/BlockDeviceInterface.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_block_device_interface_8h.html",tooltip="BlockDeviceInterface include file."];
+  Node10 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="../SpiDriver/SdSpiDriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_spi_driver_8h.html",tooltip="SpiDriver classes."];
+  Node11 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="SPI.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="SdSpiArduinoDriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_spi_arduino_driver_8h.html",tooltip="SpiDriver classes for Arduino compatible systems."];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="SdSpiLibDriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sd_spi_lib_driver_8h.html",tooltip="Class using only simple SPI library functions."];
+}

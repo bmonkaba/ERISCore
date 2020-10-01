@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ErisCore: AudioDirector Class Reference</title>
+<title>My Project: AudioDirector Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ErisCore
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -107,6 +107,8 @@ Collaboration diagram for AudioDirector:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac17d6584f80dc62c992ced7d879b5786"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786">AudioDirector</a> ()</td></tr>
 <tr class="separator:ac17d6584f80dc62c992ced7d879b5786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1cafad76498a9f3d58bc8855bdf67ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#ab1cafad76498a9f3d58bc8855bdf67ea">AudioDirector</a> (const <a class="el" href="class_audio_director.html">AudioDirector</a> &amp;)=delete</td></tr>
+<tr class="separator:ab1cafad76498a9f3d58bc8855bdf67ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf7bb7f3ee814b6a8b0048427f8e9eb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#abf7bb7f3ee814b6a8b0048427f8e9eb5">activateConnectionGroup</a> (uint16_t group_id)</td></tr>
 <tr class="separator:abf7bb7f3ee814b6a8b0048427f8e9eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad97af621b2072f1246526f2afb0e0ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#aad97af621b2072f1246526f2afb0e0ff">addAudioStreamObj</a> (<a class="el" href="class_audio_stream.html">AudioStream</a> *obj)</td></tr>
@@ -147,8 +149,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a7a805a5c40dd2c4d950020cd741f5394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e2550defde3456abed3799ff8376654"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_audio_stream.html">AudioStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a3e2550defde3456abed3799ff8376654">pAudioStreamObjPool</a> [<a class="el" href="_audio_director_8h.html#a55e40ae7817922a01086b86a043dee06">MAX_AUDIO_STREAM_OBJECTS</a>]</td></tr>
 <tr class="separator:a3e2550defde3456abed3799ff8376654"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a816f042e16bd729ed8782e0ba8703504"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_audio_stream.html">AudioStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a816f042e16bd729ed8782e0ba8703504">pAudioStreamInputPort</a></td></tr>
-<tr class="separator:a816f042e16bd729ed8782e0ba8703504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790edabdaf89b447a28e2ee850d84670"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classeris_audio_input_i2_s.html">erisAudioInputI2S</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a790edabdaf89b447a28e2ee850d84670">AudioStreamInputPort</a></td></tr>
+<tr class="separator:a790edabdaf89b447a28e2ee850d84670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40757346afed066b3a9650f716cefb7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_audio_stream.html">AudioStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a40757346afed066b3a9650f716cefb7f">pAudioStreamOutputPort</a></td></tr>
 <tr class="separator:a40757346afed066b3a9650f716cefb7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73f5916ceca8fed0b2bb1934aa3a5591"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a73f5916ceca8fed0b2bb1934aa3a5591">activeConnectionGroup</a></td></tr>
@@ -168,9 +170,12 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a1708e7f4e5871ab4f98b7e7d12925884"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_audio_connection.html">AudioConnection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884">pCord</a> [<a class="el" href="_audio_director_8h.html#a053b7859476cc9867ec62c49e68d3fa1">MAX_CONNECTIONS</a>]</td></tr>
 <tr class="separator:a1708e7f4e5871ab4f98b7e7d12925884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00028">28</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac17d6584f80dc62c992ced7d879b5786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac17d6584f80dc62c992ced7d879b5786">&#9670;&nbsp;</a></span>AudioDirector()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac17d6584f80dc62c992ced7d879b5786">&#9670;&nbsp;</a></span>AudioDirector() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,18 +189,44 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#a73f5916ceca8fed0b2bb1934aa3a5591">activeConnectionGroup</a>, <a class="el" href="class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d">activeConnections</a>, <a class="el" href="class_audio_director.html#aad97af621b2072f1246526f2afb0e0ff">addAudioStreamObj()</a>, <a class="el" href="_audio_stream_8h.html#af9139a25266f928b7d7e1b4de48c4326">AudioMemory</a>, <a class="el" href="class_audio_director.html#ad65f0a1ec7aa26ae86abe46f42e33892">categoryCount</a>, <a class="el" href="class_audio_director.html#a07980407da906643feeac1f7a1a30b65">categoryList</a>, <a class="el" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>, <a class="el" href="class_audio_director.html#a1da47d92a4ceddb2844cf690e395caff">generateCategoryList()</a>, <a class="el" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName()</a>, <a class="el" href="class_audio_director.html#a7a805a5c40dd2c4d950020cd741f5394">heapEnd</a>, <a class="el" href="class_audio_director.html#a174eb4f868e38debf4fcd474bcbdc20f">heapStart</a>, <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">AudioStream::instance</a>, <a class="el" href="_audio_director_8h.html#af760e948fbd21588d965e6285ae64924">MAX_AUDIO_MEMORY_BLOCKS</a>, <a class="el" href="_audio_director_8h.html#ab4a6404e604591c49018d28f890fc335">MAX_CATEGORIES</a>, <a class="el" href="_audio_director_8h.html#a053b7859476cc9867ec62c49e68d3fa1">MAX_CONNECTIONS</a>, <a class="el" href="_audio_director_8h.html#abc12096f9bc6b40854744480b495374e">MAX_UNIQUE_NAMES_PER_CATEGORY</a>, <a class="el" href="_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="_audio_director_8h.html#a426c7b3dbd9cded3b276dbeace90e537">nullStr</a>, <a class="el" href="class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d">objCount</a>, <a class="el" href="class_audio_director.html#a816f042e16bd729ed8782e0ba8703504">pAudioStreamInputPort</a>, <a class="el" href="class_audio_director.html#a40757346afed066b3a9650f716cefb7f">pAudioStreamOutputPort</a>, <a class="el" href="class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884">pCord</a>, <a class="el" href="class_audio_stream.html#ac242dd9497117769db00c076d9b71710">AudioStream::shortName</a>, <a class="el" href="class_audio_director.html#ad4853c04650773ae8c37a6e3bba2e0db">shortNameQueryResult</a>, and <a class="el" href="class_audio_director.html#aa485080dc3d644895c8b38b097badc5f">shortNameQueryResultCount</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00064">64</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph.png" border="0" usemap="#aclass_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph" alt=""/></div>
-<map name="class_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph" id="aclass_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph">
+<map name="class_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph" id="class_audio_director_ac17d6584f80dc62c992ced7d879b5786_cgraph">
 <area shape="rect" title=" " alt="" coords="5,56,192,83"/>
 <area shape="rect" href="class_audio_director.html#aad97af621b2072f1246526f2afb0e0ff" title=" " alt="" coords="243,5,467,32"/>
 <area shape="rect" href="class_audio_director.html#a1da47d92a4ceddb2844cf690e395caff" title=" " alt="" coords="240,56,471,83"/>
 <area shape="rect" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df" title=" " alt="" coords="255,107,456,149"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="ab1cafad76498a9f3d58bc8855bdf67ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1cafad76498a9f3d58bc8855bdf67ea">&#9670;&nbsp;</a></span>AudioDirector() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioDirector::AudioDirector </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_audio_director.html">AudioDirector</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -216,7 +247,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect()</a>, <a class="el" href="class_audio_director.html#a0bd2489338ed7ae8a836fad125710d99">disconnect()</a>, <a class="el" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>, <a class="el" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName()</a>, <a class="el" href="class_audio_director.html#a816f042e16bd729ed8782e0ba8703504">pAudioStreamInputPort</a>, and <a class="el" href="class_audio_director.html#a40757346afed066b3a9650f716cefb7f">pAudioStreamOutputPort</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00312">312</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -234,7 +265,7 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph.png" border="0" usemap="#aclass_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph" alt=""/></div>
-<map name="class_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph" id="aclass_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph">
+<map name="class_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph" id="class_audio_director_abf7bb7f3ee814b6a8b0048427f8e9eb5_icgraph">
 <area shape="rect" title=" " alt="" coords="237,5,455,47"/>
 <area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="135,13,189,39"/>
 <area shape="rect" href="_p_u6050_2_user_functions_8cpp.html#a41681a4f770a4314939bd47e174cab0c" title=" " alt="" coords="5,13,87,39"/>
@@ -259,12 +290,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_stream.html#afd0f87125aecd2222c87ab2f57cde6f9">AudioStream::category</a>, <a class="el" href="_sd_error_codes_8txt.html#a04f67be1f041c05faf903fc66f9f8bb6">count</a>, <a class="el" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>, <a class="el" href="class_audio_director.html#a7a805a5c40dd2c4d950020cd741f5394">heapEnd</a>, <a class="el" href="class_audio_director.html#a174eb4f868e38debf4fcd474bcbdc20f">heapStart</a>, <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">AudioStream::instance</a>, <a class="el" href="_audio_director_8h.html#a55e40ae7817922a01086b86a043dee06">MAX_AUDIO_STREAM_OBJECTS</a>, <a class="el" href="class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d">objCount</a>, <a class="el" href="class_audio_director.html#a3e2550defde3456abed3799ff8376654">pAudioStreamObjPool</a>, and <a class="el" href="class_audio_stream.html#ac242dd9497117769db00c076d9b71710">AudioStream::shortName</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00129">129</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph.png" border="0" usemap="#aclass_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph" alt=""/></div>
-<map name="class_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph" id="aclass_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph">
+<map name="class_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph" id="class_audio_director_aad97af621b2072f1246526f2afb0e0ff_icgraph">
 <area shape="rect" title=" " alt="" coords="240,5,464,32"/>
 <area shape="rect" href="class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786" title=" " alt="" coords="5,5,192,32"/>
 </map>
@@ -310,12 +341,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d">activeConnections</a>, <a class="el" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>, <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="_audio_director_8h.html#a053b7859476cc9867ec62c49e68d3fa1">MAX_CONNECTIONS</a>, <a class="el" href="_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, <a class="el" href="class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884">pCord</a>, <a class="el" href="class_audio_connection.html#a4208c4c7f60da78ae1daede7a6bfeb3f">AudioConnection::rewire()</a>, and <a class="el" href="class_audio_stream.html#ac242dd9497117769db00c076d9b71710">AudioStream::shortName</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00190">190</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph.png" border="0" usemap="#aclass_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph" alt=""/></div>
-<map name="class_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph" id="aclass_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph">
+<map name="class_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph" id="class_audio_director_ab4957e373e5d9078454d07da471f1d94_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,160,32"/>
 <area shape="rect" href="class_audio_connection.html#a4208c4c7f60da78ae1daede7a6bfeb3f" title=" " alt="" coords="208,5,371,32"/>
 <area shape="rect" href="class_audio_connection.html#ab86753a735bd46a3924035617b0c3623" title=" " alt="" coords="419,5,604,32"/>
@@ -375,12 +406,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect()</a>, and <a class="el" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00238">238</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph.png" border="0" usemap="#aclass_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph" alt=""/></div>
-<map name="class_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph" id="aclass_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph">
+<map name="class_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph" id="class_audio_director_aac97077a6f47bf2728b8eb8720d9ad49_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,160,61"/>
 <area shape="rect" href="class_audio_director.html#ab4957e373e5d9078454d07da471f1d94" title=" " alt="" coords="231,5,386,32"/>
 <area shape="rect" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df" title=" " alt="" coords="208,57,409,98"/>
@@ -407,6 +438,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00279">279</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="a0a736ed040dd5d0ee2db53eef8833922"></a>
@@ -432,7 +465,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d">activeConnections</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00040">40</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_audio_director_a0a736ed040dd5d0ee2db53eef8833922_icgraph.png" border="0" usemap="#aclass_audio_director_a0a736ed040dd5d0ee2db53eef8833922_icgraph" alt=""/></div>
+</div>
 
 </div>
 </div>
@@ -474,7 +512,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d">activeConnections</a>, <a class="el" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>, <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="_audio_director_8h.html#a053b7859476cc9867ec62c49e68d3fa1">MAX_CONNECTIONS</a>, <a class="el" href="_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, and <a class="el" href="class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884">pCord</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00290">290</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -529,12 +567,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#a0bd2489338ed7ae8a836fad125710d99">disconnect()</a>, and <a class="el" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00286">286</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph.png" border="0" usemap="#aclass_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph" alt=""/></div>
-<map name="class_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph" id="aclass_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph">
+<map name="class_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph" id="class_audio_director_a32ddf87cd4d8a21f533d3e6057b583f1_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,176,61"/>
 <area shape="rect" href="class_audio_director.html#a0bd2489338ed7ae8a836fad125710d99" title=" " alt="" coords="239,5,410,32"/>
 <area shape="rect" href="class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df" title=" " alt="" coords="224,57,425,98"/>
@@ -558,6 +596,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00308">308</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -584,12 +624,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="class_audio_director.html#ad65f0a1ec7aa26ae86abe46f42e33892">categoryCount</a>, <a class="el" href="class_audio_director.html#a07980407da906643feeac1f7a1a30b65">categoryList</a>, <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="_audio_director_8h.html#ab4a6404e604591c49018d28f890fc335">MAX_CATEGORIES</a>, <a class="el" href="class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d">objCount</a>, and <a class="el" href="class_audio_director.html#a3e2550defde3456abed3799ff8376654">pAudioStreamObjPool</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00156">156</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph.png" border="0" usemap="#aclass_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph" alt=""/></div>
-<map name="class_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph" id="aclass_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph">
+<map name="class_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph" id="class_audio_director_a1da47d92a4ceddb2844cf690e395caff_icgraph">
 <area shape="rect" title=" " alt="" coords="240,5,471,32"/>
 <area shape="rect" href="class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786" title=" " alt="" coords="5,5,192,32"/>
 </map>
@@ -613,7 +653,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c::i</a>, <a class="el" href="class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d">objCount</a>, and <a class="el" href="class_audio_director.html#a3e2550defde3456abed3799ff8376654">pAudioStreamObjPool</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00172">172</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -692,6 +732,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00242">242</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="ae56e605ed655b992bbe7ef7df600b07b"></a>
@@ -740,6 +782,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00051">51</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="ae124c7fca2591b44fd30f2ab9b05f70d"></a>
@@ -761,6 +805,32 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00052">52</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
+</div>
+</div>
+<a id="a790edabdaf89b447a28e2ee850d84670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790edabdaf89b447a28e2ee850d84670">&#9670;&nbsp;</a></span>AudioStreamInputPort</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classeris_audio_input_i2_s.html">erisAudioInputI2S</a> AudioDirector::AudioStreamInputPort</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00046">46</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -784,6 +854,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00054">54</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="a07980407da906643feeac1f7a1a30b65"></a>
@@ -805,6 +877,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00056">56</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -828,6 +902,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00044">44</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="a174eb4f868e38debf4fcd474bcbdc20f"></a>
@@ -849,6 +925,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00043">43</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -872,27 +950,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a816f042e16bd729ed8782e0ba8703504"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a816f042e16bd729ed8782e0ba8703504">&#9670;&nbsp;</a></span>pAudioStreamInputPort</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_audio_stream.html">AudioStream</a>* AudioDirector::pAudioStreamInputPort</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00053">53</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -916,6 +974,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00045">45</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="a40757346afed066b3a9650f716cefb7f"></a>
@@ -937,6 +997,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00047">47</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -960,6 +1022,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00058">58</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <a id="ad4853c04650773ae8c37a6e3bba2e0db"></a>
@@ -981,6 +1045,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00057">57</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
 
 </div>
 </div>
@@ -1004,10 +1070,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_audio_director_8h_source.html#l00055">55</a> of file <a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a></li>
+<li>C:/Users/Shadow/Documents/GitHub/ERISCore/include/<a class="el" href="_audio_director_8h_source.html">AudioDirector.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

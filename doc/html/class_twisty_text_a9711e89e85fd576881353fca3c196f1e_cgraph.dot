@@ -1,0 +1,18 @@
+digraph "TwistyText::perFrame"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="TwistyText::perFrame",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="left",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ios_8h.html#a24a80a73f0a0d2d72d1cb74f49ff4759",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ios_base::setf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classios__base.html#ab5db835cb45bba7684ebf72d9a3cccb4",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="lerp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_math_util_8h.html#a81990fce6f19bce5fc3989fae017ffb1",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="lerp8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_math_util_8h.html#af3085a6b3519e0288cf74e7395213456",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="tft",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f",tooltip=" "];
+}

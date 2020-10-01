@@ -3,8 +3,11 @@ var hierarchy =
     [ "adcdata_t", "structadcdata__t.html", null ],
     [ "AppBaseClass", "class_app_base_class.html", [
       [ "AppButton", "class_app_button.html", null ],
+      [ "AppCQT", "class_app_c_q_t.html", null ],
       [ "AppReprogram", "class_app_reprogram.html", null ],
+      [ "AppScope", "class_app_scope.html", null ],
       [ "AppSlider", "class_app_slider.html", null ],
+      [ "AppTemplate", "class_app_template.html", null ],
       [ "MyAppExample", "class_my_app_example.html", null ]
     ] ],
     [ "AppManager", "class_app_manager.html", null ],
@@ -335,6 +338,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "FatPos_t", "struct_fat_pos__t.html", null ],
+    [ "FFTReadRangeStruct", "struct_f_f_t_read_range_struct.html", null ],
     [ "fname_t", "structfname__t.html", null ],
     [ "FrameParams", "struct_frame_params.html", null ],
     [ "FsBaseFile", "class_fs_base_file.html", [

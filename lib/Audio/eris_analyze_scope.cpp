@@ -88,6 +88,7 @@ void erisAudioAnalyzeScope::update(void)
 				}
 				if(!found) {offset = AUDIO_BLOCK_SAMPLES;};
 				edgeCount = 0;
+				peakValue = 0;
 			}
 			
 			while ((offset < AUDIO_BLOCK_SAMPLES) && (count > 0)){
@@ -96,8 +97,10 @@ void erisAudioAnalyzeScope::update(void)
 					h_div_count=0;
 					count--;
 					memory[0][mem_length - count - 1 ] = block->data[offset];
+					peakValue = max(peakValue,abs(block->data[offset]));
 					if (isDualChannel){ 
 						memory[1][mem_length - count - 1 ] = blockb->data[offset];
+						peakValue = max(peakValue,abs(blockb->data[offset]));
 					}else memory[1][mem_length - count - 1 ] = 0;
 
 					if ((offset >= h_div) && (block->data[offset] >= 0 ) && (block->data[offset-h_div] < 0)) edgeCount++;

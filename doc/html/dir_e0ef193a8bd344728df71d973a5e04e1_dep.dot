@@ -1,0 +1,15 @@
+digraph "C:/Users/Shadow/Documents/GitHub/ERISCore/lib/SdFat-beta-master" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_a1057353f0d746f72dccba68772260b8 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="lib" fontname="Helvetica", fontsize="10", URL="dir_a1057353f0d746f72dccba68772260b8.html"]
+  subgraph clusterdir_e0ef193a8bd344728df71d973a5e04e1 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_e0ef193a8bd344728df71d973a5e04e1.html"];
+    dir_e0ef193a8bd344728df71d973a5e04e1 [shape=plaintext label="SdFat-beta-master"];
+    dir_c1df805140aa5ef4a55ecb258c5ea965 [shape=box label="examples" color="red" fillcolor="white" style="filled" URL="dir_c1df805140aa5ef4a55ecb258c5ea965.html"];
+    dir_6c6843f1295a1e48bed3b95979947910 [shape=box label="extras" color="black" fillcolor="white" style="filled" URL="dir_6c6843f1295a1e48bed3b95979947910.html"];
+    dir_ea07528d4a32d2d88075cc43f02c8397 [shape=box label="src" color="red" fillcolor="white" style="filled" URL="dir_ea07528d4a32d2d88075cc43f02c8397.html"];
+  }
+  }
+}

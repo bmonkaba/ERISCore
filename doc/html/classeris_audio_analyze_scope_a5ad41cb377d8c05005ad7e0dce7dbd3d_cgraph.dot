@@ -1,0 +1,14 @@
+digraph "erisAudioAnalyzeScope::update"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="erisAudioAnalyzeScope\l::update",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AudioStream::receiveReadOnly",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_stream.html#a9599ba022ef3e214243ce4dee9717019",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AudioStream::release",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_stream.html#a29a40aab8fe15aeee2f0a131da381424",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="erisAudioAnalyzeScope\l::trigger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_scope.html#a5908af4a47b73f1850f106303ae071bd",tooltip=" "];
+}

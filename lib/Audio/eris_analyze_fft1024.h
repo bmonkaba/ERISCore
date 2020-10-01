@@ -56,9 +56,6 @@ typedef struct FFTReadRangeStruct{
 } FFTReadRange;
 
 
-
-
-
 class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
@@ -76,7 +73,7 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 32;//689hz
+		subsample_lowfreqrange = 16;//689hz
 		subsample_highfreqrange = 8;//~2637 (24th fret)
 		ssr = SS_HIGHFREQ;
 	}
@@ -226,9 +223,9 @@ public:
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
 				fftRR->avgValueFast = (fftRR->avgValueFast * 0.80) + (fftRR->peakValue * 0.20);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.995) + (fftRR->peakValue * 0.005); 	//by comparing a short and long moving average; slow transient detection
-				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
-				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = fftRR->peakValue;
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->peakValue * 0.05); 	//by comparing a short and long moving average; slow transient detection
+				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);
+				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.7) + (fftRR->peakValue * 0.3);
 				
 				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;

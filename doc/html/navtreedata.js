@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "ErisCore", "index.html", [
+  [ "My Project", "index.html", [
     [ "Arduino SdFat Library", "index.html", [
       [ "Warnings for SdFat V2 Alpha/Beta", "index.html#Warn", null ],
       [ "Introduction", "index.html#Intro", null ],
@@ -48,6 +48,7 @@ var NAVTREE =
       [ "Again WIP", "md__c___users__shadow__documents__git_hub__e_r_i_s_core_lib__i_l_i9341_t3n-master__r_e_a_d_m_e.html#autotoc_md9", null ]
     ] ],
     [ "Warning: This is an early beta version of SdFat Version 2.", "md__c___users__shadow__documents__git_hub__e_r_i_s_core_lib__sd_fat-beta-master__r_e_a_d_m_e.html", null ],
+    [ "ERISCore", "md__c___users__shadow__documents__git_hub__e_r_i_s_core__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -89,26 +90,27 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____temp_____8c.html",
-"_fs_api_constants_8h.html#a8418da03a9d0bec43de84dbcf8b91de4",
-"_i_l_i9341__t3n_8h.html#aa2c11f3421fe0cfd04de4afc144145ae",
-"_sd_card_info_8h.html#afcbc43e43942a772e79ef2aa55e37650",
-"_u_i_8h.html#ac201f141adece1f43b4606cc4ed69498",
-"class_buffered_print.html#ab41de6eca77a04a49a6fc965b1950fc5",
-"class_fat_file.html#ae51e724ac6cc3d67d64a5a666d5850f1",
-"class_print_basic.html#a3add272be125923e67e5a15f0e212678",
-"class_stdio_stream.html#aac250d041a7844c8db1cbd2d97ecfdaa",
-"classeris_audio_analyze_f_f_t1024.html",
-"classeris_audio_output_i2_s_oct.html#afe78d61a4f821c4cf10f3afb12627ddd",
-"classostream.html",
-"functions_s.html",
-"ili9341__t3n__font___comic_sans_m_s_8h.html#abf9f3c10c9c24cf2aa8a8af19ad204ca",
-"struct_c_s_d_v2.html#aba414a2887ea57a9715e17b3bb4f6030",
-"structbios_parameter_block_fat16.html#a5fe19b67b4fe62a7ed43ef87e10a2bc1",
-"ui__menu__structs_8h.html#a0c84f684c4dd9108de3daad9259c5536",
-"ui__menu__structs_8h.html#a3ed291be2f6bb46cbe03e4bdbae0e974",
-"ui__menu__structs_8h.html#a6cb959e70adaf2ce3598a2b6663ecaf3",
-"ui__menu__structs_8h.html#a9c56fbdf4190485eb03b3b37b1251257",
-"ui__menu__structs_8h.html#ad778d6aa327a3e171be4e78d1078e7ca"
+"_fmt_number_8cpp.html",
+"_i_l_i9341__t3n_8cpp_source.html",
+"_sd_card_info_8h.html#a74fdb2782b0db8bcf0fcd3dbccbaff01",
+"_twisty_text_8h.html#a8d24d6dbaa84c6d56606aaceb0e4b06f",
+"class_app_slider.html#a3a0495f64171236c05be5fd2b49d919e",
+"class_ex_fat_partition.html#ac80c18f9b2c2c05b7ce0c1612b5654bd",
+"class_fs_base_file.html#ae4f6d168072bb4f2a61976f621659d20",
+"class_sd_spi_card.html#aa12ad53111abcb187d3c6119a3a77592",
+"class_u_i.html#aa034dd67bc6addd28e4b2de32b29e195",
+"classeris_audio_effect_mid_side.html#a47365723abd7225320b8d1fe872d631c",
+"classeris_audio_synth_waveform_modulated.html",
+"cpplint_8py.html#a954b179c4037e5da8ac599cce095c37e",
+"globals_h.html",
+"ios_8h.html#a985805b22ffb4ce2f5298168662bd2d7",
+"struct_dir_lfn__t.html#a3990aff9273c786692f6e1901288ce64",
+"structblock16__t.html#acb59990c3e3f6a49a60225daea5026e9",
+"ui__menu__structs_8h.html#a167e84e96d83f2fef959100006422d6c",
+"ui__menu__structs_8h.html#a4705cd7ebb9410f1769313f9e85f74ba",
+"ui__menu__structs_8h.html#a751200affb390fbe82c9a3b961c8f6b4",
+"ui__menu__structs_8h.html#aa6c7f900e221ec2615808e1710db93ab",
+"ui__menu__structs_8h.html#ae0aae16ca179537f44d73f9071ae5471"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

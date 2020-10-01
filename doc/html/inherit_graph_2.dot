@@ -1,0 +1,22 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="AppBaseClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_base_class.html",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="AppButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_button.html",tooltip=" "];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AppCQT",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_c_q_t.html",tooltip=" "];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AppReprogram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_reprogram.html",tooltip=" "];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="AppScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_scope.html",tooltip=" "];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="AppSlider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_slider.html",tooltip=" "];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="AppTemplate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_template.html",tooltip=" "];
+  Node0 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="MyAppExample",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_app_example.html",tooltip=" "];
+}

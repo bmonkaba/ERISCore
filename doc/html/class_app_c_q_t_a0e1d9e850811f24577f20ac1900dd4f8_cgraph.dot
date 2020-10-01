@@ -1,0 +1,20 @@
+digraph "AppCQT::update"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="AppCQT::update",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="erisAudioAnalyzeFFT1024\l::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_f_f_t1024.html#aa8d3a4a1acf9560568d517d843382f79",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="erisAudioAnalyzeFFT1024\l::sort_fftrr_by_cqt_bin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_f_f_t1024.html#a8e1d12d061b83e2f737aec1a763b7286",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="erisAudioAnalyzeFFT1024\l::compare_fftrr_cqt_bin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_f_f_t1024.html#a92d555b890dd4e94c237d95810a45f8c",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="erisAudioAnalyzeFFT1024\l::sort_fftrr_by_value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_f_f_t1024.html#a98144c6da12b21f11c34396c285f2f16",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="erisAudioAnalyzeFFT1024\l::compare_fftrr_value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classeris_audio_analyze_f_f_t1024.html#a4ca1ddc8fdf44fa1957bf72059cfcbc0",tooltip=" "];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="tft",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f",tooltip=" "];
+}

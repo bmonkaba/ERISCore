@@ -44,6 +44,7 @@ public:
 		hdivide(5);
 		autoTrigger = false;
 		isAvailable = false;
+		peakValue = 0;
 	}
 
 	virtual void update(void);
@@ -53,6 +54,7 @@ public:
 	void delay(uint32_t num) { delay_length = num; }
 	void length(uint32_t num) { mem_length = num; }
 	int16_t read(int8_t channel, uint16_t mem_index);
+	int16_t getPeakValue(){return peakValue;}
 	bool available(void);
 	void hdivide(int8_t horizontal_division){h_div = horizontal_division;auto_h_div = h_div; h_div_count=0;};
 private:
@@ -70,6 +72,7 @@ private:
 	uint32_t mem_length; // number of samples to capture
 	uint32_t edgeCount;
 	uint32_t count;
+	int16_t peakValue;
 	audio_block_t *inputQueueArray[2];
 };
 

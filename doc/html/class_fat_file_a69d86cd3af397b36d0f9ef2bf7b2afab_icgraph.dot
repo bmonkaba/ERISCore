@@ -1,0 +1,14 @@
+digraph "FatFile::fgets"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="FatFile::fgets",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FsBaseFile::fgets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_fs_base_file.html#ab6b6b97a6382a763d6de882252412727",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ILI9341_t3_ERIS::begin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_i_l_i9341__t3___e_r_i_s.html#aac7f00d564f87cf2063f869d273f6f48",tooltip=" "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ILI9341_t3_ERIS::bltSD",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_i_l_i9341__t3___e_r_i_s.html#a62cbbd94867557ffbe8d9a2c832c8716",tooltip=" "];
+}

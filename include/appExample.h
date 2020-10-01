@@ -19,20 +19,26 @@ class MyAppExample:public AppBaseClass {
     uint32_t t_lastupdate;
     erisAudioAnalyzeFFT1024* fft;
     erisAudioAnalyzeFFT1024* fft2;
-    int16_t fft2AutoOffset;
     erisAudioAnalyzeScope* scope;
     MyAppExample():AppBaseClass(){
       Serial.println("MyApp constructor called");
       id = 1;
       t_lastupdate = micros();
 
+      x_end = 0;
+      x_start = 0;
+      y_end = 0;
+      y_start = 0;
+      x_last = 0;
+      y_last = 0;
+      y_last_scope = 0;
+      
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(2000);
+      filter->frequency(4000);
       filter->resonance(0.70);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
       filter2->frequency(600);
       filter2->resonance(0.604);
-
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(600);
 
@@ -46,18 +52,14 @@ class MyAppExample:public AppBaseClass {
       cqt->setDimension(320,220);
       cqt->setParent(this);
 
-      AudioProcessorUsageMaxReset();
-      AudioMemoryUsageMaxReset();
-
       slider = new AppSlider();
-      slider->origin_x=50;       //for testing
-      slider->origin_y=205;
-      slider->width=270;
-      slider->height=35;
-      slider->value=20;
-      slider->setParent(this);
+      slider->setPosition(50,205);
+      slider->setDimension(270,35);
       slider->setName("SLIDER");
-      strcpy(slider->text,"Dry Mix");
+      slider->setText("Dry Mix");
+      slider->setValue(20);
+      slider->setParent(this);
+      
       char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
       uint8_t si = 0;
       for (int x=0;x<320-40;x+=80){
@@ -67,10 +69,12 @@ class MyAppExample:public AppBaseClass {
           button->setDimension(60,30);
           button->setParent(this);
           button->setName(s[si]);
-          strcpy(button->text,s[si++]);
+          button->setText(s[si++]);
         }
       }
-      
+
+      AudioProcessorUsageMaxReset();
+      AudioMemoryUsageMaxReset();      
     } 
     //define event handlers
     void update(){

@@ -1,0 +1,16 @@
+digraph "C:/Users/Shadow/Documents/GitHub/ERISCore/lib/ILI9341_t3n-master/examples" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_52cc0d2ecc826c584cbeb18250b7d482 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="ILI9341_t3n-master" fontname="Helvetica", fontsize="10", URL="dir_52cc0d2ecc826c584cbeb18250b7d482.html"]
+  subgraph clusterdir_60c34081a0f16b9d3f6e4c6c6784c1f5 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_60c34081a0f16b9d3f6e4c6c6784c1f5.html"];
+    dir_60c34081a0f16b9d3f6e4c6c6784c1f5 [shape=plaintext label="examples"];
+    dir_29f6ee040438ef129b0da96dd037ede8 [shape=box label="DemoSauce" color="black" fillcolor="white" style="filled" URL="dir_29f6ee040438ef129b0da96dd037ede8.html"];
+    dir_32fc9acefea97f38c4f6ff6a20b5a52b [shape=box label="pictureEmbed" color="black" fillcolor="white" style="filled" URL="dir_32fc9acefea97f38c4f6ff6a20b5a52b.html"];
+  }
+  }
+  dir_3bd0ec6e6b2abb645b4ac2dc1d9728ea [shape=box label="src" URL="dir_3bd0ec6e6b2abb645b4ac2dc1d9728ea.html"];
+  dir_29f6ee040438ef129b0da96dd037ede8->dir_3bd0ec6e6b2abb645b4ac2dc1d9728ea [headlabel="16", labeldistance=1.5 headhref="dir_000010_000014.html"];
+}

@@ -1,4 +1,6 @@
 #include "AppManager.h"
+
+#define MAX_TEXT_LENGTH 16
 // Slider 
 //
 
@@ -11,9 +13,15 @@ class AppSlider:public AppBaseClass {
         last_x = 0;
         value = 0;
     }; 
+    int16_t getValue(){return value;}
+    void setValue(int16_t new_value){value = new_value;}
+    void setText(const char* name_string){
+      if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
+      } else strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
+    }
     //define event handlers
     int16_t value;
-    char text[16];
+    char text[MAX_TEXT_LENGTH];
   private:
     uint16_t last_x;
   protected:

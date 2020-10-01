@@ -1,0 +1,12 @@
+digraph "FatPartition::dmpFat"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="FatPartition::dmpFat",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FatPartition::fatType",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_fat_partition.html#ad45c276232d7093b82f1075e8c488bac",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="nf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d",tooltip=" "];
+}

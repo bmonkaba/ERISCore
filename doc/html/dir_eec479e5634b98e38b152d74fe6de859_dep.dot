@@ -1,0 +1,18 @@
+digraph "C:/Users/Shadow/Documents/GitHub/ERISCore/tools" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4ef12e58aa429d652d8cf572cf893a50 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="ERISCore" fontname="Helvetica", fontsize="10", URL="dir_4ef12e58aa429d652d8cf572cf893a50.html"]
+  subgraph clusterdir_eec479e5634b98e38b152d74fe6de859 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_eec479e5634b98e38b152d74fe6de859.html"];
+    dir_eec479e5634b98e38b152d74fe6de859 [shape=plaintext label="tools"];
+    dir_64a08b1be30f8ab8b05d795c2ea64d41 [shape=box label="autowrapper" color="black" fillcolor="white" style="filled" URL="dir_64a08b1be30f8ab8b05d795c2ea64d41.html"];
+    dir_1e00bb5885baed14521c2c3b6cd47c77 [shape=box label="convert" color="red" fillcolor="white" style="filled" URL="dir_1e00bb5885baed14521c2c3b6cd47c77.html"];
+    dir_e1ff956143b38cce69d1a0085247e9c2 [shape=box label="scripts" color="black" fillcolor="white" style="filled" URL="dir_e1ff956143b38cce69d1a0085247e9c2.html"];
+    dir_15ba7000e06d05e5eb6897130081fe9c [shape=box label="templates" color="black" fillcolor="white" style="filled" URL="dir_15ba7000e06d05e5eb6897130081fe9c.html"];
+  }
+  }
+  dir_a1057353f0d746f72dccba68772260b8 [shape=box label="lib" fillcolor="white" style="filled" color="red" URL="dir_a1057353f0d746f72dccba68772260b8.html"];
+  dir_15ba7000e06d05e5eb6897130081fe9c->dir_a1057353f0d746f72dccba68772260b8 [headlabel="1", labeldistance=1.5 headhref="dir_000042_000006.html"];
+}

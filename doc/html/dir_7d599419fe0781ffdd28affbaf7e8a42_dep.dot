@@ -1,0 +1,11 @@
+digraph "C:/Users/Shadow/Documents/GitHub/ERISCore/lib/SdFat-beta-master/src/FatLib" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ea07528d4a32d2d88075cc43f02c8397 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="src" fontname="Helvetica", fontsize="10", URL="dir_ea07528d4a32d2d88075cc43f02c8397.html"]
+  dir_7d599419fe0781ffdd28affbaf7e8a42 [shape=box, label="FatLib", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_7d599419fe0781ffdd28affbaf7e8a42.html"];
+  }
+  dir_9b0d0320bfccf1220a4d254fcf913ca2 [shape=box label="common" URL="dir_9b0d0320bfccf1220a4d254fcf913ca2.html"];
+  dir_7d599419fe0781ffdd28affbaf7e8a42->dir_9b0d0320bfccf1220a4d254fcf913ca2 [headlabel="19", labeldistance=1.5 headhref="dir_000032_000029.html"];
+}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ErisCore: PCM1863.h Source File</title>
+<title>My Project: C:/Users/Shadow/Documents/GitHub/ERISCore/include/PCM1863.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ErisCore
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">//Serial.print(&quot;\n&quot;);</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  Wire.beginTransmission(74);Wire.write(11);Wire.write(76); <span class="comment">//write config</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  delay(1);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  delay(100);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Wire.beginTransmission(74);Wire.write(11);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b">I2C_NOSTOP</a>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Wire.requestFrom(74, 1);</div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// 0100 0010: VINL2[SE] 42</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// 0100 0100: VINL3[SE] 44</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// 0100 1000: VINL4[SE] 48 &lt;-----</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Wire.beginTransmission(74);Wire.write(6);Wire.write(48); <span class="comment">//68</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x42); <span class="comment">//68</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">//ADC 1 Input Channel Select (ADC1R):</span></div>
@@ -155,7 +155,7 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">//0100 0010: VINR2[SE] 42</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">//0100 0100: VINR3[SE] 44</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">//0100 1000: VINR4[SE] 48 &lt;-----</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Wire.beginTransmission(74);Wire.write(7);Wire.write(48); <span class="comment">//68</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Wire.beginTransmission(74);Wire.write(7);Wire.write(0x41); <span class="comment">//68</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">//ADC 2 Input Channel Select (ADC2L)</span></div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">//0100 0010: VINL2[SE] 42  &lt;-----</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">//0100 0100: VINL3[SE] 44</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">//0100 1000: VINL4[SE] 48</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Wire.beginTransmission(74);Wire.write(8);Wire.write(42); <span class="comment">//72</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Wire.beginTransmission(74);Wire.write(8);Wire.write(0x42); <span class="comment">//72</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">//ADC 2 Input Channel Select (ADC2R)</span></div>
@@ -171,19 +171,19 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment">//0100 0010: VINR2[SE] &lt;-----</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="comment">//0100 0100: VINR3[SE]</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">//0100 1000: VINR4[SE]</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  Wire.beginTransmission(74);Wire.write(9);Wire.write(42);<span class="comment">//72</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x41);<span class="comment">//72</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="comment">//PGA</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">//Wire.beginTransmission(74);Wire.write(0);Wire.write(0);</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">//Wire.endTransmission(I2C_STOP);</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Wire.beginTransmission(74);Wire.write(1);Wire.write(16); <span class="comment">//6 * 0.5db = 3db gain</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Wire.beginTransmission(74);Wire.write(1);Wire.write(18); <span class="comment">//6 * 0.5db = 3db gain</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  Wire.beginTransmission(74);Wire.write(2);Wire.write(12);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  Wire.beginTransmission(74);Wire.write(2);Wire.write(18);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  Wire.beginTransmission(74);Wire.write(3);Wire.write(12);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  Wire.beginTransmission(74);Wire.write(3);Wire.write(18);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  Wire.beginTransmission(74);Wire.write(4);Wire.write(12);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  Wire.beginTransmission(74);Wire.write(4);Wire.write(18);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a>);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">byte</span> <a class="code" href="_sd_error_codes_8txt.html#a6b3b1621a5c4a5ce4a9cec7671c54baf">error</a>, address;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">int</span> nDevices;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  Serial.println(<span class="stringliteral">&quot;I2CBusScan: Scanning...&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  Serial.println(<span class="stringliteral">&quot;I2CBusScan: Scanning&quot;</span>);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  nDevices = 0;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">for</span>(address = 1; address &lt; 127; address++ )</div>
@@ -207,43 +207,46 @@ $(document).ready(function(){initNavTree('_p_c_m1863_8h_source.html',''); initRe
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: I2C device found at address &quot;</span>));</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">if</span> (address&lt;16)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        Serial.print(<span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;0&quot;</span>));</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="comment">//Serial.print(address,HEX);</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      Serial.print(address);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      Serial.println(<span class="stringliteral">&quot;  !&quot;</span>);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      nDevices++;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="_sd_error_codes_8txt.html#a6b3b1621a5c4a5ce4a9cec7671c54baf">error</a>==4)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: Unknown error at address 0x&quot;</span>));</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <span class="keywordflow">if</span> (address&lt;16)</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;0&quot;</span>));</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      Serial.println(address,<a class="code" href="_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span> (nDevices == 0)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    Serial.println(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: No I2C devices found\n&quot;</span>));</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    Serial.println(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: done\n&quot;</span>));</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      nDevices++;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="_sd_error_codes_8txt.html#a6b3b1621a5c4a5ce4a9cec7671c54baf">error</a>==4)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: Unknown error at address 0x&quot;</span>));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">if</span> (address&lt;16)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        Serial.print(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;0&quot;</span>));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      Serial.println(address,<a class="code" href="_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordflow">if</span> (nDevices == 0)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    Serial.println(<a class="code" href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: No I2C devices found\n&quot;</span>));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">  141</a></span>&#160;uint8_t <a class="code" href="_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(uint8_t control_register){</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    Wire.beginTransmission(74);Wire.write(control_register);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    Wire.endTransmission(<a class="code" href="_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b">I2C_NOSTOP</a>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    Wire.requestFrom(74, 1);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> Wire.read();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_p_c_m1863_8h_html_ae97924b7877c5f26955e82ab97470b95"><div class="ttname"><a href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a></div><div class="ttdeci">#define I2C_STOP</div><div class="ttdef"><b>Definition:</b> PCM1863.h:6</div></div>
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> PrintBasic.h:43</div></div>
-<div class="ttc" id="aout_8txt_html_a22268b5ea187eb82713f02f8af288dad"><div class="ttname"><a href="out_8txt.html#a22268b5ea187eb82713f02f8af288dad">wt_start_index</a></div><div class="ttdeci">const int16_t PROGMEM wt_start_index[]</div><div class="ttdef"><b>Definition:</b> out.txt:1</div></div>
-<div class="ttc" id="a_p_c_m1863_8h_html_a9956c2ea4162d70e6ee8db10139e2d2e"><div class="ttname"><a href="_p_c_m1863_8h.html#a9956c2ea4162d70e6ee8db10139e2d2e">ExtADCConfig</a></div><div class="ttdeci">void ExtADCConfig()</div><div class="ttdef"><b>Definition:</b> PCM1863.h:37</div></div>
-<div class="ttc" id="a_p_c_m1863_8h_html_a0d9ccf7656803723e1115c96b21820aa"><div class="ttname"><a href="_p_c_m1863_8h.html#a0d9ccf7656803723e1115c96b21820aa">I2CReset</a></div><div class="ttdeci">void I2CReset()</div><div class="ttdef"><b>Definition:</b> PCM1863.h:11</div></div>
-<div class="ttc" id="a_p_c_m1863_8h_html_a783f335e2c15ea37a020ee3997aeb28a"><div class="ttname"><a href="_p_c_m1863_8h.html#a783f335e2c15ea37a020ee3997aeb28a">I2CBusScan</a></div><div class="ttdeci">void I2CBusScan()</div><div class="ttdef"><b>Definition:</b> PCM1863.h:103</div></div>
-<div class="ttc" id="a_h_s_i_8h_html_a9415ed4aa4ea94a91d37fc99f344c3d4"><div class="ttname"><a href="_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a></div><div class="ttdeci">#define I2C_DATA</div><div class="ttdef"><b>Definition:</b> HSI.h:21</div></div>
-<div class="ttc" id="a_sd_error_codes_8txt_html_a6b3b1621a5c4a5ce4a9cec7671c54baf"><div class="ttname"><a href="_sd_error_codes_8txt.html#a6b3b1621a5c4a5ce4a9cec7671c54baf">error</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list C Symbol failed SD_CARD_ERROR_NONE No error</div><div class="ttdef"><b>Definition:</b> SdErrorCodes.txt:8</div></div>
-<div class="ttc" id="a_sd_spi_bare_uno_driver_8h_html_a61a3c9a18380aafb6e430e79bf596557"><div class="ttname"><a href="_sd_spi_bare_uno_driver_8h.html#a61a3c9a18380aafb6e430e79bf596557">OUTPUT</a></div><div class="ttdeci">#define OUTPUT</div><div class="ttdef"><b>Definition:</b> SdSpiBareUnoDriver.h:45</div></div>
-<div class="ttc" id="a_fat_file_8h_html_a75acaba9e781937468d0911423bc0c35"><div class="ttname"><a href="_fat_file_8h.html#a75acaba9e781937468d0911423bc0c35">PROGMEM</a></div><div class="ttdeci">#define PROGMEM</div><div class="ttdef"><b>Definition:</b> FatFile.h:60</div></div>
-<div class="ttc" id="a_print_basic_8h_html_a9075d93e0ab26ccd6e059fa06aa4e3de"><div class="ttname"><a href="_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a></div><div class="ttdeci">#define HEX</div><div class="ttdef"><b>Definition:</b> PrintBasic.h:52</div></div>
-<div class="ttc" id="anamespaceraw2c_html_ac9177c9fc1f265220b209ee76822c994"><div class="ttname"><a href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c.i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> raw2c.py:87</div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_ae97924b7877c5f26955e82ab97470b95"><div class="ttname"><a href="_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a></div><div class="ttdeci">#define I2C_STOP</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00006">PCM1863.h:6</a></div></div>
+<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="_print_basic_8h_source.html#l00043">PrintBasic.h:43</a></div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_a9956c2ea4162d70e6ee8db10139e2d2e"><div class="ttname"><a href="_p_c_m1863_8h.html#a9956c2ea4162d70e6ee8db10139e2d2e">ExtADCConfig</a></div><div class="ttdeci">void ExtADCConfig()</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00037">PCM1863.h:37</a></div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_a355d3b0e208bf224635b70280298fcf8"><div class="ttname"><a href="_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a></div><div class="ttdeci">uint8_t ExtADCReadReg(uint8_t control_register)</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00141">PCM1863.h:141</a></div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_a0d9ccf7656803723e1115c96b21820aa"><div class="ttname"><a href="_p_c_m1863_8h.html#a0d9ccf7656803723e1115c96b21820aa">I2CReset</a></div><div class="ttdeci">void I2CReset()</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00011">PCM1863.h:11</a></div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_a783f335e2c15ea37a020ee3997aeb28a"><div class="ttname"><a href="_p_c_m1863_8h.html#a783f335e2c15ea37a020ee3997aeb28a">I2CBusScan</a></div><div class="ttdeci">void I2CBusScan()</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00103">PCM1863.h:103</a></div></div>
+<div class="ttc" id="a_h_s_i_8h_html_a9415ed4aa4ea94a91d37fc99f344c3d4"><div class="ttname"><a href="_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a></div><div class="ttdeci">#define I2C_DATA</div><div class="ttdef"><b>Definition:</b> <a href="_h_s_i_8h_source.html#l00021">HSI.h:21</a></div></div>
+<div class="ttc" id="a_sd_error_codes_8txt_html_a6b3b1621a5c4a5ce4a9cec7671c54baf"><div class="ttname"><a href="_sd_error_codes_8txt.html#a6b3b1621a5c4a5ce4a9cec7671c54baf">error</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list C Symbol failed SD_CARD_ERROR_NONE No error</div><div class="ttdef"><b>Definition:</b> <a href="_sd_error_codes_8txt_source.html#l00007">SdErrorCodes.txt:8</a></div></div>
+<div class="ttc" id="a_sd_spi_bare_uno_driver_8h_html_a61a3c9a18380aafb6e430e79bf596557"><div class="ttname"><a href="_sd_spi_bare_uno_driver_8h.html#a61a3c9a18380aafb6e430e79bf596557">OUTPUT</a></div><div class="ttdeci">#define OUTPUT</div><div class="ttdef"><b>Definition:</b> <a href="_sd_spi_bare_uno_driver_8h_source.html#l00045">SdSpiBareUnoDriver.h:45</a></div></div>
+<div class="ttc" id="a_print_basic_8h_html_a9075d93e0ab26ccd6e059fa06aa4e3de"><div class="ttname"><a href="_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a></div><div class="ttdeci">#define HEX</div><div class="ttdef"><b>Definition:</b> <a href="_print_basic_8h_source.html#l00052">PrintBasic.h:52</a></div></div>
+<div class="ttc" id="anamespaceraw2c_html_ac9177c9fc1f265220b209ee76822c994"><div class="ttname"><a href="namespaceraw2c.html#ac9177c9fc1f265220b209ee76822c994">raw2c.i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="raw2c_8py_source.html#l00087">raw2c.py:87</a></div></div>
 <div class="ttc" id="a_h_s_i_8h_html"><div class="ttname"><a href="_h_s_i_8h.html">HSI.h</a></div></div>
-<div class="ttc" id="a_p_c_m1863_8h_html_ae7450a4ba0cc321d2581194c4387583b"><div class="ttname"><a href="_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b">I2C_NOSTOP</a></div><div class="ttdeci">#define I2C_NOSTOP</div><div class="ttdef"><b>Definition:</b> PCM1863.h:7</div></div>
-<div class="ttc" id="a_h_s_i_8h_html_ab5f0572ec4591ff6f7763fe13cdbe364"><div class="ttname"><a href="_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a></div><div class="ttdeci">#define I2C_CLK</div><div class="ttdef"><b>Definition:</b> HSI.h:22</div></div>
+<div class="ttc" id="a_p_c_m1863_8h_html_ae7450a4ba0cc321d2581194c4387583b"><div class="ttname"><a href="_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b">I2C_NOSTOP</a></div><div class="ttdeci">#define I2C_NOSTOP</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m1863_8h_source.html#l00007">PCM1863.h:7</a></div></div>
+<div class="ttc" id="a_h_s_i_8h_html_ab5f0572ec4591ff6f7763fe13cdbe364"><div class="ttname"><a href="_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a></div><div class="ttdeci">#define I2C_CLK</div><div class="ttdef"><b>Definition:</b> <a href="_h_s_i_8h_source.html#l00022">HSI.h:22</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

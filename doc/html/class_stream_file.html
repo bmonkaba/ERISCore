@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ErisCore: StreamFile&lt; BaseFile, PosType &gt; Class Template Reference</title>
+<title>My Project: StreamFile&lt; BaseFile, PosType &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ErisCore
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('class_stream_file.html',''); initResiz
 Inheritance diagram for StreamFile&lt; BaseFile, PosType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_stream_file__inherit__graph.png" border="0" usemap="#a_stream_file_3_01_base_file_00_01_pos_type_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="_stream_file_3_01_base_file_00_01_pos_type_01_4_inherit__map" id="a_stream_file_3_01_base_file_00_01_pos_type_01_4_inherit__map">
+<map name="_stream_file_3_01_base_file_00_01_pos_type_01_4_inherit__map" id="_stream_file_3_01_base_file_00_01_pos_type_01_4_inherit__map">
 <area shape="rect" title="StreamFile class." alt="" coords="14,80,166,121"/>
 <area shape="rect" title=" " alt="" coords="5,5,79,32"/>
 <area shape="rect" title=" " alt="" coords="103,5,176,32"/>
@@ -107,7 +107,7 @@ Inheritance diagram for StreamFile&lt; BaseFile, PosType &gt;:</div>
 Collaboration diagram for StreamFile&lt; BaseFile, PosType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_stream_file__coll__graph.png" border="0" usemap="#a_stream_file_3_01_base_file_00_01_pos_type_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="_stream_file_3_01_base_file_00_01_pos_type_01_4_coll__map" id="a_stream_file_3_01_base_file_00_01_pos_type_01_4_coll__map">
+<map name="_stream_file_3_01_base_file_00_01_pos_type_01_4_coll__map" id="_stream_file_3_01_base_file_00_01_pos_type_01_4_coll__map">
 <area shape="rect" title="StreamFile class." alt="" coords="14,80,166,121"/>
 <area shape="rect" title=" " alt="" coords="5,5,79,32"/>
 <area shape="rect" title=" " alt="" coords="103,5,176,32"/>
@@ -148,6 +148,8 @@ Public Member Functions</h2></td></tr>
 class StreamFile&lt; BaseFile, PosType &gt;</h3>
 
 <p><a class="el" href="class_stream_file.html" title="StreamFile class.">StreamFile</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00063">63</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1089cf17a36822b908d16f301f3ba315"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1089cf17a36822b908d16f301f3ba315">&#9670;&nbsp;</a></span>StreamFile()</h2>
@@ -173,6 +175,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00070">70</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 
 </div>
 </div>
@@ -203,6 +207,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of bytes available from the current position to EOF or INT_MAX if more than INT_MAX bytes are available. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00075">75</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -242,6 +248,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </div><div class="memdoc">
 <p>Ensure that any bytes written to the file are saved to the SD card. </p>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00079">79</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="a586ad44055eca4c1b2b457299b829d44"></a>
@@ -269,6 +277,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>This function reports if the current file is a directory or not. </p><dl class="section return"><dt>Returns</dt><dd>true if the file is a directory. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00085">85</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 
 </div>
 </div>
@@ -299,6 +309,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 <p>No longer implemented due to Long File Names.</p>
 <p>Use getName(char* name, size_t size). </p><dl class="section return"><dt>Returns</dt><dd>a pointer to replacement suggestion. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00093">93</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="af0da96e502485133ca0cff27fa130082"></a>
@@ -328,6 +340,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 <p>Return the next available byte without consuming it.</p>
 <dl class="section return"><dt>Returns</dt><dd>The byte if no error and not at eof else -1; </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00100">100</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="a18a04d1e68a0c1e3e38e5712cd9bbc03"></a>
@@ -355,6 +369,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the current file position. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00104">104</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 
 </div>
 </div>
@@ -384,6 +400,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </div><div class="memdoc">
 <p>Read the next byte from a file.</p>
 <dl class="section return"><dt>Returns</dt><dd>For success return the next byte in the file as an int. If an error occurs or end of file is reached return -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00112">112</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -424,6 +442,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </div><div class="memdoc">
 <p>Rewind a file if it is a directory </p>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00116">116</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="a773ee6f661fc689a5187f51cb5498086"></a>
@@ -460,6 +480,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true for success or false for failure. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00128">128</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="a5813d451e7f7ba57a04d177caffc5a9f"></a>
@@ -487,11 +509,13 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the file's size. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00132">132</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph.png" border="0" usemap="#aclass_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph" alt=""/></div>
-<map name="class_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph" id="aclass_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph">
+<map name="class_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph" id="class_stream_file_a5813d451e7f7ba57a04d177caffc5a9f_icgraph">
 <area shape="rect" title=" " alt="" coords="195,13,312,39"/>
 <area shape="rect" href="class_stream_file.html#a0ace3aaaf6d0fb673a43059c0664fab6" title=" " alt="" coords="5,5,147,47"/>
 </map>
@@ -545,6 +569,8 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>For success <a class="el" href="class_stream_file.html#a0695220134825199b39dee82f18ab1ec">write()</a> returns the number of bytes written, always <em>size</em>. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00155">155</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <a id="a0695220134825199b39dee82f18ab1ec"></a>
@@ -580,10 +606,12 @@ template&lt;class BaseFile , typename PosType &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 for success and 0 for failure. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_arduino_files_8h_source.html#l00140">140</a> of file <a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a></li>
+<li>C:/Users/Shadow/Documents/GitHub/ERISCore/lib/SdFat-beta-master/src/common/<a class="el" href="_arduino_files_8h_source.html">ArduinoFiles.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

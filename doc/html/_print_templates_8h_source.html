@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ErisCore: PrintTemplates.h Source File</title>
+<title>My Project: C:/Users/Shadow/Documents/GitHub/ERISCore/lib/SdFat-beta-master/src/common/PrintTemplates.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ErisCore
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('_print_templates_8h_source.html',''); 
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">unsigned</span> base;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">int</span> n;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> nc = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">int</span> nf;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">int</span> nz;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">int</span> prec;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a>;</div>
@@ -302,19 +302,19 @@ $(document).ready(function(){initNavTree('_print_templates_8h_source.html',''); 
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    n = ns + np + nz;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a> &lt; n) {</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      nc += n;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      nf = 0;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a> = 0;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      nc += <a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a>;</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      <span class="keywordflow">if</span> (zeroPad) {</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        nz += <a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a> - n;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        nf = 0;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a> = 0;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        nf = <a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a> - n;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a> = <a class="code" href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a> - n;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      }</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// Do right blank padding.</span></div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">if</span> (!leftAdjust) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">for</span> (; nf &gt; 0; nf--) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">for</span> (; <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a> &gt; 0; <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a>--) {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">if</span> (1 != file-&gt;write(<span class="charliteral">&#39; &#39;</span>)) {</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;          <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
@@ -335,7 +335,7 @@ $(document).ready(function(){initNavTree('_print_templates_8h_source.html',''); 
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="comment">// Right blank padding.</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">for</span> (; nf &gt; 0; nf--) {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">for</span> (; <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a> &gt; 0; <a class="code" href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a>--) {</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <span class="keywordflow">if</span> (1 != file-&gt;write(<span class="charliteral">&#39; &#39;</span>)) {</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      }</div>
@@ -516,20 +516,21 @@ $(document).ready(function(){initNavTree('_print_templates_8h_source.html',''); 
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor">#endif  // PrintTemplates_h</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> PrintBasic.h:43</div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_a734e1abae6b77a32b040375e741b8d58"><div class="ttname"><a href="_fmt_number_8cpp.html#a734e1abae6b77a32b040375e741b8d58">fmtUnsigned</a></div><div class="ttdeci">char * fmtUnsigned(char *str, uint32_t num, uint8_t base, bool caps)</div><div class="ttdef"><b>Definition:</b> FmtNumber.cpp:230</div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_a29e6f245d52c13dc1b1d0ed44eac22b0"><div class="ttname"><a href="_fmt_number_8cpp.html#a29e6f245d52c13dc1b1d0ed44eac22b0">fmtDouble</a></div><div class="ttdeci">char * fmtDouble(char *str, double num, uint8_t prec, bool altFmt)</div><div class="ttdef"><b>Definition:</b> FmtNumber.cpp:247</div></div>
-<div class="ttc" id="a_print_templates_8h_html_a3899b48e0eb6938ff58ca3accd53402a"><div class="ttname"><a href="_print_templates_8h.html#a3899b48e0eb6938ff58ca3accd53402a">fprintf</a></div><div class="ttdeci">int fprintf(T *file, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> PrintTemplates.h:305</div></div>
-<div class="ttc" id="a_print_templates_8h_html_ab82ae47ddc52e7a1a9400cc3c42a9de7"><div class="ttname"><a href="_print_templates_8h.html#ab82ae47ddc52e7a1a9400cc3c42a9de7">isDigit</a></div><div class="ttdeci">#define isDigit(d)</div><div class="ttdef"><b>Definition:</b> PrintTemplates.h:34</div></div>
-<div class="ttc" id="anamespaceraw2c_html_aba37d2f080c9fba4fd6bbb70c55eaa85"><div class="ttname"><a href="namespaceraw2c.html#aba37d2f080c9fba4fd6bbb70c55eaa85">raw2c.f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition:</b> raw2c.py:63</div></div>
-<div class="ttc" id="a_print_templates_8h_html_ad139f8bf9b6ead8bd28abf1dd412a8a4"><div class="ttname"><a href="_print_templates_8h.html#ad139f8bf9b6ead8bd28abf1dd412a8a4">vmprintf</a></div><div class="ttdeci">int vmprintf(F *file, const char *fmt, va_list ap)</div><div class="ttdef"><b>Definition:</b> PrintTemplates.h:322</div></div>
-<div class="ttc" id="a_sd_error_codes_8txt_html_a0410d8de8f93707b3e56560dbe9c2afe"><div class="ttname"><a href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list C Symbol failed SD_CARD_ERROR_NONE No SD_CARD_ERROR_CMD0 Card reset SD_CARD_ERROR_CMD2 SDIO read SD_CARD_ERROR_CMD3 SDIO publish SD_CARD_ERROR_CMD6 Switch card SD_CARD_ERROR_CMD7 SDIO card SD_CARD_ERROR_CMD8 Send and check interface SD_CARD_ERROR_CMD9 Read CSD SD_CARD_ERROR_CMD10 Read CID SD_CARD_ERROR_CMD12 Stop multiple block SD_CARD_ERROR_CMD13 Read card SD_CARD_ERROR_CMD17 Read single SD_CARD_ERROR_CMD18 Read multiple SD_CARD_ERROR_CMD24 Write single SD_CARD_ERROR_CMD25 Write multiple SD_CARD_ERROR_CMD32 Set first erase SD_CARD_ERROR_CMD33 Set last erase SD_CARD_ERROR_CMD38 Erase selected SD_CARD_ERROR_CMD58 Read OCR SD_CARD_ERROR_CMD59 Set CRC SD_CARD_ERROR_ACMD6 Set SDIO bus width</div><div class="ttdef"><b>Definition:</b> SdErrorCodes.txt:28</div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_aa5392c985f34a9fce3107f4560b89b37"><div class="ttname"><a href="_fmt_number_8cpp.html#aa5392c985f34a9fce3107f4560b89b37">fmtSigned</a></div><div class="ttdeci">char * fmtSigned(char *str, int32_t num, uint8_t base, bool caps)</div><div class="ttdef"><b>Definition:</b> FmtNumber.cpp:218</div></div>
-<div class="ttc" id="a_print_templates_8h_html_afceda1e76dbfc91ef2d06925a10eaea9"><div class="ttname"><a href="_print_templates_8h.html#afceda1e76dbfc91ef2d06925a10eaea9">mprintf</a></div><div class="ttdeci">int mprintf(T *file, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> PrintTemplates.h:397</div></div>
+<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="_print_basic_8h_source.html#l00043">PrintBasic.h:43</a></div></div>
+<div class="ttc" id="a_fmt_number_8cpp_html_a734e1abae6b77a32b040375e741b8d58"><div class="ttname"><a href="_fmt_number_8cpp.html#a734e1abae6b77a32b040375e741b8d58">fmtUnsigned</a></div><div class="ttdeci">char * fmtUnsigned(char *str, uint32_t num, uint8_t base, bool caps)</div><div class="ttdef"><b>Definition:</b> <a href="_fmt_number_8cpp_source.html#l00230">FmtNumber.cpp:230</a></div></div>
+<div class="ttc" id="a_fmt_number_8cpp_html_a29e6f245d52c13dc1b1d0ed44eac22b0"><div class="ttname"><a href="_fmt_number_8cpp.html#a29e6f245d52c13dc1b1d0ed44eac22b0">fmtDouble</a></div><div class="ttdeci">char * fmtDouble(char *str, double num, uint8_t prec, bool altFmt)</div><div class="ttdef"><b>Definition:</b> <a href="_fmt_number_8cpp_source.html#l00247">FmtNumber.cpp:247</a></div></div>
+<div class="ttc" id="a_print_templates_8h_html_a3899b48e0eb6938ff58ca3accd53402a"><div class="ttname"><a href="_print_templates_8h.html#a3899b48e0eb6938ff58ca3accd53402a">fprintf</a></div><div class="ttdeci">int fprintf(T *file, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="_print_templates_8h_source.html#l00305">PrintTemplates.h:305</a></div></div>
+<div class="ttc" id="a_print_templates_8h_html_ab82ae47ddc52e7a1a9400cc3c42a9de7"><div class="ttname"><a href="_print_templates_8h.html#ab82ae47ddc52e7a1a9400cc3c42a9de7">isDigit</a></div><div class="ttdeci">#define isDigit(d)</div><div class="ttdef"><b>Definition:</b> <a href="_print_templates_8h_source.html#l00034">PrintTemplates.h:34</a></div></div>
+<div class="ttc" id="anamespaceraw2c_html_aba37d2f080c9fba4fd6bbb70c55eaa85"><div class="ttname"><a href="namespaceraw2c.html#aba37d2f080c9fba4fd6bbb70c55eaa85">raw2c.f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition:</b> <a href="raw2c_8py_source.html#l00063">raw2c.py:63</a></div></div>
+<div class="ttc" id="a_print_templates_8h_html_ad139f8bf9b6ead8bd28abf1dd412a8a4"><div class="ttname"><a href="_print_templates_8h.html#ad139f8bf9b6ead8bd28abf1dd412a8a4">vmprintf</a></div><div class="ttdeci">int vmprintf(F *file, const char *fmt, va_list ap)</div><div class="ttdef"><b>Definition:</b> <a href="_print_templates_8h_source.html#l00322">PrintTemplates.h:322</a></div></div>
+<div class="ttc" id="a_sd_error_codes_8txt_html_a0410d8de8f93707b3e56560dbe9c2afe"><div class="ttname"><a href="_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe">width</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list C Symbol failed SD_CARD_ERROR_NONE No SD_CARD_ERROR_CMD0 Card reset SD_CARD_ERROR_CMD2 SDIO read SD_CARD_ERROR_CMD3 SDIO publish SD_CARD_ERROR_CMD6 Switch card SD_CARD_ERROR_CMD7 SDIO card SD_CARD_ERROR_CMD8 Send and check interface SD_CARD_ERROR_CMD9 Read CSD SD_CARD_ERROR_CMD10 Read CID SD_CARD_ERROR_CMD12 Stop multiple block SD_CARD_ERROR_CMD13 Read card SD_CARD_ERROR_CMD17 Read single SD_CARD_ERROR_CMD18 Read multiple SD_CARD_ERROR_CMD24 Write single SD_CARD_ERROR_CMD25 Write multiple SD_CARD_ERROR_CMD32 Set first erase SD_CARD_ERROR_CMD33 Set last erase SD_CARD_ERROR_CMD38 Erase selected SD_CARD_ERROR_CMD58 Read OCR SD_CARD_ERROR_CMD59 Set CRC SD_CARD_ERROR_ACMD6 Set SDIO bus width</div><div class="ttdef"><b>Definition:</b> <a href="_sd_error_codes_8txt_source.html#l00027">SdErrorCodes.txt:28</a></div></div>
+<div class="ttc" id="a_fmt_number_8cpp_html_aa5392c985f34a9fce3107f4560b89b37"><div class="ttname"><a href="_fmt_number_8cpp.html#aa5392c985f34a9fce3107f4560b89b37">fmtSigned</a></div><div class="ttdeci">char * fmtSigned(char *str, int32_t num, uint8_t base, bool caps)</div><div class="ttdef"><b>Definition:</b> <a href="_fmt_number_8cpp_source.html#l00218">FmtNumber.cpp:218</a></div></div>
+<div class="ttc" id="a_print_templates_8h_html_afceda1e76dbfc91ef2d06925a10eaea9"><div class="ttname"><a href="_print_templates_8h.html#afceda1e76dbfc91ef2d06925a10eaea9">mprintf</a></div><div class="ttdeci">int mprintf(T *file, const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="_print_templates_8h_source.html#l00397">PrintTemplates.h:397</a></div></div>
 <div class="ttc" id="a_fmt_number_8h_html"><div class="ttname"><a href="_fmt_number_8h.html">FmtNumber.h</a></div></div>
-<div class="ttc" id="a_fat_file_8h_html_a48c60b057902adf805797f183286728d"><div class="ttname"><a href="_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a></div><div class="ttdeci">#define pgm_read_byte(addr)</div><div class="ttdef"><b>Definition:</b> FatFile.h:52</div></div>
-<div class="ttc" id="a_sys_call_8h_html_ab979d9d4b4923f7c54d6caa6e1a61936"><div class="ttname"><a href="_sys_call_8h.html#ab979d9d4b4923f7c54d6caa6e1a61936">nullptr</a></div><div class="ttdeci">#define nullptr</div><div class="ttdef"><b>Definition:</b> SysCall.h:37</div></div>
-<div class="ttc" id="a_print_templates_8h_html_aa3bc14da82a850b0f8ce848a6d54045f"><div class="ttname"><a href="_print_templates_8h.html#aa3bc14da82a850b0f8ce848a6d54045f">vfprintf</a></div><div class="ttdeci">int vfprintf(F *file, const char *fmt, va_list ap)</div><div class="ttdef"><b>Definition:</b> PrintTemplates.h:47</div></div>
+<div class="ttc" id="a_fat_file_8h_html_a48c60b057902adf805797f183286728d"><div class="ttname"><a href="_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a></div><div class="ttdeci">#define pgm_read_byte(addr)</div><div class="ttdef"><b>Definition:</b> <a href="_fat_file_8h_source.html#l00052">FatFile.h:52</a></div></div>
+<div class="ttc" id="a_audio_utilities_8h_html_a22a16f7f288a1cf9be8ff7bfe33e6d3d"><div class="ttname"><a href="_audio_utilities_8h.html#a22a16f7f288a1cf9be8ff7bfe33e6d3d">nf</a></div><div class="ttdeci">float nf(uint8_t index)</div></div>
+<div class="ttc" id="a_sys_call_8h_html_ab979d9d4b4923f7c54d6caa6e1a61936"><div class="ttname"><a href="_sys_call_8h.html#ab979d9d4b4923f7c54d6caa6e1a61936">nullptr</a></div><div class="ttdeci">#define nullptr</div><div class="ttdef"><b>Definition:</b> <a href="_sys_call_8h_source.html#l00037">SysCall.h:37</a></div></div>
+<div class="ttc" id="a_print_templates_8h_html_aa3bc14da82a850b0f8ce848a6d54045f"><div class="ttname"><a href="_print_templates_8h.html#aa3bc14da82a850b0f8ce848a6d54045f">vfprintf</a></div><div class="ttdeci">int vfprintf(F *file, const char *fmt, va_list ap)</div><div class="ttdef"><b>Definition:</b> <a href="_print_templates_8h_source.html#l00047">PrintTemplates.h:47</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

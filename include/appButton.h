@@ -1,4 +1,6 @@
 #include "AppManager.h"
+
+#define MAX_BUTTON_TEXT_LENGTH 16
 // Button 
 //
 
@@ -9,9 +11,15 @@ class AppButton:public AppBaseClass {
         showActivatedUntil=micros();
         strcpy(text,"NONE");
         strcpy(name,"NONE");
-    }; 
-    char text[16];
-    //define event handlers
+    };
+
+    void setText(const char* name_string){
+      if (strlen(name_string) < MAX_BUTTON_TEXT_LENGTH - 1){strcpy(text,name_string);
+      } else strncpy(text,name_string,MAX_BUTTON_TEXT_LENGTH - 1);
+    }
+
+    char text[MAX_BUTTON_TEXT_LENGTH];
+
   protected:
     bool isPressed;
     unsigned long showActivatedUntil;

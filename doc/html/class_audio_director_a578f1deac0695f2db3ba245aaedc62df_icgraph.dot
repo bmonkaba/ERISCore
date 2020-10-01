@@ -1,0 +1,28 @@
+digraph "AudioDirector::getAudioStreamObjByName"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="AudioDirector::getAudioStream\lObjByName",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AudioDirector::activateConnection\lGroup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_director.html#abf7bb7f3ee814b6a8b0048427f8e9eb5",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="setup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="userSetup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_p_u6050_2_user_functions_8cpp.html#a41681a4f770a4314939bd47e174cab0c",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="AppCQT::AppCQT",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_c_q_t.html#a587bd3e6103103694f01f420aeb02a70",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="AppScope::AppScope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_app_scope.html#a963ae83979bbfdfd46c0b1d063406361",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="AudioDirector::AudioDirector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="AudioDirector::connect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_director.html#aac97077a6f47bf2728b8eb8720d9ad49",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="AudioDirector::disconnect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_audio_director.html#a32ddf87cd4d8a21f533d3e6057b583f1",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="MyAppExample::MessageHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_app_example.html#a7a77ffb8a5fb02933673fba14c58e8c0",tooltip=" "];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="MyAppExample::MyAppExample",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_app_example.html#a7add24412505a2766caa57e6efee08f7",tooltip=" "];
+}
