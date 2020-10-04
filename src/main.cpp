@@ -32,7 +32,7 @@ void setup() {
   }
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
-  Serial.begin(256000);//9600
+  Serial.begin(10);//baud rate is ignored by the library as it's fixed at max USB speed
   Serial.println(F("Setup: Initalizing"));
   Serial.println(F("Setup: Configuring Audio Hardware"));
   I2CReset();

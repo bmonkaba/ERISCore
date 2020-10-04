@@ -107,7 +107,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		apply_window_to_fft_buffer(tmp_buffer, window);
 		arm_cfft_radix4_q15(&fft_inst, tmp_buffer);
 		outputflag = false; //output flag is false while updating the fft results
-
+		
 		for (int i=0; i < 512; i++) {
 			uint32_t tmp = *((uint32_t *)tmp_buffer + i); // real & imag
 			uint32_t magsq = multiply_16tx16t_add_16bx16b(tmp, tmp);

@@ -506,7 +506,7 @@ void dumpDMA_TCD(DMABaseClass *dmabc, const char *psz_title) {
 //==============================================
 #ifdef ENABLE_ILI9341_FRAMEBUFFER
 void ILI9341_t3n::initDMASettings(void) {
-  // Serial.printf("initDMASettings called %d\n", _dma_state);
+  //  Serial.printf("initDMASettings called %d\n", _dma_state);
   if (_dma_state & ILI9341_DMA_INIT) { // should test for init, but...
     return;                            // we already init this.
   }

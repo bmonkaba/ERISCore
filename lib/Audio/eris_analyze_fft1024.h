@@ -73,9 +73,13 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 16;//689hz
-		subsample_highfreqrange = 8;//~2637 (24th fret)
-		ssr = SS_HIGHFREQ;
+		subsample_lowfreqrange = 19;//689hz
+		subsample_highfreqrange = 5;//~2637 (24th fret)
+		ssr = SS_HIGHFREQ;	
+		memset(&output,0,sizeof(uint16_t)*512);
+		memset(&output_packed,0,sizeof(uint32_t)*512);
+		memset(&buffer,0,sizeof(int16_t)*2048);
+		memset(&tmp_buffer,0,sizeof(int16_t)*2048);
 	}
 	//FAT Audio
 	void reset(){

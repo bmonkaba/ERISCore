@@ -112,6 +112,7 @@ class AppManager {
     void popAppFocus();  //return to the requesting app
     void peekAppFocus(); //used by apps to find out who called it
     void update(){
+      elapsedMillis cycle_time=0;
       if (root == 0){
         Serial.println("AppManager::update called without an application initalized");
         return;
@@ -146,8 +147,17 @@ class AppManager {
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
         }
+
+        /*
+        Serial.print(node->name);
+        Serial.print(F(":"));
+        Serial.print(cycle_time);
+        Serial.print(F(" "));
+        */
+        //cycle_time = 0;
         node=node->nextAppicationNode;//check next node
       }while(node !=0);
+      //Serial.println();
       //finally update the screen
       if (!tft.busy()) tft.updateScreen();
     };
