@@ -8,7 +8,8 @@ class AppScope:public AppBaseClass {
         y_last_scope = 0;
         y_last_scope_ch2 = 0;
         scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
-        scope->trigger();    
+        scope->trigger();
+        strcpy(name,"AppScope"); 
     }; 
 
   protected:

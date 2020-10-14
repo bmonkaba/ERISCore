@@ -8,8 +8,8 @@ class AppSlider:public AppBaseClass {
   public:
     AppSlider():AppBaseClass(){
         isPressed = false;
-        strcpy(text,"NONE");
-        strcpy(name,"NONE");
+        strcpy(text,"AppSlider");
+        strcpy(name,"AppSlider");
         last_x = 0;
         value = 0;
     }; 

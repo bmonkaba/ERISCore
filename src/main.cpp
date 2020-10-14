@@ -15,7 +15,7 @@ MyAppExample app;
 AppReprogram *appReprogram;
 AppTemplate appTemplate;
 
-void setup() {
+void FLASHMEM setup() {
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.

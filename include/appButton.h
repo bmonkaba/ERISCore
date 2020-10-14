@@ -9,8 +9,8 @@ class AppButton:public AppBaseClass {
     AppButton():AppBaseClass(){
         isPressed = false;
         showActivatedUntil=micros();
-        strcpy(text,"NONE");
-        strcpy(name,"NONE");
+        strcpy(text,"AppButton");
+        strcpy(name,"AppButton");
     };
 
     void setText(const char* name_string){

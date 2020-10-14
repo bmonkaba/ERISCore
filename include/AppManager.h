@@ -2,6 +2,8 @@
 #define _AppBase_
 
 #define MAX_NAME_LENGTH 24
+#define ENABLE_ASYNC_SCREEN_UPDATES
+//#define SERIAL_PRINT_APP_LOOP_TIME
 
 #include <Arduino.h>
 #include "HSI.h"
@@ -93,6 +95,9 @@ class AppManager {
       touch.begin();
       touch_state = 0;
       Serial.println(F("AppManager: Contructor complete"));
+      #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+      tft.updateScreenAsync(false);
+      #endif
     };
 
   public:
@@ -112,7 +117,8 @@ class AppManager {
     void popAppFocus();  //return to the requesting app
     void peekAppFocus(); //used by apps to find out who called it
     void update(){
-      elapsedMillis cycle_time=0;
+      bool screenBusy = tft.busy();
+      elapsedMicros cycle_time=0;
       if (root == 0){
         Serial.println("AppManager::update called without an application initalized");
         return;
@@ -120,7 +126,11 @@ class AppManager {
       touch.update();
       AppBaseClass *node = root;
       bool isactive_child;
-      if (!tft.busy()) tft.bltSDFullScreen("bluehex.ile");
+      #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+      if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
+      #else
+      if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
+      #endif
       //search the linked list
       do{
         node->updateRT(); //real time update (always called)
@@ -143,23 +153,28 @@ class AppManager {
             node->touch_state=0;
             node->onTouchRelease(p.x, p.y);
           }
-          if (!tft.busy()) node->update(); //update active window
+          if (!screenBusy)node->update(); //update active window
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
         }
-
-        /*
+        #ifdef SERIAL_PRINT_APP_LOOP_TIME
         Serial.print(node->name);
         Serial.print(F(":"));
         Serial.print(cycle_time);
         Serial.print(F(" "));
-        */
-        //cycle_time = 0;
+        #endif
+        cycle_time = 0;
         node=node->nextAppicationNode;//check next node
       }while(node !=0);
-      //Serial.println();
+      #ifdef SERIAL_PRINT_APP_LOOP_TIME
+      Serial.println();
+      #endif
       //finally update the screen
-      if (!tft.busy()) tft.updateScreen();
+      #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+        if (!screenBusy) tft.updateScreenAsync(false);
+      #else
+      if (!screenBusy) tft.updateScreen();
+      #endif
     };
 
     void RegisterApp(AppBaseClass *app){

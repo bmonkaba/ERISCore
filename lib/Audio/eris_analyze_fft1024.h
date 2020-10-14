@@ -32,7 +32,9 @@
 #include "arm_math.h"
 #include "analyze_fft1024.h"
 #include <stdlib.h>
+#include "data_windows_f32.h"
 
+#define ENABLE_F32_FFT
 
 enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
@@ -45,7 +47,7 @@ typedef struct FFTReadRangeStruct{
 	uint16_t startBin;		
 	uint16_t stopBin;		
 	uint16_t peakBin;		
-	uint32_t peakFFTResult;		//real and imag packed data can be used to calc phase 
+	//uint32_t peakFFTResult;		//real and imag packed data can be used to calc phase 
 	float estimatedFrequency;
 	float peakFrequency;
 	float peakValue;
@@ -60,8 +62,16 @@ class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  window(AudioWindowFlattop1024), sample_block(0), outputflag(false) {
+	  sample_block(0), outputflag(false) {
+		#ifdef ENABLE_F32_FFT
+		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
+		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;
+		window = NULL;
+		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
+		window_f32 = NULL;
+		window = AudioWindowHanning1024;
+		#endif
 		shortName="fft1024";
 		unum_inputs=1;
 		unum_outputs=0;
@@ -72,14 +82,21 @@ public:
 		MEM_STEP = 0x010;
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
-		BLOCK_REFRESH_SIZE = 4; 
-		subsample_lowfreqrange = 19;//689hz
-		subsample_highfreqrange = 5;//~2637 (24th fret)
+		BLOCK_REFRESH_SIZE = 6;
+		subsample_lowfreqrange = 32;//689hz
+		subsample_highfreqrange = 7;//~2637 (24th fret)
 		ssr = SS_HIGHFREQ;	
-		memset(&output,0,sizeof(uint16_t)*512);
-		memset(&output_packed,0,sizeof(uint32_t)*512);
+		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
+		#ifdef ENABLE_F32_FFT
+		//memset(&output,0,sizeof(float32_t)*1024);
+		arm_fill_f32(0,output,1024);
+		//memset(&tmp_buffer,0,sizeof(float32_t)*2048);
+		arm_fill_f32(0,tmp_buffer,1024);
+		#else
+		memset(&output,0,sizeof(uint16_t)*512);
 		memset(&tmp_buffer,0,sizeof(int16_t)*2048);
+		#endif
 	}
 	//FAT Audio
 	void reset(){
@@ -124,9 +141,22 @@ public:
 	}
 	float read(unsigned int binNumber) {
 		if (binNumber > 511) return 0.0;
+		#ifdef ENABLE_F32_FFT
+		return output[binNumber];
+		#else
 		return (float)(output[binNumber]) * (1.0 / 16384.0);
+		#endif
 	}
 	float read(unsigned int binFirst, unsigned int binLast,FFTReadRange *fftRR = NULL) {
+		float32_t maxf = 0;
+		float32_t powerf = 0;
+		//float32_t comp;
+		uint32_t peak_index;
+		uint32_t span;
+
+		span = binLast - binFirst;
+		if(span<2) return 0.0;
+
 		if (binFirst > binLast) {
 			unsigned int tmp = binLast;
 			binLast = binFirst;
@@ -139,22 +169,30 @@ public:
 		}
 		if (binFirst > 511) return 0.0;
 		if (binLast > 511) binLast = 511;
-		float maxf = 0;
-		float comp;
+		
+		arm_power_f32(&output[binFirst], span, &powerf);
+		arm_max_f32 (&output[binFirst], span, &maxf, &peak_index);
+		maxf = 0;
+		/*
 		do {
-			comp = (float)output[binFirst];
+			comp = output[binFirst];
 			maxf = max(comp,maxf);
 			if(fftRR) {
 				if (maxf > fftRR->peakValue) {
 					fftRR->peakBin = binFirst;
-					fftRR->peakFFTResult = output_packed[binFirst];
+					//fftRR->peakFFTResult = output_packed[binFirst];
 					fftRR->peakValue = maxf;
 				}
 			}
 			binFirst++;
 		} while (binFirst <= binLast);
-		if(fftRR) fftRR->peakValue *= (1.0 / 16384.0);
-		return maxf * (1.0 / 16384.0);
+		*/
+		
+		if(fftRR){
+			fftRR->peakValue = powerf/(7168);
+			fftRR->peakBin = peak_index + binFirst;
+		} 
+		return powerf/(7168); //maxf * (1.0 / 512.0);
 	}
 	float read(FFTReadRange *fftRR){
 		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);
@@ -226,10 +264,10 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.80) + (fftRR->peakValue * 0.20);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.20) + (fftRR->peakValue * 0.80);	//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->peakValue * 0.05); 	//by comparing a short and long moving average; slow transient detection
 				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);
-				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.7) + (fftRR->peakValue * 0.3);
+				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				
 				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;
@@ -267,16 +305,12 @@ public:
 		window = w;
 	}
 	virtual void update(void);
-	uint16_t output[512] __attribute__ ((aligned (4)));
-	uint32_t output_packed[512] __attribute__ ((aligned (4))); //16bit real and imag packed data 
+	//uint32_t output_packed[512] __attribute__ ((aligned (4))); //16bit real and imag packed data 
 private:
 	void init(void);
 	void copy_to_fft_buffer(void *destination, const void *source,int subsample);
 	const int16_t *window;
-	int16_t buffer[2048] __attribute__ ((aligned (4)));
-	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
-	//uint32_t sum[512];
-	//uint8_t count;
+	const float32_t *window_f32;
 	uint8_t sample_block;
 	bool enabled; //FAT Audio
 	uint16_t MEM_STEP;
@@ -287,10 +321,18 @@ private:
 	uint16_t subsample_lowfreqrange;
 	uint16_t subsample_highfreqrange;
 	subsample_range ssr;
-	//uint8_t naverage;
 	volatile bool outputflag;
 	audio_block_t *inputQueueArray[1];
+	#ifdef ENABLE_F32_FFT
+	arm_cfft_radix4_instance_f32 fft_inst;
+	float32_t tmp_buffer[2048] __attribute__ ((aligned (4)));
+	float32_t output[1024] __attribute__ ((aligned (4)));
+	#else
 	arm_cfft_radix4_instance_q15 fft_inst;
+	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
+	uint16_t output[512] __attribute__ ((aligned (4)));
+	#endif
+	int16_t buffer[2048] __attribute__ ((aligned (4)));
 };
 
 #endif

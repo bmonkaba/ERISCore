@@ -21,6 +21,7 @@ class MyAppExample:public AppBaseClass {
     erisAudioAnalyzeFFT1024* fft2;
     erisAudioAnalyzeScope* scope;
     MyAppExample():AppBaseClass(){
+      sprintf(name, "MyAppExample");
       Serial.println("MyApp constructor called");
       id = 1;
       t_lastupdate = micros();
@@ -93,8 +94,8 @@ class MyAppExample:public AppBaseClass {
       tft.print(AudioMemoryUsage());
       tft.print(F(")"));
       tft.setCursor(260,5);
-      tft.print(F("CON: "));
-      tft.print(ad.connectionCount());
+      //tft.print(F("CON: "));
+      //tft.print(ad.connectionCount());
       t_lastupdate = micros();
     }
 

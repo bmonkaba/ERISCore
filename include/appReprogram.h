@@ -6,7 +6,7 @@
 class AppReprogram:public AppBaseClass {
   public:
     AppReprogram():AppBaseClass(){
-      id = 2;
+      sprintf(name,"AppReprogram");
       pinMode(TAP_INPUT, INPUT);
       pinMode(SW_D, INPUT);
     } 
