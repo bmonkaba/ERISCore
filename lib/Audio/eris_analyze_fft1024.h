@@ -65,7 +65,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;
+		window_f32 = AudioWindowBlackman1024_f32;
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
@@ -83,8 +83,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 6;
-		subsample_lowfreqrange = 32;//689hz
-		subsample_highfreqrange = 7;//~2637 (24th fret)
+		subsample_lowfreqrange = 16;//stick to factors of 128 2, 4, 8, 16, 32, 64
+		subsample_highfreqrange = 2;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
@@ -150,7 +150,6 @@ public:
 	float read(unsigned int binFirst, unsigned int binLast,FFTReadRange *fftRR = NULL) {
 		float32_t maxf = 0;
 		float32_t powerf = 0;
-		//float32_t comp;
 		uint32_t peak_index;
 		uint32_t span;
 
@@ -172,27 +171,12 @@ public:
 		
 		arm_power_f32(&output[binFirst], span, &powerf);
 		arm_max_f32 (&output[binFirst], span, &maxf, &peak_index);
-		maxf = 0;
-		/*
-		do {
-			comp = output[binFirst];
-			maxf = max(comp,maxf);
-			if(fftRR) {
-				if (maxf > fftRR->peakValue) {
-					fftRR->peakBin = binFirst;
-					//fftRR->peakFFTResult = output_packed[binFirst];
-					fftRR->peakValue = maxf;
-				}
-			}
-			binFirst++;
-		} while (binFirst <= binLast);
-		*/
-		
+		maxf = 0;		
 		if(fftRR){
 			fftRR->peakValue = powerf/(7168);
 			fftRR->peakBin = peak_index + binFirst;
 		} 
-		return powerf/(7168); //maxf * (1.0 / 512.0);
+		return powerf/(7168);
 	}
 	float read(FFTReadRange *fftRR){
 		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);

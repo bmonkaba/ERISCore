@@ -40,7 +40,8 @@ class AppCQT:public AppBaseClass {
         sprintf(buffer, "waveform_%d", i);
         osc[i] = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
         AudioNoInterrupts();
-        osc[i]->begin(0.0, 440, WAVEFORM_SINE);
+        if(i < 8){osc[i]->begin(0.0, 440, WAVEFORM_SINE);}
+        else osc[i]->begin(0.0, 440, WAVEFORM_SINE);
         AudioInterrupts();
       }
 
@@ -58,7 +59,8 @@ class AppCQT:public AppBaseClass {
       //init the QCT bins
       float flow;
       float fhigh;
-      
+      highRange = 64;
+
       for (uint16_t i=1;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         flow = 0;
         fhigh = 0;
@@ -69,19 +71,31 @@ class AppCQT:public AppBaseClass {
         memset(&fftHighRR[i],0,sizeof(FFTReadRange));
         memset(&fftLowRR[i],0,sizeof(FFTReadRange));
         
-        fftHighRR[i].cqtBin =i;
-        fftLowRR[i].cqtBin =i;
-        
-        fftHighRR[i].startFrequency =flow;
-        fftLowRR[i].startFrequency =flow;
-        
-        fftHighRR[i].stopFrequency =fhigh;
-        fftLowRR[i].stopFrequency =fhigh;  
+        if (i > highRange){
+          fftHighRR[i].cqtBin =i;
+          fftLowRR[i].cqtBin =0;
+          
+          fftHighRR[i].startFrequency =flow;
+          fftLowRR[i].startFrequency =0;
+          
+          fftHighRR[i].stopFrequency =fhigh;
+          fftLowRR[i].stopFrequency =0;  
+
+        }else{
+          fftHighRR[i].cqtBin =0;
+          fftLowRR[i].cqtBin =i;
+          
+          fftHighRR[i].startFrequency =0;
+          fftLowRR[i].startFrequency =flow;
+          
+          fftHighRR[i].stopFrequency =0;
+          fftLowRR[i].stopFrequency =fhigh;            
+        }
       }
 
       rt_calls = 0;
       update_calls = 0;
-      highRange = 64;
+      
     }; 
   protected:
     double rt_calls;
@@ -96,7 +110,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (4)));;
     void update(){
       update_calls++;
-      if (!fft2->available()) return;
+      if (!fft->available()) return;
       updateOscillatorBank();
       //draw the cqt bins
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
@@ -105,11 +119,11 @@ class AppCQT:public AppBaseClass {
         float amp;
         float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = log(amp*100.0) * height/2;
+        signal = log(amp*100.0) * height/4;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_DARKCYAN); 
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = log(amp*100.0) * height/2;
+        signal = log(amp*100.0) * height/4;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
@@ -141,7 +155,7 @@ class AppCQT:public AppBaseClass {
     };
 
     void updateOscillatorBank(){
-      float d_min,d;
+      float d_min,d,blendf;
       uint16_t j_min;
 
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
@@ -157,50 +171,46 @@ class AppCQT:public AppBaseClass {
       //erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,8);
       //erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,8);
      
-      //update the oscillators:
-      //step 1 - clear the peak value
-      for(uint16_t i=0; i < OSC_BANK_SIZE; i++) oscBank[i].peakValue = 0;
-      
-      //for each top cqt bin find the closest osc freq match with a peak value = 0
-      for(uint16_t i=0; i < OSC_BANK_SIZE/2; i++){
-        d_min = 15000.0;
-        j_min = 0;
-        for (uint16_t j=0; j < OSC_BANK_SIZE/2; j++){
-           d = abs(oscBank[j].peakFrequency - fftHighRR[i].peakFrequency);
-           if ((d < d_min) && (oscBank[j].peakValue == 0)){
-            d_min=d;
-            j_min=j;  
-           }
+      //STEP 1 - UPDATE any already set oscillators
+      bool found;
+      for(uint16_t i=0; i < OSC_BANK_SIZE; i++){
+        found = false;
+        for (uint16_t j=0; j < OSC_BANK_SIZE; j++){
+          if ((i < 8) && oscBank[i].cqtBin == fftHighRR[j].cqtBin){oscBank[i]=fftHighRR[j];found = true;}
+          else if (oscBank[i].cqtBin == fftLowRR[j-8].cqtBin){oscBank[i]=fftLowRR[j-8];found = true;}
         }
-        //assign the oscillator
-        oscBank[j_min] = fftHighRR[i]; 
-      }
-      //repeat for the second cqt
-      for(uint16_t i=0; i < OSC_BANK_SIZE/2; i++){
-        d_min= 15000.0;
-        j_min = 0;
-        for (uint16_t j=0; j < OSC_BANK_SIZE/2; j++){
-           d = abs(oscBank[j+8].peakFrequency - fftLowRR[i].peakFrequency);
-           if ((d < d_min) && (oscBank[j+8].peakValue == 0)){
-            d_min=d;
-            j_min=j;
-           }
-        }
-        //copy closest to the osc bank
-        oscBank[j_min+8] = fftLowRR[i]; 
+        //if not found then clear the slot
+        if (!found){memset(&oscBank[i],0,sizeof(FFTReadRange));}
       }
 
-      //now actually set the oscilators
-      //AudioNoInterrupts();
-      for(int16_t i=0; i < OSC_BANK_SIZE; i++){
-          //osc[i]->frequency(note_freq[oscBank[i].cqtBin]);
-          osc[i]->frequency(oscBank[i].estimatedFrequency);
-          if (i < 8){osc[i]->amplitude(oscBank[i].avgValueSlow/2);}//0.1 * sin(((fftLowRR[i].peakValue-0.05)/0.095) * PI)
-          else osc[i]->amplitude(oscBank[i].peakValue/4);
-          Serial.print(oscBank[i].estimatedFrequency);Serial.print(",");
+      //STEP 2 - Add the new osc settings
+      uint16_t free_slot;
+      for(uint16_t i=0; i < OSC_BANK_SIZE; i++){
+        found = false;
+        free_slot = 0;
+        for (uint16_t j=0; j < OSC_BANK_SIZE; j++){
+          if ((i < 8) && oscBank[j].cqtBin == fftHighRR[i].cqtBin){found = true;}
+          else if (oscBank[j].cqtBin == fftLowRR[i-8].cqtBin){found = true;}
+          if (oscBank[j].cqtBin == 0) free_slot = j;
+        }
+        //if not found then add to the first found slot
+        if (!found){
+          if (i > 8){oscBank[free_slot]=fftLowRR[i-8];}
+          else oscBank[free_slot]=fftHighRR[i];
+        }
       }
-      Serial.println();
-      //AudioInterrupts();
+
+
+      //now actually set the oscilators
+      AudioNoInterrupts();
+      for(int16_t i=0; i < OSC_BANK_SIZE; i++){
+          //osc[i]->frequency(note_freq[oscBank[i].cqtBin-1]);
+          osc[i]->frequency(oscBank[i].estimatedFrequency);
+          osc[i]->amplitude(oscBank[i].peakValue);
+          //Serial.print(note_name[oscBank[i].cqtBin]);Serial.print(",");
+      }
+      //Serial.println();
+      AudioInterrupts();
       //restore the cleared values
       for(uint16_t i=0; i < OSC_BANK_SIZE/2; i++){
         //fftHighRR[oscBank[i].cqtBin].peakValue = oscBank[i].peakValue;
@@ -209,34 +219,7 @@ class AppCQT:public AppBaseClass {
       //resort so we leave it in order by cqt bin
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-      
 
-      /*
-      //set the oscillators
-      for (int16_t i=0; i < 8; i++){
-        if (fftHighRR[i].cqtBin > highRange){
-          float phase = normalized_atan2((float)(0xFFFF & fftHighRR[i].peakFFTResult),(float)(0xFFFF & (fftHighRR[i].peakFFTResult>>16)))*180/PI;
-          //AudioNoInterrupts();
-          //osc[i]->frequency(note_freq[fftHighRR[i].cqtBin]);
-          osc[i]->frequency(fftHighRR[i].estimatedFrequency);
-          osc[i]->amplitude(4*fftHighRR[i].avgValueSlow);//0.1 * sin(((fftLowRR[i].peakValue-0.05)/0.095) * PI)
-          osc[i]->phase(phase);
-          AudioInterrupts();
-        } else osc[i]->amplitude(0.0);
-      }
-      //
-      for (int16_t i=0; i < 8; i++){
-        if ((fftLowRR[i].cqtBin < highRange) && (fftLowRR[i].cqtBin > 12)){
-          float phase = normalized_atan2((float)(0xFFFF & fftLowRR[i].peakFFTResult),(float)(0xFFFF & (fftLowRR[i].peakFFTResult>>16)))*180/PI;
-          //AudioNoInterrupts();
-          //osc[i]->frequency(note_freq[fftLowRR[i].cqtBin]);
-          osc[i+8]->frequency(2* fftLowRR[i].estimatedFrequency);
-          osc[i+8]->amplitude(4*fftLowRR[i].avgValueFast);
-          osc[i+8]->phase(phase);
-          AudioInterrupts();
-        } else osc[i+8]->amplitude(0.0);
-      }
-      */    
       return;
     }
 };

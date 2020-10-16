@@ -21,7 +21,7 @@ class AppScope:public AppBaseClass {
         float scale;
         if (scope->available()){
             scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-            if (scale > 100.0) scale = 100.0;
+            if (scale > 1000.0) scale = 1000.0;
             for (int16_t i=0;i<width;i++){
                 int16_t v;
                 float f;

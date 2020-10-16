@@ -35,13 +35,13 @@ class MyAppExample:public AppBaseClass {
       y_last_scope = 0;
       
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(4000);
-      filter->resonance(0.70);
+      filter->frequency(14000);
+      filter->resonance(0.20);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(600);
-      filter2->resonance(0.604);
+      filter2->frequency(100);
+      filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(600);
+      filter3->frequency(800);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
