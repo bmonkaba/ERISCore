@@ -35,26 +35,27 @@ class MyAppExample:public AppBaseClass {
       y_last_scope = 0;
       
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(14000);
+      filter->frequency(8000);
       filter->resonance(0.20);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
       filter2->frequency(100);
       filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(800);
+      filter3->frequency(1400);
+      filter3->resonance(0.20);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
-      oscope->setDimension(320,220);
+      oscope->setDimension(320,100);
       oscope->setParent(this);
 
       cqt = new AppCQT;
       cqt->setPosition(0,20);
-      cqt->setDimension(320,220);
+      cqt->setDimension(320,100);
       cqt->setParent(this);
 
       slider = new AppSlider();
-      slider->setPosition(50,205);
+      slider->setPosition(50,200);
       slider->setDimension(270,35);
       slider->setName("SLIDER");
       slider->setText("Dry Mix");

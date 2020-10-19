@@ -83,8 +83,8 @@ public:
 		subsample_by = 8;
 		BLOCKS_PER_FFT = 128;
 		BLOCK_REFRESH_SIZE = 6;
-		subsample_lowfreqrange = 16;//stick to factors of 128 2, 4, 8, 16, 32, 64
-		subsample_highfreqrange = 2;//
+		subsample_lowfreqrange = 32;//stick to factors of 128 2, 4, 8, 16, 32, 64
+		subsample_highfreqrange = 16;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
@@ -173,10 +173,10 @@ public:
 		arm_max_f32 (&output[binFirst], span, &maxf, &peak_index);
 		maxf = 0;		
 		if(fftRR){
-			fftRR->peakValue = powerf/(7168);
+			fftRR->peakValue = powerf/(716.8);
 			fftRR->peakBin = peak_index + binFirst;
 		} 
-		return powerf/(7168);
+		return powerf/(716.8);
 	}
 	float read(FFTReadRange *fftRR){
 		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);
@@ -204,15 +204,10 @@ public:
 		
 		if (freq_to > bw){
 			if(fftRR){
-				fftRR->startBin = 0;
-				fftRR->stopBin = 0;
-				fftRR->startFrequency = 0;
-				fftRR->stopFrequency = 0;
-				fftRR->peakFrequency = 0;
-				fftRR->estimatedFrequency = 0;
-				fftRR->peakValue = 0;
-				fftRR->avgValueSlow = 0;
-				fftRR->avgValueFast = 0;
+				int16_t cqtBin;
+				cqtBin = fftRR->cqtBin;
+				memset(&fftRR,0,sizeof(FFTReadRange));
+				fftRR->cqtBin = cqtBin;
 			}
 			return 0;
 		}
@@ -245,13 +240,13 @@ public:
 				 }
 				 fftRR->estimatedFrequency = (fftRR->peakFrequency * (1-ratio)) + (lobeFrequency * ratio); 
 				 //clamp estimate
-				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
-				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
+				 //if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
+				 //if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.20) + (fftRR->peakValue * 0.80);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);	//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->peakValue * 0.05); 	//by comparing a short and long moving average; slow transient detection
-				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);
-				if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
+				//if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);
+				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				
 				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fftRR->peakValue - fftRR->avgValueSlow;

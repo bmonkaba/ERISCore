@@ -322,8 +322,9 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   //connect("waveformMod_1 0 filter_1 0");
   //connect("waveformMod_1 0 filter_3 0");
   connect("i2s-in_1 1 filter_1 0");
-  connect("filter_1 0 filter_2 0"); //lp filter
-  connect("filter_2 2 fft1024_1 0"); //hp filter
+  connect("filter_1 0 fft1024_1 0"); //lp filter
+  //connect("filter_1 0 filter_2 0"); //lp filter
+  //connect("filter_2 2 fft1024_1 0"); //hp filter
   
   connect("i2s-in_1 1 filter_3 0");
   connect("filter_3 0 fft1024_2 0"); //lp filter
