@@ -109,6 +109,10 @@ class AppManager {
       return obj;
     }
 
+    SdFs* getSD(){
+      return &sd;
+    }
+    
     TS_Point p;
     bool touch_state;
 
@@ -120,7 +124,7 @@ class AppManager {
       bool screenBusy = tft.busy();
       elapsedMicros cycle_time=0;
       if (root == 0){
-        Serial.println("AppManager::update called without an application initalized");
+        Serial.println(F("AppManager::update called without an application initalized"));
         return;
       }
       touch.update();
@@ -193,7 +197,7 @@ class AppManager {
 
 AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 
-AppBaseClass::AppBaseClass(){
+AppBaseClass:: AppBaseClass(){
   //Serial.println("AppBaseClass constructor called");
   parentNode=NULL;          //set by the parent
   nextAppicationNode=NULL;

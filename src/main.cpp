@@ -8,12 +8,14 @@
 #include "appTemplate.h"
 #include "appExample.h"
 #include "appReprogram.h"
+#include "appSerialCommandInterface.h"
 #include "PCM1863.h"
 
 uint16_t inc;
 MyAppExample app;
+AppSerialCommandInterface appSCI;
 AppReprogram *appReprogram;
-AppTemplate appTemplate;
+//AppTemplate appTemplate;
 
 void FLASHMEM setup() {
   //////////////////////////////////////////////////////////////////////////////////////
@@ -23,16 +25,17 @@ void FLASHMEM setup() {
   //power on/reset bootrequest check
   pinMode(TAP_INPUT, INPUT);
   pinMode(SW_D, INPUT);
-  delay(200);
+  delay(500);
+  Serial.begin(3000000);//baud rate is ignored by the library as it's fixed at max USB speed
   if (digitalRead(TAP_INPUT) == LOW && digitalRead(SW_D) == LOW){
             Serial.println("setup: Power on reset request to enter programming mode in 5 seconds.");
             delay(5000);
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
+  //while(!Serial); //DEBUG - wait for serial connection
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
-  Serial.begin(10);//baud rate is ignored by the library as it's fixed at max USB speed
   Serial.println(F("Setup: Initalizing"));
   Serial.println(F("Setup: Configuring Audio Hardware"));
   I2CReset();
@@ -68,13 +71,12 @@ void FLASHMEM setup() {
   }
 }
 
-elapsedMillis loop_cycle_time;
+elapsedMicros loop_cycle_time;
 void loop(void) {
   //The appManager will... 
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
   //calls updateRT for all apps
   loop_cycle_time = 0; 
-  AppManager::getInstance()->update();
-  //Serial.println(loop_cycle_time);                                     
+  AppManager::getInstance()->update();                                    
 }

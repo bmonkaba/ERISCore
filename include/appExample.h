@@ -35,14 +35,14 @@ class MyAppExample:public AppBaseClass {
       y_last_scope = 0;
       
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(8000);
-      filter->resonance(0.20);
+      filter->frequency(700);
+      filter->resonance(0.9);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(100);
-      filter2->resonance(0.20);
+      filter2->frequency(300);
+      //filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(1400);
-      filter3->resonance(0.20);
+      filter3->frequency(20000);
+      //filter3->resonance(0.20);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);
@@ -128,8 +128,13 @@ class MyAppExample:public AppBaseClass {
     }
     void MessageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect sender by ptr...
-          erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_5"));
-          mix->gain(3,slider->value/100.0);
+          erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
+          mix->gain(3,3 * slider->value/100.0);
+          
+          mix->gain(0,1.0 - slider->value/100.0);
+          mix->gain(1,1.0 - slider->value/100.0);
+          mix->gain(2,1.0 - slider->value/100.0);
+          
           //fm_mod->begin(1.0, slider->value/2000.0, WAVEFORM_TRIANGLE);
         }
         else if(sender->isName("BREAK")){ //...or, can detect sender by name

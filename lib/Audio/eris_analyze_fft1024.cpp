@@ -103,9 +103,12 @@ void erisAudioAnalyzeFFT1024::update(void)
 		MEM_STEP = subsample_highfreqrange;
 		subsample_by = (int)subsample_highfreqrange;
 	}
-	BLOCKS_PER_FFT = (1024 / 128) * subsample_by;
-	BLOCK_REFRESH_SIZE = subsample_by/2;//8;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;//(BLOCKS_PER_FFT / (subsample_by * 2) - 1);//BLOCKS_PER_FFT / (subsample_by * 2);
-	ofs = 2 * (128/subsample_by) * sample_block;
+	BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
+	BLOCK_REFRESH_SIZE =  BLOCKS_PER_FFT/2;//64 / (AUDIO_BLOCK_SAMPLES /subsample_by);
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//32 / (AUDIO_BLOCK_SAMPLES /subsample_by);
+
+
+	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * sample_block;
 
 	if (sample_block < BLOCKS_PER_FFT - 1){
 		copy_to_fft_buffer(buffer+ofs, block->data,subsample_by);
@@ -142,8 +145,12 @@ void erisAudioAnalyzeFFT1024::update(void)
 		if (sample_block!= 0){
 			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE;
 			//fft overlap - restore tmp cpy of last half to first half
-			memmove(buffer,&buffer[(128/subsample_by) * BLOCK_REFRESH_SIZE * 2], 2 * (128/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)* sizeof(int16_t));
+			//memmove(buffer,&buffer+((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE *  sizeof(int16_t)), (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
+			memmove(buffer,&buffer[(AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE], (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)* sizeof(int16_t));
+			//memmove(buffer,&buffer[1024], 1024 * sizeof(int16_t));
+			
 			outputflag = true;
 		}
+
 	}
 }
