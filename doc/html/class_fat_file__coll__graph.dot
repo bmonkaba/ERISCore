@@ -1,8 +1,0 @@
-digraph "FatFile"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{FatFile\n||+ FatFile()\l+ FatFile()\l+ operator bool()\l+ flush()\l+ clearError()\l+ clearWriteError()\l+ dirIndex()\l+ getError()\l+ getWriteError()\l+ fgetpos()\land 80 more...\l+ legal83Char()\l+ printFatDate()\l+ printFatTime()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Basic file class."];
-}

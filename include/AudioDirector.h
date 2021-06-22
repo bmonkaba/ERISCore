@@ -34,6 +34,8 @@ class AudioDirector{
     bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
     bool connect(char* from,uint8_t from_port,char* to,uint8_t to_port);
     bool connect(const char* connectionString);
+    bool getAudioStreamString(uint16_t streamIndex, char* streamStringBuffer);
+    bool getConnectionString(uint16_t connectionIndex, char* connectionStringBuffer);
     bool disconnect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
     bool disconnect(char* from,uint8_t from_port,char* to,uint8_t to_port);
     bool disconnect(const char* connectionString);
@@ -183,10 +185,47 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
     }
   }
   //not found return null
+  Serial.print(F("M  AudioDirector::getAudioStreamObjByName Not Found: "));
+  Serial.println(AudioStreamObjName);
   return 0;
 }
 
+bool AudioDirector::getAudioStreamString(uint16_t streamIndex, char* streamStringBuffer){
+  if (streamIndex >= objCount){
+    strcpy(streamStringBuffer,"");
+    return false;
+  }
+  sprintf(streamStringBuffer,"%s %s_%d",pAudioStreamObjPool[streamIndex]->category,pAudioStreamObjPool[streamIndex]->shortName,pAudioStreamObjPool[streamIndex]->instance);
+  return true;
+}
 
+bool AudioDirector::getConnectionString(uint16_t connectionIndex, char* connectionStringBuffer){
+  //STUB
+  uint16_t i;
+  uint16_t count = 0;
+  if (connectionIndex >= activeConnections){
+    strcpy(connectionStringBuffer,"");
+    return false;
+  }
+  for(i=0; i < MAX_CONNECTIONS;i++){
+    if (pCord[i]->isConnected == true){
+      if(count == connectionIndex){
+        //build connection string into the buffer
+        sprintf(connectionStringBuffer,"connect(%s_%d,%d,%s_%d,%d);",
+          pCord[i]->pSrc->shortName,
+          pCord[i]->pSrc->instance,
+          pCord[i]->src_index,
+          pCord[i]->pDst->shortName,
+          pCord[i]->pDst->instance,
+          pCord[i]->dest_index);
+        if (connectionIndex < activeConnections) return true;
+      }
+      count++;
+    }
+  }
+  strcpy(connectionStringBuffer,"");
+  return false;
+}
 bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput){
   uint16_t i;
   if (NULL==source||NULL==destination) return false;
@@ -284,7 +323,7 @@ bool AudioDirector::connect(const char* connectionString){
 }
 
 bool AudioDirector::disconnect(char* from,uint8_t from_port,char* to,uint8_t to_port){
-  return disconnect(getAudioStreamObjByName((char* )from),from_port,getAudioStreamObjByName((char* )from),to_port);
+  return disconnect(getAudioStreamObjByName((char* )from),from_port,getAudioStreamObjByName((char* )to),to_port);
 }
 
 bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput){
@@ -293,15 +332,19 @@ bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStrea
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
     if (pCord[i]->pSrc == source && pCord[i]->pDst == destination && pCord[i]->src_index == sourceOutput && pCord[i]->dest_index == destinationInput){
-      Serial.print(F("AudioDirector::disconnect() found AudioConnection at index "));
+      Serial.print(F("M AudioDirector::disconnect() found AudioConnection at index "));
       Serial.println(i);
       //disconnect the audio connection
       if(pCord[i]->disconnect()) activeConnections--;
-      Serial.println(F("AudioDirector::disconnect() disconnect complete"));
+      Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
       return true; 
     }
   }
-  Serial.print(F("AudioDirector::disconnect() Warning: AudioConnection not found"));
+  Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
+  Serial.println(source->shortName);
+  Serial.println(source->instance);
+  Serial.println(destination->shortName);
+  Serial.println(destination->instance);
   return false; //no empty connection slots
 }
 
@@ -312,7 +355,8 @@ bool AudioDirector::disconnect(const char* connectionString){
 void AudioDirector::activateConnectionGroup(uint16_t group_id){
 //testing
   Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
-  
+  AudioNoInterrupts();
+
   //connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
 
   //connect a waveform object to the output and fft
@@ -361,7 +405,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("i2s-in_1 1 mixer_5 3");
 
   connect("mixer_1 0 i2s-out_1 0");
-
+  AudioInterrupts();
   
   //to use the objects they must be downcast
   erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));

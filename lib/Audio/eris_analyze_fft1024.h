@@ -299,6 +299,8 @@ public:
 	void windowFunction(const int16_t *w) {
 		window = w;
 	}
+	bool analyze(void);
+
 	virtual void update(void);
 	//uint32_t output_packed[512] __attribute__ ((aligned (4))); //16bit real and imag packed data 
 private:

@@ -79,6 +79,21 @@ static void apply_window_to_fft_buffer_f32(float32_t *buffer, const float32_t *w
 	
 }
 
+bool erisAudioAnalyzeFFT1024::analyze(void)
+{
+	if (outputflag == false) return false; //no new data frame to analyze
+	//copy buffer while casting to float and scale to the range -1 to 1
+	for (int16_t i=0; i < 1024; i++){
+		tmp_buffer[i] = (float32_t)buffer[i] / 32768.0;
+	}
+	
+	apply_window_to_fft_buffer_f32(tmp_buffer, window_f32);
+	arm_cfft_radix4_f32(&fft_inst, tmp_buffer);
+	/* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
+	arm_cmplx_mag_f32(tmp_buffer, output, 1024);  
+	return true;
+}
+
 void erisAudioAnalyzeFFT1024::update(void)
 {
 	audio_block_t *block;
@@ -103,7 +118,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		MEM_STEP = subsample_highfreqrange;
 		subsample_by = (int)subsample_highfreqrange;
 	}
-	BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
+	BLOCKS_PER_FFT = 1024 / (AUDIO_BLOCK_SAMPLES / subsample_by);
 	BLOCK_REFRESH_SIZE =  BLOCKS_PER_FFT/2;//64 / (AUDIO_BLOCK_SAMPLES /subsample_by);
 	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//32 / (AUDIO_BLOCK_SAMPLES /subsample_by);
 
@@ -118,14 +133,20 @@ void erisAudioAnalyzeFFT1024::update(void)
 		copy_to_fft_buffer(buffer+ofs, block->data,subsample_by);
 		release(block);
 		#ifdef ENABLE_F32_FFT
+
+
+
+		//moved the following into analyze function
 		//copy buffer while casting to float and scale to the range -1 to 1
-		for (int16_t i=0; i < 2048; i++){
-			tmp_buffer[i] = (float32_t)buffer[i] / 32768.0;
-		}
-		apply_window_to_fft_buffer_f32(tmp_buffer, window_f32);
-		arm_cfft_radix4_f32(&fft_inst, tmp_buffer);
-		/* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
-		arm_cmplx_mag_f32(tmp_buffer, output, 1024);  
+		//for (int16_t i=0; i < 1024; i++){
+		//	tmp_buffer[i] = (float32_t)buffer[i] / 32768.0;
+		//}
+		//
+		//apply_window_to_fft_buffer_f32(tmp_buffer, window_f32);
+		//arm_cfft_radix4_f32(&fft_inst, tmp_buffer);
+		///* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
+		//arm_cmplx_mag_f32(tmp_buffer, output, 1024);  
+
 		/* Calculates maxValue and returns corresponding BIN value */ 
 		//arm_max_f32(testOutput, fftSize, &maxValue, &testIndex); 
 		#else
@@ -143,7 +164,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		#endif
 
 		if (sample_block!= 0){
-			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE;
+			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE - 1;
 			//fft overlap - restore tmp cpy of last half to first half
 			//memmove(buffer,&buffer+((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE *  sizeof(int16_t)), (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
 			memmove(buffer,&buffer[(AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE], (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)* sizeof(int16_t));

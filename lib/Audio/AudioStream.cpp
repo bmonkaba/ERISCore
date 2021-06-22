@@ -127,7 +127,7 @@ void AudioStream::release(audio_block_t *block)
 	uint32_t mask = (0x80000000 >> (31 - (block->memory_pool_index & 0x1F)));
 	uint32_t index = block->memory_pool_index >> 5;
 
-	__disable_irq();
+	//__disable_irq();
 	if (block->ref_count > 1) {
 		block->ref_count--;
 	} else {
@@ -137,7 +137,7 @@ void AudioStream::release(audio_block_t *block)
 		if (index < memory_pool_first_mask) memory_pool_first_mask = index;
 		memory_used--;
 	}
-	__enable_irq();
+	//__enable_irq();
 }
 
 // Transmit an audio data block
@@ -198,7 +198,7 @@ void AudioConnection::connect(void)
 
 	if (isConnected) return;
 	if (dest_index > pDst->num_inputs) return;
-	__disable_irq();
+	//__disable_irq();
 	p = pSrc->destination_list;
 	if (p == NULL) {
 		pSrc->destination_list = this;
@@ -241,12 +241,12 @@ bool AudioConnection::disconnect(void)
 	Serial.print(F("\tdst index:"));Serial.println((uint32_t)dest_index);
 	Serial.print(F("\tpSrc->destination_list:"));Serial.println((uint32_t)pSrc->destination_list);
 	
-	__disable_irq();
+	//__disable_irq();
 	// Remove destination from source list
 	p = pSrc->destination_list;
 	if (p == NULL) {
 //>>> PAH re-enable the IRQ
-		__enable_irq();
+		//__enable_irq();
 		return false;
 	} else if (p == this) {
 		if (p->next_dest) {
@@ -274,7 +274,7 @@ bool AudioConnection::disconnect(void)
 	if(pDst->inputQueue[dest_index] != NULL) {
 		AudioStream::release(pDst->inputQueue[dest_index]);
 		// release() re-enables the IRQ. Need it to be disabled a little longer
-		__disable_irq();
+		//__disable_irq();
 		pDst->inputQueue[dest_index] = NULL;
 	}
 
@@ -290,9 +290,8 @@ bool AudioConnection::disconnect(void)
 	}
 
 	isConnected = false;
-
+	//__enable_irq();
 	return true;
-	__enable_irq();
 }
 
 
@@ -319,7 +318,7 @@ bool AudioConnection::reconnect(){
 		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Invalid destination port"));
 		return false;
 	}
-	__disable_irq();
+	//__disable_irq();
 	p = pSrc->destination_list;
 	if (p == NULL) {
 		//Serial.println("(eris)AudioConnection:reconnect() making first connection");
@@ -347,7 +346,7 @@ bool AudioConnection::reconnect(){
 
 	isConnected = true;
 
-	__enable_irq();
+	//__enable_irq();
 	Serial.println(F("(eris)AudioConnection:reconnect() connection complete"));
 	return true;
 }

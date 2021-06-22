@@ -1,8 +1,0 @@
-digraph "SdSpiCard"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{SdSpiCard\n||+ SdSpiCard()\l+ begin()\l+ dbgClearStats()\l+ dbgPrintStats()\l+ sectorCount()\l+ cardSize()\l+ erase()\l+ eraseSingleSectorEnable()\l+ error()\l+ errorCode()\land 23 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Raw access to SD and SDHC flash memory cards via SPI protocol."];
-}

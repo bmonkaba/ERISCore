@@ -1,8 +1,0 @@
-digraph "CID"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{CID\n|+ mid\l+ oid\l+ pnm\l+ prv_m\l+ prv_n\l+ psn\l+ mdt_year_high\l+ reserved\l+ mdt_month\l+ mdt_year_low\l+ always1\l+ crc\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Card IDentification (CID) register."];
-}

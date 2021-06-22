@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['data_4923',['data',['../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719',1,'audio_block_struct::data()'],['../dc/df2/structglyph__t.html#a228008bd54fc4c2995124db999ec3d6a',1,'glyph_t::data()'],['../d7/d00/struct_i_l_i9341__t3__font__t.html#ae1927253874f02ba8e40c29b03753eb6',1,'ILI9341_t3_font_t::data()'],['../dc/deb/structblock8__t.html#a88745d549d17f6835e514754315ef931',1,'block8_t::data()'],['../d4/d4a/structblock16__t.html#a0782b15fe864f3160535ace802060514',1,'block16_t::data()'],['../dc/deb/structblock8__t.html#ac06b34d222a4d027063174c7eaef6ce5',1,'block8_t::data()'],['../d9/d43/structadcdata__t.html#a41a49a040c7ad5b2f182cd81e4c140c7',1,'adcdata_t::data()'],['../db/da2/struct_dir_generic__t.html#abde169ea86c51fbe6b6942978dfe67a3',1,'DirGeneric_t::data()'],['../d0/d08/unioncache__t.html#ae675b7a3a87d809070de111d1d1f1d81',1,'cache_t::data()'],['../d3/d0c/notes_8txt.html#a45d7b17561bfaf6d171d738d3dc01c65',1,'data():&#160;notes.txt'],['../d9/dfc/_sd_error_codes_8txt.html#a45d7b17561bfaf6d171d738d3dc01c65',1,'data():&#160;SdErrorCodes.txt']]],
+  ['data_5fdim16_4924',['DATA_DIM16',['../d4/da2/_avr_adc_logger_8h.html#a1c018512bbd473f670dd9a740ab3cbc4',1,'DATA_DIM16():&#160;AvrAdcLogger.h'],['../d1/d58/_analog_bin_logger_8h.html#a1c018512bbd473f670dd9a740ab3cbc4',1,'DATA_DIM16():&#160;AnalogBinLogger.h']]],
+  ['data_5fdim8_4925',['DATA_DIM8',['../d4/da2/_avr_adc_logger_8h.html#aedd0d576e0ca69f47fdddb6dc95f6d8a',1,'DATA_DIM8():&#160;AvrAdcLogger.h'],['../d1/d58/_analog_bin_logger_8h.html#aedd0d576e0ca69f47fdddb6dc95f6d8a',1,'DATA_DIM8():&#160;AnalogBinLogger.h']]],
+  ['data_5fformat_4926',['DATA_FORMAT',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a8025058383a0b2166405c7812504e211',1,'UserFunctions.cpp']]],
+  ['data_5fres_5faccepted_4927',['DATA_RES_ACCEPTED',['../d2/db6/_sd_card_info_8h.html#a4d3c106b58ae6d3073be9e023dad309e',1,'SdCardInfo.h']]],
+  ['data_5fres_5fmask_4928',['DATA_RES_MASK',['../d2/db6/_sd_card_info_8h.html#ae69df74cf48dd991c1aaf4e87c5f8a84',1,'SdCardInfo.h']]],
+  ['data_5fstart_5fsector_4929',['DATA_START_SECTOR',['../d2/db6/_sd_card_info_8h.html#ab17e9c0b080e70ef1e0bd00e0fc4e904',1,'SdCardInfo.h']]],
+  ['data_5ftype_4930',['data_type',['../d6/d17/struct_u_i_c_type.html#a199733d5ee7539ced8c1d110f3e919e6',1,'UICType::data_type()'],['../d0/d72/_u_i_8h.html#ad43f10af6313cded905b580c545f7a7f',1,'data_type():&#160;UI.h']]],
+  ['datalength_4931',['dataLength',['../da/db6/struct_dir_stream__t.html#ab4ce1f9a0c2de619babde5566d5cbbb5',1,'DirStream_t']]],
+  ['datax0_4932',['DATAX0',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a2f680d115fcd536008965b1a1e505f09',1,'UserFunctions.cpp']]],
+  ['datax1_4933',['DATAX1',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a4ba1b9600584ae00708460a2517f3cdf',1,'UserFunctions.cpp']]],
+  ['datay0_4934',['DATAY0',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a7c71d7c8f2f59283d02828abed5906cb',1,'UserFunctions.cpp']]],
+  ['datay1_4935',['DATAY1',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a261aeaaff853135f8c1e68442a2e6461',1,'UserFunctions.cpp']]],
+  ['dataz0_4936',['DATAZ0',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a6df0774523995e5a5152d95b07e551a7',1,'UserFunctions.cpp']]],
+  ['dataz1_4937',['DATAZ1',['../da/dc4/_low_latency_logger_a_d_x_l345_2_user_functions_8cpp.html#a239d19894ab824dfcae33bcf76622ebe',1,'UserFunctions.cpp']]],
+  ['dec_4938',['dec',['../d4/dc1/classios__base.html#a2826aed005e7c1f6858060cddae7971a',1,'ios_base']]],
+  ['delta_4939',['delta',['../dc/df2/structglyph__t.html#a92aca16875692482911adfd8ac00756a',1,'glyph_t']]],
+  ['description_4940',['description',['../de/d39/struct_u_i_menu_type.html#a7c60a738be888df8c1992b7a9b348786',1,'UIMenuType::description()'],['../d0/d72/_u_i_8h.html#a68344fa88cf4e86b5079fd69a5c22d57',1,'description():&#160;UI.h']]],
+  ['dest_5findex_4941',['dest_index',['../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3',1,'AudioConnection']]],
+  ['dir_4942',['dir',['../d0/d08/unioncache__t.html#a04a7472d08f2545d6db7804c82c99d7c',1,'cache_t']]],
+  ['driveselect_4943',['driveSelect',['../d8/dda/structbios_parameter_block_ex_fat.html#a705554e385b3fce54cba8cdb115dfdfe',1,'biosParameterBlockExFat']]],
+  ['dsr_5fimp_4944',['dsr_imp',['../d2/db6/_sd_card_info_8h.html#adca766448ce5830490363d3fbb02ab4b',1,'dsr_imp():&#160;SdCardInfo.h'],['../d0/dfb/struct_c_s_d_v1.html#adfec8df7c230379bccd0ee89a5ff822a',1,'CSDV1::dsr_imp()'],['../d8/d81/struct_c_s_d_v2.html#a16e521025f7277d53eeaf7ab576dd692',1,'CSDV2::dsr_imp()']]],
+  ['dst_4945',['dst',['../da/dca/struct_parsed_connection.html#a5b302dcc6f1b9ee24708a38f815dfda3',1,'ParsedConnection']]],
+  ['dst_5fport_4946',['dst_port',['../da/dca/struct_parsed_connection.html#a8443c09a8a9bfdf324a64277766b29bc',1,'ParsedConnection']]]
+];

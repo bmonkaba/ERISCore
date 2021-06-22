@@ -72,6 +72,7 @@ class AppManager {
     static AppManager* obj; //make appManager a singleton
     SdFs sd;
     AppBaseClass *root; //root linked list node
+    AppBaseClass *pActiveApp; //active app
     uint16_t nextIDAssignment;
     uint16_t activeID; //active app
                       //TODO: implement an active id push/pop stack for nesting apps
@@ -119,7 +120,12 @@ class AppManager {
     void switchAppFocus(uint16_t id){activeID=id;}; //switch focus
     void pushAppFocus();  //used by switchAppFocus to store the requesting app for return
     void popAppFocus();  //return to the requesting app
-    void peekAppFocus(); //used by apps to find out who called it
+    uint16_t peekAppFocus(){return activeID;}//used by apps to find out which has focus
+    AppBaseClass* getActiveApp(){
+      Serial.print("M ");
+      Serial.println(pActiveApp->name);
+      return pActiveApp;
+    }
     void update(){
       bool screenBusy = tft.busy();
       elapsedMicros cycle_time=0;
@@ -140,6 +146,8 @@ class AppManager {
         node->updateRT(); //real time update (always called)
         //Serial.println("AppManager:: real time update");
         isactive_child = false;
+        if (node->id == activeID) pActiveApp = node;
+
         if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
         if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);

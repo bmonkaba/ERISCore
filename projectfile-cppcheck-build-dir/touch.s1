@@ -1,0 +1,7 @@
+Touch
+setCalibrationInputs
+begin call:[begin,digitalWrite,pinMode,println,setMISO,setMOSI,setSCK]
+besttwoavg call:[return] noreturn:[return]
+update call:[SPISettings,beginTransaction,besttwoavg,digitalWrite,endTransaction,millis,transfer,transfer16]
+touched call:[return] noreturn:[return]
+getPoint call:[TS_Point] noreturn:[TS_Point]

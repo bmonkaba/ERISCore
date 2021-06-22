@@ -1,8 +1,0 @@
-digraph "UI"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{UI\n|+ knob1_pos\l+ knob2_pos\l+ knob3_pos\l+ knob4_pos\l+ expin_pos\l+ level_in_r\l+ level_in_l\l+ level_out_r\l+ level_out_l\l|+ UI()\l+ Setup()\l+ Update()\l+ LoadPreset()\l+ setDisplayMessageWithValue()\l+ setDisplayMessage()\l+ getControlValueFloat()\l+ getControlValue()\l+ setCCValue()\l+ setControlValue()\land 11 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-}

@@ -155,5 +155,17 @@ class MyAppExample:public AppBaseClass {
           erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
           wav->begin(0.3, 2637.02, WAVEFORM_SQUARE);
         }
+        else if(sender->isName("SCI")){
+          Serial.flush();
+          Serial.print(F("M appExample::MessageHandler SCI handler param: "));
+          Serial.println(message);
+          Serial.flush();
+          AudioNoInterrupts();
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
+          //wav->frequency(atoi(message));
+          //wav->amplitude(0.6);
+          wav->begin(0.010,atoi(message),WAVEFORM_SINE);
+          AudioInterrupts();
+        }
     }
 };

@@ -109,7 +109,7 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
 
 void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   //full screen block transfer with no clipping - used for full screen images matching the screen resolution
-  pSD->chdir("I/U/W");
+  pSD->chdir("/I/U/W");
   file.open(filename, O_READ);
   if (file.available() == 0){ //file not found
     Serial.print("ILI9341_t3_ERIS::bltSDFullScreen File Not Found:");

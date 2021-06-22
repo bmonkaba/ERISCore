@@ -1,8 +1,0 @@
-digraph "CSDV2"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{CSDV2\n|+ reserved1\l+ csd_ver\l+ taac\l+ nsac\l+ tran_speed\l+ ccc_high\l+ read_bl_len\l+ ccc_low\l+ reserved2\l+ dsr_imp\land 27 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="CSD register for version 2.00 cards."];
-}
