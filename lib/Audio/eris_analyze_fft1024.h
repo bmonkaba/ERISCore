@@ -65,7 +65,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowHamming1024_f32;//AudioWindowKaiser14_1024_f32;//AudioWindowBlackman1024_f32;AudioWindowHamming1024_f32;//
+		window_f32 = AudioWindowKaiser14_1024_f32;//AudioWindowBlackman1024_f32;AudioWindowHamming1024_f32;//
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
@@ -77,10 +77,12 @@ public:
 		unum_outputs=0;
 		category="analyze-function";
 		enabled = false;
+		outputflag = false;
+		is_analyzed = false;
 		sample_block=0;
 		SAMPLING_INDEX=0;
 		MEM_STEP = 0x010;
-		subsample_by = 4;
+		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
 		subsample_lowfreqrange = 32;//ratio should be 2:1; bw is fc of the low range
@@ -90,9 +92,9 @@ public:
 		memset(&buffer,0,sizeof(int16_t)*2048);
 		#ifdef ENABLE_F32_FFT
 		//memset(&output,0,sizeof(float32_t)*1024);
-		arm_fill_f32(0,output,1024);
+		arm_fill_f32(0,(float32_t*)output,1024);
 		//memset(&tmp_buffer,0,sizeof(float32_t)*2048);
-		arm_fill_f32(0,tmp_buffer,2048);
+		arm_fill_f32(0,(float32_t*)tmp_buffer,2048);
 		#else
 		memset(&output,0,sizeof(uint16_t)*512);
 		memset(&tmp_buffer,0,sizeof(int16_t)*2048);
@@ -168,8 +170,8 @@ public:
 		}
 		if (binFirst > 510) return 0.0;
 		if (binLast > 510) binLast = 510;
-		arm_power_f32(&output[binFirst], span, &powerf);
-		arm_max_f32 (&output[binFirst], span, &maxf, &peak_index);
+		arm_power_f32((float32_t*)&output[binFirst], span, &powerf);
+		arm_max_f32 ((float32_t*)&output[binFirst], span, &maxf, &peak_index);
 		maxf = 0;		
 		if(fftRR){
 			fftRR->peakValue = powerf / (span);
@@ -188,7 +190,7 @@ public:
 		unsigned int start_bin;
 		unsigned int stop_bin;
 
-		bw = (AUDIO_SAMPLE_RATE_EXACT / (float)subsample_by)/2.0;
+		bw = (AUDIO_SAMPLE_RATE_EXACT / (float)subsample_by)/4.0;
 		bin_size = bw/512.0f;
 		start_bin = (unsigned int)(freq_from / bin_size);
 		stop_bin = (unsigned int)(freq_to / bin_size);
@@ -299,7 +301,8 @@ public:
 	void windowFunction(const int16_t *w) {
 		window = w;
 	}
-	bool analyze(void);
+	bool capture(void);
+	void analyze(void);
 
 	virtual void update(void);
 	//uint32_t output_packed[512] __attribute__ ((aligned (4))); //16bit real and imag packed data 
@@ -321,18 +324,19 @@ public: //tmp for debug
 	subsample_range ssr;
 private:	
 	volatile bool outputflag;
+	bool is_analyzed = false;
 	audio_block_t *inputQueueArray[1];
 public: //tmp for debug
 	#ifdef ENABLE_F32_FFT
 	arm_cfft_radix4_instance_f32 fft_inst;
-	float32_t tmp_buffer[2048] __attribute__ ((aligned (4)));
-	float32_t output[1024] __attribute__ ((aligned (4)));
+	volatile float32_t tmp_buffer[2048] __attribute__ ((aligned (4)));
+	volatile float32_t output[1024] __attribute__ ((aligned (4)));
 	#else
 	arm_cfft_radix4_instance_q15 fft_inst;
 	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
 	uint16_t output[512] __attribute__ ((aligned (4)));
 	#endif
-	int16_t buffer[2048] __attribute__ ((aligned (4)));
+	int16_t buffer[2048] __attribute__ ((aligned (2)));
 };
 
 #endif

@@ -17,9 +17,7 @@ class MyAppExample:public AppBaseClass {
     int16_t y_end,y_start;
     int16_t x_last,y_last,y_last_scope;
     uint32_t t_lastupdate;
-    erisAudioAnalyzeFFT1024* fft;
-    erisAudioAnalyzeFFT1024* fft2;
-    erisAudioAnalyzeScope* scope;
+
     MyAppExample():AppBaseClass(){
       sprintf(name, "MyAppExample");
       Serial.println("MyApp constructor called");
@@ -157,14 +155,14 @@ class MyAppExample:public AppBaseClass {
         }
         else if(sender->isName("SCI")){
           Serial.flush();
-          Serial.print(F("M appExample::MessageHandler SCI handler param: "));
+          Serial.print(F("M appExample::MessageHandler SCI param: "));
           Serial.println(message);
           Serial.flush();
           AudioNoInterrupts();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
           //wav->frequency(atoi(message));
           //wav->amplitude(0.6);
-          wav->begin(0.010,atoi(message),WAVEFORM_SINE);
+          wav->begin(1.0,atoi(message),WAVEFORM_SINE);
           AudioInterrupts();
         }
     }

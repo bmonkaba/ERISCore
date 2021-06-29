@@ -112,10 +112,12 @@ class AppCQT:public AppBaseClass {
 
       rt_calls = 0;
       update_calls = 0;
+      fft_buffer_serial_transmit_elapsed = 0;
     }; 
   protected:
     double rt_calls;
     double update_calls;
+    elapsedMillis fft_buffer_serial_transmit_elapsed;
     uint16_t highRange; 
     erisAudioSynthWaveform* osc[OSC_BANK_SIZE];
     erisAudioAnalyzeFFT1024* fft;
@@ -126,8 +128,11 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (4)));;
     void update(){
       update_calls++;
-      if (!fft2->available()) return;
+      if (!fft2->capture() == false) return;
+      //AudioNoInterrupts();
       fft2->analyze();
+      //AudioInterrupts();
+
       updateOscillatorBank();
       //draw the cqt bins
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
@@ -136,11 +141,11 @@ class AppCQT:public AppBaseClass {
         float amp;
         float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = log(amp*100.0) * height/10;
+        signal = log(amp*0.707) * height/10;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = log(amp*100.0) * height/10;
+        signal = log(amp*0.707) * height/10;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
@@ -155,21 +160,27 @@ class AppCQT:public AppBaseClass {
         tft.setTextColor(ILI9341_MAGENTA);
       }
     }; //called only when the app is active
+    
     void updateRT(){
       rt_calls++;    
-      if (!fft->available()) return;
-      fft->analyze();
-      //updateOscillatorBank();
-      Serial.flush();
+      if (fft->capture() == false) return;
       //AudioNoInterrupts();
-      Serial.printf("S 1024"); 
-      for(int i = 0; i < 1024; i+=1){
-        Serial.printf(F(",%d"),128+ (int)(256.0 * (0.0005 * fft->buffer[i])));
+      fft->analyze();
+      
+      if (fft_buffer_serial_transmit_elapsed > 50){
+        fft_buffer_serial_transmit_elapsed = 0;
+        Serial.flush();
+        Serial.printf("S 1024"); 
+        for(int i = 0; i < 1024; i+=1){
+          Serial.printf(F(",%d"),128+ (int)(255.0 * (0.004 * fft->output[i])));
+        }
+        Serial.println("");
+        Serial.flush();
       }
-      Serial.println("");
       //AudioInterrupts();
-      Serial.flush();
+      
     }; //allways called even if app is not active
+    
     void onFocus(){};   //called when given focus
     void onFocusLost(){}; //called when focus is taken
     void onTouch(uint16_t x, uint16_t y){
@@ -234,7 +245,7 @@ class AppCQT:public AppBaseClass {
           //osc[i]->frequency(note_freq[oscBank[i].cqtBin]); 
           osc[i]->frequency(oscBank[i].peakFrequency);
           float a;
-          a = oscBank[i].peakValue / 200.0;
+          a = oscBank[i].peakValue / 50.0;
           if (a > 1 / 24.0) a = 1 / 24.0; 
           osc[i]->amplitude(a);
           //AudioInterrupts();
@@ -248,8 +259,8 @@ class AppCQT:public AppBaseClass {
       //  if (fftHighRR[i].peakValue > 0.0) Serial.printf(F("CQT_H %d,%f,%f,%f,%f\n"),fftHighRR[i].cqtBin,fftHighRR[i].estimatedFrequency,fftHighRR[i].peakFrequency,note_freq[fftHighRR[i].cqtBin],fftHighRR[i].avgValueFast*100);
         delayMicroseconds(60);
         Serial.flush();
-        if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%.0f,%.0f,%.0f,%.2f,%d\n"),oscBank[i].cqtBin,oscBank[i].estimatedFrequency,oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].avgValueFast*100.0,oscBank[i].stopBin - oscBank[i].startBin);
-        if (oscBank[i].cqtBin >= highRange) Serial.printf(F("CQT_H %d,%.0f,%.0f,%.0f,%.2f,%d\n"),oscBank[i].cqtBin,oscBank[i].estimatedFrequency,oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].avgValueFast*100.0,oscBank[i].stopBin - oscBank[i].startBin);
+        if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%.0f,%.0f,%.0f,%.2f,%d\n"),oscBank[i].cqtBin,oscBank[i].estimatedFrequency,oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].avgValueFast*0.5,oscBank[i].stopBin - oscBank[i].startBin);
+        if (oscBank[i].cqtBin >= highRange) Serial.printf(F("CQT_H %d,%.0f,%.0f,%.0f,%.2f,%d\n"),oscBank[i].cqtBin,oscBank[i].estimatedFrequency,oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].avgValueFast*0.5,oscBank[i].stopBin - oscBank[i].startBin);
         Serial.flush();
       }
       Serial.printf(F("CQT_EOF \n"));

@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link href="//cdn.jsdelivr.net/npm/jquery.fancytree@2.38/dist/skin-win8/ui.fancytree.min.css" rel="stylesheet">
+    <style>
+    
+.container {
+  display: grid;
+  grid-template-columns: 100px 330px 1fr;
+  grid-template-rows: 0.2fr 300px 700px;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hamburger menubar menubar"
+    "sidebar imgview  comms"
+    "sidebar explorer graphs";
+  width: 98%;
+  height: 100%;
+  border: 1px solid #dedede;
+  filter: drop-shadow(2px 4px 6px magenta);
+}
+
+.hamburger {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+  grid-area: hamburger;
+  border: 1px solid #dedede;
+}
+
+.menubar {
+
+  grid-area: menubar;
+  height: 32px;
+  border: 1px solid #dedede;
+}
+
+.sidebar { grid-area: sidebar; border: 1px solid #dedede;}
+
+.imgview {
+
+  grid-area: imgview;
+  width: 330px;
+  height: 300px;
+  border: 1px solid #dedede;
+}
+
+
+
+    
+
+.comms {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr .5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "outbox messages messages"
+    "outbox messages messages"
+    "outbox messages messages"
+    ;
+  grid-area: comms;
+  border: 1px solid #dedede;
+}
+
+.outbox { grid-area: outbox; border: 1px solid #dedede;}
+
+.messages { grid-area: messages; border: 1px solid #dedede;max-height: 300px;overflow-y:scroll;}
+    
+    
+.explorer {
+
+  grid-area: explorer;
+  width: 320px;
+  border: 1px solid #dedede;
+}
+
+
+.graphs {
+  display: grid;
+  grid-template-columns: 1030px 0.5fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "cqtmsg cqt cqt"
+    "fftmsg fft fft"
+    "fft2msg fft2 fft2";
+  grid-area: graphs;
+  border: 1px solid #dedede;
+}
+
+.cqtmsg { grid-area: cqtmsg;border: 1px solid #dedede; }
+
+.fftmsg { grid-area: fftmsg;border: 1px solid #dedede; }
+
+.cqt {
+
+  grid-area: cqt;
+  width: 1026px;
+  height: 210px;
+}
+
+.fft {
+
+  grid-area: fft;
+  width: 1026px;
+  height: 210px;
+}
+
+.fft2msg { grid-area: fft2msg; }
+
+.fft2 {
+
+  grid-area: fft2;
+  width: 1026px;
+  height: 210px;
+}
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      body { margin: 0px; padding: 20px; background-color: #000000; font-size: 12px; color: #ffff00; 
+background: rgb(47,13,45);
+background: radial-gradient(circle, rgba(47,13,45,1) 0%, rgba(5,16,30,1) 100%);
+      }
+      
+      
+      #received { font-size: 12px; border: 1px solid #dedede; color: #00ff00;background-color: #1a1a1a;display:block;min-height:200;}
+      #received_scroll {height:220;}
+
+      #sent { width: 500px;} 
+      #kbs{color: #7F7F7F;}
+      #ileview{color: #7F7F7F;border: 1px solid #dedede;}
+      #float{color: #7F7F7F;object-position: top;position: relative;left:10px;top:20px;z-index:1;margin-block: unset;}
+      #stage_label{color: #7F7F7F;margin-block: unset;}
+      #stage{color: #7F7F7F;object-position: top;position: relative;left:0;top:0;margin-block: unset;}
+      #oscope_label{color: #7F7F7F;display: block;overflow: hidden;width: 100%;height: 100%;margin-block: unset;}
+      #oscope{   mix-blend-mode: luminosity;position: relative;left:0;top:0;margin-block: unset;}
+      #ile_label{color: #7F7F7F;}
+      
+      
+      #fancy_explorer { display:block; overflow: auto; height: 600px;} 
+      $green: #88ce02;
+      $dark: #262626;
+
+
+
+ul.fancytree-container {
+    font-family: tahoma,arial,helvetica;
+    font-size: 9pt;
+    white-space: nowrap;
+    padding: 3px;
+    margin: 0;
+    background-color: #000000;
+    border: 1px dotted gray;
+    display: block;
+    height: 500px;
+    width: 100%;
+    position: relative;
+    
+}
+
+textarea {
+   resize: none;
+}
+
+
+</style>
+<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery.fancytree@2.38/dist/jquery.fancytree-all-deps.min.js"></script>
+
+<script type="text/javascript" src="static/main.js"></script>
+  </head>
+  <body>
+  
+  <div class="container">
+          <div class="hamburger">
+              <div id="kbs">
+              </div>
+          </div>
+      
+      <div class="menubar"> 
+          
+      </div>
+      
+      <div class="sidebar">SIDEBAR
+      </div>
+      
+      <div class="imgview">
+          <p id="ile_label">ILE viewer</p>
+          <canvas id="ileview" width="320" height="240"></canvas> 
+      </div>
+      
+      <div class="comms">
+          <div id="tx" class="outbox">
+             Serial Transmit
+             <form id="sent">
+              <textarea id="cmd_value" name="asdf" rows="10" cols="80">DISCONNECT filter_2 2 fft1024_2 0
+CONNECT waveform_15 0 fft1024_2 0
+DISCONNECT filter_1 2 fft1024_1 0
+CONNECT waveform_15 0 fft1024_1 0
+AA 220
+</textarea><br>
+                  <button id="cmd_send">Send</button>  
+                  <button id="clear">Clear</button>
+                  
+                  <input type="range" min="30" max="2400" value="50" class="slider" id="freq_slider">
+                </form><br>
+          </div>
+    
+          <div id="scroll_me" class="messages">
+          Serial Console Messages
+              <div id="received_scroll">
+                  <div id="received">
+                  </div>
+              </div>
+          </div>
+      </div>
+        
+      <div class="explorer">
+      SD CARD EXPLORER
+            <div id="fancy_explorer">
+            </div>
+      </div>
+        
+      <div class="graphs">
+      GRAPHS
+        <div class="cqtmsg">
+            <p id="stage_label">
+            <h3 id="float">Real Time CQT Transform (2xFFT)</h3>   
+            <canvas id="stage" width="1024" height="450"></canvas> 
+            </p>
+        </div>
+            
+        <div class="fftmsg">
+            <p id="oscope_label">    
+             Real Time Scope (FFT Sample Window)
+              <canvas id="oscope" width="1024" height="200"></canvas>
+              </p>
+        </div>
+      
+        <div class="cqt">
+        </div>
+      
+        <div class="fft">
+        </div>
+      
+        <div class="fft2msg">
+        </div>
+      
+        <div class="fft2">
+        </div>
+    </div>
+</div> 
+</body>
+</html>
