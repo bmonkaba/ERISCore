@@ -402,7 +402,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("waveform_13 0 mixer_5 0");
   connect("waveform_14 0 mixer_5 1");
   connect("waveform_15 0 mixer_5 2");
-  connect("i2s-in_1 1 mixer_5 3");
+  //connect("i2s-in_1 1 mixer_5 3");
 
   connect("mixer_1 0 i2s-out_1 0");
   AudioInterrupts();

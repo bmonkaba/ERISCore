@@ -83,7 +83,6 @@ static void apply_window_to_fft_buffer_f32(float32_t *buffer, const float32_t *w
 bool erisAudioAnalyzeFFT1024::capture(void)
 {
 	if (outputflag == false) return false; //no new data frame to analyze
-	outputflag = false; //current frame can now be analyzed
 	is_analyzed = false;
 	return true;
 }
@@ -91,11 +90,15 @@ bool erisAudioAnalyzeFFT1024::capture(void)
 void erisAudioAnalyzeFFT1024::analyze(void)
 {
 	if (is_analyzed) return;
-	is_analyzed = true;
-	//apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
-	//arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
-	/* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
-	//arm_cmplx_mag_f32((float32_t*)tmp_buffer, output, 1024); 
+	is_analyzed = true;	
+	//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
+	apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
+	arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
+	arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
+	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
+	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
+	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
+	outputflag = false; //current frame is analyzed and ready to use
 	return;
 }
 
@@ -124,8 +127,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//64 / (AUDIO_BLOCK_SAMPLES /subsample_by);
-	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//32 / (AUDIO_BLOCK_SAMPLES /subsample_by);
+	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
 
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);
@@ -143,16 +146,17 @@ void erisAudioAnalyzeFFT1024::update(void)
 		//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
 		for (int16_t i=0; i < 1024; i++){
 			tmp_buffer[i] = ((float32_t)buffer[i] / (float32_t)32768.0);
-			if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0;
+			if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0.5;
 		}
 		//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
-	
-
+		
+		/*
 		apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
 		arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
 		arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
 		/* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
-		arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024); 
+		//arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024); 
+		
 
 		//moved the following into analyze function
 		//copy buffer while casting to float and scale to the range -1 to 1
@@ -187,7 +191,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 			//fft overlap - restore tmp cpy of last half to first half
 			//memmove(buffer,&buffer+((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE *  sizeof(int16_t)), (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
 			//memmove(buffer,&buffer [ (((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE) )],  (((AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)) * sizeof(int16_t)));
-			memmove(buffer,&buffer[ofs], (1024 - ofs) * sizeof(int16_t));
+			memmove(buffer,&buffer[(AUDIO_BLOCK_SAMPLES/subsample_by)*BLOCK_REFRESH_SIZE], (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
 			outputflag = true;
 		}
 

@@ -320,7 +320,7 @@ socket.onclose = function(){
 };
 
 var sendMessage = function(message) {
-  console.log("sending:" + message.data);
+  //console.log("sending:" + message.data);
   socket.send(message.data + String.fromCharCode(10));
 };
 
@@ -365,6 +365,8 @@ function draw(){
 }
 
 function sweepFreq(){
-    $('#freq_slider')[0].stepUp(3);
-    $('#freq_slider').trigger("change");
+    if ($(sweep_checkbox).is(":checked")){
+        $('#freq_slider')[0].stepUp(3);
+        $('#freq_slider').trigger("change");
+    }
 }

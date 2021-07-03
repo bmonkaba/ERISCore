@@ -238,8 +238,9 @@ CONNECT waveform_15 0 fft1024_1 0
 AA 220
 </textarea><br>
                   <button id="cmd_send">Send</button>  
-                  <button id="clear">Clear</button>
-                  
+                  <button id="clear">Clear</button><br>
+                  <input type="checkbox" id="sweep_checkbox" value="enable">
+                  <label for="sweep_checkbox"> Enable Freq Sweep</label>
                   <input type="range" min="30" max="2400" value="50" class="slider" id="freq_slider">
                 </form><br>
           </div>
@@ -271,7 +272,7 @@ AA 220
         <div class="fftmsg">
             <p id="oscope_label">    
              Real Time Scope (FFT Sample Window)
-              <canvas id="oscope" width="1024" height="200"></canvas>
+              <canvas id="oscope" width="1024" height="100"></canvas>
               </p>
         </div>
       

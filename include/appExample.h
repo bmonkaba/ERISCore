@@ -33,10 +33,10 @@ class MyAppExample:public AppBaseClass {
       y_last_scope = 0;
       
       erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(700);
-      filter->resonance(0.9);
+      filter->frequency(2400);
+      //filter->resonance(0.9);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(300);
+      filter2->frequency(100);
       //filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(20000);
@@ -57,7 +57,7 @@ class MyAppExample:public AppBaseClass {
       slider->setDimension(270,35);
       slider->setName("SLIDER");
       slider->setText("Dry Mix");
-      slider->setValue(20);
+      slider->setValue(0);
       slider->setParent(this);
       
       char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
@@ -137,33 +137,28 @@ class MyAppExample:public AppBaseClass {
         }
         else if(sender->isName("BREAK")){ //...or, can detect sender by name
           //disconnect the fft block
-          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
+          //erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
           //ad.disconnect(wav,0,fft,0);
         }
         else if(sender->isName("MAKE")){ //...or, can detect sender by name
-          //disconnect the fft block
-          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.3, 440, WAVEFORM_SAWTOOTH);
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
+          wav->begin(0.12,440,WAVEFORM_SAWTOOTH);
         }
         else if(sender->isName("SIN")){
-          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.3, 220, WAVEFORM_SINE);
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
+          wav->begin(0.12,440,WAVEFORM_SINE);
         }
         else if(sender->isName("SQUARE")){
-          erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          wav->begin(0.3, 2637.02, WAVEFORM_SQUARE);
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
+          wav->begin(0.12,440,WAVEFORM_SQUARE);
         }
         else if(sender->isName("SCI")){
           Serial.flush();
           Serial.print(F("M appExample::MessageHandler SCI param: "));
           Serial.println(message);
           Serial.flush();
-          AudioNoInterrupts();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
-          //wav->frequency(atoi(message));
-          //wav->amplitude(0.6);
-          wav->begin(1.0,atoi(message),WAVEFORM_SINE);
-          AudioInterrupts();
+          wav->begin(0.12,atoi(message),WAVEFORM_SQUARE);
         }
     }
 };

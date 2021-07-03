@@ -52,7 +52,6 @@ def checkQueue():
         for c in clients:
             c.write_message(message)
 
-
 if __name__ == '__main__':
     ###
     ## start the serial worker in background (as a deamon)
