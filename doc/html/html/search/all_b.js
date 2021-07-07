@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['key_1183',['key',['../d6/d17/struct_u_i_c_type.html#a706330a676c845727c28f42a33f82426',1,'UICType::key()'],['../d0/daf/structpair16.html#a3d60b9d79eec3eab23cac710acbbd3ed',1,'pair16::key()'],['../d0/d72/_u_i_8h.html#acd3d88da3c0e0313c3645ff34f62f542',1,'key():&#160;UI.h']]],
-  ['keyword2_1184',['KEYWORD2',['../db/de6/keywords_8txt.html#af217cc03041f2cc44ac92222a8da170b',1,'keywords.txt']]],
-  ['keywords_2etxt_1185',['keywords.txt',['../db/de6/keywords_8txt.html',1,'']]],
-  ['khzsdclk_1186',['kHzSdClk',['../d4/d82/class_sdio_card.html#a3532a1a4b8a43a51ed9b5853186203cb',1,'SdioCard']]],
-  ['knob1_5fpos_1187',['knob1_pos',['../d8/de6/class_u_i.html#ad73de764b22d8b7d3139e45e852831ed',1,'UI']]],
-  ['knob2_5fpos_1188',['knob2_pos',['../d8/de6/class_u_i.html#ae08529b0c32b51c4ea4467b632706f2a',1,'UI']]],
-  ['knob3_5fpos_1189',['knob3_pos',['../d8/de6/class_u_i.html#a266ac0bf580815b693a234227bc87633',1,'UI']]],
-  ['knob4_5fpos_1190',['knob4_pos',['../d8/de6/class_u_i.html#a605fa03b0bd356ec8e5a1d8d4da0fc3a',1,'UI']]]
+  ['last_5fvalue_297',['last_value',['../d6/d17/struct_u_i_c_type.html#a48f40ff08c42ae4644441153858bd4e0',1,'UICType::last_value()'],['../d0/d72/_u_i_8h.html#a254360fe693b069ec1fd9cb5a11b36fd',1,'last_value():&#160;UI.h']]],
+  ['length_298',['length',['../d4/d81/classeris_audio_analyze_scope.html#a9d9b4f5149cdc25ead34c2547f2381f5',1,'erisAudioAnalyzeScope']]],
+  ['level_5fin_5fl_299',['level_in_l',['../d8/de6/class_u_i.html#a89c727e52d405a03c48ad30150d82451',1,'UI']]],
+  ['level_5fin_5fr_300',['level_in_r',['../d8/de6/class_u_i.html#a868fbd5caee15044ca473b1c3a7252b6',1,'UI']]],
+  ['level_5fout_5fl_301',['level_out_l',['../d8/de6/class_u_i.html#a7cb8434f8a3d3a9c61e528695417bf59',1,'UI']]],
+  ['level_5fout_5fr_302',['level_out_r',['../d8/de6/class_u_i.html#a3bb4a9767bea9840caac6d78d2429779',1,'UI']]],
+  ['linkgroup_303',['linkGroup',['../d8/d1c/class_audio_director.html#a063dd9da4c6abd5b19d77e1722228a4e',1,'AudioDirector']]],
+  ['list_5ftype_304',['list_type',['../d6/d17/struct_u_i_c_type.html#aedacbbbebd2b10b98f1aaecbc9ff8eab',1,'UICType::list_type()'],['../d0/d72/_u_i_8h.html#a6f403d7ce74a336734df5441dd3d2d51',1,'list_type():&#160;UI.h']]],
+  ['loadpreset_305',['LoadPreset',['../d8/de6/class_u_i.html#ad627e1400712dfd5789df95c2907ecbf',1,'UI']]],
+  ['loop_306',['loop',['../df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f',1,'main.cpp']]],
+  ['loop_5fcycle_5ftime_307',['loop_cycle_time',['../df/d0a/main_8cpp.html#a16d315ff7ef8e8b68745797e6f3b029a',1,'main.cpp']]],
+  ['lr_308',['LR',['../de/d10/_h_s_i_8h.html#a3572ba4e929ec4380493fcfbbde0efa2',1,'HSI.h']]]
 ];

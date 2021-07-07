@@ -248,10 +248,9 @@ class AppSerialCommandInterface:public AppBaseClass {
                     }
                 } else if (strcmp(cmd, "AA") == 0){         //active app message
                     if (total_read > 1) AppManager::getInstance()->getActiveApp()->MessageHandler(this,param);
-                    Serial.flush();
-                    Serial.print(F("AA OK "));
-                    Serial.println(AppManager::getInstance()->getActiveApp()->name);
-                    Serial.flush();
+                    //Serial.print(F("AA OK "));
+                    //Serial.println(AppManager::getInstance()->getActiveApp()->name);
+                    //Serial.flush();
                 }
 
                 newRxMsg = false;

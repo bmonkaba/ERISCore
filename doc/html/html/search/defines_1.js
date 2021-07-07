@@ -1,19 +1,4 @@
 var searchData=
 [
-  ['adc_5fdata_6835',['ADC_DATA',['../de/d10/_h_s_i_8h.html#aa168854c0424810c7314f150902a2fb4',1,'HSI.h']]],
-  ['an1_6836',['AN1',['../de/d10/_h_s_i_8h.html#a4903de2a52966c8dc2c20faf565d451d',1,'HSI.h']]],
-  ['an2_6837',['AN2',['../de/d10/_h_s_i_8h.html#a9b0754e893d69a1e69e856853f70da1f',1,'HSI.h']]],
-  ['an3_6838',['AN3',['../de/d10/_h_s_i_8h.html#a9f593faa38f1023698d74f03a457abe3',1,'HSI.h']]],
-  ['an4_6839',['AN4',['../de/d10/_h_s_i_8h.html#adc95f1e9cdc00268d7bca5885052171f',1,'HSI.h']]],
-  ['audio_5fbitclk_6840',['AUDIO_BITCLK',['../de/d10/_h_s_i_8h.html#aa5d9e705d8288551f98ff1690d725c5e',1,'HSI.h']]],
-  ['audio_5fblock_5fsamples_6841',['AUDIO_BLOCK_SAMPLES',['../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6',1,'AudioStream.h']]],
-  ['audio_5fsample_5frate_6842',['AUDIO_SAMPLE_RATE',['../df/d6c/_audio_stream_8h.html#a36b0af5a0e22aa1e36a4f3ad02247c60',1,'AudioStream.h']]],
-  ['audio_5fsample_5frate_5fexact_6843',['AUDIO_SAMPLE_RATE_EXACT',['../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f',1,'AudioStream.h']]],
-  ['audiomemory_6844',['AudioMemory',['../df/d6c/_audio_stream_8h.html#af9139a25266f928b7d7e1b4de48c4326',1,'AudioStream.h']]],
-  ['audiomemoryusage_6845',['AudioMemoryUsage',['../df/d6c/_audio_stream_8h.html#a21b71931e7d22c8dbbf3fd164aee4dbe',1,'AudioStream.h']]],
-  ['audiomemoryusagemax_6846',['AudioMemoryUsageMax',['../df/d6c/_audio_stream_8h.html#ac6e539fd823ebfa806c6100ed4b11909',1,'AudioStream.h']]],
-  ['audiomemoryusagemaxreset_6847',['AudioMemoryUsageMaxReset',['../df/d6c/_audio_stream_8h.html#abef10b44c6db850b5cd842d5a75a69fc',1,'AudioStream.h']]],
-  ['audioprocessorusage_6848',['AudioProcessorUsage',['../df/d6c/_audio_stream_8h.html#a2e455d1437a36f4c774b8dd1fd00f5de',1,'AudioStream.h']]],
-  ['audioprocessorusagemax_6849',['AudioProcessorUsageMax',['../df/d6c/_audio_stream_8h.html#abad91d31e5949851ecb6128a91d36d84',1,'AudioStream.h']]],
-  ['audioprocessorusagemaxreset_6850',['AudioProcessorUsageMaxReset',['../df/d6c/_audio_stream_8h.html#a2bef6c05d3a9dc6e908674eccf9fcbe8',1,'AudioStream.h']]]
+  ['builtin_5fsdcard_3700',['BUILTIN_SDCARD',['../df/d0a/main_8cpp.html#a83dbf0cf2bee77d1420f6c04800ae09a',1,'main.cpp']]]
 ];

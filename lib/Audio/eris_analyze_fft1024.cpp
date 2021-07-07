@@ -31,6 +31,35 @@
 #include "arm_const_structs.h" //WILL BE NEEDED FOR IMPLEMENTING f32 FFT
 
 
+
+
+// Approximates atan2(y, x) normalized to the [0,4] range
+// with a maximum error of 0.1620 degrees
+float normalized_atan2( float y, float x )
+{
+    //return 0;
+    static const uint32_t sign_mask = 0x80000000;
+    static const float b = 0.596227f;
+
+    // Extract the sign bits
+    uint32_t ux_s  = sign_mask & (uint32_t &)x;
+    uint32_t uy_s  = sign_mask & (uint32_t &)y;
+
+    // Determine the quadrant offset
+    float q = (float)( ( ~ux_s & uy_s ) >> 29 | ux_s >> 30 ); 
+
+    // Calculate the arctangent in the first quadrant
+    float bxy_a = ::fabs( b * x * y );
+    float num = bxy_a + y * y;
+    float atan_1q =  num / ( x * x + bxy_a + num );
+
+    // Translate it to the proper quadrant
+    uint32_t uatan_2q = (ux_s ^ uy_s) | (uint32_t &)atan_1q;
+    return q + (float &)uatan_2q;
+} 
+
+
+
 //Fat Audio - to add trailing zeros to fft buffer
 /*
 static void zero_to_fft_buffer(void *destination)
@@ -89,12 +118,22 @@ bool erisAudioAnalyzeFFT1024::capture(void)
 
 void erisAudioAnalyzeFFT1024::analyze(void)
 {
+	float p;
+
 	if (is_analyzed) return;
 	is_analyzed = true;	
 	//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
 	apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
 	arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
 	arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
+	//extract the polar phase from the interleaved real and imag 
+	
+	for(int16_t i=0;i < 1024;i+=2){
+		p = normalized_atan2(tmp_buffer[i],tmp_buffer[i+1]);
+		if (!std::isfinite(p)) p = 0;
+		phase[i/2] = p;
+	}
+	
 	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
 	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
 	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
@@ -127,9 +166,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
-	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
-
+	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/4;
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/4;//BLOCKS_PER_FFT/4;
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);
 

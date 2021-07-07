@@ -97,7 +97,8 @@ $(document).ready(function(){initNavTree('d2/d7c/class_audio_connection.html','.
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d18/class_audio_connection__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d18/class_audio_connection__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -178,11 +179,10 @@ Friends</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00079">79</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                                   :</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>(source), <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>(destination), <a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>(0), <a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>(0),</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>(<a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>(NULL)</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        { <a class="code" href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">isConnected</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;          <span class="comment">//connect(); //REMOVED TO SUPPORT THE ERIS CORE AUDIO CONNECTION POOL</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
-<div class="ttc" id="a_stdio_stream_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00092">StdioStream.h:92</a></div></div>
 <div class="ttc" id="aclass_audio_connection_html_a0b9e74c2fd47c0918918f7cb8b462e35"><div class="ttname"><a href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">AudioConnection::pDst</a></div><div class="ttdeci">AudioStream * pDst</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00112">AudioStream.h:112</a></div></div>
 <div class="ttc" id="aclass_audio_connection_html_a186c54e51c05073dfa23b15af114f955"><div class="ttname"><a href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">AudioConnection::isConnected</a></div><div class="ttdeci">bool isConnected</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00116">AudioStream.h:116</a></div></div>
 <div class="ttc" id="aclass_audio_connection_html_a2f484adcf9e08f393209419c0a694c05"><div class="ttname"><a href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">AudioConnection::pSrc</a></div><div class="ttdeci">AudioStream * pSrc</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00111">AudioStream.h:109</a></div></div>
@@ -244,7 +244,7 @@ Friends</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                                  :</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>(source), <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>(destination),</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>(sourceOutput), <a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>(destinationInput),</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>(<a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>(NULL)</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        { <a class="code" href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">isConnected</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          <span class="comment">//connect(); //REMOVED TO SUPPORT ERIS CORE</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
@@ -288,7 +288,8 @@ Friends</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_ae0bd3df10a34f954a9f2128363cc7939_cgraph.svg" width="484" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_ae0bd3df10a34f954a9f2128363cc7939_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -318,7 +319,7 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a> &gt; <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1">num_inputs</a>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">//__disable_irq();</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    p = <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (p == <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (p == NULL) {</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">while</span> (p-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>) {</div>
@@ -332,7 +333,7 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        p-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    this-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    this-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = NULL;</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c">numConnections</a>++;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#a76e57ea7b1d52d78545f1a35e287d10c">active</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
@@ -348,6 +349,8 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclass_audio_stream_html_aae8e555ac9f257e10abbd3545a78f88c"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c">AudioStream::numConnections</a></div><div class="ttdeci">uint8_t numConnections</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00196">AudioStream.h:196</a></div></div>
 <div class="ttc" id="aclass_audio_stream_html_adc3bac67eb13d51375cc49a48c3328b1"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1">AudioStream::num_inputs</a></div><div class="ttdeci">unsigned char num_inputs</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream.h:185</a></div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00184">AudioStream::active</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">dest_index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00116">isConnected</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00115">next_dest</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream::num_inputs</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00196">AudioStream::numConnections</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">pDst</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00109">pSrc</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">src_index</a>.</p>
+
 </div>
 </div>
 <a id="a65659ef7116830706ebcdc686f49d426"></a>
@@ -372,19 +375,19 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">isConnected</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a> &gt; <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1">num_inputs</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;(eris)AudioConnection:disconnect()&quot;</span>));</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc name:&quot;</span>));Serial.println(<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc index:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst name:&quot;</span>));Serial.println(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst index:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tpSrc-&gt;destination_list:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;(eris)AudioConnection:disconnect()&quot;</span>));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc name:&quot;</span>));Serial.println(<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc index:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst name:&quot;</span>));Serial.println(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst index:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tpSrc-&gt;destination_list:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list);</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    </div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">//__disable_irq();</span></div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">// Remove destination from source list</span></div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    p = <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">if</span> (p == <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">if</span> (p == NULL) {</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">//&gt;&gt;&gt; PAH re-enable the IRQ</span></div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="comment">//__enable_irq();</span></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -392,7 +395,7 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (p-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>) {</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list = <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list = NULL;</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">while</span> (p) {</div>
@@ -401,7 +404,7 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    p = <a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    p = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    p = NULL;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                }</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            }</div>
@@ -411,11 +414,11 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">//&gt;&gt;&gt; PAH release the audio buffer properly</span></div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">//Remove possible pending src block from destination</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;inputQueue[<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>] != <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;inputQueue[<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>] != NULL) {</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <a class="code" href="../../d5/d96/class_audio_stream.html#a29a40aab8fe15aeee2f0a131da381424">AudioStream::release</a>(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;inputQueue[<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>]);</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="comment">// release() re-enables the IRQ. Need it to be disabled a little longer</span></div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="comment">//__disable_irq();</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;inputQueue[<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>] = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;inputQueue[<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>] = NULL;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    }</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="comment">//Check if the disconnected AudioStream objects should still be active</span></div>
@@ -433,17 +436,27 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">//__enable_irq();</span></div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00043">PrintBasic.h:43</a></div></div>
 <div class="ttc" id="aclass_audio_stream_html_a29a40aab8fe15aeee2f0a131da381424"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#a29a40aab8fe15aeee2f0a131da381424">AudioStream::release</a></div><div class="ttdeci">static void release(audio_block_t *block)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7e/_audio_stream_8cpp_source.html#l00124">AudioStream.cpp:124</a></div></div>
 <div class="ttc" id="aclass_audio_stream_html_ac242dd9497117769db00c076d9b71710"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">AudioStream::shortName</a></div><div class="ttdeci">const char * shortName</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00177">AudioStream.h:177</a></div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00184">AudioStream::active</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">dest_index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00116">isConnected</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00115">next_dest</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream::num_inputs</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00196">AudioStream::numConnections</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">pDst</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00109">pSrc</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00124">AudioStream::release()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00177">AudioStream::shortName</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">src_index</a>.</p>
+
 <p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00095">~AudioConnection()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a65659ef7116830706ebcdc686f49d426_icgraph.svg" width="484" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a65659ef7116830706ebcdc686f49d426_cgraph.svg" width="459" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a65659ef7116830706ebcdc686f49d426_icgraph.svg" width="563" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -466,30 +479,30 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">299</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                               {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() connecting by ptr&quot;</span>));</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc name:&quot;</span>));Serial.print(<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc index:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>);</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc instance:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">instance</a>);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tsrc ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() connecting by ptr&quot;</span>));</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc name:&quot;</span>));Serial.print(<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc index:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4fd2cd26e00e0292f739812a051ba00d">src_index</a>);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc instance:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">instance</a>);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tsrc ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>);</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst name:&quot;</span>));Serial.print(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst index:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst instance:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">instance</a>);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tdst ptr:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;\tpSrc-&gt;destination_list ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst name:&quot;</span>));Serial.print(<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst index:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a>);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst instance:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">instance</a>);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tdst ptr:&quot;</span>));Serial.print((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;\tpSrc-&gt;destination_list ptr:&quot;</span>));Serial.println((uint32_t)<a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html">AudioConnection</a> *p;</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">isConnected</a>){</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() Warning: Already Connected&quot;</span>));</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() Warning: Already Connected&quot;</span>));</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    }</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/d7c/class_audio_connection.html#a4edba6a0f38cff66895ac3aa87e559d3">dest_index</a> &gt; <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1">num_inputs</a>){</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() Warning: Invalid destination port&quot;</span>));</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() Warning: Invalid destination port&quot;</span>));</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="comment">//__disable_irq();</span></div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    p = <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (p == <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (p == NULL) {</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="comment">//Serial.println(&quot;(eris)AudioConnection:reconnect() making first connection&quot;);</span></div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;destination_list = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -506,8 +519,8 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        p-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    this-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    pSrc-&gt;numConnections++;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    this-&gt;<a class="code" href="../../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84">next_dest</a> = NULL;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c">numConnections</a>++;</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a2f484adcf9e08f393209419c0a694c05">pSrc</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#a76e57ea7b1d52d78545f1a35e287d10c">active</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a0b9e74c2fd47c0918918f7cb8b462e35">pDst</a>-&gt;<a class="code" href="../../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c">numConnections</a>++;</div>
@@ -516,20 +529,21 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <a class="code" href="../../d2/d7c/class_audio_connection.html#a186c54e51c05073dfa23b15af114f955">isConnected</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="comment">//__enable_irq();</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() connection complete&quot;</span>));</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;(eris)AudioConnection:reconnect() connection complete&quot;</span>));</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
 <div class="ttc" id="aclass_audio_stream_html_ac8fb019d1a24233d62228d2e234dde88"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">AudioStream::instance</a></div><div class="ttdeci">uint8_t instance</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00181">AudioStream.h:181</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">dest_index</a>, <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00043">F</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00181">AudioStream::instance</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">pDst</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00109">pSrc</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00177">AudioStream::shortName</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">src_index</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00184">AudioStream::active</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">dest_index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00181">AudioStream::instance</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00116">isConnected</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00115">next_dest</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream::num_inputs</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00196">AudioStream::numConnections</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">pDst</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00109">pSrc</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00177">AudioStream::shortName</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">src_index</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_ab86753a735bd46a3924035617b0c3623_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_ab86753a735bd46a3924035617b0c3623_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -594,19 +608,21 @@ Friends</h2></td></tr>
 <p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">dest_index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">pDst</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00109">pSrc</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">src_index</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00229">AudioDirector::connect()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f_cgraph.svg" width="407" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f_cgraph.svg" width="471" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -651,7 +667,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00114">114</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
 
 </div>
 </div>
@@ -669,7 +685,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00116">116</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00079">AudioConnection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00079">AudioConnection()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>.</p>
 
 </div>
 </div>
@@ -687,6 +703,8 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00115">115</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00150">AudioStream::transmit()</a>.</p>
+
 </div>
 </div>
 <a id="a0b9e74c2fd47c0918918f7cb8b462e35"></a>
@@ -703,7 +721,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00112">112</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
 
 </div>
 </div>
@@ -721,7 +739,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00111">111</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
 
 </div>
 </div>
@@ -739,7 +757,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00113">113</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00202">AudioDirector::getConnectionString()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">reconnect()</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00102">rewire()</a>.</p>
 
 </div>
 </div>

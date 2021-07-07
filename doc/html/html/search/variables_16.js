@@ -1,18 +1,10 @@
 var searchData=
 [
-  ['w_6728',['w',['../df/d54/structsetw.html#ab48d915a24d3f3365c9eb76e138a6f4e',1,'setw']]],
-  ['wallpaper_6729',['wallpaper',['../de/d39/struct_u_i_menu_type.html#a7db0cb68cc48058a52b78e61542b3c58',1,'UIMenuType::wallpaper()'],['../d0/d72/_u_i_8h.html#a449edc08eb6ba350f4de1a84b7bd433f',1,'wallpaper():&#160;UI.h']]],
-  ['web_5fpoint_5fradius_6730',['WEB_POINT_RADIUS',['../d7/d05/_triangle_web_8h.html#ab2aa6f82f9bde6c052f10123b2447e70',1,'TriangleWeb.h']]],
-  ['web_5fpoint_5fspacing_6731',['WEB_POINT_SPACING',['../d7/d05/_triangle_web_8h.html#a95e57fdc5d2aad779330280d10ce3df4',1,'TriangleWeb.h']]],
-  ['width_6732',['width',['../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d',1,'AppBaseClass::width()'],['../dc/df2/structglyph__t.html#ac6ad25b0f6296d8d3e426a4e97fed882',1,'glyph_t::width()'],['../d5/d63/struct_g_f_xglyph.html#a02bd34fd474af250b230f52cee75a6c1',1,'GFXglyph::width()'],['../d9/dfc/_sd_error_codes_8txt.html#a0410d8de8f93707b3e56560dbe9c2afe',1,'width():&#160;SdErrorCodes.txt']]],
-  ['wobble_5famount_6733',['WOBBLE_AMOUNT',['../d0/d8d/_twisty_text_8h.html#aa557cccb6ad90d4694946bc5737e5288',1,'TwistyText.h']]],
-  ['wobble_5ffreq_6734',['WOBBLE_FREQ',['../d0/d8d/_twisty_text_8h.html#a8d24d6dbaa84c6d56606aaceb0e4b06f',1,'TwistyText.h']]],
-  ['wobble_5ftorque_6735',['WOBBLE_TORQUE',['../d0/d8d/_twisty_text_8h.html#aaa22eacb919a68049e4fc49bc7c6eac8',1,'TwistyText.h']]],
-  ['wp_5fgrp_5fenable_6736',['wp_grp_enable',['../d0/dfb/struct_c_s_d_v1.html#abb28c4b98ba996aded6abfc6e8cf9b71',1,'CSDV1::wp_grp_enable()'],['../d8/d81/struct_c_s_d_v2.html#a98cf0c80369604ba372c22a0453f9e76',1,'CSDV2::wp_grp_enable()'],['../d2/db6/_sd_card_info_8h.html#ab4247b023129bd89e0cebe8508b35f0a',1,'wp_grp_enable():&#160;SdCardInfo.h']]],
-  ['wp_5fgrp_5fsize_6737',['wp_grp_size',['../d0/dfb/struct_c_s_d_v1.html#ab1253141f377914cb13d47d9797f73f9',1,'CSDV1::wp_grp_size()'],['../d8/d81/struct_c_s_d_v2.html#a8e3d189a715bd9797b1fa1aa32e24c72',1,'CSDV2::wp_grp_size()'],['../d2/db6/_sd_card_info_8h.html#a3574bbe4ccfc7f26daa84efd98a9ff4c',1,'wp_grp_size():&#160;SdCardInfo.h']]],
-  ['write_5fbl_5flen_5fhigh_6738',['write_bl_len_high',['../d0/dfb/struct_c_s_d_v1.html#a31e6e39d7a0b3dac710ab07d5be1a70f',1,'CSDV1::write_bl_len_high()'],['../d8/d81/struct_c_s_d_v2.html#af6592d240bf4b0c0d8b8a034d9fb1041',1,'CSDV2::write_bl_len_high()'],['../d2/db6/_sd_card_info_8h.html#af31036ae33a6db8cf3db322fef249b48',1,'write_bl_len_high():&#160;SdCardInfo.h']]],
-  ['write_5fbl_5flen_5flow_6739',['write_bl_len_low',['../d0/dfb/struct_c_s_d_v1.html#ab23d5880dee5cbd3e060d36c516f9c89',1,'CSDV1::write_bl_len_low()'],['../d8/d81/struct_c_s_d_v2.html#a1d64afb6ea52bea58bdcc583ebd1d90f',1,'CSDV2::write_bl_len_low()'],['../d2/db6/_sd_card_info_8h.html#ad61c0325b9602bdb15cf59b69fc4a67f',1,'write_bl_len_low():&#160;SdCardInfo.h']]],
-  ['write_5fblk_5fmisalign_6740',['write_blk_misalign',['../d0/dfb/struct_c_s_d_v1.html#ad3a8ed0a26fc75a2534d1c759e788f76',1,'CSDV1::write_blk_misalign()'],['../d8/d81/struct_c_s_d_v2.html#ab80757f726c43476d311c5a0be8351e0',1,'CSDV2::write_blk_misalign()'],['../d2/db6/_sd_card_info_8h.html#a5fd0cab21c874fd49fc4ea5d537be201',1,'write_blk_misalign():&#160;SdCardInfo.h']]],
-  ['write_5fmultiple_5ftoken_6741',['WRITE_MULTIPLE_TOKEN',['../d2/db6/_sd_card_info_8h.html#a28fac51eb9c6d9ad57a7359fd8bdd0db',1,'SdCardInfo.h']]],
-  ['write_5fpartial_6742',['write_partial',['../d0/dfb/struct_c_s_d_v1.html#a58f083b73ebb46c4821163f316802c2c',1,'CSDV1::write_partial()'],['../d8/d81/struct_c_s_d_v2.html#a3aa87bccca13deac8c91464b8d0cd6b9',1,'CSDV2::write_partial()'],['../d2/db6/_sd_card_info_8h.html#a062890f25943538976760e7db822a635',1,'write_partial():&#160;SdCardInfo.h']]]
+  ['y_3649',['y',['../d6/d17/struct_u_i_c_type.html#a7eadaa6260065be8f449ee985e0773c8',1,'UICType::y()'],['../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30',1,'y():&#160;UI.h']]],
+  ['y_5fend_3650',['y_end',['../dd/da5/class_my_app_example.html#a1648d6d46367aa9724647dab9d1eef17',1,'MyAppExample']]],
+  ['y_5flast_3651',['y_last',['../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426',1,'MyAppExample']]],
+  ['y_5flast_5fscope_3652',['y_last_scope',['../dd/da5/class_my_app_example.html#af715f2d525f97373ae29ce007576659e',1,'MyAppExample::y_last_scope()'],['../d8/dbe/class_app_scope.html#a4e63a6a30627034ef7cd87b250d20dbc',1,'AppScope::y_last_scope()']]],
+  ['y_5flast_5fscope_5fch2_3653',['y_last_scope_ch2',['../d8/dbe/class_app_scope.html#afb4f42f93e704b477224c28382e80ed7',1,'AppScope']]],
+  ['y_5fstart_3654',['y_start',['../dd/da5/class_my_app_example.html#a852e7f9a257cbb8c2f87b7160a95c310',1,'MyAppExample']]],
+  ['yraw_3655',['yraw',['../d1/dff/class_touch.html#a881986fd337f4436f290dd097c6559b3',1,'Touch']]]
 ];

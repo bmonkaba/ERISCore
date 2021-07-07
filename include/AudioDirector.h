@@ -6,11 +6,11 @@
 #include "eris_analyze_scope.h"
 
 #define MAX_AUDIO_STREAM_OBJECTS 150
-#define MAX_AUDIO_MEMORY_BLOCKS 30
+#define MAX_AUDIO_MEMORY_BLOCKS 38
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
 #define MAX_CONNECTIONS 64 
-#define MAX_CONNECTION_STRING_LENGTH 96
+#define MAX_CONNECTION_STRING_LENGTH 64
 
 const char* nullStr = "NULL";
 
@@ -98,7 +98,7 @@ AudioDirector::AudioDirector(){
   for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
     addAudioStreamObj(new erisAudioAnalyzePeak);
-    addAudioStreamObj(new erisAudioAnalyzeRMS);
+    addAudioStreamObj(new erisAudioFilterBiquad);
   }
 
   Serial.print(F("AudioDirector::AudioDirector() objects: "));
@@ -365,8 +365,8 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
 
   //connect("waveformMod_1 0 filter_1 0");
   //connect("waveformMod_1 0 filter_3 0");
-  connect("i2s-in_1 1 filter_1 0");
-  connect("filter_1 2 fft1024_1 0"); //lp filter
+  connect("i2s-in_1 1 biquad_1 0");
+  connect("biquad_1 0 fft1024_1 0"); //lp filter
   
   connect("i2s-in_1 1 filter_2 0");
   connect("filter_2 2 fft1024_2 0"); //lp filter
@@ -408,8 +408,8 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   AudioInterrupts();
   
   //to use the objects they must be downcast
-  erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));
-  mod->begin(0.40, 200, WAVEFORM_SINE);
+  //erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));
+  //mod->begin(0.40, 200, WAVEFORM_SINE);
 
 /*
   erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));

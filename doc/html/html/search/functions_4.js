@@ -1,27 +1,5 @@
 var searchData=
 [
-  ['datalength_4044',['dataLength',['../d5/d14/class_ex_fat_file.html#ada4dde9f2eed36bf556fcf1bd3d28ccf',1,'ExFatFile']]],
-  ['datastartsector_4045',['dataStartSector',['../d0/d12/class_fat_partition.html#a7e89ec91780f7dfa060b261c605bf2e5',1,'FatPartition::dataStartSector()'],['../df/dd9/class_fs_volume.html#a79cebeb23cb3cdaa06550475fe24272a',1,'FsVolume::dataStartSector()']]],
-  ['datetimecallback_4046',['dateTimeCallback',['../d1/dfe/class_sd_file.html#a2d78e6a8cedbf8ce545af68457b43bf1',1,'SdFile']]],
-  ['datetimecallbackcancel_4047',['dateTimeCallbackCancel',['../d1/dfe/class_sd_file.html#ad266770d0a779d1a528a3997aee5142d',1,'SdFile']]],
-  ['dbgclearstats_4048',['dbgClearStats',['../db/d9b/class_sd_spi_card.html#ab6cf8283dee415d9217eb758e75a98ef',1,'SdSpiCard']]],
-  ['dbgfat_4049',['dbgFat',['../d0/d12/class_fat_partition.html#a0af1e91a311180119b4a2c85d7e6e87e',1,'FatPartition']]],
-  ['dbgprintstats_4050',['dbgPrintStats',['../db/d9b/class_sd_spi_card.html#abdb02df511072aefb465a22858d92e06',1,'SdSpiCard']]],
-  ['deactivate_4051',['deactivate',['../dc/da1/class_sd_spi_arduino_driver.html#ae88a255f533e3acb41d1221025a69b55',1,'SdSpiArduinoDriver::deactivate()'],['../dd/d8c/class_sd_spi_driver_bare_uno.html#a129080578667f0336d2f2b125cd5eddd',1,'SdSpiDriverBareUno::deactivate()'],['../d4/d73/class_sd_spi_base_class.html#ae3a5ede781e390263382fcf7765d665d',1,'SdSpiBaseClass::deactivate()'],['../dc/dd3/class_sd_spi_soft_driver.html#a05315e4128ae7263d9e68119d6ae4308',1,'SdSpiSoftDriver::deactivate()']]],
-  ['dec_4052',['dec',['../df/dd5/ios_8h.html#ada38ab90e22f0ebb638cb864a35c562d',1,'ios.h']]],
-  ['delay_4053',['delay',['../d4/d81/classeris_audio_analyze_scope.html#ac09535fdab9f449a141ce9c15ff4f02d',1,'erisAudioAnalyzeScope']]],
-  ['die_4054',['die',['../dd/dcc/bdf__to__ili9341_8c.html#aed761bfe5d8f8e47225ebfba3ab7766c',1,'bdf_to_ili9341.c']]],
-  ['digitalpin_4055',['DigitalPin',['../dc/dc3/class_digital_pin.html#ab68480b09df5c4794c95cdf2230d4c55',1,'DigitalPin']]],
-  ['direntry_4056',['dirEntry',['../d3/d51/class_fat_file.html#a2f4e9ab3056125b07f15d14ca26d5346',1,'FatFile']]],
-  ['dirindex_4057',['dirIndex',['../d5/d14/class_ex_fat_file.html#a5e3baa5d5269c2948cfaf604c42f6a16',1,'ExFatFile::dirIndex()'],['../d3/d51/class_fat_file.html#ae5ec24d4a94d3780384d3f2b731c7eb9',1,'FatFile::dirIndex()'],['../d7/d76/class_fs_base_file.html#ac05660570595552c72164a61001899d5',1,'FsBaseFile::dirIndex()']]],
-  ['dirsize_4058',['dirSize',['../d3/d51/class_fat_file.html#ae2ed15f05c9ccbce355e7a8d3ce8382d',1,'FatFile']]],
-  ['dirty_4059',['dirty',['../d3/d77/class_fs_cache.html#af50f564561a2db190280769d4641147b',1,'FsCache::dirty()'],['../d2/def/class_fat_cache.html#ab4d3b0c16bb6a116c7d01afff2dcb307',1,'FatCache::dirty()']]],
-  ['disconnect_4060',['disconnect',['../d8/d1c/class_audio_director.html#a0bd2489338ed7ae8a836fad125710d99',1,'AudioDirector::disconnect(AudioStream *source, int sourceOutput, AudioStream *destination, int destinationInput)'],['../d8/d1c/class_audio_director.html#a32ddf87cd4d8a21f533d3e6057b583f1',1,'AudioDirector::disconnect(char *from, uint8_t from_port, char *to, uint8_t to_port)'],['../d8/d1c/class_audio_director.html#a2b3de9f3d1fcec5506f028b762e76f8b',1,'AudioDirector::disconnect(const char *connectionString)'],['../d2/d7c/class_audio_connection.html#a65659ef7116830706ebcdc686f49d426',1,'AudioConnection::disconnect()']]],
-  ['dmpbitmap_4061',['dmpBitmap',['../d4/de9/class_ex_fat_partition.html#a6865906ff8ae978ec54c1ad464b10abc',1,'ExFatPartition']]],
-  ['dmpcluster_4062',['dmpCluster',['../d4/de9/class_ex_fat_partition.html#afc09f5007bb31dbabe69ef7cb413089a',1,'ExFatPartition']]],
-  ['dmpdirsector_4063',['dmpDirSector',['../d0/d12/class_fat_partition.html#a132d2081ecedd4686940a0b3a688237b',1,'FatPartition']]],
-  ['dmpfat_4064',['dmpFat',['../d4/de9/class_ex_fat_partition.html#a55e609f31ec0a649c0cebcd53674d249',1,'ExFatPartition::dmpFat()'],['../d0/d12/class_fat_partition.html#a8e78474397ef6d59588f0d5bb9fe5240',1,'FatPartition::dmpFat()']]],
-  ['dmpfile_4065',['dmpFile',['../d3/d51/class_fat_file.html#a4f01d27954ae49aeb6888ac7302f55d9',1,'FatFile']]],
-  ['dmprootdir_4066',['dmpRootDir',['../d0/d12/class_fat_partition.html#a0536262e8e9f501d3b86e062251faf94',1,'FatPartition']]],
-  ['dmpsector_4067',['dmpSector',['../d4/de9/class_ex_fat_partition.html#a1092830e46501f07f54afa9f654ede0c',1,'ExFatPartition::dmpSector()'],['../d0/d12/class_fat_partition.html#a143a82ac2808498385f3a7027ec7cdc1',1,'FatPartition::dmpSector()']]]
+  ['delay_2001',['delay',['../d4/d81/classeris_audio_analyze_scope.html#ac09535fdab9f449a141ce9c15ff4f02d',1,'erisAudioAnalyzeScope']]],
+  ['disconnect_2002',['disconnect',['../d8/d1c/class_audio_director.html#a0bd2489338ed7ae8a836fad125710d99',1,'AudioDirector::disconnect(AudioStream *source, int sourceOutput, AudioStream *destination, int destinationInput)'],['../d8/d1c/class_audio_director.html#a32ddf87cd4d8a21f533d3e6057b583f1',1,'AudioDirector::disconnect(char *from, uint8_t from_port, char *to, uint8_t to_port)'],['../d8/d1c/class_audio_director.html#a2b3de9f3d1fcec5506f028b762e76f8b',1,'AudioDirector::disconnect(const char *connectionString)'],['../d2/d7c/class_audio_connection.html#a65659ef7116830706ebcdc686f49d426',1,'AudioConnection::disconnect()']]]
 ];

@@ -1,3 +1,18 @@
+/**
+ * @file appExample.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief Application Example
+ * 
+ * Using the AppBaseClass template and standard functional apps
+ * this example shows how a complete application can be built 
+ * and communicate with the various components.
+ * 
+ * @version 0.1
+ * @date 2021-07-03
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "AudioUtilities.h"
 #include "AppManager.h"
 #include "appButton.h"
@@ -5,8 +20,7 @@
 #include "appScope.h"
 #include "appCQT.h"
 
-// Example application
-//
+
 class MyAppExample:public AppBaseClass {
   public:
     AppCQT *cqt;
@@ -32,11 +46,13 @@ class MyAppExample:public AppBaseClass {
       y_last = 0;
       y_last_scope = 0;
       
-      erisAudioFilterStateVariable* filter = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_1"));
-      filter->frequency(2400);
+      erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_1"));
+      //filter->setLowpass(0,440);
+      filter->setLowpass(0,2400);
+      //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(100);
+      filter2->frequency(110);
       //filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(20000);
@@ -153,12 +169,11 @@ class MyAppExample:public AppBaseClass {
           wav->begin(0.12,440,WAVEFORM_SQUARE);
         }
         else if(sender->isName("SCI")){
-          Serial.flush();
-          Serial.print(F("M appExample::MessageHandler SCI param: "));
-          Serial.println(message);
-          Serial.flush();
+          //Serial.print(F("M appExample::MessageHandler SCI param: "));
+          //Serial.println(message);
+          //Serial.flush();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
-          wav->begin(0.12,atoi(message),WAVEFORM_SQUARE);
+          wav->begin(0.12,atoi(message),WAVEFORM_SINE);
         }
     }
 };

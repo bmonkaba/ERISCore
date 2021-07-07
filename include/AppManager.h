@@ -122,8 +122,6 @@ class AppManager {
     void popAppFocus();  //return to the requesting app
     uint16_t peekAppFocus(){return activeID;}//used by apps to find out which has focus
     AppBaseClass* getActiveApp(){
-      Serial.print("M ");
-      Serial.println(pActiveApp->name);
       return pActiveApp;
     }
     void update(){

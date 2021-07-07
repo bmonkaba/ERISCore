@@ -21,6 +21,7 @@ var class_app_c_q_t =
     [ "updateRT", "d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057", null ],
     [ "fft", "d4/dde/class_app_c_q_t.html#a88143c03a7a43806fbff1b81912cebad", null ],
     [ "fft2", "d4/dde/class_app_c_q_t.html#afce1d381287e0937ab92abc266b7e5ef", null ],
+    [ "fft_buffer_serial_transmit_elapsed", "d4/dde/class_app_c_q_t.html#aa1372f68a27d1ad0b08a070ba19b985c", null ],
     [ "fftRVal", "d4/dde/class_app_c_q_t.html#ae8e8a9798495c35597a77f7be9416d7e", null ],
     [ "height", "d4/dde/class_app_c_q_t.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "highRange", "d4/dde/class_app_c_q_t.html#a88f91c8af5ebe6b3b2accb8358383720", null ],

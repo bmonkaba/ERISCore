@@ -98,14 +98,16 @@ $(document).ready(function(){initNavTree('db/d69/class_app_base_class.html','../
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/db4/class_app_base_class__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/db4/class_app_base_class__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Collaboration diagram for AppBaseClass:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d2c/class_app_base_class__coll__graph.svg" width="380" height="426"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../de/d2c/class_app_base_class__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -196,9 +198,9 @@ Friends</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">208</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                           {</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="comment">//Serial.println(&quot;AppBaseClass constructor called&quot;);</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a50389da1569c64f256e008ce929b0b36">parentNode</a>=<a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;          <span class="comment">//set by the parent</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873">nextAppicationNode</a>=<a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c">previousAppicationNode</a>=<a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a50389da1569c64f256e008ce929b0b36">parentNode</a>=NULL;          <span class="comment">//set by the parent</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873">nextAppicationNode</a>=NULL;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c">previousAppicationNode</a>=NULL;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">touch_state</a> = <span class="keyword">false</span>;      <span class="comment">//set by the application manager</span></div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8">origin_x</a>=0;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed">origin_y</a>=0;</div>
@@ -207,7 +209,6 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  strcpy(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,<span class="stringliteral">&quot;NONE&quot;</span>);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>()-&gt;<a class="code" href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">RegisterApp</a>(<span class="keyword">this</span>); <span class="comment">//self register on construction</span></div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
-<div class="ttc" id="a_stdio_stream_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00092">StdioStream.h:92</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a12be372470e6826bae25db90c01c388e"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">AppBaseClass::touch_state</a></div><div class="ttdeci">bool touch_state</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00031">AppManager.h:31</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a31587f3166dcf6ea0302337c3323822c"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c">AppBaseClass::previousAppicationNode</a></div><div class="ttdeci">AppBaseClass * previousAppicationNode</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00029">AppManager.h:29</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a3e8afaf0337b6ce5b539b78527ee0873"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873">AppBaseClass::nextAppicationNode</a></div><div class="ttdeci">AppBaseClass * nextAppicationNode</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00030">AppManager.h:30</a></div></div>
@@ -220,13 +221,14 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclass_app_manager_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00105">AppManager.h:105</a></div></div>
 <div class="ttc" id="aclass_app_manager_html_aed66c0e0b2984215d8849b28f6fa63ae"><div class="ttname"><a href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">AppManager::RegisterApp</a></div><div class="ttdeci">void RegisterApp(AppBaseClass *app)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00192">AppManager.h:192</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00105">AppManager::getInstance()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">height</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">name</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00030">nextAppicationNode</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00092">NULL</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00039">origin_x</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00040">origin_y</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00028">parentNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00029">previousAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00192">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">touch_state</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">width</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00105">AppManager::getInstance()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">height</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">name</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00030">nextAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00039">origin_x</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00040">origin_y</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00028">parentNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00029">previousAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00192">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">touch_state</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">width</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_afc31089c73d88d7b768aa71cbabf0465_cgraph.svg" width="436" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_afc31089c73d88d7b768aa71cbabf0465_cgraph.svg" width="511" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -293,7 +295,8 @@ Friends</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aacbb5f3bae12ca03970d0b10b3bbd2de_icgraph.svg" width="387" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aacbb5f3bae12ca03970d0b10b3bbd2de_icgraph.svg" width="290" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -331,13 +334,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00129">MyAppExample::MessageHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00141">MyAppExample::MessageHandler()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa989ddf4bdc4cbd9a61791ca45082177_icgraph.svg" width="438" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa989ddf4bdc4cbd9a61791ca45082177_icgraph.svg" width="508" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -387,7 +391,8 @@ Friends</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae84fb7d2e79a6e050cfa11d8e04cbae9_icgraph.svg" width="459" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae84fb7d2e79a6e050cfa11d8e04cbae9_icgraph.svg" width="538" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -497,7 +502,8 @@ Friends</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a7532a3ebe719e4c44762a35002eafbe2_icgraph.svg" width="462" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a7532a3ebe719e4c44762a35002eafbe2_icgraph.svg" width="523" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -547,7 +553,8 @@ Friends</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a2d09d0e6ca5812c4ce8b2fb671311c15_icgraph.svg" width="488" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a2d09d0e6ca5812c4ce8b2fb671311c15_icgraph.svg" width="559" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -597,7 +604,8 @@ Friends</h2></td></tr>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a4995bf2a090d64e88279683392fcd419_icgraph.svg" width="508" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a4995bf2a090d64e88279683392fcd419_icgraph.svg" width="582" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -641,13 +649,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">height</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">width</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00023">MyAppExample::MyAppExample()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_icgraph.svg" width="468" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_icgraph.svg" width="542" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -685,13 +694,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00004">MAX_NAME_LENGTH</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00023">MyAppExample::MyAppExample()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a953a8c57a54994f8f550221eb4b7e47b_icgraph.svg" width="442" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a953a8c57a54994f8f550221eb4b7e47b_icgraph.svg" width="508" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -725,13 +735,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00028">parentNode</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00023">MyAppExample::MyAppExample()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9_icgraph.svg" width="446" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9_icgraph.svg" width="512" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -775,13 +786,14 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00039">origin_x</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00040">origin_y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00023">MyAppExample::MyAppExample()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_icgraph.svg" width="455" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_icgraph.svg" width="524" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -812,18 +824,16 @@ Friends</h2></td></tr>
 <p>Reimplemented in <a class="el" href="../../d9/d03/class_app_template.html#a59fce240c8928b4d2e5abed74a4f0c0a">AppTemplate</a>, <a class="el" href="../../de/d35/class_app_slider.html#aa3a66c33b438ce3d6f89fef4270a2f35">AppSlider</a>, <a class="el" href="../../d9/dad/class_app_serial_command_interface.html#a78ae566447d808a534bb290b59b2b293">AppSerialCommandInterface</a>, <a class="el" href="../../d8/dbe/class_app_scope.html#afea80e94624d9ed8ce80c36021000c65">AppScope</a>, <a class="el" href="../../dd/da5/class_my_app_example.html#a85d334b7ccd2035b491b13d81350fea1">MyAppExample</a>, <a class="el" href="../../d4/dde/class_app_c_q_t.html#a0e1d9e850811f24577f20ac1900dd4f8">AppCQT</a>, and <a class="el" href="../../d2/d92/class_app_button.html#a32a41fe46125c49b1bd985958804bfa0">AppButton</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00059">59</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;AppBaseClass:update&quot;</span>));};  <span class="comment">//will be called only when the app has the screen focus and the screen isnt busy redrawing</span></div>
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00043">PrintBasic.h:43</a></div></div>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{Serial.println(F(<span class="stringliteral">&quot;AppBaseClass:update&quot;</span>));};  <span class="comment">//will be called only when the app has the screen focus and the screen isnt busy redrawing</span></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00043">F</a>.</p>
-
 <p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00129">AppManager::update()</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a0c2ee195056463d26b529f8c5218e8b9_icgraph.svg" width="451" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a0c2ee195056463d26b529f8c5218e8b9_icgraph.svg" width="512" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -862,7 +872,8 @@ Friends</h2></td></tr>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ad94e41c748692bda9c38b25c876bc3e6_icgraph.svg" width="467" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ad94e41c748692bda9c38b25c876bc3e6_icgraph.svg" width="532" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -907,7 +918,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">42</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00175">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">setDimension()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00127">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00195">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">setDimension()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00132">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -951,7 +962,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">43</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00009">AppButton::AppButton()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00036">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00052">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00009">AppSlider::AppSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00023">MyAppExample::MyAppExample()</a>, <a class="el" href="../../d6/d71/cpplint_8py_source.html#l02204">cpplint._ClassInfo::CheckEnd()</a>, <a class="el" href="../../d6/d71/cpplint_8py_source.html#l02243">cpplint._NamespaceInfo::CheckEnd()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00124">AppManager::getActiveApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00047">isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">setName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00129">AppManager::update()</a>, and <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00141">AppSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00009">AppButton::AppButton()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00036">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00052">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00009">AppSlider::AppSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00124">AppManager::getActiveApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00047">isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">setName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00129">AppManager::update()</a>, and <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00141">AppSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -995,7 +1006,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00039">39</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00175">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">setPosition()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00127">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00195">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">setPosition()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00132">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1013,7 +1024,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00040">40</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00175">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">setPosition()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00127">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00195">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">setPosition()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00132">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1120,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">41</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00175">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">setDimension()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00127">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00208">AppBaseClass()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00039">AppButton::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00195">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00263">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00052">AppSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00016">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00047">AppButton::onTouchRelease()</a>, <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00069">AppSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">setDimension()</a>, <a class="el" href="../../d5/db4/app_button_8h_source.html#l00026">AppButton::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00132">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, and <a class="el" href="../../d0/d74/app_slider_8h_source.html#l00029">AppSlider::update()</a>.</p>
 
 </div>
 </div>

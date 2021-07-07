@@ -41,12 +41,12 @@ enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
 typedef struct FFTReadRangeStruct{
 	uint16_t cqtBin;		// Provided by the caller
-	float startFrequency;		// Provided by the caller
-	float stopFrequency;		// Provided by the caller
-	
 	uint16_t startBin;		
 	uint16_t stopBin;		
-	uint16_t peakBin;		
+	uint16_t peakBin;	
+	float startFrequency;		// Provided by the caller
+	float stopFrequency;		// Provided by the caller
+		
 	//uint32_t peakFFTResult;		//real and imag packed data can be used to calc phase 
 	float estimatedFrequency;
 	float peakFrequency;
@@ -55,6 +55,7 @@ typedef struct FFTReadRangeStruct{
 	float avgValueSlow; 			//by comparing a short and long moving average; slow transient detection
 	float macdValue;
 	float transientValue;			//difference between the peak and fast peak values
+	float phase;
 } FFTReadRange;
 
 
@@ -65,7 +66,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//
+		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
@@ -95,6 +96,7 @@ public:
 		arm_fill_f32(0,(float32_t*)output,1024);
 		//memset(&tmp_buffer,0,sizeof(float32_t)*2048);
 		arm_fill_f32(0,(float32_t*)tmp_buffer,2048);
+		arm_fill_f32(0,(float32_t*)phase,512);
 		#else
 		memset(&output,0,sizeof(uint16_t)*512);
 		memset(&tmp_buffer,0,sizeof(int16_t)*2048);
@@ -176,8 +178,9 @@ public:
 		if(fftRR){
 			fftRR->peakValue = powerf;
 			fftRR->peakBin = peak_index + binFirst;
+			fftRR->phase = phase[fftRR->peakBin];
 		} 
-		return powerf/(1024.0);
+		return powerf;
 	}
 	float read(FFTReadRange *fftRR){
 		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);
@@ -236,9 +239,8 @@ public:
 
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
-			//fftRR->peakValue *= 80.0 / (fftRR->peakBin);//bin_size;
-			fftRR->peakValue *= 100.0/(subsample_by);
-			fftRR->peakValue = sqrt(fftRR->peakValue * bin_size);
+			fftRR->peakValue = log10f(fftRR->peakValue* bin_size * 1000) * 30.0;
+			//fftRR->peakValue = log10f(fftRR->peakValue * bin_size);
 			
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
@@ -261,8 +263,8 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.75) + (fftRR->peakValue * 0.25);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.10) + (fftRR->avgValueFast * 0.90); 	//by comparing a short and long moving average; slow transient detection
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->avgValueFast * 0.05); 	//by comparing a short and long moving average; slow transient detection
 				//if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				
@@ -276,7 +278,7 @@ public:
 
 	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
 	static int compare_fftrr_value(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)->peakValue > ((const FFTReadRange *)q)->peakValue) return -1;
+		if (((const FFTReadRange *)p)-> peakValue > ((const FFTReadRange *)q)->peakValue) return -1;
 		return 1;
 	}
 
@@ -331,6 +333,7 @@ public: //tmp for debug
 	arm_cfft_radix4_instance_f32 fft_inst;
 	volatile float32_t tmp_buffer[2048] __attribute__ ((aligned (4)));
 	volatile float32_t output[1024] __attribute__ ((aligned (4)));
+	float32_t phase[512] __attribute__ ((aligned (4)));
 	#else
 	arm_cfft_radix4_instance_q15 fft_inst;
 	int16_t tmp_buffer[2048] __attribute__ ((aligned (4)));
