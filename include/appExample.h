@@ -51,12 +51,16 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,2400);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
-      erisAudioFilterStateVariable* filter2 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_2"));
-      filter2->frequency(110);
+      erisAudioFilterBiquad* filter2 = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
+      filter2->setLowpass(0,90);
       //filter2->resonance(0.20);
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(20000);
       //filter3->resonance(0.20);
+
+      erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
+      reverb->roomsize(0.99);
+      reverb->damping(0.91);
 
       oscope = new AppScope;
       oscope->setPosition(0,20);

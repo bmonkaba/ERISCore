@@ -86,18 +86,19 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
   addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
-  
+  addAudioStreamObj(new erisAudioEffectFreeverb);
+
+
   //generate audio component pool
   for (int i=0; i < 16; i++){
     addAudioStreamObj(new erisAudioEffectEnvelope);
     addAudioStreamObj(new erisAudioSynthWaveformModulated);
     addAudioStreamObj(new erisAudioSynthWaveform);
-    addAudioStreamObj(new erisAudioFilterStateVariable);
   }
 
   for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
-    addAudioStreamObj(new erisAudioAnalyzePeak);
+    addAudioStreamObj(new erisAudioFilterStateVariable);
     addAudioStreamObj(new erisAudioFilterBiquad);
   }
 
@@ -368,21 +369,25 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("i2s-in_1 1 biquad_1 0");
   connect("biquad_1 0 fft1024_1 0"); //lp filter
   
-  connect("i2s-in_1 1 filter_2 0");
-  connect("filter_2 2 fft1024_2 0"); //lp filter
+  connect("i2s-in_1 1 biquad_2 0");
+  connect("biquad_2 0 fft1024_2 0"); //lp filter
 
   connect("i2s-in_1 1 scope_1 0");
   connect("mixer_1 0 scope_1 1");
   //connect("i2s-in_1 1 i2s-out_1 1");
 
   //16 voice oscillator bank
-  connect("mixer_2 0 mixer_1 0");
-  connect("mixer_3 0 mixer_1 1");
-  connect("mixer_4 0 mixer_1 2");
+  connect("mixer_2 0 mixer_6 0");
+  connect("mixer_3 0 mixer_6 1");
+  connect("mixer_4 0 mixer_6 2");
 
+  connect("mixer_6 0 freeverb_1 0");
+  connect("freeverb_1 0 mixer_1 0");
   
+  connect("mixer_6 0 mixer_1 1");
+
   connect("mixer_5 0 filter_3 0");
-  connect("filter_3 0 mixer_1 3");
+  connect("filter_3 0 mixer_1 2");
 
   connect("waveform_1 0 mixer_2 0");
   connect("waveform_2 0 mixer_2 1");
@@ -402,7 +407,7 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("waveform_13 0 mixer_5 0");
   connect("waveform_14 0 mixer_5 1");
   connect("waveform_15 0 mixer_5 2");
-  //connect("i2s-in_1 1 mixer_5 3");
+  connect("i2s-in_1 1 mixer_5 3");
 
   connect("mixer_1 0 i2s-out_1 0");
   AudioInterrupts();

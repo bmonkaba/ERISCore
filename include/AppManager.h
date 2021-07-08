@@ -79,6 +79,7 @@ class AppManager {
     AppManager(){ //private constuctor (lazy singleton pattern)
       root = 0;
       activeID = 0;
+      pActiveApp = 0;
       nextIDAssignment = 1; //id 0 is reserved
       //init the sd card
       if (!sd.begin(SdioConfig(FIFO_SDIO))){

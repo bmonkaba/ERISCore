@@ -58,6 +58,8 @@ class AppSerialCommandInterface:public AppBaseClass {
         streamPos = 0;
         pSD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
+        txBuffer[0] = 0;
+        receivedChars[0] = 0;
     }; 
     //define event handlers
   protected:
@@ -137,8 +139,8 @@ class AppSerialCommandInterface:public AppBaseClass {
     };
 
 
-    void update(){};    //called only when the app is active
-    void updateRT(){
+    void update() override{};    //called only when the app is active
+    void updateRT() override{
         if (sincePoll < SERIAL_POLLING_RATE_MAX) return;
         sincePoll = 0;
         char endMarker = '\n';
@@ -257,14 +259,14 @@ class AppSerialCommandInterface:public AppBaseClass {
             }
         }
     }; //allways called even if app is not active
-    void onFocus(){};   //called when given focus
-    void onFocusLost(){}; //called when focus is taken
-    void onTouch(uint16_t x, uint16_t y){
+    void onFocus()override{};   //called when given focus
+    void onFocusLost()override{}; //called when focus is taken
+    void onTouch(uint16_t x, uint16_t y)override{
         //check if touch point is within the application bounding box
         if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
             //is touched
         }
     };
-    void onTouchRelease(uint16_t x, uint16_t y){
+    void onTouchRelease(uint16_t x, uint16_t y)override{
     };
 };

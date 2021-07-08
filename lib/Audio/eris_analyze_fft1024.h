@@ -40,10 +40,7 @@ enum subsample_range{SS_LOWFREQ, SS_HIGHFREQ};
 
 
 typedef struct FFTReadRangeStruct{
-	uint16_t cqtBin;		// Provided by the caller
-	uint16_t startBin;		
-	uint16_t stopBin;		
-	uint16_t peakBin;	
+
 	float startFrequency;		// Provided by the caller
 	float stopFrequency;		// Provided by the caller
 		
@@ -56,6 +53,10 @@ typedef struct FFTReadRangeStruct{
 	float macdValue;
 	float transientValue;			//difference between the peak and fast peak values
 	float phase;
+	uint16_t cqtBin;		// Provided by the caller
+	uint16_t startBin;		
+	uint16_t stopBin;		
+	uint16_t peakBin;	
 } FFTReadRange;
 
 
@@ -79,7 +80,7 @@ public:
 		category="analyze-function";
 		enabled = false;
 		outputflag = false;
-		is_analyzed = false;
+		is_analyzed = true; //default state of true prevents potential analysis without available data on startup
 		sample_block=0;
 		SAMPLING_INDEX=0;
 		MEM_STEP = 0x010;
@@ -239,7 +240,8 @@ public:
 
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
-			fftRR->peakValue = log10f(fftRR->peakValue* bin_size * 1000) * 30.0;
+			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
+			fftRR->peakValue = fftRR->peakValue * 0.2;
 			//fftRR->peakValue = log10f(fftRR->peakValue * bin_size);
 			
 			//from the peak bin calc the freq
