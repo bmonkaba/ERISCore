@@ -54,15 +54,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/dd3/classeris_audio_synth_tone_sweep.html",
-"d6/d17/struct_u_i_c_type.html#ac2b44d58bee11da48fc2aa27b200746a",
-"db/d69/class_app_base_class.html",
-"de/d35/class_app_slider.html#aa989ddf4bdc4cbd9a61791ca45082177",
-"de/d7c/ui__menu__structs_8h.html#a2c520950aa564fc2dfaa94ffdea67b85",
-"de/d7c/ui__menu__structs_8h.html#a5ca472559a75a7f56432ee2355fc9dd3",
-"de/d7c/ui__menu__structs_8h.html#a8be1755babfb124dc1b5c0a95d22b6cf",
-"de/d7c/ui__menu__structs_8h.html#ac047eedd4fd094c511b08825b9a41fba",
-"de/d7c/ui__menu__structs_8h.html#af899a5a8a73d5200921d0ffc52a85251"
+"d2/d92/class_app_button.html#ad94e41c748692bda9c38b25c876bc3e6",
+"d6/d17/_u_i_element_8h.html",
+"d9/dad/class_app_serial_command_interface.html#acec8429a0d867221c0c4f47f4f7d00d4",
+"de/d10/_h_s_i_8h.html#a55ed635bf7ffc90a941e1b439f877193",
+"de/d7c/ui__menu__structs_8h.html#a20a7e187e2bb4d539868c92e8a4266f4",
+"de/d7c/ui__menu__structs_8h.html#a50cc5c0a83043770a318c2db5da2492b",
+"de/d7c/ui__menu__structs_8h.html#a822cab4b5c3f3cce4f2bc0a567896ac4",
+"de/d7c/ui__menu__structs_8h.html#ab4a4bc8a83f8e4c46c5f6173006bbed1",
+"de/d7c/ui__menu__structs_8h.html#aee9a18c93280edb2ee9022b41e779df3",
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

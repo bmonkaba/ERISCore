@@ -18,6 +18,8 @@ var class_app_slider =
     [ "setValue", "de/d35/class_app_slider.html#a474f1d34b936e817475736652e8e1db0", null ],
     [ "update", "de/d35/class_app_slider.html#aa3a66c33b438ce3d6f89fef4270a2f35", null ],
     [ "updateRT", "de/d35/class_app_slider.html#ad94e41c748692bda9c38b25c876bc3e6", null ],
+    [ "cycle_time", "de/d35/class_app_slider.html#acff523b6c1d155a66b915e4f49158af8", null ],
+    [ "cycle_time_max", "de/d35/class_app_slider.html#a297b44dd038d30faab55f6ccf1f9e9e2", null ],
     [ "height", "de/d35/class_app_slider.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "id", "de/d35/class_app_slider.html#a3682f17759610f58e60351fe96daa6b2", null ],
     [ "isPressed", "de/d35/class_app_slider.html#ada151041e909d65afde567653d20ef28", null ],
@@ -29,6 +31,10 @@ var class_app_slider =
     [ "previousAppicationNode", "de/d35/class_app_slider.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "text", "de/d35/class_app_slider.html#a3a0495f64171236c05be5fd2b49d919e", null ],
     [ "touch_state", "de/d35/class_app_slider.html#a12be372470e6826bae25db90c01c388e", null ],
+    [ "update_loop_time", "de/d35/class_app_slider.html#a08a303813204000ee12600a38fe96d18", null ],
+    [ "update_loop_time_max", "de/d35/class_app_slider.html#acec8429a0d867221c0c4f47f4f7d00d4", null ],
+    [ "updateRT_loop_time", "de/d35/class_app_slider.html#a3d6da03c9c3c5243d8dd2281dc963011", null ],
+    [ "updateRT_loop_time_max", "de/d35/class_app_slider.html#ad9996440b20f31307ba26ff1f932a421", null ],
     [ "value", "de/d35/class_app_slider.html#af1ea469525f4c6d349573317128f6988", null ],
     [ "width", "de/d35/class_app_slider.html#ab09a10b13273bf5b5a99c412f3835c0d", null ]
 ];

@@ -23,8 +23,8 @@
 
 class MyAppExample:public AppBaseClass {
   public:
-    AppCQT *cqt;
-    AppScope *oscope;
+    AppCQT cqt;
+    AppScope oscope;
     AppButton *button;
     AppSlider *slider;
     int16_t x_end,x_start;
@@ -51,26 +51,30 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,2400);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
-      erisAudioFilterBiquad* filter2 = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter2->setLowpass(0,90);
+      filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
+      filter->setLowpass(0,90);
       //filter2->resonance(0.20);
+      filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
+      filter->setLowpass(0,2880);
+      //filter2->resonance(0.20);
+      
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(20000);
+      filter3->frequency(8100);
       //filter3->resonance(0.20);
 
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.99);
-      reverb->damping(0.91);
+      reverb->roomsize(0.69);
+      reverb->damping(0.72);
 
-      oscope = new AppScope;
-      oscope->setPosition(0,20);
-      oscope->setDimension(320,100);
-      oscope->setParent(this);
+      //oscope = new AppScope;
+      oscope.setPosition(0,20);
+      oscope.setDimension(320,100);
+      oscope.setParent(this);
 
-      cqt = new AppCQT;
-      cqt->setPosition(0,20);
-      cqt->setDimension(320,100);
-      cqt->setParent(this);
+      //cqt = new AppCQT;
+      cqt.setPosition(0,20);
+      cqt.setDimension(320,100);
+      cqt.setParent(this);
 
       slider = new AppSlider();
       slider->setPosition(50,200);
@@ -149,8 +153,8 @@ class MyAppExample:public AppBaseClass {
           erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
           mix->gain(3,3 * slider->value/100.0);
           
-          mix->gain(0,1.0 - slider->value/100.0);
-          mix->gain(1,1.0 - slider->value/100.0);
+          //mix->gain(0,1.0 - slider->value/100.0);
+          //mix->gain(1,1.0 - slider->value/100.0);
           mix->gain(2,1.0 - slider->value/100.0);
           
           //fm_mod->begin(1.0, slider->value/2000.0, WAVEFORM_TRIANGLE);

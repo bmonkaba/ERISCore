@@ -12,7 +12,7 @@
 #include "PCM1863.h"
 
 uint16_t inc;
-MyAppExample app;
+static DMAMEM MyAppExample app;
 AppSerialCommandInterface appSCI;
 AppReprogram *appReprogram;
 //AppTemplate appTemplate;
@@ -71,12 +71,10 @@ void FLASHMEM setup() {
   }
 }
 
-elapsedMicros loop_cycle_time;
 void loop(void) {
   //The appManager will... 
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
   //calls updateRT for all apps
-  loop_cycle_time = 0; 
   AppManager::getInstance()->update();                                    
 }

@@ -4,6 +4,7 @@ var class_app_manager =
     [ "getSD", "da/d96/class_app_manager.html#acc43b045c7e46f78039e89525710757b", null ],
     [ "peekAppFocus", "da/d96/class_app_manager.html#a670f012b624cb34002cc2e5bbd3d9ac3", null ],
     [ "popAppFocus", "da/d96/class_app_manager.html#a80e6bc14473e833077f0179d5b771830", null ],
+    [ "printStats", "da/d96/class_app_manager.html#a5473102eda020a4b4e2bcdf5dad221b1", null ],
     [ "pushAppFocus", "da/d96/class_app_manager.html#a927463551ef548aa5f1f75d517c72128", null ],
     [ "RegisterApp", "da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae", null ],
     [ "switchAppFocus", "da/d96/class_app_manager.html#a4e836d1c6fc14462e71bd7f386b031c0", null ],

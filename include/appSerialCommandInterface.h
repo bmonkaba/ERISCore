@@ -9,11 +9,11 @@ INCOMMING MESSAGES:
 
     LS [PATH]
     GET [PATH]  (get file is responded with FS messages)
-    ACON    (request current audio block connections)
-    CONNECT (make an audio block connection)
-    DISCONNECT (break an audio block connection)
-    B          (broadcast message to apps )
-
+    ACON        (request current audio block connections)
+    CONNECT     (make an audio block connection)
+    DISCONNECT  (break an audio block connection)
+    AA          (broadcast message to active app )
+    STATS       
 OUTPUT MESSAGES:
 
     CQT_H  (CQT BINS - High Range)
@@ -35,6 +35,7 @@ OUTPUT MESSAGES:
 #define SERIAL_PARAM_BUFFER_SIZE 128
 #define SERIAL_OUTPUT_BUFFER_SIZE 1024
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 256
+
 
 
 int replacechar(char *str, char orig, char rep) {
@@ -253,6 +254,9 @@ class AppSerialCommandInterface:public AppBaseClass {
                     //Serial.print(F("AA OK "));
                     //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                     //Serial.flush();
+                }else if (strcmp(cmd, "STATS") == 0){ 
+                    ad.printStats();
+                    AppManager::getInstance()->printStats();
                 }
 
                 newRxMsg = false;

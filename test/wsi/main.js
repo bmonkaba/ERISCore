@@ -14,24 +14,17 @@ var osi;
 var si = 0;
 var rx_bytes = 0;
 var frame_count = 0;
-
 var t = new Date();
 var start_time = Date.now();
 var com_state = "";
 var sdFiles = [];
 var fileStreamContainer = [];
 
-
-
-
-
 $( "#freq_slider" ).slider({
   change: function( event, ui ) {}
 });
 
-
 setInterval(sweepFreq, 100);
-
 
 $('#file_explorer').jstree();
 $('#fancy_explorer').fancytree({
@@ -307,10 +300,9 @@ socket.onmessage = function (message) {
       default:
         received.append(message.data.trim());
         received.append($('<br/>'));
-        scroll.animate({scrollTop: received.scrollHeight}, "slow");            
+        //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
+        $('.messages').scrollTop(10000000000);           
   };
-  //$('#messages').animate({$('#messages').scrollTop: 0}, "fast");
-  $('.messages').scrollTop(10000000000);
 };
 
 
@@ -338,6 +330,16 @@ $("#cmd_send").click(function(ev){
 
 $('#clear').click(function(){
   received.empty();
+});
+
+$("#ACON").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "ACON\n"});
+});
+
+$("#STATS").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "STATS"});
 });
 
 

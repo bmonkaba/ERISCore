@@ -4,6 +4,7 @@ var classeris_audio_analyze_f_f_t1024 =
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a5b98b7b6d5fd30a7e1aa56e90eff8699", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024.html#ad5828db6b0f32067282146976b559b70", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a707b94f214928898fea242ccbcd4ba31", null ],
+    [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a8ca8dce06854a577e392e54ecb0c1b6a", null ],
     [ "analyze", "d0/d55/classeris_audio_analyze_f_f_t1024.html#adaa8219e3ba39881ca0e59eaa85e96f8", null ],
     [ "available", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a6942413450de223b739c755c1532f7fd", null ],
     [ "averageTogether", "d0/d55/classeris_audio_analyze_f_f_t1024.html#ace4164df1e4e6086974c0d4fe4a649e8", null ],

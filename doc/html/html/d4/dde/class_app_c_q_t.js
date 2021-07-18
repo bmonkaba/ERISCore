@@ -1,6 +1,7 @@
 var class_app_c_q_t =
 [
     [ "AppCQT", "d4/dde/class_app_c_q_t.html#a587bd3e6103103694f01f420aeb02a70", null ],
+    [ "__attribute__", "d4/dde/class_app_c_q_t.html#a1ca4e432022b3dd9486e057df6656d05", null ],
     [ "__attribute__", "d4/dde/class_app_c_q_t.html#a3fc3d5298eac6769a2cec3fd690fc0ca", null ],
     [ "__attribute__", "d4/dde/class_app_c_q_t.html#a822fe7791600dfc454ed4c52d0b210e3", null ],
     [ "__attribute__", "d4/dde/class_app_c_q_t.html#ad96b3d9679050177b8a4d36ffcf9438f", null ],
@@ -17,12 +18,14 @@ var class_app_c_q_t =
     [ "setParent", "d4/dde/class_app_c_q_t.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d4/dde/class_app_c_q_t.html#aa9f84b5a03adc7115a476219022e12b5", null ],
     [ "update", "d4/dde/class_app_c_q_t.html#a0e1d9e850811f24577f20ac1900dd4f8", null ],
-    [ "updateOscillatorBank", "d4/dde/class_app_c_q_t.html#a9385e1564ef7fd404f0aac7adef64412", null ],
+    [ "updateOscillatorBank", "d4/dde/class_app_c_q_t.html#a367a939ac48e4efa3bb648cd4f3bf848", null ],
     [ "updateRT", "d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057", null ],
+    [ "cqt_serial_transmit_elapsed", "d4/dde/class_app_c_q_t.html#ad422483231c7d891a9400e85fb2d9dcf", null ],
+    [ "cycle_time", "d4/dde/class_app_c_q_t.html#acff523b6c1d155a66b915e4f49158af8", null ],
+    [ "cycle_time_max", "d4/dde/class_app_c_q_t.html#a297b44dd038d30faab55f6ccf1f9e9e2", null ],
     [ "fft", "d4/dde/class_app_c_q_t.html#a88143c03a7a43806fbff1b81912cebad", null ],
     [ "fft2", "d4/dde/class_app_c_q_t.html#afce1d381287e0937ab92abc266b7e5ef", null ],
     [ "fft_buffer_serial_transmit_elapsed", "d4/dde/class_app_c_q_t.html#aa1372f68a27d1ad0b08a070ba19b985c", null ],
-    [ "fftRVal", "d4/dde/class_app_c_q_t.html#ae8e8a9798495c35597a77f7be9416d7e", null ],
     [ "height", "d4/dde/class_app_c_q_t.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "highRange", "d4/dde/class_app_c_q_t.html#a88f91c8af5ebe6b3b2accb8358383720", null ],
     [ "id", "d4/dde/class_app_c_q_t.html#a3682f17759610f58e60351fe96daa6b2", null ],
@@ -36,5 +39,9 @@ var class_app_c_q_t =
     [ "rt_calls", "d4/dde/class_app_c_q_t.html#a383695819f9ddeffb5689576884b9928", null ],
     [ "touch_state", "d4/dde/class_app_c_q_t.html#a12be372470e6826bae25db90c01c388e", null ],
     [ "update_calls", "d4/dde/class_app_c_q_t.html#ad44c783cf9c188d4c38a787cc1e04237", null ],
+    [ "update_loop_time", "d4/dde/class_app_c_q_t.html#a08a303813204000ee12600a38fe96d18", null ],
+    [ "update_loop_time_max", "d4/dde/class_app_c_q_t.html#acec8429a0d867221c0c4f47f4f7d00d4", null ],
+    [ "updateRT_loop_time", "d4/dde/class_app_c_q_t.html#a3d6da03c9c3c5243d8dd2281dc963011", null ],
+    [ "updateRT_loop_time_max", "d4/dde/class_app_c_q_t.html#ad9996440b20f31307ba26ff1f932a421", null ],
     [ "width", "d4/dde/class_app_c_q_t.html#ab09a10b13273bf5b5a99c412f3835c0d", null ]
 ];

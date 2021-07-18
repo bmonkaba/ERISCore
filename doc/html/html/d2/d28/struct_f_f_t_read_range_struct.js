@@ -8,6 +8,7 @@ var struct_f_f_t_read_range_struct =
     [ "peakBin", "d2/d28/struct_f_f_t_read_range_struct.html#ab48e101175264362a6a23b7bb4008f04", null ],
     [ "peakFrequency", "d2/d28/struct_f_f_t_read_range_struct.html#affcc948ddeed41e476eb8a9ebb952826", null ],
     [ "peakValue", "d2/d28/struct_f_f_t_read_range_struct.html#a0046b2984c70bc155f9d69a5aba6c9dd", null ],
+    [ "phase", "d2/d28/struct_f_f_t_read_range_struct.html#ae746cc6f746161a094d598d670fa969d", null ],
     [ "startBin", "d2/d28/struct_f_f_t_read_range_struct.html#ad43426f115fc1f443a345baab9745128", null ],
     [ "startFrequency", "d2/d28/struct_f_f_t_read_range_struct.html#a2d1c41e051c823bb3ad48a1779fe95e3", null ],
     [ "stopBin", "d2/d28/struct_f_f_t_read_range_struct.html#a2bba8f9c8bdabe494dcd725130119ac9", null ],

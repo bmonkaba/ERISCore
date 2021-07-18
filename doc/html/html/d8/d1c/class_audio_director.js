@@ -17,6 +17,7 @@ var class_audio_director =
     [ "getConnectionString", "d8/d1c/class_audio_director.html#a3aac7905bf91399796f415898fc63cd1", null ],
     [ "linkGroup", "d8/d1c/class_audio_director.html#a063dd9da4c6abd5b19d77e1722228a4e", null ],
     [ "ParseConnectString", "d8/d1c/class_audio_director.html#a632071166d2460d377ca926fe1ca26c8", null ],
+    [ "printStats", "d8/d1c/class_audio_director.html#a154eaf3ab4ea4fa754fc35e0687f4c1b", null ],
     [ "unlinkAll", "d8/d1c/class_audio_director.html#ae56e605ed655b992bbe7ef7df600b07b", null ],
     [ "activeConnectionGroup", "d8/d1c/class_audio_director.html#a73f5916ceca8fed0b2bb1934aa3a5591", null ],
     [ "activeConnections", "d8/d1c/class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d", null ],

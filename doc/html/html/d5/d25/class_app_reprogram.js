@@ -15,6 +15,8 @@ var class_app_reprogram =
     [ "setPosition", "d5/d25/class_app_reprogram.html#aa9f84b5a03adc7115a476219022e12b5", null ],
     [ "update", "d5/d25/class_app_reprogram.html#a0c2ee195056463d26b529f8c5218e8b9", null ],
     [ "updateRT", "d5/d25/class_app_reprogram.html#a4909d746167dbdef2f06ca08a42ed0f3", null ],
+    [ "cycle_time", "d5/d25/class_app_reprogram.html#acff523b6c1d155a66b915e4f49158af8", null ],
+    [ "cycle_time_max", "d5/d25/class_app_reprogram.html#a297b44dd038d30faab55f6ccf1f9e9e2", null ],
     [ "height", "d5/d25/class_app_reprogram.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "id", "d5/d25/class_app_reprogram.html#a3682f17759610f58e60351fe96daa6b2", null ],
     [ "name", "d5/d25/class_app_reprogram.html#ab52309ab6ada18b53b674f23b01dded2", null ],
@@ -24,5 +26,9 @@ var class_app_reprogram =
     [ "parentNode", "d5/d25/class_app_reprogram.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "d5/d25/class_app_reprogram.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "touch_state", "d5/d25/class_app_reprogram.html#a12be372470e6826bae25db90c01c388e", null ],
+    [ "update_loop_time", "d5/d25/class_app_reprogram.html#a08a303813204000ee12600a38fe96d18", null ],
+    [ "update_loop_time_max", "d5/d25/class_app_reprogram.html#acec8429a0d867221c0c4f47f4f7d00d4", null ],
+    [ "updateRT_loop_time", "d5/d25/class_app_reprogram.html#a3d6da03c9c3c5243d8dd2281dc963011", null ],
+    [ "updateRT_loop_time_max", "d5/d25/class_app_reprogram.html#ad9996440b20f31307ba26ff1f932a421", null ],
     [ "width", "d5/d25/class_app_reprogram.html#ab09a10b13273bf5b5a99c412f3835c0d", null ]
 ];

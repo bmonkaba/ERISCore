@@ -35,6 +35,12 @@ class AppBaseClass {
                   // 253 - widgets (always active)
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
+    uint16_t update_loop_time;
+    uint16_t update_loop_time_max;
+    uint16_t updateRT_loop_time;
+    uint16_t updateRT_loop_time_max;
+    uint16_t cycle_time;
+    uint16_t cycle_time_max;
   public:
     int16_t origin_x;
     int16_t origin_y;
@@ -125,9 +131,27 @@ class AppManager {
     AppBaseClass* getActiveApp(){
       return pActiveApp;
     }
+    void printStats(){
+      AppBaseClass *node = root;
+      do{
+        Serial.flush();
+        Serial.print(node->name);
+        Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
+        Serial.print("\tupdate_loop_time_max: ");Serial.print(node->update_loop_time_max);
+        Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
+        Serial.print("\tupdateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
+        Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
+        Serial.print("\tcycle_time_max: ");Serial.print(node->cycle_time_max);
+        Serial.println();
+        
+        node=node->nextAppicationNode;//check next node
+      }while(node !=0);
+
+    }
     void update(){
       bool screenBusy = tft.busy();
       elapsedMicros cycle_time=0;
+      elapsedMicros app_time=0;
       if (root == 0){
         Serial.println(F("AppManager::update called without an application initalized"));
         return;
@@ -142,7 +166,11 @@ class AppManager {
       #endif
       //search the linked list
       do{
+        cycle_time = 0;
+        app_time=0;
         node->updateRT(); //real time update (always called)
+        node->updateRT_loop_time = app_time;
+        if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
         //Serial.println("AppManager:: real time update");
         isactive_child = false;
         if (node->id == activeID) pActiveApp = node;
@@ -164,7 +192,12 @@ class AppManager {
             node->touch_state=0;
             node->onTouchRelease(p.x, p.y);
           }
-          if (!screenBusy)node->update(); //update active window
+          if (!screenBusy){
+            app_time=0;
+            node->update(); //update active window
+            node->update_loop_time = app_time;
+            if (node->update_loop_time > node->update_loop_time_max) node->update_loop_time_max = node->update_loop_time;
+          }
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
         }
@@ -174,7 +207,8 @@ class AppManager {
         Serial.print(cycle_time);
         Serial.print(F(" "));
         #endif
-        cycle_time = 0;
+        node->cycle_time = cycle_time;
+        if (node->cycle_time > node->cycle_time_max) node->cycle_time_max = node->cycle_time;
         node=node->nextAppicationNode;//check next node
       }while(node !=0);
       #ifdef SERIAL_PRINT_APP_LOOP_TIME
@@ -214,6 +248,12 @@ AppBaseClass:: AppBaseClass(){
   origin_y=0;
   width=320;
   height=240;
+  update_loop_time = 0;
+  update_loop_time_max = 0;
+  updateRT_loop_time = 0;
+  updateRT_loop_time_max = 0;
+  cycle_time = 0;
+  cycle_time_max =0;
   strcpy(name,"NONE");
   AppManager::getInstance()->RegisterApp(this); //self register on construction
 }

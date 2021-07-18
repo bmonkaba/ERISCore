@@ -41,6 +41,7 @@ class AudioDirector{
     bool disconnect(const char* connectionString);
     int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
+    void printStats();
   protected:
     void*  heapStart;  //used to estamate total heap allocation size
     void*  heapEnd;    //
@@ -155,6 +156,16 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   }
   return false;
 };
+
+void AudioDirector::printStats(){
+  for(uint16_t i=0; i < objCount;i++){
+    Serial.flush();
+    Serial.print(pAudioStreamObjPool[i]->shortName);Serial.print("_");
+    Serial.print(pAudioStreamObjPool[i]->instance);Serial.print(" processorUsage:");
+    Serial.print(pAudioStreamObjPool[i]->processorUsage());Serial.print(" processorUsageMax:");
+    Serial.println(pAudioStreamObjPool[i]->processorUsageMax());
+  }
+}
 
 void AudioDirector::generateCategoryList(){
   //called from the constructor
@@ -376,19 +387,26 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("mixer_1 0 scope_1 1");
   //connect("i2s-in_1 1 i2s-out_1 1");
 
-  //16 voice oscillator bank
+  //16 voice oscillator bank bus mixer (6)
   connect("mixer_2 0 mixer_6 0");
   connect("mixer_3 0 mixer_6 1");
   connect("mixer_4 0 mixer_6 2");
+  connect("mixer_5 0 mixer_6 3");
+  //synth output to reverb and master mixer (1)
+  //connect("mixer_6 0 biquad_3 0");
 
   connect("mixer_6 0 freeverb_1 0");
-  connect("freeverb_1 0 mixer_1 0");
-  
-  connect("mixer_6 0 mixer_1 1");
+  connect("freeverb_1 0 biquad_3 0");
+  connect("biquad_3 0 mixer_1 1");
 
-  connect("mixer_5 0 filter_3 0");
+  //input through filter 3 to the master mixer
+  connect("i2s-in_1 1 filter_3 0");
   connect("filter_3 0 mixer_1 2");
 
+  //master mixer to the output
+  connect("mixer_1 0 i2s-out_1 0");
+
+  //osc banks
   connect("waveform_1 0 mixer_2 0");
   connect("waveform_2 0 mixer_2 1");
   connect("waveform_3 0 mixer_2 2");
@@ -407,9 +425,9 @@ void AudioDirector::activateConnectionGroup(uint16_t group_id){
   connect("waveform_13 0 mixer_5 0");
   connect("waveform_14 0 mixer_5 1");
   connect("waveform_15 0 mixer_5 2");
-  connect("i2s-in_1 1 mixer_5 3");
-
-  connect("mixer_1 0 i2s-out_1 0");
+  connect("waveform_16 0 mixer_5 3");
+  
+  
   AudioInterrupts();
   
   //to use the objects they must be downcast

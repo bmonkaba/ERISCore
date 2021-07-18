@@ -35,12 +35,15 @@ var searchData=
   ['cqt_113',['cqt',['../dd/da5/class_my_app_example.html#aae36dd46a018355b3a789eccef78ed8f',1,'MyAppExample']]],
   ['cqt_5ffont_114',['CQT_FONT',['../d0/d72/_u_i_8h.html#a56e8f2bd14e0b968699c7735684dc926',1,'UI.h']]],
   ['cqt_5ffont_5fsize_115',['CQT_FONT_SIZE',['../d0/d72/_u_i_8h.html#a4d5babc252cd53529a08de9e60e7da4c',1,'UI.h']]],
-  ['cqtbin_116',['cqtBin',['../d2/d28/struct_f_f_t_read_range_struct.html#a4ccd8687130e2959ae12ff0cdc1b4639',1,'FFTReadRangeStruct']]],
-  ['cs_5fexp_117',['CS_EXP',['../de/d10/_h_s_i_8h.html#a569237181520f0b24da7e16f403d1107',1,'HSI.h']]],
-  ['cs_5ftouch_118',['CS_TOUCH',['../de/d10/_h_s_i_8h.html#ab88a77c2b507fd37ff28af2cdfd8de72',1,'HSI.h']]],
-  ['cspin_119',['csPin',['../d1/dff/class_touch.html#a75eac865c00d9d392e7878ff054025c9',1,'Touch']]],
-  ['ct_5flist_120',['CT_LIST',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a942dd3c04b000931d0401fbb7a682935',1,'UI.h']]],
-  ['ct_5fnumeric_121',['CT_NUMERIC',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a9d58836ef364c39f7af981a7cce0ee8a',1,'UI.h']]],
-  ['ct_5ftoggle_122',['CT_TOGGLE',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a73a7ad0af6b17c1dd3e208446205f432',1,'UI.h']]],
-  ['cycle_5fcounter_5fapprox_5fpercent_123',['CYCLE_COUNTER_APPROX_PERCENT',['../df/d6c/_audio_stream_8h.html#ad93bd266d55f8077bc3a009b023bf0b2',1,'AudioStream.h']]]
+  ['cqt_5fserial_5ftransmit_5felapsed_116',['cqt_serial_transmit_elapsed',['../d4/dde/class_app_c_q_t.html#ad422483231c7d891a9400e85fb2d9dcf',1,'AppCQT']]],
+  ['cqtbin_117',['cqtBin',['../d2/d28/struct_f_f_t_read_range_struct.html#a4ccd8687130e2959ae12ff0cdc1b4639',1,'FFTReadRangeStruct']]],
+  ['cs_5fexp_118',['CS_EXP',['../de/d10/_h_s_i_8h.html#a569237181520f0b24da7e16f403d1107',1,'HSI.h']]],
+  ['cs_5ftouch_119',['CS_TOUCH',['../de/d10/_h_s_i_8h.html#ab88a77c2b507fd37ff28af2cdfd8de72',1,'HSI.h']]],
+  ['cspin_120',['csPin',['../d1/dff/class_touch.html#a75eac865c00d9d392e7878ff054025c9',1,'Touch']]],
+  ['ct_5flist_121',['CT_LIST',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a942dd3c04b000931d0401fbb7a682935',1,'UI.h']]],
+  ['ct_5fnumeric_122',['CT_NUMERIC',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a9d58836ef364c39f7af981a7cce0ee8a',1,'UI.h']]],
+  ['ct_5ftoggle_123',['CT_TOGGLE',['../d0/d72/_u_i_8h.html#a5c0ec05302b7f90003f69cb2383e7590a73a7ad0af6b17c1dd3e208446205f432',1,'UI.h']]],
+  ['cycle_5fcounter_5fapprox_5fpercent_124',['CYCLE_COUNTER_APPROX_PERCENT',['../df/d6c/_audio_stream_8h.html#ad93bd266d55f8077bc3a009b023bf0b2',1,'AudioStream.h']]],
+  ['cycle_5ftime_125',['cycle_time',['../db/d69/class_app_base_class.html#acff523b6c1d155a66b915e4f49158af8',1,'AppBaseClass']]],
+  ['cycle_5ftime_5fmax_126',['cycle_time_max',['../db/d69/class_app_base_class.html#a297b44dd038d30faab55f6ccf1f9e9e2',1,'AppBaseClass']]]
 ];

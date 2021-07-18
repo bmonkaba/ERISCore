@@ -16,6 +16,8 @@ var class_app_button =
     [ "setText", "d2/d92/class_app_button.html#af6aa00f8d126733dcb4f54376154879b", null ],
     [ "update", "d2/d92/class_app_button.html#a32a41fe46125c49b1bd985958804bfa0", null ],
     [ "updateRT", "d2/d92/class_app_button.html#ad94e41c748692bda9c38b25c876bc3e6", null ],
+    [ "cycle_time", "d2/d92/class_app_button.html#acff523b6c1d155a66b915e4f49158af8", null ],
+    [ "cycle_time_max", "d2/d92/class_app_button.html#a297b44dd038d30faab55f6ccf1f9e9e2", null ],
     [ "height", "d2/d92/class_app_button.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "id", "d2/d92/class_app_button.html#a3682f17759610f58e60351fe96daa6b2", null ],
     [ "isPressed", "d2/d92/class_app_button.html#afc256c8ebd2e844292f3cf8f6abebb2e", null ],
@@ -28,5 +30,9 @@ var class_app_button =
     [ "showActivatedUntil", "d2/d92/class_app_button.html#a185c7ba6a440bb4a3bfff1362a72d9ff", null ],
     [ "text", "d2/d92/class_app_button.html#a6881d377ee2537834b8a397a8314fb24", null ],
     [ "touch_state", "d2/d92/class_app_button.html#a12be372470e6826bae25db90c01c388e", null ],
+    [ "update_loop_time", "d2/d92/class_app_button.html#a08a303813204000ee12600a38fe96d18", null ],
+    [ "update_loop_time_max", "d2/d92/class_app_button.html#acec8429a0d867221c0c4f47f4f7d00d4", null ],
+    [ "updateRT_loop_time", "d2/d92/class_app_button.html#a3d6da03c9c3c5243d8dd2281dc963011", null ],
+    [ "updateRT_loop_time_max", "d2/d92/class_app_button.html#ad9996440b20f31307ba26ff1f932a421", null ],
     [ "width", "d2/d92/class_app_button.html#ab09a10b13273bf5b5a99c412f3835c0d", null ]
 ];
