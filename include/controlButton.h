@@ -1,16 +1,19 @@
 #include "AppManager.h"
 
 #define MAX_BUTTON_TEXT_LENGTH 16
+#define SHOW_ACTIVE_TIME_MILLISEC 500
+
 // Button 
 //
 
-class AppButton:public AppBaseClass {
+class ControlButton:public AppBaseClass {
   public:
-    AppButton():AppBaseClass(){
+    ControlButton():AppBaseClass(){
         isPressed = false;
-        showActivatedUntil=micros();
-        strcpy(text,"AppButton");
-        strcpy(name,"AppButton");
+        show_active = false;
+        time_active = 0;
+        strcpy(text,"ControlButton");
+        strcpy(name,"ControlButton");
     };
 
     void setText(const char* name_string){
@@ -22,11 +25,15 @@ class AppButton:public AppBaseClass {
 
   protected:
     bool isPressed;
-    unsigned long showActivatedUntil;
+    elapsedMillis time_active;
+    bool show_active;
     void update(){
-        if (showActivatedUntil > micros()){
+        if (show_active){
             //tft.bltSD("/I/U/W","greenhex.ile",origin_x,origin_y,AT_NONE);
             tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_GREENYELLOW);
+            if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+                show_active = false;
+            }
         } else{
             //tft.bltSD("/I/U/W","redhex.ile",origin_x,origin_y,AT_NONE);
             tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
@@ -42,14 +49,15 @@ class AppButton:public AppBaseClass {
         if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
             //Serial.println("MyButton:onTouch Button Pressed");
             isPressed = true;
+            show_active = true;
         }
     };
     void onTouchRelease(uint16_t x, uint16_t y){
         if (isPressed && x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
             parentNode->MessageHandler(this,"Pressed");
-            showActivatedUntil = micros() + 500000; //show the active state for 1/2 sec
         }
         isPressed = false;
+        time_active = 0;
     };
 };

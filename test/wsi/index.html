@@ -6,8 +6,8 @@
     
 .container {
   display: grid;
-  grid-template-columns: 100px 330px 1fr;
-  grid-template-rows: 0.2fr 300px 700px;
+  grid-template-columns: 64px 330px 1fr;
+  grid-template-rows: 64px 0.7fr 0.3fr;
   gap: 10px 10px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -15,7 +15,7 @@
     "sidebar imgview  comms"
     "sidebar explorer graphs";
   width: 98%;
-  height: 100%;
+  height: 98%;
   filter: drop-shadow(2px 4px 6px magenta);
 }
 
@@ -35,7 +35,7 @@
 .menubar {
 
   grid-area: menubar;
-  height: 32px;
+  height: 1fr;
 }
 
 .sidebar { grid-area: sidebar; border: 1px solid #dedede;}
@@ -44,7 +44,7 @@
 
   grid-area: imgview;
   width: 330px;
-  height: 300px;
+  height: 1fr;
   border: 1px solid #dedede;
 }
 
@@ -69,7 +69,7 @@
 
 .outbox { grid-area: outbox; }
 
-.messages { grid-area: messages; max-height: 300px;overflow-y:scroll;}
+.messages { grid-area: messages; max-height: 600px;overflow-y:scroll;}
     
     
 .explorer {
@@ -123,8 +123,8 @@ body { margin: 0px; padding: 20px; background-color: #000000; font-size: 12px; c
 background: radial-gradient(circle, rgba(47,13,45,1) 0%, rgba(5,16,30,1) 100%);
 }
             
-#received { font-size: 14px; border: 1px solid #dedede; color: #00ff00;background-color: #1a1a1a;display:block;min-height:200;}
-#received_scroll {height:220;}
+#received { font-size: 14px; border: 1px solid #dedede; color: #00ff00;background-color: #1a1a1a;display:block;min-height:1fr;}
+#received_scroll {height:1fr;}
 
 #sent { width: 250px;} 
 #kbs{color: #7F7F7F;}
@@ -194,11 +194,11 @@ textarea {
           <div id="tx" class="outbox">
              Serial Transmit
              <form id="sent">
-              <textarea id="cmd_value" name="asdf" rows="10" cols="40">DISCONNECT filter_2 2 fft1024_2 0
-CONNECT waveform_15 0 fft1024_2 0
-DISCONNECT filter_1 2 fft1024_1 0
-CONNECT waveform_15 0 fft1024_1 0
-DISCONNECT i2s-in_1 1 mixer_5 3
+              <textarea id="cmd_value" name="asdf" rows="10" cols="40">DISCONNECT fft1024_2 0
+CONNECT pink_1 0 fft1024_2 0
+DISCONNECT fft1024_1 0
+CONNECT pink_1 0 fft1024_1 0
+DISCONNECT mixer_5 3
 AA 220
 </textarea><br>
                   <button id="cmd_send">Send</button>  
@@ -231,14 +231,14 @@ AA 220
         <div class="cqtmsg">
             <p id="stage_label">
             <h3 id="float">Real Time CQT Transform (2xFFT)</h3>   
-            <canvas id="stage" width="1024" height="450"></canvas> 
+            <canvas id="stage" width="1024" height="250"></canvas> 
             </p>
         </div>
             
         <div class="fftmsg">
             <p id="oscope_label">    
              Real Time Scope (FFT Sample Window)
-              <canvas id="oscope" width="1024" height="100"></canvas>
+              <canvas id="oscope" width="1024" height="50"></canvas>
               </p>
         </div>
       

@@ -173,8 +173,13 @@ class AppManager {
         if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
         //Serial.println("AppManager:: real time update");
         isactive_child = false;
-        if (node->id == activeID) pActiveApp = node;
-
+        if (node->id == activeID) {
+          if (pActiveApp != node){
+            if (pActiveApp != 0) pActiveApp->onFocusLost();
+            node->onFocus();
+            pActiveApp = node;
+          }
+        }
         if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
         if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);

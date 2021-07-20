@@ -47,8 +47,6 @@ void FLASHMEM setup() {
   //app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();
   AppManager::getInstance()->switchAppFocus(app.getId()); //focus is requested by obj id
-  // set the connection goup
-  ad.activateConnectionGroup(0);
   Serial.println(F("Setup: Configuring the sw audio block connections"));
   Serial.println(F("Setup: Init Complete"));
   Serial.print(F("Ext ADC Operating State (15:RUNNING): "));

@@ -15,8 +15,8 @@
  */
 #include "AudioUtilities.h"
 #include "AppManager.h"
-#include "appButton.h"
-#include "appSlider.h"
+#include "controlButton.h"
+#include "controlSlider.h"
 #include "appScope.h"
 #include "appCQT.h"
 
@@ -25,8 +25,8 @@ class MyAppExample:public AppBaseClass {
   public:
     AppCQT cqt;
     AppScope oscope;
-    AppButton *button;
-    AppSlider *slider;
+    ControlButton *button;
+    ControlSlider *slider;
     int16_t x_end,x_start;
     int16_t y_end,y_start;
     int16_t x_last,y_last,y_last_scope;
@@ -35,6 +35,7 @@ class MyAppExample:public AppBaseClass {
     MyAppExample():AppBaseClass(){
       sprintf(name, "MyAppExample");
       Serial.println("MyApp constructor called");
+
       id = 1;
       t_lastupdate = micros();
 
@@ -46,25 +47,29 @@ class MyAppExample:public AppBaseClass {
       y_last = 0;
       y_last_scope = 0;
       
+      erisAudioSynthNoisePink* pink = (erisAudioSynthNoisePink*) (ad.getAudioStreamObjByName("pink_1"));
+      pink->amplitude(0.4);
+      
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
       filter->setLowpass(0,2400);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,90);
-      //filter2->resonance(0.20);
+      filter->setLowpass(0,190);
+      
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
       filter->setLowpass(0,2880);
-      //filter2->resonance(0.20);
       
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(8100);
-      //filter3->resonance(0.20);
-
+      
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.69);
-      reverb->damping(0.72);
+      reverb->roomsize(0.59);
+      reverb->damping(0.42);
+
+      erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
+      mix->gain(2,0.285);
 
       //oscope = new AppScope;
       oscope.setPosition(0,20);
@@ -76,7 +81,7 @@ class MyAppExample:public AppBaseClass {
       cqt.setDimension(320,100);
       cqt.setParent(this);
 
-      slider = new AppSlider();
+      slider = new ControlSlider();
       slider->setPosition(50,200);
       slider->setDimension(270,35);
       slider->setName("SLIDER");
@@ -84,11 +89,11 @@ class MyAppExample:public AppBaseClass {
       slider->setValue(0);
       slider->setParent(this);
       
-      char s[4][16] = {"MAKE","BREAK","SIN","SQUARE"};
+      char s[4][16] = {"SIN","TRI","SAW","SQUARE"};
       uint8_t si = 0;
       for (int x=0;x<320-40;x+=80){
         for(int y=160; y<240-40;y+=40){
-          button = new AppButton(); //reuse the button var to create many instances
+          button = new ControlButton(); //reuse the button var to create many instances
           button->setPosition(x,y);
           button->setDimension(60,30);
           button->setParent(this);
@@ -149,39 +154,99 @@ class MyAppExample:public AppBaseClass {
         y_last = y;
     }
     void MessageHandler(AppBaseClass *sender, const char *message){   
-        if (sender == slider){ //can detect sender by ptr...
-          erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
-          mix->gain(3,3 * slider->value/100.0);
-          
-          //mix->gain(0,1.0 - slider->value/100.0);
-          //mix->gain(1,1.0 - slider->value/100.0);
-          mix->gain(2,1.0 - slider->value/100.0);
-          
-          //fm_mod->begin(1.0, slider->value/2000.0, WAVEFORM_TRIANGLE);
+        if (sender == slider){ //can detect message sender by ptr...
+          erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
+          filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));
         }
-        else if(sender->isName("BREAK")){ //...or, can detect sender by name
-          //disconnect the fft block
-          //erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*)(ad.getAudioStreamObjByName("waveformMod_1"));
-          //ad.disconnect(wav,0,fft,0);
+        else if(sender->isName("SIN")){ //...or, can detect sender by name
+          changeVoice(WAVEFORM_SINE);
         }
-        else if(sender->isName("MAKE")){ //...or, can detect sender by name
-          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
-          wav->begin(0.12,440,WAVEFORM_SAWTOOTH);
+        else if(sender->isName("TRI")){
+          changeVoice(WAVEFORM_TRIANGLE);
         }
-        else if(sender->isName("SIN")){
-          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
-          wav->begin(0.12,440,WAVEFORM_SINE);
+        else if(sender->isName("SAW")){
+          changeVoice(WAVEFORM_SAWTOOTH);
         }
         else if(sender->isName("SQUARE")){
-          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
-          wav->begin(0.12,440,WAVEFORM_SQUARE);
+          changeVoice(WAVEFORM_SQUARE);
         }
         else if(sender->isName("SCI")){
           //Serial.print(F("M appExample::MessageHandler SCI param: "));
           //Serial.println(message);
           //Serial.flush();
-          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_15"));
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
           wav->begin(0.12,atoi(message),WAVEFORM_SINE);
         }
+    }
+
+    void onFocus(){
+      makeAudioConnections();
+    }
+
+    void makeAudioConnections(){
+      ad.disconnectAll();
+      ad.connect("i2s-in_1 1 biquad_1 0");
+      ad.connect("biquad_1 0 fft1024_1 0"); //lp filter
+      
+      ad.connect("i2s-in_1 1 biquad_2 0");
+      ad.connect("biquad_2 0 fft1024_2 0"); //lp filter
+
+      ad.connect("i2s-in_1 1 scope_1 0");
+      ad.connect("mixer_1 0 scope_1 1");
+      
+      //16 voice oscillator bank bus mixer (6)
+      ad.connect("mixer_2 0 mixer_6 0");
+      ad.connect("mixer_3 0 mixer_6 1");
+      ad.connect("mixer_4 0 mixer_6 2");
+      ad.connect("mixer_5 0 mixer_6 3");
+      //synth output to reverb and master mixer (1)
+      //connect("mixer_6 0 biquad_3 0");
+
+      ad.connect("mixer_6 0 biquad_3 0");
+      ad.connect("biquad_3 0 freeverb_1 0");
+      ad.connect("freeverb_1 0 mixer_1 1");
+
+      //input through filter 3 to the master mixer
+      ad.connect("i2s-in_1 1 filter_3 0");
+      ad.connect("filter_3 0 mixer_1 2");
+
+      //master mixer to the output
+      ad.connect("mixer_1 0 i2s-out_1 0");
+
+      //osc banks
+      ad.connect("waveform_1 0 mixer_2 0");
+      ad.connect("waveform_2 0 mixer_2 1");
+      ad.connect("waveform_3 0 mixer_2 2");
+      ad.connect("waveform_4 0 mixer_2 3");
+      
+      ad.connect("waveform_5 0 mixer_3 0");
+      ad.connect("waveform_6 0 mixer_3 1");
+      ad.connect("waveform_7 0 mixer_3 2");
+      ad.connect("waveform_8 0 mixer_3 3");
+      
+      ad.connect("waveform_9 0 mixer_4 0");
+      ad.connect("waveform_10 0 mixer_4 1");
+      ad.connect("waveform_11 0 mixer_4 2");
+      ad.connect("waveform_12 0 mixer_4 3");
+      
+      ad.connect("waveform_13 0 mixer_5 0");
+      ad.connect("waveform_14 0 mixer_5 1");
+      ad.connect("waveform_15 0 mixer_5 2");
+      ad.connect("waveform_16 0 mixer_5 3");
+      AudioInterrupts();
+    }
+
+    void changeVoice(uint16_t voice_type){
+      char buffer[32];
+      erisAudioSynthWaveform* w;
+      AudioNoInterrupts();
+      for (int16_t i=0; i < OSC_BANK_SIZE; i++){
+        sprintf(buffer, "waveform_%d", i);
+        w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
+        w->begin(voice_type);
+      }
+      AudioInterrupts();
+
+      return;
     }
 };

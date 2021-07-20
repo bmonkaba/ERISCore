@@ -184,7 +184,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
 		for (int16_t i=0; i < 1024; i++){
 			tmp_buffer[i] = ((float32_t)buffer[i] / (float32_t)32768.0);
-			if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0.5;
+			if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0.0;
 		}
 		//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
 		

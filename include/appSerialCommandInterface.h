@@ -208,7 +208,7 @@ class AppSerialCommandInterface:public AppBaseClass {
                     */
                     while(ad.getConnectionString(i,csBuffer)){
                         i += 1;
-                        Serial.flush();
+                        
                         Serial.println(csBuffer);
                         Serial.flush();
                     }
@@ -226,26 +226,25 @@ class AppSerialCommandInterface:public AppBaseClass {
                         Serial.flush();
                     } else{
                         Serial.flush();
-                        Serial.println(F("CONNECT OK"));
+                        //Serial.println(F("CONNECT OK"));
                         AudioNoInterrupts();
                         ad.connect(param,source_port,param2,dest_port);
                         AudioInterrupts();
                         Serial.flush();
                     }
                 } else if (strcmp(cmd, "DISCONNECT") == 0){
-                    int source_port;
                     int dest_port;
-                    total_read = sscanf(receivedChars, "%s %s %d %s %d" , cmd, param,&source_port,param2,&dest_port);
-                    if (total_read < 3){
+                    total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
+                    if (total_read < 2){
                         Serial.flush();
                         Serial.print(F("DISCONNECT WRONG PARAM COUNT "));
                         Serial.println(receivedChars);
                         Serial.flush();
                     } else{
                         Serial.flush();
-                        Serial.println(F("DISCONNECT OK"));
+                        //Serial.println(F("DISCONNECT OK"));
                         AudioNoInterrupts();
-                        ad.disconnect(param,source_port,param2,dest_port);
+                        ad.disconnect(param,dest_port);
                         AudioInterrupts();
                         Serial.flush();
                     }

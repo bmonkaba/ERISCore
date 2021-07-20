@@ -29,15 +29,15 @@ class AudioDirector{
   public:
     AudioDirector();
     AudioDirector(const AudioDirector &) = delete;	//delete the copy constructor
-    void activateConnectionGroup(uint16_t group_id);
     bool addAudioStreamObj(AudioStream* obj);
     bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
     bool connect(char* from,uint8_t from_port,char* to,uint8_t to_port);
     bool connect(const char* connectionString);
     bool getAudioStreamString(uint16_t streamIndex, char* streamStringBuffer);
     bool getConnectionString(uint16_t connectionIndex, char* connectionStringBuffer);
-    bool disconnect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
-    bool disconnect(char* from,uint8_t from_port,char* to,uint8_t to_port);
+    bool disconnectAll();
+    bool disconnect(AudioStream* destination,int destinationInput);
+    bool disconnect(char* to,uint8_t to_port);
     bool disconnect(const char* connectionString);
     int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
@@ -51,7 +51,6 @@ class AudioDirector{
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    uint16_t activeConnectionGroup; 
     uint16_t activeConnections; 
     uint16_t objCount;
     uint16_t categoryCount;
@@ -69,7 +68,6 @@ AudioDirector::AudioDirector(){
   activeConnections = 0;
   categoryCount=0;
   shortNameQueryResultCount=0;
-  activeConnectionGroup=0;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
   for (uint16_t i=0; i < MAX_UNIQUE_NAMES_PER_CATEGORY; i++){
@@ -88,10 +86,11 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioAnalyzeScope);
   addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
   addAudioStreamObj(new erisAudioEffectFreeverb);
+  addAudioStreamObj(new erisAudioSynthNoisePink);
 
 
   //generate audio component pool
-  for (int i=0; i < 16; i++){
+  for (int i=0; i < 17; i++){
     addAudioStreamObj(new erisAudioEffectEnvelope);
     addAudioStreamObj(new erisAudioSynthWaveformModulated);
     addAudioStreamObj(new erisAudioSynthWaveform);
@@ -334,16 +333,16 @@ bool AudioDirector::connect(const char* connectionString){
   return false;
 }
 
-bool AudioDirector::disconnect(char* from,uint8_t from_port,char* to,uint8_t to_port){
-  return disconnect(getAudioStreamObjByName((char* )from),from_port,getAudioStreamObjByName((char* )to),to_port);
+bool AudioDirector::disconnect(char* to,uint8_t to_port){
+  return disconnect(getAudioStreamObjByName((char* )to),to_port);
 }
 
-bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput){
-  if (NULL==source||NULL==destination) return false;
+bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
+  if (NULL==destination) return false;
   //find the connection within the pool
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
-    if (pCord[i]->pSrc == source && pCord[i]->pDst == destination && pCord[i]->src_index == sourceOutput && pCord[i]->dest_index == destinationInput){
+    if (pCord[i]->pDst == destination && pCord[i]->dest_index == destinationInput){
       Serial.print(F("M AudioDirector::disconnect() found AudioConnection at index "));
       Serial.println(i);
       //disconnect the audio connection
@@ -353,8 +352,6 @@ bool AudioDirector::disconnect(AudioStream* source, int sourceOutput, AudioStrea
     }
   }
   Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
-  Serial.println(source->shortName);
-  Serial.println(source->instance);
   Serial.println(destination->shortName);
   Serial.println(destination->instance);
   return false; //no empty connection slots
@@ -364,81 +361,11 @@ bool AudioDirector::disconnect(const char* connectionString){
   return false;
 };
 
-void AudioDirector::activateConnectionGroup(uint16_t group_id){
-//testing
-  Serial.println(F("AudioDirector::activateConnectionGroup() connecting AudioStreamInputPort to pAudioStreamOutputPort"));
-  AudioNoInterrupts();
-
-  //connect(pAudioStreamInputPort,0,pAudioStreamOutputPort,0);
-
-  //connect a waveform object to the output and fft
-  //connect("waveform_1 0 waveformMod_1 0");
-  
-
-  //connect("waveformMod_1 0 filter_1 0");
-  //connect("waveformMod_1 0 filter_3 0");
-  connect("i2s-in_1 1 biquad_1 0");
-  connect("biquad_1 0 fft1024_1 0"); //lp filter
-  
-  connect("i2s-in_1 1 biquad_2 0");
-  connect("biquad_2 0 fft1024_2 0"); //lp filter
-
-  connect("i2s-in_1 1 scope_1 0");
-  connect("mixer_1 0 scope_1 1");
-  //connect("i2s-in_1 1 i2s-out_1 1");
-
-  //16 voice oscillator bank bus mixer (6)
-  connect("mixer_2 0 mixer_6 0");
-  connect("mixer_3 0 mixer_6 1");
-  connect("mixer_4 0 mixer_6 2");
-  connect("mixer_5 0 mixer_6 3");
-  //synth output to reverb and master mixer (1)
-  //connect("mixer_6 0 biquad_3 0");
-
-  connect("mixer_6 0 freeverb_1 0");
-  connect("freeverb_1 0 biquad_3 0");
-  connect("biquad_3 0 mixer_1 1");
-
-  //input through filter 3 to the master mixer
-  connect("i2s-in_1 1 filter_3 0");
-  connect("filter_3 0 mixer_1 2");
-
-  //master mixer to the output
-  connect("mixer_1 0 i2s-out_1 0");
-
-  //osc banks
-  connect("waveform_1 0 mixer_2 0");
-  connect("waveform_2 0 mixer_2 1");
-  connect("waveform_3 0 mixer_2 2");
-  connect("waveform_4 0 mixer_2 3");
-  
-  connect("waveform_5 0 mixer_3 0");
-  connect("waveform_6 0 mixer_3 1");
-  connect("waveform_7 0 mixer_3 2");
-  connect("waveform_8 0 mixer_3 3");
-  
-  connect("waveform_9 0 mixer_4 0");
-  connect("waveform_10 0 mixer_4 1");
-  connect("waveform_11 0 mixer_4 2");
-  connect("waveform_12 0 mixer_4 3");
-  
-  connect("waveform_13 0 mixer_5 0");
-  connect("waveform_14 0 mixer_5 1");
-  connect("waveform_15 0 mixer_5 2");
-  connect("waveform_16 0 mixer_5 3");
-  
-  
-  AudioInterrupts();
-  
-  //to use the objects they must be downcast
-  //erisAudioSynthWaveform* mod = (erisAudioSynthWaveform*) (getAudioStreamObjByName("waveform_1"));
-  //mod->begin(0.40, 200, WAVEFORM_SINE);
-
-/*
-  erisAudioSynthWaveformModulated* wav = (erisAudioSynthWaveformModulated*) (getAudioStreamObjByName("waveformMod_1"));
-  wav->frequencyModulation(2);
-  wav->begin(0.6, 1200, WAVEFORM_SAWTOOTH);
-*/
-}
+bool AudioDirector::disconnectAll(){
+  for(uint16_t i=0; i < MAX_CONNECTIONS; i++){
+    if(pCord[i]->disconnect()) activeConnections--;
+  }
+  return false;
+};
 
 #endif

@@ -241,7 +241,7 @@ public:
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
 			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
-			fftRR->peakValue = fftRR->peakValue * 0.2;
+			//fftRR->peakValue = fftRR->peakValue * 0.2;
 			//fftRR->peakValue = log10f(fftRR->peakValue * bin_size);
 			
 			//from the peak bin calc the freq
@@ -265,8 +265,8 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.50) + (fftRR->peakValue * 0.50);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.95) + (fftRR->avgValueFast * 0.05); 	//by comparing a short and long moving average; slow transient detection
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.30) + (fftRR->peakValue * 0.70);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
 				//if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				

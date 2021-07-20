@@ -4,12 +4,12 @@
 // Slider 
 //
 
-class AppSlider:public AppBaseClass {
+class ControlSlider:public AppBaseClass {
   public:
-    AppSlider():AppBaseClass(){
+    ControlSlider():AppBaseClass(){
         isPressed = false;
-        strcpy(text,"AppSlider");
-        strcpy(name,"AppSlider");
+        strcpy(text,"ControlSlider");
+        strcpy(name,"ControlSlider");
         last_x = 0;
         value = 0;
     }; 
