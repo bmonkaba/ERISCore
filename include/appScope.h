@@ -34,7 +34,7 @@ class AppScope:public AppBaseClass {
                 v = scope->read(1,i) * scale;
                 f = ((v * 0.000030517578125) + 1.0) * 0.5;
                 ch2 = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_DARKCYAN);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope_ch2,origin_x + i,ch2,ILI9341_GREEN);
                 //draw x-y plot
                 if (origin_x + i > 0) tft.drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
                 y_last_scope = ch1; 

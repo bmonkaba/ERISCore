@@ -163,21 +163,21 @@ socket.onmessage = function (message) {
             if(0==display_note%2) g= 30;
 
             //cqt view
-            ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseInt(cqt[4]) * 1.25).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseInt(cqt[4])), 4, canvas.height);
+            ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseInt(cqt[5]) * 1.25).toString() + ", 1)";    
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseInt(cqt[5])), 4, canvas.height);
             
             //osc view
             //ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";    
-            ctx.fillStyle = "rgba(" + cqt[4] + ","+ (osi * 20) +"," + (255 - cqt[4]) + ", 1)";  
-            ctx.fillRect(-3 + (3 * parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
+            ctx.fillStyle = "rgba(" + 10 + cqt[5]*2 + ","+ cqt[4]*10 +"," + cqt[5]*2 + ", 1)"; 
+            ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
             
             
             if (frame_count%20) break; 
             ctx.fillStyle = "#e740FF";
-            ctx.font = "9px Arial";
+            ctx.font = "14px Arial";
             ctx.strokeStyle = "#000000";
-            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[4])) - 14);
-            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[4])) - 16);
+            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 14);
+            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 16);
             //ctx.putImageData(imageData, 0, 1);
             break;
       case "CQT_H":
@@ -191,21 +191,21 @@ socket.onmessage = function (message) {
             if(0==display_note%2) g= 10;
             
             //cqt view
-            ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseInt(cqt[4]) * 1.25).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseFloat(cqt[4])), 4, canvas.height);
+            ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseInt(cqt[5]) * 1.25).toString() + ", 1)";    
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseFloat(cqt[5])), 4, canvas.height);
 
             //osc view
-            ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";   
+            ctx.fillStyle = "rgba(" + 10 + cqt[5]*2 + ","+ cqt[4]*10 +"," + cqt[5]*2 + ", 1)"; 
             //ctx.fillRect(3, -1 + (canvas.height - ((parseInt(cqt[0])) * 3.0)), 3 + parseInt(cqt[4])/3.0, 2);
-             ctx.fillRect(-3 + (3* parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
+             ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
             
             
             if (frame_count%20) break;     
             ctx.fillStyle = "#E740FF";
-            ctx.font = "9px Arial";
+            ctx.font = "14px Arial";
             ctx.strokeStyle = "#000000";
-            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[4])) - 14);
-            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[4])) - 16);
+            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 14);
+            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 16);
             break;
             
       case "S":
@@ -305,8 +305,6 @@ socket.onmessage = function (message) {
   };
 };
 
-
-
 socket.onclose = function(){
   console.log("disconnected"); 
 };
@@ -315,9 +313,6 @@ var sendMessage = function(message) {
   //console.log("sending:" + message.data);
   socket.send(message.data + String.fromCharCode(10));
 };
-
-
-
 
 
 // send a command to the serial port
@@ -334,13 +329,29 @@ $('#clear').click(function(){
 
 $("#ACON").click(function(ev){
   ev.preventDefault();
-  sendMessage({ 'data' : "ACON\n"});
+  sendMessage({ 'data' : "ACON"});
 });
 
 $("#STATS").click(function(ev){
   ev.preventDefault();
   sendMessage({ 'data' : "STATS"});
 });
+
+$("#CQT_CFG").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "CQT_CFG"});
+});
+
+$("#PINK_NOISE").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "DISCONNECT fft1024_2 0\nCONNECT pink_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT pink_1 0 fft1024_1 0\nDISCONNECT mixer_5 3"});
+});
+
+$("#TONE").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "DISCONNECT biquad_2 0\nCONNECT waveform_16 0 biquad_2 0\nDISCONNECT biquad_1 0\nCONNECT waveform_16 0 biquad_1 0\nDISCONNECT mixer_5 3\nDISCONNECT fft1024_2 0\nCONNECT biquad_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT biquad_2 0 fft1024_1 0\nAA 220"});
+});
+
 
 
 $("#freq_slider").on("change", function(event, ui) {

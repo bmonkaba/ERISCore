@@ -87,8 +87,8 @@ public:
 		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
-		subsample_lowfreqrange = 16;//ratio should be 2:1; bw is fc of the low range
-		subsample_highfreqrange = 8;//
+		subsample_lowfreqrange = 32;//ratio should be 2:1; bw is fc of the low range
+		subsample_highfreqrange = 16;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
@@ -175,11 +175,13 @@ public:
 		if (binLast > 510) binLast = 510;
 		arm_power_f32((float32_t*)&output[binFirst], span, &powerf);
 		arm_max_f32 ((float32_t*)&output[binFirst], span, &maxf, &peak_index);
-		maxf = 0;		
+		//maxf = 0;		
 		if(fftRR){
-			fftRR->peakValue = powerf;
+			fftRR->peakValue = maxf;//powerf;
 			fftRR->peakBin = peak_index + binFirst;
-			fftRR->phase = phase[fftRR->peakBin];
+			if(fftRR->phase < phase[fftRR->peakBin]){
+				fftRR->phase -= phase[fftRR->peakBin];
+			}else fftRR->phase = phase[fftRR->peakBin];
 		} 
 		return powerf;
 	}
@@ -265,7 +267,7 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.30) + (fftRR->peakValue * 0.70);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.7) + (fftRR->peakValue * 0.3);	//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
 				//if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
@@ -280,7 +282,7 @@ public:
 
 	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
 	static int compare_fftrr_value(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)-> peakValue > ((const FFTReadRange *)q)->peakValue) return -1;
+		if (((const FFTReadRange *)p)-> avgValueFast > ((const FFTReadRange *)q)->avgValueFast) return -1;
 		return 1;
 	}
 

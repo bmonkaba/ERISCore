@@ -8,6 +8,11 @@ class AppTemplate:public AppBaseClass {
         
     }; 
     //define event handlers
+    void MessageHandler(AppBaseClass *sender, const char *message){   
+        if(sender->isName("SOME APP NAME")){
+         //do something
+        }
+    }
   protected:
     void update() override{};    //called only when the app is active
     void updateRT() override{}; //allways called even if app is not active

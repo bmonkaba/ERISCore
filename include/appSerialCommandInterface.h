@@ -256,6 +256,8 @@ class AppSerialCommandInterface:public AppBaseClass {
                 }else if (strcmp(cmd, "STATS") == 0){ 
                     ad.printStats();
                     AppManager::getInstance()->printStats();
+                }else if (strcmp(cmd, "CQT_CFG") == 0){ 
+                    AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
                 }
 
                 newRxMsg = false;

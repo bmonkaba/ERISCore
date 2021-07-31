@@ -41,6 +41,10 @@ class AppBaseClass {
     uint16_t updateRT_loop_time_max;
     uint16_t cycle_time;
     uint16_t cycle_time_max;
+    elapsedMillis update_call_period;
+    uint16_t update_call_period_max;
+    elapsedMillis updateRT_call_period;
+    uint16_t updateRT_call_period_max;
   public:
     int16_t origin_x;
     int16_t origin_y;
@@ -70,6 +74,7 @@ class AppBaseClass {
     virtual void onTouch(uint16_t x, uint16_t y){};
     virtual void onTouchDrag(uint16_t x, uint16_t y){};
     virtual void onTouchRelease(uint16_t x, uint16_t y){};
+  public:
     virtual void MessageHandler(AppBaseClass *sender, const char *message){};
 };
 
@@ -131,18 +136,40 @@ class AppManager {
     AppBaseClass* getActiveApp(){
       return pActiveApp;
     }
+    bool sendMessage(AppBaseClass *sender, const char *to_app, const char *message){
+      // sends a message to the requested app
+      AppBaseClass *node = root;
+      do{
+        if (node->isName(to_app)){
+          node->MessageHandler(sender,message);
+          return true;
+        }
+        node=node->nextAppicationNode;//check next node
+      }while(node !=0);
+      return false;
+    }
     void printStats(){
       AppBaseClass *node = root;
       do{
         Serial.flush();
         Serial.print(node->name);
-        Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
+        //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
         Serial.print("\tupdate_loop_time_max: ");Serial.print(node->update_loop_time_max);
-        Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
+        //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
         Serial.print("\tupdateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
-        Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
+        //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
         Serial.print("\tcycle_time_max: ");Serial.print(node->cycle_time_max);
+        //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
+        Serial.print("\tupdate_call_period_max: ");Serial.print(node->update_call_period_max);
+        Serial.print("\tupdateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
         Serial.println();
+
+        //clear the stats
+        node->update_loop_time_max = 0;
+        node->updateRT_loop_time_max = 0;
+        node->cycle_time_max = 0;
+        node->update_call_period_max = 0;
+        node->updateRT_call_period_max = 0;
         
         node=node->nextAppicationNode;//check next node
       }while(node !=0);
@@ -160,7 +187,7 @@ class AppManager {
       AppBaseClass *node = root;
       bool isactive_child;
       #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-      if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
+      if (!screenBusy) tft.fillRect(0, 0, 320, 20, 0);//tft.bltSDFullScreen("bluehex.ile");
       #else
       if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
       #endif
@@ -168,9 +195,11 @@ class AppManager {
       do{
         cycle_time = 0;
         app_time=0;
+        if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
         node->updateRT(); //real time update (always called)
         node->updateRT_loop_time = app_time;
         if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
+        node->updateRT_call_period =0;
         //Serial.println("AppManager:: real time update");
         isactive_child = false;
         if (node->id == activeID) {
@@ -199,9 +228,11 @@ class AppManager {
           }
           if (!screenBusy){
             app_time=0;
+            if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
             node->update(); //update active window
             node->update_loop_time = app_time;
             if (node->update_loop_time > node->update_loop_time_max) node->update_loop_time_max = node->update_loop_time;
+            node->update_call_period =0;
           }
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                     //update order follows the order of app instance creation
@@ -253,12 +284,16 @@ AppBaseClass:: AppBaseClass(){
   origin_y=0;
   width=320;
   height=240;
-  update_loop_time = 0;
-  update_loop_time_max = 0;
-  updateRT_loop_time = 0;
-  updateRT_loop_time_max = 0;
-  cycle_time = 0;
+  update_loop_time =0;
+  update_loop_time_max =0;
+  updateRT_loop_time =0;
+  updateRT_loop_time_max =0;
+  cycle_time =0;
   cycle_time_max =0;
+  update_call_period =0;
+  update_call_period_max =0;
+  updateRT_call_period =0;
+  updateRT_call_period_max =0;
   strcpy(name,"NONE");
   AppManager::getInstance()->RegisterApp(this); //self register on construction
 }

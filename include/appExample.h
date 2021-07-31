@@ -48,28 +48,34 @@ class MyAppExample:public AppBaseClass {
       y_last_scope = 0;
       
       erisAudioSynthNoisePink* pink = (erisAudioSynthNoisePink*) (ad.getAudioStreamObjByName("pink_1"));
-      pink->amplitude(0.4);
+      pink->amplitude(1.0);
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
-      filter->setLowpass(0,2400);
+      filter->setLowpass(0,2200);
+      filter->setLowpass(1,2000);
+      filter->setLowpass(2,1800);
+      filter->setLowpass(3,1600);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,190);
+      filter->setLowpass(0,1200);
+      filter->setLowpass(1,600);
+      filter->setLowpass(2,300);
+      filter->setLowpass(3,240);
       
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,2880);
+      filter->setLowpass(0,14000);
       
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(8100);
+      filter3->frequency(18000);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.59);
+      reverb->roomsize(0.39);
       reverb->damping(0.42);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
-      mix->gain(2,0.285);
+      mix->gain(2,0.0);
 
       //oscope = new AppScope;
       oscope.setPosition(0,20);
@@ -175,7 +181,7 @@ class MyAppExample:public AppBaseClass {
           //Serial.println(message);
           //Serial.flush();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
-          wav->begin(0.12,atoi(message),WAVEFORM_SINE);
+          wav->begin(0.5,atoi(message),WAVEFORM_SINE);
         }
     }
 
@@ -184,30 +190,21 @@ class MyAppExample:public AppBaseClass {
     }
 
     void makeAudioConnections(){
-      ad.disconnectAll();
-      ad.connect("i2s-in_1 1 biquad_1 0");
-      ad.connect("biquad_1 0 fft1024_1 0"); //lp filter
-      
-      ad.connect("i2s-in_1 1 biquad_2 0");
-      ad.connect("biquad_2 0 fft1024_2 0"); //lp filter
-
-      ad.connect("i2s-in_1 1 scope_1 0");
-      ad.connect("mixer_1 0 scope_1 1");
-      
+      ad.disconnectAll();      
       //16 voice oscillator bank bus mixer (6)
       ad.connect("mixer_2 0 mixer_6 0");
       ad.connect("mixer_3 0 mixer_6 1");
       ad.connect("mixer_4 0 mixer_6 2");
       ad.connect("mixer_5 0 mixer_6 3");
       //synth output to reverb and master mixer (1)
-      //connect("mixer_6 0 biquad_3 0");
 
       ad.connect("mixer_6 0 biquad_3 0");
+      ad.connect("biquad_3 0 mixer_1 0");
       ad.connect("biquad_3 0 freeverb_1 0");
-      ad.connect("freeverb_1 0 mixer_1 1");
+      //ad.connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
-      ad.connect("i2s-in_1 1 filter_3 0");
+      //ad.connect("i2s-in_1 1 filter_3 0");
       ad.connect("filter_3 0 mixer_1 2");
 
       //master mixer to the output
@@ -233,6 +230,18 @@ class MyAppExample:public AppBaseClass {
       ad.connect("waveform_14 0 mixer_5 1");
       ad.connect("waveform_15 0 mixer_5 2");
       ad.connect("waveform_16 0 mixer_5 3");
+
+      //fft connections
+      ad.connect("i2s-in_1 1 biquad_1 0");
+      ad.connect("biquad_1 0 fft1024_1 0"); //lp filter
+      
+      ad.connect("i2s-in_1 1 biquad_2 0");
+      ad.connect("biquad_2 0 fft1024_2 0"); //lp filter
+
+      //scope connections
+      ad.connect("i2s-in_1 1 scope_1 0");
+      ad.connect("mixer_6 0 scope_1 1");
+
       AudioInterrupts();
     }
 

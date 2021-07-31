@@ -3,9 +3,9 @@
 void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
-    pinMode(backlight, OUTPUT);
-    //analogWriteFrequency(TFT_LED_PWM, 42000);
-    //analogWrite(backlight, 5);
+    //pinMode(backlight, OUTPUT);
+    analogWriteFrequency(backlight, 240);
+    analogWrite(backlight, 200);
 }
 void ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin();

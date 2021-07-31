@@ -131,7 +131,7 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 	for(int16_t i=0;i < 1024;i+=2){
 		p = normalized_atan2(tmp_buffer[i],tmp_buffer[i+1]);
 		if (!std::isfinite(p)) p = 0;
-		phase[i/2] = p;
+		phase[i/2] = 360.0 * (p/4.0);
 	}
 	
 	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
@@ -166,8 +166,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
-	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//BLOCKS_PER_FFT/4;
+	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/128;
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCK_REFRESH_SIZE/2;//BLOCKS_PER_FFT/4;
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);
 
