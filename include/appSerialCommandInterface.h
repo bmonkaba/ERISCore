@@ -254,7 +254,7 @@ class AppSerialCommandInterface:public AppBaseClass {
                     //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                     //Serial.flush();
                 }else if (strcmp(cmd, "STATS") == 0){ 
-                    ad.printStats();
+                    //ad.printStats();
                     AppManager::getInstance()->printStats();
                 }else if (strcmp(cmd, "CQT_CFG") == 0){ 
                     AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");

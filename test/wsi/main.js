@@ -349,7 +349,7 @@ $("#PINK_NOISE").click(function(ev){
 
 $("#TONE").click(function(ev){
   ev.preventDefault();
-  sendMessage({ 'data' : "DISCONNECT biquad_2 0\nCONNECT waveform_16 0 biquad_2 0\nDISCONNECT biquad_1 0\nCONNECT waveform_16 0 biquad_1 0\nDISCONNECT mixer_5 3\nDISCONNECT fft1024_2 0\nCONNECT biquad_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT biquad_2 0 fft1024_1 0\nAA 220"});
+  sendMessage({ 'data' : "DISCONNECT scope_1 0\nCONNECT waveform_16 0 scope_1 0\nDISCONNECT fft1024_2 0\nCONNECT waveform_16 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT waveform_16 0 fft1024_2 0\nDISCONNECT mixer_5 3\nDISCONNECT fft1024_2 0\nCONNECT biquad_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT biquad_2 0 fft1024_1 0\nAA 220"});
 });
 
 

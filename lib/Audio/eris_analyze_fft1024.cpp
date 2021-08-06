@@ -137,6 +137,9 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
 	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
 	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
+
+	spectralFilter();
+
 	outputflag = false; //current frame is analyzed and ready to use
 	return;
 }
@@ -166,7 +169,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/128;
+	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/64;
 	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCK_REFRESH_SIZE/2;//BLOCKS_PER_FFT/4;
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);

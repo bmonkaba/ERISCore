@@ -203,48 +203,46 @@ class AppCQT:public AppBaseClass {
         } else fft->read(&fftHighRR[i]);
       }
 
-      //STEP 1 - UPDATE current oscillators
-      for(uint16_t i=0; i < OSC_BANK_SIZE; i++){
-          if (oscBank[i].cqtBin >= highRange && !low_range_switch){oscBank[i] = fftHighRR[oscBank[i].cqtBin];
-          } else if ((oscBank[i].cqtBin > 0) && (oscBank[i].cqtBin < highRange) && low_range_switch) {
-            oscBank[i] = fftLowRR[oscBank[i].cqtBin];
-          }
-      }
-
-      //sort the updated cqt bins by peakValue
+      //STEP 1 -sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
 
-      //erisAudioAnalyzeFFT1024::sort_fftrr_by_value(oscBank,OSC_BANK_SIZE);
+
       
       //STEP 2 - Add the new osc settings
       //low range
       if (low_range_switch){
-        for(uint16_t i=0; i < OSC_BANK_SIZE/2; i++){
+        for(uint16_t i=0; i < OSC_BANK_SIZE; i++){
           found = false;
           for (uint16_t j=0; j < OSC_BANK_SIZE; j++){
-            if (oscBank[j].cqtBin == fftLowRR[i].cqtBin){found = true;break;}
+            if (oscBank[j].cqtBin == fftLowRR[i].cqtBin){
+              oscBank[j] = fftLowRR[i];
+              found = true;break;
+            }
           }
           if(!found){
             for(uint16_t k= OSC_BANK_SIZE-1; k > 0;k--){
-              if ((fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < fftLowRR[i].avgValueFast)){
-                fftLowRR[i].phase = 0;
+              if ((fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < (fftLowRR[i].avgValueFast))){
                 oscBank[k] = fftLowRR[i];
+                //fftLowRR[i].phase = 0;
                 break;
               } 
             }
           }
         }
-      } else for(uint16_t i=0; i < OSC_BANK_SIZE/2; i++){ //high range
+      } else for(uint16_t i=0; i < OSC_BANK_SIZE; i++){ //high range
         found = false;
         for (uint16_t j=0; j < OSC_BANK_SIZE; j++){
-          if (oscBank[j].cqtBin == fftHighRR[i].cqtBin){found = true;break;}
+          if (oscBank[j].cqtBin == fftHighRR[i].cqtBin){
+            oscBank[j] = fftHighRR[i];
+            found = true;break;
+          }
         }
         if(!found){
           for(uint16_t k= OSC_BANK_SIZE-1; k > 0;k--){
-            if ((fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.85 * fftHighRR[i].avgValueFast))&& ( -3.0 < oscBank[k].phase < 3.0) && ( -3.0 < fftHighRR[i].phase < 3.0)){
-              fftHighRR[i].phase = 0;
+            if ((fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.20 * fftHighRR[i].avgValueFast))){
               oscBank[k] = fftHighRR[i];
+              //fftHighRR[i].phase = 0;
               break;
             } 
           }
@@ -260,14 +258,15 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 15.0){
             //osc[i]->frequency(note_freq[oscBank[i].cqtBin]);
-            f = oscBank[i].estimatedFrequency;
+            f = oscBank[i].peakFrequency;
             //f = note_freq[oscBank[i].cqtBin];
             
-            osc[i]->frequency(f * octave_down[0]);
+            osc[i]->frequency(f * octave_up[0]);
             a = oscBank[i].avgValueFast/120.0;
             if (f < 10.0) {f = 10.0;a=0;}
+            if (a < floor) a = 0.0;
             if(!isnan(a)) osc[i]->amplitude(a);
-             osc[i]->phase(oscBank[i].phase);
+            //osc[i]->phase(oscBank[i].phase);
           }
         }
       }
@@ -277,8 +276,8 @@ class AppCQT:public AppBaseClass {
         cqt_serial_transmit_elapsed = 0;   
         
         for (uint16_t i=0;i< (OSC_BANK_SIZE);i++){
-          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].estimatedFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].transientValue,oscBank[i].avgValueFast);
-          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].estimatedFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].transientValue,oscBank[i].avgValueFast);
+          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast);
+          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast);
         }
         Serial.printf(F("CQT_EOF \n"));
         //Serial.flush();

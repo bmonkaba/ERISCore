@@ -154,14 +154,14 @@ class AppManager {
         Serial.flush();
         Serial.print(node->name);
         //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
-        Serial.print("\tupdate_loop_time_max: ");Serial.print(node->update_loop_time_max);
+        Serial.print("\n \tupdate_loop_time_max: ");Serial.print(node->update_loop_time_max);
         //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
-        Serial.print("\tupdateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
+        Serial.print("\n \tupdateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
         //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
-        Serial.print("\tcycle_time_max: ");Serial.print(node->cycle_time_max);
+        Serial.print("\n \tcycle_time_max: ");Serial.print(node->cycle_time_max);
         //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
-        Serial.print("\tupdate_call_period_max: ");Serial.print(node->update_call_period_max);
-        Serial.print("\tupdateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
+        Serial.print("\n \tupdate_call_period_max: ");Serial.print(node->update_call_period_max);
+        Serial.print("\n \tupdateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
         Serial.println();
 
         //clear the stats

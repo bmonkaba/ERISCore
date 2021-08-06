@@ -68,7 +68,7 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,14000);
       
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(18000);
+      filter3->frequency(1000);//HP
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(0.39);
@@ -204,7 +204,7 @@ class MyAppExample:public AppBaseClass {
       //ad.connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
-      //ad.connect("i2s-in_1 1 filter_3 0");
+      ad.connect("i2s-in_1 1 filter_3 2");//HP
       ad.connect("filter_3 0 mixer_1 2");
 
       //master mixer to the output

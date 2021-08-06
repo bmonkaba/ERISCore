@@ -87,8 +87,8 @@ public:
 		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
-		subsample_lowfreqrange = 32;//ratio should be 2:1; bw is fc of the low range
-		subsample_highfreqrange = 16;//
+		subsample_lowfreqrange = 16;//ratio should be 2:1; bw is fc of the low range
+		subsample_highfreqrange = 8;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
@@ -180,7 +180,7 @@ public:
 			fftRR->peakValue = maxf;//powerf;
 			fftRR->peakBin = peak_index + binFirst;
 			if(fftRR->phase < phase[fftRR->peakBin]){
-				fftRR->phase -= phase[fftRR->peakBin];
+				fftRR->phase = phase[fftRR->peakBin];
 			}else fftRR->phase = phase[fftRR->peakBin];
 		} 
 		return powerf;
@@ -267,7 +267,7 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.7) + (fftRR->peakValue * 0.3);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.5) + (fftRR->peakValue * 0.5);	//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
 				//if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
@@ -306,6 +306,16 @@ public:
 	}
 	void windowFunction(const int16_t *w) {
 		window = w;
+	}
+	void spectralFilter(){
+		//takes the energy of the side lobes for any bins above a threshold
+		for (uint16_t i = 1; i < 1024; i++){
+			if (output[i-1] < output[i] > output[i+1]){
+				output[i] += output[i-1] + output[i+1];
+				output[i-1] = 0;
+				output[i+1] = 0;
+			}
+		}
 	}
 	bool capture(void);
 	void analyze(void);
