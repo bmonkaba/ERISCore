@@ -53,19 +53,19 @@ class MyAppExample:public AppBaseClass {
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
       filter->setLowpass(0,2200);
-      filter->setLowpass(1,2000);
-      filter->setLowpass(2,1800);
-      filter->setLowpass(3,1600);
+      filter->setLowpass(1,2400);
+      filter->setLowpass(2,2500);
+      filter->setLowpass(3,2600);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,1200);
-      filter->setLowpass(1,600);
-      filter->setLowpass(2,300);
+      filter->setLowpass(0,500);
+      filter->setLowpass(1,300);
+      filter->setLowpass(2,280);
       filter->setLowpass(3,240);
       
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,14000);
+      filter->setLowpass(0,12000);
       
       erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
       filter3->frequency(1000);//HP
@@ -188,7 +188,31 @@ class MyAppExample:public AppBaseClass {
     void onFocus(){
       makeAudioConnections();
     }
-
+    
+    void onAnalog1(uint16_t uval, float fval){
+      Serial.print("AN1 ");Serial.println(fval);
+      //fft input amp
+      erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
+      amp->gain(log((10.0 * fval) + 1));   
+    };
+    
+    void onAnalog2(uint16_t uval, float fval){
+      Serial.print("AN2 ");Serial.println(fval);
+      //analog 2 controls the resynthisized signal biquad output filter
+      erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
+      filter->setLowpass(0,100.0 + (12000.0 * fval));
+      filter->setLowpass(1,100.0 + (12000.0 * fval));  
+    };
+    
+    void onAnalog3(uint16_t uval, float fval){Serial.print("AN3 ");Serial.println(fval);};
+    
+    void onAnalog4(uint16_t uval, float fval){
+      Serial.print("AN4 ");Serial.println(fval);
+      //output amp
+      erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
+      amp->gain(log((10.0 * fval) + 1));          
+    };
+    
     void makeAudioConnections(){
       ad.disconnectAll();      
       //16 voice oscillator bank bus mixer (6)
@@ -204,11 +228,12 @@ class MyAppExample:public AppBaseClass {
       //ad.connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
-      ad.connect("i2s-in_1 1 filter_3 2");//HP
+      //ad.connect("i2s-in_1 1 filter_3 2");//HP
       ad.connect("filter_3 0 mixer_1 2");
 
-      //master mixer to the output
-      ad.connect("mixer_1 0 i2s-out_1 0");
+      //master mixer to the output amp
+      ad.connect("mixer_1 0 amp_1 0");
+      ad.connect("amp_1 0 i2s-out_1 0");
 
       //osc banks
       ad.connect("waveform_1 0 mixer_2 0");
@@ -232,15 +257,19 @@ class MyAppExample:public AppBaseClass {
       ad.connect("waveform_16 0 mixer_5 3");
 
       //fft connections
-      ad.connect("i2s-in_1 1 biquad_1 0");
+      ad.connect("i2s-in_1 1 amp_2 0");
+
+      ad.connect("amp_2 0 biquad_1 0");
       ad.connect("biquad_1 0 fft1024_1 0"); //lp filter
       
-      ad.connect("i2s-in_1 1 biquad_2 0");
+      ad.connect("amp_2 0 biquad_2 0");
       ad.connect("biquad_2 0 fft1024_2 0"); //lp filter
 
       //scope connections
-      ad.connect("i2s-in_1 1 scope_1 0");
-      ad.connect("mixer_6 0 scope_1 1");
+      //input through the fft amp
+      ad.connect("amp_2 0 scope_1 0");
+      //resynthed signal output filter
+      ad.connect("biquad_3 0 scope_1 1");
 
       AudioInterrupts();
     }

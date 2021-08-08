@@ -309,8 +309,8 @@ public:
 	}
 	void spectralFilter(){
 		//takes the energy of the side lobes for any bins above a threshold
-		for (uint16_t i = 1; i < 1024; i++){
-			if (output[i-1] < output[i] > output[i+1]){
+		for (uint16_t i = 1; i < 1024 - 1; i++){
+			if ((output[i-1] < output[i])&&(output[i] > output[i+1])){
 				output[i] += output[i-1] + output[i+1];
 				output[i-1] = 0;
 				output[i+1] = 0;

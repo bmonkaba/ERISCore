@@ -5,8 +5,8 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
-#define MAX_AUDIO_STREAM_OBJECTS 150
-#define MAX_AUDIO_MEMORY_BLOCKS 36
+#define MAX_AUDIO_STREAM_OBJECTS 160
+#define MAX_AUDIO_MEMORY_BLOCKS 50
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 16
 #define MAX_CONNECTIONS 64 
@@ -100,6 +100,7 @@ AudioDirector::AudioDirector(){
     addAudioStreamObj(new erisAudioMixer4);
     addAudioStreamObj(new erisAudioFilterStateVariable);
     addAudioStreamObj(new erisAudioFilterBiquad);
+    addAudioStreamObj(new erisAudioAmplifier);
   }
 
   Serial.print(F("AudioDirector::AudioDirector() objects: "));

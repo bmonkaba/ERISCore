@@ -8,6 +8,7 @@
 #include <Arduino.h>
 #include "HSI.h"
 #include "touch.h"
+#include "AnalogInputs.h"
 #include "ILI9341_t3_ERIS.h"
 //#include "font_Arial.h"
 #include "AudioDirector.h"
@@ -41,9 +42,9 @@ class AppBaseClass {
     uint16_t updateRT_loop_time_max;
     uint16_t cycle_time;
     uint16_t cycle_time_max;
-    elapsedMillis update_call_period;
+    elapsedMicros update_call_period;
     uint16_t update_call_period_max;
-    elapsedMillis updateRT_call_period;
+    elapsedMicros updateRT_call_period;
     uint16_t updateRT_call_period_max;
   public:
     int16_t origin_x;
@@ -74,6 +75,10 @@ class AppBaseClass {
     virtual void onTouch(uint16_t x, uint16_t y){};
     virtual void onTouchDrag(uint16_t x, uint16_t y){};
     virtual void onTouchRelease(uint16_t x, uint16_t y){};
+    virtual void onAnalog1(uint16_t uval, float fval){};
+    virtual void onAnalog2(uint16_t uval, float fval){};
+    virtual void onAnalog3(uint16_t uval, float fval){};
+    virtual void onAnalog4(uint16_t uval, float fval){};
   public:
     virtual void MessageHandler(AppBaseClass *sender, const char *message){};
 };
@@ -82,6 +87,7 @@ class AppManager {
   private:
     static AppManager* obj; //make appManager a singleton
     SdFs sd;
+    AnalogInputs analog;
     AppBaseClass *root; //root linked list node
     AppBaseClass *pActiveApp; //active app
     uint16_t nextIDAssignment;
@@ -154,14 +160,14 @@ class AppManager {
         Serial.flush();
         Serial.print(node->name);
         //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
-        Serial.print("\n \tupdate_loop_time_max: ");Serial.print(node->update_loop_time_max);
+        Serial.print("\n&emsp;update_loop_time_max: ");Serial.print(node->update_loop_time_max);
         //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
-        Serial.print("\n \tupdateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
+        Serial.print("\n&emsp;updateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
         //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
-        Serial.print("\n \tcycle_time_max: ");Serial.print(node->cycle_time_max);
+        Serial.print("\n&emsp;cycle_time_max: ");Serial.print(node->cycle_time_max);
         //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
-        Serial.print("\n \tupdate_call_period_max: ");Serial.print(node->update_call_period_max);
-        Serial.print("\n \tupdateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
+        Serial.print("\n&emsp;update_call_period_max: ");Serial.print(node->update_call_period_max);
+        Serial.print("\n&emsp;updateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
         Serial.println();
 
         //clear the stats
@@ -184,6 +190,7 @@ class AppManager {
         return;
       }
       touch.update();
+      bool update_analog = analog.update();
       AppBaseClass *node = root;
       bool isactive_child;
       #ifdef ENABLE_ASYNC_SCREEN_UPDATES
@@ -213,6 +220,12 @@ class AppManager {
         if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //active app found - trigger any events and then call the update function
+          if (update_analog){
+            node->onAnalog1(analog.readAN1(),analog.freadAN1());
+            node->onAnalog2(analog.readAN2(),analog.freadAN2());
+            node->onAnalog3(analog.readAN3(),analog.freadAN3());
+            node->onAnalog4(analog.readAN4(),analog.freadAN4());
+          }
           if (touch.touched()) {
             p = touch.getPoint();
             //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
