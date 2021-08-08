@@ -10,5 +10,6 @@ var dir_522b70b8f32e2759668ed7a76d5f3f67 =
     [ "eris_analyze_scope.cpp", "d4/d9a/eris__analyze__scope_8cpp.html", "d4/d9a/eris__analyze__scope_8cpp" ],
     [ "eris_analyze_scope.h", "d8/dc5/eris__analyze__scope_8h.html", [
       [ "erisAudioAnalyzeScope", "d4/d81/classeris_audio_analyze_scope.html", "d4/d81/classeris_audio_analyze_scope" ]
-    ] ]
+    ] ],
+    [ "eris_synth_waveform.h", "de/db5/eris__synth__waveform_8h.html", "de/db5/eris__synth__waveform_8h" ]
 ];

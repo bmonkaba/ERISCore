@@ -1,5 +1,30 @@
 var classeris_audio_synth_waveform_modulated =
 [
     [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html#a63fd134464c2ed700385ca506dbbe85e", null ],
-    [ "update", "df/d13/classeris_audio_synth_waveform_modulated.html#adb17e472a78199d529d649d287c3a0f2", null ]
+    [ "amplitude", "df/d13/classeris_audio_synth_waveform_modulated.html#a1aff0e5aa86a1bff7578e82fd026e7fc", null ],
+    [ "arbitraryWaveform", "df/d13/classeris_audio_synth_waveform_modulated.html#abe4ae9a7c6c4bb2b086186782f52b80c", null ],
+    [ "begin", "df/d13/classeris_audio_synth_waveform_modulated.html#a919a65a33447abbab6f95d4ec0d899d3", null ],
+    [ "begin", "df/d13/classeris_audio_synth_waveform_modulated.html#a3115ea45095008e478e7b1554e9d2445", null ],
+    [ "frequency", "df/d13/classeris_audio_synth_waveform_modulated.html#a4da60875f4b350e2cc76d6cd9c33a078", null ],
+    [ "frequencyModulation", "df/d13/classeris_audio_synth_waveform_modulated.html#a00d411c4863945c1bb379c47bd1125a2", null ],
+    [ "isActive", "df/d13/classeris_audio_synth_waveform_modulated.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
+    [ "offset", "df/d13/classeris_audio_synth_waveform_modulated.html#aa1b591fd33de8b18ea6ecea009957e8c", null ],
+    [ "phaseModulation", "df/d13/classeris_audio_synth_waveform_modulated.html#a9e628e5d0a231a45a67648d5ef3643e1", null ],
+    [ "processorUsage", "df/d13/classeris_audio_synth_waveform_modulated.html#a8b64af9348ca38d5374514343fb78382", null ],
+    [ "processorUsageMax", "df/d13/classeris_audio_synth_waveform_modulated.html#a3a97d8e3b9d63b1cb6c4544d3aa040f2", null ],
+    [ "processorUsageMaxReset", "df/d13/classeris_audio_synth_waveform_modulated.html#aff732b4ba2fa71f3a47b16247d024a92", null ],
+    [ "receiveReadOnly", "df/d13/classeris_audio_synth_waveform_modulated.html#a9599ba022ef3e214243ce4dee9717019", null ],
+    [ "receiveWritable", "df/d13/classeris_audio_synth_waveform_modulated.html#aedbf0b4a808724dc4f4115c60b615622", null ],
+    [ "transmit", "df/d13/classeris_audio_synth_waveform_modulated.html#ae55a08c2b5815749c06ac5d0f39b1e48", null ],
+    [ "update", "df/d13/classeris_audio_synth_waveform_modulated.html#adb17e472a78199d529d649d287c3a0f2", null ],
+    [ "active", "df/d13/classeris_audio_synth_waveform_modulated.html#a76e57ea7b1d52d78545f1a35e287d10c", null ],
+    [ "category", "df/d13/classeris_audio_synth_waveform_modulated.html#afd0f87125aecd2222c87ab2f57cde6f9", null ],
+    [ "cpu_cycles", "df/d13/classeris_audio_synth_waveform_modulated.html#a0bfdc8888172e1256c35d3b6bdc7799d", null ],
+    [ "cpu_cycles_max", "df/d13/classeris_audio_synth_waveform_modulated.html#a132a5948323a2f94a6f53e42a64411dc", null ],
+    [ "instance", "df/d13/classeris_audio_synth_waveform_modulated.html#ac8fb019d1a24233d62228d2e234dde88", null ],
+    [ "num_inputs", "df/d13/classeris_audio_synth_waveform_modulated.html#adc3bac67eb13d51375cc49a48c3328b1", null ],
+    [ "numConnections", "df/d13/classeris_audio_synth_waveform_modulated.html#aae8e555ac9f257e10abbd3545a78f88c", null ],
+    [ "shortName", "df/d13/classeris_audio_synth_waveform_modulated.html#ac242dd9497117769db00c076d9b71710", null ],
+    [ "unum_inputs", "df/d13/classeris_audio_synth_waveform_modulated.html#a643f654eb80d440b0535cd0e6244a85c", null ],
+    [ "unum_outputs", "df/d13/classeris_audio_synth_waveform_modulated.html#a1ca258955ea281b46625381746c733f5", null ]
 ];

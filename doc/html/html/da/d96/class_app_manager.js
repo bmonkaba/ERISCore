@@ -7,6 +7,7 @@ var class_app_manager =
     [ "printStats", "da/d96/class_app_manager.html#a5473102eda020a4b4e2bcdf5dad221b1", null ],
     [ "pushAppFocus", "da/d96/class_app_manager.html#a927463551ef548aa5f1f75d517c72128", null ],
     [ "RegisterApp", "da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae", null ],
+    [ "sendMessage", "da/d96/class_app_manager.html#aa4f7649ae1aa1a567286d73981f00090", null ],
     [ "switchAppFocus", "da/d96/class_app_manager.html#a4e836d1c6fc14462e71bd7f386b031c0", null ],
     [ "update", "da/d96/class_app_manager.html#ab4352bf5559866e77c333e74af7c2210", null ],
     [ "p", "da/d96/class_app_manager.html#a79bdde908efa7810477f913ff47c1c28", null ],

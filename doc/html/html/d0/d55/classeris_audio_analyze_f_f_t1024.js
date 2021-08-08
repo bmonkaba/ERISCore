@@ -23,6 +23,7 @@ var classeris_audio_analyze_f_f_t1024 =
     [ "receiveWritable", "d0/d55/classeris_audio_analyze_f_f_t1024.html#aedbf0b4a808724dc4f4115c60b615622", null ],
     [ "reset", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a83218493f4f01007407be9394c5c9e4b", null ],
     [ "setActiveRange", "d0/d55/classeris_audio_analyze_f_f_t1024.html#aaee68161bece8d59cc3fcb02154d8822", null ],
+    [ "spectralFilter", "d0/d55/classeris_audio_analyze_f_f_t1024.html#aa7132a69740d009f5d282b08ed3867fa", null ],
     [ "toggleActiveRange", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a5fad2b0d286d2ba6e7236b403dab81d6", null ],
     [ "transmit", "d0/d55/classeris_audio_analyze_f_f_t1024.html#ae55a08c2b5815749c06ac5d0f39b1e48", null ],
     [ "update", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a4984b3fda16edc12b3b12abf302a5a04", null ],

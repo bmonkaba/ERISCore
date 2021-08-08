@@ -1,13 +1,14 @@
 var hierarchy =
 [
+    [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", [
-      [ "AppButton", "d2/d92/class_app_button.html", null ],
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", null ],
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
       [ "AppScope", "d8/dbe/class_app_scope.html", null ],
       [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html", null ],
-      [ "AppSlider", "de/d35/class_app_slider.html", null ],
       [ "AppTemplate", "d9/d03/class_app_template.html", null ],
+      [ "ControlButton", "df/d17/class_control_button.html", null ],
+      [ "ControlSlider", "de/d67/class_control_slider.html", null ],
       [ "MyAppExample", "dd/da5/class_my_app_example.html", null ]
     ] ],
     [ "AppManager", "da/d96/class_app_manager.html", null ],
@@ -201,6 +202,12 @@ var hierarchy =
       [ "erisAudioRecordQueue", "de/d1d/classeris_audio_record_queue.html", null ]
     ] ],
     [ "AudioStream", "d5/d96/class_audio_stream.html", [
+      [ "AudioSynthWaveform", "d4/dd5/class_audio_synth_waveform.html", [
+        [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", null ]
+      ] ],
+      [ "AudioSynthWaveformModulated", "d9/d43/class_audio_synth_waveform_modulated.html", [
+        [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html", null ]
+      ] ],
       [ "erisAudioAnalyzeFFT1024", "d0/d55/classeris_audio_analyze_f_f_t1024.html", null ],
       [ "erisAudioAnalyzeScope", "d4/d81/classeris_audio_analyze_scope.html", null ]
     ] ],
@@ -219,14 +226,8 @@ var hierarchy =
     [ "AudioSynthToneSweep", null, [
       [ "erisAudioSynthToneSweep", "d2/dd3/classeris_audio_synth_tone_sweep.html", null ]
     ] ],
-    [ "AudioSynthWaveform", null, [
-      [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", null ]
-    ] ],
     [ "AudioSynthWaveformDc", null, [
       [ "erisAudioSynthWaveformDc", "d7/d66/classeris_audio_synth_waveform_dc.html", null ]
-    ] ],
-    [ "AudioSynthWaveformModulated", null, [
-      [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html", null ]
     ] ],
     [ "AudioSynthWaveformPWM", null, [
       [ "erisAudioSynthWaveformPWM", "d2/d43/classeris_audio_synth_waveform_p_w_m.html", null ]

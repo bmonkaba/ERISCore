@@ -54,16 +54,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/d92/class_app_button.html#ad94e41c748692bda9c38b25c876bc3e6",
-"d6/d17/_u_i_element_8h.html",
-"d9/dad/class_app_serial_command_interface.html#acec8429a0d867221c0c4f47f4f7d00d4",
-"de/d10/_h_s_i_8h.html#a55ed635bf7ffc90a941e1b439f877193",
-"de/d7c/ui__menu__structs_8h.html#a20a7e187e2bb4d539868c92e8a4266f4",
-"de/d7c/ui__menu__structs_8h.html#a50cc5c0a83043770a318c2db5da2492b",
-"de/d7c/ui__menu__structs_8h.html#a822cab4b5c3f3cce4f2bc0a567896ac4",
-"de/d7c/ui__menu__structs_8h.html#ab4a4bc8a83f8e4c46c5f6173006bbed1",
-"de/d7c/ui__menu__structs_8h.html#aee9a18c93280edb2ee9022b41e779df3",
-"index.html"
+"d3/ddb/_analog_inputs_8h_source.html",
+"d5/d96/class_audio_stream.html#a8b64af9348ca38d5374514343fb78382",
+"d9/d03/class_app_template.html#acec8429a0d867221c0c4f47f4f7d00d4",
+"dd/d3a/ui__config__strings_8h.html#a2f74cce09a3a16b3c21ce58f30454e2a",
+"de/d7c/ui__menu__structs_8h.html#a0b248e23f18edaa026c6133a83d7f23c",
+"de/d7c/ui__menu__structs_8h.html#a3ccc38a7c6c3db51c98bf7245d90a3db",
+"de/d7c/ui__menu__structs_8h.html#a6a3a4c6c7cf27463825f393335dfa17f",
+"de/d7c/ui__menu__structs_8h.html#a9af3ee863d9d88d41f447c5365e95dd9",
+"de/d7c/ui__menu__structs_8h.html#ad59e033903c21b15cefcf4e61a09b262",
+"df/d13/classeris_audio_synth_waveform_modulated.html#ac242dd9497117769db00c076d9b71710"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

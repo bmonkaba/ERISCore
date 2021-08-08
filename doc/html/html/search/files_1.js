@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['data_5fwindows_5ff32_2eh_1962',['data_windows_f32.h',['../da/d3d/data__windows__f32_8h.html',1,'']]]
+  ['controlbutton_2eh_2012',['controlButton.h',['../dc/ddf/control_button_8h.html',1,'']]],
+  ['controlslider_2eh_2013',['controlSlider.h',['../d4/d50/control_slider_8h.html',1,'']]]
 ];

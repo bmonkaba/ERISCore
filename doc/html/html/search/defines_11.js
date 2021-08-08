@@ -1,23 +1,5 @@
 var searchData=
 [
-  ['ui_5fencoder_5fmute_5ftime_7116',['UI_ENCODER_MUTE_TIME',['../d0/d72/_u_i_8h.html#aa9c2d71586a045906bc7bbde4a3bfc92',1,'UI.h']]],
-  ['ui_5fmax_5fcontrols_5fper_5fmenu_7117',['UI_MAX_CONTROLS_PER_MENU',['../d0/d72/_u_i_8h.html#a32a4ff9a0953f5e658712813c471a813',1,'UI.h']]],
-  ['uno_5fmiso_7118',['UNO_MISO',['../da/dd5/_sd_spi_bare_uno_driver_8h.html#a7d4b107b66ea4016cacb482cca57161f',1,'SdSpiBareUnoDriver.h']]],
-  ['uno_5fmosi_7119',['UNO_MOSI',['../da/dd5/_sd_spi_bare_uno_driver_8h.html#a6935052f926ab36fd296efa935bc648d',1,'SdSpiBareUnoDriver.h']]],
-  ['uno_5fsck_7120',['UNO_SCK',['../da/dd5/_sd_spi_bare_uno_driver_8h.html#a8fc14d2a1594c2400fa9267e85bee4bb',1,'SdSpiBareUnoDriver.h']]],
-  ['uno_5fss_7121',['UNO_SS',['../da/dd5/_sd_spi_bare_uno_driver_8h.html#a4d27d150198211d7829b19894eb98f98',1,'SdSpiBareUnoDriver.h']]],
-  ['use_5fblock_5fdevice_5finterface_7122',['USE_BLOCK_DEVICE_INTERFACE',['../de/d9b/_sd_fat_config_8h.html#ae92cc0fb2a31925cfc5694feb048dca2',1,'SdFatConfig.h']]],
-  ['use_5fdbg_5fmacros_7123',['USE_DBG_MACROS',['../d5/dfc/_debug_macros_8h.html#ad94345c0d9f0c8d27d1263bb67bc80c7',1,'DebugMacros.h']]],
-  ['use_5fexfat_5fbitmap_5fcache_7124',['USE_EXFAT_BITMAP_CACHE',['../de/d9b/_sd_fat_config_8h.html#a8d3fca2607182c1ba389dd61c283a3e2',1,'SdFatConfig.h']]],
-  ['use_5fexfat_5funicode_5fnames_7125',['USE_EXFAT_UNICODE_NAMES',['../da/df6/_ex_fat_config_8h.html#af33530a6f1c622b1d3c59988df41bba4',1,'ExFatConfig.h']]],
-  ['use_5ffat_5ffile_5fflag_5fcontiguous_7126',['USE_FAT_FILE_FLAG_CONTIGUOUS',['../de/d9b/_sd_fat_config_8h.html#ad42a354208ecb245adfc238266a612e5',1,'SdFatConfig.h']]],
-  ['use_5ffcntl_5fh_7127',['USE_FCNTL_H',['../de/d9b/_sd_fat_config_8h.html#ab4b7255422e65730612f1f6af1a26752',1,'SdFatConfig.h']]],
-  ['use_5ffmt_5fbase10_7128',['USE_FMT_BASE10',['../d8/d73/_fmt_number_8cpp.html#ac2197c16737a365968c62142592c09a9',1,'FmtNumber.cpp']]],
-  ['use_5flba_5fto_5fchs_7129',['USE_LBA_TO_CHS',['../db/dc9/_fat_formatter_8cpp.html#ad141eff06ee441be9d7584ba356c440f',1,'FatFormatter.cpp']]],
-  ['use_5flong_5ffile_5fnames_7130',['USE_LONG_FILE_NAMES',['../de/d9b/_sd_fat_config_8h.html#a2536b194b3b007604a39e8526e108b52',1,'SdFatConfig.h']]],
-  ['use_5fmulti_5fsector_5fio_7131',['USE_MULTI_SECTOR_IO',['../de/d9b/_sd_fat_config_8h.html#ae477a983188d4370faff32b07a5cfacb',1,'SdFatConfig.h']]],
-  ['use_5fsd_5fcrc_7132',['USE_SD_CRC',['../de/d9b/_sd_fat_config_8h.html#af2e76ffb2fdb830175abf513dd640fdd',1,'SdFatConfig.h']]],
-  ['use_5fseparate_5ffat_5fcache_7133',['USE_SEPARATE_FAT_CACHE',['../de/d9b/_sd_fat_config_8h.html#a23f662882413dcb017ebd8107473b8c3',1,'SdFatConfig.h']]],
-  ['use_5fshared_5fspi_7134',['USE_SHARED_SPI',['../d2/d96/_low_latency_logger_a_d_x_l345_2_user_types_8h.html#a9548f9cfa2b97ff8ecedf0c98be8b9a6',1,'UserTypes.h']]],
-  ['use_5fsimple_5flittle_5fendian_7135',['USE_SIMPLE_LITTLE_ENDIAN',['../de/d9b/_sd_fat_config_8h.html#a9d4fac424e31b4383a10211f0489d93b',1,'SdFatConfig.h']]]
+  ['z_5fthreshold_3896',['Z_THRESHOLD',['../db/dfc/touch_8cpp.html#a5cd8cec6af62011935a3a4970068b2f3',1,'touch.cpp']]],
+  ['z_5fthreshold_5fint_3897',['Z_THRESHOLD_INT',['../db/dfc/touch_8cpp.html#a812b93d7d16f53447d3188c0d5c63f27',1,'touch.cpp']]]
 ];
