@@ -22,18 +22,34 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../db/dc8/_audio_director_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="488,-284.5 488,-318.5 650,-318.5 650,-284.5 488,-284.5"/>
-<text text-anchor="start" x="496" y="-304.9" font-family="Helvetica,sans-Serif" font-size="12.00">D:/brian/Dev/Eris/ERISCore</text>
-<text text-anchor="middle" x="569" y="-291.9" font-family="Helvetica,sans-Serif" font-size="12.00">/include/AudioDirector.h</text>
+<g id="a_node2"><a xlink:href="../../d3/ddb/_analog_inputs_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="398,-284.5 398,-318.5 560,-318.5 560,-284.5 398,-284.5"/>
+<text text-anchor="start" x="406" y="-304.9" font-family="Helvetica,sans-Serif" font-size="12.00">D:/brian/Dev/Eris/ERISCore</text>
+<text text-anchor="middle" x="479" y="-291.9" font-family="Helvetica,sans-Serif" font-size="12.00">/include/AnalogInputs.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M569,-345.25C569,-336.39 569,-326.77 569,-318.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="565.5,-345.5 569,-355.5 572.5,-345.5 565.5,-345.5"/>
+<path fill="none" stroke="midnightblue" d="M539.94,-349.22C526.96,-339.27 511.95,-327.76 500.07,-318.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="538.06,-352.19 548.13,-355.5 542.32,-346.63 538.06,-352.19"/>
+</g>
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="../../db/dc8/_audio_director_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="578,-284.5 578,-318.5 740,-318.5 740,-284.5 578,-284.5"/>
+<text text-anchor="start" x="586" y="-304.9" font-family="Helvetica,sans-Serif" font-size="12.00">D:/brian/Dev/Eris/ERISCore</text>
+<text text-anchor="middle" x="659" y="-291.9" font-family="Helvetica,sans-Serif" font-size="12.00">/include/AudioDirector.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node13 -->
+<g id="edge19" class="edge">
+<title>Node1&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M598.06,-349.22C611.04,-339.27 626.05,-327.76 637.93,-318.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="595.68,-346.63 589.87,-355.5 599.94,-352.19 595.68,-346.63"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -48,8 +64,8 @@
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M569,-274.25C569,-265.39 569,-255.77 569,-247.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="565.5,-274.5 569,-284.5 572.5,-274.5 565.5,-274.5"/>
+<path fill="none" stroke="midnightblue" d="M508.06,-278.22C521.04,-268.27 536.05,-256.76 547.93,-247.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="505.68,-275.63 499.87,-284.5 509.94,-281.19 505.68,-275.63"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -236,6 +252,12 @@
 <title>Node12&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M579.33,-140.24C532.26,-129.45 473.22,-115.91 427.95,-105.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="578.66,-143.67 589.19,-142.5 580.22,-136.85 578.66,-143.67"/>
+</g>
+<!-- Node13&#45;&gt;Node3 -->
+<g id="edge20" class="edge">
+<title>Node13&#45;&gt;Node3</title>
+<path fill="none" stroke="midnightblue" d="M629.94,-278.22C616.96,-268.27 601.95,-256.76 590.07,-247.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="628.06,-281.19 638.13,-284.5 632.32,-275.63 628.06,-281.19"/>
 </g>
 </g>
 </svg>

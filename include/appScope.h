@@ -21,7 +21,7 @@ class AppScope:public AppBaseClass {
         float scale;
         if (scope->available()){
             scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-            if (scale > 1000.0) scale = 1000.0;
+            if (scale > 15000.0) scale = 15000.0;
             for (int16_t i=0;i<width;i++){
                 int16_t v;
                 float f;
@@ -29,7 +29,7 @@ class AppScope:public AppBaseClass {
                 v = scope->read(0,i) * scale;
                 f = ((v * 0.000030517578125) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
                 ch1 = origin_y + (uint16_t)(f * height);
-                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ch1,ILI9341_RED);
+                if (origin_x + i > 0) tft.drawLine(origin_x + i-1,y_last_scope,origin_x + i,ch1,ILI9341_ORANGE);
                 //draw the second channel
                 v = scope->read(1,i) * scale;
                 f = ((v * 0.000030517578125) + 1.0) * 0.5;
@@ -40,10 +40,15 @@ class AppScope:public AppBaseClass {
                 y_last_scope = ch1; 
                 y_last_scope_ch2 = ch2;
             }
+            //Serial.printf("%" PRId64 "\n", scope->getDotDelta());
             scope->trigger();
-            tft.setCursor(origin_x,origin_y+15);
+            tft.setCursor(origin_x+width - 100,origin_y+5);
             tft.print("scale: ");
-            tft.print(scale); 
+            tft.print(scale);
+            tft.setCursor(origin_x+width - 100,origin_y+20);
+            tft.print("hdiv: ");
+            tft.print(scope->getHDiv());
+            
         }
         tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
     };    //called only when the app is active

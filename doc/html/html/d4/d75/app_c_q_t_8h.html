@@ -95,8 +95,7 @@ $(document).ready(function(){initNavTree('d4/d75/app_c_q_t_8h.html','../../'); i
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../da/dfe/app_c_q_t_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../da/dfe/app_c_q_t_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -111,20 +110,32 @@ $(document).ready(function(){initNavTree('d4/d75/app_c_q_t_8h.html','../../'); i
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dde/class_app_c_q_t.html">AppCQT</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <a class="el" href="../../d4/dde/class_app_c_q_t.html" title="Implements the AppCQT class.">AppCQT</a> class.  <a href="../../d4/dde/class_app_c_q_t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0e6eb21f4797c43c1e55840a246da543"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a0e6eb21f4797c43c1e55840a246da543">CQT_HIGHRANGE_SPLIT_AT_BIN</a>&#160;&#160;&#160;47</td></tr>
+<tr class="memdesc:a0e6eb21f4797c43c1e55840a246da543"><td class="mdescLeft">&#160;</td><td class="mdescRight">CQT_HIGHRANGE_SPLIT_AT_BIN defines the cqt bin at which the high range fft will begin to be read from.  <a href="../../d4/d75/app_c_q_t_8h.html#a0e6eb21f4797c43c1e55840a246da543">More...</a><br /></td></tr>
 <tr class="separator:a0e6eb21f4797c43c1e55840a246da543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a268431ac67111c44f5346b92590c5f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>&#160;&#160;&#160;14</td></tr>
+<tr class="memitem:a268431ac67111c44f5346b92590c5f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a268431ac67111c44f5346b92590c5f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)  <a href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">More...</a><br /></td></tr>
 <tr class="separator:a268431ac67111c44f5346b92590c5f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ebfb6b2cc5819364cf740b029af8371"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a9ebfb6b2cc5819364cf740b029af8371">TX_CQT_PERIOD</a>&#160;&#160;&#160;250</td></tr>
+<tr class="memdesc:a9ebfb6b2cc5819364cf740b029af8371"><td class="mdescLeft">&#160;</td><td class="mdescRight">the period at which the some quantized voice data is sent to the serial port  <a href="../../d4/d75/app_c_q_t_8h.html#a9ebfb6b2cc5819364cf740b029af8371">More...</a><br /></td></tr>
 <tr class="separator:a9ebfb6b2cc5819364cf740b029af8371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6043a8f2fa308ddb4cbe148f6b76a6c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a6043a8f2fa308ddb4cbe148f6b76a6c5">TX_PERIOD</a>&#160;&#160;&#160;500</td></tr>
+<tr class="memdesc:a6043a8f2fa308ddb4cbe148f6b76a6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodically transmit the fft output buffer to the serial port  <a href="../../d4/d75/app_c_q_t_8h.html#a6043a8f2fa308ddb4cbe148f6b76a6c5">More...</a><br /></td></tr>
 <tr class="separator:a6043a8f2fa308ddb4cbe148f6b76a6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Brian Monkaba (<a href="#" onclick="location.href='mai'+'lto:'+'bri'+'an'+'.mo'+'nk'+'aba'+'@g'+'mai'+'l.'+'com'; return false;">brian<span style="display: none;">.nosp@m.</span>.mon<span style="display: none;">.nosp@m.</span>kaba@<span style="display: none;">.nosp@m.</span>gmai<span style="display: none;">.nosp@m.</span>l.com</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-08-08</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0e6eb21f4797c43c1e55840a246da543"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e6eb21f4797c43c1e55840a246da543">&#9670;&nbsp;</a></span>CQT_HIGHRANGE_SPLIT_AT_BIN</h2>
 
@@ -137,7 +148,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00006">6</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p>CQT_HIGHRANGE_SPLIT_AT_BIN defines the cqt bin at which the high range fft will begin to be read from. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00022">22</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -148,12 +161,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSC_BANK_SIZE&#160;&#160;&#160;14</td>
+          <td class="memname">#define OSC_BANK_SIZE&#160;&#160;&#160;8</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00009">9</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p>OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00028">28</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -169,7 +184,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00019">19</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p>the period at which the some quantized voice data is sent to the serial port </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00043">43</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -185,7 +202,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00016">16</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p>periodically transmit the fft output buffer to the serial port </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00037">37</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,10 @@
 var NAVTREEINDEX10 =
 {
+"df/d13/classeris_audio_synth_waveform_modulated.html#a9599ba022ef3e214243ce4dee9717019":[0,0,87,13],
+"df/d13/classeris_audio_synth_waveform_modulated.html#a9e628e5d0a231a45a67648d5ef3643e1":[0,0,87,9],
+"df/d13/classeris_audio_synth_waveform_modulated.html#aa1b591fd33de8b18ea6ecea009957e8c":[0,0,87,8],
+"df/d13/classeris_audio_synth_waveform_modulated.html#aae8e555ac9f257e10abbd3545a78f88c":[0,0,87,23],
+"df/d13/classeris_audio_synth_waveform_modulated.html#abe4ae9a7c6c4bb2b086186782f52b80c":[0,0,87,2],
 "df/d13/classeris_audio_synth_waveform_modulated.html#ac242dd9497117769db00c076d9b71710":[0,0,87,24],
 "df/d13/classeris_audio_synth_waveform_modulated.html#ac8fb019d1a24233d62228d2e234dde88":[0,0,87,21],
 "df/d13/classeris_audio_synth_waveform_modulated.html#adb17e472a78199d529d649d287c3a0f2":[0,0,87,16],
@@ -190,8 +195,8 @@ var NAVTREEINDEX10 =
 "globals_type.html":[1,1,3],
 "globals_u.html":[1,1,0,17],
 "globals_v.html":[1,1,0,18],
-"globals_vars.html":[1,1,2],
 "globals_vars.html":[1,1,2,0],
+"globals_vars.html":[1,1,2],
 "globals_vars_a.html":[1,1,2,1],
 "globals_vars_c.html":[1,1,2,2],
 "globals_vars_d.html":[1,1,2,3],

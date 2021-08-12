@@ -45,6 +45,9 @@ public:
 		autoTrigger = false;
 		isAvailable = false;
 		peakValue = 0;
+		dot=0;
+		dotAvg=0;
+		dotLast=0;
 	}
 
 	virtual void update(void);
@@ -57,6 +60,11 @@ public:
 	int16_t getPeakValue(){return peakValue;}
 	bool available(void);
 	void hdivide(int8_t horizontal_division){h_div = horizontal_division;auto_h_div = h_div; h_div_count=0;};
+	uint8_t getHDiv(){return h_div;}
+	q63_t getDotProduct(){return dot;}
+	q63_t getDotProductAvg(){return dotAvg;}
+	q63_t getDotDelta(){return dot - dotLast;}
+	
 private:
 	const char *myname;
 	uint8_t state;
@@ -73,6 +81,9 @@ private:
 	uint32_t edgeCount;
 	uint32_t count;
 	int16_t peakValue;
+	q63_t dot;
+	q63_t dotLast;
+	q63_t dotAvg;
 	audio_block_t *inputQueueArray[2];
 };
 

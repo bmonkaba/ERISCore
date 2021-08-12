@@ -25,7 +25,9 @@
  */
 
 #include <Arduino.h>
+#include <arm_math.h>
 #include "eris_analyze_scope.h"
+
 
 #define STATE_IDLE          0  // doing nothing
 #define STATE_WAIT_TRIGGER  1  // looking for trigger condition
@@ -112,7 +114,13 @@ void erisAudioAnalyzeScope::update(void)
 			if (count == 0){
 				//Serial.println(edgeCount);
 				if((edgeCount < 3) && (auto_h_div < 4)) auto_h_div++;
-				if((edgeCount > 4) && (auto_h_div > 2)) auto_h_div--;
+				if((edgeCount > 4) && (auto_h_div > 1)) auto_h_div--;
+				//calculate the dot product if dual channel
+				if (isDualChannel){
+					dotLast = dot;			
+					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
+					dotAvg = (dotAvg*0.9) + (dot*0.1);
+				}	
 				isAvailable = true;
 				if (autoTrigger){
 					trigger();

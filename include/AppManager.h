@@ -194,7 +194,7 @@ class AppManager {
       AppBaseClass *node = root;
       bool isactive_child;
       #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-      if (!screenBusy) tft.fillRect(0, 0, 320, 20, 0);//tft.bltSDFullScreen("bluehex.ile");
+      //if (!screenBusy) tft.fillRect(0, 0, 320, 240, 0);//tft.bltSDFullScreen("bluehex.ile");//tft.fillRect(0, 0, 320, 20, 0);
       #else
       if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
       #endif

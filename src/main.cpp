@@ -12,9 +12,9 @@
 #include "PCM1863.h"
 
 uint16_t inc;
-static DMAMEM MyAppExample app;
-AppSerialCommandInterface appSCI;
-AppReprogram *appReprogram;
+FASTRUN MyAppExample *app;
+FASTRUN AppSerialCommandInterface *appSCI;
+FASTRUN AppReprogram *appReprogram;
 //AppTemplate appTemplate;
 
 void FLASHMEM setup() {
@@ -44,9 +44,10 @@ void FLASHMEM setup() {
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
   touch.setRotation(3);
   Serial.println(F("Setup: Loading Applications"));
-  //app = new MyAppExample;    //note: The AppBaseClass constructor self registers with the app manager
+  app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
   appReprogram = new AppReprogram();
-  AppManager::getInstance()->switchAppFocus(app.getId()); //focus is requested by obj id
+  appSCI = new AppSerialCommandInterface();
+  AppManager::getInstance()->switchAppFocus(app->getId()); //focus is requested by obj id
   Serial.println(F("Setup: Configuring the sw audio block connections"));
   Serial.println(F("Setup: Init Complete"));
   Serial.print(F("Ext ADC Operating State (15:RUNNING): "));

@@ -344,13 +344,14 @@ $("#CQT_CFG").click(function(ev){
 
 $("#PINK_NOISE").click(function(ev){
   ev.preventDefault();
-  sendMessage({ 'data' : "DISCONNECT fft1024_2 0\nCONNECT pink_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT pink_1 0 fft1024_1 0\nDISCONNECT mixer_5 3"});
+  sendMessage({ 'data' : "DISCONNECT amp_2 0\nCONNECT pink_1 0 amp_2 0\nDISCONNECT mixer_5 3"});
 });
 
 $("#TONE").click(function(ev){
   ev.preventDefault();
-  sendMessage({ 'data' : "DISCONNECT scope_1 0\nCONNECT waveform_16 0 scope_1 0\nDISCONNECT fft1024_2 0\nCONNECT waveform_16 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT waveform_16 0 fft1024_2 0\nDISCONNECT mixer_5 3\nDISCONNECT fft1024_2 0\nCONNECT biquad_1 0 fft1024_2 0\nDISCONNECT fft1024_1 0\nCONNECT biquad_2 0 fft1024_1 0\nAA 220"});
+  sendMessage({ 'data' : "DISCONNECT amp_2 0\nCONNECT waveform_16 0 amp_2 0\nDISCONNECT mixer_5 3\nAA 220"});
 });
+
 
 
 

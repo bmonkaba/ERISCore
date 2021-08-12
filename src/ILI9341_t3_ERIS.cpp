@@ -4,7 +4,7 @@ void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 240);
+    analogWriteFrequency(backlight, 333);
     analogWrite(backlight, 200);
 }
 void ILI9341_t3_ERIS::begin(){
@@ -23,7 +23,7 @@ void ILI9341_t3_ERIS::begin(){
     if (pSD->exists("bluehex.ile")){println("File found...");}
     file.open("bluehex.ile", O_READ);
     char buf[32];
-    file.fgets(buf,sizeof(buf)); // thow away these valuse - wallpaper is fixed @ 320x240
+    file.fgets(buf,sizeof(buf)); // thow away these values - wallpaper is fixed @ 320x240
     file.fgets(buf,sizeof(buf)); //
     for (uint32_t i = 0; i < (320 * 240); i += 1){file.read(&pFB[i],2);}
     file.close();

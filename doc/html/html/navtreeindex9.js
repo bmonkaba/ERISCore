@@ -1,5 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"de/d7c/ui__menu__structs_8h.html#ad491cba85a0607f667d9468019cb718a":[1,0,0,18,487],
+"de/d7c/ui__menu__structs_8h.html#ad49f87325e1ac12fa0132cfe28cbea53":[1,0,0,18,1167],
+"de/d7c/ui__menu__structs_8h.html#ad500f84262bbce492ba2329a8d46faca":[1,0,0,18,330],
+"de/d7c/ui__menu__structs_8h.html#ad50feac0ee0d4a357098acec477fb2fc":[1,0,0,18,72],
 "de/d7c/ui__menu__structs_8h.html#ad59e033903c21b15cefcf4e61a09b262":[1,0,0,18,1241],
 "de/d7c/ui__menu__structs_8h.html#ad5d02947b97a2836a8e41661416bfcec":[1,0,0,18,300],
 "de/d7c/ui__menu__structs_8h.html#ad5e6501ee73c996fa61ea020d41e6524":[1,0,0,18,1045],
@@ -225,10 +229,11 @@ var NAVTREEINDEX9 =
 "df/d0a/main_8cpp.html":[1,0,2,1],
 "df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f":[1,0,2,1,1],
 "df/d0a/main_8cpp.html#a2eb031a196afc920120d008cd3858f2e":[1,0,2,1,2],
-"df/d0a/main_8cpp.html#a3da5b626ba9581d74eb6155bb3578800":[1,0,2,1,5],
-"df/d0a/main_8cpp.html#a41debc15b6965bd70b14b8802974cd49":[1,0,2,1,3],
+"df/d0a/main_8cpp.html#a3da5b626ba9581d74eb6155bb3578800":[1,0,2,1,6],
+"df/d0a/main_8cpp.html#a427aa98d6edc302575324619af7f22aa":[1,0,2,1,4],
+"df/d0a/main_8cpp.html#a6974831a494489fa691832e6370d82f9":[1,0,2,1,3],
 "df/d0a/main_8cpp.html#a83dbf0cf2bee77d1420f6c04800ae09a":[1,0,2,1,0],
-"df/d0a/main_8cpp.html#ac99ef840eba108f6a346351da2ebad45":[1,0,2,1,4],
+"df/d0a/main_8cpp.html#afd4f82308f5b6236f0c1144cc2b47331":[1,0,2,1,5],
 "df/d0a/main_8cpp_source.html":[1,0,2,1],
 "df/d13/classeris_audio_synth_waveform_modulated.html":[0,0,87],
 "df/d13/classeris_audio_synth_waveform_modulated.html#a00d411c4863945c1bb379c47bd1125a2":[0,0,87,6],
@@ -244,10 +249,5 @@ var NAVTREEINDEX9 =
 "df/d13/classeris_audio_synth_waveform_modulated.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[0,0,87,7],
 "df/d13/classeris_audio_synth_waveform_modulated.html#a76e57ea7b1d52d78545f1a35e287d10c":[0,0,87,17],
 "df/d13/classeris_audio_synth_waveform_modulated.html#a8b64af9348ca38d5374514343fb78382":[0,0,87,10],
-"df/d13/classeris_audio_synth_waveform_modulated.html#a919a65a33447abbab6f95d4ec0d899d3":[0,0,87,3],
-"df/d13/classeris_audio_synth_waveform_modulated.html#a9599ba022ef3e214243ce4dee9717019":[0,0,87,13],
-"df/d13/classeris_audio_synth_waveform_modulated.html#a9e628e5d0a231a45a67648d5ef3643e1":[0,0,87,9],
-"df/d13/classeris_audio_synth_waveform_modulated.html#aa1b591fd33de8b18ea6ecea009957e8c":[0,0,87,8],
-"df/d13/classeris_audio_synth_waveform_modulated.html#aae8e555ac9f257e10abbd3545a78f88c":[0,0,87,23],
-"df/d13/classeris_audio_synth_waveform_modulated.html#abe4ae9a7c6c4bb2b086186782f52b80c":[0,0,87,2]
+"df/d13/classeris_audio_synth_waveform_modulated.html#a919a65a33447abbab6f95d4ec0d899d3":[0,0,87,3]
 };

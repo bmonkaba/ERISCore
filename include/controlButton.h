@@ -28,6 +28,7 @@ class ControlButton:public AppBaseClass {
     elapsedMillis time_active;
     bool show_active;
     void update(){
+        tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
         if (show_active){
             //tft.bltSD("/I/U/W","greenhex.ile",origin_x,origin_y,AT_NONE);
             tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_GREENYELLOW);

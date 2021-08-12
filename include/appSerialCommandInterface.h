@@ -114,12 +114,15 @@ class AppSerialCommandInterface:public AppBaseClass {
             
             txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
             streamPos = file.position();
-            
+            file.close();
+
             if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
                 //last chunk
-                file.close();
+                //file.close();
+                Serial.flush();
                 Serial.println(txBuffer);
                 Serial.println(F("FS_END"));
+                Serial.flush();
                 isStreamingFile = false;
                 streamPos = 0;
                 return;
@@ -127,6 +130,7 @@ class AppSerialCommandInterface:public AppBaseClass {
                 //send file chunk
                 Serial.flush();
                 Serial.println(txBuffer);
+                Serial.flush();
                 return;
             }             
         } 

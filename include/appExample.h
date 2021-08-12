@@ -59,16 +59,16 @@ class MyAppExample:public AppBaseClass {
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,500);
-      filter->setLowpass(1,300);
-      filter->setLowpass(2,280);
-      filter->setLowpass(3,240);
+      filter->setLowpass(0,570);
+      filter->setLowpass(1,500);
+      filter->setLowpass(2,433);
+      filter->setLowpass(3,400);
       
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,12000);
+      filter->setLowpass(0,8200);
       
-      erisAudioFilterStateVariable* filter3 = (erisAudioFilterStateVariable*) (ad.getAudioStreamObjByName("filter_3"));
-      filter3->frequency(1000);//HP
+      filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
+      filter->setHighpass(0,2400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(0.39);
@@ -78,34 +78,40 @@ class MyAppExample:public AppBaseClass {
       mix->gain(2,0.0);
 
       //oscope = new AppScope;
-      oscope.setPosition(0,20);
-      oscope.setDimension(320,100);
+      oscope.setPosition(5,20);
+      oscope.setDimension(110,50);
       oscope.setParent(this);
 
       //cqt = new AppCQT;
-      cqt.setPosition(0,20);
-      cqt.setDimension(320,100);
+      cqt.setPosition(125,20);
+      cqt.setDimension(320-10-125,50);
       cqt.setParent(this);
 
       slider = new ControlSlider();
-      slider->setPosition(50,200);
-      slider->setDimension(270,35);
+      slider->setPosition(10,80);
+      slider->setDimension(260,30);
       slider->setName("SLIDER");
       slider->setText("Dry Mix");
       slider->setValue(0);
       slider->setParent(this);
       
-      char s[4][16] = {"SIN","TRI","SAW","SQUARE"};
+      char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE"};
       uint8_t si = 0;
-      for (int x=0;x<320-40;x+=80){
-        for(int y=160; y<240-40;y+=40){
-          button = new ControlButton(); //reuse the button var to create many instances
-          button->setPosition(x,y);
-          button->setDimension(60,30);
-          button->setParent(this);
-          button->setName(s[si]);
-          button->setText(s[si++]);
+      uint16_t x = 10;
+      uint16_t y = 120;
+      for (uint16_t i=0;i<5;i+=1){
+        button = new ControlButton(); //reuse the button var to create many instances
+        button->setPosition(x,y);
+        if(x>(320-80)){
+          x=10;y+=40;
+        }else {
+          x+=80;
         }
+        
+        button->setDimension(60,30);
+        button->setParent(this);
+        button->setName(s[si]);
+        button->setText(s[si++]);
       }
 
       AudioProcessorUsageMaxReset();
@@ -115,6 +121,7 @@ class MyAppExample:public AppBaseClass {
     void update(){
       //Serial.println("MyApp:update");
       //float fps = (float)(micros()-t_lastupdate)/1000000.0;
+      tft.fillRect(0, 0, 320, 19, 0);
       tft.setCursor(5,5);
       tft.print(F("CPU: "));
       tft.print(AudioProcessorUsageMax());
@@ -146,23 +153,23 @@ class MyAppExample:public AppBaseClass {
       y_end = y;
       x_last = x;
       y_last = y;
-      tft.drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);
+      //tft.drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);
     }
 
     void onTouchDrag(uint16_t x, uint16_t y){
       //Serial.println("MyApp:onTouchDrag");
-        tft.drawPixel(x,y,ILI9341_BLUE);
-        tft.drawPixel(x-1,y,ILI9341_RED);
-        tft.drawPixel(x,y-1,ILI9341_YELLOW);
-        tft.drawPixel(x+1,y,ILI9341_ORANGE);
-        tft.drawLine(x_last,y_last,x,y,ILI9341_WHITE);
-        x_last = x;
-        y_last = y;
+      //tft.drawPixel(x,y,ILI9341_BLUE);
+      //tft.drawPixel(x-1,y,ILI9341_RED);
+      //tft.drawPixel(x,y-1,ILI9341_YELLOW);
+      //tft.drawPixel(x+1,y,ILI9341_ORANGE);
+      //tft.drawLine(x_last,y_last,x,y,ILI9341_WHITE);
+      x_last = x;
+      y_last = y;
     }
     void MessageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect message sender by ptr...
-          erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
-          filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));
+          //erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
+          //filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));
         }
         else if(sender->isName("SIN")){ //...or, can detect sender by name
           changeVoice(WAVEFORM_SINE);
@@ -172,6 +179,9 @@ class MyAppExample:public AppBaseClass {
         }
         else if(sender->isName("SAW")){
           changeVoice(WAVEFORM_SAWTOOTH);
+        }
+        else if(sender->isName("REVSAW")){
+          changeVoice(WAVEFORM_SAWTOOTH_REVERSE);
         }
         else if(sender->isName("SQUARE")){
           changeVoice(WAVEFORM_SQUARE);
@@ -190,27 +200,49 @@ class MyAppExample:public AppBaseClass {
     }
     
     void onAnalog1(uint16_t uval, float fval){
-      Serial.print("AN1 ");Serial.println(fval);
-      //fft input amp
+      Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
+      //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
-      amp->gain(log((10.0 * fval) + 1));   
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
+      AudioNoInterrupts();
+      amp->gain(20.0 * log((10.0 * fval) + 1));
+      mixer->gain(0,1.0 * log((9*(1.0-fval))+1.0));
+      AudioInterrupts();
     };
     
     void onAnalog2(uint16_t uval, float fval){
-      Serial.print("AN2 ");Serial.println(fval);
+      Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,100.0 + (12000.0 * fval));
-      filter->setLowpass(1,100.0 + (12000.0 * fval));  
+      AudioNoInterrupts();
+      filter->setLowpass(0,220.0 + (7000.0 * log((9*fval)+1.0)));
+      filter->setLowpass(1,110.0 + (6200.0 * log((9*fval)+1.0)));
+      filter->setLowpass(2,50.0 + (5200.0 * log((9*fval)+1.0)));
+      filter->setLowpass(3,30.0 + (3700.0 * log((9*fval)+1.0)));
+      AudioInterrupts();
     };
     
-    void onAnalog3(uint16_t uval, float fval){Serial.print("AN3 ");Serial.println(fval);};
-    
+    void onAnalog3(uint16_t uval, float fval){
+      Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
+      //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
+      erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
+      AudioNoInterrupts();
+      filter->setHighpass(0,100.0 + (1200.0 * log((9*fval)+1.0)));
+      filter->setHighpass(1,100.0 + (910.0 * log((9*fval)+1.0)));
+      filter->setHighpass(2,100.0 + (820.0 * log((9*fval)+1.0)));
+      filter->setHighpass(3,100.0 + (720.0 * log((9*fval)+1.0)));
+      mixer->gain(2,30 * log((9*fval)+1.0));
+      AudioInterrupts();
+    };
+
     void onAnalog4(uint16_t uval, float fval){
-      Serial.print("AN4 ");Serial.println(fval);
-      //output amp
+      Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
+      //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
-      amp->gain(log((10.0 * fval) + 1));          
+      AudioNoInterrupts();
+      amp->gain(0.50 * log((9*fval)+1.0));
+      AudioInterrupts();
     };
     
     void makeAudioConnections(){
@@ -228,8 +260,8 @@ class MyAppExample:public AppBaseClass {
       //ad.connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
-      //ad.connect("i2s-in_1 1 filter_3 2");//HP
-      ad.connect("filter_3 0 mixer_1 2");
+      ad.connect("amp_2 0 biquad_4 2");//HP
+      ad.connect("biquad_4 0 mixer_1 2");
 
       //master mixer to the output amp
       ad.connect("mixer_1 0 amp_1 0");
@@ -278,7 +310,7 @@ class MyAppExample:public AppBaseClass {
       char buffer[32];
       erisAudioSynthWaveform* w;
       AudioNoInterrupts();
-      for (int16_t i=0; i < OSC_BANK_SIZE; i++){
+      for (int16_t i=1; i <= OSC_BANK_SIZE; i++){
         sprintf(buffer, "waveform_%d", i);
         w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
         w->begin(voice_type);

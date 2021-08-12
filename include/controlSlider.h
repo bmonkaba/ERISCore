@@ -29,6 +29,7 @@ class ControlSlider:public AppBaseClass {
     void update(){
         int16_t marker = width*(value/100.0);
         //tft.drawFastVLine(marker,origin_y,height,ILI9341_MAGENTA);
+        tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
         tft.fillRoundRect(origin_x, origin_y, marker, height,4, CL(36, 54, 84));
         tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
         tft.setTextColor(CL(0,0,0));

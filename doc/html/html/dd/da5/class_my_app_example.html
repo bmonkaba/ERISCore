@@ -97,16 +97,14 @@ $(document).ready(function(){initNavTree('dd/da5/class_my_app_example.html','../
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/d49/class_my_app_example__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/d49/class_my_app_example__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Collaboration diagram for MyAppExample:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d81/class_my_app_example__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d81/class_my_app_example__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -279,16 +277,16 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="comment">//setHighShelf(0, 1800, -24,3.0f);</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="comment">//filter-&gt;resonance(0.9);</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_2&quot;</span>));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      filter-&gt;setLowpass(0,500);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      filter-&gt;setLowpass(1,300);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      filter-&gt;setLowpass(2,280);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      filter-&gt;setLowpass(3,240);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      filter-&gt;setLowpass(0,570);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      filter-&gt;setLowpass(1,500);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      filter-&gt;setLowpass(2,433);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      filter-&gt;setLowpass(3,400);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_3&quot;</span>));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      filter-&gt;setLowpass(0,12000);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      filter-&gt;setLowpass(0,8200);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="../../d9/dcd/classeris_audio_filter_state_variable.html">erisAudioFilterStateVariable</a>* filter3 = (<a class="code" href="../../d9/dcd/classeris_audio_filter_state_variable.html">erisAudioFilterStateVariable</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;filter_3&quot;</span>));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      filter3-&gt;frequency(1000);<span class="comment">//HP</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_4&quot;</span>));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      filter-&gt;setHighpass(0,2400);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <a class="code" href="../../d1/ddb/classeris_audio_effect_freeverb.html">erisAudioEffectFreeverb</a>* reverb = (<a class="code" href="../../d1/ddb/classeris_audio_effect_freeverb.html">erisAudioEffectFreeverb</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;freeverb_1&quot;</span>));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      reverb-&gt;roomsize(0.39);</div>
@@ -298,39 +296,45 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      mix-&gt;gain(2,0.0);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="comment">//oscope = new AppScope;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36">oscope</a>.<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(0,20);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36">oscope</a>.<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(320,100);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36">oscope</a>.<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(5,20);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36">oscope</a>.<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(110,50);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36">oscope</a>.<a class="code" href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">setParent</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="comment">//cqt = new AppCQT;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#ae501dbb09f367386798f32106b525627">cqt</a>.<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(0,20);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#ae501dbb09f367386798f32106b525627">cqt</a>.<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(320,100);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#ae501dbb09f367386798f32106b525627">cqt</a>.<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(125,20);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#ae501dbb09f367386798f32106b525627">cqt</a>.<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(320-10-125,50);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#ae501dbb09f367386798f32106b525627">cqt</a>.<a class="code" href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">setParent</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a> = <span class="keyword">new</span> <a class="code" href="../../de/d67/class_control_slider.html">ControlSlider</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(50,200);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(270,35);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(10,80);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(260,30);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#a953a8c57a54994f8f550221eb4b7e47b">setName</a>(<span class="stringliteral">&quot;SLIDER&quot;</span>);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../de/d67/class_control_slider.html#ac9e42e36b940ba34914d5218ad08141b">setText</a>(<span class="stringliteral">&quot;Dry Mix&quot;</span>);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../de/d67/class_control_slider.html#aa2f05e0d7ca053f3df110a522468ea94">setValue</a>(0);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">setParent</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordtype">char</span> s[4][16] = {<span class="stringliteral">&quot;SIN&quot;</span>,<span class="stringliteral">&quot;TRI&quot;</span>,<span class="stringliteral">&quot;SAW&quot;</span>,<span class="stringliteral">&quot;SQUARE&quot;</span>};</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordtype">char</span> s[][16] = {<span class="stringliteral">&quot;SIN&quot;</span>,<span class="stringliteral">&quot;TRI&quot;</span>,<span class="stringliteral">&quot;SAW&quot;</span>,<span class="stringliteral">&quot;REVSAW&quot;</span>,<span class="stringliteral">&quot;SQUARE&quot;</span>};</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      uint8_t si = 0;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>=0;<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>&lt;320-40;<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>+=80){</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>=160; <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>&lt;240-40;<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>+=40){</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a> = <span class="keyword">new</span> <a class="code" href="../../df/d17/class_control_button.html">ControlButton</a>(); <span class="comment">//reuse the button var to create many instances</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(60,30);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">setParent</a>(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#a953a8c57a54994f8f550221eb4b7e47b">setName</a>(s[si]);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../df/d17/class_control_button.html#a95258d44736955381bcc79eb6c003c91">setText</a>(s[si++]);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <a class="code" href="../../df/d6c/_audio_stream_8h.html#a2bef6c05d3a9dc6e908674eccf9fcbe8">AudioProcessorUsageMaxReset</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <a class="code" href="../../df/d6c/_audio_stream_8h.html#abef10b44c6db850b5cd842d5a75a69fc">AudioMemoryUsageMaxReset</a>();      </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    } </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      uint16_t <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a> = 10;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      uint16_t <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a> = 120;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keywordflow">for</span> (uint16_t i=0;i&lt;5;i+=1){</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a> = <span class="keyword">new</span> <a class="code" href="../../df/d17/class_control_button.html">ControlButton</a>(); <span class="comment">//reuse the button var to create many instances</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>&gt;(320-80)){</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>=10;<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>+=40;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;          <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>+=80;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(60,30);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">setParent</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#a953a8c57a54994f8f550221eb4b7e47b">setName</a>(s[si]);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">button</a>-&gt;<a class="code" href="../../df/d17/class_control_button.html#a95258d44736955381bcc79eb6c003c91">setText</a>(s[si++]);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <a class="code" href="../../df/d6c/_audio_stream_8h.html#a2bef6c05d3a9dc6e908674eccf9fcbe8">AudioProcessorUsageMaxReset</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <a class="code" href="../../df/d6c/_audio_stream_8h.html#abef10b44c6db850b5cd842d5a75a69fc">AudioMemoryUsageMaxReset</a>();      </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } </div>
 <div class="ttc" id="a_app_manager_8h_html_a006a96f275f1ff9181d61fd882ecc76a"><div class="ttname"><a href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a></div><div class="ttdeci">AudioDirector ad</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00022">AppManager.h:22</a></div></div>
 <div class="ttc" id="a_audio_stream_8h_html_a2bef6c05d3a9dc6e908674eccf9fcbe8"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#a2bef6c05d3a9dc6e908674eccf9fcbe8">AudioProcessorUsageMaxReset</a></div><div class="ttdeci">#define AudioProcessorUsageMaxReset()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00128">AudioStream.h:128</a></div></div>
 <div class="ttc" id="a_audio_stream_8h_html_abef10b44c6db850b5cd842d5a75a69fc"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#abef10b44c6db850b5cd842d5a75a69fc">AudioMemoryUsageMaxReset</a></div><div class="ttdeci">#define AudioMemoryUsageMaxReset()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00131">AudioStream.h:131</a></div></div>
@@ -362,7 +366,6 @@ Protected Attributes</h2></td></tr>
 <div class="ttc" id="aclass_my_app_example_html_afb31e99b6bf2b7a1210ab4d0302702d2"><div class="ttname"><a href="../../dd/da5/class_my_app_example.html#afb31e99b6bf2b7a1210ab4d0302702d2">MyAppExample::button</a></div><div class="ttdeci">ControlButton * button</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6c/app_example_8h_source.html#l00028">appExample.h:28</a></div></div>
 <div class="ttc" id="aclasseris_audio_effect_freeverb_html"><div class="ttname"><a href="../../d1/ddb/classeris_audio_effect_freeverb.html">erisAudioEffectFreeverb</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00598">erisAudio.h:598</a></div></div>
 <div class="ttc" id="aclasseris_audio_filter_biquad_html"><div class="ttname"><a href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00708">erisAudio.h:708</a></div></div>
-<div class="ttc" id="aclasseris_audio_filter_state_variable_html"><div class="ttname"><a href="../../d9/dcd/classeris_audio_filter_state_variable.html">erisAudioFilterStateVariable</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00728">erisAudio.h:728</a></div></div>
 <div class="ttc" id="aclasseris_audio_mixer4_html"><div class="ttname"><a href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00378">erisAudio.h:378</a></div></div>
 <div class="ttc" id="aclasseris_audio_synth_noise_pink_html"><div class="ttname"><a href="../../d6/d86/classeris_audio_synth_noise_pink.html">erisAudioSynthNoisePink</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00548">erisAudio.h:548</a></div></div>
 </div><!-- fragment -->
@@ -372,8 +375,7 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7add24412505a2766caa57e6efee08f7_cgraph.svg" width="551" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7add24412505a2766caa57e6efee08f7_cgraph.svg" width="551" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -403,42 +405,40 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00277">277</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                         {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <span class="keywordtype">char</span> buffer[32];</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>* w;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      AudioNoInterrupts();</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="keywordflow">for</span> (int16_t i=0; i &lt; <a class="code" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>; i++){</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        sprintf(buffer, <span class="stringliteral">&quot;waveform_%d&quot;</span>, i);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        w = (<a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(buffer));</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        w-&gt;<a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f">begin</a>(voice_type);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      AudioInterrupts();</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
-<div class="ttc" id="aapp_c_q_t_8h_html_a268431ac67111c44f5346b92590c5f17"><div class="ttname"><a href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a></div><div class="ttdeci">#define OSC_BANK_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/app_c_q_t_8h_source.html#l00009">appCQT.h:9</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00309">309</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                         {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      <span class="keywordtype">char</span> buffer[32];</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      <a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>* w;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      AudioNoInterrupts();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;      <span class="keywordflow">for</span> (int16_t i=1; i &lt;= <a class="code" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>; i++){</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        sprintf(buffer, <span class="stringliteral">&quot;waveform_%d&quot;</span>, i);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        w = (<a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(buffer));</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        w-&gt;<a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f">begin</a>(voice_type);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="ttc" id="aapp_c_q_t_8h_html_a268431ac67111c44f5346b92590c5f17"><div class="ttname"><a href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a></div><div class="ttdeci">#define OSC_BANK_SIZE</div><div class="ttdoc">OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!...</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/app_c_q_t_8h_source.html#l00028">appCQT.h:28</a></div></div>
 <div class="ttc" id="aclass_audio_synth_waveform_html_a61d94d86e578cc851270e6d50a993c6f"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f">AudioSynthWaveform::begin</a></div><div class="ttdeci">void begin(short t_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">eris_synth_waveform.h:102</a></div></div>
 <div class="ttc" id="aclasseris_audio_synth_waveform_html"><div class="ttname"><a href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00488">erisAudio.h:488</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">AudioSynthWaveform::begin()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00009">OSC_BANK_SIZE</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">AudioSynthWaveform::begin()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00028">OSC_BANK_SIZE</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00162">MessageHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MessageHandler()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_aa5595aba54c9d838845dec618c87f9ed_cgraph.svg" width="532" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_aa5595aba54c9d838845dec618c87f9ed_cgraph.svg" width="532" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_aa5595aba54c9d838845dec618c87f9ed_icgraph.svg" width="550" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_aa5595aba54c9d838845dec618c87f9ed_icgraph.svg" width="550" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -471,6 +471,15 @@ Protected Attributes</h2></td></tr>
 <div class="ttc" id="aclass_app_base_class_html_a3682f17759610f58e60351fe96daa6b2"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a3682f17759610f58e60351fe96daa6b2">AppBaseClass::id</a></div><div class="ttdeci">uint16_t id</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00033">AppManager.h:33</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00033">AppBaseClass::id</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../df/d0a/main_8cpp_source.html#l00020">setup()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aacbb5f3bae12ca03970d0b10b3bbd2de_icgraph.svg" width="290" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -507,14 +516,13 @@ Protected Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00054">AppBaseClass::name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00295">AppCQT::MessageHandler()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00162">MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00011">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00145">AppManager::sendMessage()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00321">AppCQT::MessageHandler()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00011">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00145">AppManager::sendMessage()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa989ddf4bdc4cbd9a61791ca45082177_icgraph.svg" width="100%" height="457"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa989ddf4bdc4cbd9a61791ca45082177_icgraph.svg" width="100%" height="457"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -542,88 +550,86 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00216">216</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                               {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f">disconnectAll</a>();      </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <span class="comment">//16 voice oscillator bank bus mixer (6)</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_2 0 mixer_6 0&quot;</span>);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_3 0 mixer_6 1&quot;</span>);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_4 0 mixer_6 2&quot;</span>);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_5 0 mixer_6 3&quot;</span>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="comment">//synth output to reverb and master mixer (1)</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_6 0 biquad_3 0&quot;</span>);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 mixer_1 0&quot;</span>);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 freeverb_1 0&quot;</span>);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <span class="comment">//ad.connect(&quot;freeverb_1 0 mixer_1 1&quot;);</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <span class="comment">//input through filter 3 to the master mixer</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="comment">//ad.connect(&quot;i2s-in_1 1 filter_3 2&quot;);//HP</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;filter_3 0 mixer_1 2&quot;</span>);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="comment">//master mixer to the output amp</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_1 0 amp_1 0&quot;</span>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_1 0 i2s-out_1 0&quot;</span>);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      <span class="comment">//osc banks</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_1 0 mixer_2 0&quot;</span>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_2 0 mixer_2 1&quot;</span>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_3 0 mixer_2 2&quot;</span>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_4 0 mixer_2 3&quot;</span>);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_5 0 mixer_3 0&quot;</span>);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_6 0 mixer_3 1&quot;</span>);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_7 0 mixer_3 2&quot;</span>);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_8 0 mixer_3 3&quot;</span>);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_9 0 mixer_4 0&quot;</span>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_10 0 mixer_4 1&quot;</span>);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_11 0 mixer_4 2&quot;</span>);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_12 0 mixer_4 3&quot;</span>);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_13 0 mixer_5 0&quot;</span>);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_14 0 mixer_5 1&quot;</span>);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_15 0 mixer_5 2&quot;</span>);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_16 0 mixer_5 3&quot;</span>);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="comment">//fft connections</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;i2s-in_1 1 amp_2 0&quot;</span>);</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00248">248</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                               {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f">disconnectAll</a>();      </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <span class="comment">//16 voice oscillator bank bus mixer (6)</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_2 0 mixer_6 0&quot;</span>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_3 0 mixer_6 1&quot;</span>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_4 0 mixer_6 2&quot;</span>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_5 0 mixer_6 3&quot;</span>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <span class="comment">//synth output to reverb and master mixer (1)</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_6 0 biquad_3 0&quot;</span>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 mixer_1 0&quot;</span>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 freeverb_1 0&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="comment">//ad.connect(&quot;freeverb_1 0 mixer_1 1&quot;);</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 biquad_1 0&quot;</span>);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_1 0 fft1024_1 0&quot;</span>); <span class="comment">//lp filter</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 biquad_2 0&quot;</span>);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_2 0 fft1024_2 0&quot;</span>); <span class="comment">//lp filter</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      <span class="comment">//scope connections</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      <span class="comment">//input through the fft amp</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 scope_1 0&quot;</span>);</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      <span class="comment">//resynthed signal output filter</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 scope_1 1&quot;</span>);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      AudioInterrupts();</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <span class="comment">//input through filter 3 to the master mixer</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 biquad_4 2&quot;</span>);<span class="comment">//HP</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_4 0 mixer_1 2&quot;</span>);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      <span class="comment">//master mixer to the output amp</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;mixer_1 0 amp_1 0&quot;</span>);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_1 0 i2s-out_1 0&quot;</span>);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      <span class="comment">//osc banks</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_1 0 mixer_2 0&quot;</span>);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_2 0 mixer_2 1&quot;</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_3 0 mixer_2 2&quot;</span>);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_4 0 mixer_2 3&quot;</span>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_5 0 mixer_3 0&quot;</span>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_6 0 mixer_3 1&quot;</span>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_7 0 mixer_3 2&quot;</span>);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_8 0 mixer_3 3&quot;</span>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_9 0 mixer_4 0&quot;</span>);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_10 0 mixer_4 1&quot;</span>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_11 0 mixer_4 2&quot;</span>);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_12 0 mixer_4 3&quot;</span>);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_13 0 mixer_5 0&quot;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_14 0 mixer_5 1&quot;</span>);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_15 0 mixer_5 2&quot;</span>);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;waveform_16 0 mixer_5 3&quot;</span>);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;      <span class="comment">//fft connections</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;i2s-in_1 1 amp_2 0&quot;</span>);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 biquad_1 0&quot;</span>);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_1 0 fft1024_1 0&quot;</span>); <span class="comment">//lp filter</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 biquad_2 0&quot;</span>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_2 0 fft1024_2 0&quot;</span>); <span class="comment">//lp filter</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      <span class="comment">//scope connections</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="comment">//input through the fft amp</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;amp_2 0 scope_1 0&quot;</span>);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="comment">//resynthed signal output filter</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">connect</a>(<span class="stringliteral">&quot;biquad_3 0 scope_1 1&quot;</span>);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
 <div class="ttc" id="aclass_audio_director_html_a0ee0c50bcd3cb021f77a10e5999c3c2f"><div class="ttname"><a href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f">AudioDirector::disconnectAll</a></div><div class="ttdeci">bool disconnectAll()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc8/_audio_director_8h_source.html#l00365">AudioDirector.h:365</a></div></div>
 <div class="ttc" id="aclass_audio_director_html_ab4957e373e5d9078454d07da471f1d94"><div class="ttname"><a href="../../d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94">AudioDirector::connect</a></div><div class="ttdeci">bool connect(AudioStream *source, int sourceOutput, AudioStream *destination, int destinationInput)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc8/_audio_director_8h_source.html#l00241">AudioDirector.h:241</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00241">AudioDirector::connect()</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00365">AudioDirector::disconnectAll()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00188">onFocus()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_acbf88d789ce51f4ca12d3e0300327408_cgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00198">onFocus()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_acbf88d789ce51f4ca12d3e0300327408_icgraph.svg" width="566" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_acbf88d789ce51f4ca12d3e0300327408_cgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_acbf88d789ce51f4ca12d3e0300327408_icgraph.svg" width="566" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -664,48 +670,50 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#ae84fb7d2e79a6e050cfa11d8e04cbae9">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00162">162</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                                                  {   </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span> (sender == <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>){ <span class="comment">//can detect message sender by ptr...</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_3&quot;</span>));</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;          filter-&gt;setLowpass(0,100.0 + (8000.0 * (<a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>-&gt;<a class="code" href="../../de/d67/class_control_slider.html#af8d5ed2773e78cda0b0d5342eac2523a">value</a>/100.0)));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SIN&quot;</span>)){ <span class="comment">//...or, can detect sender by name</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;TRI&quot;</span>)){</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3">WAVEFORM_TRIANGLE</a>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SAW&quot;</span>)){</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8">WAVEFORM_SAWTOOTH</a>);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SQUARE&quot;</span>)){</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468">WAVEFORM_SQUARE</a>);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SCI&quot;</span>)){</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;          <span class="comment">//Serial.print(F(&quot;M appExample::MessageHandler SCI param: &quot;));</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;          <span class="comment">//Serial.println(message);</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;          <span class="comment">//Serial.flush();</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;          <a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>* wav = (<a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;waveform_16&quot;</span>));</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;          wav-&gt;<a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f">begin</a>(0.5,atoi(message),<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>);</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">169</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                                                  {   </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span> (sender == <a class="code" href="../../dd/da5/class_my_app_example.html#a0fe0904db9f707af77ae2014a843f38b">slider</a>){ <span class="comment">//can detect message sender by ptr...</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;          <span class="comment">//erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName(&quot;biquad_3&quot;));</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;          <span class="comment">//filter-&gt;setLowpass(0,100.0 + (8000.0 * (slider-&gt;value/100.0)));</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SIN&quot;</span>)){ <span class="comment">//...or, can detect sender by name</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;TRI&quot;</span>)){</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3">WAVEFORM_TRIANGLE</a>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SAW&quot;</span>)){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8">WAVEFORM_SAWTOOTH</a>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;REVSAW&quot;</span>)){</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187">WAVEFORM_SAWTOOTH_REVERSE</a>);</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SQUARE&quot;</span>)){</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;          <a class="code" href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">changeVoice</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468">WAVEFORM_SQUARE</a>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sender-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">isName</a>(<span class="stringliteral">&quot;SCI&quot;</span>)){</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          <span class="comment">//Serial.print(F(&quot;M appExample::MessageHandler SCI param: &quot;));</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          <span class="comment">//Serial.println(message);</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;          <span class="comment">//Serial.flush();</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;          <a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>* wav = (<a class="code" href="../../df/dc5/classeris_audio_synth_waveform.html">erisAudioSynthWaveform</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;waveform_16&quot;</span>));</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          wav-&gt;<a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f">begin</a>(0.5,atoi(message),<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
 <div class="ttc" id="aclass_app_base_class_html_aa989ddf4bdc4cbd9a61791ca45082177"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177">AppBaseClass::isName</a></div><div class="ttdeci">bool isName(const char *name_string)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00058">AppManager.h:58</a></div></div>
-<div class="ttc" id="aclass_control_slider_html_af8d5ed2773e78cda0b0d5342eac2523a"><div class="ttname"><a href="../../de/d67/class_control_slider.html#af8d5ed2773e78cda0b0d5342eac2523a">ControlSlider::value</a></div><div class="ttdeci">int16_t value</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d50/control_slider_8h_source.html#l00023">controlSlider.h:23</a></div></div>
-<div class="ttc" id="aclass_my_app_example_html_aa5595aba54c9d838845dec618c87f9ed"><div class="ttname"><a href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">MyAppExample::changeVoice</a></div><div class="ttdeci">void changeVoice(uint16_t voice_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6c/app_example_8h_source.html#l00277">appExample.h:277</a></div></div>
+<div class="ttc" id="aclass_my_app_example_html_aa5595aba54c9d838845dec618c87f9ed"><div class="ttname"><a href="../../dd/da5/class_my_app_example.html#aa5595aba54c9d838845dec618c87f9ed">MyAppExample::changeVoice</a></div><div class="ttdeci">void changeVoice(uint16_t voice_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6c/app_example_8h_source.html#l00309">appExample.h:309</a></div></div>
 <div class="ttc" id="aeris__synth__waveform_8h_html_a178da4a81fe33f9fbbebd284d3e0dda8"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8">WAVEFORM_SAWTOOTH</a></div><div class="ttdeci">#define WAVEFORM_SAWTOOTH</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00041">eris_synth_waveform.h:41</a></div></div>
 <div class="ttc" id="aeris__synth__waveform_8h_html_a495c5edee5c99b494e036344665da8d9"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a></div><div class="ttdeci">#define WAVEFORM_SINE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00040">eris_synth_waveform.h:40</a></div></div>
 <div class="ttc" id="aeris__synth__waveform_8h_html_a57f0fcfbcdf334fda2f7b03df5fe1ea3"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3">WAVEFORM_TRIANGLE</a></div><div class="ttdeci">#define WAVEFORM_TRIANGLE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00043">eris_synth_waveform.h:43</a></div></div>
 <div class="ttc" id="aeris__synth__waveform_8h_html_ac28d7ff4364b4cfbb2f3d2f9e010c468"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468">WAVEFORM_SQUARE</a></div><div class="ttdeci">#define WAVEFORM_SQUARE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00042">eris_synth_waveform.h:42</a></div></div>
+<div class="ttc" id="aeris__synth__waveform_8h_html_acac6ccc6dc691e3fa9849e39f9988187"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187">WAVEFORM_SAWTOOTH_REVERSE</a></div><div class="ttdeci">#define WAVEFORM_SAWTOOTH_REVERSE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00046">eris_synth_waveform.h:46</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">AudioSynthWaveform::begin()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00277">changeVoice()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">AppBaseClass::isName()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00029">slider</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00023">ControlSlider::value</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00041">WAVEFORM_SAWTOOTH</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00040">WAVEFORM_SINE</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00042">WAVEFORM_SQUARE</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00043">WAVEFORM_TRIANGLE</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">AudioSynthWaveform::begin()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00309">changeVoice()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">AppBaseClass::isName()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00029">slider</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00041">WAVEFORM_SAWTOOTH</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00046">WAVEFORM_SAWTOOTH_REVERSE</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00040">WAVEFORM_SINE</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00042">WAVEFORM_SQUARE</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00043">WAVEFORM_TRIANGLE</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7a77ffb8a5fb02933673fba14c58e8c0_cgraph.svg" width="100%" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7a77ffb8a5fb02933673fba14c58e8c0_cgraph.svg" width="100%" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -746,23 +754,26 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a9690562f1ed92ae4544190d68be66c1e">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00192">192</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                             {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN1 &quot;</span>);Serial.println(fval);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="comment">//fft input amp</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp_2&quot;</span>));</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      amp-&gt;gain(log((10.0 * fval) + 1));   </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    };</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00202">202</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                             {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN1 &quot;</span>);Serial.printf(<span class="stringliteral">&quot;%0.4f\n&quot;</span>,fval);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <span class="comment">//analog 1 controls the dry signal input to the fft blocks (used by the cqt app)</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp_2&quot;</span>));</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      <a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>* mixer = (<a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;mixer_1&quot;</span>));</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      AudioNoInterrupts();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      amp-&gt;gain(20.0 * log((10.0 * fval) + 1));</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      mixer-&gt;gain(0,1.0 * log((9*(1.0-fval))+1.0));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    };</div>
 <div class="ttc" id="aclasseris_audio_amplifier_html"><div class="ttname"><a href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/ded/eris_audio_8h_source.html#l00368">erisAudio.h:368</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_ad8c2b2ba3165e6c5313220ab196abdd8_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_ad8c2b2ba3165e6c5313220ab196abdd8_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -803,23 +814,26 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#accc379f5b1f582928d1c29608b5546a2">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00199">199</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                             {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN2 &quot;</span>);Serial.println(fval);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="comment">//analog 2 controls the resynthisized signal biquad output filter</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_3&quot;</span>));</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      filter-&gt;setLowpass(0,100.0 + (12000.0 * fval));</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      filter-&gt;setLowpass(1,100.0 + (12000.0 * fval));  </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    };</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00213">213</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                             {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN2 &quot;</span>);Serial.printf(<span class="stringliteral">&quot;%0.4f\n&quot;</span>,fval);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      <span class="comment">//analog 2 controls the resynthisized signal biquad output filter</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_3&quot;</span>));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      AudioNoInterrupts();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      filter-&gt;setLowpass(0,220.0 + (7000.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      filter-&gt;setLowpass(1,110.0 + (6200.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      filter-&gt;setLowpass(2,50.0 + (5200.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      filter-&gt;setLowpass(3,30.0 + (3700.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    };</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_ac8faa089757ba1bb3f30879382c46de1_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_ac8faa089757ba1bb3f30879382c46de1_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -860,9 +874,30 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a8dcf375c6659741078b08b90ad500090">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00207">207</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{Serial.print(<span class="stringliteral">&quot;AN3 &quot;</span>);Serial.println(fval);};</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00225">225</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                             {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN3 &quot;</span>);Serial.printf(<span class="stringliteral">&quot;%0.4f\n&quot;</span>,fval);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <span class="comment">//analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad_4&quot;</span>));</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>* mixer = (<a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;mixer_1&quot;</span>));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      AudioNoInterrupts();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      filter-&gt;setHighpass(0,100.0 + (1200.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      filter-&gt;setHighpass(1,100.0 + (910.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      filter-&gt;setHighpass(2,100.0 + (820.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      filter-&gt;setHighpass(3,100.0 + (720.0 * log((9*fval)+1.0)));</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      mixer-&gt;gain(2,30 * log((9*fval)+1.0));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    };</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_aac2c5518d8844a0b8d994d2b13c9866c_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <a id="a7ad02ea4527df520cef3acfcadf9828a"></a>
@@ -901,22 +936,23 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#aef1d60f75d914b3a7abd0d44b0c266c3">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00209">209</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                             {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN4 &quot;</span>);Serial.println(fval);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="comment">//output amp</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp_1&quot;</span>));</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      amp-&gt;gain(log((10.0 * fval) + 1));          </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    };</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00239">239</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                             {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      Serial.print(<span class="stringliteral">&quot;AN4 &quot;</span>);Serial.printf(<span class="stringliteral">&quot;%0.4f\n&quot;</span>,fval);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <span class="comment">//output volume</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a>.<a class="code" href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp_1&quot;</span>));</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      AudioNoInterrupts();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      amp-&gt;gain(0.50 * log((9*fval)+1.0));</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      AudioInterrupts();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    };</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00022">ad</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00186">AudioDirector::getAudioStreamObjByName()</a>.</p>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7ad02ea4527df520cef3acfcadf9828a_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a7ad02ea4527df520cef3acfcadf9828a_cgraph.svg" width="515" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -946,20 +982,19 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a53c663808513ec64776645ee98da4a1f">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00188">188</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                  {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#acbf88d789ce51f4ca12d3e0300327408">makeAudioConnections</a>();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="ttc" id="aclass_my_app_example_html_acbf88d789ce51f4ca12d3e0300327408"><div class="ttname"><a href="../../dd/da5/class_my_app_example.html#acbf88d789ce51f4ca12d3e0300327408">MyAppExample::makeAudioConnections</a></div><div class="ttdeci">void makeAudioConnections()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6c/app_example_8h_source.html#l00216">appExample.h:216</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00198">198</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                  {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#acbf88d789ce51f4ca12d3e0300327408">makeAudioConnections</a>();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="ttc" id="aclass_my_app_example_html_acbf88d789ce51f4ca12d3e0300327408"><div class="ttname"><a href="../../dd/da5/class_my_app_example.html#acbf88d789ce51f4ca12d3e0300327408">MyAppExample::makeAudioConnections</a></div><div class="ttdeci">void makeAudioConnections()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6c/app_example_8h_source.html#l00248">appExample.h:248</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00216">makeAudioConnections()</a>.</p>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00248">makeAudioConnections()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a3970e5306df931a55e34a4ae513d6f50_cgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a3970e5306df931a55e34a4ae513d6f50_cgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -993,13 +1028,12 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{};</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d_icgraph.svg" width="555" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d_icgraph.svg" width="555" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1040,23 +1074,23 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a7532a3ebe719e4c44762a35002eafbe2">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00136">136</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                        {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a424e3752c8f361d3c95cd6b19d953aac">x_start</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a852e7f9a257cbb8c2f87b7160a95c310">y_start</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.<a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a6efb6ee1407d55e237e86b7557d89b75">bltSDFullScreen</a>(<span class="stringliteral">&quot;bluehex.ile&quot;</span>);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00143">143</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                        {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a424e3752c8f361d3c95cd6b19d953aac">x_start</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a852e7f9a257cbb8c2f87b7160a95c310">y_start</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.<a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a6efb6ee1407d55e237e86b7557d89b75">bltSDFullScreen</a>(<span class="stringliteral">&quot;bluehex.ile&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
 <div class="ttc" id="a_app_manager_8h_html_a02651bfd33ab4b159cf8e4e3ee120c2f"><div class="ttname"><a href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a></div><div class="ttdeci">ILI9341_t3_ERIS tft(TFT_CS, TFT_DC, TFT_RESET, TFT_MOSI, TFT_SCLK, TFT_MISO)</div></div>
 <div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_html_a6efb6ee1407d55e237e86b7557d89b75"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a6efb6ee1407d55e237e86b7557d89b75">ILI9341_t3_ERIS::bltSDFullScreen</a></div><div class="ttdeci">void bltSDFullScreen(const char *filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00110">ILI9341_t3_ERIS.cpp:110</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00110">ILI9341_t3_ERIS::bltSDFullScreen()</a>, <a class="el" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft()</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00021">x</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">x_last</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">x_start</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00022">y</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">y_last</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">y_start</a>.</p>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a9113a6d8c69d8dacf810449d732d6c5e_cgraph.svg" width="468" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1098,26 +1132,19 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a2d09d0e6ca5812c4ce8b2fb671311c15">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00152">152</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                            {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="comment">//Serial.println(&quot;MyApp:onTouchDrag&quot;);</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawPixel(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>,ILI9341_BLUE);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawPixel(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>-1,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>,ILI9341_RED);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawPixel(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>-1,ILI9341_YELLOW);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawPixel(<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>+1,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>,ILI9341_ORANGE);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawLine(<a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a>,<a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>,<a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>,ILI9341_WHITE);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00159">159</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                            {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="comment">//Serial.println(&quot;MyApp:onTouchDrag&quot;);</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="comment">//tft.drawPixel(x,y,ILI9341_BLUE);</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="comment">//tft.drawPixel(x-1,y,ILI9341_RED);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="comment">//tft.drawPixel(x,y-1,ILI9341_YELLOW);</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="comment">//tft.drawPixel(x+1,y,ILI9341_ORANGE);</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="comment">//tft.drawLine(x_last,y_last,x,y,ILI9341_WHITE);</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft()</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00021">x</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">x_last</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00022">y</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">y_last</a>.</p>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_ad79c94d0e20305799c8631bcd618b18e_cgraph.svg" width="332" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="reference">References <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00021">x</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">x_last</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00022">y</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">y_last</a>.</p>
 
 </div>
 </div>
@@ -1157,23 +1184,16 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a4995bf2a090d64e88279683392fcd419">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">144</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                               {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a99e65adf8428d27e8743e7a75fc8b348">x_end</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a1648d6d46367aa9724647dab9d1eef17">y_end</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.drawLine(<a class="code" href="../../dd/da5/class_my_app_example.html#a424e3752c8f361d3c95cd6b19d953aac">x_start</a>,<a class="code" href="../../dd/da5/class_my_app_example.html#a852e7f9a257cbb8c2f87b7160a95c310">y_start</a>,<a class="code" href="../../dd/da5/class_my_app_example.html#a99e65adf8428d27e8743e7a75fc8b348">x_end</a>,<a class="code" href="../../dd/da5/class_my_app_example.html#a1648d6d46367aa9724647dab9d1eef17">y_end</a>,ILI9341_ORANGE);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00151">151</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                               {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a99e65adf8428d27e8743e7a75fc8b348">x_end</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a1648d6d46367aa9724647dab9d1eef17">y_end</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22">x_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#a4dde988b1b2adba65ae3efa69f65d960">x</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#a3fe140d4ee9527d67eaf070820ac8426">y_last</a> = <a class="code" href="../../d0/d72/_u_i_8h.html#ab0580f504a7428539be299fa71565f30">y</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="comment">//tft.drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft()</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00021">x</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">x_end</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">x_last</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">x_start</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00022">y</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">y_end</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">y_last</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">y_start</a>.</p>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/da5/class_my_app_example_a571482dbb24fc7951840cbf819bb3ca3_cgraph.svg" width="355" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="reference">References <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00021">x</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">x_end</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">x_last</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00022">y</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">y_end</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">y_last</a>.</p>
 
 </div>
 </div>
@@ -1391,27 +1411,28 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class.html#a0c2ee195056463d26b529f8c5218e8b9">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00115">115</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                 {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="comment">//Serial.println(&quot;MyApp:update&quot;);</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="comment">//float fps = (float)(micros()-t_lastupdate)/1000000.0;</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(5,5);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;CPU: &quot;</span>));</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#abad91d31e5949851ecb6128a91d36d84">AudioProcessorUsageMax</a>());</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot; (&quot;</span>));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#a2e455d1437a36f4c774b8dd1fd00f5de">AudioProcessorUsage</a>());</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;)&quot;</span>));</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(130,5);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;ABMEM: &quot;</span>));</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#ac6e539fd823ebfa806c6100ed4b11909">AudioMemoryUsageMax</a>());</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot; (&quot;</span>));</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#a21b71931e7d22c8dbbf3fd164aee4dbe">AudioMemoryUsage</a>());</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;)&quot;</span>));</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(260,5);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="comment">//tft.print(F(&quot;CON: &quot;));</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="comment">//tft.print(ad.connectionCount());</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#aca8cf8d2a20cc4f3173324bea31666ab">t_lastupdate</a> = micros();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00121">121</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                 {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="comment">//Serial.println(&quot;MyApp:update&quot;);</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="comment">//float fps = (float)(micros()-t_lastupdate)/1000000.0;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.fillRect(0, 0, 320, 19, 0);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(5,5);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;CPU: &quot;</span>));</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#abad91d31e5949851ecb6128a91d36d84">AudioProcessorUsageMax</a>());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot; (&quot;</span>));</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#a2e455d1437a36f4c774b8dd1fd00f5de">AudioProcessorUsage</a>());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;)&quot;</span>));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(130,5);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;ABMEM: &quot;</span>));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#ac6e539fd823ebfa806c6100ed4b11909">AudioMemoryUsageMax</a>());</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot; (&quot;</span>));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(<a class="code" href="../../df/d6c/_audio_stream_8h.html#a21b71931e7d22c8dbbf3fd164aee4dbe">AudioMemoryUsage</a>());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.print(F(<span class="stringliteral">&quot;)&quot;</span>));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <a class="code" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a>.setCursor(260,5);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="comment">//tft.print(F(&quot;CON: &quot;));</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="comment">//tft.print(ad.connectionCount());</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <a class="code" href="../../dd/da5/class_my_app_example.html#aca8cf8d2a20cc4f3173324bea31666ab">t_lastupdate</a> = micros();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
 <div class="ttc" id="a_audio_stream_8h_html_a21b71931e7d22c8dbbf3fd164aee4dbe"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#a21b71931e7d22c8dbbf3fd164aee4dbe">AudioMemoryUsage</a></div><div class="ttdeci">#define AudioMemoryUsage()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00129">AudioStream.h:129</a></div></div>
 <div class="ttc" id="a_audio_stream_8h_html_a2e455d1437a36f4c774b8dd1fd00f5de"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#a2e455d1437a36f4c774b8dd1fd00f5de">AudioProcessorUsage</a></div><div class="ttdeci">#define AudioProcessorUsage()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00126">AudioStream.h:126</a></div></div>
 <div class="ttc" id="a_audio_stream_8h_html_abad91d31e5949851ecb6128a91d36d84"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#abad91d31e5949851ecb6128a91d36d84">AudioProcessorUsageMax</a></div><div class="ttdeci">#define AudioProcessorUsageMax()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00127">AudioStream.h:127</a></div></div>
@@ -1578,7 +1599,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00053">53</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00187">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00046">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00052">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00269">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00055">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00069">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">AppBaseClass::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00118">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00219">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00058">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00273">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">AppBaseClass::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00146">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1604,7 +1625,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00033">33</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">AppBaseClass::getId()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00057">AppBaseClass::getId()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00274">AppManager::RegisterApp()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1630,7 +1651,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00054">54</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00027">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00053">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00011">ControlButton::ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00009">ControlSlider::ControlSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">AppBaseClass::isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00157">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00063">AppBaseClass::setName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00055">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00053">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00011">ControlButton::ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00009">ControlSlider::ControlSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00058">AppBaseClass::isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00157">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00063">AppBaseClass::setName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1656,7 +1677,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">31</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00157">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00145">AppManager::sendMessage()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00157">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00274">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00145">AppManager::sendMessage()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1682,7 +1703,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00050">50</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00187">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00046">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00052">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00269">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00055">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00069">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00068">AppBaseClass::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00118">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00219">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00058">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00273">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00068">AppBaseClass::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00146">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1708,7 +1729,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00051">51</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00187">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00046">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00052">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00269">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00055">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00069">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00068">AppBaseClass::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00118">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00219">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00058">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00273">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00068">AppBaseClass::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00146">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1752,7 +1773,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00029">29</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00059">ControlSlider::onTouchDrag()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00055">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00069">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00067">AppBaseClass::setParent()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00060">ControlSlider::onTouchDrag()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00067">AppBaseClass::setParent()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00184">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1778,7 +1799,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00030">30</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00274">AppManager::RegisterApp()</a>.</p>
 
 </div>
 </div>
@@ -1796,7 +1817,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00029">29</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00162">MessageHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MessageHandler()</a>.</p>
 
 </div>
 </div>
@@ -1814,7 +1835,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00033">33</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00115">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00121">update()</a>.</p>
 
 </div>
 </div>
@@ -2074,7 +2095,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">52</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00187">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00053">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00046">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00052">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00269">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00055">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00069">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">AppBaseClass::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00118">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00290">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00219">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00058">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00273">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">AppBaseClass::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00146">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00019">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -2092,7 +2113,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">30</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00151">onTouchRelease()</a>.</p>
 
 </div>
 </div>
@@ -2110,7 +2131,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">32</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00136">onTouch()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00152">onTouchDrag()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00143">onTouch()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00159">onTouchDrag()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00151">onTouchRelease()</a>.</p>
 
 </div>
 </div>
@@ -2128,7 +2149,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00030">30</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00136">onTouch()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00143">onTouch()</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2167,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">31</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00151">onTouchRelease()</a>.</p>
 
 </div>
 </div>
@@ -2164,7 +2185,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00032">32</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00136">onTouch()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00152">onTouchDrag()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00143">onTouch()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00159">onTouchDrag()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00151">onTouchRelease()</a>.</p>
 
 </div>
 </div>
@@ -2200,7 +2221,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00031">31</a> of file <a class="el" href="../../d2/d6c/app_example_8h_source.html">appExample.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00136">onTouch()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00144">onTouchRelease()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00143">onTouch()</a>.</p>
 
 </div>
 </div>
