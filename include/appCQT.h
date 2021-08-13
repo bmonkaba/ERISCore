@@ -290,7 +290,7 @@ class AppCQT:public AppBaseClass {
             f = oscBank[i].peakFrequency;
 
             osc[i]->frequency(f * octave_down[0]);
-            a = oscBank[i].avgValueFast/3.0;
+            a = oscBank[i].avgValueFast/(2*osc_bank_size);
             if (f < 20.0) {f = 20.0;a=0;}
             if (a < floor) a = 0.0;
             if(!isnan(a)) osc[i]->amplitude(a);
