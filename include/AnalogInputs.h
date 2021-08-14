@@ -16,6 +16,7 @@
 
 #define MAX_POLLING_RATE 50
 #define TRIGGER_DELTA 5
+#define ANALOG_INPUTS_PERIODIC_UPDATE 100
 
 /**
  * @brief Used for filtering the analog inputs and change detection
@@ -25,10 +26,11 @@ class AnalogInputs {
     private:
         int16_t ai[4];
         elapsedMillis lastUpdate;
+        elapsedMillis lastTrigger;
     public:
         AnalogInputs(){
             analogReadAveraging(128);
-            analogReadResolution(12);
+            analogReadResolution(10);
             ai[0]=0;
             ai[1]=0;
             ai[2]=0;
@@ -45,6 +47,8 @@ class AnalogInputs {
          * @return false 
          */
         bool update(){
+            bool trigger;
+            trigger=false;
             //rate limit the updates
             if (lastUpdate < MAX_POLLING_RATE) return false;
             lastUpdate = 0;
@@ -55,10 +59,16 @@ class AnalogInputs {
             ai[2] = (ai[2] * 0.80) + (analogRead(AN3) * 0.20);
             ai[3] = (ai[3] * 0.80) + (analogRead(AN4) * 0.20);
             AudioInterrupts();
-            if (abs(ai[0] - old_ai[0])>TRIGGER_DELTA) return true;
-            if (abs(ai[1] - old_ai[1])>TRIGGER_DELTA) return true;
-            if (abs(ai[2] - old_ai[2])>TRIGGER_DELTA) return true;
-            if (abs(ai[3] - old_ai[3])>TRIGGER_DELTA) return true;
+
+            if (abs(ai[0] - old_ai[0])>TRIGGER_DELTA) trigger = true;
+            if (abs(ai[1] - old_ai[1])>TRIGGER_DELTA) trigger = true;
+            if (abs(ai[2] - old_ai[2])>TRIGGER_DELTA) trigger = true;
+            if (abs(ai[3] - old_ai[3])>TRIGGER_DELTA) trigger = true;
+            if (lastTrigger > ANALOG_INPUTS_PERIODIC_UPDATE) trigger = true;
+            if (trigger == true){
+                lastTrigger = 0;
+                return true;
+            }
             return false;
         }
         //return ad counts
@@ -68,10 +78,10 @@ class AnalogInputs {
         uint16_t readAN4(){return (uint16_t )ai[3];};
 
         //return 10bit scaled 0-1 range
-        float freadAN1(){return ai[0]/4096.0;};
-        float freadAN2(){return ai[1]/4096.0;};
-        float freadAN3(){return ai[2]/4096.0;};
-        float freadAN4(){return ai[3]/4096.0;};
+        float freadAN1(){return ai[0]/1024.0;};
+        float freadAN2(){return ai[1]/1024.0;};
+        float freadAN3(){return ai[2]/1024.0;};
+        float freadAN4(){return ai[3]/1024.0;};
 };
 
 #endif

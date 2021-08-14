@@ -23,6 +23,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "HSI.h", "de/d10/_h_s_i_8h.html", "de/d10/_h_s_i_8h" ],
     [ "ILI9341_t3_ERIS.h", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h" ],
     [ "PCM1863.h", "dc/d47/_p_c_m1863_8h.html", "dc/d47/_p_c_m1863_8h" ],
+    [ "svcDataDictionary.h", "dd/df4/svc_data_dictionary_8h.html", "dd/df4/svc_data_dictionary_8h" ],
     [ "touch.h", "d1/d4e/touch_8h.html", [
       [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ]
     ] ],

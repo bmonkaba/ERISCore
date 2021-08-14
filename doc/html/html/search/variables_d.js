@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['objcount_2394',['objCount',['../d8/d1c/class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d',1,'AudioDirector']]],
-  ['octave_5fdown_2395',['octave_down',['../dc/dac/_audio_utilities_8h.html#aa43b250ba4844984fd38bf7fbae75244',1,'AudioUtilities.h']]],
-  ['octave_5fup_2396',['octave_up',['../dc/dac/_audio_utilities_8h.html#abcec7f677e69d44084da437ef8fbd75c',1,'AudioUtilities.h']]],
-  ['origin_5fx_2397',['origin_x',['../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8',1,'AppBaseClass']]],
-  ['origin_5fy_2398',['origin_y',['../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed',1,'AppBaseClass']]],
-  ['osc_2399',['osc',['../d4/dde/class_app_c_q_t.html#a243f12ecbb2cb0b77c4c25e284c04a60',1,'AppCQT']]],
-  ['osc_5fbank_5fsize_2400',['osc_bank_size',['../d4/dde/class_app_c_q_t.html#a3b12d173a995e4eb5c9a8d6336bafacd',1,'AppCQT']]],
-  ['oscope_2401',['oscope',['../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36',1,'MyAppExample']]]
+  ['objcount_2410',['objCount',['../d8/d1c/class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d',1,'AudioDirector']]],
+  ['octave_5fdown_2411',['octave_down',['../dc/dac/_audio_utilities_8h.html#aa43b250ba4844984fd38bf7fbae75244',1,'AudioUtilities.h']]],
+  ['octave_5fup_2412',['octave_up',['../dc/dac/_audio_utilities_8h.html#abcec7f677e69d44084da437ef8fbd75c',1,'AudioUtilities.h']]],
+  ['origin_5fx_2413',['origin_x',['../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8',1,'AppBaseClass']]],
+  ['origin_5fy_2414',['origin_y',['../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed',1,'AppBaseClass']]],
+  ['osc_2415',['osc',['../d4/dde/class_app_c_q_t.html#a243f12ecbb2cb0b77c4c25e284c04a60',1,'AppCQT']]],
+  ['osc_5fbank_5fsize_2416',['osc_bank_size',['../d4/dde/class_app_c_q_t.html#a3b12d173a995e4eb5c9a8d6336bafacd',1,'AppCQT']]],
+  ['oscope_2417',['oscope',['../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36',1,'MyAppExample']]]
 ];

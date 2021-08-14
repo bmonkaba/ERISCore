@@ -200,13 +200,13 @@ $(document).ready(function(){initNavTree('d4/d9a/eris__analyze__scope_8cpp_sourc
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span> (count == 0){</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="comment">//Serial.println(edgeCount);</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">if</span>((edgeCount &lt; 3) &amp;&amp; (auto_h_div &lt; 4)) auto_h_div++;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">if</span>((edgeCount &gt; 4) &amp;&amp; (auto_h_div &gt; 1)) auto_h_div--;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">if</span>((edgeCount &lt; 4) &amp;&amp; (auto_h_div &lt; 6)) auto_h_div++;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">if</span>((edgeCount &gt; 5) &amp;&amp; (auto_h_div &gt; 3)) auto_h_div--;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="comment">//calculate the dot product if dual channel</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">if</span> (isDualChannel){</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    dotLast = dot;          </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    arm_dot_prod_q15(&amp;memory[0][0],&amp;memory[1][0],mem_length,&amp;dot);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    dotAvg = (dotAvg*0.9) + (dot*0.1);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    dotAvg = (dotAvg*0.6) + (dot*0.4);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                }   </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                isAvailable = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">if</span> (autoTrigger){</div>

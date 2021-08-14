@@ -40,6 +40,10 @@ class AppScope:public AppBaseClass {
                 y_last_scope = ch1; 
                 y_last_scope_ch2 = ch2;
             }
+            AppManager::getInstance()->data.update("DOT",(int32_t)(scope->getDotProduct()>>16));
+            AppManager::getInstance()->data.update("DOT_AVG",(int32_t)(scope->getDotProductAvg()>>16));
+            AppManager::getInstance()->data.update("DOT_DELTA",(int32_t)(scope->getDotDelta()));
+            AppManager::getInstance()->data.update("INPUT_PEAK",(int32_t)scope->getPeakValue());
             //Serial.printf("%" PRId64 "\n", scope->getDotDelta());
             scope->trigger();
             tft.setCursor(origin_x+width - 100,origin_y+5);

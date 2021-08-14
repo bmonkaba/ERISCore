@@ -13,7 +13,9 @@ INCOMMING MESSAGES:
     CONNECT     (make an audio block connection)
     DISCONNECT  (break an audio block connection)
     AA          (broadcast message to active app )
-    STATS       
+    STATS
+    CQT_CFG     request a dump of the cqt bin configs
+    GET_DD      request a dump of the data dictionary       
 OUTPUT MESSAGES:
 
     CQT_H  (CQT BINS - High Range)
@@ -36,7 +38,8 @@ OUTPUT MESSAGES:
 #define SERIAL_OUTPUT_BUFFER_SIZE 1024
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 128
 
-
+#define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
+#define SERIAL_AUTO_TRANSMIT_DATA_PERIOD 125
 
 int replacechar(char *str, char orig, char rep) {
     char *ix = str;
@@ -52,6 +55,7 @@ class AppSerialCommandInterface:public AppBaseClass {
   public:
     AppSerialCommandInterface():AppBaseClass(){
         sincePoll = 0;
+        sincePeriodic = 0;
         indexRxBuffer = 0;
         isStreamingFile = false;
         strcpy(streamPath,"");
@@ -74,6 +78,7 @@ class AppSerialCommandInterface:public AppBaseClass {
     uint64_t streamPos;
     bool isStreamingFile;
     elapsedMillis sincePoll;
+    elapsedMillis sincePeriodic;
 
     void streamHandler(){
         char bufferChr;
@@ -146,6 +151,14 @@ class AppSerialCommandInterface:public AppBaseClass {
 
     void update() override{};    //called only when the app is active
     void updateRT() override{
+        //tx periodic messages
+        #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
+        if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
+            sincePeriodic = 0;
+            AppManager::getInstance()->data.printDictionary();
+        }
+        #endif
+        //poll for rx data
         if (sincePoll < SERIAL_POLLING_RATE_MAX) return;
         sincePoll = 0;
         char endMarker = '\n';
@@ -262,6 +275,8 @@ class AppSerialCommandInterface:public AppBaseClass {
                     AppManager::getInstance()->printStats();
                 }else if (strcmp(cmd, "CQT_CFG") == 0){ 
                     AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
+                }else if (strcmp(cmd, "GET_DD") == 0){ 
+                    AppManager::getInstance()->data.printDictionary();
                 }
 
                 newRxMsg = false;

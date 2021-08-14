@@ -41,6 +41,7 @@ var class_app_c_q_t =
     [ "osc", "d4/dde/class_app_c_q_t.html#a243f12ecbb2cb0b77c4c25e284c04a60", null ],
     [ "osc_bank_size", "d4/dde/class_app_c_q_t.html#a3b12d173a995e4eb5c9a8d6336bafacd", null ],
     [ "parentNode", "d4/dde/class_app_c_q_t.html#a50389da1569c64f256e008ce929b0b36", null ],
+    [ "pll", "d4/dde/class_app_c_q_t.html#a7707477ea3aa9bf571b4f353ab61791b", null ],
     [ "previousAppicationNode", "d4/dde/class_app_c_q_t.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "rt_calls", "d4/dde/class_app_c_q_t.html#a383695819f9ddeffb5689576884b9928", null ],
     [ "touch_state", "d4/dde/class_app_c_q_t.html#a12be372470e6826bae25db90c01c388e", null ],

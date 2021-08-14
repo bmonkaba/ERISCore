@@ -35,6 +35,7 @@ var class_app_serial_command_interface =
     [ "previousAppicationNode", "d9/dad/class_app_serial_command_interface.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "pSD", "d9/dad/class_app_serial_command_interface.html#a7e0cfbac705013bfc107ea8e54ce1037", null ],
     [ "receivedChars", "d9/dad/class_app_serial_command_interface.html#af5a495854386e52c2005dea4a4f17358", null ],
+    [ "sincePeriodic", "d9/dad/class_app_serial_command_interface.html#a8c7a94da64758888ddbbf8a237861070", null ],
     [ "sincePoll", "d9/dad/class_app_serial_command_interface.html#a444d84c651d57e985b5746e9e3b86593", null ],
     [ "streamFile", "d9/dad/class_app_serial_command_interface.html#aea13c9b2dca1be80591a742dce4ac249", null ],
     [ "streamPath", "d9/dad/class_app_serial_command_interface.html#aff6b31ad4c2ef6064b6fc0a883bcf215", null ],

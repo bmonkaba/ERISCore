@@ -113,13 +113,13 @@ void erisAudioAnalyzeScope::update(void)
 			
 			if (count == 0){
 				//Serial.println(edgeCount);
-				if((edgeCount < 3) && (auto_h_div < 4)) auto_h_div++;
-				if((edgeCount > 4) && (auto_h_div > 1)) auto_h_div--;
+				if((edgeCount < 4) && (auto_h_div < 6)) auto_h_div++;
+				if((edgeCount > 5) && (auto_h_div > 3)) auto_h_div--;
 				//calculate the dot product if dual channel
 				if (isDualChannel){
 					dotLast = dot;			
 					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
-					dotAvg = (dotAvg*0.9) + (dot*0.1);
+					dotAvg = (dotAvg*0.6) + (dot*0.4);
 				}	
 				isAvailable = true;
 				if (autoTrigger){

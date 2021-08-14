@@ -12,6 +12,7 @@
 #include "ILI9341_t3_ERIS.h"
 //#include "font_Arial.h"
 #include "AudioDirector.h"
+#include "svcDataDictionary.h"
 
 extern const ILI9341_t3_font_t Arial_9;
 
@@ -134,7 +135,7 @@ class AppManager {
     
     TS_Point p;
     bool touch_state;
-
+    SvcDataDictionary data;//data dictionary service
     void switchAppFocus(uint16_t id){activeID=id;}; //switch focus
     void pushAppFocus();  //used by switchAppFocus to store the requesting app for return
     void popAppFocus();  //return to the requesting app

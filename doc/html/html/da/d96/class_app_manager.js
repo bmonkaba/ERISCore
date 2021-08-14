@@ -10,6 +10,7 @@ var class_app_manager =
     [ "sendMessage", "da/d96/class_app_manager.html#aa4f7649ae1aa1a567286d73981f00090", null ],
     [ "switchAppFocus", "da/d96/class_app_manager.html#a4e836d1c6fc14462e71bd7f386b031c0", null ],
     [ "update", "da/d96/class_app_manager.html#ab4352bf5559866e77c333e74af7c2210", null ],
+    [ "data", "da/d96/class_app_manager.html#af72e348f854c8a67a3514da99a16d149", null ],
     [ "p", "da/d96/class_app_manager.html#a79bdde908efa7810477f913ff47c1c28", null ],
     [ "touch_state", "da/d96/class_app_manager.html#a5caa0396d49e80d9ad1e1ad7354209fd", null ]
 ];

@@ -6,7 +6,7 @@
     
 .container {
   display: grid;
-  grid-template-columns: 64px 330px 1fr;
+  grid-template-columns: 0.125fr 330px 1fr;
   grid-template-rows: 64px 0.7fr 0.3fr;
   gap: 10px 10px;
   grid-auto-flow: row;
@@ -182,7 +182,7 @@ textarea {
           
       </div>
       
-      <div class="sidebar">SIDEBAR
+      <div class="sidebar" id="sidebar">SIDEBAR
       </div>
       
       <div class="imgview">
@@ -207,11 +207,13 @@ AA 220
                   <label for="sweep_checkbox"> Enable Freq Sweep</label>
                   <input type="range" min="30" max="2400" value="50" class="slider" id="freq_slider">
                 </form><br>
+                <button id="DD">Data Dictionary</button> 
                 <button id="ACON">Audio Connections</button> 
                 <button id="STATS">Stats</button> 
                 <button id="CQT_CFG">CQT Config</button>
                 <button id="PINK_NOISE">Pink Noise</button>
                 <button id="TONE">Tone</button>
+                <button id="MUTE">MUTE</button>
           </div>
     
           <div id="scroll_me" class="messages">

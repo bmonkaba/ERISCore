@@ -249,6 +249,7 @@ var hierarchy =
       [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", null ]
     ] ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
+    [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
     [ "UI", "d8/de6/class_u_i.html", null ],
     [ "UICType", "d6/d17/struct_u_i_c_type.html", null ],
     [ "UIMenuType", "de/d39/struct_u_i_menu_type.html", null ],

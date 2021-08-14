@@ -97,6 +97,7 @@ var annotated_dup =
     [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", "d8/d5a/class_i_l_i9341__t3___e_r_i_s" ],
     [ "MyAppExample", "dd/da5/class_my_app_example.html", "dd/da5/class_my_app_example" ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", "da/dca/struct_parsed_connection" ],
+    [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", "dc/d43/class_svc_data_dictionary" ],
     [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ],
     [ "UI", "d8/de6/class_u_i.html", "d8/de6/class_u_i" ],
     [ "UICType", "d6/d17/struct_u_i_c_type.html", "d6/d17/struct_u_i_c_type" ],

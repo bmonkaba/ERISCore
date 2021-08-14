@@ -103,12 +103,12 @@ class MyAppExample:public AppBaseClass {
         button = new ControlButton(); //reuse the button var to create many instances
         button->setPosition(x,y);
         if(x>(320-80)){
-          x=10;y+=40;
+          x=10;y+=70;
         }else {
           x+=80;
         }
         
-        button->setDimension(60,30);
+        button->setDimension(60,60);
         button->setParent(this);
         button->setName(s[si]);
         button->setText(s[si++]);
@@ -200,48 +200,50 @@ class MyAppExample:public AppBaseClass {
     }
     
     void onAnalog1(uint16_t uval, float fval){
-      Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
+     // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
-      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
+
       AudioNoInterrupts();
-      amp->gain(20.0 * log((10.0 * fval) + 1));
-      mixer->gain(0,1.0 * log((9*(1.0-fval))+1.0));
+      amp->gain(1.0 * log((9.0 * fval) ));
+      
       AudioInterrupts();
     };
     
     void onAnalog2(uint16_t uval, float fval){
-      Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
+      //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
-      filter->setLowpass(0,220.0 + (7000.0 * log((9*fval)+1.0)));
-      filter->setLowpass(1,110.0 + (6200.0 * log((9*fval)+1.0)));
-      filter->setLowpass(2,50.0 + (5200.0 * log((9*fval)+1.0)));
-      filter->setLowpass(3,30.0 + (3700.0 * log((9*fval)+1.0)));
+      filter->setLowpass(0,220.0 + (12000.0 * fval));
+      filter->setLowpass(1,110.0 + (11000.0 * fval));
+      filter->setLowpass(2,170.0 + (8100.0 * fval));
+      filter->setLowpass(3,310.0 + (7200.0 * fval));
+      mixer->gain(0,log((9*fval)+1.0));
       AudioInterrupts();
     };
     
     void onAnalog3(uint16_t uval, float fval){
-      Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
+      //Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
       AudioNoInterrupts();
-      filter->setHighpass(0,100.0 + (1200.0 * log((9*fval)+1.0)));
-      filter->setHighpass(1,100.0 + (910.0 * log((9*fval)+1.0)));
-      filter->setHighpass(2,100.0 + (820.0 * log((9*fval)+1.0)));
-      filter->setHighpass(3,100.0 + (720.0 * log((9*fval)+1.0)));
-      mixer->gain(2,30 * log((9*fval)+1.0));
+      filter->setHighpass(0,100.0 + (600.0 * log((9*fval)+1.0)));
+      //filter->setHighpass(1,100.0 + (3910.0 * log((9*fval)+1.0)));
+      //filter->setHighpass(2,100.0 + (4820.0 * log((9*fval)+1.0)));
+      //filter->setHighpass(3,100.0 + (15720.0 * log((9*fval)+1.0)));
+      mixer->gain(2,log((9*fval)));
       AudioInterrupts();
     };
 
     void onAnalog4(uint16_t uval, float fval){
-      Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
+      //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
       AudioNoInterrupts();
-      amp->gain(0.50 * log((9*fval)+1.0));
+      amp->gain(log((9*fval)+1.0));
       AudioInterrupts();
     };
     
@@ -261,7 +263,8 @@ class MyAppExample:public AppBaseClass {
 
       //input through filter 3 to the master mixer
       ad.connect("amp_2 0 biquad_4 2");//HP
-      ad.connect("biquad_4 0 mixer_1 2");
+      //ad.connect("biquad_4 0 mixer_1 2");
+      ad.connect("amp_2 0 mixer_1 2");
 
       //master mixer to the output amp
       ad.connect("mixer_1 0 amp_1 0");
@@ -315,6 +318,9 @@ class MyAppExample:public AppBaseClass {
         w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
         w->begin(voice_type);
       }
+      //change the voice of the test signal too
+      w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
+      w->begin(voice_type);
       AudioInterrupts();
 
       return;
