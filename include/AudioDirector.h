@@ -5,6 +5,7 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
+
 #define MAX_AUDIO_STREAM_OBJECTS 160
 #define MAX_AUDIO_MEMORY_BLOCKS 50
 #define MAX_CATEGORIES 16

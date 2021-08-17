@@ -191,7 +191,8 @@ class MyAppExample:public AppBaseClass {
           //Serial.println(message);
           //Serial.flush();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
-          wav->begin(0.5,atoi(message),WAVEFORM_SINE);
+          wav->frequency(atoi(message));
+          wav->amplitude(0.15);
         }
     }
 
@@ -205,7 +206,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
 
       AudioNoInterrupts();
-      amp->gain(1.0 * log((9.0 * fval) ));
+      amp->gain(20.0 * log((9.0 * fval) + 1.0));
       
       AudioInterrupts();
     };
@@ -217,10 +218,10 @@ class MyAppExample:public AppBaseClass {
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
       filter->setLowpass(0,220.0 + (12000.0 * fval));
-      filter->setLowpass(1,110.0 + (11000.0 * fval));
-      filter->setLowpass(2,170.0 + (8100.0 * fval));
-      filter->setLowpass(3,310.0 + (7200.0 * fval));
-      mixer->gain(0,log((9*fval)+1.0));
+      filter->setLowpass(1,110.0 + (11200.0 * fval));
+      filter->setLowpass(2,170.0 + (9100.0 * fval));
+      filter->setLowpass(3,310.0 + (8200.0 * fval));
+      mixer->gain(0,4* log((9)+1.0));
       AudioInterrupts();
     };
     
@@ -234,7 +235,7 @@ class MyAppExample:public AppBaseClass {
       //filter->setHighpass(1,100.0 + (3910.0 * log((9*fval)+1.0)));
       //filter->setHighpass(2,100.0 + (4820.0 * log((9*fval)+1.0)));
       //filter->setHighpass(3,100.0 + (15720.0 * log((9*fval)+1.0)));
-      mixer->gain(2,log((9*fval)));
+      mixer->gain(2,log((7.0 * fval)+1));
       AudioInterrupts();
     };
 
@@ -243,7 +244,7 @@ class MyAppExample:public AppBaseClass {
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
       AudioNoInterrupts();
-      amp->gain(log((9*fval)+1.0));
+      amp->gain(log((9.0 * fval)+1));
       AudioInterrupts();
     };
     

@@ -44,10 +44,21 @@ public:
 		hdivide(5);
 		autoTrigger = false;
 		isAvailable = false;
+		edgeCount = 0;
+		edgeCount_ch2 = 0;
 		peakValue = 0;
 		dot=0;
 		dotAvg=0;
 		dotLast=0;
+		dotAvgSlow=0;
+		dotDelta = 0;
+		dotDeltaMACD=0;
+		dotMACD=0;
+		edgeTimer=0;
+		edgeDelay=0;
+		edgeTimer2=0;
+		edgeDelay2=0;
+		
 	}
 
 	virtual void update(void);
@@ -63,7 +74,13 @@ public:
 	uint8_t getHDiv(){return h_div;}
 	q63_t getDotProduct(){return dot;}
 	q63_t getDotProductAvg(){return dotAvg;}
-	q63_t getDotDelta(){return dot - dotLast;}
+	q63_t getDotMACD(){return dotMACD;}
+	q63_t getDotDelta(){return dotDelta;}
+	q63_t getDotDeltaMACD(){return dotDeltaMACD;}
+	uint32_t getEdgeCount(){return edgeCount;}
+	uint32_t getEdgeCount_ch2(){return edgeCount_ch2;}
+	uint32_t getEdgeDelay(){return edgeDelay;}
+	uint32_t getEdgeDelay2(){return edgeDelay2;}
 	
 private:
 	const char *myname;
@@ -79,11 +96,20 @@ private:
 	uint32_t delay_length; // number of samples between trigger and sampling
 	uint32_t mem_length; // number of samples to capture
 	uint32_t edgeCount;
+	uint32_t edgeCount_ch2;
 	uint32_t count;
 	int16_t peakValue;
+	uint32_t edgeTimer;
+	uint32_t edgeDelay;
+	uint32_t edgeTimer2;
+	uint32_t edgeDelay2;
 	q63_t dot;
 	q63_t dotLast;
 	q63_t dotAvg;
+	q63_t dotAvgSlow;
+	q63_t dotDelta;
+	q63_t dotDeltaMACD;
+	q63_t dotMACD;
 	audio_block_t *inputQueueArray[2];
 };
 

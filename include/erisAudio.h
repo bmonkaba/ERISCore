@@ -1,12 +1,18 @@
 #ifndef __erisAudio
 #define __erisAudio
 
+
 //block the following includes provided by Audio.h
 #define play_sd_raw_h_
 #define play_sd_wav_h_
-
+//a modified synth waveform header is contained in the eris library
+//block the import from audio.h
+#include "eris_synth_waveform.h"
 #include <Audio.h>
+//now load the modified version
+//#undef synth_waveform_h_
 #include <new>
+
 
 // handcode
 //

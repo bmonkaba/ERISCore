@@ -88,7 +88,8 @@ $(document).ready(function(){initNavTree('d4/d75/app_c_q_t_8h.html','../../'); i
 <div class="title">appCQT.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../dc/dac/_audio_utilities_8h_source.html">AudioUtilities.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;float.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/dac/_audio_utilities_8h_source.html">AudioUtilities.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for appCQT.h:</div>
@@ -103,7 +104,8 @@ $(document).ready(function(){initNavTree('d4/d75/app_c_q_t_8h.html','../../'); i
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/df0/app_c_q_t_8h__dep__incl.svg" width="227" height="247"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/df0/app_c_q_t_8h__dep__incl.svg" width="227" height="247"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="../../d4/d75/app_c_q_t_8h_source.html">Go to the source code of this file.</a></p>
@@ -119,7 +121,7 @@ Macros</h2></td></tr>
 <tr class="memitem:a0e6eb21f4797c43c1e55840a246da543"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a0e6eb21f4797c43c1e55840a246da543">CQT_HIGHRANGE_SPLIT_AT_BIN</a>&#160;&#160;&#160;47</td></tr>
 <tr class="memdesc:a0e6eb21f4797c43c1e55840a246da543"><td class="mdescLeft">&#160;</td><td class="mdescRight">CQT_HIGHRANGE_SPLIT_AT_BIN defines the cqt bin at which the high range fft will begin to be read from.  <a href="../../d4/d75/app_c_q_t_8h.html#a0e6eb21f4797c43c1e55840a246da543">More...</a><br /></td></tr>
 <tr class="separator:a0e6eb21f4797c43c1e55840a246da543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a268431ac67111c44f5346b92590c5f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:a268431ac67111c44f5346b92590c5f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">OSC_BANK_SIZE</a>&#160;&#160;&#160;15</td></tr>
 <tr class="memdesc:a268431ac67111c44f5346b92590c5f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)  <a href="../../d4/d75/app_c_q_t_8h.html#a268431ac67111c44f5346b92590c5f17">More...</a><br /></td></tr>
 <tr class="separator:a268431ac67111c44f5346b92590c5f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ebfb6b2cc5819364cf740b029af8371"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d75/app_c_q_t_8h.html#a9ebfb6b2cc5819364cf740b029af8371">TX_CQT_PERIOD</a>&#160;&#160;&#160;250</td></tr>
@@ -151,7 +153,7 @@ Macros</h2></td></tr>
 
 <p>CQT_HIGHRANGE_SPLIT_AT_BIN defines the cqt bin at which the high range fft will begin to be read from. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00022">22</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00023">23</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -162,14 +164,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define OSC_BANK_SIZE&#160;&#160;&#160;8</td>
+          <td class="memname">#define OSC_BANK_SIZE&#160;&#160;&#160;15</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!) </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00028">28</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00029">29</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -187,7 +189,7 @@ Macros</h2></td></tr>
 
 <p>the period at which the some quantized voice data is sent to the serial port </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00043">43</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00044">44</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>
@@ -205,7 +207,7 @@ Macros</h2></td></tr>
 
 <p>periodically transmit the fft output buffer to the serial port </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00037">37</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00038">38</a> of file <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html">appCQT.h</a>.</p>
 
 </div>
 </div>

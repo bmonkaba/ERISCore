@@ -6,6 +6,7 @@
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
 #include <Arduino.h>
+#include <deque>
 #include "HSI.h"
 #include "touch.h"
 #include "AnalogInputs.h"
@@ -99,6 +100,12 @@ class AppManager {
       activeID = 0;
       pActiveApp = 0;
       nextIDAssignment = 1; //id 0 is reserved
+      //init the appStack
+      // allocate an array with space for 5 elements using deque's allocator:
+      unsigned int *p;
+      p = appFocusStack.get_allocator().allocate(16);
+      // construct values in-place on the array:
+      for (int8_t i=0; i<16; i++) appFocusStack.get_allocator().construct(&p[i],i);
       //init the sd card
       if (!sd.begin(SdioConfig(FIFO_SDIO))){
         Serial.println(F("AppManager: FATAL! SD Card Not Found "));
@@ -136,9 +143,19 @@ class AppManager {
     TS_Point p;
     bool touch_state;
     SvcDataDictionary data;//data dictionary service
-    void switchAppFocus(uint16_t id){activeID=id;}; //switch focus
-    void pushAppFocus();  //used by switchAppFocus to store the requesting app for return
-    void popAppFocus();  //return to the requesting app
+    std::deque<unsigned int> appFocusStack;
+    void getFocus(uint16_t id){
+      pushAppFocus(activeID);
+      activeID=id;
+    } //switch focus
+    void returnFocus(){popAppFocus();} //alias for popAppFocus
+  private:
+    void pushAppFocus(uint16_t app_id){appFocusStack.push_front(app_id);}  //used by switchAppFocus to store the requesting app for return
+    void popAppFocus(){
+      activeID=appFocusStack.front();//load from the stack
+      appFocusStack.pop_front();//then remove
+    }  //return to the requesting app
+  public:
     uint16_t peekAppFocus(){return activeID;}//used by apps to find out which has focus
     AppBaseClass* getActiveApp(){
       return pActiveApp;

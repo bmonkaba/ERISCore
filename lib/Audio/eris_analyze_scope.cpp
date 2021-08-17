@@ -78,23 +78,62 @@ void erisAudioAnalyzeScope::update(void)
 			break;
 
 		  case STATE_PRINTING:
-		  	//for the first sample try to find a zero crossing offset in the curernt audio block
+		  	//wait for the zero crossing on ch1 
 			if (count == mem_length){ 
+				dot = 0;
+				dotAvg = 0;
+				dotAvgSlow = 0;
+				//dotDelta = 0;
+				//dotDeltaMACD = 0;
+				dotMACD = 0;
+				edgeCount = 0;
+				edgeCount_ch2 = 0;
+				peakValue = 0;
+				edgeTimer=0;
+				edgeDelay=0;
+				edgeTimer2=0;
+				edgeDelay2=0;				
+
 				bool found = false;
 				for(int16_t i=1;i < AUDIO_BLOCK_SAMPLES-h_div;i++){
 					if (block->data[i] > 0 && block->data[i-1] < 0){
 						offset = i;
 						found = true;
+						edgeTimer=0;
+						edgeTimer2=0;
 						break;
 					}
 				}
+				//skip to the next block
 				if(!found) {offset = AUDIO_BLOCK_SAMPLES;};
-				edgeCount = 0;
-				peakValue = 0;
+
 			}
 			
 			while ((offset < AUDIO_BLOCK_SAMPLES) && (count > 0)){
+				edgeTimer++;
+				edgeTimer2++;
+				//for every sample
+				if (offset>0 && block->data[offset-1] < 0 && block->data[offset] >=0){
+					if(edgeCount >2){
+						if (edgeDelay==0){edgeDelay = edgeTimer;
+						} else {
+							edgeDelay = (edgeDelay + edgeTimer)/2;
+						}
+					}
+					edgeTimer=0;
+				} 
+				if (isDualChannel && offset>0 && blockb->data[offset-1] < 0 && blockb->data[offset] >=0){
+					if(edgeCount_ch2 >2){
+						if (edgeDelay2==0){edgeDelay2 = edgeTimer2;
+						} else {
+							edgeDelay2 = (edgeDelay2 + edgeTimer2)/2;
+						}
+					}
+					edgeTimer2=0;
+				} 
+
 				h_div_count++;
+				//for the captured samples
 				if(h_div_count==h_div){
 					h_div_count=0;
 					count--;
@@ -103,9 +142,14 @@ void erisAudioAnalyzeScope::update(void)
 					if (isDualChannel){ 
 						memory[1][mem_length - count - 1 ] = blockb->data[offset];
 						peakValue = max(peakValue,abs(blockb->data[offset]));
+						if ((offset >= h_div) && (blockb->data[offset] <= 0 ) && (blockb->data[offset-h_div] > 0)){
+							edgeCount_ch2++;
+						}
 					}else memory[1][mem_length - count - 1 ] = 0;
 
-					if ((offset >= h_div) && (block->data[offset] >= 0 ) && (block->data[offset-h_div] < 0)) edgeCount++;
+					if ((offset >= h_div) && (block->data[offset] <= 0 ) && (block->data[offset-h_div] > 0)){
+						edgeCount++;
+					}
 				}
 				offset++;
 			}
@@ -113,13 +157,17 @@ void erisAudioAnalyzeScope::update(void)
 			
 			if (count == 0){
 				//Serial.println(edgeCount);
-				if((edgeCount < 4) && (auto_h_div < 6)) auto_h_div++;
-				if((edgeCount > 5) && (auto_h_div > 3)) auto_h_div--;
+				if((edgeCount < 6) && (auto_h_div < 64)) auto_h_div++;
+				if((edgeCount > 8) && (auto_h_div > 3)) auto_h_div--;
 				//calculate the dot product if dual channel
 				if (isDualChannel){
 					dotLast = dot;			
 					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
-					dotAvg = (dotAvg*0.6) + (dot*0.4);
+					dotDelta = (dot - dotLast) - dotDelta;		
+					dotAvg = (dotAvg*0.9999) + (dot*0.0001);
+					dotAvgSlow = (dotAvg*0.99999) + (dot*0.00001);
+					dotDeltaMACD = (dotAvg - dotAvgSlow) - dotDeltaMACD;
+					dotMACD = dotAvg - dotAvgSlow;
 				}	
 				isAvailable = true;
 				if (autoTrigger){

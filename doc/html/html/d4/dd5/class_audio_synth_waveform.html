@@ -101,14 +101,16 @@ $(document).ready(function(){initNavTree('d4/dd5/class_audio_synth_waveform.html
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d6/da2/class_audio_synth_waveform__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d6/da2/class_audio_synth_waveform__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Collaboration diagram for AudioSynthWaveform:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d8/d6f/class_audio_synth_waveform__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d8/d6f/class_audio_synth_waveform__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -125,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a61d94d86e578cc851270e6d50a993c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395cff98439e97ba08854b343eed4317"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317">frequency</a> (float freq)</td></tr>
 <tr class="separator:a395cff98439e97ba08854b343eed4317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69834f59c2509a53eb458711eaef912"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#ac69834f59c2509a53eb458711eaef912">getPhase</a> ()</td></tr>
+<tr class="separator:ac69834f59c2509a53eb458711eaef912"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7329b2b8dcb44e76c7f397d4d8fc1a84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#a7329b2b8dcb44e76c7f397d4d8fc1a84">isActive</a> (void)</td></tr>
 <tr class="separator:a7329b2b8dcb44e76c7f397d4d8fc1a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad70a484961cd7107e1d5b5132ae4d1f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#ad70a484961cd7107e1d5b5132ae4d1f5">offset</a> (float n)</td></tr>
@@ -149,6 +153,8 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a7c4d9340bcbe72c1e77cf3c8fd03ea2d"><td class="memItemLeft" align="right" valign="top">const int16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d">arbdata</a></td></tr>
+<tr class="separator:a7c4d9340bcbe72c1e77cf3c8fd03ea2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0f87125aecd2222c87ab2f57cde6f9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#afd0f87125aecd2222c87ab2f57cde6f9">category</a></td></tr>
 <tr class="separator:afd0f87125aecd2222c87ab2f57cde6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bfdc8888172e1256c35d3b6bdc7799d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#a0bfdc8888172e1256c35d3b6bdc7799d">cpu_cycles</a></td></tr>
@@ -157,8 +163,24 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a132a5948323a2f94a6f53e42a64411dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8fb019d1a24233d62228d2e234dde88"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#ac8fb019d1a24233d62228d2e234dde88">instance</a></td></tr>
 <tr class="separator:ac8fb019d1a24233d62228d2e234dde88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d636961692dc5e3434764d1cc0a4ab"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#a02d636961692dc5e3434764d1cc0a4ab">magnitude</a></td></tr>
+<tr class="separator:a02d636961692dc5e3434764d1cc0a4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf68a61a0e321c6cf4aebce9cad6bba"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#aecf68a61a0e321c6cf4aebce9cad6bba">phase_accumulator</a></td></tr>
+<tr class="separator:aecf68a61a0e321c6cf4aebce9cad6bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce788d9982b1dd31429c8e84976b707"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">phase_increment</a></td></tr>
+<tr class="separator:a8ce788d9982b1dd31429c8e84976b707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd33eca9d21a3386994e551bba1ff13c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a></td></tr>
+<tr class="separator:acd33eca9d21a3386994e551bba1ff13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae82522cc3295d8d6f3139a90646585e2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#ae82522cc3295d8d6f3139a90646585e2">pulse_width</a></td></tr>
+<tr class="separator:ae82522cc3295d8d6f3139a90646585e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac2a3bafe78c684f9a7600eb0d62ddef"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#aac2a3bafe78c684f9a7600eb0d62ddef">sample</a></td></tr>
+<tr class="separator:aac2a3bafe78c684f9a7600eb0d62ddef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac242dd9497117769db00c076d9b71710"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#ac242dd9497117769db00c076d9b71710">shortName</a></td></tr>
 <tr class="separator:ac242dd9497117769db00c076d9b71710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3b6d96d89686e45376c2dd6fb1fb9a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#a9b3b6d96d89686e45376c2dd6fb1fb9a">tone_offset</a></td></tr>
+<tr class="separator:a9b3b6d96d89686e45376c2dd6fb1fb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7865ba286bd0c01f32f64769cca51cd"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd">tone_type</a></td></tr>
+<tr class="separator:ac7865ba286bd0c01f32f64769cca51cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643f654eb80d440b0535cd0e6244a85c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#a643f654eb80d440b0535cd0e6244a85c">unum_inputs</a></td></tr>
 <tr class="separator:a643f654eb80d440b0535cd0e6244a85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ca258955ea281b46625381746c733f5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d96/class_audio_stream.html#a1ca258955ea281b46625381746c733f5">unum_outputs</a></td></tr>
@@ -236,12 +258,21 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00053">53</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                             : <a class="code" href="../../d5/d96/class_audio_stream.html#ab2e106f7e2f70f0cfb1d7b171da71f16">AudioStream</a>(0,NULL),</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        phase_accumulator(0), phase_increment(0), phase_offset(0),</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        magnitude(0), pulse_width(0x40000000),</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        arbdata(NULL), sample(0), tone_type(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>),</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        tone_offset(0) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#aecf68a61a0e321c6cf4aebce9cad6bba">phase_accumulator</a>(0), <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">phase_increment</a>(0), <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a>(0),</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a02d636961692dc5e3434764d1cc0a4ab">magnitude</a>(0), <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ae82522cc3295d8d6f3139a90646585e2">pulse_width</a>(0x40000000),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d">arbdata</a>(NULL), <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#aac2a3bafe78c684f9a7600eb0d62ddef">sample</a>(0), <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd">tone_type</a>(<a class="code" href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>),</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a9b3b6d96d89686e45376c2dd6fb1fb9a">tone_offset</a>(0) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="ttc" id="aclass_audio_stream_html_ab2e106f7e2f70f0cfb1d7b171da71f16"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#ab2e106f7e2f70f0cfb1d7b171da71f16">AudioStream::AudioStream</a></div><div class="ttdeci">AudioStream()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00136">AudioStream.h:136</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_a02d636961692dc5e3434764d1cc0a4ab"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a02d636961692dc5e3434764d1cc0a4ab">AudioSynthWaveform::magnitude</a></div><div class="ttdeci">int32_t magnitude</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00124">eris_synth_waveform.h:124</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_a7c4d9340bcbe72c1e77cf3c8fd03ea2d"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d">AudioSynthWaveform::arbdata</a></div><div class="ttdeci">const int16_t * arbdata</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00126">eris_synth_waveform.h:126</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_a8ce788d9982b1dd31429c8e84976b707"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">AudioSynthWaveform::phase_increment</a></div><div class="ttdeci">uint32_t phase_increment</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00122">eris_synth_waveform.h:122</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_a9b3b6d96d89686e45376c2dd6fb1fb9a"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a9b3b6d96d89686e45376c2dd6fb1fb9a">AudioSynthWaveform::tone_offset</a></div><div class="ttdeci">int16_t tone_offset</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00129">eris_synth_waveform.h:129</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_aac2a3bafe78c684f9a7600eb0d62ddef"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#aac2a3bafe78c684f9a7600eb0d62ddef">AudioSynthWaveform::sample</a></div><div class="ttdeci">int16_t sample</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00127">eris_synth_waveform.h:127</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_ac7865ba286bd0c01f32f64769cca51cd"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd">AudioSynthWaveform::tone_type</a></div><div class="ttdeci">short tone_type</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00128">eris_synth_waveform.h:128</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_acd33eca9d21a3386994e551bba1ff13c"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">AudioSynthWaveform::phase_offset</a></div><div class="ttdeci">uint32_t phase_offset</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">eris_synth_waveform.h:123</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_ae82522cc3295d8d6f3139a90646585e2"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#ae82522cc3295d8d6f3139a90646585e2">AudioSynthWaveform::pulse_width</a></div><div class="ttdeci">uint32_t pulse_width</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00125">eris_synth_waveform.h:125</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_aecf68a61a0e321c6cf4aebce9cad6bba"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#aecf68a61a0e321c6cf4aebce9cad6bba">AudioSynthWaveform::phase_accumulator</a></div><div class="ttdeci">uint32_t phase_accumulator</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00121">eris_synth_waveform.h:121</a></div></div>
 <div class="ttc" id="aeris__synth__waveform_8h_html_a495c5edee5c99b494e036344665da8d9"><div class="ttname"><a href="../../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a></div><div class="ttdeci">#define WAVEFORM_SINE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00040">eris_synth_waveform.h:40</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -325,7 +356,8 @@ Protected Attributes</h2></td></tr>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a362f8375c64deaef923207f442b674db_icgraph.svg" width="466" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a362f8375c64deaef923207f442b674db_icgraph.svg" width="466" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -354,23 +386,25 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00078">78</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                            {   <span class="comment">// 0 to 1.0</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (n &lt; 0) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            n = 0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            n = 1.0;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        magnitude = n * 65536.0;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00081">81</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                            {   <span class="comment">// 0 to 1.0</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (n &lt; 0) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            n = 0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            n = 1.0;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a02d636961692dc5e3434764d1cc0a4ab">magnitude</a> = n * 65536.0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00106">begin()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00124">magnitude</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00109">begin()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MyAppExample::MessageHandler()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_ab5d0141790b5564716115191b82c5f48_icgraph.svg" width="403" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_ab5d0141790b5564716115191b82c5f48_icgraph.svg" width="490" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -410,11 +444,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00112">112</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                               {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        arbdata = data;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00115">115</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                               {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d">arbdata</a> = data;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00126">arbdata</a>.</p>
+
 </div>
 </div>
 <a id="a26b58de690a697940d2441f7d73401b2"></a>
@@ -457,23 +493,24 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00106">106</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                                        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ab5d0141790b5564716115191b82c5f48">amplitude</a>(t_amp);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317">frequency</a>(t_freq);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        phase_offset = 0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        tone_type = t_type;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00109">109</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                                        {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ab5d0141790b5564716115191b82c5f48">amplitude</a>(t_amp);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317">frequency</a>(t_freq);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a> = 0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd">tone_type</a> = t_type;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
 <div class="ttc" id="aclass_audio_synth_waveform_html_a395cff98439e97ba08854b343eed4317"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317">AudioSynthWaveform::frequency</a></div><div class="ttdeci">void frequency(float freq)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00060">eris_synth_waveform.h:60</a></div></div>
-<div class="ttc" id="aclass_audio_synth_waveform_html_ab5d0141790b5564716115191b82c5f48"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#ab5d0141790b5564716115191b82c5f48">AudioSynthWaveform::amplitude</a></div><div class="ttdeci">void amplitude(float n)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00078">eris_synth_waveform.h:78</a></div></div>
+<div class="ttc" id="aclass_audio_synth_waveform_html_ab5d0141790b5564716115191b82c5f48"><div class="ttname"><a href="../../d4/dd5/class_audio_synth_waveform.html#ab5d0141790b5564716115191b82c5f48">AudioSynthWaveform::amplitude</a></div><div class="ttdeci">void amplitude(float n)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/db5/eris__synth__waveform_8h_source.html#l00081">eris_synth_waveform.h:81</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00078">amplitude()</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00060">frequency()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00081">amplitude()</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00060">frequency()</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">phase_offset</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00128">tone_type</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a26b58de690a697940d2441f7d73401b2_cgraph.svg" width="403" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a26b58de690a697940d2441f7d73401b2_cgraph.svg" width="403" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -502,19 +539,22 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00102">102</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                             {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        phase_offset = 0;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        tone_type = t_type;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00105">105</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                             {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a> = 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd">tone_type</a> = t_type;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00055">AppCQT::AppCQT()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00312">MyAppExample::changeVoice()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MyAppExample::MessageHandler()</a>.</p>
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">phase_offset</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00128">tone_type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00056">AppCQT::AppCQT()</a>, and <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00313">MyAppExample::changeVoice()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a61d94d86e578cc851270e6d50a993c6f_icgraph.svg" width="100%" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a61d94d86e578cc851270e6d50a993c6f_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -550,21 +590,54 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (freq &gt; <a class="code" href="../../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f">AUDIO_SAMPLE_RATE_EXACT</a> / 2) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            freq = <a class="code" href="../../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f">AUDIO_SAMPLE_RATE_EXACT</a> / 2;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        phase_increment = freq * (4294967296.0 / <a class="code" href="../../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f">AUDIO_SAMPLE_RATE_EXACT</a>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (phase_increment &gt; 0x7FFE0000u) phase_increment = 0x7FFE0000;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">phase_increment</a> = freq * (4294967296.0 / <a class="code" href="../../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f">AUDIO_SAMPLE_RATE_EXACT</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">phase_increment</a> &gt; 0x7FFE0000u) <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707">phase_increment</a> = 0x7FFE0000;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
 <div class="ttc" id="a_audio_stream_8h_html_a53a971165fb8f0f8e1e723b6265a882f"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#a53a971165fb8f0f8e1e723b6265a882f">AUDIO_SAMPLE_RATE_EXACT</a></div><div class="ttdeci">#define AUDIO_SAMPLE_RATE_EXACT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00059">AudioStream.h:59</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00059">AUDIO_SAMPLE_RATE_EXACT</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00059">AUDIO_SAMPLE_RATE_EXACT</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00122">phase_increment</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00106">begin()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00231">AppCQT::updateOscillatorBank()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00109">begin()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MyAppExample::MessageHandler()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00233">AppCQT::updateOscillatorBank()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a395cff98439e97ba08854b343eed4317_icgraph.svg" width="100%" height="384"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a395cff98439e97ba08854b343eed4317_icgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+</div>
+
+</div>
+</div>
+<a id="ac69834f59c2509a53eb458711eaef912"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac69834f59c2509a53eb458711eaef912">&#9670;&nbsp;</a></span>getPhase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AudioSynthWaveform::getPhase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00078">78</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                     {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a>/(4294967296.0 / 360.0);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">phase_offset</a>.</p>
 
 </div>
 </div>
@@ -688,16 +761,18 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00086">86</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                         {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (n &lt; -1.0) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            n = -1.0;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            n = 1.0;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        tone_offset = n * 32767.0;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00089">89</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                         {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (n &lt; -1.0) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            n = -1.0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            n = 1.0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#a9b3b6d96d89686e45376c2dd6fb1fb9a">tone_offset</a> = n * 32767.0;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00129">tone_offset</a>.</p>
+
 </div>
 </div>
 <a id="ad43a5ae00497ef4a163767a245a0919f"></a>
@@ -732,9 +807,21 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            angle = angle - 360.0;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> (angle &gt;= 360.0) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        phase_offset = angle * (4294967296.0 / 360.0);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#acd33eca9d21a3386994e551bba1ff13c">phase_offset</a> = angle * (4294967296.0 / 360.0);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">phase_offset</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00233">AppCQT::updateOscillatorBank()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_ad43a5ae00497ef4a163767a245a0919f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a8b64af9348ca38d5374514343fb78382"></a>
@@ -857,16 +944,18 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00094">94</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                             {  <span class="comment">// 0.0 to 1.0</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (n &lt; 0) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            n = 0;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            n = 1.0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        pulse_width = n * 4294967296.0;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00097">97</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                             {  <span class="comment">// 0.0 to 1.0</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (n &lt; 0) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            n = 0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 1.0) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            n = 1.0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="../../d4/dd5/class_audio_synth_waveform.html#ae82522cc3295d8d6f3139a90646585e2">pulse_width</a> = n * 4294967296.0;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00125">pulse_width</a>.</p>
+
 </div>
 </div>
 <a id="a9599ba022ef3e214243ce4dee9717019"></a>
@@ -907,12 +996,13 @@ Protected Attributes</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00000">index</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream::num_inputs</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d7/d78/eris__analyze__fft1024_8cpp_source.html#l00147">erisAudioAnalyzeFFT1024::update()</a>, and <a class="el" href="../../d4/d9a/eris__analyze__scope_8cpp_source.html#l00037">erisAudioAnalyzeScope::update()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a9599ba022ef3e214243ce4dee9717019_icgraph.svg" width="508" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a9599ba022ef3e214243ce4dee9717019_icgraph.svg" width="508" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -960,12 +1050,13 @@ Protected Attributes</h2></td></tr>
 <div class="ttc" id="astructaudio__block__struct_html_a68d5c70bc46a92800b24bd278dfec719"><div class="ttname"><a href="../../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719">audio_block_struct::data</a></div><div class="ttdeci">int16_t data[AUDIO_BLOCK_SAMPLES]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00072">AudioStream.h:72</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00081">AudioStream::allocate()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00072">audio_block_struct::data</a>, <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00000">index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">AudioStream::num_inputs</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00069">audio_block_struct::ref_count</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_aedbf0b4a808724dc4f4115c60b615622_cgraph.svg" width="466" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_aedbf0b4a808724dc4f4115c60b615622_cgraph.svg" width="466" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1016,12 +1107,13 @@ Protected Attributes</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d0/d72/_u_i_8h_source.html#l00000">index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00071">audio_block_struct::memory_pool_index</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00174">AudioStream::memory_used</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00069">audio_block_struct::ref_count</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../d7/d78/eris__analyze__fft1024_8cpp_source.html#l00147">erisAudioAnalyzeFFT1024::update()</a>, and <a class="el" href="../../d4/d9a/eris__analyze__scope_8cpp_source.html#l00037">erisAudioAnalyzeScope::update()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a29a40aab8fe15aeee2f0a131da381424_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d5/d96/class_audio_stream_a29a40aab8fe15aeee2f0a131da381424_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 
 </div>
@@ -1106,13 +1198,14 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../df/dc5/classeris_audio_synth_waveform.html#a03190ee08ff2f5e931fe38c552771642">erisAudioSynthWaveform</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00496">erisAudioSynthWaveform::update()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00502">erisAudioSynthWaveform::update()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a8f721d44e5cbda20dfd536ecd7539a7a_icgraph.svg" width="430" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/dd5/class_audio_synth_waveform_a8f721d44e5cbda20dfd536ecd7539a7a_icgraph.svg" width="430" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 
 </div>
@@ -1170,18 +1263,18 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00362">362</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;{</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">if</span> (update_scheduled) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    attachInterruptVector(IRQ_SOFTWARE, <a class="code" href="../../d5/d96/class_audio_stream.html#ad6b33ba52cfa5558c7b031b854e4bcdf">software_isr</a>);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    NVIC_SET_PRIORITY(IRQ_SOFTWARE, 208); <span class="comment">// 255 = lowest priority</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    NVIC_ENABLE_IRQ(IRQ_SOFTWARE);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    update_scheduled = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
-<div class="ttc" id="aclass_audio_stream_html_ad6b33ba52cfa5558c7b031b854e4bcdf"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#ad6b33ba52cfa5558c7b031b854e4bcdf">AudioStream::software_isr</a></div><div class="ttdeci">friend void software_isr(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7e/_audio_stream_8cpp_source.html#l00380">AudioStream.cpp:380</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00363">363</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">if</span> (update_scheduled) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    attachInterruptVector(IRQ_SOFTWARE, <a class="code" href="../../d5/d96/class_audio_stream.html#ad6b33ba52cfa5558c7b031b854e4bcdf">software_isr</a>);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    NVIC_SET_PRIORITY(IRQ_SOFTWARE, 208); <span class="comment">// 255 = lowest priority</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    NVIC_ENABLE_IRQ(IRQ_SOFTWARE);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    update_scheduled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;}</div>
+<div class="ttc" id="aclass_audio_stream_html_ad6b33ba52cfa5558c7b031b854e4bcdf"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#ad6b33ba52cfa5558c7b031b854e4bcdf">AudioStream::software_isr</a></div><div class="ttdeci">friend void software_isr(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7e/_audio_stream_8cpp_source.html#l00381">AudioStream.cpp:381</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00380">AudioStream::software_isr</a>.</p>
+<p class="reference">References <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00381">AudioStream::software_isr</a>.</p>
 
 </div>
 </div>
@@ -1209,11 +1302,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00372">372</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;{</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    NVIC_DISABLE_IRQ(IRQ_SOFTWARE);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    update_scheduled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00373">373</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;{</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    NVIC_DISABLE_IRQ(IRQ_SOFTWARE);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    update_scheduled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1240,7 +1333,25 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00184">184</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00169">AudioStream::isActive()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">AudioConnection::reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00169">AudioStream::isActive()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00300">AudioConnection::reconnect()</a>.</p>
+
+</div>
+</div>
+<a id="a7c4d9340bcbe72c1e77cf3c8fd03ea2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c4d9340bcbe72c1e77cf3c8fd03ea2d">&#9670;&nbsp;</a></span>arbdata</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int16_t* AudioSynthWaveform::arbdata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00126">126</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00115">arbitraryWaveform()</a>.</p>
 
 </div>
 </div>
@@ -1266,7 +1377,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00178">178</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00490">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00500">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00133">AudioDirector::addAudioStreamObj()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00496">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, and <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00134">AudioDirector::addAudioStreamObj()</a>.</p>
 
 </div>
 </div>
@@ -1392,7 +1503,25 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00181">181</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00066">AudioDirector::AudioDirector()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00133">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00341">AudioDirector::disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00214">AudioDirector::getConnectionString()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">AudioConnection::reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00067">AudioDirector::AudioDirector()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00134">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00342">AudioDirector::disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00215">AudioDirector::getConnectionString()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00300">AudioConnection::reconnect()</a>.</p>
+
+</div>
+</div>
+<a id="a02d636961692dc5e3434764d1cc0a4ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02d636961692dc5e3434764d1cc0a4ab">&#9670;&nbsp;</a></span>magnitude</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t AudioSynthWaveform::magnitude</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00124">124</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00081">amplitude()</a>.</p>
 
 </div>
 </div>
@@ -1470,7 +1599,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">185</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00165">AudioStream::receiveReadOnly()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00177">AudioStream::receiveWritable()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">AudioConnection::reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00165">AudioStream::receiveReadOnly()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00177">AudioStream::receiveWritable()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00300">AudioConnection::reconnect()</a>.</p>
 
 </div>
 </div>
@@ -1496,7 +1625,93 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00196">196</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">AudioConnection::reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00195">AudioConnection::connect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00300">AudioConnection::reconnect()</a>.</p>
+
+</div>
+</div>
+<a id="aecf68a61a0e321c6cf4aebce9cad6bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecf68a61a0e321c6cf4aebce9cad6bba">&#9670;&nbsp;</a></span>phase_accumulator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t AudioSynthWaveform::phase_accumulator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00121">121</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+</div>
+</div>
+<a id="a8ce788d9982b1dd31429c8e84976b707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce788d9982b1dd31429c8e84976b707">&#9670;&nbsp;</a></span>phase_increment</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t AudioSynthWaveform::phase_increment</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00122">122</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00060">frequency()</a>.</p>
+
+</div>
+</div>
+<a id="acd33eca9d21a3386994e551bba1ff13c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd33eca9d21a3386994e551bba1ff13c">&#9670;&nbsp;</a></span>phase_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t AudioSynthWaveform::phase_offset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00123">123</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00105">begin()</a>, <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00078">getPhase()</a>, and <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00069">phase()</a>.</p>
+
+</div>
+</div>
+<a id="ae82522cc3295d8d6f3139a90646585e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82522cc3295d8d6f3139a90646585e2">&#9670;&nbsp;</a></span>pulse_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t AudioSynthWaveform::pulse_width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00125">125</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00097">pulseWidth()</a>.</p>
+
+</div>
+</div>
+<a id="aac2a3bafe78c684f9a7600eb0d62ddef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac2a3bafe78c684f9a7600eb0d62ddef">&#9670;&nbsp;</a></span>sample</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t AudioSynthWaveform::sample</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00127">127</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
 
 </div>
 </div>
@@ -1522,7 +1737,43 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00177">177</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00066">AudioDirector::AudioDirector()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00490">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00500">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00133">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00241">AudioDirector::connect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00341">AudioDirector::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00214">AudioDirector::getConnectionString()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00299">AudioConnection::reconnect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00067">AudioDirector::AudioDirector()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00496">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00134">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00242">AudioDirector::connect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00342">AudioDirector::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00229">AudioConnection::disconnect()</a>, <a class="el" href="../../db/dc8/_audio_director_8h_source.html#l00215">AudioDirector::getConnectionString()</a>, and <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00300">AudioConnection::reconnect()</a>.</p>
+
+</div>
+</div>
+<a id="a9b3b6d96d89686e45376c2dd6fb1fb9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b3b6d96d89686e45376c2dd6fb1fb9a">&#9670;&nbsp;</a></span>tone_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t AudioSynthWaveform::tone_offset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00129">129</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00089">offset()</a>.</p>
+
+</div>
+</div>
+<a id="ac7865ba286bd0c01f32f64769cca51cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7865ba286bd0c01f32f64769cca51cd">&#9670;&nbsp;</a></span>tone_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short AudioSynthWaveform::tone_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00128">128</a> of file <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html">eris_synth_waveform.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../de/db5/eris__synth__waveform_8h_source.html#l00105">begin()</a>.</p>
 
 </div>
 </div>
@@ -1548,7 +1799,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00179">179</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00490">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00500">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00496">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
 
 </div>
 </div>
@@ -1574,7 +1825,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00180">180</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00490">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00500">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00137">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00066">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00036">erisAudioAnalyzeScope::erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00496">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
 
 </div>
 </div>

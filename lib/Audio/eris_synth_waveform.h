@@ -75,6 +75,9 @@ public:
 		}
 		phase_offset = angle * (4294967296.0 / 360.0);
 	}
+	float getPhase() {
+		return phase_offset/(4294967296.0 / 360.0);
+	}
 	void amplitude(float n) {	// 0 to 1.0
 		if (n < 0) {
 			n = 0;
@@ -114,7 +117,7 @@ public:
 	}
 	virtual void update(void);
 
-private:
+public:
 	uint32_t phase_accumulator;
 	uint32_t phase_increment;
 	uint32_t phase_offset;
@@ -206,5 +209,5 @@ private:
 	uint8_t  modulation_type;
 };
 
-
 #endif
+

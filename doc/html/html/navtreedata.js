@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -55,15 +55,16 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918",
-"d5/d96/class_audio_stream.html#a132a5948323a2f94a6f53e42a64411dc",
-"d9/d03/class_app_template.html#ab09a10b13273bf5b5a99c412f3835c0d",
-"dc/ddf/control_button_8h.html#a9acedcace229ff6b54e6ed963a84751d",
-"de/d7c/ui__menu__structs_8h.html#a075b96d5b6aa51ed85c83c579c9cfd4a",
-"de/d7c/ui__menu__structs_8h.html#a38822f8539c9f33d1b9f08b87cf0f346",
-"de/d7c/ui__menu__structs_8h.html#a6541a1fb1eca554aec946376b4780d70",
-"de/d7c/ui__menu__structs_8h.html#a97800d01e98b81311e47ef5e35cec3ff",
-"de/d7c/ui__menu__structs_8h.html#acf56d72134d5b5bb8c22b95bc9a9bffb",
-"df/d0a/main_8cpp.html#afd4f82308f5b6236f0c1144cc2b47331"
+"d5/d33/classeris_audio_synth_waveform_sine_modulated.html#ae195f7285c61a3b2dcd900594d6615d3",
+"d9/d03/class_app_template.html#a08a303813204000ee12600a38fe96d18",
+"dc/d7c/classeris_audio_synth_simple_drum.html#a851ba07300dababc8c499c81554e03f9",
+"de/d7c/ui__menu__structs_8h.html#a0344ffd1dce499a7b3cb99239c7e650f",
+"de/d7c/ui__menu__structs_8h.html#a354705f87e1616908094aa674d2abc11",
+"de/d7c/ui__menu__structs_8h.html#a6218096073f10ab3732ec05980fac948",
+"de/d7c/ui__menu__structs_8h.html#a92db3254dbbde99f69234570816474d7",
+"de/d7c/ui__menu__structs_8h.html#ac9f7ef87e8414e21c1a110aab9d36131",
+"de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468",
+"globals_e.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

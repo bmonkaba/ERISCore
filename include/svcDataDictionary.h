@@ -21,7 +21,7 @@
  */
 
 #define DATADICT_KEYVALUE_PAIRS 32
-#define DATADICT_MAX_KEY_LEN 16
+#define DATADICT_MAX_KEY_LEN 32
 
 class SvcDataDictionary{
     private:

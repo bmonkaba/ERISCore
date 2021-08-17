@@ -232,6 +232,7 @@ bool AudioConnection::disconnect(void)
 
 	if (!isConnected) return false;
 	if (dest_index > pDst->num_inputs) return false;
+	Serial.flush();
 	Serial.println(F("(eris)AudioConnection:disconnect()"));
 	Serial.print(F("\tsrc name:"));Serial.println(pSrc->shortName);
 	Serial.print(F("\tsrc ptr:"));Serial.println((uint32_t)pSrc);

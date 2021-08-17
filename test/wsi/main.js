@@ -167,7 +167,7 @@ socket.onmessage = function (message) {
 
             //cqt view
             ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseInt(cqt[5]) * 1.25).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseInt(cqt[5])), 4, canvas.height);
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height*parseFloat(cqt[5])), 4, canvas.height);
             
             //osc view
             //ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";    
@@ -195,7 +195,7 @@ socket.onmessage = function (message) {
             
             //cqt view
             ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseInt(cqt[5]) * 1.25).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (1+parseFloat(cqt[5])), 4, canvas.height);
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height*parseFloat(cqt[5])), 4, canvas.height);
 
             //osc view
             ctx.fillStyle = "rgba(" + 10 + cqt[5]*2 + ","+ cqt[4]*10 +"," + cqt[5]*2 + ", 1)"; 
