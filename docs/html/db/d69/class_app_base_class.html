@@ -223,30 +223,30 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">308</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                           {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="comment">//Serial.println(&quot;AppBaseClass constructor called&quot;);</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a50389da1569c64f256e008ce929b0b36">parentNode</a>=NULL;          <span class="comment">//set by the parent</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873">nextAppicationNode</a>=NULL;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c">previousAppicationNode</a>=NULL;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">touch_state</a> = <span class="keyword">false</span>;      <span class="comment">//set by the application manager</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8">origin_x</a>=0;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed">origin_y</a>=0;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d">width</a>=320;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a7f85f42f0aec6aabd77825f19d604cc6">height</a>=240;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18">update_loop_time</a> =0;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#acec8429a0d867221c0c4f47f4f7d00d4">update_loop_time_max</a> =0;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3d6da03c9c3c5243d8dd2281dc963011">updateRT_loop_time</a> =0;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421">updateRT_loop_time_max</a> =0;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#acff523b6c1d155a66b915e4f49158af8">cycle_time</a> =0;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a297b44dd038d30faab55f6ccf1f9e9e2">cycle_time_max</a> =0;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009">update_call_period</a> =0;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744">update_call_period_max</a> =0;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a2c2bd2a942c2228c8556dc2cb918e020">updateRT_call_period</a> =0;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a52fe0832f15327eed5bf0eecf5c368bd">updateRT_call_period_max</a> =0;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  strcpy(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,<span class="stringliteral">&quot;NONE&quot;</span>);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>()-&gt;<a class="code" href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">RegisterApp</a>(<span class="keyword">this</span>); <span class="comment">//self register on construction</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">313</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                           {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="comment">//Serial.println(&quot;AppBaseClass constructor called&quot;);</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a50389da1569c64f256e008ce929b0b36">parentNode</a>=NULL;          <span class="comment">//set by the parent</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873">nextAppicationNode</a>=NULL;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c">previousAppicationNode</a>=NULL;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">touch_state</a> = <span class="keyword">false</span>;      <span class="comment">//set by the application manager</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8">origin_x</a>=0;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed">origin_y</a>=0;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d">width</a>=320;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a7f85f42f0aec6aabd77825f19d604cc6">height</a>=240;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18">update_loop_time</a> =0;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#acec8429a0d867221c0c4f47f4f7d00d4">update_loop_time_max</a> =0;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a3d6da03c9c3c5243d8dd2281dc963011">updateRT_loop_time</a> =0;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421">updateRT_loop_time_max</a> =0;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#acff523b6c1d155a66b915e4f49158af8">cycle_time</a> =0;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a297b44dd038d30faab55f6ccf1f9e9e2">cycle_time_max</a> =0;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009">update_call_period</a> =0;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744">update_call_period_max</a> =0;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a2c2bd2a942c2228c8556dc2cb918e020">updateRT_call_period</a> =0;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html#a52fe0832f15327eed5bf0eecf5c368bd">updateRT_call_period_max</a> =0;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  strcpy(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,<span class="stringliteral">&quot;NONE&quot;</span>);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>()-&gt;<a class="code" href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">RegisterApp</a>(<span class="keyword">this</span>); <span class="comment">//self register on construction</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;}</div>
 <div class="ttc" id="aclass_app_base_class_html_a08a303813204000ee12600a38fe96d18"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18">AppBaseClass::update_loop_time</a></div><div class="ttdeci">uint16_t update_loop_time</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00041">AppManager.h:41</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a12be372470e6826bae25db90c01c388e"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">AppBaseClass::touch_state</a></div><div class="ttdeci">bool touch_state</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00034">AppManager.h:34</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a297b44dd038d30faab55f6ccf1f9e9e2"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a297b44dd038d30faab55f6ccf1f9e9e2">AppBaseClass::cycle_time_max</a></div><div class="ttdeci">uint16_t cycle_time_max</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00046">AppManager.h:46</a></div></div>
@@ -267,9 +267,9 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclass_app_base_class_html_ad9996440b20f31307ba26ff1f932a421"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421">AppBaseClass::updateRT_loop_time_max</a></div><div class="ttdeci">uint16_t updateRT_loop_time_max</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00044">AppManager.h:44</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_ae25e514a1d183f98b5c3551ffcaf2744"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744">AppBaseClass::update_call_period_max</a></div><div class="ttdeci">uint16_t update_call_period_max</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00048">AppManager.h:48</a></div></div>
 <div class="ttc" id="aclass_app_manager_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00131">AppManager.h:131</a></div></div>
-<div class="ttc" id="aclass_app_manager_html_aed66c0e0b2984215d8849b28f6fa63ae"><div class="ttname"><a href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">AppManager::RegisterApp</a></div><div class="ttdeci">void RegisterApp(AppBaseClass *app)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00292">AppManager.h:292</a></div></div>
+<div class="ttc" id="aclass_app_manager_html_aed66c0e0b2984215d8849b28f6fa63ae"><div class="ttname"><a href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae">AppManager::RegisterApp</a></div><div class="ttdeci">void RegisterApp(AppBaseClass *app)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00297">AppManager.h:297</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00045">cycle_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00046">cycle_time_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00131">AppManager::getInstance()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00055">height</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00056">name</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00033">nextAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">origin_x</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00053">origin_y</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">parentNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00032">previousAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00292">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00034">touch_state</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00047">update_call_period</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00048">update_call_period_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">update_loop_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">update_loop_time_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00049">updateRT_call_period</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00050">updateRT_call_period_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">updateRT_loop_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00044">updateRT_loop_time_max</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00054">width</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00045">cycle_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00046">cycle_time_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00131">AppManager::getInstance()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00055">height</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00056">name</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00033">nextAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">origin_x</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00053">origin_y</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">parentNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00032">previousAppicationNode</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00297">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00034">touch_state</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00047">update_call_period</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00048">update_call_period_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">update_loop_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">update_loop_time_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00049">updateRT_call_period</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00050">updateRT_call_period_max</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">updateRT_loop_time</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00044">updateRT_loop_time_max</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00054">width</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -382,7 +382,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00056">name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00382">AppCQT::MessageHandler()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MyAppExample::MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00011">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00163">AppManager::sendMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00390">AppCQT::MessageHandler()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00169">MyAppExample::MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00011">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00163">AppManager::sendMessage()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -1198,7 +1198,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00045">45</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1224,7 +1224,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00046">46</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1242,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00055">55</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00106">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00071">setDimension()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00021">AppScope::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00107">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00071">setDimension()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00021">AppScope::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1268,7 +1268,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00035">35</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00059">getId()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00292">AppManager::RegisterApp()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00059">getId()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00297">AppManager::RegisterApp()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1286,7 +1286,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00056">56</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00056">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00056">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00011">ControlButton::ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00009">ControlSlider::ControlSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00060">isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00065">setName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00056">AppCQT::AppCQT()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00008">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00007">AppScope::AppScope()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00056">AppSerialCommandInterface::AppSerialCommandInterface()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00011">ControlButton::ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00009">ControlSlider::ControlSlider()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00060">isName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00065">setName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1312,7 +1312,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00033">33</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00292">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00163">AppManager::sendMessage()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00297">AppManager::RegisterApp()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00163">AppManager::sendMessage()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1330,7 +1330,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00052">52</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00106">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00070">setPosition()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00015">AppScope::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00107">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00070">setPosition()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00015">AppScope::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1348,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00053">53</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00106">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00070">setPosition()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00015">AppScope::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00107">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00070">setPosition()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00015">AppScope::setPosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -1374,7 +1374,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00031">31</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00060">ControlSlider::onTouchDrag()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">setParent()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00060">ControlSlider::onTouchDrag()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00069">setParent()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1400,7 +1400,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00032">32</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00292">AppManager::RegisterApp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00297">AppManager::RegisterApp()</a>.</p>
 
 </div>
 </div>
@@ -1426,7 +1426,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00034">34</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1452,7 +1452,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00047">47</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1478,7 +1478,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00048">48</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1504,7 +1504,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00041">41</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1530,7 +1530,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00042">42</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +1556,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00049">49</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1582,7 +1582,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00050">50</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1608,7 +1608,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00043">43</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1634,7 +1634,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00044">44</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00175">AppManager::printStats()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00202">AppManager::update()</a>.</p>
 
 </div>
 </div>
@@ -1652,7 +1652,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00054">54</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00308">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00106">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00071">setDimension()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00021">AppScope::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00313">AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00223">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00107">AppScope::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00047">ControlButton::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00053">ControlSlider::onTouch()</a>, <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00288">AppSerialCommandInterface::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">ControlButton::onTouchRelease()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00070">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00071">setDimension()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00021">AppScope::setDimension()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00150">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00030">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00029">ControlSlider::update()</a>.</p>
 
 </div>
 </div>

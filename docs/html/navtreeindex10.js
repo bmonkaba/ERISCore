@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905":[1,0,1,0,9,3],
 "de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468":[1,0,1,0,9,8],
 "de/db5/eris__synth__waveform_8h.html#ac3b1173bbdffa88cc1919cadd264ef7d":[1,0,1,0,9,11],
 "de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187":[1,0,1,0,9,6],
@@ -17,12 +18,12 @@ var NAVTREEINDEX10 =
 "de/df9/classeris_audio_output_t_d_m.html#ab5ba1fc2346c200ffacdb8e75c61006f":[0,0,74,0],
 "df/d0a/main_8cpp.html":[1,0,2,1],
 "df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f":[1,0,2,1,1],
-"df/d0a/main_8cpp.html#a2eb031a196afc920120d008cd3858f2e":[1,0,2,1,2],
 "df/d0a/main_8cpp.html#a3da5b626ba9581d74eb6155bb3578800":[1,0,2,1,6],
-"df/d0a/main_8cpp.html#a427aa98d6edc302575324619af7f22aa":[1,0,2,1,4],
-"df/d0a/main_8cpp.html#a6974831a494489fa691832e6370d82f9":[1,0,2,1,3],
+"df/d0a/main_8cpp.html#a41debc15b6965bd70b14b8802974cd49":[1,0,2,1,4],
+"df/d0a/main_8cpp.html#a466baca2911bdacabb72c6ebcf745cca":[1,0,2,1,5],
+"df/d0a/main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d":[1,0,2,1,2],
+"df/d0a/main_8cpp.html#a6ada74b7b16b4952dbfebdeee738624f":[1,0,2,1,3],
 "df/d0a/main_8cpp.html#a83dbf0cf2bee77d1420f6c04800ae09a":[1,0,2,1,0],
-"df/d0a/main_8cpp.html#afd4f82308f5b6236f0c1144cc2b47331":[1,0,2,1,5],
 "df/d0a/main_8cpp_source.html":[1,0,2,1],
 "df/d13/classeris_audio_synth_waveform_modulated.html":[0,0,87],
 "df/d13/classeris_audio_synth_waveform_modulated.html#a00d411c4863945c1bb379c47bd1125a2":[0,0,87,6],
@@ -213,8 +214,8 @@ var NAVTREEINDEX10 =
 "functions_t.html":[0,3,0,18],
 "functions_u.html":[0,3,0,19],
 "functions_v.html":[0,3,0,20],
-"functions_vars.html":[0,3,2],
 "functions_vars.html":[0,3,2,0],
+"functions_vars.html":[0,3,2],
 "functions_vars_a.html":[0,3,2,1],
 "functions_vars_b.html":[0,3,2,2],
 "functions_vars_c.html":[0,3,2,3],
@@ -243,11 +244,10 @@ var NAVTREEINDEX10 =
 "functions_y.html":[0,3,0,23],
 "functions_z.html":[0,3,0,24],
 "functions_~.html":[0,3,0,25],
-"globals.html":[1,1,0],
 "globals.html":[1,1,0,0],
+"globals.html":[1,1,0],
 "globals_a.html":[1,1,0,1],
 "globals_b.html":[1,1,0,2],
 "globals_c.html":[1,1,0,3],
-"globals_d.html":[1,1,0,4],
-"globals_defs.html":[1,1,6]
+"globals_d.html":[1,1,0,4]
 };

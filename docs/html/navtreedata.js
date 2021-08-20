@@ -55,16 +55,16 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918",
-"d5/d33/classeris_audio_synth_waveform_sine_modulated.html#ae195f7285c61a3b2dcd900594d6615d3",
-"d9/d03/class_app_template.html#a08a303813204000ee12600a38fe96d18",
-"dc/d7c/classeris_audio_synth_simple_drum.html#a851ba07300dababc8c499c81554e03f9",
-"de/d7c/ui__menu__structs_8h.html#a0344ffd1dce499a7b3cb99239c7e650f",
-"de/d7c/ui__menu__structs_8h.html#a354705f87e1616908094aa674d2abc11",
-"de/d7c/ui__menu__structs_8h.html#a6218096073f10ab3732ec05980fac948",
-"de/d7c/ui__menu__structs_8h.html#a92db3254dbbde99f69234570816474d7",
-"de/d7c/ui__menu__structs_8h.html#ac9f7ef87e8414e21c1a110aab9d36131",
-"de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468",
-"globals_e.html"
+"d5/d33/classeris_audio_synth_waveform_sine_modulated.html#ab55cbe4ec3a17c4bd2efb59860f4fa83",
+"d9/d03/class_app_template.html#a06ee52ad8474b0e72a56f71eb0b527f1",
+"dc/d7c/classeris_audio_synth_simple_drum.html",
+"de/d7c/ui__menu__structs_8h.html#a02bf0c26e0cbcf0b914220d65ed6fe71",
+"de/d7c/ui__menu__structs_8h.html#a353f6032bbdecb5479936537f26c0990",
+"de/d7c/ui__menu__structs_8h.html#a6207d9bc9fe16fe6bdb71d839bb40484",
+"de/d7c/ui__menu__structs_8h.html#a92d2d44cdc8874e8e31e87fd9f929d24",
+"de/d7c/ui__menu__structs_8h.html#ac8c315e4a07ad3030ac4d92cc5c03598",
+"de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905",
+"globals_defs.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

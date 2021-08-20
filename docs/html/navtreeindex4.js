@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"dc/d7c/classeris_audio_synth_simple_drum.html":[0,0,83],
 "dc/d7c/classeris_audio_synth_simple_drum.html#a851ba07300dababc8c499c81554e03f9":[0,0,83,0],
 "dc/d7c/classeris_audio_synth_simple_drum.html#aa0a2c2f27f939d6c31f8fcb3027c29a4":[0,0,83,1],
 "dc/d96/classeris_audio_output_i2_s.html":[0,0,61],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "de/d7c/ui__menu__structs_8h.html#a021babd8ab2f9d2aafef4151f74ee243":[1,0,0,19,901],
 "de/d7c/ui__menu__structs_8h.html#a02500e773228762c8d39c5716ef8be36":[1,0,0,19,134],
 "de/d7c/ui__menu__structs_8h.html#a026265ffae4555900f6e164b78d1655c":[1,0,0,19,389],
-"de/d7c/ui__menu__structs_8h.html#a0267899c1fd1dccf56283e3889294808":[1,0,0,19,334],
-"de/d7c/ui__menu__structs_8h.html#a02bf0c26e0cbcf0b914220d65ed6fe71":[1,0,0,19,279]
+"de/d7c/ui__menu__structs_8h.html#a0267899c1fd1dccf56283e3889294808":[1,0,0,19,334]
 };

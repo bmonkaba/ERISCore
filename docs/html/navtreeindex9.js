@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"de/d7c/ui__menu__structs_8h.html#ac8c315e4a07ad3030ac4d92cc5c03598":[1,0,0,19,668],
 "de/d7c/ui__menu__structs_8h.html#ac9f7ef87e8414e21c1a110aab9d36131":[1,0,0,19,918],
 "de/d7c/ui__menu__structs_8h.html#aca068f2cf8c14ce68017677158e93316":[1,0,0,19,1003],
 "de/d7c/ui__menu__structs_8h.html#aca3249e2cf7e84552513f71e6224bb84":[1,0,0,19,1079],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "de/db5/eris__synth__waveform_8h.html#a24ee98dbaa3894cdd365968f378c20a9":[1,0,1,0,9,10],
 "de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9":[1,0,1,0,9,7],
 "de/db5/eris__synth__waveform_8h.html#a538043fe947ae9c5e59fe2fa4abf9ab2":[1,0,1,0,9,4],
-"de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3":[1,0,1,0,9,9],
-"de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905":[1,0,1,0,9,3]
+"de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3":[1,0,1,0,9,9]
 };

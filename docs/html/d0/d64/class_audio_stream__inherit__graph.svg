@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 807;
+var viewWidth = 809;
 var viewHeight = 1728;
 var sectionId = 'dynsection-0';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-0';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>AudioStream</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-1724 803,-1724 803,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1724 804.5,-1724 804.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -285,49 +285,50 @@ var sectionId = 'dynsection-0';
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="../../d4/d81/classeris_audio_analyze_scope.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="633,-347.5 633,-787.5 799,-787.5 799,-347.5 633,-347.5"/>
-<text text-anchor="middle" x="716" y="-773.9" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioAnalyzeScope</text>
-<polyline fill="none" stroke="black" points="633,-766.5 799,-766.5 "/>
-<text text-anchor="middle" x="716" y="-752.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-<polyline fill="none" stroke="black" points="633,-745.5 799,-745.5 "/>
-<text text-anchor="start" x="641" y="-731.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioAnalyzeScope</text>
-<text text-anchor="start" x="641" y="-718.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
-<text text-anchor="start" x="641" y="-705.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool available(void)</text>
-<text text-anchor="start" x="641" y="-692.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void delay(uint32_t num)</text>
-<text text-anchor="start" x="641" y="-679.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDelta()</text>
-<text text-anchor="start" x="641" y="-666.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDeltaMACD()</text>
-<text text-anchor="start" x="641" y="-653.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotMACD()</text>
-<text text-anchor="start" x="641" y="-640.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProduct()</text>
-<text text-anchor="start" x="641" y="-627.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProductAvg()</text>
-<text text-anchor="start" x="641" y="-614.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount()</text>
-<text text-anchor="start" x="641" y="-601.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount</text>
-<text text-anchor="start" x="641" y="-588.9" font-family="Helvetica,sans-Serif" font-size="12.00">_ch2()</text>
-<text text-anchor="start" x="641" y="-575.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay()</text>
-<text text-anchor="start" x="641" y="-562.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay2()</text>
-<text text-anchor="start" x="641" y="-549.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t getHDiv()</text>
-<text text-anchor="start" x="641" y="-536.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t getPeakValue()</text>
-<text text-anchor="start" x="641" y="-523.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void hdivide(int8_t</text>
-<text text-anchor="start" x="641" y="-510.9" font-family="Helvetica,sans-Serif" font-size="12.00"> horizontal_division)</text>
-<text text-anchor="start" x="641" y="-497.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void length(uint32</text>
-<text text-anchor="start" x="641" y="-484.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t num)</text>
-<text text-anchor="start" x="641" y="-471.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void name(const char</text>
-<text text-anchor="start" x="641" y="-458.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *str)</text>
-<text text-anchor="start" x="641" y="-445.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t read(int8_t</text>
-<text text-anchor="start" x="641" y="-432.9" font-family="Helvetica,sans-Serif" font-size="12.00"> channel, uint16_t mem</text>
-<text text-anchor="start" x="641" y="-419.9" font-family="Helvetica,sans-Serif" font-size="12.00">_index)</text>
-<text text-anchor="start" x="641" y="-406.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(float</text>
-<text text-anchor="start" x="641" y="-393.9" font-family="Helvetica,sans-Serif" font-size="12.00"> level, int edge)</text>
-<text text-anchor="start" x="641" y="-380.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(void)</text>
-<text text-anchor="start" x="641" y="-367.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void update</text>
-<text text-anchor="start" x="641" y="-354.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<polygon fill="white" stroke="black" points="633.5,-341 633.5,-794 800.5,-794 800.5,-341 633.5,-341"/>
+<text text-anchor="middle" x="717" y="-780.4" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioAnalyzeScope</text>
+<polyline fill="none" stroke="black" points="633.5,-773 800.5,-773 "/>
+<text text-anchor="middle" x="717" y="-759.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polyline fill="none" stroke="black" points="633.5,-752 800.5,-752 "/>
+<text text-anchor="start" x="641.5" y="-738.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioAnalyzeScope</text>
+<text text-anchor="start" x="641.5" y="-725.4" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<text text-anchor="start" x="641.5" y="-712.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool available(void)</text>
+<text text-anchor="start" x="641.5" y="-699.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void delay(uint32_t num)</text>
+<text text-anchor="start" x="641.5" y="-686.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotAcceleration()</text>
+<text text-anchor="start" x="641.5" y="-673.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDelta()</text>
+<text text-anchor="start" x="641.5" y="-660.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDeltaMACD()</text>
+<text text-anchor="start" x="641.5" y="-647.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotMACD()</text>
+<text text-anchor="start" x="641.5" y="-634.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProduct()</text>
+<text text-anchor="start" x="641.5" y="-621.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProductAvg()</text>
+<text text-anchor="start" x="641.5" y="-608.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount()</text>
+<text text-anchor="start" x="641.5" y="-595.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount</text>
+<text text-anchor="start" x="641.5" y="-582.4" font-family="Helvetica,sans-Serif" font-size="12.00">_ch2()</text>
+<text text-anchor="start" x="641.5" y="-569.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay()</text>
+<text text-anchor="start" x="641.5" y="-556.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay2()</text>
+<text text-anchor="start" x="641.5" y="-543.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t getHDiv()</text>
+<text text-anchor="start" x="641.5" y="-530.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t getPeakValue()</text>
+<text text-anchor="start" x="641.5" y="-517.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void hdivide(int8_t</text>
+<text text-anchor="start" x="641.5" y="-504.4" font-family="Helvetica,sans-Serif" font-size="12.00"> horizontal_division)</text>
+<text text-anchor="start" x="641.5" y="-491.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void length(uint32</text>
+<text text-anchor="start" x="641.5" y="-478.4" font-family="Helvetica,sans-Serif" font-size="12.00">_t num)</text>
+<text text-anchor="start" x="641.5" y="-465.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void name(const char</text>
+<text text-anchor="start" x="641.5" y="-452.4" font-family="Helvetica,sans-Serif" font-size="12.00"> *str)</text>
+<text text-anchor="start" x="641.5" y="-439.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t read(int8_t</text>
+<text text-anchor="start" x="641.5" y="-426.4" font-family="Helvetica,sans-Serif" font-size="12.00"> channel, uint16_t mem</text>
+<text text-anchor="start" x="641.5" y="-413.4" font-family="Helvetica,sans-Serif" font-size="12.00">_index)</text>
+<text text-anchor="start" x="641.5" y="-400.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(float</text>
+<text text-anchor="start" x="641.5" y="-387.4" font-family="Helvetica,sans-Serif" font-size="12.00"> level, int edge)</text>
+<text text-anchor="start" x="641.5" y="-374.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(void)</text>
+<text text-anchor="start" x="641.5" y="-361.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void update</text>
+<text text-anchor="start" x="641.5" y="-348.4" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M502.55,-1247.36C545.73,-1181.67 593.13,-1100.72 624,-1022 653,-948.05 673.32,-863.57 687.34,-787.73"/>
-<polygon fill="none" stroke="midnightblue" points="499.63,-1245.44 497.03,-1255.71 505.47,-1249.3 499.63,-1245.44"/>
+<path fill="none" stroke="midnightblue" d="M503.01,-1246.52C546.03,-1180.97 593.18,-1100.36 624,-1022 652.28,-950.1 672.43,-868.26 686.58,-794.08"/>
+<polygon fill="none" stroke="midnightblue" points="499.83,-1244.98 497.24,-1255.25 505.67,-1248.84 499.83,-1244.98"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">

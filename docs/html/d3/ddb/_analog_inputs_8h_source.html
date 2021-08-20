@@ -92,9 +92,9 @@ $(document).ready(function(){initNavTree('d3/ddb/_analog_inputs_8h_source.html',
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/ded/eris_audio_8h.html">erisAudio.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d10/_h_s_i_8h.html">HSI.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#a2e34d815b85c822a126f45d0271022d0">   17</a></span>&#160;<span class="preprocessor">#define MAX_POLLING_RATE 50</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918">   18</a></span>&#160;<span class="preprocessor">#define TRIGGER_DELTA 5</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#a7629421b2c5843f7f7dec517ae2d80af">   19</a></span>&#160;<span class="preprocessor">#define ANALOG_INPUTS_PERIODIC_UPDATE 100</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#a2e34d815b85c822a126f45d0271022d0">   17</a></span>&#160;<span class="preprocessor">#define MAX_POLLING_RATE 80</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918">   18</a></span>&#160;<span class="preprocessor">#define TRIGGER_DELTA 4</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d3/ddb/_analog_inputs_8h.html#a7629421b2c5843f7f7dec517ae2d80af">   19</a></span>&#160;<span class="preprocessor">#define ANALOG_INPUTS_PERIODIC_UPDATE 400</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d5/d8f/class_analog_inputs.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d5/d8f/class_analog_inputs.html">AnalogInputs</a> {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div>
@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('d3/ddb/_analog_inputs_8h_source.html',
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        elapsedMillis lastTrigger;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d5/d8f/class_analog_inputs.html#af73006f6bc81f481ce41506f208e8df8">   31</a></span>&#160;        <a class="code" href="../../d5/d8f/class_analog_inputs.html#af73006f6bc81f481ce41506f208e8df8">AnalogInputs</a>(){</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            analogReadAveraging(128);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            analogReadAveraging(32);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            analogReadResolution(10);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            ai[0]=0;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            ai[1]=0;</div>
@@ -120,10 +120,10 @@ $(document).ready(function(){initNavTree('d3/ddb/_analog_inputs_8h_source.html',
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            lastUpdate = 0;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            int16_t old_ai[4] = {ai[0],ai[1],ai[2],ai[3]};</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            AudioNoInterrupts();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ai[0] = (ai[0] * 0.80) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a4903de2a52966c8dc2c20faf565d451d">AN1</a>) * 0.20);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ai[1] = (ai[1] * 0.80) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9b0754e893d69a1e69e856853f70da1f">AN2</a>) * 0.20);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ai[2] = (ai[2] * 0.80) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9f593faa38f1023698d74f03a457abe3">AN3</a>) * 0.20);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            ai[3] = (ai[3] * 0.80) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#adc95f1e9cdc00268d7bca5885052171f">AN4</a>) * 0.20);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ai[0] = (ai[0] * 0.85) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a4903de2a52966c8dc2c20faf565d451d">AN1</a>) * 0.15);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ai[1] = (ai[1] * 0.85) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9b0754e893d69a1e69e856853f70da1f">AN2</a>) * 0.15);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ai[2] = (ai[2] * 0.85) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9f593faa38f1023698d74f03a457abe3">AN3</a>) * 0.15);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            ai[3] = (ai[3] * 0.85) + (analogRead(<a class="code" href="../../de/d10/_h_s_i_8h.html#adc95f1e9cdc00268d7bca5885052171f">AN4</a>) * 0.15);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            AudioInterrupts();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (abs(ai[0] - old_ai[0])&gt;<a class="code" href="../../d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918">TRIGGER_DELTA</a>) trigger = <span class="keyword">true</span>;</div>

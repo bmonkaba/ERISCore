@@ -3,6 +3,7 @@ var classeris_audio_analyze_scope =
     [ "erisAudioAnalyzeScope", "d4/d81/classeris_audio_analyze_scope.html#a18d35c11b0d8e218822163d4794cb776", null ],
     [ "available", "d4/d81/classeris_audio_analyze_scope.html#a86e2901f7e473ae224a2a17b8fb38d00", null ],
     [ "delay", "d4/d81/classeris_audio_analyze_scope.html#ac09535fdab9f449a141ce9c15ff4f02d", null ],
+    [ "getDotAcceleration", "d4/d81/classeris_audio_analyze_scope.html#ae698c5d8956e042833992556e552dd9e", null ],
     [ "getDotDelta", "d4/d81/classeris_audio_analyze_scope.html#a8806213e7b77e8801ef85e43ddee2859", null ],
     [ "getDotDeltaMACD", "d4/d81/classeris_audio_analyze_scope.html#aaa499e35b91c8d24733f264faf22831b", null ],
     [ "getDotMACD", "d4/d81/classeris_audio_analyze_scope.html#a98708c9cc3eacf2335dcf4ded7467c77", null ],

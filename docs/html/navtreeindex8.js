@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"de/d7c/ui__menu__structs_8h.html#a92d2d44cdc8874e8e31e87fd9f929d24":[1,0,0,19,1098],
 "de/d7c/ui__menu__structs_8h.html#a92db3254dbbde99f69234570816474d7":[1,0,0,19,1010],
 "de/d7c/ui__menu__structs_8h.html#a92ebb17eb3f7ddbdaee6e01900284ed6":[1,0,0,19,203],
 "de/d7c/ui__menu__structs_8h.html#a930b841ef0328c7b20a658a08e383d76":[1,0,0,19,34],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "de/d7c/ui__menu__structs_8h.html#ac84b3ac2e3f5ffb22c59d14ea136f317":[1,0,0,19,53],
 "de/d7c/ui__menu__structs_8h.html#ac8b065faadffd0cb53626a4ec515151b":[1,0,0,19,425],
 "de/d7c/ui__menu__structs_8h.html#ac8b0d2a63b92df4b62e2c9bd5f35fbbc":[1,0,0,19,734],
-"de/d7c/ui__menu__structs_8h.html#ac8c1a3923f1f5ba830b8d1cf7ebff020":[1,0,0,19,170],
-"de/d7c/ui__menu__structs_8h.html#ac8c315e4a07ad3030ac4d92cc5c03598":[1,0,0,19,668]
+"de/d7c/ui__menu__structs_8h.html#ac8c1a3923f1f5ba830b8d1cf7ebff020":[1,0,0,19,170]
 };

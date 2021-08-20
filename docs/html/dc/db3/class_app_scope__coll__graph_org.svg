@@ -13,32 +13,32 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="183,-0.5 183,-323.5 348,-323.5 348,-0.5 183,-0.5"/>
-<text text-anchor="middle" x="265.5" y="-309.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope</text>
-<polyline fill="none" stroke="black" points="183,-302.5 348,-302.5 "/>
-<text text-anchor="start" x="191" y="-288.9" font-family="Helvetica,sans-Serif" font-size="12.00"># bool hasFocus</text>
-<text text-anchor="start" x="191" y="-275.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_height</text>
-<text text-anchor="start" x="191" y="-262.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_origin_x</text>
-<text text-anchor="start" x="191" y="-249.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_origin_y</text>
-<text text-anchor="start" x="191" y="-236.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_width</text>
-<text text-anchor="start" x="191" y="-223.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t y_last_scope</text>
-<text text-anchor="start" x="191" y="-210.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t y_last_scope_ch2</text>
-<polyline fill="none" stroke="black" points="183,-203.5 348,-203.5 "/>
-<text text-anchor="start" x="191" y="-189.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AppScope()</text>
-<text text-anchor="start" x="191" y="-176.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setDimension(int16</text>
-<text text-anchor="start" x="191" y="-163.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t new_width, int16_t</text>
-<text text-anchor="start" x="191" y="-150.9" font-family="Helvetica,sans-Serif" font-size="12.00"> new_height)</text>
-<text text-anchor="start" x="191" y="-137.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setPosition(int16</text>
-<text text-anchor="start" x="191" y="-124.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t newOriginX, int16_t</text>
-<text text-anchor="start" x="191" y="-111.9" font-family="Helvetica,sans-Serif" font-size="12.00"> newOriginY)</text>
-<text text-anchor="start" x="191" y="-98.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onFocus()</text>
-<text text-anchor="start" x="191" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onFocusLost()</text>
-<text text-anchor="start" x="191" y="-72.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onTouch(uint16</text>
-<text text-anchor="start" x="191" y="-59.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t x, uint16_t y)</text>
-<text text-anchor="start" x="191" y="-46.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onTouchRelease</text>
-<text text-anchor="start" x="191" y="-33.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t x, uint16_t y)</text>
-<text text-anchor="start" x="191" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void update()</text>
-<text text-anchor="start" x="191" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void updateRT()</text>
+<polygon fill="#bfbfbf" stroke="black" points="184,-0.5 184,-323.5 349,-323.5 349,-0.5 184,-0.5"/>
+<text text-anchor="middle" x="266.5" y="-309.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope</text>
+<polyline fill="none" stroke="black" points="184,-302.5 349,-302.5 "/>
+<text text-anchor="start" x="192" y="-288.9" font-family="Helvetica,sans-Serif" font-size="12.00"># bool hasFocus</text>
+<text text-anchor="start" x="192" y="-275.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_height</text>
+<text text-anchor="start" x="192" y="-262.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_origin_x</text>
+<text text-anchor="start" x="192" y="-249.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_origin_y</text>
+<text text-anchor="start" x="192" y="-236.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t widget_width</text>
+<text text-anchor="start" x="192" y="-223.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t y_last_scope</text>
+<text text-anchor="start" x="192" y="-210.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t y_last_scope_ch2</text>
+<polyline fill="none" stroke="black" points="184,-203.5 349,-203.5 "/>
+<text text-anchor="start" x="192" y="-189.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AppScope()</text>
+<text text-anchor="start" x="192" y="-176.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setDimension(int16</text>
+<text text-anchor="start" x="192" y="-163.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t new_width, int16_t</text>
+<text text-anchor="start" x="192" y="-150.9" font-family="Helvetica,sans-Serif" font-size="12.00"> new_height)</text>
+<text text-anchor="start" x="192" y="-137.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setPosition(int16</text>
+<text text-anchor="start" x="192" y="-124.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t newOriginX, int16_t</text>
+<text text-anchor="start" x="192" y="-111.9" font-family="Helvetica,sans-Serif" font-size="12.00"> newOriginY)</text>
+<text text-anchor="start" x="192" y="-98.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onFocus()</text>
+<text text-anchor="start" x="192" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onFocusLost()</text>
+<text text-anchor="start" x="192" y="-72.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onTouch(uint16</text>
+<text text-anchor="start" x="192" y="-59.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t x, uint16_t y)</text>
+<text text-anchor="start" x="192" y="-46.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void onTouchRelease</text>
+<text text-anchor="start" x="192" y="-33.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t x, uint16_t y)</text>
+<text text-anchor="start" x="192" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void update()</text>
+<text text-anchor="start" x="192" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void updateRT()</text>
 </a>
 </g>
 </g>
@@ -116,8 +116,8 @@
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M187.82,-440.49C199.21,-399.81 210.39,-359.86 220.57,-323.51"/>
-<polygon fill="none" stroke="midnightblue" points="184.4,-439.72 185.08,-450.29 191.14,-441.6 184.4,-439.72"/>
+<path fill="none" stroke="midnightblue" d="M187.82,-442.45C199.43,-401.23 210.83,-360.71 221.21,-323.87"/>
+<polygon fill="none" stroke="midnightblue" points="184.45,-441.52 185.1,-452.1 191.18,-443.42 184.45,-441.52"/>
 </g>
 <!-- Node2&#45;&gt;Node2 -->
 <g id="edge2" class="edge">
@@ -132,49 +132,50 @@
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d4/d81/classeris_audio_analyze_scope.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="357.5,-562 357.5,-1002 523.5,-1002 523.5,-562 357.5,-562"/>
-<text text-anchor="middle" x="440.5" y="-988.4" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioAnalyzeScope</text>
-<polyline fill="none" stroke="black" points="357.5,-981 523.5,-981 "/>
-<text text-anchor="middle" x="440.5" y="-967.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-<polyline fill="none" stroke="black" points="357.5,-960 523.5,-960 "/>
-<text text-anchor="start" x="365.5" y="-946.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioAnalyzeScope</text>
-<text text-anchor="start" x="365.5" y="-933.4" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
-<text text-anchor="start" x="365.5" y="-920.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool available(void)</text>
-<text text-anchor="start" x="365.5" y="-907.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void delay(uint32_t num)</text>
-<text text-anchor="start" x="365.5" y="-894.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDelta()</text>
-<text text-anchor="start" x="365.5" y="-881.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDeltaMACD()</text>
-<text text-anchor="start" x="365.5" y="-868.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotMACD()</text>
-<text text-anchor="start" x="365.5" y="-855.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProduct()</text>
-<text text-anchor="start" x="365.5" y="-842.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProductAvg()</text>
-<text text-anchor="start" x="365.5" y="-829.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount()</text>
-<text text-anchor="start" x="365.5" y="-816.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount</text>
-<text text-anchor="start" x="365.5" y="-803.4" font-family="Helvetica,sans-Serif" font-size="12.00">_ch2()</text>
-<text text-anchor="start" x="365.5" y="-790.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay()</text>
-<text text-anchor="start" x="365.5" y="-777.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay2()</text>
-<text text-anchor="start" x="365.5" y="-764.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t getHDiv()</text>
-<text text-anchor="start" x="365.5" y="-751.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t getPeakValue()</text>
-<text text-anchor="start" x="365.5" y="-738.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void hdivide(int8_t</text>
-<text text-anchor="start" x="365.5" y="-725.4" font-family="Helvetica,sans-Serif" font-size="12.00"> horizontal_division)</text>
-<text text-anchor="start" x="365.5" y="-712.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void length(uint32</text>
-<text text-anchor="start" x="365.5" y="-699.4" font-family="Helvetica,sans-Serif" font-size="12.00">_t num)</text>
-<text text-anchor="start" x="365.5" y="-686.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void name(const char</text>
-<text text-anchor="start" x="365.5" y="-673.4" font-family="Helvetica,sans-Serif" font-size="12.00"> *str)</text>
-<text text-anchor="start" x="365.5" y="-660.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t read(int8_t</text>
-<text text-anchor="start" x="365.5" y="-647.4" font-family="Helvetica,sans-Serif" font-size="12.00"> channel, uint16_t mem</text>
-<text text-anchor="start" x="365.5" y="-634.4" font-family="Helvetica,sans-Serif" font-size="12.00">_index)</text>
-<text text-anchor="start" x="365.5" y="-621.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(float</text>
-<text text-anchor="start" x="365.5" y="-608.4" font-family="Helvetica,sans-Serif" font-size="12.00"> level, int edge)</text>
-<text text-anchor="start" x="365.5" y="-595.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(void)</text>
-<text text-anchor="start" x="365.5" y="-582.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void update</text>
-<text text-anchor="start" x="365.5" y="-569.4" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<polygon fill="white" stroke="black" points="357,-555.5 357,-1008.5 524,-1008.5 524,-555.5 357,-555.5"/>
+<text text-anchor="middle" x="440.5" y="-994.9" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioAnalyzeScope</text>
+<polyline fill="none" stroke="black" points="357,-987.5 524,-987.5 "/>
+<text text-anchor="middle" x="440.5" y="-973.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polyline fill="none" stroke="black" points="357,-966.5 524,-966.5 "/>
+<text text-anchor="start" x="365" y="-952.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioAnalyzeScope</text>
+<text text-anchor="start" x="365" y="-939.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<text text-anchor="start" x="365" y="-926.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool available(void)</text>
+<text text-anchor="start" x="365" y="-913.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void delay(uint32_t num)</text>
+<text text-anchor="start" x="365" y="-900.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotAcceleration()</text>
+<text text-anchor="start" x="365" y="-887.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDelta()</text>
+<text text-anchor="start" x="365" y="-874.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotDeltaMACD()</text>
+<text text-anchor="start" x="365" y="-861.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotMACD()</text>
+<text text-anchor="start" x="365" y="-848.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProduct()</text>
+<text text-anchor="start" x="365" y="-835.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ q63_t getDotProductAvg()</text>
+<text text-anchor="start" x="365" y="-822.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount()</text>
+<text text-anchor="start" x="365" y="-809.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeCount</text>
+<text text-anchor="start" x="365" y="-796.9" font-family="Helvetica,sans-Serif" font-size="12.00">_ch2()</text>
+<text text-anchor="start" x="365" y="-783.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay()</text>
+<text text-anchor="start" x="365" y="-770.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t getEdgeDelay2()</text>
+<text text-anchor="start" x="365" y="-757.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t getHDiv()</text>
+<text text-anchor="start" x="365" y="-744.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t getPeakValue()</text>
+<text text-anchor="start" x="365" y="-731.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void hdivide(int8_t</text>
+<text text-anchor="start" x="365" y="-718.9" font-family="Helvetica,sans-Serif" font-size="12.00"> horizontal_division)</text>
+<text text-anchor="start" x="365" y="-705.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void length(uint32</text>
+<text text-anchor="start" x="365" y="-692.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t num)</text>
+<text text-anchor="start" x="365" y="-679.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void name(const char</text>
+<text text-anchor="start" x="365" y="-666.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *str)</text>
+<text text-anchor="start" x="365" y="-653.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t read(int8_t</text>
+<text text-anchor="start" x="365" y="-640.9" font-family="Helvetica,sans-Serif" font-size="12.00"> channel, uint16_t mem</text>
+<text text-anchor="start" x="365" y="-627.9" font-family="Helvetica,sans-Serif" font-size="12.00">_index)</text>
+<text text-anchor="start" x="365" y="-614.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(float</text>
+<text text-anchor="start" x="365" y="-601.9" font-family="Helvetica,sans-Serif" font-size="12.00"> level, int edge)</text>
+<text text-anchor="start" x="365" y="-588.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void trigger(void)</text>
+<text text-anchor="start" x="365" y="-575.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void update</text>
+<text text-anchor="start" x="365" y="-562.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node1 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M397.61,-561.79C383.8,-500.21 367.17,-433.54 348.5,-373 344.7,-360.67 340.5,-348.03 336.07,-335.38"/>
-<polygon fill="none" stroke="#404040" points="335.96,-335.07 330.18,-330.75 331.95,-323.76 337.72,-328.08 335.96,-335.07"/>
+<path fill="none" stroke="#404040" d="M396.01,-555.47C382.49,-495.68 366.4,-431.5 348.5,-373 344.71,-360.61 340.52,-347.91 336.11,-335.19"/>
+<polygon fill="none" stroke="#404040" points="335.99,-334.83 330.22,-330.49 332,-323.51 337.77,-327.84 335.99,-334.83"/>
 <text text-anchor="middle" x="362" y="-345.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #scope</text>
 </g>
 <!-- Node4 -->
@@ -239,7 +240,7 @@
 <!-- Node4&#45;&gt;Node3 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M440.5,-1218.17C440.5,-1144.91 440.5,-1069.35 440.5,-1002.16"/>
+<path fill="none" stroke="midnightblue" d="M440.5,-1218.05C440.5,-1147.21 440.5,-1074.21 440.5,-1008.73"/>
 <polygon fill="none" stroke="midnightblue" points="437,-1218.49 440.5,-1228.49 444,-1218.49 437,-1218.49"/>
 </g>
 </g>

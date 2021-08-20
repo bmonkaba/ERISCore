@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"d5/d33/classeris_audio_synth_waveform_sine_modulated.html#ab55cbe4ec3a17c4bd2efb59860f4fa83":[0,0,91,1],
 "d5/d33/classeris_audio_synth_waveform_sine_modulated.html#ae195f7285c61a3b2dcd900594d6615d3":[0,0,91,0],
 "d5/d62/classeris_audio_output_s_p_d_i_f2.html":[0,0,72],
 "d5/d62/classeris_audio_output_s_p_d_i_f2.html#ab29a625b1c4f37ae31c9efa4e0543361":[0,0,72,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "d8/de6/class_u_i.html#ae08529b0c32b51c4ea4467b632706f2a":[0,0,99,23],
 "d8/de6/class_u_i.html#ae134432d58dcc27b892baeaffd31c29d":[0,0,99,7],
 "d8/de6/class_u_i.html#af1dd85189a1639bda100e10fe633803b":[0,0,99,12],
-"d9/d03/class_app_template.html":[0,0,8],
-"d9/d03/class_app_template.html#a06ee52ad8474b0e72a56f71eb0b527f1":[0,0,8,17]
+"d9/d03/class_app_template.html":[0,0,8]
 };

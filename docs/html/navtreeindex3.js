@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"d9/d03/class_app_template.html#a06ee52ad8474b0e72a56f71eb0b527f1":[0,0,8,17],
 "d9/d03/class_app_template.html#a08a303813204000ee12600a38fe96d18":[0,0,8,32],
 "d9/d03/class_app_template.html#a12be372470e6826bae25db90c01c388e":[0,0,8,29],
 "d9/d03/class_app_template.html#a297b44dd038d30faab55f6ccf1f9e9e2":[0,0,8,20],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "dc/d47/_p_c_m1863_8h_source.html":[1,0,0,14],
 "dc/d55/classeris_audio_input_i2_s_hex.html":[0,0,49],
 "dc/d55/classeris_audio_input_i2_s_hex.html#a38780d74ff37f4b05fe2ee9d8b6953e6":[0,0,49,1],
-"dc/d55/classeris_audio_input_i2_s_hex.html#a77e17bcb7f9a0458bcd06166e0823534":[0,0,49,0],
-"dc/d7c/classeris_audio_synth_simple_drum.html":[0,0,83]
+"dc/d55/classeris_audio_input_i2_s_hex.html#a77e17bcb7f9a0458bcd06166e0823534":[0,0,49,0]
 };
