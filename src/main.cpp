@@ -12,12 +12,12 @@
 #include "PCM1863.h"
 
 uint16_t inc;
-FASTRUN MyAppExample *app;
-FASTRUN AppSerialCommandInterface *appSCI;
-FASTRUN AppReprogram *appReprogram;
+MyAppExample *app;
+AppSerialCommandInterface *appSCI;
+AppReprogram *appReprogram;
 //AppTemplate appTemplate;
 
-void FLASHMEM setup() {
+void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.

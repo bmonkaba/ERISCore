@@ -303,7 +303,7 @@ class AppCQT:public AppBaseClass {
             (AppManager::getInstance()->data.read("DOT_ACCEL")  > -10) &&
             (pll_p > 0))))
             {
-              pll_p *=0.01;
+              //pll_p *=-1.0;
             }
   
         }
@@ -316,25 +316,35 @@ class AppCQT:public AppBaseClass {
           //pll_p *= 0.9;
         }
         
-        if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 1000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) < -1000 ){
-          pll_p -= 1;
-        }else if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -1000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) > 1000 ){
-          pll_p += 1;
+        if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 10000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) < -10000 ){
+          pll_p -= 0.1;
+        }else if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -10000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) > 10000 ){
+          pll_p += 0.1;
         }else{
-          pll_p=0;
+          pll_p*=-1.0;
         }
       }  
 
-      if(AppManager::getInstance()->data.read("DOT_AVG") < 0) {
-          pll_p += 0.005;
-          //pll_p *= 0.9;
-        }else if(AppManager::getInstance()->data.read("DOT_AVG") > 0) {
-          pll_p -= 0.005;
-          //pll_p *= 0.9;
+      if(AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -1000) {
+        if (pll_p > 0){
+          pll_p *=-0.105;
+          pll_f -= 0.01;
         }
+      }else if(AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 1000) {
+        if (pll_p < 0){
+          pll_p *=-0.105;
+          pll_f += 0.01;
+        }
+      }
 
-      //pll_p = 0;
-      pll_f = 1.0;
+      if(AppManager::getInstance()->data.read("EDGE_DELTA") < 0) {
+          pll_f += 0.00001;
+      }else if(AppManager::getInstance()->data.read("EDGE_DELTA") > 0) {
+        pll_f -= 0.00001;
+      }
+
+      //pll_p *= 1.01;
+      //pll_f = 1.0;
       AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*100000));
       AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*100000));
 
