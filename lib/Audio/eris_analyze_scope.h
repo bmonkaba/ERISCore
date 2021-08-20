@@ -52,6 +52,7 @@ public:
 		dotLast=0;
 		dotAvgSlow=0;
 		dotDelta = 0;
+		dotAccel=0;
 		dotDeltaMACD=0;
 		dotMACD=0;
 		edgeTimer=0;
@@ -76,6 +77,7 @@ public:
 	q63_t getDotProductAvg(){return dotAvg;}
 	q63_t getDotMACD(){return dotMACD;}
 	q63_t getDotDelta(){return dotDelta;}
+	q63_t getDotAcceleration(){return dotAccel;}
 	q63_t getDotDeltaMACD(){return dotDeltaMACD;}
 	uint32_t getEdgeCount(){return edgeCount;}
 	uint32_t getEdgeCount_ch2(){return edgeCount_ch2;}
@@ -108,6 +110,7 @@ private:
 	q63_t dotAvg;
 	q63_t dotAvgSlow;
 	q63_t dotDelta;
+	q63_t dotAccel;
 	q63_t dotDeltaMACD;
 	q63_t dotMACD;
 	audio_block_t *inputQueueArray[2];

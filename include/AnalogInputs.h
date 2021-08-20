@@ -14,9 +14,9 @@
 #include "erisAudio.h"
 #include "HSI.h"
 
-#define MAX_POLLING_RATE 50
-#define TRIGGER_DELTA 5
-#define ANALOG_INPUTS_PERIODIC_UPDATE 100
+#define MAX_POLLING_RATE 80
+#define TRIGGER_DELTA 4
+#define ANALOG_INPUTS_PERIODIC_UPDATE 400
 
 /**
  * @brief Used for filtering the analog inputs and change detection
@@ -29,7 +29,7 @@ class AnalogInputs {
         elapsedMillis lastTrigger;
     public:
         AnalogInputs(){
-            analogReadAveraging(128);
+            analogReadAveraging(32);
             analogReadResolution(10);
             ai[0]=0;
             ai[1]=0;
@@ -54,10 +54,10 @@ class AnalogInputs {
             lastUpdate = 0;
             int16_t old_ai[4] = {ai[0],ai[1],ai[2],ai[3]};
             AudioNoInterrupts();
-            ai[0] = (ai[0] * 0.80) + (analogRead(AN1) * 0.20);
-            ai[1] = (ai[1] * 0.80) + (analogRead(AN2) * 0.20);
-            ai[2] = (ai[2] * 0.80) + (analogRead(AN3) * 0.20);
-            ai[3] = (ai[3] * 0.80) + (analogRead(AN4) * 0.20);
+            ai[0] = (ai[0] * 0.85) + (analogRead(AN1) * 0.15);
+            ai[1] = (ai[1] * 0.85) + (analogRead(AN2) * 0.15);
+            ai[2] = (ai[2] * 0.85) + (analogRead(AN3) * 0.15);
+            ai[3] = (ai[3] * 0.85) + (analogRead(AN4) * 0.15);
             AudioInterrupts();
 
             if (abs(ai[0] - old_ai[0])>TRIGGER_DELTA) trigger = true;

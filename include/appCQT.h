@@ -26,7 +26,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 15
+#define OSC_BANK_SIZE 6
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -160,12 +160,12 @@ class AppCQT:public AppBaseClass {
         float amp;
         float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = 5*(log(1.0 + (amp))/1.04139268516) * height;
+        signal = 5*(log1p((amp))/1.04139268516) * height;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = 5*(log(1.0 + (amp))/1.04139268516) * height;
+        signal = 5*(log1p((amp))/1.04139268516) * height;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
@@ -257,8 +257,8 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(uint16_t k= osc_bank_size-1; k > 0;k--){
-              if ((fftLowRR[i].transientValue > 0.00005 ) && (fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < (0.20 * fftLowRR[i].avgValueFast))){
-                fftLowRR[i].phase = 0;
+              if ((fftLowRR[i].transientValue > 0.0005 ) && (fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < (0.20 * fftLowRR[i].avgValueFast))){
+                //fftLowRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
                 oscBank[k] = fftLowRR[i];
@@ -277,8 +277,8 @@ class AppCQT:public AppBaseClass {
         }
         if(!found){
           for(uint16_t k= osc_bank_size-1; k > 0;k--){
-            if ((fftHighRR[i].transientValue > 0.00005) && (fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.20 * fftHighRR[i].avgValueFast))){
-              fftHighRR[i].phase = 0;
+            if ((fftHighRR[i].transientValue > 0.0005) && (fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.20 * fftHighRR[i].avgValueFast))){
+              //fftHighRR[i].phase = 0;
               pll_p = 0.0;
               pll_f = 1.0;
               oscBank[k] = fftHighRR[i];
@@ -293,53 +293,50 @@ class AppCQT:public AppBaseClass {
       //pll_p =0;
 
       //
-      if(AppManager::getInstance()->data.read("DOT") <40000 && abs(AppManager::getInstance()->data.read("EDGE_DELTA")) < 20 ){
-        if((AppManager::getInstance()->data.read("EDGE_DELTA")) < -2 ) {
-          pll_f += 0.00001 * abs(AppManager::getInstance()->data.read("EDGE_DELTA"));
-          pll_p =0;
-        }else if((AppManager::getInstance()->data.read("EDGE_DELTA")) > 2) {
-          pll_f -= 0.00001 * abs(AppManager::getInstance()->data.read("EDGE_DELTA"));
-          pll_p =0;
-        }else if((AppManager::getInstance()->data.read("DOT_DELTA") < 1000)){
-          pll_p -= 0.0008;// * AppManager::getInstance()->data.read("DOT_AVG") ;    
-        }else if((AppManager::getInstance()->data.read("DOT_DELTA") > -1000)){
-          pll_p += 0.0008;
-        }else{
-          if (pll_p < 180) {pll_p -= 0.00020;
-          }else pll_p += 0.00020;
+      if(abs(AppManager::getInstance()->data.read("EDGE_DELTA")) < 20 ){
+        if((AppManager::getInstance()->data.read("EDGE_DELTA")) == 0 ) {
+          
+          if (!(((AppManager::getInstance()->data.read("DOT_MACD")< 5000) &&
+            (AppManager::getInstance()->data.read("DOT_ACCEL")  < 10) &&
+            (pll_p < 0)) ||
+            ((AppManager::getInstance()->data.read("DOT_MACD")  > -5000) &&
+            (AppManager::getInstance()->data.read("DOT_ACCEL")  > -10) &&
+            (pll_p > 0))))
+            {
+              pll_p *=0.01;
+            }
+  
         }
-      }
-      /*
-      if((AppManager::getInstance()->data.read("DOT_MACD")) < 0 ) {
-        pll_p -= 0.0001;
-      }else if((AppManager::getInstance()->data.read("DOT_MACD")) > 0 ) {
-        pll_p += 0.0001;
-      }
-      */
+        
+        if(AppManager::getInstance()->data.read("EDGE_DELTA") < -5) {
+          pll_p += 0.00001;
+          //pll_p *= 0.9;
+        }else if(AppManager::getInstance()->data.read("EDGE_DELTA") > 5) {
+          pll_p -= 0.00001;
+          //pll_p *= 0.9;
+        }
+        
+        if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 1000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) < -1000 ){
+          pll_p -= 1;
+        }else if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -1000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) > 1000 ){
+          pll_p += 1;
+        }else{
+          pll_p=0;
+        }
+      }  
 
-      
-      /*
-      if((AppManager::getInstance()->data.read("EDGE_DELTA_MACD")) < 0 ) {
-        pll_f += 0.00000005 
-      }else if((AppManager::getInstance()->data.read("EDGE_DELTA_MACD")) > 0 ) {
-        pll_f += 0.00000005 * AppManager::getInstance()->data.read("EDGE_DELTA_MACD");
-      }
-      */
-
-      /*
-      if(AppManager::getInstance()->data.read("DOT_AVG") < 0){
-        pll -= 0.000001;
-      }else if(AppManager::getInstance()->data.read("DOT_AVG") > 0){
-        pll += 0.000001;
-      }
-      */
-      if (pll_p>=360.0){pll_p -= 360.0;
-      }else if (pll_p <= 0.0)pll_p += 360.0;
+      if(AppManager::getInstance()->data.read("DOT_AVG") < 0) {
+          pll_p += 0.005;
+          //pll_p *= 0.9;
+        }else if(AppManager::getInstance()->data.read("DOT_AVG") > 0) {
+          pll_p -= 0.005;
+          //pll_p *= 0.9;
+        }
 
       //pll_p = 0;
-
-      AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*1000000));
-      AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*1000000));
+      pll_f = 1.0;
+      AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*100000));
+      AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*100000));
 
       //actually update the oscilators
       AudioNoInterrupts();
@@ -350,12 +347,13 @@ class AppCQT:public AppBaseClass {
             //osc[i]->frequency(note_freq[oscBank[i].cqtBin]);
             f = oscBank[i].peakFrequency;
 
-            osc[i]->frequency(pll_f * f * octave_up[0]);
-            a = 0.707 * oscBank[i].avgValueFast/(osc_bank_size);
+            osc[i]->frequency(pll_f * f * octave_down[0]);
+            a = log1p(oscBank[i].avgValueFast)/(osc_bank_size);
             if (f < 20.0) {f = 20.0;a=0;}
             if (a < floor) a = 0.0;
             if(!isnan(a)) osc[i]->amplitude(a);
             osc[i]->phase(osc[i]->getPhase() + pll_p);
+            //osc[i]->phase(oscBank[i].phase);// + pll_p);
           }
         }
       }

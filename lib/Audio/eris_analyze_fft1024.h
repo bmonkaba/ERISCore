@@ -267,7 +267,7 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.5) + (fftRR->peakValue * 0.5);	//used to calc moving average convergence / divergence (MACD) 
+				fftRR->avgValueFast = (fftRR->avgValueFast * 0.75) + (fftRR->peakValue * 0.25);	//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
 				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
@@ -312,8 +312,10 @@ public:
 		for (uint16_t i = 1; i < 1024 - 1; i++){
 			if ((output[i-1] < output[i])&&(output[i] > output[i+1])){
 				output[i] += output[i-1] + output[i+1];
+				output[i] *= 0.707;
 				output[i-1] = 0;
 				output[i+1] = 0;
+				
 			}
 		}
 	}

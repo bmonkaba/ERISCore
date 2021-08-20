@@ -33,8 +33,8 @@ class AppBaseClass {
     AppBaseClass *nextAppicationNode;
     bool touch_state;   //set by the app manager
     uint16_t id; //app id for derived class instances
-                  // 255 - reserved for the base class (unused)
-                  // 254 - dashboard widgets (dashboard active only)
+                  // 65000 - reserved for the base class (unused)
+                  // 35000 - dashboard widgets (dashboard active only)
                   // 253 - widgets (always active)
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
@@ -239,6 +239,11 @@ class AppManager {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //active app found - trigger any events and then call the update function
           if (update_analog){
+            data.update("AN1",analog.readAN1());
+            data.update("AN2",analog.readAN2());
+            data.update("AN3",analog.readAN3());
+            data.update("AN4",analog.readAN4());
+            
             node->onAnalog1(analog.readAN1(),analog.freadAN1());
             node->onAnalog2(analog.readAN2(),analog.freadAN2());
             node->onAnalog3(analog.readAN3(),analog.freadAN3());

@@ -85,15 +85,15 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
-  addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
-  addAudioStreamObj(new erisAudioEffectFreeverb);
+  //addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
+  //addAudioStreamObj(new erisAudioEffectFreeverb);
   addAudioStreamObj(new erisAudioSynthNoisePink);
 
 
   //generate audio component pool
   for (int i=0; i < 17; i++){
-    addAudioStreamObj(new erisAudioEffectEnvelope);
-    addAudioStreamObj(new erisAudioSynthWaveformModulated);
+    //addAudioStreamObj(new erisAudioEffectEnvelope);
+    //addAudioStreamObj(new erisAudioSynthWaveformModulated);
     addAudioStreamObj(new erisAudioSynthWaveform);
   }
 

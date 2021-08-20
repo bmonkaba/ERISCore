@@ -83,8 +83,9 @@ void erisAudioAnalyzeScope::update(void)
 				dot = 0;
 				dotAvg = 0;
 				dotAvgSlow = 0;
-				//dotDelta = 0;
-				//dotDeltaMACD = 0;
+				dotDelta = 0;
+				dotDeltaMACD = 0;
+				dotAccel = 0;
 				dotMACD = 0;
 				edgeCount = 0;
 				edgeCount_ch2 = 0;
@@ -113,20 +114,20 @@ void erisAudioAnalyzeScope::update(void)
 				edgeTimer++;
 				edgeTimer2++;
 				//for every sample
-				if (offset>0 && block->data[offset-1] < 0 && block->data[offset] >=0){
-					if(edgeCount >2){
+				if ((offset >= h_div) && block->data[offset] <= 0 && block->data[offset-h_div] >0){
+					if(edgeCount > 0){
 						if (edgeDelay==0){edgeDelay = edgeTimer;
 						} else {
-							edgeDelay = (edgeDelay + edgeTimer)/2;
+							edgeDelay = max(edgeDelay, edgeTimer);
 						}
 					}
 					edgeTimer=0;
 				} 
-				if (isDualChannel && offset>0 && blockb->data[offset-1] < 0 && blockb->data[offset] >=0){
-					if(edgeCount_ch2 >2){
+				if (isDualChannel && (offset >= h_div) && blockb->data[offset] <= 0 && blockb->data[offset-h_div] >0){
+					if(edgeCount_ch2 > 0){
 						if (edgeDelay2==0){edgeDelay2 = edgeTimer2;
 						} else {
-							edgeDelay2 = (edgeDelay2 + edgeTimer2)/2;
+							edgeDelay2 = max(edgeDelay2,edgeTimer2);
 						}
 					}
 					edgeTimer2=0;
@@ -161,13 +162,18 @@ void erisAudioAnalyzeScope::update(void)
 				if((edgeCount > 8) && (auto_h_div > 3)) auto_h_div--;
 				//calculate the dot product if dual channel
 				if (isDualChannel){
+					q63_t lastDelta;
+					lastDelta= dotDelta;
 					dotLast = dot;			
 					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
-					dotDelta = (dot - dotLast) - dotDelta;		
-					dotAvg = (dotAvg*0.9999) + (dot*0.0001);
-					dotAvgSlow = (dotAvg*0.99999) + (dot*0.00001);
-					dotDeltaMACD = (dotAvg - dotAvgSlow) - dotDeltaMACD;
-					dotMACD = dotAvg - dotAvgSlow;
+					dotDelta = ((dot/2) - (dotLast/2)) * 2;
+					dotAccel = ((dotDelta/2)-(lastDelta/2)) * 2;		
+					dotAvg = ((dotAvg*0.75) + (dot*0.25));
+					dotAvgSlow = (dotAvg*0.95) + (dot*0.05);
+					dotMACD = ((dotAvg/2) - (dotAvgSlow/2)) * 2;
+					//(dotMACD>0)?:dotMACD*=-1;
+					dotDeltaMACD = ((dotMACD/2) - (dotDeltaMACD/2)) * 2;
+					
 				}	
 				isAvailable = true;
 				if (autoTrigger){

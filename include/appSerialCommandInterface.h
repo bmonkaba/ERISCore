@@ -39,7 +39,7 @@ OUTPUT MESSAGES:
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 128
 
 #define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
-#define SERIAL_AUTO_TRANSMIT_DATA_PERIOD 125
+#define SERIAL_AUTO_TRANSMIT_DATA_PERIOD 75
 
 int replacechar(char *str, char orig, char rep) {
     char *ix = str;
@@ -271,7 +271,7 @@ class AppSerialCommandInterface:public AppBaseClass {
                     //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                     //Serial.flush();
                 }else if (strcmp(cmd, "STATS") == 0){ 
-                    //ad.printStats();
+                    ad.printStats();
                     AppManager::getInstance()->printStats();
                 }else if (strcmp(cmd, "CQT_CFG") == 0){ 
                     AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");

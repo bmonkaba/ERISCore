@@ -206,7 +206,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
 
       AudioNoInterrupts();
-      amp->gain(20.0 * log((9.0 * fval) + 1.0));
+      amp->gain(log1p(9.0 * fval));
       
       AudioInterrupts();
     };
@@ -221,7 +221,7 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(1,110.0 + (11200.0 * fval));
       filter->setLowpass(2,170.0 + (9100.0 * fval));
       filter->setLowpass(3,310.0 + (8200.0 * fval));
-      mixer->gain(0,4* log((9)+1.0));
+      mixer->gain(0,4* log1p(9));
       AudioInterrupts();
     };
     
@@ -235,7 +235,7 @@ class MyAppExample:public AppBaseClass {
       //filter->setHighpass(1,100.0 + (3910.0 * log((9*fval)+1.0)));
       //filter->setHighpass(2,100.0 + (4820.0 * log((9*fval)+1.0)));
       //filter->setHighpass(3,100.0 + (15720.0 * log((9*fval)+1.0)));
-      mixer->gain(2,log((7.0 * fval)+1));
+      mixer->gain(2,log1p(7.0 * fval));
       AudioInterrupts();
     };
 
@@ -244,7 +244,7 @@ class MyAppExample:public AppBaseClass {
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
       AudioNoInterrupts();
-      amp->gain(log((9.0 * fval)+1));
+      amp->gain(log1p(9.0 * fval));
       AudioInterrupts();
     };
     

@@ -12,13 +12,13 @@ class AppScope:public AppBaseClass {
         strcpy(name,"AppScope");
         hasFocus = false;
     }; 
-    void setPosition (int16_t newOriginX, int16_t newOriginY){
+    void setPosition (int16_t newOriginX, int16_t newOriginY) {
         origin_x=newOriginX;
         origin_y=newOriginY;
         widget_origin_x=newOriginX;
         widget_origin_y=newOriginY;
     }
-    void setDimension(int16_t new_width, int16_t new_height){
+    void setDimension(int16_t new_width, int16_t new_height) {
         width=new_width;
         height=new_height;
         widget_width=new_width;
@@ -76,16 +76,17 @@ class AppScope:public AppBaseClass {
             
 
             //publish the scopes math functions
-            AppManager::getInstance()->data.update("DOT",(int32_t)(scope->getDotProduct()>>8));
-            AppManager::getInstance()->data.update("DOT_AVG",(int32_t)(scope->getDotProductAvg()>>8));
-            AppManager::getInstance()->data.update("DOT_DELTA",(int32_t)(scope->getDotDelta()));
-            AppManager::getInstance()->data.update("DOT_DELTA_MACD",(int32_t)scope->getDotDeltaMACD());
+            AppManager::getInstance()->data.update("DOT",(int32_t)(scope->getDotProduct()>>10));
+            AppManager::getInstance()->data.update("DOT_AVG",(int32_t)(scope->getDotProductAvg()>>10));
+            AppManager::getInstance()->data.update("DOT_DELTA",(int32_t)(scope->getDotDelta()>>10));
+            AppManager::getInstance()->data.update("DOT_DELTA_MACD",(int32_t)scope->getDotDeltaMACD()>>10);
+            AppManager::getInstance()->data.update("DOT_ACCEL",(int32_t)(scope->getDotAcceleration()>>10));
             AppManager::getInstance()->data.update("DOT_MACD",(int32_t)scope->getDotMACD());
             AppManager::getInstance()->data.update("EDGE_COUNT",(int32_t)scope->getEdgeCount());
             AppManager::getInstance()->data.update("EDGE_COUNT_CH2",(int32_t)scope->getEdgeCount_ch2());
             AppManager::getInstance()->data.update("EDGE_DELAY",(int32_t)scope->getEdgeDelay());
             AppManager::getInstance()->data.update("EDGE_DELAY2",(int32_t)scope->getEdgeDelay2());
-            AppManager::getInstance()->data.update("EDGE_DELTA",(int32_t)scope->getEdgeDelay()-(int32_t)scope->getEdgeDelay2());
+            AppManager::getInstance()->data.update("EDGE_DELTA",(int32_t)(scope->getEdgeDelay()-scope->getEdgeDelay2()) + 1); //min value of 1 (protect for div by zero)
             AppManager::getInstance()->data.update("INPUT_PEAK",(int32_t)scope->getPeakValue());
             
             //Serial.printf("%" PRId64 "\n", scope->getDotDelta());
@@ -104,8 +105,24 @@ class AppScope:public AppBaseClass {
     void onFocus(){};   //called when given focus
     void onFocusLost(){}; //called when focus is taken
     void onTouch(uint16_t x, uint16_t y){
+        uint16_t w;
+        uint16_t h;
+        uint16_t _x;
+        uint16_t _y;
+        if(hasFocus){
+            w = width;
+            h = height;
+            _x = origin_x;
+            _y = origin_y;
+        }else {
+            w = widget_width;
+            h = widget_height;
+            _x = widget_origin_x;
+            _y = widget_origin_y;
+        }
+        
         //check if touch point is within the application bounding box
-        if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+        if (x > _x && x < (_x + w) && y > _y && y < (_y + h)){
             //is touched
             if(!hasFocus){
                 AppManager::getInstance()->getFocus(this->id);
