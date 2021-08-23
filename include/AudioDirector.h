@@ -99,7 +99,7 @@ AudioDirector::AudioDirector(){
 
   for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
-    addAudioStreamObj(new erisAudioFilterStateVariable);
+    //addAudioStreamObj(new erisAudioFilterStateVariable);
     addAudioStreamObj(new erisAudioFilterBiquad);
     addAudioStreamObj(new erisAudioAmplifier);
   }
@@ -127,7 +127,7 @@ AudioDirector::AudioDirector(){
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
   Serial.print(e-s);
-  Serial.println(" Bytes");
+  Serial.println(F(" Bytes"));
 
 };
 
@@ -159,13 +159,18 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
 };
 
 void AudioDirector::printStats(){
+  long s = (uint32_t)heapStart;
+  long e = (uint32_t)heapEnd;
   for(uint16_t i=0; i < objCount;i++){
     Serial.flush();
-    Serial.print(pAudioStreamObjPool[i]->shortName);Serial.print("_");
-    Serial.print(pAudioStreamObjPool[i]->instance);Serial.print(" processorUsage:");
-    Serial.print(pAudioStreamObjPool[i]->processorUsage());Serial.print(" processorUsageMax:");
+    Serial.print(pAudioStreamObjPool[i]->shortName);Serial.print(F("_"));
+    Serial.print(pAudioStreamObjPool[i]->instance);Serial.print(F(" processorUsage:"));
+    Serial.print(pAudioStreamObjPool[i]->processorUsage());Serial.print(F(" processorUsageMax:"));
     Serial.println(pAudioStreamObjPool[i]->processorUsageMax());
   }
+  Serial.print(F("AudioDirector Obj Pool Size:"));
+  Serial.print(e-s);
+  Serial.println(F(" Bytes (estimated)"));
 }
 
 void AudioDirector::generateCategoryList(){

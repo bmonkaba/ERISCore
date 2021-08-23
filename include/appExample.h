@@ -87,29 +87,27 @@ class MyAppExample:public AppBaseClass {
       cqt.setDimension(320-10-125,50);
       cqt.setParent(this);
 
-      slider = new ControlSlider();
+      slider = new ControlSlider(this);
       slider->setPosition(10,80);
       slider->setDimension(260,30);
       slider->setName("SLIDER");
       slider->setText("Dry Mix");
       slider->setValue(0);
-      slider->setParent(this);
+
       
       char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE"};
       uint8_t si = 0;
       uint16_t x = 10;
       uint16_t y = 120;
       for (uint16_t i=0;i<5;i+=1){
-        button = new ControlButton(); //reuse the button var to create many instances
+        button = new ControlButton(this); //reuse the button var to create many instances
         button->setPosition(x,y);
         if(x>(320-80)){
           x=10;y+=70;
         }else {
           x+=80;
         }
-        
         button->setDimension(60,60);
-        button->setParent(this);
         button->setName(s[si]);
         button->setText(s[si++]);
       }
@@ -145,7 +143,7 @@ class MyAppExample:public AppBaseClass {
       y_start = y;
       x_last = x;
       y_last = y;
-      tft.bltSDFullScreen("bluehex.ile");
+      //tft.bltSDFullScreen("bluehex.ile");
     }
 
     void onTouchRelease(uint16_t x, uint16_t y){
@@ -206,7 +204,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
 
       AudioNoInterrupts();
-      amp->gain(log1p(9.0 * fval));
+      amp->gain(6*log1p(fval));
       
       AudioInterrupts();
     };
@@ -217,11 +215,11 @@ class MyAppExample:public AppBaseClass {
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
-      filter->setLowpass(0,220.0 + (12000.0 * fval));
-      filter->setLowpass(1,110.0 + (11200.0 * fval));
-      filter->setLowpass(2,170.0 + (9100.0 * fval));
-      filter->setLowpass(3,310.0 + (8200.0 * fval));
-      mixer->gain(0,4* log1p(9));
+      filter->setLowpass(0,601.0 + (16141.0 * fval));
+      filter->setLowpass(1,727.0 + (11279.0 * fval));
+      filter->setLowpass(2,857.0 + (9137.0 * fval));
+      filter->setLowpass(3,919.0 + (8221.0 * fval));
+      mixer->gain(0,log1p(1));
       AudioInterrupts();
     };
     
@@ -231,11 +229,11 @@ class MyAppExample:public AppBaseClass {
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
       AudioNoInterrupts();
-      filter->setHighpass(0,100.0 + (600.0 * log((9*fval)+1.0)));
+      filter->setHighpass(0,100.0 + (600.0 * log1p(10*fval)));
       //filter->setHighpass(1,100.0 + (3910.0 * log((9*fval)+1.0)));
       //filter->setHighpass(2,100.0 + (4820.0 * log((9*fval)+1.0)));
       //filter->setHighpass(3,100.0 + (15720.0 * log((9*fval)+1.0)));
-      mixer->gain(2,log1p(7.0 * fval));
+      mixer->gain(2,1.0 - log1p(fval));
       AudioInterrupts();
     };
 
@@ -263,9 +261,9 @@ class MyAppExample:public AppBaseClass {
       //ad.connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
-      ad.connect("amp_2 0 biquad_4 2");//HP
+      ad.connect("i2s-in_1 1 biquad_4 2");//HP
       //ad.connect("biquad_4 0 mixer_1 2");
-      ad.connect("amp_2 0 mixer_1 2");
+      ad.connect("i2s-in_1 1 mixer_1 2");
 
       //master mixer to the output amp
       ad.connect("mixer_1 0 amp_1 0");
@@ -314,11 +312,13 @@ class MyAppExample:public AppBaseClass {
       char buffer[32];
       erisAudioSynthWaveform* w;
       AudioNoInterrupts();
+      
       for (int16_t i=1; i <= OSC_BANK_SIZE; i++){
         sprintf(buffer, "waveform_%d", i);
         w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
         w->begin(voice_type);
       }
+      
       //change the voice of the test signal too
       w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
       w->begin(voice_type);

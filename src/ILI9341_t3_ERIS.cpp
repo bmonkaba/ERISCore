@@ -5,11 +5,16 @@ void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
     analogWriteFrequency(backlight, 48000);
-    analogWrite(backlight, 255);
+    analogWrite(backlight, 200);
 }
 void ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin();
-    ILI9341_t3n::useFrameBuffer(1);
+    useFrameBuffer(1);
+    pFB = _pfbtft;
+    //try and force a second buffer
+    _pfbtft = NULL;
+    useFrameBuffer(1);
+    pFB2 = _pfbtft;
     //setClock(30000000); //110000000
     setClipRect();
     setOrigin();
@@ -17,8 +22,7 @@ void ILI9341_t3_ERIS::begin(){
     setTextColor(CL(74, 143, 255));
     setTextSize(2);
     setRotation(1);
-    println("Online...");
-    pFB = _pfbtft;          
+    println("Online...");          
     pSD->chdir("I/U/W");
     if (pSD->exists("bluehex.ile")){println("File found...");}
     file.open("bluehex.ile", O_READ);
@@ -29,6 +33,19 @@ void ILI9341_t3_ERIS::begin(){
     file.close();
     updateScreen();
 }
+
+void ILI9341_t3_ERIS::flipBuffer(){
+  if(pFB == _pfbtft){
+    setFrameBuffer(pFB2);
+  } else setFrameBuffer(pFB);
+
+};
+
+void ILI9341_t3_ERIS::flipWritePointer(){
+  if(pFB == _pfbtft){
+    _pfbtft = pFB2;
+  } else _pfbtft = pFB;
+};
 
 void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type){
   int16_t iy; // x & y index
@@ -119,8 +136,8 @@ void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   }
   file.seekSet(15); //skip the header - header will always be 15 bytes for full screen wallpaper
   //for (unsigned long i = (320 * 64) ; i < (320 * 240); i += 32){
-  for (unsigned long i = 0; i < (320 * 240); i += 1){ //32,64
-    file.read(&pFB[i],2);
+  for (unsigned long i = 0; i < (320 * 240); i += 32){ //32,64
+    file.read(&_pfbtft[i],64);
   }
   file.close();
 }

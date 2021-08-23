@@ -8,7 +8,8 @@
 
 class ControlButton:public AppBaseClass {
   public:
-    ControlButton():AppBaseClass(){
+    ControlButton(AppBaseClass *parent):AppBaseClass(){
+        setParent(parent);
         isPressed = false;
         show_active = false;
         time_active = 0;

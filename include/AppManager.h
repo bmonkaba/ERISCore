@@ -1,8 +1,20 @@
+/**
+ * @file AppManager.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-20
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef _AppBase_
 #define _AppBase_
 
 #define MAX_NAME_LENGTH 24
 #define ENABLE_ASYNC_SCREEN_UPDATES
+#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
 #include <Arduino.h>
@@ -94,12 +106,21 @@ class AppManager {
     AppBaseClass *pActiveApp; //active app
     uint16_t nextIDAssignment;
     uint16_t activeID; //active app
+    uint16_t cycle_time_max;
+    elapsedMicros cycle_time;
+    elapsedMillis monitor_dd_update_timer;
+    bool redraw_background;
+    bool redraw_objects;
+
                       //TODO: implement an active id push/pop stack for nesting apps
     AppManager(){ //private constuctor (lazy singleton pattern)
       root = 0;
       activeID = 0;
       pActiveApp = 0;
       nextIDAssignment = 1; //id 0 is reserved
+      monitor_dd_update_timer = 0;
+      redraw_background=true;
+      redraw_objects=true;
       //init the appStack
       // allocate an array with space for 5 elements using deque's allocator:
       unsigned int *p;
@@ -135,6 +156,140 @@ class AppManager {
       }
       return obj;
     }
+
+    void update(){
+        bool monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
+
+        cycle_time=0;
+        #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+        bool screenBusy;
+        screenBusy = (tft.busy() || redraw_objects==true || redraw_background==true);
+        
+        
+        //finally update the screen
+        #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+        if (redraw_background==true){
+          redraw_background=false;
+          //background was updated this loop.. on the next loop draw the objects
+          //tft.bltSDFullScreen("bluehex.ile");
+          tft.fillRect(0, 0, 320, 240, 0);
+          redraw_objects = true;
+        }
+        #else
+        if (!screenBusy) tft.updateScreen();
+        #endif
+        
+        
+        if (!screenBusy){
+          tft.updateScreenAsync(false);
+          redraw_background=true;
+          //tft.fillRect(0, 0, 320, 240, 0);
+        }
+
+        #else
+        if (!screenBusy) tft.updateScreen();
+        #endif
+
+        elapsedMicros app_time=0;
+        if (root == 0){
+          Serial.println(F("AppManager::update called without an application initalized"));
+          return;
+        }
+        touch.update();
+        bool update_analog = analog.update();
+        AppBaseClass *node = root;
+        bool isactive_child;
+        #ifdef ENABLE_ASYNC_SCREEN_UPDATES
+        //if (!screenBusy) tft.fillRect(0, 0, 320, 240, 0);//tft.bltSDFullScreen("bluehex.ile");//tft.fillRect(0, 0, 320, 20, 0);
+        #else
+        //if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
+        #endif
+        //search the linked list
+        cycle_time = 0;
+        do{
+          app_time=0;
+          if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
+          node->updateRT(); //real time update (always called)
+          node->updateRT_loop_time = app_time;
+          if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
+          node->updateRT_call_period =0;
+          //Serial.println("AppManager:: real time update");
+          isactive_child = false;
+          if (node->id == activeID) {
+              if (pActiveApp != node){
+                if (pActiveApp != 0) pActiveApp->onFocusLost();
+                node->onFocus();
+                pActiveApp = node;
+              }
+          }
+          if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
+          if (node->id == activeID || isactive_child) {
+              //Serial.print("AppManager::updating active application");Serial.println(activeID);
+              //active app found - trigger any events and then call the update function
+              if (update_analog){
+                data.update("AN1",analog.readAN1());
+                data.update("AN2",analog.readAN2());
+                data.update("AN3",analog.readAN3());
+                data.update("AN4",analog.readAN4());
+                
+                node->onAnalog1(analog.readAN1(),analog.freadAN1());
+                node->onAnalog2(analog.readAN2(),analog.freadAN2());
+                node->onAnalog3(analog.readAN3(),analog.freadAN3());
+                node->onAnalog4(analog.readAN4(),analog.freadAN4());
+              }
+              if (touch.touched()) {
+                p = touch.getPoint();
+                //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
+                if (node->touch_state == 0){
+                    node->onTouch(p.x, p.y);
+                    node->touch_state=1;
+                } else{
+                    node->onTouchDrag(p.x, p.y);
+                }
+              } else if (node->touch_state==1){
+                node->touch_state=0;
+                node->onTouchRelease(p.x, p.y);
+              }
+              if (redraw_objects){
+                app_time=0;
+                if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
+                node->update(); //update active window
+                node->update_loop_time = app_time;
+                if (node->update_loop_time > node->update_loop_time_max){
+                    node->update_loop_time_max = node->update_loop_time;
+                    //update the data dictionary
+                    data.update(node->name,node->update_loop_time_max); 
+                }
+                node->update_call_period =0;
+              }
+              //return ;//dont return in case multiple apps share the same id (app specific overlay)
+                      //update order follows the order of app instance creation
+          }
+          #ifdef SERIAL_PRINT_APP_LOOP_TIME
+          Serial.print(node->name);
+          Serial.print(F(":"));
+          Serial.print(cycle_time);
+          Serial.print(F(" "));
+          #endif
+          node->cycle_time = cycle_time;
+          if (node->cycle_time > node->cycle_time_max){
+              node->cycle_time_max = node->cycle_time;
+          }
+          node=node->nextAppicationNode;//check next node
+        }while(node !=0);
+        redraw_objects = false;
+        #ifdef SERIAL_PRINT_APP_LOOP_TIME
+        Serial.println();
+        #endif
+
+        if (cycle_time > cycle_time_max) cycle_time_max = cycle_time;
+        
+        if(monitor_update){
+        monitor_dd_update_timer = 0;
+        data.update("LOOP_TIME_MAX",cycle_time_max);  
+        cycle_time_max=0;
+        }
+    };
 
     SdFs* getSD(){
       return &sd;
@@ -178,121 +333,32 @@ class AppManager {
         Serial.flush();
         Serial.print(node->name);
         //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
-        Serial.print("\n&emsp;update_loop_time_max: ");Serial.print(node->update_loop_time_max);
+        Serial.print(F("\n&emsp;update_loop_time_max: "));Serial.print(node->update_loop_time_max);
         //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
-        Serial.print("\n&emsp;updateRT_loop_time_max: ");Serial.print(node->updateRT_loop_time_max);
+        Serial.print(F("\n&emsp;updateRT_loop_time_max: "));Serial.print(node->updateRT_loop_time_max);
         //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
-        Serial.print("\n&emsp;cycle_time_max: ");Serial.print(node->cycle_time_max);
+        Serial.print(F("\n&emsp;cycle_time_max: "));Serial.print(node->cycle_time_max);
         //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
-        Serial.print("\n&emsp;update_call_period_max: ");Serial.print(node->update_call_period_max);
-        Serial.print("\n&emsp;updateRT_call_period_max: ");Serial.print(node->updateRT_call_period_max);
-        Serial.println();
-
+        Serial.print(F("\n&emsp;update_call_period_max: "));Serial.print(node->update_call_period_max);
+        Serial.print(F("\n&emsp;updateRT_call_period_max: "));Serial.print(node->updateRT_call_period_max);
+        Serial.println(F("\n-------------------------------"));
         //clear the stats
         node->update_loop_time_max = 0;
         node->updateRT_loop_time_max = 0;
         node->cycle_time_max = 0;
         node->update_call_period_max = 0;
         node->updateRT_call_period_max = 0;
-        
+      
         node=node->nextAppicationNode;//check next node
       }while(node !=0);
-
+      //print app manager stats
+      Serial.println(F("ApplicationManager"));
+      Serial.print(F("\n&emsp;cycle_time: "));Serial.print(cycle_time);
+      Serial.print(F("\n&emsp;cycle_time_max: "));Serial.println(cycle_time_max);
+      //clear the stats
+      cycle_time_max = 0;
     }
-    void update(){
-      bool screenBusy = tft.busy();
-      elapsedMicros cycle_time=0;
-      elapsedMicros app_time=0;
-      if (root == 0){
-        Serial.println(F("AppManager::update called without an application initalized"));
-        return;
-      }
-      touch.update();
-      bool update_analog = analog.update();
-      AppBaseClass *node = root;
-      bool isactive_child;
-      #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-      //if (!screenBusy) tft.fillRect(0, 0, 320, 240, 0);//tft.bltSDFullScreen("bluehex.ile");//tft.fillRect(0, 0, 320, 20, 0);
-      #else
-      if (!screenBusy) tft.bltSDFullScreen("bluehex.ile");
-      #endif
-      //search the linked list
-      do{
-        cycle_time = 0;
-        app_time=0;
-        if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
-        node->updateRT(); //real time update (always called)
-        node->updateRT_loop_time = app_time;
-        if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
-        node->updateRT_call_period =0;
-        //Serial.println("AppManager:: real time update");
-        isactive_child = false;
-        if (node->id == activeID) {
-          if (pActiveApp != node){
-            if (pActiveApp != 0) pActiveApp->onFocusLost();
-            node->onFocus();
-            pActiveApp = node;
-          }
-        }
-        if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
-        if (node->id == activeID || isactive_child) {
-          //Serial.print("AppManager::updating active application");Serial.println(activeID);
-          //active app found - trigger any events and then call the update function
-          if (update_analog){
-            data.update("AN1",analog.readAN1());
-            data.update("AN2",analog.readAN2());
-            data.update("AN3",analog.readAN3());
-            data.update("AN4",analog.readAN4());
-            
-            node->onAnalog1(analog.readAN1(),analog.freadAN1());
-            node->onAnalog2(analog.readAN2(),analog.freadAN2());
-            node->onAnalog3(analog.readAN3(),analog.freadAN3());
-            node->onAnalog4(analog.readAN4(),analog.freadAN4());
-          }
-          if (touch.touched()) {
-            p = touch.getPoint();
-            //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
-            if (node->touch_state == 0){
-              node->onTouch(p.x, p.y);
-              node->touch_state=1;
-            } else{
-              node->onTouchDrag(p.x, p.y);
-            }
-          } else if (node->touch_state==1){
-            node->touch_state=0;
-            node->onTouchRelease(p.x, p.y);
-          }
-          if (!screenBusy){
-            app_time=0;
-            if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
-            node->update(); //update active window
-            node->update_loop_time = app_time;
-            if (node->update_loop_time > node->update_loop_time_max) node->update_loop_time_max = node->update_loop_time;
-            node->update_call_period =0;
-          }
-          //return ;//dont return in case multiple apps share the same id (app specific overlay)
-                    //update order follows the order of app instance creation
-        }
-        #ifdef SERIAL_PRINT_APP_LOOP_TIME
-        Serial.print(node->name);
-        Serial.print(F(":"));
-        Serial.print(cycle_time);
-        Serial.print(F(" "));
-        #endif
-        node->cycle_time = cycle_time;
-        if (node->cycle_time > node->cycle_time_max) node->cycle_time_max = node->cycle_time;
-        node=node->nextAppicationNode;//check next node
-      }while(node !=0);
-      #ifdef SERIAL_PRINT_APP_LOOP_TIME
-      Serial.println();
-      #endif
-      //finally update the screen
-      #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-        if (!screenBusy) tft.updateScreenAsync(false);
-      #else
-      if (!screenBusy) tft.updateScreen();
-      #endif
-    };
+
 
     void RegisterApp(AppBaseClass *app){
       //assign a unique id to the object

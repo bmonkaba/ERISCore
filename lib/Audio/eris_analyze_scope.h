@@ -75,6 +75,7 @@ public:
 	uint8_t getHDiv(){return h_div;}
 	q63_t getDotProduct(){return dot;}
 	q63_t getDotProductAvg(){return dotAvg;}
+	q63_t getDotProductAvgSlow(){return dotAvgSlow;}
 	q63_t getDotMACD(){return dotMACD;}
 	q63_t getDotDelta(){return dotDelta;}
 	q63_t getDotAcceleration(){return dotAccel;}

@@ -20,7 +20,7 @@
  * 
  */
 
-#define DATADICT_KEYVALUE_PAIRS 32
+#define DATADICT_KEYVALUE_PAIRS 40
 #define DATADICT_MAX_KEY_LEN 32
 
 class SvcDataDictionary{
@@ -50,7 +50,7 @@ class SvcDataDictionary{
         int32_t read(const char* key){
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
-                if (0==strcmp(&_key[i][0],key)) return _val[i];
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN)) ) return _val[i];
             }
             //key not found
             return 0;
@@ -59,7 +59,7 @@ class SvcDataDictionary{
         bool update(const char* key,int32_t val){
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
-                if (0==strcmp(&_key[i][0],key)){
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN)) ){
                     _val[i] = val;
                     return true;
                 }

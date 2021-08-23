@@ -16,7 +16,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
     public:
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
-            _SPI_CLOCK = 70000000;
+            _SPI_CLOCK = 80000000;
             //pSD = NULL;
             //backlight = 0;
             //pFB = NULL;    
@@ -24,15 +24,24 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void setSD(SdFs *ptr); //pointer to the SD Class
         void setPWMPin(uint8_t pin);
         void begin();
+        void flipBuffer();
+        void flipWritePointer();
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
         bool busy(){return (_dma_state & ILI9341_DMA_ACTIVE);}
-
+        bool updateScreenAsync(bool update_cont){
+            bool rval;
+            _dma_state &= ~ILI9341_DMA_INIT;
+            rval= ILI9341_t3n::updateScreenAsync(update_cont);
+            flipWritePointer();
+            return rval;
+        }
     protected:
         SdFs *pSD;
         FsFile file;
         uint8_t backlight;
-        uint16_t *pFB;  //framebuffer pointer      
+        uint16_t *pFB;  //framebuffer pointer
+        uint16_t *pFB2;  //framebuffer pointer     
 };
 
 #endif

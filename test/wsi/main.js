@@ -32,9 +32,14 @@ setInterval(sweepFreq, 100);
 
 setInterval(function() {
   document.querySelectorAll(".sparkline").forEach(function(svg) {
-    sparkline.sparkline(svg, sparks[svg.id]);
+    try{
+        sparkline.sparkline(svg, sparks[svg.id]);
+        svg.innerHTML += "<text x=\"50\" y=\"25\">"+svg.id+": "+sparks[svg.id][0]+"</text>";
+    } catch(e){
+        
+    }
   });
-}, 500);
+}, 200);
 
 $('#file_explorer').jstree();
 $('#fancy_explorer').fancytree({
@@ -274,17 +279,22 @@ socket.onmessage = function (message) {
           break
 
       case "DD":
-          data_dict = JSON.parse(res[1]);
+          try{
+              data_dict = JSON.parse(res[1]);
+          } catch(e){
+          //bad message throw it out
+              break;
+          }
           //sidebar.empty();
           for (var key in data_dict){
               //sidebar.append(data_dict[key] + "<br>");
               if ($('#'+key).length < 1){
-                  sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
-                  sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"320\" height=\"24\" stroke-width=\"1\"></svg>");
+                  //sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
+                  sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"300\" height=\"60\" stroke-width=\"1\"></svg><br>");
                   sparks[key] = [];
               }
               sparks[key].unshift(parseInt(data_dict[key]));
-              if(sparks[key].length > 20){
+              if(sparks[key].length > 50){
                   sparks[key].pop();
               }
               $("#"+key+"_VAL").text(sparks[key][0]);

@@ -26,7 +26,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 6
+#define OSC_BANK_SIZE 12
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -160,12 +160,12 @@ class AppCQT:public AppBaseClass {
         float amp;
         float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = 5*(log1p((amp))/1.04139268516) * height;
+        signal = (log1p((amp))*5.0) * height;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = 5*(log1p((amp))/1.04139268516) * height;
+        signal = (log1p((amp))*5.0) * height;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
@@ -235,14 +235,21 @@ class AppCQT:public AppBaseClass {
       float floor;
       floor = 0.00010;
       
+      if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
+      else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
+
       for (uint16_t i=0; i < NOTE_ARRAY_LENGTH; i++){
         if (low_range_switch){fft2->read(&fftLowRR[i]); 
         } else fft->read(&fftHighRR[i]);
       }
 
+
+
       //sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
+
+
 
       //Add the new osc settings
       //low range
@@ -288,81 +295,62 @@ class AppCQT:public AppBaseClass {
         }
       }
       
+      //take the edge delays from the scope to fine tune the frequency
+      //advance or delay the phase based on the dot avg from the scope
+      //the primary objective is to ensure a slightly unstable but predictable oscillator to avoid standing waves
+      //the second objective is to provide some phase control without being overtly forceful 
+      // - this means it should sound natural through the audible range
+      // the implementation accumulates error overtime.
+      int64_t edgeDelta;
+      edgeDelta = (AppManager::getInstance()->data.read("EDGE_DELAY") - AppManager::getInstance()->data.read("EDGE_DELAY2"));
 
-      //pll
-      //pll_p =0;
+      if(edgeDelta < (-1+(0.03 * AppManager::getInstance()->data.read("EDGE_DELAY")))) {
+        pll_f -= 0.00001 * abs(edgeDelta);
+      }else if(edgeDelta> (1+(0.07 * AppManager::getInstance()->data.read("EDGE_DELAY")))) {
+        pll_f += 0.00001 * abs(edgeDelta);
+      };
 
-      //
-      if(abs(AppManager::getInstance()->data.read("EDGE_DELTA")) < 20 ){
-        if((AppManager::getInstance()->data.read("EDGE_DELTA")) == 0 ) {
-          
-          if (!(((AppManager::getInstance()->data.read("DOT_MACD")< 5000) &&
-            (AppManager::getInstance()->data.read("DOT_ACCEL")  < 10) &&
-            (pll_p < 0)) ||
-            ((AppManager::getInstance()->data.read("DOT_MACD")  > -5000) &&
-            (AppManager::getInstance()->data.read("DOT_ACCEL")  > -10) &&
-            (pll_p > 0))))
-            {
-              //pll_p *=-1.0;
-            }
+      if (AppManager::getInstance()->data.read("DOT_AVG_SLOW")<0){
+        pll_p += 0.001 * abs(AppManager::getInstance()->data.read("DOT_AVG_SLOW"));
+      } else if (AppManager::getInstance()->data.read("DOT_AVG_SLOW")>0){
+        pll_p -= 0.001 * abs(AppManager::getInstance()->data.read("DOT_AVG_SLOW"));
+      };
   
-        }
-        
-        if(AppManager::getInstance()->data.read("EDGE_DELTA") < -5) {
-          pll_p += 0.00001;
-          //pll_p *= 0.9;
-        }else if(AppManager::getInstance()->data.read("EDGE_DELTA") > 5) {
-          pll_p -= 0.00001;
-          //pll_p *= 0.9;
-        }
-        
-        if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 10000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) < -10000 ){
-          pll_p -= 0.1;
-        }else if((AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -10000) && (AppManager::getInstance()->data.read("DOT_ACCEL")) > 10000 ){
-          pll_p += 0.1;
-        }else{
-          pll_p*=-1.0;
-        }
-      }  
-
-      if(AppManager::getInstance()->data.read("DOT_DELTA_MACD") < -1000) {
-        if (pll_p > 0){
-          pll_p *=-0.105;
-          pll_f -= 0.01;
-        }
-      }else if(AppManager::getInstance()->data.read("DOT_DELTA_MACD") > 1000) {
-        if (pll_p < 0){
-          pll_p *=-0.105;
-          pll_f += 0.01;
-        }
+      if (pll_p>1.0){
+        pll_p -= 1.0;
+      }
+      if (pll_p<-1.0){
+        pll_p += 1.0;
       }
 
-      if(AppManager::getInstance()->data.read("EDGE_DELTA") < 0) {
-          pll_f += 0.00001;
-      }else if(AppManager::getInstance()->data.read("EDGE_DELTA") > 0) {
-        pll_f -= 0.00001;
-      }
+      pll_f = 1.0;
 
-      //pll_p *= 1.01;
-      //pll_f = 1.0;
-      AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*100000));
-      AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*100000));
+      AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*1000));
+      AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*1000));
+
+      //take the phase from the  dominant frequency component
+      float dominantPhase;
+      if (fftLowRR[0].avgValueSlow > fftHighRR[0].avgValueSlow){
+        dominantPhase = fftLowRR[0].phase;
+      } else dominantPhase = fftHighRR[0].phase;
 
       //actually update the oscilators
       AudioNoInterrupts();
       for(int16_t i=0; i < osc_bank_size; i++){
-        float a,f;    
+        float a,f;
+        float64_t phase_aligner;    
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             //osc[i]->frequency(note_freq[oscBank[i].cqtBin]);
             f = oscBank[i].peakFrequency;
 
             osc[i]->frequency(pll_f * f * octave_down[0]);
-            a = log1p(oscBank[i].avgValueFast)/(osc_bank_size);
+            a = ((oscBank[i].peakValue)/(osc_bank_size)) * sqrt(osc_bank_size);
             if (f < 20.0) {f = 20.0;a=0;}
             if (a < floor) a = 0.0;
             if(!isnan(a)) osc[i]->amplitude(a);
-            osc[i]->phase(osc[i]->getPhase() + pll_p);
+            phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
+            osc[i]->phase((phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p);
             //osc[i]->phase(oscBank[i].phase);// + pll_p);
           }
         }

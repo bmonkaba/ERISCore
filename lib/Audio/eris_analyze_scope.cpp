@@ -99,10 +99,16 @@ void erisAudioAnalyzeScope::update(void)
 				for(int16_t i=1;i < AUDIO_BLOCK_SAMPLES-h_div;i++){
 					if (block->data[i] > 0 && block->data[i-1] < 0){
 						offset = i;
-						found = true;
-						edgeTimer=0;
-						edgeTimer2=0;
-						break;
+						if(isDualChannel){
+							if (blockb->data[i] > 0){
+								found = true;
+							}
+						}else found = true;
+						if (found){
+							edgeTimer=0;
+							edgeTimer2=0;
+							break;
+						}
 					}
 				}
 				//skip to the next block
@@ -115,19 +121,19 @@ void erisAudioAnalyzeScope::update(void)
 				edgeTimer2++;
 				//for every sample
 				if ((offset >= h_div) && block->data[offset] <= 0 && block->data[offset-h_div] >0){
-					if(edgeCount > 0){
+					if((edgeCount > 0) && (edgeTimer > 20)){
 						if (edgeDelay==0){edgeDelay = edgeTimer;
 						} else {
-							edgeDelay = max(edgeDelay, edgeTimer);
+							edgeDelay = (edgeDelay+edgeTimer)/2;
 						}
 					}
 					edgeTimer=0;
 				} 
 				if (isDualChannel && (offset >= h_div) && blockb->data[offset] <= 0 && blockb->data[offset-h_div] >0){
-					if(edgeCount_ch2 > 0){
+					if((edgeCount_ch2 > 0) && (edgeTimer2 > 20)){
 						if (edgeDelay2==0){edgeDelay2 = edgeTimer2;
 						} else {
-							edgeDelay2 = max(edgeDelay2,edgeTimer2);
+							edgeDelay2 = (edgeDelay2 + edgeTimer2)/2;
 						}
 					}
 					edgeTimer2=0;
@@ -158,8 +164,8 @@ void erisAudioAnalyzeScope::update(void)
 			
 			if (count == 0){
 				//Serial.println(edgeCount);
-				if((edgeCount < 6) && (auto_h_div < 64)) auto_h_div++;
-				if((edgeCount > 8) && (auto_h_div > 3)) auto_h_div--;
+				if((edgeCount < 8) && (auto_h_div < 16)) auto_h_div++;
+				if((edgeCount >= 12) && (auto_h_div > 1)) auto_h_div--;
 				//calculate the dot product if dual channel
 				if (isDualChannel){
 					q63_t lastDelta;
@@ -168,9 +174,9 @@ void erisAudioAnalyzeScope::update(void)
 					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
 					dotDelta = ((dot/2) - (dotLast/2)) * 2;
 					dotAccel = ((dotDelta/2)-(lastDelta/2)) * 2;		
-					dotAvg = ((dotAvg*0.75) + (dot*0.25));
-					dotAvgSlow = (dotAvg*0.95) + (dot*0.05);
-					dotMACD = ((dotAvg/2) - (dotAvgSlow/2)) * 2;
+					dotAvg = ((dotAvg*0.999) + (dot*0.001));
+					dotAvgSlow = (dotAvg*0.99995) + (dot*0.00005);
+					dotMACD = ((dotAvg) - (dotAvgSlow));
 					//(dotMACD>0)?:dotMACD*=-1;
 					dotDeltaMACD = ((dotMACD/2) - (dotDeltaMACD/2)) * 2;
 					
@@ -199,22 +205,22 @@ int16_t erisAudioAnalyzeScope::read(int8_t channel, uint16_t mem_index){
 
 void erisAudioAnalyzeScope::trigger(void)
 {
-	uint32_t n = delay_length;
-
 	h_div = auto_h_div;
-
-	if (n > 0) {
-		count = n;
-		state = 2;
-	} else {
-		count = mem_length;
-		state = STATE_PRINTING;
+	if (count ==0){ //ignore external trigger requests if already capturing
+		if (delay_length > 0) {
+			count = delay_length;
+			state = STATE_DELAY;
+		} else {
+			count = mem_length;
+			state = STATE_PRINTING;
+		}
 	}
 }
 
 bool erisAudioAnalyzeScope::available(){
 	if (isAvailable){
 		isAvailable = false;
+		trigger();
 		return true;
 	} 
 	return false;

@@ -75,5 +75,5 @@ void loop(void) {
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
   //calls updateRT for all apps
-  AppManager::getInstance()->update();                                    
+  AppManager::getInstance()->update();                           
 }

@@ -138,7 +138,7 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
 	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
 
-	spectralFilter();
+	//spectralFilter();
 
 	outputflag = false; //current frame is analyzed and ready to use
 	return;

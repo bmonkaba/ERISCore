@@ -6,7 +6,8 @@
 
 class ControlSlider:public AppBaseClass {
   public:
-    ControlSlider():AppBaseClass(){
+    ControlSlider(AppBaseClass *parent):AppBaseClass(){
+        setParent(parent);
         isPressed = false;
         strcpy(text,"ControlSlider");
         strcpy(name,"ControlSlider");
