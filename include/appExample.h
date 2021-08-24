@@ -311,16 +311,19 @@ class MyAppExample:public AppBaseClass {
     void changeVoice(uint16_t voice_type){
       char buffer[32];
       erisAudioSynthWaveform* w;
-      AudioNoInterrupts();
+      
       
       for (int16_t i=1; i <= OSC_BANK_SIZE; i++){
         sprintf(buffer, "waveform_%d", i);
         w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
+        AudioNoInterrupts();
         w->begin(voice_type);
+        AudioInterrupts();
       }
       
       //change the voice of the test signal too
       w = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName("waveform_16"));
+      AudioNoInterrupts();
       w->begin(voice_type);
       AudioInterrupts();
 

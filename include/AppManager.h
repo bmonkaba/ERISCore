@@ -14,6 +14,7 @@
 
 #define MAX_NAME_LENGTH 24
 #define ENABLE_ASYNC_SCREEN_UPDATES
+#define DISPLAY_UPDATE_PERIOD 60
 #define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
@@ -107,6 +108,7 @@ class AppManager {
     uint16_t nextIDAssignment;
     uint16_t activeID; //active app
     uint16_t cycle_time_max;
+    elapsedMillis display_refresh_time;
     elapsedMicros cycle_time;
     elapsedMillis monitor_dd_update_timer;
     bool redraw_background;
@@ -145,6 +147,7 @@ class AppManager {
       Serial.println(F("AppManager: Contructor complete"));
       #ifdef ENABLE_ASYNC_SCREEN_UPDATES
       tft.updateScreenAsync(false);
+      display_refresh_time = 0;
       #endif
     };
 
@@ -181,9 +184,11 @@ class AppManager {
         
         
         if (!screenBusy){
-          tft.updateScreenAsync(false);
-          redraw_background=true;
-          //tft.fillRect(0, 0, 320, 240, 0);
+          if (display_refresh_time > DISPLAY_UPDATE_PERIOD){
+            tft.updateScreenAsync(false);
+            redraw_background=true;
+            display_refresh_time = 0;
+          }
         }
 
         #else

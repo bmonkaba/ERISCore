@@ -33,7 +33,7 @@ class SvcDataDictionary{
             next=0;
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 _val[i] = 0;
-                memset(&_key[i][0],DATADICT_MAX_KEY_LEN,sizeof(char));
+                memset(_key[i],DATADICT_MAX_KEY_LEN,sizeof(char));
             }
         }
 
@@ -41,10 +41,13 @@ class SvcDataDictionary{
             //if dictionary full
             if (next == DATADICT_KEYVALUE_PAIRS) return false;
             //else
-            strcpy(&_key[next][0],key);
-            _val[next] = val;
-            next++;
-            return true;
+            if(strlen(key) < DATADICT_MAX_KEY_LEN){
+                strcpy(_key[next],key);
+                _val[next] = val;
+                next++;
+                return true;
+            }
+            return false;//bad key
         }
 
         int32_t read(const char* key){
@@ -64,9 +67,8 @@ class SvcDataDictionary{
                     return true;
                 }
             }
-            //key not found
+            //key not found - try to create a new record
             return create(key, val);
-            //return false;
         }
 
         //serial interface

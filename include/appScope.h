@@ -36,9 +36,9 @@ class AppScope:public AppBaseClass {
 
     void update(){
         float scale;
-        if (scope->available()){
+        if (1 | scope->available()){
             scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-            if (scale > 15000.0) scale = 15000.0;
+            if (scale > 10.0) scale = 10.0;
             uint16_t w;
             uint16_t h;
             uint16_t x;
@@ -76,29 +76,24 @@ class AppScope:public AppBaseClass {
             
 
             //publish the scopes math functions
-            AudioNoInterrupts();
-            AppManager::getInstance()->data.update("DOT",(int32_t)(scope->getDotProduct()/1000));
-            AppManager::getInstance()->data.update("DOT_AVG",(int32_t)(scope->getDotProductAvg()/1000));
-            AppManager::getInstance()->data.update("DOT_AVG_SLOW",(int32_t)(scope->getDotProductAvgSlow()/1000));
-            AppManager::getInstance()->data.update("DOT_DELTA",(int32_t)(scope->getDotDelta()/1000));
-            AppManager::getInstance()->data.update("DOT_DELTA_MACD",(int32_t)scope->getDotDeltaMACD()/1000);
-            AppManager::getInstance()->data.update("DOT_ACCEL",(int32_t)(scope->getDotAcceleration()/1000));
-            AppManager::getInstance()->data.update("DOT_MACD",(int32_t)scope->getDotMACD()/1000);
-            AppManager::getInstance()->data.update("EDGE_COUNT",(int32_t)scope->getEdgeCount());
-            AppManager::getInstance()->data.update("EDGE_COUNT_CH2",(int32_t)scope->getEdgeCount_ch2());
-            AppManager::getInstance()->data.update("EDGE_DELAY",(int32_t)scope->getEdgeDelay());
-            AppManager::getInstance()->data.update("EDGE_DELAY2",(int32_t)scope->getEdgeDelay2());
-            AppManager::getInstance()->data.update("EDGE_DELTA",(int32_t)(scope->getEdgeDelay()-scope->getEdgeDelay2()) + 1); //min value of 1 (protect for div by zero)
-            AppManager::getInstance()->data.update("INPUT_PEAK",(int32_t)scope->getPeakValue());
+            AppManager::getInstance()->data.update("DOT",scope->getDotProduct());
+            AppManager::getInstance()->data.update("DOT_AVG",scope->getDotProductAvg());
+            AppManager::getInstance()->data.update("DOT_AVG_SLOW",scope->getDotProductAvgSlow());
+            AppManager::getInstance()->data.update("DOT_DELTA",scope->getDotDelta());
+            AppManager::getInstance()->data.update("DOT_DELTA_MACD",scope->getDotDeltaMACD());
+            AppManager::getInstance()->data.update("DOT_ACCEL",scope->getDotAcceleration());
+            AppManager::getInstance()->data.update("DOT_MACD",scope->getDotMACD());
+            AppManager::getInstance()->data.update("EDGE_COUNT",scope->getEdgeCount());
+            AppManager::getInstance()->data.update("EDGE_COUNT_CH2",scope->getEdgeCount_ch2());
+            AppManager::getInstance()->data.update("EDGE_DELAY",scope->getEdgeDelay());
+            AppManager::getInstance()->data.update("EDGE_DELAY2",scope->getEdgeDelay2());
+            AppManager::getInstance()->data.update("EDGE_DELTA",scope->getEdgeDelay()-scope->getEdgeDelay2() + 1); //min value of 1 (protect for div by zero)
+            AppManager::getInstance()->data.update("INPUT_PEAK",scope->getPeakValue());
             
             if(scope->getEdgeDelay()>20) AppManager::getInstance()->data.update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(float32_t)scope->getEdgeDelay()));
             if(scope->getEdgeDelay2()>20) AppManager::getInstance()->data.update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(float32_t)scope->getEdgeDelay2()));
-            /*
-            if((scope->getEdgeDelay()>20)&&(scope->getEdgeDelay2()>20)&&
-                (scope->getEdgeDelay()<500)&&(scope->getEdgeDelay2()<500)
-                )AppManager::getInstance()->data.update("FREQ_DELTA",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/((float32_t)scope->getEdgeDelay()-(float32_t)scope->getEdgeDelay2())));
-            */
-            AudioInterrupts();
+            
+
             //Serial.printf("%" PRId64 "\n", scope->getDotDelta());
             //scope->trigger();
             tft.setCursor(x+w - 100,y+5);

@@ -29,6 +29,8 @@
 #include "eris_analyze_scope.h"
 
 
+#define SCOPE_MAX_TRIGGER_WAIT	800  
+
 #define STATE_IDLE          0  // doing nothing
 #define STATE_WAIT_TRIGGER  1  // looking for trigger condition
 #define STATE_DELAY         2  // waiting from trigger to print
@@ -97,6 +99,13 @@ void erisAudioAnalyzeScope::update(void)
 
 				bool found = false;
 				for(int16_t i=1;i < AUDIO_BLOCK_SAMPLES-h_div;i++){
+					if(trigger_wait_count > SCOPE_MAX_TRIGGER_WAIT){
+						//force the trigger
+						found=true;
+						edgeTimer=0;
+						edgeTimer2=0;
+						break;
+					}
 					if (block->data[i] > 0 && block->data[i-1] < 0){
 						offset = i;
 						if(isDualChannel){
@@ -144,17 +153,17 @@ void erisAudioAnalyzeScope::update(void)
 				if(h_div_count==h_div){
 					h_div_count=0;
 					count--;
-					memory[0][mem_length - count - 1 ] = block->data[offset];
+					_memory[0][mem_length - count - 1 ] = block->data[offset];
 					peakValue = max(peakValue,abs(block->data[offset]));
 					if (isDualChannel){ 
-						memory[1][mem_length - count - 1 ] = blockb->data[offset];
+						_memory[1][mem_length - count - 1 ] = blockb->data[offset];
 						peakValue = max(peakValue,abs(blockb->data[offset]));
-						if ((offset >= h_div) && (blockb->data[offset] <= 0 ) && (blockb->data[offset-h_div] > 0)){
+						if ((offset >= h_div) && (blockb->data[offset] <= -10 ) && (blockb->data[offset-h_div] > 10)){
 							edgeCount_ch2++;
 						}
-					}else memory[1][mem_length - count - 1 ] = 0;
+					}else _memory[1][mem_length - count - 1 ] = 0;
 
-					if ((offset >= h_div) && (block->data[offset] <= 0 ) && (block->data[offset-h_div] > 0)){
+					if ((offset >= h_div) && (block->data[offset] <= -10 ) && (block->data[offset-h_div] > 10)){
 						edgeCount++;
 					}
 				}
@@ -164,27 +173,47 @@ void erisAudioAnalyzeScope::update(void)
 			
 			if (count == 0){
 				//Serial.println(edgeCount);
-				if((edgeCount < 8) && (auto_h_div < 16)) auto_h_div++;
-				if((edgeCount >= 12) && (auto_h_div > 1)) auto_h_div--;
-				//calculate the dot product if dual channel
-				if (isDualChannel){
-					q63_t lastDelta;
-					lastDelta= dotDelta;
-					dotLast = dot;			
-					arm_dot_prod_q15(&memory[0][0],&memory[1][0],mem_length,&dot);
-					dotDelta = ((dot/2) - (dotLast/2)) * 2;
-					dotAccel = ((dotDelta/2)-(lastDelta/2)) * 2;		
-					dotAvg = ((dotAvg*0.999) + (dot*0.001));
-					dotAvgSlow = (dotAvg*0.99995) + (dot*0.00005);
-					dotMACD = ((dotAvg) - (dotAvgSlow));
-					//(dotMACD>0)?:dotMACD*=-1;
-					dotDeltaMACD = ((dotMACD/2) - (dotDeltaMACD/2)) * 2;
-					
-				}	
+					//only update the values if data is available
+					if(peakValue >0){
+						if((edgeCount < 6) && (auto_h_div < 16)) auto_h_div++;
+						if((edgeCount > 7) && (auto_h_div > 1)) auto_h_div--;
+						//calculate the dot product if dual channel
+						if (isDualChannel){
+							q63_t lastDelta;
+							lastDelta= dotDelta;
+							dotLast = dot/1000000;	
+							arm_dot_prod_q15(&_memory[0][0],&_memory[1][0],mem_length,&dot);
+							dot = dot /1000000;
+							dotDelta = ((dot) - (dotLast));
+							dotAccel = ((dotDelta)-(lastDelta));		
+							dotAvg = (dotAvg/2) + (dot/2);
+							dotAvgSlow = (dotAvg/2) + (dotAvgSlow/2);
+							dotMACD = ((dotAvg) - (dotAvgSlow));
+							//(dotMACD>0)?:dotMACD*=-1;
+							dotDeltaMACD = ((dotMACD) - (dotDeltaMACD));
+							memcpy(&memory[1],&_memory[1],sizeof(_memory[1]));
+						}
+						//buffered outputs
+						memcpy(&memory[0],&_memory[0],sizeof(_memory[0]));
+						edgeCount_output = edgeCount;
+						edgeCount_ch2_output = edgeCount_ch2;
+						dot_output=dot;
+						dotAvg_output=dotAvg;
+						dotLast_output=dotLast;
+						dotAvgSlow_output=dotAvgSlow;
+						dotDelta_output = dotDelta;
+						dotAccel_output=dotAccel;
+						dotDeltaMACD_output=dotDeltaMACD;
+						dotMACD_output=dotMACD;
+						edgeDelay_output=edgeDelay;
+						edgeDelay2_output=edgeDelay2;
+						peakValue_output = peakValue;
+					}
 				isAvailable = true;
 				if (autoTrigger){
 					trigger();
 				}else state = STATE_IDLE;
+				trigger_wait_count = 0;
 			}
 			break;
 
