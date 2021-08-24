@@ -41,9 +41,15 @@ float normalized_atan2( float y, float x )
     static const uint32_t sign_mask = 0x80000000;
     static const float b = 0.596227f;
 
+	uint32_t ux;
+	uint32_t uy;
+	memcpy(&ux, &x, sizeof(x));
+	memcpy(&uy, &y, sizeof(x));
     // Extract the sign bits
-    uint32_t ux_s  = sign_mask & (uint32_t &)x;
-    uint32_t uy_s  = sign_mask & (uint32_t &)y;
+    //uint32_t ux_s  = sign_mask & (uint32_t &)x;
+    //uint32_t uy_s  = sign_mask & (uint32_t &)y;
+	uint32_t ux_s  = sign_mask & ux;
+    uint32_t uy_s  = sign_mask & uy;
 
     // Determine the quadrant offset
     float q = (float)( ( ~ux_s & uy_s ) >> 29 | ux_s >> 30 ); 
@@ -53,9 +59,12 @@ float normalized_atan2( float y, float x )
     float num = bxy_a + y * y;
     float atan_1q =  num / ( x * x + bxy_a + num );
 
+	uint32_t uatan;
+	memcpy(&uatan, &atan_1q, sizeof(atan_1q));
     // Translate it to the proper quadrant
-    uint32_t uatan_2q = (ux_s ^ uy_s) | (uint32_t &)atan_1q;
-    return q + (float &)uatan_2q;
+    uint32_t uatan_2q = (ux_s ^ uy_s) | uatan;
+	memcpy(&atan_1q, &uatan_2q, sizeof(uatan_2q));
+    return q + atan_1q;
 } 
 
 
@@ -83,7 +92,7 @@ void erisAudioAnalyzeFFT1024::copy_to_fft_buffer(void *destination, const void *
 	SAMPLING_INDEX -= AUDIO_BLOCK_SAMPLES;
 }
 
-
+#ifndef ENABLE_F32_FFT
 static void apply_window_to_fft_buffer(void *buffer, const void *window)
 {
 	int16_t *buf = (int16_t *)buffer;
@@ -97,7 +106,7 @@ static void apply_window_to_fft_buffer(void *buffer, const void *window)
 	}
 
 }
-
+#else
 static void apply_window_to_fft_buffer_f32(float32_t *buffer, const float32_t *window)
 {
 	float32_t *buf = (float32_t *)buffer;
@@ -108,6 +117,7 @@ static void apply_window_to_fft_buffer_f32(float32_t *buffer, const float32_t *w
 	}
 	
 }
+#endif
 
 bool erisAudioAnalyzeFFT1024::capture(void)
 {
@@ -195,7 +205,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 		apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
 		arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
 		arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
-		/* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
+		// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin  
 		//arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024); 
 		
 
@@ -207,11 +217,12 @@ void erisAudioAnalyzeFFT1024::update(void)
 		//
 		//apply_window_to_fft_buffer_f32(tmp_buffer, window_f32);
 		//arm_cfft_radix4_f32(&fft_inst, tmp_buffer);
-		///* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */ 
+		// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin
 		//arm_cmplx_mag_f32(tmp_buffer, output, 1024);  
 
-		/* Calculates maxValue and returns corresponding BIN value */ 
+		// Calculates maxValue and returns corresponding BIN value
 		//arm_max_f32(testOutput, fftSize, &maxValue, &testIndex); 
+		*/
 		#else
 		memcpy(tmp_buffer,buffer,2048 * sizeof(int16_t));
 		apply_window_to_fft_buffer(tmp_buffer, window);

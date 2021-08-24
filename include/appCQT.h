@@ -120,7 +120,8 @@ class AppCQT:public AppBaseClass {
       
       rt_calls = 0;
       update_calls = 0;
-      
+      pll_p=0.0;
+      pll_f=1.0;
       //enable the fft blocks
       AudioNoInterrupts();
       fft_buffer_serial_transmit_elapsed = 0;
@@ -318,11 +319,11 @@ class AppCQT:public AppBaseClass {
      float ch2_f = AppManager::getInstance()->data.read("CH2_FREQ");
      int32_t das = AppManager::getInstance()->data.read("DOT_AVG_SLOW");
      if (ch1_f>ch2_f){
-        pll_f += 0.000001;
+        pll_f += 0.00001;
      } else if (ch1_f<ch2_f){
-        pll_f -= 0.000001;
+        pll_f -= 0.00001;
      } else{
-        pll_f = 1.0;
+        //pll_f = 1.0;
         if (das<0){
           pll_f += 0.000001;
           pll_p += 0.001 * abs(das);
@@ -359,8 +360,8 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
+            a = ((oscBank[i].peakValue)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
-              a = ((oscBank[i].peakValue)/(log1pf(osc_bank_size)));
               if (a < floor) a = 0.0;
               if (a > (1.0/(float)OSC_BANK_SIZE)) a = 0;
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);

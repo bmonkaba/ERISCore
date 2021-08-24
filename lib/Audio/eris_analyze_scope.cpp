@@ -175,8 +175,8 @@ void erisAudioAnalyzeScope::update(void)
 				//Serial.println(edgeCount);
 					//only update the values if data is available
 					if(peakValue >0){
-						if((edgeCount < 6) && (auto_h_div < 16)) auto_h_div++;
-						if((edgeCount > 7) && (auto_h_div > 1)) auto_h_div--;
+						if((edgeCount < 8) && (auto_h_div < 16)) auto_h_div++;
+						if((edgeCount > 11) && (auto_h_div > 1)) auto_h_div--;
 						//calculate the dot product if dual channel
 						if (isDualChannel){
 							q63_t lastDelta;
