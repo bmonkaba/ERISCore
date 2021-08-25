@@ -1,3 +1,13 @@
+/**
+ * @file ILI9341_t3_ERIS.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef _ILI9341_t3ERIS_
 #define _ILI9341_t3ERIS_
 

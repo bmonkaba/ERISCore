@@ -1,3 +1,13 @@
+/**
+ * @file touch.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef _touch_
 #define _touch_
 
@@ -28,7 +38,6 @@ class Touch : public XPT2046_Touchscreen {
         TS_Point getPoint();
 
     protected:
-        
         uint8_t csPin, tirqPin, rotation=1;
         uint32_t msraw=0x80000000;
         uint16_t _raw_minx;

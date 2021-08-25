@@ -24,6 +24,19 @@
  * THE SOFTWARE.
  */
 
+/**
+ * @file eris_analyze_fft1024.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright portions Copyright (c) 2021
+ * 
+ */
+
+
+
 #ifndef erisanalyze_fft1024_h_
 #define erisanalyze_fft1024_h_
 

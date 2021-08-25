@@ -14,7 +14,7 @@
 
 #define MAX_NAME_LENGTH 24
 #define ENABLE_ASYNC_SCREEN_UPDATES
-#define DISPLAY_UPDATE_PERIOD 20
+#define DISPLAY_UPDATE_PERIOD 24
 #define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
@@ -66,6 +66,11 @@ class AppBaseClass {
     int16_t origin_y;
     int16_t width;
     int16_t height;
+    int16_t widget_origin_x;
+    int16_t widget_origin_y;
+    int16_t widget_width;
+    int16_t widget_height;
+    int16_t x,y,w,h;
     char name[MAX_NAME_LENGTH];
     AppBaseClass();
     AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
@@ -80,22 +85,29 @@ class AppBaseClass {
       } else strncpy(name,name_string,MAX_NAME_LENGTH - 1);
     }
     void setParent(AppBaseClass *parent){parentNode = parent;};
-    void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;}
-    void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;}
+    void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;_updatePosition();}
+    void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;_updatePosition();}
+    void setWidgetPosition(int16_t newOriginX, int16_t newOriginY){widget_origin_x=newOriginX;widget_origin_y=newOriginY;_updatePosition();}
+    void setWidgetDimension(int16_t new_width, int16_t new_height){widget_width=new_width;widget_height=new_height;_updatePosition();}
+    void getFocus();
     virtual void update(){Serial.println(F("AppBaseClass:update"));};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
     virtual void updateRT(){}; //will be called every loop and prior to a potential update call
     //Event handlers
     virtual void onFocus(){};
     virtual void onFocusLost(){};
-    virtual void onTouch(uint16_t x, uint16_t y){};
-    virtual void onTouchDrag(uint16_t x, uint16_t y){};
-    virtual void onTouchRelease(uint16_t x, uint16_t y){};
+    virtual void onTouch(uint16_t t_x, uint16_t t_y){};
+    virtual void onTouchDrag(uint16_t t_x, uint16_t t_y){};
+    virtual void onTouchRelease(uint16_t t_x, uint16_t t_y){};
     virtual void onAnalog1(uint16_t uval, float fval){};
     virtual void onAnalog2(uint16_t uval, float fval){};
     virtual void onAnalog3(uint16_t uval, float fval){};
     virtual void onAnalog4(uint16_t uval, float fval){};
-  public:
     virtual void MessageHandler(AppBaseClass *sender, const char *message){};
+  protected:
+    bool has_focus;
+    void returnFocus();
+  private:
+    void _updatePosition();
 };
 
 class AppManager {
@@ -383,6 +395,7 @@ AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 
 AppBaseClass:: AppBaseClass(){
   //Serial.println("AppBaseClass constructor called");
+  has_focus=false;
   parentNode=NULL;          //set by the parent
   nextAppicationNode=NULL;
   previousAppicationNode=NULL;
@@ -391,6 +404,14 @@ AppBaseClass:: AppBaseClass(){
   origin_y=0;
   width=320;
   height=240;
+  widget_origin_x=0;
+  widget_origin_y=0;
+  widget_width=320;
+  widget_height=240;
+  x=0;
+  y=0;
+  w=320;
+  h=240;
   update_loop_time =0;
   update_loop_time_max =0;
   updateRT_loop_time =0;
@@ -404,5 +425,36 @@ AppBaseClass:: AppBaseClass(){
   strcpy(name,"NONE");
   AppManager::getInstance()->RegisterApp(this); //self register on construction
 }
+
+void AppBaseClass::_updatePosition(){
+  if(has_focus){
+    w = width;
+    h = height;
+    x = origin_x;
+    y = origin_y;
+  }else{
+    w = widget_width;
+    h = widget_height;
+    x = widget_origin_x;
+    y = widget_origin_y;
+  }
+  return;
+}
+
+void AppBaseClass::returnFocus(){
+  if(!has_focus) return;
+  has_focus = false;
+  AppManager::getInstance()->returnFocus();
+  _updatePosition();
+  return;
+}  
+
+void AppBaseClass::getFocus(){
+    has_focus = true;
+    AppManager::getInstance()->getFocus(this->id);
+    _updatePosition();    
+    return;
+}
+
 
 #endif

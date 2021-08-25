@@ -28,6 +28,10 @@
  * SOFTWARE.
  */
 
+/**
+ * @brief modified version from lib basline
+ * 
+ */
 #ifndef AudioStream_h
 #define AudioStream_h
 

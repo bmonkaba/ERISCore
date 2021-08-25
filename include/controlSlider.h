@@ -1,3 +1,13 @@
+/**
+ * @file controlSlider.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "AppManager.h"
 
 #define MAX_TEXT_LENGTH 16
@@ -28,48 +38,48 @@ class ControlSlider:public AppBaseClass {
   protected:
     bool isPressed;
     void update(){
-        int16_t marker = width*(value/100.0);
-        //tft.drawFastVLine(marker,origin_y,height,ILI9341_MAGENTA);
-        tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
-        tft.fillRoundRect(origin_x, origin_y, marker, height,4, CL(36, 54, 84));
-        tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
+        int16_t marker = w*(value/100.0);
+        //tft.drawFastVLine(marker,y,h,ILI9341_MAGENTA);
+        tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
+        tft.fillRoundRect(x, y, marker, h,4, CL(36, 54, 84));
+        tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
         tft.setTextColor(CL(0,0,0));
-        tft.setCursor(origin_x+(width/2)-1,origin_y+(height/2),true);
+        tft.setCursor(x+(w/2)-1,y+(h/2),true);
         tft.print(text);
-        tft.setCursor(origin_x+(width/2)+1,origin_y+(height/2),true);
+        tft.setCursor(x+(w/2)+1,y+(h/2),true);
         tft.print(text);
-        tft.setCursor(origin_x+(width/2),origin_y+(height/2)-1,true);
+        tft.setCursor(x+(w/2),y+(h/2)-1,true);
         tft.print(text);
-        tft.setCursor(origin_x+(width/2),origin_y+(height/2)+1,true);
+        tft.setCursor(x+(w/2),y+(h/2)+1,true);
         tft.print(text);
-        tft.setCursor(origin_x+(width/2)+1,origin_y+(height/2)+1,true);
+        tft.setCursor(x+(w/2)+1,y+(h/2)+1,true);
         tft.print(text);
-        tft.setCursor(origin_x+(width/2)-1,origin_y+(height/2)-1,true);
+        tft.setCursor(x+(w/2)-1,y+(h/2)-1,true);
         tft.print(text);
         tft.setTextColor(CL(74, 143, 255));
-        tft.setCursor(origin_x+(width/2),origin_y+(height/2),true);
+        tft.setCursor(x+(w/2),y+(h/2),true);
         tft.print(text);
     };
     void onFocusLost(){isPressed=false;};
-    void onTouch(uint16_t x, uint16_t y){
-        if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+    void onTouch(uint16_t t_x, uint16_t t_y){
+        if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             isPressed = true;
-            last_x = x;
+            last_x = t_x;
         }
     };
 
-    void onTouchDrag(uint16_t x, uint16_t y){
+    void onTouchDrag(uint16_t t_x, uint16_t t_y){
         if(isPressed){
-            value += ((x-last_x)/2);
+            value += ((t_x-last_x)/2);
             if (value>100)value = 100;
             if(value <0)value=0;
-            if (last_x != x) parentNode->MessageHandler(this,"Changed");
-            last_x = x;
+            if (last_x != t_x) parentNode->MessageHandler(this,"Changed");
+            last_x = t_x;
         }
     }
 
-    void onTouchRelease(uint16_t x, uint16_t y){
-        if (isPressed && x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+    void onTouchRelease(uint16_t t_x, uint16_t t_y){
+        if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             parentNode->MessageHandler(this,"Set");
         }
         isPressed = false;

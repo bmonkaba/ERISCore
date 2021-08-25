@@ -3,7 +3,7 @@
 
 #define Z_THRESHOLD     400
 #define Z_THRESHOLD_INT	75
-#define MSEC_THRESHOLD  3
+#define MSEC_THRESHOLD  50
 #define SPI_SETTING     SPISettings(3000000, MSBFIRST, SPI_MODE0)
 
 bool Touch::begin(){

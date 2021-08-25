@@ -24,6 +24,20 @@
  * THE SOFTWARE.
  */
 
+
+/**
+ * @file eris_analyze_scope.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright portions Copyright (c) 2021
+ * 
+ */
+
+
+
 #ifndef eris_analyze_scope_h_
 #define eris_analyze_scope_h_
 
@@ -78,6 +92,9 @@ public:
 		dotMACD_output=0;
 		edgeDelay_output=0;
 		edgeDelay2_output=0;
+
+		memset(memory[0],0,sizeof(memory[0]));
+		memset(memory[1],0,sizeof(memory[1]));
 		
 	}
 

@@ -29,6 +29,17 @@
  */
 
 
+/**
+ * @file AudioStream.cpp
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright portions Copyright (c) 2021
+ * 
+ */
+
 #include <Arduino.h>
 #include "AudioStream.h"
 

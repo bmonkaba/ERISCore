@@ -24,6 +24,7 @@
  * THE SOFTWARE.
  */
 
+
 #ifndef synth_waveform_h_
 #define synth_waveform_h_
 

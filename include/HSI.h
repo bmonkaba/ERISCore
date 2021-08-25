@@ -1,3 +1,13 @@
+/**
+ * @file HSI.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef __HSI_h
 #define __HSI_h     
 

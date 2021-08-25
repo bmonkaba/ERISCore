@@ -1,3 +1,13 @@
+/**
+ * @file appSerialCommandInterface.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "AppManager.h"
 // AppSerialCommandInterface
 //
@@ -285,12 +295,12 @@ class AppSerialCommandInterface:public AppBaseClass {
     }; //allways called even if app is not active
     void onFocus()override{};   //called when given focus
     void onFocusLost()override{}; //called when focus is taken
-    void onTouch(uint16_t x, uint16_t y)override{
+    void onTouch(uint16_t t_x, uint16_t t_y)override{
         //check if touch point is within the application bounding box
-        if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+       if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //is touched
         }
     };
-    void onTouchRelease(uint16_t x, uint16_t y)override{
+    void onTouchRelease(uint16_t t_x, uint16_t t_y)override{
     };
 };

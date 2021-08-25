@@ -23,6 +23,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+/**
+ * @file eris_analyze_fft1024.cpp
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright portions Copyright (c) 2021
+ * 
+ */
+
+
 #include <cmath>
 #include <Arduino.h>
 #include "eris_analyze_fft1024.h"

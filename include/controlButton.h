@@ -1,3 +1,13 @@
+/**
+ * @file controlButton.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "AppManager.h"
 
 #define MAX_BUTTON_TEXT_LENGTH 16
@@ -29,33 +39,33 @@ class ControlButton:public AppBaseClass {
     elapsedMillis time_active;
     bool show_active;
     void update(){
-        tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
+        tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
         if (show_active){
             //tft.bltSD("/I/U/W","greenhex.ile",origin_x,origin_y,AT_NONE);
-            tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_GREENYELLOW);
+            tft.drawRoundRect(x,y,w,h,4,ILI9341_GREENYELLOW);
             if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
                 show_active = false;
             }
         } else{
             //tft.bltSD("/I/U/W","redhex.ile",origin_x,origin_y,AT_NONE);
-            tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
+            tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
         }
-        tft.setCursor(origin_x+(width/2),origin_y+(height/2),true);
+        tft.setCursor(x+(w/2),y+(h/2),true);
         tft.setFont(Arial_9);
         tft.print(text);
     };
     void onFocusLost(){isPressed=false;};
-    void onTouch(uint16_t x, uint16_t y){
+    void onTouch(uint16_t t_x, uint16_t t_y){
         //Serial.println("MyButton:onTouch");
         //check if touch point is within the application bounding box
-        if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+        if ((t_x > x && t_x < x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouch Button Pressed");
             isPressed = true;
             show_active = true;
         }
     };
-    void onTouchRelease(uint16_t x, uint16_t y){
-        if (isPressed && x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+    void onTouchRelease(uint16_t t_x, uint16_t t_y){
+        if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
             parentNode->MessageHandler(this,"Pressed");
         }

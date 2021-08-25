@@ -123,13 +123,13 @@ class AppCQT:public AppBaseClass {
       pll_p=0.0;
       pll_f=1.0;
       //enable the fft blocks
-      AudioNoInterrupts();
       fft_buffer_serial_transmit_elapsed = 0;
       cqt_serial_transmit_elapsed = 0;
+      isActive = true;
+      AudioNoInterrupts();
       fft->enableFFT(true);
       fft2->enableFFT(true);
       AudioInterrupts();
-      isActive = true;
     }; 
   protected:
     bool isActive;
@@ -153,25 +153,25 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-      tft.fillRoundRect(origin_x,origin_y,width,height,3,CL(12,0,20));
+      tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
       //draw the cqt bins
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         uint16_t nx;
         float signal;
         float amp;
-        float im = (width-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
+        float im = (w-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = (log1p((amp))*5.0) * height;
+        signal = (log1p((amp))*5.0) * h;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
-        //tft.fillRoundRect(origin_x+nx,origin_y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
-        tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
+        //tft.fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
+        tft.fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = (log1p((amp))*5.0) * height;
+        signal = (log1p((amp))*5.0) * h;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
-        tft.fillRoundRect(origin_x+nx,origin_y+height - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
+        tft.fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
       //draw the border
-      tft.drawRoundRect(origin_x,origin_y,width,height,4,ILI9341_MAGENTA);
+      tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
       
       if (fftHighRR[0].peakValue > fftLowRR[0].peakValue) {
         fftRVal = fftHighRR[0];
@@ -189,6 +189,8 @@ class AppCQT:public AppBaseClass {
       if (fft2->capture() && fft->capture()){
         AudioNoInterrupts();
         fft2->analyze();
+        AudioInterrupts();
+        AudioNoInterrupts();
         fft->analyze();
         AudioInterrupts();
         updateOscillatorBank(true);
@@ -216,15 +218,18 @@ class AppCQT:public AppBaseClass {
     };
 
     void onFocusLost(){ //called when focus is taken
-      fft->enableFFT(false);
-      fft2->enableFFT(false);
-      isActive = false;
+
     };
 
-    void onTouch(uint16_t x, uint16_t y){
+    void onTouch(uint16_t t_x, uint16_t t_y){
       //check if touch point is within the application bounding box
-      if (x > origin_x && x < (origin_x + width) && y > origin_y && y < (origin_y + height)){
+      if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
           //is touched
+          if(!has_focus){
+            getFocus();
+          }else{
+            returnFocus();
+          }
       }
     };
 
@@ -360,11 +365,12 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = ((oscBank[i].peakValue)/(log1pf(osc_bank_size)));
+            a = ((oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               if (a > (1.0/(float)OSC_BANK_SIZE)) a = 0;
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
+              phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
               f = (pll_f * f * octave_down[0]);
               if (f < 20) f = 20;
@@ -372,12 +378,10 @@ class AppCQT:public AppBaseClass {
               AudioNoInterrupts();
               osc[i]->frequency(f);
               osc[i]->amplitude(a);
-              osc[i]->phase((phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p);
+              osc[i]->phase(phase_aligner);
               AudioInterrupts();
             } 
-            
-            //
-            //osc[i]->phase(oscBank[i].phase);// + pll_p);
+
           }
         }
       }

@@ -1,3 +1,13 @@
+/**
+ * @file appScope.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2021-08-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "AppManager.h"
 // Basic Oscilloscope App
 //
@@ -5,12 +15,9 @@
 class AppScope:public AppBaseClass {
   public:
     AppScope():AppBaseClass(){
-        y_last_scope = 0;
-        y_last_scope_ch2 = 0;
         scope = (erisAudioAnalyzeScope*) (ad.getAudioStreamObjByName("scope_1"));
         scope->trigger();
         strcpy(name,"AppScope");
-        hasFocus = false;
     }; 
     void setPosition (int16_t newOriginX, int16_t newOriginY) {
         origin_x=newOriginX;
@@ -26,118 +33,77 @@ class AppScope:public AppBaseClass {
     }
   protected:
     erisAudioAnalyzeScope* scope;
-    uint16_t y_last_scope;
-    uint16_t y_last_scope_ch2;
-    bool hasFocus=false;
-    uint16_t widget_origin_x; 
-    uint16_t widget_origin_y;
-    uint16_t widget_width;
-    uint16_t widget_height;
-
+    
     void update(){
         float scale;
-        if (1 | scope->available()){
-            scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-            if (scale > 10.0) scale = 10.0;
-            uint16_t w;
-            uint16_t h;
-            uint16_t x;
-            uint16_t y;
-            if(hasFocus){
-                w = width;
-                h = height;
-                x = origin_x;
-                y = origin_y;
-            }else {
-                w = widget_width;
-                h = widget_height;
-                x = widget_origin_x;
-                y = widget_origin_y;
-            }
-            tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
-            for (int16_t i=0;i<w;i++){
-                int16_t v;
-                float f;
-                uint16_t ch1,ch2;
-                v = scope->read(0,i) * scale;
-                f = ((v * 0.000030517578125) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
-                ch1 = y + (uint16_t)(f * h);
-                if (x + i > 0) tft.drawLine(x + i-1,y_last_scope,x + i,ch1,ILI9341_ORANGE);
-                //draw the second channel
-                v = scope->read(1,i) * scale;
-                f = ((v * 0.000030517578125) + 1.0) * 0.5;
-                ch2 = y + (uint16_t)(f * h);
-                if (x + i > 0) tft.drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_GREEN);
-                //draw x-y plot
-                if (x + i > 0) tft.drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
-                y_last_scope = ch1; 
-                y_last_scope_ch2 = ch2;
-            }
-            
+        uint16_t y_last_scope;
+        uint16_t y_last_scope_ch2;
 
-            //publish the scopes math functions
-            AppManager::getInstance()->data.update("DOT",scope->getDotProduct());
-            AppManager::getInstance()->data.update("DOT_AVG",scope->getDotProductAvg());
-            AppManager::getInstance()->data.update("DOT_AVG_SLOW",scope->getDotProductAvgSlow());
-            AppManager::getInstance()->data.update("DOT_DELTA",scope->getDotDelta());
-            AppManager::getInstance()->data.update("DOT_DELTA_MACD",scope->getDotDeltaMACD());
-            AppManager::getInstance()->data.update("DOT_ACCEL",scope->getDotAcceleration());
-            AppManager::getInstance()->data.update("DOT_MACD",scope->getDotMACD());
-            AppManager::getInstance()->data.update("EDGE_COUNT",scope->getEdgeCount());
-            AppManager::getInstance()->data.update("EDGE_COUNT_CH2",scope->getEdgeCount_ch2());
-            AppManager::getInstance()->data.update("EDGE_DELAY",scope->getEdgeDelay());
-            AppManager::getInstance()->data.update("EDGE_DELAY2",scope->getEdgeDelay2());
-            AppManager::getInstance()->data.update("EDGE_DELTA",scope->getEdgeDelay()-scope->getEdgeDelay2() + 1); //min value of 1 (protect for div by zero)
-            AppManager::getInstance()->data.update("INPUT_PEAK",scope->getPeakValue());
-            
-            if(scope->getEdgeDelay()>20) AppManager::getInstance()->data.update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(float32_t)scope->getEdgeDelay()));
-            if(scope->getEdgeDelay2()>20) AppManager::getInstance()->data.update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(float32_t)scope->getEdgeDelay2()));
-            
+        y_last_scope=h/2;
+        y_last_scope_ch2=h/2;
+       
+        scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
+        if (scale > 10.0) scale = 10.0;
+        tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
+        for (int16_t i=0;i<w;i++){
+            int16_t v;
+            float f;
+            uint16_t ch1,ch2;
+            v = scope->read(0,i) * scale;
+            f = ((v * 0.000030517578125) + 1.0) * 0.5; // 1/32768 = 0.000030517578125 
+            ch1 = y + (uint16_t)(f * h);
+            if (i > 0) tft.drawLine(x + i-1,y_last_scope,x + i,ch1,ILI9341_ORANGE);
+            //draw the second channel
+            v = scope->read(1,i) * scale;
+            f = ((v * 0.000030517578125) + 1.0) * 0.5;
+            ch2 = y + (uint16_t)(f * h);
+            if (i > 0) tft.drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_GREENYELLOW);
+            //draw x-y plot
+            if (i > 0) tft.drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_DARKGREY);
+            y_last_scope = ch1; 
+            y_last_scope_ch2 = ch2;
+        }
+        
+        //publish the scopes math functions
+        AppManager *am = AppManager::getInstance();
+        am->data.update("DOT",scope->getDotProduct());
+        am->data.update("DOT_AVG",scope->getDotProductAvg());
+        am->data.update("DOT_AVG_SLOW",scope->getDotProductAvgSlow());
+        am->data.update("DOT_DELTA",scope->getDotDelta());
+        am->data.update("DOT_DELTA_MACD",scope->getDotDeltaMACD());
+        am->data.update("DOT_ACCEL",scope->getDotAcceleration());
+        am->data.update("DOT_MACD",scope->getDotMACD());
+        am->data.update("EDGE_COUNT",scope->getEdgeCount());
+        am->data.update("EDGE_COUNT_CH2",scope->getEdgeCount_ch2());
+        am->data.update("EDGE_DELAY",scope->getEdgeDelay());
+        am->data.update("EDGE_DELAY2",scope->getEdgeDelay2());
+        am->data.update("EDGE_DELTA",scope->getEdgeDelay()-scope->getEdgeDelay2() + 1); //min value of 1 (protect for div by zero)
+        am->data.update("INPUT_PEAK",scope->getPeakValue());
+        
+        if(scope->getEdgeDelay()>20) am->data.update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* (float32_t)scope->getEdgeDelay())));
+        if(scope->getEdgeDelay2()>20) am->data.update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* (float32_t)scope->getEdgeDelay2())));
 
-            //Serial.printf("%" PRId64 "\n", scope->getDotDelta());
-            //scope->trigger();
+        if (w>120 && h>60){
             tft.setCursor(x+w - 100,y+5);
             tft.print("scale: ");
             tft.print(scale);
             tft.setCursor(x+w - 100,y+20);
             tft.print("hdiv: ");
-            tft.print(scope->getHDiv());
-            tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
-        }
-        
+            tft.print(scope->getHDiv());   
+        } 
+        tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
     };    //called only when the app is active
     void updateRT(){}; //allways called even if app is not active
     void onFocus(){};   //called when given focus
     void onFocusLost(){}; //called when focus is taken
-    void onTouch(uint16_t x, uint16_t y){
-        uint16_t w;
-        uint16_t h;
-        uint16_t _x;
-        uint16_t _y;
-        if(hasFocus){
-            w = width;
-            h = height;
-            _x = origin_x;
-            _y = origin_y;
-        }else {
-            w = widget_width;
-            h = widget_height;
-            _x = widget_origin_x;
-            _y = widget_origin_y;
-        }
-        
+    void onTouch(uint16_t t_x, uint16_t t_y){
         //check if touch point is within the application bounding box
-        if (x > _x && x < (_x + w) && y > _y && y < (_y + h)){
+        if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //is touched
-            if(!hasFocus){
-                AppManager::getInstance()->getFocus(this->id);
-                hasFocus = true;
-                origin_x = 0; origin_y = 0;
-                width = 320; height = 240;
-
+            if(!has_focus){
+                getFocus();
             }else{
-                AppManager::getInstance()->returnFocus();
-                hasFocus = false;
+                returnFocus();
             }
         }
     };
