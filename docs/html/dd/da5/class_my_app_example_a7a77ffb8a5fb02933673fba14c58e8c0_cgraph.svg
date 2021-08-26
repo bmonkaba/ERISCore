@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 629;
 var viewHeight = 216;
-var sectionId = 'dynsection-9';
+var sectionId = 'dynsection-11';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
@@ -95,74 +95,58 @@ var sectionId = 'dynsection-9';
 <path fill="none" stroke="midnightblue" d="M156.71,-114.5C184.57,-119.49 218.05,-125.48 247.11,-130.68"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="246.73,-134.16 257.19,-132.48 247.96,-127.27 246.73,-134.16"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="440,-87 440,-121 621,-121 621,-87 440,-87"/>
-<text text-anchor="start" x="448" y="-107.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::getAudioStream</text>
-<text text-anchor="middle" x="530.5" y="-94.4" font-family="Helvetica,sans-Serif" font-size="12.00">ObjByName</text>
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="../../d8/d1c/class_audio_director.html#a578f1deac0695f2db3ba245aaedc62df" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="440,-106 440,-140 621,-140 621,-106 440,-106"/>
+<text text-anchor="start" x="448" y="-126.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::getAudioStream</text>
+<text text-anchor="middle" x="530.5" y="-113.4" font-family="Helvetica,sans-Serif" font-size="12.00">ObjByName</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node5 -->
-<g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M194.03,-104C263.98,-104 358.48,-104 429.36,-104"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="429.64,-107.5 439.64,-104 429.64,-100.5 429.64,-107.5"/>
+<!-- Node1&#45;&gt;Node4 -->
+<g id="edge5" class="edge">
+<title>Node1&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M194.03,-108.23C263.98,-111.31 358.48,-115.47 429.36,-118.59"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="429.5,-122.1 439.64,-119.04 429.81,-115.11 429.5,-122.1"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317" target="_top" xlink:title=" ">
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d4/dd5/class_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="252.5,-41 252.5,-75 381.5,-75 381.5,-41 252.5,-41"/>
 <text text-anchor="start" x="260.5" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioSynthWaveform</text>
 <text text-anchor="middle" x="317" y="-48.4" font-family="Helvetica,sans-Serif" font-size="12.00">::frequency</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node1&#45;&gt;Node6</title>
+<!-- Node1&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node1&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M148.01,-93.45C175.92,-87.56 211.2,-80.11 242.22,-73.57"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="243.07,-76.97 252.13,-71.48 241.62,-70.12 243.07,-76.97"/>
 </g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177" target="_top" xlink:title=" ">
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="245.5,-0.5 245.5,-21.5 388.5,-21.5 388.5,-0.5 245.5,-0.5"/>
 <text text-anchor="middle" x="317" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::isName</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node7 -->
-<g id="edge7" class="edge">
-<title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M113.96,-93.25C138.09,-77.45 185.75,-48 230,-31 236.44,-28.53 243.28,-26.3 250.17,-24.32"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="251.53,-27.58 260.27,-21.58 249.7,-20.82 251.53,-27.58"/>
-</g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d4/dd5/class_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="466,-140 466,-174 595,-174 595,-140 466,-140"/>
-<text text-anchor="start" x="474" y="-160.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioSynthWaveform</text>
-<text text-anchor="middle" x="530.5" y="-147.4" font-family="Helvetica,sans-Serif" font-size="12.00">::begin</text>
-</a>
-</g>
+<!-- Node1&#45;&gt;Node6 -->
+<g id="edge6" class="edge">
+<title>Node1&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M114.01,-93.47C138.2,-77.99 185.94,-49.06 230,-32 237.54,-29.08 245.61,-26.47 253.68,-24.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="254.75,-27.51 263.49,-21.52 252.92,-20.76 254.75,-27.51"/>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M404.03,-148.69C421.17,-149.83 439.03,-151.01 455.71,-152.12"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="455.73,-155.62 465.94,-152.79 456.19,-148.64 455.73,-155.62"/>
-</g>
-<!-- Node3&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M374.96,-132.5C391.86,-129.38 410.9,-125.87 429.68,-122.41"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="430.57,-125.8 439.77,-120.55 429.3,-118.92 430.57,-125.8"/>
+<path fill="none" stroke="midnightblue" d="M404.03,-134.87C412.49,-134.06 421.13,-133.25 429.72,-132.44"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="430.14,-135.91 439.77,-131.49 429.48,-128.94 430.14,-135.91"/>
 </g>
 </g>
 </svg>

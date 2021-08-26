@@ -14,7 +14,7 @@
 
 #define MAX_NAME_LENGTH 24
 #define ENABLE_ASYNC_SCREEN_UPDATES
-#define DISPLAY_UPDATE_PERIOD 24
+#define DISPLAY_UPDATE_PERIOD 20
 #define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
@@ -123,8 +123,10 @@ class AppManager {
     elapsedMillis display_refresh_time;
     elapsedMicros cycle_time;
     elapsedMillis monitor_dd_update_timer;
+    Animation animated_wallpaper;
     bool redraw_background;
     bool redraw_objects;
+    bool redraw_render;
 
                       //TODO: implement an active id push/pop stack for nesting apps
     AppManager(){ //private constuctor (lazy singleton pattern)
@@ -134,7 +136,8 @@ class AppManager {
       nextIDAssignment = 1; //id 0 is reserved
       monitor_dd_update_timer = 0;
       redraw_background=true;
-      redraw_objects=true;
+      redraw_objects=false;
+      redraw_render=false;
       //init the appStack
       // allocate an array with space for 5 elements using deque's allocator:
       unsigned int *p;
@@ -150,6 +153,7 @@ class AppManager {
       Serial.println(F("AppManager: Config display"));
       tft.setPWMPin(TFT_LED_PWM); //library will control the backlight
       tft.setSD(&sd); //provide a cd pointer to the sd class
+      animated_wallpaper.setPath("/V/POINTSOLIGHT");
       Serial.println(F("AppManager: Init display"));
       tft.begin();
       Serial.println(F("AppManager: Init touch controller"));
@@ -174,35 +178,34 @@ class AppManager {
 
     void update(){
         bool monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
-
         cycle_time=0;
         #ifdef ENABLE_ASYNC_SCREEN_UPDATES
         bool screenBusy;
-        screenBusy = (tft.busy() || redraw_objects==true || redraw_background==true);
-        
-        
-        //finally update the screen
-        #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-        if (redraw_background==true){
-          redraw_background=false;
-          //background was updated this loop.. on the next loop draw the objects
-          //tft.bltSDFullScreen("bluehex.ile");
-          tft.fillRect(0, 0, 320, 240, 0);
-          redraw_objects = true;
-        }
-        #else
-        if (!screenBusy) tft.updateScreen();
-        #endif
-        
-        
+        screenBusy = (tft.busy()|| redraw_objects==true || redraw_background==true || redraw_render==true);
         if (!screenBusy){
-          if (display_refresh_time > DISPLAY_UPDATE_PERIOD){
-            tft.updateScreenAsync(false);
-            redraw_background=true;
-            display_refresh_time = 0;
-          }
+          //Serial.println(F("AppManager::ScreenNotBusy"));
+          redraw_background=true;
         }
 
+        //update the screen background
+        if (redraw_background==true){
+          //background was updated this loop.. on the next loop draw the objects
+          //tft.bltSDFullScreen("bluehex.ile");
+          //tft.fillRect(0, 0, 320, 240, 7565);
+          //redraw_objects = true;
+          //redraw_background=false;
+          
+          if (animated_wallpaper.getNextFrameChunk(&sd)){
+              tft.bltSDAnimationFullScreen(&animated_wallpaper);
+              //Serial.println(F("AppManager::FrameChunk"));
+          }
+          if (animated_wallpaper.isFrameComplete()){
+            //Serial.println(F("AppManager::FrameComplete"));
+            redraw_objects = true;
+            redraw_background=false;
+          }
+        }
+ 
         #else
         if (!screenBusy) tft.updateScreen();
         #endif
@@ -294,7 +297,18 @@ class AppManager {
           }
           node=node->nextAppicationNode;//check next node
         }while(node !=0);
-        redraw_objects = false;
+        if (redraw_objects==true){
+          //Serial.println(F("AppManager::ObjDrawComplete"));
+          redraw_objects = false;
+          redraw_render = true;
+        }
+        if (display_refresh_time > DISPLAY_UPDATE_PERIOD && redraw_render == true){
+          //Serial.println(F("AppManager::UpdateScreen"));
+          tft.updateScreenAsync(false);
+          redraw_render = false;
+          display_refresh_time = 0;
+        }
+        
         #ifdef SERIAL_PRINT_APP_LOOP_TIME
         Serial.println();
         #endif
@@ -302,9 +316,11 @@ class AppManager {
         if (cycle_time > cycle_time_max) cycle_time_max = cycle_time;
         
         if(monitor_update){
-        monitor_dd_update_timer = 0;
-        data.update("LOOP_TIME_MAX",cycle_time_max);  
-        cycle_time_max=0;
+          monitor_dd_update_timer = 0;
+          data.update("LOOP_TIME_MAX",cycle_time_max);
+          data.update("FRAME_PTR1",(int32_t)tft.getFrameAddress());
+          data.update("FRAME_PTR2",(int32_t)tft.getFrame2Address()); 
+          cycle_time_max=0;
         }
     };
 

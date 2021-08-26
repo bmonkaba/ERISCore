@@ -46,21 +46,21 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 532;
+var viewWidth = 535;
 var viewHeight = 338;
-var sectionId = 'dynsection-3';
+var sectionId = 'dynsection-7';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>AppManager::getInstance</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-333.5 528,-333.5 528,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-333.5 531,-333.5 531,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="374,-154 374,-175 524,-175 524,-154 374,-154"/>
-<text text-anchor="middle" x="449" y="-161.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::getInstance</text>
+<polygon fill="#bfbfbf" stroke="black" points="377,-154 377,-175 527,-175 527,-154 377,-154"/>
+<text text-anchor="middle" x="452" y="-161.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::getInstance</text>
 </a>
 </g>
 </g>
@@ -68,138 +68,195 @@ var sectionId = 'dynsection-3';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../db/d69/class_app_base_class.html#afc31089c73d88d7b768aa71cbabf0465" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="156,-308 156,-329 338,-329 338,-308 156,-308"/>
-<text text-anchor="middle" x="247" y="-315.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::AppBaseClass</text>
+<polygon fill="white" stroke="black" points="159,-308 159,-329 341,-329 341,-308 159,-308"/>
+<text text-anchor="middle" x="250" y="-315.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::AppBaseClass</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M437.54,-184.24C420.73,-213.96 384.77,-269.76 338,-298.5 331.73,-302.36 324.8,-305.47 317.66,-307.99"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="440.74,-185.69 442.5,-175.24 434.61,-182.31 440.74,-185.69"/>
+<path fill="none" stroke="midnightblue" d="M440.54,-184.24C423.73,-213.96 387.77,-269.76 341,-298.5 334.73,-302.36 327.8,-305.47 320.66,-307.99"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="443.74,-185.69 445.5,-175.24 437.61,-182.31 443.74,-185.69"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d9/dad/class_app_serial_command_interface.html#a151da3de5e7fcec8fdf7f20fd9db658b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="160,-254.5 160,-288.5 334,-288.5 334,-254.5 160,-254.5"/>
-<text text-anchor="start" x="168" y="-274.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
-<text text-anchor="middle" x="247" y="-261.9" font-family="Helvetica,sans-Serif" font-size="12.00">::AppSerialCommandInterface</text>
+<polygon fill="white" stroke="black" points="163,-254.5 163,-288.5 337,-288.5 337,-254.5 163,-254.5"/>
+<text text-anchor="start" x="171" y="-274.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
+<text text-anchor="middle" x="250" y="-261.9" font-family="Helvetica,sans-Serif" font-size="12.00">::AppSerialCommandInterface</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M428.77,-181.63C407.79,-199.54 372.55,-227.37 338,-244.5 330.55,-248.19 322.49,-251.49 314.37,-254.39"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="431.08,-184.27 436.34,-175.07 426.49,-178.98 431.08,-184.27"/>
+<path fill="none" stroke="midnightblue" d="M431.77,-181.63C410.79,-199.54 375.55,-227.37 341,-244.5 333.55,-248.19 325.49,-251.49 317.37,-254.39"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="434.08,-184.27 439.34,-175.07 429.49,-178.98 434.08,-184.27"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="227.5,-214 227.5,-235 266.5,-235 266.5,-214 227.5,-214"/>
-<text text-anchor="middle" x="247" y="-221.4" font-family="Helvetica,sans-Serif" font-size="12.00">loop</text>
+<g id="a_node4"><a xlink:href="../../db/d69/class_app_base_class.html#afcd9194843e5eb3f6140e28cc3c9e8f9" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="174.5,-174 174.5,-195 325.5,-195 325.5,-174 174.5,-174"/>
+<text text-anchor="middle" x="250" y="-181.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::getFocus</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M412.76,-178.64C391.36,-186.89 363.38,-197.1 338,-204.5 313.72,-211.58 285.13,-217.54 266.8,-221.06"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="414.04,-181.9 422.09,-175.01 411.5,-175.38 414.04,-181.9"/>
-</g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d8/dbe/class_app_scope.html#ac5fb1582ddfe9da8e02c6dd01ff0ecc9" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="185.5,-174 185.5,-195 308.5,-195 308.5,-174 185.5,-174"/>
-<text text-anchor="middle" x="247" y="-181.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::onTouch</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M363.65,-172.94C345.18,-174.78 325.99,-176.7 308.67,-178.43"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="364.21,-176.4 373.81,-171.92 363.51,-169.43 364.21,-176.4"/>
-</g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../df/d0a/main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="224.5,-134 224.5,-155 269.5,-155 269.5,-134 224.5,-134"/>
-<text text-anchor="middle" x="247" y="-141.4" font-family="Helvetica,sans-Serif" font-size="12.00">setup</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M363.7,-156.07C329.23,-152.62 292.22,-148.92 269.58,-146.66"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="363.51,-159.57 373.81,-157.08 364.21,-152.6 363.51,-159.57"/>
-</g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="../../d8/dbe/class_app_scope.html#afea80e94624d9ed8ce80c36021000c65" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="189.5,-94 189.5,-115 304.5,-115 304.5,-94 189.5,-94"/>
-<text text-anchor="middle" x="247" y="-101.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::update</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M412.76,-150.36C391.36,-142.11 363.38,-131.9 338,-124.5 326.17,-121.05 313.31,-117.87 301.12,-115.1"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="411.5,-153.62 422.09,-153.99 414.04,-147.1 411.5,-153.62"/>
+<path fill="none" stroke="midnightblue" d="M366.54,-172.95C352.99,-174.3 339.04,-175.7 325.74,-177.03"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="367.21,-176.4 376.81,-171.92 366.51,-169.43 367.21,-176.4"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="../../d4/dde/class_app_c_q_t.html#a367a939ac48e4efa3bb648cd4f3bf848" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="156.5,-54 156.5,-75 337.5,-75 337.5,-54 156.5,-54"/>
-<text text-anchor="middle" x="247" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateOscillatorBank</text>
+<g id="a_node8"><a xlink:href="../../df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="230.5,-134 230.5,-155 269.5,-155 269.5,-134 230.5,-134"/>
+<text text-anchor="middle" x="250" y="-141.4" font-family="Helvetica,sans-Serif" font-size="12.00">loop</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M429.35,-147.17C408.6,-128.85 373.35,-100.44 338,-84.5 329.54,-80.68 320.29,-77.57 311.05,-75.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="427.03,-149.79 436.8,-153.88 431.71,-144.59 427.03,-149.79"/>
-</g>
-<!-- Node10 -->
-<g id="node10" class="node">
-<title>Node10</title>
-<g id="a_node10"><a xlink:href="../../d9/dad/class_app_serial_command_interface.html#a78cb6587862058ba6a6b4bfd9b9ecee1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="163,-0.5 163,-34.5 331,-34.5 331,-0.5 163,-0.5"/>
-<text text-anchor="start" x="171" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
-<text text-anchor="middle" x="247" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">::updateRT</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node10 -->
-<g id="edge9" class="edge">
-<title>Node1&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M435.46,-145.32C417.16,-118.81 380.62,-71.23 338,-44.5 331.92,-40.69 325.27,-37.39 318.43,-34.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="432.66,-147.42 441.15,-153.75 438.46,-143.5 432.66,-147.42"/>
+<path fill="none" stroke="midnightblue" d="M366.73,-156.07C330.67,-152.47 291.81,-148.58 269.55,-146.35"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="366.51,-159.57 376.81,-157.08 367.21,-152.6 366.51,-159.57"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-54 0,-75 120,-75 120,-54 0,-54"/>
-<text text-anchor="middle" x="60" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateRT</text>
+<g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class.html#a9f95ae78f35aefdb005560509aa683ad" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="168,-214 168,-235 332,-235 332,-214 168,-214"/>
+<text text-anchor="middle" x="250" y="-221.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::returnFocus</text>
 </a>
 </g>
 </g>
-<!-- Node8&#45;&gt;Node9 -->
+<!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
-<title>Node8&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M146.34,-64.5C137.38,-64.5 128.52,-64.5 120.07,-64.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="146.48,-68 156.48,-64.5 146.48,-61 146.48,-68"/>
+<title>Node1&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M415.76,-178.64C394.36,-186.89 366.38,-197.1 341,-204.5 329.17,-207.95 316.31,-211.13 304.12,-213.9"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="417.04,-181.9 425.09,-175.01 414.5,-175.38 417.04,-181.9"/>
+</g>
+<!-- Node10 -->
+<g id="node10" class="node">
+<title>Node10</title>
+<g id="a_node10"><a xlink:href="../../d8/dbe/class_app_scope.html#afea80e94624d9ed8ce80c36021000c65" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="192.5,-94 192.5,-115 307.5,-115 307.5,-94 192.5,-94"/>
+<text text-anchor="middle" x="250" y="-101.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::update</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node10 -->
+<g id="edge11" class="edge">
+<title>Node1&#45;&gt;Node10</title>
+<path fill="none" stroke="midnightblue" d="M415.76,-150.36C394.36,-142.11 366.38,-131.9 341,-124.5 329.17,-121.05 316.31,-117.87 304.12,-115.1"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="414.5,-153.62 425.09,-153.99 417.04,-147.1 414.5,-153.62"/>
+</g>
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:href="../../d4/dde/class_app_c_q_t.html#a367a939ac48e4efa3bb648cd4f3bf848" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="159.5,-54 159.5,-75 340.5,-75 340.5,-54 159.5,-54"/>
+<text text-anchor="middle" x="250" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateOscillatorBank</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node11 -->
+<g id="edge12" class="edge">
+<title>Node1&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M432.35,-147.17C411.6,-128.85 376.35,-100.44 341,-84.5 332.54,-80.68 323.29,-77.57 314.05,-75.04"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="430.03,-149.79 439.8,-153.88 434.71,-144.59 430.03,-149.79"/>
+</g>
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="../../d9/dad/class_app_serial_command_interface.html#a78cb6587862058ba6a6b4bfd9b9ecee1" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="166,-0.5 166,-34.5 334,-34.5 334,-0.5 166,-0.5"/>
+<text text-anchor="start" x="174" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
+<text text-anchor="middle" x="250" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">::updateRT</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node13 -->
+<g id="edge14" class="edge">
+<title>Node1&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M438.46,-145.32C420.16,-118.81 383.62,-71.23 341,-44.5 334.92,-40.69 328.27,-37.39 321.43,-34.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="435.66,-147.42 444.15,-153.75 441.46,-143.5 435.66,-147.42"/>
+</g>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d4/dde/class_app_c_q_t.html#afe46b4d45e1666ab30dafbdd9b091db2" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="5,-214 5,-235 118,-235 118,-214 5,-214"/>
+<text text-anchor="middle" x="61.5" y="-221.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::onTouch</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M190.15,-197.12C164.84,-202.55 135.6,-208.82 111.5,-213.99"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="190.96,-200.53 200,-195.01 189.49,-193.68 190.96,-200.53"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d8/dbe/class_app_scope.html#a1a6df5195027c5a65e0f23219eea64ab" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-174 0,-195 123,-195 123,-174 0,-174"/>
+<text text-anchor="middle" x="61.5" y="-181.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::onTouch</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node4&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M164.42,-184.5C150.5,-184.5 136.33,-184.5 123.14,-184.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="164.49,-188 174.49,-184.5 164.49,-181 164.49,-188"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../df/d0a/main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="39,-134 39,-155 84,-155 84,-134 39,-134"/>
+<text text-anchor="middle" x="61.5" y="-141.4" font-family="Helvetica,sans-Serif" font-size="12.00">setup</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node4&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M190.06,-171.86C154.01,-164.13 110,-154.69 84.22,-149.16"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="189.49,-175.32 200,-173.99 190.96,-168.47 189.49,-175.32"/>
+</g>
+<!-- Node9&#45;&gt;Node5 -->
+<g id="edge9" class="edge">
+<title>Node9&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M157.47,-224.5C143.99,-224.5 130.47,-224.5 118.03,-224.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="157.74,-228 167.74,-224.5 157.74,-221 157.74,-228"/>
+</g>
+<!-- Node9&#45;&gt;Node6 -->
+<g id="edge10" class="edge">
+<title>Node9&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M190.15,-211.88C164.84,-206.45 135.6,-200.18 111.5,-195.01"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="189.49,-215.32 200,-213.99 190.96,-208.47 189.49,-215.32"/>
+</g>
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:href="../../d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1.5,-54 1.5,-75 121.5,-75 121.5,-54 1.5,-54"/>
+<text text-anchor="middle" x="61.5" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateRT</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node12 -->
+<g id="edge13" class="edge">
+<title>Node11&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M149.11,-64.5C139.74,-64.5 130.46,-64.5 121.64,-64.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="149.3,-68 159.3,-64.5 149.3,-61 149.3,-68"/>
 </g>
 </g>
 </svg>

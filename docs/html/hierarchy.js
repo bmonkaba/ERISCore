@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", null ],
+    [ "Animation", "d4/d7c/class_animation.html", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", [
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", null ],
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
@@ -250,9 +251,6 @@ var hierarchy =
     ] ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
-    [ "UI", "d8/de6/class_u_i.html", null ],
-    [ "UICType", "d6/d17/struct_u_i_c_type.html", null ],
-    [ "UIMenuType", "de/d39/struct_u_i_menu_type.html", null ],
     [ "XPT2046_Touchscreen", null, [
       [ "Touch", "d1/dff/class_touch.html", null ]
     ] ]

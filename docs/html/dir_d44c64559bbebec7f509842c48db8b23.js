@@ -26,9 +26,5 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "svcDataDictionary.h", "dd/df4/svc_data_dictionary_8h.html", "dd/df4/svc_data_dictionary_8h" ],
     [ "touch.h", "d1/d4e/touch_8h.html", [
       [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ]
-    ] ],
-    [ "UI.h", "d0/d72/_u_i_8h.html", "d0/d72/_u_i_8h" ],
-    [ "ui_config_strings.h", "dd/d3a/ui__config__strings_8h.html", "dd/d3a/ui__config__strings_8h" ],
-    [ "ui_menu_structs.h", "de/d7c/ui__menu__structs_8h.html", "de/d7c/ui__menu__structs_8h" ],
-    [ "UIElement.h", "d6/d17/_u_i_element_8h.html", "d6/d17/_u_i_element_8h" ]
+    ] ]
 ];

@@ -1,4 +1,11 @@
 var searchData=
 [
-  ['value_3811',['value',['../de/d67/class_control_slider.html#af8d5ed2773e78cda0b0d5342eac2523a',1,'ControlSlider::value()'],['../d6/d17/struct_u_i_c_type.html#a5d2e876e91dd93f0ef27f499d4d6bcb0',1,'UICType::value()'],['../d0/d72/_u_i_8h.html#a638e4503e0ae6ce655b7ad2e17e8f0ad',1,'value():&#160;UI.h']]]
+  ['w_1302',['w',['../db/d69/class_app_base_class.html#a7681137fa3cb2aa9534625f1d9006970',1,'AppBaseClass']]],
+  ['widget_5fheight_1303',['widget_height',['../db/d69/class_app_base_class.html#a759c6df44dea772abc58db8867f2b93c',1,'AppBaseClass']]],
+  ['widget_5forigin_5fx_1304',['widget_origin_x',['../db/d69/class_app_base_class.html#ab64e8963a503983f937b7d659dd37b4e',1,'AppBaseClass']]],
+  ['widget_5forigin_5fy_1305',['widget_origin_y',['../db/d69/class_app_base_class.html#a6c4b0270ec71171609d675fb8fdbb2aa',1,'AppBaseClass']]],
+  ['widget_5fwidth_1306',['widget_width',['../db/d69/class_app_base_class.html#af7f8d7d2e26895cbd304112f41aa3e22',1,'AppBaseClass']]],
+  ['width_1307',['width',['../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d',1,'AppBaseClass']]],
+  ['window_1308',['window',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#aa912b4a80d03e8ed2bea94f02361b73d',1,'erisAudioAnalyzeFFT1024']]],
+  ['window_5ff32_1309',['window_f32',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#a85ffb58a9a40df085141b0b836f3008a',1,'erisAudioAnalyzeFFT1024']]]
 ];

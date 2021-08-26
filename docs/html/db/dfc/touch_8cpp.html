@@ -82,7 +82,8 @@ $(document).ready(function(){initNavTree('db/dfc/touch_8cpp.html','../../'); ini
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">touch.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -102,7 +103,7 @@ $(document).ready(function(){initNavTree('db/dfc/touch_8cpp.html','../../'); ini
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0b065f9371f4988ee9541118344ed1be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dfc/touch_8cpp.html#a0b065f9371f4988ee9541118344ed1be">MSEC_THRESHOLD</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:a0b065f9371f4988ee9541118344ed1be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dfc/touch_8cpp.html#a0b065f9371f4988ee9541118344ed1be">MSEC_THRESHOLD</a>&#160;&#160;&#160;50</td></tr>
 <tr class="separator:a0b065f9371f4988ee9541118344ed1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d00ddb2d87eb9a7f4c8287f1676ef3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dfc/touch_8cpp.html#a9d00ddb2d87eb9a7f4c8287f1676ef3d">SPI_SETTING</a>&#160;&#160;&#160;SPISettings(3000000, MSBFIRST, SPI_MODE0)</td></tr>
 <tr class="separator:a9d00ddb2d87eb9a7f4c8287f1676ef3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +111,11 @@ Macros</h2></td></tr>
 <tr class="separator:a5cd8cec6af62011935a3a4970068b2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a812b93d7d16f53447d3188c0d5c63f27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dfc/touch_8cpp.html#a812b93d7d16f53447d3188c0d5c63f27">Z_THRESHOLD_INT</a>&#160;&#160;&#160;75</td></tr>
 <tr class="separator:a812b93d7d16f53447d3188c0d5c63f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:acaa1eab013111acf9a269f11a7105c1d"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dfc/touch_8cpp.html#acaa1eab013111acf9a269f11a7105c1d">besttwoavg</a> (int16_t x, int16_t y, int16_t z)</td></tr>
+<tr class="separator:acaa1eab013111acf9a269f11a7105c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0b065f9371f4988ee9541118344ed1be"></a>
@@ -119,7 +125,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MSEC_THRESHOLD&#160;&#160;&#160;3</td>
+          <td class="memname">#define MSEC_THRESHOLD&#160;&#160;&#160;50</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -173,6 +179,72 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../db/dfc/touch_8cpp_source.html#l00005">5</a> of file <a class="el" href="../../db/dfc/touch_8cpp_source.html">touch.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="acaa1eab013111acf9a269f11a7105c1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa1eab013111acf9a269f11a7105c1d">&#9670;&nbsp;</a></span>besttwoavg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int16_t besttwoavg </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../db/dfc/touch_8cpp_source.html#l00021">21</a> of file <a class="el" href="../../db/dfc/touch_8cpp_source.html">touch.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                                               {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  int16_t da, db, dc;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  int16_t reta = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">if</span> ( x &gt; y ) da = x - y; <span class="keywordflow">else</span> da = y - x;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> ( x &gt; z ) db = x - z; <span class="keywordflow">else</span> db = z - x;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">if</span> ( z &gt; y ) dc = z - y; <span class="keywordflow">else</span> dc = y - z;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">if</span> ( da &lt;= db &amp;&amp; da &lt;= dc ) reta = (x + y) &gt;&gt; 1;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( db &lt;= da &amp;&amp; db &lt;= dc ) reta = (x + z) &gt;&gt; 1;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">else</span> reta = (y + z) &gt;&gt; 1;   <span class="comment">//    else if ( dc &lt;= da &amp;&amp; dc &lt;= db ) reta = (x + y) &gt;&gt; 1;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">return</span> (reta);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../db/dfc/touch_8cpp_source.html#l00033">Touch::update()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/dfc/touch_8cpp_acaa1eab013111acf9a269f11a7105c1d_icgraph.svg" width="598" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

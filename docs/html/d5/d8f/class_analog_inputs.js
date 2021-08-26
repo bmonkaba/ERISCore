@@ -9,5 +9,8 @@ var class_analog_inputs =
     [ "readAN2", "d5/d8f/class_analog_inputs.html#af25b231016ad4f7a4711d6bdb472d313", null ],
     [ "readAN3", "d5/d8f/class_analog_inputs.html#ade4d04a3b2269587914d433a7f27ea11", null ],
     [ "readAN4", "d5/d8f/class_analog_inputs.html#a377de243cab0ee18857220e7b1d5fc33", null ],
-    [ "update", "d5/d8f/class_analog_inputs.html#a0de9a56bcfaa560efb631be277ea8502", null ]
+    [ "update", "d5/d8f/class_analog_inputs.html#a0de9a56bcfaa560efb631be277ea8502", null ],
+    [ "ai", "d5/d8f/class_analog_inputs.html#a7cbfe719c1153447d41c7e74ad26e4cf", null ],
+    [ "lastTrigger", "d5/d8f/class_analog_inputs.html#a8535eccc492342f73b8a997309cad97c", null ],
+    [ "lastUpdate", "d5/d8f/class_analog_inputs.html#a5444b5bc7f3db3eb230cdc0cc10eca3f", null ]
 ];

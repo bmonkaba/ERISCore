@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['name_2436',['name',['../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2',1,'AppBaseClass']]],
-  ['next_5fdest_2437',['next_dest',['../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84',1,'AudioConnection']]],
-  ['nextappicationnode_2438',['nextAppicationNode',['../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873',1,'AppBaseClass']]],
-  ['note_5ffreq_2439',['note_freq',['../dc/dac/_audio_utilities_8h.html#af6d1c471accf787e079027d03a69fc35',1,'AudioUtilities.h']]],
-  ['note_5fname_2440',['note_name',['../dc/dac/_audio_utilities_8h.html#a0a239e6eab8de7c74d8679a1668fc70a',1,'AudioUtilities.h']]],
-  ['nullstr_2441',['nullStr',['../db/dc8/_audio_director_8h.html#a426c7b3dbd9cded3b276dbeace90e537',1,'AudioDirector.h']]],
-  ['num_5finputs_2442',['num_inputs',['../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1',1,'AudioStream']]],
-  ['numconnections_2443',['numConnections',['../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c',1,'AudioStream']]]
+  ['obj_1205',['obj',['../da/d96/class_app_manager.html#aa7180e9d7b6f4b58f17972057a51393b',1,'AppManager']]],
+  ['objcount_1206',['objCount',['../d8/d1c/class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d',1,'AudioDirector']]],
+  ['octave_5fdown_1207',['octave_down',['../dc/dac/_audio_utilities_8h.html#aa43b250ba4844984fd38bf7fbae75244',1,'AudioUtilities.h']]],
+  ['octave_5fup_1208',['octave_up',['../dc/dac/_audio_utilities_8h.html#abcec7f677e69d44084da437ef8fbd75c',1,'AudioUtilities.h']]],
+  ['origin_5fx_1209',['origin_x',['../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8',1,'AppBaseClass']]],
+  ['origin_5fy_1210',['origin_y',['../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed',1,'AppBaseClass']]],
+  ['osc_1211',['osc',['../d4/dde/class_app_c_q_t.html#a243f12ecbb2cb0b77c4c25e284c04a60',1,'AppCQT']]],
+  ['osc_5fbank_5fsize_1212',['osc_bank_size',['../d4/dde/class_app_c_q_t.html#a3b12d173a995e4eb5c9a8d6336bafacd',1,'AppCQT']]],
+  ['oscope_1213',['oscope',['../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36',1,'MyAppExample']]],
+  ['outputflag_1214',['outputflag',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#aea6497b66755dd3d6f96ae3286f15927',1,'erisAudioAnalyzeFFT1024']]]
 ];

@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['enabled_2386',['enabled',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#ae0014e691b676a2ff446fee87bf825b8',1,'erisAudioAnalyzeFFT1024']]],
-  ['enum_5fdata_5ftype_2387',['enum_data_type',['../d6/d17/struct_u_i_c_type.html#aae6c530a0553397be8fe375bb953a275',1,'UICType::enum_data_type()'],['../d0/d72/_u_i_8h.html#a74d414ae4529bf972cb28454a7965c29',1,'enum_data_type():&#160;UI.h']]],
-  ['enum_5flist_5ftype_2388',['enum_list_type',['../d6/d17/struct_u_i_c_type.html#a7352490841e7c50120cabef3b6fa5b06',1,'UICType::enum_list_type()'],['../d0/d72/_u_i_8h.html#a66d7737568cde1f2cda29149cdb12c03',1,'enum_list_type():&#160;UI.h']]],
-  ['estimatedfrequency_2389',['estimatedFrequency',['../d2/d28/struct_f_f_t_read_range_struct.html#ab4fc33ca163f2c990bd9adfc075a200c',1,'FFTReadRangeStruct']]],
-  ['expin_5fpos_2390',['expin_pos',['../d8/de6/class_u_i.html#a115fb0875b2df2afda3f533d8f0b5557',1,'UI']]]
+  ['edgecount_1136',['edgeCount',['../d4/d81/classeris_audio_analyze_scope.html#a800fe83b061792f94366c7dd9771feab',1,'erisAudioAnalyzeScope']]],
+  ['edgecount_5fch2_1137',['edgeCount_ch2',['../d4/d81/classeris_audio_analyze_scope.html#ae2e1088481f8ddf4965171cd64828209',1,'erisAudioAnalyzeScope']]],
+  ['edgecount_5fch2_5foutput_1138',['edgeCount_ch2_output',['../d4/d81/classeris_audio_analyze_scope.html#ac25b9543985d120d199812a7ac66a403',1,'erisAudioAnalyzeScope']]],
+  ['edgecount_5foutput_1139',['edgeCount_output',['../d4/d81/classeris_audio_analyze_scope.html#a0d884ae0ba9a5be1b7541d0455bf3c31',1,'erisAudioAnalyzeScope']]],
+  ['edgedelay_1140',['edgeDelay',['../d4/d81/classeris_audio_analyze_scope.html#a79acf7be47c23b4bfd58d6794e98edff',1,'erisAudioAnalyzeScope']]],
+  ['edgedelay2_1141',['edgeDelay2',['../d4/d81/classeris_audio_analyze_scope.html#a7f3009870c6ab30a4d289bc39ccb8108',1,'erisAudioAnalyzeScope']]],
+  ['edgedelay2_5foutput_1142',['edgeDelay2_output',['../d4/d81/classeris_audio_analyze_scope.html#ab13233d43eccb3aafa84e1b1c2846d54',1,'erisAudioAnalyzeScope']]],
+  ['edgedelay_5foutput_1143',['edgeDelay_output',['../d4/d81/classeris_audio_analyze_scope.html#a6e910e9b2ee3b9f7b5e000cd5c48a58d',1,'erisAudioAnalyzeScope']]],
+  ['edgetimer_1144',['edgeTimer',['../d4/d81/classeris_audio_analyze_scope.html#ac1e37fe5558101b63148061ef6b0462b',1,'erisAudioAnalyzeScope']]],
+  ['edgetimer2_1145',['edgeTimer2',['../d4/d81/classeris_audio_analyze_scope.html#af04b27374a4d3bb3023762b9219c2bb5',1,'erisAudioAnalyzeScope']]],
+  ['enabled_1146',['enabled',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#ae0014e691b676a2ff446fee87bf825b8',1,'erisAudioAnalyzeFFT1024']]],
+  ['estimatedfrequency_1147',['estimatedFrequency',['../d2/d28/struct_f_f_t_read_range_struct.html#ab4fc33ca163f2c990bd9adfc075a200c',1,'FFTReadRangeStruct']]]
 ];

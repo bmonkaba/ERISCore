@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "__erisAudioAnalyzeFFT1024", "d3/db2/class____eris_audio_analyze_f_f_t1024.html", "d3/db2/class____eris_audio_analyze_f_f_t1024" ],
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", "d5/d8f/class_analog_inputs" ],
+    [ "Animation", "d4/d7c/class_animation.html", "d4/d7c/class_animation" ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", "db/d69/class_app_base_class" ],
     [ "AppCQT", "d4/dde/class_app_c_q_t.html", "d4/dde/class_app_c_q_t" ],
     [ "AppManager", "da/d96/class_app_manager.html", "da/d96/class_app_manager" ],
@@ -98,8 +99,5 @@ var annotated_dup =
     [ "MyAppExample", "dd/da5/class_my_app_example.html", "dd/da5/class_my_app_example" ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", "da/dca/struct_parsed_connection" ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", "dc/d43/class_svc_data_dictionary" ],
-    [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ],
-    [ "UI", "d8/de6/class_u_i.html", "d8/de6/class_u_i" ],
-    [ "UICType", "d6/d17/struct_u_i_c_type.html", "d6/d17/struct_u_i_c_type" ],
-    [ "UIMenuType", "de/d39/struct_u_i_menu_type.html", "de/d39/struct_u_i_menu_type" ]
+    [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ]
 ];

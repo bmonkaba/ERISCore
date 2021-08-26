@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['wallpaper_3812',['wallpaper',['../de/d39/struct_u_i_menu_type.html#a7db0cb68cc48058a52b78e61542b3c58',1,'UIMenuType::wallpaper()'],['../d0/d72/_u_i_8h.html#a449edc08eb6ba350f4de1a84b7bd433f',1,'wallpaper():&#160;UI.h']]],
-  ['widget_5fheight_3813',['widget_height',['../d8/dbe/class_app_scope.html#a456ffc4c9991e391f12aa165ff03e279',1,'AppScope']]],
-  ['widget_5forigin_5fx_3814',['widget_origin_x',['../d8/dbe/class_app_scope.html#a8a547991815d64f479f99eef964fa106',1,'AppScope']]],
-  ['widget_5forigin_5fy_3815',['widget_origin_y',['../d8/dbe/class_app_scope.html#aa3d0a4b35c0166155e4fee7b70d0fb9e',1,'AppScope']]],
-  ['widget_5fwidth_3816',['widget_width',['../d8/dbe/class_app_scope.html#abbbfdee844c477e78150db0c09b51906',1,'AppScope']]],
-  ['width_3817',['width',['../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d',1,'AppBaseClass']]]
+  ['x_1310',['x',['../db/d69/class_app_base_class.html#a3d5594a6a0d365be1098e9cdb2748c3d',1,'AppBaseClass']]],
+  ['x_5fend_1311',['x_end',['../dd/da5/class_my_app_example.html#a99e65adf8428d27e8743e7a75fc8b348',1,'MyAppExample']]],
+  ['x_5flast_1312',['x_last',['../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22',1,'MyAppExample']]],
+  ['x_5fstart_1313',['x_start',['../dd/da5/class_my_app_example.html#a424e3752c8f361d3c95cd6b19d953aac',1,'MyAppExample']]],
+  ['xraw_1314',['xraw',['../d1/dff/class_touch.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
 ];
