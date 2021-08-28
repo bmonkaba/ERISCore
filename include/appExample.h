@@ -52,30 +52,30 @@ class MyAppExample:public AppBaseClass {
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
-      filter->setLowpass(0,2200);
-      filter->setLowpass(1,2400);
-      filter->setLowpass(2,2500);
-      filter->setLowpass(3,2600);
+      filter->setLowpass(0, 2200);
+       filter->setLowpass(1,2200);
+      filter->setLowpass(2,2200);
+      filter->setLowpass(3,2200);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,570);
-      filter->setLowpass(1,500);
-      filter->setLowpass(2,433);
-      filter->setLowpass(3,400);
+      filter->setLowpass(0,911);
+      filter->setLowpass(1,703);
+      filter->setLowpass(2,533);
+      filter->setLowpass(3,337);
       
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_3"));
       filter->setLowpass(0,8200);
       
       filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
-      filter->setHighpass(0,2400);
+      filter->setLowpass(0,12400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad.getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(0.39);
       reverb->damping(0.42);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
-      mix->gain(2,0.0);
+      mix->gain(2,10.0);
 
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);
@@ -204,7 +204,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_2"));
 
       AudioNoInterrupts();
-      amp->gain(6*log1p(fval));
+      amp->gain(24*log1p(fval));
       AudioInterrupts();
     };
     
@@ -215,9 +215,9 @@ class MyAppExample:public AppBaseClass {
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
       filter->setLowpass(0,601.0 + (16141.0 * fval));
-      filter->setLowpass(1,727.0 + (11279.0 * fval));
-      filter->setLowpass(2,857.0 + (9137.0 * fval));
-      filter->setLowpass(3,919.0 + (8221.0 * fval));
+      filter->setLowpass(1,727.0 + (14279.0 * fval));
+      filter->setLowpass(2,857.0 + (13137.0 * fval));
+      filter->setLowpass(3,919.0 + (12221.0 * fval));
       mixer->gain(0,log1p(1));
       AudioInterrupts();
     };
@@ -227,13 +227,13 @@ class MyAppExample:public AppBaseClass {
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad.getAudioStreamObjByName("biquad_4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad.getAudioStreamObjByName("mixer_1"));
-      float hp = 2400.0 + (2400.0 * log1p(10.0*fval));
-      float lp = 150.0 + (300.0 * log1p(10.0*fval));
-      float gain = log1p(fval);
+      //float lp = 2400.0 + (12400.0 * log1p(10.0*fval));
+      float hp = 150.0 + (16000.0 * log1p(10.0*fval));
+      float gain = fval;
       AudioNoInterrupts();
-      filter->setHighpass(0,hp);
-      filter->setLowpass(0,lp);
-      mixer->gain(2,gain);
+      //filter->setHighpass(1,hp);
+      filter->setLowpass(0,hp);
+      mixer->gain(2,3.0);
       AudioInterrupts();
     };
 
@@ -241,7 +241,7 @@ class MyAppExample:public AppBaseClass {
       //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad.getAudioStreamObjByName("amp_1"));
-      float gain = log1p(9.0 * fval);
+      float gain = 3*log1p(9.0 * fval);
       AudioNoInterrupts();
       amp->gain(gain);
       AudioInterrupts();
@@ -263,8 +263,8 @@ class MyAppExample:public AppBaseClass {
 
       //input through filter 3 to the master mixer
       ad.connect("i2s-in_1 1 biquad_4 2");//HP
-      //ad.connect("biquad_4 0 mixer_1 2");
-      ad.connect("i2s-in_1 1 mixer_1 2");
+      ad.connect("biquad_4 0 mixer_1 2");
+     // ad.connect("i2s-in_1 1 mixer_1 2");
 
       //master mixer to the output amp
       ad.connect("mixer_1 0 amp_1 0");

@@ -26,7 +26,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 14
+#define OSC_BANK_SIZE 15
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -188,10 +188,10 @@ class AppCQT:public AppBaseClass {
       //if (rt_calls < 10000) return;    
       if (fft2->capture() && fft->capture()){
         AudioNoInterrupts();
-        fft2->analyze();
+        fft->analyze();
         AudioInterrupts();
         AudioNoInterrupts();
-        fft->analyze();
+        fft2->analyze();
         AudioInterrupts();
         updateOscillatorBank(true);
         updateOscillatorBank(false);
@@ -239,24 +239,49 @@ class AppCQT:public AppBaseClass {
     void updateOscillatorBank(bool low_range_switch){
       bool found;
       float floor;
-      floor = 0.00010;
+      floor = 0.0000010;
       
       if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
       else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
 
+      float peak_read=-1000;
+      uint16_t peak_bin=0;
+      float peak;
       for (uint16_t i=0; i < NOTE_ARRAY_LENGTH; i++){
-        if (low_range_switch){fft2->read(&fftLowRR[i]); 
-        } else fft->read(&fftHighRR[i]);
+        if (low_range_switch) peak = fft2->read(&fftLowRR[i]);
+        else peak = fft->read(&fftHighRR[i]);
+        if (peak>peak_read){
+            peak_read = peak;
+            peak_bin = i;
+        }
       }
 
-
+      //filter out odd harmonics
+      if (low_range_switch){
+        bool isEven = (peak_bin%2==0);
+        if(isEven){
+          for(uint16_t i=1; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.2;  
+        } else for(uint16_t i=0; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.2;
+      }else{
+         bool isEven = (fftHighRR[0].cqtBin%2==0);
+        if(isEven){
+          for(uint16_t i=1; i < osc_bank_size; i+=2){
+            if((fftHighRR[i].stopBin - fftHighRR[i].startBin) < 5) fftHighRR[i].avgValueFast *= 0.2;
+            //high freq tilt
+            fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.05; 
+          }
+        } else for(uint16_t i=0; i < osc_bank_size; i+=2){
+            if((fftHighRR[i].stopBin - fftHighRR[i].startBin) < 5) fftHighRR[i].avgValueFast *= 0.2;
+            //high freq tilt
+            fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.05; 
+          }
+      }
 
       //sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
 
-
-
+    
       //Add the new osc settings
       //low range
       if (low_range_switch){
@@ -319,22 +344,23 @@ class AppCQT:public AppBaseClass {
       };
     */
      
+     pll_p = 0.0;
 
      float ch1_f = AppManager::getInstance()->data.read("CH1_FREQ");
      float ch2_f = AppManager::getInstance()->data.read("CH2_FREQ");
      int32_t das = AppManager::getInstance()->data.read("DOT_AVG_SLOW");
-     if (ch1_f>ch2_f){
+     if ((ch1_f*octave_down[0])>ch2_f){
         pll_f += 0.00001;
      } else if (ch1_f<ch2_f){
         pll_f -= 0.00001;
      } else{
         //pll_f = 1.0;
         if (das<0){
-          pll_f += 0.000001;
-          pll_p += 0.001 * abs(das);
+          pll_f += 0.00001;
+          pll_p += 1 * abs(das);
         } else if (das>0){
-          pll_f -= 0.000001;
-          pll_p -= 0.001 * abs(das);
+          pll_f -= 0.00001;
+          pll_p -= 0.1 * abs(das);
         };
      }
 
@@ -365,10 +391,10 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = ((oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = ((oscBank[i].peakValue)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
-              if (a > (1.0/(float)OSC_BANK_SIZE)) a = 0;
+              if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;

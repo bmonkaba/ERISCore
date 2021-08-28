@@ -14,7 +14,7 @@
 
 #define MAX_NAME_LENGTH 24
 #define ENABLE_ASYNC_SCREEN_UPDATES
-#define DISPLAY_UPDATE_PERIOD 20
+#define DISPLAY_UPDATE_PERIOD 36
 #define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 
@@ -192,14 +192,12 @@ class AppManager {
           //background was updated this loop.. on the next loop draw the objects
           //tft.bltSDFullScreen("bluehex.ile");
           //tft.fillRect(0, 0, 320, 240, 7565);
-          //redraw_objects = true;
-          //redraw_background=false;
-          
           if (animated_wallpaper.getNextFrameChunk(&sd)){
+              
               tft.bltSDAnimationFullScreen(&animated_wallpaper);
-              //Serial.println(F("AppManager::FrameChunk"));
+              
           }
-          if (animated_wallpaper.isFrameComplete()){
+          if (true | animated_wallpaper.isFrameComplete()){
             //Serial.println(F("AppManager::FrameComplete"));
             redraw_objects = true;
             redraw_background=false;

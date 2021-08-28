@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 10
+#define ANIMATION_CHUNKS_PER_FRAME 1
 
 bool Animation::getNextFrameChunk(SdFs *pSD){
     if (chunk==0){

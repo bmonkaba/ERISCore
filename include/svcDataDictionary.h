@@ -53,7 +53,7 @@ class SvcDataDictionary{
         int32_t read(const char* key){
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
-                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN)) ) return _val[i];
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))) return _val[i];
             }
             //key not found
             return 0;
@@ -62,7 +62,7 @@ class SvcDataDictionary{
         bool update(const char* key,int32_t val){
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
-                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN)) ){
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))){
                     _val[i] = val;
                     return true;
                 }

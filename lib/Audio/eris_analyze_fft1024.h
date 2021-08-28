@@ -196,7 +196,7 @@ public:
 				fftRR->phase = phase[fftRR->peakBin];
 			}else fftRR->phase = phase[fftRR->peakBin];
 		} 
-		return powerf;
+		return maxf;
 	}
 	float read(FFTReadRange *fftRR){
 		return read(fftRR->startFrequency, fftRR->stopFrequency, fftRR);
@@ -209,8 +209,8 @@ public:
 		unsigned int start_bin;
 		unsigned int stop_bin;
 
-		bw = (AUDIO_SAMPLE_RATE_EXACT / (float)subsample_by)/4.0;
-		bin_size = bw/512.0f;
+		bw = AUDIO_SAMPLE_RATE_EXACT/2.0/(float)subsample_by;
+		bin_size = bw/1024.0f;
 		start_bin = (unsigned int)(freq_from / bin_size);
 		stop_bin = (unsigned int)(freq_to / bin_size);
 		if (start_bin > 511 || stop_bin > 511){
@@ -257,7 +257,7 @@ public:
 		if(fftRR){
 			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
 			fftRR->peakValue = (fftRR->peakValue * 0.707)/ 100.0;
-			//fftRR->peakValue = log10f(fftRR->peakValue * bin_size);
+			fftRR->peakValue = log1p(fftRR->peakValue);
 			
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
