@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['waveform_5farbitrary_1434',['WAVEFORM_ARBITRARY',['../de/db5/eris__synth__waveform_8h.html#a057e6fc51e7e44873c0488f6ffb20296',1,'eris_synth_waveform.h']]],
-  ['waveform_5fpulse_1435',['WAVEFORM_PULSE',['../de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905',1,'eris_synth_waveform.h']]],
-  ['waveform_5fsample_5fhold_1436',['WAVEFORM_SAMPLE_HOLD',['../de/db5/eris__synth__waveform_8h.html#a538043fe947ae9c5e59fe2fa4abf9ab2',1,'eris_synth_waveform.h']]],
-  ['waveform_5fsawtooth_1437',['WAVEFORM_SAWTOOTH',['../de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8',1,'eris_synth_waveform.h']]],
-  ['waveform_5fsawtooth_5freverse_1438',['WAVEFORM_SAWTOOTH_REVERSE',['../de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187',1,'eris_synth_waveform.h']]],
-  ['waveform_5fsine_1439',['WAVEFORM_SINE',['../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9',1,'eris_synth_waveform.h']]],
-  ['waveform_5fsquare_1440',['WAVEFORM_SQUARE',['../de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468',1,'eris_synth_waveform.h']]],
-  ['waveform_5ftriangle_1441',['WAVEFORM_TRIANGLE',['../de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3',1,'eris_synth_waveform.h']]],
-  ['waveform_5ftriangle_5fvariable_1442',['WAVEFORM_TRIANGLE_VARIABLE',['../de/db5/eris__synth__waveform_8h.html#a24ee98dbaa3894cdd365968f378c20a9',1,'eris_synth_waveform.h']]]
+  ['tap_5finput_1474',['TAP_INPUT',['../de/d10/_h_s_i_8h.html#adc0e0e96b45f4b7d0e3667db2e3504f6',1,'HSI.h']]],
+  ['tft_5fcs_1475',['TFT_CS',['../de/d10/_h_s_i_8h.html#a5f4d46ae101b77df78010c506601c87c',1,'HSI.h']]],
+  ['tft_5fdc_1476',['TFT_DC',['../de/d10/_h_s_i_8h.html#a51529307207622c113ff0d584536be13',1,'HSI.h']]],
+  ['tft_5fled_5fpwm_1477',['TFT_LED_PWM',['../de/d10/_h_s_i_8h.html#a1f14cc5ea103357f65b114c83b438091',1,'HSI.h']]],
+  ['tft_5fmiso_1478',['TFT_MISO',['../de/d10/_h_s_i_8h.html#ac108dd4310833bbb4afd1bce1090d55f',1,'HSI.h']]],
+  ['tft_5fmosi_1479',['TFT_MOSI',['../de/d10/_h_s_i_8h.html#a4db639d2d88a53132a529677e6dd795c',1,'HSI.h']]],
+  ['tft_5freset_1480',['TFT_RESET',['../de/d10/_h_s_i_8h.html#af81ec4b4eb708da6c9c39a6c5aa1aa4b',1,'HSI.h']]],
+  ['tft_5fsclk_1481',['TFT_SCLK',['../de/d10/_h_s_i_8h.html#a095a96cc6abc991346d7b6712f8576b5',1,'HSI.h']]],
+  ['trigger_5fdelta_1482',['TRIGGER_DELTA',['../d3/ddb/_analog_inputs_8h.html#aa782ecfe0f6bd8112c6b386ccf5ac918',1,'AnalogInputs.h']]],
+  ['tx_5fcqt_5fperiod_1483',['TX_CQT_PERIOD',['../d4/d75/app_c_q_t_8h.html#a9ebfb6b2cc5819364cf740b029af8371',1,'appCQT.h']]],
+  ['tx_5fperiod_1484',['TX_PERIOD',['../d4/d75/app_c_q_t_8h.html#a6043a8f2fa308ddb4cbe148f6b76a6c5',1,'appCQT.h']]]
 ];

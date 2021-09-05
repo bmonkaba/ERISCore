@@ -10,8 +10,10 @@
  */
 #include "AppManager.h"
 
-#define MAX_BUTTON_TEXT_LENGTH 16
-#define SHOW_ACTIVE_TIME_MILLISEC 500
+#define MAX_BUTTON_TEXT_LENGTH 12
+#define SHOW_ACTIVE_TIME_MILLISEC 150
+
+extern const ILI9341_t3_font_t Arial_9;
 
 // Button 
 //
@@ -20,6 +22,7 @@ class ControlButton:public AppBaseClass {
   public:
     ControlButton(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
+        isDirty = true;
         isPressed = false;
         show_active = false;
         time_active = 0;
@@ -35,24 +38,29 @@ class ControlButton:public AppBaseClass {
     char text[MAX_BUTTON_TEXT_LENGTH];
 
   protected:
+    bool isDirty;
     bool isPressed;
     elapsedMillis time_active;
     bool show_active;
     void update(){
-        tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
-        if (show_active){
-            //tft.bltSD("/I/U/W","greenhex.ile",origin_x,origin_y,AT_NONE);
-            tft.drawRoundRect(x,y,w,h,4,ILI9341_GREENYELLOW);
-            if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+        isDirty = true;
+        
+        if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
                 show_active = false;
-            }
-        } else{
-            //tft.bltSD("/I/U/W","redhex.ile",origin_x,origin_y,AT_NONE);
-            tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
+                isDirty = true;
+                time_active = 0;
         }
-        tft.setCursor(x+(w/2),y+(h/2),true);
-        tft.setFont(Arial_9);
-        tft.print(text);
+        if (!isDirty) return;
+        draw->fillRoundRect(x,y,w,h,3,CL(12,0,20));
+        if (show_active){
+            draw->drawRoundRect(x,y,w,h,4,ILI9341_GREENYELLOW);
+        } else{
+            draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
+        }
+        draw->setCursor(x+(w/2),y+(h/2),true);
+        draw->setFont(Arial_9);
+        draw->print(text);
+        isDirty = false;
     };
     void onFocusLost(){isPressed=false;};
     void onTouch(uint16_t t_x, uint16_t t_y){
@@ -62,6 +70,7 @@ class ControlButton:public AppBaseClass {
             //Serial.println("MyButton:onTouch Button Pressed");
             isPressed = true;
             show_active = true;
+            isDirty = true;
         }
     };
     void onTouchRelease(uint16_t t_x, uint16_t t_y){
@@ -71,5 +80,6 @@ class ControlButton:public AppBaseClass {
         }
         isPressed = false;
         time_active = 0;
+        isDirty = true;
     };
 };

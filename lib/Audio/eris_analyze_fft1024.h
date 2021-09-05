@@ -63,7 +63,6 @@ typedef struct FFTReadRangeStruct{
 	float peakValue;
 	float avgValueFast;				//used to calc moving average convergence / divergence (MACD) 
 	float avgValueSlow; 			//by comparing a short and long moving average; slow transient detection
-	float macdValue;
 	float transientValue;			//difference between the peak and fast peak values
 	float phase;
 	uint16_t cqtBin;		// Provided by the caller
@@ -246,7 +245,6 @@ public:
 				fftRR->peakValue=0;
 				fftRR->avgValueFast=0;				//used to calc moving average convergence / divergence (MACD) 
 				fftRR->avgValueSlow=0; 			//by comparing a short and long moving average; slow transient detection
-				fftRR->macdValue=0;
 				fftRR->transientValue=0;			//difference between the peak and fast peak values
 			}
 			return 0;
@@ -284,8 +282,6 @@ public:
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
 				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
-				
-				fftRR->macdValue = fftRR->avgValueFast - fftRR->avgValueSlow;
 				fftRR->transientValue = fabs(fftRR->peakValue - fftRR->avgValueSlow);
 			}
 		}

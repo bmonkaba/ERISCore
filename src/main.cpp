@@ -12,12 +12,12 @@
 #include "PCM1863.h"
 
 uint16_t inc;
-MyAppExample *app;
-AppSerialCommandInterface *appSCI;
-AppReprogram *appReprogram;
+MyAppExample app;
+AppSerialCommandInterface appSCI;
+AppReprogram appReprogram;
 //AppTemplate appTemplate;
 
-void setup() {
+void FLASHMEM setup() {
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.
@@ -28,12 +28,12 @@ void setup() {
   delay(500);
   Serial.begin(3000000);//baud rate is ignored by the library as it's fixed at max USB speed
   if (digitalRead(TAP_INPUT) == LOW && digitalRead(SW_D) == LOW){
-            Serial.println("setup: Power on reset request to enter programming mode in 5 seconds.");
-            delay(5000);
+            Serial.println(F("setup: Power on reset request to enter programming mode in 5 seconds."));
+            delay(1000);
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
-  //while(!Serial); //DEBUG - wait for serial connection
+  while(!Serial); //DEBUG - wait for serial connection
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
   Serial.println(F("Setup: Initalizing"));
@@ -41,14 +41,13 @@ void setup() {
   I2CReset();
   ExtADCConfig();
   //I2CBusScan();
-  touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
-  touch.setRotation(3);
+  
   Serial.println(F("Setup: Loading Applications"));
-  app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
-  appReprogram = new AppReprogram();
-  appSCI = new AppSerialCommandInterface();
+  //app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
+  //appReprogram = new AppReprogram();
+  //appSCI = new AppSerialCommandInterface();
   //AppManager::getInstance()->getFocus(app->getId()); //focus is requested by obj id
-  app->getFocus();
+  app.getFocus();
   Serial.println(F("Setup: Configuring the sw audio block connections"));
   Serial.println(F("Setup: Init Complete"));
   Serial.print(F("Ext ADC Operating State (15:RUNNING): "));

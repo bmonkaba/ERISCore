@@ -122,7 +122,7 @@ void erisAudioAnalyzeScope::update(void)
 					if (block->data[i] > 0 && block->data[i-1] < 0){
 						offset = i;
 						if(isDualChannel){
-							if (1 | blockb->data[i] > 0){
+							if (blockb->data[i] > 0){
 								found = true;
 							}
 						}else found = true;

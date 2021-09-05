@@ -19,31 +19,54 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#ifndef _svcDataDictionary_
+#define _svcDataDictionary_
 
-#define DATADICT_KEYVALUE_PAIRS 40
+#define DATADICT_KEYVALUE_PAIRS 48
 #define DATADICT_MAX_KEY_LEN 32
+
+enum svcDataDictionaryRecordType{
+    READ,
+    READWRITE,
+    POINTER
+};
+
+typedef struct svcDataDictionaryRecord
+{
+    /* value data */
+    int32_t val;
+    uint32_t *owner;
+    int32_t *pval;
+    svcDataDictionaryRecordType record_type;
+}svcDataDictionaryRecord;
+
 
 class SvcDataDictionary{
     private:
         char _key[DATADICT_KEYVALUE_PAIRS][DATADICT_MAX_KEY_LEN];
-        int32_t _val[DATADICT_KEYVALUE_PAIRS];
+        svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
         uint16_t next;
     public:
         SvcDataDictionary(){
             next=0;
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
-                _val[i] = 0;
-                memset(_key[i],DATADICT_MAX_KEY_LEN,sizeof(char));
+                record[i].owner = 0;
+                record[i].val = 0;
+                record[i].pval = 0;
+                record[i].record_type = READWRITE;
+                memset(_key[i],DATADICT_MAX_KEY_LEN,sizeof(_key[i]));
             }
         }
 
         bool create(const char* key,int32_t val){
             //if dictionary full
             if (next == DATADICT_KEYVALUE_PAIRS) return false;
+            //TODO: ensure key doesn't already exist before creating a new record
+            
             //else
             if(strlen(key) < DATADICT_MAX_KEY_LEN){
                 strcpy(_key[next],key);
-                _val[next] = val;
+                record[next].val = val;
                 next++;
                 return true;
             }
@@ -53,7 +76,7 @@ class SvcDataDictionary{
         int32_t read(const char* key){
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
-                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))) return _val[i];
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))) return record[i].val;
             }
             //key not found
             return 0;
@@ -63,12 +86,29 @@ class SvcDataDictionary{
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 //key found
                 if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))){
-                    _val[i] = val;
+                    record[i].val = val;
                     return true;
                 }
             }
             //key not found - try to create a new record
             return create(key, val);
+        }
+
+        bool increment(const char* key){
+            int index = -1;
+            for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
+                //key found
+                if ((0==strncmp(_key[i],key,DATADICT_MAX_KEY_LEN))){
+                    index = i;
+                    break;
+                }
+            }
+            if (index == -1){
+                if (!create(key,0)) return false;
+                index = next -1;
+            }
+            record[index].val++;
+            return true;
         }
 
         //serial interface
@@ -82,11 +122,14 @@ class SvcDataDictionary{
             Serial.print("DD {");
 
             for(int i=0;i<next;i++){
-                Serial.printf("\"%s\":%d",_key[i],_val[i]);
+                Serial.printf("\"%s\":%d",_key[i],record[i].val);
                 if (i != next-1) Serial.print(",");
+                Serial.flush();
             }
             Serial.println("}");
             Serial.flush();
         }
 
 };
+
+#endif

@@ -2373,7 +2373,7 @@ static const uint8_t init_commands[] = {4,
                                         0x10, // FrameRate Control 119Hz
                                         0};
 
-FLASHMEM void ILI9341_t3n::begin(uint32_t spi_clock, uint32_t spi_clock_read) {
+void ILI9341_t3n::begin(uint32_t spi_clock, uint32_t spi_clock_read) {
   // verify SPI pins are valid;
   // allow user to say use current ones...
   _SPI_CLOCK = spi_clock;           // #define ILI9341_SPICLOCK 30000000

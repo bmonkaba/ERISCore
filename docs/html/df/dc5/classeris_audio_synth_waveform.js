@@ -8,7 +8,7 @@ var classeris_audio_synth_waveform =
     [ "begin", "df/dc5/classeris_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f", null ],
     [ "frequency", "df/dc5/classeris_audio_synth_waveform.html#a395cff98439e97ba08854b343eed4317", null ],
     [ "getPhase", "df/dc5/classeris_audio_synth_waveform.html#ac69834f59c2509a53eb458711eaef912", null ],
-    [ "initialize_memory", "df/dc5/classeris_audio_synth_waveform.html#ad67ffec5f3c12bea5a3695e1b6f7068c", null ],
+    [ "initialize_memory", "df/dc5/classeris_audio_synth_waveform.html#aae750491f0dbedac3bd763d6dc62c1bb", null ],
     [ "isActive", "df/dc5/classeris_audio_synth_waveform.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
     [ "offset", "df/dc5/classeris_audio_synth_waveform.html#ad70a484961cd7107e1d5b5132ae4d1f5", null ],
     [ "phase", "df/dc5/classeris_audio_synth_waveform.html#ad43a5ae00497ef4a163767a245a0919f", null ],

@@ -82,20 +82,22 @@ $(document).ready(function(){initNavTree('db/d6b/app_serial_command_interface_8h
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">appSerialCommandInterface.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d2c/globaldefs_8h_source.html">globaldefs.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>&quot;</code><br />
+<code>#include &quot;SdFat-beta.h&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for appSerialCommandInterface.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/d90/app_serial_command_interface_8h__incl.svg" width="100%" height="575"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/d90/app_serial_command_interface_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -103,7 +105,7 @@ $(document).ready(function(){initNavTree('db/d6b/app_serial_command_interface_8h
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d8e/app_serial_command_interface_8h__dep__incl.svg" width="302" height="152"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d8e/app_serial_command_interface_8h__dep__incl.svg" width="534" height="152"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -113,28 +115,6 @@ $(document).ready(function(){initNavTree('db/d6b/app_serial_command_interface_8h
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dad/class_app_serial_command_interface.html">AppSerialCommandInterface</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a9da45ab810e3bd9b433bcac761b99221"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#a9da45ab810e3bd9b433bcac761b99221">SERIAL_AUTO_TRANSMIT_DATA_PERIOD</a>&#160;&#160;&#160;40</td></tr>
-<tr class="separator:a9da45ab810e3bd9b433bcac761b99221"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa965a565bc48134c92eb0be99e196d39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#aa965a565bc48134c92eb0be99e196d39">SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY</a></td></tr>
-<tr class="separator:aa965a565bc48134c92eb0be99e196d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bbe063c9ff2ad8940b615fdab34110d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#a5bbe063c9ff2ad8940b615fdab34110d">SERIAL_FILESTREAM_PAYLOAD_SIZE</a>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:a5bbe063c9ff2ad8940b615fdab34110d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfe80eb43785493f268187a201692d8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#abfe80eb43785493f268187a201692d8e">SERIAL_OUTPUT_BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="separator:abfe80eb43785493f268187a201692d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c22e2c6abc159d7fafbeb6d43e4c968"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#a5c22e2c6abc159d7fafbeb6d43e4c968">SERIAL_PARAM_BUFFER_SIZE</a>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:a5c22e2c6abc159d7fafbeb6d43e4c968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bebf7301603ccdf9533cb9aa41c08ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#a2bebf7301603ccdf9533cb9aa41c08ef">SERIAL_POLLING_RATE_MAX</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a2bebf7301603ccdf9533cb9aa41c08ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba0ceec384cf3acb51e0d6f45f31379c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:aba0ceec384cf3acb51e0d6f45f31379c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a0f3daef760195868b4aef06728c4119f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6b/app_serial_command_interface_8h.html#a0f3daef760195868b4aef06728c4119f">replacechar</a> (char *str, char orig, char rep)</td></tr>
-<tr class="separator:a0f3daef760195868b4aef06728c4119f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Brian Monkaba (<a href="#" onclick="location.href='mai'+'lto:'+'bri'+'an'+'.mo'+'nk'+'aba'+'@g'+'mai'+'l.'+'com'; return false;">brian<span style="display: none;">.nosp@m.</span>.mon<span style="display: none;">.nosp@m.</span>kaba@<span style="display: none;">.nosp@m.</span>gmai<span style="display: none;">.nosp@m.</span>l.com</a>) </dd></dl>
@@ -143,176 +123,7 @@ Functions</h2></td></tr>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a9da45ab810e3bd9b433bcac761b99221"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da45ab810e3bd9b433bcac761b99221">&#9670;&nbsp;</a></span>SERIAL_AUTO_TRANSMIT_DATA_PERIOD</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_AUTO_TRANSMIT_DATA_PERIOD&#160;&#160;&#160;40</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00052">52</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="aa965a565bc48134c92eb0be99e196d39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa965a565bc48134c92eb0be99e196d39">&#9670;&nbsp;</a></span>SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00051">51</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="a5bbe063c9ff2ad8940b615fdab34110d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bbe063c9ff2ad8940b615fdab34110d">&#9670;&nbsp;</a></span>SERIAL_FILESTREAM_PAYLOAD_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_FILESTREAM_PAYLOAD_SIZE&#160;&#160;&#160;128</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00049">49</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="abfe80eb43785493f268187a201692d8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfe80eb43785493f268187a201692d8e">&#9670;&nbsp;</a></span>SERIAL_OUTPUT_BUFFER_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_OUTPUT_BUFFER_SIZE&#160;&#160;&#160;1024</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00048">48</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="a5c22e2c6abc159d7fafbeb6d43e4c968"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c22e2c6abc159d7fafbeb6d43e4c968">&#9670;&nbsp;</a></span>SERIAL_PARAM_BUFFER_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_PARAM_BUFFER_SIZE&#160;&#160;&#160;128</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00047">47</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="a2bebf7301603ccdf9533cb9aa41c08ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bebf7301603ccdf9533cb9aa41c08ef">&#9670;&nbsp;</a></span>SERIAL_POLLING_RATE_MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_POLLING_RATE_MAX&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00045">45</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<a id="aba0ceec384cf3acb51e0d6f45f31379c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba0ceec384cf3acb51e0d6f45f31379c">&#9670;&nbsp;</a></span>SERIAL_RX_BUFFER_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SERIAL_RX_BUFFER_SIZE&#160;&#160;&#160;128</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00046">46</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a0f3daef760195868b4aef06728c4119f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f3daef760195868b4aef06728c4119f">&#9670;&nbsp;</a></span>replacechar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int replacechar </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>orig</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>rep</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00054">54</a> of file <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                                {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">char</span> *ix = str;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> n = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">while</span>((ix = strchr(ix, orig)) != NULL) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        *ix++ = rep;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        n++;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-</div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00163">AppSerialCommandInterface::updateRT()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d6b/app_serial_command_interface_8h_a0f3daef760195868b4aef06728c4119f_icgraph.svg" width="387" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

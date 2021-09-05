@@ -202,12 +202,14 @@ textarea {
              Serial Transmit
              <form id="sent">
               <textarea id="cmd_value" name="asdf" rows="10" cols="40">
+AUDIO_NO_INTERRUPTS
 DISCONNECT fft1024_1 0
 DISCONNECT fft1024_2 0
 CONNECT waveform_16 0 scope_1 0
 CONNECT waveform_16 0 fft1024_1 0
 CONNECT waveform_16 0 fft1024_2 0
 DISCONNECT mixer_5 3
+AUDIO_INTERRUPTS
 AA 220
 </textarea><br>
                   <button id="cmd_send">Send</button>  

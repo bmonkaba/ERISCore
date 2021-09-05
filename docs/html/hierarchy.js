@@ -251,6 +251,7 @@ var hierarchy =
     ] ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
+    [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
     [ "XPT2046_Touchscreen", null, [
       [ "Touch", "d1/dff/class_touch.html", null ]
     ] ]

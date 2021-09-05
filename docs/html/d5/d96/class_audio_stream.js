@@ -3,7 +3,7 @@ var class_audio_stream =
     [ "AudioStream", "d5/d96/class_audio_stream.html#ab2e106f7e2f70f0cfb1d7b171da71f16", null ],
     [ "AudioStream", "d5/d96/class_audio_stream.html#af2e5c5dbc5f0b1cf74a2067d6f23a010", null ],
     [ "allocate", "d5/d96/class_audio_stream.html#a362f8375c64deaef923207f442b674db", null ],
-    [ "initialize_memory", "d5/d96/class_audio_stream.html#ad67ffec5f3c12bea5a3695e1b6f7068c", null ],
+    [ "initialize_memory", "d5/d96/class_audio_stream.html#aae750491f0dbedac3bd763d6dc62c1bb", null ],
     [ "isActive", "d5/d96/class_audio_stream.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
     [ "processorUsage", "d5/d96/class_audio_stream.html#a8b64af9348ca38d5374514343fb78382", null ],
     [ "processorUsageMax", "d5/d96/class_audio_stream.html#a3a97d8e3b9d63b1cb6c4544d3aa040f2", null ],

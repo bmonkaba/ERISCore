@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parsedconnection_767',['ParsedConnection',['../da/dca/struct_parsed_connection.html',1,'']]]
+  ['parsedconnection_792',['ParsedConnection',['../da/dca/struct_parsed_connection.html',1,'']]]
 ];

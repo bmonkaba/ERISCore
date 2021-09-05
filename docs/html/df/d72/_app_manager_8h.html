@@ -82,21 +82,20 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h.html','../../')
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">AppManager.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
-<code>#include &lt;deque&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d2c/globaldefs_8h_source.html">globaldefs.h</a>&quot;</code><br />
+<code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../de/d10/_h_s_i_8h_source.html">HSI.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d1/d4e/touch_8h_source.html">touch.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/ddb/_analog_inputs_8h_source.html">AnalogInputs.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dc8/_audio_director_8h_source.html">AudioDirector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for AppManager.h:</div>
@@ -119,35 +118,8 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h.html','../../')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d96/class_app_manager.html">AppManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a7f577a945f09a83065eb29f7735f674b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a7f577a945f09a83065eb29f7735f674b">APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC</a>&#160;&#160;&#160;500</td></tr>
-<tr class="separator:a7f577a945f09a83065eb29f7735f674b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dd7d3fffe12cd8607ba41b1a10eda0c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a1dd7d3fffe12cd8607ba41b1a10eda0c">DISPLAY_UPDATE_PERIOD</a>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:a1dd7d3fffe12cd8607ba41b1a10eda0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec62f4713e992fb7868b21869cddb961"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#aec62f4713e992fb7868b21869cddb961">ENABLE_ASYNC_SCREEN_UPDATES</a></td></tr>
-<tr class="separator:aec62f4713e992fb7868b21869cddb961"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c397a708cec89c74029582574516b30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a0c397a708cec89c74029582574516b30">MAX_NAME_LENGTH</a>&#160;&#160;&#160;24</td></tr>
-<tr class="separator:a0c397a708cec89c74029582574516b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a02651bfd33ab4b159cf8e4e3ee120c2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html">ILI9341_t3_ERIS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a02651bfd33ab4b159cf8e4e3ee120c2f">tft</a> (<a class="el" href="../../de/d10/_h_s_i_8h.html#a5f4d46ae101b77df78010c506601c87c">TFT_CS</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a51529307207622c113ff0d584536be13">TFT_DC</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#af81ec4b4eb708da6c9c39a6c5aa1aa4b">TFT_RESET</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a4db639d2d88a53132a529677e6dd795c">TFT_MOSI</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a095a96cc6abc991346d7b6712f8576b5">TFT_SCLK</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#ac108dd4310833bbb4afd1bce1090d55f">TFT_MISO</a>)</td></tr>
-<tr class="separator:a02651bfd33ab4b159cf8e4e3ee120c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e2de6cc6534b42211780387e8a2568"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/dff/class_touch.html">Touch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a08e2de6cc6534b42211780387e8a2568">touch</a> (<a class="el" href="../../de/d10/_h_s_i_8h.html#ab88a77c2b507fd37ff28af2cdfd8de72">CS_TOUCH</a>)</td></tr>
-<tr class="separator:a08e2de6cc6534b42211780387e8a2568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a006a96f275f1ff9181d61fd882ecc76a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a006a96f275f1ff9181d61fd882ecc76a">ad</a></td></tr>
-<tr class="separator:a006a96f275f1ff9181d61fd882ecc76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eec6508ad3423ae351f1830e8e7afb6"><td class="memItemLeft" align="right" valign="top">const ILI9341_t3_font_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d72/_app_manager_8h.html#a6eec6508ad3423ae351f1830e8e7afb6">Arial_9</a></td></tr>
-<tr class="separator:a6eec6508ad3423ae351f1830e8e7afb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Brian Monkaba (<a href="#" onclick="location.href='mai'+'lto:'+'bri'+'an'+'.mo'+'nk'+'aba'+'@g'+'mai'+'l.'+'com'; return false;">brian<span style="display: none;">.nosp@m.</span>.mon<span style="display: none;">.nosp@m.</span>kaba@<span style="display: none;">.nosp@m.</span>gmai<span style="display: none;">.nosp@m.</span>l.com</a>) </dd></dl>
@@ -156,206 +128,7 @@ Variables</h2></td></tr>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a7f577a945f09a83065eb29f7735f674b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f577a945f09a83065eb29f7735f674b">&#9670;&nbsp;</a></span>APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC&#160;&#160;&#160;500</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00018">18</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-
-</div>
-</div>
-<a id="a1dd7d3fffe12cd8607ba41b1a10eda0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dd7d3fffe12cd8607ba41b1a10eda0c">&#9670;&nbsp;</a></span>DISPLAY_UPDATE_PERIOD</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DISPLAY_UPDATE_PERIOD&#160;&#160;&#160;20</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00017">17</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-
-</div>
-</div>
-<a id="aec62f4713e992fb7868b21869cddb961"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec62f4713e992fb7868b21869cddb961">&#9670;&nbsp;</a></span>ENABLE_ASYNC_SCREEN_UPDATES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ENABLE_ASYNC_SCREEN_UPDATES</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00016">16</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-
-</div>
-</div>
-<a id="a0c397a708cec89c74029582574516b30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c397a708cec89c74029582574516b30">&#9670;&nbsp;</a></span>MAX_NAME_LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_NAME_LENGTH&#160;&#160;&#160;24</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00015">15</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a02651bfd33ab4b159cf8e4e3ee120c2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02651bfd33ab4b159cf8e4e3ee120c2f">&#9670;&nbsp;</a></span>tft()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html">ILI9341_t3_ERIS</a> tft </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#a5f4d46ae101b77df78010c506601c87c">TFT_CS</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#a51529307207622c113ff0d584536be13">TFT_DC</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#af81ec4b4eb708da6c9c39a6c5aa1aa4b">TFT_RESET</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#a4db639d2d88a53132a529677e6dd795c">TFT_MOSI</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#a095a96cc6abc991346d7b6712f8576b5">TFT_SCLK</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#ac108dd4310833bbb4afd1bce1090d55f">TFT_MISO</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00132">AppManager::AppManager()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00151">AppCQT::update()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00118">MyAppExample::update()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00179">AppManager::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00041">ControlButton::update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d72/_app_manager_8h_a02651bfd33ab4b159cf8e4e3ee120c2f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a08e2de6cc6534b42211780387e8a2568"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e2de6cc6534b42211780387e8a2568">&#9670;&nbsp;</a></span>touch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d1/dff/class_touch.html">Touch</a> touch </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d10/_h_s_i_8h.html#ab88a77c2b507fd37ff28af2cdfd8de72">CS_TOUCH</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00132">AppManager::AppManager()</a>, <a class="el" href="../../df/d0a/main_8cpp_source.html#l00020">setup()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00179">AppManager::update()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d72/_app_manager_8h_a08e2de6cc6534b42211780387e8a2568_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a006a96f275f1ff9181d61fd882ecc76a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a006a96f275f1ff9181d61fd882ecc76a">&#9670;&nbsp;</a></span>ad</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> ad</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00037">37</a> of file <a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00056">AppCQT::AppCQT()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00017">AppScope::AppScope()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00035">MyAppExample::MyAppExample()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00312">MyAppExample::changeVoice()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00250">MyAppExample::makeAudioConnections()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00167">MyAppExample::MessageHandler()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00201">MyAppExample::onAnalog1()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00211">MyAppExample::onAnalog2()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00225">MyAppExample::onAnalog3()</a>, <a class="el" href="../../d2/d6c/app_example_8h_source.html#l00240">MyAppExample::onAnalog4()</a>, and <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00163">AppSerialCommandInterface::updateRT()</a>.</p>
-
-</div>
-</div>
-<a id="a6eec6508ad3423ae351f1830e8e7afb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6eec6508ad3423ae351f1830e8e7afb6">&#9670;&nbsp;</a></span>Arial_9</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const ILI9341_t3_font_t Arial_9</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00041">ControlButton::update()</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

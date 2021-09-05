@@ -20,7 +20,7 @@ var classeris_audio_analyze_scope =
     [ "getHDiv", "d4/d81/classeris_audio_analyze_scope.html#a9a0e5d6a6eeff913a4e417efea934dde", null ],
     [ "getPeakValue", "d4/d81/classeris_audio_analyze_scope.html#a9d865bd201a84115950c1810ba18971c", null ],
     [ "hdivide", "d4/d81/classeris_audio_analyze_scope.html#a79ef2786e89a1f0a95d7daffe0f144fc", null ],
-    [ "initialize_memory", "d4/d81/classeris_audio_analyze_scope.html#ad67ffec5f3c12bea5a3695e1b6f7068c", null ],
+    [ "initialize_memory", "d4/d81/classeris_audio_analyze_scope.html#aae750491f0dbedac3bd763d6dc62c1bb", null ],
     [ "isActive", "d4/d81/classeris_audio_analyze_scope.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
     [ "length", "d4/d81/classeris_audio_analyze_scope.html#a9d9b4f5149cdc25ead34c2547f2381f5", null ],
     [ "name", "d4/d81/classeris_audio_analyze_scope.html#aca595c069e0635302a601c9005c21d16", null ],

@@ -1,6 +1,30 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 1
+#define ANIMATION_CHUNKS_PER_FRAME 6
+
+static volatile bool dmabusy;
+
+void FASTRUN renderCompleteCB(){
+    Serial.println("renderCompleteCB");
+    dmabusy=false;
+}
+
+bool _busy(){
+    return dmabusy;
+}
+
+bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
+            bool rval;
+            uint16_t* a;
+            uint16_t* b;
+
+            //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
+            Serial.flush();
+            dmabusy=true;
+            setFrameCompleteCB(&renderCompleteCB);
+            rval= updateScreenAsync(false);
+            return rval;
+        }
 
 bool Animation::getNextFrameChunk(SdFs *pSD){
     if (chunk==0){
@@ -25,46 +49,49 @@ bool Animation::getNextFrameChunk(SdFs *pSD){
     return true;
 }
 
-
-
 void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
+
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 48000);
+    analogWriteFrequency(backlight, 96000);
     analogWrite(backlight, 200);
 }
+
 void ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
-    useFrameBuffer(1);
-    pFB = _pfbtft;
+    //setFrameBuffer(FB1);
+    //useFrameBuffer(true);
+    fillScreen(ILI9341_BLUE);
+    //pFB = 0;//FB1;
     //try and force a second buffer
-    _pfbtft = NULL;
-    useFrameBuffer(1);
-    pFB2 = _pfbtft;
+    //setFrameBuffer(FB2);
+    //useFrameBuffer(true);
+    //fillScreen(ILI9341_PURPLE);
+    //pFB2 = 0;//FB2;
     //setClock(30000000); //110000000
     setClipRect();
     setOrigin();
-    fillScreen(ILI9341_BLACK);
+    //fillScreen(ILI9341_RED);
     setTextColor(CL(74, 143, 255));
-    setTextSize(2);
+    setTextSize(1);
     setRotation(1);
     println("Online...");          
     updateScreen();
+    dmabusy=false;
 }
 
+/*
 void ILI9341_t3_ERIS::flipBuffer(){
   if(pFB == _pfbtft){
     setFrameBuffer(pFB2);
-  } else setFrameBuffer(pFB);
-
+    useFrameBuffer(true);
+  } else{
+    setFrameBuffer(pFB);
+    useFrameBuffer(true);
+  }
 };
-
-void ILI9341_t3_ERIS::flipWritePointer(){
-  if(pFB == _pfbtft){
-    _pfbtft = pFB2;
-  } else _pfbtft = pFB;
-};
+*/
 
 void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type){
   int16_t iy; // x & y index

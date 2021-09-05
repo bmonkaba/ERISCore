@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('dc/d43/class_svc_data_dictionary.html'
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d59/class_svc_data_dictionary__coll__graph.svg" width="204" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d2/d59/class_svc_data_dictionary__coll__graph.svg" width="258" height="507"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -106,6 +106,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87eed8a624cc90d7dd6ca0b268dff41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54624619a88a7baf56bf475df84a5bb7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">create</a> (const char *key, int32_t val)</td></tr>
 <tr class="separator:a54624619a88a7baf56bf475df84a5bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab72733da062e89f277308ca64daf300"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#aab72733da062e89f277308ca64daf300">increment</a> (const char *key)</td></tr>
+<tr class="separator:aab72733da062e89f277308ca64daf300"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a3ec8213306c1f447c9f398e983a4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a29a3ec8213306c1f447c9f398e983a4b">printDictionary</a> ()</td></tr>
 <tr class="separator:a29a3ec8213306c1f447c9f398e983a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f8da1203864a57b4511876907f03eb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a8f8da1203864a57b4511876907f03eb3">printStats</a> ()</td></tr>
@@ -119,14 +121,14 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:afc4566c6dbbabf443cf0c6093391e0f2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a> [<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>][<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>]</td></tr>
 <tr class="separator:afc4566c6dbbabf443cf0c6093391e0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fecff3a261d0e69e06aad489ca5816d"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a> [<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>]</td></tr>
-<tr class="separator:a3fecff3a261d0e69e06aad489ca5816d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27f3d033c0751ccf72bcb370191f5bf3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a></td></tr>
 <tr class="separator:a27f3d033c0751ccf72bcb370191f5bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c8460846f0d515c2ea79084cb850f02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a> [<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>]</td></tr>
+<tr class="separator:a3c8460846f0d515c2ea79084cb850f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">26</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00044">44</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a87eed8a624cc90d7dd6ca0b268dff41a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87eed8a624cc90d7dd6ca0b268dff41a">&#9670;&nbsp;</a></span>SvcDataDictionary()</h2>
@@ -151,21 +153,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00032">32</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                           {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>=0;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a>[i] = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                memset(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>,<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="ttc" id="aclass_svc_data_dictionary_html_a27f3d033c0751ccf72bcb370191f5bf3"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">SvcDataDictionary::next</a></div><div class="ttdeci">uint16_t next</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">svcDataDictionary.h:30</a></div></div>
-<div class="ttc" id="aclass_svc_data_dictionary_html_a3fecff3a261d0e69e06aad489ca5816d"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">SvcDataDictionary::_val</a></div><div class="ttdeci">int32_t _val[DATADICT_KEYVALUE_PAIRS]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">svcDataDictionary.h:29</a></div></div>
-<div class="ttc" id="aclass_svc_data_dictionary_html_afc4566c6dbbabf443cf0c6093391e0f2"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">SvcDataDictionary::_key</a></div><div class="ttdeci">char _key[DATADICT_KEYVALUE_PAIRS][DATADICT_MAX_KEY_LEN]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">svcDataDictionary.h:28</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_ab0d4b44bdc0c12c14053e27157a5bafb"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a></div><div class="ttdeci">#define DATADICT_MAX_KEY_LEN</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00024">svcDataDictionary.h:24</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_abe1182317d2c82fffde2a410976d3bbf"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a></div><div class="ttdeci">#define DATADICT_KEYVALUE_PAIRS</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00023">svcDataDictionary.h:23</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00050">50</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                           {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>=0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a009eb2d0dc398e804880347cdc4fbad3">owner</a> = 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">val</a> = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a28f8611177f9298c9d2ce14594616366">pval</a> = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a110db2c5b662f49c5434693ecd112e7e">record_type</a> = <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de">READWRITE</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                memset(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>,<span class="keyword">sizeof</span>(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i]));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="ttc" id="aclass_svc_data_dictionary_html_a27f3d033c0751ccf72bcb370191f5bf3"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">SvcDataDictionary::next</a></div><div class="ttdeci">uint16_t next</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">svcDataDictionary.h:48</a></div></div>
+<div class="ttc" id="aclass_svc_data_dictionary_html_a3c8460846f0d515c2ea79084cb850f02"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">SvcDataDictionary::record</a></div><div class="ttdeci">svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">svcDataDictionary.h:47</a></div></div>
+<div class="ttc" id="aclass_svc_data_dictionary_html_afc4566c6dbbabf443cf0c6093391e0f2"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">SvcDataDictionary::_key</a></div><div class="ttdeci">char _key[DATADICT_KEYVALUE_PAIRS][DATADICT_MAX_KEY_LEN]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">svcDataDictionary.h:46</a></div></div>
+<div class="ttc" id="astructsvc_data_dictionary_record_html_a009eb2d0dc398e804880347cdc4fbad3"><div class="ttname"><a href="../../d7/dd5/structsvc_data_dictionary_record.html#a009eb2d0dc398e804880347cdc4fbad3">svcDataDictionaryRecord::owner</a></div><div class="ttdeci">uint32_t * owner</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00038">svcDataDictionary.h:38</a></div></div>
+<div class="ttc" id="astructsvc_data_dictionary_record_html_a110db2c5b662f49c5434693ecd112e7e"><div class="ttname"><a href="../../d7/dd5/structsvc_data_dictionary_record.html#a110db2c5b662f49c5434693ecd112e7e">svcDataDictionaryRecord::record_type</a></div><div class="ttdeci">svcDataDictionaryRecordType record_type</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">svcDataDictionary.h:40</a></div></div>
+<div class="ttc" id="astructsvc_data_dictionary_record_html_a26541cb0668aebe05067d59f4fa1f304"><div class="ttname"><a href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">svcDataDictionaryRecord::val</a></div><div class="ttdeci">int32_t val</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionary.h:37</a></div></div>
+<div class="ttc" id="astructsvc_data_dictionary_record_html_a28f8611177f9298c9d2ce14594616366"><div class="ttname"><a href="../../d7/dd5/structsvc_data_dictionary_record.html#a28f8611177f9298c9d2ce14594616366">svcDataDictionaryRecord::pval</a></div><div class="ttdeci">int32_t * pval</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00039">svcDataDictionary.h:39</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de">READWRITE</a></div><div class="ttdeci">@ READWRITE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">svcDataDictionary.h:30</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_ab0d4b44bdc0c12c14053e27157a5bafb"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a></div><div class="ttdeci">#define DATADICT_MAX_KEY_LEN</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">svcDataDictionary.h:26</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_abe1182317d2c82fffde2a410976d3bbf"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a></div><div class="ttdeci">#define DATADICT_KEYVALUE_PAIRS</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">svcDataDictionary.h:25</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">_val</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00023">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00024">DATADICT_MAX_KEY_LEN</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">next</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">DATADICT_MAX_KEY_LEN</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">next</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00038">svcDataDictionaryRecord::owner</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00039">svcDataDictionaryRecord::pval</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">READWRITE</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">svcDataDictionaryRecord::record_type</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionaryRecord::val</a>.</p>
 
 </div>
 </div>
@@ -204,29 +214,96 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">40</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">//if dictionary full</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a> == <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="comment">//else</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span>(strlen(key) &lt; <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                strcpy(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>],key);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a>[<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>] = val;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>++;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;<span class="comment">//bad key</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">61</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="comment">//if dictionary full</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a> == <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">//TODO: ensure key doesn&#39;t already exist before creating a new record</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">//else</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span>(strlen(key) &lt; <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>){</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                strcpy(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>],key);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">val</a> = val;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>++;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;<span class="comment">//bad key</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">_val</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00023">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00024">DATADICT_MAX_KEY_LEN</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">next</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">DATADICT_MAX_KEY_LEN</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">next</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionaryRecord::val</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00097">increment()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00085">update()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_a54624619a88a7baf56bf475df84a5bb7_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_a54624619a88a7baf56bf475df84a5bb7_icgraph.svg" width="100%" height="426"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aab72733da062e89f277308ca64daf300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab72733da062e89f277308ca64daf300">&#9670;&nbsp;</a></span>increment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SvcDataDictionary::increment </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00097">97</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                       {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordtype">int</span> index = -1;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="comment">//key found</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> ((0==strncmp(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],key,<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>))){</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    index = i;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (index == -1){</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">create</a>(key,0)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                index = <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a> -1;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[index].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">val</a>++;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="ttc" id="aclass_svc_data_dictionary_html_a54624619a88a7baf56bf475df84a5bb7"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">SvcDataDictionary::create</a></div><div class="ttdeci">bool create(const char *key, int32_t val)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">svcDataDictionary.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">DATADICT_MAX_KEY_LEN</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">next</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionaryRecord::val</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00083">AppManager::update()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300_cgraph.svg" width="379" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300_icgraph.svg" width="488" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -255,28 +332,28 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00079">79</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                              {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">//todo: print out in JSON format</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            Serial.flush();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            Serial.print(<span class="stringliteral">&quot;DD {&quot;</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>;i++){</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                Serial.printf(<span class="stringliteral">&quot;\&quot;%s\&quot;:%d&quot;</span>,<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a>[i]);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">if</span> (i != <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>-1) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            Serial.println(<span class="stringliteral">&quot;}&quot;</span>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            Serial.flush();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00119">119</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                              {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="comment">//todo: print out in JSON format</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            Serial.flush();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            Serial.print(<span class="stringliteral">&quot;DD {&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>;i++){</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                Serial.printf(<span class="stringliteral">&quot;\&quot;%s\&quot;:%d&quot;</span>,<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].val);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">if</span> (i != <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3">next</a>-1) Serial.print(<span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            Serial.println(<span class="stringliteral">&quot;}&quot;</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            Serial.flush();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">_val</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">next</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">next</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html#l00163">AppSerialCommandInterface::updateRT()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00126">AppSerialCommandInterface::updateRT()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_a29a3ec8213306c1f447c9f398e983a4b_icgraph.svg" width="443" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -306,10 +383,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00075">75</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                         {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00115">115</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                         {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,25 +414,25 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00053">53</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                     {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="comment">//key found</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">if</span> ((0==strncmp(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],key,<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>)) ) <span class="keywordflow">return</span> <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a>[i];</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="comment">//key not found</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00076">76</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                     {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">//key found</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> ((0==strncmp(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],key,<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>))) <span class="keywordflow">return</span> <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">val</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">//key not found</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">_val</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00023">DATADICT_KEYVALUE_PAIRS</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00024">DATADICT_MAX_KEY_LEN</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">DATADICT_MAX_KEY_LEN</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionaryRecord::val</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00239">AppCQT::updateOscillatorBank()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00083">AppManager::update()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00249">AppCQT::updateOscillatorBank()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_ac24fc984a57549307f64a4e2979c1718_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_ac24fc984a57549307f64a4e2979c1718_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -395,36 +472,35 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">62</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="comment">//key found</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keywordflow">if</span> ((0==strncmp(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],key,<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>)) ){</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3fecff3a261d0e69e06aad489ca5816d">_val</a>[i] = val;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment">//key not found - try to create a new record</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">create</a>(key, val);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="ttc" id="aclass_svc_data_dictionary_html_a54624619a88a7baf56bf475df84a5bb7"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">SvcDataDictionary::create</a></div><div class="ttdeci">bool create(const char *key, int32_t val)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">svcDataDictionary.h:40</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00085">85</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>;i++){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="comment">//key found</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">if</span> ((0==strncmp(<a class="code" href="../../dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2">_key</a>[i],key,<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>))){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02">record</a>[i].<a class="code" href="../../d7/dd5/structsvc_data_dictionary_record.html#a26541cb0668aebe05067d59f4fa1f304">val</a> = val;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="comment">//key not found - try to create a new record</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7">create</a>(key, val);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">_val</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00023">DATADICT_KEYVALUE_PAIRS</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00024">DATADICT_MAX_KEY_LEN</a>.</p>
+<p class="reference">References <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">_key</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00025">DATADICT_KEYVALUE_PAIRS</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00026">DATADICT_MAX_KEY_LEN</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">record</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00037">svcDataDictionaryRecord::val</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00179">AppManager::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00037">AppScope::update()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00239">AppCQT::updateOscillatorBank()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00083">AppManager::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00249">AppCQT::updateOscillatorBank()</a>, and <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00078">AppScope::updateRT()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_a63683e7d627dc39628652548e3ae037f_cgraph.svg" width="379" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d43/class_svc_data_dictionary_a63683e7d627dc39628652548e3ae037f_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -452,35 +528,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">28</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00046">46</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00032">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00079">printDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00053">read()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">update()</a>.</p>
-
-</div>
-</div>
-<a id="a3fecff3a261d0e69e06aad489ca5816d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fecff3a261d0e69e06aad489ca5816d">&#9670;&nbsp;</a></span>_val</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t SvcDataDictionary::_val[<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">29</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00032">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00079">printDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00053">read()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00050">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00097">increment()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00119">printDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00076">read()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00085">update()</a>.</p>
 
 </div>
 </div>
@@ -504,9 +554,35 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">30</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00048">48</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00032">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00040">create()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00079">printDictionary()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00050">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00097">increment()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00119">printDictionary()</a>.</p>
+
+</div>
+</div>
+<a id="a3c8460846f0d515c2ea79084cb850f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c8460846f0d515c2ea79084cb850f02">&#9670;&nbsp;</a></span>record</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a> SvcDataDictionary::record[<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00047">47</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00050">SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00061">create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00097">increment()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00119">printDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00076">read()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00085">update()</a>.</p>
 
 </div>
 </div>

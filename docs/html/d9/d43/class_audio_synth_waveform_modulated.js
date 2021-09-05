@@ -8,7 +8,7 @@ var class_audio_synth_waveform_modulated =
     [ "begin", "d9/d43/class_audio_synth_waveform_modulated.html#a3115ea45095008e478e7b1554e9d2445", null ],
     [ "frequency", "d9/d43/class_audio_synth_waveform_modulated.html#a4da60875f4b350e2cc76d6cd9c33a078", null ],
     [ "frequencyModulation", "d9/d43/class_audio_synth_waveform_modulated.html#a00d411c4863945c1bb379c47bd1125a2", null ],
-    [ "initialize_memory", "d9/d43/class_audio_synth_waveform_modulated.html#ad67ffec5f3c12bea5a3695e1b6f7068c", null ],
+    [ "initialize_memory", "d9/d43/class_audio_synth_waveform_modulated.html#aae750491f0dbedac3bd763d6dc62c1bb", null ],
     [ "isActive", "d9/d43/class_audio_synth_waveform_modulated.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
     [ "offset", "d9/d43/class_audio_synth_waveform_modulated.html#aa1b591fd33de8b18ea6ecea009957e8c", null ],
     [ "phaseModulation", "d9/d43/class_audio_synth_waveform_modulated.html#a9e628e5d0a231a45a67648d5ef3643e1", null ],

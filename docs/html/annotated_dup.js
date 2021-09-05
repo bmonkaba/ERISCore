@@ -99,5 +99,6 @@ var annotated_dup =
     [ "MyAppExample", "dd/da5/class_my_app_example.html", "dd/da5/class_my_app_example" ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", "da/dca/struct_parsed_connection" ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", "dc/d43/class_svc_data_dictionary" ],
+    [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", "d7/dd5/structsvc_data_dictionary_record" ],
     [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ]
 ];

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['cqt_5fhighrange_5fsplit_5fat_5fbin_1357',['CQT_HIGHRANGE_SPLIT_AT_BIN',['../d4/d75/app_c_q_t_8h.html#a0e6eb21f4797c43c1e55840a246da543',1,'appCQT.h']]],
-  ['cs_5fexp_1358',['CS_EXP',['../de/d10/_h_s_i_8h.html#a569237181520f0b24da7e16f403d1107',1,'HSI.h']]],
-  ['cs_5ftouch_1359',['CS_TOUCH',['../de/d10/_h_s_i_8h.html#ab88a77c2b507fd37ff28af2cdfd8de72',1,'HSI.h']]],
-  ['cycle_5fcounter_5fapprox_5fpercent_1360',['CYCLE_COUNTER_APPROX_PERCENT',['../df/d6c/_audio_stream_8h.html#ad93bd266d55f8077bc3a009b023bf0b2',1,'AudioStream.h']]]
+  ['builtin_5fsdcard_1407',['BUILTIN_SDCARD',['../df/d0a/main_8cpp.html#a83dbf0cf2bee77d1420f6c04800ae09a',1,'main.cpp']]]
 ];

@@ -37,30 +37,30 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d8/dbe/class_app_scope.html#afea80e94624d9ed8ce80c36021000c65" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="189,-40.5 189,-61.5 304,-61.5 304,-40.5 189,-40.5"/>
-<text text-anchor="middle" x="246.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::update</text>
+<g id="a_node4"><a xlink:href="../../d4/dde/class_app_c_q_t.html#a367a939ac48e4efa3bb648cd4f3bf848" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="156,-40.5 156,-61.5 337,-61.5 337,-40.5 156,-40.5"/>
+<text text-anchor="middle" x="246.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateOscillatorBank</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M362.61,-51C343.31,-51 322.58,-51 304.1,-51"/>
+<path fill="none" stroke="midnightblue" d="M362.82,-51C354.45,-51 345.82,-51 337.22,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="362.86,-54.5 372.86,-51 362.86,-47.5 362.86,-54.5"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d4/dde/class_app_c_q_t.html#a367a939ac48e4efa3bb648cd4f3bf848" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="156,-0.5 156,-21.5 337,-21.5 337,-0.5 156,-0.5"/>
-<text text-anchor="middle" x="246.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateOscillatorBank</text>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d8/dbe/class_app_scope.html#a8b64e61af245b7f302d19483601ca11a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="181.5,-0.5 181.5,-21.5 311.5,-21.5 311.5,-0.5 181.5,-0.5"/>
+<text text-anchor="middle" x="246.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppScope::updateRT</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node1&#45;&gt;Node5</title>
+<!-- Node1&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node1&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M362.82,-36C340.62,-31.19 316.53,-25.97 296.13,-21.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="362.35,-39.48 372.86,-38.18 363.83,-32.64 362.35,-39.48"/>
 </g>
@@ -79,20 +79,20 @@
 <path fill="none" stroke="midnightblue" d="M172.46,-91C138.75,-91 101.47,-91 79.7,-91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="172.78,-94.5 182.78,-91 172.78,-87.5 172.78,-94.5"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-0.5 0,-21.5 120,-21.5 120,-0.5 0,-0.5"/>
-<text text-anchor="middle" x="60" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateRT</text>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d4/dde/class_app_c_q_t.html#acba800039e0a2c7ec5f84b503d877057" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-40.5 0,-61.5 120,-61.5 120,-40.5 0,-40.5"/>
+<text text-anchor="middle" x="60" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppCQT::updateRT</text>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M145.73,-11C137.04,-11 128.44,-11 120.25,-11"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="145.95,-14.5 155.95,-11 145.95,-7.5 145.95,-14.5"/>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M145.73,-51C137.04,-51 128.44,-51 120.25,-51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="145.95,-54.5 155.95,-51 145.95,-47.5 145.95,-54.5"/>
 </g>
 </g>
 </svg>

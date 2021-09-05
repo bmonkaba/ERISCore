@@ -16,7 +16,7 @@ var classeris_audio_analyze_f_f_t1024 =
     [ "copy_to_fft_buffer", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a4ab75e9715a7ed5e4839599f3720299d", null ],
     [ "enableFFT", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a755081ed295a0ae6385db5dad48c6de1", null ],
     [ "init", "d0/d55/classeris_audio_analyze_f_f_t1024.html#af659f7d226d922b289e5a458ebdd76f9", null ],
-    [ "initialize_memory", "d0/d55/classeris_audio_analyze_f_f_t1024.html#ad67ffec5f3c12bea5a3695e1b6f7068c", null ],
+    [ "initialize_memory", "d0/d55/classeris_audio_analyze_f_f_t1024.html#aae750491f0dbedac3bd763d6dc62c1bb", null ],
     [ "isActive", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a7329b2b8dcb44e76c7f397d4d8fc1a84", null ],
     [ "processorUsage", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a8b64af9348ca38d5374514343fb78382", null ],
     [ "processorUsageMax", "d0/d55/classeris_audio_analyze_f_f_t1024.html#a3a97d8e3b9d63b1cb6c4544d3aa040f2", null ],

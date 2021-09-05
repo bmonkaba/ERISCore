@@ -60,7 +60,7 @@ class AppCQT:public AppBaseClass {
       for (int16_t i=0; i < osc_bank_size; i++){
         sprintf(buffer, "waveform_%d", i);
         //request the object from the audio director
-        osc[i] = (erisAudioSynthWaveform*) (ad.getAudioStreamObjByName(buffer));
+        osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
         AudioNoInterrupts();
         //init the object to the default state
         osc[i]->begin(0.0, 0, WAVEFORM_SINE);
@@ -68,8 +68,8 @@ class AppCQT:public AppBaseClass {
       }
 
       //take care to downcast fetched objects to the correct type!
-      fft = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_1"));
-      fft2 = (erisAudioAnalyzeFFT1024*) (ad.getAudioStreamObjByName("fft1024_2"));
+      fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_1"));
+      fft2 = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_2"));
       fft2->toggleActiveRange(); //switch to low range
 
       //zero out the data variables
@@ -84,11 +84,14 @@ class AppCQT:public AppBaseClass {
       for (uint16_t i=0;i < NOTE_ARRAY_LENGTH;i++){
         flow = 0;
         fhigh = 0;
-        if (i != 0 && i != NOTE_ARRAY_LENGTH-2){
+        if (i > 0 && i < NOTE_ARRAY_LENGTH-18){
           //calculate the high and low frequencys for the given note
           //this is done by splitting the frequency differences from the music note above and below 
           flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
           fhigh = note_freq[i] + (note_freq[i+1] - note_freq[i])/2.0;
+        }else{
+          flow = 0;
+          fhigh = 0;
         }
         //zero out the destination within the array
         memset(&fftHighRR[i],0,sizeof(FFTReadRange));
@@ -97,7 +100,7 @@ class AppCQT:public AppBaseClass {
         //write the ranges to the bins, split between the high and low range fft
         if (i >= highRange){
           fftHighRR[i].cqtBin =i;
-          fftLowRR[i].cqtBin =i;
+          fftLowRR[i].cqtBin =0;
           
           fftHighRR[i].startFrequency = flow;
           fftLowRR[i].startFrequency =0;
@@ -153,7 +156,7 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-      tft.fillRoundRect(x,y,w,h,3,CL(12,0,20));
+      draw->fillRoundRect(x,y,w,h,3,CL(30,0,60));
       //draw the cqt bins
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         uint16_t nx;
@@ -162,23 +165,27 @@ class AppCQT:public AppBaseClass {
         float im = (w-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
         signal = (log1p((amp))*5.0) * h;
+        if (signal<0) signal = 0;
+        if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
-        //tft.fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
-        tft.fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
+        //draw->fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
+        draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
         signal = (log1p((amp))*5.0) * h;
+        if (signal<0) signal = 0;
+        if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
-        tft.fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
+        draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
       //draw the border
-      tft.drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
+      draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
       
       if (fftHighRR[0].peakValue > fftLowRR[0].peakValue) {
         fftRVal = fftHighRR[0];
-        tft.setTextColor(ILI9341_DARKCYAN);
+        draw->setTextColor(ILI9341_DARKCYAN);
       } else{
         fftRVal = fftLowRR[0];
-        tft.setTextColor(ILI9341_MAGENTA);
+        draw->setTextColor(ILI9341_MAGENTA);
       }
     }; //called only when the app is active
     
@@ -225,11 +232,14 @@ class AppCQT:public AppBaseClass {
       //check if touch point is within the application bounding box
       if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
           //is touched
-          if(!has_focus){
-            getFocus();
-          }else{
-            returnFocus();
-          }
+           if(!has_pop){
+                //getFocus();
+                requestPopUp();
+                
+            }else{
+                //returnFocus();
+                releasePopUp();
+            }
       }
     };
 
@@ -335,20 +345,20 @@ class AppCQT:public AppBaseClass {
 
      /*
       int64_t edgeDelta;
-      edgeDelta = (AppManager::getInstance()->data.read("EDGE_DELAY") - AppManager::getInstance()->data.read("EDGE_DELAY2"));
+      edgeDelta = (AppManager::getInstance()->data->read("EDGE_DELAY") - AppManager::getInstance()->data->read("EDGE_DELAY2"));
 
-      if(edgeDelta < (-1+(0.03 * AppManager::getInstance()->data.read("EDGE_DELAY")))) {
+      if(edgeDelta < (-1+(0.03 * AppManager::getInstance()->data->read("EDGE_DELAY")))) {
         pll_f -= 0.000001 * abs(edgeDelta);
-      }else if(edgeDelta> (1+(0.07 * AppManager::getInstance()->data.read("EDGE_DELAY")))) {
+      }else if(edgeDelta> (1+(0.07 * AppManager::getInstance()->data->read("EDGE_DELAY")))) {
         pll_f += 0.000001 * abs(edgeDelta);
       };
     */
      
      pll_p = 0.0;
 
-     float ch1_f = AppManager::getInstance()->data.read("CH1_FREQ");
-     float ch2_f = AppManager::getInstance()->data.read("CH2_FREQ");
-     int32_t das = AppManager::getInstance()->data.read("DOT_AVG_SLOW");
+     float ch1_f = AppManager::getInstance()->data->read("CH1_FREQ");
+     float ch2_f = AppManager::getInstance()->data->read("CH2_FREQ");
+     int32_t das = AppManager::getInstance()->data->read("DOT_AVG_SLOW");
      if ((ch1_f*octave_down[0])>ch2_f){
         pll_f += 0.00001;
      } else if (ch1_f<ch2_f){
@@ -373,8 +383,8 @@ class AppCQT:public AppBaseClass {
 
       //pll_p = 0.0;
      
-      AppManager::getInstance()->data.update("PLL_P",(int32_t)(pll_p*1000));
-      AppManager::getInstance()->data.update("PLL_F",(int32_t)(pll_f*1000));
+      AppManager::getInstance()->data->update("PLL_P",(int32_t)(pll_p*1000));
+      AppManager::getInstance()->data->update("PLL_F",(int32_t)(pll_f*1000));
 
 
       //take the phase from the  dominant frequency component
@@ -391,7 +401,7 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = ((oscBank[i].peakValue)/(log1pf(osc_bank_size)));
+            a = (log1pf(oscBank[i].peakValue)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
@@ -418,9 +428,9 @@ class AppCQT:public AppBaseClass {
         for (uint16_t i=0;i < osc_bank_size;i++){
           if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
           if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
+          Serial.flush();
         }
         Serial.printf(F("CQT_EOF \n"));
-        //Serial.flush();
       }
 
       //resort so we leave the arrays in order by cqt bin
