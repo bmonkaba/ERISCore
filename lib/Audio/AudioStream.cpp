@@ -252,7 +252,7 @@ bool AudioConnection::disconnect(void)
 	Serial.print(F("\tdst ptr:"));Serial.println((uint32_t)pDst);
 	Serial.print(F("\tdst index:"));Serial.println((uint32_t)dest_index);
 	Serial.print(F("\tpSrc->destination_list:"));Serial.println((uint32_t)pSrc->destination_list);
-	
+	Serial.flush();
 	//__disable_irq();
 	// Remove destination from source list
 	p = pSrc->destination_list;
@@ -322,12 +322,14 @@ bool AudioConnection::reconnect(){
 	Serial.print(F("\tpSrc->destination_list ptr:"));Serial.println((uint32_t)pSrc->destination_list);
 	AudioConnection *p;
 
-	if (isConnected){
+	if (isConnected){ 
 		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Already Connected"));
+		Serial.flush();
 		return false;
 	}
 	if (dest_index > pDst->num_inputs){
 		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Invalid destination port"));
+		Serial.flush();
 		return false;
 	}
 	//__disable_irq();
@@ -342,6 +344,7 @@ bool AudioConnection::reconnect(){
 				&& p->src_index == this->src_index && p->dest_index == this->dest_index) {
 				//Source and destination already connected through another connection, abort
 				Serial.println("(eris)AudioConnection:reconnect() Warning: connection already exists");
+				Serial.flush();
 				__enable_irq();
 				return false;
 			}
@@ -360,6 +363,7 @@ bool AudioConnection::reconnect(){
 
 	//__enable_irq();
 	Serial.println(F("(eris)AudioConnection:reconnect() connection complete"));
+	Serial.flush();
 	return true;
 }
 

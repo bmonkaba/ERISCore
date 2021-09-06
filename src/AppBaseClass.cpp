@@ -83,7 +83,7 @@ void AppBaseClass::returnFocus(){
 
 void AppBaseClass::requestPopUp(){
     has_pop = true;
-    //AppManager::getInstance()->requestPopUp(this->id);
+    AppManager::getInstance()->requestPopUp(this->id);
     _updatePosition();    
     return;
 }
@@ -91,7 +91,7 @@ void AppBaseClass::requestPopUp(){
 void AppBaseClass::releasePopUp(){
   if(!has_pop) return;
   has_pop = false;
-  //AppManager::getInstance()->releasePopUp();
+  AppManager::getInstance()->releasePopUp();
     _updatePosition();    
     return;
 }

@@ -156,7 +156,7 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-      draw->fillRoundRect(x,y,w,h,3,CL(30,0,60));
+      draw->fillRoundRect(x,y,w,h,3,CL(0x15,0x07,0x2F));
       //draw the cqt bins
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
         uint16_t nx;
@@ -194,12 +194,12 @@ class AppCQT:public AppBaseClass {
       rt_calls++;
       //if (rt_calls < 10000) return;    
       if (fft2->capture() && fft->capture()){
-        AudioNoInterrupts();
+        //AudioNoInterrupts();
         fft->analyze();
-        AudioInterrupts();
-        AudioNoInterrupts();
+        //AudioInterrupts();
+        //AudioNoInterrupts();
         fft2->analyze();
-        AudioInterrupts();
+        //AudioInterrupts();
         updateOscillatorBank(true);
         updateOscillatorBank(false);
       }
@@ -342,17 +342,6 @@ class AppCQT:public AppBaseClass {
       //the second objective is to provide some phase control without being overtly forceful 
       // - this means it should sound natural through the audible range
       // the implementation accumulates error overtime.
-
-     /*
-      int64_t edgeDelta;
-      edgeDelta = (AppManager::getInstance()->data->read("EDGE_DELAY") - AppManager::getInstance()->data->read("EDGE_DELAY2"));
-
-      if(edgeDelta < (-1+(0.03 * AppManager::getInstance()->data->read("EDGE_DELAY")))) {
-        pll_f -= 0.000001 * abs(edgeDelta);
-      }else if(edgeDelta> (1+(0.07 * AppManager::getInstance()->data->read("EDGE_DELAY")))) {
-        pll_f += 0.000001 * abs(edgeDelta);
-      };
-    */
      
      pll_p = 0.0;
 
@@ -424,13 +413,14 @@ class AppCQT:public AppBaseClass {
 
       if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD){
         cqt_serial_transmit_elapsed = 0;   
-        
+        Serial.flush();
         for (uint16_t i=0;i < osc_bank_size;i++){
           if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
           if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
           Serial.flush();
         }
         Serial.printf(F("CQT_EOF \n"));
+        Serial.flush();
       }
 
       //resort so we leave the arrays in order by cqt bin

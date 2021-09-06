@@ -1,3 +1,5 @@
+//#pragma GCC optimize ("O0")
+
 #include <Arduino.h>
 #define BUILTIN_SDCARD 254
 #include <SdCard/SdioCard.h>
@@ -17,7 +19,10 @@ AppSerialCommandInterface appSCI;
 AppReprogram appReprogram;
 //AppTemplate appTemplate;
 
-void FLASHMEM setup() {
+void setup() {
+  //stack fill test
+  char stackfill[50000];
+  memset(stackfill,0x5A,sizeof(stackfill));
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.

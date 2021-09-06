@@ -38,7 +38,6 @@ class ControlSlider:public AppBaseClass {
     bool isDirty;
     bool isPressed;
     void update(){
-        return;
         isDirty = true;
         if (isDirty){
             int16_t marker = w*(value/100.0);

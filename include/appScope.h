@@ -44,7 +44,7 @@ class AppScope:public AppBaseClass {
        
         scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
         if (scale > 10.0) scale = 10.0;
-        draw->fillRoundRect(x,y,w,h,3,CL(0,35,5));
+        draw->fillRoundRect(x,y,w,h,3,CL(0,0,0));
         for (int16_t i=0;i<w;i++){
             int16_t v;
             float f;
@@ -57,9 +57,9 @@ class AppScope:public AppBaseClass {
             v = scope->read(1,i) * scale;
             f = ((v * 0.000030517578125) + 1.0) * 0.5;
             ch2 = y + (uint16_t)(f * h);
-            if (i > 0) draw->drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_GREENYELLOW);
+            if (i > 0) draw->drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_CYAN);
             //draw x-y plot
-            if (i > 0) draw->drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_DARKGREY);
+            if (i > 0) draw->drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
             y_last_scope = ch1; 
             y_last_scope_ch2 = ch2;
         }
@@ -91,8 +91,8 @@ class AppScope:public AppBaseClass {
         //am->data->update("EDGE_DELAY2",scope->getEdgeDelay2());
         am->data->update("EDGE_DELTA",scope->getEdgeDelay()-scope->getEdgeDelay2() + 1); //min value of 1 (protect for div by zero)
         am->data->update("INPUT_PEAK",scope->getPeakValue());
-        if(scope->getEdgeDelay()>20) am->data->update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay() + 0.0000001))));
-        if(scope->getEdgeDelay2()>20) am->data->update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay2()+ 0.0000001))));
+        if(scope->getEdgeDelay()>20) am->data->update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay() + 0.00001))));
+        if(scope->getEdgeDelay2()>20) am->data->update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay2()+ 0.00001))));
     }; //allways called even if app is not active
   
     void onFocus(){};   //called when given focus
@@ -105,7 +105,7 @@ class AppScope:public AppBaseClass {
             //is touched
             if(!has_pop){
                 //getFocus();
-                requestPopUp();
+                requestPopUp(); 
                 
             }else{
                 //returnFocus();

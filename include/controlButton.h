@@ -10,7 +10,6 @@
  */
 #include "AppManager.h"
 
-#define MAX_BUTTON_TEXT_LENGTH 12
 #define SHOW_ACTIVE_TIME_MILLISEC 150
 
 extern const ILI9341_t3_font_t Arial_9;
@@ -31,11 +30,11 @@ class ControlButton:public AppBaseClass {
     };
 
     void setText(const char* name_string){
-      if (strlen(name_string) < MAX_BUTTON_TEXT_LENGTH - 1){strcpy(text,name_string);
-      } else strncpy(text,name_string,MAX_BUTTON_TEXT_LENGTH - 1);
+      if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
+      } else strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
     }
 
-    char text[MAX_BUTTON_TEXT_LENGTH];
+    char text[MAX_TEXT_LENGTH];
 
   protected:
     bool isDirty;

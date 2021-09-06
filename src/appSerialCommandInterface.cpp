@@ -158,6 +158,7 @@ void AppSerialCommandInterface::updateRT(){
                     AppManager::getInstance()->getSD()->chdir();
                     AppManager::getInstance()->getSD()->ls();
                     Serial.println(F("DIR_EOF"));
+                    Serial.flush();
                 } else{
                     replacechar(param,':',' '); //replace space token used to tx the path
                     Serial.print("M ");
@@ -165,12 +166,14 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.println(F("DIR"));
                     AppManager::getInstance()->getSD()->ls(param);
                     Serial.println(F("DIR_EOF"));
+                    Serial.flush();
                 }
             } else if (strcmp(cmd, "GET") == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
                 if (total_read < 3){
                     Serial.print(F("GET_ERR WRONG PARAM COUNT"));
                     Serial.println(param);
+                    Serial.flush();
                 } else{
                     //file streaming request ok
                     //init the transfer
@@ -178,6 +181,7 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.print(param);
                     Serial.print(" ");
                     Serial.println(param2);
+                    Serial.flush();
                     strcpy(streamPath,param);
                     strcpy(streamFile,param2);
                     isStreamingFile = true;
@@ -254,7 +258,7 @@ void AppSerialCommandInterface::updateRT(){
                 char* mp = 0;
                 char c;
                 strcpy(txBuffer," ");
-                for(uint32_t i = 0x20200000; i < 0x2027D000; i+=1){ 
+                for(uint32_t i = 0x20200000; i < 0x2027F000; i+=1){ 
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
@@ -269,7 +273,7 @@ void AppSerialCommandInterface::updateRT(){
                     }
 
                     Serial.printf("%02X ",(uint8_t)c);
-                    
+
                     if (isprint((int)c)){ 
                         strncat(txBuffer, &c, 1);
                     }
@@ -289,7 +293,7 @@ void AppSerialCommandInterface::updateRT(){
                 char* mp = 0;
                 char c;
                 strcpy(txBuffer," ");
-                for(uint32_t i = 0x000000FF; i < 0x7D000; i+=1){ 
+                for(uint32_t i = 0x0007A1E0; i < 0x7F000; i+=1){ 
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);

@@ -100,7 +100,7 @@ class MyAppExample:public AppBaseClass {
       char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST"};
       uint8_t si = 0;
       uint16_t bx = 10;
-      uint16_t by = 120;
+      uint16_t by = 124;
       for (uint16_t i=0;i<sizeof(s)/16;i+=1){
         button = new ControlButton(this); //reuse the button var to create many instances
         if(bx>(320-68)){
@@ -134,8 +134,8 @@ class MyAppExample:public AppBaseClass {
       draw->print(AudioMemoryUsage());
       draw->print(F(")"));
       draw->setCursor(260,5);
-      //draw->print(F("CON: "));
-      //draw->print(ad->connectionCount());
+      draw->print(F("CON: "));
+      draw->print(ad->connectionCount());
       t_lastupdate = micros();
     }
 

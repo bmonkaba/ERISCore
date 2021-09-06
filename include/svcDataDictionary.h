@@ -124,7 +124,6 @@ class SvcDataDictionary{
             for(int i=0;i<next;i++){
                 Serial.printf("\"%s\":%d",_key[i],record[i].val);
                 if (i != next-1) Serial.print(",");
-                Serial.flush();
             }
             Serial.println("}");
             Serial.flush();

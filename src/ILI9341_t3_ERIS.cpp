@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 6
+#define ANIMATION_CHUNKS_PER_FRAME 12
 
 static volatile bool dmabusy;
 

@@ -351,7 +351,7 @@ public: //tmp for debug
 	subsample_range ssr;
 private:	
 	volatile bool outputflag;
-	bool is_analyzed = false;
+	volatile bool is_analyzed = false;
 	audio_block_t *inputQueueArray[1];
 public: //tmp for debug
 	#ifdef ENABLE_F32_FFT

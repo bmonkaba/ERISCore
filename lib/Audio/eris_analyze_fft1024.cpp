@@ -208,11 +208,13 @@ void erisAudioAnalyzeFFT1024::update(void)
 
 		//copy buffer while casting to float and scale to the range -1 to 1
 		//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
-
-		for (int16_t i=0; i < 1024; i++){
-			tmp_buffer[i] = ((float32_t)buffer[i] / (float32_t)32768.0);
-			//if (SS_LOWFREQ) tmp_buffer[i] *= subsample_lowfreqrange/(float32_t)subsample_highfreqrange; //scale match the low range
-			if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0.0;
+		if(outputflag == false && is_analyzed){
+			for (int16_t i=0; i < 1024; i++){
+				tmp_buffer[i] = ((float32_t)buffer[i] / (float32_t)32768.0);
+				//if (SS_LOWFREQ) tmp_buffer[i] *= subsample_lowfreqrange/(float32_t)subsample_highfreqrange; //scale match the low range
+				if (!std::isfinite(tmp_buffer[i])) tmp_buffer[i] = 0.0;
+			}
+			outputflag = true;
 		}
 		//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
 		
@@ -259,7 +261,6 @@ void erisAudioAnalyzeFFT1024::update(void)
 			//memmove(buffer,&buffer+((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE *  sizeof(int16_t)), (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
 			//memmove(buffer,&buffer [ (((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE) )],  (((AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)) * sizeof(int16_t)));
 			memmove(buffer,&buffer[(AUDIO_BLOCK_SAMPLES/subsample_by)*BLOCK_REFRESH_SIZE], (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
-			outputflag = true;
 		}
 
 	}

@@ -76,7 +76,7 @@ FLASHMEM AudioDirector::AudioDirector(){
   long e = (uint32_t)heapEnd;
   Serial.print(e-s);
   Serial.println(F(" Bytes"));
-
+  Serial.flush();
 };
 
 
@@ -105,6 +105,7 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
     Serial.print(F(" ptr: "));
     Serial.println((uint32_t)obj);
     heapEnd = (void *)obj;
+    Serial.flush();
     return true;
   }
   return false;
@@ -123,6 +124,7 @@ void AudioDirector::printStats(){
   Serial.print(F("AudioDirector Obj Pool Size:"));
   Serial.print(e-s);
   Serial.println(F(" Bytes (estimated)"));
+  Serial.flush();
 }
 
 void AudioDirector::generateCategoryList(){
@@ -204,6 +206,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     if(source==pCord[i]->pSrc && destination==pCord[i]->pDst && sourceOutput==pCord[i]->src_index && destinationInput==pCord[i]->dest_index){
       Serial.print(F("AudioDirector::connect() found existing connection; reconnecting at index  "));
       Serial.println(i);
+      Serial.flush();
       if(pCord[i]->reconnect()) activeConnections++;
       return true;
     }
@@ -221,6 +224,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
         Serial.print(F(" -> "));
         Serial.print(destination->shortName);Serial.print(":");
         Serial.println(destinationInput);
+        Serial.flush();
         if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
         return true;
       }
@@ -233,6 +237,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       Serial.print(F(" -> "));
       Serial.print(destination->shortName);Serial.print(F(":"));
       Serial.println(destinationInput);
+      Serial.flush();
       //need to rewire after creation as the reference based approach was bypassed 
       //in favor of pointers in order to facilitate the extention of the audio connection base class
       pCord[i] = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
@@ -281,7 +286,7 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   Serial.println(connectionString);
   Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.println(p->src_port);
   Serial.print(F("Dest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
-
+  Serial.flush();
   return;
 }
 
@@ -307,12 +312,14 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
       //disconnect the audio connection
       if(pCord[i]->disconnect()) activeConnections--;
       Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
+      Serial.flush();
       return true; 
     }
   }
   Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
   Serial.println(destination->shortName);
   Serial.println(destination->instance);
+  Serial.flush();
   return false; //no empty connection slots
 }
 

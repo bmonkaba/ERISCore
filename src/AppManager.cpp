@@ -23,7 +23,7 @@
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 
-uint16_t FB1[320 * 240]__attribute__ ((aligned (32)));
+uint16_t DMAMEM FB1[320 * 240]__attribute__ ((aligned (32)));
 //DMAMEM uint16_t FB2[320 * 240]__attribute__ ((aligned (32)));
 
 SvcDataDictionary _data;
@@ -81,6 +81,8 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
 
 
 void AppManager::update(){
+    uint32_t heapTop;
+    void* htop;
     uint32_t drt;
     bool touch_updated;
     bool monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
@@ -225,6 +227,7 @@ void AppManager::update(){
         data->update("RENDER_PERIOD",drt);
         data->update("RENDER",4);
         data->increment("RENDER_FRAME");
+        Serial.flush();
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         redraw_render = false;
         redraw_background=true;
@@ -254,6 +257,15 @@ void AppManager::update(){
       data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
       cycle_time_max=0;
+      htop = malloc(100);
+      heapTop = (uint32_t) htop;
+      free(htop);
+      data->update("HEAP_FREE",0x20280000 - heapTop);
+      data->update("LOCAL_MEM",0X7FFFF - (uint32_t)(&heapTop) - 0x20000000);
+      
+      
+      //Serial.printf("heap pointer: %08XH\n",heapTop);
+      //Serial.printf("heap free: %d bytes\n",0x20280000 - heapTop);
     }
     drt = display_refresh_time;
     //Serial.printf(" %u\n",drt);
@@ -279,13 +291,15 @@ AppBaseClass* AppManager::getApp(uint16_t id){
 
 bool AppManager::requestPopUp(uint16_t id,bool exclusive){
   if (appPopUpStackIndex == 8) return false;
-  appPopUpStack[appPopUpStackIndex++] = id;
+  appPopUpStack[appPopUpStackIndex] = id;
+  appPopUpStackIndex+=1;
   return true;
 }
 bool AppManager::releasePopUp(){
   if (appFocusStackIndex == 0)return false;
   //appPopUpStack[appPopUpStack.size()-1]=0;
-  appPopUpStack[--appPopUpStackIndex] = 0;
+  appPopUpStackIndex-=1;
+  appPopUpStack[appPopUpStackIndex] = 0;
   return true;
 }
 
