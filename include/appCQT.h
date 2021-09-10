@@ -26,7 +26,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 15
+#define OSC_BANK_SIZE 10
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -35,13 +35,13 @@
 //#define TX_PERIODIC_FFT
 
 //transmit period in msec
-#define TX_PERIOD 500
+#define TX_PERIOD 100
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 250
+#define TX_CQT_PERIOD 400
 
 
 // Constant Q Transform App
@@ -55,17 +55,17 @@ class AppCQT:public AppBaseClass {
   public:
     AppCQT():AppBaseClass(){
       osc_bank_size = OSC_BANK_SIZE;
-      char buffer[16]; //used to build the stream names
+      char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
+      AudioNoInterrupts();
       for (int16_t i=0; i < osc_bank_size; i++){
         sprintf(buffer, "waveform_%d", i);
         //request the object from the audio director
         osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
-        AudioNoInterrupts();
         //init the object to the default state
         osc[i]->begin(0.0, 0, WAVEFORM_SINE);
-        AudioInterrupts();
       }
+      AudioInterrupts();
 
       //take care to downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_1"));
@@ -84,7 +84,7 @@ class AppCQT:public AppBaseClass {
       for (uint16_t i=0;i < NOTE_ARRAY_LENGTH;i++){
         flow = 0;
         fhigh = 0;
-        if (i > 0 && i < NOTE_ARRAY_LENGTH-18){
+        if (i > 0 && i < NOTE_ARRAY_LENGTH){
           //calculate the high and low frequencys for the given note
           //this is done by splitting the frequency differences from the music note above and below 
           flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
@@ -100,7 +100,7 @@ class AppCQT:public AppBaseClass {
         //write the ranges to the bins, split between the high and low range fft
         if (i >= highRange){
           fftHighRR[i].cqtBin =i;
-          fftLowRR[i].cqtBin =0;
+          fftLowRR[i].cqtBin =i;
           
           fftHighRR[i].startFrequency = flow;
           fftLowRR[i].startFrequency =0;
@@ -110,13 +110,13 @@ class AppCQT:public AppBaseClass {
 
         }
         else{
-          fftHighRR[i].cqtBin =0;
+          fftHighRR[i].cqtBin =i;
           fftLowRR[i].cqtBin =i;
           
-          fftHighRR[i].startFrequency =0;
+          fftHighRR[i].startFrequency =flow;
           fftLowRR[i].startFrequency =flow;
           
-          fftHighRR[i].stopFrequency =0;
+          fftHighRR[i].stopFrequency =fhigh;
           fftLowRR[i].stopFrequency =fhigh;            
         }
        }
@@ -156,27 +156,49 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
+      erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(oscBank,osc_bank_size);
+
       draw->fillRoundRect(x,y,w,h,3,CL(0x15,0x07,0x2F));
       //draw the cqt bins
-      for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){
-        uint16_t nx;
-        float signal;
-        float amp;
-        float im = (w-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
+      const float im = (w-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
+      uint16_t nx;
+      float signal;
+      float amp;
+        
+      for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){  
         amp = fftHighRR[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = (log1p((amp))*5.0) * h;
+        signal = (log1p((amp))*10.0) * h;
         if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //draw->fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = (log1p((amp))*5.0) * h;
+        signal = (log1p((amp))*10.0) * h;
         if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
+
+      //make a second pass but only draw the oscillators
+      for (uint16_t i=0;i < osc_bank_size;i++){
+        amp = oscBank[i].avgValueSlow;//fft->read(&fftHighRR[i]);
+        signal = (log1p((amp))*10.0) * h;
+        if (signal<0) signal = 0;
+        if (signal>(h-1)) signal = h-1;
+        nx = (uint16_t)(im*oscBank[i].cqtBin);
+        if (signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,ILI9341_ORANGE);
+        if (signal > 20){
+          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 20);
+          draw->print(note_name[oscBank[i].cqtBin]);
+          if(i==0){ 
+            draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 40);  
+            draw->print(oscBank[i].peakFrequency);
+          }
+        }
+      }
+
       //draw the border
       draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
       
@@ -246,10 +268,10 @@ class AppCQT:public AppBaseClass {
     void onTouchRelease(uint16_t x, uint16_t y){
     };
 
-    void updateOscillatorBank(bool low_range_switch){
+    void FLASHMEM updateOscillatorBank(bool low_range_switch){
       bool found;
       float floor;
-      floor = 0.0000010;
+      floor = 0.00010;
       
       if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
       else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -270,20 +292,20 @@ class AppCQT:public AppBaseClass {
       if (low_range_switch){
         bool isEven = (peak_bin%2==0);
         if(isEven){
-          for(uint16_t i=1; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.2;  
-        } else for(uint16_t i=0; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.2;
+          for(uint16_t i=1; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.1;  
+        } else for(uint16_t i=0; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.1;
       }else{
          bool isEven = (fftHighRR[0].cqtBin%2==0);
         if(isEven){
           for(uint16_t i=1; i < osc_bank_size; i+=2){
-            if((fftHighRR[i].stopBin - fftHighRR[i].startBin) < 5) fftHighRR[i].avgValueFast *= 0.2;
+            fftHighRR[i].avgValueFast *= 0.1;
             //high freq tilt
-            fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.05; 
+            //fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.10; 
           }
         } else for(uint16_t i=0; i < osc_bank_size; i+=2){
-            if((fftHighRR[i].stopBin - fftHighRR[i].startBin) < 5) fftHighRR[i].avgValueFast *= 0.2;
+            fftHighRR[i].avgValueFast *= 0.1;
             //high freq tilt
-            fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.05; 
+            //fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.10; 
           }
       }
 
@@ -305,7 +327,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(uint16_t k= osc_bank_size-1; k > 0;k--){
-              if ((fftLowRR[i].transientValue > 0.0005 ) && (fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < (0.20 * fftLowRR[i].avgValueFast))){
+              if ((fftLowRR[i].transientValue > 0.0005 ) && (fftLowRR[i].avgValueFast > floor) && (oscBank[k].avgValueFast < (0.70 * fftLowRR[i].avgValueFast))){
                 //fftLowRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -325,7 +347,7 @@ class AppCQT:public AppBaseClass {
         }
         if(!found){
           for(uint16_t k= osc_bank_size-1; k > 0;k--){
-            if ((fftHighRR[i].transientValue > 0.0005) && (fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.20 * fftHighRR[i].avgValueFast))){
+            if ((fftHighRR[i].transientValue > 0.0005) && (fftHighRR[i].peakValue > floor) && (oscBank[k].avgValueFast < (0.70 * fftHighRR[i].avgValueFast))){
               //fftHighRR[i].phase = 0;
               pll_p = 0.0;
               pll_f = 1.0;
@@ -348,18 +370,18 @@ class AppCQT:public AppBaseClass {
      float ch1_f = AppManager::getInstance()->data->read("CH1_FREQ");
      float ch2_f = AppManager::getInstance()->data->read("CH2_FREQ");
      int32_t das = AppManager::getInstance()->data->read("DOT_AVG_SLOW");
-     if ((ch1_f*octave_down[0])>ch2_f){
-        pll_f += 0.00001;
+     if ((ch1_f*octave_down[12])>ch2_f){
+        pll_f += 0.000001;
      } else if (ch1_f<ch2_f){
-        pll_f -= 0.00001;
+        pll_f -= 0.000001;
      } else{
         //pll_f = 1.0;
         if (das<0){
-          pll_f += 0.00001;
-          pll_p += 1 * abs(das);
+          pll_f += 0.000001;
+          pll_p += 0.1 * abs(das);
         } else if (das>0){
-          pll_f -= 0.00001;
-          pll_p -= 0.1 * abs(das);
+          pll_f -= 0.000001;
+          pll_p -= 0.01 * abs(das);
         };
      }
 
@@ -390,21 +412,21 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = (log1pf(oscBank[i].peakValue)/(log1pf(osc_bank_size)));
+            a = (log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
-              f = (pll_f * f * octave_down[0]);
+              f = (pll_f * f * octave_down[12]);
               if (f < 20) f = 20;
               if (f > 10000) f = 10000;
-              AudioNoInterrupts();
+              //AudioNoInterrupts();
               osc[i]->frequency(f);
               osc[i]->amplitude(a);
-              osc[i]->phase(phase_aligner);
-              AudioInterrupts();
+              //osc[i]->phase(phase_aligner);
+              //AudioInterrupts();
             } 
 
           }
@@ -413,11 +435,11 @@ class AppCQT:public AppBaseClass {
 
       if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD){
         cqt_serial_transmit_elapsed = 0;   
-        Serial.flush();
+        
         for (uint16_t i=0;i < osc_bank_size;i++){
           if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
           if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
-          Serial.flush();
+          
         }
         Serial.printf(F("CQT_EOF \n"));
         Serial.flush();

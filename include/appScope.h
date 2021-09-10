@@ -19,18 +19,7 @@ class AppScope:public AppBaseClass {
         scope->trigger();
         strcpy(name,"AppScope");
     }; 
-    void setPosition (int16_t newOriginX, int16_t newOriginY) {
-        origin_x=newOriginX;
-        origin_y=newOriginY;
-        widget_origin_x=newOriginX;
-        widget_origin_y=newOriginY;
-    }
-    void setDimension(int16_t new_width, int16_t new_height) {
-        width=new_width;
-        height=new_height;
-        widget_width=new_width;
-        widget_height=new_height;
-    }
+
   protected:
     erisAudioAnalyzeScope* scope;
     

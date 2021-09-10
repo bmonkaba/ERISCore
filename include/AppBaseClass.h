@@ -71,7 +71,7 @@ class AppBaseClass {
     uint16_t getId(){return id;};
     bool isName(const char * name_string){
       bool is;
-      (0==strcmp(name,name_string))?is=true:is=false;
+      (0==strncmp(name,name_string,sizeof(name)))?is=true:is=false;
       return is; 
     };
     void setName(const char* name_string){

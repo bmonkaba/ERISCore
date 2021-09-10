@@ -309,17 +309,18 @@ bool AudioConnection::disconnect(void)
 
 //ADDED TO SUPPORT ERIS CORE
 bool AudioConnection::reconnect(){
-	Serial.println(F("(eris)AudioConnection:reconnect() connecting by ptr"));
+	//Serial.println(F("(eris)AudioConnection:reconnect() connecting by ptr"));
 	Serial.print(F("\tsrc name:"));Serial.print(pSrc->shortName);
 	Serial.print(F("\tsrc index:"));Serial.print((uint32_t)src_index);
 	Serial.print(F("\tsrc instance:"));Serial.print((uint32_t)pSrc->instance);
-	Serial.print(F("\tsrc ptr:"));Serial.println((uint32_t)pSrc);
+	Serial.print(F("\tsrc ptr:"));Serial.printf("0x%08x\t",(uint32_t)pSrc);
 
 	Serial.print(F("\tdst name:"));Serial.print(pDst->shortName);
 	Serial.print(F("\tdst index:"));Serial.print((uint32_t)dest_index);
 	Serial.print(F("\tdst instance:"));Serial.print((uint32_t)pDst->instance);
-	Serial.print(F("\tdst ptr:"));Serial.print((uint32_t)pDst);
-	Serial.print(F("\tpSrc->destination_list ptr:"));Serial.println((uint32_t)pSrc->destination_list);
+	Serial.print(F("\tdst ptr:"));Serial.printf("0x%08x",(uint32_t)pDst);
+	Serial.print(F("\tpSrc->destination_list ptr:"));Serial.printf("0x%08x\n",(uint32_t)pSrc->destination_list);
+	Serial.flush();
 	AudioConnection *p;
 
 	if (isConnected){ 
@@ -339,13 +340,13 @@ bool AudioConnection::reconnect(){
 		pSrc->destination_list = this;
 	} else {
 		while (p->next_dest) {
-			//Serial.println("(eris)AudioConnection:reconnect() adding a connection");
+			Serial.println("(eris)AudioConnection:reconnect() adding a connection");
+			Serial.flush();
 			if (p->pSrc == this->pSrc && p->pDst == this->pDst
 				&& p->src_index == this->src_index && p->dest_index == this->dest_index) {
 				//Source and destination already connected through another connection, abort
 				Serial.println("(eris)AudioConnection:reconnect() Warning: connection already exists");
 				Serial.flush();
-				__enable_irq();
 				return false;
 			}
 			p = p->next_dest;
@@ -362,8 +363,8 @@ bool AudioConnection::reconnect(){
 	isConnected = true;
 
 	//__enable_irq();
-	Serial.println(F("(eris)AudioConnection:reconnect() connection complete"));
-	Serial.flush();
+	//Serial.println(F("(eris)AudioConnection:reconnect() connection complete"));
+	//Serial.flush();
 	return true;
 }
 

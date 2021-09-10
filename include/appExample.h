@@ -71,8 +71,8 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,12400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.39);
-      reverb->damping(0.42);
+      reverb->roomsize(0.99);
+      reverb->damping(0.12);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
       mix->gain(2,10.0);
@@ -193,7 +193,7 @@ class MyAppExample:public AppBaseClass {
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_16"));
           //AudioNoInterrupts();
           wav->frequency(atoi(message));
-          wav->amplitude(0.15);
+          wav->amplitude(0.09);
           //AudioNoInterrupts();
         }
         else if(sender->isName("TEST")){
@@ -246,7 +246,7 @@ class MyAppExample:public AppBaseClass {
       AudioNoInterrupts();
       filter->setLowpass(0,lp);
       filter->setHighpass(1,hp);
-      mixer->gain(2,1.0);
+      mixer->gain(2,1.0+gain);
       AudioInterrupts();
     };
 
@@ -261,6 +261,7 @@ class MyAppExample:public AppBaseClass {
     };
     
     void makeAudioConnections(){
+      AudioNoInterrupts();
       ad->disconnectAll();      
       //16 voice oscillator bank bus mixer (6)
       ad->connect("mixer_2 0 mixer_6 0");
@@ -318,7 +319,6 @@ class MyAppExample:public AppBaseClass {
       ad->connect("amp_2 0 scope_1 0");
       //resynthed signal output filter
       ad->connect("biquad_3 0 scope_1 1");
-
       AudioInterrupts();
       delay(10);
     }

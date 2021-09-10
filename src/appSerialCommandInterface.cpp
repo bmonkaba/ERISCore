@@ -152,7 +152,7 @@ void AppSerialCommandInterface::updateRT(){
             char cmd[128], param[128],param2[128];
             int total_read;
             total_read = sscanf(receivedChars, "%s %s" , cmd, param);
-            if (strcmp(cmd, "LS") == 0){
+            if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 if (total_read < 2){
                     Serial.println(F("DIR"));
                     AppManager::getInstance()->getSD()->chdir();
@@ -168,7 +168,7 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.println(F("DIR_EOF"));
                     Serial.flush();
                 }
-            } else if (strcmp(cmd, "GET") == 0){
+            } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
                 if (total_read < 3){
                     Serial.print(F("GET_ERR WRONG PARAM COUNT"));
@@ -186,7 +186,7 @@ void AppSerialCommandInterface::updateRT(){
                     strcpy(streamFile,param2);
                     isStreamingFile = true;
                 }
-            } else if (strcmp(cmd, "ACON") == 0){ //audio connections
+            } else if (strncmp(cmd, "ACON",sizeof(cmd)) == 0){ //audio connections
                 uint16_t i;  
                 char csBuffer[128];
                 i = 0;
@@ -204,11 +204,11 @@ void AppSerialCommandInterface::updateRT(){
                     i += 1;
                     
                     Serial.println(csBuffer);
-                    Serial.flush();
                 }
                 Serial.println(F("M ACON END"));
+                Serial.flush();
 
-            } else if (strcmp(cmd, "CONNECT") == 0){
+            } else if (strncmp(cmd, "CONNECT",sizeof(cmd)) == 0){
                 int source_port;
                 int dest_port;
                 
@@ -226,7 +226,7 @@ void AppSerialCommandInterface::updateRT(){
                     //AudioInterrupts();
                     Serial.flush();
                 }
-            } else if (strcmp(cmd, "DISCONNECT") == 0){
+            } else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
                 total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
@@ -242,19 +242,19 @@ void AppSerialCommandInterface::updateRT(){
                     //AudioInterrupts();
                     Serial.flush();
                 }
-            } else if (strcmp(cmd, "AA") == 0){         //active app message
+            } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) AppManager::getInstance()->getActiveApp()->MessageHandler(this,param);
                 //Serial.print(F("AA OK "));
                 //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                 //Serial.flush();
-            }else if (strcmp(cmd, "STATS") == 0){ 
+            }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){ 
                 ad->printStats();
                 AppManager::getInstance()->printStats();
-            }else if (strcmp(cmd, "CQT_CFG") == 0){ 
+            }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
-            }else if (strcmp(cmd, "GET_DD") == 0){ 
+            }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->data->printDictionary();
-            }else if (strcmp(cmd, "GET_RAM2") == 0){ 
+            }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
                 strcpy(txBuffer," ");
@@ -289,7 +289,7 @@ void AppSerialCommandInterface::updateRT(){
                     //Serial.print(c);
                 }
                 Serial.flush();
-            }else if (strcmp(cmd, "GET_RAM1") == 0){ 
+            }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
                 strcpy(txBuffer," ");
@@ -324,13 +324,14 @@ void AppSerialCommandInterface::updateRT(){
                 }
                 Serial.flush();
 
-            }else if (strcmp(cmd, "AUDIO_NO_INTERRUPTS") == 0){
+            }else if (strncmp(cmd, "AUDIO_NO_INTERRUPTS",sizeof(cmd)) == 0){
                 AudioNoInterrupts();
-            }else if (strcmp(cmd, "AUDIO_INTERRUPTS") == 0){
+            }else if (strncmp(cmd, "AUDIO_INTERRUPTS",sizeof(cmd)) == 0){
                 AudioInterrupts();
             }
             //END
             newRxMsg = false;
         }
     }
+    delayNanoseconds(20);
 }; //allways called even if app is not active

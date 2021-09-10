@@ -23,10 +23,10 @@
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 
-uint16_t DMAMEM FB1[320 * 240]__attribute__ ((aligned (32)));
+uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (32)));
 //DMAMEM uint16_t FB2[320 * 240]__attribute__ ((aligned (32)));
 
-SvcDataDictionary _data;
+SvcDataDictionary _data __attribute__ ((aligned(32)));;
 
 
 AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
@@ -81,16 +81,21 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
 
 
 void AppManager::update(){
+    elapsedMicros app_time;
     uint32_t heapTop;
     void* htop;
     uint32_t drt;
     bool touch_updated;
-    bool monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
+    bool update_analog;
+    AppBaseClass *node;
+    bool isactive_child;
+    bool monitor_update;
+    
+    monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
     #ifdef ENABLE_ASYNC_SCREEN_UPDATES
     //bool screenBusy;
     //screenBusy = (tft.busy()|| redraw_objects==true || redraw_background==true || redraw_popup ==true || redraw_render==true);
-    
     //update the screen background
     drt = display_refresh_time;
     if (!draw.busy() && redraw_background==true && (drt > DISPLAY_UPDATE_PERIOD)){
@@ -102,12 +107,12 @@ void AppManager::update(){
           //Serial.printf(F("AppManager::bltSDAnimation Chunk %d\n"),t); 
       }
     }
-    
     #else
     if (!screenBusy) draw.updateScreen();
     #endif
-
-    elapsedMicros app_time=0;
+    
+    node = root;
+    app_time=0;
     if (root == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
       return;
@@ -116,9 +121,7 @@ void AppManager::update(){
       touch.update(); //wait until draw is complete in case of dma 
       touch_updated = true;
     } else touch_updated = false;
-    bool update_analog = analog.update();
-    AppBaseClass *node = root;
-    bool isactive_child;
+    
     #ifdef ENABLE_ASYNC_SCREEN_UPDATES
     //if (!screenBusy) draw.fillRect(0, 0, 320, 240, 0);//draw.bltSDFullScreen("bluehex.ile");//draw.fillRect(0, 0, 320, 20, 0);
     #else
@@ -126,6 +129,8 @@ void AppManager::update(){
     #endif
     //search the linked list
     
+    update_analog = analog.update();
+    data->increment("RT_CALLS");
     do{
       app_time=0;
       if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
@@ -138,10 +143,11 @@ void AppManager::update(){
       node->updateRT_call_period =0;
       //Serial.println("AppManager:: real time update");
       isactive_child = false;
-      if (node->id == activeID) {
+      if (node->id == activeID && !draw.busy()) {
           if (pActiveApp != node){
             if (pActiveApp != 0) pActiveApp->onFocusLost();
             node->onFocus();
+            delayNanoseconds(220000);
             pActiveApp = node;
           }
       }
@@ -190,7 +196,6 @@ void AppManager::update(){
           //return ;//dont return in case multiple apps share the same id (app specific overlay)
                   //update order follows the order of app instance creation
       }
-
       #ifdef SERIAL_PRINT_APP_LOOP_TIME
       Serial.print(node->name);
       Serial.print(F(":"));
@@ -205,13 +210,13 @@ void AppManager::update(){
     }while(node !=0);
 
     if(redraw_popup==true){
-      AppBaseClass* a;
+      
       //draw any popups
       if (!appPopUpStackIndex==0 && appPopUpStack[appPopUpStackIndex-1] != 0){
-        a = getApp(appPopUpStack[appPopUpStackIndex-1]);
-        if (a != 0){
+        node = getApp(appPopUpStack[appPopUpStackIndex-1]);
+        if (node != 0){
           //Serial.println(F("AppManager::redraw_popup"));
-          a->update();
+          node->update();
         }
       }
       redraw_popup = false;
@@ -228,6 +233,7 @@ void AppManager::update(){
         data->update("RENDER",4);
         data->increment("RENDER_FRAME");
         Serial.flush();
+        delayNanoseconds(20);
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         redraw_render = false;
         redraw_background=true;
@@ -240,6 +246,7 @@ void AppManager::update(){
     }else if (redraw_objects==true ){
       //Serial.printf(F("AppManager::ObjDrawComplete %d\n"),drt);
       data->update("RENDER",2);
+      data->increment("UPDATE_CALLS");
       redraw_objects = false;
       redraw_popup = true;
       //redraw_render = true;
@@ -261,16 +268,10 @@ void AppManager::update(){
       heapTop = (uint32_t) htop;
       free(htop);
       data->update("HEAP_FREE",0x20280000 - heapTop);
-      data->update("LOCAL_MEM",0X7FFFF - (uint32_t)(&heapTop) - 0x20000000);
-      
-      
-      //Serial.printf("heap pointer: %08XH\n",heapTop);
-      //Serial.printf("heap free: %d bytes\n",0x20280000 - heapTop);
+      data->update("LOCAL_MEM",0x2007F000 - (uint32_t)(&heapTop));
+      heapTop = 0;
     }
     drt = display_refresh_time;
-    //Serial.printf(" %u\n",drt);
-    Serial.flush();
-
 };
 
 SdFs* AppManager::getSD(){

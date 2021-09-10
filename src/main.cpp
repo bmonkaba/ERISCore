@@ -1,3 +1,4 @@
+//char dummy[32000];
 //#pragma GCC optimize ("O0")
 
 #include <Arduino.h>
@@ -21,8 +22,8 @@ AppReprogram appReprogram;
 
 void setup() {
   //stack fill test
-  char stackfill[50000];
-  memset(stackfill,0x5A,sizeof(stackfill));
+  //char stackfill[50000];
+  //memset(stackfill,0x5A,sizeof(stackfill));
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.
@@ -38,7 +39,8 @@ void setup() {
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
-  while(!Serial); //DEBUG - wait for serial connection
+  //while(!Serial); //DEBUG - wait for serial connection
+  delayNanoseconds(500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
   Serial.println(F("Setup: Initalizing"));
@@ -73,6 +75,7 @@ void setup() {
     Serial.print(F(": "));
     Serial.println(ExtADCReadReg(i),HEX);
   }
+  Serial.flush();
 }
 
 void loop(void) {

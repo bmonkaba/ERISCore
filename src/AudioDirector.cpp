@@ -34,7 +34,7 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
   //addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
-  //addAudioStreamObj(new erisAudioEffectFreeverb);
+  addAudioStreamObj(new erisAudioEffectFreeverb);
   addAudioStreamObj(new erisAudioSynthNoisePink);
 
 
@@ -135,7 +135,7 @@ void AudioDirector::generateCategoryList(){
     found = false;
     for (uint16_t j = 0; j < MAX_CATEGORIES; j++){   //check if cat name is already in the list
       if (categoryList[j] != 0){ //dont test unitialized string pointers
-        if (strcmp(*categoryList[j],pAudioStreamObjPool[i]->category)==0) found = true;
+        if (strncmp(*categoryList[j],pAudioStreamObjPool[i]->category,sizeof(AudioStream::category))==0) found = true;
       } 
     }
     if (found==false) categoryList[categoryCount++] = (char**)&pAudioStreamObjPool[i]->category; //add to the list if not existing
@@ -217,13 +217,8 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     //find any already existing but unused connections
     if (NULL!=pCord[i]){
       if (pCord[i]->isConnected == false){
-        Serial.print(F("AudioDirector::connect() recycling AudioConnection at index "));
-        Serial.println(i);
-        Serial.print(source->shortName);Serial.print(":");
-        Serial.print(sourceOutput);
-        Serial.print(F(" -> "));
-        Serial.print(destination->shortName);Serial.print(":");
-        Serial.println(destinationInput);
+        Serial.printf(F("\tAudioDirector::connect() connection index: %d\t"),i);
+        Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
         Serial.flush();
         if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
         return true;
@@ -282,11 +277,14 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   token = strtok(NULL, " ");
   p->dst_port = atoi(token);
   
+  /*
   Serial.print(F("AudioDirector::ParseConnectString "));
-  Serial.println(connectionString);
-  Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.println(p->src_port);
-  Serial.print(F("Dest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
+  //Serial.println(connectionString);
+  Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.print(p->src_port);
+  Serial.print(F("\tDest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
   Serial.flush();
+  */
+ 
   return;
 }
 

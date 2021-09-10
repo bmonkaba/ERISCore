@@ -79,7 +79,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
+		window_f32 = AudioWindowKaiser12_1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
@@ -99,7 +99,7 @@ public:
 		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
-		subsample_lowfreqrange = 16;//ratio should be 2:1; bw is fc of the low range
+		subsample_lowfreqrange =  32;//ratio should be 2:1; bw is fc of the low range
 		subsample_highfreqrange = 8;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
