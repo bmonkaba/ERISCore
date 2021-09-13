@@ -1,6 +1,6 @@
 var class_audio_director =
 [
-    [ "AudioDirector", "d8/d1c/class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786", null ],
+    [ "AudioDirector", "d8/d1c/class_audio_director.html#a79200c209e5b4ecb8318bfd5c29c21a8", null ],
     [ "AudioDirector", "d8/d1c/class_audio_director.html#ab1cafad76498a9f3d58bc8855bdf67ea", null ],
     [ "addAudioStreamObj", "d8/d1c/class_audio_director.html#aad97af621b2072f1246526f2afb0e0ff", null ],
     [ "connect", "d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94", null ],

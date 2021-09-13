@@ -15,9 +15,6 @@ bool _busy(){
 
 bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
             bool rval;
-            uint16_t* a;
-            uint16_t* b;
-
             //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
             Serial.flush();
             dmabusy=true;

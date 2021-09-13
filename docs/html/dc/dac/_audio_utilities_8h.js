@@ -7,7 +7,7 @@ var _audio_utilities_8h =
     [ "od", "dc/dac/_audio_utilities_8h.html#aeb30ecddbfc5b6ba62bc0da4d2073799", null ],
     [ "ou", "dc/dac/_audio_utilities_8h.html#ae45b0bf3fff1e47d738025ad3284bced", null ],
     [ "note_freq", "dc/dac/_audio_utilities_8h.html#af6d1c471accf787e079027d03a69fc35", null ],
-    [ "note_name", "dc/dac/_audio_utilities_8h.html#a5a2208631663ab98452c0944852f1f4a", null ],
-    [ "octave_down", "dc/dac/_audio_utilities_8h.html#aa43b250ba4844984fd38bf7fbae75244", null ],
-    [ "octave_up", "dc/dac/_audio_utilities_8h.html#abcec7f677e69d44084da437ef8fbd75c", null ]
+    [ "note_name", "dc/dac/_audio_utilities_8h.html#a0a239e6eab8de7c74d8679a1668fc70a", null ],
+    [ "octave_down", "dc/dac/_audio_utilities_8h.html#a4acc20e89264694f46edc7c91361359d", null ],
+    [ "octave_up", "dc/dac/_audio_utilities_8h.html#a32a42878ee800838d536a83870eb2c1d", null ]
 ];

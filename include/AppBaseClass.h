@@ -102,7 +102,7 @@ class AppBaseClass {
     bool has_focus;
     bool has_pop;
     void returnFocus();
-    void requestPopUp();
+    void requestPopUp(bool exclusive=false);
     void releasePopUp();
     void selfRegister();
   private:

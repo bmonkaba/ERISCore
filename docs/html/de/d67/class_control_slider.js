@@ -18,7 +18,7 @@ var class_control_slider =
     [ "onTouchRelease", "de/d67/class_control_slider.html#a50745ac7860ba904c4deca768b659106", null ],
     [ "RegisterApp", "de/d67/class_control_slider.html#a1347e3dece7d16b17a81a5a20597e365", null ],
     [ "releasePopUp", "de/d67/class_control_slider.html#a84d1a45250dacc61c7f3fd1c06547a3a", null ],
-    [ "requestPopUp", "de/d67/class_control_slider.html#afb6b3bef6594a153b3d06c3a7dc3d15e", null ],
+    [ "requestPopUp", "de/d67/class_control_slider.html#a5c284e20788663354eb4d8a862d3a91d", null ],
     [ "returnFocus", "de/d67/class_control_slider.html#a9f95ae78f35aefdb005560509aa683ad", null ],
     [ "selfRegister", "de/d67/class_control_slider.html#a932d7b1d01e2809a7d844daceba8f52f", null ],
     [ "setDimension", "de/d67/class_control_slider.html#ae48421c05ab38a72f27c1face4bb50c4", null ],

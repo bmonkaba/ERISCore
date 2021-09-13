@@ -70,7 +70,7 @@ class AppScope:public AppBaseClass {
         //am->data->update("DOT",scope->getDotProduct());
         //am->data->update("DOT_AVG",scope->getDotProductAvg());
         am->data->update("DOT_AVG_SLOW",scope->getDotProductAvgSlow());
-        //am->data->update("DOT_DELTA",scope->getDotDelta());
+        am->data->update("DOT_DELTA",scope->getDotDelta());
         //am->data->update("DOT_DELTA_MACD",scope->getDotDeltaMACD());
         am->data->update("DOT_ACCEL",scope->getDotAcceleration());
         //am->data->update("DOT_MACD",scope->getDotMACD());

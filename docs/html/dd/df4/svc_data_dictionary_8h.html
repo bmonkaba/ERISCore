@@ -84,8 +84,9 @@ $(document).ready(function(){initNavTree('dd/df4/svc_data_dictionary_8h.html','.
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">svcDataDictionary.h File Reference</div>  </div>
 </div><!--header-->
@@ -122,23 +123,41 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:abe1182317d2c82fffde2a410976d3bbf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>&#160;&#160;&#160;48</td></tr>
+<tr class="memitem:abe1182317d2c82fffde2a410976d3bbf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf">DATADICT_KEYVALUE_PAIRS</a>&#160;&#160;&#160;42</td></tr>
 <tr class="separator:abe1182317d2c82fffde2a410976d3bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0d4b44bdc0c12c14053e27157a5bafb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>&#160;&#160;&#160;32</td></tr>
 <tr class="separator:ab0d4b44bdc0c12c14053e27157a5bafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a4d0e1b4ebad6f5f7a2fb0ee55e501a67"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a4d0e1b4ebad6f5f7a2fb0ee55e501a67">svcDataDictionaryRecord</a></td></tr>
-<tr class="separator:a4d0e1b4ebad6f5f7a2fb0ee55e501a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a6c450b4b92bd1fec7468641d98871eda"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda">svcDataDictionaryRecordType</a> { <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaacb9be765f361bb7efb9073730aac92c6">READ</a>
-, <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de">READWRITE</a>
-, <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaaad7dce162b42b3d0968ffa57fad43512">POINTER</a>
+<tr class="memitem:a6c450b4b92bd1fec7468641d98871eda"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda">svcDataDictionaryRecordType</a> { <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa34cfcb6110ccb5af83a959764dbc9111">DDRT_READ</a>
+, <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24">DDRT_READWRITE</a>
+, <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc">DDRT_POINTER</a>
+, <a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f">DDRT_EMPTY</a>
  }</td></tr>
 <tr class="separator:a6c450b4b92bd1fec7468641d98871eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac52b13e21caa2c289fdfd3c58d994433"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ac52b13e21caa2c289fdfd3c58d994433">__attribute__</a> ((aligned(32)))</td></tr>
+<tr class="separator:ac52b13e21caa2c289fdfd3c58d994433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab8a7d783bd0c1cb55490a9894614b998"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ab8a7d783bd0c1cb55490a9894614b998">__attribute__</a></td></tr>
+<tr class="separator:ab8a7d783bd0c1cb55490a9894614b998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeed6b95bc3b9d2ce0321b85f62a22111"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#aeed6b95bc3b9d2ce0321b85f62a22111">_padding</a> [16]</td></tr>
+<tr class="separator:aeed6b95bc3b9d2ce0321b85f62a22111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef6ff54552e8fc050862e775cb93874"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a1ef6ff54552e8fc050862e775cb93874">key</a> [<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>]</td></tr>
+<tr class="separator:a1ef6ff54552e8fc050862e775cb93874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743e9412f11fe56ae277d25f0f844d18"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a743e9412f11fe56ae277d25f0f844d18">owner</a></td></tr>
+<tr class="separator:a743e9412f11fe56ae277d25f0f844d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace0a8388a029a1947f41856e7a94d93e"><td class="memItemLeft" align="right" valign="top">int32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ace0a8388a029a1947f41856e7a94d93e">pval</a></td></tr>
+<tr class="separator:ace0a8388a029a1947f41856e7a94d93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fec1f78e864dd22a42a67f744208598"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda">svcDataDictionaryRecordType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a0fec1f78e864dd22a42a67f744208598">record_type</a></td></tr>
+<tr class="separator:a0fec1f78e864dd22a42a67f744208598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9defd75397baec7dc6e0779384a952"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a></td></tr>
+<tr class="separator:a8e9defd75397baec7dc6e0779384a952"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Data Dictionary service provides an interface to a data dictionary service the service shall provide a CRUD (create,read,update,destroy) interface data shall be globaly readable create operation shall require a pointer to the owner update and destroy operations can only be made by the owner the owner pointer shall never be dereferenced or accessed by the service; it only serves as an ID NULL pointers are OK. They can be utilized to create globaly modifiable (update,destroy) records. </p>
@@ -156,7 +175,7 @@ Enumerations</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DATADICT_KEYVALUE_PAIRS&#160;&#160;&#160;48</td>
+          <td class="memname">#define DATADICT_KEYVALUE_PAIRS&#160;&#160;&#160;42</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,21 +200,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a4d0e1b4ebad6f5f7a2fb0ee55e501a67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d0e1b4ebad6f5f7a2fb0ee55e501a67">&#9670;&nbsp;</a></span>svcDataDictionaryRecord</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a> <a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a6c450b4b92bd1fec7468641d98871eda"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c450b4b92bd1fec7468641d98871eda">&#9670;&nbsp;</a></span>svcDataDictionaryRecordType</h2>
@@ -209,21 +213,160 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaacb9be765f361bb7efb9073730aac92c6"></a>READ&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de"></a>READWRITE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaaad7dce162b42b3d0968ffa57fad43512"></a>POINTER&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaa34cfcb6110ccb5af83a959764dbc9111"></a>DDRT_READ&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24"></a>DDRT_READWRITE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc"></a>DDRT_POINTER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f"></a>DDRT_EMPTY&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00028">28</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaacb9be765f361bb7efb9073730aac92c6">READ</a>,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de">READWRITE</a>,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaaad7dce162b42b3d0968ffa57fad43512">POINTER</a></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa35c9731eb1af206e4ebcfc0bc95cd6de">READWRITE</a></div><div class="ttdeci">@ READWRITE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">svcDataDictionary.h:30</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaaad7dce162b42b3d0968ffa57fad43512"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaaad7dce162b42b3d0968ffa57fad43512">POINTER</a></div><div class="ttdeci">@ POINTER</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00032">svcDataDictionary.h:31</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaacb9be765f361bb7efb9073730aac92c6"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaacb9be765f361bb7efb9073730aac92c6">READ</a></div><div class="ttdeci">@ READ</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">svcDataDictionary.h:29</a></div></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa34cfcb6110ccb5af83a959764dbc9111">DDRT_READ</a>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24">DDRT_READWRITE</a>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc">DDRT_POINTER</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f">DDRT_EMPTY</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24">DDRT_READWRITE</a></div><div class="ttdeci">@ DDRT_READWRITE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00030">svcDataDictionary.h:30</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaa34cfcb6110ccb5af83a959764dbc9111"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa34cfcb6110ccb5af83a959764dbc9111">DDRT_READ</a></div><div class="ttdeci">@ DDRT_READ</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00029">svcDataDictionary.h:29</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc">DDRT_POINTER</a></div><div class="ttdeci">@ DDRT_POINTER</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00031">svcDataDictionary.h:31</a></div></div>
+<div class="ttc" id="asvc_data_dictionary_8h_html_a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f">DDRT_EMPTY</a></div><div class="ttdeci">@ DDRT_EMPTY</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00033">svcDataDictionary.h:32</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ac52b13e21caa2c289fdfd3c58d994433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52b13e21caa2c289fdfd3c58d994433">&#9670;&nbsp;</a></span>__attribute__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="../../d7/dd5/structsvc_data_dictionary_record.html">svcDataDictionaryRecord</a> __attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(aligned(32))&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ab8a7d783bd0c1cb55490a9894614b998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a7d783bd0c1cb55490a9894614b998">&#9670;&nbsp;</a></span>__attribute__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> _data __attribute__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeed6b95bc3b9d2ce0321b85f62a22111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeed6b95bc3b9d2ce0321b85f62a22111">&#9670;&nbsp;</a></span>_padding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char _padding[16]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00006">6</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+</div>
+</div>
+<a id="a1ef6ff54552e8fc050862e775cb93874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef6ff54552e8fc050862e775cb93874">&#9670;&nbsp;</a></span>key</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char key[<a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb">DATADICT_MAX_KEY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00001">1</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00051">SvcDataDictionary::SvcDataDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">SvcDataDictionary::create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00104">SvcDataDictionary::increment()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00126">SvcDataDictionary::printDictionary()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00080">SvcDataDictionary::read()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00089">SvcDataDictionary::update()</a>.</p>
+
+</div>
+</div>
+<a id="a743e9412f11fe56ae277d25f0f844d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743e9412f11fe56ae277d25f0f844d18">&#9670;&nbsp;</a></span>owner</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t* owner</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00003">3</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+</div>
+</div>
+<a id="ace0a8388a029a1947f41856e7a94d93e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace0a8388a029a1947f41856e7a94d93e">&#9670;&nbsp;</a></span>pval</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t* pval</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00004">4</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+</div>
+</div>
+<a id="a0fec1f78e864dd22a42a67f744208598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fec1f78e864dd22a42a67f744208598">&#9670;&nbsp;</a></span>record_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda">svcDataDictionaryRecordType</a> record_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00005">5</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00089">SvcDataDictionary::update()</a>.</p>
+
+</div>
+</div>
+<a id="a8e9defd75397baec7dc6e0779384a952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e9defd75397baec7dc6e0779384a952">&#9670;&nbsp;</a></span>val</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t val</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">2</a> of file <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html">svcDataDictionary.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00062">SvcDataDictionary::create()</a>, <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00126">SvcDataDictionary::printDictionary()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00089">SvcDataDictionary::update()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

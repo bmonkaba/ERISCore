@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['name_1233',['name',['../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2',1,'AppBaseClass']]],
-  ['next_1234',['next',['../dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3',1,'SvcDataDictionary']]],
-  ['next_5fdest_1235',['next_dest',['../d2/d7c/class_audio_connection.html#a86103ac904d649232382774eae387a84',1,'AudioConnection']]],
-  ['next_5fupdate_1236',['next_update',['../d5/d96/class_audio_stream.html#af9cd6c94cd50aa817ed928bc4a2d71e8',1,'AudioStream']]],
-  ['nextappicationnode_1237',['nextAppicationNode',['../db/d69/class_app_base_class.html#a3e8afaf0337b6ce5b539b78527ee0873',1,'AppBaseClass']]],
-  ['nextidassignment_1238',['nextIDAssignment',['../da/d96/class_app_manager.html#a2acd9f4e111057e0f2ed0243b7c2cb68',1,'AppManager']]],
-  ['note_5ffreq_1239',['note_freq',['../dc/dac/_audio_utilities_8h.html#af6d1c471accf787e079027d03a69fc35',1,'AudioUtilities.h']]],
-  ['note_5fname_1240',['note_name',['../dc/dac/_audio_utilities_8h.html#a5a2208631663ab98452c0944852f1f4a',1,'AudioUtilities.h']]],
-  ['nullstr_1241',['nullStr',['../d1/d2c/_audio_director_8cpp.html#a426c7b3dbd9cded3b276dbeace90e537',1,'AudioDirector.cpp']]],
-  ['num_5finputs_1242',['num_inputs',['../d5/d96/class_audio_stream.html#adc3bac67eb13d51375cc49a48c3328b1',1,'AudioStream']]],
-  ['numconnections_1243',['numConnections',['../d5/d96/class_audio_stream.html#aae8e555ac9f257e10abbd3545a78f88c',1,'AudioStream']]]
+  ['magnitude_1226',['magnitude',['../d4/dd5/class_audio_synth_waveform.html#a02d636961692dc5e3434764d1cc0a4ab',1,'AudioSynthWaveform::magnitude()'],['../d9/d43/class_audio_synth_waveform_modulated.html#aca9f35470c81e90ebeba776629ab977e',1,'AudioSynthWaveformModulated::magnitude()']]],
+  ['mem_5flength_1227',['mem_length',['../d4/d81/classeris_audio_analyze_scope.html#a009dbb6d75e51083fa061bb26b5b8528',1,'erisAudioAnalyzeScope']]],
+  ['mem_5fstep_1228',['MEM_STEP',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#a50000ac8856adf1d02c82188bedb5868',1,'erisAudioAnalyzeFFT1024']]],
+  ['memory_5fpool_1229',['memory_pool',['../d5/d96/class_audio_stream.html#a760fb58e212788dbec27664ea23bbd32',1,'AudioStream']]],
+  ['memory_5fpool_5favailable_5fmask_1230',['memory_pool_available_mask',['../d5/d96/class_audio_stream.html#a6f70806d5f6baccccf03482dae743192',1,'AudioStream']]],
+  ['memory_5fpool_5ffirst_5fmask_1231',['memory_pool_first_mask',['../d5/d96/class_audio_stream.html#a09743ebc10ac1be3e977b806b51468d7',1,'AudioStream']]],
+  ['memory_5fpool_5findex_1232',['memory_pool_index',['../de/dd6/structaudio__block__struct.html#af299f9fc881ff8bbf3ad6fbf1ba4f7b3',1,'audio_block_struct']]],
+  ['memory_5fused_1233',['memory_used',['../d5/d96/class_audio_stream.html#a743e19367946485719cd96436da38970',1,'AudioStream']]],
+  ['memory_5fused_5fmax_1234',['memory_used_max',['../d5/d96/class_audio_stream.html#a43ccf2427001ee57a44a0998226f8e38',1,'AudioStream']]],
+  ['modulation_5ffactor_1235',['modulation_factor',['../d9/d43/class_audio_synth_waveform_modulated.html#a1b7944259bbc90c2b22909a6de3cf958',1,'AudioSynthWaveformModulated']]],
+  ['modulation_5ftype_1236',['modulation_type',['../d9/d43/class_audio_synth_waveform_modulated.html#a1f2cbf62c1505092deaae0c0172a3668',1,'AudioSynthWaveformModulated']]],
+  ['monitor_5fdd_5fupdate_5ftimer_1237',['monitor_dd_update_timer',['../da/d96/class_app_manager.html#a4efa38607f2334ff20047536d4e83e45',1,'AppManager']]],
+  ['msraw_1238',['msraw',['../d1/dff/class_touch.html#a6803048a87b2667442fe6c64360454fa',1,'Touch']]],
+  ['myname_1239',['myname',['../d4/d81/classeris_audio_analyze_scope.html#a6054babe529afcc2578de59b31868485',1,'erisAudioAnalyzeScope']]]
 ];

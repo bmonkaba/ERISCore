@@ -157,8 +157,18 @@ class AppCQT:public AppBaseClass {
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(oscBank,osc_bank_size);
+      draw->fillRoundRect(x,y,w,h,3,CL(0x07,0x00,0x10));
+      //draw the scale lines
+      draw->setFont(Arial_8);
+      draw->setTextColor(ILI9341_DARKGREY);
+      for(uint8_t i=1;i < 18; i++){
+        draw->drawLine(x,y +  (h - (log1p((0.1 * i))) * h),x+w,y + (h - (log1p((0.1 * i))) * h),ILI9341_DARKCYAN);
+        if (has_pop){
+          draw->setCursor(x + i * 17,y+ (h - (log1p((0.1 * i))) * h) - 9);
+          if (i < 17) draw->print((log1p((0.1 * i))));
+        }
+      }
 
-      draw->fillRoundRect(x,y,w,h,3,CL(0x15,0x07,0x2F));
       //draw the cqt bins
       const float im = (w-1)/(float)(sizeof(note_freq)/sizeof(note_freq[0]));
       uint16_t nx;
@@ -182,20 +192,19 @@ class AppCQT:public AppBaseClass {
       }
 
       //make a second pass but only draw the oscillators
+      draw->setTextColor(ILI9341_GREENYELLOW);
       for (uint16_t i=0;i < osc_bank_size;i++){
         amp = oscBank[i].avgValueSlow;//fft->read(&fftHighRR[i]);
         signal = (log1p((amp))*10.0) * h;
         if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*oscBank[i].cqtBin);
-        if (signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,ILI9341_ORANGE);
-        if (signal > 20){
-          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 20);
+        if (signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,CL(0xFF,0xA0,(uint8_t)(200*oscBank[i].transientValue)));
+        if (signal > 20 && has_pop){
+          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 15);
           draw->print(note_name[oscBank[i].cqtBin]);
-          if(i==0){ 
-            draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 40);  
-            draw->print(oscBank[i].peakFrequency);
-          }
+          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 25);  
+          draw->print(oscBank[i].peakFrequency); 
         }
       }
 
@@ -256,7 +265,7 @@ class AppCQT:public AppBaseClass {
           //is touched
            if(!has_pop){
                 //getFocus();
-                requestPopUp();
+                requestPopUp(true);
                 
             }else{
                 //returnFocus();
@@ -271,7 +280,7 @@ class AppCQT:public AppBaseClass {
     void FLASHMEM updateOscillatorBank(bool low_range_switch){
       bool found;
       float floor;
-      floor = 0.00010;
+      floor = 0.000001;
       
       if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
       else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -292,18 +301,18 @@ class AppCQT:public AppBaseClass {
       if (low_range_switch){
         bool isEven = (peak_bin%2==0);
         if(isEven){
-          for(uint16_t i=1; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.1;  
-        } else for(uint16_t i=0; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.1;
+          for(uint16_t i=1; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.01;  
+        } else for(uint16_t i=0; i < osc_bank_size; i+=2) fftLowRR[i].avgValueFast *= 0.01;
       }else{
          bool isEven = (fftHighRR[0].cqtBin%2==0);
         if(isEven){
           for(uint16_t i=1; i < osc_bank_size; i+=2){
-            fftHighRR[i].avgValueFast *= 0.1;
+            fftHighRR[i].avgValueFast *= 0.01;
             //high freq tilt
             //fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.10; 
           }
         } else for(uint16_t i=0; i < osc_bank_size; i+=2){
-            fftHighRR[i].avgValueFast *= 0.1;
+            fftHighRR[i].avgValueFast *= 0.01;
             //high freq tilt
             //fftHighRR[i-1].avgValueFast += ((fftHighRR[i-1].startBin - highRange)/(float)(highRange))* 1.10; 
           }
@@ -365,34 +374,38 @@ class AppCQT:public AppBaseClass {
       // - this means it should sound natural through the audible range
       // the implementation accumulates error overtime.
      
-     pll_p = 0.0;
+     //pll_p = 0.0;
+     //pll_f = 1.0;
 
      float ch1_f = AppManager::getInstance()->data->read("CH1_FREQ");
      float ch2_f = AppManager::getInstance()->data->read("CH2_FREQ");
-     int32_t das = AppManager::getInstance()->data->read("DOT_AVG_SLOW");
-     if ((ch1_f*octave_down[12])>ch2_f){
-        pll_f += 0.000001;
+     int32_t das = AppManager::getInstance()->data->read("DOT_DELTA");
+     if ((ch1_f*octave_down[0])>ch2_f){
+        pll_f += 0.00001;
+        pll_p = 0.0;
      } else if (ch1_f<ch2_f){
-        pll_f -= 0.000001;
+        pll_f -= 0.00001;
+        pll_p = 0.0;
      } else{
         //pll_f = 1.0;
         if (das<0){
-          pll_f += 0.000001;
-          pll_p += 0.1 * abs(das);
+          //pll_f += 0.0001;
+          pll_p = 0.200;
         } else if (das>0){
-          pll_f -= 0.000001;
-          pll_p -= 0.01 * abs(das);
+          //pll_f -= 0.0001;
+          pll_p = -0.200;
         };
      }
 
-      if (pll_p>180.0){
-        pll_p -= 180.0;
+      if (pll_p>360.0){
+        pll_p -= 360.0;
       }
-      if (pll_p<-180.0){
-        pll_p += 180.0;
+      if (pll_p<-360.0){
+        pll_p += 360.0;
       }
 
-      //pll_p = 0.0;
+     //                                                                                                                    pll_p = 0.0;
+     //pll_f = 1.0;
      
       AppManager::getInstance()->data->update("PLL_P",(int32_t)(pll_p*1000));
       AppManager::getInstance()->data->update("PLL_F",(int32_t)(pll_f*1000));
@@ -419,13 +432,13 @@ class AppCQT:public AppBaseClass {
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
-              f = (pll_f * f * octave_down[12]);
+              f = (pll_f * f * octave_down[0]);
               if (f < 20) f = 20;
               if (f > 10000) f = 10000;
               //AudioNoInterrupts();
               osc[i]->frequency(f);
               osc[i]->amplitude(a);
-              //osc[i]->phase(phase_aligner);
+              osc[i]->phase(phase_aligner);
               //AudioInterrupts();
             } 
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['uibltalphatype_1372',['UIBLTAlphaType',['../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html#a5be8bb1d7800c26bafa46ed5b606e8eb',1,'ILI9341_t3_ERIS.h']]]
+  ['subsample_5frange_1374',['subsample_range',['../d4/dfc/eris__analyze__fft1024_8h.html#af1f4ed6c31e28ce8075c254e6ed3ab18',1,'eris_analyze_fft1024.h']]],
+  ['svcdatadictionaryrecordtype_1375',['svcDataDictionaryRecordType',['../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda',1,'svcDataDictionary.h']]]
 ];

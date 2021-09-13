@@ -19,7 +19,7 @@ var class_my_app_example =
     [ "onTouchRelease", "dd/da5/class_my_app_example.html#a59f2b9f6b63b328d6745ec7ee65ada3a", null ],
     [ "RegisterApp", "dd/da5/class_my_app_example.html#a1347e3dece7d16b17a81a5a20597e365", null ],
     [ "releasePopUp", "dd/da5/class_my_app_example.html#a84d1a45250dacc61c7f3fd1c06547a3a", null ],
-    [ "requestPopUp", "dd/da5/class_my_app_example.html#afb6b3bef6594a153b3d06c3a7dc3d15e", null ],
+    [ "requestPopUp", "dd/da5/class_my_app_example.html#a5c284e20788663354eb4d8a862d3a91d", null ],
     [ "returnFocus", "dd/da5/class_my_app_example.html#a9f95ae78f35aefdb005560509aa683ad", null ],
     [ "selfRegister", "dd/da5/class_my_app_example.html#a932d7b1d01e2809a7d844daceba8f52f", null ],
     [ "setDimension", "dd/da5/class_my_app_example.html#ae48421c05ab38a72f27c1face4bb50c4", null ],

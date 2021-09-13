@@ -99,7 +99,7 @@ public:
 		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
-		subsample_lowfreqrange =  32;//ratio should be 2:1; bw is fc of the low range
+		subsample_lowfreqrange =  16;//ratio should be 2:1; bw is fc of the low range
 		subsample_highfreqrange = 8;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
@@ -260,15 +260,15 @@ public:
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
 			if (fftRR->peakFrequency < 0) fftRR->peakFrequency = 0.01;
-			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 510) && (output[fftRR->peakBin] > 0)){
+			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 510)){
 				//from the balance of the side lobes, estimate the actual frequency
 				float ratio = 1;
 				float lobeFrequency = 1;
-				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0.1){
+				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0.1 && (output[fftRR->peakBin] > 0)){
 					//pos lobe
 					ratio = (output[fftRR->peakBin+1] - output[fftRR->peakBin-1] + output[fftRR->peakBin+1]) / (1.0 * output[fftRR->peakBin]);
 					lobeFrequency = ((fftRR->peakBin+1) * bin_size) - bin_size/2;
-				 } else if (output[fftRR->peakBin-1] > 0.1){ 
+				 } else if (output[fftRR->peakBin-1] > 0.1 && (output[fftRR->peakBin] > 0)){ 
 					 //neg lobe
 					ratio = (output[fftRR->peakBin-1]-output[fftRR->peakBin+1] + output[fftRR->peakBin-1]) / (1.0 * output[fftRR->peakBin]);
 				 	lobeFrequency = ((fftRR->peakBin-1) * bin_size)  - bin_size/2;

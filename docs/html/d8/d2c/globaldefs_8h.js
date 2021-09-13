@@ -3,6 +3,7 @@ var globaldefs_8h =
     [ "APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC", "d8/d2c/globaldefs_8h.html#a7f577a945f09a83065eb29f7735f674b", null ],
     [ "DISPLAY_UPDATE_PERIOD", "d8/d2c/globaldefs_8h.html#a1dd7d3fffe12cd8607ba41b1a10eda0c", null ],
     [ "ENABLE_ASYNC_SCREEN_UPDATES", "d8/d2c/globaldefs_8h.html#aec62f4713e992fb7868b21869cddb961", null ],
+    [ "ERIS_GREEN", "d8/d2c/globaldefs_8h.html#a6a380c61f628d82f3c48ade8ec37d23b", null ],
     [ "MAX_AUDIO_MEMORY_BLOCKS", "d8/d2c/globaldefs_8h.html#af760e948fbd21588d965e6285ae64924", null ],
     [ "MAX_AUDIO_STREAM_OBJECTS", "d8/d2c/globaldefs_8h.html#a55e40ae7817922a01086b86a043dee06", null ],
     [ "MAX_CATEGORIES", "d8/d2c/globaldefs_8h.html#ab4a6404e604591c49018d28f890fc335", null ],

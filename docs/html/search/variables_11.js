@@ -1,15 +1,18 @@
 var searchData=
 [
-  ['unum_5finputs_1333',['unum_inputs',['../d5/d96/class_audio_stream.html#a643f654eb80d440b0535cd0e6244a85c',1,'AudioStream']]],
-  ['unum_5foutputs_1334',['unum_outputs',['../d5/d96/class_audio_stream.html#a1ca258955ea281b46625381746c733f5',1,'AudioStream']]],
-  ['update_5fcall_5fperiod_1335',['update_call_period',['../db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009',1,'AppBaseClass']]],
-  ['update_5fcall_5fperiod_5fmax_1336',['update_call_period_max',['../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744',1,'AppBaseClass']]],
-  ['update_5fcalls_1337',['update_calls',['../d4/dde/class_app_c_q_t.html#ad44c783cf9c188d4c38a787cc1e04237',1,'AppCQT']]],
-  ['update_5floop_5ftime_1338',['update_loop_time',['../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18',1,'AppBaseClass']]],
-  ['update_5floop_5ftime_5fmax_1339',['update_loop_time_max',['../db/d69/class_app_base_class.html#acec8429a0d867221c0c4f47f4f7d00d4',1,'AppBaseClass']]],
-  ['update_5fscheduled_1340',['update_scheduled',['../d5/d96/class_audio_stream.html#aba25b939ec5ee19afe4d607391a82c01',1,'AudioStream']]],
-  ['updatert_5fcall_5fperiod_1341',['updateRT_call_period',['../db/d69/class_app_base_class.html#a2c2bd2a942c2228c8556dc2cb918e020',1,'AppBaseClass']]],
-  ['updatert_5fcall_5fperiod_5fmax_1342',['updateRT_call_period_max',['../db/d69/class_app_base_class.html#a52fe0832f15327eed5bf0eecf5c368bd',1,'AppBaseClass']]],
-  ['updatert_5floop_5ftime_1343',['updateRT_loop_time',['../db/d69/class_app_base_class.html#a3d6da03c9c3c5243d8dd2281dc963011',1,'AppBaseClass']]],
-  ['updatert_5floop_5ftime_5fmax_1344',['updateRT_loop_time_max',['../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421',1,'AppBaseClass']]]
+  ['t_5flastupdate_1322',['t_lastupdate',['../dd/da5/class_my_app_example.html#aca8cf8d2a20cc4f3173324bea31666ab',1,'MyAppExample']]],
+  ['text_1323',['text',['../df/d17/class_control_button.html#aeec9825d71fcb7e8fb0254babc9dd41a',1,'ControlButton::text()'],['../de/d67/class_control_slider.html#a8344ad849fc558e9dcc1c5fee8a33961',1,'ControlSlider::text()']]],
+  ['tft_5fread_5fspeed_1324',['tft_read_speed',['../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a5db8a7c5742e03f5376f7632917be724',1,'ILI9341_t3_ERIS']]],
+  ['tft_5fwrite_5fspeed_1325',['tft_write_speed',['../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a02625a6326def65841032070c1a768d9',1,'ILI9341_t3_ERIS']]],
+  ['time_5factive_1326',['time_active',['../df/d17/class_control_button.html#a19fd501eb21c9012d198cae90b74876a',1,'ControlButton']]],
+  ['tirqpin_1327',['tirqPin',['../d1/dff/class_touch.html#a8eaa043b5335f0fc6e11d3bce6408c0c',1,'Touch']]],
+  ['tone_5foffset_1328',['tone_offset',['../d4/dd5/class_audio_synth_waveform.html#a9b3b6d96d89686e45376c2dd6fb1fb9a',1,'AudioSynthWaveform::tone_offset()'],['../d9/d43/class_audio_synth_waveform_modulated.html#a511ed706d9c8af8911fcb1e77d419a87',1,'AudioSynthWaveformModulated::tone_offset()']]],
+  ['tone_5ftype_1329',['tone_type',['../d4/dd5/class_audio_synth_waveform.html#ac7865ba286bd0c01f32f64769cca51cd',1,'AudioSynthWaveform::tone_type()'],['../d9/d43/class_audio_synth_waveform_modulated.html#aa755734dc191a664feb380b02847b087',1,'AudioSynthWaveformModulated::tone_type()']]],
+  ['touch_1330',['touch',['../dc/d40/_app_manager_8cpp.html#acd8906d2b931efa3a04c33b68e665ccc',1,'AppManager.cpp']]],
+  ['touch_5fstate_1331',['touch_state',['../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e',1,'AppBaseClass::touch_state()'],['../da/d96/class_app_manager.html#a5caa0396d49e80d9ad1e1ad7354209fd',1,'AppManager::touch_state()']]],
+  ['transientvalue_1332',['transientValue',['../d2/d28/struct_f_f_t_read_range_struct.html#a60694f60f4355d633f5e2196fbf47821',1,'FFTReadRangeStruct']]],
+  ['trigger_5fedge_1333',['trigger_edge',['../d4/d81/classeris_audio_analyze_scope.html#adafa04e5f1240f82175e004501b8891a',1,'erisAudioAnalyzeScope']]],
+  ['trigger_5flevel_1334',['trigger_level',['../d4/d81/classeris_audio_analyze_scope.html#a4feac040778c451605b107d8251f94ef',1,'erisAudioAnalyzeScope']]],
+  ['trigger_5fwait_5fcount_1335',['trigger_wait_count',['../d4/d81/classeris_audio_analyze_scope.html#a90dca96db6028f063688e722cf6a0887',1,'erisAudioAnalyzeScope']]],
+  ['txbuffer_1336',['txBuffer',['../d9/dad/class_app_serial_command_interface.html#ab38040a4dd3310fb7a3e65654022bc02',1,'AppSerialCommandInterface']]]
 ];

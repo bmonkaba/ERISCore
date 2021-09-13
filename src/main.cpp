@@ -39,7 +39,7 @@ void setup() {
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
-  //while(!Serial); //DEBUG - wait for serial connection
+  while(!Serial); //DEBUG - wait for serial connection
   delayNanoseconds(500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC

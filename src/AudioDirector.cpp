@@ -135,7 +135,7 @@ void AudioDirector::generateCategoryList(){
     found = false;
     for (uint16_t j = 0; j < MAX_CATEGORIES; j++){   //check if cat name is already in the list
       if (categoryList[j] != 0){ //dont test unitialized string pointers
-        if (strncmp(*categoryList[j],pAudioStreamObjPool[i]->category,sizeof(AudioStream::category))==0) found = true;
+        if (strcmp(*categoryList[j],pAudioStreamObjPool[i]->category)==0) found = true;
       } 
     }
     if (found==false) categoryList[categoryCount++] = (char**)&pAudioStreamObjPool[i]->category; //add to the list if not existing

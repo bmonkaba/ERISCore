@@ -21,6 +21,7 @@ class AppReprogram:public AppBaseClass {
       pinMode(SW_D, INPUT);
     } 
     //define event handlers
+    void update(){};
     void updateRT(){
         //Enter program mode if both TAP_INPUT and SW_D 
         //switches are pressed at the same time.

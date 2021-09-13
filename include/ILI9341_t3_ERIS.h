@@ -57,9 +57,9 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
             //_SPI_CLOCK = 1000000;
             tft_write_speed = 76000000;
             tft_read_speed = 20000000;
-            //pSD = NULL;
+            pSD = NULL;
             //backlight = 0;
-            //pFB = NULL;    
+            pFB = NULL;    
         };
         void setSD(SdFs *ptr); //pointer to the SD Class
         void setPWMPin(uint8_t pin);

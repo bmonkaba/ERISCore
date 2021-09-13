@@ -30,7 +30,7 @@ class ControlSlider:public AppBaseClass {
       } else strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
     }
     //define event handlers
-    uint16_t value;
+    int16_t value;
     char text[MAX_TEXT_LENGTH];
   private:
     uint16_t last_x;
@@ -40,26 +40,11 @@ class ControlSlider:public AppBaseClass {
     void update(){
         isDirty = true;
         if (isDirty){
-            int16_t marker = w*(value/100.0);
+            int16_t marker = w*((float)value/100.0);
             //draw->drawFastVLine(marker,y,h,ILI9341_MAGENTA);
             //draw->fillRoundRect(x,y,w,h,4,CL(12,0,20));
             draw->fillRoundRect(x+1, y, marker+2, h,4, CL(36, 54, 84));
             draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
-            /*
-            draw->setTextColor(CL(0,0,0));
-            draw->setCursor(x+(w/2)-1,y+(h/2),true);
-            draw->print(text);
-            draw->setCursor(x+(w/2)+1,y+(h/2),true);
-            draw->print(text);
-            draw->setCursor(x+(w/2),y+(h/2)-1,true);
-            draw->print(text);
-            draw->setCursor(x+(w/2),y+(h/2)+1,true);
-            draw->print(text);
-            draw->setCursor(x+(w/2)+1,y+(h/2)+1,true);
-            draw->print(text);
-            draw->setCursor(x+(w/2)-1,y+(h/2)-1,true);
-            draw->print(text);
-            */
             draw->setTextColor(CL(74, 143, 255));
             //draw->setCursor(x+(w/2),y+(h/2),true);
             //draw->print(text);
@@ -79,7 +64,6 @@ class ControlSlider:public AppBaseClass {
         if(isPressed){
             value += ((t_x-last_x)/2);
             if (value>100)value = 100;
-            if(value <0)value=0;
             if (last_x != t_x) parentNode->MessageHandler(this,"Changed");
             last_x = t_x;
             isDirty = true;

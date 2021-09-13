@@ -25,16 +25,14 @@ var class_app_manager =
     [ "cycle_time_max", "da/d96/class_app_manager.html#a1a4d46edc2c02c8dea587186368b432b", null ],
     [ "data", "da/d96/class_app_manager.html#a702921f08484c897380064116a4a23a6", null ],
     [ "display_refresh_time", "da/d96/class_app_manager.html#a4ed0c304d8225d2a243fc3e05d134da8", null ],
+    [ "exclusive_app_render", "da/d96/class_app_manager.html#a42daed903317a4ee59b6afc91aa9fadc", null ],
     [ "monitor_dd_update_timer", "da/d96/class_app_manager.html#a4efa38607f2334ff20047536d4e83e45", null ],
     [ "nextIDAssignment", "da/d96/class_app_manager.html#a2acd9f4e111057e0f2ed0243b7c2cb68", null ],
     [ "obj", "da/d96/class_app_manager.html#aa7180e9d7b6f4b58f17972057a51393b", null ],
     [ "p", "da/d96/class_app_manager.html#a79bdde908efa7810477f913ff47c1c28", null ],
     [ "pActiveApp", "da/d96/class_app_manager.html#a5dbf4eaefad6927f17dffa39dd8c36cc", null ],
-    [ "redraw_background", "da/d96/class_app_manager.html#ac6cc145eda62ec34d4f9db797e1af1be", null ],
-    [ "redraw_objects", "da/d96/class_app_manager.html#a33df122b87ccd16bb8d7f7b1a40a69ac", null ],
-    [ "redraw_popup", "da/d96/class_app_manager.html#a879a35d91ec2799236b8cedfa32c881e", null ],
-    [ "redraw_render", "da/d96/class_app_manager.html#a2869401d7d6851685b99e9aa2eb8f4fa", null ],
     [ "root", "da/d96/class_app_manager.html#a1609289f7b35f217c9f9aec1a1948832", null ],
     [ "sd", "da/d96/class_app_manager.html#aefb1b88fd22eb9aa1c5309658a00cac7", null ],
+    [ "state", "da/d96/class_app_manager.html#a65b36ee3b46c24fd07bc5b92aaafee50", null ],
     [ "touch_state", "da/d96/class_app_manager.html#a5caa0396d49e80d9ad1e1ad7354209fd", null ]
 ];

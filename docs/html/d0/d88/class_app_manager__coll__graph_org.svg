@@ -13,27 +13,26 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="646,-0.5 646,-570.5 826,-570.5 826,-0.5 646,-0.5"/>
-<text text-anchor="middle" x="736" y="-556.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager</text>
-<polyline fill="none" stroke="black" points="646,-549.5 826,-549.5 "/>
-<text text-anchor="start" x="654" y="-535.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t activeID</text>
-<text text-anchor="start" x="654" y="-522.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t appFocusStack</text>
-<text text-anchor="start" x="654" y="-509.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint8_t appFocusStackIndex</text>
-<text text-anchor="start" x="654" y="-496.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t appPopUpStack</text>
-<text text-anchor="start" x="654" y="-483.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint8_t appPopUpStackIndex</text>
-<text text-anchor="start" x="654" y="-470.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMicros cycle_time</text>
-<text text-anchor="start" x="654" y="-457.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t cycle_time_max</text>
-<text text-anchor="start" x="654" y="-444.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis display</text>
-<text text-anchor="start" x="654" y="-431.9" font-family="Helvetica,sans-Serif" font-size="12.00">_refresh_time</text>
-<text text-anchor="start" x="654" y="-418.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis monitor</text>
-<text text-anchor="start" x="654" y="-405.9" font-family="Helvetica,sans-Serif" font-size="12.00">_dd_update_timer</text>
-<text text-anchor="start" x="654" y="-392.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t nextIDAssignment</text>
-<text text-anchor="start" x="654" y="-379.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; TS_Point p</text>
-<text text-anchor="start" x="654" y="-366.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool redraw_background</text>
-<text text-anchor="start" x="654" y="-353.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool redraw_objects</text>
-<text text-anchor="start" x="654" y="-340.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool redraw_popup</text>
-<text text-anchor="start" x="654" y="-327.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool redraw_render</text>
-<text text-anchor="start" x="654" y="-314.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; SdFs sd</text>
+<polygon fill="#bfbfbf" stroke="black" points="646,-0.5 646,-557.5 826,-557.5 826,-0.5 646,-0.5"/>
+<text text-anchor="middle" x="736" y="-543.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager</text>
+<polyline fill="none" stroke="black" points="646,-536.5 826,-536.5 "/>
+<text text-anchor="start" x="654" y="-522.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t activeID</text>
+<text text-anchor="start" x="654" y="-509.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t appFocusStack</text>
+<text text-anchor="start" x="654" y="-496.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint8_t appFocusStackIndex</text>
+<text text-anchor="start" x="654" y="-483.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t appPopUpStack</text>
+<text text-anchor="start" x="654" y="-470.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint8_t appPopUpStackIndex</text>
+<text text-anchor="start" x="654" y="-457.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMicros cycle_time</text>
+<text text-anchor="start" x="654" y="-444.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t cycle_time_max</text>
+<text text-anchor="start" x="654" y="-431.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis display</text>
+<text text-anchor="start" x="654" y="-418.9" font-family="Helvetica,sans-Serif" font-size="12.00">_refresh_time</text>
+<text text-anchor="start" x="654" y="-405.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool exclusive_app</text>
+<text text-anchor="start" x="654" y="-392.9" font-family="Helvetica,sans-Serif" font-size="12.00">_render</text>
+<text text-anchor="start" x="654" y="-379.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis monitor</text>
+<text text-anchor="start" x="654" y="-366.9" font-family="Helvetica,sans-Serif" font-size="12.00">_dd_update_timer</text>
+<text text-anchor="start" x="654" y="-353.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t nextIDAssignment</text>
+<text text-anchor="start" x="654" y="-340.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; TS_Point p</text>
+<text text-anchor="start" x="654" y="-327.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; SdFs sd</text>
+<text text-anchor="start" x="654" y="-314.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; loopState state</text>
 <text text-anchor="start" x="654" y="-301.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool touch_state</text>
 <polyline fill="none" stroke="black" points="646,-294.5 826,-294.5 "/>
 <text text-anchor="start" x="654" y="-280.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AppBaseClass * getActive</text>
@@ -64,15 +63,15 @@
 <!-- Node1&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M826.2,-336.42C836.97,-327.16 844,-310.19 844,-285.5 844,-267.56 840.29,-253.7 834.13,-243.91"/>
-<polygon fill="none" stroke="#404040" points="833.97,-243.72 827.04,-241.74 826.2,-234.58 833.14,-236.56 833.97,-243.72"/>
-<text text-anchor="middle" x="855.5" y="-282.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;obj</text>
+<path fill="none" stroke="#404040" d="M826.2,-328.95C836.97,-319.87 844,-303.22 844,-279 844,-261.4 840.29,-247.8 834.13,-238.2"/>
+<polygon fill="none" stroke="#404040" points="834.06,-238.12 827.11,-236.2 826.2,-229.05 833.15,-230.96 834.06,-238.12"/>
+<text text-anchor="middle" x="855.5" y="-275.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;obj</text>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../db/d69/class_app_base_class.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="179.5,-633.5 179.5,-1775.5 364.5,-1775.5 364.5,-633.5 179.5,-633.5"/>
+<polygon fill="white" stroke="black" points="179.5,-620.5 179.5,-1775.5 364.5,-1775.5 364.5,-620.5 179.5,-620.5"/>
 <text text-anchor="middle" x="272" y="-1761.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass</text>
 <polyline fill="none" stroke="black" points="179.5,-1754.5 364.5,-1754.5 "/>
 <text text-anchor="start" x="187.5" y="-1740.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t h</text>
@@ -157,29 +156,30 @@
 <text text-anchor="start" x="187.5" y="-718.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void update()</text>
 <text text-anchor="start" x="187.5" y="-705.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ virtual void updateRT()</text>
 <text text-anchor="start" x="187.5" y="-692.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void releasePopUp()</text>
-<text text-anchor="start" x="187.5" y="-679.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void requestPopUp()</text>
-<text text-anchor="start" x="187.5" y="-666.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void returnFocus()</text>
-<text text-anchor="start" x="187.5" y="-653.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void selfRegister()</text>
-<text text-anchor="start" x="187.5" y="-640.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; void _updatePosition()</text>
+<text text-anchor="start" x="187.5" y="-679.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void requestPopUp(bool</text>
+<text text-anchor="start" x="187.5" y="-666.9" font-family="Helvetica,sans-Serif" font-size="12.00"> exclusive=false)</text>
+<text text-anchor="start" x="187.5" y="-653.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void returnFocus()</text>
+<text text-anchor="start" x="187.5" y="-640.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void selfRegister()</text>
+<text text-anchor="start" x="187.5" y="-627.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; void _updatePosition()</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M364.64,-979.36C410.52,-872.95 468.53,-744.9 527,-633 561.22,-567.52 602.59,-497.36 639.47,-437.42"/>
-<polygon fill="none" stroke="#404040" points="639.52,-437.34 639.27,-430.13 645.82,-427.13 646.08,-434.33 639.52,-437.34"/>
-<text text-anchor="middle" x="582" y="-605.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;pActiveApp</text>
-<text text-anchor="middle" x="582" y="-592.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;root</text>
+<path fill="none" stroke="#404040" d="M364.52,-968.61C410.15,-861.21 467.99,-732.35 527,-620 560.89,-555.48 602.21,-486.58 639.14,-427.79"/>
+<polygon fill="none" stroke="#404040" points="639.35,-427.47 639.16,-420.26 645.74,-417.32 645.93,-424.52 639.35,-427.47"/>
+<text text-anchor="middle" x="582" y="-592.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;pActiveApp</text>
+<text text-anchor="middle" x="582" y="-579.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;root</text>
 </g>
 <!-- Node2&#45;&gt;Node2 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node2</title>
-<path fill="none" stroke="#404040" d="M364.7,-1299.87C375.48,-1282.27 382.5,-1250.48 382.5,-1204.5 382.5,-1166.78 377.78,-1138.61 370.13,-1119.99"/>
-<polygon fill="none" stroke="#404040" points="370.07,-1119.86 363.81,-1116.28 364.7,-1109.13 370.96,-1112.71 370.07,-1119.86"/>
-<text text-anchor="middle" x="450.5" y="-1214.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #nextAppicationNode</text>
-<text text-anchor="middle" x="450.5" y="-1201.4" font-family="Helvetica,sans-Serif" font-size="12.00">#parentNode</text>
-<text text-anchor="middle" x="450.5" y="-1188.4" font-family="Helvetica,sans-Serif" font-size="12.00">#previousAppicationNode</text>
+<path fill="none" stroke="#404040" d="M364.7,-1294.33C375.48,-1276.55 382.5,-1244.44 382.5,-1198 382.5,-1159.9 377.78,-1131.45 370.13,-1112.64"/>
+<polygon fill="none" stroke="#404040" points="370.02,-1112.42 363.78,-1108.82 364.7,-1101.67 370.95,-1105.27 370.02,-1112.42"/>
+<text text-anchor="middle" x="450.5" y="-1207.9" font-family="Helvetica,sans-Serif" font-size="12.00"> #nextAppicationNode</text>
+<text text-anchor="middle" x="450.5" y="-1194.9" font-family="Helvetica,sans-Serif" font-size="12.00">#parentNode</text>
+<text text-anchor="middle" x="450.5" y="-1181.9" font-family="Helvetica,sans-Serif" font-size="12.00">#previousAppicationNode</text>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -224,8 +224,8 @@
 <!-- Node3&#45;&gt;Node2 -->
 <g id="edge4" class="edge">
 <title>Node3&#45;&gt;Node2</title>
-<path fill="none" stroke="#404040" d="M139.93,-1942.43C151.18,-1879.66 164.1,-1807.59 177.35,-1733.63"/>
-<polygon fill="none" stroke="#404040" points="177.36,-1733.56 174.48,-1726.95 179.48,-1721.75 182.36,-1728.36 177.36,-1733.56"/>
+<path fill="none" stroke="#404040" d="M139.67,-1942.47C150.96,-1879.05 163.94,-1806.09 177.28,-1731.19"/>
+<polygon fill="none" stroke="#404040" points="177.32,-1730.97 174.43,-1724.36 179.42,-1719.16 182.3,-1725.77 177.32,-1730.97"/>
 <text text-anchor="middle" x="183" y="-1797.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #draw</text>
 </g>
 <!-- Node4 -->
@@ -308,8 +308,8 @@
 <!-- Node5&#45;&gt;Node2 -->
 <g id="edge6" class="edge">
 <title>Node5&#45;&gt;Node2</title>
-<path fill="none" stroke="#404040" d="M311.44,-1825.29C310.65,-1812.97 309.86,-1800.5 309.06,-1787.91"/>
-<polygon fill="none" stroke="#404040" points="309.05,-1787.79 304.68,-1782.05 308.29,-1775.81 312.66,-1781.54 309.05,-1787.79"/>
+<path fill="none" stroke="#404040" d="M311.58,-1825.39C310.8,-1813.06 310.02,-1800.59 309.22,-1788"/>
+<polygon fill="none" stroke="#404040" points="309.21,-1787.87 304.84,-1782.14 308.45,-1775.9 312.83,-1781.63 309.21,-1787.87"/>
 <text text-anchor="middle" x="323" y="-1797.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #ad</text>
 </g>
 <!-- Node6 -->
@@ -479,10 +479,9 @@
 <g id="node9" class="node">
 <title>Node11</title>
 <g id="a_node9"><a xlink:href="../../dc/d43/class_svc_data_dictionary.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="536.5,-1101.5 536.5,-1307.5 681.5,-1307.5 681.5,-1101.5 536.5,-1101.5"/>
-<text text-anchor="middle" x="609" y="-1293.9" font-family="Helvetica,sans-Serif" font-size="12.00">SvcDataDictionary</text>
-<polyline fill="none" stroke="black" points="536.5,-1286.5 681.5,-1286.5 "/>
-<text text-anchor="start" x="544.5" y="-1272.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; char _key</text>
+<polygon fill="white" stroke="black" points="536.5,-1101.5 536.5,-1294.5 681.5,-1294.5 681.5,-1101.5 536.5,-1101.5"/>
+<text text-anchor="middle" x="609" y="-1280.9" font-family="Helvetica,sans-Serif" font-size="12.00">SvcDataDictionary</text>
+<polyline fill="none" stroke="black" points="536.5,-1273.5 681.5,-1273.5 "/>
 <text text-anchor="start" x="544.5" y="-1259.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; uint16_t next</text>
 <polyline fill="none" stroke="black" points="536.5,-1252.5 681.5,-1252.5 "/>
 <text text-anchor="start" x="544.5" y="-1238.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ SvcDataDictionary()</text>
@@ -502,94 +501,96 @@
 <!-- Node11&#45;&gt;Node1 -->
 <g id="edge14" class="edge">
 <title>Node11&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M623.14,-1101.42C640.38,-976.89 670.3,-760.91 694.99,-582.58"/>
-<polygon fill="none" stroke="#404040" points="695,-582.5 691.87,-576.01 696.65,-570.62 699.79,-577.11 695,-582.5"/>
-<text text-anchor="middle" x="710" y="-598.9" font-family="Helvetica,sans-Serif" font-size="12.00"> +data</text>
+<path fill="none" stroke="#404040" d="M622.23,-1101.46C639.53,-976.56 670.6,-752.2 695.91,-569.48"/>
+<polygon fill="none" stroke="#404040" points="695.92,-569.39 692.78,-562.9 697.57,-557.51 700.71,-564 695.92,-569.39"/>
+<text text-anchor="middle" x="711" y="-585.9" font-family="Helvetica,sans-Serif" font-size="12.00"> +data</text>
 </g>
 <!-- Node12 -->
 <g id="node10" class="node">
 <title>Node12</title>
 <g id="a_node10"><a xlink:href="../../d7/dd5/structsvc_data_dictionary_record.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="516.5,-2092 516.5,-2207 701.5,-2207 701.5,-2092 516.5,-2092"/>
-<text text-anchor="middle" x="609" y="-2193.4" font-family="Helvetica,sans-Serif" font-size="12.00">svcDataDictionaryRecord</text>
-<polyline fill="none" stroke="black" points="516.5,-2186 701.5,-2186 "/>
-<text text-anchor="start" x="524.5" y="-2172.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t * owner</text>
-<text text-anchor="start" x="524.5" y="-2159.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int32_t * pval</text>
-<text text-anchor="start" x="524.5" y="-2146.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ svcDataDictionaryRecordType</text>
-<text text-anchor="start" x="524.5" y="-2133.4" font-family="Helvetica,sans-Serif" font-size="12.00"> record_type</text>
-<text text-anchor="start" x="524.5" y="-2120.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int32_t val</text>
-<polyline fill="none" stroke="black" points="516.5,-2113 701.5,-2113 "/>
-<text text-anchor="middle" x="609" y="-2099.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polygon fill="white" stroke="black" points="516.5,-2079 516.5,-2220 701.5,-2220 701.5,-2079 516.5,-2079"/>
+<text text-anchor="middle" x="609" y="-2206.4" font-family="Helvetica,sans-Serif" font-size="12.00">svcDataDictionaryRecord</text>
+<polyline fill="none" stroke="black" points="516.5,-2199 701.5,-2199 "/>
+<text text-anchor="start" x="524.5" y="-2185.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ char _padding</text>
+<text text-anchor="start" x="524.5" y="-2172.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ char key</text>
+<text text-anchor="start" x="524.5" y="-2159.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint32_t * owner</text>
+<text text-anchor="start" x="524.5" y="-2146.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int32_t * pval</text>
+<text text-anchor="start" x="524.5" y="-2133.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ svcDataDictionaryRecordType</text>
+<text text-anchor="start" x="524.5" y="-2120.4" font-family="Helvetica,sans-Serif" font-size="12.00"> record_type</text>
+<text text-anchor="start" x="524.5" y="-2107.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ int32_t val</text>
+<polyline fill="none" stroke="black" points="516.5,-2100 701.5,-2100 "/>
+<text text-anchor="middle" x="609" y="-2086.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node12&#45;&gt;Node11 -->
 <g id="edge15" class="edge">
 <title>Node12&#45;&gt;Node11</title>
-<path fill="none" stroke="#404040" d="M609,-2091.99C609,-1940.51 609,-1523.16 609,-1319.83"/>
-<polygon fill="none" stroke="#404040" points="609,-1319.64 605,-1313.64 609,-1307.64 613,-1313.64 609,-1319.64"/>
+<path fill="none" stroke="#404040" d="M609,-2078.68C609,-1914.56 609,-1503.29 609,-1306.8"/>
+<polygon fill="none" stroke="#404040" points="609,-1306.75 605,-1300.75 609,-1294.75 613,-1300.75 609,-1306.75"/>
 <text text-anchor="middle" x="629.5" y="-1797.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;record</text>
 </g>
 <!-- Node13 -->
 <g id="node11" class="node">
 <title>Node13</title>
 <g id="a_node11"><a xlink:href="../../d4/d7c/class_animation.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="699.5,-1108 699.5,-1301 858.5,-1301 858.5,-1108 699.5,-1108"/>
-<text text-anchor="middle" x="779" y="-1287.4" font-family="Helvetica,sans-Serif" font-size="12.00">Animation</text>
-<polyline fill="none" stroke="black" points="699.5,-1280 858.5,-1280 "/>
-<text text-anchor="start" x="707.5" y="-1266.4" font-family="Helvetica,sans-Serif" font-size="12.00"># char _path</text>
-<text text-anchor="start" x="707.5" y="-1253.4" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t chunk</text>
-<text text-anchor="start" x="707.5" y="-1240.4" font-family="Helvetica,sans-Serif" font-size="12.00"># char filename</text>
-<text text-anchor="start" x="707.5" y="-1227.4" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t frame</text>
-<polyline fill="none" stroke="black" points="699.5,-1220 858.5,-1220 "/>
-<text text-anchor="start" x="707.5" y="-1206.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ Animation()</text>
-<text text-anchor="start" x="707.5" y="-1193.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ char * getFileName()</text>
-<text text-anchor="start" x="707.5" y="-1180.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getNextFrameChunk</text>
-<text text-anchor="start" x="707.5" y="-1167.4" font-family="Helvetica,sans-Serif" font-size="12.00">(SdFs *ptr)</text>
-<text text-anchor="start" x="707.5" y="-1154.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ char * getPath()</text>
-<text text-anchor="start" x="707.5" y="-1141.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isFrameComplete()</text>
-<text text-anchor="start" x="707.5" y="-1128.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setPath(const</text>
-<text text-anchor="start" x="707.5" y="-1115.4" font-family="Helvetica,sans-Serif" font-size="12.00"> char *path)</text>
+<polygon fill="white" stroke="black" points="699.5,-1101.5 699.5,-1294.5 858.5,-1294.5 858.5,-1101.5 699.5,-1101.5"/>
+<text text-anchor="middle" x="779" y="-1280.9" font-family="Helvetica,sans-Serif" font-size="12.00">Animation</text>
+<polyline fill="none" stroke="black" points="699.5,-1273.5 858.5,-1273.5 "/>
+<text text-anchor="start" x="707.5" y="-1259.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char _path</text>
+<text text-anchor="start" x="707.5" y="-1246.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t chunk</text>
+<text text-anchor="start" x="707.5" y="-1233.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char filename</text>
+<text text-anchor="start" x="707.5" y="-1220.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t frame</text>
+<polyline fill="none" stroke="black" points="699.5,-1213.5 858.5,-1213.5 "/>
+<text text-anchor="start" x="707.5" y="-1199.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ Animation()</text>
+<text text-anchor="start" x="707.5" y="-1186.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ char * getFileName()</text>
+<text text-anchor="start" x="707.5" y="-1173.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getNextFrameChunk</text>
+<text text-anchor="start" x="707.5" y="-1160.9" font-family="Helvetica,sans-Serif" font-size="12.00">(SdFs *ptr)</text>
+<text text-anchor="start" x="707.5" y="-1147.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ char * getPath()</text>
+<text text-anchor="start" x="707.5" y="-1134.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isFrameComplete()</text>
+<text text-anchor="start" x="707.5" y="-1121.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void setPath(const</text>
+<text text-anchor="start" x="707.5" y="-1108.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *path)</text>
 </a>
 </g>
 </g>
 <!-- Node13&#45;&gt;Node1 -->
 <g id="edge16" class="edge">
 <title>Node13&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M774.52,-1107.96C768.74,-984.64 758.41,-764.35 749.9,-582.92"/>
-<polygon fill="none" stroke="#404040" points="749.89,-582.74 745.61,-576.93 749.33,-570.75 753.61,-576.56 749.89,-582.74"/>
-<text text-anchor="middle" x="807.5" y="-598.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;animated_wallpaper</text>
+<path fill="none" stroke="#404040" d="M774.52,-1101.46C768.67,-976.62 758.15,-752.42 749.59,-569.75"/>
+<polygon fill="none" stroke="#404040" points="749.57,-569.49 745.3,-563.69 749.01,-557.51 753.29,-563.31 749.57,-569.49"/>
+<text text-anchor="middle" x="806.5" y="-585.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;animated_wallpaper</text>
 </g>
 <!-- Node14 -->
 <g id="node12" class="node">
 <title>Node14</title>
 <g id="a_node12"><a xlink:href="../../d5/d8f/class_analog_inputs.html" target="_top" xlink:title="Used for filtering the analog inputs and change detection.">
-<polygon fill="white" stroke="black" points="876.5,-1101.5 876.5,-1307.5 1027.5,-1307.5 1027.5,-1101.5 876.5,-1101.5"/>
-<text text-anchor="middle" x="952" y="-1293.9" font-family="Helvetica,sans-Serif" font-size="12.00">AnalogInputs</text>
-<polyline fill="none" stroke="black" points="876.5,-1286.5 1027.5,-1286.5 "/>
-<text text-anchor="start" x="884.5" y="-1272.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; int16_t ai</text>
-<text text-anchor="start" x="884.5" y="-1259.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis lastTrigger</text>
-<text text-anchor="start" x="884.5" y="-1246.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis lastUpdate</text>
-<polyline fill="none" stroke="black" points="876.5,-1239.5 1027.5,-1239.5 "/>
-<text text-anchor="start" x="884.5" y="-1225.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AnalogInputs()</text>
-<text text-anchor="start" x="884.5" y="-1212.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN1()</text>
-<text text-anchor="start" x="884.5" y="-1199.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN2()</text>
-<text text-anchor="start" x="884.5" y="-1186.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN3()</text>
-<text text-anchor="start" x="884.5" y="-1173.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN4()</text>
-<text text-anchor="start" x="884.5" y="-1160.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN1()</text>
-<text text-anchor="start" x="884.5" y="-1147.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN2()</text>
-<text text-anchor="start" x="884.5" y="-1134.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN3()</text>
-<text text-anchor="start" x="884.5" y="-1121.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN4()</text>
-<text text-anchor="start" x="884.5" y="-1108.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool update()</text>
+<polygon fill="white" stroke="black" points="876.5,-1095 876.5,-1301 1027.5,-1301 1027.5,-1095 876.5,-1095"/>
+<text text-anchor="middle" x="952" y="-1287.4" font-family="Helvetica,sans-Serif" font-size="12.00">AnalogInputs</text>
+<polyline fill="none" stroke="black" points="876.5,-1280 1027.5,-1280 "/>
+<text text-anchor="start" x="884.5" y="-1266.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; int16_t ai</text>
+<text text-anchor="start" x="884.5" y="-1253.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis lastTrigger</text>
+<text text-anchor="start" x="884.5" y="-1240.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; elapsedMillis lastUpdate</text>
+<polyline fill="none" stroke="black" points="876.5,-1233 1027.5,-1233 "/>
+<text text-anchor="start" x="884.5" y="-1219.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ AnalogInputs()</text>
+<text text-anchor="start" x="884.5" y="-1206.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN1()</text>
+<text text-anchor="start" x="884.5" y="-1193.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN2()</text>
+<text text-anchor="start" x="884.5" y="-1180.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN3()</text>
+<text text-anchor="start" x="884.5" y="-1167.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ float freadAN4()</text>
+<text text-anchor="start" x="884.5" y="-1154.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN1()</text>
+<text text-anchor="start" x="884.5" y="-1141.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN2()</text>
+<text text-anchor="start" x="884.5" y="-1128.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN3()</text>
+<text text-anchor="start" x="884.5" y="-1115.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t readAN4()</text>
+<text text-anchor="start" x="884.5" y="-1102.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool update()</text>
 </a>
 </g>
 </g>
 <!-- Node14&#45;&gt;Node1 -->
 <g id="edge17" class="edge">
 <title>Node14&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M946.66,-1101.44C938.25,-978.08 917.43,-765.11 868,-589 858.11,-553.78 844.95,-517.31 830.76,-482.41"/>
-<polygon fill="none" stroke="#404040" points="830.68,-482.24 824.7,-478.21 826.12,-471.14 832.1,-475.17 830.68,-482.24"/>
-<text text-anchor="middle" x="893.5" y="-598.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;analog</text>
+<path fill="none" stroke="#404040" d="M946.81,-1094.92C938.49,-970.37 917.58,-754.36 867,-576 857.39,-542.12 844.64,-507.09 830.85,-473.5"/>
+<polygon fill="none" stroke="#404040" points="830.75,-473.25 824.75,-469.25 826.14,-462.17 832.14,-466.18 830.75,-473.25"/>
+<text text-anchor="middle" x="892.5" y="-585.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;analog</text>
 </g>
 </g>
 </svg>

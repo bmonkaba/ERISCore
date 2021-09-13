@@ -18,7 +18,7 @@ var class_app_base_class =
     [ "onTouchRelease", "db/d69/class_app_base_class.html#ad759e79954ed91d52567d885622585be", null ],
     [ "RegisterApp", "db/d69/class_app_base_class.html#a1347e3dece7d16b17a81a5a20597e365", null ],
     [ "releasePopUp", "db/d69/class_app_base_class.html#a84d1a45250dacc61c7f3fd1c06547a3a", null ],
-    [ "requestPopUp", "db/d69/class_app_base_class.html#afb6b3bef6594a153b3d06c3a7dc3d15e", null ],
+    [ "requestPopUp", "db/d69/class_app_base_class.html#a5c284e20788663354eb4d8a862d3a91d", null ],
     [ "returnFocus", "db/d69/class_app_base_class.html#a9f95ae78f35aefdb005560509aa683ad", null ],
     [ "selfRegister", "db/d69/class_app_base_class.html#a932d7b1d01e2809a7d844daceba8f52f", null ],
     [ "setDimension", "db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4", null ],

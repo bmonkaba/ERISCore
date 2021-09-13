@@ -17,7 +17,7 @@ var class_app_serial_command_interface =
     [ "onTouchRelease", "d9/dad/class_app_serial_command_interface.html#ab9e41d908e90e3c4d8b2a6dc7c47553d", null ],
     [ "RegisterApp", "d9/dad/class_app_serial_command_interface.html#a1347e3dece7d16b17a81a5a20597e365", null ],
     [ "releasePopUp", "d9/dad/class_app_serial_command_interface.html#a84d1a45250dacc61c7f3fd1c06547a3a", null ],
-    [ "requestPopUp", "d9/dad/class_app_serial_command_interface.html#afb6b3bef6594a153b3d06c3a7dc3d15e", null ],
+    [ "requestPopUp", "d9/dad/class_app_serial_command_interface.html#a5c284e20788663354eb4d8a862d3a91d", null ],
     [ "returnFocus", "d9/dad/class_app_serial_command_interface.html#a9f95ae78f35aefdb005560509aa683ad", null ],
     [ "selfRegister", "d9/dad/class_app_serial_command_interface.html#a932d7b1d01e2809a7d844daceba8f52f", null ],
     [ "setDimension", "d9/dad/class_app_serial_command_interface.html#ae48421c05ab38a72f27c1face4bb50c4", null ],

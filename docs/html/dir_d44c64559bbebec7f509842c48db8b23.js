@@ -6,9 +6,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "appExample.h", "d2/d6c/app_example_8h.html", [
       [ "MyAppExample", "dd/da5/class_my_app_example.html", "dd/da5/class_my_app_example" ]
     ] ],
-    [ "AppManager.h", "df/d72/_app_manager_8h.html", [
-      [ "AppManager", "da/d96/class_app_manager.html", "da/d96/class_app_manager" ]
-    ] ],
+    [ "AppManager.h", "df/d72/_app_manager_8h.html", "df/d72/_app_manager_8h" ],
     [ "appReprogram.h", "dd/d93/app_reprogram_8h.html", [
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", "d5/d25/class_app_reprogram" ]
     ] ],

@@ -32,7 +32,7 @@
 <text text-anchor="start" x="8" y="-834.9" font-family="Helvetica,sans-Serif" font-size="12.00">_lowfreqrange</text>
 <text text-anchor="start" x="8" y="-821.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; audio_block_t * inputQueue</text>
 <text text-anchor="start" x="8" y="-808.9" font-family="Helvetica,sans-Serif" font-size="12.00">Array</text>
-<text text-anchor="start" x="8" y="-795.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; bool is_analyzed</text>
+<text text-anchor="start" x="8" y="-795.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; volatile bool is_analyzed</text>
 <text text-anchor="start" x="8" y="-782.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; volatile bool outputflag</text>
 <text text-anchor="start" x="8" y="-769.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; const int16_t * window</text>
 <text text-anchor="start" x="8" y="-756.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; const float32_t * window_f32</text>

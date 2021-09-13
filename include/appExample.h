@@ -71,11 +71,12 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,12400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.99);
-      reverb->damping(0.12);
+      reverb->roomsize(0.39);
+      reverb->damping(0.72);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      mix->gain(2,10.0);
+      mix->gain(2,1.0);
+      mix->gain(2,0.5);
 
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);
@@ -273,7 +274,7 @@ class MyAppExample:public AppBaseClass {
       ad->connect("mixer_6 0 biquad_3 0");
       ad->connect("biquad_3 0 mixer_1 0");
       ad->connect("biquad_3 0 freeverb_1 0");
-      //ad->connect("freeverb_1 0 mixer_1 1");
+      ad->connect("freeverb_1 0 mixer_1 1");
 
       //input through filter 3 to the master mixer
       ad->connect("i2s-in_1 1 biquad_4 0");

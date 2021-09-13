@@ -36,16 +36,14 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   pActiveApp = 0;
   nextIDAssignment = 1; //id 0 is reserved
   monitor_dd_update_timer = 0;
-  redraw_background=false;
-  redraw_objects=true;
-  redraw_render=false;
-  redraw_popup=false;
+  state = redraw_objects;
   //init the app focus and app stacks
   memset(&appFocusStack,0,sizeof(appFocusStack));
   memset(&appPopUpStack,0,sizeof(appPopUpStack));
   appFocusStackIndex = 0;
   appPopUpStackIndex = 0;
-
+  exclusive_app_render = false;
+  cycle_time_max = 0;
   //init the sd card
   if (!sd.begin(SdioConfig(FIFO_SDIO))){
     Serial.println(F("AppManager: FATAL! SD Card Not Found "));
@@ -93,55 +91,109 @@ void AppManager::update(){
     
     monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
-    #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-    //bool screenBusy;
-    //screenBusy = (tft.busy()|| redraw_objects==true || redraw_background==true || redraw_popup ==true || redraw_render==true);
-    //update the screen background
     drt = display_refresh_time;
-    if (!draw.busy() && redraw_background==true && (drt > DISPLAY_UPDATE_PERIOD)){
-        data->update("RENDER",0);
-      //tft.bltSDFullScreen("bluehex.ile");
-      //tft.fillRect(0, 0, 320, 240, 7565);
-      if (animated_wallpaper.getNextFrameChunk(&sd)){
-          draw.bltSDAnimationFullScreen(&animated_wallpaper);   
-          //Serial.printf(F("AppManager::bltSDAnimation Chunk %d\n"),t); 
-      }
-    }
-    #else
-    if (!screenBusy) draw.updateScreen();
-    #endif
-    
-    node = root;
     app_time=0;
-    if (root == 0){
+    touch_updated = false;
+    update_analog = false;
+    node = root;
+
+    //update touch
+    touch.update();
+    touch_updated = true;
+    //update analog inputs
+    update_analog = analog.update();
+
+    if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
       return;
     }
-    if (!draw.busy()){
-      touch.update(); //wait until draw is complete in case of dma 
-      touch_updated = true;
-    } else touch_updated = false;
+
+    //update loop is directed by the state variable 
+    switch(state){
+      case redraw_background:
+        if (!draw.busy()){
+            data->update("RENDER",0);
+          if (animated_wallpaper.getNextFrameChunk(&sd)){
+              draw.bltSDAnimationFullScreen(&animated_wallpaper);   
+          }
+        }
+        if ((data->read("RENDER") == 0) && animated_wallpaper.isFrameComplete()){
+          //Serial.printf(F("AppManager::isFrameComplete %d\n"),drt);
+          data->update("RENDER",1);
+          state = redraw_objects;
+        }
+        break;
+        
+      case redraw_wait:
+        if (drt > 30){
+          if(exclusive_app_render) state = redraw_objects;
+          else state = redraw_background;
+        }
+
+        break;
+
+      case redraw_render:
+        //Serial.printf(F("AppManager::Rendering %d\n"),drt);
+        data->update("RENDER_PERIOD",drt);
+        data->update("RENDER",4);
+        data->increment("RENDER_FRAME");
+        Serial.flush();
+        delayNanoseconds(20);
+        draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
+        state = redraw_wait;
+        display_refresh_time = 0;
+        break;
+
+      case redraw_objects:        
+        node = root;
+        if (exclusive_app_render == false){
+          do{
+              app_time=0;
+              if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
+              //Serial.printf("%s ",node->name);
+              //Serial.flush();
+              node->update(); //update active window
+              Serial.flush();
+              node->update_loop_time = app_time;
+              if (node->update_loop_time > node->update_loop_time_max){
+                  node->update_loop_time_max = node->update_loop_time;
+                  //update the data dictionary
+                  data->update(node->name,node->update_loop_time_max); 
+              }
+              node->update_call_period =0;
+              node=node->nextAppicationNode;//check next node
+            }while(node !=NULL);
+        };
+        data->update("RENDER",2);
+        data->increment("UPDATE_CALLS");
+        state = redraw_popup;
+        break;
+
+      case redraw_popup:
+        //draw any popups
+        if (!appPopUpStackIndex==0 && appPopUpStack[appPopUpStackIndex-1] != 0){
+          node = getApp(appPopUpStack[appPopUpStackIndex-1]);
+          if (node != 0){
+            //Serial.println(F("AppManager::redraw_popup"));
+            node->update();
+          }
+        }
+        data->update("RENDER",3);
+        state = redraw_render;     
+        break;
+    }
     
-    #ifdef ENABLE_ASYNC_SCREEN_UPDATES
-    //if (!screenBusy) draw.fillRect(0, 0, 320, 240, 0);//draw.bltSDFullScreen("bluehex.ile");//draw.fillRect(0, 0, 320, 20, 0);
-    #else
-    //if (!screenBusy) draw.bltSDFullScreen("bluehex.ile");
-    #endif
-    //search the linked list
-    
-    update_analog = analog.update();
+    //always call the apps updateRT function on every loop
     data->increment("RT_CALLS");
+    node = root;
     do{
       app_time=0;
       if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
-      //Serial.printf("%s_RT ",node->name);
-      //Serial.flush();
       node->updateRT(); //real time update (always called)
       Serial.flush();
       node->updateRT_loop_time = app_time;
       if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
       node->updateRT_call_period =0;
-      //Serial.println("AppManager:: real time update");
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
           if (pActiveApp != node){
@@ -179,82 +231,13 @@ void AppManager::update(){
             node->touch_state=0;
             node->onTouchRelease(p.x, p.y);
           }
-          if (redraw_objects){
-            app_time=0;
-            if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
-            //Serial.printf("%s ",node->name);
-            node->update(); //update active window
-            Serial.flush();
-            node->update_loop_time = app_time;
-            if (node->update_loop_time > node->update_loop_time_max){
-                node->update_loop_time_max = node->update_loop_time;
-                //update the data dictionary
-                data->update(node->name,node->update_loop_time_max); 
-            }
-            node->update_call_period =0;
-          }
-          //return ;//dont return in case multiple apps share the same id (app specific overlay)
-                  //update order follows the order of app instance creation
       }
-      #ifdef SERIAL_PRINT_APP_LOOP_TIME
-      Serial.print(node->name);
-      Serial.print(F(":"));
-      Serial.print(cycle_time);
-      Serial.print(F(" "));
-      #endif
       node->cycle_time = cycle_time;
       if (node->cycle_time > node->cycle_time_max){
           node->cycle_time_max = node->cycle_time;
       }
       node=node->nextAppicationNode;//check next node
-    }while(node !=0);
-
-    if(redraw_popup==true){
-      
-      //draw any popups
-      if (!appPopUpStackIndex==0 && appPopUpStack[appPopUpStackIndex-1] != 0){
-        node = getApp(appPopUpStack[appPopUpStackIndex-1]);
-        if (node != 0){
-          //Serial.println(F("AppManager::redraw_popup"));
-          node->update();
-        }
-      }
-      redraw_popup = false;
-      redraw_render = true;
-    } else if (redraw_background==true && (data->read("RENDER") == 0) && animated_wallpaper.isFrameComplete()){
-      //Serial.printf(F("AppManager::isFrameComplete %d\n"),drt);
-      data->update("RENDER",1);
-      redraw_objects = true;
-      redraw_background=false;
-      //redraw_render = true;
-    } else if (redraw_render == true){
-        //Serial.printf(F("AppManager::Rendering %d\n"),drt);
-        data->update("RENDER_PERIOD",drt);
-        data->update("RENDER",4);
-        data->increment("RENDER_FRAME");
-        Serial.flush();
-        delayNanoseconds(20);
-        draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
-        redraw_render = false;
-        redraw_background=true;
-        //redraw_objects = true;
-        display_refresh_time = 0;
-    }else if(redraw_popup==true ){
-      data->update("RENDER",3);
-      redraw_popup = false;
-      redraw_render = true;          
-    }else if (redraw_objects==true ){
-      //Serial.printf(F("AppManager::ObjDrawComplete %d\n"),drt);
-      data->update("RENDER",2);
-      data->increment("UPDATE_CALLS");
-      redraw_objects = false;
-      redraw_popup = true;
-      //redraw_render = true;
-    }
-
-    #ifdef SERIAL_PRINT_APP_LOOP_TIME
-    Serial.println();
-    #endif
+    }while(node !=NULL);
 
     if (cycle_time > cycle_time_max) cycle_time_max = cycle_time;
     
@@ -271,7 +254,6 @@ void AppManager::update(){
       data->update("LOCAL_MEM",0x2007F000 - (uint32_t)(&heapTop));
       heapTop = 0;
     }
-    drt = display_refresh_time;
 };
 
 SdFs* AppManager::getSD(){
@@ -286,7 +268,7 @@ AppBaseClass* AppManager::getApp(uint16_t id){
         return node;
       }
       node=node->nextAppicationNode;//check next node
-    }while(node !=0);
+    }while(node !=NULL);
     return NULL;
 }
 
@@ -294,6 +276,7 @@ bool AppManager::requestPopUp(uint16_t id,bool exclusive){
   if (appPopUpStackIndex == 8) return false;
   appPopUpStack[appPopUpStackIndex] = id;
   appPopUpStackIndex+=1;
+  exclusive_app_render = exclusive;
   return true;
 }
 bool AppManager::releasePopUp(){
@@ -301,6 +284,7 @@ bool AppManager::releasePopUp(){
   //appPopUpStack[appPopUpStack.size()-1]=0;
   appPopUpStackIndex-=1;
   appPopUpStack[appPopUpStackIndex] = 0;
+  exclusive_app_render = false;
   return true;
 }
 
@@ -331,7 +315,7 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
       return true;
     }
     node=node->nextAppicationNode;//check next node
-  }while(node !=0);
+  }while(node !=NULL);
   return false;
 }
 void AppManager::printStats(){
@@ -357,7 +341,7 @@ void AppManager::printStats(){
     node->updateRT_call_period_max = 0;
   
     node=node->nextAppicationNode;//check next node
-  }while(node !=0);
+  }while(node !=NULL);
   //print app manager stats
   Serial.println(F("ApplicationManager"));
   Serial.print(F("\n&emsp;cycle_time: "));Serial.print(cycle_time);

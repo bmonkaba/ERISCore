@@ -7,7 +7,6 @@ var class_svc_data_dictionary =
     [ "printStats", "dc/d43/class_svc_data_dictionary.html#a8f8da1203864a57b4511876907f03eb3", null ],
     [ "read", "dc/d43/class_svc_data_dictionary.html#ac24fc984a57549307f64a4e2979c1718", null ],
     [ "update", "dc/d43/class_svc_data_dictionary.html#a63683e7d627dc39628652548e3ae037f", null ],
-    [ "_key", "dc/d43/class_svc_data_dictionary.html#afc4566c6dbbabf443cf0c6093391e0f2", null ],
     [ "next", "dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3", null ],
     [ "record", "dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02", null ]
 ];

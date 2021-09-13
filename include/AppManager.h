@@ -22,7 +22,13 @@
 #ifndef _AppManager_
 #define _AppManager_
 
-
+enum loopState{
+  redraw_wait,
+  redraw_background,
+  redraw_objects,
+  redraw_render,
+  redraw_popup,
+};
 
 
 class AppManager {
@@ -39,16 +45,14 @@ class AppManager {
     elapsedMicros cycle_time;
     elapsedMillis monitor_dd_update_timer;
     Animation animated_wallpaper;
-    bool redraw_background;
-    bool redraw_objects;
-    bool redraw_render;
-    bool redraw_popup;
+    loopState state;
     TS_Point p;
     bool touch_state;
     uint16_t appFocusStack[8]; //supports application switching
     uint16_t appPopUpStack[8]; //supports ordered overlay rendering
     uint8_t appFocusStackIndex;
     uint8_t appPopUpStackIndex;
+    bool exclusive_app_render;
 
                       //TODO: implement an active id push/pop stack for nesting apps
     AppManager();

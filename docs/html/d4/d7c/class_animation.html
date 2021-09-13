@@ -198,7 +198,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00044">filename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00173">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00170">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -226,35 +226,35 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                          {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>==0){</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>++;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      sprintf(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<span class="stringliteral">&quot;%03u.ile&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>++;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      pSD-&gt;chdir(<a class="code" href="../../d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f">_path</a>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="keywordflow">if</span>(pSD-&gt;exists(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>)){</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">true</span>; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a> = 1;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          sprintf(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<span class="stringliteral">&quot;%03u.ile&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;          <span class="keywordflow">if</span>(pSD-&gt;exists(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>)){</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;              <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;          }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      Serial.printf(<span class="stringliteral">&quot;File: %s Not found at: %s\n&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<a class="code" href="../../d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f">_path</a>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>++;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>&gt;=<a class="code" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a467a0a0544a2823d8ca02936eb7b1405">ANIMATION_CHUNKS_PER_FRAME</a>) <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>=0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                          {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>==0){</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>++;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      sprintf(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<span class="stringliteral">&quot;%03u.ile&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>++;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      pSD-&gt;chdir(<a class="code" href="../../d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f">_path</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordflow">if</span>(pSD-&gt;exists(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>)){</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">true</span>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;          <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a> = 1;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          sprintf(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<span class="stringliteral">&quot;%03u.ile&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;          <span class="keywordflow">if</span>(pSD-&gt;exists(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>)){</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      Serial.printf(<span class="stringliteral">&quot;File: %s Not found at: %s\n&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<a class="code" href="../../d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f">_path</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>++;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>&gt;=<a class="code" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a467a0a0544a2823d8ca02936eb7b1405">ANIMATION_CHUNKS_PER_FRAME</a>) <a class="code" href="../../d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a>=0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8cpp_html_a467a0a0544a2823d8ca02936eb7b1405"><div class="ttname"><a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a467a0a0544a2823d8ca02936eb7b1405">ANIMATION_CHUNKS_PER_FRAME</a></div><div class="ttdeci">#define ANIMATION_CHUNKS_PER_FRAME</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00003">ILI9341_t3_ERIS.cpp:3</a></div></div>
 <div class="ttc" id="aclass_animation_html_ad890e742613a81ce42a096b0ea6be37f"><div class="ttname"><a href="../../d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f">Animation::_path</a></div><div class="ttdeci">char _path[128]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00045">ILI9341_t3_ERIS.h:45</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00045">_path</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00003">ANIMATION_CHUNKS_PER_FRAME</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00043">chunk</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00044">filename</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00040">frame</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00083">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00081">AppManager::update()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -294,7 +294,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00045">_path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00173">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00170">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -337,7 +337,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00043">chunk</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00083">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00081">AppManager::update()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -441,7 +441,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00045">45</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00029">getNextFrameChunk()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00040">getPath()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00030">setPath()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00040">getPath()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00030">setPath()</a>.</p>
 
 </div>
 </div>
@@ -467,7 +467,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00043">43</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00029">Animation()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00173">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00029">getNextFrameChunk()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00034">isFrameComplete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00029">Animation()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00170">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00034">isFrameComplete()</a>.</p>
 
 </div>
 </div>
@@ -493,7 +493,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00044">44</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00039">getFileName()</a>, and <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00029">getNextFrameChunk()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00039">getFileName()</a>, and <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>.</p>
 
 </div>
 </div>
@@ -519,7 +519,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00042">42</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00029">Animation()</a>, and <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00029">getNextFrameChunk()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00029">Animation()</a>, and <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>.</p>
 
 </div>
 </div>

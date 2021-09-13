@@ -81,9 +81,9 @@ void AppBaseClass::returnFocus(){
   return;
 }  
 
-void AppBaseClass::requestPopUp(){
+void AppBaseClass::requestPopUp(bool exclusive){
     has_pop = true;
-    AppManager::getInstance()->requestPopUp(this->id);
+    AppManager::getInstance()->requestPopUp(this->id,exclusive);
     _updatePosition();    
     return;
 }
