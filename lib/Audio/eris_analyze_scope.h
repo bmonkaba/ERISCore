@@ -45,13 +45,13 @@
 #include "AudioStream.h"
 
 
-#define OSCOPE_CAPTURE_LENGTH 320 
+#define OSCOPE_CAPTURE_LENGTH 640 
 
 class erisAudioAnalyzeScope : public AudioStream
 {
 public:
 	erisAudioAnalyzeScope(void) : AudioStream(2, inputQueueArray),
-	  myname(NULL), state(0), trigger_edge(0), delay_length(0), mem_length(OSCOPE_CAPTURE_LENGTH) {
+	  myname(NULL), state(0), trigger_edge(0), delay_length(0), mem_length(OSCOPE_CAPTURE_LENGTH/2) {
 		shortName="scope";
 		unum_inputs=2;
 		unum_outputs=0;

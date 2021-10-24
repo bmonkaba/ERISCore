@@ -52,14 +52,28 @@ int replacechar(char *str, char orig, char rep) {
 }
 
 
+uint16_t AppSerialCommandInterface::checksum(const char *msg){
+    uint16_t csum;
+    csum=0;
+    for(uint16_t i = 0;i<strlen(msg);i++){
+        csum += msg[i];
+    }
+    return csum;
+}
 
 void AppSerialCommandInterface::streamHandler(){
     char bufferChr;
     char hexBuffer[8];
     uint16_t payload_len;
-    
+
     if (streamPos == 0) Serial.println(F("FS_START"));
     pSD->chdir(streamPath);
+
+    if(Serial.availableForWrite() < SERIAL_FILESTREAM_PAYLOAD_SIZE){
+        //serial tx buffer not available
+        //Serial.println(F("GET_WRN throttling"));
+        return; 
+    }
     if (pSD->exists(streamFile)){
         payload_len = 0;
 
@@ -75,30 +89,42 @@ void AppSerialCommandInterface::streamHandler(){
         //send the next chunked message until eof
         uint64_t i;
         i = file.available();
-        if(i > SERIAL_FILESTREAM_PAYLOAD_SIZE) i = SERIAL_FILESTREAM_PAYLOAD_SIZE;
-        for(;i > 0; i--){
-            payload_len += 1;
-            if (file.read(&bufferChr,1) < 0){
-                Serial.println(F("GET_ERR FILE READ ERROR "));
-                isStreamingFile = false;
-                streamPos = 0;
-                file.close();
-                return;
+        if(i>0){
+            //if i is zero then last chunk was eof
+            if(i > SERIAL_FILESTREAM_PAYLOAD_SIZE) i = SERIAL_FILESTREAM_PAYLOAD_SIZE;
+            for(;i > 0; i--){
+                payload_len += 1;
+                if (file.read(&bufferChr,1) < 0){
+                    Serial.println(F("GET_ERR FILE READ ERROR "));
+                    isStreamingFile = false;
+                    streamPos = 0;
+                    file.close();
+                    return;
+                }
+                sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
+                strcat(txBuffer,hexBuffer);
+                //strcat(txBuffer,",");
             }
-            sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
-            strcat(txBuffer,hexBuffer);
-            //strcat(txBuffer,",");
+            
+            txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
+            streamPos = file.position();
         }
-        
-        txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
-        streamPos = file.position();
         file.close();
 
-        if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
-            //last chunk
-            //file.close();
+        if (payload_len == 0){
+            //no data to tx; @ eof
+            Serial.println(F("FS_END"));
             Serial.flush();
-            Serial.println(txBuffer);
+            isStreamingFile = false;
+            streamPos = 0;
+            return;
+        }
+        else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
+            //last chunk
+            Serial.flush();
+            Serial.print(txBuffer);
+            Serial.print(",");
+            Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
             Serial.flush();
             isStreamingFile = false;
@@ -107,7 +133,9 @@ void AppSerialCommandInterface::streamHandler(){
         } else{
             //send file chunk
             Serial.flush();
-            Serial.println(txBuffer);
+            Serial.print(txBuffer);
+            Serial.print(",");
+            Serial.println(checksum(txBuffer));
             Serial.flush();
             return;
         }             
@@ -125,6 +153,11 @@ void AppSerialCommandInterface::streamHandler(){
 
 void AppSerialCommandInterface::updateRT(){
     //tx periodic messages
+    if(Serial.availableForWrite() < SERIAL_FILESTREAM_PAYLOAD_SIZE){
+        //serial tx buffer not available
+        //Serial.println(F("GET_WRN throttling"));
+        return; 
+    }
     #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
     if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
         sincePeriodic = 0;
@@ -259,17 +292,17 @@ void AppSerialCommandInterface::updateRT(){
                 char c;
                 strcpy(txBuffer," ");
                 for(uint32_t i = 0x20200000; i < 0x2027F000; i+=1){ 
+                    while(Serial.availableForWrite() < 5048){
+                        delay(35);
+                    }
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
                     if(i%64==0){
                         Serial.println(txBuffer);
                         strcpy(txBuffer," ");
-    
                         Serial.printf("%08X",i);
                         Serial.print("  ");
-                        Serial.flush();
-                        delay(50);
                     }
 
                     Serial.printf("%02X ",(uint8_t)c);
@@ -284,8 +317,6 @@ void AppSerialCommandInterface::updateRT(){
                         c = '.';
                         strncat(txBuffer, &c, 1);
                     }
-                    
-
                     //Serial.print(c);
                 }
                 Serial.flush();

@@ -192,8 +192,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/4;
-	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = 2;//(subsample_lowfreqrange/subsample_highfreqrange) * 2;//BLOCK_REFRESH_SIZE/(subsample_lowfreqrange/2);//BLOCKS_PER_FFT/4;
+	BLOCK_REFRESH_SIZE = (1024 / AUDIO_BLOCK_SAMPLES)/2;
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = (1024 / AUDIO_BLOCK_SAMPLES)/4;;//((subsample_lowfreqrange/subsample_highfreqrange) * 2);//BLOCK_REFRESH_SIZE/(subsample_lowfreqrange/2);//BLOCKS_PER_FFT/4;
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);
 
@@ -217,29 +217,7 @@ void erisAudioAnalyzeFFT1024::update(void)
 			outputflag = true;
 		}
 		//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
-		
-		/*
-		apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
-		arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
-		arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
-		// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin  
-		//arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024); 
-		
 
-		//moved the following into analyze function
-		//copy buffer while casting to float and scale to the range -1 to 1
-		//for (int16_t i=0; i < 1024; i++){
-		//	tmp_buffer[i] = (float32_t)buffer[i] / 32768.0;
-		//}
-		//
-		//apply_window_to_fft_buffer_f32(tmp_buffer, window_f32);
-		//arm_cfft_radix4_f32(&fft_inst, tmp_buffer);
-		// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin
-		//arm_cmplx_mag_f32(tmp_buffer, output, 1024);  
-
-		// Calculates maxValue and returns corresponding BIN value
-		//arm_max_f32(testOutput, fftSize, &maxValue, &testIndex); 
-		*/
 		#else
 		memcpy(tmp_buffer,buffer,2048 * sizeof(int16_t));
 		apply_window_to_fft_buffer(tmp_buffer, window);
@@ -258,8 +236,6 @@ void erisAudioAnalyzeFFT1024::update(void)
 			sample_block = BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE;
 			ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * sample_block;
 			//fft overlap - restore tmp cpy of last half to first half
-			//memmove(buffer,&buffer+((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE *  sizeof(int16_t)), (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
-			//memmove(buffer,&buffer [ (((AUDIO_BLOCK_SAMPLES/subsample_by) * BLOCK_REFRESH_SIZE) )],  (((AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE)) * sizeof(int16_t)));
 			memmove(buffer,&buffer[(AUDIO_BLOCK_SAMPLES/subsample_by)*BLOCK_REFRESH_SIZE], (AUDIO_BLOCK_SAMPLES/subsample_by) * (BLOCKS_PER_FFT - BLOCK_REFRESH_SIZE) * sizeof(int16_t));
 		}
 

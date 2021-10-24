@@ -80,76 +80,8 @@ class AppSerialCommandInterface:public AppBaseClass {
     bool isStreamingFile;
     elapsedMillis sincePoll;
     elapsedMillis sincePeriodic;
-
-    void streamHandler();/*{
-        char bufferChr;
-        char hexBuffer[8];
-        uint16_t payload_len;
-        
-        if (streamPos == 0) Serial.println(F("FS_START"));
-        pSD->chdir(streamPath);
-        if (pSD->exists(streamFile)){
-            payload_len = 0;
-
-            strcpy(txBuffer,"FS ");
-
-            if(!file.open(streamFile, O_READ)){ 
-                Serial.println(F("GET_ERR FILE OPEN ERROR"));
-                isStreamingFile = false;
-                streamPos = 0;
-                return;
-            }
-            file.seek(streamPos);
-            //send the next chunked message until eof
-            uint64_t i;
-            i = file.available();
-            if(i > SERIAL_FILESTREAM_PAYLOAD_SIZE) i = SERIAL_FILESTREAM_PAYLOAD_SIZE;
-            for(;i > 0; i--){
-                payload_len += 1;
-                if (file.read(&bufferChr,1) < 0){
-                    Serial.println(F("GET_ERR FILE READ ERROR "));
-                    isStreamingFile = false;
-                    streamPos = 0;
-                    file.close();
-                    return;
-                }
-                sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
-                strcat(txBuffer,hexBuffer);
-                //strcat(txBuffer,",");
-            }
-            
-            txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
-            streamPos = file.position();
-            file.close();
-
-            if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
-                //last chunk
-                //file.close();
-                Serial.flush();
-                Serial.println(txBuffer);
-                Serial.println(F("FS_END"));
-                Serial.flush();
-                isStreamingFile = false;
-                streamPos = 0;
-                return;
-            } else{
-                //send file chunk
-                Serial.flush();
-                Serial.println(txBuffer);
-                Serial.flush();
-                return;
-            }             
-        } 
-        else{
-            Serial.print(F("GET_ERR FILE NOT FOUND "));
-            Serial.println(streamFile);
-            isStreamingFile = false;
-            streamPos = 0;
-            return;
-        }
-    };
-
-    */
+    uint16_t checksum(const char *msg);
+    void streamHandler();
     void update() override{};    //called only when the app is active
     void updateRT() override;
     void onFocus()override{};   //called when given focus

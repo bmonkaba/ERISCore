@@ -51,8 +51,8 @@ class AudioDirector{
     void*  heapStart;  //used to estamate total heap allocation size
     void*  heapEnd;    //
     AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
-    erisAudioInputI2S AudioStreamInputPort; //ADC Audio Input(s)
-    AudioStream* pAudioStreamOutputPort; //DAC Audio Output(s)
+    AudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
+    erisAudioOutputI2S AudioStreamOutputPort; //DAC Audio Output(s)
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();

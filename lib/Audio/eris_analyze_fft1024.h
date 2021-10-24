@@ -79,7 +79,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowKaiser12_1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
+		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);
@@ -99,7 +99,7 @@ public:
 		subsample_by = 4; 
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
-		subsample_lowfreqrange =  16;//ratio should be 2:1; bw is fc of the low range
+		subsample_lowfreqrange = 16;//ratio should be 2:1; bw is fc of the low range
 		subsample_highfreqrange = 8;//
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
@@ -171,7 +171,7 @@ public:
 		uint32_t span;
 
 		span = binLast - binFirst;
-		if(span<2) return 0.0;
+		if(span<1) return 0.0;
 
 		if (binFirst > binLast) {
 			unsigned int tmp = binLast;
@@ -184,17 +184,16 @@ public:
 			fftRR->peakValue = 0;
 		}
 		if (binFirst > 510) return 0.0;
-		if (binLast > 510) binLast = 510;
+		if (binLast > 511) binLast = 511;
 		arm_power_f32((float32_t*)&output[binFirst], span, &powerf);
-		arm_max_f32 ((float32_t*)&output[binFirst], span, &maxf, &peak_index);
-		//maxf = 0;		
+		arm_max_f32((float32_t*)&output[binFirst], span, &maxf, &peak_index);	
 		if(fftRR){
-			fftRR->peakValue = maxf;//powerf;
+			arm_sqrt_f32(powerf*span,&fftRR->peakValue);
 			fftRR->peakBin = peak_index + binFirst;
 			if(fftRR->phase < phase[fftRR->peakBin]){
 				fftRR->phase = phase[fftRR->peakBin];
 			}else fftRR->phase = phase[fftRR->peakBin];
-		} 
+		}
 		return maxf;
 	}
 	float read(FFTReadRange *fftRR){
@@ -254,8 +253,10 @@ public:
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
 			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
-			fftRR->peakValue = (fftRR->peakValue * 0.707)/ 100.0;
-			fftRR->peakValue = log1p(fftRR->peakValue);
+			if (fftRR->peakValue > 0){
+				//fftRR->peakValue *= 1 + (((float)fftRR->peakBin/4096.0f) * ((float)fftRR->peakBin/4096.0f));
+				fftRR->peakValue = log1p(fftRR->peakValue)/50.0;
+			}
 			
 			//from the peak bin calc the freq
 			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
@@ -278,11 +279,17 @@ public:
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
 
-				fftRR->avgValueFast = (fftRR->avgValueFast * 0.75) + (fftRR->peakValue * 0.25);	//used to calc moving average convergence / divergence (MACD) 
-				fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.85) + (fftRR->avgValueFast * 0.15); 	//by comparing a short and long moving average; slow transient detection
+				
+				ratio = 1.0 - (subsample_by/(float)subsample_lowfreqrange);
+				fftRR->avgValueFast = (fftRR->avgValueFast * ratio) + (fftRR->peakValue * (1.0f -ratio));	//used to calc moving average convergence / divergence (MACD) 
+				//fftRR->avgValueFast = fftRR->peakValue;
+				ratio = 0.98;
+				fftRR->avgValueSlow = (fftRR->avgValueSlow * ratio) + (fftRR->avgValueFast * (1.0f -ratio)); 	//by comparing a short and long moving average; slow transient detection
 				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
+				
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
-				fftRR->transientValue = fabs(fftRR->peakValue - fftRR->avgValueSlow);
+				if (fftRR->avgValueFast> 0) fftRR->transientValue = (fftRR->avgValueFast - fftRR->avgValueSlow)/fftRR->avgValueFast;
+				else fftRR->transientValue = 0;
 			}
 		}
 			
@@ -291,7 +298,7 @@ public:
 
 	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
 	static int compare_fftrr_value(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)-> avgValueFast > ((const FFTReadRange *)q)->avgValueFast) return -1;
+		if (((const FFTReadRange *)p)->avgValueFast > ((const FFTReadRange *)q)->avgValueFast) return -1;
 		return 1;
 	}
 
@@ -321,7 +328,6 @@ public:
 		for (uint16_t i = 1; i < 1024 - 1; i++){
 			if ((output[i-1] < output[i])&&(output[i] > output[i+1])){
 				output[i] += output[i-1] + output[i+1];
-				output[i] *= 0.707;
 				output[i-1] = 0;
 				output[i+1] = 0;
 				

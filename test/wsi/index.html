@@ -2,12 +2,37 @@
 <html>
   <head>
     <link href="//cdn.jsdelivr.net/npm/jquery.fancytree@2.38/dist/skin-win8/ui.fancytree.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.min.css" rel="stylesheet">
     <style>
+    
+    
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(54,166,250,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,255,0.4); 
+}    
+    
     
 .container {
   display: grid;
-  grid-template-columns: 0.25fr 0.25fr 0.5fr;
-  grid-template-rows: 64px 0.3fr 0.7fr;
+  grid-template-columns: 300px 0.25fr 0.5fr;
+  grid-template-rows: 64px 0.20fr 0.9fr;
   gap: 10px 10px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -16,7 +41,8 @@
     "sidebar explorer graphs";
   width: 98%;
   height: 98%;
-  filter: drop-shadow(2px 4px 6px magenta);
+  filter: drop-shadow(1px 3px 4px darkgrey);
+    margin: auto;
 }
 
 .hamburger {
@@ -36,46 +62,72 @@
 
   grid-area: menubar;
   height: 1fr;
+  background-color: #202020;
+  border-radius: 15px;
 }
 
-.sidebar { grid-area: sidebar; border: 1px solid #dedede;}
+.sidebar { 
+  grid-area: sidebar; 
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
+
+}
 
 .imgview {
-
   grid-area: imgview;
-  width: 330px;
-  height: 400px;
-  border: 1px solid #dedede;
+  width: 320px;
+  height: 300px;
+  border: 1px solid #8e8e8e;
+  border-radius: 15px;
+  background-color: #000000; 
+  font-size: 12px; 
+  color: #ffff00; 
+  text-align: center;
+  background: radial-gradient(circle, rgba(60,60,60,1) 10%, rgba(8,8,8,0.9) 100%);
 }
 
 
-
-    
 
 .comms {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr .5fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 0.16fr 0.15fr 0.15fr;
+  grid-template-rows: 0.3fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "outbox messages messages"
-    "outbox messages messages"
-    "outbox messages messages"
+
     ;
   grid-area: comms;
-  
 }
 
-.outbox { grid-area: outbox; }
+.outbox { grid-area: outbox; 
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
+  padding-left: 5px;
+  height: 300px;
+}
 
-.messages { grid-area: messages; max-height: 400px;overflow-y:scroll;}
+.messages { grid-area: messages; max-height: 400px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    border: 1px solid #8e8e8e;
+    background-color: #202020;
+    border-radius: 15px;
+}
     
     
 .explorer {
 
   grid-area: explorer;
   width: 320px;
+  height: 575px;
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
+
  
 }
 
@@ -91,44 +143,66 @@
     "fftmsg fft fft"
     "fft2msg fft2 fft2";
   grid-area: graphs;
-  border: 1px solid #dedede;
+  
+
 }
 
-.cqtmsg { grid-area: cqtmsg;border: 1px solid #dedede; }
+.cqtmsg { grid-area: cqtmsg;border: 1px solid #8e8e8e; border-radius: 15px;background-color: #202020;}
 
-.fftmsg { grid-area: fftmsg;border: 1px solid #dedede; }
+.fftmsg { grid-area: fftmsg;border: 1px solid #8e8e8e; border-radius: 15px; background-color: #202020;}
 
 .cqt {
   grid-area: cqt;
   width: 1026px;
   height: 210px;
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
 }
 
 .fft {
   grid-area: fft;
   width: 1026px;
   height: 210px;
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
 }
 
-.fft2msg { grid-area: fft2msg; }
+.fft2msg { 
+  grid-area: fft2msg; 
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
+}
 
 .fft2 {
-
   grid-area: fft2;
   width: 1026px;
   height: 210px;
+  border: 1px solid #8e8e8e;
+  background-color: #202020;
+  border-radius: 15px;
 }
 
 .sparkline {
   stroke: #3d85de;
-  fill: rgba(#3d85de, .7);
+  background: radial-gradient(circle, rgba(47,13,45,0.4) 0%, rgba(5,16,30,0.9) 100%);
+  border: 1px solid #8e8e8e;
+  width: 280px;
+  height: 25px;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-family: system-ui;
+  border-radius: 15px;
 }
    
-body { margin: 0px; padding: 20px; background-color: #000000; font-size: 12px; color: #ffff00; background: rgb(47,13,45);
-background: radial-gradient(circle, rgba(47,13,45,1) 0%, rgba(5,16,30,1) 100%);
+body { margin: 0px; padding: 20px; background-color: #4F4F4F; font-size: 12px; color: #ffff00; text-align: center;
+background: radial-gradient(circle, rgba(47,13,45,0.4) 0%, rgba(5,16,30,0.9) 100%);
+border-radius: 15px;
 }
             
-#received { font-size: 14px; border: 1px solid #dedede; color: #00ff00;background-color: #1a1a1a;display:block;min-height:1fr;}
+#received { font-size: 80%; border: 1px solid #8e8e8e; color: #00ff00;background-color: #1a1a1a;display:block;min-height:1fr;text-align: left;}
 #received_scroll {height:1fr;}
 
 #sent { width: 250px;} 
@@ -138,10 +212,10 @@ background: radial-gradient(circle, rgba(47,13,45,1) 0%, rgba(5,16,30,1) 100%);
 #stage_label{color: #7F7F7F;margin-block: unset;}
 #stage{color: #7F7F7F;object-position: top;position: relative;left:0;top:0;margin-block: unset;}
 #oscope_label{color: #7F7F7F;display: block;overflow: hidden;width: 100%;height: 100%;margin-block: unset;}
-#oscope{mix-blend-mode: luminosity;position: relative;left:0;top:0;margin-block: unset;}
+#oscope{mix-blend-mode: hard-light;position: relative;left:0;top:0;margin-block: unset;}
 #ile_label{color: #7F7F7F;}
 
-#fancy_explorer { display:block; overflow: auto; height: 600px;} 
+#fancy_explorer { display:block; overflow: auto; height: 545px;text-align: left;} 
 $green: #88ce02;
 $dark: #262626;
 
@@ -157,7 +231,6 @@ ul.fancytree-container {
     height: 500px;
     width: 100%;
     position: relative;
-    
 }
 
 textarea {
@@ -166,6 +239,8 @@ textarea {
 
 
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js" integrity="sha512-oQq8uth41D+gIH/NJvSJvVB85MFk1eWpMK6glnkg6I7EdMqC1XVkW7RxLheXwmFdG03qScCM7gKS/Cx3FYt7Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone-amd-module.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.rawgit.com/fnando/sparkline/master/dist/sparkline.js"></script>
 <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -186,14 +261,14 @@ textarea {
           </div>
       
       <div class="menubar"> 
-          
+          <form action="" class="dropzone" id="upload"></form>
       </div>
       
       <div class="sidebar" id="sidebar">DATA DICTIONARY
       </div>
       
       <div class="imgview">
-          <p id="ile_label">ILE viewer</p>
+          ILE viewer<br><br>
           <canvas id="ileview" width="320" height="240"></canvas> 
       </div>
       
@@ -203,11 +278,10 @@ textarea {
              <form id="sent">
               <textarea id="cmd_value" name="asdf" rows="10" cols="40">
 AUDIO_NO_INTERRUPTS
-DISCONNECT fft1024_1 0
-DISCONNECT fft1024_2 0
-CONNECT waveform_16 0 scope_1 0
-CONNECT waveform_16 0 fft1024_1 0
-CONNECT waveform_16 0 fft1024_2 0
+DISCONNECT biquad_1 0
+DISCONNECT biquad_2 0
+CONNECT waveform_16 0 biquad_1 0
+CONNECT waveform_16 0 biquad_2 0
 DISCONNECT mixer_5 3
 AUDIO_INTERRUPTS
 AA 220
@@ -218,10 +292,9 @@ AA 220
                   <label for="sweep_checkbox"> Enable Freq Sweep</label>
                   <input type="range" min="30" max="2400" value="50" class="slider" id="freq_slider">
                 </form><br>
-                <button id="DD">Data Dictionary</button> 
                 <button id="ACON">Audio Connections</button> 
-                <button id="STATS">Stats</button> 
-                <button id="CQT_CFG">CQT Config</button>
+                <button id="STATS">Stats</button>
+                <button id="CQT_CFG">CQT Config</button><br>
                 <button id="PINK_NOISE">Pink Noise</button>
                 <button id="TONE">Tone</button>
                 <button id="MUTE">MUTE</button>
@@ -248,14 +321,15 @@ AA 220
         <div class="cqtmsg">
             <p id="stage_label">
             <h3 id="float">Real Time CQT Transform (2xFFT)</h3>   
-            <canvas id="stage" width="1024" height="250"></canvas> 
+            <canvas id="stage" width="1024" height="256"></canvas> 
             </p>
         </div>
-            
+        <BR>    
         <div class="fftmsg">
             <p id="oscope_label">    
              Real Time Scope (FFT Sample Window)
-              <canvas id="oscope" width="1024" height="50"></canvas>
+              <canvas id="oscope" width="1024" height="256"></canvas>
+              <canvas id="oscope_hidden" width="1024" height="256" hidden></canvas>
               </p>
         </div>
       

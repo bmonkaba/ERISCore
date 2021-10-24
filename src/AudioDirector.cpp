@@ -12,7 +12,7 @@
 
 const char* nullStr = "NULL";
 
-FLASHMEM AudioDirector::AudioDirector(){
+AudioDirector::AudioDirector(){
   objCount=0;
   activeConnections = 0;
   categoryCount=0;
@@ -26,10 +26,12 @@ FLASHMEM AudioDirector::AudioDirector(){
     categoryList[j] = (char**)&nullStr;
   }
 
-  pAudioStreamOutputPort = new erisAudioOutputI2S();
-  heapStart = pAudioStreamOutputPort;
-  addAudioStreamObj(&AudioStreamInputPort);
-  addAudioStreamObj(pAudioStreamOutputPort);
+  heapStart = pAudioStreamInputPort;
+  pAudioStreamInputPort = new erisAudioInputI2S();
+  addAudioStreamObj(pAudioStreamInputPort);
+  addAudioStreamObj(&AudioStreamOutputPort);
+
+  
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
@@ -52,6 +54,7 @@ FLASHMEM AudioDirector::AudioDirector(){
     addAudioStreamObj(new erisAudioAmplifier);
   }
 
+  
   Serial.print(F("AudioDirector::AudioDirector() objects: "));
   Serial.println(objCount);
 

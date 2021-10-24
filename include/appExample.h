@@ -52,31 +52,33 @@ class MyAppExample:public AppBaseClass {
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
-      filter->setLowpass(0, 2200);
-       filter->setLowpass(1,2200);
-      filter->setLowpass(2,2200);
-      filter->setLowpass(3,2200);
+      filter->setLowpass(0, 1100,0.3);
+      filter->setLowpass(0, 2100);
+      //filter->setHighpass(0, 200);
+      //filter->setLowpass(1,2200);
+      //filter->setLowpass(2,2200);
+      //filter->setLowpass(3,2200);
       //setHighShelf(0, 1800, -24,3.0f);
       //filter->resonance(0.9);
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_2"));
-      filter->setLowpass(0,911);
-      filter->setLowpass(1,703);
-      filter->setLowpass(2,533);
-      filter->setLowpass(3,337);
+      filter->setLowpass(0, 300);
+      //filter->setLowpass(1,300);
+      //filter->setLowpass(2,300);
+      //filter->setLowpass(3,300);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,8200);
+      filter->setLowpass(0,12200);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_4"));
-      filter->setLowpass(0,12400);
+      filter->setLowpass(0,18400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.39);
-      reverb->damping(0.72);
+      reverb->roomsize(0.40);
+      reverb->damping(0.92);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      mix->gain(2,1.0);
-      mix->gain(2,0.5);
+      mix->gain(0,0.75);
+      mix->gain(1,0.25);
 
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);
@@ -84,12 +86,12 @@ class MyAppExample:public AppBaseClass {
       oscope.setPosition(5,20);
       oscope.setDimension(315,100);
       oscope.setParent(this);
-
+      
       //cqt = new AppCQT;
       cqt.setWidgetPosition(125,20);
       cqt.setWidgetDimension(320-10-125,50);
       cqt.setParent(this);
-
+      
       slider = new ControlSlider(this);
       slider->setWidgetPosition(10,80);
       slider->setWidgetDimension(260,30);
@@ -194,7 +196,7 @@ class MyAppExample:public AppBaseClass {
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_16"));
           //AudioNoInterrupts();
           wav->frequency(atoi(message));
-          wav->amplitude(0.09);
+          wav->amplitude(0.01);
           //AudioNoInterrupts();
         }
         else if(sender->isName("TEST")){
@@ -218,7 +220,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_2"));
 
       AudioNoInterrupts();
-      amp->gain(24*log1p(fval));
+      amp->gain(log1p(fval));
       AudioInterrupts();
     };
     
@@ -232,7 +234,7 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(1,727.0 + (14279.0 * fval));
       filter->setLowpass(2,857.0 + (13137.0 * fval));
       filter->setLowpass(3,919.0 + (12221.0 * fval));
-      mixer->gain(0,log1p(1)/OSC_BANK_SIZE);
+      mixer->gain(0,1.0);
       AudioInterrupts();
     };
     
@@ -243,11 +245,11 @@ class MyAppExample:public AppBaseClass {
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
       float lp = 300.0 + (1200.0 * log1p(fval));
       float hp = 150.0 + (600.0 * log1p(fval));
-      float gain = fval;
+      float gain = log1p(fval);
       AudioNoInterrupts();
       filter->setLowpass(0,lp);
       filter->setHighpass(1,hp);
-      mixer->gain(2,1.0+gain);
+      mixer->gain(2,gain);
       AudioInterrupts();
     };
 
@@ -255,7 +257,7 @@ class MyAppExample:public AppBaseClass {
       //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_1"));
-      float gain = 20*log1p(fval);
+      float gain = log1p(fval);
       AudioNoInterrupts();
       amp->gain(gain);
       AudioInterrupts();
@@ -264,28 +266,31 @@ class MyAppExample:public AppBaseClass {
     void makeAudioConnections(){
       AudioNoInterrupts();
       ad->disconnectAll();      
-      //16 voice oscillator bank bus mixer (6)
+      //input to input amplifier      
+      ad->connect("i2s-in_1 1 amp_2 0");
+
+      //amplified input -> filter -> master mixer
+      ad->connect("amp_2 0 biquad_4 0");
+      //ad->connect("biquad_4 0 mixer_1 2");
+      
+      //master mixer -> output amp
+      ad->connect("mixer_1 0 amp_1 0");
+      ad->connect("amp_1 0 i2s-out_1 0");
+
+      //16 input bank bus mixer structure (4in x 4blocks)
       ad->connect("mixer_2 0 mixer_6 0");
       ad->connect("mixer_3 0 mixer_6 1");
       ad->connect("mixer_4 0 mixer_6 2");
       ad->connect("mixer_5 0 mixer_6 3");
-      //synth output to reverb and master mixer (1)
 
+      //bus output to filter -> reverb -> master mixer
       ad->connect("mixer_6 0 biquad_3 0");
+      //ad->connect("biquad_3 0 freeverb_1 0");
+      //ad->connect("freeverb_1 0 mixer_1 1");
+      //filtered bus mixer -> master mixer
       ad->connect("biquad_3 0 mixer_1 0");
-      ad->connect("biquad_3 0 freeverb_1 0");
-      ad->connect("freeverb_1 0 mixer_1 1");
-
-      //input through filter 3 to the master mixer
-      ad->connect("i2s-in_1 1 biquad_4 0");
-      ad->connect("biquad_4 0 mixer_1 2");
-     // ad->codnnect("i2s-in_1 1 mixer_1 2");
-
-      //master mixer to the output amp
-      ad->connect("mixer_1 0 amp_1 0");
-      ad->connect("amp_1 0 i2s-out_1 0");
-
-      //osc banks
+      
+      //connect the oscillators to the bus mixer
       ad->connect("waveform_1 0 mixer_2 0");
       ad->connect("waveform_2 0 mixer_2 1");
       ad->connect("waveform_3 0 mixer_2 2");
@@ -307,18 +312,15 @@ class MyAppExample:public AppBaseClass {
       ad->connect("waveform_16 0 mixer_5 3");
 
       //fft connections
-      ad->connect("i2s-in_1 1 amp_2 0");
-
-      ad->connect("amp_2 0 biquad_1 0");
+      ad->connect("amp_2 0 biquad_2 0");
       ad->connect("biquad_1 0 fft1024_1 0"); //lp filter
       
-      ad->connect("amp_2 0 biquad_2 0");
+      ad->connect("amp_2 0 biquad_1 0");
       ad->connect("biquad_2 0 fft1024_2 0"); //lp filter
 
-      //scope connections
-      //input through the fft amp
+      //input amp-> scope ch1
       ad->connect("amp_2 0 scope_1 0");
-      //resynthed signal output filter
+      //filtered bus mixer output -> scope ch2
       ad->connect("biquad_3 0 scope_1 1");
       AudioInterrupts();
       delay(10);

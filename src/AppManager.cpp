@@ -59,7 +59,7 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   //render.setSD(&sd); //provide a cd pointer to the sd class
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
-  animated_wallpaper.setPath("/V/POINTSOLIGHT");
+  animated_wallpaper.setPath("/V/CLEANROOM");
   Serial.println(F("AppManager: Init display"));
   draw.begin();
   //render.begin();
@@ -76,8 +76,6 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   #endif
 };
 
-
-
 void AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
@@ -92,17 +90,18 @@ void AppManager::update(){
     monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
     drt = display_refresh_time;
-    app_time=0;
     touch_updated = false;
     update_analog = false;
     node = root;
 
     //update touch
+    app_time=0;
     touch.update();
     touch_updated = true;
     //update analog inputs
     update_analog = analog.update();
-
+    data->update("AM_TOUCH",app_time);
+    
     if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
       return;
@@ -111,6 +110,7 @@ void AppManager::update(){
     //update loop is directed by the state variable 
     switch(state){
       case redraw_background:
+        app_time=0;
         if (!draw.busy()){
             data->update("RENDER",0);
           if (animated_wallpaper.getNextFrameChunk(&sd)){
@@ -122,6 +122,7 @@ void AppManager::update(){
           data->update("RENDER",1);
           state = redraw_objects;
         }
+        data->update("AM_DRAW",app_time);    
         break;
         
       case redraw_wait:
@@ -129,10 +130,10 @@ void AppManager::update(){
           if(exclusive_app_render) state = redraw_objects;
           else state = redraw_background;
         }
-
         break;
 
       case redraw_render:
+        app_time=0;      
         //Serial.printf(F("AppManager::Rendering %d\n"),drt);
         data->update("RENDER_PERIOD",drt);
         data->update("RENDER",4);
@@ -142,6 +143,7 @@ void AppManager::update(){
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         state = redraw_wait;
         display_refresh_time = 0;
+        data->update("AM_RENDER",app_time);
         break;
 
       case redraw_objects:        
@@ -157,9 +159,9 @@ void AppManager::update(){
               node->update_loop_time = app_time;
               if (node->update_loop_time > node->update_loop_time_max){
                   node->update_loop_time_max = node->update_loop_time;
-                  //update the data dictionary
-                  data->update(node->name,node->update_loop_time_max); 
               }
+              //update the data dictionary
+              //data->update(node->name,node->update_loop_time); 
               node->update_call_period =0;
               node=node->nextAppicationNode;//check next node
             }while(node !=NULL);
@@ -170,6 +172,7 @@ void AppManager::update(){
         break;
 
       case redraw_popup:
+        app_time=0;
         //draw any popups
         if (!appPopUpStackIndex==0 && appPopUpStack[appPopUpStackIndex-1] != 0){
           node = getApp(appPopUpStack[appPopUpStackIndex-1]);
@@ -193,6 +196,7 @@ void AppManager::update(){
       Serial.flush();
       node->updateRT_loop_time = app_time;
       if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
+       
       node->updateRT_call_period =0;
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
@@ -243,11 +247,13 @@ void AppManager::update(){
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
+      data->update("SERIAL_AVAIL",Serial.availableForWrite());
       data->update("LOOP_TIME",cycle_time);
-      data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
+      //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
       cycle_time_max=0;
-      htop = malloc(100);
+      htop = malloc(10000);
+      memset(htop,0x5A,10000);
       heapTop = (uint32_t) htop;
       free(htop);
       data->update("HEAP_FREE",0x20280000 - heapTop);

@@ -65,6 +65,7 @@ class AppScope:public AppBaseClass {
     };    //called only when the app is active
 
     void updateRT(){
+        /*
         //publish the scopes math functions
         AppManager *am = AppManager::getInstance();
         //am->data->update("DOT",scope->getDotProduct());
@@ -82,6 +83,7 @@ class AppScope:public AppBaseClass {
         am->data->update("INPUT_PEAK",scope->getPeakValue());
         if(scope->getEdgeDelay()>20) am->data->update("CH1_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay() + 0.00001))));
         if(scope->getEdgeDelay2()>20) am->data->update("CH2_FREQ",(int32_t)(AUDIO_SAMPLE_RATE_EXACT/(0.001* ((float32_t)scope->getEdgeDelay2()+ 0.00001))));
+        */
     }; //allways called even if app is not active
   
     void onFocus(){};   //called when given focus

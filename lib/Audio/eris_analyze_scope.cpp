@@ -122,7 +122,7 @@ void erisAudioAnalyzeScope::update(void)
 					if (block->data[i] > 0 && block->data[i-1] < 0){
 						offset = i;
 						if(isDualChannel){
-							if (blockb->data[i] > 0){
+							if (blockb->data[i] > 0  || 1){
 								found = true;
 							}
 						}else found = true;
@@ -191,7 +191,7 @@ void erisAudioAnalyzeScope::update(void)
 						if((edgeCount < 8) && (auto_h_div < 16)) auto_h_div++;
 						if((edgeCount > 11) && (auto_h_div > 1)) auto_h_div--;
 						//calculate the dot product if dual channel
-						if (isDualChannel){
+						if (isDualChannel ){
 							q63_t lastDelta;
 							lastDelta= dotDelta;
 							dotLast = dot/1000000;	
