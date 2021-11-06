@@ -13,8 +13,6 @@
 #include "AudioUtilities.h"
 #include "AppManager.h"
 
-
-
 /**
  * @brief CQT_HIGHRANGE_SPLIT_AT_BIN defines the cqt bin at which the high range fft will begin to be read from
  * 
@@ -38,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 31
+#define TX_PERIOD 331
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 41
+#define TX_CQT_PERIOD 367
 
 
 // Constant Q Transform App
@@ -160,6 +158,45 @@ class AppCQT:public AppBaseClass {
     void update(){
       if (!isActive) return;
       update_calls++;
+      
+      #ifdef TX_PERIODIC_FFT
+        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 6000){
+          fft_buffer_serial_transmit_elapsed = 0;
+          if(fft_buffer_select_for_serial_transmit < 2){
+            Serial.printf("S 512"); 
+            for(int i = 0; i < 512; i+=1){
+              //transmitt low range then high range
+              if(Serial.availableForWrite() < 1000){Serial.flush();}
+              if(fft_buffer_select_for_serial_transmit == 0) Serial.printf(F(",%d"),(int)(100.0*fft2->output[i])); 
+              if(fft_buffer_select_for_serial_transmit == 1) Serial.printf(F(",%d"),(int)(100.0*fft->output[i]));
+              //if ((i % 127)==0) Serial.flush();
+            }
+            Serial.println("");
+            //Serial.flush();
+            delayMicroseconds(500);
+          }
+          fft_buffer_select_for_serial_transmit += 1;
+          if(fft_buffer_select_for_serial_transmit >= 2) 
+          {
+            fft_buffer_select_for_serial_transmit = 0;
+            Serial.println("S FIN"); // end of series data
+          }
+          //Serial.flush();
+        }else 
+      #endif
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 6000){
+        cqt_serial_transmit_elapsed = 0;   
+        
+        for (uint16_t i=0;i < osc_bank_size;i++){
+          if(Serial.availableForWrite() < 1000){Serial.flush();}
+          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
+          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
+        }
+        Serial.printf(F("CQT_EOF \n"));
+        //Serial.flush();
+      }
+      
+      
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(oscBank,osc_bank_size);
@@ -184,15 +221,15 @@ class AppCQT:public AppBaseClass {
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){  
         amp = fftHighRR[i].peakValue;//fft->read(&fftHighRR[i]);
         signal = (log1p((amp))*10.0) * h;
-        if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
+        if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //draw->fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
         signal = (log1p((amp))*10.0) * h;
-        if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
+        if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_MAGENTA);
       }
@@ -241,27 +278,7 @@ class AppCQT:public AppBaseClass {
 
       }
       
-      #ifdef TX_PERIODIC_FFT
-      if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 6000){
-        fft_buffer_serial_transmit_elapsed = 0;
-        Serial.flush();
-        if(fft_buffer_select_for_serial_transmit < 2){
-          Serial.printf("S 512"); 
-          for(int i = 0; i < 512; i+=1){
-            //transmitt low range then high range
-            if(fft_buffer_select_for_serial_transmit == 0) Serial.printf(F(",%d"),(int)(100.0*fft2->output[i])); 
-            if(fft_buffer_select_for_serial_transmit == 1) Serial.printf(F(",%d"),(int)(100.0*fft->output[i]));
-          }
-          Serial.println("");
-        }
-        fft_buffer_select_for_serial_transmit += 1;
-        if(fft_buffer_select_for_serial_transmit >= 2) 
-        {
-          fft_buffer_select_for_serial_transmit = 0;
-          Serial.println("S FIN"); // end of series data
-        }
-      }
-      #endif
+      
       //Serial.flush();
     }; //allways called even if app is not active
     
@@ -362,7 +379,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (oscBank[k].avgValueSlow < fftHighRR[i].avgValueSlow){
+              if (oscBank[k].avgValueSlow < (fftHighRR[i].avgValueSlow * 0.3)){
                 //fftHighRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -394,7 +411,7 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = oscBank[i].avgValueFast;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = oscBank[i].peakValue;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
@@ -406,26 +423,13 @@ class AppCQT:public AppBaseClass {
               if (f > 20000) f = 20000;
               
               osc[i]->frequency(f);
-              osc[i]->amplitude(a);
+              osc[i]->amplitude(log1p(a));
               osc[i]->phase(phase_aligner);
-            } 
-
+            } else osc[i]->amplitude(0);
           }
         }
       }
       AudioInterrupts();
-
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5000){
-        cqt_serial_transmit_elapsed = 0;   
-        
-        for (uint16_t i=0;i < osc_bank_size;i++){
-          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
-          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
-          
-        }
-        Serial.printf(F("CQT_EOF \n"));
-        Serial.flush();
-      }
 
       //resort so we leave the arrays in order by cqt bin
       //if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
@@ -438,16 +442,16 @@ class AppCQT:public AppBaseClass {
     if(sender->isName("SCI")){
       Serial.print(F("M appCQT::MessageHandler SCI param: "));
       Serial.println(message);
-      Serial.flush();
+      //Serial.flush();
       if (strcmp(message,"CQT_INFO")==0){
         //sort the bins to transmit them in order
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
         for (uint16_t i=1;i< NOTE_ARRAY_LENGTH - 1;i++){
-          Serial.printf(F("L %d,%f,%f,%d,%d,%d\t\t\t"),fftLowRR[i].cqtBin,fftLowRR[i].startFrequency,fftLowRR[i].stopFrequency,fftLowRR[i].startBin,fftLowRR[i].stopBin,fftLowRR[i].stopBin-fftLowRR[i].startBin);
-          Serial.printf(F("H %d,%f,%f,%d,%d,%d\n"),fftHighRR[i].cqtBin,fftHighRR[i].startFrequency,fftHighRR[i].stopFrequency,fftHighRR[i].startBin,fftHighRR[i].stopBin,fftHighRR[i].stopBin-fftHighRR[i].startBin);
+          Serial.printf(F("M L %d,%f,%f,%d,%d,%d\t\t\t"),fftLowRR[i].cqtBin,fftLowRR[i].startFrequency,fftLowRR[i].stopFrequency,fftLowRR[i].startBin,fftLowRR[i].stopBin,fftLowRR[i].stopBin-fftLowRR[i].startBin);
+          Serial.printf(F("M H %d,%f,%f,%d,%d,%d\n"),fftHighRR[i].cqtBin,fftHighRR[i].startFrequency,fftHighRR[i].stopFrequency,fftHighRR[i].startBin,fftHighRR[i].stopBin,fftHighRR[i].stopBin-fftHighRR[i].startBin);
         }
-        Serial.flush();
+        //Serial.flush();
       }
     }
   }

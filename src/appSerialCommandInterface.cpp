@@ -65,22 +65,24 @@ void AppSerialCommandInterface::streamHandler(){
     char bufferChr;
     char hexBuffer[8];
     uint16_t payload_len;
+    uint16_t avail;
+    avail = Serial.availableForWrite();
+    if(avail < 4000){
+        //serial tx buffer not available
+        Serial.println(F("M GET_WRN throttling"));
+        delayMicroseconds(1000);
+        return; 
+    }
 
     if (streamPos == 0) Serial.println(F("FS_START"));
     pSD->chdir(streamPath);
-
-    if(Serial.availableForWrite() < SERIAL_FILESTREAM_PAYLOAD_SIZE){
-        //serial tx buffer not available
-        //Serial.println(F("GET_WRN throttling"));
-        return; 
-    }
     if (pSD->exists(streamFile)){
         payload_len = 0;
 
         strcpy(txBuffer,"FS ");
 
         if(!file.open(streamFile, O_READ)){ 
-            Serial.println(F("GET_ERR FILE OPEN ERROR"));
+            Serial.println(F("M GET_ERR FILE OPEN ERROR"));
             isStreamingFile = false;
             streamPos = 0;
             return;
@@ -95,7 +97,7 @@ void AppSerialCommandInterface::streamHandler(){
             for(;i > 0; i--){
                 payload_len += 1;
                 if (file.read(&bufferChr,1) < 0){
-                    Serial.println(F("GET_ERR FILE READ ERROR "));
+                    Serial.println(F("M GET_ERR FILE READ ERROR "));
                     isStreamingFile = false;
                     streamPos = 0;
                     file.close();
@@ -114,34 +116,35 @@ void AppSerialCommandInterface::streamHandler(){
         if (payload_len == 0){
             //no data to tx; @ eof
             Serial.println(F("FS_END"));
-            Serial.flush();
+            delayMicroseconds(2000);
+            //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
             //last chunk
-            Serial.flush();
+            //Serial.flush();
             Serial.print(txBuffer);
             Serial.print(",");
             Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
-            Serial.flush();
+            //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
             return;
         } else{
             //send file chunk
-            Serial.flush();
+            //Serial.flush();
             Serial.print(txBuffer);
             Serial.print(",");
             Serial.println(checksum(txBuffer));
-            Serial.flush();
+            //Serial.flush();
             return;
         }             
     } 
     else{
-        Serial.print(F("GET_ERR FILE NOT FOUND "));
+        Serial.print(F("M GET_ERR FILE NOT FOUND "));
         Serial.println(streamFile);
         isStreamingFile = false;
         streamPos = 0;
@@ -149,38 +152,33 @@ void AppSerialCommandInterface::streamHandler(){
     }
 };
 
-
-
 void AppSerialCommandInterface::updateRT(){
-    //tx periodic messages
-    if(Serial.availableForWrite() < SERIAL_FILESTREAM_PAYLOAD_SIZE){
-        //serial tx buffer not available
-        //Serial.println(F("GET_WRN throttling"));
-        return; 
-    }
-    #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
-    if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
-        sincePeriodic = 0;
-        AppManager::getInstance()->data->printDictionary();
-    }
-    #endif
-    //poll for rx data
-    if (sincePoll < SERIAL_POLLING_RATE_MAX) return;
-    sincePoll = 0;
+    //throttle 
+    while(Serial.availableForWrite() < 4000) {
+        delayMicroseconds(7000);
+    } 
+
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
 
     if (isStreamingFile){
         streamHandler();
-    }else while (Serial.available() > 0 && false == newRxMsg) {
+    }else while (Serial.available() > 0 && false == newRxMsg ) {
         bufferChr = Serial.read();
         receivedChars[indexRxBuffer++] = bufferChr;
+        if(indexRxBuffer >= SERIAL_RX_BUFFER_SIZE){
+            //input overflow - clear serial input and reset the index
+            indexRxBuffer = 0;
+            Serial.clear();
+            Serial.clearReadError();
+        }
         if (bufferChr == endMarker){
             receivedChars[--indexRxBuffer] = '\0'; //remove the end marker and null terminate the string
             indexRxBuffer = 0; //reset the write index
             newRxMsg = true;
         }
+
         if (newRxMsg){
             char cmd[128], param[128],param2[128];
             int total_read;
@@ -191,7 +189,7 @@ void AppSerialCommandInterface::updateRT(){
                     AppManager::getInstance()->getSD()->chdir();
                     AppManager::getInstance()->getSD()->ls();
                     Serial.println(F("DIR_EOF"));
-                    Serial.flush();
+                    //Serial.flush();
                 } else{
                     replacechar(param,':',' '); //replace space token used to tx the path
                     Serial.print("M ");
@@ -199,22 +197,22 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.println(F("DIR"));
                     AppManager::getInstance()->getSD()->ls(param);
                     Serial.println(F("DIR_EOF"));
-                    Serial.flush();
+                    //Serial.flush();
                 }
             } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
                 if (total_read < 3){
-                    Serial.print(F("GET_ERR WRONG PARAM COUNT"));
+                    Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
                     Serial.println(param);
-                    Serial.flush();
+                    //Serial.flush();
                 } else{
                     //file streaming request ok
                     //init the transfer
-                    Serial.print(F("GET_OK ")); 
+                    Serial.print(F("M GET_OK ")); 
                     Serial.print(param);
                     Serial.print(" ");
                     Serial.println(param2);
-                    Serial.flush();
+                    //Serial.flush();
                     strcpy(streamPath,param);
                     strcpy(streamFile,param2);
                     isStreamingFile = true;
@@ -227,19 +225,19 @@ void AppSerialCommandInterface::updateRT(){
                 /*
                 while(ad->getAudioStreamString(i,csBuffer)){
                     i += 1;
-                    Serial.flush();
+                    //Serial.flush();
                     Serial.println(csBuffer);
-                    Serial.flush();
+                    //Serial.flush();
                 }
                 i=0;
                 */
                 while(ad->getConnectionString(i,csBuffer)){
                     i += 1;
-                    
+                    Serial.print("M ");
                     Serial.println(csBuffer);
                 }
                 Serial.println(F("M ACON END"));
-                Serial.flush();
+                //Serial.flush();
 
             } else if (strncmp(cmd, "CONNECT",sizeof(cmd)) == 0){
                 int source_port;
@@ -247,42 +245,28 @@ void AppSerialCommandInterface::updateRT(){
                 
                 total_read = sscanf(receivedChars, "%s %s %d %s %d" , cmd, param,&source_port,param2,&dest_port);
                 if (total_read < 3){
-                    Serial.flush();
-                    Serial.print(F("CONNECT WRONG PARAM COUNT "));
+                    Serial.print(F("M CONNECT WRONG PARAM COUNT "));
                     Serial.println(receivedChars);
-                    Serial.flush();
                 } else{
-                    Serial.flush();
-                    //Serial.println(F("CONNECT OK"));
-                    //AudioNoInterrupts();
                     ad->connect(param,source_port,param2,dest_port);
-                    //AudioInterrupts();
-                    Serial.flush();
                 }
-            } else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
+            } else if (strncmp(cmd, "M DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
                 total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
-                    Serial.flush();
-                    Serial.print(F("DISCONNECT WRONG PARAM COUNT "));
+                    Serial.print(F("M DISCONNECT WRONG PARAM COUNT "));
                     Serial.println(receivedChars);
-                    Serial.flush();
                 } else{
-                    Serial.flush();
-                    //Serial.println(F("DISCONNECT OK"));
-                    //AudioNoInterrupts();
                     ad->disconnect(param,dest_port);
-                    //AudioInterrupts();
-                    Serial.flush();
                 }
             } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) AppManager::getInstance()->getActiveApp()->MessageHandler(this,param);
                 //Serial.print(F("AA OK "));
                 //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                 //Serial.flush();
-            }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){ 
-                ad->printStats();
+            }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 AppManager::getInstance()->printStats();
+                ad->printStats();
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
@@ -290,36 +274,59 @@ void AppSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
+                int avail;
+                delayMicroseconds(230000);
+                Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20200000);
                 strcpy(txBuffer," ");
-                for(uint32_t i = 0x20200000; i < 0x2027F000; i+=1){ 
-                    while(Serial.availableForWrite() < 5048){
-                        delay(35);
-                    }
+                for(uint32_t i = 0x20200000; i < 0x2027F000; i+=1){
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
-                    if(i%64==0){
-                        Serial.println(txBuffer);
+                    if(i%64==0 && i != 0x20200000){
+                        Serial.print(txBuffer);
+                        Serial.println(F("\"}}"));
                         strcpy(txBuffer," ");
-                        Serial.printf("%08X",i);
-                        Serial.print("  ");
+
+                        avail = Serial.availableForWrite();
+                        while(avail < 5000){
+                            delayMicroseconds(100000);
+                            avail = Serial.availableForWrite();
+                        }
+
+                        if(i%1024==0){
+                            float32_t pct;
+                            pct = 100.0 * ((float)(i-0x20200000)/(float)(0x2027F000-0x20200000));
+                            Serial.printf(F("CLS\nM GET_RAM2 %08X %.0f pct "),i,pct);
+                            for(uint16_t div = 0; div < (uint16_t)pct; div += 5){
+                                Serial.printf("*");
+                            }
+                            Serial.println("");
+                        }
+                        Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),i);
                     }
 
                     Serial.printf("%02X ",(uint8_t)c);
-
-                    if (isprint((int)c)){ 
+                    const char* escape = "\\";
+                    if (c=='"'){                        
+                        strncat(txBuffer, escape, 1);
                         strncat(txBuffer, &c, 1);
-                    }
-                    else if (c==0){
+                    }else if (c=='\''){
+                        strncat(txBuffer, escape, 1);
+                        strncat(txBuffer, &c, 1);
+                    }else if (isprint((int)c)){ 
+                        strncat(txBuffer, &c, 1);
+                    }else if (c==0){
                         c = '*';
                         strncat(txBuffer, &c, 1);
-                    } else{
+                    }else{
                         c = '.';
                         strncat(txBuffer, &c, 1);
                     }
                     //Serial.print(c);
                 }
-                Serial.flush();
+                Serial.println("\n");
+                Serial.println(F("RAM END"));
+                delayMicroseconds(500000);
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
@@ -334,7 +341,7 @@ void AppSerialCommandInterface::updateRT(){
     
                         Serial.printf("%08X",i);
                         Serial.print("  ");
-                        Serial.flush();
+
                         delay(80);
                     }
 
@@ -353,8 +360,6 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.printf("%02X ",c);
                     //Serial.print(c);
                 }
-                Serial.flush();
-
             }else if (strncmp(cmd, "AUDIO_NO_INTERRUPTS",sizeof(cmd)) == 0){
                 AudioNoInterrupts();
             }else if (strncmp(cmd, "AUDIO_INTERRUPTS",sizeof(cmd)) == 0){
@@ -364,5 +369,14 @@ void AppSerialCommandInterface::updateRT(){
             newRxMsg = false;
         }
     }
-    delayNanoseconds(20);
+    sincePoll = 0;
+    
+    //tx periodic messages
+    #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
+    if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
+        sincePeriodic = 0;
+        AppManager::getInstance()->data->printDictionary();
+    }
+    #endif
+    //Serial.flush();
 }; //allways called even if app is not active

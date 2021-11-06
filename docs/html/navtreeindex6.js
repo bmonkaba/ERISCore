@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"de/dd6/structaudio__block__struct.html":[0,0,10],
+"de/dd6/structaudio__block__struct.html#a01d021533181c5fe46b62ff06217018f":[0,0,10,4],
+"de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719":[0,0,10,0],
+"de/dd6/structaudio__block__struct.html#a8ad3ddee4203672ee702cc8b76e67eeb":[0,0,10,2],
 "de/dd6/structaudio__block__struct.html#aebaed5308ff4d02b54a3d11c4d516526":[0,0,10,3],
 "de/dd6/structaudio__block__struct.html#af299f9fc881ff8bbf3ad6fbf1ba4f7b3":[0,0,10,1],
 "de/df9/classeris_audio_output_t_d_m.html":[0,0,75],
@@ -7,10 +11,11 @@ var NAVTREEINDEX6 =
 "de/df9/classeris_audio_output_t_d_m.html#ab5ba1fc2346c200ffacdb8e75c61006f":[0,0,75,0],
 "df/d0a/main_8cpp.html":[1,0,2,5],
 "df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f":[1,0,2,5,1],
-"df/d0a/main_8cpp.html#a3da5b626ba9581d74eb6155bb3578800":[1,0,2,5,6],
+"df/d0a/main_8cpp.html#a3da5b626ba9581d74eb6155bb3578800":[1,0,2,5,7],
 "df/d0a/main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d":[1,0,2,5,2],
 "df/d0a/main_8cpp.html#a5a7a45d2498bd5f17ae0453bacd069c0":[1,0,2,5,3],
 "df/d0a/main_8cpp.html#a83dbf0cf2bee77d1420f6c04800ae09a":[1,0,2,5,0],
+"df/d0a/main_8cpp.html#a8a2ee263f0d8ed8914b78acd3f8b4384":[1,0,2,5,6],
 "df/d0a/main_8cpp.html#ac99ef840eba108f6a346351da2ebad45":[1,0,2,5,5],
 "df/d0a/main_8cpp.html#acf168df5f8b9152aa4396ccaf3e20647":[1,0,2,5,4],
 "df/d0a/main_8cpp_source.html":[1,0,2,5],
@@ -235,8 +240,8 @@ var NAVTREEINDEX6 =
 "functions_d.html":[0,3,0,4],
 "functions_e.html":[0,3,0,5],
 "functions_f.html":[0,3,0,6],
-"functions_func.html":[0,3,1],
 "functions_func.html":[0,3,1,0],
+"functions_func.html":[0,3,1],
 "functions_func_a.html":[0,3,1,1],
 "functions_func_b.html":[0,3,1,2],
 "functions_func_c.html":[0,3,1,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX6 =
 "functions_func_e.html":[0,3,1,5],
 "functions_func_f.html":[0,3,1,6],
 "functions_func_g.html":[0,3,1,7],
-"functions_func_h.html":[0,3,1,8],
-"functions_func_i.html":[0,3,1,9],
-"functions_func_l.html":[0,3,1,10],
-"functions_func_m.html":[0,3,1,11],
-"functions_func_n.html":[0,3,1,12],
-"functions_func_o.html":[0,3,1,13]
+"functions_func_h.html":[0,3,1,8]
 };

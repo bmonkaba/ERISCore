@@ -1,6 +1,6 @@
 var class_audio_director =
 [
-    [ "AudioDirector", "d8/d1c/class_audio_director.html#a79200c209e5b4ecb8318bfd5c29c21a8", null ],
+    [ "AudioDirector", "d8/d1c/class_audio_director.html#ac17d6584f80dc62c992ced7d879b5786", null ],
     [ "AudioDirector", "d8/d1c/class_audio_director.html#ab1cafad76498a9f3d58bc8855bdf67ea", null ],
     [ "addAudioStreamObj", "d8/d1c/class_audio_director.html#aad97af621b2072f1246526f2afb0e0ff", null ],
     [ "connect", "d8/d1c/class_audio_director.html#ab4957e373e5d9078454d07da471f1d94", null ],
@@ -20,14 +20,14 @@ var class_audio_director =
     [ "printStats", "d8/d1c/class_audio_director.html#a154eaf3ab4ea4fa754fc35e0687f4c1b", null ],
     [ "unlinkAll", "d8/d1c/class_audio_director.html#ae56e605ed655b992bbe7ef7df600b07b", null ],
     [ "activeConnections", "d8/d1c/class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d", null ],
-    [ "AudioStreamInputPort", "d8/d1c/class_audio_director.html#a790edabdaf89b447a28e2ee850d84670", null ],
+    [ "AudioStreamOutputPort", "d8/d1c/class_audio_director.html#aee6b0b29cb657c634e9a4188eaa1e55a", null ],
     [ "categoryCount", "d8/d1c/class_audio_director.html#ad65f0a1ec7aa26ae86abe46f42e33892", null ],
     [ "categoryList", "d8/d1c/class_audio_director.html#a07980407da906643feeac1f7a1a30b65", null ],
     [ "heapEnd", "d8/d1c/class_audio_director.html#a7a805a5c40dd2c4d950020cd741f5394", null ],
     [ "heapStart", "d8/d1c/class_audio_director.html#a174eb4f868e38debf4fcd474bcbdc20f", null ],
     [ "objCount", "d8/d1c/class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d", null ],
+    [ "pAudioStreamInputPort", "d8/d1c/class_audio_director.html#a816f042e16bd729ed8782e0ba8703504", null ],
     [ "pAudioStreamObjPool", "d8/d1c/class_audio_director.html#a3e2550defde3456abed3799ff8376654", null ],
-    [ "pAudioStreamOutputPort", "d8/d1c/class_audio_director.html#a40757346afed066b3a9650f716cefb7f", null ],
     [ "pCord", "d8/d1c/class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884", null ],
     [ "shortNameQueryResult", "d8/d1c/class_audio_director.html#ad4853c04650773ae8c37a6e3bba2e0db", null ],
     [ "shortNameQueryResultCount", "d8/d1c/class_audio_director.html#aa485080dc3d644895c8b38b097badc5f", null ]

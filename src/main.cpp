@@ -1,4 +1,4 @@
-//char dummy[32000];
+char dummy[32000];
 //#pragma GCC optimize ("O0")
 
 #include <Arduino.h>
@@ -47,6 +47,7 @@ void setup() {
   Serial.println(F("Setup: Configuring Audio Hardware"));
   I2CReset();
   ExtADCConfig();
+  ExtADCPrintStatus();
   //I2CBusScan();
   
   Serial.println(F("Setup: Loading Applications"));
@@ -57,25 +58,7 @@ void setup() {
   app.getFocus();
   Serial.println(F("Setup: Configuring the sw audio block connections"));
   Serial.println(F("Setup: Init Complete"));
-  Serial.print(F("Ext ADC Operating State (15:RUNNING): "));
-  Serial.println(ExtADCReadReg(114));
-  Serial.print(F("Ext ADC Sample Freq: "));
-  Serial.println(ExtADCReadReg(115));
-  Serial.print(F("Ext ADC BCLK Ratio: "));
-  Serial.println((ExtADCReadReg(116) >> 4) & 0x7);
-  Serial.print(F("Ext ADC SCLK Ratio: "));
-  Serial.println(ExtADCReadReg(116) & 0x7);
-  Serial.print(F("Ext ADC CLK Error Status (0:OK): "));
-  Serial.println(ExtADCReadReg(117));
-  Serial.print(F("Ext ADC Voltage Status (7:OK): "));
-  Serial.println(ExtADCReadReg(120));
-  for (int i =0; i < 12;i++){
-    Serial.print(F("Ext ADC CONF REG VALUE"));
-    Serial.print(i);
-    Serial.print(F(": "));
-    Serial.println(ExtADCReadReg(i),HEX);
-  }
-  Serial.flush();
+  
 }
 
 void loop(void) {

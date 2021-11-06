@@ -55,7 +55,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 76000000;
+            tft_write_speed = 70000000;
             tft_read_speed = 20000000;
             pSD = NULL;
             //backlight = 0;

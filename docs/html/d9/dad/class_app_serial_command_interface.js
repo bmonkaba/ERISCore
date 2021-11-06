@@ -2,6 +2,7 @@ var class_app_serial_command_interface =
 [
     [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html#a151da3de5e7fcec8fdf7f20fd9db658b", null ],
     [ "_updatePosition", "d9/dad/class_app_serial_command_interface.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
+    [ "checksum", "d9/dad/class_app_serial_command_interface.html#a33e412b2ff6652285262d55ac9ae6548", null ],
     [ "getFocus", "d9/dad/class_app_serial_command_interface.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
     [ "getId", "d9/dad/class_app_serial_command_interface.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
     [ "isName", "d9/dad/class_app_serial_command_interface.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
@@ -39,7 +40,7 @@ var class_app_serial_command_interface =
     [ "has_pop", "d9/dad/class_app_serial_command_interface.html#a5cd34ff4f1f9bd936c25227496db7302", null ],
     [ "height", "d9/dad/class_app_serial_command_interface.html#a7f85f42f0aec6aabd77825f19d604cc6", null ],
     [ "id", "d9/dad/class_app_serial_command_interface.html#a3682f17759610f58e60351fe96daa6b2", null ],
-    [ "indexRxBuffer", "d9/dad/class_app_serial_command_interface.html#a86745f91d911049a08711f7c23af08c8", null ],
+    [ "indexRxBuffer", "d9/dad/class_app_serial_command_interface.html#a945f6de6c30c68936ab89325b68e0330", null ],
     [ "isStreamingFile", "d9/dad/class_app_serial_command_interface.html#a0be88a3818b6a71466e118f892ca687d", null ],
     [ "name", "d9/dad/class_app_serial_command_interface.html#ab52309ab6ada18b53b674f23b01dded2", null ],
     [ "nextAppicationNode", "d9/dad/class_app_serial_command_interface.html#a3e8afaf0337b6ce5b539b78527ee0873", null ],

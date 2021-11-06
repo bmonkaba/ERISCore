@@ -2,6 +2,44 @@
 
 const regex = new RegExp(/\r?\n|\r/, 'g');
 var data_dict = {};
+var watch ={};
+var ram ={"RAM1":{},"RAM2":{}};
+var bulk_update_buffer = [];
+var pixel;
+var pixel_color;
+
+// setup the db that will be used to map ram to the symbol table
+//https://dexie.org/docs/API-Reference#quick-reference
+var db = new Dexie("symbols_database");
+          db.version(1).stores({
+              symbols: '++id,&addr,bind,name,type,section,file',
+              data_chunk: '++id,&addr,chunk'
+          });
+
+var lgraph;
+var lgcanvas;
+
+//node constructor class
+function ErisAudioNode()
+{
+  //this.addInput("1","number");
+  //this.addInput("2","number");
+  //this.addOutput("0","number");
+  this.properties = { precision: 1 };
+}
+
+//name to show
+ErisAudioNode.title = "ErisNode";
+
+//function to call when the node is executed
+ErisAudioNode.prototype.onExecute = function()
+{
+    //default node execution.. do something
+    a = 0;
+    b = 1;
+    a = b;
+
+}
 
 
 $(document).ready(function(){
@@ -16,6 +54,7 @@ var socket = new WebSocket("ws://ryzen:8080/ws");
 var osi;
 var si = 0;
 var rx_bytes = 0;
+var error_bytes = 0;
 var frame_count = 0;
 var t = new Date();
 var start_time = Date.now();
@@ -25,22 +64,104 @@ var fileStreamContainer = [];
 var sparks ={};
 
 
+$('#graph_container').hide();
+$('#memory_container').hide();
+$('#monitor_container').hide();
+
+
+
+
+
+//draw the crt filter
+var crt = $("#crt")[0]
+var ctx = crt.getContext('2d');
+ctx.strokeStyle = "rgba(0, 64, 128, 0.3)";
+
+for(y=0;y<crt.height;y+=3){
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(crt.width, y);
+    ctx.stroke();
+}
+
+
+
+pixel = document.getElementById('monitor_canvas').getContext('2d').createImageData(1,1);
+pixel_color = pixel.data;
+
+//draw the monitor background
+var c = document.getElementById('monitor_canvas');
+if (c.getContext){
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = "#D74022";
+    ctx.fillStyle = "#000000";
+    ctx.fillRect (0, 0, c.width, c.height);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+    c.style.webkitFilter = "blur(0px)";
+}
+
+
+lgraph = new LGraph();
+lgcanvas = new LGraphCanvas("#connections", lgraph);
+
+//register in the system
+LiteGraph.registerNodeType("basic/ErisAudio", ErisAudioNode );
+//lgraph.start();
+lgcanvas.setZoom(0.5);
+
+$("html").on("dragover", function(event) {
+    event.preventDefault();  
+    event.stopPropagation();
+    //$(this).addClass('watchbar');
+});
+
+$("html").on("dragleave", function(event) {
+    event.preventDefault();  
+    event.stopPropagation();
+    //$(this).removeClass('watchbar');
+});
+
+$("html").on("drop", function(event) {
+    event.preventDefault();  
+    event.stopPropagation();
+    let dt = event.originalEvent.dataTransfer;
+    let files = dt.files;
+    handleFileList(files);
+    //alert("Dropped!");
+});
+
 $( "#freq_slider" ).slider({
   change: function( event, ui ) {}
 });
 
 setInterval(sweepFreq, 100);
+    setInterval(function() {
+    var now = Date.now();
+    kbs.empty();
+    kbs.append(((rx_bytes/((now - start_time)/1000.0))).toFixed(0));
+    kbs.append(' Bytes/Sec&emsp;');
+    kbs.append(parseFloat((1.0 - (error_bytes/rx_bytes))*100.0).toFixed(2)+"%");
+    kbs.append(' Quality&emsp;');
+    kbs.append('DL&#11015;');
+    kbs.append(fileStreamContainer.length);
+    //reset the bandwidth monitor variables
+    rx_bytes = 0;
+    error_bytes = 0;
+    start_time = now;    
+    //received.append($('<br/>'));
+    sendMessage({ 'data' : "STATS"});
+}, 300);
 
 setInterval(function() {
   document.querySelectorAll(".sparkline").forEach(function(svg) {
     try{
         sparkline.sparkline(svg, sparks[svg.id]);
-        svg.innerHTML += "<text x=\"50\" y=\"15\">"+svg.id+": "+sparks[svg.id][0]+"</text>";
+        //svg.innerHTML += "<text x=\"15\" y=\"15\" class=\"svg_text\">"+svg.id+": "+sparks[svg.id][0]+"</text>";
     } catch(e){
         
     }
   });
-}, 500);
+}, 120);
 
 $('#file_explorer').jstree();
 $('#fancy_explorer').fancytree({
@@ -87,7 +208,6 @@ socket.onmessage = function (message) {
   var res = message.data.trim().split(" ");
   var now = Date.now();
   
-  
   rx_bytes += message.data.length;
   
   if (com_state != "") {
@@ -107,10 +227,19 @@ socket.onmessage = function (message) {
                   if (message.data.search('/') > 0) sdFiles.push({"title":message.data.replace('/','').replace(regex,''),"folder": true, lazy: true});
                   else sdFiles.push({"title":message.data.replaceAll(regex,'')});
               }
+              $("#fancy_explorer").children(".fancytree-container").css({ 'background-color': 'transparent'});
+              $("#fancy_explorer").children(".fancytree-container").css({ 'font-size': '1.0em'});
+              
               break;      
     }
   
    } else switch(res[0]){
+      case "M":
+          received.append(res.slice(1).join(" "));
+          received.append($('<br/>'));
+          //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
+          $('.messages').scrollTop(10000000000);      
+          break;
       case "DIR":
           com_state = "LS";
           sdFiles = [];
@@ -141,16 +270,6 @@ socket.onmessage = function (message) {
             if (display_note == 20){display_note = 0;}
  
             if(0==display_note){
-                kbs.empty();
-                kbs.append(((rx_bytes/((now - start_time)/1000.0))).toFixed(0));
-                kbs.append('Bytes/Sec<br>DL&#11015;');
-                kbs.append(fileStreamContainer.length);
-                //reset the bandwidth monitor variables
-                rx_bytes = 0;
-                start_time = now;
-                
-                //received.append($('<br/>'));
-                
                 ctx.strokeStyle = "#9A0000";
                 ctx.moveTo(10, canvas.height/2.0);
                 ctx.lineTo(10, canvas.height);
@@ -233,8 +352,8 @@ socket.onmessage = function (message) {
           //canvas = $('#oscope')[0];
           ctx = canvas.getContext('2d');
           
-          ctx.fillStyle = "#A0A0A0";//Math.random()
-          ctx.strokeStyle = "#7AF000";
+          ctx.fillStyle = "#207020";//Math.random()
+          ctx.strokeStyle = "#C0F0C0";
           ctx.beginPath();
           ctx.moveTo(si,canvas.height);
           ctx.lineTo(si,canvas.height);
@@ -249,7 +368,7 @@ socket.onmessage = function (message) {
               for (var i = 1; i <= parseInt(s[0]);i++){  
                   ctx.lineTo(si, canvas.height - (parseInt(s[i])-2));
                   ctx.stroke();
-                  ctx.fillRect(si, canvas.height - (parseInt(s[i]))+1, 1, 3);
+                  ctx.fillRect(si, canvas.height - (parseInt(s[i])), 1, parseInt(s[i]));
                   si += 1;
               } 
           }
@@ -261,13 +380,14 @@ socket.onmessage = function (message) {
                 ctx.moveTo(0,canvas.height);
                 ctx.beginPath();
                 si = 0; 
-                ctx.fillStyle = "rgba(0,0,0,1)";
+               
                 //ctx.fillRect (0, 0, canvas.width, canvas.height);
                 //ctx.clearRect(0, 0, canvas.width, canvas.height);
                   
                 var imageData = ctx.getImageData(-2, 2, canvas.width-2,canvas.height+2);
                   var data = imageData.data;
               
+                  
                   for (var j = 0; j < canvas.height; j += 1) {        
                       for (var i = 0; i < canvas.width; i+= 1) {
                           offset = (j * canvas.width * 4) + (i * 4.0);
@@ -277,19 +397,86 @@ socket.onmessage = function (message) {
                           data[offset + 3] = data[offset + 3] -1; // alpha
                       }
                    }
-       
+                  
+                  ctx.closePath();
                   ctx.putImageData(imageData, 0, 0);
                   ctx.fillRect(0,0,1, canvas.height);
                   ctx.fillRect(0,canvas.height,canvas.width, 1);
             }
-          //ctx.closePath();
           ctx.lineWidth = 1;
           ctx.stroke();
           //draw capture divider
-          ctx.fillStyle = "rgba(128,60,128,1)";
-          ctx.fillRect(si, 0,1,canvas.height);
+          ctx.fillStyle = "rgba(80,80,100,1)";
+          ctx.fillRect(si, 0,5,canvas.height);
           break
 
+      case "RAM":
+          if (res[1] == "END"){
+          
+             //create the datatable
+                $("#memory_chunk_table").empty();
+                $("#memory_chunk_table").DataTable( {
+                    data: bulk_update_buffer,
+                    columns: [
+                        { title: "addr" },
+                        { title: "chunk" }
+                    ]
+                } );
+     
+            //update the db
+            db.data_chunk.clear().then(function(res){
+            
+            
+            
+            
+                 db.data_chunk.bulkAdd(bulk_update_buffer).then(function(lastkey){
+                console.log(lastkey);
+                //clear the buffer after the db load;
+                //bulk_update_buffer = [];
+            }).catch(Dexie.BulkError, function (e) {
+                // by explicitely catching the bulkAdd() operation 
+                // successfull additions are committed despite rejected records.
+                console.error ("Warning Dexie.BulkError completed with errors:");
+                console.error(e);
+            });  
+     
+            
+            
+            
+            
+            
+            
+            
+            });
+  
+            break;
+          }
+          try{
+              k = res.slice(1).join(" ");
+              d = JSON.parse(k);
+              if (d.RAM1) bulk_update_buffer.push(d.RAM1);
+              if (d.RAM2) bulk_update_buffer.push(d.RAM2);       
+              $.extend(true,ram,d);
+          } catch(e){
+          //bad message throw it out
+              break;
+          }
+          break;
+      case "STATS":
+          try{
+              data_dict = JSON.parse(res.slice(1).join(" ")); 
+          } catch(e){
+          //bad message throw it out
+              break;
+          }
+          $.extend(watch, data_dict);
+          $("#watch_received").jsonViewer(watch);
+          if(Math.random() > 0.95){
+              //don't need to redraw every time data is received' 
+              renderAudioBlocks();
+          }
+          renderMonitor();
+          break;
       case "DD":
           try{
               data_dict = JSON.parse(res[1]);
@@ -301,17 +488,24 @@ socket.onmessage = function (message) {
           for (var key in data_dict){
               //sidebar.append(data_dict[key] + "<br>");
               if ($('#'+key).length < 1){
-                  //sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
-                  sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"300\" height=\"60\" stroke-width=\"1\"></svg><br>");
-                  sparks[key] = [];
+                  sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
+                  sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"160\" height=\"60\" stroke-width=\"1\"></svg>");
+                  sparks[key] = new Array(1024);
+                  sparks[key].fill(0);
               }
-              sparks[key].unshift(parseInt(data_dict[key]));
-              if(sparks[key].length > 50){
-                  sparks[key].pop();
+              d = parseInt(data_dict[key]);              
+              if (isNaN(d)){
+                  console.log(key);
+                  data_dict[key] = 0;
+                  sparks[key].unshift(0);
+              }else{
+                  sparks[key].unshift(d);
+              }
+              if(sparks[key].length > 1024){
+                sparks[key].pop();
               }
               $("#"+key+"_VAL").text(sparks[key][0]);
           }
-         
           break;
       case "FS_START":
           fileStreamContainer = [];
@@ -379,11 +573,15 @@ socket.onmessage = function (message) {
         ctx.putImageData(imageData, 0, 0);
           break;
 
+      case "CLS":
+           $("#received").empty();
+           break;
       default:
-        received.append(message.data.trim());
-        received.append($('<br/>'));
-        //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
-        $('.messages').scrollTop(10000000000);           
+          error_bytes += message.data.length;
+          //received.append("RX ERROR (BYTES LOST): ");
+          //received.append(message.data.length);
+          //received.append($('<br/>'));
+          //$('.messages').scrollTop(10000000000);           
   };
 };
 
@@ -456,6 +654,29 @@ $("#DD").click(function(ev){
 
 
 
+
+$("#cmd_showAudio").click(function(ev){
+  ev.preventDefault();
+  $("#graph_container").show(0.35);
+  $("#memory_container").hide(0.15);
+  $("#monitor_container").hide(0.15);
+});
+
+$("#cmd_showMemory").click(function(ev){
+  ev.preventDefault();
+  $("#graph_container").hide(0.15);
+  $("#memory_container").show(0.35);
+  $("#monitor_container").hide(0.15);
+});
+
+$("#cmd_showMonitor").click(function(ev){
+  ev.preventDefault();
+  $("#graph_container").hide(0.15);
+  $("#memory_container").hide(0.15);
+  $("#monitor_container").show(0.35);
+});
+
+
 $("#freq_slider").on("change", function(event, ui) {
   sendMessage({ 'data' : 'AA ' + $('#freq_slider')[0].value});
 });
@@ -486,10 +707,161 @@ function sweepFreq(){
     }
 }
 
-//import Dropzone from "dropzone";
-Dropzone.autoDiscover = false;
+function preventDefaults (e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
 
-let myDropzone = new Dropzone("#upload");
-myDropzone.on("addedfile", file => {
-  console.log(`File added: ${file.name}`);
-});
+function handleDrop(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  let dt = e.dataTransfer;
+  let files = dt.files;
+  handleFileList(files);
+}
+
+function handleFileList(files) {
+  ([...files]).forEach(handleFile);
+}
+
+function handleFile(file) {
+    console.log(`File added: ${file.name}`);
+    reader = new FileReader();
+    reader.onload = function (event) {
+        data_dict = JSON.parse("{\"BUILD_INFO\":"+ event.target.result + "}");
+        $.extend( true, watch, data_dict);
+        $("#watch_received").jsonViewer(watch,{collapsed: true});
+    };
+    //console.log(file);
+    reader.readAsText(file);    
+}
+
+
+function renderMonitor(){
+    var c = document.getElementById('monitor_canvas');
+    if (c.getContext){
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = "#D74022";
+        ctx.fillStyle = "#000000";
+        
+        ctx.fillStyle = "rgba(0,0,0,1)";
+        c.style.webkitFilter = "opacity(0.7);";
+
+        ctx.strokeStyle = "rgba(0, 4, 12, 1.0)";
+
+
+        for (const [key, value] of Object.entries(watch.APPS)) {
+            if (key != 'root'){
+                pixel_color[0]   = 255;
+                pixel_color[1]   = 0;
+                pixel_color[2]   = 255;
+                pixel_color[3]   = 20;
+                x = watch.APPS[key].cycle_time_max/15;
+                ctx.putImageData(pixel, x, c.height-2);
+                pixel_color[0]   = 0;
+                pixel_color[1]   = 255;
+                pixel_color[2]   = 255;
+                pixel_color[3]   = 20;
+                x = watch.APPS[key].updateRT_loop_time_max*2;
+                ctx.putImageData(pixel, x, c.height-2);
+            }
+        }
+        //slide the image up
+        var imageData = ctx.getImageData(0, 0, c.width,c.height);
+        if (Math.random() > 0.98){
+            ctx.putImageData(imageData, 0, -1);
+            //draw the new row
+            ctx.beginPath();
+            ctx.moveTo(0, c.height-1);
+            ctx.lineTo(c.width, c.height-1);
+            ctx.stroke();
+        }
+    }
+}
+
+
+function renderAudioBlocks(){
+    var x = 0;
+    var y = 0;
+    var zonex = [0,20,620,620,1000,1400];
+    var zonex_start = [0,20,620,620,1000,1400];
+    var zone_width = [400,400,400,820,1400,200];
+    var zonex_gap = [90,90,90,90,90,90];
+    var zoney = [0,300,50,300,300,0];
+    var zoney_gap = [75,125,125,125,125,125];
+
+    var column_color = ["#213A55","#2F2A34","##18181F","#40474E","#551234","#371B32"];
+    var zi = 0;
+    var erist_test;
+    
+    //clear any existing nodes
+    lgraph.clear();
+    
+    //draw the blocks
+    for (c in watch.AudioDirector.AudioStreamObjPool){ //for each component in the pool 
+        erist_test = LiteGraph.createNode("basic/ErisAudio");
+        inport = watch.AudioDirector.AudioStreamObjPool[c].inputs;
+        for (i = 0; i < inport;i+=1){
+            erist_test.addInput(i.toString(),"number");
+        };
+        outport = watch.AudioDirector.AudioStreamObjPool[c].outputs;
+        for (i = 0; i < outport;i+=1){
+            erist_test.addOutput(i.toString(),"number");
+        };
+        erist_test.title = c;
+        
+        switch(watch.AudioDirector.AudioStreamObjPool[c].category){
+            case 'input-function':
+                zi = 0;
+                break;        
+            case 'output-function':
+                zi = 5;
+                break;        
+            case 'synth-function':
+                zi = 1;
+                break;
+            case 'effect-function':
+                zi = 2;
+                break; 
+            case 'mixer-function':
+                zi = 3;
+                break;
+            default:
+                zi = 4;
+        }
+        erist_test.bgcolor = column_color[zi];
+
+        erist_test.pos = [zonex[zi],zoney[zi]];
+        zonex[zi] += zonex_gap[zi];
+        
+        if (zonex[zi] > zone_width[zi]){
+            zonex[zi] = zonex_start[zi];
+            zoney[zi] += zoney_gap[zi];
+        } else zonex[zi] += zonex_gap[zi];
+
+        
+        
+        
+        lgraph.add(erist_test);
+        watch.AudioDirector.AudioStreamObjPool[c].graph_node = erist_test;
+    };
+    //draw the connections
+    for (c in watch.AudioDirector.AudioConnectionPool){ //for each connection in the pool
+        //node_const.connect(0, node_watch, 0 );
+        if (watch.AudioDirector.AudioConnectionPool[(c).toString()].isConnected == 1){
+            source_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceName;
+            dest_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].destName;
+            
+            source_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceInstance;
+            dest_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            
+            watch.AudioDirector.AudioStreamObjPool[source_name].graph_node. 
+                connect(watch.AudioDirector.AudioConnectionPool[(c).toString()].sourcePort,
+                watch.AudioDirector.AudioStreamObjPool[dest_name].graph_node,
+                watch.AudioDirector.AudioConnectionPool[(c).toString()].destPort);
+        }
+    } 
+}
+
+
+

@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 24
+#define ANIMATION_CHUNKS_PER_FRAME 4
 
 static volatile bool dmabusy;
 
@@ -16,7 +16,7 @@ bool _busy(){
 bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
             bool rval;
             //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
-            Serial.flush();
+            //Serial.flush();
             dmabusy=true;
             setFrameCompleteCB(&renderCompleteCB);
             rval= updateScreenAsync(false);

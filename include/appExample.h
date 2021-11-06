@@ -52,8 +52,7 @@ class MyAppExample:public AppBaseClass {
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_1"));
       //filter->setLowpass(0,440);
-      filter->setLowpass(0, 1100,0.3);
-      filter->setLowpass(0, 2100);
+      filter->setLowpass(0, 1100,0.6);
       //filter->setHighpass(0, 200);
       //filter->setLowpass(1,2200);
       //filter->setLowpass(2,2200);
@@ -67,14 +66,14 @@ class MyAppExample:public AppBaseClass {
       //filter->setLowpass(3,300);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
-      filter->setLowpass(0,12200);
+      filter->setLowpass(0,8052);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_4"));
       filter->setLowpass(0,18400);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.40);
-      reverb->damping(0.92);
+      reverb->roomsize(0.95);
+      reverb->damping(0.22);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
       mix->gain(0,0.75);
@@ -230,11 +229,11 @@ class MyAppExample:public AppBaseClass {
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
-      filter->setLowpass(0,601.0 + (16141.0 * fval));
-      filter->setLowpass(1,727.0 + (14279.0 * fval));
-      filter->setLowpass(2,857.0 + (13137.0 * fval));
-      filter->setLowpass(3,919.0 + (12221.0 * fval));
-      mixer->gain(0,1.0);
+      filter->setLowpass(0,220.0 + (6000.0 * fval));
+      //filter->setLowpass(1,727.0 + (14279.0 * fval));
+      //filter->setLowpass(2,857.0 + (13137.0 * fval));
+      //filter->setLowpass(3,919.0 + (12221.0 * fval));
+      mixer->gain(0,2.0);
       AudioInterrupts();
     };
     
@@ -243,9 +242,9 @@ class MyAppExample:public AppBaseClass {
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      float lp = 300.0 + (1200.0 * log1p(fval));
-      float hp = 150.0 + (600.0 * log1p(fval));
-      float gain = log1p(fval);
+      float lp = 300.0 + (18000.0 * log1p(fval));
+      float hp = 210.0 + (100.0 * log1p(fval));
+      float gain = 1.0 + log1p(fval);
       AudioNoInterrupts();
       filter->setLowpass(0,lp);
       filter->setHighpass(1,hp);
@@ -271,7 +270,7 @@ class MyAppExample:public AppBaseClass {
 
       //amplified input -> filter -> master mixer
       ad->connect("amp_2 0 biquad_4 0");
-      //ad->connect("biquad_4 0 mixer_1 2");
+      ad->connect("biquad_4 0 mixer_1 2");
       
       //master mixer -> output amp
       ad->connect("mixer_1 0 amp_1 0");
@@ -285,8 +284,8 @@ class MyAppExample:public AppBaseClass {
 
       //bus output to filter -> reverb -> master mixer
       ad->connect("mixer_6 0 biquad_3 0");
-      //ad->connect("biquad_3 0 freeverb_1 0");
-      //ad->connect("freeverb_1 0 mixer_1 1");
+      ad->connect("biquad_3 0 freeverb_1 0");
+      ad->connect("freeverb_1 0 mixer_1 1");
       //filtered bus mixer -> master mixer
       ad->connect("biquad_3 0 mixer_1 0");
       

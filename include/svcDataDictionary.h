@@ -125,7 +125,7 @@ class SvcDataDictionary{
         
         void printDictionary(){
             //todo: print out in JSON format
-            Serial.flush();
+            //Serial.flush();
             Serial.print("DD {");
 
             for(int i=0;i<next;i++){
@@ -133,7 +133,7 @@ class SvcDataDictionary{
                 if (i != next-1) Serial.print(",");
             }
             Serial.println("}");
-            Serial.flush();
+            //Serial.flush();
         }
 
 };

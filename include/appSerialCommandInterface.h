@@ -71,7 +71,7 @@ class AppSerialCommandInterface:public AppBaseClass {
   protected:
     SdFs *pSD;
     FsFile file;
-    byte indexRxBuffer;
+    uint16_t indexRxBuffer;
     char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];

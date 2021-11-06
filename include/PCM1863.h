@@ -44,6 +44,37 @@ void I2CReset(){
   //Wire.setDefaultTimeout(200000); // 200ms
 }
 
+uint8_t ExtADCReadReg(uint8_t control_register){
+    Wire.beginTransmission(74);Wire.write(control_register);
+    Wire.endTransmission(I2C_NOSTOP);
+    Wire.requestFrom(74, 1);
+    return Wire.read();
+}
+
+void ExtADCPrintStatus(){
+  Serial.print("ADC ");
+  Serial.print(F("{\"State(15:RUNNING)\":"));
+  Serial.print(ExtADCReadReg(114));
+  Serial.print(F(",\"SampleFreq:\":"));
+  Serial.print(ExtADCReadReg(115));
+  Serial.print(F(",\"BCLK Ratio:\":"));
+  Serial.print((ExtADCReadReg(116) >> 4) & 0x7);
+  Serial.print(F(",\"SCLK Ratio:\":"));
+  Serial.print(ExtADCReadReg(116) & 0x7);
+  Serial.print(F(",\"CLK Error:\":"));
+  Serial.print(ExtADCReadReg(117));
+  Serial.print(F(",\"Voltage(7:OK):\":"));
+  Serial.print(ExtADCReadReg(120));
+  for (int i =0; i < 12;i++){
+    Serial.print(F(",\"CONFIG REG"));
+    Serial.print(i);
+    Serial.print(F(":\":"));
+    Serial.print(ExtADCReadReg(i),HEX);
+  }
+  Serial.println("}");
+  //Serial.flush();
+}
+
 void ExtADCConfig(){
   //AUDIO FORMAT - i2s
   Wire.beginTransmission(74);Wire.write(11);
@@ -146,11 +177,4 @@ void I2CBusScan()
   }
   if (nDevices == 0)
     Serial.println(F("I2CBusScan: No I2C devices found\n"));
-}
-
-uint8_t ExtADCReadReg(uint8_t control_register){
-    Wire.beginTransmission(74);Wire.write(control_register);
-    Wire.endTransmission(I2C_NOSTOP);
-    Wire.requestFrom(74, 1);
-    return Wire.read();
 }

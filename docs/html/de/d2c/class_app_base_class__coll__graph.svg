@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 668;
+var viewWidth = 703;
 var viewHeight = 3037;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>AppBaseClass</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-3033 663.5,-3033 663.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-3033 699,-3033 699,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -212,267 +212,267 @@ var sectionId = 'dynsection-1';
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="62.5,-2267.5 62.5,-2330.5 139.5,-2330.5 139.5,-2267.5 62.5,-2267.5"/>
-<text text-anchor="middle" x="101" y="-2316.9" font-family="Helvetica,sans-Serif" font-size="12.00">ILI9341_t3n</text>
-<polyline fill="none" stroke="#bfbfbf" points="62.5,-2309.5 139.5,-2309.5 "/>
-<text text-anchor="middle" x="101" y="-2295.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="62.5,-2288.5 139.5,-2288.5 "/>
-<text text-anchor="middle" x="101" y="-2274.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polygon fill="white" stroke="#bfbfbf" points="55.5,-2267.5 55.5,-2330.5 132.5,-2330.5 132.5,-2267.5 55.5,-2267.5"/>
+<text text-anchor="middle" x="94" y="-2316.9" font-family="Helvetica,sans-Serif" font-size="12.00">ILI9341_t3n</text>
+<polyline fill="none" stroke="#bfbfbf" points="55.5,-2309.5 132.5,-2309.5 "/>
+<text text-anchor="middle" x="94" y="-2295.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="55.5,-2288.5 132.5,-2288.5 "/>
+<text text-anchor="middle" x="94" y="-2274.9" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M101.11,-2257.3C101.36,-2161.39 102,-1915.84 102.46,-1736.61"/>
-<polygon fill="none" stroke="midnightblue" points="97.61,-2257.43 101.08,-2267.44 104.61,-2257.45 97.61,-2257.43"/>
+<path fill="none" stroke="midnightblue" d="M94.48,-2257.3C95.6,-2161.39 98.48,-1915.84 100.58,-1736.61"/>
+<polygon fill="none" stroke="midnightblue" points="90.98,-2257.4 94.36,-2267.44 97.98,-2257.48 90.98,-2257.4"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d8/d1c/class_audio_director.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="225.5,-1205.5 225.5,-1853.5 438.5,-1853.5 438.5,-1205.5 225.5,-1205.5"/>
-<text text-anchor="middle" x="332" y="-1839.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector</text>
-<polyline fill="none" stroke="black" points="225.5,-1832.5 438.5,-1832.5 "/>
-<text text-anchor="start" x="233.5" y="-1818.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t activeConnections</text>
-<text text-anchor="start" x="233.5" y="-1805.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t categoryCount</text>
-<text text-anchor="start" x="233.5" y="-1792.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char ** categoryList</text>
-<text text-anchor="start" x="233.5" y="-1779.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void * heapEnd</text>
-<text text-anchor="start" x="233.5" y="-1766.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void * heapStart</text>
-<text text-anchor="start" x="233.5" y="-1753.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t objCount</text>
-<text text-anchor="start" x="233.5" y="-1740.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char * shortNameQueryResult</text>
-<text text-anchor="start" x="233.5" y="-1727.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t shortNameQueryResult</text>
-<text text-anchor="start" x="233.5" y="-1714.9" font-family="Helvetica,sans-Serif" font-size="12.00">Count</text>
-<polyline fill="none" stroke="black" points="225.5,-1707.5 438.5,-1707.5 "/>
-<text text-anchor="start" x="233.5" y="-1693.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioDirector()</text>
-<text text-anchor="start" x="233.5" y="-1680.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioDirector(const</text>
-<text text-anchor="start" x="233.5" y="-1667.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioDirector &amp;)=delete</text>
-<text text-anchor="start" x="233.5" y="-1654.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool addAudioStreamObj</text>
-<text text-anchor="start" x="233.5" y="-1641.9" font-family="Helvetica,sans-Serif" font-size="12.00">(AudioStream *obj)</text>
-<text text-anchor="start" x="233.5" y="-1628.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(AudioStream</text>
-<text text-anchor="start" x="233.5" y="-1615.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, int sourceOutput,</text>
-<text text-anchor="start" x="233.5" y="-1602.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioStream *destination,</text>
-<text text-anchor="start" x="233.5" y="-1589.9" font-family="Helvetica,sans-Serif" font-size="12.00"> int destinationInput)</text>
-<text text-anchor="start" x="233.5" y="-1576.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(char *from,</text>
-<text text-anchor="start" x="233.5" y="-1563.9" font-family="Helvetica,sans-Serif" font-size="12.00"> uint8_t from_port, char</text>
-<text text-anchor="start" x="233.5" y="-1550.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *to, uint8_t to_port)</text>
-<text text-anchor="start" x="233.5" y="-1537.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(const</text>
-<text text-anchor="start" x="233.5" y="-1524.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionString)</text>
-<text text-anchor="start" x="233.5" y="-1511.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t connectionCount()</text>
-<text text-anchor="start" x="233.5" y="-1498.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(AudioStream</text>
-<text text-anchor="start" x="233.5" y="-1485.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *destination, int destinationInput)</text>
-<text text-anchor="start" x="233.5" y="-1472.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(char</text>
-<text text-anchor="start" x="233.5" y="-1459.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *to, uint8_t to_port)</text>
-<text text-anchor="start" x="233.5" y="-1446.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(const</text>
-<text text-anchor="start" x="233.5" y="-1433.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionString)</text>
-<text text-anchor="start" x="233.5" y="-1420.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnectAll()</text>
-<text text-anchor="start" x="233.5" y="-1407.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream * getAudioStream</text>
-<text text-anchor="start" x="233.5" y="-1394.9" font-family="Helvetica,sans-Serif" font-size="12.00">ObjByName(const char *AudioStream</text>
-<text text-anchor="start" x="233.5" y="-1381.9" font-family="Helvetica,sans-Serif" font-size="12.00">ObjName)</text>
-<text text-anchor="start" x="233.5" y="-1368.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getAudioStreamString</text>
-<text text-anchor="start" x="233.5" y="-1355.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t streamIndex,</text>
-<text text-anchor="start" x="233.5" y="-1342.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *streamStringBuffer)</text>
-<text text-anchor="start" x="233.5" y="-1329.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getConnectionString</text>
-<text text-anchor="start" x="233.5" y="-1316.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t connectionIndex,</text>
-<text text-anchor="start" x="233.5" y="-1303.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionStringBuffer)</text>
-<text text-anchor="start" x="233.5" y="-1290.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void printStats()</text>
-<text text-anchor="start" x="233.5" y="-1277.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void generateCategoryList()</text>
-<text text-anchor="start" x="233.5" y="-1264.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void linkGroup()</text>
-<text text-anchor="start" x="233.5" y="-1251.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void ParseConnectString</text>
-<text text-anchor="start" x="233.5" y="-1238.9" font-family="Helvetica,sans-Serif" font-size="12.00">(const char *connectionString,</text>
-<text text-anchor="start" x="233.5" y="-1225.9" font-family="Helvetica,sans-Serif" font-size="12.00"> ParsedConnection *p)</text>
-<text text-anchor="start" x="233.5" y="-1212.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void unlinkAll()</text>
+<polygon fill="white" stroke="black" points="240.5,-1205.5 240.5,-1853.5 453.5,-1853.5 453.5,-1205.5 240.5,-1205.5"/>
+<text text-anchor="middle" x="347" y="-1839.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector</text>
+<polyline fill="none" stroke="black" points="240.5,-1832.5 453.5,-1832.5 "/>
+<text text-anchor="start" x="248.5" y="-1818.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t activeConnections</text>
+<text text-anchor="start" x="248.5" y="-1805.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t categoryCount</text>
+<text text-anchor="start" x="248.5" y="-1792.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char ** categoryList</text>
+<text text-anchor="start" x="248.5" y="-1779.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void * heapEnd</text>
+<text text-anchor="start" x="248.5" y="-1766.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void * heapStart</text>
+<text text-anchor="start" x="248.5" y="-1753.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t objCount</text>
+<text text-anchor="start" x="248.5" y="-1740.9" font-family="Helvetica,sans-Serif" font-size="12.00"># char * shortNameQueryResult</text>
+<text text-anchor="start" x="248.5" y="-1727.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint16_t shortNameQueryResult</text>
+<text text-anchor="start" x="248.5" y="-1714.9" font-family="Helvetica,sans-Serif" font-size="12.00">Count</text>
+<polyline fill="none" stroke="black" points="240.5,-1707.5 453.5,-1707.5 "/>
+<text text-anchor="start" x="248.5" y="-1693.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioDirector()</text>
+<text text-anchor="start" x="248.5" y="-1680.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioDirector(const</text>
+<text text-anchor="start" x="248.5" y="-1667.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioDirector &amp;)=delete</text>
+<text text-anchor="start" x="248.5" y="-1654.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool addAudioStreamObj</text>
+<text text-anchor="start" x="248.5" y="-1641.9" font-family="Helvetica,sans-Serif" font-size="12.00">(AudioStream *obj)</text>
+<text text-anchor="start" x="248.5" y="-1628.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(AudioStream</text>
+<text text-anchor="start" x="248.5" y="-1615.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, int sourceOutput,</text>
+<text text-anchor="start" x="248.5" y="-1602.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioStream *destination,</text>
+<text text-anchor="start" x="248.5" y="-1589.9" font-family="Helvetica,sans-Serif" font-size="12.00"> int destinationInput)</text>
+<text text-anchor="start" x="248.5" y="-1576.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(char *from,</text>
+<text text-anchor="start" x="248.5" y="-1563.9" font-family="Helvetica,sans-Serif" font-size="12.00"> uint8_t from_port, char</text>
+<text text-anchor="start" x="248.5" y="-1550.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *to, uint8_t to_port)</text>
+<text text-anchor="start" x="248.5" y="-1537.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool connect(const</text>
+<text text-anchor="start" x="248.5" y="-1524.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionString)</text>
+<text text-anchor="start" x="248.5" y="-1511.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int16_t connectionCount()</text>
+<text text-anchor="start" x="248.5" y="-1498.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(AudioStream</text>
+<text text-anchor="start" x="248.5" y="-1485.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *destination, int destinationInput)</text>
+<text text-anchor="start" x="248.5" y="-1472.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(char</text>
+<text text-anchor="start" x="248.5" y="-1459.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *to, uint8_t to_port)</text>
+<text text-anchor="start" x="248.5" y="-1446.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(const</text>
+<text text-anchor="start" x="248.5" y="-1433.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionString)</text>
+<text text-anchor="start" x="248.5" y="-1420.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnectAll()</text>
+<text text-anchor="start" x="248.5" y="-1407.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream * getAudioStream</text>
+<text text-anchor="start" x="248.5" y="-1394.9" font-family="Helvetica,sans-Serif" font-size="12.00">ObjByName(const char *AudioStream</text>
+<text text-anchor="start" x="248.5" y="-1381.9" font-family="Helvetica,sans-Serif" font-size="12.00">ObjName)</text>
+<text text-anchor="start" x="248.5" y="-1368.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getAudioStreamString</text>
+<text text-anchor="start" x="248.5" y="-1355.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t streamIndex,</text>
+<text text-anchor="start" x="248.5" y="-1342.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *streamStringBuffer)</text>
+<text text-anchor="start" x="248.5" y="-1329.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool getConnectionString</text>
+<text text-anchor="start" x="248.5" y="-1316.9" font-family="Helvetica,sans-Serif" font-size="12.00">(uint16_t connectionIndex,</text>
+<text text-anchor="start" x="248.5" y="-1303.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char *connectionStringBuffer)</text>
+<text text-anchor="start" x="248.5" y="-1290.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void printStats()</text>
+<text text-anchor="start" x="248.5" y="-1277.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void generateCategoryList()</text>
+<text text-anchor="start" x="248.5" y="-1264.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void linkGroup()</text>
+<text text-anchor="start" x="248.5" y="-1251.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void ParseConnectString</text>
+<text text-anchor="start" x="248.5" y="-1238.9" font-family="Helvetica,sans-Serif" font-size="12.00">(const char *connectionString,</text>
+<text text-anchor="start" x="248.5" y="-1225.9" font-family="Helvetica,sans-Serif" font-size="12.00"> ParsedConnection *p)</text>
+<text text-anchor="start" x="248.5" y="-1212.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void unlinkAll()</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node1 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M292.53,-1205.39C291.02,-1193.06 289.5,-1180.59 287.96,-1168"/>
-<polygon fill="none" stroke="#404040" points="287.93,-1167.81 283.24,-1162.34 286.48,-1155.9 291.18,-1161.37 287.93,-1167.81"/>
-<text text-anchor="middle" x="302" y="-1177.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #ad</text>
+<path fill="none" stroke="#404040" d="M302.42,-1205.39C300.72,-1193.06 299,-1180.59 297.26,-1168"/>
+<polygon fill="none" stroke="#404040" points="297.23,-1167.79 292.45,-1162.39 295.59,-1155.9 300.38,-1161.3 297.23,-1167.79"/>
+<text text-anchor="middle" x="311" y="-1177.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #ad</text>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d2/d7c/class_audio_connection.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="118.5,-2744.5 118.5,-3028.5 331.5,-3028.5 331.5,-2744.5 118.5,-2744.5"/>
-<text text-anchor="middle" x="225" y="-3014.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioConnection</text>
-<polyline fill="none" stroke="black" points="118.5,-3007.5 331.5,-3007.5 "/>
-<text text-anchor="start" x="126.5" y="-2993.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ unsigned char dest</text>
-<text text-anchor="start" x="126.5" y="-2980.9" font-family="Helvetica,sans-Serif" font-size="12.00">_index</text>
-<text text-anchor="start" x="126.5" y="-2967.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isConnected</text>
-<text text-anchor="start" x="126.5" y="-2954.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ unsigned char src_index</text>
-<polyline fill="none" stroke="black" points="118.5,-2947.5 331.5,-2947.5 "/>
-<text text-anchor="start" x="126.5" y="-2933.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioConnection(AudioStream</text>
-<text text-anchor="start" x="126.5" y="-2920.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, AudioStream *destination)</text>
-<text text-anchor="start" x="126.5" y="-2907.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioConnection(AudioStream</text>
-<text text-anchor="start" x="126.5" y="-2894.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, unsigned char sourceOutput,</text>
-<text text-anchor="start" x="126.5" y="-2881.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioStream *destination, unsigned</text>
-<text text-anchor="start" x="126.5" y="-2868.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char destinationInput)</text>
-<text text-anchor="start" x="126.5" y="-2855.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ ~AudioConnection()</text>
-<text text-anchor="start" x="126.5" y="-2842.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void connect(void)</text>
-<text text-anchor="start" x="126.5" y="-2829.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(void)</text>
-<text text-anchor="start" x="126.5" y="-2816.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool reconnect(void)</text>
-<text text-anchor="start" x="126.5" y="-2803.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool rewire(AudioStream</text>
-<text text-anchor="start" x="126.5" y="-2790.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *psource, unsigned char</text>
-<text text-anchor="start" x="126.5" y="-2777.9" font-family="Helvetica,sans-Serif" font-size="12.00"> sourceOutput, AudioStream</text>
-<text text-anchor="start" x="126.5" y="-2764.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *pdestination, unsigned char</text>
-<text text-anchor="start" x="126.5" y="-2751.9" font-family="Helvetica,sans-Serif" font-size="12.00"> destinationInput)</text>
+<g id="a_node5"><a xlink:href="../../dc/d96/classeris_audio_output_i2_s.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="150.5,-2261 150.5,-2337 285.5,-2337 285.5,-2261 150.5,-2261"/>
+<text text-anchor="middle" x="218" y="-2323.4" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioOutputI2S</text>
+<polyline fill="none" stroke="black" points="150.5,-2316 285.5,-2316 "/>
+<text text-anchor="middle" x="218" y="-2302.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polyline fill="none" stroke="black" points="150.5,-2295 285.5,-2295 "/>
+<text text-anchor="start" x="158.5" y="-2281.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioOutputI2S()</text>
+<text text-anchor="start" x="158.5" y="-2268.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void update()</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node4 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node4</title>
-<path fill="none" stroke="#404040" d="M193.58,-2744.25C190.02,-2723.47 186.97,-2702.25 185,-2682 168.51,-2512.58 146.97,-2081.92 185,-1916 191.84,-1886.16 203.11,-1882.21 215,-1854 216.9,-1849.49 218.8,-1844.93 220.7,-1840.33"/>
-<polygon fill="none" stroke="#404040" points="220.86,-1839.95 219.43,-1832.88 225.41,-1828.85 226.83,-1835.92 220.86,-1839.95"/>
-<text text-anchor="middle" x="206.5" y="-2295.9" font-family="Helvetica,sans-Serif" font-size="12.00"> #pCord</text>
-</g>
-<!-- Node5&#45;&gt;Node5 -->
-<g id="edge6" class="edge">
-<title>Node5&#45;&gt;Node5</title>
-<path fill="none" stroke="#404040" d="M331.7,-2913.01C342.56,-2907.77 349.5,-2898.93 349.5,-2886.5 349.5,-2878.54 346.65,-2872.05 341.75,-2867.04"/>
-<polygon fill="none" stroke="#404040" points="341.53,-2866.88 334.32,-2866.71 331.7,-2859.99 338.91,-2860.16 341.53,-2866.88"/>
-<text text-anchor="middle" x="380" y="-2883.4" font-family="Helvetica,sans-Serif" font-size="12.00"> +next_dest</text>
+<path fill="none" stroke="#404040" d="M210.63,-2260.88C197.17,-2186.09 172.85,-2012.42 206,-1872 208.05,-1863.29 211.31,-1862.15 215,-1854 221.8,-1839 228.64,-1823.53 235.44,-1807.88"/>
+<polygon fill="none" stroke="#404040" points="235.62,-1807.47 234.33,-1800.37 240.39,-1796.45 241.68,-1803.55 235.62,-1807.47"/>
+<text text-anchor="middle" x="273.5" y="-1881.9" font-family="Helvetica,sans-Serif" font-size="12.00"> #AudioStreamOutputPort</text>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d5/d96/class_audio_stream.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="237,-1916.5 237,-2681.5 429,-2681.5 429,-1916.5 237,-1916.5"/>
-<text text-anchor="middle" x="333" y="-2667.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioStream</text>
-<polyline fill="none" stroke="red" points="237,-2660.5 429,-2660.5 "/>
-<text text-anchor="start" x="245" y="-2646.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ const char * category</text>
-<text text-anchor="start" x="245" y="-2633.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t cpu_cycles</text>
-<text text-anchor="start" x="245" y="-2620.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t cpu_cycles_max</text>
-<text text-anchor="start" x="245" y="-2607.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t instance</text>
-<text text-anchor="start" x="245" y="-2594.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ const char * shortName</text>
-<text text-anchor="start" x="245" y="-2581.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t unum_inputs</text>
-<text text-anchor="start" x="245" y="-2568.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t unum_outputs</text>
-<text text-anchor="start" x="245" y="-2555.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t cpu</text>
-<text text-anchor="start" x="245" y="-2542.9" font-family="Helvetica,sans-Serif" font-size="12.00">_cycles_total</text>
-<text text-anchor="start" x="245" y="-2529.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t cpu</text>
-<text text-anchor="start" x="245" y="-2516.9" font-family="Helvetica,sans-Serif" font-size="12.00">_cycles_total_max</text>
-<text text-anchor="start" x="245" y="-2503.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t memory_used</text>
-<text text-anchor="start" x="245" y="-2490.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t memory</text>
-<text text-anchor="start" x="245" y="-2477.9" font-family="Helvetica,sans-Serif" font-size="12.00">_used_max</text>
-<text text-anchor="start" x="245" y="-2464.9" font-family="Helvetica,sans-Serif" font-size="12.00"># bool active</text>
-<text text-anchor="start" x="245" y="-2451.9" font-family="Helvetica,sans-Serif" font-size="12.00"># unsigned char num_inputs</text>
-<text text-anchor="start" x="245" y="-2438.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint8_t numConnections</text>
-<text text-anchor="start" x="245" y="-2425.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static uint32_t memory</text>
-<text text-anchor="start" x="245" y="-2412.9" font-family="Helvetica,sans-Serif" font-size="12.00">_pool_available_mask</text>
-<text text-anchor="start" x="245" y="-2399.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static uint16_t memory</text>
-<text text-anchor="start" x="245" y="-2386.9" font-family="Helvetica,sans-Serif" font-size="12.00">_pool_first_mask</text>
-<text text-anchor="start" x="245" y="-2373.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static bool update</text>
-<text text-anchor="start" x="245" y="-2360.9" font-family="Helvetica,sans-Serif" font-size="12.00">_scheduled</text>
-<polyline fill="none" stroke="red" points="237,-2353.5 429,-2353.5 "/>
-<text text-anchor="start" x="245" y="-2339.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream()</text>
-<text text-anchor="start" x="245" y="-2326.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream(unsigned</text>
-<text text-anchor="start" x="245" y="-2313.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char ninput, audio_block</text>
-<text text-anchor="start" x="245" y="-2300.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t **iqueue)</text>
-<text text-anchor="start" x="245" y="-2287.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isActive(void)</text>
-<text text-anchor="start" x="245" y="-2274.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int processorUsage</text>
-<text text-anchor="start" x="245" y="-2261.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
-<text text-anchor="start" x="245" y="-2248.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int processorUsageMax</text>
-<text text-anchor="start" x="245" y="-2235.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
-<text text-anchor="start" x="245" y="-2222.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void processorUsageMaxReset</text>
-<text text-anchor="start" x="245" y="-2209.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
-<text text-anchor="start" x="245" y="-2196.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static void initialize</text>
-<text text-anchor="start" x="245" y="-2183.9" font-family="Helvetica,sans-Serif" font-size="12.00">_memory(audio_block_t</text>
-<text text-anchor="start" x="245" y="-2170.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *data, unsigned int num)</text>
-<text text-anchor="start" x="245" y="-2157.9" font-family="Helvetica,sans-Serif" font-size="12.00"># audio_block_t * receiveRead</text>
-<text text-anchor="start" x="245" y="-2144.9" font-family="Helvetica,sans-Serif" font-size="12.00">Only(unsigned int index=0)</text>
-<text text-anchor="start" x="245" y="-2131.9" font-family="Helvetica,sans-Serif" font-size="12.00"># audio_block_t * receiveWritable</text>
-<text text-anchor="start" x="245" y="-2118.9" font-family="Helvetica,sans-Serif" font-size="12.00">(unsigned int index=0)</text>
-<text text-anchor="start" x="245" y="-2105.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void transmit(audio</text>
-<text text-anchor="start" x="245" y="-2092.9" font-family="Helvetica,sans-Serif" font-size="12.00">_block_t *block, unsigned</text>
-<text text-anchor="start" x="245" y="-2079.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char index=0)</text>
-<text text-anchor="start" x="245" y="-2066.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static audio_block</text>
-<text text-anchor="start" x="245" y="-2053.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t * allocate(void)</text>
-<text text-anchor="start" x="245" y="-2040.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void release</text>
-<text text-anchor="start" x="245" y="-2027.9" font-family="Helvetica,sans-Serif" font-size="12.00">(audio_block_t *block)</text>
-<text text-anchor="start" x="245" y="-2014.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void update</text>
-<text text-anchor="start" x="245" y="-2001.9" font-family="Helvetica,sans-Serif" font-size="12.00">_all(void)</text>
-<text text-anchor="start" x="245" y="-1988.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static bool update</text>
-<text text-anchor="start" x="245" y="-1975.9" font-family="Helvetica,sans-Serif" font-size="12.00">_setup(void)</text>
-<text text-anchor="start" x="245" y="-1962.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void update</text>
-<text text-anchor="start" x="245" y="-1949.9" font-family="Helvetica,sans-Serif" font-size="12.00">_stop(void)</text>
-<text text-anchor="start" x="245" y="-1936.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; virtual void update</text>
-<text text-anchor="start" x="245" y="-1923.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)=0</text>
+<g id="a_node6"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="169,-2855 169,-2918 267,-2918 267,-2855 169,-2855"/>
+<text text-anchor="middle" x="218" y="-2904.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioOutputI2S</text>
+<polyline fill="none" stroke="#bfbfbf" points="169,-2897 267,-2897 "/>
+<text text-anchor="middle" x="218" y="-2883.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="169,-2876 267,-2876 "/>
+<text text-anchor="middle" x="218" y="-2862.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
 </a>
 </g>
-</g>
-<!-- Node5&#45;&gt;Node6 -->
-<g id="edge8" class="edge">
-<title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="#404040" d="M222.2,-2744.17C222.12,-2738.03 222.06,-2731.95 222,-2726 221.89,-2714.44 220.44,-2711.45 222,-2700 225.23,-2676.3 229.48,-2652.02 234.45,-2627.7"/>
-<polygon fill="none" stroke="#404040" points="234.49,-2627.52 231.8,-2620.83 236.94,-2615.77 239.63,-2622.46 234.49,-2627.52"/>
-<text text-anchor="middle" x="264.5" y="-2709.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;destination_list</text>
-</g>
-<!-- Node6&#45;&gt;Node4 -->
-<g id="edge12" class="edge">
-<title>Node6&#45;&gt;Node4</title>
-<path fill="none" stroke="#404040" d="M332.5,-1916.5C332.48,-1899.55 332.46,-1882.59 332.44,-1865.75"/>
-<polygon fill="none" stroke="#404040" points="332.44,-1865.52 328.43,-1859.53 332.42,-1853.52 336.43,-1859.52 332.44,-1865.52"/>
-<text text-anchor="middle" x="402.5" y="-1888.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #pAudioStreamObjPool</text>
-<text text-anchor="middle" x="402.5" y="-1875.4" font-family="Helvetica,sans-Serif" font-size="12.00">#pAudioStreamOutputPort</text>
 </g>
 <!-- Node6&#45;&gt;Node5 -->
-<g id="edge7" class="edge">
+<g id="edge6" class="edge">
 <title>Node6&#45;&gt;Node5</title>
-<path fill="none" stroke="#404040" d="M321.68,-2681.69C318.59,-2696.74 315.04,-2711.56 311,-2726 310.36,-2728.27 309.69,-2730.55 308.98,-2732.83"/>
-<polygon fill="none" stroke="#404040" points="308.98,-2732.83 310.88,-2739.79 305.18,-2744.22 303.29,-2737.26 308.98,-2732.83"/>
-<text text-anchor="middle" x="334.5" y="-2716.4" font-family="Helvetica,sans-Serif" font-size="12.00"> +pDst</text>
-<text text-anchor="middle" x="334.5" y="-2703.4" font-family="Helvetica,sans-Serif" font-size="12.00">+pSrc</text>
+<path fill="none" stroke="midnightblue" d="M218,-2844.63C218,-2736.09 218,-2441.75 218,-2337.35"/>
+<polygon fill="none" stroke="midnightblue" points="214.5,-2844.85 218,-2854.85 221.5,-2844.85 214.5,-2844.85"/>
 </g>
-<!-- Node6&#45;&gt;Node6 -->
-<g id="edge9" class="edge">
-<title>Node6&#45;&gt;Node6</title>
-<path fill="none" stroke="#404040" d="M429.06,-2364.78C439.94,-2352.46 447,-2330.54 447,-2299 447,-2274.86 442.86,-2256.34 436.04,-2243.46"/>
-<polygon fill="none" stroke="#404040" points="435.82,-2243.14 429.13,-2240.43 429.06,-2233.22 435.74,-2235.93 435.82,-2243.14"/>
-<text text-anchor="middle" x="481.5" y="-2302.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;first_update</text>
-<text text-anchor="middle" x="481.5" y="-2289.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;next_update</text>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../d2/d7c/class_audio_connection.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="297.5,-2744.5 297.5,-3028.5 510.5,-3028.5 510.5,-2744.5 297.5,-2744.5"/>
+<text text-anchor="middle" x="404" y="-3014.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioConnection</text>
+<polyline fill="none" stroke="black" points="297.5,-3007.5 510.5,-3007.5 "/>
+<text text-anchor="start" x="305.5" y="-2993.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ unsigned char dest</text>
+<text text-anchor="start" x="305.5" y="-2980.9" font-family="Helvetica,sans-Serif" font-size="12.00">_index</text>
+<text text-anchor="start" x="305.5" y="-2967.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isConnected</text>
+<text text-anchor="start" x="305.5" y="-2954.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ unsigned char src_index</text>
+<polyline fill="none" stroke="black" points="297.5,-2947.5 510.5,-2947.5 "/>
+<text text-anchor="start" x="305.5" y="-2933.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioConnection(AudioStream</text>
+<text text-anchor="start" x="305.5" y="-2920.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, AudioStream *destination)</text>
+<text text-anchor="start" x="305.5" y="-2907.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioConnection(AudioStream</text>
+<text text-anchor="start" x="305.5" y="-2894.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *source, unsigned char sourceOutput,</text>
+<text text-anchor="start" x="305.5" y="-2881.9" font-family="Helvetica,sans-Serif" font-size="12.00"> AudioStream *destination, unsigned</text>
+<text text-anchor="start" x="305.5" y="-2868.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char destinationInput)</text>
+<text text-anchor="start" x="305.5" y="-2855.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ ~AudioConnection()</text>
+<text text-anchor="start" x="305.5" y="-2842.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void connect(void)</text>
+<text text-anchor="start" x="305.5" y="-2829.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool disconnect(void)</text>
+<text text-anchor="start" x="305.5" y="-2816.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool reconnect(void)</text>
+<text text-anchor="start" x="305.5" y="-2803.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool rewire(AudioStream</text>
+<text text-anchor="start" x="305.5" y="-2790.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *psource, unsigned char</text>
+<text text-anchor="start" x="305.5" y="-2777.9" font-family="Helvetica,sans-Serif" font-size="12.00"> sourceOutput, AudioStream</text>
+<text text-anchor="start" x="305.5" y="-2764.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *pdestination, unsigned char</text>
+<text text-anchor="start" x="305.5" y="-2751.9" font-family="Helvetica,sans-Serif" font-size="12.00"> destinationInput)</text>
+</a>
+</g>
+</g>
+<!-- Node7&#45;&gt;Node4 -->
+<g id="edge7" class="edge">
+<title>Node7&#45;&gt;Node4</title>
+<path fill="none" stroke="#404040" d="M372.9,-2744.5C369.28,-2723.63 366.13,-2702.32 364,-2682 348.06,-2529.89 345.1,-2148.34 345.3,-1865.9"/>
+<polygon fill="none" stroke="#404040" points="345.3,-1865.79 341.3,-1859.79 345.31,-1853.79 349.3,-1859.79 345.3,-1865.79"/>
+<text text-anchor="middle" x="385.5" y="-2295.9" font-family="Helvetica,sans-Serif" font-size="12.00"> #pCord</text>
+</g>
+<!-- Node7&#45;&gt;Node7 -->
+<g id="edge8" class="edge">
+<title>Node7&#45;&gt;Node7</title>
+<path fill="none" stroke="#404040" d="M510.7,-2913.01C521.56,-2907.77 528.5,-2898.93 528.5,-2886.5 528.5,-2878.54 525.65,-2872.05 520.75,-2867.04"/>
+<polygon fill="none" stroke="#404040" points="520.53,-2866.88 513.32,-2866.71 510.7,-2859.99 517.91,-2860.16 520.53,-2866.88"/>
+<text text-anchor="middle" x="559" y="-2883.4" font-family="Helvetica,sans-Serif" font-size="12.00"> +next_dest</text>
 </g>
 <!-- Node8 -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node7"><a xlink:href="../../d8/d01/classeris_audio_input_i2_s.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="534.5,-2261 534.5,-2337 659.5,-2337 659.5,-2261 534.5,-2261"/>
-<text text-anchor="middle" x="597" y="-2323.4" font-family="Helvetica,sans-Serif" font-size="12.00">erisAudioInputI2S</text>
-<polyline fill="none" stroke="black" points="534.5,-2316 659.5,-2316 "/>
-<text text-anchor="middle" x="597" y="-2302.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-<polyline fill="none" stroke="black" points="534.5,-2295 659.5,-2295 "/>
-<text text-anchor="start" x="542.5" y="-2281.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ erisAudioInputI2S()</text>
-<text text-anchor="start" x="542.5" y="-2268.4" font-family="Helvetica,sans-Serif" font-size="12.00">+ void update()</text>
+<g id="a_node8"><a xlink:href="../../d5/d96/class_audio_stream.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="red" points="416,-1916.5 416,-2681.5 608,-2681.5 608,-1916.5 416,-1916.5"/>
+<text text-anchor="middle" x="512" y="-2667.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioStream</text>
+<polyline fill="none" stroke="red" points="416,-2660.5 608,-2660.5 "/>
+<text text-anchor="start" x="424" y="-2646.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ const char * category</text>
+<text text-anchor="start" x="424" y="-2633.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t cpu_cycles</text>
+<text text-anchor="start" x="424" y="-2620.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint16_t cpu_cycles_max</text>
+<text text-anchor="start" x="424" y="-2607.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t instance</text>
+<text text-anchor="start" x="424" y="-2594.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ const char * shortName</text>
+<text text-anchor="start" x="424" y="-2581.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t unum_inputs</text>
+<text text-anchor="start" x="424" y="-2568.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ uint8_t unum_outputs</text>
+<text text-anchor="start" x="424" y="-2555.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t cpu</text>
+<text text-anchor="start" x="424" y="-2542.9" font-family="Helvetica,sans-Serif" font-size="12.00">_cycles_total</text>
+<text text-anchor="start" x="424" y="-2529.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t cpu</text>
+<text text-anchor="start" x="424" y="-2516.9" font-family="Helvetica,sans-Serif" font-size="12.00">_cycles_total_max</text>
+<text text-anchor="start" x="424" y="-2503.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t memory_used</text>
+<text text-anchor="start" x="424" y="-2490.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static uint16_t memory</text>
+<text text-anchor="start" x="424" y="-2477.9" font-family="Helvetica,sans-Serif" font-size="12.00">_used_max</text>
+<text text-anchor="start" x="424" y="-2464.9" font-family="Helvetica,sans-Serif" font-size="12.00"># bool active</text>
+<text text-anchor="start" x="424" y="-2451.9" font-family="Helvetica,sans-Serif" font-size="12.00"># unsigned char num_inputs</text>
+<text text-anchor="start" x="424" y="-2438.9" font-family="Helvetica,sans-Serif" font-size="12.00"># uint8_t numConnections</text>
+<text text-anchor="start" x="424" y="-2425.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static uint32_t memory</text>
+<text text-anchor="start" x="424" y="-2412.9" font-family="Helvetica,sans-Serif" font-size="12.00">_pool_available_mask</text>
+<text text-anchor="start" x="424" y="-2399.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static uint16_t memory</text>
+<text text-anchor="start" x="424" y="-2386.9" font-family="Helvetica,sans-Serif" font-size="12.00">_pool_first_mask</text>
+<text text-anchor="start" x="424" y="-2373.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; static bool update</text>
+<text text-anchor="start" x="424" y="-2360.9" font-family="Helvetica,sans-Serif" font-size="12.00">_scheduled</text>
+<polyline fill="none" stroke="red" points="416,-2353.5 608,-2353.5 "/>
+<text text-anchor="start" x="424" y="-2339.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream()</text>
+<text text-anchor="start" x="424" y="-2326.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ AudioStream(unsigned</text>
+<text text-anchor="start" x="424" y="-2313.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char ninput, audio_block</text>
+<text text-anchor="start" x="424" y="-2300.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t **iqueue)</text>
+<text text-anchor="start" x="424" y="-2287.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ bool isActive(void)</text>
+<text text-anchor="start" x="424" y="-2274.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int processorUsage</text>
+<text text-anchor="start" x="424" y="-2261.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<text text-anchor="start" x="424" y="-2248.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ int processorUsageMax</text>
+<text text-anchor="start" x="424" y="-2235.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<text text-anchor="start" x="424" y="-2222.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ void processorUsageMaxReset</text>
+<text text-anchor="start" x="424" y="-2209.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)</text>
+<text text-anchor="start" x="424" y="-2196.9" font-family="Helvetica,sans-Serif" font-size="12.00">+ static void initialize</text>
+<text text-anchor="start" x="424" y="-2183.9" font-family="Helvetica,sans-Serif" font-size="12.00">_memory(audio_block_t</text>
+<text text-anchor="start" x="424" y="-2170.9" font-family="Helvetica,sans-Serif" font-size="12.00"> *data, unsigned int num)</text>
+<text text-anchor="start" x="424" y="-2157.9" font-family="Helvetica,sans-Serif" font-size="12.00"># audio_block_t * receiveRead</text>
+<text text-anchor="start" x="424" y="-2144.9" font-family="Helvetica,sans-Serif" font-size="12.00">Only(unsigned int index=0)</text>
+<text text-anchor="start" x="424" y="-2131.9" font-family="Helvetica,sans-Serif" font-size="12.00"># audio_block_t * receiveWritable</text>
+<text text-anchor="start" x="424" y="-2118.9" font-family="Helvetica,sans-Serif" font-size="12.00">(unsigned int index=0)</text>
+<text text-anchor="start" x="424" y="-2105.9" font-family="Helvetica,sans-Serif" font-size="12.00"># void transmit(audio</text>
+<text text-anchor="start" x="424" y="-2092.9" font-family="Helvetica,sans-Serif" font-size="12.00">_block_t *block, unsigned</text>
+<text text-anchor="start" x="424" y="-2079.9" font-family="Helvetica,sans-Serif" font-size="12.00"> char index=0)</text>
+<text text-anchor="start" x="424" y="-2066.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static audio_block</text>
+<text text-anchor="start" x="424" y="-2053.9" font-family="Helvetica,sans-Serif" font-size="12.00">_t * allocate(void)</text>
+<text text-anchor="start" x="424" y="-2040.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void release</text>
+<text text-anchor="start" x="424" y="-2027.9" font-family="Helvetica,sans-Serif" font-size="12.00">(audio_block_t *block)</text>
+<text text-anchor="start" x="424" y="-2014.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void update</text>
+<text text-anchor="start" x="424" y="-2001.9" font-family="Helvetica,sans-Serif" font-size="12.00">_all(void)</text>
+<text text-anchor="start" x="424" y="-1988.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static bool update</text>
+<text text-anchor="start" x="424" y="-1975.9" font-family="Helvetica,sans-Serif" font-size="12.00">_setup(void)</text>
+<text text-anchor="start" x="424" y="-1962.9" font-family="Helvetica,sans-Serif" font-size="12.00"># static void update</text>
+<text text-anchor="start" x="424" y="-1949.9" font-family="Helvetica,sans-Serif" font-size="12.00">_stop(void)</text>
+<text text-anchor="start" x="424" y="-1936.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45; virtual void update</text>
+<text text-anchor="start" x="424" y="-1923.9" font-family="Helvetica,sans-Serif" font-size="12.00">(void)=0</text>
 </a>
 </g>
+</g>
+<!-- Node7&#45;&gt;Node8 -->
+<g id="edge10" class="edge">
+<title>Node7&#45;&gt;Node8</title>
+<path fill="none" stroke="#404040" d="M401.2,-2744.17C401.12,-2738.03 401.06,-2731.95 401,-2726 400.89,-2714.44 399.44,-2711.45 401,-2700 404.23,-2676.3 408.48,-2652.02 413.45,-2627.7"/>
+<polygon fill="none" stroke="#404040" points="413.49,-2627.52 410.8,-2620.83 415.94,-2615.77 418.63,-2622.46 413.49,-2627.52"/>
+<text text-anchor="middle" x="443.5" y="-2709.9" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;destination_list</text>
 </g>
 <!-- Node8&#45;&gt;Node4 -->
-<g id="edge10" class="edge">
+<g id="edge12" class="edge">
 <title>Node8&#45;&gt;Node4</title>
-<path fill="none" stroke="#404040" d="M593.46,-2260.79C586.1,-2191.47 566.3,-2038.46 525,-1916 503.72,-1852.91 473.93,-1787.11 444.1,-1728.11"/>
-<polygon fill="none" stroke="#404040" points="443.98,-1727.86 437.69,-1724.33 438.54,-1717.17 444.82,-1720.7 443.98,-1727.86"/>
-<text text-anchor="middle" x="580.5" y="-1881.9" font-family="Helvetica,sans-Serif" font-size="12.00"> #AudioStreamInputPort</text>
+<path fill="none" stroke="#404040" d="M429.98,-1916.5C426.3,-1899.38 422.62,-1882.26 418.97,-1865.26"/>
+<polygon fill="none" stroke="#404040" points="418.97,-1865.25 413.79,-1860.23 416.44,-1853.52 421.62,-1858.55 418.97,-1865.25"/>
+<text text-anchor="middle" x="491" y="-1888.4" font-family="Helvetica,sans-Serif" font-size="12.00"> #pAudioStreamInputPort</text>
+<text text-anchor="middle" x="491" y="-1875.4" font-family="Helvetica,sans-Serif" font-size="12.00">#pAudioStreamObjPool</text>
 </g>
-<!-- Node9 -->
-<g id="node8" class="node">
-<title>Node9</title>
-<g id="a_node8"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="552.5,-2855 552.5,-2918 641.5,-2918 641.5,-2855 552.5,-2855"/>
-<text text-anchor="middle" x="597" y="-2904.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioInputI2S</text>
-<polyline fill="none" stroke="#bfbfbf" points="552.5,-2897 641.5,-2897 "/>
-<text text-anchor="middle" x="597" y="-2883.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="552.5,-2876 641.5,-2876 "/>
-<text text-anchor="middle" x="597" y="-2862.4" font-family="Helvetica,sans-Serif" font-size="12.00"> </text>
-</a>
+<!-- Node8&#45;&gt;Node7 -->
+<g id="edge9" class="edge">
+<title>Node8&#45;&gt;Node7</title>
+<path fill="none" stroke="#404040" d="M500.68,-2681.69C497.59,-2696.74 494.04,-2711.56 490,-2726 489.36,-2728.27 488.69,-2730.55 487.98,-2732.83"/>
+<polygon fill="none" stroke="#404040" points="487.98,-2732.83 489.88,-2739.79 484.18,-2744.22 482.29,-2737.26 487.98,-2732.83"/>
+<text text-anchor="middle" x="512.5" y="-2716.4" font-family="Helvetica,sans-Serif" font-size="12.00"> +pDst</text>
+<text text-anchor="middle" x="512.5" y="-2703.4" font-family="Helvetica,sans-Serif" font-size="12.00">+pSrc</text>
 </g>
-</g>
-<!-- Node9&#45;&gt;Node8 -->
+<!-- Node8&#45;&gt;Node8 -->
 <g id="edge11" class="edge">
-<title>Node9&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M597,-2844.63C597,-2736.09 597,-2441.75 597,-2337.35"/>
-<polygon fill="none" stroke="midnightblue" points="593.5,-2844.85 597,-2854.85 600.5,-2844.85 593.5,-2844.85"/>
+<title>Node8&#45;&gt;Node8</title>
+<path fill="none" stroke="#404040" d="M608.06,-2364.78C618.94,-2352.46 626,-2330.54 626,-2299 626,-2274.86 621.86,-2256.34 615.04,-2243.46"/>
+<polygon fill="none" stroke="#404040" points="614.82,-2243.14 608.13,-2240.43 608.06,-2233.22 614.74,-2235.93 614.82,-2243.14"/>
+<text text-anchor="middle" x="660.5" y="-2302.4" font-family="Helvetica,sans-Serif" font-size="12.00"> &#45;first_update</text>
+<text text-anchor="middle" x="660.5" y="-2289.4" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;next_update</text>
 </g>
 </g>
 </svg>

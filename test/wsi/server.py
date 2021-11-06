@@ -34,10 +34,10 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print ('new connection')
         clients.append(self)
-        self.write_message("connected")
+        self.write_message("M connected")
  
     def on_message(self, message):
-        print ('tornado received from client: %s' % json.dumps(message))
+        #print ('tornado received from client: %s' % json.dumps(message))
         #self.write_message('ack')
         input_queue.put(message)
  
@@ -53,6 +53,9 @@ def checkQueue():
             c.write_message(message)
 
 if __name__ == '__main__':
+    print("Eris Audio System Test Tool Web Server")
+    print("warning: this app is running an open access local static webserver and USB serial websocket")
+    print("http://localhost:8080")
     ###
     ## start the serial worker in background (as a deamon)
     sp = serialworker.SerialProcess(input_queue, output_queue)
@@ -74,11 +77,11 @@ if __name__ == '__main__':
     )
     httpServer = tornado.httpserver.HTTPServer(app)
     httpServer.listen(options.port)
-    print ("Listening on port:", options.port)
+    print ("Now listening on port:", options.port)
 
     mainLoop = tornado.ioloop.IOLoop.instance()
     ## adjust the scheduler_interval according to the frames sent by the serial port
-    scheduler_interval = 30
+    scheduler_interval = 20
     scheduler = tornado.ioloop.PeriodicCallback(checkQueue, scheduler_interval)
     scheduler.start()
     #s_scheduler = tornado.ioloop.PeriodicCallback(sp.run, scheduler_interval)

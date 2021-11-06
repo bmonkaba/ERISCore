@@ -59,7 +59,7 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   //render.setSD(&sd); //provide a cd pointer to the sd class
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
-  animated_wallpaper.setPath("/V/CLEANROOM");
+  animated_wallpaper.setPath("/V/BROKCHRD");
   Serial.println(F("AppManager: Init display"));
   draw.begin();
   //render.begin();
@@ -125,21 +125,21 @@ void AppManager::update(){
         data->update("AM_DRAW",app_time);    
         break;
         
-      case redraw_wait:
-        if (drt > 30){
+      case redraw_wait: //idle render time to give the screen refresh a head start
+        if (drt > 30){  
           if(exclusive_app_render) state = redraw_objects;
           else state = redraw_background;
         }
+        //note: this is  a good place for application manager housekeeping tasks where screen access is not required
+        
         break;
 
       case redraw_render:
         app_time=0;      
-        //Serial.printf(F("AppManager::Rendering %d\n"),drt);
         data->update("RENDER_PERIOD",drt);
         data->update("RENDER",4);
         data->increment("RENDER_FRAME");
-        Serial.flush();
-        delayNanoseconds(20);
+        //delayNanoseconds(20);
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         state = redraw_wait;
         display_refresh_time = 0;
@@ -152,16 +152,12 @@ void AppManager::update(){
           do{
               app_time=0;
               if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
-              //Serial.printf("%s ",node->name);
-              //Serial.flush();
               node->update(); //update active window
-              Serial.flush();
               node->update_loop_time = app_time;
               if (node->update_loop_time > node->update_loop_time_max){
                   node->update_loop_time_max = node->update_loop_time;
               }
               //update the data dictionary
-              //data->update(node->name,node->update_loop_time); 
               node->update_call_period =0;
               node=node->nextAppicationNode;//check next node
             }while(node !=NULL);
@@ -193,10 +189,8 @@ void AppManager::update(){
       app_time=0;
       if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
       node->updateRT(); //real time update (always called)
-      Serial.flush();
       node->updateRT_loop_time = app_time;
       if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
-       
       node->updateRT_call_period =0;
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
@@ -210,7 +204,7 @@ void AppManager::update(){
       if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
       if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
-          //active app found - trigger any events and then call the update function
+          //trigger any events and then call the update function for this 'active' app or child node
           if (update_analog){
             data->update("AN1",analog.readAN1());
             data->update("AN2",analog.readAN2());
@@ -224,6 +218,8 @@ void AppManager::update(){
           }
           if (touch_updated == true && touch.touched()) {
             p = touch.getPoint();
+            data->update("TOUCH_X",(int32_t)p.x);
+            data->update("TOUCH_Y",(int32_t)p.y);
             //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
             if (node->touch_state == 0){
                 node->onTouch(p.x, p.y);
@@ -247,19 +243,19 @@ void AppManager::update(){
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
-      data->update("SERIAL_AVAIL",Serial.availableForWrite());
       data->update("LOOP_TIME",cycle_time);
+      data->update("SERIAL_AVAIL",Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
       cycle_time_max=0;
-      htop = malloc(10000);
-      memset(htop,0x5A,10000);
+      htop = malloc(1000);
+      memset(htop,0x5A,1000);
       heapTop = (uint32_t) htop;
       free(htop);
       data->update("HEAP_FREE",0x20280000 - heapTop);
       data->update("LOCAL_MEM",0x2007F000 - (uint32_t)(&heapTop));
       heapTop = 0;
-    }
+    } 
 };
 
 SdFs* AppManager::getSD(){
@@ -326,19 +322,23 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
 }
 void AppManager::printStats(){
   AppBaseClass *node = root;
+  if (node == NULL) return;
+  Serial.print(F("STATS {\"APPS\":{"));
   do{
-    Serial.flush();
+    //Serial.flush();
+    Serial.print(F("\""));
     Serial.print(node->name);
+    Serial.print(F("\":{"));
     //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
-    Serial.print(F("\n&emsp;update_loop_time_max: "));Serial.print(node->update_loop_time_max);
+    Serial.print(F("\"update_loop_time_max\":"));Serial.print(node->update_loop_time_max);Serial.print(F(","));
     //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
-    Serial.print(F("\n&emsp;updateRT_loop_time_max: "));Serial.print(node->updateRT_loop_time_max);
+    Serial.print(F("\"updateRT_loop_time_max\":"));Serial.print(node->updateRT_loop_time_max);Serial.print(F(","));
     //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
-    Serial.print(F("\n&emsp;cycle_time_max: "));Serial.print(node->cycle_time_max);
+    Serial.print(F("\"cycle_time_max\":"));Serial.print(node->cycle_time_max);Serial.print(F(","));
     //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
-    Serial.print(F("\n&emsp;update_call_period_max: "));Serial.print(node->update_call_period_max);
-    Serial.print(F("\n&emsp;updateRT_call_period_max: "));Serial.print(node->updateRT_call_period_max);
-    Serial.println(F("\n-------------------------------"));
+    Serial.print(F("\"update_call_period_max\":"));Serial.print(node->update_call_period_max);Serial.print(F(","));
+    Serial.print(F("\"updateRT_call_period_max\":"));Serial.print(node->updateRT_call_period_max);
+    Serial.print(F("},"));
     //clear the stats
     node->update_loop_time_max = 0;
     node->updateRT_loop_time_max = 0;
@@ -348,12 +348,26 @@ void AppManager::printStats(){
   
     node=node->nextAppicationNode;//check next node
   }while(node !=NULL);
+
+  if (root != 0){
+    Serial.print(F("\"root\":\""));Serial.print(root->name);Serial.print(F("\""));
+  }else{
+    Serial.print(F("\"root\":"));Serial.print(F("\"NULL\""));
+  }
+  
+  Serial.println(F("}}"));
+  //Serial.flush();
   //print app manager stats
-  Serial.println(F("ApplicationManager"));
-  Serial.print(F("\n&emsp;cycle_time: "));Serial.print(cycle_time);
-  Serial.print(F("\n&emsp;cycle_time_max: "));Serial.println(cycle_time_max);
+  Serial.print(F("STATS {\"APPMANAGER\":{"));
+  Serial.print(F("\"cycle_time\":"));Serial.print(cycle_time);Serial.print(F(","));
+  Serial.print(F("\"cycle_time_max\":"));Serial.print(cycle_time_max);Serial.print(F(","));
+  Serial.print(F("\"touch_state\":"));Serial.print(touch_state);Serial.print(F(","));
+  Serial.print(F("\"active_app_id\":"));Serial.print(activeID);Serial.print(F(","));
+  Serial.print(F("\"exclusive_app_render\":"));Serial.print(exclusive_app_render);
+  Serial.println(F("}}"));
   //clear the stats
   cycle_time_max = 0;
+  return;
 }
 
 void AppManager::RegisterApp(AppBaseClass *app){

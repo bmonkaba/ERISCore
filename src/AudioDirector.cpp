@@ -25,9 +25,9 @@ AudioDirector::AudioDirector(){
   for (uint16_t j = 0; j < MAX_CATEGORIES; j++){
     categoryList[j] = (char**)&nullStr;
   }
-
-  heapStart = pAudioStreamInputPort;
   pAudioStreamInputPort = new erisAudioInputI2S();
+  heapStart = pAudioStreamInputPort;
+
   addAudioStreamObj(pAudioStreamInputPort);
   addAudioStreamObj(&AudioStreamOutputPort);
 
@@ -55,43 +55,39 @@ AudioDirector::AudioDirector(){
   }
 
   
-  Serial.print(F("AudioDirector::AudioDirector() objects: "));
+  Serial.print(F("M AudioDirector::AudioDirector() objects: "));
   Serial.println(objCount);
 
   generateCategoryList();
-  Serial.print(F("AudioDirector::AudioDirector() object categories: "));
+  Serial.print(F("M AudioDirector::AudioDirector() object categories: "));
   Serial.println(categoryCount);
   for (uint16_t j = 0; j < categoryCount; j++)Serial.println(*categoryList[j]);
 
   AudioStream* test = getAudioStreamObjByName("mixer_2");
-  Serial.println(F("AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
+  Serial.println(F("M AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
   Serial.print(test->shortName);
   Serial.print(F("_"));
   Serial.println(test->instance);
 
-  Serial.println(F("AudioDirector::AudioDirector() building AudioConnection pool"));
+  Serial.println(F("M AudioDirector::AudioDirector() building AudioConnection pool"));
   for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
     pCord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
   }
   heapEnd = pCord[MAX_CONNECTIONS-1] + (pCord[MAX_CONNECTIONS-1] - pCord[MAX_CONNECTIONS-2]);
-  Serial.print(F("AudioDirector::AudioDirector() Estimated Memory Useage: "));
+  Serial.print(F("M AudioDirector::AudioDirector() Estimated Memory Useage: "));
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
   Serial.print(e-s);
   Serial.println(F(" Bytes"));
-  Serial.flush();
+  //Serial.flush();
 };
-
-
-
-
 
 bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   uint8_t count = 0; 
 
   if (obj !=0 && objCount < MAX_AUDIO_STREAM_OBJECTS){
     pAudioStreamObjPool[objCount++] = obj;
-    Serial.print(F("AudioDirector::addAudioStreamObj adding obj :"));
+    Serial.print(F("M AudioDirector::addAudioStreamObj adding obj :"));
     Serial.print(obj->category);
     Serial.print(F("->"));
     Serial.print(obj->shortName);  
@@ -108,7 +104,7 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
     Serial.print(F(" ptr: "));
     Serial.println((uint32_t)obj);
     heapEnd = (void *)obj;
-    Serial.flush();
+    //Serial.flush();
     return true;
   }
   return false;
@@ -117,17 +113,71 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
 void AudioDirector::printStats(){
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
+  Serial.print(F("STATS {\"AudioDirector\":{"));
+  
+  //send audio object pool info
+  Serial.print(F("\"AudioStreamObjPool\":{"));  
   for(uint16_t i=0; i < objCount;i++){
-    Serial.flush();
+    //Serial.flush();
+    Serial.print(F("\""));
     Serial.print(pAudioStreamObjPool[i]->shortName);Serial.print(F("_"));
-    Serial.print(pAudioStreamObjPool[i]->instance);Serial.print(F(" processorUsage:"));
-    Serial.print(pAudioStreamObjPool[i]->processorUsage());Serial.print(F(" processorUsageMax:"));
-    Serial.println(pAudioStreamObjPool[i]->processorUsageMax());
+    Serial.print(pAudioStreamObjPool[i]->instance);
+    Serial.print(F("\":{\"processorUsage\":"));
+    Serial.print(pAudioStreamObjPool[i]->processorUsage());
+    Serial.print(F(",\"processorUsageMax\":"));
+    Serial.print(pAudioStreamObjPool[i]->processorUsageMax());
+    Serial.print(F(",\"category\":\""));
+    Serial.print(pAudioStreamObjPool[i]->category);Serial.print(F("\""));
+    Serial.print(F(",\"inputs\":"));
+    Serial.print(pAudioStreamObjPool[i]->unum_inputs);
+    Serial.print(F(",\"outputs\":"));
+    Serial.print(pAudioStreamObjPool[i]->unum_outputs);
+    Serial.print("}"); //close obj
+    if ( i < (objCount -1)) Serial.print(",");
   }
-  Serial.print(F("AudioDirector Obj Pool Size:"));
+  Serial.print("},");
+  //Serial.flush();//end of obj pool dict
+  //send connection pool info
+  Serial.print(F("\"AudioConnectionPool\":{"));
+  Serial.print(F("\"activeConnections\":"));
+  Serial.print(activeConnections);
+
+  //for each...
+  for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
+    Serial.print(F(",\""));
+    Serial.print(i); //connection index used as a container
+    Serial.print(F("\":{"));
+
+    Serial.print(F("\"isConnected\":"));
+    Serial.print(pCord[i]->isConnected);
+    if (pCord[i]->isConnected == true){
+        //assigned connections
+        Serial.print(F(",\"sourceName\":\""));
+        Serial.print(pCord[i]->pSrc->shortName);
+        Serial.print(F("\",\"sourceInstance\":"));
+        Serial.print(pCord[i]->pSrc->instance);
+        Serial.print(F(",\"sourcePort\":"));
+        Serial.print(pCord[i]->src_index);
+
+        Serial.print(F(",\"destName\":\""));
+        Serial.print(pCord[i]->pDst->shortName);
+        Serial.print(F("\",\"destInstance\":"));
+        Serial.print(pCord[i]->pDst->instance);
+        Serial.print(F(",\"destPort\":"));
+        Serial.print(pCord[i]->dest_index);
+    }else{
+        //unassigned connections
+    }
+    Serial.print(F("}")); //close the connection container 
+    //Serial.flush();    
+  }
+  Serial.print(F("}")); // close the coonection pool container
+  //throw in some audio director stats
+  Serial.print(F(",\"AudioStreamObjCount\":")); Serial.print(objCount);
+  Serial.print(F(",\"memory\":"));
   Serial.print(e-s);
-  Serial.println(F(" Bytes (estimated)"));
-  Serial.flush();
+  Serial.println(F("}}"));
+  //Serial.flush();
 }
 
 void AudioDirector::generateCategoryList(){
@@ -160,7 +210,7 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
     }
   }
   //not found return null
-  Serial.print(F("M  AudioDirector::getAudioStreamObjByName Not Found: "));
+  Serial.print(F("M AudioDirector::getAudioStreamObjByName Not Found: "));
   Serial.println(AudioStreamObjName);
   return 0;
 }
@@ -207,9 +257,9 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
     if(source==pCord[i]->pSrc && destination==pCord[i]->pDst && sourceOutput==pCord[i]->src_index && destinationInput==pCord[i]->dest_index){
-      Serial.print(F("AudioDirector::connect() found existing connection; reconnecting at index  "));
+      Serial.print(F("M AudioDirector::connect() found existing connection; reconnecting at index  "));
       Serial.println(i);
-      Serial.flush();
+      //Serial.flush();
       if(pCord[i]->reconnect()) activeConnections++;
       return true;
     }
@@ -220,22 +270,22 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     //find any already existing but unused connections
     if (NULL!=pCord[i]){
       if (pCord[i]->isConnected == false){
-        Serial.printf(F("\tAudioDirector::connect() connection index: %d\t"),i);
+        Serial.printf(F("M \tAudioDirector::connect() connection index: %d\t"),i);
         Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
-        Serial.flush();
+        //Serial.flush();
         if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
         return true;
       }
     }
     if (NULL==pCord[i]){
-      Serial.print(F("AudioDirector::connect() making a new AudioConnection at index "));
+      Serial.print(F("M AudioDirector::connect() making a new AudioConnection at index "));
       Serial.println(i);
       Serial.print(source->shortName);Serial.print(F(":"));
       Serial.print(sourceOutput);
       Serial.print(F(" -> "));
       Serial.print(destination->shortName);Serial.print(F(":"));
       Serial.println(destinationInput);
-      Serial.flush();
+      //Serial.flush();
       //need to rewire after creation as the reference based approach was bypassed 
       //in favor of pointers in order to facilitate the extention of the audio connection base class
       pCord[i] = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
@@ -243,7 +293,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       return true; 
     }
   }
-  Serial.print(F("AudioDirector::connect() Error: No free audio connection available"));
+  Serial.print(F("M AudioDirector::connect() Error: No free audio connection available"));
   return false; //no empty connection slots  
 }
 
@@ -285,7 +335,7 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   //Serial.println(connectionString);
   Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.print(p->src_port);
   Serial.print(F("\tDest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
-  Serial.flush();
+  //Serial.flush();
   */
  
   return;
@@ -313,14 +363,14 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
       //disconnect the audio connection
       if(pCord[i]->disconnect()) activeConnections--;
       Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
-      Serial.flush();
+      //Serial.flush();
       return true; 
     }
   }
   Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
   Serial.println(destination->shortName);
   Serial.println(destination->instance);
-  Serial.flush();
+  //Serial.flush();
   return false; //no empty connection slots
 }
 

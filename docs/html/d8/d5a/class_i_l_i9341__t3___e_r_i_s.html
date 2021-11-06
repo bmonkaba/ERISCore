@@ -211,7 +211,7 @@ Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00056">56</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                                                                     : ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">//_SPI_CLOCK = 1000000;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a02625a6326def65841032070c1a768d9">tft_write_speed</a> = 76000000;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a02625a6326def65841032070c1a768d9">tft_write_speed</a> = 70000000;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a5db8a7c5742e03f5376f7632917be724">tft_read_speed</a> = 20000000;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a43a11ace3671a2d9cb3d5e112956ad9c">pSD</a> = NULL;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">//backlight = 0;</span></div>
@@ -454,7 +454,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00003">ANIMATION_CHUNKS_PER_FRAME</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00043">Animation::chunk</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00079">file</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00039">Animation::getFileName()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00040">Animation::getPath()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00078">pSD</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00081">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00079">AppManager::update()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -542,7 +542,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00012">_busy()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00081">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00079">AppManager::update()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -588,16 +588,6 @@ Protected Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00069">69</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{<span class="keywordflow">return</span> (uint32_t)(<span class="keywordtype">void</span> *)_pfbtft;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00081">AppManager::update()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_aac6bfeafd4e3753f4e8dc2af3a5d0afd_icgraph.svg" width="544" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="a33f0105b1eecc4c37195900fcf0d5fd8"></a>
@@ -628,11 +618,11 @@ Protected Attributes</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00081">backlight</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00032">AppManager::AppManager()</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a33f0105b1eecc4c37195900fcf0d5fd8_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -661,11 +651,11 @@ Protected Attributes</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00078">pSD</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00032">AppManager::AppManager()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a2bfdbf675a570c74b787fd222185f25f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -702,7 +692,7 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                                                                 {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordtype">bool</span> rval;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="comment">//Serial.printf(&quot;%u\n&quot;,(uint32_t)(void*)draw-&gt;_pfbtft);</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            Serial.flush();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="comment">//Serial.flush();</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <a class="code" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a41e73c7325aea8e9529aab690d5c6c43">dmabusy</a>=<span class="keyword">true</span>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            setFrameCompleteCB(&amp;<a class="code" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a40f515c08c1328c42a1b4a03e8a0ec42">renderCompleteCB</a>);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            rval= updateScreenAsync(<span class="keyword">false</span>);</div>
@@ -711,11 +701,11 @@ Protected Attributes</h2></td></tr>
 <div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8cpp_html_a40f515c08c1328c42a1b4a03e8a0ec42"><div class="ttname"><a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html#a40f515c08c1328c42a1b4a03e8a0ec42">renderCompleteCB</a></div><div class="ttdeci">void FASTRUN renderCompleteCB()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00007">ILI9341_t3_ERIS.cpp:7</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00005">dmabusy</a>, and <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00007">renderCompleteCB()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae309692439e0ea13772be6833c81809c_cgraph.svg" width="464" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>

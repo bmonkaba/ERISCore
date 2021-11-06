@@ -1,6 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"d8/d1c/class_audio_director.html#ae56e605ed655b992bbe7ef7df600b07b":[0,0,12,18],
 "d8/d1c/class_audio_director.html#ae782fba36ae378e4a1890c6fdcfa5934":[0,0,12,13],
+"d8/d1c/class_audio_director.html#aee6b0b29cb657c634e9a4188eaa1e55a":[0,0,12,20],
 "d8/d1f/app_scope_8h.html":[1,0,0,6],
 "d8/d1f/app_scope_8h_source.html":[1,0,0,6],
 "d8/d26/classeris_audio_output_i2_sslave.html":[0,0,67],
@@ -237,17 +239,15 @@ var NAVTREEINDEX3 =
 "d9/d43/class_audio_synth_waveform_modulated.html#afd0f87125aecd2222c87ab2f57cde6f9":[0,0,15,25],
 "d9/d43/class_audio_synth_waveform_modulated.html#aff732b4ba2fa71f3a47b16247d024a92":[0,0,15,14],
 "d9/dad/class_app_serial_command_interface.html":[0,0,8],
-"d9/dad/class_app_serial_command_interface.html#a02b03e7f3c8034d8b52991d7c7a82f28":[0,0,8,25],
-"d9/dad/class_app_serial_command_interface.html#a08a303813204000ee12600a38fe96d18":[0,0,8,58],
-"d9/dad/class_app_serial_command_interface.html#a0be88a3818b6a71466e118f892ca687d":[0,0,8,40],
-"d9/dad/class_app_serial_command_interface.html#a12be372470e6826bae25db90c01c388e":[0,0,8,54],
-"d9/dad/class_app_serial_command_interface.html#a1347e3dece7d16b17a81a5a20597e365":[0,0,8,15],
+"d9/dad/class_app_serial_command_interface.html#a02b03e7f3c8034d8b52991d7c7a82f28":[0,0,8,26],
+"d9/dad/class_app_serial_command_interface.html#a08a303813204000ee12600a38fe96d18":[0,0,8,59],
+"d9/dad/class_app_serial_command_interface.html#a0be88a3818b6a71466e118f892ca687d":[0,0,8,41],
+"d9/dad/class_app_serial_command_interface.html#a12be372470e6826bae25db90c01c388e":[0,0,8,55],
+"d9/dad/class_app_serial_command_interface.html#a1347e3dece7d16b17a81a5a20597e365":[0,0,8,16],
 "d9/dad/class_app_serial_command_interface.html#a151da3de5e7fcec8fdf7f20fd9db658b":[0,0,8,0],
-"d9/dad/class_app_serial_command_interface.html#a297b44dd038d30faab55f6ccf1f9e9e2":[0,0,8,31],
-"d9/dad/class_app_serial_command_interface.html#a2c2bd2a942c2228c8556dc2cb918e020":[0,0,8,60],
-"d9/dad/class_app_serial_command_interface.html#a31587f3166dcf6ea0302337c3323822c":[0,0,8,46],
+"d9/dad/class_app_serial_command_interface.html#a297b44dd038d30faab55f6ccf1f9e9e2":[0,0,8,32],
+"d9/dad/class_app_serial_command_interface.html#a2c2bd2a942c2228c8556dc2cb918e020":[0,0,8,61],
+"d9/dad/class_app_serial_command_interface.html#a31587f3166dcf6ea0302337c3323822c":[0,0,8,47],
 "d9/dad/class_app_serial_command_interface.html#a32e44666dd58b3cd733c8ac64957dce3":[0,0,8,1],
-"d9/dad/class_app_serial_command_interface.html#a3351e0160fb9d0fc79e5ac6db652645a":[0,0,8,71],
-"d9/dad/class_app_serial_command_interface.html#a3682f17759610f58e60351fe96daa6b2":[0,0,8,38],
-"d9/dad/class_app_serial_command_interface.html#a3c123ae6a02df86e8a343e3ecccf4beb":[0,0,8,10]
+"d9/dad/class_app_serial_command_interface.html#a3351e0160fb9d0fc79e5ac6db652645a":[0,0,8,72]
 };

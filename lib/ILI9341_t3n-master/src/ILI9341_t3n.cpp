@@ -2437,7 +2437,7 @@ void ILI9341_t3n::begin(uint32_t spi_clock, uint32_t spi_clock_read) {
 
     Serial.printf("    mosi:%d miso:%d SCLK:%d CS:%d DC:%d\n", _mosi, _miso,
                   _sclk, _cs, _dc);
-    Serial.flush();
+    //Serial.flush();
     return; // most likely will go bomb
   }
   // Make sure we have all of the proper SPI pins selected.

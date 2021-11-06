@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"dc/dc8/classeris_audio_output_i2_s2.html#a4a29b4f3d325cab73f3f54e5d5f4f962":[0,0,63,0],
+"dc/dc8/classeris_audio_output_i2_s2.html#ab453d60346d9ac5751785b3cd81808e6":[0,0,63,1],
+"dc/ddf/control_button_8h.html":[1,0,0,10],
+"dc/ddf/control_button_8h.html#a6eec6508ad3423ae351f1830e8e7afb6":[1,0,0,10,2],
 "dc/ddf/control_button_8h.html#a9acedcace229ff6b54e6ed963a84751d":[1,0,0,10,1],
 "dc/ddf/control_button_8h_source.html":[1,0,0,10],
 "dc/df6/classeris_audio_effect_digital_combine.html":[0,0,32],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "de/db5/eris__synth__waveform_8h_source.html":[1,0,1,0,9],
 "de/dd3/classeris_audio_output_t_d_m2.html":[0,0,76],
 "de/dd3/classeris_audio_output_t_d_m2.html#a6c17c8c9fffc6f3920362eed6c039e14":[0,0,76,0],
-"de/dd3/classeris_audio_output_t_d_m2.html#afdc59eef1ab14617fa2d2541a020f838":[0,0,76,1],
-"de/dd6/structaudio__block__struct.html":[0,0,10],
-"de/dd6/structaudio__block__struct.html#a01d021533181c5fe46b62ff06217018f":[0,0,10,4],
-"de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719":[0,0,10,0],
-"de/dd6/structaudio__block__struct.html#a8ad3ddee4203672ee702cc8b76e67eeb":[0,0,10,2]
+"de/dd3/classeris_audio_output_t_d_m2.html#afdc59eef1ab14617fa2d2541a020f838":[0,0,76,1]
 };

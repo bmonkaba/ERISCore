@@ -243,7 +243,7 @@ bool AudioConnection::disconnect(void)
 
 	if (!isConnected) return false;
 	if (dest_index > pDst->num_inputs) return false;
-	Serial.flush();
+	//Serial.flush();
 	Serial.println(F("(eris)AudioConnection:disconnect()"));
 	Serial.print(F("\tsrc name:"));Serial.println(pSrc->shortName);
 	Serial.print(F("\tsrc ptr:"));Serial.println((uint32_t)pSrc);
@@ -252,7 +252,7 @@ bool AudioConnection::disconnect(void)
 	Serial.print(F("\tdst ptr:"));Serial.println((uint32_t)pDst);
 	Serial.print(F("\tdst index:"));Serial.println((uint32_t)dest_index);
 	Serial.print(F("\tpSrc->destination_list:"));Serial.println((uint32_t)pSrc->destination_list);
-	Serial.flush();
+	//Serial.flush();
 	//__disable_irq();
 	// Remove destination from source list
 	p = pSrc->destination_list;
@@ -320,17 +320,17 @@ bool AudioConnection::reconnect(){
 	Serial.print(F("\tdst instance:"));Serial.print((uint32_t)pDst->instance);
 	Serial.print(F("\tdst ptr:"));Serial.printf("0x%08x",(uint32_t)pDst);
 	Serial.print(F("\tpSrc->destination_list ptr:"));Serial.printf("0x%08x\n",(uint32_t)pSrc->destination_list);
-	Serial.flush();
+	//Serial.flush();
 	AudioConnection *p;
 
 	if (isConnected){ 
 		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Already Connected"));
-		Serial.flush();
+		//Serial.flush();
 		return false;
 	}
 	if (dest_index > pDst->num_inputs){
 		Serial.println(F("(eris)AudioConnection:reconnect() Warning: Invalid destination port"));
-		Serial.flush();
+		//Serial.flush();
 		return false;
 	}
 	//__disable_irq();
@@ -341,12 +341,12 @@ bool AudioConnection::reconnect(){
 	} else {
 		while (p->next_dest) {
 			Serial.println("(eris)AudioConnection:reconnect() adding a connection");
-			Serial.flush();
+			//Serial.flush();
 			if (p->pSrc == this->pSrc && p->pDst == this->pDst
 				&& p->src_index == this->src_index && p->dest_index == this->dest_index) {
 				//Source and destination already connected through another connection, abort
 				Serial.println("(eris)AudioConnection:reconnect() Warning: connection already exists");
-				Serial.flush();
+				//Serial.flush();
 				return false;
 			}
 			p = p->next_dest;
