@@ -1,16 +1,11 @@
 var searchData=
 [
-  ['max_5faudio_5fmemory_5fblocks_1455',['MAX_AUDIO_MEMORY_BLOCKS',['../d8/d2c/globaldefs_8h.html#af760e948fbd21588d965e6285ae64924',1,'globaldefs.h']]],
-  ['max_5faudio_5fstream_5fobjects_1456',['MAX_AUDIO_STREAM_OBJECTS',['../d8/d2c/globaldefs_8h.html#a55e40ae7817922a01086b86a043dee06',1,'globaldefs.h']]],
-  ['max_5fcategories_1457',['MAX_CATEGORIES',['../d8/d2c/globaldefs_8h.html#ab4a6404e604591c49018d28f890fc335',1,'globaldefs.h']]],
-  ['max_5fconnection_5fstring_5flength_1458',['MAX_CONNECTION_STRING_LENGTH',['../d8/d2c/globaldefs_8h.html#ae968330ad80f32f4f1ded1f548a3e30a',1,'globaldefs.h']]],
-  ['max_5fconnections_1459',['MAX_CONNECTIONS',['../d8/d2c/globaldefs_8h.html#a053b7859476cc9867ec62c49e68d3fa1',1,'globaldefs.h']]],
-  ['max_5fname_5flength_1460',['MAX_NAME_LENGTH',['../d8/d2c/globaldefs_8h.html#a0c397a708cec89c74029582574516b30',1,'globaldefs.h']]],
-  ['max_5fpolling_5frate_1461',['MAX_POLLING_RATE',['../d3/ddb/_analog_inputs_8h.html#a2e34d815b85c822a126f45d0271022d0',1,'AnalogInputs.h']]],
-  ['max_5ftext_5flength_1462',['MAX_TEXT_LENGTH',['../d8/d2c/globaldefs_8h.html#a9a90baeac9b3273d185357200b599b39',1,'globaldefs.h']]],
-  ['max_5funique_5fnames_5fper_5fcategory_1463',['MAX_UNIQUE_NAMES_PER_CATEGORY',['../d8/d2c/globaldefs_8h.html#abc12096f9bc6b40854744480b495374e',1,'globaldefs.h']]],
-  ['mclk_1464',['MCLK',['../de/d10/_h_s_i_8h.html#a625e6fdb4c2120fc163e1b04178af3dd',1,'HSI.h']]],
-  ['midi_5fin_1465',['MIDI_IN',['../de/d10/_h_s_i_8h.html#a11393d47c3a4fcda3352249ea5f6d59c',1,'HSI.h']]],
-  ['midi_5fout_1466',['MIDI_OUT',['../de/d10/_h_s_i_8h.html#a1f7db720ba6021328353df2e65bf4cff',1,'HSI.h']]],
-  ['msec_5fthreshold_1467',['MSEC_THRESHOLD',['../db/dfc/touch_8cpp.html#a0b065f9371f4988ee9541118344ed1be',1,'touch.cpp']]]
+  ['i2c_5fclk_4816',['I2C_CLK',['../de/d10/_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364',1,'HSI.h']]],
+  ['i2c_5fdata_4817',['I2C_DATA',['../de/d10/_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4',1,'HSI.h']]],
+  ['i2c_5fnostop_4818',['I2C_NOSTOP',['../dc/d47/_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b',1,'PCM1863.h']]],
+  ['i2c_5fstop_4819',['I2C_STOP',['../dc/d47/_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95',1,'PCM1863.h']]],
+  ['include_5fsdios_4820',['INCLUDE_SDIOS',['../de/d9b/_sd_fat_config_8h.html#a7cc6c9647297d65f8e823de70740630b',1,'SdFatConfig.h']]],
+  ['input_4821',['INPUT',['../da/dd5/_sd_spi_bare_uno_driver_8h.html#a1bb283bd7893b9855e2f23013891fc82',1,'SdSpiBareUnoDriver.h']]],
+  ['isdigit_4822',['isDigit',['../de/d4f/_print_templates_8h.html#ab82ae47ddc52e7a1a9400cc3c42a9de7',1,'PrintTemplates.h']]],
+  ['isdirseparator_4823',['isDirSeparator',['../dd/ddc/_ex_fat_file_8h.html#a9f85580ad6f1dfc86fff09a58ff0a1c0',1,'isDirSeparator():&#160;ExFatFile.h'],['../d6/d7b/_fat_file_8h.html#a9f85580ad6f1dfc86fff09a58ff0a1c0',1,'isDirSeparator():&#160;FatFile.h']]]
 ];

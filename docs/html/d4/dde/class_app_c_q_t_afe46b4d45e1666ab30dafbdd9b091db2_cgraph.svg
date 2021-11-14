@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 754;
 var viewHeight = 150;
-var sectionId = 'dynsection-13';
+var sectionId = 'dynsection-16';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
@@ -79,18 +79,18 @@ var sectionId = 'dynsection-13';
 <path fill="none" stroke="midnightblue" d="M113.31,-64.78C121.45,-63.87 130.02,-62.92 138.7,-61.95"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="139.37,-65.4 148.92,-60.81 138.6,-58.44 139.37,-65.4"/>
 </g>
-<!-- Node13 -->
+<!-- Node30 -->
 <g id="node7" class="node">
-<title>Node13</title>
+<title>Node30</title>
 <g id="a_node7"><a xlink:href="../../db/d69/class_app_base_class.html#a5c284e20788663354eb4d8a862d3a91d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="149,-80.5 149,-101.5 327,-101.5 327,-80.5 149,-80.5"/>
 <text text-anchor="middle" x="238" y="-87.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::requestPopUp</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node13 -->
+<!-- Node1&#45;&gt;Node30 -->
 <g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node13</title>
+<title>Node1&#45;&gt;Node30</title>
 <path fill="none" stroke="midnightblue" d="M113.31,-77.22C121.45,-78.13 130.02,-79.08 138.7,-80.05"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="138.6,-83.56 148.92,-81.19 139.37,-76.6 138.6,-83.56"/>
 </g>
@@ -124,25 +124,25 @@ var sectionId = 'dynsection-13';
 <path fill="none" stroke="midnightblue" d="M327.26,-51C341.8,-51 356.85,-51 371.3,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="371.7,-54.5 381.7,-51 371.7,-47.5 371.7,-54.5"/>
 </g>
-<!-- Node12 -->
+<!-- Node29 -->
 <g id="node6" class="node">
-<title>Node12</title>
-<g id="a_node6"><a xlink:href="../../da/d96/class_app_manager.html#a06b2e46b0f44765b857e9dad91dfe822" target="_top" xlink:title=" ">
+<title>Node29</title>
+<g id="a_node6"><a xlink:href="../../da/d96/class_app_manager.html#a06b2e46b0f44765b857e9dad91dfe822" target="_top" xlink:title="provides an interface for apps to release pop up focus">
 <polygon fill="white" stroke="black" points="373.5,-0.5 373.5,-21.5 540.5,-21.5 540.5,-0.5 373.5,-0.5"/>
 <text text-anchor="middle" x="457" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::releasePopUp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node12 -->
+<!-- Node2&#45;&gt;Node29 -->
 <g id="edge5" class="edge">
-<title>Node2&#45;&gt;Node12</title>
+<title>Node2&#45;&gt;Node29</title>
 <path fill="none" stroke="midnightblue" d="M296.01,-40.49C324.56,-35.23 359.29,-28.83 389.09,-23.33"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="389.79,-26.76 398.99,-21.51 388.52,-19.88 389.79,-26.76"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title="Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)">
 <polygon fill="white" stroke="red" points="587,-40.5 587,-61.5 746,-61.5 746,-40.5 587,-40.5"/>
 <text text-anchor="middle" x="666.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::AppManager</text>
 </a>
@@ -154,30 +154,30 @@ var sectionId = 'dynsection-13';
 <path fill="none" stroke="midnightblue" d="M532.03,-51C546.5,-51 561.81,-51 576.7,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="576.93,-54.5 586.93,-51 576.93,-47.5 576.93,-54.5"/>
 </g>
-<!-- Node13&#45;&gt;Node3 -->
+<!-- Node30&#45;&gt;Node3 -->
 <g id="edge7" class="edge">
-<title>Node13&#45;&gt;Node3</title>
+<title>Node30&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M327.26,-91C335.7,-91 344.3,-91 352.86,-91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="352.87,-94.5 362.87,-91 352.87,-87.5 352.87,-94.5"/>
 </g>
-<!-- Node13&#45;&gt;Node4 -->
+<!-- Node30&#45;&gt;Node4 -->
 <g id="edge8" class="edge">
-<title>Node13&#45;&gt;Node4</title>
+<title>Node30&#45;&gt;Node4</title>
 <path fill="none" stroke="midnightblue" d="M296.01,-80.49C324.56,-75.23 359.29,-68.83 389.09,-63.33"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="389.79,-66.76 398.99,-61.51 388.52,-59.88 389.79,-66.76"/>
 </g>
-<!-- Node14 -->
+<!-- Node31 -->
 <g id="node8" class="node">
-<title>Node14</title>
-<g id="a_node8"><a xlink:href="../../da/d96/class_app_manager.html#a82ecc96146ee297d433f34a57ed14130" target="_top" xlink:title=" ">
+<title>Node31</title>
+<g id="a_node8"><a xlink:href="../../da/d96/class_app_manager.html#a82ecc96146ee297d433f34a57ed14130" target="_top" xlink:title="provides an interface for apps to request pop up focus with or without exclusive screen access">
 <polygon fill="white" stroke="black" points="373.5,-120.5 373.5,-141.5 540.5,-141.5 540.5,-120.5 373.5,-120.5"/>
 <text text-anchor="middle" x="457" y="-127.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::requestPopUp</text>
 </a>
 </g>
 </g>
-<!-- Node13&#45;&gt;Node14 -->
+<!-- Node30&#45;&gt;Node31 -->
 <g id="edge9" class="edge">
-<title>Node13&#45;&gt;Node14</title>
+<title>Node30&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M296.01,-101.51C324.56,-106.77 359.29,-113.17 389.09,-118.67"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="388.52,-122.12 398.99,-120.49 389.79,-115.24 388.52,-122.12"/>
 </g>

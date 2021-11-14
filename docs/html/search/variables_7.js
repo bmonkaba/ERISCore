@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['h_1212',['h',['../db/d69/class_app_base_class.html#a3feefed7d1686ef2968540a0636566f9',1,'AppBaseClass']]],
-  ['h_5fdiv_1213',['h_div',['../d4/d81/classeris_audio_analyze_scope.html#a4c58614ca2e5db77b6fcfb82823c2452',1,'erisAudioAnalyzeScope']]],
-  ['h_5fdiv_5fcount_1214',['h_div_count',['../d4/d81/classeris_audio_analyze_scope.html#a47049a1d02886d146abbcb67502d462f',1,'erisAudioAnalyzeScope']]],
-  ['has_5ffocus_1215',['has_focus',['../db/d69/class_app_base_class.html#a66d43516f1f6e88e091fa974f4d5460d',1,'AppBaseClass']]],
-  ['has_5fpop_1216',['has_pop',['../db/d69/class_app_base_class.html#a5cd34ff4f1f9bd936c25227496db7302',1,'AppBaseClass']]],
-  ['heapend_1217',['heapEnd',['../d8/d1c/class_audio_director.html#a7a805a5c40dd2c4d950020cd741f5394',1,'AudioDirector']]],
-  ['heapstart_1218',['heapStart',['../d8/d1c/class_audio_director.html#a174eb4f868e38debf4fcd474bcbdc20f',1,'AudioDirector']]],
-  ['height_1219',['height',['../db/d69/class_app_base_class.html#a7f85f42f0aec6aabd77825f19d604cc6',1,'AppBaseClass']]],
-  ['highrange_1220',['highRange',['../d4/dde/class_app_c_q_t.html#a88f91c8af5ebe6b3b2accb8358383720',1,'AppCQT']]]
+  ['g_5foctave_5fdown_5fshift_4160',['g_octave_down_shift',['../df/d72/_app_manager_8h.html#ad4dc2085d79897bc3e241bd2b7af3a62',1,'g_octave_down_shift():&#160;AppManager.cpp'],['../dc/d40/_app_manager_8cpp.html#ad4dc2085d79897bc3e241bd2b7af3a62',1,'g_octave_down_shift():&#160;AppManager.cpp']]],
+  ['goodbit_4161',['goodbit',['../d4/dc1/classios__base.html#a07a00996a6e525b88bdfe7935d5ead05',1,'ios_base']]],
+  ['gpiopinmap_4162',['GpioPinMap',['../d9/d7b/_avr_developers_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;AvrDevelopersGpioPinMap.h'],['../d9/d0c/_bobuino_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;BobuinoGpioPinMap.h'],['../d0/d41/_leonardo_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;LeonardoGpioPinMap.h'],['../d1/d45/_mega_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;MegaGpioPinMap.h'],['../da/db1/_sleeping_beauty_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;SleepingBeautyGpioPinMap.h'],['../d3/db0/_standard1284_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;Standard1284GpioPinMap.h'],['../d3/d50/_teensy2_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;Teensy2GpioPinMap.h'],['../d6/de6/_teensy2pp_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;Teensy2ppGpioPinMap.h'],['../d2/dff/_uno_gpio_pin_map_8h.html#aa1c8e7931e36249eb8f91c8808ce33cf',1,'GpioPinMap():&#160;UnoGpioPinMap.h']]],
+  ['gwelcomemessage_4163',['gWelcomeMessage',['../d6/d0f/app_serial_command_interface_8cpp.html#a462ba08568f93a3fec6a44898d5989da',1,'appSerialCommandInterface.cpp']]],
+  ['gx_4164',['gx',['../dd/de8/structdata__t.html#a4e10d09ef9e316e4c87a9b16fdc7c5a8',1,'data_t']]],
+  ['gy_4165',['gy',['../dd/de8/structdata__t.html#a927c1ac8ebe5dbd53911ea1987d87794',1,'data_t']]],
+  ['gz_4166',['gz',['../dd/de8/structdata__t.html#a3ffed1a07d879deecf8527f398b44145',1,'data_t']]]
 ];

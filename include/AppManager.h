@@ -8,9 +8,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#include "globaldefs.h"
 #include <Arduino.h>
-#include <vector>
+#include "globaldefs.h"
 #include "HSI.h"
 #include "touch.h"
 #include "AnalogInputs.h"
@@ -21,6 +20,9 @@
 #include "svcDataDictionary.h"
 #ifndef _AppManager_
 #define _AppManager_
+
+//test variable (serial client remote modification)
+extern short g_octave_down_shift;
 
 enum loopState{
   redraw_wait,
@@ -34,7 +36,7 @@ enum loopState{
 class AppManager {
   private:
     static AppManager* obj; //make appManager a singleton
-    SdFs sd;
+    SdFs sd;    
     AnalogInputs analog;
     AppBaseClass *root; //root linked list node
     AppBaseClass *pActiveApp; //active app
@@ -68,6 +70,9 @@ class AppManager {
     }
     void update();
     SdFs* getSD();
+    bool chdir(){return sd.chdir();};
+    bool chdir(const char* path){return sd.chdir(path);};
+    bool ls(){return sd.ls();};
     AppBaseClass* getApp(uint16_t id);
     bool requestPopUp(uint16_t id,bool exclusive=false);
     bool releasePopUp();

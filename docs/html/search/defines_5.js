@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['enable_5fasync_5fscreen_5fupdates_1439',['ENABLE_ASYNC_SCREEN_UPDATES',['../d8/d2c/globaldefs_8h.html#aec62f4713e992fb7868b21869cddb961',1,'globaldefs.h']]],
-  ['enable_5ff32_5ffft_1440',['ENABLE_F32_FFT',['../d4/dfc/eris__analyze__fft1024_8h.html#a2d91b21f85c2cd1316f01ba1b73c516c',1,'eris_analyze_fft1024.h']]],
-  ['enc1_5fa_5fsw_1441',['ENC1_A_SW',['../de/d10/_h_s_i_8h.html#abe350636218050e4c0fb7968703269b9',1,'HSI.h']]],
-  ['enc2_5fa_5fsw_1442',['ENC2_A_SW',['../de/d10/_h_s_i_8h.html#a766a15ecc60989655af1a2ea741ae1de',1,'HSI.h']]],
-  ['enc2_5fb_5fsw_1443',['ENC2_B_SW',['../de/d10/_h_s_i_8h.html#a8650595f35926ac77fb3c366b1320d35',1,'HSI.h']]],
-  ['enc_5f1_5fsw_1444',['ENC_1_SW',['../de/d10/_h_s_i_8h.html#ad4aa32653547e0a12f47bce4bfc774c2',1,'HSI.h']]],
-  ['enc_5f2_5fsw_1445',['ENC_2_SW',['../de/d10/_h_s_i_8h.html#a62b855a76afa9bd229b66a94de3b0857',1,'HSI.h']]],
-  ['eris_5fgreen_1446',['ERIS_GREEN',['../d8/d2c/globaldefs_8h.html#a6a380c61f628d82f3c48ade8ec37d23b',1,'globaldefs.h']]],
-  ['exp_5fin_1447',['EXP_IN',['../de/d10/_h_s_i_8h.html#ac3f84dda1133550ee743d1d1fffa5635',1,'HSI.h']]],
-  ['ext_5fpwm_1448',['EXT_PWM',['../de/d10/_h_s_i_8h.html#a55ed635bf7ffc90a941e1b439f877193',1,'HSI.h']]],
-  ['ext_5fpwm2_1449',['EXT_PWM2',['../de/d10/_h_s_i_8h.html#a7717b9b715df1a5d8d364f28f9cd6256',1,'HSI.h']]]
+  ['enable_5farduino_5ffeatures_4782',['ENABLE_ARDUINO_FEATURES',['../de/d9b/_sd_fat_config_8h.html#a9a8c1ea8596f35f7f33a24b642567206',1,'SdFatConfig.h']]],
+  ['enable_5farduino_5fserial_4783',['ENABLE_ARDUINO_SERIAL',['../de/d9b/_sd_fat_config_8h.html#aa0a95c918e41f5cb3850231fc41fdcd0',1,'SdFatConfig.h']]],
+  ['enable_5farduino_5fstring_4784',['ENABLE_ARDUINO_STRING',['../de/d9b/_sd_fat_config_8h.html#aae353ccb45df7772d8022763a57410d9',1,'SdFatConfig.h']]],
+  ['enable_5fasync_5fscreen_5fupdates_4785',['ENABLE_ASYNC_SCREEN_UPDATES',['../d8/d2c/globaldefs_8h.html#aec62f4713e992fb7868b21869cddb961',1,'globaldefs.h']]],
+  ['enable_5fdedicated_5fspi_4786',['ENABLE_DEDICATED_SPI',['../de/d9b/_sd_fat_config_8h.html#a3ceb23f14263a17c56eac40e484cbbbb',1,'SdFatConfig.h']]],
+  ['enable_5ff32_5ffft_4787',['ENABLE_F32_FFT',['../d4/dfc/eris__analyze__fft1024_8h.html#a2d91b21f85c2cd1316f01ba1b73c516c',1,'eris_analyze_fft1024.h']]],
+  ['enc1_5fa_5fsw_4788',['ENC1_A_SW',['../de/d10/_h_s_i_8h.html#abe350636218050e4c0fb7968703269b9',1,'HSI.h']]],
+  ['enc2_5fa_5fsw_4789',['ENC2_A_SW',['../de/d10/_h_s_i_8h.html#a766a15ecc60989655af1a2ea741ae1de',1,'HSI.h']]],
+  ['enc2_5fb_5fsw_4790',['ENC2_B_SW',['../de/d10/_h_s_i_8h.html#a8650595f35926ac77fb3c366b1320d35',1,'HSI.h']]],
+  ['enc_5f1_5fsw_4791',['ENC_1_SW',['../de/d10/_h_s_i_8h.html#ad4aa32653547e0a12f47bce4bfc774c2',1,'HSI.h']]],
+  ['enc_5f2_5fsw_4792',['ENC_2_SW',['../de/d10/_h_s_i_8h.html#a62b855a76afa9bd229b66a94de3b0857',1,'HSI.h']]],
+  ['endl_5fcalls_5fflush_4793',['ENDL_CALLS_FLUSH',['../de/d9b/_sd_fat_config_8h.html#a270eefdaec4778f2a491658f34f61b17',1,'SdFatConfig.h']]],
+  ['eof_4794',['EOF',['../da/d2d/_stdio_stream_8h.html#a59adc4c82490d23754cd39c2fb99b0da',1,'StdioStream.h']]],
+  ['eris_5fgreen_4795',['ERIS_GREEN',['../d8/d2c/globaldefs_8h.html#a6a380c61f628d82f3c48ade8ec37d23b',1,'globaldefs.h']]],
+  ['exp_5fin_4796',['EXP_IN',['../de/d10/_h_s_i_8h.html#ac3f84dda1133550ee743d1d1fffa5635',1,'HSI.h']]],
+  ['ext_5fpwm_4797',['EXT_PWM',['../de/d10/_h_s_i_8h.html#a55ed635bf7ffc90a941e1b439f877193',1,'HSI.h']]],
+  ['ext_5fpwm2_4798',['EXT_PWM2',['../de/d10/_h_s_i_8h.html#a7717b9b715df1a5d8d364f28f9cd6256',1,'HSI.h']]]
 ];

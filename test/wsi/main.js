@@ -2,18 +2,22 @@
 
 const regex = new RegExp(/\r?\n|\r/, 'g');
 var data_dict = {};
+var file_dict = {};
+
 var watch ={};
+var symbols =[];
 var ram ={"RAM1":{},"RAM2":{}};
 var bulk_update_buffer = [];
 var pixel;
 var pixel_color;
+
 
 // setup the db that will be used to map ram to the symbol table
 //https://dexie.org/docs/API-Reference#quick-reference
 var db = new Dexie("symbols_database");
           db.version(1).stores({
               symbols: '++id,&addr,bind,name,type,section,file',
-              data_chunk: '++id,&addr,chunk'
+              data_chunk: '++id,&addr'
           });
 
 var lgraph;
@@ -62,12 +66,21 @@ var com_state = "";
 var sdFiles = [];
 var fileStreamContainer = [];
 var sparks ={};
+symbols_data_table = $("#symbols_table").DataTable({
+            columns: [
+                { data: "name"},
+                { data: "addr"},
+                { data: "bind"},
+                { data: "type"},
+                { data: "size"}
+            ]
+        });
 
 
 $('#graph_container').hide();
 $('#memory_container').hide();
 $('#monitor_container').hide();
-
+$('#symbols_container').hide();
 
 
 
@@ -198,7 +211,8 @@ $('#fancy_explorer').fancytree({
 var tree = $.ui.fancytree.getTree("#fancy_explorer");
 
 socket.onopen = function(){  
-  console.log("connected"); 
+  console.log("connected");
+  sendMessage({ 'data' : "HELO "});
   sendMessage({data:"LS "});
 }; 
 
@@ -238,7 +252,7 @@ socket.onmessage = function (message) {
           received.append(res.slice(1).join(" "));
           received.append($('<br/>'));
           //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
-          $('.messages').scrollTop(10000000000);      
+          received.scrollTop(10000000000);      
           break;
       case "DIR":
           com_state = "LS";
@@ -411,55 +425,49 @@ socket.onmessage = function (message) {
           break
 
       case "RAM":
-          if (res[1] == "END"){
-          
-             //create the datatable
-                $("#memory_chunk_table").empty();
-                $("#memory_chunk_table").DataTable( {
-                    data: bulk_update_buffer,
-                    columns: [
-                        { title: "addr" },
-                        { title: "chunk" }
-                    ]
-                } );
-     
+          if (res[1] == "END"){   
+
             //update the db
             db.data_chunk.clear().then(function(res){
-            
-            
-            
-            
-                 db.data_chunk.bulkAdd(bulk_update_buffer).then(function(lastkey){
-                console.log(lastkey);
-                //clear the buffer after the db load;
-                //bulk_update_buffer = [];
-            }).catch(Dexie.BulkError, function (e) {
-                // by explicitely catching the bulkAdd() operation 
-                // successfull additions are committed despite rejected records.
-                console.error ("Warning Dexie.BulkError completed with errors:");
-                console.error(e);
-            });  
-     
-            
-            
-            
-            
-            
-            
-            
-            });
-  
+                db.data_chunk.bulkAdd(bulk_update_buffer).then(function(lastkey){
+                    console.log(lastkey);
+                    //clear the buffer after the db load;
+                    //bulk_update_buffer = [];
+                    
+                    
+                    //create the datatable
+                    //$("#memory_chunk_table").empty();
+                    $("#memory_chunk_table").DataTable( {
+
+                        data: bulk_update_buffer,
+                        columns: [
+                            { data: "addr",  "width": "1.5em","font-size": "1em"},
+                            { data: "chunk", "font-size": "0.68em" },
+                            { data: "decode", "width": "20em","font-size": "0.8em" }
+                        ]
+
+                    } );
+                    
+                    
+                }).catch(Dexie.BulkError, function (e) {
+                    // by explicitely catching the bulkAdd() operation 
+                    // successfull additions are committed despite rejected records.
+                    console.error ("Warning Dexie.BulkError completed with errors:");
+                    console.error(e);
+                }
+            )});  
             break;
-          }
-          try{
-              k = res.slice(1).join(" ");
-              d = JSON.parse(k);
-              if (d.RAM1) bulk_update_buffer.push(d.RAM1);
-              if (d.RAM2) bulk_update_buffer.push(d.RAM2);       
-              $.extend(true,ram,d);
-          } catch(e){
-          //bad message throw it out
-              break;
+        } else{
+              try{
+                  k = res.slice(1).join(" ");
+                  d = JSON.parse(k);
+                  if (d.RAM1) bulk_update_buffer.push(d.RAM1);
+                  if (d.RAM2) bulk_update_buffer.push(d.RAM2);       
+                  $.extend(true,ram,d);
+              } catch(e){
+              //bad message throw it out
+                  break;
+              }
           }
           break;
       case "STATS":
@@ -542,7 +550,7 @@ socket.onmessage = function (message) {
                   ctx.canvas.height = parseInt(height,10);
                   fileStreamContainer = fileStreamContainer.concat(s.slice(end,-1));
                   //console.log(s.slice(end+1,-1));
-              }
+              } else console.log(s);
               
           }else{
               fileStreamContainer = fileStreamContainer.concat(s.slice(0,-1));
@@ -578,6 +586,7 @@ socket.onmessage = function (message) {
            break;
       default:
           error_bytes += message.data.length;
+          console.log(message.data);
           //received.append("RX ERROR (BYTES LOST): ");
           //received.append(message.data.length);
           //received.append($('<br/>'));
@@ -660,6 +669,7 @@ $("#cmd_showAudio").click(function(ev){
   $("#graph_container").show(0.35);
   $("#memory_container").hide(0.15);
   $("#monitor_container").hide(0.15);
+  $("#symbols_container").hide(0.15);
 });
 
 $("#cmd_showMemory").click(function(ev){
@@ -667,6 +677,7 @@ $("#cmd_showMemory").click(function(ev){
   $("#graph_container").hide(0.15);
   $("#memory_container").show(0.35);
   $("#monitor_container").hide(0.15);
+  $("#symbols_container").hide(0.15);
 });
 
 $("#cmd_showMonitor").click(function(ev){
@@ -674,7 +685,33 @@ $("#cmd_showMonitor").click(function(ev){
   $("#graph_container").hide(0.15);
   $("#memory_container").hide(0.15);
   $("#monitor_container").show(0.35);
+  $("#symbols_container").hide(0.15);
 });
+
+$("#cmd_showSymbols").click(function(ev){
+  ev.preventDefault();
+  $("#graph_container").hide(0.15);
+  $("#memory_container").hide(0.15);
+  $("#monitor_container").hide(0.15);
+  $("#symbols_container").show(0.35);
+});
+
+
+$('#symbols_table tbody').on('click', 'tr', function () {
+        var data = symbols_data_table.row( this ).data();
+        console.log(symbols_data_table.row( this ).data());
+        sendMessage({ 'data' : 'GET_RAM ' + data.addr + ' ' + data.size});
+} );
+
+
+
+$("#getRam2").click(function(ev){
+  ev.preventDefault();
+  sendMessage({ 'data' : "GET_RAM2"});
+  $("#received").empty();
+  $("#memory_chunk_table tbody").empty();
+});
+
 
 
 $("#freq_slider").on("change", function(event, ui) {
@@ -728,11 +765,18 @@ function handleFile(file) {
     console.log(`File added: ${file.name}`);
     reader = new FileReader();
     reader.onload = function (event) {
-        data_dict = JSON.parse("{\"BUILD_INFO\":"+ event.target.result + "}");
-        $.extend( true, watch, data_dict);
-        $("#watch_received").jsonViewer(watch,{collapsed: true});
+        file_dict = JSON.parse(event.target.result);
+        r = (file_dict.memory.files[0]).symbols;
+        symbols = [];
+        symbols_data_table.clear();
+        for (file in file_dict.memory.files){
+             $.extend(symbols,file_dict.memory.files[file].symbols);
+             for(symbol in file_dict.memory.files[file].symbols){
+                 symbols_data_table.row.add(file_dict.memory.files[file].symbols[symbol]);
+             }
+        }
+        symbols_data_table.draw();
     };
-    //console.log(file);
     reader.readAsText(file);    
 }
 
@@ -743,32 +787,29 @@ function renderMonitor(){
         var ctx = c.getContext('2d');
         ctx.fillStyle = "#D74022";
         ctx.fillStyle = "#000000";
-        
-        ctx.fillStyle = "rgba(0,0,0,1)";
-        c.style.webkitFilter = "opacity(0.7);";
-
+        ctx.fillStyle = "rgba(0,0,0,0.6)";
+        c.style.webkitFilter = "opacity(0.9);";
         ctx.strokeStyle = "rgba(0, 4, 12, 1.0)";
-
 
         for (const [key, value] of Object.entries(watch.APPS)) {
             if (key != 'root'){
                 pixel_color[0]   = 255;
                 pixel_color[1]   = 0;
                 pixel_color[2]   = 255;
-                pixel_color[3]   = 20;
-                x = watch.APPS[key].cycle_time_max/15;
+                pixel_color[3]   = 80;
+                x = watch.APPS[key].update_loop_time_max/3;
                 ctx.putImageData(pixel, x, c.height-2);
                 pixel_color[0]   = 0;
                 pixel_color[1]   = 255;
                 pixel_color[2]   = 255;
-                pixel_color[3]   = 20;
-                x = watch.APPS[key].updateRT_loop_time_max*2;
+                pixel_color[3]   = 80;
+                x = watch.APPS[key].updateRT_loop_time_max/3;
                 ctx.putImageData(pixel, x, c.height-2);
             }
         }
         //slide the image up
         var imageData = ctx.getImageData(0, 0, c.width,c.height);
-        if (Math.random() > 0.98){
+        if (Math.random() > 0.01){
             ctx.putImageData(imageData, 0, -1);
             //draw the new row
             ctx.beginPath();
@@ -776,6 +817,7 @@ function renderMonitor(){
             ctx.lineTo(c.width, c.height-1);
             ctx.stroke();
         }
+         
     }
 }
 

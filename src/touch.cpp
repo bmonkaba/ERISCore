@@ -1,10 +1,10 @@
 #include "touch.h"
 #include "HSI.h"
 
-#define Z_THRESHOLD     400
+#define Z_THRESHOLD     600
 #define Z_THRESHOLD_INT	75
 #define MSEC_THRESHOLD  50
-#define SPI_SETTING     SPISettings(3000000, MSBFIRST, SPI_MODE0)
+#define SPI_SETTING     SPISettings(2000000, MSBFIRST, SPI_MODE0)
 
 bool Touch::begin(){
 	Serial.println("Touch:begin");

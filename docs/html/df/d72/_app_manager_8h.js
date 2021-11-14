@@ -7,5 +7,6 @@ var _app_manager_8h =
       [ "redraw_objects", "df/d72/_app_manager_8h.html#a0923efccff3ec345030a674b118b8a8da0e56e7f34306a8c87edb6c5db20b1404", null ],
       [ "redraw_render", "df/d72/_app_manager_8h.html#a0923efccff3ec345030a674b118b8a8dabb001eb5547bf2fa3628aac15c71b028", null ],
       [ "redraw_popup", "df/d72/_app_manager_8h.html#a0923efccff3ec345030a674b118b8a8da135d34d614004e8e92013cc63bdfcd6a", null ]
-    ] ]
+    ] ],
+    [ "g_octave_down_shift", "df/d72/_app_manager_8h.html#ad4dc2085d79897bc3e241bd2b7af3a62", null ]
 ];

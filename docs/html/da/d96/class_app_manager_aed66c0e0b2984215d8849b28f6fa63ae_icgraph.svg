@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 583;
 var viewHeight = 30;
-var sectionId = 'dynsection-10';
+var sectionId = 'dynsection-13';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
@@ -58,7 +58,7 @@ var sectionId = 'dynsection-10';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="provides an interface for apps to register themselves with the AppManager">
 <polygon fill="#bfbfbf" stroke="black" points="418,-0.5 418,-21.5 575,-21.5 575,-0.5 418,-0.5"/>
 <text text-anchor="middle" x="496.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::RegisterApp</text>
 </a>

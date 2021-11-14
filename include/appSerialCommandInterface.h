@@ -15,7 +15,8 @@
 #include <string.h>
 #include "AppManager.h"
 #include "AppBaseClass.h"
-#include "SdFat-beta.h"
+#include <SdFat.h>
+//#include <SdFat.h>
 // AppSerialCommandInterface
 //
 /*
@@ -48,10 +49,6 @@ OUTPUT MESSAGES:
 */
 //
 
-using namespace std;
-
-
-
 class AppSerialCommandInterface:public AppBaseClass {
   public:
     AppSerialCommandInterface():AppBaseClass(){
@@ -81,19 +78,10 @@ class AppSerialCommandInterface:public AppBaseClass {
     elapsedMillis sincePoll;
     elapsedMillis sincePeriodic;
     uint16_t checksum(const char *msg);
+    void throttle();
     void streamHandler();
     void update() override{};    //called only when the app is active
     void updateRT() override;
-    void onFocus()override{};   //called when given focus
-    void onFocusLost()override{}; //called when focus is taken
-    void onTouch(uint16_t t_x, uint16_t t_y)override{
-        //check if touch point is within the application bounding box
-       if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
-            //is touched
-        }
-    };
-    void onTouchRelease(uint16_t t_x, uint16_t t_y)override{
-    };
 };
 
 #endif

@@ -94,25 +94,25 @@ var sectionId = 'dynsection-2';
 <path fill="none" stroke="midnightblue" d="M382.08,-39.34C391.75,-40.33 401.64,-41.35 411.35,-42.35"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="411.08,-45.84 421.39,-43.38 411.8,-38.87 411.08,-45.84"/>
 </g>
-<!-- Node11 -->
+<!-- Node28 -->
 <g id="node5" class="node">
-<title>Node11</title>
-<g id="a_node5"><a xlink:href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae" target="_top" xlink:title=" ">
+<title>Node28</title>
+<g id="a_node5"><a xlink:href="../../da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae" target="_top" xlink:title="provides an interface for apps to register themselves with the AppManager">
 <polygon fill="white" stroke="black" points="418,-0.5 418,-21.5 575,-21.5 575,-0.5 418,-0.5"/>
 <text text-anchor="middle" x="496.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::RegisterApp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node11 -->
+<!-- Node2&#45;&gt;Node28 -->
 <g id="edge4" class="edge">
-<title>Node2&#45;&gt;Node11</title>
+<title>Node2&#45;&gt;Node28</title>
 <path fill="none" stroke="midnightblue" d="M382.08,-22.66C390.62,-21.78 399.33,-20.89 407.94,-20"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="408.39,-23.48 417.98,-18.97 407.68,-16.51 408.39,-23.48"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title="Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)">
 <polygon fill="white" stroke="red" points="611,-40.5 611,-61.5 770,-61.5 770,-40.5 611,-40.5"/>
 <text text-anchor="middle" x="690.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::AppManager</text>
 </a>

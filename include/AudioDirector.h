@@ -64,8 +64,6 @@ class AudioDirector{
     char* shortNameQueryResult[MAX_UNIQUE_NAMES_PER_CATEGORY];
     AudioConnection* pCord[MAX_CONNECTIONS];
     void ParseConnectString(const char* connectionString,ParsedConnection *p);
-    
-    // GUItool: begin automatically generated code
 };
 
 

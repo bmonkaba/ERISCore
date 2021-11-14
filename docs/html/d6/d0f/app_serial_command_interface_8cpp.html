@@ -82,12 +82,14 @@ $(document).ready(function(){initNavTree('d6/d0f/app_serial_command_interface_8c
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">appSerialCommandInterface.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d6b/app_serial_command_interface_8h_source.html">appSerialCommandInterface.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for appSerialCommandInterface.cpp:</div>
@@ -104,6 +106,13 @@ $(document).ready(function(){initNavTree('d6/d0f/app_serial_command_interface_8c
 Functions</h2></td></tr>
 <tr class="memitem:a0f3daef760195868b4aef06728c4119f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp.html#a0f3daef760195868b4aef06728c4119f">replacechar</a> (char *str, char orig, char rep)</td></tr>
 <tr class="separator:a0f3daef760195868b4aef06728c4119f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a462ba08568f93a3fec6a44898d5989da"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp.html#a462ba08568f93a3fec6a44898d5989da">gWelcomeMessage</a></td></tr>
+<tr class="separator:a462ba08568f93a3fec6a44898d5989da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6385eecb021ea6dc1e9b5597cfe94b85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a></td></tr>
+<tr class="separator:a6385eecb021ea6dc1e9b5597cfe94b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a0f3daef760195868b4aef06728c4119f"></a>
@@ -138,18 +147,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html">appSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">char</span> *ix = str;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> n = 0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">while</span>((ix = strchr(ix, orig)) != NULL) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        *ix++ = rep;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        n++;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html">appSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">char</span> *ix = str;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> n = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">while</span>((ix = strchr(ix, orig)) != <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        *ix++ = rep;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        n++;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="ttc" id="a_stdio_stream_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00092">StdioStream.h:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00155">AppSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00092">NULL</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00201">AppSerialCommandInterface::updateRT()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -158,6 +170,72 @@ Functions</h2></td></tr>
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d0f/app_serial_command_interface_8cpp_a0f3daef760195868b4aef06728c4119f_icgraph.svg" width="387" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a462ba08568f93a3fec6a44898d5989da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a462ba08568f93a3fec6a44898d5989da">&#9670;&nbsp;</a></span>gWelcomeMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* gWelcomeMessage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= </div>
+<div class="line"><span class="stringliteral">&quot;M \n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀▀▀▀█░▌.▀▀▀▀█░█▀▀▀▀.▐░█▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌.....▐░▌.....▐░▌..........\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▄▄▄▄▄▄▄▄▄.▐░█▄▄▄▄▄▄▄█░▌.....▐░▌.....▐░█▄▄▄▄▄▄▄▄▄.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌.....▐░▌.....▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀█░█▀▀......▐░▌......▀▀▀▀▀▀▀▀▀█░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.....▐░▌.......▐░▌...............▐░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▄▄▄▄▄▄▄▄▄.▐░▌......▐░▌..▄▄▄▄█░█▄▄▄▄..▄▄▄▄▄▄▄▄▄█░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░░░░░░░░░░░▌▐░▌.......▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M .▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ....................................................\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌▐░▌.......▐░▌▐░▌..........\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌▐░█▀▀▀▀█░█▀▀.▐░█▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░▌..........▐░▌.......▐░▌▐░▌.....▐░▌..▐░▌..........\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░█▄▄▄▄▄▄▄▄▄.▐░█▄▄▄▄▄▄▄█░▌▐░▌......▐░▌.▐░█▄▄▄▄▄▄▄▄▄.\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌.......▐░▌▐░░░░░░░░░░░▌\n&quot;</span></div>
+<div class="line"><span class="stringliteral">&quot;M .▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html">appSerialCommandInterface.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d6/d0f/app_serial_command_interface_8cpp_source.html#l00201">AppSerialCommandInterface::updateRT()</a>.</p>
+
+</div>
+</div>
+<a id="a6385eecb021ea6dc1e9b5597cfe94b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6385eecb021ea6dc1e9b5597cfe94b85">&#9670;&nbsp;</a></span>sd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a> sd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

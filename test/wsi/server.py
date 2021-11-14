@@ -37,7 +37,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         self.write_message("M connected")
  
     def on_message(self, message):
-        #print ('tornado received from client: %s' % json.dumps(message))
+        print ('tornado received from client: %s' % json.dumps(message))
         #self.write_message('ack')
         input_queue.put(message)
  

@@ -67,7 +67,7 @@ var sectionId = 'dynsection-4';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title="Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)">
 <polygon fill="white" stroke="black" points="400,-154 400,-175 559,-175 559,-154 400,-154"/>
 <text text-anchor="middle" x="479.5" y="-161.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::AppManager</text>
 </a>
@@ -125,84 +125,84 @@ var sectionId = 'dynsection-4';
 <path fill="none" stroke="midnightblue" d="M269.33,-181.8C248.58,-200.09 213.31,-228.47 178,-244.5 169.58,-248.32 160.37,-251.44 151.18,-253.99"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="271.69,-184.39 276.8,-175.1 267.02,-179.18 271.69,-184.39"/>
 </g>
-<!-- Node7 -->
+<!-- Node8 -->
 <g id="node6" class="node">
-<title>Node7</title>
-<g id="a_node6"><a xlink:href="../../df/d0a/main_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" target="_top" xlink:title=" ">
+<title>Node8</title>
+<g id="a_node6"><a xlink:href="../../d6/dd8/_eris_core_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="69.5,-214 69.5,-235 108.5,-235 108.5,-214 69.5,-214"/>
 <text text-anchor="middle" x="89" y="-221.4" font-family="Helvetica,sans-Serif" font-size="12.00">loop</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node7 -->
+<!-- Node3&#45;&gt;Node8 -->
 <g id="edge5" class="edge">
-<title>Node3&#45;&gt;Node7</title>
+<title>Node3&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M252.03,-178.87C230.72,-187.06 203.08,-197.12 178,-204.5 154.4,-211.44 126.65,-217.39 108.72,-220.96"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="253.58,-182.03 261.64,-175.14 251.05,-175.5 253.58,-182.03"/>
 </g>
-<!-- Node8 -->
+<!-- Node9 -->
 <g id="node7" class="node">
-<title>Node8</title>
+<title>Node9</title>
 <g id="a_node7"><a xlink:href="../../db/d69/class_app_base_class.html#a84d1a45250dacc61c7f3fd1c06547a3a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="0,-174 0,-195 178,-195 178,-174 0,-174"/>
 <text text-anchor="middle" x="89" y="-181.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::releasePopUp</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node8 -->
+<!-- Node3&#45;&gt;Node9 -->
 <g id="edge6" class="edge">
-<title>Node3&#45;&gt;Node8</title>
+<title>Node3&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M203.79,-173.01C195.35,-173.86 186.76,-174.73 178.28,-175.58"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="204.39,-176.46 213.99,-171.98 203.69,-169.5 204.39,-176.46"/>
 </g>
-<!-- Node11 -->
+<!-- Node12 -->
 <g id="node8" class="node">
-<title>Node11</title>
+<title>Node12</title>
 <g id="a_node8"><a xlink:href="../../db/d69/class_app_base_class.html#a5c284e20788663354eb4d8a862d3a91d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="0,-134 0,-155 178,-155 178,-134 0,-134"/>
 <text text-anchor="middle" x="89" y="-141.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::requestPopUp</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node11 -->
+<!-- Node3&#45;&gt;Node12 -->
 <g id="edge7" class="edge">
-<title>Node3&#45;&gt;Node11</title>
+<title>Node3&#45;&gt;Node12</title>
 <path fill="none" stroke="midnightblue" d="M203.79,-155.99C195.35,-155.14 186.76,-154.27 178.28,-153.42"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="203.69,-159.5 213.99,-157.02 204.39,-152.54 203.69,-159.5"/>
 </g>
-<!-- Node12 -->
+<!-- Node13 -->
 <g id="node9" class="node">
-<title>Node12</title>
+<title>Node13</title>
 <g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class.html#a9f95ae78f35aefdb005560509aa683ad" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="7,-94 7,-115 171,-115 171,-94 7,-94"/>
 <text text-anchor="middle" x="89" y="-101.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::returnFocus</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node12 -->
+<!-- Node3&#45;&gt;Node13 -->
 <g id="edge8" class="edge">
-<title>Node3&#45;&gt;Node12</title>
+<title>Node3&#45;&gt;Node13</title>
 <path fill="none" stroke="midnightblue" d="M252.03,-150.13C230.72,-141.94 203.08,-131.88 178,-124.5 166.28,-121.05 153.53,-117.85 141.47,-115.06"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="251.05,-153.5 261.64,-153.86 253.58,-146.97 251.05,-153.5"/>
 </g>
-<!-- Node13 -->
+<!-- Node14 -->
 <g id="node10" class="node">
-<title>Node13</title>
+<title>Node14</title>
 <g id="a_node10"><a xlink:href="../../db/d69/class_app_base_class.html#a932d7b1d01e2809a7d844daceba8f52f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="7,-54 7,-75 171,-75 171,-54 7,-54"/>
 <text text-anchor="middle" x="89" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::selfRegister</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node13 -->
+<!-- Node3&#45;&gt;Node14 -->
 <g id="edge9" class="edge">
-<title>Node3&#45;&gt;Node13</title>
+<title>Node3&#45;&gt;Node14</title>
 <path fill="none" stroke="midnightblue" d="M269.33,-147.2C248.58,-128.91 213.31,-100.53 178,-84.5 169.58,-80.68 160.37,-77.56 151.18,-75.01"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="267.02,-149.82 276.8,-153.9 271.69,-144.61 267.02,-149.82"/>
 </g>
-<!-- Node15 -->
+<!-- Node16 -->
 <g id="node11" class="node">
-<title>Node15</title>
+<title>Node16</title>
 <g id="a_node11"><a xlink:href="../../d9/dad/class_app_serial_command_interface.html#a78cb6587862058ba6a6b4bfd9b9ecee1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="5,-0.5 5,-34.5 173,-34.5 173,-0.5 5,-0.5"/>
 <text text-anchor="start" x="13" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
@@ -210,9 +210,9 @@ var sectionId = 'dynsection-4';
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node15 -->
+<!-- Node3&#45;&gt;Node16 -->
 <g id="edge10" class="edge">
-<title>Node3&#45;&gt;Node15</title>
+<title>Node3&#45;&gt;Node16</title>
 <path fill="none" stroke="midnightblue" d="M275.44,-145.35C257.1,-118.89 220.54,-71.36 178,-44.5 172.05,-40.75 165.55,-37.48 158.86,-34.66"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="272.63,-147.45 281.14,-153.77 278.43,-143.53 272.63,-147.45"/>
 </g>

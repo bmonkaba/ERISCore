@@ -1,12 +1,24 @@
 var searchData=
 [
-  ['receivedchars_1299',['receivedChars',['../d9/dad/class_app_serial_command_interface.html#af5a495854386e52c2005dea4a4f17358',1,'AppSerialCommandInterface']]],
-  ['record_1300',['record',['../dc/d43/class_svc_data_dictionary.html#a3c8460846f0d515c2ea79084cb850f02',1,'SvcDataDictionary']]],
-  ['record_5ftype_1301',['record_type',['../d7/dd5/structsvc_data_dictionary_record.html#a110db2c5b662f49c5434693ecd112e7e',1,'svcDataDictionaryRecord::record_type()'],['../dd/df4/svc_data_dictionary_8h.html#a0fec1f78e864dd22a42a67f744208598',1,'record_type():&#160;svcDataDictionary.h']]],
-  ['ref_5fcount_1302',['ref_count',['../de/dd6/structaudio__block__struct.html#aebaed5308ff4d02b54a3d11c4d516526',1,'audio_block_struct']]],
-  ['reflector_1303',['reflector',['../da/d1c/ideas_8txt.html#ac371554e6ffc34648abdd800a7cec9b4',1,'ideas.txt']]],
-  ['reserved1_1304',['reserved1',['../de/dd6/structaudio__block__struct.html#a01d021533181c5fe46b62ff06217018f',1,'audio_block_struct']]],
-  ['root_1305',['root',['../da/d96/class_app_manager.html#a1609289f7b35f217c9f9aec1a1948832',1,'AppManager']]],
-  ['rotation_1306',['rotation',['../d1/dff/class_touch.html#a399fab37167c025b8595c4c2c1e44902',1,'Touch']]],
-  ['rt_5fcalls_1307',['rt_calls',['../d4/dde/class_app_c_q_t.html#a383695819f9ddeffb5689576884b9928',1,'AppCQT']]]
+  ['obj_4383',['obj',['../da/d96/class_app_manager.html#aa7180e9d7b6f4b58f17972057a51393b',1,'AppManager']]],
+  ['objcount_4384',['objCount',['../d8/d1c/class_audio_director.html#a24c3c7ce0becdb17e271a788bfbb6c3d',1,'AudioDirector']]],
+  ['oct_4385',['oct',['../d4/dc1/classios__base.html#a4155540f8d3ffdb8d25a2f50ee4df08f',1,'ios_base']]],
+  ['octave_5fdown_4386',['octave_down',['../dc/dac/_audio_utilities_8h.html#a4acc20e89264694f46edc7c91361359d',1,'AudioUtilities.h']]],
+  ['octave_5fup_4387',['octave_up',['../dc/dac/_audio_utilities_8h.html#a32a42878ee800838d536a83870eb2c1d',1,'AudioUtilities.h']]],
+  ['oemname_4388',['oemName',['../dc/d17/structpartition_boot_sector.html#a9e633deb11206a8eb01731d26ddce49b',1,'partitionBootSector::oemName()'],['../dc/da3/structpartition_boot_sector_fat.html#aaa845fab3f0c4061a0f099ff67c47fe4',1,'partitionBootSectorFat::oemName()'],['../df/de1/struct_ex_fat_boot_sector.html#aeb25da614c64e85ff723a8de8dadd2dc',1,'ExFatBootSector::oemName()']]],
+  ['oid_4389',['oid',['../d1/db8/struct_c_i_d.html#a12cb950aa46c62c8af1e530006f97031',1,'CID::oid()'],['../d2/db6/_sd_card_info_8h.html#a0e7c3c74464b5888d6e4dde057c4d2c9',1,'oid():&#160;SdCardInfo.h']]],
+  ['open_5fparentheses_4390',['open_parentheses',['../d4/dac/classcpplint_1_1___block_info.html#a02a0b48995a599f6b2bbaa6f16cca98a',1,'cpplint::_BlockInfo']]],
+  ['operation_4391',['operation',['../d9/dfc/_sd_error_codes_8txt.html#a895a06d9bcabbbb32db63b9c3afff49f',1,'SdErrorCodes.txt']]],
+  ['options_4392',['options',['../df/d9e/class_sd_spi_config.html#a6292855eeea89636ad2b4da9675dbc96',1,'SdSpiConfig']]],
+  ['order_4393',['order',['../de/d14/struct_dir_lfn__t.html#a8bfeaef3a1a08bc1961c7289c90dafce',1,'DirLfn_t']]],
+  ['origin_5fx_4394',['origin_x',['../db/d69/class_app_base_class.html#ad484524ffb9a008ab4f5221bf2c018d8',1,'AppBaseClass']]],
+  ['origin_5fy_4395',['origin_y',['../db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed',1,'AppBaseClass']]],
+  ['osc_4396',['osc',['../d4/dde/class_app_c_q_t.html#a243f12ecbb2cb0b77c4c25e284c04a60',1,'AppCQT']]],
+  ['osc_5fbank_5fsize_4397',['osc_bank_size',['../d4/dde/class_app_c_q_t.html#a3b12d173a995e4eb5c9a8d6336bafacd',1,'AppCQT']]],
+  ['oscope_4398',['oscope',['../dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36',1,'MyAppExample']]],
+  ['out_4399',['out',['../d4/dc1/classios__base.html#a4c1d517774c0d11af3424e90395f26ae',1,'ios_base']]],
+  ['output_5fformat_4400',['output_format',['../d7/d38/classcpplint_1_1___cpp_lint_state.html#a5c68ca79b0ff9b2fba1c488a7b2bd3f0',1,'cpplint::_CppLintState']]],
+  ['outputflag_4401',['outputflag',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#aea6497b66755dd3d6f96ae3286f15927',1,'erisAudioAnalyzeFFT1024']]],
+  ['overrun_4402',['overrun',['../dc/deb/structblock8__t.html#adf39273c31f253fe916703a6ef3e126b',1,'block8_t::overrun()'],['../d4/d4a/structblock16__t.html#acb59990c3e3f6a49a60225daea5026e9',1,'block16_t::overrun()'],['../dc/deb/structblock8__t.html#ad94aaab75cb1a00627c59db9f7f95b53',1,'block8_t::overrun()'],['../d9/d43/structadcdata__t.html#a31b51866a5a1136ebe559c60873f518a',1,'adcdata_t::overrun()']]],
+  ['owner_4403',['owner',['../d7/dd5/structsvc_data_dictionary_record.html#a009eb2d0dc398e804880347cdc4fbad3',1,'svcDataDictionaryRecord::owner()'],['../dd/df4/svc_data_dictionary_8h.html#a743e9412f11fe56ae277d25f0f844d18',1,'owner():&#160;svcDataDictionary.h']]]
 ];

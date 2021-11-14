@@ -36,14 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 331
+#define TX_PERIOD 431
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 367
-
+#define TX_CQT_PERIOD 167
 
 // Constant Q Transform App
 //
@@ -59,8 +58,11 @@ class AppCQT:public AppBaseClass {
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
 
+      //set global val
+      g_octave_down_shift = 0;
+
       AudioNoInterrupts();
-      for (int16_t i=0; i < osc_bank_size; i++){
+      for (int16_t i=1; i < osc_bank_size+1; i++){
         sprintf(buffer, "waveform_%d", i);
         //request the object from the audio director
         osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
@@ -160,20 +162,18 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       
       #ifdef TX_PERIODIC_FFT
-        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 6000){
+        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 4000){
           fft_buffer_serial_transmit_elapsed = 0;
           if(fft_buffer_select_for_serial_transmit < 2){
             Serial.printf("S 512"); 
             for(int i = 0; i < 512; i+=1){
               //transmitt low range then high range
-              if(Serial.availableForWrite() < 1000){Serial.flush();}
+              if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
               if(fft_buffer_select_for_serial_transmit == 0) Serial.printf(F(",%d"),(int)(100.0*fft2->output[i])); 
               if(fft_buffer_select_for_serial_transmit == 1) Serial.printf(F(",%d"),(int)(100.0*fft->output[i]));
               //if ((i % 127)==0) Serial.flush();
             }
             Serial.println("");
-            //Serial.flush();
-            delayMicroseconds(500);
           }
           fft_buffer_select_for_serial_transmit += 1;
           if(fft_buffer_select_for_serial_transmit >= 2) 
@@ -182,20 +182,19 @@ class AppCQT:public AppBaseClass {
             Serial.println("S FIN"); // end of series data
           }
           //Serial.flush();
-        }else 
+        } 
       #endif
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 6000){
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 2000){
         cqt_serial_transmit_elapsed = 0;   
         
         for (uint16_t i=0;i < osc_bank_size;i++){
-          if(Serial.availableForWrite() < 1000){Serial.flush();}
-          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
-          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.5f,%.5f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].transientValue);
+          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
+          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
         }
+      
         Serial.printf(F("CQT_EOF \n"));
         //Serial.flush();
       }
-      
       
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -269,16 +268,12 @@ class AppCQT:public AppBaseClass {
       //if (rt_calls < 10000) return;    
       if (fft2->capture() && fft->capture()){
         AudioNoInterrupts();
-        fft->analyze();
         fft2->analyze();
+        fft->analyze();
         AudioInterrupts();
-
         updateOscillatorBank(true);
         updateOscillatorBank(false);
-
       }
-      
-      
       //Serial.flush();
     }; //allways called even if app is not active
     
@@ -286,10 +281,15 @@ class AppCQT:public AppBaseClass {
       fft->enableFFT(true);
       fft2->enableFFT(true);
       isActive = true;
+      Serial.println("M ** CQT ON FOCUS");
+
     };
 
     void onFocusLost(){ //called when focus is taken
-
+      fft->enableFFT(false);
+      fft2->enableFFT(false);
+      isActive = false;
+      Serial.println("M ** CQT LOST FOCUS");
     };
 
     void onTouch(uint16_t t_x, uint16_t t_y){
@@ -399,9 +399,14 @@ class AppCQT:public AppBaseClass {
 
       //take the phase from the  dominant frequency component
       float dominantPhase = 0;
+      /*
       if (fftLowRR[0].avgValueSlow > fftHighRR[0].avgValueSlow){
         dominantPhase = fftLowRR[0].phase;
       } else dominantPhase = fftHighRR[0].phase;
+      */
+      if (low_range_switch){
+          dominantPhase = fftLowRR[0].phase;
+      } else dominantPhase = fftHighRR[0].phase;;
 
       //actually update the oscilators
       AudioNoInterrupts();
@@ -410,7 +415,7 @@ class AppCQT:public AppBaseClass {
         float64_t phase_aligner;    
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
-            f = oscBank[i].peakFrequency;           
+            f = oscBank[i].estimatedFrequency;           
             a = oscBank[i].peakValue;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
@@ -418,7 +423,7 @@ class AppCQT:public AppBaseClass {
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
-              f = (pll_f * f * octave_down[0]);
+              f = (pll_f * f * octave_down[g_octave_down_shift]);
               if (f < 20) f = 20;
               if (f > 20000) f = 20000;
               
@@ -438,7 +443,13 @@ class AppCQT:public AppBaseClass {
       return;
     }
 
-  void MessageHandler(AppBaseClass *sender, const char *message){   
+  void MessageHandler(AppBaseClass *sender, const char *message){
+    if(strcmp(message,"ENABLE")==0){
+      onFocus();
+    }else if(strcmp(message,"DISABLE")==0){
+      onFocusLost();
+    }
+
     if(sender->isName("SCI")){
       Serial.print(F("M appCQT::MessageHandler SCI param: "));
       Serial.println(message);

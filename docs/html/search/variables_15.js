@@ -1,8 +1,26 @@
 var searchData=
 [
-  ['x_1372',['x',['../db/d69/class_app_base_class.html#a3d5594a6a0d365be1098e9cdb2748c3d',1,'AppBaseClass']]],
-  ['x_5fend_1373',['x_end',['../dd/da5/class_my_app_example.html#a99e65adf8428d27e8743e7a75fc8b348',1,'MyAppExample']]],
-  ['x_5flast_1374',['x_last',['../dd/da5/class_my_app_example.html#a11eaac7951d1830a796e3e565334ef22',1,'MyAppExample']]],
-  ['x_5fstart_1375',['x_start',['../dd/da5/class_my_app_example.html#a424e3752c8f361d3c95cd6b19d953aac',1,'MyAppExample']]],
-  ['xraw_1376',['xraw',['../d1/dff/class_touch.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
+  ['u16_4603',['u16',['../d9/d43/structadcdata__t.html#a12b55a7908a4a8d051a38aeb8b02d7b1',1,'adcdata_t']]],
+  ['u8_4604',['u8',['../d9/d43/structadcdata__t.html#abf572ba7b88a49019ee4afe0d7844961',1,'adcdata_t']]],
+  ['uhsspeedausize_4605',['uhsSpeedAuSize',['../d6/d4a/struct_sd_status.html#a55b4ee19155d5865de5f0fdd514d19bb',1,'SdStatus']]],
+  ['uint32_5fmax_4606',['uint32_max',['../d7/d52/istream_8cpp.html#af928af934dfd9121978ee16f57c8f960',1,'istream.cpp']]],
+  ['ungetc_5fbuf_5fsize_4607',['UNGETC_BUF_SIZE',['../da/d2d/_stdio_stream_8h.html#a785dd413c0d7b05f95df82d3453ecacd',1,'StdioStream.h']]],
+  ['unicode_4608',['unicode',['../df/ddf/struct_dir_label__t.html#a37658ef6eef527dce4eb3ee74f577f2b',1,'DirLabel_t::unicode()'],['../d3/dcb/struct_dir_name__t.html#ae471bfd42e7b9ae8cb7ed1d2d89770ec',1,'DirName_t::unicode()']]],
+  ['unicode1_4609',['unicode1',['../de/d14/struct_dir_lfn__t.html#a88647f2b6e369129212686a9a1b6b50f',1,'DirLfn_t']]],
+  ['unicode2_4610',['unicode2',['../de/d14/struct_dir_lfn__t.html#a0524fe45a11280a9d154c684892487a5',1,'DirLfn_t']]],
+  ['unicode3_4611',['unicode3',['../de/d14/struct_dir_lfn__t.html#a36d3e8d0c72886ae0bba163a72053843',1,'DirLfn_t']]],
+  ['unum_5finputs_4612',['unum_inputs',['../d5/d96/class_audio_stream.html#a643f654eb80d440b0535cd0e6244a85c',1,'AudioStream']]],
+  ['unum_5foutputs_4613',['unum_outputs',['../d5/d96/class_audio_stream.html#a1ca258955ea281b46625381746c733f5',1,'AudioStream']]],
+  ['upcase_5fcluster_4614',['UPCASE_CLUSTER',['../d6/dac/_ex_fat_formatter_8cpp.html#ac5f741c3a18a07be804f1b13dae16130',1,'ExFatFormatter.cpp']]],
+  ['update_5fcall_5fperiod_4615',['update_call_period',['../db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009',1,'AppBaseClass']]],
+  ['update_5fcall_5fperiod_5fmax_4616',['update_call_period_max',['../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744',1,'AppBaseClass']]],
+  ['update_5fcalls_4617',['update_calls',['../d4/dde/class_app_c_q_t.html#ad44c783cf9c188d4c38a787cc1e04237',1,'AppCQT']]],
+  ['update_5floop_5ftime_4618',['update_loop_time',['../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18',1,'AppBaseClass']]],
+  ['update_5floop_5ftime_5fmax_4619',['update_loop_time_max',['../db/d69/class_app_base_class.html#acec8429a0d867221c0c4f47f4f7d00d4',1,'AppBaseClass']]],
+  ['update_5fscheduled_4620',['update_scheduled',['../d5/d96/class_audio_stream.html#aba25b939ec5ee19afe4d607391a82c01',1,'AudioStream']]],
+  ['updatert_5fcall_5fperiod_4621',['updateRT_call_period',['../db/d69/class_app_base_class.html#a2c2bd2a942c2228c8556dc2cb918e020',1,'AppBaseClass']]],
+  ['updatert_5fcall_5fperiod_5fmax_4622',['updateRT_call_period_max',['../db/d69/class_app_base_class.html#a52fe0832f15327eed5bf0eecf5c368bd',1,'AppBaseClass']]],
+  ['updatert_5floop_5ftime_4623',['updateRT_loop_time',['../db/d69/class_app_base_class.html#a3d6da03c9c3c5243d8dd2281dc963011',1,'AppBaseClass']]],
+  ['updatert_5floop_5ftime_5fmax_4624',['updateRT_loop_time_max',['../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421',1,'AppBaseClass']]],
+  ['uppercase_4625',['uppercase',['../d4/dc1/classios__base.html#ade3db1fe3249e87f4c47a9a8916793d9',1,'ios_base']]]
 ];

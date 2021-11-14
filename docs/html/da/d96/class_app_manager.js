@@ -1,11 +1,14 @@
 var class_app_manager =
 [
     [ "AppManager", "da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a", null ],
+    [ "chdir", "da/d96/class_app_manager.html#a4f036abb187c2f91cd64f8436c157148", null ],
+    [ "chdir", "da/d96/class_app_manager.html#a2aee6bba45a1a63e10a3950c88fbb46a", null ],
     [ "getActiveApp", "da/d96/class_app_manager.html#aae60a456d65e4cdf7a3455e288a9a052", null ],
     [ "getApp", "da/d96/class_app_manager.html#a9853cc712c3a2efca6a982937cc97c44", null ],
     [ "getFocus", "da/d96/class_app_manager.html#add0cb3ca55868f2af725a2c71ae20e3c", null ],
     [ "getInstance", "da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86", null ],
     [ "getSD", "da/d96/class_app_manager.html#a821aeaa51455976c0fa5ffe304cae89b", null ],
+    [ "ls", "da/d96/class_app_manager.html#a394ebd4ce08e43eb85f6211e52ccfc17", null ],
     [ "peekAppFocus", "da/d96/class_app_manager.html#a670f012b624cb34002cc2e5bbd3d9ac3", null ],
     [ "printStats", "da/d96/class_app_manager.html#a5473102eda020a4b4e2bcdf5dad221b1", null ],
     [ "RegisterApp", "da/d96/class_app_manager.html#aed66c0e0b2984215d8849b28f6fa63ae", null ],

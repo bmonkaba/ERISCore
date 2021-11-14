@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#include <ctype.h>
 #include "appSerialCommandInterface.h"
 #include "AppManager.h"
 // AppSerialCommandInterface
@@ -16,6 +17,7 @@
 
 INCOMMING MESSAGES:
 
+    HELO
     LS [PATH]
     GET [PATH]  (get file is responded with FS messages)
     ACON        (request current audio block connections)
@@ -24,7 +26,9 @@ INCOMMING MESSAGES:
     AA          (broadcast message to active app )
     STATS
     CQT_CFG     request a dump of the cqt bin configs
-    GET_DD      request a dump of the data dictionary       
+    GET_DD      request a dump of the data dictionary   
+    GET_RAM2    reqquest a dump of ram2   
+
 OUTPUT MESSAGES:
 
     CQT_H  (CQT BINS - High Range)
@@ -38,9 +42,40 @@ OUTPUT MESSAGES:
     GET_ERR (error response )
     ACON START (begin audio connection list)
     ACON END (end audio connection list)
+    RAM {JSON}
+
 
 */
 //
+extern SdFs sd;
+
+const char* gWelcomeMessage = 
+"M \n" 
+"M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n"
+"M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n"
+"M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀▀▀▀█░▌.▀▀▀▀█░█▀▀▀▀.▐░█▀▀▀▀▀▀▀▀▀.\n"
+"M ▐░▌..........▐░▌.......▐░▌.....▐░▌.....▐░▌..........\n"
+"M ▐░█▄▄▄▄▄▄▄▄▄.▐░█▄▄▄▄▄▄▄█░▌.....▐░▌.....▐░█▄▄▄▄▄▄▄▄▄.\n"
+"M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌.....▐░▌.....▐░░░░░░░░░░░▌\n"
+"M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀█░█▀▀......▐░▌......▀▀▀▀▀▀▀▀▀█░▌\n"
+"M ▐░▌..........▐░▌.....▐░▌.......▐░▌...............▐░▌\n"
+"M ▐░█▄▄▄▄▄▄▄▄▄.▐░▌......▐░▌..▄▄▄▄█░█▄▄▄▄..▄▄▄▄▄▄▄▄▄█░▌\n"
+"M ▐░░░░░░░░░░░▌▐░▌.......▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n"
+"M .▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀.\n"
+"M ....................................................\n"
+"M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n"
+"M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n"
+"M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀.\n"
+"M ▐░▌..........▐░▌.......▐░▌▐░▌.......▐░▌▐░▌..........\n"
+"M ▐░▌..........▐░▌.......▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄.\n"
+"M ▐░▌..........▐░▌.......▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n"
+"M ▐░▌..........▐░▌.......▐░▌▐░█▀▀▀▀█░█▀▀.▐░█▀▀▀▀▀▀▀▀▀.\n"
+"M ▐░▌..........▐░▌.......▐░▌▐░▌.....▐░▌..▐░▌..........\n"
+"M ▐░█▄▄▄▄▄▄▄▄▄.▐░█▄▄▄▄▄▄▄█░▌▐░▌......▐░▌.▐░█▄▄▄▄▄▄▄▄▄.\n"
+"M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌.......▐░▌▐░░░░░░░░░░░▌\n"
+"M .▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀.\n";
+
+
 int replacechar(char *str, char orig, char rep) {
     char *ix = str;
     int n = 0;
@@ -51,7 +86,6 @@ int replacechar(char *str, char orig, char rep) {
     return n;
 }
 
-
 uint16_t AppSerialCommandInterface::checksum(const char *msg){
     uint16_t csum;
     csum=0;
@@ -61,18 +95,29 @@ uint16_t AppSerialCommandInterface::checksum(const char *msg){
     return csum;
 }
 
+void AppSerialCommandInterface::throttle(){
+    uint16_t avail;
+    avail = Serial.availableForWrite();
+
+    if(avail < 1000){
+        uint16_t delta_avail;
+        //serial tx buffer not available
+        delayMicroseconds(3000);
+        delta_avail = Serial.availableForWrite();
+        if(avail == delta_avail){
+            Serial.flush();
+            Serial.println(F("M WRN flush"));
+        } else Serial.println(F("M WRN throttling"));
+    }
+    return;
+}
+
 void AppSerialCommandInterface::streamHandler(){
     char bufferChr;
     char hexBuffer[8];
     uint16_t payload_len;
-    uint16_t avail;
-    avail = Serial.availableForWrite();
-    if(avail < 4000){
-        //serial tx buffer not available
-        Serial.println(F("M GET_WRN throttling"));
-        delayMicroseconds(1000);
-        return; 
-    }
+    
+    throttle();
 
     if (streamPos == 0) Serial.println(F("FS_START"));
     pSD->chdir(streamPath);
@@ -97,7 +142,7 @@ void AppSerialCommandInterface::streamHandler(){
             for(;i > 0; i--){
                 payload_len += 1;
                 if (file.read(&bufferChr,1) < 0){
-                    Serial.println(F("M GET_ERR FILE READ ERROR "));
+                    Serial.println(F("M GET_ERR FILE READ ERROR"));
                     isStreamingFile = false;
                     streamPos = 0;
                     file.close();
@@ -152,11 +197,10 @@ void AppSerialCommandInterface::streamHandler(){
     }
 };
 
+
 void AppSerialCommandInterface::updateRT(){
     //throttle 
-    while(Serial.availableForWrite() < 4000) {
-        delayMicroseconds(7000);
-    } 
+    throttle();
 
     char endMarker = '\n';
     boolean newRxMsg = false;
@@ -164,10 +208,10 @@ void AppSerialCommandInterface::updateRT(){
 
     if (isStreamingFile){
         streamHandler();
-    }else while (Serial.available() > 0 && false == newRxMsg ) {
+    }else if (Serial.available() > 0 && false == newRxMsg ) {
         bufferChr = Serial.read();
         receivedChars[indexRxBuffer++] = bufferChr;
-        if(indexRxBuffer >= SERIAL_RX_BUFFER_SIZE){
+        if(indexRxBuffer >= (SERIAL_RX_BUFFER_SIZE-16)){
             //input overflow - clear serial input and reset the index
             indexRxBuffer = 0;
             Serial.clear();
@@ -175,7 +219,7 @@ void AppSerialCommandInterface::updateRT(){
         }
         if (bufferChr == endMarker){
             receivedChars[--indexRxBuffer] = '\0'; //remove the end marker and null terminate the string
-            indexRxBuffer = 0; //reset the write index
+            indexRxBuffer = 0; //reset the input write index
             newRxMsg = true;
         }
 
@@ -186,18 +230,20 @@ void AppSerialCommandInterface::updateRT(){
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 if (total_read < 2){
                     Serial.println(F("DIR"));
-                    AppManager::getInstance()->getSD()->chdir();
-                    AppManager::getInstance()->getSD()->ls();
+                    sd->chdir();
+                    sd->ls();
+                    //AppManager::getInstance()->getSD()->chdir();
+                    //AppManager::getInstance()->getSD()->ls();
                     Serial.println(F("DIR_EOF"));
-                    //Serial.flush();
+                    Serial.flush();
                 } else{
                     replacechar(param,':',' '); //replace space token used to tx the path
                     Serial.print("M ");
                     Serial.println(param);
                     Serial.println(F("DIR"));
-                    AppManager::getInstance()->getSD()->ls(param);
+                    pSD->ls(param);
                     Serial.println(F("DIR_EOF"));
-                    //Serial.flush();
+                    Serial.flush();
                 }
             } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
@@ -271,31 +317,38 @@ void AppSerialCommandInterface::updateRT(){
                 AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->data->printDictionary();
+            }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
+                Serial.println(gWelcomeMessage);
+            }else if (strncmp(cmd, "GET_RAM",sizeof(cmd)) == 0){ 
+                char* mp;
+                long num;
+                num = strtol(param,NULL,10);
+                mp = (char*)num;
+                Serial.printf("M GET_RAM {\"addr\":\"%08X\",\"data\":\"%02X\"}\n",num,(uint8_t)*mp);
+                //Serial.printf("M DEBUG {\"addr\":\"%08X\",\"data\":\"%02X\"}\n",&g_octave_down_shift,g_octave_down_shift);
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
                 int avail;
                 delayMicroseconds(230000);
-                Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20200000);
+                Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
                 strcpy(txBuffer," ");
-                for(uint32_t i = 0x20200000; i < 0x2027F000; i+=1){
+                //RAM2 always ends at 0x20280000
+                for(uint32_t i = 0x20000000; i < 0x20280000; i+=1){
+                    if (i == 0x20016000) i = 0x20200000;
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
-                    if(i%64==0 && i != 0x20200000){
+                    if(i%64==0 && i != 0x20000000){
+                        Serial.print(F("\",\"decode\":\""));
                         Serial.print(txBuffer);
                         Serial.println(F("\"}}"));
-                        strcpy(txBuffer," ");
-
-                        avail = Serial.availableForWrite();
-                        while(avail < 5000){
-                            delayMicroseconds(100000);
-                            avail = Serial.availableForWrite();
-                        }
-
+                        strcpy(txBuffer,"");
+                        delayMicroseconds(8000);
+                        throttle();
                         if(i%1024==0){
                             float32_t pct;
-                            pct = 100.0 * ((float)(i-0x20200000)/(float)(0x2027F000-0x20200000));
+                            pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
                             Serial.printf(F("CLS\nM GET_RAM2 %08X %.0f pct "),i,pct);
                             for(uint16_t div = 0; div < (uint16_t)pct; div += 5){
                                 Serial.printf("*");
@@ -315,18 +368,20 @@ void AppSerialCommandInterface::updateRT(){
                         strncat(txBuffer, &c, 1);
                     }else if (isprint((int)c)){ 
                         strncat(txBuffer, &c, 1);
-                    }else if (c==0){
-                        c = '*';
+                    }else if (iscntrl((int)c)){
+                        c = '.';
                         strncat(txBuffer, &c, 1);
                     }else{
-                        c = '.';
+                        c = '?';
                         strncat(txBuffer, &c, 1);
                     }
                     //Serial.print(c);
                 }
                 Serial.println("\n");
                 Serial.println(F("RAM END"));
-                delayMicroseconds(500000);
+                delayMicroseconds(1800000);
+                //flush out serial input buffer
+                Serial.clear();
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;

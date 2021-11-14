@@ -51,20 +51,11 @@ class MyAppExample:public AppBaseClass {
       pink->amplitude(1.0);
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_1"));
-      //filter->setLowpass(0,440);
       filter->setLowpass(0, 1100,0.6);
-      //filter->setHighpass(0, 200);
-      //filter->setLowpass(1,2200);
-      //filter->setLowpass(2,2200);
-      //filter->setLowpass(3,2200);
-      //setHighShelf(0, 1800, -24,3.0f);
-      //filter->resonance(0.9);
+
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_2"));
       filter->setLowpass(0, 300);
-      //filter->setLowpass(1,300);
-      //filter->setLowpass(2,300);
-      //filter->setLowpass(3,300);
-      
+
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
       filter->setLowpass(0,8052);
       
@@ -85,7 +76,7 @@ class MyAppExample:public AppBaseClass {
       oscope.setPosition(5,20);
       oscope.setDimension(315,100);
       oscope.setParent(this);
-      
+ 
       //cqt = new AppCQT;
       cqt.setWidgetPosition(125,20);
       cqt.setWidgetDimension(320-10-125,50);
@@ -97,7 +88,6 @@ class MyAppExample:public AppBaseClass {
       slider->setName("SLIDER");
       slider->setText("Dry Mix");
       slider->setValue(0);
-
       
       char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST"};
       uint8_t si = 0;
@@ -122,6 +112,7 @@ class MyAppExample:public AppBaseClass {
     void update(){
       //Serial.println("MyApp:update");
       //float fps = (float)(micros()-t_lastupdate)/1000000.0;
+
       draw->fillRect(0, 0, 320, 19, 0);
       draw->setCursor(5,5);
       draw->print(F("CPU: "));
@@ -211,13 +202,13 @@ class MyAppExample:public AppBaseClass {
 
     void onFocus(){
       makeAudioConnections();
+      am->sendMessage(this,"CQT","ENABLE");
     }
     
     void onAnalog1(uint16_t uval, float fval){
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_2"));
-
       AudioNoInterrupts();
       amp->gain(log1p(fval));
       AudioInterrupts();
@@ -230,9 +221,6 @@ class MyAppExample:public AppBaseClass {
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
       filter->setLowpass(0,220.0 + (6000.0 * fval));
-      //filter->setLowpass(1,727.0 + (14279.0 * fval));
-      //filter->setLowpass(2,857.0 + (13137.0 * fval));
-      //filter->setLowpass(3,919.0 + (12221.0 * fval));
       mixer->gain(0,2.0);
       AudioInterrupts();
     };

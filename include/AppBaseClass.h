@@ -28,12 +28,20 @@
 #ifndef _AppBase_
 #define _AppBase_
 
+
+//forward declaration of the AppManager class to be defined later
+
+class AppManager;
+
+
 // Application Base Class
 //
 class AppBaseClass {
   friend class AppManager;
   protected:
     AudioDirector* ad;
+    AppManager* am;
+    SdFs* sd;
     ILI9341_t3_ERIS* draw;
     AppBaseClass *parentNode;
     AppBaseClass *previousAppicationNode;

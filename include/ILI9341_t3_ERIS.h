@@ -14,7 +14,8 @@
 #include "ILI9341_t3n.h"
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
-#include <SdFat-beta.h>
+#include <SdFat.h>
+//#include <SdFat.h>
 
 
 // ERIS SD Graphics extention 
@@ -26,20 +27,24 @@ bool _busy();
 class Animation{
     friend class ILI9341_t3_ERIS;
     public:
-        Animation(){frame = 1;chunk=0;}
+        Animation(){frame = 1;chunk=0;last_frame=-1;pSD=NULL;}
         void setPath(const char *path){
             if (strlen(path) < 120) strcpy(_path,path);
+            last_frame = -1; //reset end of animation frame marker
             return;
         };
         bool isFrameComplete(){
             if(chunk==0)return true; 
             return false;
         }
-        bool getNextFrameChunk(SdFs *ptr);
+        bool getNextFrameChunk();
+        void setSD(SdFs *ptr);
         char* getFileName(){return filename;};
         char* getPath(){return _path;};
     protected:
+        SdFs* pSD;
         uint16_t frame;
+        int16_t last_frame;
         uint16_t chunk;
         char filename[128];
         char _path[128];
@@ -55,7 +60,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 70000000;
+            tft_write_speed = 72000000;
             tft_read_speed = 20000000;
             pSD = NULL;
             //backlight = 0;

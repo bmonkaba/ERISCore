@@ -1,7 +1,7 @@
 import serial
 import time
 ## Change this to match your local settings
-SERIAL_PORT = 'COM3'
+SERIAL_PORT = 'COM6'
 SERIAL_BAUDRATE = 1500000
 
 class SerialProcess():
@@ -18,19 +18,30 @@ class SerialProcess():
         self.sp.write(data.encode())
         
     def readSerial(self):
-        return self.sp.readline()
+        try:
+            return self.sp.readline()
+        except:
+            return ""
+                
+         
  
     def run(self):
         while True:
             if not self.input_queue.empty():
-                self.writeSerial(self.input_queue.get())         
-            while (self.sp.inWaiting() > 750):
-                d = self.readSerial()
+                d = self.input_queue.get()
+                print ("writing to serial port: "+ d)
+                print("<" + d[:4])
+                self.writeSerial(d)         
+            
+            d = self.readSerial()
+            while (len(d)>0):
                 try:
                    d = d.decode()
                 except:
                    d = "?" * len(d) 
+                #print(">" + d[:40])
                 self.output_queue.put(d)
+                d = self.readSerial()
 
 
                 

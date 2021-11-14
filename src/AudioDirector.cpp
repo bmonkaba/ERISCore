@@ -257,8 +257,8 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
     if(source==pCord[i]->pSrc && destination==pCord[i]->pDst && sourceOutput==pCord[i]->src_index && destinationInput==pCord[i]->dest_index){
-      Serial.print(F("M AudioDirector::connect() found existing connection; reconnecting at index  "));
-      Serial.println(i);
+      //Serial.print(F("M AudioDirector::connect() found existing connection; reconnecting at index  "));
+      //Serial.println(i);
       //Serial.flush();
       if(pCord[i]->reconnect()) activeConnections++;
       return true;
@@ -270,8 +270,8 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     //find any already existing but unused connections
     if (NULL!=pCord[i]){
       if (pCord[i]->isConnected == false){
-        Serial.printf(F("M \tAudioDirector::connect() connection index: %d\t"),i);
-        Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
+        //Serial.printf(F("M \tAudioDirector::connect() connection index: %d\t"),i);
+        //Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
         //Serial.flush();
         if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
         return true;
@@ -280,11 +280,13 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     if (NULL==pCord[i]){
       Serial.print(F("M AudioDirector::connect() making a new AudioConnection at index "));
       Serial.println(i);
+      /*
       Serial.print(source->shortName);Serial.print(F(":"));
       Serial.print(sourceOutput);
       Serial.print(F(" -> "));
       Serial.print(destination->shortName);Serial.print(F(":"));
       Serial.println(destinationInput);
+      */
       //Serial.flush();
       //need to rewire after creation as the reference based approach was bypassed 
       //in favor of pointers in order to facilitate the extention of the audio connection base class

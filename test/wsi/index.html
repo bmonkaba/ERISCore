@@ -44,6 +44,7 @@
       <div class="menubar">
       <button class="button" id="cmd_showAudio">Audio</button>
       <button class="button" id="cmd_showMemory">Memory</button>
+      <button class="button" id="cmd_showSymbols">Symbols</button>
       <button class="button" id="cmd_showMonitor">Monitor</button>
     </div>
       
@@ -136,10 +137,41 @@ AA 220
         </div>
     </div>
     <div id="memory_container" class="graphs">
-       <table id="memory_chunk_table"></table>
+    <form>
+    <button class="button" id="getRam2">Ram2 Snapshot</button><br><br><br>
+       <table id="memory_chunk_table" width="1280px" class="cell-border compact stripe">
+           <thead>
+                <tr>
+                    <th>addr</th>
+                    <th>chunk</th>
+                    <th>decode</th>
+               </tr>
+           </thead>
+       </table>
+    </form>
     </div>
+    
+    <div id="symbols_container" class="graphs">
+    <form>
+    <button class="button" id="none">PLACEHOLDER</button><br><br><br>
+       <table id="symbols_table"  class="compact">
+           <thead>
+                <tr>
+                    <th>name</th>
+                    <th>addr</th>
+                    <th>bind</th>
+                    <th>type</th>
+                    <th>size</th>
+               </tr>
+           </thead>
+       </table>
+    </form>
+    </div>
+    
     <div id="monitor_container" class="graphs">
-    <canvas id="monitor_canvas" width="1224" height="500"></canvas>
+        <div><div class="titlebar">Jitter Plot</div>
+            <canvas id="monitor_canvas" width="1224" height="500"></canvas>
+        </div>
     </div>
     
 </div> 

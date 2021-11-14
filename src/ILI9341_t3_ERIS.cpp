@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 4
+#define ANIMATION_CHUNKS_PER_FRAME 14
 
 static volatile bool dmabusy;
 
@@ -23,22 +23,27 @@ bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_co
             return rval;
         }
 
-bool Animation::getNextFrameChunk(SdFs *pSD){
+bool Animation::getNextFrameChunk(){
+    if (pSD == NULL) return false;
     if (chunk==0){
       chunk++;
       sprintf(filename,"%03u.ile",frame);
       frame++;
+      if(last_frame > 0 && frame > last_frame) frame = 1;
       pSD->chdir(_path);
       if(pSD->exists(filename)){
+          //Serial.println("M Animation::getNextFrameChunk(): OK");    
           return true; 
       }else{
+          last_frame = frame;
           frame = 1;
           sprintf(filename,"%03u.ile",frame);
           if(pSD->exists(filename)){
+              //Serial.println("M Animation::getNextFrameChunk(): CYCLE OK");
               return true;
           }
       }
-      Serial.printf("File: %s Not found at: %s\n",filename,_path);
+      Serial.printf(F("M SDCard Error  File: %s Not found at: %s\n"),filename,_path);
       return false;
     }
     chunk++;
@@ -46,20 +51,22 @@ bool Animation::getNextFrameChunk(SdFs *pSD){
     return true;
 }
 
+void Animation::setSD(SdFs *ptr){pSD = ptr;}
+
 void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
 
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 96000);
-    analogWrite(backlight, 200);
+    analogWriteFrequency(backlight, 30000);
+    analogWrite(backlight, 220);
 }
 
 void ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
     //setFrameBuffer(FB1);
     //useFrameBuffer(true);
-    fillScreen(ILI9341_BLUE);
+    fillScreen(ILI9341_BLACK);
     //pFB = 0;//FB1;
     //try and force a second buffer
     //setFrameBuffer(FB2);
@@ -73,7 +80,11 @@ void ILI9341_t3_ERIS::begin(){
     setTextColor(CL(74, 143, 255));
     setTextSize(1);
     setRotation(1);
-    println("Online...");          
+    println("Online...");
+    if(pSD){
+      pSD->chdir();
+      pSD->ls();
+    }          
     updateScreen();
     dmabusy=false;
 }

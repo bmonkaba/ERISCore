@@ -285,7 +285,7 @@ public:
 				//fftRR->avgValueFast = fftRR->peakValue;
 				ratio = 0.98;
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * ratio) + (fftRR->avgValueFast * (1.0f -ratio)); 	//by comparing a short and long moving average; slow transient detection
-				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = fftRR->peakValue;
+				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast/7.0 )+(fftRR->peakValue/3.0);
 				
 				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				if (fftRR->avgValueFast> 0) fftRR->transientValue = (fftRR->avgValueFast - fftRR->avgValueSlow)/fftRR->avgValueFast;

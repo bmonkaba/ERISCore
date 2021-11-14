@@ -10,26 +10,27 @@
  */
 
 //#define SERIAL_PRINT_APP_LOOP_TIME
-
 #include <Arduino.h>
 #include "HSI.h"
 #include "touch.h"
 #include "AnalogInputs.h"
 #include "ILI9341_t3_ERIS.h"
 #include "ili9341_t3n_font_Arial.h"
-//#include "AudioDirector.h"
 #include "AppManager.h"
+
 
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
-
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (32)));
-//DMAMEM uint16_t FB2[320 * 240]__attribute__ ((aligned (32)));
+//uint16_t DMAMEM FB2[320 * 240] __attribute__ ((aligned (32)));
+SvcDataDictionary _data;
+short g_octave_down_shift;
 
-SvcDataDictionary _data __attribute__ ((aligned(32)));;
-
-
-AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
+/**
+ * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
+ * 
+ */
+AppManager::AppManager(){
   data = &_data;
   root = 0;
   activeID = 0;
@@ -46,11 +47,11 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   cycle_time_max = 0;
   //init the sd card
   if (!sd.begin(SdioConfig(FIFO_SDIO))){
-    Serial.println(F("AppManager: FATAL! SD Card Not Found "));
+    Serial.println(F("M AppManager: FATAL! SD Card Not Found "));
     sd.initErrorHalt(&Serial);
   } else {Serial.println(F("AppManager: SD Card FOUND"));}
   //init the display
-  Serial.println(F("AppManager: Config display"));
+  Serial.println(F("M AppManager: Config display"));
   draw.setPWMPin(TFT_LED_PWM); //library will control the backlight
   draw.setSD(&sd); //provide a cd pointer to the sd class
   draw.setFrameBuffer(FB1);
@@ -59,23 +60,29 @@ AppManager::AppManager(){ //private constuctor (lazy singleton pattern)
   //render.setSD(&sd); //provide a cd pointer to the sd class
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
-  animated_wallpaper.setPath("/V/BROKCHRD");
-  Serial.println(F("AppManager: Init display"));
+  animated_wallpaper.setSD(&sd);
+  animated_wallpaper.setPath("/V/WRMMM");
+  Serial.println(F("M AppManager: Init display"));
   draw.begin();
   //render.begin();
-  Serial.println(F("AppManager: Init touch controller"));
+  Serial.println(F("M AppManager: Init touch controller"));
   //init the touch screen
   touch.setCalibrationInputs(452,374,3830,3800); //inital cal values; app manager will monitor and update
   touch.setRotation(3);
   touch.begin();
   touch_state = 0;
-  Serial.println(F("AppManager: Contructor complete"));
+  Serial.println(F("M AppManager: Contructor complete"));
   #ifdef ENABLE_ASYNC_SCREEN_UPDATES
   //render.updateScreenAsync(true);
   display_refresh_time = 0;
   #endif
+  tempmon_init();
 };
 
+/**
+ * @brief AppManager update executes single update of the state machine
+ * 
+ */
 void AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
@@ -94,44 +101,40 @@ void AppManager::update(){
     update_analog = false;
     node = root;
 
-    //update touch
-    app_time=0;
-    touch.update();
-    touch_updated = true;
-    //update analog inputs
-    update_analog = analog.update();
-    data->update("AM_TOUCH",app_time);
-    
     if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
       return;
     }
-
+  
+    //update analog inputs
+    update_analog = analog.update();
+    
     //update loop is directed by the state variable 
     switch(state){
       case redraw_background:
         app_time=0;
         if (!draw.busy()){
             data->update("RENDER",0);
-          if (animated_wallpaper.getNextFrameChunk(&sd)){
-              draw.bltSDAnimationFullScreen(&animated_wallpaper);   
-          }
-        }
+          if (animated_wallpaper.getNextFrameChunk()){
+              draw.bltSDAnimationFullScreen(&animated_wallpaper);
+              data->update("AM_REDRAW_BG",app_time);
+          } else Serial.println("M bad chunk");
+        } else Serial.println("M draw busy");
         if ((data->read("RENDER") == 0) && animated_wallpaper.isFrameComplete()){
-          //Serial.printf(F("AppManager::isFrameComplete %d\n"),drt);
           data->update("RENDER",1);
           state = redraw_objects;
         }
-        data->update("AM_DRAW",app_time);    
         break;
         
-      case redraw_wait: //idle render time to give the screen refresh a head start
-        if (drt > 30){  
+      case redraw_wait://idle render time to give the screen refresh a head start
+        if (drt > 22){ //magic number is to tune the delay between frame buffer writes
+                       //as the data is simutaniously being written out to SPI.
+                       //This ensures we are not overwritting the current frame 
+                       //with the next frame. 
           if(exclusive_app_render) state = redraw_objects;
           else state = redraw_background;
-        }
+        };
         //note: this is  a good place for application manager housekeeping tasks where screen access is not required
-        
         break;
 
       case redraw_render:
@@ -139,14 +142,12 @@ void AppManager::update(){
         data->update("RENDER_PERIOD",drt);
         data->update("RENDER",4);
         data->increment("RENDER_FRAME");
-        //delayNanoseconds(20);
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         state = redraw_wait;
         display_refresh_time = 0;
-        data->update("AM_RENDER",app_time);
         break;
 
-      case redraw_objects:        
+      case redraw_objects:      
         node = root;
         if (exclusive_app_render == false){
           do{
@@ -181,8 +182,9 @@ void AppManager::update(){
         state = redraw_render;     
         break;
     }
-    
     //always call the apps updateRT function on every loop
+    touch.update();
+    touch_updated = true;    
     data->increment("RT_CALLS");
     node = root;
     do{
@@ -197,7 +199,6 @@ void AppManager::update(){
           if (pActiveApp != node){
             if (pActiveApp != 0) pActiveApp->onFocusLost();
             node->onFocus();
-            delayNanoseconds(220000);
             pActiveApp = node;
           }
       }
@@ -218,9 +219,9 @@ void AppManager::update(){
           }
           if (touch_updated == true && touch.touched()) {
             p = touch.getPoint();
-            data->update("TOUCH_X",(int32_t)p.x);
-            data->update("TOUCH_Y",(int32_t)p.y);
-            //Serial.print(p.x);Serial.print(" ");Serial.println(p.y);
+            //data->update("TOUCH_X",(int32_t)p.x);
+            //data->update("TOUCH_Y",(int32_t)p.y);
+            //data->update("TOUCH_Z",(int32_t)p.z);
             if (node->touch_state == 0){
                 node->onTouch(p.x, p.y);
                 node->touch_state=1;
@@ -243,8 +244,8 @@ void AppManager::update(){
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
-      data->update("LOOP_TIME",cycle_time);
-      data->update("SERIAL_AVAIL",Serial.availableForWrite());
+      data->update("LOOP_TIME",cycle_time_max);
+      //data->update("SERIAL_AVAIL",Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
       cycle_time_max=0;
@@ -255,25 +256,42 @@ void AppManager::update(){
       data->update("HEAP_FREE",0x20280000 - heapTop);
       data->update("LOCAL_MEM",0x2007F000 - (uint32_t)(&heapTop));
       heapTop = 0;
-    } 
+      data->update("CPU_TEMP",(uint32_t)(1000.0 * tempmonGetTemp()));
+    }
 };
-
+/**
+ * @brief provides an interface for apps to request the SdFs object
+ * 
+ * @return SdFs* 
+ */
 SdFs* AppManager::getSD(){
   return &sd;
 }
 
+/**
+ * @brief provides an interface for apps to request another app object by id
+ * 
+ * @param id 
+ * @return AppBaseClass* 
+ */
 AppBaseClass* AppManager::getApp(uint16_t id){
-  // sends a message to the requested app
     AppBaseClass *node = root;
     do{
       if (node->id == id){
         return node;
       }
-      node=node->nextAppicationNode;//check next node
+      node=node->nextAppicationNode;
     }while(node !=NULL);
     return NULL;
 }
-
+/**
+ * @brief provides an interface for apps to request pop up focus with or without exclusive screen access
+ * 
+ * @param id 
+ * @param exclusive 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::requestPopUp(uint16_t id,bool exclusive){
   if (appPopUpStackIndex == 8) return false;
   appPopUpStack[appPopUpStackIndex] = id;
@@ -281,33 +299,65 @@ bool AppManager::requestPopUp(uint16_t id,bool exclusive){
   exclusive_app_render = exclusive;
   return true;
 }
+/**
+ * @brief provides an interface for apps to release pop up focus
+ * 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::releasePopUp(){
   if (appFocusStackIndex == 0)return false;
-  //appPopUpStack[appPopUpStack.size()-1]=0;
   appPopUpStackIndex-=1;
   appPopUpStack[appPopUpStackIndex] = 0;
   exclusive_app_render = false;
   return true;
 }
-
+/**
+ * @brief provides an interface for apps to request focus
+ * 
+ * @param id 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::getFocus(uint16_t id){
   if (appPopUpStackIndex == 8) return false;
   appFocusStack[appFocusStackIndex++] = activeID;
   activeID=id;
   return true;
 } 
-
+/**
+ * @brief provides an interface for apps to release focus
+ * 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::returnFocus(){
   if (appFocusStackIndex == 0) return false;
   activeID = appFocusStack[--appFocusStackIndex];//load from the stack
   appFocusStack[appFocusStackIndex] = 0;
   return true;
 } 
-
-uint16_t AppManager::peekAppFocus(){return activeID;}//used by apps to find out which has focus
-
+/**
+ * @brief provides an interface for apps to request the id of the active app
+ * 
+ * @return uint16_t 
+ */
+uint16_t AppManager::peekAppFocus(){return activeID;}
+/**
+ * @brief provides an interface for apps to request the active app object
+ * 
+ * @return AppBaseClass* 
+ */
 AppBaseClass* AppManager::getActiveApp(){ return pActiveApp;}
-
+/**
+ * @brief provides an interface for apps to send messages to other apps
+ * 
+ * @param sender 
+ * @param to_app 
+ * @param message 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const char *message){
   // sends a message to the requested app
   AppBaseClass *node = root;
@@ -320,12 +370,15 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
   }while(node !=NULL);
   return false;
 }
+/**
+ * @brief prints out some stats in JSON format to the serial port
+ * 
+ */
 void AppManager::printStats(){
   AppBaseClass *node = root;
   if (node == NULL) return;
   Serial.print(F("STATS {\"APPS\":{"));
   do{
-    //Serial.flush();
     Serial.print(F("\""));
     Serial.print(node->name);
     Serial.print(F("\":{"));
@@ -345,18 +398,14 @@ void AppManager::printStats(){
     node->cycle_time_max = 0;
     node->update_call_period_max = 0;
     node->updateRT_call_period_max = 0;
-  
     node=node->nextAppicationNode;//check next node
   }while(node !=NULL);
-
   if (root != 0){
     Serial.print(F("\"root\":\""));Serial.print(root->name);Serial.print(F("\""));
   }else{
     Serial.print(F("\"root\":"));Serial.print(F("\"NULL\""));
   }
-  
   Serial.println(F("}}"));
-  //Serial.flush();
   //print app manager stats
   Serial.print(F("STATS {\"APPMANAGER\":{"));
   Serial.print(F("\"cycle_time\":"));Serial.print(cycle_time);Serial.print(F(","));
@@ -365,15 +414,21 @@ void AppManager::printStats(){
   Serial.print(F("\"active_app_id\":"));Serial.print(activeID);Serial.print(F(","));
   Serial.print(F("\"exclusive_app_render\":"));Serial.print(exclusive_app_render);
   Serial.println(F("}}"));
-  //clear the stats
+  //clear the app manager stats
   cycle_time_max = 0;
   return;
 }
-
+/**
+ * @brief provides an interface for apps to register themselves with the AppManager
+ * 
+ * @param app 
+ */
 void AppManager::RegisterApp(AppBaseClass *app){
   //assign a unique id to the object
   app->id = nextIDAssignment++;
   app->draw = &draw;
+  app->am = this;
+  app->sd = &sd;
   if (root == 0) {root = app; return;}
   else{
     AppBaseClass *endNode = root;
