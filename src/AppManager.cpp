@@ -24,7 +24,6 @@ ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (32)));
 //uint16_t DMAMEM FB2[320 * 240] __attribute__ ((aligned (32)));
 SvcDataDictionary _data;
-short g_octave_down_shift;
 
 /**
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
@@ -61,7 +60,7 @@ AppManager::AppManager(){
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
   animated_wallpaper.setSD(&sd);
-  animated_wallpaper.setPath("/V/WRMMM");
+  animated_wallpaper.setPath("/V/TEST");
   Serial.println(F("M AppManager: Init display"));
   draw.begin();
   //render.begin();
@@ -71,12 +70,24 @@ AppManager::AppManager(){
   touch.setRotation(3);
   touch.begin();
   touch_state = 0;
+  //enable cpu temp monitoring
+  tempmon_init();
+  //set the default template colors for the gui
+  data->create("UI_BUTTON_FILL_COLOR",ILI9341_PINK);
+  data->create("UI_BUTTON_SHADE_COLOR",ILI9341_RED);
+  data->create("UI_BUTTON_ACTIVE_BORDER_COLOR",ILI9341_GREENYELLOW);
+  data->create("UI_BUTTON_INACTIVE_BORDER_COLOR",ILI9341_MAGENTA);
+  data->update("UI_BUTTON_TEXT_COLOR",ILI9341_PURPLE);
+  data->update("UI_SLIDER_BORDER_COLOR",ILI9341_GREENYELLOW);
+  data->update("UI_SLIDER_FILL_COLOR",ILI9341_ORANGE);
+  data->update("UI_SLIDER_TEXT_COLOR",ILI9341_YELLOW);
+
   Serial.println(F("M AppManager: Contructor complete"));
   #ifdef ENABLE_ASYNC_SCREEN_UPDATES
   //render.updateScreenAsync(true);
   display_refresh_time = 0;
   #endif
-  tempmon_init();
+  
 };
 
 /**
@@ -240,7 +251,11 @@ void AppManager::update(){
       node=node->nextAppicationNode;//check next node
     }while(node !=NULL);
 
-    if (cycle_time > cycle_time_max) cycle_time_max = cycle_time;
+    if (cycle_time > cycle_time_max){
+      cycle_time_max = cycle_time;
+    } else{
+      //delayMicroseconds((cycle_time_max - cycle_time)/100);
+    }
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
@@ -248,7 +263,7 @@ void AppManager::update(){
       //data->update("SERIAL_AVAIL",Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
-      cycle_time_max=0;
+      cycle_time_max*=0.999;
       htop = malloc(1000);
       memset(htop,0x5A,1000);
       heapTop = (uint32_t) htop;

@@ -50,12 +50,14 @@ class ControlButton:public AppBaseClass {
                 time_active = 0;
         }
         if (!isDirty) return;
-        draw->fillRoundRect(x,y,w,h,3,CL(12,0,20));
+        draw->fillRoundRect(x,y,w,h/2,3,am->data->read("UI_BUTTON_FILL_COLOR"));
+        draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
         if (show_active){
-            draw->drawRoundRect(x,y,w,h,4,ILI9341_GREENYELLOW);
+            draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); //ILI9341_GREENYELLOW
         } else{
-            draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
+            draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));//ILI9341_MAGENTA
         }
+        draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
         draw->setCursor(x+(w/2),y+(h/2),true);
         draw->setFont(Arial_9);
         draw->print(text);

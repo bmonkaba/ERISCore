@@ -17,12 +17,36 @@
 #define play_sd_wav_h_
 //a modified synth waveform header is contained in the eris library
 //block the import from audio.h
+
 #include "eris_synth_waveform.h"
+#include "eris_analyze_fft1024.h"
+#include "eris_analyze_scope.h"
+
+
 #include <Audio.h>
+#include "AudioStream.h"
+
+#include "eris_mixer_ext.h"
+
 //now load the modified version
 //#undef synth_waveform_h_
 #include <new>
 
+
+
+
+
+
+class erisAudioMixer8:public AudioMixer8{
+public:
+	erisAudioMixer8():AudioMixer8(){
+		shortName="console";
+		unum_inputs=8;
+		unum_outputs=1;
+		category="mixer-function";
+	}
+	void update(){this->AudioMixer8::update();}
+};
 
 // handcode
 //

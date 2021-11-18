@@ -61,15 +61,29 @@ class MyAppExample:public AppBaseClass {
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_4"));
       filter->setLowpass(0,18400);
+
+      filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_5"));
+      filter->setNotch(0,475,3.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.95);
-      reverb->damping(0.22);
+      reverb->roomsize(0.38);
+      reverb->damping(0.8);
 
       erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
       mix->gain(0,0.75);
       mix->gain(1,0.25);
 
+      erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay_1"));
+      delay->delay(0,30);
+      delay->delay(1,60);
+      delay->delay(2,540);
+      delay->delay(3,600);
+      mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
+      mix->gain(0,0.5);
+      mix->gain(1,0.1);
+      mix->gain(2,0.05);
+      mix->gain(3,0.01);
+      
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);
       oscope.setWidgetDimension(110,50);
@@ -226,13 +240,14 @@ class MyAppExample:public AppBaseClass {
     };
     
     void onAnalog3(uint16_t uval, float fval){
+      float lp,hp,gain;
       //Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      float lp = 300.0 + (18000.0 * log1p(fval));
-      float hp = 210.0 + (100.0 * log1p(fval));
-      float gain = 1.0 + log1p(fval);
+      lp = 300.0 + (18000.0 * log1p(fval));
+      hp = 210.0 + (100.0 * log1p(fval));
+      gain = log1p(fval);
       AudioNoInterrupts();
       filter->setLowpass(0,lp);
       filter->setHighpass(1,hp);
@@ -246,7 +261,7 @@ class MyAppExample:public AppBaseClass {
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_1"));
       float gain = log1p(fval);
       AudioNoInterrupts();
-      amp->gain(gain);
+      amp->gain(1.0 + gain);
       AudioInterrupts();
     };
     
@@ -265,11 +280,9 @@ class MyAppExample:public AppBaseClass {
       ad->connect("amp_1 0 i2s-out_1 0");
 
       //16 input bank bus mixer structure (4in x 4blocks)
-      ad->connect("mixer_2 0 mixer_6 0");
-      ad->connect("mixer_3 0 mixer_6 1");
-      ad->connect("mixer_4 0 mixer_6 2");
-      ad->connect("mixer_5 0 mixer_6 3");
-
+      ad->connect("console_1 0 mixer_6 0");
+      ad->connect("console_2 0 mixer_6 1");
+      
       //bus output to filter -> reverb -> master mixer
       ad->connect("mixer_6 0 biquad_3 0");
       ad->connect("biquad_3 0 freeverb_1 0");
@@ -277,26 +290,24 @@ class MyAppExample:public AppBaseClass {
       //filtered bus mixer -> master mixer
       ad->connect("biquad_3 0 mixer_1 0");
       
-      //connect the oscillators to the bus mixer
-      ad->connect("waveform_1 0 mixer_2 0");
-      ad->connect("waveform_2 0 mixer_2 1");
-      ad->connect("waveform_3 0 mixer_2 2");
-      ad->connect("waveform_4 0 mixer_2 3");
+      //connect the oscillators to console 1
+      ad->connect("waveform_1 0 console_1 0");
+      ad->connect("waveform_2 0 console_1 1");
+      ad->connect("waveform_3 0 console_1 2");
+      ad->connect("waveform_4 0 console_1 3");
+      ad->connect("waveform_5 0 console_1 4");
+      ad->connect("waveform_6 0 console_1 5");
+      ad->connect("waveform_7 0 console_1 6");
+      ad->connect("waveform_8 0 console_1 7");
       
-      ad->connect("waveform_5 0 mixer_3 0");
-      ad->connect("waveform_6 0 mixer_3 1");
-      ad->connect("waveform_7 0 mixer_3 2");
-      ad->connect("waveform_8 0 mixer_3 3");
-      
-      ad->connect("waveform_9 0 mixer_4 0");
-      ad->connect("waveform_10 0 mixer_4 1");
-      ad->connect("waveform_11 0 mixer_4 2");
-      ad->connect("waveform_12 0 mixer_4 3");
-      
-      ad->connect("waveform_13 0 mixer_5 0");
-      ad->connect("waveform_14 0 mixer_5 1");
-      ad->connect("waveform_15 0 mixer_5 2");
-      ad->connect("waveform_16 0 mixer_5 3");
+      ad->connect("waveform_9 0 console_2 0");
+      ad->connect("waveform_10 0 console_2 1");
+      ad->connect("waveform_11 0 console_2 2");
+      ad->connect("waveform_12 0 console_2 3");
+      ad->connect("waveform_13 0 console_2 4");
+      ad->connect("waveform_14 0 console_2 5");
+      ad->connect("waveform_15 0 console_2 6");
+      ad->connect("waveform_16 0 console_2 7");
 
       //fft connections
       ad->connect("amp_2 0 biquad_2 0");
@@ -309,6 +320,16 @@ class MyAppExample:public AppBaseClass {
       ad->connect("amp_2 0 scope_1 0");
       //filtered bus mixer output -> scope ch2
       ad->connect("biquad_3 0 scope_1 1");
+
+      //delay connections
+      ad->connect("biquad_4 0 delay_1 0");
+      ad->connect("delay_1 0 mixer_2 0");
+      ad->connect("delay_1 1 mixer_2 1");
+      ad->connect("delay_1 2 mixer_2 2");
+      ad->connect("delay_1 3 mixer_2 3");
+
+      ad->connect("mixer_2 0 biquad_5 0");
+      ad->connect("biquad_5 0 mixer_6 3");
       AudioInterrupts();
       delay(10);
     }

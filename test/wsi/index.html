@@ -9,6 +9,7 @@
     <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
     
     <link href="/static/site/index.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
     
     
     
@@ -22,6 +23,7 @@
 
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 <script src="https://cdn.rawgit.com/fnando/sparkline/master/dist/sparkline.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -42,6 +44,7 @@
   <div class="container">
       <div class="hamburger">[REDACTED]</div>
       <div class="menubar">
+      <button class="button" id="cmd_showFlow">Flow</button>
       <button class="button" id="cmd_showAudio">Audio</button>
       <button class="button" id="cmd_showMemory">Memory</button>
       <button class="button" id="cmd_showSymbols">Symbols</button>
@@ -127,28 +130,39 @@ AA 220
         </div>
       
         <div class="fft2msg">
-        <div class="titlebar">Data Flow Graph</div>
-        <button class="button" id="df_orderby_type">Order By Type</button>
-        <button class="button" id="df_orderby_flow">Order By Flow</button>
         </div>
       
         <div class="fft2">
-        <canvas id="connections" width="1024" height="1024"></canvas>
         </div>
     </div>
     <div id="memory_container" class="graphs">
-    <form>
-    <button class="button" id="getRam2">Ram2 Snapshot</button><br><br><br>
-       <table id="memory_chunk_table" width="1280px" class="cell-border compact stripe">
-           <thead>
-                <tr>
-                    <th>addr</th>
-                    <th>chunk</th>
-                    <th>decode</th>
-               </tr>
-           </thead>
-       </table>
-    </form>
+        <form>
+            <div class="titlebar">Data Dictionary Editor</div>
+            <select id="listboxDataDict" name="listboxDataDict" size=10>  
+              <option> List item 1 </option>  
+              <option> List item 2 </option>  
+              <option> List item 3 </option>  
+              <option> List item N </option>  
+            </select><br>
+            <label for="write_dd">New Value:</label>
+            <input type="text" id="write_dd" name="write_dd" minlength="1" maxlength="8" size="10">
+            <button class="button" id="write_dd_button">Commit</button>
+            <br>
+            <label for="pickr">New Color</label><div id="pickr" class="pickr"></div>
+            <br><br>
+        </form><br>
+        <form>
+        <button class="button" id="getRam2">Ram2 Snapshot</button><br><br><br>
+           <table id="memory_chunk_table" width="1280px" class="cell-border compact stripe">
+               <thead>
+                    <tr>
+                        <th>addr</th>
+                        <th>chunk</th>
+                        <th>decode</th>
+                   </tr>
+               </thead>
+           </table>
+        </form>
     </div>
     
     <div id="symbols_container" class="graphs">
@@ -173,6 +187,16 @@ AA 220
             <canvas id="monitor_canvas" width="1224" height="500"></canvas>
         </div>
     </div>
+    
+    <div id="flow_container" class="graphs">
+        <div class="flowimg">
+            <div class="titlebar">Data Flow Graph</div>
+            <button class="button" id="df_orderby_type">Order By Type</button>
+            <button class="button" id="df_orderby_flow">Order By Flow</button>
+            <canvas id="connections" width="1200" height="1024"></canvas>
+        </div>
+    </div>
+    
     
 </div> 
 </body>

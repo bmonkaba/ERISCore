@@ -32,6 +32,7 @@ INCOMMING MESSAGES:
     STATS
     CQT_CFG     request a dump of the cqt bin configs
     GET_DD      request a dump of the data dictionary       
+    UPDATE_DD key val   set a key value 
 OUTPUT MESSAGES:
 
     CQT_H  (CQT BINS - High Range)
@@ -45,7 +46,7 @@ OUTPUT MESSAGES:
     GET_ERR (error response )
     ACON START (begin audio connection list)
     ACON END (end audio connection list)
-
+    RAM   JSON container
 */
 //
 

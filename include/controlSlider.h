@@ -41,13 +41,11 @@ class ControlSlider:public AppBaseClass {
         isDirty = true;
         if (isDirty){
             int16_t marker = w*((float)value/100.0);
-            //draw->drawFastVLine(marker,y,h,ILI9341_MAGENTA);
-            //draw->fillRoundRect(x,y,w,h,4,CL(12,0,20));
-            draw->fillRoundRect(x+1, y, marker+2, h,4, CL(36, 54, 84));
-            draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
-            draw->setTextColor(CL(74, 143, 255));
-            //draw->setCursor(x+(w/2),y+(h/2),true);
-            //draw->print(text);
+            draw->fillRoundRect(x+1, y, marker+2, h,4, am->data->read("UI_SLIDER_FILL_COLOR"));
+            draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_SLIDER_BORDER_COLOR"));
+            draw->setTextColor(am->data->read("UI_SLIDER_TEXT_COLOR"));
+            draw->setCursor(x+(w/2),y+(h/2),true);
+            draw->print(text);
             isDirty = false;
         }
     };

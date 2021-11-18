@@ -180,11 +180,11 @@ void AppSerialCommandInterface::streamHandler(){
             return;
         } else{
             //send file chunk
-            //Serial.flush();
             Serial.print(txBuffer);
             Serial.print(",");
             Serial.println(checksum(txBuffer));
-            //Serial.flush();
+            Serial.flush();
+            delayMicroseconds(5500);
             return;
         }             
     } 
@@ -216,6 +216,7 @@ void AppSerialCommandInterface::updateRT(){
             indexRxBuffer = 0;
             Serial.clear();
             Serial.clearReadError();
+            return;
         }
         if (bufferChr == endMarker){
             receivedChars[--indexRxBuffer] = '\0'; //remove the end marker and null terminate the string
@@ -317,6 +318,15 @@ void AppSerialCommandInterface::updateRT(){
                 AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->data->printDictionary();
+            }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
+                int32_t val;
+                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int*)&val);
+                if (total_read < 3){
+                    Serial.print(F("M WRONG PARAM COUNT"));
+                    Serial.println(total_read);
+                }else{
+                    am->data->update(param,val);
+                }
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
                 Serial.println(gWelcomeMessage);
             }else if (strncmp(cmd, "GET_RAM",sizeof(cmd)) == 0){ 
@@ -329,7 +339,6 @@ void AppSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
-                int avail;
                 delayMicroseconds(230000);
                 Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
                 strcpy(txBuffer," ");

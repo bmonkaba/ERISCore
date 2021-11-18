@@ -54,6 +54,12 @@ AudioDirector::AudioDirector(){
     addAudioStreamObj(new erisAudioAmplifier);
   }
 
+  addAudioStreamObj(new erisAudioMixer8);
+  addAudioStreamObj(new erisAudioMixer8);
+  addAudioStreamObj(new erisAudioMixer8);
+
+  addAudioStreamObj(new erisAudioEffectDelay);
+
   
   Serial.print(F("M AudioDirector::AudioDirector() objects: "));
   Serial.println(objCount);

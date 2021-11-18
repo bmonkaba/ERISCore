@@ -14,10 +14,8 @@
 #include "globaldefs.h"
 #include <string.h>
 #include "erisAudio.h"
-#include "eris_analyze_fft1024.h"
-#include "eris_analyze_scope.h"
 
-using namespace std;
+
 
 typedef struct{
   char src[MAX_NAME_LENGTH];

@@ -66,6 +66,73 @@ var com_state = "";
 var sdFiles = [];
 var fileStreamContainer = [];
 var sparks ={};
+
+
+
+
+
+const pickr = Pickr.create({
+    el: '.pickr',
+    theme: 'nano', // or 'monolith', or 'nano'
+    lockOpacity: true,
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 1)',
+        'rgba(156, 39, 176, 1)',
+        'rgba(103, 58, 183, 1)',
+        'rgba(63, 81, 181, 1)',
+        'rgba(33, 150, 243, 1)',
+        'rgba(3, 169, 244, 1)',
+        'rgba(0, 188, 212, 1)',
+        'rgba(0, 150, 136, 1)',
+        'rgba(76, 175, 80, 1)',
+        'rgba(139, 195, 74, 1)',
+        'rgba(205, 220, 57, 1)',
+        'rgba(255, 235, 59, 1)',
+        'rgba(255, 193, 7, 1)'
+    ],
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: false,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: false,
+            hsva: false,
+            cmyk: false,
+            input: true,
+            clear: false,
+            save: true
+        }
+    }
+});
+
+
+
+
+
+pickr.on('change', (color, source, instance) => {
+    c = color.toRGBA();
+    r = (c[0].toFixed()<< 8) & 0xF800;
+    g = (c[1].toFixed()<< 3) & 0x07E0;
+    b = (c[2].toFixed()>> 3) & 0x001F;
+    c = r + g + b;
+    //console.log('Event: "change"', c);
+    $("#write_dd").val(c);
+    
+})
+
+
+
+
+
+
 symbols_data_table = $("#symbols_table").DataTable({
             columns: [
                 { data: "name"},
@@ -660,12 +727,33 @@ $("#DD").click(function(ev){
   $("#received").empty();
 });
 
+$("#write_dd_button").click(function(ev){
+  ev.preventDefault();
+  var key = $('#listboxDataDict option:selected').val();
+  var value = $("#write_dd").val();
+  sendMessage({ 'data' : "UPDATE_DD " + key +" "+ value});
+  $("#received").empty();
+});
 
 
 
+
+
+
+
+
+$("#cmd_showFlow").click(function(ev){
+  ev.preventDefault();
+  $("#flow_container").show(0.35);
+  $("#graph_container").hide(0.15);
+  $("#memory_container").hide(0.15);
+  $("#monitor_container").hide(0.15);
+  $("#symbols_container").hide(0.15);
+});
 
 $("#cmd_showAudio").click(function(ev){
   ev.preventDefault();
+  $("#flow_container").hide(0.15);
   $("#graph_container").show(0.35);
   $("#memory_container").hide(0.15);
   $("#monitor_container").hide(0.15);
@@ -674,14 +762,20 @@ $("#cmd_showAudio").click(function(ev){
 
 $("#cmd_showMemory").click(function(ev){
   ev.preventDefault();
+  $("#flow_container").hide(0.15);
   $("#graph_container").hide(0.15);
   $("#memory_container").show(0.35);
   $("#monitor_container").hide(0.15);
   $("#symbols_container").hide(0.15);
+  $('#listboxDataDict').empty();
+  for (spark in sparks){
+     $('#listboxDataDict').append($('<option>').text(spark).val(spark));   
+  };
 });
 
 $("#cmd_showMonitor").click(function(ev){
   ev.preventDefault();
+  $("#flow_container").hide(0.15);
   $("#graph_container").hide(0.15);
   $("#memory_container").hide(0.15);
   $("#monitor_container").show(0.35);
@@ -690,6 +784,7 @@ $("#cmd_showMonitor").click(function(ev){
 
 $("#cmd_showSymbols").click(function(ev){
   ev.preventDefault();
+  $("#flow_container").hide(0.15);
   $("#graph_container").hide(0.15);
   $("#memory_container").hide(0.15);
   $("#monitor_container").hide(0.15);
@@ -786,30 +881,39 @@ function renderMonitor(){
     if (c.getContext){
         var ctx = c.getContext('2d');
         ctx.fillStyle = "#D74022";
-        ctx.fillStyle = "#000000";
-        ctx.fillStyle = "rgba(0,0,0,0.6)";
-        c.style.webkitFilter = "opacity(0.9);";
-        ctx.strokeStyle = "rgba(0, 4, 12, 1.0)";
+        ctx.strokeStyle = "#FF205020";
 
         for (const [key, value] of Object.entries(watch.APPS)) {
             if (key != 'root'){
+                /*
                 pixel_color[0]   = 255;
                 pixel_color[1]   = 0;
                 pixel_color[2]   = 255;
                 pixel_color[3]   = 80;
-                x = watch.APPS[key].update_loop_time_max/3;
+                x = watch.APPS[key].update_loop_time_max/10;
                 ctx.putImageData(pixel, x, c.height-2);
+                */
+                
+                x = watch.APPS[key].updateRT_call_period_max/20;
+                ctx.beginPath();
+                ctx.moveTo(x, c.height-1);
                 pixel_color[0]   = 0;
                 pixel_color[1]   = 255;
                 pixel_color[2]   = 255;
                 pixel_color[3]   = 80;
-                x = watch.APPS[key].updateRT_loop_time_max/3;
+                x2 = x + watch.APPS[key].updateRT_loop_time_max/20;
+                ctx.lineTo(x2, c.height-1);
+                ctx.stroke();
                 ctx.putImageData(pixel, x, c.height-2);
             }
         }
         //slide the image up
-        var imageData = ctx.getImageData(0, 0, c.width,c.height);
-        if (Math.random() > 0.01){
+        
+        if (Math.random() > 0.90){
+            ctx.fillStyle = "#000000";
+            ctx.strokeStyle = "#000000";
+            
+            var imageData = ctx.getImageData(0, 0, c.width,c.height);
             ctx.putImageData(imageData, 0, -1);
             //draw the new row
             ctx.beginPath();
@@ -822,7 +926,30 @@ function renderMonitor(){
 }
 
 
-function renderAudioBlocks(){
+function renderAudioBlocks(){    
+    //clear any existing nodes
+    lgraph.clear();
+    renderAudioBlocksByFlow();
+    //draw the connections
+    for (c in watch.AudioDirector.AudioConnectionPool){ //for each connection in the pool
+        //node_const.connect(0, node_watch, 0 );
+        if (watch.AudioDirector.AudioConnectionPool[(c).toString()].isConnected == 1){
+            source_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceName;
+            dest_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].destName;
+            
+            source_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceInstance;
+            dest_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            
+            watch.AudioDirector.AudioStreamObjPool[source_name].graph_node. 
+                connect(watch.AudioDirector.AudioConnectionPool[(c).toString()].sourcePort,
+                watch.AudioDirector.AudioStreamObjPool[dest_name].graph_node,
+                watch.AudioDirector.AudioConnectionPool[(c).toString()].destPort);
+        }
+    } 
+}
+
+
+function renderAudioBlocksByType(){
     var x = 0;
     var y = 0;
     var zonex = [0,20,620,620,1000,1400];
@@ -830,16 +957,13 @@ function renderAudioBlocks(){
     var zone_width = [400,400,400,820,1400,200];
     var zonex_gap = [90,90,90,90,90,90];
     var zoney = [0,300,50,300,300,0];
-    var zoney_gap = [75,125,125,125,125,125];
+    var zoney_gap = [75,125,125,200,125,125];
 
     var column_color = ["#213A55","#2F2A34","##18181F","#40474E","#551234","#371B32"];
     var zi = 0;
     var erist_test;
     
-    //clear any existing nodes
-    lgraph.clear();
-    
-    //draw the blocks
+    //draw the blocks - by type
     for (c in watch.AudioDirector.AudioStreamObjPool){ //for each component in the pool 
         erist_test = LiteGraph.createNode("basic/ErisAudio");
         inport = watch.AudioDirector.AudioStreamObjPool[c].inputs;
@@ -881,28 +1005,106 @@ function renderAudioBlocks(){
             zoney[zi] += zoney_gap[zi];
         } else zonex[zi] += zonex_gap[zi];
 
-        
-        
-        
         lgraph.add(erist_test);
         watch.AudioDirector.AudioStreamObjPool[c].graph_node = erist_test;
     };
-    //draw the connections
-    for (c in watch.AudioDirector.AudioConnectionPool){ //for each connection in the pool
-        //node_const.connect(0, node_watch, 0 );
-        if (watch.AudioDirector.AudioConnectionPool[(c).toString()].isConnected == 1){
-            source_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceName;
-            dest_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].destName;
-            
-            source_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceInstance;
-            dest_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
-            
-            watch.AudioDirector.AudioStreamObjPool[source_name].graph_node. 
-                connect(watch.AudioDirector.AudioConnectionPool[(c).toString()].sourcePort,
-                watch.AudioDirector.AudioStreamObjPool[dest_name].graph_node,
-                watch.AudioDirector.AudioConnectionPool[(c).toString()].destPort);
+
+}
+
+
+function renderAudioBlocksByFlow(){
+    var x = 0;
+    var y = 0;
+    var zonex = [0,20,620,620,1000,1400];
+    var zonex_start = [0,20,620,620,1000,1400];
+    var zone_width = [400,400,400,820,1400,200];
+    var zonex_gap = [90,90,90,90,90,90];
+    var zoney = [0,300,50,300,300,0];
+    var zoney_gap = [75,125,125,200,125,125];
+
+    var column_color = ["#213A55","#2F2A34","##18181F","#40474E","#551234","#371B32"];
+    var zi = 0;
+    var erist_test;
+    var rank =[];
+    var next_rank =[];
+    
+    //draw the blocks - by type
+    //first pass find the output (sink) blocks
+    for (obj in watch.AudioDirector.AudioStreamObjPool){ 
+        //for each component in the pool 
+        zi = -1;
+        switch(watch.AudioDirector.AudioStreamObjPool[obj].outputs){    
+            case 0:    
+                erist_test = LiteGraph.createNode("basic/ErisAudio");
+                inport = watch.AudioDirector.AudioStreamObjPool[obj].inputs;
+                for (i = 0; i < inport;i+=1){
+                    erist_test.addInput(i.toString(),"number");
+                };
+                outport = watch.AudioDirector.AudioStreamObjPool[obj].outputs;
+                for (i = 0; i < outport;i+=1){
+                    erist_test.addOutput(i.toString(),"number");
+                };
+                erist_test.title = obj;
+                zi = 5;
+                rank.push(obj);
+                break;        
         }
-    } 
+        if(zi>=0){
+            erist_test.bgcolor = column_color[zi];
+            erist_test.pos = [zonex[zi],zoney[zi]];
+            zonex[zi] += zonex_gap[zi];
+            
+            if (zonex[zi] > zone_width[zi]){
+                zonex[zi] = zonex_start[zi];
+                zoney[zi] += zoney_gap[zi];
+            } else zonex[zi] += zonex_gap[zi];
+    
+            lgraph.add(erist_test);
+            watch.AudioDirector.AudioStreamObjPool[obj].graph_node = erist_test;
+            watch.AudioDirector.AudioStreamObjPool[obj].placed = 1;
+        }
+ 
+    }
+    
+    x=1400;
+    while(rank.length > 0){
+        //search all connections for destination blocks pointing to the current rank
+        y = 0;
+        x -= 400;
+        for (c in watch.AudioDirector.AudioConnectionPool){
+             //for each connection in the pool
+             i = watch.AudioDirector.AudioConnectionPool[(c).toString()].destName + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            if (rank.includes(i)){
+                s = watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceName + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceInstance;
+                next_rank.push(s);
+            }
+        }
+    
+        found = 0;
+        for (name of next_rank){
+            if (typeof watch.AudioDirector.AudioStreamObjPool[name].graph_node == 'undefined') {
+                found = 1;
+                erist_test = LiteGraph.createNode("basic/ErisAudio");
+                inport = watch.AudioDirector.AudioStreamObjPool[name].inputs;
+                for (i = 0; i < inport;i+=1){
+                    erist_test.addInput(i.toString(),"number");
+                };
+                outport = watch.AudioDirector.AudioStreamObjPool[name].outputs;
+                for (i = 0; i < outport;i+=1){
+                    erist_test.addOutput(i.toString(),"number");
+                };
+                erist_test.title = name;
+                erist_test.pos = [x,y];
+                y+= 50 + ((inport + outport) * 40);
+                lgraph.add(erist_test);
+                watch.AudioDirector.AudioStreamObjPool[name].graph_node = erist_test;
+            }
+        }
+        
+        rank = next_rank.map((x) => x);
+        if (found ==0) rank.length = 0;
+        next_rank.length = 0;
+    }
 }
 
 

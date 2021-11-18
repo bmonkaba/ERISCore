@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 14
+#define ANIMATION_CHUNKS_PER_FRAME 8
 
 static volatile bool dmabusy;
 
@@ -35,7 +35,7 @@ bool Animation::getNextFrameChunk(){
           //Serial.println("M Animation::getNextFrameChunk(): OK");    
           return true; 
       }else{
-          last_frame = frame;
+          last_frame = frame - 1;
           frame = 1;
           sprintf(filename,"%03u.ile",frame);
           if(pSD->exists(filename)){

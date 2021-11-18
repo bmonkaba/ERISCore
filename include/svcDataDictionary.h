@@ -23,7 +23,7 @@
 #define _svcDataDictionary_
 
 #define DATADICT_KEYVALUE_PAIRS 42
-#define DATADICT_MAX_KEY_LEN 32
+#define DATADICT_MAX_KEY_LEN 48
 
 enum svcDataDictionaryRecordType{
     DDRT_READ,

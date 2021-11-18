@@ -21,8 +21,6 @@
 #ifndef _AppManager_
 #define _AppManager_
 
-//test variable (serial client remote modification)
-extern short g_octave_down_shift;
 
 enum loopState{
   redraw_wait,

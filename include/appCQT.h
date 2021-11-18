@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 431
+#define TX_PERIOD 731
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 167
+#define TX_CQT_PERIOD 567
 
 // Constant Q Transform App
 //
@@ -57,10 +57,6 @@ class AppCQT:public AppBaseClass {
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
-
-      //set global val
-      g_octave_down_shift = 0;
-
       AudioNoInterrupts();
       for (int16_t i=1; i < osc_bank_size+1; i++){
         sprintf(buffer, "waveform_%d", i);
@@ -70,21 +66,19 @@ class AppCQT:public AppBaseClass {
         osc[i]->begin(0.0, 0, WAVEFORM_SINE);
       }
       AudioInterrupts();
-
       //take care to downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_1"));
       fft2 = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_2"));
       fft2->toggleActiveRange(); //switch to low range
-
       //zero out the data variables
       memset(&fftRVal,0,sizeof(FFTReadRange));
       memset(&oscBank,0,sizeof(FFTReadRange)* OSC_BANK_SIZE);
-
+      //init the data dictionary value(s)
+      am->data->create("OCTAVE_DOWN_INTERVAL",0);
       //init the QCT bins by loading the frequency ranges for each music note using a look up table
       float flow;
       float fhigh;
       highRange = CQT_HIGHRANGE_SPLIT_AT_BIN;
-
       for (uint16_t i=0;i < NOTE_ARRAY_LENGTH;i++){
         flow = 0;
         fhigh = 0;
@@ -100,7 +94,6 @@ class AppCQT:public AppBaseClass {
         //zero out the destination within the array
         memset(&fftHighRR[i],0,sizeof(FFTReadRange));
         memset(&fftLowRR[i],0,sizeof(FFTReadRange));
-        
         //write the ranges to the bins, split between the high and low range fft
         if (i >= highRange){
           fftHighRR[i].cqtBin =i;
@@ -160,7 +153,6 @@ class AppCQT:public AppBaseClass {
     void update(){
       if (!isActive) return;
       update_calls++;
-      
       #ifdef TX_PERIODIC_FFT
         if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 4000){
           fft_buffer_serial_transmit_elapsed = 0;
@@ -191,7 +183,6 @@ class AppCQT:public AppBaseClass {
           if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
           if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
         }
-      
         Serial.printf(F("CQT_EOF \n"));
         //Serial.flush();
       }
@@ -313,22 +304,19 @@ class AppCQT:public AppBaseClass {
     void updateOscillatorBank(bool low_range_switch){
       bool found;
       float floor;
-      floor = 0.000001;
+      floor = 0.001;
+      float peak_read=-1000;
+      float peak;
       
       //sort the FFTReadRange array by cqt bin number
       if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
       else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-
       //read the fft ranges, which stores the results into the FFTReadRange array
-      float peak_read=-1000;
-      uint16_t peak_bin=0;
-      float peak;
       for (uint16_t i=0; i < NOTE_ARRAY_LENGTH; i++){
         if (low_range_switch) peak = fft2->read(&fftLowRR[i]);
         else peak = fft->read(&fftHighRR[i]);
         if (peak>peak_read){
             peak_read = peak;
-            peak_bin = i;
         }
       }
       //update the oscillator bank with the current values
@@ -337,11 +325,13 @@ class AppCQT:public AppBaseClass {
           oscBank[i] = fftHighRR[oscBank[i].cqtBin];
         }else oscBank[i] = fftLowRR[oscBank[i].cqtBin];
         //if values are below a threshold then clear the osc
-        if(oscBank[i].transientValue == 0 && oscBank[i].avgValueSlow < floor){
+        if(oscBank[i].transientValue < 0.001 && oscBank[i].avgValueSlow < floor){
+          fftLowRR[0].avgValueFast = 0;
+          fftLowRR[0].avgValueSlow = 0;
+          fftLowRR[0].transientValue = 0;
           oscBank[i] = fftLowRR[0];
         }
       }
-
       //sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -359,7 +349,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (oscBank[k].avgValueSlow < fftLowRR[i].avgValueSlow){
+              if (((oscBank[k].avgValueFast * 1.2) < fftLowRR[i].avgValueFast) && (fftLowRR[i].transientValue > (oscBank[k].transientValue * 1.2))){
                 //fftLowRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -379,7 +369,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (oscBank[k].avgValueSlow < (fftHighRR[i].avgValueSlow * 0.3)){
+              if (((oscBank[k].avgValueFast * 1.2) < fftHighRR[i].avgValueFast) && (fftHighRR[i].transientValue > (oscBank[k].transientValue * 1.2))){
                 //fftHighRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -397,13 +387,8 @@ class AppCQT:public AppBaseClass {
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
 
-      //take the phase from the  dominant frequency component
+      //take the phase from the dominant frequency component
       float dominantPhase = 0;
-      /*
-      if (fftLowRR[0].avgValueSlow > fftHighRR[0].avgValueSlow){
-        dominantPhase = fftLowRR[0].phase;
-      } else dominantPhase = fftHighRR[0].phase;
-      */
       if (low_range_switch){
           dominantPhase = fftLowRR[0].phase;
       } else dominantPhase = fftHighRR[0].phase;;
@@ -415,18 +400,17 @@ class AppCQT:public AppBaseClass {
         float64_t phase_aligner;    
         if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
-            f = oscBank[i].estimatedFrequency;           
-            a = oscBank[i].peakValue;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            f = oscBank[i].peakFrequency;           
+            a = oscBank[i].avgValueFast;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
-              f = (pll_f * f * octave_down[g_octave_down_shift]);
+              f = (pll_f * f * octave_down[am->data->read("OCTAVE_DOWN_INTERVAL")]);
               if (f < 20) f = 20;
               if (f > 20000) f = 20000;
-              
               osc[i]->frequency(f);
               osc[i]->amplitude(log1p(a));
               osc[i]->phase(phase_aligner);
