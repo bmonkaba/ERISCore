@@ -29,8 +29,8 @@ class SerialProcess():
         while True:
             if not self.input_queue.empty():
                 d = self.input_queue.get()
-                print ("writing to serial port: "+ d)
-                print("<" + d[:4])
+                #print ("writing to serial port: "+ d)
+                #print("< " + d[:78])
                 self.writeSerial(d)         
             
             d = self.readSerial()
@@ -39,7 +39,8 @@ class SerialProcess():
                    d = d.decode()
                 except:
                    d = "?" * len(d) 
-                #print(">" + d[:40])
+                if (d.find("M ") >= 0): 
+                    print("> " + d[:78].strip('\n'))
                 self.output_queue.put(d)
                 d = self.readSerial()
 

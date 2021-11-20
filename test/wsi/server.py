@@ -34,10 +34,10 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print ('new connection')
         clients.append(self)
-        self.write_message("M connected")
+        self.write_message("M connected to the serial bridge")
  
     def on_message(self, message):
-        print ('tornado received from client: %s' % json.dumps(message))
+        #print ('tornado received from client: %s' % json.dumps(message))
         #self.write_message('ack')
         input_queue.put(message)
  

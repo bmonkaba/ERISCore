@@ -361,7 +361,10 @@ bool AudioDirector::disconnect(char* to,uint8_t to_port){
 }
 
 bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
-  if (NULL==destination) return false;
+  if (NULL==destination){
+    Serial.println(F("M AudioDirector::disconnect: ERROR destination is NULL"));
+    return false;
+  }
   //find the connection within the pool
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
@@ -379,7 +382,7 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
   Serial.println(destination->shortName);
   Serial.println(destination->instance);
   //Serial.flush();
-  return false; //no empty connection slots
+  return false; 
 }
 
 bool AudioDirector::disconnect(const char* connectionString){

@@ -63,15 +63,20 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,18400);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_5"));
-      filter->setNotch(0,475,3.0);
+      filter->setNotch(0,475,7.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(0.38);
-      reverb->damping(0.8);
-
-      erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      mix->gain(0,0.75);
-      mix->gain(1,0.25);
+      am->data->create("REVERB_ROOM_SIZE",(float32_t)0.38);
+      am->data->create("REVERB_DAMPING",(float32_t)0.8);
+      reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
+      reverb->damping(am->data->readf("REVERB_DAMPING"));
+      erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
+      mix->gain(3,0.40);
+      
+      mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
+      mix->gain(0,0.40);
+      mix->gain(1,0.40);
+      mix->gain(3,0.40);
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay_1"));
       delay->delay(0,30);
@@ -79,10 +84,10 @@ class MyAppExample:public AppBaseClass {
       delay->delay(2,540);
       delay->delay(3,600);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.5);
-      mix->gain(1,0.1);
-      mix->gain(2,0.05);
-      mix->gain(3,0.01);
+      mix->gain(0,0.15);
+      mix->gain(1,0.25);
+      mix->gain(2,0.30);
+      mix->gain(3,0.60);
       
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);
@@ -119,31 +124,13 @@ class MyAppExample:public AppBaseClass {
         bx+=69;
       }
 
-      AudioProcessorUsageMaxReset();
-      AudioMemoryUsageMaxReset();      
+        
     } 
     //define event handlers
     void update(){
-      //Serial.println("MyApp:update");
-      //float fps = (float)(micros()-t_lastupdate)/1000000.0;
-
-      draw->fillRect(0, 0, 320, 19, 0);
-      draw->setCursor(5,5);
-      draw->print(F("CPU: "));
-      draw->print(AudioProcessorUsageMax());
-      draw->print(F(" ("));
-      draw->print(AudioProcessorUsage());
-      draw->print(F(")"));
-      draw->setCursor(130,5);
-      draw->print(F("ABMEM: "));
-      draw->print(AudioMemoryUsageMax());
-      draw->print(F(" ("));
-      draw->print(AudioMemoryUsage());
-      draw->print(F(")"));
-      draw->setCursor(260,5);
-      draw->print(F("CON: "));
-      draw->print(ad->connectionCount());
-      t_lastupdate = micros();
+      erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
+      reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
+      reverb->damping(am->data->readf("REVERB_DAMPING"));
     }
 
     void onTouch(uint16_t t_x, uint16_t t_y){
@@ -322,7 +309,7 @@ class MyAppExample:public AppBaseClass {
       ad->connect("biquad_3 0 scope_1 1");
 
       //delay connections
-      ad->connect("biquad_4 0 delay_1 0");
+      ad->connect("freeverb_1 0 delay_1 0");
       ad->connect("delay_1 0 mixer_2 0");
       ad->connect("delay_1 1 mixer_2 1");
       ad->connect("delay_1 2 mixer_2 2");
@@ -330,6 +317,8 @@ class MyAppExample:public AppBaseClass {
 
       ad->connect("mixer_2 0 biquad_5 0");
       ad->connect("biquad_5 0 mixer_6 3");
+
+      ad->connect("console_2 0 mixer_1 3");
       AudioInterrupts();
       delay(10);
     }

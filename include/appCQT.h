@@ -24,7 +24,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 16
+#define OSC_BANK_SIZE 14
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 731
+#define TX_PERIOD 280
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 567
+#define TX_CQT_PERIOD 250
 
 // Constant Q Transform App
 //
@@ -74,7 +74,7 @@ class AppCQT:public AppBaseClass {
       memset(&fftRVal,0,sizeof(FFTReadRange));
       memset(&oscBank,0,sizeof(FFTReadRange)* OSC_BANK_SIZE);
       //init the data dictionary value(s)
-      am->data->create("OCTAVE_DOWN_INTERVAL",0);
+      am->data->create("OCTAVE_DOWN_INTERVAL",(int32_t)0);
       //init the QCT bins by loading the frequency ranges for each music note using a look up table
       float flow;
       float fhigh;
@@ -154,13 +154,13 @@ class AppCQT:public AppBaseClass {
       if (!isActive) return;
       update_calls++;
       #ifdef TX_PERIODIC_FFT
-        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 4000){
+        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5000){
           fft_buffer_serial_transmit_elapsed = 0;
           if(fft_buffer_select_for_serial_transmit < 2){
             Serial.printf("S 512"); 
             for(int i = 0; i < 512; i+=1){
               //transmitt low range then high range
-              if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
+              //if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
               if(fft_buffer_select_for_serial_transmit == 0) Serial.printf(F(",%d"),(int)(100.0*fft2->output[i])); 
               if(fft_buffer_select_for_serial_transmit == 1) Serial.printf(F(",%d"),(int)(100.0*fft->output[i]));
               //if ((i % 127)==0) Serial.flush();
@@ -176,14 +176,14 @@ class AppCQT:public AppBaseClass {
           //Serial.flush();
         } 
       #endif
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 2000){
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5000){
         cqt_serial_transmit_elapsed = 0;   
         
         for (uint16_t i=0;i < osc_bank_size;i++){
           if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
           if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
         }
-        Serial.printf(F("CQT_EOF \n"));
+        Serial.printf(F("CQT_EOF\n"));
         //Serial.flush();
       }
       
@@ -304,7 +304,9 @@ class AppCQT:public AppBaseClass {
     void updateOscillatorBank(bool low_range_switch){
       bool found;
       float floor;
-      floor = 0.001;
+      float trigger;
+      trigger = 0.001;
+      floor = 0.0001;
       float peak_read=-1000;
       float peak;
       
@@ -321,11 +323,12 @@ class AppCQT:public AppBaseClass {
       }
       //update the oscillator bank with the current values
       for (uint16_t i=0; i < osc_bank_size; i++){
-        if (oscBank[i].cqtBin > highRange){
-          oscBank[i] = fftHighRR[oscBank[i].cqtBin];
-        }else oscBank[i] = fftLowRR[oscBank[i].cqtBin];
+        //if (oscBank[i].cqtBin >= highRange){
+        //  if (!low_range_switch) oscBank[i] = fftHighRR[oscBank[i].cqtBin];
+        //}else if (low_range_switch)oscBank[i] = fftLowRR[oscBank[i].cqtBin];
+        
         //if values are below a threshold then clear the osc
-        if(oscBank[i].transientValue < 0.001 && oscBank[i].avgValueSlow < floor){
+        if(oscBank[i].avgValueSlow < floor){
           fftLowRR[0].avgValueFast = 0;
           fftLowRR[0].avgValueSlow = 0;
           fftLowRR[0].transientValue = 0;
@@ -349,7 +352,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (((oscBank[k].avgValueFast * 1.2) < fftLowRR[i].avgValueFast) && (fftLowRR[i].transientValue > (oscBank[k].transientValue * 1.2))){
+              if (((trigger) < fftLowRR[i].avgValueFast) && ((oscBank[k].avgValueFast ) < fftLowRR[i].avgValueFast) && (fftLowRR[i].transientValue > (oscBank[k].transientValue))){
                 //fftLowRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -369,7 +372,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (((oscBank[k].avgValueFast * 1.2) < fftHighRR[i].avgValueFast) && (fftHighRR[i].transientValue > (oscBank[k].transientValue * 1.2))){
+              if (((trigger) < fftHighRR[i].avgValueFast) && ((oscBank[k].avgValueFast) < fftHighRR[i].avgValueFast) && (fftHighRR[i].transientValue > (oscBank[k].transientValue))){
                 //fftHighRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -398,7 +401,7 @@ class AppCQT:public AppBaseClass {
       for(int16_t i=0; i < osc_bank_size; i++){
         float a,f;
         float64_t phase_aligner;    
-        if( ( (oscBank[i].cqtBin < highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin >= highRange) && (low_range_switch == false))){
+        if( ( (oscBank[i].cqtBin <= highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin > highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
             a = oscBank[i].avgValueFast;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
@@ -412,9 +415,9 @@ class AppCQT:public AppBaseClass {
               if (f < 20) f = 20;
               if (f > 20000) f = 20000;
               osc[i]->frequency(f);
-              osc[i]->amplitude(log1p(a));
+              osc[i]->amplitude(a);
               osc[i]->phase(phase_aligner);
-            } else osc[i]->amplitude(0);
+            }; //else osc[i]->amplitude(0.0);
           }
         }
       }

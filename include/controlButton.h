@@ -50,7 +50,7 @@ class ControlButton:public AppBaseClass {
                 time_active = 0;
         }
         if (!isDirty) return;
-        draw->fillRoundRect(x,y,w,h/2,3,am->data->read("UI_BUTTON_FILL_COLOR"));
+        draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
         draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
         if (show_active){
             draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); //ILI9341_GREENYELLOW

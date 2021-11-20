@@ -41,7 +41,8 @@ class ControlSlider:public AppBaseClass {
         isDirty = true;
         if (isDirty){
             int16_t marker = w*((float)value/100.0);
-            draw->fillRoundRect(x+1, y, marker+2, h,4, am->data->read("UI_SLIDER_FILL_COLOR"));
+            draw->fillRoundRect(x+1, y, marker+2, h/2 + 4,4, am->data->read("UI_SLIDER_FILL_COLOR"));
+            draw->fillRoundRect(x+1, y+ h/2, marker+2, h/2,4, am->data->read("UI_SLIDER_SHADE_COLOR"));
             draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_SLIDER_BORDER_COLOR"));
             draw->setTextColor(am->data->read("UI_SLIDER_TEXT_COLOR"));
             draw->setCursor(x+(w/2),y+(h/2),true);

@@ -297,14 +297,18 @@ void AppSerialCommandInterface::updateRT(){
                 } else{
                     ad->connect(param,source_port,param2,dest_port);
                 }
-            } else if (strncmp(cmd, "M DISCONNECT",sizeof(cmd)) == 0){
+            } else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
                 total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
                     Serial.print(F("M DISCONNECT WRONG PARAM COUNT "));
                     Serial.println(receivedChars);
                 } else{
-                    ad->disconnect(param,dest_port);
+                    if (ad->disconnect(param,dest_port)){
+                        Serial.printf(F("M DISCONNECTED %s %d\n"),param,dest_port);
+                    }else{
+                        Serial.printf(F("M FAILED DISCONNECT OF %s %d\n"),param,dest_port);
+                    }
                 }
             } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) AppManager::getInstance()->getActiveApp()->MessageHandler(this,param);
@@ -320,12 +324,17 @@ void AppSerialCommandInterface::updateRT(){
                 AppManager::getInstance()->data->printDictionary();
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
-                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int*)&val);
+                float32_t fval;
+                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int32_t*)&val);
                 if (total_read < 3){
-                    Serial.print(F("M WRONG PARAM COUNT"));
-                    Serial.println(total_read);
-                }else{
-                    am->data->update(param,val);
+                    total_read = sscanf(receivedChars, "%s %s %f" , cmd, param,(float32_t*)&fval);
+                    if (total_read < 3){
+                        Serial.print(F("M WRONG PARAM COUNT"));
+                        Serial.println(total_read);
+                    } else am->data->update(param,fval); 
+                }else if(!am->data->update(param,val)){
+                    total_read = sscanf(receivedChars, "%s %s %f" , cmd, param,(float32_t*)&fval);
+                    am->data->update(param,fval);
                 }
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
                 Serial.println(gWelcomeMessage);

@@ -79,7 +79,7 @@ public:
 	  sample_block(0), outputflag(false) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
-		window_f32 = AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
+		window_f32 = AudioWindowHamming1024_f32;//AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
 		window = NULL;
 		#else
 		arm_cfft_radix4_init_q15(&fft_inst, 1024, 0, 1);

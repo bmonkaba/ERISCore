@@ -29,7 +29,7 @@ SvcDataDictionary _data;
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
  * 
  */
-AppManager::AppManager(){
+AppManager:: AppManager(){
   data = &_data;
   root = 0;
   activeID = 0;
@@ -73,14 +73,20 @@ AppManager::AppManager(){
   //enable cpu temp monitoring
   tempmon_init();
   //set the default template colors for the gui
-  data->create("UI_BUTTON_FILL_COLOR",ILI9341_PINK);
-  data->create("UI_BUTTON_SHADE_COLOR",ILI9341_RED);
-  data->create("UI_BUTTON_ACTIVE_BORDER_COLOR",ILI9341_GREENYELLOW);
-  data->create("UI_BUTTON_INACTIVE_BORDER_COLOR",ILI9341_MAGENTA);
-  data->update("UI_BUTTON_TEXT_COLOR",ILI9341_PURPLE);
-  data->update("UI_SLIDER_BORDER_COLOR",ILI9341_GREENYELLOW);
-  data->update("UI_SLIDER_FILL_COLOR",ILI9341_ORANGE);
-  data->update("UI_SLIDER_TEXT_COLOR",ILI9341_YELLOW);
+  data->create("UI_BUTTON_FILL_COLOR",(int32_t)76);
+  data->create("UI_BUTTON_SHADE_COLOR",(int32_t)37);
+  data->create("UI_BUTTON_ACTIVE_BORDER_COLOR",(int32_t)23254);
+  data->create("UI_BUTTON_INACTIVE_BORDER_COLOR",(int32_t)23244);
+  data->create("UI_BUTTON_TEXT_COLOR",(int32_t)50713);
+  data->create("UI_SLIDER_BORDER_COLOR",(int32_t)44374);
+  data->create("UI_SLIDER_SHADE_COLOR",(int32_t)44344);
+  data->create("UI_SLIDER_FILL_COLOR",(int32_t)1530);
+  data->create("UI_SLIDER_TEXT_COLOR",(int32_t)39222);
+
+  data->create("AudioProcessorUsageMax",(float32_t)AudioProcessorUsageMax());
+  data->create("AudioProcessorUsage",(float32_t)AudioProcessorUsage());
+  data->create("AudioMemoryUsageMax",(int32_t)AudioMemoryUsageMax());
+  data->create("AudioMemoryUsage",(int32_t)AudioMemoryUsage());
 
   Serial.println(F("M AppManager: Contructor complete"));
   #ifdef ENABLE_ASYNC_SCREEN_UPDATES
@@ -125,14 +131,14 @@ void AppManager::update(){
       case redraw_background:
         app_time=0;
         if (!draw.busy()){
-            data->update("RENDER",0);
+            data->update("RENDER",(int32_t)0);
           if (animated_wallpaper.getNextFrameChunk()){
               draw.bltSDAnimationFullScreen(&animated_wallpaper);
-              data->update("AM_REDRAW_BG",app_time);
+              data->update("AM_REDRAW_BG",(int32_t)app_time);
           } else Serial.println("M bad chunk");
         } else Serial.println("M draw busy");
         if ((data->read("RENDER") == 0) && animated_wallpaper.isFrameComplete()){
-          data->update("RENDER",1);
+          data->update("RENDER",(int32_t)1);
           state = redraw_objects;
         }
         break;
@@ -146,12 +152,18 @@ void AppManager::update(){
           else state = redraw_background;
         };
         //note: this is  a good place for application manager housekeeping tasks where screen access is not required
+        data->update("AudioProcessorUsageMax",(float32_t)AudioProcessorUsageMax());
+        float32_t cpu;
+        cpu = AudioProcessorUsage();
+        data->update("AudioProcessorUsage",(float32_t)cpu);
+        data->update("AudioMemoryUsageMax",(int32_t)AudioMemoryUsageMax());
+        data->update("AudioMemoryUsage",(int32_t)AudioMemoryUsage());
         break;
 
       case redraw_render:
         app_time=0;      
-        data->update("RENDER_PERIOD",drt);
-        data->update("RENDER",4);
+        data->update("RENDER_PERIOD",(int32_t)drt);
+        data->update("RENDER",(int32_t)4);
         data->increment("RENDER_FRAME");
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         state = redraw_wait;
@@ -174,7 +186,7 @@ void AppManager::update(){
               node=node->nextAppicationNode;//check next node
             }while(node !=NULL);
         };
-        data->update("RENDER",2);
+        data->update("RENDER",(int32_t)2);
         data->increment("UPDATE_CALLS");
         state = redraw_popup;
         break;
@@ -189,7 +201,7 @@ void AppManager::update(){
             node->update();
           }
         }
-        data->update("RENDER",3);
+        data->update("RENDER",(int32_t)3);
         state = redraw_render;     
         break;
     }
@@ -218,10 +230,10 @@ void AppManager::update(){
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //trigger any events and then call the update function for this 'active' app or child node
           if (update_analog){
-            data->update("AN1",analog.readAN1());
-            data->update("AN2",analog.readAN2());
-            data->update("AN3",analog.readAN3());
-            data->update("AN4",analog.readAN4());
+            data->update("AN1",(int32_t)analog.readAN1());
+            data->update("AN2",(int32_t)analog.readAN2());
+            data->update("AN3",(int32_t)analog.readAN3());
+            data->update("AN4",(int32_t)analog.readAN4());
             
             node->onAnalog1(analog.readAN1(),analog.freadAN1());
             node->onAnalog2(analog.readAN2(),analog.freadAN2());
@@ -259,7 +271,7 @@ void AppManager::update(){
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
-      data->update("LOOP_TIME",cycle_time_max);
+      data->update("LOOP_TIME",(int32_t)cycle_time_max);
       //data->update("SERIAL_AVAIL",Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
@@ -268,10 +280,12 @@ void AppManager::update(){
       memset(htop,0x5A,1000);
       heapTop = (uint32_t) htop;
       free(htop);
-      data->update("HEAP_FREE",0x20280000 - heapTop);
-      data->update("LOCAL_MEM",0x2007F000 - (uint32_t)(&heapTop));
+      data->update("HEAP_FREE",(int32_t)(0x20280000 - heapTop));
+      data->update("LOCAL_MEM",(int32_t)(0x2007F000 - (uint32_t)(&heapTop)));
       heapTop = 0;
-      data->update("CPU_TEMP",(uint32_t)(1000.0 * tempmonGetTemp()));
+      data->update("CPU_TEMP",(float32_t)tempmonGetTemp());
+      AudioProcessorUsageMaxReset();
+      AudioMemoryUsageMaxReset();    
     }
 };
 /**

@@ -3,7 +3,7 @@
 const regex = new RegExp(/\r?\n|\r/, 'g');
 var data_dict = {};
 var file_dict = {};
-
+var osc_array = [];
 var watch ={};
 var symbols =[];
 var ram ={"RAM1":{},"RAM2":{}};
@@ -330,6 +330,12 @@ socket.onmessage = function (message) {
           break;
       case "CQT_EOF":
             osi = 0;
+            $("#cqtosc").empty();
+            for (osc in osc_array){
+                $("#cqtosc").append(osc + ": " + osc_array[osc]);
+                $("#cqtosc").append("<br>");
+            }
+            osc_array = [];
             frame_count = frame_count + 1;
             var imageData = ctx.getImageData(1, 1, canvas.width,canvas.height-1);
             var data = imageData.data;
@@ -374,13 +380,13 @@ socket.onmessage = function (message) {
             //received.append(message.data.replaceAll(",","\t"));
            // received.append($('<br/>'));
             cqt = res[1].split(",");
-            
+            osc_array.push(res[1]);
             g = 90;       
             if(0==display_note%2) g= 30;
 
             //cqt view
             ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseFloat(cqt[5]) * 200).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height*10.0* parseFloat(cqt[5])), 4, canvas.height);
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
             
             //osc view
             //ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";    
@@ -390,7 +396,7 @@ socket.onmessage = function (message) {
             
             if (frame_count%20) break; 
             ctx.fillStyle = "#e740FF";
-            ctx.font = "14px Arial";
+            ctx.font = "8px Arial";
             ctx.strokeStyle = "#000000";
             ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 14);
             ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 16);
@@ -407,8 +413,8 @@ socket.onmessage = function (message) {
             if(0==display_note%2) g= 10;
             
             //cqt view
-            ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[6]) * 200).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height*10.0*parseFloat(cqt[5])), 4, canvas.height);
+            ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[6]) * 20).toString() + ", 1)";    
+            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
 
             //osc view
             ctx.fillStyle = "rgba( "+ (parseFloat(cqt[5]) * 4000).toString() +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[4]) * 8000).toString()  + ", 1)";    
@@ -447,9 +453,9 @@ socket.onmessage = function (message) {
               destinationCtx.putImageData(imageData, 0, 0);
           } else{
               for (var i = 1; i <= parseInt(s[0]);i++){  
-                  ctx.lineTo(si, canvas.height - (parseInt(s[i])-2));
+                  ctx.lineTo(si, canvas.height - (parseInt(s[i])-2)/10);
                   ctx.stroke();
-                  ctx.fillRect(si, canvas.height - (parseInt(s[i])), 1, parseInt(s[i]));
+                  ctx.fillRect(si, canvas.height - (parseInt(s[i]))/10, 1, parseInt(s[i]));
                   si += 1;
               } 
           }
@@ -568,7 +574,7 @@ socket.onmessage = function (message) {
                   sparks[key] = new Array(1024);
                   sparks[key].fill(0);
               }
-              d = parseInt(data_dict[key]);              
+              d = parseFloat(data_dict[key]);              
               if (isNaN(d)){
                   console.log(key);
                   data_dict[key] = 0;
@@ -677,7 +683,7 @@ $("#cmd_send").click(function(ev){
   var cmd = $('#cmd_value').val();
   sendMessage({ 'data' : cmd});
   $('#cmd_value').val("");
-  $("#received").empty();
+  //$("#received").empty();
 });
 
 $('#clear').click(function(){
@@ -1095,7 +1101,7 @@ function renderAudioBlocksByFlow(){
                 };
                 erist_test.title = name;
                 erist_test.pos = [x,y];
-                y+= 50 + ((inport + outport) * 40);
+                y+= 50 + ((inport + outport) * 20);
                 lgraph.add(erist_test);
                 watch.AudioDirector.AudioStreamObjPool[name].graph_node = erist_test;
             }
