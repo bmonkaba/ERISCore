@@ -13,7 +13,7 @@ import threading
 multiprocessing.set_start_method('spawn')
 
 import serialworker
-import json
+
  
 define("port", default=8080, help="run on the given port", type=int)
  
@@ -47,10 +47,11 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 
 ## check the queue for pending messages, and rely that to all connected clients
 def checkQueue():
+    message = ""
     while not output_queue.empty():
-        message = output_queue.get()
-        for c in clients:
-            c.write_message(message)
+        message += output_queue.get()
+    for c in clients:
+        c.write_message(message)
 
 if __name__ == '__main__':
     print("Eris Audio System Test Tool Web Server")
@@ -81,7 +82,7 @@ if __name__ == '__main__':
 
     mainLoop = tornado.ioloop.IOLoop.instance()
     ## adjust the scheduler_interval according to the frames sent by the serial port
-    scheduler_interval = 20
+    scheduler_interval = 1
     scheduler = tornado.ioloop.PeriodicCallback(checkQueue, scheduler_interval)
     scheduler.start()
     #s_scheduler = tornado.ioloop.PeriodicCallback(sp.run, scheduler_interval)

@@ -49,6 +49,9 @@ OUTPUT MESSAGES:
 //
 extern SdFs sd;
 
+char* token;
+const char newline = '\n';
+
 const char* gWelcomeMessage = 
 "M \n" 
 "M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n"
@@ -95,30 +98,80 @@ uint16_t AppSerialCommandInterface::checksum(const char *msg){
     return csum;
 }
 
+void replaceAll(char * str, char oldChar, char newChar)
+{
+    int i = 0;
+    while(str[i] != '\0'){
+        if(str[i] == oldChar) str[i] = newChar;
+        i++;
+    }
+}
+
 void AppSerialCommandInterface::throttle(){
     uint16_t avail;
     avail = Serial.availableForWrite();
 
-    if(avail < 1000){
+    if(avail < 2000){
         uint16_t delta_avail;
         //serial tx buffer not available
-        delayMicroseconds(3000);
+        delayMicroseconds(60500);
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
             Serial.println(F("M WRN flush"));
-        } else Serial.println(F("M WRN throttling"));
+        } else{
+            //Serial.println(F("M WRN throttling"));
+        }
     }
     return;
 }
 
+void AppSerialCommandInterface::txOverflowHandler(){
+    char* s;
+    bool first;
+    bool full;
+
+    //delay(200);
+    s = strrchr(txBuffer,'\n');//find last new line
+    indexTxBuffer = (s-txBuffer);//len
+    if (indexTxBuffer < SERIAL_OUTPUT_BUFFER_SIZE-1){ 
+        full = false;
+        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memcpy(workingBuffer,txBuffer,indexTxBuffer);
+        s += 1;
+        //indexTxBuffer+=1;
+        //copy any remaining chars to the begining of the txBuffer
+        strcpy(txBuffer,s);
+        memset(txBuffer + strlen(s)+1,0,SERIAL_OUTPUT_BUFFER_SIZE - strlen(s));
+        indexTxBuffer = strlen(txBuffer);
+    } else{
+        full = true;
+        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memcpy(workingBuffer,txBuffer,SERIAL_OUTPUT_BUFFER_SIZE);
+        empty();
+    }
+    token = strtok(workingBuffer, &newline);
+    first = true;
+    while( token != NULL ) {                        
+        if (first & !txBufferOverflowFlag){
+            Serial.print(F("\""));
+        }else{
+            if (full) Serial.print(F(",\""));
+            else Serial.print(F(",\""));
+        }
+        Serial.print(token);
+        Serial.print(F("\""));
+        token = strtok(NULL, &newline);
+        first = false;
+    }
+    //Serial.print(",\"dummy_value\"");
+}
+
 void AppSerialCommandInterface::streamHandler(){
-    char bufferChr;
+    char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
-    
     throttle();
-
     if (streamPos == 0) Serial.println(F("FS_START"));
     pSD->chdir(streamPath);
     if (pSD->exists(streamFile)){
@@ -160,8 +213,10 @@ void AppSerialCommandInterface::streamHandler(){
 
         if (payload_len == 0){
             //no data to tx; @ eof
+            Serial.print(",");
+            Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
-            delayMicroseconds(2000);
+            //delayMicroseconds(2000);
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
@@ -184,7 +239,7 @@ void AppSerialCommandInterface::streamHandler(){
             Serial.print(",");
             Serial.println(checksum(txBuffer));
             Serial.flush();
-            delayMicroseconds(5500);
+            delayMicroseconds(6000);
             return;
         }             
     } 
@@ -229,22 +284,71 @@ void AppSerialCommandInterface::updateRT(){
             int total_read;
             total_read = sscanf(receivedChars, "%s %s" , cmd, param);
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
+                bool first;
                 if (total_read < 2){
-                    Serial.println(F("DIR"));
+                    //send the root directory
+                    empty();
+                    println(F("DIR"));
+                    print(F("LS . ["));
+                    strcpy(workingBuffer,txBuffer);
+                    empty();
+                    Serial.print(workingBuffer);
                     sd->chdir();
-                    sd->ls();
-                    //AppManager::getInstance()->getSD()->chdir();
-                    //AppManager::getInstance()->getSD()->ls();
+                    txBufferOverflowFlag = false;
+                    sd->ls(this);
+                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+                    strcpy(workingBuffer,txBuffer);
+                    empty();
+                    first = true;
+                    token = strtok(workingBuffer, &newline);
+                    while( token != NULL ) {
+                        if (first & !txBufferOverflowFlag) Serial.print(F("\""));
+                        else Serial.print(F(",\""));
+                        Serial.print(token);
+                        Serial.print(F("\""));
+                        token = strtok(NULL, &newline);
+                        first = false;
+                    }
+                    Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
                     Serial.flush();
                 } else{
+                    //send the requested path
+                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
                     replacechar(param,':',' '); //replace space token used to tx the path
-                    Serial.print("M ");
-                    Serial.println(param);
-                    Serial.println(F("DIR"));
-                    pSD->ls(param);
+                    empty();
+                    print(F("M "));
+                    println(param);
+                    println(F("DIR"));
+                    strcpy(workingBuffer,txBuffer);
+                    Serial.print(workingBuffer);
+                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+                    empty();
+                    sd->chdir();
+                    Serial.print(F("LS "));
+                    replacechar(param,' ',':'); //replace any spaces in the transmitted path to ':'
+                    Serial.print(param);
+                    replacechar(param,':',' '); // put the spaces back in time for the ls command
+                    Serial.print(F(" ["));
+                    //delay(100);
+                    txBufferOverflowFlag = false;
+                    sd->ls(this,param,false);
+                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+                    strcpy(workingBuffer,txBuffer);
+                    first = true;
+                    token = strtok(workingBuffer, &newline);
+                    while( token != NULL ) {                        
+                        if (first & !txBufferOverflowFlag) Serial.print(F("\""));
+                        else Serial.print(F(",\""));
+                        Serial.print(token);
+                        Serial.print(F("\""));
+                        token = strtok(NULL, &newline);
+                        first = false;
+                    }
+                    Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
                     Serial.flush();
+                    empty();
                 }
             } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
@@ -348,7 +452,7 @@ void AppSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
-                delayMicroseconds(230000);
+                delayMicroseconds(100000);
                 Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
                 strcpy(txBuffer," ");
                 //RAM2 always ends at 0x20280000
@@ -357,12 +461,12 @@ void AppSerialCommandInterface::updateRT(){
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
-                    if(i%64==0 && i != 0x20000000){
+                    if(i%32==0 && i != 0x20000000){
                         Serial.print(F("\",\"decode\":\""));
                         Serial.print(txBuffer);
                         Serial.println(F("\"}}"));
                         strcpy(txBuffer,"");
-                        delayMicroseconds(8000);
+                        delayMicroseconds(4500);
                         throttle();
                         if(i%1024==0){
                             float32_t pct;
@@ -397,7 +501,7 @@ void AppSerialCommandInterface::updateRT(){
                 }
                 Serial.println("\n");
                 Serial.println(F("RAM END"));
-                delayMicroseconds(1800000);
+                delayMicroseconds(200000);
                 //flush out serial input buffer
                 Serial.clear();
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
@@ -449,6 +553,8 @@ void AppSerialCommandInterface::updateRT(){
     if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
         sincePeriodic = 0;
         AppManager::getInstance()->data->printDictionary();
+        AppManager::getInstance()->printStats();
+        ad->printStats();
     }
     #endif
     //Serial.flush();

@@ -1,5 +1,5 @@
 #include <Arduino.h>
-
+#include <string.h>
 /**
  * @file svcDataDictionary.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
@@ -25,6 +25,7 @@
 #define DATADICT_KEYVALUE_PAIRS 42
 #define DATADICT_MAX_KEY_LEN 48
 
+#define DATADICT_USE_MALLOC
 enum svcDataDictionaryRecordType{
     DDRT_READ,
     DDRT_READWRITE,
@@ -70,13 +71,17 @@ typedef struct svcDataDictionaryRecord
 {
     /* value data */
     uint32_t key_hash;
+#ifdef DATADICT_USE_MALLOC
+    char* key;
+#else
     char key[DATADICT_MAX_KEY_LEN];
+#endif
     value_container val;
     uint32_t *owner;
     pointer_container *pval;
     svcDataDictionaryRecordType record_type;
     svcDataDictionaryDataType data_type;
-}svcDataDictionaryRecord __attribute__ ((aligned (32)));;
+}svcDataDictionaryRecord;// __attribute__ ((aligned (32)));
 
 class SvcDataDictionary{
     private:
@@ -87,7 +92,7 @@ class SvcDataDictionary{
         //uint32 djb2 string hash
         uint32_t h = 5381;
         int c;
-        while (c = *s++)h = ((h << 5) + h) + c;
+        while (c = *s++){h = ((h << 5) + h) + c;}
         return h;
     }
 
@@ -101,7 +106,11 @@ class SvcDataDictionary{
                 record[i].record_type = DDRT_READWRITE;
                 record[i].data_type = DDDT_INT32;
                 record[i].key_hash = 48879; //0xBEEF
+                #ifdef DATADICT_USE_MALLOC
+                record[i].key = NULL;
+                #else
                 memset(record[i].key,0,sizeof(record[i].key));
+                #endif
             }
         }
 
@@ -111,7 +120,15 @@ class SvcDataDictionary{
             //TODO: ensure key doesn't already exist before creating a new record
             //else
             if(strlen(key) < DATADICT_MAX_KEY_LEN){
+                #ifdef DATADICT_USE_MALLOC
+                record[next].key = strdup(key);
+                //record[next].key = (char*)malloc(strlen(key)+1);
+                //if (record[next].key != NULL){
+                //strcpy(record[next].key,key);
+                //} else return false; //if malloc failed
+                #else
                 strcpy(record[next].key,key);
+                #endif
                 record[next].val.int32_val = val;
                 record[next].pval = 0;
                 record[next].owner = owner;
@@ -129,7 +146,14 @@ class SvcDataDictionary{
             //TODO: ensure key doesn't already exist before creating a new record
             //else
             if(strlen(key) < DATADICT_MAX_KEY_LEN){
+                #ifdef DATADICT_USE_MALLOC
+                record[next].key = (char*)malloc(strlen(key)+1);
+                if (record[next].key != NULL){
+                    strcpy(record[next].key,key);
+                } else return false; //if malloc failed               
+                #else
                 strcpy(record[next].key,key);
+                #endif
                 record[next].val.int32_val = val;
                 record[next].pval = 0;
                 record[next].owner = 0;
@@ -148,7 +172,14 @@ class SvcDataDictionary{
             //TODO: ensure key doesn't already exist before creating a new record
             //else
             if(strlen(key) < DATADICT_MAX_KEY_LEN){
+                #ifdef DATADICT_USE_MALLOC
+                record[next].key = (char*)malloc(strlen(key)+1);
+                if (record[next].key != NULL){
+                    strcpy(record[next].key,key);
+                } else return false; //if malloc failed               
+                #else
                 strcpy(record[next].key,key);
+                #endif
                 record[next].val.float32_val = val;
                 record[next].pval = 0;
                 record[next].owner = 0;

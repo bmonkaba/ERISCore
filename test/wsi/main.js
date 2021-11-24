@@ -10,7 +10,7 @@ var ram ={"RAM1":{},"RAM2":{}};
 var bulk_update_buffer = [];
 var pixel;
 var pixel_color;
-
+var dataflow_render_by ="type";
 
 // setup the db that will be used to map ram to the symbol table
 //https://dexie.org/docs/API-Reference#quick-reference
@@ -218,8 +218,8 @@ setInterval(sweepFreq, 100);
     setInterval(function() {
     var now = Date.now();
     kbs.empty();
-    kbs.append(((rx_bytes/((now - start_time)/1000.0))).toFixed(0));
-    kbs.append(' Bytes/Sec&emsp;');
+    kbs.append(((rx_bytes/((now - start_time)/1.0))).toFixed(0));
+    kbs.append(' KBytes/Sec&emsp;');
     kbs.append(parseFloat((1.0 - (error_bytes/rx_bytes))*100.0).toFixed(2)+"%");
     kbs.append(' Quality&emsp;');
     kbs.append('DL&#11015;');
@@ -228,9 +228,9 @@ setInterval(sweepFreq, 100);
     rx_bytes = 0;
     error_bytes = 0;
     start_time = now;    
-    //received.append($('<br/>'));
-    sendMessage({ 'data' : "STATS"});
-}, 300);
+    
+    //sendMessage({ 'data' : "STATS"});
+}, 1000);
 
 setInterval(function() {
   document.querySelectorAll(".sparkline").forEach(function(svg) {
@@ -283,387 +283,406 @@ socket.onopen = function(){
   sendMessage({data:"LS "});
 }; 
 
-socket.onmessage = function (message) {
+socket.onmessage = function (message_block) {
+  if (message_block.data.length == 0) return;
   var canvas = $('#stage')[0];
   var ctx = canvas.getContext('2d');
-  var res = message.data.trim().split(" ");
-  var now = Date.now();
   
-  rx_bytes += message.data.length;
-  
-  if (com_state != "") {
-    switch (com_state){
-          case "LS":
-              if (res[0] == "DIR_EOF"){
-                   var tree = $.ui.fancytree.getTree("#fancy_explorer");
-                   if (tree.getActiveNode() != null){
-                       //tree.getActiveNode().data.result += sdFiles;
-                       tree.getActiveNode().addChildren(sdFiles);
-                       sdFiles = [];
-                    }else{
-                        tree.reload(sdFiles);
-                   }
-                   com_state = "";
-              } else{
-                  if (message.data.search('/') > 0) sdFiles.push({"title":message.data.replace('/','').replace(regex,''),"folder": true, lazy: true});
-                  else sdFiles.push({"title":message.data.replaceAll(regex,'')});
-              }
-              $("#fancy_explorer").children(".fancytree-container").css({ 'background-color': 'transparent'});
-              $("#fancy_explorer").children(".fancytree-container").css({ 'font-size': '1.0em'});
-              
-              break;      
-    }
-  
-   } else switch(res[0]){
-      case "M":
-          received.append(res.slice(1).join(" "));
-          received.append($('<br/>'));
-          //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
-          received.scrollTop(10000000000);      
-          break;
-      case "DIR":
-          com_state = "LS";
-          sdFiles = [];
-          break;
-      case "DIR_EOF":
-          // handled in the ls capture state
-          break;
-      case "CQT_EOF":
-            osi = 0;
-            $("#cqtosc").empty();
-            for (osc in osc_array){
-                $("#cqtosc").append(osc + ": " + osc_array[osc]);
-                $("#cqtosc").append("<br>");
-            }
-            osc_array = [];
-            frame_count = frame_count + 1;
-            var imageData = ctx.getImageData(1, 1, canvas.width,canvas.height-1);
-            var data = imageData.data;
-            
-            for (var j = 1; j < canvas.height; j += 5) {        
-                for (var i = 0; i < canvas.width; i+= 1) {
-                    offset = (j * canvas.width * 4) + (i * 4.0);
-                    data[offset]     = data[offset] * 0.96;     // red
-                    data[offset + 1] = data[offset + 1] * 0.96; // green
-                    data[offset + 2] = data[offset + 2] * 0.96; // blue
-                    data[offset + 3] = data[offset + 3] * 1; // alpha
-                }
-             }
- 
-            ctx.putImageData(imageData, 4, 0);
-            ctx.fillStyle = "#1b0b0b";
-            ctx.fillRect (0, canvas.height-1, canvas.width, canvas.height);
- 
-            if (display_note == 20){display_note = 0;}
- 
-            if(0==display_note){
-                ctx.strokeStyle = "#9A0000";
-                ctx.moveTo(10, canvas.height/2.0);
-                ctx.lineTo(10, canvas.height);
-                ctx.stroke();
-                ctx.strokeStyle = "#5A0000";
-                ctx.moveTo(10, canvas.height);
-                ctx.lineTo(canvas.width, canvas.height);
-                ctx.stroke();
-            } else{
-                ctx.strokeStyle = "#9A7030";
-                ctx.moveTo(8, canvas.height/2.0);
-                //ctx.lineTo(8, canvas.height-30);
-                //ctx.stroke();
-                //ctx.strokeStyle = "#FF2050";
-            }
-            display_note += 1;
-            break;
-      case "CQT_L":
-            osi += 1;
-            //console.log(message.data);
-            //received.append(message.data.replaceAll(",","\t"));
-           // received.append($('<br/>'));
-            cqt = res[1].split(",");
-            osc_array.push(res[1]);
-            g = 90;       
-            if(0==display_note%2) g= 30;
-
-            //cqt view
-            ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseFloat(cqt[5]) * 200).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
-            
-            //osc view
-            //ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";    
-            ctx.fillStyle = "rgba(" + 10 + cqt[5]*2 + ","+ cqt[4]*10 +"," + cqt[5]*200 + ", 1)"; 
-            ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
-            
-            
-            if (frame_count%20) break; 
-            ctx.fillStyle = "#e740FF";
-            ctx.font = "8px Arial";
-            ctx.strokeStyle = "#000000";
-            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 14);
-            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 16);
-            //ctx.putImageData(imageData, 0, 1);
-            break;
-      case "CQT_H":
-            osi += 1;
-            //console.log(message.data);
-            //received.append(message.data.replaceAll(",","\t\t\t\t"));
-            //received.append($('<br/>'));
-            cqt = res[1].split(",");
-            
-            g = 70;       
-            if(0==display_note%2) g= 10;
-            
-            //cqt view
-            ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[6]) * 20).toString() + ", 1)";    
-            ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
-
-            //osc view
-            ctx.fillStyle = "rgba( "+ (parseFloat(cqt[5]) * 4000).toString() +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[4]) * 8000).toString()  + ", 1)";    
-            //ctx.fillRect(3, -1 + (canvas.height - ((parseInt(cqt[0])) * 3.0)), 3 + parseInt(cqt[4])/3.0, 2);
-             ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
-            
-            
-            if (frame_count%20) break;     
-            ctx.fillStyle = "#E740FF";
-            ctx.font = "14px Arial";
-            ctx.strokeStyle = "#000000";
-            ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 14);
-            ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 16);
-            break;
-            
-      case "S":
-          //received.append(message.data);
-          //received.append($('<br/>'));
-          s = res[1].split(",");
-          //$("oscope").hide();
-          canvas = document.getElementById('oscope_hidden');
-          //canvas = $('#oscope')[0];
-          ctx = canvas.getContext('2d');
-          
-          ctx.fillStyle = "#207020";//Math.random()
-          ctx.strokeStyle = "#C0F0C0";
-          ctx.beginPath();
-          ctx.moveTo(si,canvas.height);
-          ctx.lineTo(si,canvas.height);
-          if (s[0] == "FIN"){
-              //nothing else to draw
-              //$("oscope").show();
-              destinationCanvas = document.getElementById('oscope');
-              destinationCtx = destinationCanvas.getContext('2d');
-              imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-              destinationCtx.putImageData(imageData, 0, 0);
-          } else{
-              for (var i = 1; i <= parseInt(s[0]);i++){  
-                  ctx.lineTo(si, canvas.height - (parseInt(s[i])-2)/10);
-                  ctx.stroke();
-                  ctx.fillRect(si, canvas.height - (parseInt(s[i]))/10, 1, parseInt(s[i]));
-                  si += 1;
-              } 
-          }
-          
-            if (si == canvas.width || s[0] == "FIN"){
-                ctx.lineTo(si,canvas.height);
-                //ctx.closePath();
-                ctx.stroke();
-                ctx.moveTo(0,canvas.height);
-                ctx.beginPath();
-                si = 0; 
-               
-                //ctx.fillRect (0, 0, canvas.width, canvas.height);
-                //ctx.clearRect(0, 0, canvas.width, canvas.height);
-                  
-                var imageData = ctx.getImageData(-2, 2, canvas.width-2,canvas.height+2);
-                  var data = imageData.data;
-              
-                  
-                  for (var j = 0; j < canvas.height; j += 1) {        
-                      for (var i = 0; i < canvas.width; i+= 1) {
-                          offset = (j * canvas.width * 4) + (i * 4.0);
-                          data[offset]     = data[offset] * 0.98;     // red
-                          data[offset + 1] = data[offset + 1] -1; // green
-                          data[offset + 2] = data[offset + 2] * 0.98; // blue
-                          data[offset + 3] = data[offset + 3] -1; // alpha
+  var message_list = message_block.data.replaceAll('\r','').split("\n");
+  /* remove any empty messages */
+  message_list = message_list.filter(e=>e);
+  for (message of message_list){
+      //console.log(message)
+      var res = message.split(" ");
+      var now = Date.now();
+      
+      rx_bytes += message.length;
+      
+      if (com_state != "") {
+        switch (com_state){
+              case "LS":
+                  if (res[0] == "DIR_EOF"){
+                       var tree = $.ui.fancytree.getTree("#fancy_explorer");
+                       if (tree.getActiveNode() != null){
+                           //tree.getActiveNode().data.result += sdFiles;
+                           tree.getActiveNode().addChildren(sdFiles);
+                           sdFiles = [];
+                        }else{
+                            tree.reload(sdFiles);
+                       }
+                       com_state = "";
+                  } else{
+                      res[2] = res.slice(2).join(' ');
+                      listing = JSON.parse(res[2]);
+                      for (item of listing){
+                          if(item.length > 0){
+                              if (item.search('/') > 0) sdFiles.push({"title":item.replace('/','').replace(regex,''),"folder": true, lazy: true});
+                              else sdFiles.push({"title":item.replaceAll(regex,'')});
+                          }
                       }
-                   }
+                  }
+                  $("#fancy_explorer").children(".fancytree-container").css({ 'background-color': 'transparent'});
+                  $("#fancy_explorer").children(".fancytree-container").css({ 'font-size': '1.0em'});
                   
-                  ctx.closePath();
-                  ctx.putImageData(imageData, 0, 0);
-                  ctx.fillRect(0,0,1, canvas.height);
-                  ctx.fillRect(0,canvas.height,canvas.width, 1);
-            }
-          ctx.lineWidth = 1;
-          ctx.stroke();
-          //draw capture divider
-          ctx.fillStyle = "rgba(80,80,100,1)";
-          ctx.fillRect(si, 0,5,canvas.height);
-          break
-
-      case "RAM":
-          if (res[1] == "END"){   
-
-            //update the db
-            db.data_chunk.clear().then(function(res){
-                db.data_chunk.bulkAdd(bulk_update_buffer).then(function(lastkey){
-                    console.log(lastkey);
-                    //clear the buffer after the db load;
-                    //bulk_update_buffer = [];
-                    
-                    
-                    //create the datatable
-                    //$("#memory_chunk_table").empty();
-                    $("#memory_chunk_table").DataTable( {
-
-                        data: bulk_update_buffer,
-                        columns: [
-                            { data: "addr",  "width": "1.5em","font-size": "1em"},
-                            { data: "chunk", "font-size": "0.68em" },
-                            { data: "decode", "width": "20em","font-size": "0.8em" }
-                        ]
-
-                    } );
-                    
-                    
-                }).catch(Dexie.BulkError, function (e) {
-                    // by explicitely catching the bulkAdd() operation 
-                    // successfull additions are committed despite rejected records.
-                    console.error ("Warning Dexie.BulkError completed with errors:");
-                    console.error(e);
+                  break;      
+        }
+      
+       } else switch(res[0]){
+          case "M":
+              received.append(res.slice(1).join(" "));
+              received.append($('<br/>'));
+              //scroll.animate({scrollTop: received.scrollHeight}, "slow"); 
+              received.scrollTop(10000000000);      
+              break;
+          case "DIR":
+              com_state = "LS";
+              sdFiles = [];
+              break;
+          case "DIR_EOF":
+              // handled in the ls capture state
+              break;
+          case "CQT_EOF":
+                osi = 0;
+                add_str = ""
+                for (osc in osc_array){
+                    add_str += (osc + ": " + osc_array[osc] + "<br>");
                 }
-            )});  
-            break;
-        } else{
+                $("#cqtosc").empty().append(add_str);
+                osc_array = [];
+                frame_count = frame_count + 1;
+                var imageData = ctx.getImageData(1, 1, canvas.width,canvas.height-1);
+                var data = imageData.data;
+                
+                for (var j = 1; j < canvas.height; j += 5) {        
+                    for (var i = 0; i < canvas.width; i+= 1) {
+                        offset = (j * canvas.width * 4) + (i * 4.0);
+                        data[offset]     = data[offset] * 0.96;     // red
+                        data[offset + 1] = data[offset + 1] * 0.96; // green
+                        data[offset + 2] = data[offset + 2] * 0.96; // blue
+                        data[offset + 3] = data[offset + 3] * 1; // alpha
+                    }
+                 }
+     
+                ctx.putImageData(imageData, 4, 0);
+                ctx.fillStyle = "#1b0b0b";
+                ctx.fillRect (0, canvas.height-1, canvas.width, canvas.height);
+     
+                if (display_note == 20){display_note = 0;}
+     
+                if(0==display_note){
+                    ctx.strokeStyle = "#9A0000";
+                    ctx.moveTo(10, canvas.height/2.0);
+                    ctx.lineTo(10, canvas.height);
+                    ctx.stroke();
+                    ctx.strokeStyle = "#5A0000";
+                    ctx.moveTo(10, canvas.height);
+                    ctx.lineTo(canvas.width, canvas.height);
+                    ctx.stroke();
+                } else{
+                    ctx.strokeStyle = "#9A7030";
+                    ctx.moveTo(8, canvas.height/2.0);
+                    //ctx.lineTo(8, canvas.height-30);
+                    //ctx.stroke();
+                    //ctx.strokeStyle = "#FF2050";
+                }
+                display_note += 1;
+                break;
+          case "CQT_L":
+                osi += 1;
+                //console.log(message);
+                //received.append(message.replaceAll(",","\t"));
+               // received.append($('<br/>'));
+                cqt = res[1].split(",");
+                osc_array.push(res[1]);
+                g = 90;       
+                if(0==display_note%2) g= 30;
+    
+                //cqt view
+                ctx.fillStyle = "rgba(" + (parseInt(cqt[0]) * 5).toString() + ","+ g +"," + (parseFloat(cqt[5]) * 200).toString() + ", 1)";    
+                ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
+                
+                //osc view
+                //ctx.fillStyle = "rgba(" + (osi * 20) + ","+ cqt[4] +"," + (255 - osi * 20) + ", 1)";    
+                ctx.fillStyle = "rgba(" + 10 + cqt[5]*2 + ","+ cqt[4]*10 +"," + cqt[5]*200 + ", 1)"; 
+                ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
+                
+                
+                if (frame_count%20) break; 
+                ctx.fillStyle = "#e740FF";
+                ctx.font = "8px Arial";
+                ctx.strokeStyle = "#000000";
+                ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 14);
+                ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseFloat(cqt[5])) - 16);
+                //ctx.putImageData(imageData, 0, 1);
+                break;
+          case "CQT_H":
+                osi += 1;
+                //console.log(message);
+                //received.append(message.replaceAll(",","\t\t\t\t"));
+                //received.append($('<br/>'));
+                cqt = res[1].split(",");
+                osc_array.push(res[1]);
+                
+                g = 70;       
+                if(0==display_note%2) g= 10;
+                
+                //cqt view
+                ctx.fillStyle = "rgba( "+ g +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[6]) * 20).toString() + ", 1)";    
+                ctx.fillRect(parseInt(cqt[0]) * 8, canvas.height - (canvas.height* parseFloat(cqt[5])), 4, canvas.height);
+    
+                //osc view
+                ctx.fillStyle = "rgba( "+ (parseFloat(cqt[5]) * 4000).toString() +"," + (parseInt(cqt[0]) * 2).toString() + "," + (parseFloat(cqt[4]) * 8000).toString()  + ", 1)";    
+                //ctx.fillRect(3, -1 + (canvas.height - ((parseInt(cqt[0])) * 3.0)), 3 + parseInt(cqt[4])/3.0, 2);
+                 ctx.fillRect(-3 + (parseInt(cqt[0])), -1 + (canvas.height - (osi * (canvas.height/20.0))), 6, 3);
+                
+                
+                if (frame_count%20) break;     
+                ctx.fillStyle = "#E740FF";
+                ctx.font = "14px Arial";
+                ctx.strokeStyle = "#000000";
+                ctx.strokeText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 14);
+                ctx.fillText(note_name[parseInt(cqt[0])], -4 + (parseInt(cqt[0]) * 8), canvas.height - (parseInt(cqt[5])) - 16);
+                break;
+                
+          case "S":
+              //received.append(message);
+              //received.append($('<br/>'));
+              s = res[1].split(",");
+              //$("oscope").hide();
+              canvas = document.getElementById('oscope_hidden');
+              //canvas = $('#oscope')[0];
+              ctx = canvas.getContext('2d');
+              
+              ctx.fillStyle = "#207020";//Math.random()
+              ctx.strokeStyle = "#C0F0C0";
+              ctx.beginPath();
+              ctx.moveTo(si,canvas.height);
+              ctx.lineTo(si,canvas.height);
+              if (s[0] == "FIN"){
+                  //nothing else to draw
+                  //$("oscope").show();
+                  destinationCanvas = document.getElementById('oscope');
+                  destinationCtx = destinationCanvas.getContext('2d');
+                  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                  destinationCtx.putImageData(imageData, 0, 0);
+              } else{
+                  for (var i = 1; i <= parseInt(s[0]);i++){  
+                      ctx.lineTo(si, canvas.height - (parseInt(s[i])-2)/10);
+                      ctx.stroke();
+                      ctx.fillRect(si, canvas.height - (parseInt(s[i]))/10, 1, parseInt(s[i]));
+                      si += 1;
+                  } 
+              }
+              
+                if (si == canvas.width || s[0] == "FIN"){
+                    ctx.lineTo(si,canvas.height);
+                    //ctx.closePath();
+                    ctx.stroke();
+                    ctx.moveTo(0,canvas.height);
+                    ctx.beginPath();
+                    si = 0; 
+                   
+                    //ctx.fillRect (0, 0, canvas.width, canvas.height);
+                    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+                      
+                    var imageData = ctx.getImageData(-2, 2, canvas.width-2,canvas.height+2);
+                      var data = imageData.data;
+                  
+                      
+                      for (var j = 0; j < canvas.height; j += 1) {        
+                          for (var i = 0; i < canvas.width; i+= 1) {
+                              offset = (j * canvas.width * 4) + (i * 4.0);
+                              data[offset]     = data[offset] * 0.98;     // red
+                              data[offset + 1] = data[offset + 1] -1; // green
+                              data[offset + 2] = data[offset + 2] * 0.98; // blue
+                              data[offset + 3] = data[offset + 3] -1; // alpha
+                          }
+                       }
+                      
+                      ctx.closePath();
+                      ctx.putImageData(imageData, 0, 0);
+                      ctx.fillRect(0,0,1, canvas.height);
+                      ctx.fillRect(0,canvas.height,canvas.width, 1);
+                }
+              ctx.lineWidth = 1;
+              ctx.stroke();
+              //draw capture divider
+              ctx.fillStyle = "rgba(80,80,100,1)";
+              ctx.fillRect(si, 0,5,canvas.height);
+              break
+    
+          case "RAM":
+              if (res[1] == "END"){   
+    
+                //update the db
+                db.data_chunk.clear().then(function(res){
+                    db.data_chunk.bulkAdd(bulk_update_buffer).then(function(lastkey){
+                        console.log(lastkey);
+                        //clear the buffer after the db load;
+                        //bulk_update_buffer = [];
+                        
+                        
+                        //create the datatable
+                        //$("#memory_chunk_table").empty();
+                        $("#memory_chunk_table").DataTable( {
+    
+                            data: bulk_update_buffer,
+                            columns: [
+                                { data: "addr",  "width": "1.5em","font-size": "1em"},
+                                { data: "chunk", "font-size": "0.68em" },
+                                { data: "decode", "width": "20em","font-size": "0.8em" }
+                            ]
+    
+                        } );
+                        
+                        
+                    }).catch(Dexie.BulkError, function (e) {
+                        // by explicitely catching the bulkAdd() operation 
+                        // successfull additions are committed despite rejected records.
+                        console.error ("Warning Dexie.BulkError completed with errors:");
+                        console.error(e);
+                    }
+                )});  
+                break;
+            } else{
+                  try{
+                      k = res.slice(1).join(" ");
+                      d = JSON.parse(k);
+                      if (d.RAM1) bulk_update_buffer.push(d.RAM1);
+                      if (d.RAM2) bulk_update_buffer.push(d.RAM2);       
+                      $.extend(true,ram,d);
+                  } catch(e){
+                  //bad message throw it out
+                      break;
+                  }
+              }
+              break;
+          case "STATS":
               try{
-                  k = res.slice(1).join(" ");
-                  d = JSON.parse(k);
-                  if (d.RAM1) bulk_update_buffer.push(d.RAM1);
-                  if (d.RAM2) bulk_update_buffer.push(d.RAM2);       
-                  $.extend(true,ram,d);
+                  data_dict = JSON.parse(res.slice(1).join(" ")); 
               } catch(e){
               //bad message throw it out
                   break;
               }
-          }
-          break;
-      case "STATS":
-          try{
-              data_dict = JSON.parse(res.slice(1).join(" ")); 
-          } catch(e){
-          //bad message throw it out
+              $.extend(watch, data_dict);
+              try{
+                  $("#watch_received").jsonViewer(watch);
+              }catch(e){
+                  //do nothing - bad data?
+              }
+              if(Math.random() > 0.95){
+                  //don't need to redraw every time data is received' 
+                  renderAudioBlocks();
+              }
+              renderMonitor();
               break;
-          }
-          $.extend(watch, data_dict);
-          $("#watch_received").jsonViewer(watch);
-          if(Math.random() > 0.95){
-              //don't need to redraw every time data is received' 
-              renderAudioBlocks();
-          }
-          renderMonitor();
-          break;
-      case "DD":
-          try{
-              data_dict = JSON.parse(res[1]);
-          } catch(e){
-          //bad message throw it out
+          case "DD":
+              try{
+                  data_dict = JSON.parse(res[1]);
+              } catch(e){
+              //bad message throw it out
+                  break;
+              }
+              //sidebar.empty();
+              for (var key in data_dict){
+                  //sidebar.append(data_dict[key] + "<br>");
+                  if ($('#'+key).length < 1){
+                      sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
+                      sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"160\" height=\"60\" stroke-width=\"1\"></svg>");
+                      sparks[key] = new Array(1024);
+                      sparks[key].fill(0.01);
+                  }
+                  d = parseFloat(data_dict[key]);              
+                  if (isNaN(d)){
+                      //console.log(key);
+                      data_dict[key] = 0;
+                      sparks[key].unshift(0);
+                  }else{
+                      sparks[key].unshift(d);
+                  }
+                  if(sparks[key].length > 1024){
+                    sparks[key].pop();
+                  }
+                  $("#"+key+"_VAL").text(sparks[key][0]);
+              }
               break;
-          }
-          //sidebar.empty();
-          for (var key in data_dict){
-              //sidebar.append(data_dict[key] + "<br>");
-              if ($('#'+key).length < 1){
-                  sidebar.append("<br><br>"+ key + ": <b id="+key+"_VAL>val</b><br>");
-                  sidebar.append("<svg class=\"sparkline\" id="+ key+" width=\"160\" height=\"60\" stroke-width=\"1\"></svg>");
-                  sparks[key] = new Array(1024);
-                  sparks[key].fill(0);
-              }
-              d = parseFloat(data_dict[key]);              
-              if (isNaN(d)){
-                  console.log(key);
-                  data_dict[key] = 0;
-                  sparks[key].unshift(0);
-              }else{
-                  sparks[key].unshift(d);
-              }
-              if(sparks[key].length > 1024){
-                sparks[key].pop();
-              }
-              $("#"+key+"_VAL").text(sparks[key][0]);
-          }
-          break;
-      case "FS_START":
-          fileStreamContainer = [];
-          break;
-          
-      case "FS":
-          s = res[1].split(",");
-          packet_checksum = parseInt(s.slice(-1));
-          checksum = 0;
-          ar = [res[0],s.slice(0,-1).join()].join();
-          for(var i =0; i < ar.length; i++){
-              checksum += ar[i].charCodeAt(0);
-          }
-          checksum = checksum - 12; //(remove form feed from calc)
-          if (checksum != packet_checksum){
-              console.log("checksum error");
-          }
-          if(fileStreamContainer.length == 0){
-              file_type = s.slice(0,6).map(num => String.fromCharCode(parseInt(num, 16))).join("");
-              console.log(file_type);
-              if (file_type === "ILE565"){
-                  end = 7 + s.slice(7,32).findIndex(rank => rank === "0A");//split on newline
-                  split = 7 + s.slice(7,end).findIndex(rank => rank === "20");//split on comma
-                  width = s.slice(7,split);//split on comma
-                  width = width.map(num => String.fromCharCode(parseInt(num,16))).join("");
-                  height = s.slice(split+1,end);//split on comma
-                  height = height.map(num => String.fromCharCode(parseInt(num,16))).join("");
-                  console.log(width);
-                  console.log(height);
-                  //if width is less than 320, then chunk and pad the data with zeros to complete the full row
-                  canvas = $('#ileview')[0];
-                  ctx = canvas.getContext('2d');
-                  ctx.canvas.width  = parseInt(width,10);
-                  ctx.canvas.height = parseInt(height,10);
-                  fileStreamContainer = fileStreamContainer.concat(s.slice(end,-1));
-                  //console.log(s.slice(end+1,-1));
-              } else console.log(s);
+          case "FS_START":
+              fileStreamContainer = [];
+              break;
               
-          }else{
-              fileStreamContainer = fileStreamContainer.concat(s.slice(0,-1));
-          }
-          break;
-          
-      case "FS_END":
-        received.append(message.data.trim());
-        received.append($('<br/>'));   
-          //do something with the received data
-        //shift out the file size
-        //for (i=0; i <16;i++) fileStreamContainer.shift();
-        canvas = $('#ileview')[0];
-        ctx = canvas.getContext('2d');
-        ctx.fillStyle = "rgba(5,0,40,1)";
-        ctx.fillRect (0, 0, canvas.width, canvas.height);
-        var imageData = ctx.getImageData(0, 0, canvas.width,canvas.height);
-        var data = imageData.data;
-        var color;
-        for(i=0; i< fileStreamContainer.length-1;i=i+2)
-        {
-            color = parseInt(Number("0x" + fileStreamContainer[i] + fileStreamContainer[i+1]), 10);
-            data[(i*2)] = (color >> 8) & 0x00F8;
-            data[(i*2)+1] = (color >> 3) & 0x00FC;
-            data[(i*2)+2] = (color << 3) & 0x00F8;
-            data[(i*2)+3] = 0x00FF;
-        } 
-        ctx.putImageData(imageData, 0, 0);
-          break;
-
-      case "CLS":
-           $("#received").empty();
-           break;
-      default:
-          error_bytes += message.data.length;
-          console.log(message.data);
-          //received.append("RX ERROR (BYTES LOST): ");
-          //received.append(message.data.length);
-          //received.append($('<br/>'));
-          //$('.messages').scrollTop(10000000000);           
+          case "FS":
+              s = res[1].split(",");
+              packet_checksum = parseInt(s.slice(-1));
+              checksum = 0;
+              ar = [res[0],s.slice(0,-1).join()].join();
+              for(var i =0; i < ar.length; i++){
+                  checksum += ar[i].charCodeAt(0);
+              }
+              checksum = checksum - 12; //(remove form feed from calc)
+              if (checksum != packet_checksum){
+                  console.log("checksum error");
+              }
+              if(fileStreamContainer.length == 0){
+                  file_type = s.slice(0,6).map(num => String.fromCharCode(parseInt(num, 16))).join("");
+                  console.log(file_type);
+                  if (file_type === "ILE565"){
+                      end = 7 + s.slice(7,32).findIndex(rank => rank === "0A");//split on newline
+                      split = 7 + s.slice(7,end).findIndex(rank => rank === "20");//split on comma
+                      width = s.slice(7,split);//split on comma
+                      width = width.map(num => String.fromCharCode(parseInt(num,16))).join("");
+                      height = s.slice(split+1,end);//split on comma
+                      height = height.map(num => String.fromCharCode(parseInt(num,16))).join("");
+                      console.log(width);
+                      console.log(height);
+                      //if width is less than 320, then chunk and pad the data with zeros to complete the full row
+                      canvas = $('#ileview')[0];
+                      ctx = canvas.getContext('2d');
+                      ctx.canvas.width  = parseInt(width,10);
+                      ctx.canvas.height = parseInt(height,10);
+                      fileStreamContainer = fileStreamContainer.concat(s.slice(end,-1));
+                      //console.log(s.slice(end+1,-1));
+                  } else console.log(s);
+                  
+              }else{
+                  fileStreamContainer = fileStreamContainer.concat(s.slice(0,-1));
+              }
+              break;
+              
+          case "FS_END":
+            received.append(message.trim());
+            received.append($('<br/>'));   
+              //do something with the received data
+            //shift out the file size
+            //for (i=0; i <16;i++) fileStreamContainer.shift();
+            canvas = $('#ileview')[0];
+            ctx = canvas.getContext('2d');
+            ctx.fillStyle = "rgba(5,0,40,1)";
+            ctx.fillRect (0, 0, canvas.width, canvas.height);
+            var imageData = ctx.getImageData(0, 0, canvas.width,canvas.height);
+            var data = imageData.data;
+            var color;
+            for(i=0; i< fileStreamContainer.length-1;i=i+2)
+            {
+                color = parseInt(Number("0x" + fileStreamContainer[i] + fileStreamContainer[i+1]), 10);
+                data[(i*2)] = (color >> 8) & 0x00F8;
+                data[(i*2)+1] = (color >> 3) & 0x00FC;
+                data[(i*2)+2] = (color << 3) & 0x00F8;
+                data[(i*2)+3] = 0x00FF;
+            } 
+            ctx.putImageData(imageData, 0, 0);
+              break;
+    
+          case "CLS":
+               $("#received").empty();
+               break;
+          default:
+              error_bytes += message.length;
+              console.log(message);
+              //received.append("RX ERROR (BYTES LOST): ");
+              //received.append(message.length);
+              //received.append($('<br/>'));
+              //$('.messages').scrollTop(10000000000);
+    }
   };
 };
 
@@ -741,7 +760,15 @@ $("#write_dd_button").click(function(ev){
   $("#received").empty();
 });
 
+$("#df_orderby_type").click(function(ev){
+  ev.preventDefault();
+  dataflow_render_by = "type";
+});
 
+$("#df_orderby_flow").click(function(ev){
+  ev.preventDefault();
+  dataflow_render_by = "flow";
+});
 
 
 
@@ -935,7 +962,8 @@ function renderMonitor(){
 function renderAudioBlocks(){    
     //clear any existing nodes
     lgraph.clear();
-    renderAudioBlocksByFlow();
+    if (dataflow_render_by == "type"){ renderAudioBlocksByType()
+    }else if (dataflow_render_by == "flow") renderAudioBlocksByFlow();
     //draw the connections
     for (c in watch.AudioDirector.AudioConnectionPool){ //for each connection in the pool
         //node_const.connect(0, node_watch, 0 );

@@ -1,0 +1,218 @@
+Touch
+setCalibrationInputs
+erisAudioMixer8
+update call:[update] noreturn:[update]
+erisAudioInputI2S
+update call:[update] noreturn:[update]
+erisAudioInputI2SQuad
+update call:[update] noreturn:[update]
+erisAudioInputI2SHex
+update call:[update] noreturn:[update]
+erisAudioInputI2SOct
+update call:[update] noreturn:[update]
+erisAudioInputI2Sslave
+update call:[update] noreturn:[update]
+erisAudioInputI2S2
+update call:[update] noreturn:[update]
+erisAudioInputSPDIF3
+update call:[update] noreturn:[update]
+erisAsyncAudioInputSPDIF3
+update call:[update] noreturn:[update]
+erisAudioInputAnalog
+update call:[update] noreturn:[update]
+erisAudioInputAnalogStereo
+update call:[update] noreturn:[update]
+erisAudioInputPDM
+update call:[update] noreturn:[update]
+erisAudioInputTDM
+update call:[update] noreturn:[update]
+erisAudioInputTDM2
+update call:[update] noreturn:[update]
+erisAudioOutputI2S
+update call:[update] noreturn:[update]
+erisAudioOutputI2SQuad
+update call:[update] noreturn:[update]
+erisAudioOutputI2SHex
+update call:[update] noreturn:[update]
+erisAudioOutputI2SOct
+update call:[update] noreturn:[update]
+erisAudioOutputI2Sslave
+update call:[update] noreturn:[update]
+erisAudioOutputI2S2
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF2
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF3
+update call:[update] noreturn:[update]
+erisAudioOutputPT8211
+update call:[update] noreturn:[update]
+erisAudioOutputPT8211_2
+update call:[update] noreturn:[update]
+erisAudioOutputAnalog
+update call:[update] noreturn:[update]
+erisAudioOutputAnalogStereo
+update call:[update] noreturn:[update]
+erisAudioOutputPWM
+update call:[update] noreturn:[update]
+erisAudioOutputMQS
+update call:[update] noreturn:[update]
+erisAudioOutputTDM
+update call:[update] noreturn:[update]
+erisAudioOutputTDM2
+update call:[update] noreturn:[update]
+erisAudioOutputADAT
+update call:[update] noreturn:[update]
+erisAudioAmplifier
+update call:[update] noreturn:[update]
+erisAudioMixer4
+update call:[update] noreturn:[update]
+erisAudioPlayMemory
+update call:[update] noreturn:[update]
+erisAudioPlaySerialflashRaw
+update call:[update] noreturn:[update]
+erisAudioPlayQueue
+update call:[update] noreturn:[update]
+erisAudioRecordQueue
+update call:[update] noreturn:[update]
+erisAudioSynthWavetable
+update call:[update] noreturn:[update]
+erisAudioSynthSimpleDrum
+update call:[update] noreturn:[update]
+erisAudioSynthKarplusStrong
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSine
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSineHires
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSineModulated
+update call:[update] noreturn:[update]
+erisAudioSynthWaveform
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformModulated
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformPWM
+update call:[update] noreturn:[update]
+erisAudioSynthToneSweep
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformDc
+update call:[update] noreturn:[update]
+erisAudioSynthNoiseWhite
+update call:[update] noreturn:[update]
+erisAudioSynthNoisePink
+update call:[update] noreturn:[update]
+erisAudioEffectFade
+update call:[update] noreturn:[update]
+erisAudioEffectChorus
+update call:[update] noreturn:[update]
+erisAudioEffectFlange
+update call:[update] noreturn:[update]
+erisAudioEffectReverb
+update call:[update] noreturn:[update]
+erisAudioEffectFreeverb
+update call:[update] noreturn:[update]
+erisAudioEffectFreeverbStereo
+update call:[update] noreturn:[update]
+erisAudioEffectEnvelope
+update call:[update] noreturn:[update]
+erisAudioEffectMultiply
+update call:[update] noreturn:[update]
+erisAudioEffectDelay
+update call:[update] noreturn:[update]
+erisAudioEffectDelayExternal
+update call:[update] noreturn:[update]
+erisAudioEffectBitcrusher
+update call:[update] noreturn:[update]
+erisAudioEffectMidSide
+update call:[update] noreturn:[update]
+erisAudioEffectWaveshaper
+update call:[update] noreturn:[update]
+erisAudioEffectGranular
+update call:[update] noreturn:[update]
+erisAudioEffectDigitalCombine
+update call:[update] noreturn:[update]
+erisAudioFilterBiquad
+update call:[update] noreturn:[update]
+erisAudioFilterFIR
+update call:[update] noreturn:[update]
+erisAudioFilterStateVariable
+update call:[update] noreturn:[update]
+erisAudioAnalyzePeak
+update call:[update] noreturn:[update]
+erisAudioAnalyzeRMS
+update call:[update] noreturn:[update]
+erisAudioAnalyzeFFT256
+update call:[update] noreturn:[update]
+__erisAudioAnalyzeFFT1024
+update call:[update] noreturn:[update]
+erisAudioAnalyzeToneDetect
+update call:[update] noreturn:[update]
+erisAudioAnalyzeNoteFrequency
+update call:[update] noreturn:[update]
+erisAudioAnalyzePrint
+update call:[update] noreturn:[update]
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
+Animation
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
+connectionCount
+getId
+isName call:[sizeof,strncmp]
+setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
+setParent
+setPosition call:[_updatePosition] noreturn:[_updatePosition]
+setDimension call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
+update call:[F,println] noreturn:[println]
+updateRT
+onFocus
+onFocusLost
+onTouch
+onTouchDrag
+onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
+MessageHandler
+hash
+SvcDataDictionary call:[memset,sizeof] noreturn:[memset]
+create call:[hash,strcpy,strlen]
+create call:[hash,strcpy,strlen]
+create call:[hash,strcpy,strlen]
+read call:[hash]
+readf call:[hash]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+increment call:[create,hash]
+printStats
+printDictionary call:[print,printf,println] noreturn:[print,printf,println]
+getInstance call:[AppManager] noreturn:[AppManager]
+chdir call:[chdir] noreturn:[chdir]
+chdir call:[chdir] noreturn:[chdir]
+ls call:[ls] noreturn:[ls]
+AppSerialCommandInterface call:[getInstance,getSD,strcpy]
+update
+replacechar call:[strchr]
+checksum call:[strlen]
+throttle call:[F,availableForWrite,delayMicroseconds,flush,println] noreturn:[println]
+streamHandler call:[F,available,chdir,checksum,close,delayMicroseconds,exists,flush,open,position,print,println,read,seek,sprintf,strcat,strcpy,strlen,throttle] noreturn:[position,println,strcat]
+updateRT global:[gWelcomeMessage,sd] call:[AudioInterrupts,AudioNoInterrupts,F,MessageHandler,available,chdir,clear,clearReadError,connect,delay,delayMicroseconds,disconnect,flush,getActiveApp,getConnectionString,getInstance,iscntrl,isprint,ls,print,printDictionary,printStats,printf,println,read,replacechar,sendMessage,sizeof,sscanf,strcpy,streamHandler,strncat,strncmp,strtol,throttle,update] noreturn:[AudioInterrupts,AudioNoInterrupts,MessageHandler,clear,connect,delay,flush,printDictionary,printStats,printf,println,sendMessage,streamHandler,strncat,update]

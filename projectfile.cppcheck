@@ -6,6 +6,7 @@
     <check-headers>true</check-headers>
     <check-unused-templates>false</check-unused-templates>
     <max-ctu-depth>10</max-ctu-depth>
+    <max-template-recursion>100</max-template-recursion>
     <includedir>
         <dir name="include/"/>
     </includedir>

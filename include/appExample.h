@@ -84,10 +84,10 @@ class MyAppExample:public AppBaseClass {
       delay->delay(2,540);
       delay->delay(3,600);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.15);
-      mix->gain(1,0.25);
+      mix->gain(0,0.10);
+      mix->gain(1,0.15);
       mix->gain(2,0.30);
-      mix->gain(3,0.60);
+      mix->gain(3,0.39);
       
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,20);

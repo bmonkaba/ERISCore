@@ -1,7 +1,19 @@
+Animation
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
 ILI9341_t3_ERIS
-busy call:[return] noreturn:[return]
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
+renderCompleteCB global:[dmabusy] call:[println]
+_busy global:[dmabusy]
+updateScreenAsyncFrom global:[dmabusy] call:[setFrameCompleteCB,updateScreenAsync]
+getNextFrameChunk call:[F,chdir,exists,printf,sprintf]
 setSD
-setPWMPin call:[pinMode] noreturn:[pinMode]
-begin call:[CL,begin,chdir,close,exists,fgets,fillScreen,open,println,read,setClipRect,setOrigin,setRotation,setTextColor,setTextSize,sizeof,updateScreen,useFrameBuffer] noreturn:[println,read,updateScreen]
+setSD
+setPWMPin call:[analogWrite,analogWriteFrequency] noreturn:[analogWrite]
+begin global:[dmabusy] call:[CL,begin,chdir,fillScreen,ls,println,setClipRect,setOrigin,setRotation,setTextColor,setTextSize,updateScreen] noreturn:[ls]
 bltSD call:[atol,available,chdir,close,fgets,ls,open,print,println,read,seekCur,sizeof,strtok] noreturn:[close,read,seekCur]
+bltSDAnimationFullScreen call:[available,chdir,close,getFileName,getPath,ls,open,print,println,read,seekSet] noreturn:[close]
 bltSDFullScreen call:[available,chdir,close,ls,open,print,println,read,seekSet] noreturn:[close,read]

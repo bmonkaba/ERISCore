@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 280
+#define TX_PERIOD 200
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 250
+#define TX_CQT_PERIOD 133
 
 // Constant Q Transform App
 //
@@ -58,8 +58,8 @@ class AppCQT:public AppBaseClass {
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
       AudioNoInterrupts();
-      for (int16_t i=1; i < osc_bank_size+1; i++){
-        sprintf(buffer, "waveform_%d", i);
+      for (int16_t i=0; i < osc_bank_size; i++){
+        sprintf(buffer, "waveform_%d", i+1);
         //request the object from the audio director
         osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
         //init the object to the default state
@@ -180,8 +180,8 @@ class AppCQT:public AppBaseClass {
         cqt_serial_transmit_elapsed = 0;   
         
         for (uint16_t i=0;i < osc_bank_size;i++){
-          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
-          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].transientValue*100.0);
+          if (oscBank[i].cqtBin < highRange) Serial.printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
+          if (oscBank[i].cqtBin >= highRange)Serial.printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast*10.0,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
         }
         Serial.printf(F("CQT_EOF\n"));
         //Serial.flush();
@@ -323,16 +323,15 @@ class AppCQT:public AppBaseClass {
       }
       //update the oscillator bank with the current values
       for (uint16_t i=0; i < osc_bank_size; i++){
-        //if (oscBank[i].cqtBin >= highRange){
-        //  if (!low_range_switch) oscBank[i] = fftHighRR[oscBank[i].cqtBin];
-        //}else if (low_range_switch)oscBank[i] = fftLowRR[oscBank[i].cqtBin];
+        if (oscBank[i].cqtBin >= highRange){
+          if (low_range_switch==false) oscBank[i] = fftHighRR[oscBank[i].cqtBin];
+        }else if (low_range_switch==true)oscBank[i] = fftLowRR[oscBank[i].cqtBin];
         
-        //if values are below a threshold then clear the osc
+        //if values are below a threshold then mute the osc
         if(oscBank[i].avgValueSlow < floor){
-          fftLowRR[0].avgValueFast = 0;
-          fftLowRR[0].avgValueSlow = 0;
-          fftLowRR[0].transientValue = 0;
-          oscBank[i] = fftLowRR[0];
+          oscBank[i].avgValueSlow = 0;
+          oscBank[i].avgValueFast = 0;
+          oscBank[i].transientValue = 0;
         }
       }
       //sort the updated cqt bins by peakValue
@@ -404,7 +403,7 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin <= highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin > highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = oscBank[i].avgValueFast;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = log1pf(oscBank[i].avgValueFast);//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               if (a < floor) a = 0.0;
               //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);

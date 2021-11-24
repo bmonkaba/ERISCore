@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="41205601">
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Animation::filename&apos; is not initialized in the constructor." verbose="Member variable &apos;Animation::filename&apos; is not initialized in the constructor." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="30" column="9"/>
+            <symbol>Animation::filename</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Animation::_path&apos; is not initialized in the constructor." verbose="Member variable &apos;Animation::_path&apos; is not initialized in the constructor." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="30" column="9"/>
+            <symbol>Animation::_path</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;ILI9341_t3_ERIS::backlight&apos; is not initialized in the constructor." verbose="Member variable &apos;ILI9341_t3_ERIS::backlight&apos; is not initialized in the constructor." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="61" column="9"/>
+            <symbol>ILI9341_t3_ERIS::backlight</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\appSerialCommandInterface.h" line="56" column="9"/>
+            <symbol>sincePoll</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodic&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodic&apos; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\appSerialCommandInterface.h" line="57" column="9"/>
+            <symbol>sincePeriodic</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
+            <symbol>Touch</symbol>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;false==newRxMsg&apos; is always true" verbose="Condition &apos;false==newRxMsg&apos; is always true" cwe="571">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="211" column="47" info="Condition &apos;false==newRxMsg&apos; is always true"/>
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="206" column="24" info="Assignment &apos;newRxMsg=false&apos;, assigned value is 0"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="230" column="26"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="250" column="30"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="293" column="30"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="302" column="30"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="328" column="30"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="330" column="34"/>
+        </error>
+        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="336" column="34"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;hexBuffer&apos; can be reduced." verbose="The scope of the variable &apos;hexBuffer&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="117" column="10"/>
+            <symbol>hexBuffer</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;payload_len&apos; can be reduced." verbose="The scope of the variable &apos;payload_len&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="118" column="14"/>
+            <symbol>payload_len</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mp&apos; can be reduced." verbose="The scope of the variable &apos;mp&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="349" column="23"/>
+            <symbol>mp</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mp&apos; can be reduced." verbose="The scope of the variable &apos;mp&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="404" column="23"/>
+            <symbol>mp</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="349" column="26"/>
+            <symbol>mp</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="404" column="26"/>
+            <symbol>mp</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;newRxMsg&apos; is assigned a value that is never used." verbose="Variable &apos;newRxMsg&apos; is assigned a value that is never used." cwe="563">
+            <location file0="src\appSerialCommandInterface.cpp" file="src\appSerialCommandInterface.cpp" line="442" column="22"/>
+            <symbol>newRxMsg</symbol>
+        </error>
+  <FileInfo check="ctu">
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:126:14" call-funcname="create" call-argnr="2" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="276" col="28" call-argexpr="(int32_t)0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:81:14" call-funcname="checksum" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="175" col="36" call-argexpr="txBuffer" call-argvaluetype="7" call-argvalue="4096"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:81:14" call-funcname="checksum" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="185" col="36" call-argexpr="txBuffer" call-argvaluetype="7" call-argvalue="4096"/><function-call call-id="src/appSerialCommandInterface.cpp:79:5" call-funcname="replacechar" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="241" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="166" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:164:17" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="177" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:175:19" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="188" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:186:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="207" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:205:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="226" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:224:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="245" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:243:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="264" col="17" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:262:14" my-argnr="1"/>
+  </FileInfo>
+  <FileInfo check="Class">
+<class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
+<class name="erisAudioInputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="98" col="1" hash="17019316723196514384"/>
+<class name="erisAudioInputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="108" col="1" hash="12889149348684469767"/>
+<class name="erisAudioInputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="118" col="1" hash="6028903301171554901"/>
+<class name="erisAudioInputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="128" col="1" hash="4968706929110944895"/>
+<class name="erisAudioInputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="138" col="1" hash="15809457002258706000"/>
+<class name="erisAudioInputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="148" col="1" hash="11406150109657359798"/>
+<class name="erisAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="158" col="1" hash="1372926380654507372"/>
+<class name="erisAsyncAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="168" col="1" hash="17940064596614591134"/>
+<class name="erisAudioInputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="178" col="1" hash="5469694701424856321"/>
+<class name="erisAudioInputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="188" col="1" hash="12061529731085099603"/>
+<class name="erisAudioInputPDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="198" col="1" hash="10033901636159097191"/>
+<class name="erisAudioInputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="208" col="1" hash="15259063952535369549"/>
+<class name="erisAudioInputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="218" col="1" hash="14856942719287723931"/>
+<class name="erisAudioOutputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="228" col="1" hash="1836933379248046551"/>
+<class name="erisAudioOutputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="238" col="1" hash="5990769019527883701"/>
+<class name="erisAudioOutputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="248" col="1" hash="11434018027038360475"/>
+<class name="erisAudioOutputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="258" col="1" hash="9571367478623596901"/>
+<class name="erisAudioOutputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="268" col="1" hash="12702726595264855518"/>
+<class name="erisAudioOutputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="278" col="1" hash="17892985148605244015"/>
+<class name="erisAudioOutputSPDIF" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="288" col="1" hash="18316701196461237528"/>
+<class name="erisAudioOutputSPDIF2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="298" col="1" hash="7797447031346815706"/>
+<class name="erisAudioOutputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="308" col="1" hash="16751863684456004246"/>
+<class name="erisAudioOutputPT8211" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="318" col="1" hash="4359577722567632146"/>
+<class name="erisAudioOutputPT8211_2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="328" col="1" hash="7628113483695143906"/>
+<class name="erisAudioOutputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="338" col="1" hash="3756956596770590231"/>
+<class name="erisAudioOutputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="348" col="1" hash="8647170536430879707"/>
+<class name="erisAudioOutputPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="358" col="1" hash="1444287441411935465"/>
+<class name="erisAudioOutputMQS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="368" col="1" hash="17079401432311194794"/>
+<class name="erisAudioOutputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="378" col="1" hash="7708984035535973941"/>
+<class name="erisAudioOutputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="388" col="1" hash="3988180730731542175"/>
+<class name="erisAudioOutputADAT" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="398" col="1" hash="6185472866387283372"/>
+<class name="erisAudioAmplifier" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="408" col="1" hash="8763940027999518862"/>
+<class name="erisAudioMixer4" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="418" col="1" hash="10114398071111466314"/>
+<class name="erisAudioPlayMemory" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="428" col="1" hash="15124706446371980787"/>
+<class name="erisAudioPlaySerialflashRaw" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="438" col="1" hash="17168942511083914767"/>
+<class name="erisAudioPlayQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="448" col="1" hash="9884993907786335155"/>
+<class name="erisAudioRecordQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="458" col="1" hash="13400521790657212627"/>
+<class name="erisAudioSynthWavetable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="468" col="1" hash="6862551364167213219"/>
+<class name="erisAudioSynthSimpleDrum" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="478" col="1" hash="16260344283374880339"/>
+<class name="erisAudioSynthKarplusStrong" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="488" col="1" hash="15428449321585163997"/>
+<class name="erisAudioSynthWaveformSine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="498" col="1" hash="5554398737258808582"/>
+<class name="erisAudioSynthWaveformSineHires" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="508" col="1" hash="1243266091286715710"/>
+<class name="erisAudioSynthWaveformSineModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="518" col="1" hash="6613027986117435692"/>
+<class name="erisAudioSynthWaveform" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="528" col="1" hash="10661082739031984725"/>
+<class name="erisAudioSynthWaveformModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="538" col="1" hash="9070137649144748664"/>
+<class name="erisAudioSynthWaveformPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="548" col="1" hash="16282031523987132795"/>
+<class name="erisAudioSynthToneSweep" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="558" col="1" hash="14902423390283889489"/>
+<class name="erisAudioSynthWaveformDc" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="568" col="1" hash="11332563550291126986"/>
+<class name="erisAudioSynthNoiseWhite" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="578" col="1" hash="18369753233789786926"/>
+<class name="erisAudioSynthNoisePink" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="588" col="1" hash="7666074944499152605"/>
+<class name="erisAudioEffectFade" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="598" col="1" hash="8097214233170311102"/>
+<class name="erisAudioEffectChorus" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="608" col="1" hash="11711887291647211682"/>
+<class name="erisAudioEffectFlange" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="618" col="1" hash="13039206121562521986"/>
+<class name="erisAudioEffectReverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="628" col="1" hash="9600413015891836070"/>
+<class name="erisAudioEffectFreeverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="638" col="1" hash="4348153898252324090"/>
+<class name="erisAudioEffectFreeverbStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="648" col="1" hash="826130359863801218"/>
+<class name="erisAudioEffectEnvelope" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="658" col="1" hash="17600207697407804882"/>
+<class name="erisAudioEffectMultiply" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="668" col="1" hash="10764948352547471841"/>
+<class name="erisAudioEffectDelay" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="678" col="1" hash="15486994146812610059"/>
+<class name="erisAudioEffectDelayExternal" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="688" col="1" hash="11642970270825282913"/>
+<class name="erisAudioEffectBitcrusher" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="698" col="1" hash="5438129528292805314"/>
+<class name="erisAudioEffectMidSide" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="708" col="1" hash="15786039691290954372"/>
+<class name="erisAudioEffectWaveshaper" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="718" col="1" hash="11726647589586739582"/>
+<class name="erisAudioEffectGranular" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="728" col="1" hash="481857465943148790"/>
+<class name="erisAudioEffectDigitalCombine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="738" col="1" hash="17907310203245797863"/>
+<class name="erisAudioFilterBiquad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="748" col="1" hash="5155133181386169548"/>
+<class name="erisAudioFilterFIR" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="758" col="1" hash="11650491588858295672"/>
+<class name="erisAudioFilterStateVariable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="768" col="1" hash="16639294264589236216"/>
+<class name="erisAudioAnalyzePeak" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="778" col="1" hash="17986091572680821655"/>
+<class name="erisAudioAnalyzeRMS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="788" col="1" hash="16353966212412028487"/>
+<class name="erisAudioAnalyzeFFT256" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="798" col="1" hash="16952353100907895819"/>
+<class name="__erisAudioAnalyzeFFT1024" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="808" col="1" hash="3142326671534559013"/>
+<class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
+<class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
+<class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="2896701280187647327"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="20" col="9" hash="16558433732527854572"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="8801391989231751179"/>
+<class name="SvcDataDictionary" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="81" col="1" hash="484828359980283568"/>
+<class name="AppSerialCommandInterface" file="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h" line="53" col="1" hash="13775448927512768186"/>
+  </FileInfo>
+  <FileInfo check="Null pointer">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:31:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="32" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:80:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="82" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:85:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="86" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:81:14" my-argnr="1" my-argname="msg" file="src/appSerialCommandInterface.cpp" line="92" col="33" value="0"/>
+  </FileInfo>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:31:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="32" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:80:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="82" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:85:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="86" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:86:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="90" col="21" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:81:14" my-argnr="1" my-argname="msg" file="src/appSerialCommandInterface.cpp" line="92" col="33" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="replacechar" lineNumber="79"/>
+    <functiondecl functionName="checksum" lineNumber="89"/>
+    <functiondecl functionName="throttle" lineNumber="98"/>
+    <functiondecl functionName="streamHandler" lineNumber="115"/>
+    <functiondecl functionName="updateRT" lineNumber="201"/>
+    <functioncall functionName="AT_HATCHBLK"/>
+    <functioncall functionName="AT_HATCHXOR"/>
+    <functioncall functionName="AT_NONE"/>
+    <functioncall functionName="AT_TRANS"/>
+    <functioncall functionName="AppBaseClass"/>
+    <functioncall functionName="AppManager"/>
+    <functioncall functionName="AsyncAudioInputSPDIF3"/>
+    <functioncall functionName="AudioAmplifier"/>
+    <functioncall functionName="AudioAnalyzeFFT1024"/>
+    <functioncall functionName="AudioAnalyzeFFT256"/>
+    <functioncall functionName="AudioAnalyzeNoteFrequency"/>
+    <functioncall functionName="AudioAnalyzePeak"/>
+    <functioncall functionName="AudioAnalyzePrint"/>
+    <functioncall functionName="AudioAnalyzeRMS"/>
+    <functioncall functionName="AudioAnalyzeToneDetect"/>
+    <functioncall functionName="AudioDirector"/>
+    <functioncall functionName="AudioEffectBitcrusher"/>
+    <functioncall functionName="AudioEffectChorus"/>
+    <functioncall functionName="AudioEffectDelay"/>
+    <functioncall functionName="AudioEffectDelayExternal"/>
+    <functioncall functionName="AudioEffectDigitalCombine"/>
+    <functioncall functionName="AudioEffectEnvelope"/>
+    <functioncall functionName="AudioEffectFade"/>
+    <functioncall functionName="AudioEffectFlange"/>
+    <functioncall functionName="AudioEffectFreeverb"/>
+    <functioncall functionName="AudioEffectFreeverbStereo"/>
+    <functioncall functionName="AudioEffectGranular"/>
+    <functioncall functionName="AudioEffectMidSide"/>
+    <functioncall functionName="AudioEffectMultiply"/>
+    <functioncall functionName="AudioEffectReverb"/>
+    <functioncall functionName="AudioEffectWaveshaper"/>
+    <functioncall functionName="AudioFilterBiquad"/>
+    <functioncall functionName="AudioFilterFIR"/>
+    <functioncall functionName="AudioFilterStateVariable"/>
+    <functioncall functionName="AudioInputAnalog"/>
+    <functioncall functionName="AudioInputAnalogStereo"/>
+    <functioncall functionName="AudioInputI2S"/>
+    <functioncall functionName="AudioInputI2S2"/>
+    <functioncall functionName="AudioInputI2SHex"/>
+    <functioncall functionName="AudioInputI2SOct"/>
+    <functioncall functionName="AudioInputI2SQuad"/>
+    <functioncall functionName="AudioInputI2Sslave"/>
+    <functioncall functionName="AudioInputPDM"/>
+    <functioncall functionName="AudioInputSPDIF3"/>
+    <functioncall functionName="AudioInputTDM"/>
+    <functioncall functionName="AudioInputTDM2"/>
+    <functioncall functionName="AudioInterrupts"/>
+    <functioncall functionName="AudioMixer4"/>
+    <functioncall functionName="AudioMixer8"/>
+    <functioncall functionName="AudioNoInterrupts"/>
+    <functioncall functionName="AudioOutputADAT"/>
+    <functioncall functionName="AudioOutputAnalog"/>
+    <functioncall functionName="AudioOutputAnalogStereo"/>
+    <functioncall functionName="AudioOutputI2S"/>
+    <functioncall functionName="AudioOutputI2S2"/>
+    <functioncall functionName="AudioOutputI2SHex"/>
+    <functioncall functionName="AudioOutputI2SOct"/>
+    <functioncall functionName="AudioOutputI2SQuad"/>
+    <functioncall functionName="AudioOutputI2Sslave"/>
+    <functioncall functionName="AudioOutputMQS"/>
+    <functioncall functionName="AudioOutputPT8211"/>
+    <functioncall functionName="AudioOutputPT8211_2"/>
+    <functioncall functionName="AudioOutputPWM"/>
+    <functioncall functionName="AudioOutputSPDIF"/>
+    <functioncall functionName="AudioOutputSPDIF2"/>
+    <functioncall functionName="AudioOutputSPDIF3"/>
+    <functioncall functionName="AudioOutputTDM"/>
+    <functioncall functionName="AudioOutputTDM2"/>
+    <functioncall functionName="AudioPlayMemory"/>
+    <functioncall functionName="AudioPlayQueue"/>
+    <functioncall functionName="AudioPlaySerialflashRaw"/>
+    <functioncall functionName="AudioRecordQueue"/>
+    <functioncall functionName="AudioSynthKarplusStrong"/>
+    <functioncall functionName="AudioSynthNoisePink"/>
+    <functioncall functionName="AudioSynthNoiseWhite"/>
+    <functioncall functionName="AudioSynthSimpleDrum"/>
+    <functioncall functionName="AudioSynthToneSweep"/>
+    <functioncall functionName="AudioSynthWaveform"/>
+    <functioncall functionName="AudioSynthWaveformDc"/>
+    <functioncall functionName="AudioSynthWaveformModulated"/>
+    <functioncall functionName="AudioSynthWaveformPWM"/>
+    <functioncall functionName="AudioSynthWaveformSine"/>
+    <functioncall functionName="AudioSynthWaveformSineHires"/>
+    <functioncall functionName="AudioSynthWaveformSineModulated"/>
+    <functioncall functionName="AudioSynthWavetable"/>
+    <functioncall functionName="DDDT_EMPTY"/>
+    <functioncall functionName="DDDT_FLOAT16"/>
+    <functioncall functionName="DDDT_FLOAT32"/>
+    <functioncall functionName="DDDT_INT16"/>
+    <functioncall functionName="DDDT_INT32"/>
+    <functioncall functionName="DDDT_PFLOAT16"/>
+    <functioncall functionName="DDDT_PFLOAT32"/>
+    <functioncall functionName="DDDT_PINT16"/>
+    <functioncall functionName="DDDT_PINT32"/>
+    <functioncall functionName="DDDT_PUINT132"/>
+    <functioncall functionName="DDDT_PUINT16"/>
+    <functioncall functionName="DDDT_UINT132"/>
+    <functioncall functionName="DDDT_UINT16"/>
+    <functioncall functionName="DDRT_EMPTY"/>
+    <functioncall functionName="DDRT_POINTER"/>
+    <functioncall functionName="DDRT_READ"/>
+    <functioncall functionName="DDRT_READWRITE"/>
+    <functioncall functionName="F"/>
+    <functioncall functionName="ILI9341_t3n"/>
+    <functioncall functionName="MessageHandler"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="O_READ"/>
+    <functioncall functionName="Touch"/>
+    <functioncall functionName="XPT2046_Touchscreen"/>
+    <functioncall functionName="_busy"/>
+    <functioncall functionName="_path"/>
+    <functioncall functionName="_pfbtft"/>
+    <functioncall functionName="_updatePosition"/>
+    <functioncall functionName="abs"/>
+    <functioncall functionName="analogRead"/>
+    <functioncall functionName="analogReadAveraging"/>
+    <functioncall functionName="analogReadResolution"/>
+    <functioncall functionName="available"/>
+    <functioncall functionName="availableForWrite"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="bufferChr"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="chdir"/>
+    <functioncall functionName="checksum"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="clearReadError"/>
+    <functioncall functionName="close"/>
+    <functioncall functionName="cmd"/>
+    <functioncall functionName="connect"/>
+    <functioncall functionName="create"/>
+    <functioncall functionName="cs"/>
+    <functioncall functionName="csBuffer"/>
+    <functioncall functionName="cspin"/>
+    <functioncall functionName="dc"/>
+    <functioncall functionName="delay"/>
+    <functioncall functionName="delayMicroseconds"/>
+    <functioncall functionName="delete"/>
+    <functioncall functionName="dest_port"/>
+    <functioncall functionName="disconnect"/>
+    <functioncall functionName="escape"/>
+    <functioncall functionName="exists"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="float"/>
+    <functioncall functionName="float32_val"/>
+    <functioncall functionName="flush"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="fval"/>
+    <functioncall functionName="gWelcomeMessage"/>
+    <functioncall functionName="getActiveApp"/>
+    <functioncall functionName="getConnectionString"/>
+    <functioncall functionName="getInstance"/>
+    <functioncall functionName="getSD"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="hash"/>
+    <functioncall functionName="hexBuffer"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="index"/>
+    <functioncall functionName="int"/>
+    <functioncall functionName="int32_t"/>
+    <functioncall functionName="int32_val"/>
+    <functioncall functionName="isStreamingFile"/>
+    <functioncall functionName="iscntrl"/>
+    <functioncall functionName="isprint"/>
+    <functioncall functionName="ix"/>
+    <functioncall functionName="key"/>
+    <functioncall functionName="lastTrigger"/>
+    <functioncall functionName="ls"/>
+    <functioncall functionName="memset"/>
+    <functioncall functionName="miso"/>
+    <functioncall functionName="mosi"/>
+    <functioncall functionName="msg"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="name_string"/>
+    <functioncall functionName="newOriginX"/>
+    <functioncall functionName="newOriginY"/>
+    <functioncall functionName="newRxMsg"/>
+    <functioncall functionName="new_height"/>
+    <functioncall functionName="new_width"/>
+    <functioncall functionName="next"/>
+    <functioncall functionName="num"/>
+    <functioncall functionName="open"/>
+    <functioncall functionName="orig"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="owner"/>
+    <functioncall functionName="param"/>
+    <functioncall functionName="param2"/>
+    <functioncall functionName="parent"/>
+    <functioncall functionName="path"/>
+    <functioncall functionName="pct"/>
+    <functioncall functionName="position"/>
+    <functioncall functionName="print"/>
+    <functioncall functionName="printDictionary"/>
+    <functioncall functionName="printStats"/>
+    <functioncall functionName="printf"/>
+    <functioncall functionName="println"/>
+    <functioncall functionName="raw_maxx"/>
+    <functioncall functionName="raw_maxy"/>
+    <functioncall functionName="raw_minx"/>
+    <functioncall functionName="raw_miny"/>
+    <functioncall functionName="read"/>
+    <functioncall functionName="receivedChars"/>
+    <functioncall functionName="redraw_background"/>
+    <functioncall functionName="redraw_objects"/>
+    <functioncall functionName="redraw_popup"/>
+    <functioncall functionName="redraw_render"/>
+    <functioncall functionName="redraw_wait"/>
+    <functioncall functionName="rep"/>
+    <functioncall functionName="replacechar"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="rst"/>
+    <functioncall functionName="sclk"/>
+    <functioncall functionName="seek"/>
+    <functioncall functionName="sendMessage"/>
+    <functioncall functionName="sincePeriodic"/>
+    <functioncall functionName="sizeof"/>
+    <functioncall functionName="source_port"/>
+    <functioncall functionName="sprintf"/>
+    <functioncall functionName="sscanf"/>
+    <functioncall functionName="str"/>
+    <functioncall functionName="strcat"/>
+    <functioncall functionName="strchr"/>
+    <functioncall functionName="strcpy"/>
+    <functioncall functionName="streamFile"/>
+    <functioncall functionName="streamHandler"/>
+    <functioncall functionName="streamPath"/>
+    <functioncall functionName="streamPos"/>
+    <functioncall functionName="strlen"/>
+    <functioncall functionName="strncat"/>
+    <functioncall functionName="strncmp"/>
+    <functioncall functionName="strncpy"/>
+    <functioncall functionName="strtol"/>
+    <functioncall functionName="this"/>
+    <functioncall functionName="throttle"/>
+    <functioncall functionName="tirq"/>
+    <functioncall functionName="total_read"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="txBuffer"/>
+    <functioncall functionName="uint16_t"/>
+    <functioncall functionName="uint32_t"/>
+    <functioncall functionName="uint8_t"/>
+    <functioncall functionName="update"/>
+    <functioncall functionName="val"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

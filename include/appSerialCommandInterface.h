@@ -50,32 +50,37 @@ OUTPUT MESSAGES:
 */
 //
 
-class AppSerialCommandInterface:public AppBaseClass {
+class AppSerialCommandInterface:public AppBaseClass, Print {
   public:
     AppSerialCommandInterface():AppBaseClass(){
         sincePoll = 0;
         sincePeriodic = 0;
         indexRxBuffer = 0;
+        indexTxBuffer = 0;
         isStreamingFile = false;
+        txBufferOverflowFlag = false;
         strcpy(streamPath,"");
         strcpy(streamFile,"");
         streamPos = 0;
         pSD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
-        txBuffer[0] = 0;
-        receivedChars[0] = 0;
+        memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+        memset(receivedChars,0,SERIAL_RX_BUFFER_SIZE);
     }; 
     //define event handlers
   protected:
     SdFs *pSD;
     FsFile file;
     uint16_t indexRxBuffer;
+    uint16_t indexTxBuffer;
     char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];
-    char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE];
+    char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
+    char workingBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
     uint64_t streamPos;
     bool isStreamingFile;
+    volatile bool txBufferOverflowFlag;
     elapsedMillis sincePoll;
     elapsedMillis sincePeriodic;
     uint16_t checksum(const char *msg);
@@ -83,6 +88,31 @@ class AppSerialCommandInterface:public AppBaseClass {
     void streamHandler();
     void update() override{};    //called only when the app is active
     void updateRT() override;
+    void txOverflowHandler();
+    size_t write(uint8_t c){
+      txBuffer[indexTxBuffer++] = c;
+      if (indexTxBuffer == SERIAL_OUTPUT_BUFFER_SIZE){
+        txOverflowHandler();
+        //set the flag after the handler 
+        //this allows the handler to detect multiple overflows
+        //which is expected when streaming data larger than
+        //2x transmit buffer size
+        txBufferOverflowFlag = true;
+      }
+      return 1;
+    };
+    void flush(){
+      while(Serial.availableForWrite() < 6000){
+        delay(5);
+      }
+      if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
+      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      indexTxBuffer = 0;
+    };
+    void empty(){
+      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      indexTxBuffer = 0;
+    }
 };
 
 #endif
