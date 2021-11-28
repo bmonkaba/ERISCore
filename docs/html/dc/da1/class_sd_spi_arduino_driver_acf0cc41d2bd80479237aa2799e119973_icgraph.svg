@@ -46,22 +46,22 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 682;
+var viewWidth = 968;
 var viewHeight = 70;
-var sectionId = 'dynsection-6';
+var sectionId = 'dynsection-5';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SdSpiArduinoDriver::setSckSpeed</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-66 678,-66 678,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-66 964,-66 964,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="552,-14 552,-48 674,-48 674,-14 552,-14"/>
-<text text-anchor="start" x="560" y="-34.4" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArduinoDriver</text>
-<text text-anchor="middle" x="613" y="-21.4" font-family="Helvetica,sans-Serif" font-size="12.00">::setSckSpeed</text>
+<polygon fill="#bfbfbf" stroke="black" points="838,-14 838,-48 960,-48 960,-14 838,-14"/>
+<text text-anchor="start" x="846" y="-34.4" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArduinoDriver</text>
+<text text-anchor="middle" x="899" y="-21.4" font-family="Helvetica,sans-Serif" font-size="12.00">::setSckSpeed</text>
 </a>
 </g>
 </g>
@@ -69,62 +69,92 @@ var sectionId = 'dynsection-6';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d5/d4b/class_shared_spi_card.html#a8a33a90afcd1527ba838a76517f83a0f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="357,-14 357,-48 516,-48 516,-14 357,-14"/>
-<text text-anchor="start" x="365" y="-34.4" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::spiSetSck</text>
-<text text-anchor="middle" x="436.5" y="-21.4" font-family="Helvetica,sans-Serif" font-size="12.00">Speed</text>
+<polygon fill="white" stroke="black" points="643,-14 643,-48 802,-48 802,-14 643,-14"/>
+<text text-anchor="start" x="651" y="-34.4" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::spiSetSck</text>
+<text text-anchor="middle" x="722.5" y="-21.4" font-family="Helvetica,sans-Serif" font-size="12.00">Speed</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M541.79,-31C533.35,-31 524.7,-31 516.15,-31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="541.95,-34.5 551.95,-31 541.95,-27.5 541.95,-34.5"/>
+<path fill="none" stroke="midnightblue" d="M827.79,-31C819.35,-31 810.7,-31 802.15,-31"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="827.95,-34.5 837.95,-31 827.95,-27.5 827.95,-34.5"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d5/d4b/class_shared_spi_card.html#a0255d8d48155bc14798edb8414f04030" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="187,-20.5 187,-41.5 321,-41.5 321,-20.5 187,-20.5"/>
-<text text-anchor="middle" x="254" y="-27.9" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::begin</text>
+<polygon fill="white" stroke="black" points="473,-20.5 473,-41.5 607,-41.5 607,-20.5 473,-20.5"/>
+<text text-anchor="middle" x="540" y="-27.9" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::begin</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M346.79,-31C338.19,-31 329.58,-31 321.25,-31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="346.86,-34.5 356.86,-31 346.86,-27.5 346.86,-34.5"/>
+<path fill="none" stroke="midnightblue" d="M632.79,-31C624.19,-31 615.58,-31 607.25,-31"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="632.86,-34.5 642.86,-31 632.86,-27.5 632.86,-34.5"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../db/d21/class_dedicated_spi_card.html#ae1bee40ca479033a13453a49bfc7ee97" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-40.5 0,-61.5 151,-61.5 151,-40.5 0,-40.5"/>
-<text text-anchor="middle" x="75.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">DedicatedSpiCard::begin</text>
+<polygon fill="white" stroke="black" points="286,-40.5 286,-61.5 437,-61.5 437,-40.5 286,-40.5"/>
+<text text-anchor="middle" x="361.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">DedicatedSpiCard::begin</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M176.57,-39.66C168.12,-40.62 159.52,-41.59 151.1,-42.55"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="177.23,-43.11 186.78,-38.5 176.45,-36.15 177.23,-43.11"/>
+<path fill="none" stroke="midnightblue" d="M462.57,-39.66C454.12,-40.62 445.52,-41.59 437.1,-42.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="463.23,-43.11 472.78,-38.5 462.45,-36.15 463.23,-43.11"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../d9/d30/class_sd_card_factory.html#a8337ec1a741c25ed9fb9fd730d68b792" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="0.5,-0.5 0.5,-21.5 150.5,-21.5 150.5,-0.5 0.5,-0.5"/>
-<text text-anchor="middle" x="75.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdCardFactory::newCard</text>
+<polygon fill="white" stroke="black" points="286.5,-0.5 286.5,-21.5 436.5,-21.5 436.5,-0.5 286.5,-0.5"/>
+<text text-anchor="middle" x="361.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdCardFactory::newCard</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M176.68,-22.35C167.99,-21.37 159.15,-20.37 150.5,-19.39"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="176.45,-25.85 186.78,-23.5 177.23,-18.89 176.45,-25.85"/>
+<path fill="none" stroke="midnightblue" d="M462.68,-22.35C453.99,-21.37 445.15,-20.37 436.5,-19.39"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="462.45,-25.85 472.78,-23.5 463.23,-18.89 462.45,-25.85"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../de/d8b/class_sd_base.html#a7a5e3b08f6cdd94cfaa19a1b43df6ed9" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="131,-0.5 131,-21.5 250,-21.5 250,-0.5 131,-0.5"/>
+<text text-anchor="middle" x="190.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::cardBegin</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M276.36,-11C267.48,-11 258.58,-11 250.08,-11"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="276.37,-14.5 286.37,-11 276.37,-7.5 276.37,-14.5"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../de/d8b/class_sd_base.html#a5748f43d73a4272ec8dc302fb0213556" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-0.5 0,-21.5 95,-21.5 95,-0.5 0,-0.5"/>
+<text text-anchor="middle" x="47.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::begin</text>
+</a>
+</g>
+</g>
+<!-- Node6&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node6&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M120.76,-11C112.06,-11 103.32,-11 95.08,-11"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="120.93,-14.5 130.93,-11 120.93,-7.5 120.93,-14.5"/>
 </g>
 </g>
 </svg>

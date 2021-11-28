@@ -20,10 +20,11 @@
 
 
 Touch touch(CS_TOUCH);
-ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
+ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (32)));
+uint16_t FASTRUN imgCache[320*240] __attribute__ ((aligned (32)));//8 64x64 16bit img cache 
 //uint16_t DMAMEM FB2[320 * 240] __attribute__ ((aligned (32)));
-SvcDataDictionary _data;
+SvcDataDictionary FASTRUN _data;
 
 /**
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
@@ -38,6 +39,7 @@ AppManager:: AppManager(){
   monitor_dd_update_timer = 0;
   state = redraw_objects;
   //init the app focus and app stacks
+  memset(imgCache,0,sizeof(imgCache));
   memset(&appFocusStack,0,sizeof(appFocusStack));
   memset(&appPopUpStack,0,sizeof(appPopUpStack));
   appFocusStackIndex = 0;
@@ -60,7 +62,7 @@ AppManager:: AppManager(){
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
   animated_wallpaper.setSD(&sd);
-  animated_wallpaper.setPath("/V/TEST");
+  animated_wallpaper.setPath("/V/PINKDOTS");
   Serial.println(F("M AppManager: Init display"));
   draw.begin();
   //render.begin();
@@ -73,20 +75,15 @@ AppManager:: AppManager(){
   //enable cpu temp monitoring
   tempmon_init();
   //set the default template colors for the gui
-  data->create("UI_BUTTON_FILL_COLOR",(int32_t)76);
-  data->create("UI_BUTTON_SHADE_COLOR",(int32_t)37);
-  data->create("UI_BUTTON_ACTIVE_BORDER_COLOR",(int32_t)23254);
-  data->create("UI_BUTTON_INACTIVE_BORDER_COLOR",(int32_t)23244);
-  data->create("UI_BUTTON_TEXT_COLOR",(int32_t)50713);
-  data->create("UI_SLIDER_BORDER_COLOR",(int32_t)44374);
-  data->create("UI_SLIDER_SHADE_COLOR",(int32_t)44344);
-  data->create("UI_SLIDER_FILL_COLOR",(int32_t)1530);
-  data->create("UI_SLIDER_TEXT_COLOR",(int32_t)39222);
-
-  data->create("AudioProcessorUsageMax",(float32_t)AudioProcessorUsageMax());
-  data->create("AudioProcessorUsage",(float32_t)AudioProcessorUsage());
-  data->create("AudioMemoryUsageMax",(int32_t)AudioMemoryUsageMax());
-  data->create("AudioMemoryUsage",(int32_t)AudioMemoryUsage());
+  data->create(UI_BUTTON_FILL_COLOR,(int32_t)76);
+  data->create(UI_BUTTON_SHADE_COLOR,(int32_t)37);
+  data->create(UI_BUTTON_ACTIVE_BORDER_COLOR,(int32_t)23254);
+  data->create(UI_BUTTON_INACTIVE_BORDER_COLOR,(int32_t)23244);
+  data->create(UI_BUTTON_TEXT_COLOR,(int32_t)50713);
+  data->create(UI_SLIDER_BORDER_COLOR,(int32_t)44374);
+  data->create(UI_SLIDER_SHADE_COLOR,(int32_t)44344);
+  data->create(UI_SLIDER_FILL_COLOR,(int32_t)1530);
+  data->create(UI_SLIDER_TEXT_COLOR,(int32_t)39222);
 
   Serial.println(F("M AppManager: Contructor complete"));
   #ifdef ENABLE_ASYNC_SCREEN_UPDATES
@@ -131,14 +128,14 @@ void AppManager::update(){
       case redraw_background:
         app_time=0;
         if (!draw.busy()){
-            data->update("RENDER",(int32_t)0);
+            data->update(RENDER,(int32_t)0);
           if (animated_wallpaper.getNextFrameChunk()){
               draw.bltSDAnimationFullScreen(&animated_wallpaper);
-              data->update("AM_REDRAW_BG",(int32_t)app_time);
-          } else Serial.println("M bad chunk");
-        } else Serial.println("M draw busy");
-        if ((data->read("RENDER") == 0) && animated_wallpaper.isFrameComplete()){
-          data->update("RENDER",(int32_t)1);
+              data->update(AM_REDRAW_BG,(int32_t)app_time);
+          } else Serial.println(F("M bad chunk"));
+        } else Serial.println(F("M draw busy"));
+        if ((data->read(RENDER) == 0) && animated_wallpaper.isFrameComplete()){
+          data->update(RENDER,(int32_t)1);
           state = redraw_objects;
         }
         break;
@@ -152,19 +149,19 @@ void AppManager::update(){
           else state = redraw_background;
         };
         //note: this is  a good place for application manager housekeeping tasks where screen access is not required
-        data->update("AudioProcessorUsageMax",(float32_t)AudioProcessorUsageMax());
+        data->update(AM_AUDIO_CPU_MAX,(float32_t)AudioProcessorUsageMax());
         float32_t cpu;
         cpu = AudioProcessorUsage();
-        data->update("AudioProcessorUsage",(float32_t)cpu);
-        data->update("AudioMemoryUsageMax",(int32_t)AudioMemoryUsageMax());
-        data->update("AudioMemoryUsage",(int32_t)AudioMemoryUsage());
+        data->update(AM_AUDIO_CPU,(float32_t)cpu);
+        data->update(AM_AUDIO_MEM_MAX,(int32_t)AudioMemoryUsageMax() * AUDIO_BLOCK_SAMPLES * 2);
+        data->update(AM_AUDIO_MEM,(int32_t)AudioMemoryUsage() * AUDIO_BLOCK_SAMPLES * 2);
         break;
 
       case redraw_render:
         app_time=0;      
-        data->update("RENDER_PERIOD",(int32_t)drt);
-        data->update("RENDER",(int32_t)4);
-        data->increment("RENDER_FRAME");
+        data->update(RENDER_PERIOD,(int32_t)drt);
+        data->update(RENDER,(int32_t)4);
+        data->increment(RENDER_FRAME);
         draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         state = redraw_wait;
         display_refresh_time = 0;
@@ -186,8 +183,8 @@ void AppManager::update(){
               node=node->nextAppicationNode;//check next node
             }while(node !=NULL);
         };
-        data->update("RENDER",(int32_t)2);
-        data->increment("UPDATE_CALLS");
+        data->update(RENDER,(int32_t)2);
+        data->increment(UPDATE_CALLS);
         state = redraw_popup;
         break;
 
@@ -201,14 +198,14 @@ void AppManager::update(){
             node->update();
           }
         }
-        data->update("RENDER",(int32_t)3);
+        data->update(RENDER,(int32_t)3);
         state = redraw_render;     
         break;
     }
     //always call the apps updateRT function on every loop
     touch.update();
     touch_updated = true;    
-    data->increment("RT_CALLS");
+    data->increment(RT_CALLS);
     node = root;
     do{
       app_time=0;
@@ -230,10 +227,10 @@ void AppManager::update(){
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //trigger any events and then call the update function for this 'active' app or child node
           if (update_analog){
-            data->update("AN1",(int32_t)analog.readAN1());
-            data->update("AN2",(int32_t)analog.readAN2());
-            data->update("AN3",(int32_t)analog.readAN3());
-            data->update("AN4",(int32_t)analog.readAN4());
+            data->update(AM_AN1,(int32_t)analog.readAN1());
+            data->update(AM_AN2,(int32_t)analog.readAN2());
+            data->update(AM_AN3,(int32_t)analog.readAN3());
+            data->update(AM_AN4,(int32_t)analog.readAN4());
             
             node->onAnalog1(analog.readAN1(),analog.freadAN1());
             node->onAnalog2(analog.readAN2(),analog.freadAN2());
@@ -271,19 +268,27 @@ void AppManager::update(){
     
     if(monitor_update){
       monitor_dd_update_timer = 0;
-      data->update("LOOP_TIME",(int32_t)cycle_time_max);
+      data->update(AM_LOOP_TIME,(int32_t)cycle_time_max);
       //data->update("SERIAL_AVAIL",Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
-      //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress()); 
+      //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress());
+      int32_t free_mem;
+      free_mem = 1000;
       cycle_time_max*=0.999;
       htop = malloc(1000);
-      memset(htop,0x5A,1000);
-      heapTop = (uint32_t) htop;
-      free(htop);
-      data->update("HEAP_FREE",(int32_t)(0x20280000 - heapTop));
-      data->update("LOCAL_MEM",(int32_t)(0x2007F000 - (uint32_t)(&heapTop)));
+      while (htop){
+        memset(htop,0x5A,1000);
+        heapTop = (uint32_t) htop;
+        free(htop);
+        free_mem += 1000;
+        htop = malloc(free_mem);
+      }
+      
+      data->update(FREE_MEM,(int32_t)(free_mem - 1000));
+      data->update(HEAP_FREE,(int32_t)(0x20280000 - heapTop));
+      data->update(LOCAL_MEM,(int32_t)(0x2007F000 - (uint32_t)(&heapTop)));
       heapTop = 0;
-      data->update("CPU_TEMP",(float32_t)tempmonGetTemp());
+      data->update(CPU_TEMP,(float32_t)tempmonGetTemp());
       AudioProcessorUsageMaxReset();
       AudioMemoryUsageMaxReset();    
     }
@@ -403,7 +408,7 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
  * @brief prints out some stats in JSON format to the serial port
  * 
  */
-void AppManager::printStats(){
+void AppManager::printStats (){
   AppBaseClass *node = root;
   if (node == NULL) return;
   Serial.print(F("STATS {\"APPS\":{"));

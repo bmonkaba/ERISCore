@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 712;
+var viewWidth = 891;
 var viewHeight = 70;
 var sectionId = 'dynsection-6';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-6';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>cpplint.FileInfo.IsSource</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-66 708,-66 708,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-66 887,-66 887,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -113,7 +113,7 @@ var sectionId = 'dynsection-6';
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../db/da8/classcpplint_1_1_file_info.html#a2b3b79b7d46221a6b9d0ea0bebac2061" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="522,-0.5 522,-21.5 704,-21.5 704,-0.5 522,-0.5"/>
+<polygon fill="white" stroke="black" points="522,-0.5 522,-21.5 704,-21.5 704,-0.5 522,-0.5"/>
 <text text-anchor="middle" x="613" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.FileInfo.RepositoryName</text>
 </a>
 </g>
@@ -123,6 +123,21 @@ var sectionId = 'dynsection-6';
 <title>Node4&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M486.06,-11C494.22,-11 502.8,-11 511.48,-11"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="511.71,-14.5 521.71,-11 511.71,-7.5 511.71,-14.5"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../db/da8/classcpplint_1_1_file_info.html#aed56577368c45cdf45fc4c9109129145" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="740,-0.5 740,-21.5 883,-21.5 883,-0.5 740,-0.5"/>
+<text text-anchor="middle" x="811.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.FileInfo.FullName</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M704.2,-11C712.73,-11 721.35,-11 729.79,-11"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="729.98,-14.5 739.98,-11 729.98,-7.5 729.98,-14.5"/>
 </g>
 </g>
 </svg>

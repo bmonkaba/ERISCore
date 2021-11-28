@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     mainLoop = tornado.ioloop.IOLoop.instance()
     ## adjust the scheduler_interval according to the frames sent by the serial port
-    scheduler_interval = 1
+    scheduler_interval = 20
     scheduler = tornado.ioloop.PeriodicCallback(checkQueue, scheduler_interval)
     scheduler.start()
     #s_scheduler = tornado.ioloop.PeriodicCallback(sp.run, scheduler_interval)

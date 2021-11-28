@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: D:/brian/Dev/Eris/ERISCore/lib/SdFat-master/src/common/DebugMacros.h Source File</title>
+<title>ERIS CORE: ERISCore/lib/SdFat-master/src/common/DebugMacros.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,13 +99,13 @@ $(document).ready(function(){initNavTree('d5/dfc/_debug_macros_8h_source.html','
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#error DBG_FILE not defined</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DBG_FILE</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgFail(uint16_t line) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="../../d2/db6/_sd_card_info_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgFail(uint16_t line) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;DBG_FAIL: &quot;</span>));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<a class="code" href="../../d0/d75/_fs_cache_8cpp.html#a247aabef4f899fd0d8d2a5564f527b9b">DBG_FILE</a>));</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Serial.write(<span class="charliteral">&#39;.&#39;</span>);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Serial.println(line);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgHalt(uint16_t line) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="../../d2/db6/_sd_card_info_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgHalt(uint16_t line) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;DBG_HALT: &quot;</span>));</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<a class="code" href="../../d0/d75/_fs_cache_8cpp.html#a247aabef4f899fd0d8d2a5564f527b9b">DBG_FILE</a>));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Serial.write(<span class="charliteral">&#39;.&#39;</span>);</div>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('d5/dfc/_debug_macros_8h_source.html','
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// USE_DBG_MACROS</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#if USE_DBG_MACROS &gt; 1</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgWarn(uint16_t line) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<a class="code" href="../../d2/db6/_sd_card_info_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((unused)) <span class="keyword">static</span> <span class="keywordtype">void</span> dbgWarn(uint16_t line) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;DBG_WARN: &quot;</span>));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<a class="code" href="../../d0/d75/_fs_cache_8cpp.html#a247aabef4f899fd0d8d2a5564f527b9b">DBG_FILE</a>));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  Serial.write(<span class="charliteral">&#39;.&#39;</span>);</div>
@@ -138,14 +138,14 @@ $(document).ready(function(){initNavTree('d5/dfc/_debug_macros_8h_source.html','
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// DebugMacros_h</span></div>
 <div class="ttc" id="a_fs_cache_8cpp_html_a247aabef4f899fd0d8d2a5564f527b9b"><div class="ttname"><a href="../../d0/d75/_fs_cache_8cpp.html#a247aabef4f899fd0d8d2a5564f527b9b">DBG_FILE</a></div><div class="ttdeci">#define DBG_FILE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d75/_fs_cache_8cpp_source.html#l00025">FsCache.cpp:25</a></div></div>
 <div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00042">PrintBasic.h:42</a></div></div>
+<div class="ttc" id="a_sd_card_info_8h_html_a011d27aa1579ba8c8866dbfc61d0f47b"><div class="ttname"><a href="../../d2/db6/_sd_card_info_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a></div><div class="ttdeci">union csd_t __attribute__</div></div>
 <div class="ttc" id="a_sd_fat_config_8h_html"><div class="ttname"><a href="../../de/d9b/_sd_fat_config_8h.html">SdFatConfig.h</a></div><div class="ttdoc">configuration definitions</div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a011d27aa1579ba8c8866dbfc61d0f47b"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a></div><div class="ttdeci">class SvcDataDictionary __attribute__</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_f58a0c698f3a537aa2722f549bb5389d.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_1a69d9ac750c094c9b309d5125550118.html">src</a></li><li class="navelem"><a class="el" href="../../dir_45911ab607593b5accdc49bf1b68433d.html">common</a></li><li class="navelem"><a class="el" href="../../d5/dfc/_debug_macros_8h.html">DebugMacros.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_607444457ce7ff98031c3752bb27f7b6.html">ERISCore</a></li><li class="navelem"><a class="el" href="../../dir_5b5543e87200f107623567781f7f5b13.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_b8b0da42578fb9a243a97ee3cbf1ef05.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_a8ab2a6fce746a759c8fe38b024da189.html">src</a></li><li class="navelem"><a class="el" href="../../dir_fb76beb15a25acaec17ec092303eaddf.html">common</a></li><li class="navelem"><a class="el" href="../../d5/dfc/_debug_macros_8h.html">DebugMacros.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

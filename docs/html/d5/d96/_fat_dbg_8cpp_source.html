@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: D:/brian/Dev/Eris/ERISCore/lib/SdFat-master/src/FatLib/FatDbg.cpp Source File</title>
+<title>ERIS CORE: ERISCore/lib/SdFat-master/src/FatLib/FatDbg.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -119,10 +119,10 @@ $(document).ready(function(){initNavTree('d5/d96/_fat_dbg_8cpp_source.html','../
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  pr-&gt;<a class="code" href="../../da/db3/class_print_basic.html#afdd5b2ee779058e5b7741c6e46f63f06">write</a>(ptr);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a010065ba4e2c4b16cda8a04db379e892">   58</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, uint16_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a010065ba4e2c4b16cda8a04db379e892">   58</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, uint16_t val) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">bool</span> space = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; 4; i++) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    uint8_t h = (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> &gt;&gt; (12 - 4*i)) &amp; 15;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    uint8_t h = (val &gt;&gt; (12 - 4*i)) &amp; 15;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (h || i == 3) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      space = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
@@ -134,10 +134,10 @@ $(document).ready(function(){initNavTree('d5/d96/_fat_dbg_8cpp_source.html','../
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a9d7bd8f0b2423a60103830a037f7482d">   73</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, uint32_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a9d7bd8f0b2423a60103830a037f7482d">   73</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, uint32_t val) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">bool</span> space = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; 8; i++) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    uint8_t h = (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> &gt;&gt; (28 - 4*i)) &amp; 15;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    uint8_t h = (val &gt;&gt; (28 - 4*i)) &amp; 15;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (h || i == 7) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      space = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
@@ -150,8 +150,8 @@ $(document).ready(function(){initNavTree('d5/d96/_fat_dbg_8cpp_source.html','../
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> U<span class="keywordtype">int</span>&gt;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a9064f68619cf8150e1393b334ca86316">   89</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a9064f68619cf8150e1393b334ca86316">printHexLn</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, Uint <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(pr, <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d5/d96/_fat_dbg_8cpp.html#a9064f68619cf8150e1393b334ca86316">   89</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a9064f68619cf8150e1393b334ca86316">printHexLn</a>(<a class="code" href="../../da/db3/class_print_basic.html">print_t</a>* pr, Uint val) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="../../d5/d96/_fat_dbg_8cpp.html#a55d1092a0a775f867ae2addf15861c3a">printHex</a>(pr, val);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  pr-&gt;<a class="code" href="../../da/db3/class_print_basic.html#af89079da3793cc7778b6b8adb46e1fde">println</a>();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
@@ -379,13 +379,12 @@ $(document).ready(function(){initNavTree('d5/d96/_fat_dbg_8cpp_source.html','../
 <div class="ttc" id="astruct_dir_lfn__t_html_a8612f90b441d580d88cedfe4013d6ae0"><div class="ttname"><a href="../../de/d14/struct_dir_lfn__t.html#a8612f90b441d580d88cedfe4013d6ae0">DirLfn_t::attributes</a></div><div class="ttdeci">uint8_t attributes</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00288">FsStructs.h:288</a></div></div>
 <div class="ttc" id="astruct_dir_lfn__t_html_a88647f2b6e369129212686a9a1b6b50f"><div class="ttname"><a href="../../de/d14/struct_dir_lfn__t.html#a88647f2b6e369129212686a9a1b6b50f">DirLfn_t::unicode1</a></div><div class="ttdeci">uint8_t unicode1[10]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00287">FsStructs.h:287</a></div></div>
 <div class="ttc" id="astruct_dir_lfn__t_html_a8bfeaef3a1a08bc1961c7289c90dafce"><div class="ttname"><a href="../../de/d14/struct_dir_lfn__t.html#a8bfeaef3a1a08bc1961c7289c90dafce">DirLfn_t::order</a></div><div class="ttdeci">uint8_t order</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00286">FsStructs.h:286</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a8e9defd75397baec7dc6e0779384a952"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a></div><div class="ttdeci">int32_t val</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">svcDataDictionary.h:2</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_f58a0c698f3a537aa2722f549bb5389d.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_1a69d9ac750c094c9b309d5125550118.html">src</a></li><li class="navelem"><a class="el" href="../../dir_dccc2f7f8f38c07aadb472743048df29.html">FatLib</a></li><li class="navelem"><a class="el" href="../../d5/d96/_fat_dbg_8cpp.html">FatDbg.cpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_607444457ce7ff98031c3752bb27f7b6.html">ERISCore</a></li><li class="navelem"><a class="el" href="../../dir_5b5543e87200f107623567781f7f5b13.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_b8b0da42578fb9a243a97ee3cbf1ef05.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_a8ab2a6fce746a759c8fe38b024da189.html">src</a></li><li class="navelem"><a class="el" href="../../dir_29145e1425131ca332efbc50768fcbb9.html">FatLib</a></li><li class="navelem"><a class="el" href="../../d5/d96/_fat_dbg_8cpp.html">FatDbg.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

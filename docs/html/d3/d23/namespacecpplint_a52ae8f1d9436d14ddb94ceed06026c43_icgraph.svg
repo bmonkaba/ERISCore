@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1108;
+var viewWidth = 1223;
 var viewHeight = 91;
 var sectionId = 'dynsection-141';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-141';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>cpplint.ParseNolintSuppressions</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-87.18 1104,-87.18 1104,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-87.18 1219,-87.18 1219,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="914,-21.68 914,-42.68 1100,-42.68 1100,-21.68 914,-21.68"/>
-<text text-anchor="middle" x="1007" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ParseNolintSuppressions</text>
+<polygon fill="#bfbfbf" stroke="black" points="1029,-21.68 1029,-42.68 1215,-42.68 1215,-21.68 1029,-21.68"/>
+<text text-anchor="middle" x="1122" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ParseNolintSuppressions</text>
 </a>
 </g>
 </g>
@@ -68,103 +68,118 @@ var sectionId = 'dynsection-141';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d3/d23/namespacecpplint.html#a3694fa1b195f49a0d78dfc81ee665eec" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="485,-61.68 485,-82.68 661,-82.68 661,-61.68 485,-61.68"/>
-<text text-anchor="middle" x="573" y="-69.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckForHeaderGuard</text>
+<polygon fill="white" stroke="black" points="600,-61.68 600,-82.68 776,-82.68 776,-61.68 600,-61.68"/>
+<text text-anchor="middle" x="688" y="-69.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckForHeaderGuard</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M935.96,-44.28C917.18,-47.21 896.85,-50.09 878,-52.18 805.19,-60.25 722.18,-65.44 661.32,-68.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="936.59,-47.72 945.92,-42.7 935.49,-40.81 936.59,-47.72"/>
+<path fill="none" stroke="midnightblue" d="M1050.96,-44.28C1032.18,-47.21 1011.85,-50.09 993,-52.18 920.19,-60.25 837.18,-65.44 776.32,-68.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1051.59,-47.72 1060.92,-42.7 1050.49,-40.81 1051.59,-47.72"/>
 </g>
 <!-- Node6 -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node5"><a xlink:href="../../d3/d23/namespacecpplint.html#a725663cb5a341fbf726f2ac8fa4e61a3" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="697,-21.68 697,-42.68 878,-42.68 878,-21.68 697,-21.68"/>
-<text text-anchor="middle" x="787.5" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckTrailingSemicolon</text>
+<g id="a_node6"><a xlink:href="../../d3/d23/namespacecpplint.html#a725663cb5a341fbf726f2ac8fa4e61a3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="812,-21.68 812,-42.68 993,-42.68 993,-21.68 812,-21.68"/>
+<text text-anchor="middle" x="902.5" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckTrailingSemicolon</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
-<g id="edge4" class="edge">
+<g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M903.75,-32.18C895.18,-32.18 886.57,-32.18 878.11,-32.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="903.76,-35.68 913.76,-32.18 903.76,-28.68 903.76,-35.68"/>
+<path fill="none" stroke="midnightblue" d="M1018.75,-32.18C1010.18,-32.18 1001.57,-32.18 993.11,-32.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1018.76,-35.68 1028.76,-32.18 1018.76,-28.68 1018.76,-35.68"/>
 </g>
 <!-- Node8 -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node7"><a xlink:href="../../d3/d23/namespacecpplint.html#ac7c198c2adf60fd79a3f2b4270055a3b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="330,-21.68 330,-42.68 449,-42.68 449,-21.68 330,-21.68"/>
-<text text-anchor="middle" x="389.5" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessLine</text>
+<g id="a_node8"><a xlink:href="../../d3/d23/namespacecpplint.html#ac7c198c2adf60fd79a3f2b4270055a3b" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="445,-21.68 445,-42.68 564,-42.68 564,-21.68 445,-21.68"/>
+<text text-anchor="middle" x="504.5" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessLine</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M940.81,-20C920.74,-16.79 898.53,-13.77 878,-12.18 703.86,1.34 658.72,6 485,-12.18 467.15,-14.05 447.72,-17.85 431.14,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="940.34,-23.47 950.78,-21.63 941.48,-16.56 940.34,-23.47"/>
+<path fill="none" stroke="midnightblue" d="M1055.81,-20C1035.74,-16.79 1013.53,-13.77 993,-12.18 818.86,1.34 773.72,6 600,-12.18 582.15,-14.05 562.72,-17.85 546.14,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1055.34,-23.47 1065.78,-21.63 1056.48,-16.56 1055.34,-23.47"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d3/d23/namespacecpplint.html#ace3e46f0fab9638ad0e786037a5ca96c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="152,-40.68 152,-61.68 294,-61.68 294,-40.68 152,-40.68"/>
-<text text-anchor="middle" x="223" y="-48.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessFileData</text>
+<polygon fill="white" stroke="black" points="267,-40.68 267,-61.68 409,-61.68 409,-40.68 267,-40.68"/>
+<text text-anchor="middle" x="338" y="-48.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessFileData</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M474.46,-66.29C417.13,-62.83 345.97,-58.54 294.16,-55.41"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="474.44,-69.8 484.63,-66.91 474.86,-62.81 474.44,-69.8"/>
+<path fill="none" stroke="midnightblue" d="M589.46,-66.29C532.13,-62.83 460.97,-58.54 409.16,-55.41"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="589.44,-69.8 599.63,-66.91 589.86,-62.81 589.44,-69.8"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d3/d23/namespacecpplint.html#a41785091b61e8719f4a4a886eb20fe43" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="0,-40.68 0,-61.68 116,-61.68 116,-40.68 0,-40.68"/>
-<text text-anchor="middle" x="58" y="-48.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessFile</text>
+<polygon fill="white" stroke="black" points="115,-40.68 115,-61.68 231,-61.68 231,-40.68 115,-40.68"/>
+<text text-anchor="middle" x="173" y="-48.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.ProcessFile</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M141.75,-51.18C133.06,-51.18 124.34,-51.18 116,-51.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="141.93,-54.68 151.93,-51.18 141.93,-47.68 141.93,-54.68"/>
+<path fill="none" stroke="midnightblue" d="M256.75,-51.18C248.06,-51.18 239.34,-51.18 231,-51.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="256.93,-54.68 266.93,-51.18 256.93,-47.68 256.93,-54.68"/>
+</g>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d3/d23/namespacecpplint.html#a03dd39c6bfb4337676fcfaf5cd797c91" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-40.68 0,-61.68 79,-61.68 79,-40.68 0,-40.68"/>
+<text text-anchor="middle" x="39.5" y="-48.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.main</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M104.49,-51.18C95.77,-51.18 87.1,-51.18 79.07,-51.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="104.7,-54.68 114.7,-51.18 104.7,-47.68 104.7,-54.68"/>
 </g>
 <!-- Node7 -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node6"><a xlink:href="../../d3/d23/namespacecpplint.html#acfc546daa5947842cb01af319dcb482b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="516.5,-21.68 516.5,-42.68 629.5,-42.68 629.5,-21.68 516.5,-21.68"/>
-<text text-anchor="middle" x="573" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckStyle</text>
+<g id="a_node7"><a xlink:href="../../d3/d23/namespacecpplint.html#acfc546daa5947842cb01af319dcb482b" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="631.5,-21.68 631.5,-42.68 744.5,-42.68 744.5,-21.68 631.5,-21.68"/>
+<text text-anchor="middle" x="688" y="-29.08" font-family="Helvetica,sans-Serif" font-size="12.00">cpplint.CheckStyle</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node7 -->
-<g id="edge5" class="edge">
+<g id="edge6" class="edge">
 <title>Node6&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M686.79,-32.18C667.19,-32.18 647.29,-32.18 629.78,-32.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="687,-35.68 697,-32.18 687,-28.68 687,-35.68"/>
+<path fill="none" stroke="midnightblue" d="M801.79,-32.18C782.19,-32.18 762.29,-32.18 744.78,-32.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="802,-35.68 812,-32.18 802,-28.68 802,-35.68"/>
 </g>
 <!-- Node7&#45;&gt;Node8 -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>Node7&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M505.91,-32.18C487.3,-32.18 467.21,-32.18 449.08,-32.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="506.06,-35.68 516.06,-32.18 506.06,-28.68 506.06,-35.68"/>
+<path fill="none" stroke="midnightblue" d="M620.91,-32.18C602.3,-32.18 582.21,-32.18 564.08,-32.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="621.06,-35.68 631.06,-32.18 621.06,-28.68 621.06,-35.68"/>
 </g>
 <!-- Node8&#45;&gt;Node3 -->
-<g id="edge7" class="edge">
+<g id="edge8" class="edge">
 <title>Node8&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M319.44,-40.16C311.03,-41.13 302.44,-42.12 294.02,-43.09"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="320.04,-43.61 329.58,-38.99 319.24,-36.66 320.04,-43.61"/>
+<path fill="none" stroke="midnightblue" d="M434.44,-40.16C426.03,-41.13 417.44,-42.12 409.02,-43.09"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="435.04,-43.61 444.58,-38.99 434.24,-36.66 435.04,-43.61"/>
 </g>
 </g>
 </svg>

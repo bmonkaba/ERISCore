@@ -47,6 +47,7 @@ var class_my_app_example =
     [ "origin_x", "dd/da5/class_my_app_example.html#ad484524ffb9a008ab4f5221bf2c018d8", null ],
     [ "origin_y", "dd/da5/class_my_app_example.html#ab2dadde94f4c2b9ade4be05b43a251ed", null ],
     [ "oscope", "dd/da5/class_my_app_example.html#a14f5428ba8f2ee77c89fb76efb1f8c36", null ],
+    [ "output_gate", "dd/da5/class_my_app_example.html#a33984f99b31023601a44b4de8f3446d1", null ],
     [ "parentNode", "dd/da5/class_my_app_example.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "dd/da5/class_my_app_example.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "sd", "dd/da5/class_my_app_example.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],

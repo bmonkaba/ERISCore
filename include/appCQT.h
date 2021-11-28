@@ -24,7 +24,7 @@
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 14
+#define OSC_BANK_SIZE 16
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port

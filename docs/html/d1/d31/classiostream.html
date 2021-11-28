@@ -103,17 +103,17 @@ $(document).ready(function(){initNavTree('d1/d31/classiostream.html','../../'); 
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/dd4/classiostream__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/dd4/classiostream__inherit__graph.svg" width="190" height="350"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Collaboration diagram for iostream:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dd/d07/classiostream__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d07/classiostream__coll__graph.svg" width="190" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -879,7 +879,7 @@ Private Attributes</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dc1/classios__base_ade5bd46462e075999c3a5c2cff2015f1_icgraph.svg" width="100%" height="475"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d4/dc1/classios__base_ade5bd46462e075999c3a5c2cff2015f1_icgraph.svg" width="100%" height="488"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1982,7 +1982,7 @@ template&lt;typename T &gt; </div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  int8_t any = 0;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  int8_t have_zero = 0;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  uint8_t neg;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint32_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> = 0;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint32_t val = 0;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  uint32_t cutoff;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  uint8_t cutlim;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <a class="code" href="../../df/da6/structfspos__t.html">pos_t</a> endPos;</div>
@@ -2022,26 +2022,25 @@ template&lt;typename T &gt; </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">if</span> (c &gt;= base) {</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> &gt; cutoff || (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> == cutoff &amp;&amp; c &gt; cutlim)) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (val &gt; cutoff || (val == cutoff &amp;&amp; c &gt; cutlim)) {</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="comment">// indicate overflow error</span></div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      any = -1;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> = <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> * base + c;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    val = val * base + c;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    c = getch(&amp;endPos);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    any = 1;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  }</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  setpos(&amp;endPos);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span> (any &gt; 0 || (have_zero &amp;&amp; any &gt;= 0)) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    *num =  neg ? -<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> : <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    *num =  neg ? -val : val;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <a class="code" href="../../df/d02/classios.html#aee5d194656bdfb0c8621b23ea2f51afb">setstate</a>(<a class="code" href="../../d4/dc1/classios__base.html#a36157154001bcce17827db6786e35efd">failbit</a>);</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a8e9defd75397baec7dc6e0779384a952"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a></div><div class="ttdeci">int32_t val</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">svcDataDictionary.h:2</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/dd5/ios_8h_source.html#l00125">ios_base::basefield</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00161">ios_base::flags()</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00104">ios_base::hex</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00106">ios_base::oct</a>, <a class="el" href="../../d7/d52/istream_8cpp_source.html#l00379">istream::readSkip()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">val</a>.</p>
+<p class="reference">References <a class="el" href="../../df/dd5/ios_8h_source.html#l00125">ios_base::basefield</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00161">ios_base::flags()</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00104">ios_base::hex</a>, <a class="el" href="../../df/dd5/ios_8h_source.html#l00106">ios_base::oct</a>, and <a class="el" href="../../d7/d52/istream_8cpp_source.html#l00379">istream::readSkip()</a>.</p>
 <div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-28-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-28-summary" class="dynsummary" style="display:block;">
@@ -2394,7 +2393,7 @@ template&lt;typename T &gt; </div>
 <div id="dynsection-34-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-34-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/d43/classostream_a63e3999be154253cf92a45c22e548f51_cgraph.svg" width="100%" height="401"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d0/d43/classostream_a63e3999be154253cf92a45c22e548f51_cgraph.svg" width="100%" height="408"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -4104,13 +4103,13 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="../../db/dc9/istream_8h_source.html#l00205">205</a> of file <a class="el" href="../../db/dc9/istream_8h_source.html">istream.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                   {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    uint32_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="../../d4/d07/classistream.html#a80d0d54abe80ccbd71f809f83fb313d8">getNumber</a>(&amp;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    arg = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">void</span>*<span class="keyword">&gt;</span>(<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    uint32_t val;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="../../d4/d07/classistream.html#a80d0d54abe80ccbd71f809f83fb313d8">getNumber</a>(&amp;val);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    arg = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">void</span>*<span class="keyword">&gt;</span>(val);</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/dc9/istream_8h_source.html#l00367">istream::getNumber()</a>, and <a class="el" href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">val</a>.</p>
+<p class="reference">References <a class="el" href="../../db/dc9/istream_8h_source.html#l00367">istream::getNumber()</a>.</p>
 <div id="dynsection-53" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-53-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-53-summary" class="dynsummary" style="display:block;">
@@ -6403,7 +6402,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>D:/brian/Dev/Eris/ERISCore/lib/SdFat-master/src/iostream/<a class="el" href="../../dd/d27/iostream_8h_source.html">iostream.h</a></li>
+<li>ERISCore/lib/SdFat-master/src/iostream/<a class="el" href="../../dd/d27/iostream_8h_source.html">iostream.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

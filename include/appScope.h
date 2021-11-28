@@ -22,9 +22,9 @@ class AppScope:public AppBaseClass {
 
   protected:
     erisAudioAnalyzeScope* scope;
-    
+    float32_t scale;
     void update(){
-        float scale;
+        
         uint16_t y_last_scope;
         uint16_t y_last_scope_ch2;
 
@@ -32,7 +32,8 @@ class AppScope:public AppBaseClass {
         y_last_scope_ch2=h/2;
        
         scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-        if (scale > 10.0) scale = 10.0;
+        if (scale > 10000.0) scale = 10000.0;
+        am->data->update("OSCOPE_SCALE",scale);
         draw->fillRoundRect(x,y,w,h,3,CL(0,0,0));
         for (int16_t i=0;i<w;i++){
             int16_t v;
@@ -65,6 +66,7 @@ class AppScope:public AppBaseClass {
     };    //called only when the app is active
 
     void updateRT(){
+        am->data->update("INPUT_PEAK",(int32_t)scope->getPeakValue());
         /*
         //publish the scopes math functions
         AppManager *am = AppManager::getInstance();

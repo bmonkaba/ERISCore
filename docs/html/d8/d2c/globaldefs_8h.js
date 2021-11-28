@@ -12,11 +12,13 @@ var globaldefs_8h =
     [ "MAX_NAME_LENGTH", "d8/d2c/globaldefs_8h.html#a0c397a708cec89c74029582574516b30", null ],
     [ "MAX_TEXT_LENGTH", "d8/d2c/globaldefs_8h.html#a9a90baeac9b3273d185357200b599b39", null ],
     [ "MAX_UNIQUE_NAMES_PER_CATEGORY", "d8/d2c/globaldefs_8h.html#abc12096f9bc6b40854744480b495374e", null ],
-    [ "SERIAL_AUTO_TRANSMIT_DATA_PERIOD", "d8/d2c/globaldefs_8h.html#a9da45ab810e3bd9b433bcac761b99221", null ],
+    [ "SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD", "d8/d2c/globaldefs_8h.html#a8d90241f7aafcab3c052f260976580ce", null ],
     [ "SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY", "d8/d2c/globaldefs_8h.html#aa965a565bc48134c92eb0be99e196d39", null ],
+    [ "SERIAL_AUTO_TRANSMIT_STATS_PERIOD", "d8/d2c/globaldefs_8h.html#a16044bbd4199388bc90d1f84e4ea8b0c", null ],
     [ "SERIAL_FILESTREAM_PAYLOAD_SIZE", "d8/d2c/globaldefs_8h.html#a5bbe063c9ff2ad8940b615fdab34110d", null ],
     [ "SERIAL_OUTPUT_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#abfe80eb43785493f268187a201692d8e", null ],
     [ "SERIAL_PARAM_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a5c22e2c6abc159d7fafbeb6d43e4c968", null ],
     [ "SERIAL_POLLING_RATE_MAX", "d8/d2c/globaldefs_8h.html#a2bebf7301603ccdf9533cb9aa41c08ef", null ],
-    [ "SERIAL_RX_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#aba0ceec384cf3acb51e0d6f45f31379c", null ]
+    [ "SERIAL_RX_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#aba0ceec384cf3acb51e0d6f45f31379c", null ],
+    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a72c24669179a4c4371f614b576d26f2d", null ]
 ];

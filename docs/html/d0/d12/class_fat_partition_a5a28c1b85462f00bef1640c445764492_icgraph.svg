@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 658;
+var viewWidth = 819;
 var viewHeight = 430;
 var sectionId = 'dynsection-42';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-42';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>FatPartition::freeChain</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-426 654,-426 654,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-426 815,-426 815,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="516,-138.5 516,-159.5 650,-159.5 650,-138.5 516,-138.5"/>
-<text text-anchor="middle" x="583" y="-145.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatPartition::freeChain</text>
+<polygon fill="#bfbfbf" stroke="black" points="677,-138.5 677,-159.5 811,-159.5 811,-138.5 677,-138.5"/>
+<text text-anchor="middle" x="744" y="-145.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatPartition::freeChain</text>
 </a>
 </g>
 </g>
@@ -68,310 +68,340 @@ var sectionId = 'dynsection-42';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d3/d51/class_fat_file.html#ad39f3c4d83135ad181c58306b23df0aa" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="327,-318.5 327,-339.5 480,-339.5 480,-318.5 327,-318.5"/>
-<text text-anchor="middle" x="403.5" y="-325.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::openCachedEntry</text>
+<polygon fill="white" stroke="black" points="488,-318.5 488,-339.5 641,-339.5 641,-318.5 488,-318.5"/>
+<text text-anchor="middle" x="564.5" y="-325.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::openCachedEntry</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M564.38,-166.87C527.85,-203.91 444.85,-288.08 415.24,-318.11"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="566.9,-169.3 571.43,-159.72 561.91,-164.38 566.9,-169.3"/>
+<path fill="none" stroke="midnightblue" d="M725.38,-166.87C688.85,-203.91 605.85,-288.08 576.24,-318.11"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="727.9,-169.3 732.43,-159.72 722.91,-164.38 727.9,-169.3"/>
 </g>
 <!-- Node11 -->
-<g id="node9" class="node">
+<g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node9"><a xlink:href="../../d3/d51/class_fat_file.html#ac837a537fbcca14c7aa390c5fc9f4e7c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="354.5,-158.5 354.5,-179.5 452.5,-179.5 452.5,-158.5 354.5,-158.5"/>
-<text text-anchor="middle" x="403.5" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::remove</text>
+<g id="a_node11"><a xlink:href="../../d3/d51/class_fat_file.html#ac837a537fbcca14c7aa390c5fc9f4e7c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="515.5,-158.5 515.5,-179.5 613.5,-179.5 613.5,-158.5 515.5,-158.5"/>
+<text text-anchor="middle" x="564.5" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::remove</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node11 -->
-<g id="edge9" class="edge">
+<g id="edge11" class="edge">
 <title>Node1&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M505.95,-157.57C487.87,-159.61 469.06,-161.73 452.63,-163.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="506.36,-161.05 515.91,-156.45 505.58,-154.09 506.36,-161.05"/>
+<path fill="none" stroke="midnightblue" d="M666.95,-157.57C648.87,-159.61 630.06,-161.73 613.63,-163.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="667.36,-161.05 676.91,-156.45 666.58,-154.09 667.36,-161.05"/>
 </g>
 <!-- Node15 -->
-<g id="node13" class="node">
+<g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node13"><a xlink:href="../../d3/d51/class_fat_file.html#a4b42f2454ff462555c07ea094a92a1e0" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="180.5,-80.5 180.5,-101.5 279.5,-101.5 279.5,-80.5 180.5,-80.5"/>
-<text text-anchor="middle" x="230" y="-87.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rename</text>
+<g id="a_node15"><a xlink:href="../../d3/d51/class_fat_file.html#a4b42f2454ff462555c07ea094a92a1e0" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="341.5,-80.5 341.5,-101.5 440.5,-101.5 440.5,-80.5 341.5,-80.5"/>
+<text text-anchor="middle" x="391" y="-87.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rename</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node15 -->
-<g id="edge20" class="edge">
+<g id="edge22" class="edge">
 <title>Node1&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M508.53,-136.86C439.77,-125.5 339,-108.85 279.69,-99.05"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="508,-140.32 518.44,-138.5 509.14,-133.41 508,-140.32"/>
+<path fill="none" stroke="midnightblue" d="M669.53,-136.86C600.77,-125.5 500,-108.85 440.69,-99.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="669,-140.32 679.44,-138.5 670.14,-133.41 669,-140.32"/>
 </g>
 <!-- Node20 -->
-<g id="node18" class="node">
+<g id="node20" class="node">
 <title>Node20</title>
-<g id="a_node18"><a xlink:href="../../d3/d51/class_fat_file.html#a7dda881dac19ea2aa9b2e85a229a98d7" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="353,-40.5 353,-61.5 454,-61.5 454,-40.5 353,-40.5"/>
-<text text-anchor="middle" x="403.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::truncate</text>
+<g id="a_node20"><a xlink:href="../../d3/d51/class_fat_file.html#a7dda881dac19ea2aa9b2e85a229a98d7" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="514,-40.5 514,-61.5 615,-61.5 615,-40.5 514,-40.5"/>
+<text text-anchor="middle" x="564.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::truncate</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node20 -->
-<g id="edge21" class="edge">
+<g id="edge23" class="edge">
 <title>Node1&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M553.54,-133.29C517.05,-113.14 454.77,-78.76 423.54,-61.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="552.22,-136.56 562.67,-138.33 555.6,-130.43 552.22,-136.56"/>
+<path fill="none" stroke="midnightblue" d="M714.54,-133.29C678.05,-113.14 615.77,-78.76 584.54,-61.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="713.22,-136.56 723.67,-138.33 716.6,-130.43 713.22,-136.56"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d3/d51/class_fat_file.html#aefd095e898758e6008f33cca17e92b72" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="187,-358.5 187,-379.5 273,-379.5 273,-358.5 187,-358.5"/>
-<text text-anchor="middle" x="230" y="-365.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::open</text>
+<polygon fill="white" stroke="black" points="348,-358.5 348,-379.5 434,-379.5 434,-358.5 348,-358.5"/>
+<text text-anchor="middle" x="391" y="-365.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::open</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M347.69,-341.78C323.54,-347.42 295.59,-353.93 273.11,-359.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="348.5,-345.19 357.44,-339.51 346.91,-338.37 348.5,-345.19"/>
+<path fill="none" stroke="midnightblue" d="M508.69,-341.78C484.54,-347.42 456.59,-353.93 434.11,-359.18"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="509.5,-345.19 518.44,-339.51 507.91,-338.37 509.5,-345.19"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d3/d51/class_fat_file.html#acda9b1bf547d43e183e657bee053a48d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="175.5,-318.5 175.5,-339.5 284.5,-339.5 284.5,-318.5 175.5,-318.5"/>
-<text text-anchor="middle" x="230" y="-325.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::openNext</text>
+<polygon fill="white" stroke="black" points="336.5,-318.5 336.5,-339.5 445.5,-339.5 445.5,-318.5 336.5,-318.5"/>
+<text text-anchor="middle" x="391" y="-325.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::openNext</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M316.77,-329C305.85,-329 294.93,-329 284.71,-329"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="316.78,-332.5 326.78,-329 316.78,-325.5 316.78,-332.5"/>
+<path fill="none" stroke="midnightblue" d="M477.77,-329C466.85,-329 455.93,-329 445.71,-329"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="477.78,-332.5 487.78,-329 477.78,-325.5 477.78,-332.5"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../d3/d51/class_fat_file.html#a60ab9d16bcc778150a364c26de467de1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="32.5,-382.5 32.5,-403.5 100.5,-403.5 100.5,-382.5 32.5,-382.5"/>
-<text text-anchor="middle" x="66.5" y="-389.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::ls</text>
+<polygon fill="white" stroke="black" points="193.5,-382.5 193.5,-403.5 261.5,-403.5 261.5,-382.5 193.5,-382.5"/>
+<text text-anchor="middle" x="227.5" y="-389.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::ls</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M182.62,-343.07C177.95,-344.9 173.33,-346.88 169,-349 151.73,-357.45 150.38,-364.77 133,-373 122.79,-377.83 111.14,-381.83 100.52,-384.95"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="184.03,-346.28 192.21,-339.54 181.62,-339.71 184.03,-346.28"/>
+<path fill="none" stroke="midnightblue" d="M343.62,-343.07C338.95,-344.9 334.33,-346.88 330,-349 312.73,-357.45 311.38,-364.77 294,-373 283.79,-377.83 272.14,-381.83 261.52,-384.95"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="345.03,-346.28 353.21,-339.54 342.62,-339.71 345.03,-346.28"/>
 </g>
 <!-- Node7 -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node6"><a xlink:href="../../d3/d51/class_fat_file.html#ab44920bb9cd5414b8e69c9dc4343394a" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="23.5,-342.5 23.5,-363.5 109.5,-363.5 109.5,-342.5 23.5,-342.5"/>
-<text text-anchor="middle" x="66.5" y="-349.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::open</text>
+<g id="a_node7"><a xlink:href="../../d3/d51/class_fat_file.html#ab44920bb9cd5414b8e69c9dc4343394a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="184.5,-342.5 184.5,-363.5 270.5,-363.5 270.5,-342.5 184.5,-342.5"/>
+<text text-anchor="middle" x="227.5" y="-349.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::open</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>Node4&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M165.28,-338.47C146.56,-341.25 126.56,-344.22 109.56,-346.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="165.85,-341.92 175.22,-336.99 164.82,-335 165.85,-341.92"/>
+<path fill="none" stroke="midnightblue" d="M326.28,-338.47C307.56,-341.25 287.56,-344.22 270.56,-346.75"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="326.85,-341.92 336.22,-336.99 325.82,-335 326.85,-341.92"/>
 </g>
 <!-- Node8 -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node7"><a xlink:href="../../d7/d76/class_fs_base_file.html#acb9b1075f4db76fa7e0521c9aff9c3df" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="0,-302.5 0,-323.5 133,-323.5 133,-302.5 0,-302.5"/>
-<text text-anchor="middle" x="66.5" y="-309.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::openNext</text>
+<g id="a_node8"><a xlink:href="../../d7/d76/class_fs_base_file.html#acb9b1075f4db76fa7e0521c9aff9c3df" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="161,-302.5 161,-323.5 294,-323.5 294,-302.5 161,-302.5"/>
+<text text-anchor="middle" x="227.5" y="-309.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::openNext</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node8 -->
-<g id="edge7" class="edge">
+<g id="edge8" class="edge">
 <title>Node4&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M165.25,-322.68C154.69,-321.64 143.72,-320.55 133.12,-319.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="164.93,-326.17 175.22,-323.67 165.62,-319.2 164.93,-326.17"/>
+<path fill="none" stroke="midnightblue" d="M326.25,-322.68C315.69,-321.64 304.72,-320.55 294.12,-319.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="325.93,-326.17 336.22,-323.67 326.62,-319.2 325.93,-326.17"/>
 </g>
 <!-- Node10 -->
-<g id="node8" class="node">
+<g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node8"><a xlink:href="../../df/dfc/class_file32.html#adc01f4a1ebc44ef36f3ffb8295c8d779" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="4,-262.5 4,-283.5 129,-283.5 129,-262.5 4,-262.5"/>
-<text text-anchor="middle" x="66.5" y="-269.9" font-family="Helvetica,sans-Serif" font-size="12.00">File32::openNextFile</text>
+<g id="a_node10"><a xlink:href="../../df/dfc/class_file32.html#adc01f4a1ebc44ef36f3ffb8295c8d779" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="165,-262.5 165,-283.5 290,-283.5 290,-262.5 165,-262.5"/>
+<text text-anchor="middle" x="227.5" y="-269.9" font-family="Helvetica,sans-Serif" font-size="12.00">File32::openNextFile</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node10 -->
-<g id="edge8" class="edge">
+<g id="edge10" class="edge">
 <title>Node4&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M185.94,-315.21C180.21,-313.21 174.44,-311.11 169,-309 152.68,-302.67 149.4,-299.12 133,-293 123.98,-289.63 114.11,-286.39 104.83,-283.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="184.88,-318.54 195.47,-318.46 187.14,-311.92 184.88,-318.54"/>
+<path fill="none" stroke="midnightblue" d="M346.94,-315.21C341.21,-313.21 335.44,-311.11 330,-309 313.68,-302.67 310.4,-299.12 294,-293 284.98,-289.63 275.11,-286.39 265.83,-283.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="345.88,-318.54 356.47,-318.46 348.14,-311.92 345.88,-318.54"/>
 </g>
 <!-- Node5&#45;&gt;Node5 -->
-<g id="edge5" class="edge">
+<g id="edge6" class="edge">
 <title>Node5&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M96.51,-413.06C94.54,-418.16 84.54,-422 66.5,-422 38.34,-422 29.76,-412.65 40.76,-403.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="99.58,-411.35 92.24,-403.71 93.21,-414.26 99.58,-411.35"/>
+<path fill="none" stroke="midnightblue" d="M257.51,-413.06C255.54,-418.16 245.54,-422 227.5,-422 199.34,-422 190.76,-412.65 201.76,-403.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="260.58,-411.35 253.24,-403.71 254.21,-414.26 260.58,-411.35"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d9/d27/class_fat_volume.html#ae40964f357cfff4208812344a0e6f26f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="18.5,-382.5 18.5,-403.5 106.5,-403.5 106.5,-382.5 18.5,-382.5"/>
+<text text-anchor="middle" x="62.5" y="-389.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::ls</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M183.04,-393C159.43,-393 130.33,-393 106.75,-393"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="183.12,-396.5 193.12,-393 183.12,-389.5 183.12,-396.5"/>
+</g>
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="../../d4/da1/class_fs_file.html#ab2f85961e3831d0d654da862becb7433" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-302.5 0,-323.5 125,-323.5 125,-302.5 0,-302.5"/>
+<text text-anchor="middle" x="62.5" y="-309.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsFile::openNextFile</text>
+</a>
+</g>
+</g>
+<!-- Node8&#45;&gt;Node9 -->
+<g id="edge9" class="edge">
+<title>Node8&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M150.39,-313C141.91,-313 133.36,-313 125.09,-313"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="150.67,-316.5 160.67,-313 150.67,-309.5 150.67,-316.5"/>
 </g>
 <!-- Node12 -->
-<g id="node10" class="node">
+<g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node10"><a xlink:href="../../d7/d76/class_fs_base_file.html#a8d21f9df86e846e34c3bb11cf7db21bc" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="169,-278.5 169,-299.5 291,-299.5 291,-278.5 169,-278.5"/>
-<text text-anchor="middle" x="230" y="-285.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::remove</text>
+<g id="a_node12"><a xlink:href="../../d7/d76/class_fs_base_file.html#a8d21f9df86e846e34c3bb11cf7db21bc" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="330,-278.5 330,-299.5 452,-299.5 452,-278.5 330,-278.5"/>
+<text text-anchor="middle" x="391" y="-285.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::remove</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node12 -->
-<g id="edge10" class="edge">
+<g id="edge12" class="edge">
 <title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M386.55,-187.31C366.34,-209.49 329.48,-246.64 291,-269 284.64,-272.7 277.5,-275.83 270.42,-278.44"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="389.38,-189.39 393.45,-179.61 384.17,-184.72 389.38,-189.39"/>
+<path fill="none" stroke="midnightblue" d="M547.55,-187.31C527.34,-209.49 490.48,-246.64 452,-269 445.64,-272.7 438.5,-275.83 431.42,-278.44"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="550.38,-189.39 554.45,-179.61 545.17,-184.72 550.38,-189.39"/>
 </g>
 <!-- Node13 -->
-<g id="node11" class="node">
+<g id="node13" class="node">
 <title>Node13</title>
-<g id="a_node11"><a xlink:href="../../d3/d51/class_fat_file.html#a75d3276f0b02b03e863afafe5731fedb" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="181,-238.5 181,-259.5 279,-259.5 279,-238.5 181,-238.5"/>
-<text text-anchor="middle" x="230" y="-245.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::remove</text>
+<g id="a_node13"><a xlink:href="../../d3/d51/class_fat_file.html#a75d3276f0b02b03e863afafe5731fedb" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="342,-238.5 342,-259.5 440,-259.5 440,-238.5 342,-238.5"/>
+<text text-anchor="middle" x="391" y="-245.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::remove</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node13 -->
-<g id="edge11" class="edge">
+<g id="edge13" class="edge">
 <title>Node11&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M376.38,-184.71C354.18,-197.67 321.2,-215.96 291,-229 283.04,-232.44 274.27,-235.66 265.96,-238.47"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="378.36,-187.61 385.2,-179.52 374.81,-181.58 378.36,-187.61"/>
+<path fill="none" stroke="midnightblue" d="M537.38,-184.71C515.18,-197.67 482.2,-215.96 452,-229 444.04,-232.44 435.27,-235.66 426.96,-238.47"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="539.36,-187.61 546.2,-179.52 535.81,-181.58 539.36,-187.61"/>
 </g>
 <!-- Node14 -->
-<g id="node12" class="node">
+<g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node12"><a xlink:href="../../d9/d27/class_fat_volume.html#abb11d05ef407775bcdb9b14a6c608433" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="170.5,-198.5 170.5,-219.5 289.5,-219.5 289.5,-198.5 170.5,-198.5"/>
-<text text-anchor="middle" x="230" y="-205.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::remove</text>
+<g id="a_node14"><a xlink:href="../../d9/d27/class_fat_volume.html#abb11d05ef407775bcdb9b14a6c608433" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="331.5,-198.5 331.5,-219.5 450.5,-219.5 450.5,-198.5 331.5,-198.5"/>
+<text text-anchor="middle" x="391" y="-205.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::remove</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node14 -->
-<g id="edge12" class="edge">
+<g id="edge14" class="edge">
 <title>Node11&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M347.45,-181.84C324.4,-187.22 297.93,-193.39 276.06,-198.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="348.5,-185.19 357.44,-179.51 346.91,-178.37 348.5,-185.19"/>
+<path fill="none" stroke="midnightblue" d="M508.45,-181.84C485.4,-187.22 458.93,-193.39 437.06,-198.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="509.5,-185.19 518.44,-179.51 507.91,-178.37 509.5,-185.19"/>
 </g>
 <!-- Node11&#45;&gt;Node15 -->
-<g id="edge13" class="edge">
+<g id="edge15" class="edge">
 <title>Node11&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M371.57,-153.8C349.29,-142.97 318.46,-128.24 291,-116 279.97,-111.08 267.68,-105.91 257.11,-101.55"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="370.33,-157.09 380.85,-158.32 373.4,-150.8 370.33,-157.09"/>
+<path fill="none" stroke="midnightblue" d="M532.57,-153.8C510.29,-142.97 479.46,-128.24 452,-116 440.97,-111.08 428.68,-105.91 418.11,-101.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="531.33,-157.09 541.85,-158.32 534.4,-150.8 531.33,-157.09"/>
 </g>
 <!-- Node16 -->
-<g id="node14" class="node">
+<g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node14"><a xlink:href="../../d3/d51/class_fat_file.html#a9515bac181d33e7f0125e88fa2ccd283" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="187,-158.5 187,-179.5 273,-179.5 273,-158.5 187,-158.5"/>
-<text text-anchor="middle" x="230" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rmdir</text>
+<g id="a_node16"><a xlink:href="../../d3/d51/class_fat_file.html#a9515bac181d33e7f0125e88fa2ccd283" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="348,-158.5 348,-179.5 434,-179.5 434,-158.5 348,-158.5"/>
+<text text-anchor="middle" x="391" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rmdir</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node16 -->
-<g id="edge14" class="edge">
+<g id="edge16" class="edge">
 <title>Node11&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M344.14,-169C320.8,-169 294.44,-169 273.04,-169"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="344.27,-172.5 354.27,-169 344.27,-165.5 344.27,-172.5"/>
+<path fill="none" stroke="midnightblue" d="M505.14,-169C481.8,-169 455.44,-169 434.04,-169"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="505.27,-172.5 515.27,-169 505.27,-165.5 505.27,-172.5"/>
 </g>
 <!-- Node19 -->
-<g id="node17" class="node">
+<g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node17"><a xlink:href="../../d3/d51/class_fat_file.html#ac780a80526f86d3def701ecdc99d8bfe" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="13.5,-109.5 13.5,-130.5 119.5,-130.5 119.5,-109.5 13.5,-109.5"/>
-<text text-anchor="middle" x="66.5" y="-116.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rmRfStar</text>
+<g id="a_node19"><a xlink:href="../../d3/d51/class_fat_file.html#ac780a80526f86d3def701ecdc99d8bfe" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="174.5,-109.5 174.5,-130.5 280.5,-130.5 280.5,-109.5 174.5,-109.5"/>
+<text text-anchor="middle" x="227.5" y="-116.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::rmRfStar</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node19 -->
-<g id="edge19" class="edge">
+<g id="edge21" class="edge">
 <title>Node11&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M344.4,-158.03C327.23,-154.94 308.38,-151.69 291,-149 232.42,-139.95 164.9,-131.46 119.54,-126.03"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="343.82,-161.48 354.29,-159.83 345.08,-154.59 343.82,-161.48"/>
+<path fill="none" stroke="midnightblue" d="M505.4,-158.03C488.23,-154.94 469.38,-151.69 452,-149 393.42,-139.95 325.9,-131.46 280.54,-126.03"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="504.82,-161.48 515.29,-159.83 506.08,-154.59 504.82,-161.48"/>
 </g>
 <!-- Node17 -->
-<g id="node15" class="node">
+<g id="node17" class="node">
 <title>Node17</title>
-<g id="a_node15"><a xlink:href="../../d7/d76/class_fs_base_file.html#ac47870fd89b0849cda33f2780918a286" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="11.5,-207.5 11.5,-228.5 121.5,-228.5 121.5,-207.5 11.5,-207.5"/>
-<text text-anchor="middle" x="66.5" y="-214.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::rmdir</text>
+<g id="a_node17"><a xlink:href="../../d7/d76/class_fs_base_file.html#ac47870fd89b0849cda33f2780918a286" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="172.5,-207.5 172.5,-228.5 282.5,-228.5 282.5,-207.5 172.5,-207.5"/>
+<text text-anchor="middle" x="227.5" y="-214.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsBaseFile::rmdir</text>
 </a>
 </g>
 </g>
 <!-- Node16&#45;&gt;Node17 -->
-<g id="edge15" class="edge">
+<g id="edge17" class="edge">
 <title>Node16&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M184.75,-182.42C158.81,-190.3 126.5,-200.1 102.37,-207.42"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="185.8,-185.76 194.35,-179.51 183.77,-179.07 185.8,-185.76"/>
+<path fill="none" stroke="midnightblue" d="M345.75,-182.42C319.81,-190.3 287.5,-200.1 263.37,-207.42"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="346.8,-185.76 355.35,-179.51 344.77,-179.07 346.8,-185.76"/>
 </g>
 <!-- Node18 -->
-<g id="node16" class="node">
+<g id="node18" class="node">
 <title>Node18</title>
-<g id="a_node16"><a xlink:href="../../d9/d27/class_fat_volume.html#af1181990bcece7dbb7d19293dd4fe11a" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="13,-167.5 13,-188.5 120,-188.5 120,-167.5 13,-167.5"/>
-<text text-anchor="middle" x="66.5" y="-174.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::rmdir</text>
+<g id="a_node18"><a xlink:href="../../d9/d27/class_fat_volume.html#af1181990bcece7dbb7d19293dd4fe11a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="174,-167.5 174,-188.5 281,-188.5 281,-167.5 174,-167.5"/>
+<text text-anchor="middle" x="227.5" y="-174.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::rmdir</text>
 </a>
 </g>
 </g>
 <!-- Node16&#45;&gt;Node18 -->
-<g id="edge16" class="edge">
+<g id="edge18" class="edge">
 <title>Node16&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M176.9,-171.9C158.79,-172.91 138.46,-174.05 120.3,-175.06"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="177.2,-175.39 186.99,-171.34 176.81,-168.4 177.2,-175.39"/>
+<path fill="none" stroke="midnightblue" d="M337.9,-171.9C319.79,-172.91 299.46,-174.05 281.3,-175.06"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="338.2,-175.39 347.99,-171.34 337.81,-168.4 338.2,-175.39"/>
 </g>
 <!-- Node16&#45;&gt;Node19 -->
-<g id="edge17" class="edge">
+<g id="edge19" class="edge">
 <title>Node16&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M184.75,-155.58C158.81,-147.7 126.5,-137.9 102.37,-130.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="183.77,-158.93 194.35,-158.49 185.8,-152.24 183.77,-158.93"/>
+<path fill="none" stroke="midnightblue" d="M345.75,-155.58C319.81,-147.7 287.5,-137.9 263.37,-130.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="344.77,-158.93 355.35,-158.49 346.8,-152.24 344.77,-158.93"/>
 </g>
 <!-- Node19&#45;&gt;Node19 -->
-<g id="edge18" class="edge">
+<g id="edge20" class="edge">
 <title>Node19&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M96.51,-140.06C94.54,-145.16 84.54,-149 66.5,-149 38.34,-149 29.76,-139.65 40.76,-130.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="99.58,-138.35 92.24,-130.71 93.21,-141.26 99.58,-138.35"/>
+<path fill="none" stroke="midnightblue" d="M257.51,-140.06C255.54,-145.16 245.54,-149 227.5,-149 199.34,-149 190.76,-139.65 201.76,-130.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="260.58,-138.35 253.24,-130.71 254.21,-141.26 260.58,-138.35"/>
 </g>
 <!-- Node21 -->
-<g id="node19" class="node">
+<g id="node21" class="node">
 <title>Node21</title>
-<g id="a_node19"><a xlink:href="../../d9/d27/class_fat_volume.html#a86a08bf789e33567418465b9b12751e2" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="169.5,-40.5 169.5,-61.5 290.5,-61.5 290.5,-40.5 169.5,-40.5"/>
-<text text-anchor="middle" x="230" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::truncate</text>
+<g id="a_node21"><a xlink:href="../../d9/d27/class_fat_volume.html#a86a08bf789e33567418465b9b12751e2" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="330.5,-40.5 330.5,-61.5 451.5,-61.5 451.5,-40.5 330.5,-40.5"/>
+<text text-anchor="middle" x="391" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatVolume::truncate</text>
 </a>
 </g>
 </g>
 <!-- Node20&#45;&gt;Node21 -->
-<g id="edge22" class="edge">
+<g id="edge24" class="edge">
 <title>Node20&#45;&gt;Node21</title>
-<path fill="none" stroke="midnightblue" d="M342.6,-51C325.72,-51 307.37,-51 290.51,-51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="342.9,-54.5 352.9,-51 342.9,-47.5 342.9,-54.5"/>
+<path fill="none" stroke="midnightblue" d="M503.6,-51C486.72,-51 468.37,-51 451.51,-51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="503.9,-54.5 513.9,-51 503.9,-47.5 503.9,-54.5"/>
 </g>
 <!-- Node22 -->
-<g id="node20" class="node">
+<g id="node22" class="node">
 <title>Node22</title>
-<g id="a_node20"><a xlink:href="../../d3/d51/class_fat_file.html#aa6e663098a578635d37d92e82d18d616" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="179.5,-0.5 179.5,-21.5 280.5,-21.5 280.5,-0.5 179.5,-0.5"/>
-<text text-anchor="middle" x="230" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::truncate</text>
+<g id="a_node22"><a xlink:href="../../d3/d51/class_fat_file.html#aa6e663098a578635d37d92e82d18d616" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="340.5,-0.5 340.5,-21.5 441.5,-21.5 441.5,-0.5 340.5,-0.5"/>
+<text text-anchor="middle" x="391" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFile::truncate</text>
 </a>
 </g>
 </g>
 <!-- Node20&#45;&gt;Node22 -->
-<g id="edge23" class="edge">
+<g id="edge25" class="edge">
 <title>Node20&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M347.45,-38.16C324.4,-32.78 297.93,-26.61 276.06,-21.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="346.91,-41.63 357.44,-40.49 348.5,-34.81 346.91,-41.63"/>
+<path fill="none" stroke="midnightblue" d="M508.45,-38.16C485.4,-32.78 458.93,-26.61 437.06,-21.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="507.91,-41.63 518.44,-40.49 509.5,-34.81 507.91,-41.63"/>
 </g>
 </g>
 </svg>

@@ -63,7 +63,7 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,18400);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_5"));
-      filter->setNotch(0,475,7.0);
+      filter->setNotch(0,475,3.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
       am->data->create("REVERB_ROOM_SIZE",(float32_t)0.38);
@@ -78,59 +78,75 @@ class MyAppExample:public AppBaseClass {
       mix->gain(1,0.40);
       mix->gain(3,0.40);
 
+      output_gate = 1.0;
+
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay_1"));
       delay->delay(0,30);
       delay->delay(1,60);
-      delay->delay(2,540);
-      delay->delay(3,600);
+      delay->delay(2,180);
+      delay->delay(3,200);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.10);
-      mix->gain(1,0.15);
-      mix->gain(2,0.30);
-      mix->gain(3,0.39);
+      mix->gain(0,0.001);
+      mix->gain(1,0.005);
+      mix->gain(2,0.010);
+      mix->gain(3,0.029);
       
       //oscope = new AppScope;
-      oscope.setWidgetPosition(5,20);
+      oscope.setWidgetPosition(5,5);
       oscope.setWidgetDimension(110,50);
       oscope.setPosition(5,20);
       oscope.setDimension(315,100);
       oscope.setParent(this);
  
       //cqt = new AppCQT;
-      cqt.setWidgetPosition(125,20);
+      cqt.setWidgetPosition(125,5);
       cqt.setWidgetDimension(320-10-125,50);
       cqt.setParent(this);
       
       slider = new ControlSlider(this);
-      slider->setWidgetPosition(10,80);
-      slider->setWidgetDimension(260,30);
+      slider->setWidgetPosition(10,65);
+      slider->setWidgetDimension(260,20);
       slider->setName("SLIDER");
-      slider->setText("Dry Mix");
+      slider->setText("");
       slider->setValue(0);
       
       char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST"};
+      char p[][16] = {"DOUBLE.ile\0","GRAIN.ile\0","PHASER.ile\0","BITCRUSH.ile\0","FUZZ.ile\0","CONFIG.ile\0"};
       uint8_t si = 0;
-      uint16_t bx = 10;
-      uint16_t by = 124;
+      uint16_t bx = 5;
+      uint16_t by = 90;
       for (uint16_t i=0;i<sizeof(s)/16;i+=1){
         button = new ControlButton(this); //reuse the button var to create many instances
-        if(bx>(320-68)){
-          bx=10;by+=55;
+        if(bx>(320-78)){
+          bx=5;by+=78;
         }
         button->setWidgetPosition(bx,by);
-        button->setWidgetDimension(65,50);
+        button->setWidgetDimension(66,66);
         button->setName(s[si]);
-        button->setText(s[si++]);
-        bx+=69;
+        button->setText(s[si]);
+        button->setImage("/I/U/I",p[si++]);
+        bx+=78;
       }
-
-        
     } 
     //define event handlers
     void update(){
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
       reverb->damping(am->data->readf("REVERB_DAMPING"));
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
+      if(am->data->read("INPUT_PEAK") < 15){
+        mixer->gain(0,0);
+        mixer->gain(1,0);
+        mixer->gain(2,0.0);
+        mixer->gain(3,0.2);
+      }else{
+        mixer->gain(0,2);
+        mixer->gain(1,2);
+        mixer->gain(2,0.0);
+        mixer->gain(3,0.5);
+
+      }
+      slider->setValue((int16_t)(100 * ((float)am->data->read("INPUT_PEAK"))/32768.0));
     }
 
     void onTouch(uint16_t t_x, uint16_t t_y){
@@ -184,7 +200,7 @@ class MyAppExample:public AppBaseClass {
           //Serial.print(F("M appExample::MessageHandler SCI param: "));
           //Serial.println(message);
           //Serial.flush();
-          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_16"));
+          erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_17"));
           //AudioNoInterrupts();
           wav->frequency(atoi(message));
           wav->amplitude(0.01);
@@ -194,8 +210,8 @@ class MyAppExample:public AppBaseClass {
           AudioNoInterrupts();
           ad->disconnect("fft1024_1 0");
           ad->disconnect("fft1024_2 0");
-          ad->connect("waveform_16 0 fft1024_1 0");
-          ad->connect("waveform_16 0 fft1024_2 0");
+          ad->connect("waveform_17 0 fft1024_1 0");
+          ad->connect("waveform_17 0 fft1024_2 0");
           //ad->connect("waveform_16 0 scope_1 0");
           AudioInterrupts();
         }
@@ -219,10 +235,8 @@ class MyAppExample:public AppBaseClass {
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
-      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
       AudioNoInterrupts();
-      filter->setLowpass(0,220.0 + (6000.0 * fval));
-      mixer->gain(0,2.0);
+      filter->setLowpass(0,220.0 + (1000.0 * fval));
       AudioInterrupts();
     };
     
@@ -273,7 +287,9 @@ class MyAppExample:public AppBaseClass {
       //bus output to filter -> reverb -> master mixer
       ad->connect("mixer_6 0 biquad_3 0");
       ad->connect("biquad_3 0 freeverb_1 0");
-      ad->connect("freeverb_1 0 mixer_1 1");
+      ad->connect("freeverb_1 0 mixer_6 2");
+      ad->connect("freeverb_1 0 delay_1 0");
+
       //filtered bus mixer -> master mixer
       ad->connect("biquad_3 0 mixer_1 0");
       
@@ -309,7 +325,7 @@ class MyAppExample:public AppBaseClass {
       ad->connect("biquad_3 0 scope_1 1");
 
       //delay connections
-      ad->connect("freeverb_1 0 delay_1 0");
+      
       ad->connect("delay_1 0 mixer_2 0");
       ad->connect("delay_1 1 mixer_2 1");
       ad->connect("delay_1 2 mixer_2 2");
@@ -318,7 +334,7 @@ class MyAppExample:public AppBaseClass {
       ad->connect("mixer_2 0 biquad_5 0");
       ad->connect("biquad_5 0 mixer_6 3");
 
-      ad->connect("console_2 0 mixer_1 3");
+      
       AudioInterrupts();
       delay(10);
     }
@@ -337,11 +353,13 @@ class MyAppExample:public AppBaseClass {
       }
       
       //change the voice of the test signal too
-      w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_16"));
+      w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_17"));
       AudioNoInterrupts();
       w->begin(voice_type);
       AudioInterrupts();
 
       return;
     }
+  protected:
+    float output_gate;
 };

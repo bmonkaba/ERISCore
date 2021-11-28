@@ -54,11 +54,13 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
   public:
     AppSerialCommandInterface():AppBaseClass(){
         sincePoll = 0;
-        sincePeriodic = 0;
+        sincePeriodicDataDict = 0;
+        sincePeriodicStats = 0;
         indexRxBuffer = 0;
         indexTxBuffer = 0;
         isStreamingFile = false;
         txBufferOverflowFlag = false;
+        periodicMessagesEnabled = true;
         strcpy(streamPath,"");
         strcpy(streamFile,"");
         streamPos = 0;
@@ -80,11 +82,13 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
     char workingBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
     uint64_t streamPos;
     bool isStreamingFile;
+    bool periodicMessagesEnabled;
     volatile bool txBufferOverflowFlag;
     elapsedMillis sincePoll;
-    elapsedMillis sincePeriodic;
+    elapsedMillis sincePeriodicDataDict;
+    elapsedMillis sincePeriodicStats;
     uint16_t checksum(const char *msg);
-    void throttle();
+    bool throttle();
     void streamHandler();
     void update() override{};    //called only when the app is active
     void updateRT() override;

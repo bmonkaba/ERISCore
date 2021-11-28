@@ -170,7 +170,7 @@ void erisAudioAnalyzeScope::update(void)
 					peakValue = max(peakValue,abs(block->data[offset]));
 					if (isDualChannel){ 
 						_memory[1][mem_length - count - 1 ] = blockb->data[offset];
-						peakValue = max(peakValue,abs(blockb->data[offset]));
+						//peakValue = max(peakValue,abs(blockb->data[offset]));
 						if ((offset >= h_div) && (blockb->data[offset] <= -10 ) && (blockb->data[offset-h_div] > 10)){
 							edgeCount_ch2++;
 						}

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 569;
+var viewWidth = 734;
 var viewHeight = 30;
 var sectionId = 'dynsection-27';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-27';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>StdioStream::print</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-26 565,-26 565,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-26 730,-26 730,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -98,7 +98,7 @@ var sectionId = 'dynsection-27';
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d2/de6/class_stdio_stream.html#ac1976bebf66840cc4c16f287d6f9ee79" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="448,-0.5 448,-21.5 561,-21.5 561,-0.5 448,-0.5"/>
+<polygon fill="white" stroke="black" points="448,-0.5 448,-21.5 561,-21.5 561,-0.5 448,-0.5"/>
 <text text-anchor="middle" x="504.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">StdioStream::write</text>
 </a>
 </g>
@@ -108,6 +108,21 @@ var sectionId = 'dynsection-27';
 <title>Node3&#45;&gt;Node4</title>
 <path fill="none" stroke="midnightblue" d="M412.41,-11C420.65,-11 429.18,-11 437.57,-11"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="437.7,-14.5 447.7,-11 437.7,-7.5 437.7,-14.5"/>
+</g>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d2/de6/class_stdio_stream.html#a525cecc51f31e964f7ef43b6cf6d8b38" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="597,-0.5 597,-21.5 726,-21.5 726,-0.5 597,-0.5"/>
+<text text-anchor="middle" x="661.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">StdioStream::flushBuf</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M561.02,-11C569.39,-11 578.13,-11 586.8,-11"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="586.93,-14.5 596.93,-11 586.93,-7.5 586.93,-14.5"/>
 </g>
 </g>
 </svg>

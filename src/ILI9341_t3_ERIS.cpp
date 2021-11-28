@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 8
+#define ANIMATION_CHUNKS_PER_FRAME 2
 
 static volatile bool dmabusy;
 
@@ -77,14 +77,10 @@ void ILI9341_t3_ERIS::begin(){
     setClipRect();
     setOrigin();
     //fillScreen(ILI9341_RED);
-    setTextColor(CL(74, 143, 255));
+    setTextColor(CL(174, 143, 255));
     setTextSize(1);
     setRotation(1);
-    println("Online...");
-    if(pSD){
-      pSD->chdir();
-      pSD->ls();
-    }          
+    println("Online...");      
     updateScreen();
     dmabusy=false;
 }
@@ -112,25 +108,27 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
   char str[16];      //char buffer
   char *c;           //char pointer
   bool toggle = false;
-  pSD->chdir();
+  //pSD->chdir();
   if (!pSD->chdir(path)){ //change file path
-    Serial.print("ILI9341_t3_ERIS::bltSD Path not found: ");
+    Serial.print(F("M ILI9341_t3_ERIS::bltSD Path not found: "));
     Serial.println(path);
     return;             
   }
   file.open(filename, O_READ);        //open image to read
   if (file.available() == 0){ //file not found
-    Serial.print("ILI9341_t3_ERIS::bltSD File Not Found: ");
+    Serial.print(F("M ILI9341_t3_ERIS::bltSD File Not Found: "));
     Serial.println(filename);
-    pSD->ls();
+    //pSD->ls();
     return;
   }
+  
   file.fgets(str,sizeof(str)); //read the header data
   file.fgets(str,sizeof(str)); //to get the image dimensions
   strtok(str," ");             //convert dimension text to numbers
   w = atol(str);
   c = strtok(NULL, " ");
   h = atol(c);
+
   //clip in y dimension (top)
   if (y<0) { //throw away rows which are off screen
     for (iy = 0; iy < -1L * y; iy += 1L){ //for each off screen row
@@ -148,26 +146,21 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
       ifb = (iy * 320L) + x + mx; //32bit index
       if (x + w > 320L){nx = x + w - 320L;}//clip in x dimension (right) - truncate copy to screen bounds
       for (uint16_t z = 0; z < (w - mx - nx); z += 1){
-        //debug - testing performance increase of reading an entire row of img data at once
-        if ((w - mx - nx)<= 320){
-          if (z == 0) file.read(&dwbf,(w - mx - nx)*2);
-          dw = dwbf[z];
-        } else file.read(&dw,2); //should never execute...but just in case
-
+        file.read(&dw,2);
         toggle ^= true;
         //if alpha is enabled mask any colors close to black
-        if (alpha_type == AT_NONE){pFB[ifb + z] = dw;}
-        else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){pFB[ifb + z] = dw;}
+        if (alpha_type == AT_NONE){_pfbtft[ifb + z] = dw;}
+        else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){_pfbtft[ifb + z] = dw;}
         else if (alpha_type == AT_HATCHBLK){
-          if ((dw & 0xE79C) != 0) pFB[ifb + z] = dw;
-          else if (toggle) pFB[ifb + z] = 0; //pFB[i] ^= pFB[i];
+          if ((dw & 0xE79C) != 0) _pfbtft[ifb + z] = dw;
+          else if (toggle) _pfbtft[ifb + z] = 0; //pFB[i] ^= pFB[i];
         }
         else if (alpha_type == AT_HATCHXOR){
-          if ((dw & 0xE79C) != 0) pFB[ifb + z] = dw;
-          else if (toggle) pFB[ifb + z] = pFB[ifb + z]^pFB[ifb + z];
+          if ((dw & 0xE79C) != 0) _pfbtft[ifb + z] = dw;
+          else if (toggle) _pfbtft[ifb + z] = _pfbtft[ifb + z]^_pfbtft[ifb + z];
         }
       }
-      if (x + w > 320L){file.seekCur( (x + w - 320L) * 2);} //clip in x dimension (right) - skip unused data away
+      if (x + w > 320L){file.seekCur( (x + w - 320L) * 2);} //clip in x dimension (right) - skip unused data
     }
     else{
       //since y index is now off screen close the file and return
@@ -183,9 +176,8 @@ void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
   pSD->chdir(an->getPath());
   file.open(an->getFileName(), O_READ);
   if (file.available() == 0){ //file not found
-    Serial.print("ILI9341_t3_ERIS::bltSDFullScreen File Not Found:");
+    Serial.print(F("M ILI9341_t3_ERIS::bltSDFullScreen File Not Found:"));
     Serial.println(an->getFileName());
-    pSD->ls();
     return;
   }
   //for (unsigned long i = (320 * 64) ; i < (320 * 240); i += 32){
@@ -202,7 +194,7 @@ void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   pSD->chdir("/I/U/W");
   file.open(filename, O_READ);
   if (file.available() == 0){ //file not found
-    Serial.print("ILI9341_t3_ERIS::bltSDFullScreen File Not Found:");
+    Serial.print(F("M ILI9341_t3_ERIS::bltSDFullScreen File Not Found:"));
     Serial.println(filename);
     pSD->ls();
     return;

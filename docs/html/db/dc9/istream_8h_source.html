@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: D:/brian/Dev/Eris/ERISCore/lib/SdFat-master/src/iostream/istream.h Source File</title>
+<title>ERIS CORE: ERISCore/lib/SdFat-master/src/iostream/istream.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -167,9 +167,9 @@ $(document).ready(function(){initNavTree('db/dc9/istream_8h_source.html','../../
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
 <div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="../../d4/d07/classistream.html#a62ef4762feacc64a8acdcbf8f1296936">  205</a></span>&#160;  <a class="code" href="../../d4/d07/classistream.html">istream</a>&amp; <a class="code" href="../../d4/d07/classistream.html#aa67d3b8ac67e2097d876a66657ec6067">operator&gt;&gt; </a>(<span class="keywordtype">void</span>*&amp; arg) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    uint32_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="../../d4/d07/classistream.html#a80d0d54abe80ccbd71f809f83fb313d8">getNumber</a>(&amp;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    arg = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">void</span>*<span class="keyword">&gt;</span>(<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    uint32_t val;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="../../d4/d07/classistream.html#a80d0d54abe80ccbd71f809f83fb313d8">getNumber</a>(&amp;val);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    arg = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">void</span>*<span class="keyword">&gt;</span>(val);</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
 <div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="../../d4/d07/classistream.html#ad0a3db5199ca44b191a9675f2dd3a098">  215</a></span>&#160;  <a class="code" href="../../d4/dc1/classios__base.html#a944a240a54e6d0cef56540f2915e8d0e">streamsize</a> <a class="code" href="../../d4/d07/classistream.html#ad0a3db5199ca44b191a9675f2dd3a098">gcount</a>()<span class="keyword"> const </span>{</div>
@@ -289,13 +289,12 @@ $(document).ready(function(){initNavTree('db/dc9/istream_8h_source.html','../../
 <div class="ttc" id="aclassistream_html_ae8451bc86d83828892d9d67c67b7f02b"><div class="ttname"><a href="../../d4/d07/classistream.html#ae8451bc86d83828892d9d67c67b7f02b">istream::operator&gt;&gt;</a></div><div class="ttdeci">istream &amp; operator&gt;&gt;(int &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc9/istream_8h_source.html#l00149">istream.h:149</a></div></div>
 <div class="ttc" id="aios_8h_html"><div class="ttname"><a href="../../df/dd5/ios_8h.html">ios.h</a></div><div class="ttdoc">ios_base and ios classes</div></div>
 <div class="ttc" id="astructfspos__t_html"><div class="ttname"><a href="../../df/da6/structfspos__t.html">fspos_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00148">FsStructs.h:148</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a8e9defd75397baec7dc6e0779384a952"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a></div><div class="ttdeci">int32_t val</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">svcDataDictionary.h:2</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_f58a0c698f3a537aa2722f549bb5389d.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_1a69d9ac750c094c9b309d5125550118.html">src</a></li><li class="navelem"><a class="el" href="../../dir_e704492c8962abc13d61b22b54e19de9.html">iostream</a></li><li class="navelem"><a class="el" href="../../db/dc9/istream_8h.html">istream.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_607444457ce7ff98031c3752bb27f7b6.html">ERISCore</a></li><li class="navelem"><a class="el" href="../../dir_5b5543e87200f107623567781f7f5b13.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_b8b0da42578fb9a243a97ee3cbf1ef05.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_a8ab2a6fce746a759c8fe38b024da189.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0c777923940a1e87c3881ee93bbb4fce.html">iostream</a></li><li class="navelem"><a class="el" href="../../db/dc9/istream_8h.html">istream.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -170,7 +170,7 @@ FULL_PATH_NAMES        = YES
 # will be relative from the directory where doxygen is started.
 # This tag requires that the tag FULL_PATH_NAMES is set to YES.
 
-STRIP_FROM_PATH        =
+STRIP_FROM_PATH        = "D:\brian\Dev\Eris"
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of the
 # path mentioned in the documentation of a class, which tells the reader which
@@ -471,7 +471,7 @@ LOOKUP_CACHE_SIZE      = 0
 # DOT_NUM_THREADS setting.
 # Minimum value: 0, maximum value: 32, default value: 1.
 
-NUM_PROC_THREADS       = 1
+NUM_PROC_THREADS       = 0
 
 #---------------------------------------------------------------------------
 # Build related configuration options
@@ -2429,7 +2429,7 @@ GROUP_GRAPHS           = YES
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-UML_LOOK               = YES
+UML_LOOK               = NO
 
 # If the UML_LOOK tag is enabled, the fields and methods are shown inside the
 # class node. If there are many fields or methods and many nodes the graph may
@@ -2472,7 +2472,7 @@ DOT_WRAP_THRESHOLD     = 17
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-TEMPLATE_RELATIONS     = NO
+TEMPLATE_RELATIONS     = YES
 
 # If the INCLUDE_GRAPH, ENABLE_PREPROCESSING and SEARCH_INCLUDES tags are set to
 # YES then doxygen will generate a graph for each documented file showing the
@@ -2624,7 +2624,7 @@ DOT_GRAPH_MAX_NODES    = 50
 # Minimum value: 0, maximum value: 1000, default value: 0.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-MAX_DOT_GRAPH_DEPTH    = 3
+MAX_DOT_GRAPH_DEPTH    = 6
 
 # Set the DOT_TRANSPARENT tag to YES to generate images with a transparent
 # background. This is disabled by default, because dot on Windows does not seem

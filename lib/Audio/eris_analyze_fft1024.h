@@ -301,7 +301,7 @@ public:
 
 	//comparison function used for qsort of FFTReadRange arrays (used for finding cqt peaks)
 	static int compare_fftrr_value(const void *p, const void *q) {
-		if (((const FFTReadRange *)p)->avgValueSlow > ((const FFTReadRange *)q)->avgValueSlow) return -1;
+		if (((const FFTReadRange *)p)->avgValueFast > ((const FFTReadRange *)q)->avgValueFast) return -1;
 		return 1;
 	}
 

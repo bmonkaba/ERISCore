@@ -104,17 +104,17 @@ $(document).ready(function(){initNavTree('d4/d81/classeris_audio_analyze_scope.h
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d3/d30/classeris_audio_analyze_scope__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d3/d30/classeris_audio_analyze_scope__inherit__graph.svg" width="200" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Collaboration diagram for erisAudioAnalyzeScope:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d28/classeris_audio_analyze_scope__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d28/classeris_audio_analyze_scope__coll__graph.svg" width="470" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
-</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -1095,13 +1095,13 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00156">peakValue_output</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00026">AppScope::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00026">AppScope::update()</a>, and <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00068">AppScope::updateRT()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/d81/classeris_audio_analyze_scope_a9d865bd201a84115950c1810ba18971c_icgraph.svg" width="402" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d4/d81/classeris_audio_analyze_scope_a9d865bd201a84115950c1810ba18971c_icgraph.svg" width="422" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1895,7 +1895,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    <a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#aa35264591665450ef44fefc166e0daf2">peakValue</a> = max(<a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#aa35264591665450ef44fefc166e0daf2">peakValue</a>,abs(<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a74e6772cc77ccb0dd9568b7947070a9c">block</a>-&gt;data[offset]));</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    <span class="keywordflow">if</span> (isDualChannel){ </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                        _memory[1][<a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#a009dbb6d75e51083fa061bb26b5b8528">mem_length</a> - <a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#aa6ccff658079d5fb8066e98c9c303469">count</a> - 1 ] = blockb-&gt;<a class="code" href="../../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719">data</a>[offset];</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#aa35264591665450ef44fefc166e0daf2">peakValue</a> = max(<a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#aa35264591665450ef44fefc166e0daf2">peakValue</a>,abs(blockb-&gt;<a class="code" href="../../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719">data</a>[offset]));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <span class="comment">//peakValue = max(peakValue,abs(blockb-&gt;data[offset]));</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        <span class="keywordflow">if</span> ((offset &gt;= <a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#a4c58614ca2e5db77b6fcfb82823c2452">h_div</a>) &amp;&amp; (blockb-&gt;<a class="code" href="../../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719">data</a>[offset] &lt;= -10 ) &amp;&amp; (blockb-&gt;<a class="code" href="../../de/dd6/structaudio__block__struct.html#a68d5c70bc46a92800b24bd278dfec719">data</a>[offset-<a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#a4c58614ca2e5db77b6fcfb82823c2452">h_div</a>] &gt; 10)){</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                            <a class="code" href="../../d4/d81/classeris_audio_analyze_scope.html#ae2e1088481f8ddf4965171cd64828209">edgeCount_ch2</a>++;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        }</div>
@@ -2185,7 +2185,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00184">184</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00516">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00085">AudioDirector::addAudioStreamObj()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00530">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00540">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00091">AudioDirector::addAudioStreamObj()</a>.</p>
 
 </div>
 </div>
@@ -3193,7 +3193,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00187">187</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00015">AudioDirector::AudioDirector()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00085">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00357">AudioDirector::disconnect()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00227">AudioDirector::getConnectionString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00015">AudioDirector::AudioDirector()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00091">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00363">AudioDirector::disconnect()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00233">AudioDirector::getConnectionString()</a>.</p>
 
 </div>
 </div>
@@ -3557,7 +3557,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00183">183</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00015">AudioDirector::AudioDirector()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00516">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00085">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00357">AudioDirector::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00240">AudioConnection::disconnect()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00227">AudioDirector::getConnectionString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00015">AudioDirector::AudioDirector()</a>, <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00530">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00540">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00091">AudioDirector::addAudioStreamObj()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00363">AudioDirector::disconnect()</a>, <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00240">AudioConnection::disconnect()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00233">AudioDirector::getConnectionString()</a>.</p>
 
 </div>
 </div>
@@ -3685,7 +3685,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00185">185</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00516">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00530">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00540">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
 
 </div>
 </div>
@@ -3711,7 +3711,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00186">186</a> of file <a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00506">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00516">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00143">AudioStream::AudioStream()</a>, <a class="el" href="../../d4/dfc/eris__analyze__fft1024_8h_source.html#l00078">erisAudioAnalyzeFFT1024::erisAudioAnalyzeFFT1024()</a>, <a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html#l00053">erisAudioAnalyzeScope()</a>, <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00530">erisAudioSynthWaveform::erisAudioSynthWaveform()</a>, and <a class="el" href="../../d2/ded/eris_audio_8h_source.html#l00540">erisAudioSynthWaveformModulated::erisAudioSynthWaveformModulated()</a>.</p>
 
 </div>
 </div>
@@ -3742,8 +3742,8 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>D:/brian/Dev/Eris/ERISCore/lib/Audio/<a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html">eris_analyze_scope.h</a></li>
-<li>D:/brian/Dev/Eris/ERISCore/lib/Audio/<a class="el" href="../../d4/d9a/eris__analyze__scope_8cpp_source.html">eris_analyze_scope.cpp</a></li>
+<li>ERISCore/lib/Audio/<a class="el" href="../../d8/dc5/eris__analyze__scope_8h_source.html">eris_analyze_scope.h</a></li>
+<li>ERISCore/lib/Audio/<a class="el" href="../../d4/d9a/eris__analyze__scope_8cpp_source.html">eris_analyze_scope.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

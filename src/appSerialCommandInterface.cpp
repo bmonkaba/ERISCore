@@ -107,23 +107,24 @@ void replaceAll(char * str, char oldChar, char newChar)
     }
 }
 
-void AppSerialCommandInterface::throttle(){
+bool AppSerialCommandInterface::throttle(){
     uint16_t avail;
     avail = Serial.availableForWrite();
 
-    if(avail < 2000){
+    if(avail < 1000){
         uint16_t delta_avail;
         //serial tx buffer not available
-        delayMicroseconds(60500);
+        delay(500);
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
             Serial.println(F("M WRN flush"));
         } else{
-            //Serial.println(F("M WRN throttling"));
+            //Serial.println(F("M WRN throttling"));//use this for debug only!
         }
     }
-    return;
+    if(avail < 3000) return false;
+    return true;
 }
 
 void AppSerialCommandInterface::txOverflowHandler(){
@@ -171,8 +172,11 @@ void AppSerialCommandInterface::streamHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
-    throttle();
-    if (streamPos == 0) Serial.println(F("FS_START"));
+    if(!throttle()) return;
+    if (streamPos == 0){
+        Serial.println(F("FS_START"));
+        periodicMessagesEnabled = false;
+    }
     pSD->chdir(streamPath);
     if (pSD->exists(streamFile)){
         payload_len = 0;
@@ -208,6 +212,7 @@ void AppSerialCommandInterface::streamHandler(){
             
             txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
             streamPos = file.position();
+            delay(20);
         }
         file.close();
 
@@ -216,7 +221,7 @@ void AppSerialCommandInterface::streamHandler(){
             Serial.print(",");
             Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
-            //delayMicroseconds(2000);
+            delay(200);
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
@@ -225,6 +230,7 @@ void AppSerialCommandInterface::streamHandler(){
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
             //last chunk
             //Serial.flush();
+            delayMicroseconds(2000);
             Serial.print(txBuffer);
             Serial.print(",");
             Serial.println(checksum(txBuffer));
@@ -232,6 +238,8 @@ void AppSerialCommandInterface::streamHandler(){
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
+            delayMicroseconds(18000);
+            periodicMessagesEnabled = true;
             return;
         } else{
             //send file chunk
@@ -239,7 +247,7 @@ void AppSerialCommandInterface::streamHandler(){
             Serial.print(",");
             Serial.println(checksum(txBuffer));
             Serial.flush();
-            delayMicroseconds(6000);
+            delayMicroseconds(4000);
             return;
         }             
     } 
@@ -550,12 +558,17 @@ void AppSerialCommandInterface::updateRT(){
     
     //tx periodic messages
     #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
-    if (sincePeriodic > SERIAL_AUTO_TRANSMIT_DATA_PERIOD){
-        sincePeriodic = 0;
-        AppManager::getInstance()->data->printDictionary();
-        AppManager::getInstance()->printStats();
-        ad->printStats();
+    if(periodicMessagesEnabled){
+        if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
+            sincePeriodicDataDict = 0;
+            AppManager::getInstance()->data->printDictionary();
+        }
+
+        if (sincePeriodicStats > SERIAL_AUTO_TRANSMIT_STATS_PERIOD){
+            sincePeriodicStats = 0;
+            AppManager::getInstance()->printStats();
+            ad->printStats();
+        }
     }
     #endif
-    //Serial.flush();
 }; //allways called even if app is not active

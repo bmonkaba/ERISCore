@@ -1,5 +1,5 @@
-//char dummy[32000];
-//#pragma GCC optimize ("Ofast")
+//char dummy[64000];
+#pragma GCC optimize ("Ofast")
 #define BUILTIN_SDCARD 254
 #include <Arduino.h>
 
@@ -17,13 +17,14 @@
 uint16_t inc;
 MyAppExample app;
 AppSerialCommandInterface appSCI;
-DMAMEM AppReprogram appReprogram;
+AppReprogram appReprogram;
 //AppTemplate appTemplate;
 
-void PROGMEM setup() {
+void setup() {
   //stack fill test
   //char stackfill[50000];
   //memset(stackfill,0x5A,sizeof(stackfill));
+  //memset(dummy,0x5A,sizeof(dummy));
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.

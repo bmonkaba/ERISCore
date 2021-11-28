@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('d4/d7c/class_animation.html','../../')
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d1/d8a/class_animation__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -207,7 +207,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00049">filename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00181">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00174">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -247,7 +247,7 @@ Friends</h2></td></tr>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;          <span class="comment">//Serial.println(&quot;M Animation::getNextFrameChunk(): OK&quot;);    </span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">true</span>; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          <a class="code" href="../../d4/d7c/class_animation.html#a72c333aeb88aa7dd9a3a614d414e1c4a">last_frame</a> = <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          <a class="code" href="../../d4/d7c/class_animation.html#a72c333aeb88aa7dd9a3a614d414e1c4a">last_frame</a> = <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a> - 1;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          <a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a> = 1;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;          sprintf(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>,<span class="stringliteral">&quot;%03u.ile&quot;</span>,<a class="code" href="../../d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af">frame</a>);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;          <span class="keywordflow">if</span>(<a class="code" href="../../d4/d7c/class_animation.html#a24c169e65c063b5b2235ce88b2f09953">pSD</a>-&gt;<a class="code" href="../../df/dd9/class_fs_volume.html#a9bece771399c97b136868f684c2b4496">exists</a>(<a class="code" href="../../d4/d7c/class_animation.html#a03163535b79731ff6be9af641ca88778">filename</a>)){</div>
@@ -270,7 +270,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00050">_path</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00003">ANIMATION_CHUNKS_PER_FRAME</a>, <a class="el" href="../../db/d47/_fs_volume_8h_source.html#l00064">FsVolume::chdir()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00048">chunk</a>, <a class="el" href="../../db/d47/_fs_volume_8h_source.html#l00100">FsVolume::exists()</a>, <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00042">F</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00049">filename</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00046">frame</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00047">last_frame</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00092">NULL</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00043">pSD</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00086">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00100">AppManager::update()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -318,7 +318,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00050">_path</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00181">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00174">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -361,7 +361,7 @@ Friends</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00048">chunk</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00086">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00100">AppManager::update()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -525,7 +525,7 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00048">48</a> of file <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00030">Animation()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00181">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00036">isFrameComplete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00030">Animation()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00174">ILI9341_t3_ERIS::bltSDAnimationFullScreen()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00026">getNextFrameChunk()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00036">isFrameComplete()</a>.</p>
 
 </div>
 </div>
@@ -634,8 +634,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>D:/brian/Dev/Eris/ERISCore/include/<a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a></li>
-<li>D:/brian/Dev/Eris/ERISCore/src/<a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a></li>
+<li>ERISCore/include/<a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a></li>
+<li>ERISCore/src/<a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

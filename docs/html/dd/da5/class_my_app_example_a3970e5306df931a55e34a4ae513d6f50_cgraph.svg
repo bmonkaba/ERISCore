@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 839;
+var viewWidth = 1039;
 var viewHeight = 150;
 var sectionId = 'dynsection-16';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-16';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>MyAppExample::onFocus</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-146 835,-146 835,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-146 1035,-146 1035,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -80,16 +80,16 @@ var sectionId = 'dynsection-16';
 <polygon fill="midnightblue" stroke="midnightblue" points="175.62,-83.41 185.89,-80.81 176.24,-76.44 175.62,-83.41"/>
 </g>
 <!-- Node8 -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node7"><a xlink:href="../../da/d96/class_app_manager.html#aa4f7649ae1aa1a567286d73981f00090" target="_top" xlink:title="provides an interface for apps to send messages to other apps">
+<g id="a_node8"><a xlink:href="../../da/d96/class_app_manager.html#aa4f7649ae1aa1a567286d73981f00090" target="_top" xlink:title="provides an interface for apps to send messages to other apps">
 <polygon fill="white" stroke="black" points="218.5,-40.5 218.5,-61.5 383.5,-61.5 383.5,-40.5 218.5,-40.5"/>
 <text text-anchor="middle" x="301" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::sendMessage</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M150.28,-64.37C168.82,-62.71 188.93,-60.92 208.21,-59.2"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="208.56,-62.68 218.2,-58.3 207.93,-55.71 208.56,-62.68"/>
@@ -110,16 +110,16 @@ var sectionId = 'dynsection-16';
 <polygon fill="midnightblue" stroke="midnightblue" points="471.83,-122.33 482.27,-120.49 472.96,-115.42 471.83,-122.33"/>
 </g>
 <!-- Node6 -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node5"><a xlink:href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="465.5,-80.5 465.5,-101.5 629.5,-101.5 629.5,-80.5 465.5,-80.5"/>
 <text text-anchor="middle" x="547.5" y="-87.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnectAll</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node6 -->
-<g id="edge4" class="edge">
+<g id="edge5" class="edge">
 <title>Node2&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M416.02,-91C429.18,-91 442.47,-91 455.28,-91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="455.43,-94.5 465.43,-91 455.43,-87.5 455.43,-94.5"/>
@@ -128,7 +128,7 @@ var sectionId = 'dynsection-16';
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d2/d7c/class_audio_connection.html#a4208c4c7f60da78ae1daede7a6bfeb3f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="682.5,-120.5 682.5,-141.5 827.5,-141.5 827.5,-120.5 682.5,-120.5"/>
+<polygon fill="white" stroke="black" points="682.5,-120.5 682.5,-141.5 827.5,-141.5 827.5,-120.5 682.5,-120.5"/>
 <text text-anchor="middle" x="755" y="-127.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioConnection::rewire</text>
 </a>
 </g>
@@ -139,47 +139,62 @@ var sectionId = 'dynsection-16';
 <path fill="none" stroke="midnightblue" d="M615.5,-131C633.67,-131 653.55,-131 672.42,-131"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="672.49,-134.5 682.49,-131 672.49,-127.5 672.49,-134.5"/>
 </g>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d2/d7c/class_audio_connection.html#ab86753a735bd46a3924035617b0c3623" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="867,-120.5 867,-141.5 1031,-141.5 1031,-120.5 867,-120.5"/>
+<text text-anchor="middle" x="949" y="-127.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioConnection::reconnect</text>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M827.77,-131C837.25,-131 847.08,-131 856.83,-131"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="856.96,-134.5 866.96,-131 856.96,-127.5 856.96,-134.5"/>
+</g>
 <!-- Node7 -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node6"><a xlink:href="../../d8/d1c/class_audio_director.html#aae48fff50fc2763f06611db46ae7c94e" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="../../d8/d1c/class_audio_director.html#aae48fff50fc2763f06611db46ae7c94e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="679,-80.5 679,-101.5 831,-101.5 831,-80.5 679,-80.5"/>
 <text text-anchor="middle" x="755" y="-87.9" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnect</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node7 -->
-<g id="edge5" class="edge">
+<g id="edge6" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M629.72,-91C642.47,-91 655.68,-91 668.52,-91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="668.72,-94.5 678.72,-91 668.72,-87.5 668.72,-94.5"/>
 </g>
 <!-- Node9 -->
-<g id="node8" class="node">
+<g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node8"><a xlink:href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class.html#aa989ddf4bdc4cbd9a61791ca45082177" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="476,-40.5 476,-61.5 619,-61.5 619,-40.5 476,-40.5"/>
 <text text-anchor="middle" x="547.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::isName</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node9 -->
-<g id="edge7" class="edge">
+<g id="edge8" class="edge">
 <title>Node8&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M383.75,-51C410.1,-51 439.28,-51 465.57,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="465.88,-54.5 475.88,-51 465.88,-47.5 465.88,-54.5"/>
 </g>
 <!-- Node10 -->
-<g id="node9" class="node">
+<g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class.html#ae84fb7d2e79a6e050cfa11d8e04cbae9" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="../../db/d69/class_app_base_class.html#ae84fb7d2e79a6e050cfa11d8e04cbae9" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="452,-0.5 452,-21.5 643,-21.5 643,-0.5 452,-0.5"/>
 <text text-anchor="middle" x="547.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppBaseClass::MessageHandler</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node10 -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>Node8&#45;&gt;Node10</title>
 <path fill="none" stroke="midnightblue" d="M366.24,-40.49C398.68,-35.18 438.21,-28.72 471.98,-23.19"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="472.96,-26.58 482.27,-21.51 471.83,-19.67 472.96,-26.58"/>

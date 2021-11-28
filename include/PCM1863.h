@@ -131,13 +131,13 @@ void ExtADCConfig(){
   //PGA
   //Wire.beginTransmission(74);Wire.write(0);Wire.write(0);
   //Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(1);Wire.write(60); //6 * 0.5db = 3db gain
+  Wire.beginTransmission(74);Wire.write(1);Wire.write(12); //6 * 0.5db = 3db gain
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(2);Wire.write(60);
+  Wire.beginTransmission(74);Wire.write(2);Wire.write(12);
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(3);Wire.write(60);
+  Wire.beginTransmission(74);Wire.write(3);Wire.write(12);
   Wire.endTransmission(I2C_STOP);
-  Wire.beginTransmission(74);Wire.write(4);Wire.write(60);
+  Wire.beginTransmission(74);Wire.write(4);Wire.write(12);
   Wire.endTransmission(I2C_STOP);
 }
 

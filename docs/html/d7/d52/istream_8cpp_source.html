@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: D:/brian/Dev/Eris/ERISCore/lib/SdFat-master/src/iostream/istream.cpp Source File</title>
+<title>ERIS CORE: ERISCore/lib/SdFat-master/src/iostream/istream.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -323,7 +323,7 @@ $(document).ready(function(){initNavTree('d7/d52/istream_8cpp_source.html','../.
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  int8_t any = 0;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  int8_t have_zero = 0;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  uint8_t neg;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint32_t <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> = 0;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint32_t val = 0;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  uint32_t cutoff;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  uint8_t cutlim;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <a class="code" href="../../df/da6/structfspos__t.html">pos_t</a> endPos;</div>
@@ -363,18 +363,18 @@ $(document).ready(function(){initNavTree('d7/d52/istream_8cpp_source.html','../.
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">if</span> (c &gt;= base) {</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> &gt; cutoff || (<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> == cutoff &amp;&amp; c &gt; cutlim)) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (val &gt; cutoff || (val == cutoff &amp;&amp; c &gt; cutlim)) {</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="comment">// indicate overflow error</span></div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      any = -1;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> = <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> * base + c;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    val = val * base + c;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    c = getch(&amp;endPos);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    any = 1;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  }</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  setpos(&amp;endPos);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span> (any &gt; 0 || (have_zero &amp;&amp; any &gt;= 0)) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    *num =  neg ? -<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a> : <a class="code" href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    *num =  neg ? -val : val;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <a class="code" href="../../df/d02/classios.html#aee5d194656bdfb0c8621b23ea2f51afb">setstate</a>(<a class="code" href="../../d4/dc1/classios__base.html#a36157154001bcce17827db6786e35efd">failbit</a>);</div>
@@ -489,13 +489,12 @@ $(document).ready(function(){initNavTree('d7/d52/istream_8cpp_source.html','../.
 <div class="ttc" id="aistream_8cpp_html_af928af934dfd9121978ee16f57c8f960"><div class="ttname"><a href="../../d7/d52/istream_8cpp.html#af928af934dfd9121978ee16f57c8f960">uint32_max</a></div><div class="ttdeci">static const uint32_t uint32_max</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d52/istream_8cpp_source.html#l00129">istream.cpp:129</a></div></div>
 <div class="ttc" id="aistream_8h_html"><div class="ttname"><a href="../../db/dc9/istream_8h.html">istream.h</a></div><div class="ttdoc">istream class</div></div>
 <div class="ttc" id="astructfspos__t_html"><div class="ttname"><a href="../../df/da6/structfspos__t.html">fspos_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00148">FsStructs.h:148</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html_a8e9defd75397baec7dc6e0779384a952"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html#a8e9defd75397baec7dc6e0779384a952">val</a></div><div class="ttdeci">int32_t val</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00002">svcDataDictionary.h:2</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_f58a0c698f3a537aa2722f549bb5389d.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_1a69d9ac750c094c9b309d5125550118.html">src</a></li><li class="navelem"><a class="el" href="../../dir_e704492c8962abc13d61b22b54e19de9.html">iostream</a></li><li class="navelem"><a class="el" href="../../d7/d52/istream_8cpp.html">istream.cpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_607444457ce7ff98031c3752bb27f7b6.html">ERISCore</a></li><li class="navelem"><a class="el" href="../../dir_5b5543e87200f107623567781f7f5b13.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_b8b0da42578fb9a243a97ee3cbf1ef05.html">SdFat-master</a></li><li class="navelem"><a class="el" href="../../dir_a8ab2a6fce746a759c8fe38b024da189.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0c777923940a1e87c3881ee93bbb4fce.html">iostream</a></li><li class="navelem"><a class="el" href="../../d7/d52/istream_8cpp.html">istream.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

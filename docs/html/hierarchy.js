@@ -137,6 +137,9 @@ var hierarchy =
     [ "AudioMixer4", null, [
       [ "erisAudioMixer4", "d1/da2/classeris_audio_mixer4.html", null ]
     ] ],
+    [ "AudioMixer8", null, [
+      [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", null ]
+    ] ],
     [ "AudioOutputADAT", null, [
       [ "erisAudioOutputADAT", "d7/d4a/classeris_audio_output_a_d_a_t.html", null ]
     ] ],
@@ -374,7 +377,9 @@ var hierarchy =
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
     [ "partitionBootSector", "dc/d17/structpartition_boot_sector.html", null ],
     [ "partitionBootSectorFat", "dc/da3/structpartition_boot_sector_fat.html", null ],
+    [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", null, [
+      [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html", null ],
       [ "RingBuf< F, Size >", "dc/d6f/class_ring_buf.html", null ]
     ] ],
     [ "PrintBasic", "da/db3/class_print_basic.html", [
@@ -417,6 +422,7 @@ var hierarchy =
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
     [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
     [ "SysCall", "df/dba/class_sys_call.html", null ],
+    [ "value_container", "da/d2d/unionvalue__container.html", null ],
     [ "Vol", null, [
       [ "SdBase< Vol >", "de/d8b/class_sd_base.html", null ]
     ] ],

@@ -40,6 +40,7 @@ var eris_audio_8h =
     [ "erisAudioInputTDM", "d1/dcb/classeris_audio_input_t_d_m.html", "d1/dcb/classeris_audio_input_t_d_m" ],
     [ "erisAudioInputTDM2", "df/dae/classeris_audio_input_t_d_m2.html", "df/dae/classeris_audio_input_t_d_m2" ],
     [ "erisAudioMixer4", "d1/da2/classeris_audio_mixer4.html", "d1/da2/classeris_audio_mixer4" ],
+    [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", "d3/daf/classeris_audio_mixer8" ],
     [ "erisAudioOutputADAT", "d7/d4a/classeris_audio_output_a_d_a_t.html", "d7/d4a/classeris_audio_output_a_d_a_t" ],
     [ "erisAudioOutputAnalog", "d0/d8d/classeris_audio_output_analog.html", "d0/d8d/classeris_audio_output_analog" ],
     [ "erisAudioOutputAnalogStereo", "d0/d3d/classeris_audio_output_analog_stereo.html", "d0/d3d/classeris_audio_output_analog_stereo" ],
