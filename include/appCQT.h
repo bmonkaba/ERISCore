@@ -305,8 +305,8 @@ class AppCQT:public AppBaseClass {
       bool found;
       float floor;
       float trigger;
-      trigger = 0.001;
-      floor = 0.0001;
+      trigger = 0.0001;
+      floor = 0.00001;
       float peak_read=-1000;
       float peak;
       

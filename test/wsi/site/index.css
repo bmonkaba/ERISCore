@@ -616,9 +616,9 @@ table.dataTable td {
 
 .container {
     display: grid;
-    grid-template-columns: 175px 335px 265px 710px 310px;
+    grid-template-columns: 200px 334px 265px 690px 300px;
     grid-template-rows: 42px 310px 75%;
-    gap: 10px 10px 10px 10px 10px;
+    gap: 10px 10px 5px 10px 5px;
     grid-auto-flow: row;
     grid-template-areas:
         "hamburger menubar menubar menubar menubar"
@@ -627,7 +627,7 @@ table.dataTable td {
 
     filter: drop-shadow(2px 2px 2px #426897c4);
     margin: 3px;
-    max-height: 768px;
+    max-height: 80vh;
     border-radius: 7px;
 }
 
@@ -667,6 +667,7 @@ table.dataTable td {
     background-color: #202020;
     background: radial-gradient(circle, rgb(193 193 193 / 29%) 10%, rgb(42 42 42 / 60%) 100%);
     font-family: 'Cutive Mono', monospace;
+    font-size: 0.75em;
     border-radius: 7px;
     text_align: left;
     overflow: hidden;
@@ -722,7 +723,7 @@ table.dataTable td {
     border-radius: 7px;
     text-align: center;
     height: 309px;
-    width: 300px;
+    width: 270px;
     overflow: hidden;
     margin-left: 10px;
 }
@@ -842,8 +843,8 @@ table.dataTable td {
     stroke: #3d85de;
     background: linear-gradient(rgb(253 254 202 / 15%) 0%, rgb(19 34 54) 100%);
     border: 1px solid #0e0e0e;
-    width: 140px;
-    height: 25px;
+    width: 170px;
+    height: 15px;
     font-size: 1em;
     font-weight: normal;
     font-family: system-ui;
@@ -1122,8 +1123,8 @@ select {
     /* font-family: tahoma,arial,helvetica; */
     font-size: 10pt;
     white-space: nowrap;
-    padding: 3px;
-    margin: 0;
+    padding: 5px;
+    margin: 5px;
     background-color: #fff;
     color: white;
     /* border: 1px dotted gray; */

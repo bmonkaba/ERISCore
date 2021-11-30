@@ -41,26 +41,25 @@ void setup() {
             while(1);
   }
   while(!Serial); //DEBUG - wait for serial connection
-  delayNanoseconds(500);
+  delay(500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
-  Serial.println(F("Setup: Initalizing"));
-  Serial.println(F("Setup: Configuring Audio Hardware"));
+  Serial.println(F("M Setup: Initalizing"));
+  Serial.println(F("M Setup: Configuring Audio Hardware"));
   I2CReset();
   ExtADCConfig();
   ExtADCPrintStatus();
   //I2CBusScan();
   
-  Serial.println(F("Setup: Loading Applications"));
+  Serial.println(F("M Setup: Loading Applications"));
   //app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
   //appReprogram = new AppReprogram();
   //appSCI = new AppSerialCommandInterface();
   //AppManager::getInstance()->getFocus(app->getId()); //focus is requested by obj id
-  Serial.println(F("Setup: Setting App Focus"));
+  Serial.println(F("M Setup: Setting App Focus"));
   app.getFocus();
-  Serial.println(F("Setup: Init Complete"));
+  Serial.println(F("M Setup: Init Complete"));
   //delay(5000);
-
 }
 
 void loop(void) {

@@ -110,8 +110,8 @@ class MyAppExample:public AppBaseClass {
       slider->setText("");
       slider->setValue(0);
       
-      char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST"};
-      char p[][16] = {"DOUBLE.ile\0","GRAIN.ile\0","PHASER.ile\0","BITCRUSH.ile\0","FUZZ.ile\0","CONFIG.ile\0"};
+      char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST","BACK"};
+      char p[][16] = {"DOUBLE.ile\0","GRAIN.ile\0","PHASER.ile\0","BITCRUSH.ile\0","FUZZ.ile\0","CONFIG.ile\0","BACK.ile\0"};
       uint8_t si = 0;
       uint16_t bx = 5;
       uint16_t by = 90;

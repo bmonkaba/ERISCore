@@ -15,15 +15,137 @@
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
 #include <SdFat.h>
-//#include <SdFat.h>
-
 
 // ERIS SD Graphics extention 
 // Implements 2d image transfer from an SD card to a RAM framebuffer viewport 
 void renderCompleteCB();
 bool _busy();
 
-//animatiobn helper class
+//every surface owns and manages it's own memory
+//therfore a 'Root' surface owns the entire surface memory (actual) from which it's space is 'BORROWED' by children
+//a 'child' surface may 'SHARE' it's space with 'FRIENDS' .. etc.
+//space is managed both directly and indirectly
+//allocated space may be revoked and given to other sufaces as required
+
+// min alloc size - lazy attemmpt to reduce potental memory fragmentation issues
+#define SURFACE_MIN_ALLOC_SIZE 256
+
+class Surface {
+  public:
+    Surface(Surface *SubSurfaceFrom, SdFs* pSD, const char* path, const char* fileName){
+        char str[16]; //char buffer
+        char *c;     //char pointer
+        FsFile file;
+        guid = hash(path) * hash(fileName);
+        //open image, get size info, attempt to allocate a buffer then copy
+        //and capture the dimensions
+        if (!pSD->chdir(path)){ //change file path
+            Serial.print(F("M ILI9341_t3_ERIS::bltSD Path not found: "));
+            Serial.println(path);
+            return;             
+        }
+        file.open(fileName, O_READ);//open image to read
+        if (file.available() == 0){ //file not found
+            Serial.print(F("M ILI9341_t3_ERIS::bltSD File Not Found: "));
+            Serial.println(fileName);
+            //pSD->ls();
+            return;
+        }
+        file.fgets(str,sizeof(str)); //read the header data
+        file.fgets(str,sizeof(str)); //to get the image dimensions
+        file.close();
+        strtok(str," ");             //convert dimension text to numbers
+        w = atol(str);
+        c = strtok(NULL, " ");
+        h = atol(c);
+        alloc_size = w*h;
+        if (alloc_size < SURFACE_MIN_ALLOC_SIZE) alloc_size = SURFACE_MIN_ALLOC_SIZE;
+        pSB = SubSurfaceFrom->requestSubSurfaceBufferP(alloc_size);
+    }
+    
+    Surface(Surface *SubSurfaceFrom, int16_t width, int16_t height){
+        w = width;
+        h = height;
+        alloc_size = w*h;
+        if (alloc_size < SURFACE_MIN_ALLOC_SIZE) alloc_size = SURFACE_MIN_ALLOC_SIZE;
+        pSB = SubSurfaceFrom->requestSubSurfaceBufferP(alloc_size);
+        //attempt to allocate a sub surface buffer then clear it
+    }
+    
+    Surface(uint16_t *buffer,uint32_t length){
+        //take an existing buffer as the surface buffer
+        pSB = buffer;
+        w = 0;
+        h = 0;
+        alloc_size = length;
+        head = 0; //used for sub surface allocation
+        Serial.print(F("M Surface buffer attached with a size of: "));
+        Serial.println(alloc_size);
+    }
+
+    Surface(uint16_t *buffer,int16_t width, int16_t height){
+        //take an existing buffer as the surface buffer
+        pSB = buffer;
+        w = width;
+        h = height;
+        alloc_size = w*h;
+        head = 0; //used for sub surface allocation
+        Serial.print(F("M Surface buffer attached with a size of: "));
+        Serial.println(alloc_size);
+    }
+
+    uint16_t* requestSubSurfaceBufferP(uint32_t size){
+        /* provides an interface to enable childern subsurfaces
+           to request a portion of the parents surface buffer
+
+           function input is size of the surface array of N elements
+           each element of the array being two bytes (uint16_t).
+           so the allocation head will be moved size * 2
+        */
+        uint16_t* pSSB;
+        if ((head + size) > alloc_size){
+            //not enough space
+            Serial.println(F("M ERROR: Surface out of MEM"));
+            return NULL;
+        }
+        if (!pSB){
+            Serial.println(F("M ERROR: Surface has no buffer"));
+            return NULL;
+        }
+        pSSB = pSB + (head*sizeof(uint16_t)); 
+        head += size;
+        Serial.println(F("M SubSurface allocated"));
+        Serial.print(F("M Surface buffer remaining:"));
+        Serial.println(alloc_size - head);
+        return pSSB;
+    }
+
+    uint16_t* getSurfaceBufferP(){return pSB;}
+    int16_t getWidth(){return w;}
+    int16_t getHeight(){return h;}
+        
+  protected:        
+    uint16_t *pSB;
+    int16_t w;
+    int16_t h;
+    uint32_t alloc_size;
+    uint32_t guid;
+    uint32_t head;
+    
+    void allocate();
+    void revoke();
+    uint32_t hash(const char* s){
+        //uint32 djb2 string hash
+        uint32_t h = 5381;
+        int c;
+        while (c = *s++){h = ((h << 5) + h) + c;}
+        return h;
+    }
+};
+
+
+//animation helper class
+
 class Animation{
     friend class ILI9341_t3_ERIS;
     public:
@@ -32,7 +154,7 @@ class Animation{
             if (strlen(path) < 120) strcpy(_path,path);
             last_frame = -1; //reset end of animation frame marker
             return;
-        };
+        }
         bool isFrameComplete(){
             if(chunk==0)return true; 
             return false;
@@ -50,10 +172,7 @@ class Animation{
         char _path[128];
 };
 
-
-enum UIBLTAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};
-
-
+enum bltAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};
 
 class ILI9341_t3_ERIS : public ILI9341_t3n {
     public:
@@ -72,7 +191,9 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //void flipBuffer();
         //void flipWritePointer();
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
-        void bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type);  
+        void bltMem(Surface *dest, Surface *source,int16_t x,int16_t y,bltAlphaType alpha_type);
+        void bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
+        void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
         void bltSDAnimationFullScreen(Animation *an);
         bool busy(){return _busy();} //(_dma_state & ILI9341_DMA_ACTIVE);}

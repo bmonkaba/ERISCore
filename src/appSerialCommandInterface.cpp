@@ -465,7 +465,7 @@ void AppSerialCommandInterface::updateRT(){
                 strcpy(txBuffer," ");
                 //RAM2 always ends at 0x20280000
                 for(uint32_t i = 0x20000000; i < 0x20280000; i+=1){
-                    if (i == 0x20016000) i = 0x20200000;
+                    if (i == 0x20010000) i = 0x20200000;
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);

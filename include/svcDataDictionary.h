@@ -88,12 +88,23 @@ class SvcDataDictionary{
         svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
         uint16_t next;
 
-    uint32_t hash(const char* s){
-        //uint32 djb2 string hash
-        uint32_t h = 5381;
-        int c;
-        while (c = *s++){h = ((h << 5) + h) + c;}
-        return h;
+    bool copyKey(const char* key){
+        //if dictionary full
+        if (next == DATADICT_KEYVALUE_PAIRS) return false;
+        record[next].key = strndup(key,DATADICT_MAX_KEY_LEN);
+        //check for strndup malloc failure
+        if (record[next].key == NULL) return false;
+        /*
+            strndup doesn't ensure null termination of strings! meaning it will fill
+            the entire buffer with chars ommiting the null ternimation to indicate the
+            end of a string.
+
+            strndup however does fill the buffer with null chars if given a string is shorter than the buffer len 
+
+            The simple guard for null termination loss is to always write a null char at the end of the buffer
+            */
+        record[next].key[strlen(key)]=0;
+        return true;
     }
 
     public:
@@ -113,83 +124,47 @@ class SvcDataDictionary{
                 #endif
             }
         }
-
+        
+        uint32_t hash(const char* s){
+            //uint32 djb2 string hash
+            uint32_t h = 5381;
+            int c;
+            while (c = *s++){h = ((h << 5) + h) + c;}
+            return h;
+        }
         bool create(const char* key,int32_t val,uint32_t* owner){
-            //if dictionary full
-            if (next == DATADICT_KEYVALUE_PAIRS) return false;
-            //TODO: ensure key doesn't already exist before creating a new record
-            //else
-            if(strlen(key) < DATADICT_MAX_KEY_LEN){
-                #ifdef DATADICT_USE_MALLOC
-                record[next].key = strdup(key);
-                //record[next].key = (char*)malloc(strlen(key)+1);
-                //if (record[next].key != NULL){
-                //strcpy(record[next].key,key);
-                //} else return false; //if malloc failed
-                #else
-                strcpy(record[next].key,key);
-                #endif
-                record[next].val.int32_val = val;
-                record[next].pval = 0;
-                record[next].owner = owner;
-                record[next].record_type = DDRT_READ;
-                record[next].key_hash = hash(key);
-                next++;
-                return true;
-            }
-            return false;//bad key
+            if (!copyKey(key)) return false;
+            record[next].val.int32_val = val;
+            record[next].pval = 0;
+            record[next].owner = owner;
+            record[next].record_type = DDRT_READ;
+            record[next].key_hash = hash(key);
+            next++;
+            return true;
         }
 
         bool create(const char* key,int32_t val){
-            //if dictionary full
-            if (next == DATADICT_KEYVALUE_PAIRS) return false;
-            //TODO: ensure key doesn't already exist before creating a new record
-            //else
-            if(strlen(key) < DATADICT_MAX_KEY_LEN){
-                #ifdef DATADICT_USE_MALLOC
-                record[next].key = (char*)malloc(strlen(key)+1);
-                if (record[next].key != NULL){
-                    strcpy(record[next].key,key);
-                } else return false; //if malloc failed               
-                #else
-                strcpy(record[next].key,key);
-                #endif
-                record[next].val.int32_val = val;
-                record[next].pval = 0;
-                record[next].owner = 0;
-                record[next].record_type = DDRT_READWRITE;
-                record[next].data_type = DDDT_INT32;
-                record[next].key_hash = hash(key);
-                next++;
-                return true;
-            }
-            return false;//bad key
+            if (!copyKey(key)) return false;
+            record[next].val.int32_val = val;
+            record[next].pval = 0;
+            record[next].owner = 0;
+            record[next].record_type = DDRT_READWRITE;
+            record[next].data_type = DDDT_INT32;
+            record[next].key_hash = hash(key);
+            next++;
+            return true;
         }
 
         bool create(const char* key,float32_t val){
-            //if dictionary full
-            if (next == DATADICT_KEYVALUE_PAIRS) return false;
-            //TODO: ensure key doesn't already exist before creating a new record
-            //else
-            if(strlen(key) < DATADICT_MAX_KEY_LEN){
-                #ifdef DATADICT_USE_MALLOC
-                record[next].key = (char*)malloc(strlen(key)+1);
-                if (record[next].key != NULL){
-                    strcpy(record[next].key,key);
-                } else return false; //if malloc failed               
-                #else
-                strcpy(record[next].key,key);
-                #endif
-                record[next].val.float32_val = val;
-                record[next].pval = 0;
-                record[next].owner = 0;
-                record[next].record_type = DDRT_READWRITE;
-                record[next].data_type = DDDT_FLOAT32;
-                record[next].key_hash = hash(key);
-                next++;
-                return true;
-            }
-            return false;//bad key
+            if (!copyKey(key)) return false;
+            record[next].val.float32_val = val;
+            record[next].pval = 0;
+            record[next].owner = 0;
+            record[next].record_type = DDRT_READWRITE;
+            record[next].data_type = DDDT_FLOAT32;
+            record[next].key_hash = hash(key);
+            next++;
+            return true;
         }
 
         int32_t read(const char* key){

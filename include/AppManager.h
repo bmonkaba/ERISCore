@@ -30,11 +30,9 @@ enum loopState{
   redraw_popup,
 };
 
-
 class AppManager {
   private:
     static AppManager* obj; //make appManager a singleton
-    SdFs sd;    
     AnalogInputs analog;
     AppBaseClass *root; //root linked list node
     AppBaseClass *pActiveApp; //active app
@@ -58,7 +56,10 @@ class AppManager {
     AppManager();
 
   public:
+    SdFs sd;
     SvcDataDictionary* data;//data dictionary service;
+    Surface*  fastImgCacheSurfaceP; //FAST MEM img cashe
+    Surface*  displaySurfaceP; //FAST MEM img cashe
     static AppManager* getInstance() //public access to get a reference to the singleton instance
     {
       if (NULL==obj) {

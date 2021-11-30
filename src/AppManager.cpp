@@ -18,12 +18,12 @@
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
 
+#define AM_IMG_CACHE_SIZE 64*64*16
 
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
-uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (32)));
-uint16_t FASTRUN imgCache[320*240] __attribute__ ((aligned (32)));//8 64x64 16bit img cache 
-//uint16_t DMAMEM FB2[320 * 240] __attribute__ ((aligned (32)));
+uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
+uint16_t FASTRUN imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
 SvcDataDictionary FASTRUN _data;
 
 /**
@@ -38,8 +38,12 @@ AppManager:: AppManager(){
   nextIDAssignment = 1; //id 0 is reserved
   monitor_dd_update_timer = 0;
   state = redraw_objects;
-  //init the app focus and app stacks
+  //attach the global imgCache buffer to a surface
   memset(imgCache,0,sizeof(imgCache));
+  fastImgCacheSurfaceP = new Surface(&imgCache[0],AM_IMG_CACHE_SIZE);
+  displaySurfaceP = new Surface(&FB1[0],320,240);
+
+  //init the app focus and app stacks
   memset(&appFocusStack,0,sizeof(appFocusStack));
   memset(&appPopUpStack,0,sizeof(appPopUpStack));
   appFocusStackIndex = 0;
@@ -57,6 +61,7 @@ AppManager:: AppManager(){
   draw.setSD(&sd); //provide a cd pointer to the sd class
   draw.setFrameBuffer(FB1);
   draw.useFrameBuffer(true);
+  
   //render.setPWMPin(TFT_LED_PWM); //library will control the backlight
   //render.setSD(&sd); //provide a cd pointer to the sd class
   //render.setFrameBuffer(FB1);

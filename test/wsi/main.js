@@ -620,7 +620,7 @@ $(document).ready(function () {
                     //sidebar.append(data_dict[key] + "<br>");
                     if ($("#" + key).length < 1) {
                         sidebar.append("<br><br>" + key + ": <b id=" + key + "_VAL>val</b><br>");
-                        sidebar.append("<svg class=\"sparkline\" id=" + key + " width=\"160\" height=\"60\" stroke-width=\"1\"></svg>");
+                        sidebar.append("<svg class=\"sparkline\" id=" + key + " width=\"170\" height=\"15\" stroke-width=\"1\"></svg>");
                         sparks[key] = new Array(1024);
                         sparks[key].fill(0.01);
                     }

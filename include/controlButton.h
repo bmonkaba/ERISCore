@@ -25,6 +25,7 @@ class ControlButton:public AppBaseClass {
         isPressed = false;
         show_active = false;
         usingImage = false;
+        imgloaded = false;
         time_active = 0;
         strcpy(text,"ControlButton");
         strcpy(name,"ControlButton");
@@ -41,6 +42,8 @@ class ControlButton:public AppBaseClass {
     void setImage(const char* path,const char* filename){
         setPath(path);
         setFile(filename);
+        if(imgloaded) delete(imgcache);
+        imgloaded = false;
     }
 
     void setFile(const char* filename){
@@ -59,10 +62,11 @@ class ControlButton:public AppBaseClass {
     char text[MAX_TEXT_LENGTH];
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
-
+    Surface* imgcache;
     bool isDirty;
     bool isPressed;
     bool usingImage;
+    bool imgloaded;
     elapsedMillis time_active;
     bool show_active;
     void update(){
@@ -75,7 +79,25 @@ class ControlButton:public AppBaseClass {
         }
         if (!isDirty) return;
         if(usingImage){
-            draw->bltSD(img_path, img_filename,x,y,AT_HATCHXOR);
+            if(!imgloaded){
+                //allocate space
+                imgcache = new Surface(am->fastImgCacheSurfaceP, &am->sd, img_path, img_filename);
+                if(!imgcache){ 
+                    Serial.println("M ERROR imgcache out of mem");
+                    Serial.flush();
+                    delete(imgcache);
+                    return;
+                }else{
+                    draw->bltSD(imgcache->getSurfaceBufferP(), imgcache->getWidth(),img_path, img_filename,0,0,AT_NONE); //load img into cache      
+                    imgloaded = true;
+                    return;
+                }
+            } else{
+                am->data->update(name,(int32_t)imgcache->getSurfaceBufferP());
+                am->data->update("FastImageCacheBuffer",(int32_t)am->fastImgCacheSurfaceP->getSurfaceBufferP());
+                
+                draw->bltMem(am->displaySurfaceP,imgcache,x,y,AT_NONE);
+            }
         }else{
             draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
             draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));

@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 2
+#define ANIMATION_CHUNKS_PER_FRAME 12
 
 static volatile bool dmabusy;
 
@@ -14,41 +14,41 @@ bool _busy(){
 }
 
 bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
-            bool rval;
-            //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
-            //Serial.flush();
-            dmabusy=true;
-            setFrameCompleteCB(&renderCompleteCB);
-            rval= updateScreenAsync(false);
-            return rval;
-        }
+  bool rval;
+  //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
+  //Serial.flush();
+  dmabusy=true;
+  setFrameCompleteCB(&renderCompleteCB);
+  rval= updateScreenAsync(false);
+  return rval;
+}
 
 bool Animation::getNextFrameChunk(){
-    if (pSD == NULL) return false;
-    if (chunk==0){
-      chunk++;
-      sprintf(filename,"%03u.ile",frame);
-      frame++;
-      if(last_frame > 0 && frame > last_frame) frame = 1;
-      pSD->chdir(_path);
-      if(pSD->exists(filename)){
-          //Serial.println("M Animation::getNextFrameChunk(): OK");    
-          return true; 
-      }else{
-          last_frame = frame - 1;
-          frame = 1;
-          sprintf(filename,"%03u.ile",frame);
-          if(pSD->exists(filename)){
-              //Serial.println("M Animation::getNextFrameChunk(): CYCLE OK");
-              return true;
-          }
-      }
-      Serial.printf(F("M SDCard Error  File: %s Not found at: %s\n"),filename,_path);
-      return false;
-    }
+  if (pSD == NULL) return false;
+  if (chunk==0){
     chunk++;
-    if(chunk>=ANIMATION_CHUNKS_PER_FRAME) chunk=0;
-    return true;
+    sprintf(filename,"%03u.ile",frame);
+    frame++;
+    if(last_frame > 0 && frame > last_frame) frame = 1;
+    pSD->chdir(_path);
+    if(pSD->exists(filename)){
+        //Serial.println("M Animation::getNextFrameChunk(): OK");    
+        return true; 
+    }else{
+        last_frame = frame - 1;
+        frame = 1;
+        sprintf(filename,"%03u.ile",frame);
+        if(pSD->exists(filename)){
+            //Serial.println("M Animation::getNextFrameChunk(): CYCLE OK");
+            return true;
+        }
+    }
+    Serial.printf(F("M SDCard Error  File: %s Not found at: %s\n"),filename,_path);
+    return false;
+  }
+  chunk++;
+  if(chunk>=ANIMATION_CHUNKS_PER_FRAME) chunk=0;
+  return true;
 }
 
 void Animation::setSD(SdFs *ptr){pSD = ptr;}
@@ -96,14 +96,55 @@ void ILI9341_t3_ERIS::flipBuffer(){
   }
 };
 */
+void ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type){
+  bool toggle = false;
+  int16_t source_x,source_y, dest_x,dest_y,x,y;
+  uint32_t read_index,write_index;
+  uint16_t *srcBuffer;
+  uint16_t *dstBuffer;
+  srcBuffer = source->getSurfaceBufferP();
+  dstBuffer = dest->getSurfaceBufferP();
+  //check for null
+  if (!srcBuffer) return;
+  if (!dstBuffer) return;
+  //check for off surface blt attempt
+  if ((pos_x > dest->getWidth()) || (0 > (dest->getWidth() + pos_x))) return;
+  if ((pos_y > dest->getHeight()) || (0 > (dest->getHeight() + pos_y))) return;
+  //for each pixel in the source buffer, write to the dest buffer if the x,y coords are within bounds
+  for (source_y=0; source_y < source->getHeight();source_y +=1){
+    for (source_x=0; source_x < source->getWidth();source_x +=1){
+      //translate the source coords to the destination coords
+      dest_x = pos_x + source_x; 
+      dest_y = pos_y + source_y;
+      write_index = (dest_y * dest->getWidth()) + dest_x;
+      read_index = (source_y * source->getWidth()) + source_x;
+      if(dest_x < 320 && dest_x >= 0 && dest_y < 240 && dest_y >= 0){
+        //if in bounds then ok to write
+        if (AT_NONE == alpha_type){
+          dstBuffer[write_index] = srcBuffer[read_index];
+        }else if(AT_HATCHXOR){
+          if (toggle) dstBuffer[write_index] = srcBuffer[read_index];
+          toggle ^= true;
+        }else if(AT_TRANS){
+          //TODO: unpack both source and dest, average the rgb values, repack and store in dest
+        }
+      }
+    }
+  }
+}
 
-void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,UIBLTAlphaType alpha_type){
+void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+  bltSD(_pfbtft, 320, path, filename,x,y,alpha_type);
+  return;
+}
+
+void ILI9341_t3_ERIS::bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
   int16_t nx;        //right clip x offset
   unsigned long ifb; //frame buffer index
-  uint16_t dwbf[320];//file read pixel row input buffer
+  //uint16_t dwbf[320];//file read pixel row input buffer
   uint16_t dw;       //pixel data
   char str[16];      //char buffer
   char *c;           //char pointer
@@ -143,24 +184,24 @@ void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int
     {
       mx = 0; nx = 0;
       if (x < 0L){file.seekCur(x * -2L);mx = -1L * x;} //clip in x dimension (left) - skip offscreen data
-      ifb = (iy * 320L) + x + mx; //32bit index
-      if (x + w > 320L){nx = x + w - 320L;}//clip in x dimension (right) - truncate copy to screen bounds
+      ifb = (iy * dest_buffer_width) + x + mx; //32bit index
+      if (x + w > dest_buffer_width){nx = x + w - dest_buffer_width;}//clip in x dimension (right) - truncate copy to screen bounds
       for (uint16_t z = 0; z < (w - mx - nx); z += 1){
         file.read(&dw,2);
         toggle ^= true;
         //if alpha is enabled mask any colors close to black
-        if (alpha_type == AT_NONE){_pfbtft[ifb + z] = dw;}
-        else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){_pfbtft[ifb + z] = dw;}
+        if (alpha_type == AT_NONE){dest_buffer[ifb + z] = dw;}
+        else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
         else if (alpha_type == AT_HATCHBLK){
-          if ((dw & 0xE79C) != 0) _pfbtft[ifb + z] = dw;
-          else if (toggle) _pfbtft[ifb + z] = 0; //pFB[i] ^= pFB[i];
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+          else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
         }
         else if (alpha_type == AT_HATCHXOR){
-          if ((dw & 0xE79C) != 0) _pfbtft[ifb + z] = dw;
-          else if (toggle) _pfbtft[ifb + z] = _pfbtft[ifb + z]^_pfbtft[ifb + z];
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+          else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
         }
       }
-      if (x + w > 320L){file.seekCur( (x + w - 320L) * 2);} //clip in x dimension (right) - skip unused data
+      if (x + w > dest_buffer_width){file.seekCur( (x + w - dest_buffer_width) * 2);} //clip in x dimension (right) - skip unused data
     }
     else{
       //since y index is now off screen close the file and return
