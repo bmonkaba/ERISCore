@@ -17,8 +17,8 @@
 #include "ILI9341_t3_ERIS.h"
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
+#include "globaldefs.h"
 
-#define AM_IMG_CACHE_SIZE 64*64*16
 
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
@@ -67,7 +67,7 @@ AppManager:: AppManager(){
   //render.setFrameBuffer(FB1);
   //render.useFrameBuffer(true);
   animated_wallpaper.setSD(&sd);
-  animated_wallpaper.setPath("/V/PINKDOTS");
+  animated_wallpaper.setPath(UI_ANIMATED_WALLPAPER_PATH);
   Serial.println(F("M AppManager: Init display"));
   draw.begin();
   //render.begin();
@@ -246,7 +246,7 @@ void AppManager::update(){
             p = touch.getPoint();
             //data->update("TOUCH_X",(int32_t)p.x);
             //data->update("TOUCH_Y",(int32_t)p.y);
-            //data->update("TOUCH_Z",(int32_t)p.z);
+            data->update("TOUCH_Z",(int32_t)p.z);
             if (node->touch_state == 0){
                 node->onTouch(p.x, p.y);
                 node->touch_state=1;
@@ -274,7 +274,7 @@ void AppManager::update(){
     if(monitor_update){
       monitor_dd_update_timer = 0;
       data->update(AM_LOOP_TIME,(int32_t)cycle_time_max);
-      //data->update("SERIAL_AVAIL",Serial.availableForWrite());
+      data->update(AM_SERIAL_AVAIL,(int32_t)Serial.availableForWrite());
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress());
       int32_t free_mem;

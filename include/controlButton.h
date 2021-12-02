@@ -27,6 +27,7 @@ class ControlButton:public AppBaseClass {
         usingImage = false;
         imgloaded = false;
         time_active = 0;
+        imgcache = NULL;
         strcpy(text,"ControlButton");
         strcpy(name,"ControlButton");
         strcpy(img_filename,"NONE");
@@ -83,7 +84,7 @@ class ControlButton:public AppBaseClass {
                 //allocate space
                 imgcache = new Surface(am->fastImgCacheSurfaceP, &am->sd, img_path, img_filename);
                 if(!imgcache){ 
-                    Serial.println("M ERROR imgcache out of mem");
+                    Serial.println(F("M ERROR imgcache out of mem"));
                     Serial.flush();
                     delete(imgcache);
                     return;
@@ -93,9 +94,6 @@ class ControlButton:public AppBaseClass {
                     return;
                 }
             } else{
-                am->data->update(name,(int32_t)imgcache->getSurfaceBufferP());
-                am->data->update("FastImageCacheBuffer",(int32_t)am->fastImgCacheSurfaceP->getSurfaceBufferP());
-                
                 draw->bltMem(am->displaySurfaceP,imgcache,x,y,AT_NONE);
             }
         }else{

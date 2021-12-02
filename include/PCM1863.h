@@ -52,7 +52,7 @@ uint8_t ExtADCReadReg(uint8_t control_register){
 }
 
 void ExtADCPrintStatus(){
-  Serial.print("ADC ");
+  Serial.print(F("ADC "));
   Serial.print(F("{\"State(15:RUNNING)\":"));
   Serial.print(ExtADCReadReg(114));
   Serial.print(F(",\"SampleFreq:\":"));
@@ -146,7 +146,7 @@ void I2CBusScan()
   byte error, address;
   int nDevices;
 
-  Serial.println("I2CBusScan: Scanning");
+  Serial.println(F("I2CBusScan: Scanning"));
 
   nDevices = 0;
   for(address = 1; address < 127; address++ )

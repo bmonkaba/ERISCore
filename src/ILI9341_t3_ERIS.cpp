@@ -1,11 +1,11 @@
 #include "ILI9341_t3_ERIS.h"
+#include "globaldefs.h"
 
-#define ANIMATION_CHUNKS_PER_FRAME 12
 
 static volatile bool dmabusy;
 
-void FASTRUN renderCompleteCB(){
-    Serial.println("renderCompleteCB");
+void renderCompleteCB(){
+    Serial.println(F("renderCompleteCB"));
     dmabusy=false;
 }
 
@@ -62,7 +62,7 @@ void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     analogWrite(backlight, 220);
 }
 
-void ILI9341_t3_ERIS::begin(){
+void FLASHMEM ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
     //setFrameBuffer(FB1);
     //useFrameBuffer(true);
@@ -96,7 +96,7 @@ void ILI9341_t3_ERIS::flipBuffer(){
   }
 };
 */
-void ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type){
   bool toggle = false;
   int16_t source_x,source_y, dest_x,dest_y,x,y;
   uint32_t read_index,write_index;
@@ -133,12 +133,12 @@ void ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_
   }
 }
 
-void ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   bltSD(_pfbtft, 320, path, filename,x,y,alpha_type);
   return;
 }
 
-void ILI9341_t3_ERIS::bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset

@@ -33,6 +33,10 @@ class MyAppExample:public AppBaseClass {
     uint32_t t_lastupdate;
 
     MyAppExample():AppBaseClass(){
+      initMyAppExample();
+    };
+
+    void FLASHMEM initMyAppExample(){
       sprintf(name, "MyAppExample");
       Serial.println("MyApp constructor called");
 
@@ -84,12 +88,12 @@ class MyAppExample:public AppBaseClass {
       delay->delay(0,30);
       delay->delay(1,60);
       delay->delay(2,180);
-      delay->delay(3,200);
+      delay->delay(3,400);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.001);
-      mix->gain(1,0.005);
-      mix->gain(2,0.010);
-      mix->gain(3,0.029);
+      mix->gain(0,0.01);
+      mix->gain(1,0.001);
+      mix->gain(2,0.0001);
+      mix->gain(3,0.001);
       
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,5);
@@ -110,8 +114,8 @@ class MyAppExample:public AppBaseClass {
       slider->setText("");
       slider->setValue(0);
       
-      char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST","BACK"};
-      char p[][16] = {"DOUBLE.ile\0","GRAIN.ile\0","PHASER.ile\0","BITCRUSH.ile\0","FUZZ.ile\0","CONFIG.ile\0","BACK.ile\0"};
+      static char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST","BACK"};
+      static char p[][16] = {"DOUBLE.ile","GRAIN.ile","PHASER.ile","BITCRUSH.ile","FUZZ.ile","CONFIG.ile","BACK.ile"};
       uint8_t si = 0;
       uint16_t bx = 5;
       uint16_t by = 90;
@@ -129,27 +133,27 @@ class MyAppExample:public AppBaseClass {
       }
     } 
     //define event handlers
-    void update(){
+    void FLASHMEM update(){
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
       reverb->damping(am->data->readf("REVERB_DAMPING"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
-      if(am->data->read("INPUT_PEAK") < 15){
-        mixer->gain(0,0);
-        mixer->gain(1,0);
+      if(am->data->read("INPUT_PEAK") < 5){
+        mixer->gain(0,0.0);
+        mixer->gain(1,0.0);
         mixer->gain(2,0.0);
-        mixer->gain(3,0.2);
+        mixer->gain(3,0.0);
       }else{
-        mixer->gain(0,2);
-        mixer->gain(1,2);
-        mixer->gain(2,0.0);
-        mixer->gain(3,0.5);
+        mixer->gain(0,0.1);
+        mixer->gain(1,0.2);
+        mixer->gain(2,0.3);
+        mixer->gain(3,0.4);
 
       }
       slider->setValue((int16_t)(100 * ((float)am->data->read("INPUT_PEAK"))/32768.0));
     }
 
-    void onTouch(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
       x_start = t_x;
       y_start = t_y;
       x_last = t_x;
@@ -158,7 +162,7 @@ class MyAppExample:public AppBaseClass {
       }
     }
 
-    void onTouchRelease(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouchRelease(uint16_t t_x, uint16_t t_y){
       x_end = t_x;
       y_end = t_y;
       x_last = t_x;
@@ -166,7 +170,7 @@ class MyAppExample:public AppBaseClass {
       //draw->drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);
     }
 
-    void onTouchDrag(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouchDrag(uint16_t t_x, uint16_t t_y){
       //Serial.println("MyApp:onTouchDrag");
       //draw->drawPixel(x,y,ILI9341_BLUE);
       //draw->drawPixel(x-1,y,ILI9341_RED);
@@ -176,7 +180,7 @@ class MyAppExample:public AppBaseClass {
       x_last = t_x;
       y_last = t_y;
     }
-    void MessageHandler(AppBaseClass *sender, const char *message){   
+    void FLASHMEM MessageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect message sender by ptr...
           //erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
           //filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));
@@ -217,12 +221,12 @@ class MyAppExample:public AppBaseClass {
         }
     }
 
-    void onFocus(){
+    void FLASHMEM onFocus(){
       makeAudioConnections();
       am->sendMessage(this,"CQT","ENABLE");
     }
     
-    void onAnalog1(uint16_t uval, float fval){
+    void FLASHMEM onAnalog1(uint16_t uval, float fval){
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_2"));
@@ -231,7 +235,7 @@ class MyAppExample:public AppBaseClass {
       AudioInterrupts();
     };
     
-    void onAnalog2(uint16_t uval, float fval){
+    void FLASHMEM onAnalog2(uint16_t uval, float fval){
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
@@ -240,7 +244,7 @@ class MyAppExample:public AppBaseClass {
       AudioInterrupts();
     };
     
-    void onAnalog3(uint16_t uval, float fval){
+    void FLASHMEM onAnalog3(uint16_t uval, float fval){
       float lp,hp,gain;
       //Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
@@ -256,7 +260,7 @@ class MyAppExample:public AppBaseClass {
       AudioInterrupts();
     };
 
-    void onAnalog4(uint16_t uval, float fval){
+    void FLASHMEM onAnalog4(uint16_t uval, float fval){
       //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_1"));
@@ -266,7 +270,7 @@ class MyAppExample:public AppBaseClass {
       AudioInterrupts();
     };
     
-    void makeAudioConnections(){
+    void FLASHMEM makeAudioConnections(){
       AudioNoInterrupts();
       ad->disconnectAll();      
       //input to input amplifier      
@@ -277,6 +281,7 @@ class MyAppExample:public AppBaseClass {
       ad->connect("biquad_4 0 mixer_1 2");
       
       //master mixer -> output amp
+      //ad->connect("mixer_1 0 biquad_3 0");
       ad->connect("mixer_1 0 amp_1 0");
       ad->connect("amp_1 0 i2s-out_1 0");
 
@@ -285,9 +290,10 @@ class MyAppExample:public AppBaseClass {
       ad->connect("console_2 0 mixer_6 1");
       
       //bus output to filter -> reverb -> master mixer
+      //ad->connect("mixer_6 0 amp_1 0");
       ad->connect("mixer_6 0 biquad_3 0");
       ad->connect("biquad_3 0 freeverb_1 0");
-      ad->connect("freeverb_1 0 mixer_6 2");
+      ad->connect("freeverb_1 0 mixer_1 4");
       ad->connect("freeverb_1 0 delay_1 0");
 
       //filtered bus mixer -> master mixer
@@ -339,7 +345,7 @@ class MyAppExample:public AppBaseClass {
       delay(10);
     }
 
-    void changeVoice(uint16_t voice_type){
+    void FLASHMEM changeVoice(uint16_t voice_type){
       char buffer[32];
       erisAudioSynthWaveform* w;
       

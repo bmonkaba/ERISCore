@@ -11,7 +11,7 @@ var ram = {
 var bulk_update_buffer = [];
 var pixel;
 var pixel_color;
-var dataflow_render_by = "type";
+var dataflow_render_by = "flow";
 
 // setup the db that will be used to map ram to the symbol table
 //https://dexie.org/docs/API-Reference#quick-reference
@@ -602,7 +602,7 @@ $(document).ready(function () {
                 } catch (e) {
                     //do nothing - bad data?
                 }
-                if (Math.random() > 0.95) {
+                if (Math.random() > 0.8) {
                     //don"t need to redraw every time data is received" 
                     renderAudioBlocks();
                 }
@@ -995,7 +995,7 @@ function renderMonitor() {
         }
         //slide the image up
 
-        if (Math.random() > 0.90) {
+        if (Math.random() > 0.75) {
             ctx.fillStyle = "#000000";
             ctx.strokeStyle = "#000000";
 
@@ -1193,4 +1193,16 @@ function renderAudioBlocksByFlow() {
         if (found == 0) rank.length = 0;
         next_rank.length = 0;
     }
+    
+    //TODO: plot seperatly unconnected or unterminated to a sink block connection chains
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

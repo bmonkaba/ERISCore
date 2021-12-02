@@ -37,6 +37,11 @@ class Surface {
         char *c;     //char pointer
         FsFile file;
         guid = hash(path) * hash(fileName);
+        w = 0;//init these in case of a bad path or file.
+        c = 0;
+        h = 0;
+        alloc_size = 0;
+        pSB = NULL;
         //open image, get size info, attempt to allocate a buffer then copy
         //and capture the dimensions
         if (!pSD->chdir(path)){ //change file path
@@ -64,6 +69,7 @@ class Surface {
     }
     
     Surface(Surface *SubSurfaceFrom, int16_t width, int16_t height){
+        guid =  (uint32_t)SubSurfaceFrom<<4 * (uint32_t)width + (uint32_t)height<<8;
         w = width;
         h = height;
         alloc_size = w*h;
@@ -74,6 +80,7 @@ class Surface {
     
     Surface(uint16_t *buffer,uint32_t length){
         //take an existing buffer as the surface buffer
+        guid =  (uint32_t)buffer<<2 * (uint32_t)length;
         pSB = buffer;
         w = 0;
         h = 0;
@@ -85,6 +92,7 @@ class Surface {
 
     Surface(uint16_t *buffer,int16_t width, int16_t height){
         //take an existing buffer as the surface buffer
+        guid =  (uint32_t)buffer * (uint32_t)width<<11 / (1 + (uint32_t)height);
         pSB = buffer;
         w = width;
         h = height;
@@ -112,7 +120,7 @@ class Surface {
             Serial.println(F("M ERROR: Surface has no buffer"));
             return NULL;
         }
-        pSSB = pSB + (head*sizeof(uint16_t)); 
+        pSSB = pSB + (head); 
         head += size;
         Serial.println(F("M SubSurface allocated"));
         Serial.print(F("M Surface buffer remaining:"));
@@ -182,7 +190,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
             tft_write_speed = 72000000;
             tft_read_speed = 20000000;
             pSD = NULL;
-            //backlight = 0;
+            backlight = 0;
             pFB = NULL;    
         };
         void setSD(SdFs *ptr); //pointer to the SD Class

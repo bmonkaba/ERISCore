@@ -74,7 +74,7 @@ class AppCQT:public AppBaseClass {
       memset(&fftRVal,0,sizeof(FFTReadRange));
       memset(&oscBank,0,sizeof(FFTReadRange)* OSC_BANK_SIZE);
       //init the data dictionary value(s)
-      am->data->create("OCTAVE_DOWN_INTERVAL",(int32_t)0);
+      am->data->create(OCTAVE_DOWN_INTERVAL,(int32_t)0);
       //init the QCT bins by loading the frequency ranges for each music note using a look up table
       float flow;
       float fhigh;
@@ -157,7 +157,7 @@ class AppCQT:public AppBaseClass {
         if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5000){
           fft_buffer_serial_transmit_elapsed = 0;
           if(fft_buffer_select_for_serial_transmit < 2){
-            Serial.printf("S 512"); 
+            Serial.printf(F("S 512")); 
             for(int i = 0; i < 512; i+=1){
               //transmitt low range then high range
               //if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
@@ -171,7 +171,7 @@ class AppCQT:public AppBaseClass {
           if(fft_buffer_select_for_serial_transmit >= 2) 
           {
             fft_buffer_select_for_serial_transmit = 0;
-            Serial.println("S FIN"); // end of series data
+            Serial.println(F("S FIN")); // end of series data
           }
           //Serial.flush();
         } 
@@ -210,14 +210,14 @@ class AppCQT:public AppBaseClass {
         
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){  
         amp = fftHighRR[i].peakValue;//fft->read(&fftHighRR[i]);
-        signal = (log1p((amp))*10.0) * h;
+        signal = (log1p((amp))) * h;
         if (signal>(h-1)) signal = h-1;
         if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //draw->fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = (log1p((amp))*10.0) * h;
+        signal = (log1p((amp))) * h;
         if (signal>(h-1)) signal = h-1;
         if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
@@ -264,6 +264,7 @@ class AppCQT:public AppBaseClass {
         AudioInterrupts();
         updateOscillatorBank(true);
         updateOscillatorBank(false);
+        am->data->increment(CQT_UPDATE_COUNT);
       }
       //Serial.flush();
     }; //allways called even if app is not active
@@ -272,7 +273,7 @@ class AppCQT:public AppBaseClass {
       fft->enableFFT(true);
       fft2->enableFFT(true);
       isActive = true;
-      Serial.println("M ** CQT ON FOCUS");
+      Serial.println(F("M ** CQT ON FOCUS"));
 
     };
 
@@ -280,7 +281,7 @@ class AppCQT:public AppBaseClass {
       fft->enableFFT(false);
       fft2->enableFFT(false);
       isActive = false;
-      Serial.println("M ** CQT LOST FOCUS");
+      Serial.println(F("M ** CQT LOST FOCUS"));
     };
 
     void onTouch(uint16_t t_x, uint16_t t_y){
@@ -303,10 +304,6 @@ class AppCQT:public AppBaseClass {
 
     void updateOscillatorBank(bool low_range_switch){
       bool found;
-      float floor;
-      float trigger;
-      trigger = 0.0001;
-      floor = 0.00001;
       float peak_read=-1000;
       float peak;
       
@@ -326,13 +323,6 @@ class AppCQT:public AppBaseClass {
         if (oscBank[i].cqtBin >= highRange){
           if (low_range_switch==false) oscBank[i] = fftHighRR[oscBank[i].cqtBin];
         }else if (low_range_switch==true)oscBank[i] = fftLowRR[oscBank[i].cqtBin];
-        
-        //if values are below a threshold then mute the osc
-        if(oscBank[i].avgValueSlow < floor){
-          oscBank[i].avgValueSlow = 0;
-          oscBank[i].avgValueFast = 0;
-          oscBank[i].transientValue = 0;
-        }
       }
       //sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
@@ -351,7 +341,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (((trigger) < fftLowRR[i].avgValueFast) && ((oscBank[k].avgValueFast ) < fftLowRR[i].avgValueFast) && (fftLowRR[i].transientValue > (oscBank[k].transientValue))){
+              if (((oscBank[k].avgValueFast ) < fftLowRR[i].avgValueFast) && (fftLowRR[i].transientValue > (oscBank[k].transientValue))){
                 //fftLowRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -371,7 +361,7 @@ class AppCQT:public AppBaseClass {
           }
           if(!found){
             for(int16_t k= osc_bank_size-1; k >= 0;k--){
-              if (((trigger) < fftHighRR[i].avgValueFast) && ((oscBank[k].avgValueFast) < fftHighRR[i].avgValueFast) && (fftHighRR[i].transientValue > (oscBank[k].transientValue))){
+              if (((oscBank[k].avgValueFast) < fftHighRR[i].avgValueFast) && (fftHighRR[i].transientValue > (oscBank[k].transientValue))){
                 //fftHighRR[i].phase = 0;
                 pll_p = 0.0;
                 pll_f = 1.0;
@@ -403,14 +393,13 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin <= highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin > highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = log1pf(oscBank[i].avgValueFast);//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = oscBank[i].avgValueFast;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
-              if (a < floor) a = 0.0;
               //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
-              f = (pll_f * f * octave_down[am->data->read("OCTAVE_DOWN_INTERVAL")]);
+              f = (pll_f * f * octave_down[am->data->read(OCTAVE_DOWN_INTERVAL)]);
               if (f < 20) f = 20;
               if (f > 20000) f = 20000;
               osc[i]->frequency(f);
@@ -430,9 +419,9 @@ class AppCQT:public AppBaseClass {
     }
 
   void MessageHandler(AppBaseClass *sender, const char *message){
-    if(strcmp(message,"ENABLE")==0){
+    if(strcmp(message,ENABLE)==0){
       onFocus();
-    }else if(strcmp(message,"DISABLE")==0){
+    }else if(strcmp(message,DISABLE)==0){
       onFocusLost();
     }
 
@@ -440,7 +429,7 @@ class AppCQT:public AppBaseClass {
       Serial.print(F("M appCQT::MessageHandler SCI param: "));
       Serial.println(message);
       //Serial.flush();
-      if (strcmp(message,"CQT_INFO")==0){
+      if (strcmp(message,CQT_INFO)==0){
         //sort the bins to transmit them in order
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);

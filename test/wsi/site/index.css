@@ -1160,3 +1160,15 @@ select {
     /* color: #000000; */
     filter: drop-shadow(2px 2px 2px black);
 }
+
+.filter--linear{
+    -webkit-filter: blur(3px);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.filter:hover{
+   -webkit-mask: none;
+   -webkit-filter: none;
+   mask: none;
+   filter: none;
+}
