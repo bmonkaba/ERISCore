@@ -36,9 +36,9 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../df/d17/class_control_button.html#ae76df976d2908fe44b9a24842abbc02d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="204,-126 204,-147 385,-147 385,-126 204,-126"/>
-<text text-anchor="middle" x="294.5" y="-133.4" font-family="Helvetica,sans-Serif" font-size="12.00">ControlButton::onTouchRelease</text>
+<g id="a_node3"><a xlink:href="../../de/d67/class_control_slider.html#a50745ac7860ba904c4deca768b659106" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="205,-126 205,-147 384,-147 384,-126 205,-126"/>
+<text text-anchor="middle" x="294.5" y="-133.4" font-family="Helvetica,sans-Serif" font-size="12.00">ControlSlider::onTouchRelease</text>
 </a>
 </g>
 </g>
@@ -51,16 +51,16 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../de/d67/class_control_slider.html#a50745ac7860ba904c4deca768b659106" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="205,-86 205,-107 384,-107 384,-86 205,-86"/>
-<text text-anchor="middle" x="294.5" y="-93.4" font-family="Helvetica,sans-Serif" font-size="12.00">ControlSlider::onTouchRelease</text>
+<g id="a_node4"><a xlink:href="../../df/d17/class_control_button.html#a1a5031084d54a73d1d8b8c3ab4a29bfe" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="204,-86 204,-107 385,-107 385,-86 204,-86"/>
+<text text-anchor="middle" x="294.5" y="-93.4" font-family="Helvetica,sans-Serif" font-size="12.00">ControlButton::onTouchRelease</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M410.85,-96.5C401.89,-96.5 392.89,-96.5 384.08,-96.5"/>
+<path fill="none" stroke="midnightblue" d="M410.86,-96.5C402.25,-96.5 393.6,-96.5 385.12,-96.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="410.92,-100 420.92,-96.5 410.92,-93 410.92,-100"/>
 </g>
 <!-- Node5 -->
@@ -97,17 +97,18 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../dd/da5/class_my_app_example.html#a3970e5306df931a55e34a4ae513d6f50" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="9,-54 9,-75 159,-75 159,-54 9,-54"/>
-<text text-anchor="middle" x="84" y="-61.4" font-family="Helvetica,sans-Serif" font-size="12.00">MyAppExample::onFocus</text>
+<g id="a_node6"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic.html#a64eaca26636ef392e0d849bc7cfd4a01" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="14,-53.5 14,-87.5 154,-87.5 154,-53.5 14,-53.5"/>
+<text text-anchor="start" x="22" y="-73.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppAudioToPolyphonic</text>
+<text text-anchor="middle" x="84" y="-60.9" font-family="Helvetica,sans-Serif" font-size="12.00">::onFocus</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M201.73,-60.02C187.55,-60.57 173.05,-61.12 159.31,-61.65"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="202.13,-63.51 211.99,-59.63 201.87,-56.51 202.13,-63.51"/>
+<path fill="none" stroke="midnightblue" d="M201.62,-62.67C185.73,-63.74 169.46,-64.83 154.29,-65.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="202.25,-66.14 211.99,-61.97 201.78,-59.15 202.25,-66.14"/>
 </g>
 <!-- Node5&#45;&gt;Node7 -->
 <g id="edge6" class="edge">

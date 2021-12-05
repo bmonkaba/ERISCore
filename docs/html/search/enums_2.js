@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['uibltalphatype_4804',['UIBLTAlphaType',['../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html#a5be8bb1d7800c26bafa46ed5b606e8eb',1,'ILI9341_t3_ERIS.h']]]
+  ['seekdir_4848',['seekdir',['../d4/dc1/classios__base.html#ab01103ba35f6ba93a704b3ec0c86191e',1,'ios_base']]],
+  ['subsample_5frange_4849',['subsample_range',['../d4/dfc/eris__analyze__fft1024_8h.html#af1f4ed6c31e28ce8075c254e6ed3ab18',1,'eris_analyze_fft1024.h']]],
+  ['svcdatadictionarydatatype_4850',['svcDataDictionaryDataType',['../dd/df4/svc_data_dictionary_8h.html#ad86fa9822c5136dd63651f82b9db8f37',1,'svcDataDictionary.h']]],
+  ['svcdatadictionaryrecordtype_4851',['svcDataDictionaryRecordType',['../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda',1,'svcDataDictionary.h']]]
 ];

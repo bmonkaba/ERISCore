@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('da/d82/_fs_structs_8cpp_source.html','
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../da/d82/_fs_structs_8cpp.html#ab50e5bcb251202b713a8ae38cb498b59">   28</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d82/_fs_structs_8cpp.html#ab50e5bcb251202b713a8ae38cb498b59">lbaToMbrChs</a>(uint8_t* chs, uint32_t capacityMB, uint32_t lba) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  uint32_t c;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  uint8_t h;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  uint8_t s;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  uint8_t <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  uint8_t numberOfHeads;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  uint8_t sectorsPerTrack = capacityMB &lt;= 256 ? 32 : 63;</div>
@@ -116,18 +117,19 @@ $(document).ready(function(){initNavTree('da/d82/_fs_structs_8cpp_source.html','
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  c = lba / (numberOfHeads * sectorsPerTrack);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">if</span> (c &lt;= 1023) {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    h = (lba % (numberOfHeads * sectorsPerTrack)) / sectorsPerTrack;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    s = (lba % sectorsPerTrack) + 1;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = (lba % sectorsPerTrack) + 1;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    c = 1023;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    h = 254;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    s = 63;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 63;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  chs[0] = h;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  chs[1] = ((c &gt;&gt; 2) &amp; 0XC0) | s;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  chs[1] = ((c &gt;&gt; 2) &amp; 0XC0) | <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  chs[2] = c;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="ttc" id="a_fs_structs_8cpp_html_ab50e5bcb251202b713a8ae38cb498b59"><div class="ttname"><a href="../../da/d82/_fs_structs_8cpp.html#ab50e5bcb251202b713a8ae38cb498b59">lbaToMbrChs</a></div><div class="ttdeci">void lbaToMbrChs(uint8_t *chs, uint32_t capacityMB, uint32_t lba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d82/_fs_structs_8cpp_source.html#l00028">FsStructs.cpp:28</a></div></div>
 <div class="ttc" id="a_fs_structs_8h_html"><div class="ttname"><a href="../../d1/db3/_fs_structs_8h.html">FsStructs.h</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

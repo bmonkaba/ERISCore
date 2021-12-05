@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -721,7 +722,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html">StdioStream.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                           {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">char</span>* s = str;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">char</span>* <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = str;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">size_t</span> n;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (num-- == 0) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> 0;</div>
@@ -729,7 +730,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">while</span> (num) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> ((n = <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>) == 0) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d2/de6/class_stdio_stream.html#acdb0e26a73dae3dda8d07ed2a84fcdda">fillBuf</a>()) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (s == str) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> == str) {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -742,27 +743,28 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    uint8_t* end = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(memchr(<a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, <span class="charliteral">&#39;\n&#39;</span>, n));</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (end != 0) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      n = ++end - <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      memcpy(s, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      memcpy(<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a> -= n;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> = end;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      s += n;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> += n;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memcpy(s, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memcpy(<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a> -= n;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> += n;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    s += n;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> += n;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    num -= n;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *s = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 0;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span> (len) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    *len = s - str;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    *len = <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> - str;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="ttc" id="aclass_stdio_stream_html_acdb0e26a73dae3dda8d07ed2a84fcdda"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#acdb0e26a73dae3dda8d07ed2a84fcdda">StdioStream::fillBuf</a></div><div class="ttdeci">bool fillBuf()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/_stdio_stream_8cpp_source.html#l00379">StdioStream.cpp:379</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html#l00379">fillBuf()</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00658">m_p</a>, and <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00659">m_r</a>.</p>
+<p class="reference">References <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html#l00379">fillBuf()</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00658">m_p</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00659">m_r</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00051">s</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -2068,7 +2070,7 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html">StdioStream.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                   {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordtype">int</span> s;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  uint8_t rtn = 0;</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="keywordflow">if</span> (n &lt; 0) {</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/de6/class_stdio_stream.html#a9f23cfa6b112a5da6ae08340af23c57b">fputc</a>(<span class="charliteral">&#39;-&#39;</span>) &lt; 0) {</div>
@@ -2077,14 +2079,14 @@ template&lt;typename T &gt; </div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    n = -n;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    rtn++;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keywordflow">if</span> ((s = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint16_t)n)) &lt; 0) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keywordflow">if</span> ((<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint16_t)n)) &lt; 0) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  }</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">return</span> rtn;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
 <div class="ttc" id="aclass_stdio_stream_html_a9f23cfa6b112a5da6ae08340af23c57b"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#a9f23cfa6b112a5da6ae08340af23c57b">StdioStream::fputc</a></div><div class="ttdeci">int fputc(int c)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00268">StdioStream.h:268</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00268">fputc()</a>, and <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00504">printDec()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00268">fputc()</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00504">printDec()</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00051">s</a>.</p>
 <div id="dynsection-34" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-34-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-34-summary" class="dynsummary" style="display:block;">
@@ -2121,19 +2123,19 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html#l00312">312</a> of file <a class="el" href="../../d5/d98/_stdio_stream_8cpp_source.html">StdioStream.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                   {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  uint8_t s = 0;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  uint8_t <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 0;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">if</span> (n &lt; 0) {</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/de6/class_stdio_stream.html#a9f23cfa6b112a5da6ae08340af23c57b">fputc</a>(<span class="charliteral">&#39;-&#39;</span>) &lt; 0) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    n = -n;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    s = 1;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 1;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  }</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordtype">int</span> rtn = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint32_t)n);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">return</span> rtn &gt; 0 ? rtn + s : -1;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">return</span> rtn &gt; 0 ? rtn + <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> : -1;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00268">fputc()</a>, and <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00504">printDec()</a>.</p>
+<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00268">fputc()</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00504">printDec()</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00051">s</a>.</p>
 <div id="dynsection-35" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-35-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-35-summary" class="dynsummary" style="display:block;">

@@ -1,6 +1,7 @@
 var class_svc_data_dictionary =
 [
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html#a87eed8a624cc90d7dd6ca0b268dff41a", null ],
+    [ "copyKey", "dc/d43/class_svc_data_dictionary.html#a7c7bd48b97fbcf18ef64337e12022619", null ],
     [ "create", "dc/d43/class_svc_data_dictionary.html#a6003ef94d7c4d9afce8c3a74b4c21444", null ],
     [ "create", "dc/d43/class_svc_data_dictionary.html#a54624619a88a7baf56bf475df84a5bb7", null ],
     [ "create", "dc/d43/class_svc_data_dictionary.html#a3b09dc582adbb4d5c6f99f6e983a81f1", null ],

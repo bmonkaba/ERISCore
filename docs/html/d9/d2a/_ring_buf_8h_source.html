@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -101,13 +102,13 @@ $(document).ready(function(){initNavTree('d9/d2a/_ring_buf_8h_source.html','../.
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d2a/_ring_buf_8h.html#a8112ba67de4780dcde4812be345dd6bb">memcpyBuf</a>(<span class="keywordtype">void</span>* dst, <span class="keyword">const</span> <span class="keywordtype">void</span>* src, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">const</span> uint8_t* b = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(0X20000000UL);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  uint8_t* d = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(dst);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">const</span> uint8_t *s = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(src);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> ((is_aligned(d, 4) &amp;&amp; is_aligned(s, 4) &amp;&amp; (len &amp; 3) == 0) ||</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    !((d &lt; b &amp;&amp; b &lt;= (d + len)) || (s &lt; b &amp;&amp; b &lt;= (s + len)))) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">const</span> uint8_t *<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(src);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> ((is_aligned(d, 4) &amp;&amp; is_aligned(<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>, 4) &amp;&amp; (len &amp; 3) == 0) ||</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    !((d &lt; b &amp;&amp; b &lt;= (d + len)) || (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> &lt; b &amp;&amp; b &lt;= (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> + len)))) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    memcpy(dst, src, len);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">while</span> (len--) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      *d++ = *s++;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      *d++ = *<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>++;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
@@ -329,6 +330,7 @@ $(document).ready(function(){initNavTree('d9/d2a/_ring_buf_8h_source.html','../.
 <div class="ttc" id="aclass_ring_buf_html_aee09954dd783177c83e422ad34dd9f00"><div class="ttname"><a href="../../dc/d6f/class_ring_buf.html#aee09954dd783177c83e422ad34dd9f00">RingBuf::m_tail</a></div><div class="ttdeci">size_t m_tail</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d2a/_ring_buf_8h_source.html#l00357">RingBuf.h:357</a></div></div>
 <div class="ttc" id="aclass_ring_buf_html_af0f1eb780920d4c32c500ad0f6a6ed05"><div class="ttname"><a href="../../dc/d6f/class_ring_buf.html#af0f1eb780920d4c32c500ad0f6a6ed05">RingBuf::write</a></div><div class="ttdeci">size_t write(const uint8_t *buf, size_t count) override</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d2a/_ring_buf_8h_source.html#l00309">RingBuf.h:309</a></div></div>
 <div class="ttc" id="aclass_ring_buf_html_af24035c0a756431c8c73b624fb6df303"><div class="ttname"><a href="../../dc/d6f/class_ring_buf.html#af24035c0a756431c8c73b624fb6df303">RingBuf::bytesFreeIsr</a></div><div class="ttdeci">size_t bytesFreeIsr() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d2a/_ring_buf_8h_source.html#l00104">RingBuf.h:104</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

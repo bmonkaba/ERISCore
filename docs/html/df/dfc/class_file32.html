@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -2080,7 +2081,7 @@ Static Private Attributes</h2></td></tr>
 <div id="dynsection-33-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-33-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d3/d51/class_fat_file_a69d86cd3af397b36d0f9ef2bf7b2afab_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d3/d51/class_fat_file_a69d86cd3af397b36d0f9ef2bf7b2afab_icgraph.svg" width="100%" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -6063,19 +6064,19 @@ Static Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00069">69</a> of file <a class="el" href="../../d1/d27/_print_basic_8h_source.html">PrintBasic.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                               {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifdef __AVR__</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  PGM_P <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = <span class="keyword">reinterpret_cast&lt;</span>PGM_P<span class="keyword">&gt;</span>(str);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  PGM_P <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = <span class="keyword">reinterpret_cast&lt;</span>PGM_P<span class="keyword">&gt;</span>(str);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">size_t</span> n = 0;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (uint8_t c; (c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> + n)) &amp;&amp; <a class="code" href="../../da/db3/class_print_basic.html#afdd5b2ee779058e5b7741c6e46f63f06">write</a>(c); n++) {}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (uint8_t c; (c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> + n)) &amp;&amp; <a class="code" href="../../da/db3/class_print_basic.html#afdd5b2ee779058e5b7741c6e46f63f06">write</a>(c); n++) {}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> n;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#else  </span><span class="comment">// __AVR__</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../da/db3/class_print_basic.html#a65247e790e6f8e209eb68a797bf96add">print</a>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(str));</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// __AVR__</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
 <div class="ttc" id="a_fat_file_8h_html_a48c60b057902adf805797f183286728d"><div class="ttname"><a href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a></div><div class="ttdeci">#define pgm_read_byte(addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d7b/_fat_file_8h_source.html#l00051">FatFile.h:51</a></div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_ae36f4e23a496c78d0a855f4eb2670fb1"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a></div><div class="ttdeci">static const float p[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">FmtNumber.cpp:410</a></div></div>
 <div class="ttc" id="aclass_print_basic_html_a65247e790e6f8e209eb68a797bf96add"><div class="ttname"><a href="../../da/db3/class_print_basic.html#a65247e790e6f8e209eb68a797bf96add">PrintBasic::print</a></div><div class="ttdeci">size_t print(char c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00063">PrintBasic.h:63</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">p</a>, <a class="el" href="../../d6/d7b/_fat_file_8h_source.html#l00051">pgm_read_byte</a>, <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00063">PrintBasic::print()</a>, and <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00135">PrintBasic::write()</a>.</p>
+<p class="reference">References <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00052">p</a>, <a class="el" href="../../d6/d7b/_fat_file_8h_source.html#l00051">pgm_read_byte</a>, <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00063">PrintBasic::print()</a>, and <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00135">PrintBasic::write()</a>.</p>
 <div id="dynsection-104" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-104-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-104-summary" class="dynsummary" style="display:block;">

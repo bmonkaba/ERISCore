@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -156,9 +157,9 @@ $(document).ready(function(){initNavTree('dc/d83/_digital_pin_8h_source.html','.
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span><span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="../../d2/db6/_sd_card_info_8h.html#a011d27aa1579ba8c8866dbfc61d0f47b">__attribute__</a>((always_inline))</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">void</span> fastBitWriteSafe(<span class="keyword">volatile</span> uint8_t* address, uint8_t mask, <span class="keywordtype">bool</span> level) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  uint8_t s;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  uint8_t <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span> (address &gt; <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(0X3F)) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    s = SREG;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = SREG;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    cli();</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">if</span> (level) {</div>
@@ -167,7 +168,7 @@ $(document).ready(function(){initNavTree('dc/d83/_digital_pin_8h_source.html','.
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    *address &amp;= ~mask;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (address &gt; <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(0X3F)) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    SREG = s;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    SREG = <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
@@ -352,6 +353,7 @@ $(document).ready(function(){initNavTree('dc/d83/_digital_pin_8h_source.html','.
 <div class="ttc" id="aclass_digital_pin_html_ab68480b09df5c4794c95cdf2230d4c55"><div class="ttname"><a href="../../dc/dc3/class_digital_pin.html#ab68480b09df5c4794c95cdf2230d4c55">DigitalPin::DigitalPin</a></div><div class="ttdeci">DigitalPin()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00301">DigitalPin.h:301</a></div></div>
 <div class="ttc" id="aclass_digital_pin_html_ac2b41de03a4f7800b25702c99cda6ad5"><div class="ttname"><a href="../../dc/dc3/class_digital_pin.html#ac2b41de03a4f7800b25702c99cda6ad5">DigitalPin::__attribute__</a></div><div class="ttdeci">__attribute__((always_inline)) void write(bool value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00375">DigitalPin.h:375</a></div></div>
 <div class="ttc" id="aclass_digital_pin_html_af695f09ef301abd39ef61868009afb65"><div class="ttname"><a href="../../dc/dc3/class_digital_pin.html#af695f09ef301abd39ef61868009afb65">DigitalPin::level</a></div><div class="ttdeci">bool level</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00327">DigitalPin.h:327</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
 <div class="ttc" id="agroup__digital_pin_html_ga36144867c1374fc4af1d23d7bcc8a171"><div class="ttname"><a href="../../d5/d36/group__digital_pin.html#ga36144867c1374fc4af1d23d7bcc8a171">fastDigitalWrite</a></div><div class="ttdeci">void fastDigitalWrite(uint8_t pin, bool value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00265">DigitalPin.h:265</a></div></div>
 <div class="ttc" id="agroup__digital_pin_html_ga6a3da3dff38bded7a09020a222ec9ec7"><div class="ttname"><a href="../../d5/d36/group__digital_pin.html#ga6a3da3dff38bded7a09020a222ec9ec7">fastDigitalRead</a></div><div class="ttdeci">bool fastDigitalRead(uint8_t pin)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00269">DigitalPin.h:269</a></div></div>
 <div class="ttc" id="agroup__digital_pin_html_ga91bafe653813e71cb6573f107e7835db"><div class="ttname"><a href="../../d5/d36/group__digital_pin.html#ga91bafe653813e71cb6573f107e7835db">fastPinMode</a></div><div class="ttdeci">void fastPinMode(uint8_t pin, uint8_t mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d83/_digital_pin_8h_source.html#l00278">DigitalPin.h:278</a></div></div>

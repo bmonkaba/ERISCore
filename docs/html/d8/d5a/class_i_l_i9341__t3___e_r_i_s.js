@@ -1,8 +1,10 @@
 var class_i_l_i9341__t3___e_r_i_s =
 [
     [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a7e4da5d1f0aabe667d8842a2b21b11f1", null ],
-    [ "begin", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aac7f00d564f87cf2063f869d273f6f48", null ],
-    [ "bltSD", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a62cbbd94867557ffbe8d9a2c832c8716", null ],
+    [ "begin", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a8c8c09d5ca51d5b4c611875df643bef6", null ],
+    [ "bltMem", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aa98b1e826474433e1f06f13823cc7a48", null ],
+    [ "bltSD", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a8416f56438e4920e01699ee24d2a8ebc", null ],
+    [ "bltSD", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aaebb83a17112fb0ec445e4d654628750", null ],
     [ "bltSDAnimationFullScreen", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#acaa55520092d6b9974963132c366b458", null ],
     [ "bltSDFullScreen", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a6efb6ee1407d55e237e86b7557d89b75", null ],
     [ "busy", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#a99cda068bb048ccd5bcb41f47bb8043b", null ],

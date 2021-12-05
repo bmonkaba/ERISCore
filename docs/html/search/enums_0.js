@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loopstate_4799',['loopState',['../df/d72/_app_manager_8h.html#a0923efccff3ec345030a674b118b8a8d',1,'AppManager.h']]]
+  ['bltalphatype_4846',['bltAlphaType',['../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html#a8a2e216721cae4a7e86de65bfe5ff022',1,'ILI9341_t3_ERIS.h']]]
 ];

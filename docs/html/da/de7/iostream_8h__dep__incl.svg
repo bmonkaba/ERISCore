@@ -13,102 +13,102 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="iostream class">
-<polygon fill="#bfbfbf" stroke="black" points="123,-239.5 123,-286.5 247,-286.5 247,-239.5 123,-239.5"/>
-<text text-anchor="start" x="131" y="-272.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="131" y="-259.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
-<text text-anchor="middle" x="185" y="-246.9" font-family="Helvetica,sans-Serif" font-size="12.00">/iostream.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="71,-239.5 71,-286.5 195,-286.5 195,-239.5 71,-239.5"/>
+<text text-anchor="start" x="79" y="-272.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="79" y="-259.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
+<text text-anchor="middle" x="133" y="-246.9" font-family="Helvetica,sans-Serif" font-size="12.00">/iostream.h</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../de/d25/fstream_8h.html" target="_top" xlink:title="iostreams for files.">
-<polygon fill="white" stroke="black" points="52,-155.5 52,-202.5 176,-202.5 176,-155.5 52,-155.5"/>
-<text text-anchor="start" x="60" y="-188.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="60" y="-175.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
-<text text-anchor="middle" x="114" y="-162.9" font-family="Helvetica,sans-Serif" font-size="12.00">/fstream.h</text>
+<g id="a_node2"><a xlink:href="../../d0/df5/bufstream_8h.html" target="_top" xlink:title="ibufstream and obufstream classes">
+<polygon fill="white" stroke="black" points="0,-155.5 0,-202.5 124,-202.5 124,-155.5 0,-155.5"/>
+<text text-anchor="start" x="8" y="-188.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="8" y="-175.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
+<text text-anchor="middle" x="62" y="-162.9" font-family="Helvetica,sans-Serif" font-size="12.00">/bufstream.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M158.51,-231.41C150.28,-221.9 141.35,-211.59 133.67,-202.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="156.03,-233.89 165.22,-239.16 161.32,-229.31 156.03,-233.89"/>
+<path fill="none" stroke="midnightblue" d="M106.51,-231.41C98.28,-221.9 89.35,-211.59 81.67,-202.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="104.03,-233.89 113.22,-239.16 109.32,-229.31 104.03,-233.89"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d0/df5/bufstream_8h.html" target="_top" xlink:title="ibufstream and obufstream classes">
-<polygon fill="white" stroke="black" points="194,-155.5 194,-202.5 318,-202.5 318,-155.5 194,-155.5"/>
-<text text-anchor="start" x="202" y="-188.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="202" y="-175.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
-<text text-anchor="middle" x="256" y="-162.9" font-family="Helvetica,sans-Serif" font-size="12.00">/bufstream.h</text>
+<g id="a_node5"><a xlink:href="../../de/d25/fstream_8h.html" target="_top" xlink:title="iostreams for files.">
+<polygon fill="white" stroke="black" points="142,-155.5 142,-202.5 266,-202.5 266,-155.5 142,-155.5"/>
+<text text-anchor="start" x="150" y="-188.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="150" y="-175.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
+<text text-anchor="middle" x="204" y="-162.9" font-family="Helvetica,sans-Serif" font-size="12.00">/fstream.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M211.49,-231.41C219.72,-221.9 228.65,-211.59 236.33,-202.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="208.68,-229.31 204.78,-239.16 213.97,-233.89 208.68,-229.31"/>
+<path fill="none" stroke="midnightblue" d="M159.49,-231.41C167.72,-221.9 176.65,-211.59 184.33,-202.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="156.68,-229.31 152.78,-239.16 161.97,-233.89 156.68,-229.31"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../dc/de5/_stream_base_class_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-71.5 0,-118.5 138,-118.5 138,-71.5 0,-71.5"/>
+<g id="a_node3"><a xlink:href="../../d7/d76/_arduino_stream_8h.html" target="_top" xlink:title="ArduinoInStream and ArduinoOutStream classes.">
+<polygon fill="white" stroke="black" points="0,-71.5 0,-118.5 124,-118.5 124,-71.5 0,-71.5"/>
 <text text-anchor="start" x="8" y="-104.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
 <text text-anchor="start" x="8" y="-91.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
-<text text-anchor="middle" x="69" y="-78.9" font-family="Helvetica,sans-Serif" font-size="12.00">/StreamBaseClass.cpp</text>
+<text text-anchor="middle" x="62" y="-78.9" font-family="Helvetica,sans-Serif" font-size="12.00">/ArduinoStream.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M96.58,-146.26C91.54,-137.08 86.14,-127.24 81.47,-118.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="93.59,-148.08 101.46,-155.16 99.72,-144.71 93.59,-148.08"/>
+<path fill="none" stroke="midnightblue" d="M62,-145.11C62,-136.26 62,-126.88 62,-118.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="58.5,-145.16 62,-155.16 65.5,-145.16 58.5,-145.16"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d8/d12/sdios_8h.html" target="_top" xlink:title="C++ IO Streams features.">
-<polygon fill="white" stroke="black" points="151,-0.5 151,-34.5 271,-34.5 271,-0.5 151,-0.5"/>
-<text text-anchor="start" x="159" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="middle" x="211" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/sdios.h</text>
+<polygon fill="white" stroke="black" points="47,-0.5 47,-34.5 167,-34.5 167,-0.5 47,-0.5"/>
+<text text-anchor="start" x="55" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="middle" x="107" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/sdios.h</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node4 -->
+<!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
-<title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M133.15,-146.51C153.63,-112.83 185.31,-60.75 201.2,-34.61"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="129.9,-145.12 127.69,-155.49 135.88,-148.76 129.9,-145.12"/>
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M80.64,-62.73C86.39,-53.08 92.49,-42.85 97.37,-34.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="77.61,-60.97 75.5,-71.35 83.63,-64.55 77.61,-60.97"/>
+</g>
+<!-- Node5&#45;&gt;Node4 -->
+<g id="edge6" class="edge">
+<title>Node5&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M184.85,-146.51C164.37,-112.83 132.69,-60.75 116.8,-34.61"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="182.12,-148.76 190.31,-155.49 188.1,-145.12 182.12,-148.76"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d7/d76/_arduino_stream_8h.html" target="_top" xlink:title="ArduinoInStream and ArduinoOutStream classes.">
-<polygon fill="white" stroke="black" points="194,-71.5 194,-118.5 318,-118.5 318,-71.5 194,-71.5"/>
-<text text-anchor="start" x="202" y="-104.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="202" y="-91.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
-<text text-anchor="middle" x="256" y="-78.9" font-family="Helvetica,sans-Serif" font-size="12.00">/ArduinoStream.h</text>
+<g id="a_node6"><a xlink:href="../../dc/de5/_stream_base_class_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="180,-71.5 180,-118.5 318,-118.5 318,-71.5 180,-71.5"/>
+<text text-anchor="start" x="188" y="-104.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="188" y="-91.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/iostream</text>
+<text text-anchor="middle" x="249" y="-78.9" font-family="Helvetica,sans-Serif" font-size="12.00">/StreamBaseClass.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M256,-145.11C256,-136.26 256,-126.88 256,-118.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="252.5,-145.16 256,-155.16 259.5,-145.16 252.5,-145.16"/>
-</g>
-<!-- Node6&#45;&gt;Node4 -->
-<g id="edge6" class="edge">
-<title>Node6&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M237.36,-62.73C231.61,-53.08 225.51,-42.85 220.63,-34.66"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="234.37,-64.55 242.5,-71.35 240.39,-60.97 234.37,-64.55"/>
+<path fill="none" stroke="midnightblue" d="M221.42,-146.26C226.46,-137.08 231.86,-127.24 236.53,-118.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="218.28,-144.71 216.54,-155.16 224.41,-148.08 218.28,-144.71"/>
 </g>
 </g>
 </svg>

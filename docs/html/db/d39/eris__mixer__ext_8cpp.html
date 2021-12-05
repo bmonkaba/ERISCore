@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -144,23 +145,23 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html">eris_mixer_ext.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = (uint32_t *)<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = (uint32_t *)<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a> + <a class="code" href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a>);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        uint32_t tmp32 = *<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>; <span class="comment">// read 2 samples from *data</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        uint32_t tmp32 = *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>; <span class="comment">// read 2 samples from *data</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        int32_t val1 = signed_multiply_32x16b(mult, tmp32);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        int32_t val2 = signed_multiply_32x16t(mult, tmp32);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        val1 = signed_saturate_rshift(val1, 16, 0);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        val2 = signed_saturate_rshift(val2, 16, 0);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        *<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>++ = pack_16b_16b(val2, val1);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> &lt; end);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>++ = pack_16b_16b(val2, val1);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> &lt; end);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="ttc" id="a_audio_stream_8h_html_ad762f9826d4325643328dc53fae4fcb6"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a></div><div class="ttdeci">#define AUDIO_BLOCK_SAMPLES</div><div class="ttdoc">modified version from lib basline</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00058">AudioStream.h:58</a></div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_ae36f4e23a496c78d0a855f4eb2670fb1"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a></div><div class="ttdeci">static const float p[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">FmtNumber.cpp:410</a></div></div>
 <div class="ttc" id="a_sd_error_codes_8txt_html_aab48e590387241bed659ca8b5009c990"><div class="ttname"><a href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list Symbol failed SD_CARD_ERROR_NONE No SD_CARD_ERROR_CMD0 Card reset SD_CARD_ERROR_CMD2 SDIO read SD_CARD_ERROR_CMD3 SDIO publish SD_CARD_ERROR_CMD6 Switch card SD_CARD_ERROR_CMD7 SDIO card SD_CARD_ERROR_CMD8 Send and check interface SD_CARD_ERROR_CMD9 Read CSD data</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00013">SdErrorCodes.txt:14</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, <a class="el" href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00014">data</a>, and <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">p</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, <a class="el" href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00014">data</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00052">p</a>.</p>
 
 </div>
 </div>

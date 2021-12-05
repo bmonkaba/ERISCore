@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,7 @@ $(document).ready(function(){initNavTree('dc/d40/_app_manager_8cpp.html','../../
 <code>#include &quot;<a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html">ILI9341_t3_ERIS.h</a>&quot;</code><br />
 <code>#include &quot;ili9341_t3n_font_Arial.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/d2c/globaldefs_8h_source.html">globaldefs.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for AppManager.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -108,8 +110,8 @@ $(document).ready(function(){initNavTree('dc/d40/_app_manager_8cpp.html','../../
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a98af623c10c3916e1d20ac82f968221c"><td class="memItemLeft" align="right" valign="top">uint16_t DMAMEM FB1[320 *240]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d40/_app_manager_8cpp.html#a98af623c10c3916e1d20ac82f968221c">__attribute__</a> ((aligned(32)))</td></tr>
-<tr class="separator:a98af623c10c3916e1d20ac82f968221c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfcca630ebdb1128cd5f77fcb9fcd496"><td class="memItemLeft" align="right" valign="top">uint16_t DMAMEM FB1[320 *240]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d40/_app_manager_8cpp.html#adfcca630ebdb1128cd5f77fcb9fcd496">__attribute__</a> ((aligned(16)))</td></tr>
+<tr class="separator:adfcca630ebdb1128cd5f77fcb9fcd496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5db3dd95011fd6a678ae291290091314"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html">ILI9341_t3_ERIS</a> FASTRUN&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d40/_app_manager_8cpp.html#a5db3dd95011fd6a678ae291290091314">draw</a> (<a class="el" href="../../de/d10/_h_s_i_8h.html#a5f4d46ae101b77df78010c506601c87c">TFT_CS</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a51529307207622c113ff0d584536be13">TFT_DC</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#af81ec4b4eb708da6c9c39a6c5aa1aa4b">TFT_RESET</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a4db639d2d88a53132a529677e6dd795c">TFT_MOSI</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#a095a96cc6abc991346d7b6712f8576b5">TFT_SCLK</a>, <a class="el" href="../../de/d10/_h_s_i_8h.html#ac108dd4310833bbb4afd1bce1090d55f">TFT_MISO</a>)</td></tr>
 <tr class="separator:a5db3dd95011fd6a678ae291290091314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -128,8 +130,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html">AppManager.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a98af623c10c3916e1d20ac82f968221c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98af623c10c3916e1d20ac82f968221c">&#9670;&nbsp;</a></span>__attribute__()</h2>
+<a id="adfcca630ebdb1128cd5f77fcb9fcd496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfcca630ebdb1128cd5f77fcb9fcd496">&#9670;&nbsp;</a></span>__attribute__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +139,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">uint16_t DMAMEM FB1 [320 * 240] __attribute__ </td>
           <td>(</td>
-          <td class="paramtype">(aligned(32))&#160;</td>
+          <td class="paramtype">(aligned(16))&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -196,7 +198,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00033">AppManager::AppManager()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00460">AppManager::RegisterApp()</a>, and <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00100">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00033">AppManager::AppManager()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00468">AppManager::RegisterApp()</a>, and <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00105">AppManager::update()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -243,7 +245,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00033">AppManager::AppManager()</a>, and <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00100">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00033">AppManager::AppManager()</a>, and <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00105">AppManager::update()</a>.</p>
 
 </div>
 </div>

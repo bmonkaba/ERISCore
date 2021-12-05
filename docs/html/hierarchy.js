@@ -4,14 +4,14 @@ var hierarchy =
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", null ],
     [ "Animation", "d4/d7c/class_animation.html", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", [
+      [ "AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic.html", null ],
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", null ],
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
       [ "AppScope", "d8/dbe/class_app_scope.html", null ],
       [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html", null ],
       [ "AppTemplate", "d9/d03/class_app_template.html", null ],
       [ "ControlButton", "df/d17/class_control_button.html", null ],
-      [ "ControlSlider", "de/d67/class_control_slider.html", null ],
-      [ "MyAppExample", "dd/da5/class_my_app_example.html", null ]
+      [ "ControlSlider", "de/d67/class_control_slider.html", null ]
     ] ],
     [ "AppManager", "da/d96/class_app_manager.html", null ],
     [ "AsyncAudioInputSPDIF3", null, [
@@ -419,6 +419,7 @@ var hierarchy =
       [ "StdioStream", "d2/de6/class_stdio_stream.html", null ],
       [ "StreamBaseClass", "d3/dc7/class_stream_base_class.html", null ]
     ] ],
+    [ "Surface", "d1/d1a/class_surface.html", null ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
     [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
     [ "SysCall", "df/dba/class_sys_call.html", null ],

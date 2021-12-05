@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -615,9 +616,9 @@ template&lt;typename WriteClass , uint8_t BUF_DIM&gt; </div>
 <div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                               {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifdef __AVR__</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">size_t</span> rtn = 0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    PGM_P <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = <span class="keyword">reinterpret_cast&lt;</span>PGM_P<span class="keyword">&gt;</span>(fsh);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    PGM_P <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = <span class="keyword">reinterpret_cast&lt;</span>PGM_P<span class="keyword">&gt;</span>(fsh);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">while</span> ((c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>++))) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">while</span> ((c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>++))) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../de/de1/class_buffered_print.html#ab41de6eca77a04a49a6fc965b1950fc5">write</a>(&amp;c, 1)) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      }</div>
@@ -638,9 +639,9 @@ template&lt;typename WriteClass , uint8_t BUF_DIM&gt; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// __AVR__</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
 <div class="ttc" id="a_fat_file_8h_html_a48c60b057902adf805797f183286728d"><div class="ttname"><a href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a></div><div class="ttdeci">#define pgm_read_byte(addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d7b/_fat_file_8h_source.html#l00051">FatFile.h:51</a></div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_ae36f4e23a496c78d0a855f4eb2670fb1"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a></div><div class="ttdeci">static const float p[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">FmtNumber.cpp:410</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d0/d70/_usb_host_shield_diff_8txt_source.html#l00005">buf</a>, <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">p</a>, <a class="el" href="../../d6/d7b/_fat_file_8h_source.html#l00051">pgm_read_byte</a>, <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00058">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::printField()</a>, and <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00249">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::write()</a>.</p>
+<p class="reference">References <a class="el" href="../../d0/d70/_usb_host_shield_diff_8txt_source.html#l00005">buf</a>, <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00052">p</a>, <a class="el" href="../../d6/d7b/_fat_file_8h_source.html#l00051">pgm_read_byte</a>, <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00058">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::printField()</a>, and <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00249">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::write()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -927,11 +928,11 @@ template&lt;typename Type &gt; </div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        *--str = <span class="charliteral">&#39;\r&#39;</span>;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    Type <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = n &lt; 0 ? -n : n;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    Type <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = n &lt; 0 ? -n : n;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(Type) &lt;= 2) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a>(str, (uint16_t)<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a>(str, (uint16_t)<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a>(str, (uint32_t)<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a>(str, (uint32_t)<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">if</span> (n &lt; 0) {</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      *--str = <span class="charliteral">&#39;-&#39;</span>;</div>
@@ -940,7 +941,7 @@ template&lt;typename Type &gt; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
 <div class="ttc" id="a_fmt_number_8cpp_html_aa87498a09d9a7d0480d5144c240e38f7"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a></div><div class="ttdeci">char * fmtBase10(char *str, uint16_t n)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00161">FmtNumber.cpp:161</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d0/d70/_usb_host_shield_diff_8txt_source.html#l00005">buf</a>, <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00161">fmtBase10()</a>, <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">p</a>, and <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00249">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::write()</a>.</p>
+<p class="reference">References <a class="el" href="../../d0/d70/_usb_host_shield_diff_8txt_source.html#l00005">buf</a>, <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00161">fmtBase10()</a>, <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00052">p</a>, and <a class="el" href="../../dc/df8/_buffered_print_8h_source.html#l00249">BufferedPrint&lt; WriteClass, BUF_DIM &gt;::write()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">

@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -90,9 +91,9 @@ $(document).ready(function(){initNavTree('dc/de5/_stream_base_class_8cpp_source.
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d3/dc7/class_stream_base_class.html#a6b797b9a578157d2caa52fc89c25e020">   27</a></span>&#160;int16_t <a class="code" href="../../d3/dc7/class_stream_base_class.html#a6b797b9a578157d2caa52fc89c25e020">StreamBaseClass::getch</a>() {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  uint8_t c;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  int8_t s = <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#af1a34dc8ed5eae6868a3593a0c5fb98e">StreamBaseFile::read</a>(&amp;c, 1);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">if</span> (s != 1) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (s &lt; 0) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  int8_t <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#af1a34dc8ed5eae6868a3593a0c5fb98e">StreamBaseFile::read</a>(&amp;c, 1);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> != 1) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> &lt; 0) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <a class="code" href="../../df/d02/classios.html#aee5d194656bdfb0c8621b23ea2f51afb">setstate</a>(<a class="code" href="../../d4/dc1/classios__base.html#ac8c2c8f2f6bc9e6ce101c20e88ebce35">badbit</a>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <a class="code" href="../../df/d02/classios.html#aee5d194656bdfb0c8621b23ea2f51afb">setstate</a>(<a class="code" href="../../d4/dc1/classios__base.html#af75072b7ef2a931c77a2cb8e7ccda460">eofbit</a>);</div>
@@ -102,11 +103,11 @@ $(document).ready(function(){initNavTree('dc/de5/_stream_base_class_8cpp_source.
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\r&#39;</span> || (<a class="code" href="../../d3/dc7/class_stream_base_class.html#aefa3ede87ae53cd01a2eedee166e062e">getmode</a>() &amp; <a class="code" href="../../d4/dc1/classios__base.html#ac99947c17c2936d15243671366605602">ios::binary</a>)) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> c;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  s = <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#af1a34dc8ed5eae6868a3593a0c5fb98e">StreamBaseFile::read</a>(&amp;c, 1);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (s == 1 &amp;&amp; c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#af1a34dc8ed5eae6868a3593a0c5fb98e">StreamBaseFile::read</a>(&amp;c, 1);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> == 1 &amp;&amp; c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> c;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (s == 1) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> == 1) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    StreamBaseFile::seekCur(-1);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> <span class="charliteral">&#39;\r&#39;</span>;</div>
@@ -264,6 +265,7 @@ $(document).ready(function(){initNavTree('dc/de5/_stream_base_class_8cpp_source.
 <div class="ttc" id="aclassios_html_aa49ed6670d1743e7a373b2d915ec739a"><div class="ttname"><a href="../../df/d02/classios.html#aa49ed6670d1743e7a373b2d915ec739a">ios::clear</a></div><div class="ttdeci">void clear(iostate state=goodbit)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd5/ios_8h_source.html#l00434">ios.h:434</a></div></div>
 <div class="ttc" id="aclassios_html_aee5d194656bdfb0c8621b23ea2f51afb"><div class="ttname"><a href="../../df/d02/classios.html#aee5d194656bdfb0c8621b23ea2f51afb">ios::setstate</a></div><div class="ttdeci">void setstate(iostate state)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd5/ios_8h_source.html#l00441">ios.h:441</a></div></div>
 <div class="ttc" id="afstream_8h_html"><div class="ttname"><a href="../../de/d25/fstream_8h.html">fstream.h</a></div><div class="ttdoc">iostreams for files.</div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -1239,13 +1240,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00380">380</a> of file <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html">SdSpiCard.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                         {</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  uint8_t* <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(ocr);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  uint8_t* <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(ocr);</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d5/d4b/class_shared_spi_card.html#adda33199753fc2aec74fe317cbaabc06">cardCommand</a>(<a class="code" href="../../d2/db6/_sd_card_info_8h.html#ac25b11b8b2f2c7cc221c90cf86b7e4a0">CMD58</a>, 0)) {</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="../../d5/d4b/class_shared_spi_card.html#a747c3f0b962098cf0c097f3c4c2b4fd4">error</a>(SD_CARD_ERROR_CMD58);</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  }</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; 4; i++) {</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>[3 - i] = <a class="code" href="../../d5/d4b/class_shared_spi_card.html#a08363209d938db87521cca6a84146041">spiReceive</a>();</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>[3 - i] = <a class="code" href="../../d5/d4b/class_shared_spi_card.html#a08363209d938db87521cca6a84146041">spiReceive</a>();</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  }</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <a class="code" href="../../d5/d4b/class_shared_spi_card.html#a0f511c39c50055a4fc97e720933aee3a">spiStop</a>();</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -1254,9 +1255,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <a class="code" href="../../d5/d4b/class_shared_spi_card.html#a0f511c39c50055a4fc97e720933aee3a">spiStop</a>();</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;}</div>
-<div class="ttc" id="a_fmt_number_8cpp_html_ae36f4e23a496c78d0a855f4eb2670fb1"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a></div><div class="ttdeci">static const float p[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">FmtNumber.cpp:410</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00224">cardCommand()</a>, <a class="el" href="../../d2/db6/_sd_card_info_8h_source.html#l00160">CMD58</a>, <a class="el" href="../../d8/daa/_sd_spi_card_8h_source.html#l00085">error()</a>, <a class="el" href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">p</a>, <a class="el" href="../../d8/daa/_sd_spi_card_8h_source.html#l00277">spiReceive()</a>, and <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00511">spiStop()</a>.</p>
+<p class="reference">References <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00224">cardCommand()</a>, <a class="el" href="../../d2/db6/_sd_card_info_8h_source.html#l00160">CMD58</a>, <a class="el" href="../../d8/daa/_sd_spi_card_8h_source.html#l00085">error()</a>, <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00052">p</a>, <a class="el" href="../../d8/daa/_sd_spi_card_8h_source.html#l00277">spiReceive()</a>, and <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00511">spiStop()</a>.</p>
 <div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-20-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-20-summary" class="dynsummary" style="display:block;">

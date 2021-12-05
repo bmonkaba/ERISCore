@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -118,7 +119,7 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d2/de6/class_stdio_stream.html#aa240c1021a1aad1cc57f63a483541dc7">   56</a></span>&#160;<span class="keywordtype">char</span>* <a class="code" href="../../d2/de6/class_stdio_stream.html#aa240c1021a1aad1cc57f63a483541dc7">StdioStream::fgets</a>(<span class="keywordtype">char</span>* str, <span class="keywordtype">size_t</span> num, <span class="keywordtype">size_t</span>* len) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">char</span>* s = str;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">char</span>* <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = str;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">size_t</span> n;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (num-- == 0) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> 0;</div>
@@ -126,7 +127,7 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">while</span> (num) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> ((n = <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>) == 0) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d2/de6/class_stdio_stream.html#acdb0e26a73dae3dda8d07ed2a84fcdda">fillBuf</a>()) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (s == str) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> == str) {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -139,21 +140,21 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    uint8_t* end = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(memchr(<a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, <span class="charliteral">&#39;\n&#39;</span>, n));</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (end != 0) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      n = ++end - <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      memcpy(s, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      memcpy(<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a> -= n;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> = end;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      s += n;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> += n;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memcpy(s, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memcpy(<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, n);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a> -= n;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> += n;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    s += n;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> += n;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    num -= n;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *s = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  *<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 0;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span> (len) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    *len = s - str;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    *len = <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> - str;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
@@ -322,15 +323,15 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#if (defined(ARDUINO) &amp;&amp; ENABLE_ARDUINO_FEATURES) || defined(DOXYGEN)</span></div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="../../d2/de6/class_stdio_stream.html#ad3f6ee8e8ca5dcf6dabfd88199b172e2">StdioStream::print</a>(<span class="keyword">const</span> __FlashStringHelper *str) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> = (<span class="keyword">const</span> <span class="keywordtype">char</span>*)str;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = (<span class="keyword">const</span> <span class="keywordtype">char</span>*)str;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint8_t c;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">while</span> ((c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>))) {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">while</span> ((c = <a class="code" href="../../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d">pgm_read_byte</a>(<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>))) {</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">if</span> (putc(c) &lt; 0) {</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a>++;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>++;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a> - (<span class="keyword">const</span> <span class="keywordtype">char</span>*)str;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> - (<span class="keyword">const</span> <span class="keywordtype">char</span>*)str;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// (defined(ARDUINO) &amp;&amp; ENABLE_ARDUINO_FEATURES) || defined(DOXYGEN)</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
@@ -351,7 +352,7 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;}</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="../../d2/de6/class_stdio_stream.html#a218af88db35f38babf01d6e0a9cdceeb">  289</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">StdioStream::printDec</a>(int16_t n) {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordtype">int</span> s;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  uint8_t rtn = 0;</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="keywordflow">if</span> (n &lt; 0) {</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/de6/class_stdio_stream.html#a9f23cfa6b112a5da6ae08340af23c57b">fputc</a>(<span class="charliteral">&#39;-&#39;</span>) &lt; 0) {</div>
@@ -360,8 +361,8 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    n = -n;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    rtn++;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keywordflow">if</span> ((s = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint16_t)n)) &lt; 0) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keywordflow">if</span> ((<a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint16_t)n)) &lt; 0) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a>;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  }</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">return</span> rtn;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
@@ -374,16 +375,16 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="../../d2/de6/class_stdio_stream.html#ad4591f1234b57f63c1acf0f3392099ac">  312</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">StdioStream::printDec</a>(int32_t n) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  uint8_t s = 0;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  uint8_t <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 0;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">if</span> (n &lt; 0) {</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/de6/class_stdio_stream.html#a9f23cfa6b112a5da6ae08340af23c57b">fputc</a>(<span class="charliteral">&#39;-&#39;</span>) &lt; 0) {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    n = -n;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    s = 1;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> = 1;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  }</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordtype">int</span> rtn = <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">printDec</a>((uint32_t)n);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">return</span> rtn &gt; 0 ? rtn + s : -1;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">return</span> rtn &gt; 0 ? rtn + <a class="code" href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a> : -1;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="../../d2/de6/class_stdio_stream.html#a8b6c2c80342abe45e6f564e9bd5bb7ea">  325</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d2/de6/class_stdio_stream.html#ac0a907feb1e4b7e00de99857b4c0a470">StdioStream::printDec</a>(uint32_t n) {</div>
@@ -518,7 +519,6 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="ttc" id="a_fmt_number_8cpp_html_a51e2380ea0ddf09e95010936d26eaf5b"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#a51e2380ea0ddf09e95010936d26eaf5b">m</a></div><div class="ttdeci">static const float m[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00409">FmtNumber.cpp:409</a></div></div>
 <div class="ttc" id="a_fmt_number_8cpp_html_aa87498a09d9a7d0480d5144c240e38f7"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#aa87498a09d9a7d0480d5144c240e38f7">fmtBase10</a></div><div class="ttdeci">char * fmtBase10(char *str, uint16_t n)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00161">FmtNumber.cpp:161</a></div></div>
 <div class="ttc" id="a_fmt_number_8cpp_html_ad58715c2856f230c4893a758f4c40ba6"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ad58715c2856f230c4893a758f4c40ba6">fmtHex</a></div><div class="ttdeci">char * fmtHex(char *str, uint32_t n)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00209">FmtNumber.cpp:209</a></div></div>
-<div class="ttc" id="a_fmt_number_8cpp_html_ae36f4e23a496c78d0a855f4eb2670fb1"><div class="ttname"><a href="../../d8/d73/_fmt_number_8cpp.html#ae36f4e23a496c78d0a855f4eb2670fb1">p</a></div><div class="ttdeci">static const float p[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d73/_fmt_number_8cpp_source.html#l00410">FmtNumber.cpp:410</a></div></div>
 <div class="ttc" id="a_fs_api_constants_8h_html_a11b644a8526139c4cc1850dac1271ced"><div class="ttname"><a href="../../dc/dbc/_fs_api_constants_8h.html#a11b644a8526139c4cc1850dac1271ced">O_WRONLY</a></div><div class="ttdeci">#define O_WRONLY</div><div class="ttdoc">Open for writing only.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dbc/_fs_api_constants_8h_source.html#l00048">FsApiConstants.h:48</a></div></div>
 <div class="ttc" id="a_fs_api_constants_8h_html_a1cf6b1de1fffedaa1d26b189e9a8d2cc"><div class="ttname"><a href="../../dc/dbc/_fs_api_constants_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">O_CREAT</a></div><div class="ttdeci">#define O_CREAT</div><div class="ttdoc">Create file if it does not exist.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dbc/_fs_api_constants_8h_source.html#l00052">FsApiConstants.h:52</a></div></div>
 <div class="ttc" id="a_fs_api_constants_8h_html_a39cbe71da20b3a35100d369620187d4f"><div class="ttname"><a href="../../dc/dbc/_fs_api_constants_8h.html#a39cbe71da20b3a35100d369620187d4f">oflag_t</a></div><div class="ttdeci">uint8_t oflag_t</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dbc/_fs_api_constants_8h_source.html#l00058">FsApiConstants.h:58</a></div></div>
@@ -568,6 +568,8 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="ttc" id="aclass_stdio_stream_html_ae8aca0d1524f214fc22986057a32c146"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#ae8aca0d1524f214fc22986057a32c146">StdioStream::fillGet</a></div><div class="ttdeci">int fillGet()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/_stdio_stream_8cpp_source.html#l00370">StdioStream.cpp:370</a></div></div>
 <div class="ttc" id="aclass_stdio_stream_html_af80daa542afa09e19ea719d133e0c4a1"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#af80daa542afa09e19ea719d133e0c4a1">StdioStream::m_w</a></div><div class="ttdeci">uint8_t m_w</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00660">StdioStream.h:660</a></div></div>
 <div class="ttc" id="aclass_stdio_stream_html_afe6cfc02af02fe9ac86543747a652686"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#afe6cfc02af02fe9ac86543747a652686">StdioStream::S_EOF</a></div><div class="ttdeci">static const uint8_t S_EOF</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00653">StdioStream.h:653</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 2028;
+var viewWidth = 2027;
 var viewHeight = 534;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,15 +54,15 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>ERISCore/lib/SdFat&#45;master/src/SpiDriver/SdSpiDriver.h</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-530 2023.5,-530 2023.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-530 2022.5,-530 2022.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="SpiDriver classes.">
-<polygon fill="#bfbfbf" stroke="black" points="1295.5,-478.5 1295.5,-525.5 1423.5,-525.5 1423.5,-478.5 1295.5,-478.5"/>
-<text text-anchor="start" x="1303.5" y="-511.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1303.5" y="-498.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1359.5" y="-485.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiDriver.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="1294.5,-478.5 1294.5,-525.5 1422.5,-525.5 1422.5,-478.5 1294.5,-478.5"/>
+<text text-anchor="start" x="1302.5" y="-511.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1302.5" y="-498.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1358.5" y="-485.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiDriver.h</text>
 </a>
 </g>
 </g>
@@ -79,144 +79,144 @@ var sectionId = 'dynsection-1';
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1285.05,-494.91C1184.29,-486.11 999.09,-468.02 842.5,-442 830.63,-440.03 818.07,-437.59 805.93,-435.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1284.87,-498.4 1295.13,-495.78 1285.47,-491.43 1284.87,-498.4"/>
+<path fill="none" stroke="midnightblue" d="M1284.2,-494.9C1183.63,-486.09 998.79,-467.98 842.5,-442 830.63,-440.03 818.07,-437.59 805.93,-435.04"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1283.99,-498.39 1294.26,-495.77 1284.6,-491.42 1283.99,-498.39"/>
 </g>
 <!-- Node70 -->
 <g id="node17" class="node">
 <title>Node70</title>
-<g id="a_node17"><a xlink:href="../../d6/df3/_sd_spi_artemis_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="851.5,-394.5 851.5,-441.5 979.5,-441.5 979.5,-394.5 851.5,-394.5"/>
-<text text-anchor="start" x="859.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="859.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="915.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiArtemis.cpp</text>
+<g id="a_node17"><a xlink:href="../../d8/d8f/_sd_spi_chip_select_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="851,-394.5 851,-441.5 984,-441.5 984,-394.5 851,-394.5"/>
+<text text-anchor="start" x="859" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="859" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="917.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiChipSelect.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node70 -->
 <g id="edge20" class="edge">
 <title>Node1&#45;&gt;Node70</title>
-<path fill="none" stroke="midnightblue" d="M1285.15,-492.33C1210,-482.82 1090.83,-465.7 989.5,-442 986.23,-441.23 982.88,-440.4 979.52,-439.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1285.1,-495.85 1295.45,-493.62 1285.97,-488.9 1285.1,-495.85"/>
+<path fill="none" stroke="midnightblue" d="M1284.2,-491.95C1210.04,-482.23 1093.11,-465.01 993.5,-442 990.41,-441.29 987.26,-440.52 984.09,-439.7"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1284,-495.45 1294.37,-493.27 1284.9,-488.51 1284,-495.45"/>
 </g>
 <!-- Node71 -->
 <g id="node18" class="node">
 <title>Node71</title>
-<g id="a_node18"><a xlink:href="../../d8/d8f/_sd_spi_chip_select_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="998,-394.5 998,-441.5 1131,-441.5 1131,-394.5 998,-394.5"/>
-<text text-anchor="start" x="1006" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1006" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1064.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiChipSelect.cpp</text>
+<g id="a_node18"><a xlink:href="../../d6/df3/_sd_spi_artemis_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1002.5,-394.5 1002.5,-441.5 1130.5,-441.5 1130.5,-394.5 1002.5,-394.5"/>
+<text text-anchor="start" x="1010.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1010.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1066.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiArtemis.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node71 -->
 <g id="edge21" class="edge">
 <title>Node1&#45;&gt;Node71</title>
-<path fill="none" stroke="midnightblue" d="M1285.44,-481.65C1242.94,-470.4 1188.62,-455.76 1140.5,-442 1137.45,-441.13 1134.34,-440.23 1131.19,-439.31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1284.59,-485.05 1295.15,-484.22 1286.38,-478.28 1284.59,-485.05"/>
+<path fill="none" stroke="midnightblue" d="M1284.38,-481.86C1241.86,-470.67 1187.54,-456.03 1139.5,-442 1136.57,-441.14 1133.57,-440.25 1130.55,-439.35"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1283.54,-485.26 1294.1,-484.41 1285.31,-478.49 1283.54,-485.26"/>
 </g>
 <!-- Node72 -->
 <g id="node19" class="node">
 <title>Node72</title>
 <g id="a_node19"><a xlink:href="../../de/daa/_sd_spi_due_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1149.5,-394.5 1149.5,-441.5 1277.5,-441.5 1277.5,-394.5 1149.5,-394.5"/>
-<text text-anchor="start" x="1157.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1157.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1213.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiDue.cpp</text>
+<polygon fill="white" stroke="black" points="1148.5,-394.5 1148.5,-441.5 1276.5,-441.5 1276.5,-394.5 1148.5,-394.5"/>
+<text text-anchor="start" x="1156.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1156.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1212.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiDue.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node72 -->
 <g id="edge22" class="edge">
 <title>Node1&#45;&gt;Node72</title>
-<path fill="none" stroke="midnightblue" d="M1310.37,-473.41C1291.92,-463.04 1271.19,-451.4 1253.65,-441.55"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1308.79,-476.53 1319.22,-478.38 1312.21,-470.43 1308.79,-476.53"/>
+<path fill="none" stroke="midnightblue" d="M1309.37,-473.41C1290.92,-463.04 1270.19,-451.4 1252.65,-441.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1307.79,-476.53 1318.22,-478.38 1311.21,-470.43 1307.79,-476.53"/>
 </g>
 <!-- Node73 -->
 <g id="node20" class="node">
 <title>Node73</title>
 <g id="a_node20"><a xlink:href="../../db/d4e/_sd_spi_e_s_p_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1295.5,-394.5 1295.5,-441.5 1423.5,-441.5 1423.5,-394.5 1295.5,-394.5"/>
-<text text-anchor="start" x="1303.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1303.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1359.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiESP.cpp</text>
+<polygon fill="white" stroke="black" points="1294.5,-394.5 1294.5,-441.5 1422.5,-441.5 1422.5,-394.5 1294.5,-394.5"/>
+<text text-anchor="start" x="1302.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1302.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1358.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiESP.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node73 -->
 <g id="edge23" class="edge">
 <title>Node1&#45;&gt;Node73</title>
-<path fill="none" stroke="midnightblue" d="M1359.5,-468.11C1359.5,-459.26 1359.5,-449.88 1359.5,-441.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1356,-468.16 1359.5,-478.16 1363,-468.16 1356,-468.16"/>
+<path fill="none" stroke="midnightblue" d="M1358.5,-468.11C1358.5,-459.26 1358.5,-449.88 1358.5,-441.72"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1355,-468.16 1358.5,-478.16 1362,-468.16 1355,-468.16"/>
 </g>
 <!-- Node74 -->
 <g id="node21" class="node">
 <title>Node74</title>
 <g id="a_node21"><a xlink:href="../../d3/de0/_sd_spi_particle_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1441.5,-394.5 1441.5,-441.5 1569.5,-441.5 1569.5,-394.5 1441.5,-394.5"/>
-<text text-anchor="start" x="1449.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1449.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1505.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiParticle.cpp</text>
+<polygon fill="white" stroke="black" points="1440.5,-394.5 1440.5,-441.5 1568.5,-441.5 1568.5,-394.5 1440.5,-394.5"/>
+<text text-anchor="start" x="1448.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1448.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1504.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiParticle.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node74 -->
 <g id="edge24" class="edge">
 <title>Node1&#45;&gt;Node74</title>
-<path fill="none" stroke="midnightblue" d="M1408.63,-473.41C1427.08,-463.04 1447.81,-451.4 1465.35,-441.55"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1406.79,-470.43 1399.78,-478.38 1410.21,-476.53 1406.79,-470.43"/>
+<path fill="none" stroke="midnightblue" d="M1407.63,-473.41C1426.08,-463.04 1446.81,-451.4 1464.35,-441.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1405.79,-470.43 1398.78,-478.38 1409.21,-476.53 1405.79,-470.43"/>
 </g>
 <!-- Node75 -->
 <g id="node22" class="node">
 <title>Node75</title>
-<g id="a_node22"><a xlink:href="../../d8/d87/_sd_spi_s_t_m32_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1587.5,-394.5 1587.5,-441.5 1715.5,-441.5 1715.5,-394.5 1587.5,-394.5"/>
-<text text-anchor="start" x="1595.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1595.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1651.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiSTM32.cpp</text>
+<g id="a_node22"><a xlink:href="../../dd/db4/_sd_spi_s_t_m32_core_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1586.5,-394.5 1586.5,-441.5 1726.5,-441.5 1726.5,-394.5 1586.5,-394.5"/>
+<text text-anchor="start" x="1594.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1594.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1656.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiSTM32Core.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node75 -->
 <g id="edge25" class="edge">
 <title>Node1&#45;&gt;Node75</title>
-<path fill="none" stroke="midnightblue" d="M1433.62,-481.86C1476.14,-470.67 1530.46,-456.03 1578.5,-442 1581.43,-441.14 1584.43,-440.25 1587.45,-439.35"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1432.69,-478.49 1423.9,-484.41 1434.46,-485.26 1432.69,-478.49"/>
+<path fill="none" stroke="midnightblue" d="M1432.5,-481.46C1474.99,-470.14 1529.31,-455.51 1577.5,-442 1580.39,-441.19 1583.33,-440.36 1586.31,-439.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1431.56,-478.09 1422.8,-484.04 1433.36,-484.85 1431.56,-478.09"/>
 </g>
 <!-- Node76 -->
 <g id="node23" class="node">
 <title>Node76</title>
-<g id="a_node23"><a xlink:href="../../d8/d65/_sd_spi_teensy3_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1733.5,-394.5 1733.5,-441.5 1861.5,-441.5 1861.5,-394.5 1733.5,-394.5"/>
-<text text-anchor="start" x="1741.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1741.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1797.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiTeensy3.cpp</text>
+<g id="a_node23"><a xlink:href="../../d8/d87/_sd_spi_s_t_m32_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1744.5,-394.5 1744.5,-441.5 1872.5,-441.5 1872.5,-394.5 1744.5,-394.5"/>
+<text text-anchor="start" x="1752.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1752.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1808.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiSTM32.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node76 -->
 <g id="edge26" class="edge">
 <title>Node1&#45;&gt;Node76</title>
-<path fill="none" stroke="midnightblue" d="M1433.86,-492.19C1508.06,-482.65 1625.03,-465.58 1724.5,-442 1727.34,-441.33 1730.24,-440.6 1733.15,-439.83"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1433.16,-488.75 1423.68,-493.49 1434.04,-495.7 1433.16,-488.75"/>
+<path fill="none" stroke="midnightblue" d="M1432.79,-492.71C1509.28,-483.41 1631.64,-466.34 1735.5,-442 1738.35,-441.33 1741.24,-440.61 1744.16,-439.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1432.28,-489.25 1422.77,-493.92 1433.11,-496.2 1432.28,-489.25"/>
 </g>
 <!-- Node77 -->
 <g id="node24" class="node">
 <title>Node77</title>
-<g id="a_node24"><a xlink:href="../../dd/db4/_sd_spi_s_t_m32_core_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1879.5,-394.5 1879.5,-441.5 2019.5,-441.5 2019.5,-394.5 1879.5,-394.5"/>
-<text text-anchor="start" x="1887.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
-<text text-anchor="start" x="1887.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
-<text text-anchor="middle" x="1949.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiSTM32Core.cpp</text>
+<g id="a_node24"><a xlink:href="../../d8/d65/_sd_spi_teensy3_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1890.5,-394.5 1890.5,-441.5 2018.5,-441.5 2018.5,-394.5 1890.5,-394.5"/>
+<text text-anchor="start" x="1898.5" y="-427.9" font-family="Helvetica,sans-Serif" font-size="12.00">ERISCore/lib/SdFat</text>
+<text text-anchor="start" x="1898.5" y="-414.9" font-family="Helvetica,sans-Serif" font-size="12.00">&#45;master/src/SpiDriver</text>
+<text text-anchor="middle" x="1954.5" y="-401.9" font-family="Helvetica,sans-Serif" font-size="12.00">/SdSpiTeensy3.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node77 -->
 <g id="edge27" class="edge">
 <title>Node1&#45;&gt;Node77</title>
-<path fill="none" stroke="midnightblue" d="M1433.78,-496.36C1533.78,-489.22 1716.89,-473 1870.5,-442 1873.44,-441.41 1876.43,-440.76 1879.44,-440.06"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1433.5,-492.87 1423.77,-497.06 1433.99,-499.85 1433.5,-492.87"/>
+<path fill="none" stroke="midnightblue" d="M1432.94,-497.13C1535.03,-490.8 1723.78,-475.42 1881.5,-442 1884.36,-441.39 1887.27,-440.72 1890.19,-440"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1432.51,-493.65 1422.74,-497.75 1432.93,-500.64 1432.51,-493.65"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">

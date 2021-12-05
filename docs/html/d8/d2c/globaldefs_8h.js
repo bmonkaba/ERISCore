@@ -1,9 +1,10 @@
 var globaldefs_8h =
 [
+    [ "AM_IMG_CACHE_SIZE", "d8/d2c/globaldefs_8h.html#a8eb7359e353b21bf4fc5db44b30c552b", null ],
+    [ "ANIMATION_CHUNKS_PER_FRAME", "d8/d2c/globaldefs_8h.html#a467a0a0544a2823d8ca02936eb7b1405", null ],
     [ "APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC", "d8/d2c/globaldefs_8h.html#a7f577a945f09a83065eb29f7735f674b", null ],
     [ "DISPLAY_UPDATE_PERIOD", "d8/d2c/globaldefs_8h.html#a1dd7d3fffe12cd8607ba41b1a10eda0c", null ],
     [ "ENABLE_ASYNC_SCREEN_UPDATES", "d8/d2c/globaldefs_8h.html#aec62f4713e992fb7868b21869cddb961", null ],
-    [ "ERIS_GREEN", "d8/d2c/globaldefs_8h.html#a6a380c61f628d82f3c48ade8ec37d23b", null ],
     [ "MAX_AUDIO_MEMORY_BLOCKS", "d8/d2c/globaldefs_8h.html#af760e948fbd21588d965e6285ae64924", null ],
     [ "MAX_AUDIO_STREAM_OBJECTS", "d8/d2c/globaldefs_8h.html#a55e40ae7817922a01086b86a043dee06", null ],
     [ "MAX_CATEGORIES", "d8/d2c/globaldefs_8h.html#ab4a6404e604591c49018d28f890fc335", null ],
@@ -20,5 +21,7 @@ var globaldefs_8h =
     [ "SERIAL_PARAM_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a5c22e2c6abc159d7fafbeb6d43e4c968", null ],
     [ "SERIAL_POLLING_RATE_MAX", "d8/d2c/globaldefs_8h.html#a2bebf7301603ccdf9533cb9aa41c08ef", null ],
     [ "SERIAL_RX_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#aba0ceec384cf3acb51e0d6f45f31379c", null ],
-    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a72c24669179a4c4371f614b576d26f2d", null ]
+    [ "p", "d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f", null ],
+    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a72c24669179a4c4371f614b576d26f2d", null ],
+    [ "s", "d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede", null ]
 ];

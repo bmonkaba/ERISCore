@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -130,7 +131,7 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../dc/d47/_p_c_m1863_8h.html#a54b34fb2981dbbdc69d1f273034c5dc5">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a54b34fb2981dbbdc69d1f273034c5dc5">ExtADCPrintStatus</a>(){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Serial.print(<span class="stringliteral">&quot;ADC &quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;ADC &quot;</span>));</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;{\&quot;State(15:RUNNING)\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(114));</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;SampleFreq:\&quot;:&quot;</span>));</div>
@@ -224,7 +225,7 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">byte</span> <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a>, address;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordtype">int</span> nDevices;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  Serial.println(<span class="stringliteral">&quot;I2CBusScan: Scanning&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: Scanning&quot;</span>));</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  nDevices = 0;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">for</span>(address = 1; address &lt; 127; address++ )</div>

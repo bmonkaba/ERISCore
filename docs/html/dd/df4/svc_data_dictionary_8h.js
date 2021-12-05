@@ -7,7 +7,9 @@ var svc_data_dictionary_8h =
     [ "DATADICT_KEYVALUE_PAIRS", "dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf", null ],
     [ "DATADICT_MAX_KEY_LEN", "dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb", null ],
     [ "DATADICT_USE_MALLOC", "dd/df4/svc_data_dictionary_8h.html#a2c44099526ee0462b9d7a32c420f43ce", null ],
+    [ "pointer_container", "dd/df4/svc_data_dictionary_8h.html#a72d1d78e033dcdec8eb28ca3e0efc6a1", null ],
     [ "svcDataDictionaryRecord", "dd/df4/svc_data_dictionary_8h.html#a4d0e1b4ebad6f5f7a2fb0ee55e501a67", null ],
+    [ "value_container", "dd/df4/svc_data_dictionary_8h.html#aefc9c71bdd370385f95579f73468477e", null ],
     [ "svcDataDictionaryDataType", "dd/df4/svc_data_dictionary_8h.html#ad86fa9822c5136dd63651f82b9db8f37", [
       [ "DDDT_INT16", "dd/df4/svc_data_dictionary_8h.html#ad86fa9822c5136dd63651f82b9db8f37accfdd4c22b7d44c487f4b146e0696b34", null ],
       [ "DDDT_UINT16", "dd/df4/svc_data_dictionary_8h.html#ad86fa9822c5136dd63651f82b9db8f37ab33cef40909dc31ccf25555680f5a547", null ],
