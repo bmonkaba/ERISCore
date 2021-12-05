@@ -786,6 +786,7 @@ table.dataTable td {
     background-color: #202020;
     overflow: hidden;
     margin: 4px;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .fftmsg {
@@ -795,6 +796,7 @@ table.dataTable td {
     background-color: #202020;
     overflow: hidden;
     margin: 4px;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .cqt {
@@ -806,6 +808,7 @@ table.dataTable td {
     border-radius: 7px;
     overflow: hidden;
     margin: 4px;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .fft {
@@ -817,6 +820,7 @@ table.dataTable td {
     border-radius: 7px;
     overflow: hidden;
     margin: 4px;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .fft2msg {
@@ -849,6 +853,7 @@ table.dataTable td {
     font-weight: normal;
     font-family: system-ui;
     border-radius: 7px;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .sparkline--fill {
@@ -1017,6 +1022,7 @@ tr {
     left: 0;
     top: 0;
     margin-block: unset;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 #oscope {
@@ -1025,6 +1031,7 @@ tr {
     top: 0;
     margin-block: unset;
     overflow: hidden
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 #ile_label {
@@ -1153,6 +1160,7 @@ select {
     filter: sepia(0.6);
     border-radius: 7px;
     background: radial-gradient(circle, rgb(0 193 255 / 27%) 10%, rgb(242 0 255 / 8%) 100%);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 #memory_container {
@@ -1162,7 +1170,7 @@ select {
 }
 
 .filter--linear{
-    -webkit-filter: blur(3px);
+    -webkit-filter: blur(0px);
     -webkit-transform: translate3d(0, 0, 0);
 }
 

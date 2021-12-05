@@ -1,0 +1,15 @@
+SvcDataDictionary
+copyKey call:[strlen,strndup]
+hash
+create call:[copyKey,hash]
+create call:[copyKey,hash]
+create call:[copyKey,hash]
+read call:[hash]
+readf call:[hash]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+update call:[create,hash] noreturn:[create]
+increment call:[create,hash]
+printStats
+printDictionary call:[F,print,printf,println] noreturn:[print,printf,println]

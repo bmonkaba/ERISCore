@@ -1,4 +1,13 @@
-Animation
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
+Surface call:[F,print,println] noreturn:[println]
+Surface call:[F,print,println] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
 setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
@@ -167,7 +176,7 @@ setPosition call:[_updatePosition] noreturn:[_updatePosition]
 setDimension call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
-update call:[F,println] noreturn:[println]
+update
 updateRT
 onFocus
 onFocusLost
@@ -191,20 +200,7 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-hash
-SvcDataDictionary call:[memset,sizeof] noreturn:[memset]
-create call:[hash,strcpy,strlen]
-create call:[hash,strcpy,strlen]
-create call:[hash,strcpy,strlen]
-read call:[hash]
-readf call:[hash]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-increment call:[create,hash]
-printStats
-printDictionary call:[print,printf,println] noreturn:[print,printf,println]
+SvcDataDictionary
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
@@ -216,3 +212,4 @@ getFocus call:[_updatePosition,getFocus,getInstance]
 returnFocus call:[_updatePosition,getInstance,returnFocus]
 requestPopUp call:[_updatePosition,getInstance,requestPopUp]
 releasePopUp call:[_updatePosition,getInstance,releasePopUp]
+setRTPriority

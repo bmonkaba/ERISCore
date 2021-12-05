@@ -37,7 +37,7 @@ class ControlSlider:public AppBaseClass {
   protected:
     bool isDirty;
     bool isPressed;
-    void update(){
+    void update() override{
         isDirty = true;
         if (isDirty){
             int16_t marker = w*((float)value/100.0);
@@ -50,8 +50,8 @@ class ControlSlider:public AppBaseClass {
             isDirty = false;
         }
     };
-    void onFocusLost(){isPressed=false;};
-    void onTouch(uint16_t t_x, uint16_t t_y){
+    void onFocusLost() override{isPressed=false;};
+    void onTouch (uint16_t t_x, uint16_t t_y){
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             isPressed = true;
             last_x = t_x;
@@ -59,7 +59,7 @@ class ControlSlider:public AppBaseClass {
         }
     };
 
-    void onTouchDrag(uint16_t t_x, uint16_t t_y){
+    void onTouchDrag (uint16_t t_x, uint16_t t_y){
         if(isPressed){
             value += ((t_x-last_x)/2);
             if (value>100)value = 100;
@@ -69,7 +69,7 @@ class ControlSlider:public AppBaseClass {
         }
     }
 
-    void onTouchRelease(uint16_t t_x, uint16_t t_y){
+    void onTouchRelease (uint16_t t_x, uint16_t t_y){
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             parentNode->MessageHandler(this,"Set");
         }

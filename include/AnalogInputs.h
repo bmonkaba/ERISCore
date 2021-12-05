@@ -52,7 +52,7 @@ class AnalogInputs {
             //rate limit the updates
             if (lastUpdate < MAX_POLLING_RATE) return false;
             lastUpdate = 0;
-            int16_t old_ai[4] = {ai[0],ai[1],ai[2],ai[3]};
+            const int16_t old_ai[4] = {ai[0],ai[1],ai[2],ai[3]};
             //AudioNoInterrupts();
             ai[0] = (ai[0] * 0.85) + (analogRead(AN1) * 0.15);
             ai[1] = (ai[1] * 0.85) + (analogRead(AN2) * 0.15);

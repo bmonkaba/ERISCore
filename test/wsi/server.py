@@ -34,7 +34,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print ('new connection')
         clients.append(self)
-        self.write_message("M connected to the serial bridge")
+        self.write_message("M WebSocket Server: Connected to the serial bridge")
  
     def on_message(self, message):
         #print ('tornado received from client: %s' % json.dumps(message))
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     mainLoop = tornado.ioloop.IOLoop.instance()
     ## adjust the scheduler_interval according to the frames sent by the serial port
-    scheduler_interval = 20
+    scheduler_interval = 50
     scheduler = tornado.ioloop.PeriodicCallback(checkQueue, scheduler_interval)
     scheduler.start()
     #s_scheduler = tornado.ioloop.PeriodicCallback(sp.run, scheduler_interval)

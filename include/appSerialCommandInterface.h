@@ -66,8 +66,9 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
         streamPos = 0;
         pSD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
-        memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+        memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
         memset(receivedChars,0,SERIAL_RX_BUFFER_SIZE);
+        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE + 1);
     }; 
     //define event handlers
   protected:
@@ -107,7 +108,7 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
     };
     void flush(){
       while(Serial.availableForWrite() < 6000){
-        delay(5);
+        delay(15);
       }
       if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
       memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);

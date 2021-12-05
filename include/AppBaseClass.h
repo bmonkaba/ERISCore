@@ -53,6 +53,7 @@ class AppBaseClass {
                   // 253 - widgets (always active)
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
+    uint16_t updateRT_priority;
     uint16_t update_loop_time;
     uint16_t update_loop_time_max;
     uint16_t updateRT_loop_time;
@@ -93,8 +94,8 @@ class AppBaseClass {
     void setWidgetPosition(int16_t newOriginX, int16_t newOriginY){widget_origin_x=newOriginX;widget_origin_y=newOriginY;_updatePosition();}
     void setWidgetDimension(int16_t new_width, int16_t new_height){widget_width=new_width;widget_height=new_height;_updatePosition();}
     void getFocus();
-    virtual void update(){Serial.println(F("AppBaseClass:update"));};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
-    virtual void updateRT(){}; //will be called every loop and prior to a potential update call
+    virtual void update(){};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
+    virtual void updateRT(){updateRT_priority = 65535;}; //will be called every loop and prior to a potential update call
     //Event handlers
     virtual void onFocus(){};
     virtual void onFocusLost(){};
@@ -112,6 +113,7 @@ class AppBaseClass {
     void returnFocus();
     void requestPopUp(bool exclusive=false);
     void releasePopUp();
+    void setRTPriority(uint16_t level);
     void selfRegister();
   private:
     void _updatePosition();

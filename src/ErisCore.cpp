@@ -1,5 +1,5 @@
 //char dummy[64000];
-#pragma GCC optimize ("Ofast")
+//#pragma GCC optimize ("Ofast")
 #define BUILTIN_SDCARD 254
 #include <Arduino.h>
 
@@ -9,22 +9,18 @@
 #include "HSI.h"
 #include "SPI.h"
 #include "appTemplate.h"
-#include "appExample.h"
+#include "appAudioToPolyphonic.h"
 #include "appReprogram.h"
 #include "appSerialCommandInterface.h"
 #include "PCM1863.h"
 
 uint16_t inc;
-MyAppExample app;
+AppAudioToPolyphonic appPoly;
 AppSerialCommandInterface appSCI;
 AppReprogram appReprogram;
 //AppTemplate appTemplate;
 
 void setup() {
-  //stack fill test
-  //char stackfill[50000];
-  //memset(stackfill,0x5A,sizeof(stackfill));
-  //memset(dummy,0x5A,sizeof(dummy));
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi
   //as access to the physical reset button may be restricted in an integrated application.
@@ -57,9 +53,12 @@ void setup() {
   //appSCI = new AppSerialCommandInterface();
   //AppManager::getInstance()->getFocus(app->getId()); //focus is requested by obj id
   Serial.println(F("M Setup: Setting App Focus"));
-  app.getFocus();
+  appPoly.getFocus();
   Serial.println(F("M Setup: Init Complete"));
   //delay(5000);
+  if (CrashReport){
+      Serial.print(CrashReport);
+  }
 }
 
 void loop(void) {
@@ -67,5 +66,5 @@ void loop(void) {
   //call the handlers of the active app for any triggered events,
   //calls update for the active app
   //calls updateRT for all apps
-  AppManager::getInstance()->update();                           
+  AppManager::getInstance()->update();
 }

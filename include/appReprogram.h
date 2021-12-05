@@ -21,8 +21,9 @@ class AppReprogram:public AppBaseClass {
       pinMode(SW_D, INPUT);
     } 
     //define event handlers
-    void update(){};
-    void updateRT(){
+    //void update(){};
+    void updateRT (){
+        updateRT_priority = 10000;
         //Enter program mode if both TAP_INPUT and SW_D 
         //switches are pressed at the same time.
         if (digitalRead(TAP_INPUT) == LOW && digitalRead(SW_D) == LOW){

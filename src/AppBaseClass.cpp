@@ -45,6 +45,7 @@ AppBaseClass::AppBaseClass(){
   update_call_period_max =0;
   updateRT_call_period =0;
   updateRT_call_period_max =0;
+  updateRT_priority = 0;
   strcpy(name,"NONE");
   selfRegister();
 }
@@ -93,6 +94,12 @@ void AppBaseClass::releasePopUp(){
   has_pop = false;
   AppManager::getInstance()->releasePopUp();
     _updatePosition();    
+    return;
+}
+
+
+void AppBaseClass::setRTPriority(uint16_t level){
+    updateRT_priority = level;
     return;
 }
 

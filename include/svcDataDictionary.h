@@ -57,7 +57,7 @@ typedef union value_container{
     uint32_t uint32_val;
     float32_t float16_val;
     float32_t float32_val;
-};
+} value_container;
 
 typedef union pointer_container{
     int16_t* pint16_val;
@@ -66,7 +66,7 @@ typedef union pointer_container{
     uint32_t* puint32_val;
     float32_t* pfloat16_val;
     float32_t* pfloat32_val;
-};
+} pointer_container;
 
 typedef struct svcDataDictionaryRecord
 {

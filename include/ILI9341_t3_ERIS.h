@@ -69,13 +69,17 @@ class Surface {
     }
     
     Surface(Surface *SubSurfaceFrom, int16_t width, int16_t height){
-        guid =  (uint32_t)SubSurfaceFrom<<4 * (uint32_t)width + (uint32_t)height<<8;
+        guid =  ((uint32_t)SubSurfaceFrom<<4) * ((uint32_t)width + ((uint32_t)height<<8));
         w = width;
         h = height;
         alloc_size = w*h;
         if (alloc_size < SURFACE_MIN_ALLOC_SIZE) alloc_size = SURFACE_MIN_ALLOC_SIZE;
         pSB = SubSurfaceFrom->requestSubSurfaceBufferP(alloc_size);
         //attempt to allocate a sub surface buffer then clear it
+        Serial.print(F("M SubSurface buffer allocated with a size of: "));
+        Serial.println(alloc_size);
+        Serial.print(F("M Surface GUID: "));
+        Serial.println(guid);
     }
     
     Surface(uint16_t *buffer,uint32_t length){
@@ -88,11 +92,13 @@ class Surface {
         head = 0; //used for sub surface allocation
         Serial.print(F("M Surface buffer attached with a size of: "));
         Serial.println(alloc_size);
+        Serial.print(F("M Surface GUID: "));
+        Serial.println(guid);
     }
 
     Surface(uint16_t *buffer,int16_t width, int16_t height){
         //take an existing buffer as the surface buffer
-        guid =  (uint32_t)buffer * (uint32_t)width<<11 / (1 + (uint32_t)height);
+        guid =  (uint32_t)buffer * ((uint32_t)width<<11) / (1 + (uint32_t)height);
         pSB = buffer;
         w = width;
         h = height;
@@ -100,6 +106,8 @@ class Surface {
         head = 0; //used for sub surface allocation
         Serial.print(F("M Surface buffer attached with a size of: "));
         Serial.println(alloc_size);
+        Serial.print(F("M Surface GUID: "));
+        Serial.println(guid);
     }
 
     uint16_t* requestSubSurfaceBufferP(uint32_t size){
@@ -146,7 +154,9 @@ class Surface {
         //uint32 djb2 string hash
         uint32_t h = 5381;
         int c;
-        while (c = *s++){h = ((h << 5) + h) + c;}
+        while ((c = *s++)){
+            h = ((h << 5) + h) + c;
+        }
         return h;
     }
 };
@@ -157,7 +167,12 @@ class Surface {
 class Animation{
     friend class ILI9341_t3_ERIS;
     public:
-        Animation(){frame = 1;chunk=0;last_frame=-1;pSD=NULL;}
+        Animation(){
+            frame = 1;chunk=0;last_frame=-1;pSD=NULL;
+            memset(filename,0,sizeof(filename));
+            memset(_path,0,sizeof(_path));
+        
+        }
         void setPath(const char *path){
             if (strlen(path) < 120) strcpy(_path,path);
             last_frame = -1; //reset end of animation frame marker
@@ -176,8 +191,8 @@ class Animation{
         uint16_t frame;
         int16_t last_frame;
         uint16_t chunk;
-        char filename[128];
-        char _path[128];
+        char filename[64];
+        char _path[64];
 };
 
 enum bltAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};

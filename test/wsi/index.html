@@ -34,11 +34,13 @@
         <div class="hamburger">[REDACTED]</div>
         
         <div class="menubar">
-            <button class="button" id="cmd_showFlow">Flow</button>
-            <button class="button" id="cmd_showAudio">Audio</button>
-            <button class="button" id="cmd_showMemory">Memory</button>
-            <button class="button" id="cmd_showSymbols">Symbols</button>
-            <button class="button" id="cmd_showMonitor">Monitor</button>
+            <button class="button" id="cmd_showFlow">Audio Flow</button>
+            <button class="button" id="cmd_showAudio">Audio Controllers</button>
+            <button class="button" id="cmd_showAudio">RT Audio View</button>
+            <button class="button" id="cmd_showAudio">UI Editor</button>
+            <button class="button" id="cmd_showMemory">Dictionary Editor / Memory</button>
+            <button class="button" id="cmd_showSymbols">Symbol Viewer</button>
+            <button class="button" id="cmd_showMonitor">System Monitor</button>
         </div>
 
         <div class="sidebar" id="sidebar">
@@ -145,6 +147,7 @@ AA 220
                 <br><br>
             </form><br>
             <form>
+                <button class="button" id="getRam1">Ram1 Snapshot</button>
                 <button class="button" id="getRam2">Ram2 Snapshot</button><br><br><br>
                 <table id="memory_chunk_table" width="1280px" class="cell-border compact stripe">
                     <thead>

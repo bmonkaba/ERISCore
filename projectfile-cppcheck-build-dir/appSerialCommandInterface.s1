@@ -162,7 +162,16 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-Animation
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
+Surface call:[F,print,println] noreturn:[println]
+Surface call:[F,print,println] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
 setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
@@ -179,7 +188,7 @@ setPosition call:[_updatePosition] noreturn:[_updatePosition]
 setDimension call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
-update call:[F,println] noreturn:[println]
+update
 updateRT
 onFocus
 onFocusLost
@@ -191,28 +200,20 @@ onAnalog2
 onAnalog3
 onAnalog4
 MessageHandler
-hash
-SvcDataDictionary call:[memset,sizeof] noreturn:[memset]
-create call:[hash,strcpy,strlen]
-create call:[hash,strcpy,strlen]
-create call:[hash,strcpy,strlen]
-read call:[hash]
-readf call:[hash]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-update call:[create,hash] noreturn:[create]
-increment call:[create,hash]
-printStats
-printDictionary call:[print,printf,println] noreturn:[print,printf,println]
+SvcDataDictionary
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
-AppSerialCommandInterface call:[getInstance,getSD,strcpy]
+AppSerialCommandInterface call:[getInstance,getSD,memset,strcpy] noreturn:[memset]
 update
+write call:[txOverflowHandler]
+flush call:[availableForWrite,delay,memset,print,strlen] noreturn:[delay,print]
+empty call:[memset]
 replacechar call:[strchr]
 checksum call:[strlen]
-throttle call:[F,availableForWrite,delayMicroseconds,flush,println] noreturn:[println]
-streamHandler call:[F,available,chdir,checksum,close,delayMicroseconds,exists,flush,open,position,print,println,read,seek,sprintf,strcat,strcpy,strlen,throttle] noreturn:[position,println,strcat]
-updateRT global:[gWelcomeMessage,sd] call:[AudioInterrupts,AudioNoInterrupts,F,MessageHandler,available,chdir,clear,clearReadError,connect,delay,delayMicroseconds,disconnect,flush,getActiveApp,getConnectionString,getInstance,iscntrl,isprint,ls,print,printDictionary,printStats,printf,println,read,replacechar,sendMessage,sizeof,sscanf,strcpy,streamHandler,strncat,strncmp,strtol,throttle,update] noreturn:[AudioInterrupts,AudioNoInterrupts,MessageHandler,clear,connect,delay,flush,printDictionary,printStats,printf,println,sendMessage,streamHandler,strncat,update]
+replaceAll
+throttle call:[F,availableForWrite,delay,flush,println] noreturn:[println]
+txOverflowHandler global:[newline,token] call:[F,empty,memcpy,memset,print,strcpy,strlen,strrchr,strtok] noreturn:[empty,print,strlen]
+streamHandler call:[F,available,chdir,checksum,close,delay,delayMicroseconds,exists,flush,open,position,print,println,read,seek,sprintf,strcat,strcpy,strlen,throttle] noreturn:[delay,strcat]
+updateRT global:[gWelcomeMessage,newline,sd,token] call:[AudioInterrupts,AudioNoInterrupts,F,MessageHandler,available,chdir,clear,clearReadError,connect,delay,delayMicroseconds,disconnect,empty,flush,getActiveApp,getConnectionString,getInstance,iscntrl,isprint,ls,memset,print,printDictionary,printStats,printf,println,read,replacechar,sendMessage,sizeof,sscanf,strcpy,streamHandler,strncat,strncmp,strtok,strtol,throttle,update] noreturn:[AudioInterrupts,AudioNoInterrupts,MessageHandler,clear,connect,delay,empty,flush,print,printDictionary,printf,println,sendMessage,streamHandler,strncat,update]

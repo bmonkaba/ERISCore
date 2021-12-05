@@ -15,7 +15,9 @@ class SerialProcess():
         self.sp.close()
  
     def writeSerial(self, data):
-        self.sp.write(data.encode())
+        e = data.encode()
+        if e != None:
+            self.sp.write(e)
         
     def readSerial(self):
         try:

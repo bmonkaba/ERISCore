@@ -70,7 +70,7 @@ class ControlButton:public AppBaseClass {
     bool imgloaded;
     elapsedMillis time_active;
     bool show_active;
-    void update(){
+    void update() override{
         isDirty = true;
         
         if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
@@ -114,8 +114,8 @@ class ControlButton:public AppBaseClass {
         }
         isDirty = false;
     };
-    void onFocusLost(){isPressed=false;};
-    void onTouch(uint16_t t_x, uint16_t t_y){
+    void onFocusLost() override{isPressed=false;};
+    void onTouch(uint16_t t_x, uint16_t t_y) override{
         //Serial.println("MyButton:onTouch");
         //check if touch point is within the application bounding box
         if ((t_x > x && t_x < x + w) && t_y > y && t_y < (y + h)){
@@ -125,7 +125,7 @@ class ControlButton:public AppBaseClass {
             isDirty = true;
         }
     };
-    void onTouchRelease(uint16_t t_x, uint16_t t_y){
+    void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
             parentNode->MessageHandler(this,"Pressed");

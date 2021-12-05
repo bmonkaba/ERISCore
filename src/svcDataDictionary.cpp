@@ -44,7 +44,7 @@ uint32_t SvcDataDictionary::hash(const char* s){
     //uint32 djb2 string hash
     uint32_t h = 5381;
     int c;
-    while (c = *s++){h = ((h << 5) + h) + c;}
+    while (c = (*s++)){h = ((h << 5) + h) + c;}
     return h;
 }
 bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){

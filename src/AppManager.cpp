@@ -105,19 +105,16 @@ AppManager:: AppManager(){
 void AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
-    void* htop;
     uint32_t drt;
     bool touch_updated;
     bool update_analog;
     AppBaseClass *node;
-    bool isactive_child;
     bool monitor_update;
     
     monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
     drt = display_refresh_time;
     touch_updated = false;
-    update_analog = false;
     node = root;
 
     if (node == 0){
@@ -158,8 +155,8 @@ void AppManager::update(){
         float32_t cpu;
         cpu = AudioProcessorUsage();
         data->update(AM_AUDIO_CPU,(float32_t)cpu);
-        data->update(AM_AUDIO_MEM_MAX,(int32_t)AudioMemoryUsageMax() * AUDIO_BLOCK_SAMPLES * 2);
-        data->update(AM_AUDIO_MEM,(int32_t)AudioMemoryUsage() * AUDIO_BLOCK_SAMPLES * 2);
+        data->update(AM_AUDIO_MEM_MAX,(int32_t)AudioMemoryUsageMax());
+        data->update(AM_AUDIO_MEM,(int32_t)AudioMemoryUsage());
         break;
 
       case redraw_render:
@@ -212,13 +209,18 @@ void AppManager::update(){
     touch_updated = true;    
     data->increment(RT_CALLS);
     node = root;
+    bool isactive_child;
     do{
       app_time=0;
-      if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
-      node->updateRT(); //real time update (always called)
-      node->updateRT_loop_time = app_time;
-      if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
-      node->updateRT_call_period =0;
+      if (node->updateRT_priority > 0){
+        node->updateRT_priority--;
+      }else{
+        if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
+        node->updateRT(); //real time update (always called)
+        node->updateRT_loop_time = app_time;
+        if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
+        node->updateRT_call_period =0;
+      }
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
           if (pActiveApp != node){
@@ -278,6 +280,7 @@ void AppManager::update(){
       //data->update("FRAME_PTR1",(int32_t)draw.getFrameAddress());
       //data->update("FRAME_PTR2",(int32_t)render.getFrameAddress());
       int32_t free_mem;
+      void* htop;
       free_mem = 1000;
       cycle_time_max*=0.999;
       htop = malloc(1000);

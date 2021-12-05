@@ -1,5 +1,5 @@
 /**
- * @file appExample.h
+ * @file appAudioToPolyPhonic.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
  * @brief Application Example
  * 
@@ -21,7 +21,11 @@
 #include "appCQT.h"
 
 
-class MyAppExample:public AppBaseClass {
+const char APPNAME[] PROGMEM = "POLY";
+const char REVERB_ROOM_SIZE[] PROGMEM = "REVERB_ROOM_SIZE";
+const char REVERB_DAMPING[] PROGMEM = "REVERB_DAMPING";
+
+class AppAudioToPolyphonic:public AppBaseClass {
   public:
     AppCQT cqt;
     AppScope oscope;
@@ -32,13 +36,13 @@ class MyAppExample:public AppBaseClass {
     int16_t x_last,y_last,y_last_scope;
     uint32_t t_lastupdate;
 
-    MyAppExample():AppBaseClass(){
+    AppAudioToPolyphonic():AppBaseClass(){
       initMyAppExample();
     };
 
     void FLASHMEM initMyAppExample(){
-      sprintf(name, "MyAppExample");
-      Serial.println("MyApp constructor called");
+      sprintf(name, APPNAME);
+      Serial.println(F("MyApp constructor called"));
 
       id = 1;
       t_lastupdate = micros();
@@ -67,33 +71,31 @@ class MyAppExample:public AppBaseClass {
       filter->setLowpass(0,18400);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_5"));
-      filter->setNotch(0,475,3.0);
+      filter->setNotch(0,475,2.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      am->data->create("REVERB_ROOM_SIZE",(float32_t)0.38);
-      am->data->create("REVERB_DAMPING",(float32_t)0.8);
+      am->data->create("REVERB_ROOM_SIZE",(float32_t)0.88);
+      am->data->create("REVERB_DAMPING",(float32_t)0.37);
       reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
       reverb->damping(am->data->readf("REVERB_DAMPING"));
-      erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
-      mix->gain(3,0.40);
       
-      mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
-      mix->gain(0,0.40);
+      erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_1"));
+      mix->gain(0,1.0);
       mix->gain(1,0.40);
       mix->gain(3,0.40);
 
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay_1"));
-      delay->delay(0,30);
-      delay->delay(1,60);
-      delay->delay(2,180);
+      delay->delay(0,10);
+      delay->delay(1,20);
+      delay->delay(2,300);
       delay->delay(3,400);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.01);
+      mix->gain(0,0.1);
       mix->gain(1,0.001);
       mix->gain(2,0.0001);
-      mix->gain(3,0.001);
+      mix->gain(3,0.4);
       
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,5);
@@ -108,14 +110,13 @@ class MyAppExample:public AppBaseClass {
       cqt.setParent(this);
       
       slider = new ControlSlider(this);
-      slider->setWidgetPosition(10,65);
-      slider->setWidgetDimension(260,20);
+      slider->setWidgetPosition(0,65);
+      slider->setWidgetDimension(320,10);
       slider->setName("SLIDER");
       slider->setText("");
       slider->setValue(0);
-      
-      static char s[][16] = {"SIN","TRI","SAW","REVSAW","SQUARE","TEST","BACK"};
-      static char p[][16] = {"DOUBLE.ile","GRAIN.ile","PHASER.ile","BITCRUSH.ile","FUZZ.ile","CONFIG.ile","BACK.ile"};
+
+
       uint8_t si = 0;
       uint16_t bx = 5;
       uint16_t by = 90;
@@ -133,24 +134,39 @@ class MyAppExample:public AppBaseClass {
       }
     } 
     //define event handlers
-    void FLASHMEM update(){
+    void update(){
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
-      reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
-      reverb->damping(am->data->readf("REVERB_DAMPING"));
-      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
-      if(am->data->read("INPUT_PEAK") < 5){
-        mixer->gain(0,0.0);
+      reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
+      reverb->damping(am->data->readf(REVERB_DAMPING));
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
+      if(am->data->read(INPUT_PEAK) < 200){
+        mixer->gain(0,0.3);
         mixer->gain(1,0.0);
         mixer->gain(2,0.0);
-        mixer->gain(3,0.0);
+        mixer->gain(3,0.3);
       }else{
-        mixer->gain(0,0.1);
-        mixer->gain(1,0.2);
-        mixer->gain(2,0.3);
-        mixer->gain(3,0.4);
+        mixer->gain(0,0.3);
+        mixer->gain(1,0.0);
+        mixer->gain(2,0.0);
+        mixer->gain(3,0.3);
 
       }
-      slider->setValue((int16_t)(100 * ((float)am->data->read("INPUT_PEAK"))/32768.0));
+
+      mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));
+      if(am->data->read(INPUT_PEAK) < 300){
+        mixer->gain(0,0.3);
+        mixer->gain(1,0.3);
+        mixer->gain(2,0.0);
+        mixer->gain(3,0.3);
+      }else{
+        mixer->gain(0,0.3);
+        mixer->gain(1,0.3);
+        mixer->gain(2,0.0);
+        mixer->gain(3,0.3);
+
+      }
+
+      slider->setValue((int16_t)(100 * ((float)am->data->read(INPUT_PEAK))/16384.0));
     }
 
     void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
@@ -216,7 +232,6 @@ class MyAppExample:public AppBaseClass {
           ad->disconnect("fft1024_2 0");
           ad->connect("waveform_17 0 fft1024_1 0");
           ad->connect("waveform_17 0 fft1024_2 0");
-          //ad->connect("waveform_16 0 scope_1 0");
           AudioInterrupts();
         }
     }
@@ -240,7 +255,7 @@ class MyAppExample:public AppBaseClass {
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
       AudioNoInterrupts();
-      filter->setLowpass(0,220.0 + (1000.0 * fval));
+      filter->setLowpass(0,220.0 + (5000.0 * fval));
       AudioInterrupts();
     };
     
@@ -278,10 +293,10 @@ class MyAppExample:public AppBaseClass {
 
       //amplified input -> filter -> master mixer
       ad->connect("amp_2 0 biquad_4 0");
+      ad->connect("amp_2 0 mixer_1 1");
       ad->connect("biquad_4 0 mixer_1 2");
       
       //master mixer -> output amp
-      //ad->connect("mixer_1 0 biquad_3 0");
       ad->connect("mixer_1 0 amp_1 0");
       ad->connect("amp_1 0 i2s-out_1 0");
 

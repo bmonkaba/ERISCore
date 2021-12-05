@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="242674475">
+  <FileInfo check="ctu">
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:113:14" call-funcname="create" call-argnr="2" file="src/svcDataDictionary.cpp" line="197" col="20" call-argexpr="(int32_t)0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:92:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="51" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:112:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:92:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="62" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:113:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:92:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="74" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:114:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="87" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:115:17" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="98" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:116:19" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="109" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:117:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="128" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:118:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="147" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:119:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="166" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:120:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="185" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:121:14" my-argnr="1"/>
+  </FileInfo>
+  <FileInfo check="Class">
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="71" col="9" hash="17793245868371730131"/>
+<class name="SvcDataDictionary" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="87" col="1" hash="10339082536672548756"/>
+  </FileInfo>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:18" my-argnr="1" my-argname="s" file="src/svcDataDictionary.cpp" line="47" col="18" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="copyKey" lineNumber="24"/>
+    <functiondecl functionName="hash" lineNumber="43"/>
+    <functiondecl functionName="create" lineNumber="50"/>
+    <functiondecl functionName="create" lineNumber="61"/>
+    <functiondecl functionName="create" lineNumber="73"/>
+    <functiondecl functionName="read" lineNumber="85"/>
+    <functiondecl functionName="readf" lineNumber="96"/>
+    <functiondecl functionName="update" lineNumber="107"/>
+    <functiondecl functionName="update" lineNumber="126"/>
+    <functiondecl functionName="update" lineNumber="145"/>
+    <functiondecl functionName="update" lineNumber="164"/>
+    <functiondecl functionName="increment" lineNumber="183"/>
+    <functiondecl functionName="printStats" lineNumber="209"/>
+    <functiondecl functionName="printDictionary" lineNumber="213"/>
+    <functioncall functionName="DDDT_EMPTY"/>
+    <functioncall functionName="DDDT_FLOAT16"/>
+    <functioncall functionName="DDDT_FLOAT32"/>
+    <functioncall functionName="DDDT_INT16"/>
+    <functioncall functionName="DDDT_INT32"/>
+    <functioncall functionName="DDDT_PFLOAT16"/>
+    <functioncall functionName="DDDT_PFLOAT32"/>
+    <functioncall functionName="DDDT_PINT16"/>
+    <functioncall functionName="DDDT_PINT32"/>
+    <functioncall functionName="DDDT_PUINT132"/>
+    <functioncall functionName="DDDT_PUINT16"/>
+    <functioncall functionName="DDDT_UINT132"/>
+    <functioncall functionName="DDDT_UINT16"/>
+    <functioncall functionName="DDRT_EMPTY"/>
+    <functioncall functionName="DDRT_POINTER"/>
+    <functioncall functionName="DDRT_READ"/>
+    <functioncall functionName="DDRT_READWRITE"/>
+    <functioncall functionName="F"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="copyKey"/>
+    <functioncall functionName="create"/>
+    <functioncall functionName="float32_val"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="hash"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="index"/>
+    <functioncall functionName="int32_t"/>
+    <functioncall functionName="int32_val"/>
+    <functioncall functionName="key"/>
+    <functioncall functionName="next"/>
+    <functioncall functionName="owner"/>
+    <functioncall functionName="print"/>
+    <functioncall functionName="printf"/>
+    <functioncall functionName="println"/>
+    <functioncall functionName="strlen"/>
+    <functioncall functionName="strndup"/>
+    <functioncall functionName="val"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

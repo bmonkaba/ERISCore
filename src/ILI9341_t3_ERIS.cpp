@@ -98,7 +98,7 @@ void ILI9341_t3_ERIS::flipBuffer(){
 */
 void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type){
   bool toggle = false;
-  int16_t source_x,source_y, dest_x,dest_y,x,y;
+  int16_t source_x,source_y, dest_x,dest_y;
   uint32_t read_index,write_index;
   uint16_t *srcBuffer;
   uint16_t *dstBuffer;

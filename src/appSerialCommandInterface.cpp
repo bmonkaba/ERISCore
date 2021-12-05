@@ -53,7 +53,6 @@ char* token;
 const char newline = '\n';
 
 const char* gWelcomeMessage = 
-"M \n" 
 "M .▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄..▄▄▄▄▄▄▄▄▄▄▄.\n"
 "M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌\n"
 "M ▐░█▀▀▀▀▀▀▀▀▀.▐░█▀▀▀▀▀▀▀█░▌.▀▀▀▀█░█▀▀▀▀.▐░█▀▀▀▀▀▀▀▀▀.\n"
@@ -76,7 +75,8 @@ const char* gWelcomeMessage =
 "M ▐░▌..........▐░▌.......▐░▌▐░▌.....▐░▌..▐░▌..........\n"
 "M ▐░█▄▄▄▄▄▄▄▄▄.▐░█▄▄▄▄▄▄▄█░▌▐░▌......▐░▌.▐░█▄▄▄▄▄▄▄▄▄.\n"
 "M ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌.......▐░▌▐░░░░░░░░░░░▌\n"
-"M .▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀.\n";
+"M .▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀.\n"
+"M Connected to the Serial Command Interface           \n";
 
 
 int replacechar(char *str, char orig, char rep) {
@@ -114,7 +114,7 @@ bool AppSerialCommandInterface::throttle(){
     if(avail < 1000){
         uint16_t delta_avail;
         //serial tx buffer not available
-        delay(500);
+        delay(5);
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
@@ -123,7 +123,7 @@ bool AppSerialCommandInterface::throttle(){
             //Serial.println(F("M WRN throttling"));//use this for debug only!
         }
     }
-    if(avail < 3000) return false;
+    if(avail < 4500) return false;
     return true;
 }
 
@@ -154,7 +154,7 @@ void AppSerialCommandInterface::txOverflowHandler(){
     token = strtok(workingBuffer, &newline);
     first = true;
     while( token != NULL ) {                        
-        if (first & !txBufferOverflowFlag){
+        if (first && !txBufferOverflowFlag){
             Serial.print(F("\""));
         }else{
             if (full) Serial.print(F(",\""));
@@ -295,6 +295,7 @@ void AppSerialCommandInterface::updateRT(){
                 bool first;
                 if (total_read < 2){
                     //send the root directory
+                    Serial.flush();
                     empty();
                     println(F("DIR"));
                     print(F("LS . ["));
@@ -310,7 +311,7 @@ void AppSerialCommandInterface::updateRT(){
                     first = true;
                     token = strtok(workingBuffer, &newline);
                     while( token != NULL ) {
-                        if (first & !txBufferOverflowFlag) Serial.print(F("\""));
+                        if (first && !txBufferOverflowFlag) Serial.print(F("\""));
                         else Serial.print(F(",\""));
                         Serial.print(token);
                         Serial.print(F("\""));
@@ -322,6 +323,7 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.flush();
                 } else{
                     //send the requested path
+                    Serial.flush();
                     memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
                     replacechar(param,':',' '); //replace space token used to tx the path
                     empty();
@@ -346,7 +348,7 @@ void AppSerialCommandInterface::updateRT(){
                     first = true;
                     token = strtok(workingBuffer, &newline);
                     while( token != NULL ) {                        
-                        if (first & !txBufferOverflowFlag) Serial.print(F("\""));
+                        if (first && !txBufferOverflowFlag) Serial.print(F("\""));
                         else Serial.print(F(",\""));
                         Serial.print(token);
                         Serial.print(F("\""));
@@ -430,6 +432,7 @@ void AppSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 AppManager::getInstance()->printStats();
                 ad->printStats();
+                delay(5);
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
@@ -437,7 +440,7 @@ void AppSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;
-                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int32_t*)&val);
+                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int*)&val);
                 if (total_read < 3){
                     total_read = sscanf(receivedChars, "%s %s %f" , cmd, param,(float32_t*)&fval);
                     if (total_read < 3){
@@ -568,6 +571,7 @@ void AppSerialCommandInterface::updateRT(){
             sincePeriodicStats = 0;
             AppManager::getInstance()->printStats();
             ad->printStats();
+            delay(2);
         }
     }
     #endif

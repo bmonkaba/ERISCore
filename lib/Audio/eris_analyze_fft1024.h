@@ -255,7 +255,7 @@ public:
 			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
 			if (fftRR->peakValue > 0){
 				//fftRR->peakValue *= 1 + (((float)fftRR->peakBin/4096.0f) * ((float)fftRR->peakBin/4096.0f));
-				fftRR->peakValue = fftRR->peakValue/10.24;
+				fftRR->peakValue = fftRR->peakValue/40.96;
 			}
 			
 			//from the peak bin calc the freq
