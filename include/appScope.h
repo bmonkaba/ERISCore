@@ -33,7 +33,7 @@ class AppScope:public AppBaseClass {
         y_last_scope_ch2=h/2;
        
         scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
-        if (scale > 10000.0) scale = 10000.0;
+        if (scale > 10.0) scale = 10.0;
         am->data->update("OSCOPE_SCALE",scale);
         draw->fillRoundRect(x,y,w,h,3,CL(0,0,0));
         for (int16_t i=0;i<w;i++){

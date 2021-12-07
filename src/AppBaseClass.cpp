@@ -11,10 +11,10 @@
 #include "AppBaseClass.h"
 #include "AppManager.h"
 
-AudioDirector _ad;
+
 
 AppBaseClass::AppBaseClass(){
-  ad = &_ad;
+  //ad = &_ad;
   draw = 0;
   //Serial.println("AppBaseClass constructor called");
   has_focus=false;
@@ -102,5 +102,6 @@ void AppBaseClass::setRTPriority(uint16_t level){
     updateRT_priority = level;
     return;
 }
+
 
 

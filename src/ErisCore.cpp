@@ -1,8 +1,6 @@
-//char dummy[64000];
 //#pragma GCC optimize ("Ofast")
 #define BUILTIN_SDCARD 254
 #include <Arduino.h>
-
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
 #include <SdFat.h>
@@ -11,14 +9,17 @@
 #include "appTemplate.h"
 #include "appAudioToPolyphonic.h"
 #include "appReprogram.h"
-#include "appSerialCommandInterface.h"
+#include "svcSerialCommandInterface.h"
 #include "PCM1863.h"
 
-uint16_t inc;
+AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
-AppSerialCommandInterface appSCI;
+SvcSerialCommandInterface sci;
 AppReprogram appReprogram;
-//AppTemplate appTemplate;
+
+
+
+
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
@@ -36,8 +37,8 @@ void setup() {
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
-  while(!Serial); //DEBUG - wait for serial connection
-  delay(500);
+  //while(!Serial); //DEBUG - wait for serial connection
+  //delay(500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
   Serial.println(F("M Setup: Initalizing"));
@@ -45,13 +46,15 @@ void setup() {
   I2CReset();
   ExtADCConfig();
   ExtADCPrintStatus();
-  //I2CBusScan();
-  
+  //I2CBusScan();  
   Serial.println(F("M Setup: Loading Applications"));
   //app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
   //appReprogram = new AppReprogram();
   //appSCI = new AppSerialCommandInterface();
   //AppManager::getInstance()->getFocus(app->getId()); //focus is requested by obj id
+
+  //give the audio director a pointer to the sci class
+  _ad.setSCI(&sci);
   Serial.println(F("M Setup: Setting App Focus"));
   appPoly.getFocus();
   Serial.println(F("M Setup: Init Complete"));

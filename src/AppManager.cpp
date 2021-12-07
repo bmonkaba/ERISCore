@@ -18,13 +18,17 @@
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
 #include "globaldefs.h"
+#include "svcSerialCommandInterface.h"
 
+extern AudioDirector _ad;
+extern SvcSerialCommandInterface sci;
 
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
 uint16_t FASTRUN imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
 SvcDataDictionary FASTRUN _data;
+
 
 /**
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
@@ -412,28 +416,49 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
   }while(node !=NULL);
   return false;
 }
+
+
+/**
+ * @brief Get the App pointer By Name. Returns NULL if not found.
+ * 
+ * @param appName 
+ * @return AppBaseClass* 
+ */
+AppBaseClass* AppManager::getAppByName(const char *appName){
+  AppBaseClass *node = root;
+  do{
+    if (node->isName(appName)){
+      return node;
+    }
+    node=node->nextAppicationNode;//check next node
+  }while(node !=NULL);
+  return NULL;
+}
+
 /**
  * @brief prints out some stats in JSON format to the serial port
  * 
  */
 void AppManager::printStats (){
+  SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
+  sci->startLZ4Message();
   AppBaseClass *node = root;
   if (node == NULL) return;
-  Serial.print(F("STATS {\"APPS\":{"));
+  sci->print(F("STATS {\"APPS\":{"));
   do{
-    Serial.print(F("\""));
-    Serial.print(node->name);
-    Serial.print(F("\":{"));
-    //Serial.print("\tupdate_loop_time: ");Serial.print(node->update_loop_time);
-    Serial.print(F("\"update_loop_time_max\":"));Serial.print(node->update_loop_time_max);Serial.print(F(","));
-    //Serial.print("\tupdateRT_loop_time: ");Serial.print(node->updateRT_loop_time);
-    Serial.print(F("\"updateRT_loop_time_max\":"));Serial.print(node->updateRT_loop_time_max);Serial.print(F(","));
-    //Serial.print("\tcycle_time: ");Serial.print(node->cycle_time);
-    Serial.print(F("\"cycle_time_max\":"));Serial.print(node->cycle_time_max);Serial.print(F(","));
-    //Serial.print("\tupdate_call_period: ");Serial.print(node->update_call_period);
-    Serial.print(F("\"update_call_period_max\":"));Serial.print(node->update_call_period_max);Serial.print(F(","));
-    Serial.print(F("\"updateRT_call_period_max\":"));Serial.print(node->updateRT_call_period_max);
-    Serial.print(F("},"));
+    sci->print(F("\""));
+    sci->print(node->name);
+    sci->print(F("\":{"));
+    //sci->print("\tupdate_loop_time: ");sci->print(node->update_loop_time);
+    sci->print(F("\"update_loop_time_max\":"));sci->print(node->update_loop_time_max);sci->print(F(","));
+    //sci->print("\tupdateRT_loop_time: ");sci->print(node->updateRT_loop_time);
+    sci->print(F("\"updateRT_loop_time_max\":"));sci->print(node->updateRT_loop_time_max);sci->print(F(","));
+    //sci->print("\tcycle_time: ");sci->print(node->cycle_time);
+    sci->print(F("\"cycle_time_max\":"));sci->print(node->cycle_time_max);sci->print(F(","));
+    //sci->print("\tupdate_call_period: ");sci->print(node->update_call_period);
+    sci->print(F("\"update_call_period_max\":"));sci->print(node->update_call_period_max);sci->print(F(","));
+    sci->print(F("\"updateRT_call_period_max\":"));sci->print(node->updateRT_call_period_max);
+    sci->print(F("},"));
     //clear the stats
     node->update_loop_time_max = 0;
     node->updateRT_loop_time_max = 0;
@@ -443,19 +468,23 @@ void AppManager::printStats (){
     node=node->nextAppicationNode;//check next node
   }while(node !=NULL);
   if (root != 0){
-    Serial.print(F("\"root\":\""));Serial.print(root->name);Serial.print(F("\""));
+    sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
   }else{
-    Serial.print(F("\"root\":"));Serial.print(F("\"NULL\""));
+    sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
   }
-  Serial.println(F("}}"));
+  sci->println(F("}}"));
+  sci->endLZ4Message();
+
   //print app manager stats
-  Serial.print(F("STATS {\"APPMANAGER\":{"));
-  Serial.print(F("\"cycle_time\":"));Serial.print(cycle_time);Serial.print(F(","));
-  Serial.print(F("\"cycle_time_max\":"));Serial.print(cycle_time_max);Serial.print(F(","));
-  Serial.print(F("\"touch_state\":"));Serial.print(touch_state);Serial.print(F(","));
-  Serial.print(F("\"active_app_id\":"));Serial.print(activeID);Serial.print(F(","));
-  Serial.print(F("\"exclusive_app_render\":"));Serial.print(exclusive_app_render);
-  Serial.println(F("}}"));
+  sci->startLZ4Message();
+  sci->print(F("STATS {\"APPMANAGER\":{"));
+  sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
+  sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
+  sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
+  sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
+  sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
+  sci->println(F("}}"));
+  sci->endLZ4Message();
   //clear the app manager stats
   cycle_time_max = 0;
   return;
@@ -470,7 +499,9 @@ void AppManager::RegisterApp(AppBaseClass *app){
   app->id = nextIDAssignment++;
   app->draw = &draw;
   app->am = this;
+  app->ad = &_ad;
   app->sd = &sd;
+  app->sci = &sci;
   if (root == 0) {root = app; return;}
   else{
     AppBaseClass *endNode = root;
@@ -482,3 +513,4 @@ void AppManager::RegisterApp(AppBaseClass *app){
 };
 
 AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
+

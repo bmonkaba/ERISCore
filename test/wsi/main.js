@@ -644,6 +644,7 @@ $(document).ready(function () {
 
             case "FS":
                 s = res[1].split(",");
+                /*
                 packet_checksum = parseInt(s.slice(-1));
                 checksum = 0;
                 ar = [res[0], s.slice(0, -1).join()].join();
@@ -654,6 +655,7 @@ $(document).ready(function () {
                 if (checksum != packet_checksum) {
                     console.log("checksum error");
                 }
+                */
                 if (fileStreamContainer.length == 0) {
                     file_type = s.slice(0, 6).map(num => String.fromCharCode(parseInt(num, 16))).join("");
                     console.log(file_type);
@@ -671,12 +673,12 @@ $(document).ready(function () {
                         ctx = canvas.getContext("2d");
                         ctx.canvas.width = parseInt(width, 10);
                         ctx.canvas.height = parseInt(height, 10);
-                        fileStreamContainer = fileStreamContainer.concat(s.slice(end, -1));
+                        fileStreamContainer = fileStreamContainer.concat(s.slice(end+2));
                         //console.log(s.slice(end+1,-1));
                     } else console.log(s);
 
                 } else {
-                    fileStreamContainer = fileStreamContainer.concat(s.slice(0, -1));
+                    fileStreamContainer = fileStreamContainer.concat(s);
                 }
                 break;
 

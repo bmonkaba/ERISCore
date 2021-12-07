@@ -616,7 +616,7 @@ table.dataTable td {
 
 .container {
     display: grid;
-    grid-template-columns: 200px 334px 265px 690px 300px;
+    grid-template-columns: 200px 336px 265px 690px 290px;
     grid-template-rows: 42px 310px 75%;
     gap: 10px 10px 5px 10px 5px;
     grid-auto-flow: row;
@@ -687,7 +687,7 @@ table.dataTable td {
 
 .imgview {
     grid-area: imgview;
-    width: 320px;
+    width: 322px;
     height: 309px;
     border: 1px solid #0e0e0e;
     border-radius: 7px;
@@ -749,6 +749,7 @@ table.dataTable td {
     text_align: left;
     overflow: hidden;
     font-family: 'Cutive Mono', monospace;
+    font-size: 0.7em;
 }
 
 .explorer {

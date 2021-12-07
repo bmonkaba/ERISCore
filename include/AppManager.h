@@ -57,6 +57,7 @@ class AppManager {
 
   public:
     SdFs sd;
+    AudioDirector* ad;
     SvcDataDictionary* data;//data dictionary service;
     Surface*  fastImgCacheSurfaceP; //FAST MEM img cashe
     Surface*  displaySurfaceP; //FAST MEM img cashe
@@ -73,12 +74,13 @@ class AppManager {
     bool chdir(const char* path){return sd.chdir(path);};
     bool ls(){return sd.ls();};
     AppBaseClass* getApp(uint16_t id);
+    AppBaseClass* getActiveApp();
+    AppBaseClass* getAppByName(const char *appName);
     bool requestPopUp(uint16_t id,bool exclusive=false);
     bool releasePopUp();
     bool getFocus(uint16_t id);
     bool returnFocus();
     uint16_t peekAppFocus();//used by apps to find out which has focus
-    AppBaseClass* getActiveApp();
     bool sendMessage(AppBaseClass *sender, const char *to_app, const char *message);
     void printStats();
     void RegisterApp(AppBaseClass *app);

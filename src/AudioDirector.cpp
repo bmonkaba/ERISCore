@@ -13,6 +13,7 @@
 const char* nullStr = "NULL";
 
 AudioDirector::AudioDirector(){
+  sci = NULL;
   objCount=0;
   activeConnections = 0;
   categoryCount=0;
@@ -38,7 +39,6 @@ AudioDirector::AudioDirector(){
   //addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
   addAudioStreamObj(new erisAudioEffectFreeverb);
   addAudioStreamObj(new erisAudioSynthNoisePink);
-
 
   //generate audio component pool
   for (int i=0; i < 17; i++){
@@ -119,71 +119,75 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
 void AudioDirector::printStats(){
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
-  Serial.print(F("STATS {\"AudioDirector\":{"));
-  
-  //send audio object pool info
-  Serial.print(F("\"AudioStreamObjPool\":{"));  
-  for(uint16_t i=0; i < objCount;i++){
-    //Serial.flush();
-    Serial.print(F("\""));
-    Serial.print(pAudioStreamObjPool[i]->shortName);Serial.print(F("_"));
-    Serial.print(pAudioStreamObjPool[i]->instance);
-    Serial.print(F("\":{\"processorUsage\":"));
-    Serial.print(pAudioStreamObjPool[i]->processorUsage());
-    Serial.print(F(",\"processorUsageMax\":"));
-    Serial.print(pAudioStreamObjPool[i]->processorUsageMax());
-    Serial.print(F(",\"category\":\""));
-    Serial.print(pAudioStreamObjPool[i]->category);Serial.print(F("\""));
-    Serial.print(F(",\"inputs\":"));
-    Serial.print(pAudioStreamObjPool[i]->unum_inputs);
-    Serial.print(F(",\"outputs\":"));
-    Serial.print(pAudioStreamObjPool[i]->unum_outputs);
-    Serial.print("}"); //close obj
-    if ( i < (objCount -1)) Serial.print(",");
-  }
-  Serial.print("},");
-  //Serial.flush();//end of obj pool dict
-  //send connection pool info
-  Serial.print(F("\"AudioConnectionPool\":{"));
-  Serial.print(F("\"activeConnections\":"));
-  Serial.print(activeConnections);
 
+  if (sci==NULL) return;
+
+  sci->startLZ4Message();
+  sci->print(F("STATS {\"AudioDirector\":{"));  
+  //send audio object pool info
+  sci->print(F("\"AudioStreamObjPool\":{"));
+  for(uint16_t i=0; i < objCount;i++){
+    sci->print(F("\""));
+    sci->print(pAudioStreamObjPool[i]->shortName);sci->print(F("_"));
+    sci->print(pAudioStreamObjPool[i]->instance);
+    sci->print(F("\":{\"processorUsage\":"));
+    sci->print(pAudioStreamObjPool[i]->processorUsage());
+    sci->print(F(",\"processorUsageMax\":"));
+    sci->print(pAudioStreamObjPool[i]->processorUsageMax());
+    sci->print(F(",\"category\":\""));
+    sci->print(pAudioStreamObjPool[i]->category);sci->print(F("\""));
+    sci->print(F(",\"inputs\":"));
+    sci->print(pAudioStreamObjPool[i]->unum_inputs);
+    sci->print(F(",\"outputs\":"));
+    sci->print(pAudioStreamObjPool[i]->unum_outputs);
+    sci->print("}"); //close obj
+    if ( i < (objCount -1)) sci->print(",");
+  }
+  sci->print("},");
+  sci->endLZ4Message();
+  //send connection pool info
+  sci->startLZ4Message();
+  sci->print(F("\"AudioConnectionPool\":{"));
+  sci->print(F("\"activeConnections\":"));
+  sci->print(activeConnections);
   //for each...
   for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
-    Serial.print(F(",\""));
-    Serial.print(i); //connection index used as a container
-    Serial.print(F("\":{"));
+    sci->print(F(",\""));
+    sci->print(i); //connection index used as a container
+    sci->print(F("\":{"));
 
-    Serial.print(F("\"isConnected\":"));
-    Serial.print(pCord[i]->isConnected);
+    sci->print(F("\"isConnected\":"));
+    sci->print(pCord[i]->isConnected);
     if (pCord[i]->isConnected == true){
         //assigned connections
-        Serial.print(F(",\"sourceName\":\""));
-        Serial.print(pCord[i]->pSrc->shortName);
-        Serial.print(F("\",\"sourceInstance\":"));
-        Serial.print(pCord[i]->pSrc->instance);
-        Serial.print(F(",\"sourcePort\":"));
-        Serial.print(pCord[i]->src_index);
+        sci->print(F(",\"sourceName\":\""));
+        sci->print(pCord[i]->pSrc->shortName);
+        sci->print(F("\",\"sourceInstance\":"));
+        sci->print(pCord[i]->pSrc->instance);
+        sci->print(F(",\"sourcePort\":"));
+        sci->print(pCord[i]->src_index);
 
-        Serial.print(F(",\"destName\":\""));
-        Serial.print(pCord[i]->pDst->shortName);
-        Serial.print(F("\",\"destInstance\":"));
-        Serial.print(pCord[i]->pDst->instance);
-        Serial.print(F(",\"destPort\":"));
-        Serial.print(pCord[i]->dest_index);
+        sci->print(F(",\"destName\":\""));
+        sci->print(pCord[i]->pDst->shortName);
+        sci->print(F("\",\"destInstance\":"));
+        sci->print(pCord[i]->pDst->instance);
+        sci->print(F(",\"destPort\":"));
+        sci->print(pCord[i]->dest_index);
     }else{
         //unassigned connections
     }
-    Serial.print(F("}")); //close the connection container 
-    //Serial.flush();    
+    sci->print(F("}")); //close the connection container
   }
-  Serial.print(F("}")); // close the coonection pool container
+  sci->print(F("}")); // close the coonection pool container
+  sci->endLZ4Message();
   //throw in some audio director stats
-  Serial.print(F(",\"AudioStreamObjCount\":")); Serial.print(objCount);
-  Serial.print(F(",\"memory\":"));
-  Serial.print(e-s);
-  Serial.println(F("}}"));
-  //Serial.flush();
+  sci->startLZ4Message();
+  sci->print(F(",\"AudioStreamObjCount\":")); sci->print(objCount);
+  sci->print(F(",\"memory\":"));
+  sci->print(e-s);
+  sci->println(F("}}"));
+  sci->endLZ4Message();
+  //sci->flush();
 }
 
 void AudioDirector::generateCategoryList(){

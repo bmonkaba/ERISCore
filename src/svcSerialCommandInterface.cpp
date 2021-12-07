@@ -1,5 +1,5 @@
 /**
- * @file appSerialCommandInterface.h
+ * @file svcSerialCommandInterface.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
  * @brief 
  * @version 0.1
@@ -8,9 +8,12 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include <ctype.h>
-#include "appSerialCommandInterface.h"
+#include "svcSerialCommandInterface.h"
 #include "AppManager.h"
+#include "lz4.h"
+#include <base64.hpp>
 // AppSerialCommandInterface
 //
 /*
@@ -89,7 +92,7 @@ int replacechar(char *str, char orig, char rep) {
     return n;
 }
 
-uint16_t AppSerialCommandInterface::checksum(const char *msg){
+uint16_t SvcSerialCommandInterface::checksum(const char *msg){
     uint16_t csum;
     csum=0;
     for(uint16_t i = 0;i<strlen(msg);i++){
@@ -107,7 +110,44 @@ void replaceAll(char * str, char oldChar, char newChar)
     }
 }
 
-bool AppSerialCommandInterface::throttle(){
+void SvcSerialCommandInterface::endLZ4Message(){
+    uint16_t compressed_len,uncompressed_len;
+    
+    while(!throttle()){
+        delay(10);
+    };
+
+    //compress and transport the message
+    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+    uncompressed_len = indexTxBuffer;
+    compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+
+    /*
+    Serial.print("M working buffer address : ");
+    Serial.println((uint32_t)workingBuffer);
+
+    Serial.print("M compressed length : ");
+    Serial.println(compressed_len);
+
+    Serial.print("M uncompressed msg : ");
+    Serial.println(txBuffer);
+    */
+
+    empty();
+    encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+    Serial.print(" ");
+    Serial.print(uncompressed_len);
+    Serial.print(" ");
+    Serial.println(txBuffer);
+    
+
+    empty();
+    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+    free(workingBuffer);
+}
+
+bool SvcSerialCommandInterface::throttle(){
     uint16_t avail;
     avail = Serial.availableForWrite();
 
@@ -127,17 +167,17 @@ bool AppSerialCommandInterface::throttle(){
     return true;
 }
 
-void AppSerialCommandInterface::txOverflowHandler(){
+void SvcSerialCommandInterface::txOverflowHandler(){
     char* s;
     bool first;
     bool full;
-
+    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
     //delay(200);
     s = strrchr(txBuffer,'\n');//find last new line
     indexTxBuffer = (s-txBuffer);//len
     if (indexTxBuffer < SERIAL_OUTPUT_BUFFER_SIZE-1){ 
         full = false;
-        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
         memcpy(workingBuffer,txBuffer,indexTxBuffer);
         s += 1;
         //indexTxBuffer+=1;
@@ -147,7 +187,7 @@ void AppSerialCommandInterface::txOverflowHandler(){
         indexTxBuffer = strlen(txBuffer);
     } else{
         full = true;
-        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
         memcpy(workingBuffer,txBuffer,SERIAL_OUTPUT_BUFFER_SIZE);
         empty();
     }
@@ -166,12 +206,14 @@ void AppSerialCommandInterface::txOverflowHandler(){
         first = false;
     }
     //Serial.print(",\"dummy_value\"");
+    free(workingBuffer);
 }
 
-void AppSerialCommandInterface::streamHandler(){
+void SvcSerialCommandInterface::streamHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
+    uint16_t compressed_len,uncompressed_len;
     if(!throttle()) return;
     if (streamPos == 0){
         Serial.println(F("FS_START"));
@@ -180,8 +222,11 @@ void AppSerialCommandInterface::streamHandler(){
     pSD->chdir(streamPath);
     if (pSD->exists(streamFile)){
         payload_len = 0;
-
-        strcpy(txBuffer,"FS ");
+        Serial.print(F("LZ4 "));
+        //Serial.print("FS ");
+        empty();
+        print("FS ");
+        //strcpy(txBuffer,"FS ");
 
         if(!file.open(streamFile, O_READ)){ 
             Serial.println(F("M GET_ERR FILE OPEN ERROR"));
@@ -206,11 +251,11 @@ void AppSerialCommandInterface::streamHandler(){
                     return;
                 }
                 sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
-                strcat(txBuffer,hexBuffer);
-                //strcat(txBuffer,",");
+                //strcat(txBuffer,hexBuffer);
+                print(hexBuffer);
             }
             
-            txBuffer[strlen(txBuffer)-1] = '\0'; //remove last comma
+            txBuffer[--indexTxBuffer] = '\0'; //remove last comma
             streamPos = file.position();
             delay(20);
         }
@@ -218,36 +263,75 @@ void AppSerialCommandInterface::streamHandler(){
 
         if (payload_len == 0){
             //no data to tx; @ eof
-            Serial.print(",");
-            Serial.println(checksum(txBuffer));
+            //Serial.print(",");
+            //Serial.println(checksum(txBuffer));
+            //println(F("0"));
+            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+            println();
+            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+            uncompressed_len = indexTxBuffer;
+            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+            empty();
+            encode_base64((unsigned char *)workingBuffer, strlen(workingBuffer), (unsigned char *)txBuffer);
+            Serial.print(" ");
+            Serial.print(uncompressed_len-2);
+            Serial.print(" ");
+            Serial.println(txBuffer);
             Serial.println(F("FS_END"));
-            delay(200);
+            empty();
+            delay(100);
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
+            free(workingBuffer);
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
             //last chunk
             //Serial.flush();
             delayMicroseconds(2000);
-            Serial.print(txBuffer);
-            Serial.print(",");
-            Serial.println(checksum(txBuffer));
+            //Serial.print(txBuffer);
+            println();
+            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+            uncompressed_len = indexTxBuffer;
+            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+            empty();
+            encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+            Serial.print(uncompressed_len);
+            Serial.print(" ");
+            Serial.println(txBuffer);
+            empty();
+            //Serial.print(",");
+            //Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
+            empty();
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
-            delayMicroseconds(18000);
+            delayMicroseconds(50000);
             periodicMessagesEnabled = true;
+            free(workingBuffer);
             return;
         } else{
             //send file chunk
-            Serial.print(txBuffer);
-            Serial.print(",");
-            Serial.println(checksum(txBuffer));
-            Serial.flush();
-            delayMicroseconds(4000);
+            //Serial.print(txBuffer);
+            println();
+            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+            uncompressed_len = indexTxBuffer;
+            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+            empty();
+            encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+            Serial.print(uncompressed_len);
+            Serial.print(" ");
+            Serial.println(txBuffer);
+            empty();
+            free(workingBuffer);
+            //Serial.print(",");
+            //Serial.println(checksum(txBuffer));
+            //Serial.flush();
+            //delayMicroseconds(4000);
             return;
         }             
     } 
@@ -261,7 +345,7 @@ void AppSerialCommandInterface::streamHandler(){
 };
 
 
-void AppSerialCommandInterface::updateRT(){
+void SvcSerialCommandInterface::updateRT(){
     //throttle 
     throttle();
 
@@ -299,13 +383,14 @@ void AppSerialCommandInterface::updateRT(){
                     empty();
                     println(F("DIR"));
                     print(F("LS . ["));
+                    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
                     strcpy(workingBuffer,txBuffer);
                     empty();
                     Serial.print(workingBuffer);
                     sd->chdir();
                     txBufferOverflowFlag = false;
                     sd->ls(this);
-                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     strcpy(workingBuffer,txBuffer);
                     empty();
                     first = true;
@@ -321,10 +406,12 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
                     Serial.flush();
+                    free(workingBuffer);
                 } else{
                     //send the requested path
                     Serial.flush();
-                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+                    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     replacechar(param,':',' '); //replace space token used to tx the path
                     empty();
                     print(F("M "));
@@ -359,6 +446,7 @@ void AppSerialCommandInterface::updateRT(){
                     Serial.println(F("DIR_EOF"));
                     Serial.flush();
                     empty();
+                    free(workingBuffer);
                 }
             } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
@@ -425,18 +513,18 @@ void AppSerialCommandInterface::updateRT(){
                     }
                 }
             } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
-                if (total_read > 1) AppManager::getInstance()->getActiveApp()->MessageHandler(this,param);
+                if (total_read > 1) am->getActiveApp()->MessageHandler(this,param);
                 //Serial.print(F("AA OK "));
                 //Serial.println(AppManager::getInstance()->getActiveApp()->name);
                 //Serial.flush();
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
-                AppManager::getInstance()->printStats();
+                am->printStats();
                 ad->printStats();
                 delay(5);
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
-                AppManager::getInstance()->sendMessage(this,"AppCQT","CQT_INFO");
+                am->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
-                AppManager::getInstance()->data->printDictionary();
+                am->data->printDictionary();
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;

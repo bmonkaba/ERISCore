@@ -1,5 +1,5 @@
 /**
- * @file appSerialCommandInterface.h
+ * @file svcSerialCommandInterface.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
  * @brief 
  * @version 0.1
@@ -16,6 +16,7 @@
 #include "AppManager.h"
 #include "AppBaseClass.h"
 #include <SdFat.h>
+#include <Print.h>
 //#include <SdFat.h>
 // AppSerialCommandInterface
 //
@@ -50,9 +51,9 @@ OUTPUT MESSAGES:
 */
 //
 
-class AppSerialCommandInterface:public AppBaseClass, Print {
+class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:
-    AppSerialCommandInterface():AppBaseClass(){
+    SvcSerialCommandInterface():AppBaseClass(){
         sincePoll = 0;
         sincePeriodicDataDict = 0;
         sincePeriodicStats = 0;
@@ -68,9 +69,19 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
         strcpy(name,"SCI");
         memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
         memset(receivedChars,0,SERIAL_RX_BUFFER_SIZE);
-        memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE + 1);
     }; 
-    //define event handlers
+    
+    void empty(){
+      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      indexTxBuffer = 0;
+    }
+
+    void startLZ4Message(){
+      empty();
+      Serial.print("LZ4");
+    }
+
+    void endLZ4Message();
   protected:
     SdFs *pSD;
     FsFile file;
@@ -80,7 +91,7 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];
     char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
-    char workingBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
+    char *workingBuffer;
     uint64_t streamPos;
     bool isStreamingFile;
     bool periodicMessagesEnabled;
@@ -101,7 +112,7 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
         //set the flag after the handler 
         //this allows the handler to detect multiple overflows
         //which is expected when streaming data larger than
-        //2x transmit buffer size
+        //the transmit buffer size
         txBufferOverflowFlag = true;
       }
       return 1;
@@ -114,10 +125,6 @@ class AppSerialCommandInterface:public AppBaseClass, Print {
       memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
       indexTxBuffer = 0;
     };
-    void empty(){
-      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
-      indexTxBuffer = 0;
-    }
 };
 
 #endif
