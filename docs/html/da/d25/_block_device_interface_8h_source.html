@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: ERISCore/lib/SdFat-master/src/common/BlockDeviceInterface.h Source File</title>
+<title>ERIS CORE: BlockDeviceInterface.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -96,9 +96,9 @@ $(document).ready(function(){initNavTree('da/d25/_block_device_interface_8h_sour
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#a58238de0c072b426bf9e5dab3a9c7ede">   40</a></span>&#160;  <span class="keyword">virtual</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#a58238de0c072b426bf9e5dab3a9c7ede">~BlockDeviceInterface</a>() {}</div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#a92bb3c3e701f7a80114d0bf3dace2789">   46</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#a92bb3c3e701f7a80114d0bf3dace2789">isBusy</a>() = 0;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#a537ffdf8645666ee60d9bee0d7e3d17e">   54</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#a537ffdf8645666ee60d9bee0d7e3d17e">readSector</a>(uint32_t sector, uint8_t* dst) = 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#a537ffdf8645666ee60d9bee0d7e3d17e">   54</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#a537ffdf8645666ee60d9bee0d7e3d17e">readSector</a>(uint32_t sector, uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>) = 0;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#aeee2944296d4aaabd00ee7be90596c5c">   64</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#aeee2944296d4aaabd00ee7be90596c5c">readSectors</a>(uint32_t sector, uint8_t* dst, <span class="keywordtype">size_t</span> ns) = 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#aeee2944296d4aaabd00ee7be90596c5c">   64</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d5/d82/class_block_device_interface.html#aeee2944296d4aaabd00ee7be90596c5c">readSectors</a>(uint32_t sector, uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, <span class="keywordtype">size_t</span> ns) = 0;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d5/d82/class_block_device_interface.html#a1531ba16d499510ae60be288112faae1">   67</a></span>&#160;  <span class="keyword">virtual</span> uint32_t <a class="code" href="../../d5/d82/class_block_device_interface.html#a1531ba16d499510ae60be288112faae1">sectorCount</a>() = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
@@ -119,6 +119,7 @@ $(document).ready(function(){initNavTree('da/d25/_block_device_interface_8h_sour
 <div class="ttc" id="aclass_block_device_interface_html_a8a4be0a85c3771c705617fad98303e49"><div class="ttname"><a href="../../d5/d82/class_block_device_interface.html#a8a4be0a85c3771c705617fad98303e49">BlockDeviceInterface::writeSector</a></div><div class="ttdeci">virtual bool writeSector(uint32_t sector, const uint8_t *src)=0</div></div>
 <div class="ttc" id="aclass_block_device_interface_html_a92bb3c3e701f7a80114d0bf3dace2789"><div class="ttname"><a href="../../d5/d82/class_block_device_interface.html#a92bb3c3e701f7a80114d0bf3dace2789">BlockDeviceInterface::isBusy</a></div><div class="ttdeci">virtual bool isBusy()=0</div></div>
 <div class="ttc" id="aclass_block_device_interface_html_aeee2944296d4aaabd00ee7be90596c5c"><div class="ttname"><a href="../../d5/d82/class_block_device_interface.html#aeee2944296d4aaabd00ee7be90596c5c">BlockDeviceInterface::readSectors</a></div><div class="ttdeci">virtual bool readSectors(uint32_t sector, uint8_t *dst, size_t ns)=0</div></div>
+<div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

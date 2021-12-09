@@ -27,7 +27,7 @@ Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
 uint16_t FASTRUN imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
-SvcDataDictionary FASTRUN _data;
+SvcDataDictionary FASTRUN _data; 
 
 
 /**

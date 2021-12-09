@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: ERISCore/lib/SdFat-master/src/SdCard/SdioTeensy.cpp Source File</title>
+<title>ERIS CORE: SdioTeensy.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -874,9 +874,9 @@ $(document).ready(function(){initNavTree('d0/d3c/_sdio_teensy_8cpp_source.html',
 <div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;}</div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a9dc1cd99d0136e514faaecf56a6318d2">SdioCard::readData</a>(uint8_t* dst) {</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a9dc1cd99d0136e514faaecf56a6318d2">SdioCard::readData</a>(uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>) {</div>
 <div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;  DBG_IRQSTAT();</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;  uint32_t* p32 = <span class="keyword">reinterpret_cast&lt;</span>uint32_t*<span class="keyword">&gt;</span>(dst);</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;  uint32_t* p32 = <span class="keyword">reinterpret_cast&lt;</span>uint32_t*<span class="keyword">&gt;</span>(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>);</div>
 <div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  <span class="keywordflow">if</span> (!(SDHC_PRSSTAT &amp; SDHC_PRSSTAT_RTA)) {</div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    SDHC_PROCTL &amp;= ~SDHC_PROCTL_SABGREQ;</div>
@@ -909,17 +909,17 @@ $(document).ready(function(){initNavTree('d0/d3c/_sdio_teensy_8cpp_source.html',
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;}</div>
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">SdioCard::readSector</a>(uint32_t sector, uint8_t* dst) {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">SdioCard::readSector</a>(uint32_t sector, uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>) {</div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d4/d82/class_sdio_card.html#aa2d642df5c63212474278523f159e5de">m_sdioConfig</a>.<a class="code" href="../../de/daf/class_sdio_config.html#a07ddb8b18bf24fa61fdd289a112e79a8">useDma</a>()) {</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    uint8_t aligned[512];</div>
 <div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    uint8_t* ptr = (uint32_t)dst &amp; 3 ? aligned : dst;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    uint8_t* ptr = (uint32_t)<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> &amp; 3 ? aligned : <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>;</div>
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160; </div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    <span class="keywordflow">if</span> (!rdWrSectors(CMD17_DMA_XFERTYP, sector, ptr, 1)) {</div>
 <div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;      <span class="keywordflow">return</span> sdError(SD_CARD_ERROR_CMD17);</div>
 <div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    }</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">if</span> (ptr != dst) {</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;      memcpy(dst, aligned, 512);</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">if</span> (ptr != <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>) {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;      memcpy(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, aligned, 512);</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    }</div>
 <div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="keywordflow">if</span> (!waitTransferComplete()) {</div>
@@ -935,7 +935,7 @@ $(document).ready(function(){initNavTree('d0/d3c/_sdio_teensy_8cpp_source.html',
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;      <a class="code" href="../../d4/d82/class_sdio_card.html#a2c548541cd917620b48d3927afad5f06">m_curSector</a> = sector;</div>
 <div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;      <a class="code" href="../../d4/d82/class_sdio_card.html#a09d8aeff6bf198b1edfc1e59ef81b816">m_curState</a> = <a class="code" href="../../d4/d82/class_sdio_card.html#a1f15024d10377857b9b83e42465a1c27">READ_STATE</a>;</div>
 <div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    }</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a9dc1cd99d0136e514faaecf56a6318d2">readData</a>(dst)) {</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a9dc1cd99d0136e514faaecf56a6318d2">readData</a>(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>)) {</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    }</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;<span class="preprocessor">#if defined(__MK64FX512__) || defined(__MK66FX1M0__)</span></div>
@@ -950,22 +950,22 @@ $(document).ready(function(){initNavTree('d0/d3c/_sdio_teensy_8cpp_source.html',
 <div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;}</div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a1ed4229446a5a2fe815d460b027243b9">SdioCard::readSectors</a>(uint32_t sector, uint8_t* dst, <span class="keywordtype">size_t</span> n) {</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d4/d82/class_sdio_card.html#a1ed4229446a5a2fe815d460b027243b9">SdioCard::readSectors</a>(uint32_t sector, uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, <span class="keywordtype">size_t</span> n) {</div>
 <div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d4/d82/class_sdio_card.html#aa2d642df5c63212474278523f159e5de">m_sdioConfig</a>.<a class="code" href="../../de/daf/class_sdio_config.html#a07ddb8b18bf24fa61fdd289a112e79a8">useDma</a>()) {</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    <span class="keywordflow">if</span> ((uint32_t)dst &amp; 3) {</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++, sector++, dst += 512) {</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">readSector</a>(sector, dst)) {</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    <span class="keywordflow">if</span> ((uint32_t)<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> &amp; 3) {</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++, sector++, <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> += 512) {</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">readSector</a>(sector, <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>)) {</div>
 <div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">false</span>;  <span class="comment">// readSector will set errorCode.</span></div>
 <div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        }</div>
 <div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;      }</div>
 <div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    }</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    <span class="keywordflow">if</span> (!rdWrSectors(CMD18_DMA_XFERTYP, sector, dst, n)) {</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    <span class="keywordflow">if</span> (!rdWrSectors(CMD18_DMA_XFERTYP, sector, <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, n)) {</div>
 <div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;      <span class="keywordflow">return</span> sdError(SD_CARD_ERROR_CMD18);</div>
 <div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    }</div>
 <div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) {</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">readSector</a>(sector + i, dst + i*512UL)) {</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="../../d4/d82/class_sdio_card.html#a77ae4fbe24bb04b74af5d388d4139dde">readSector</a>(sector + i, <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> + i*512UL)) {</div>
 <div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;      }</div>
 <div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;    }</div>
@@ -1223,6 +1223,7 @@ $(document).ready(function(){initNavTree('d0/d3c/_sdio_teensy_8cpp_source.html',
 <div class="ttc" id="aclass_sdio_config_html"><div class="ttname"><a href="../../de/daf/class_sdio_config.html">SdioConfig</a></div><div class="ttdoc">SDIO card configuration.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3e/_sdio_card_8h_source.html#l00036">SdioCard.h:36</a></div></div>
 <div class="ttc" id="aclass_sdio_config_html_a07ddb8b18bf24fa61fdd289a112e79a8"><div class="ttname"><a href="../../de/daf/class_sdio_config.html#a07ddb8b18bf24fa61fdd289a112e79a8">SdioConfig::useDma</a></div><div class="ttdeci">bool useDma()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3e/_sdio_card_8h_source.html#l00047">SdioCard.h:47</a></div></div>
 <div class="ttc" id="aclass_sys_call_html_a2219ba5ea8e411b022a3a00df5f380e0"><div class="ttname"><a href="../../df/dba/class_sys_call.html#a2219ba5ea8e411b022a3a00df5f380e0">SysCall::yield</a></div><div class="ttdeci">static void yield()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da3/_sys_call_8h_source.html#l00094">SysCall.h:94</a></div></div>
+<div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 <div class="ttc" id="aunioncsd__t_html"><div class="ttname"><a href="../../d8/d49/unioncsd__t.html">csd_t</a></div><div class="ttdoc">Union of old and new style CSD register.</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db6/_sd_card_info_8h_source.html#l00450">SdCardInfo.h:450</a></div></div>
 <div class="ttc" id="aunioncsd__t_html_acb1d09f122f32629d8d6faa9edcc943b"><div class="ttname"><a href="../../d8/d49/unioncsd__t.html#acb1d09f122f32629d8d6faa9edcc943b">csd_t::v1</a></div><div class="ttdeci">csd1_t v1</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db6/_sd_card_info_8h_source.html#l00451">SdCardInfo.h:451</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

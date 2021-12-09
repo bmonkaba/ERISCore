@@ -55,6 +55,7 @@ var class_control_button =
     [ "origin_y", "df/d17/class_control_button.html#ab2dadde94f4c2b9ade4be05b43a251ed", null ],
     [ "parentNode", "df/d17/class_control_button.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "df/d17/class_control_button.html#a31587f3166dcf6ea0302337c3323822c", null ],
+    [ "sci", "df/d17/class_control_button.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "sd", "df/d17/class_control_button.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "show_active", "df/d17/class_control_button.html#a4d6442baec567b87cb44adcc7bce0eb8", null ],
     [ "text", "df/d17/class_control_button.html#aeec9825d71fcb7e8fb0254babc9dd41a", null ],

@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <string.h>
 #include <arm_math.h>
+#include "svcSerialCommandInterface.h"
+
 /**
  * @file svcDataDictionary.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
@@ -121,7 +123,7 @@ class SvcDataDictionary{
         bool increment(const char* key);
         //serial interface
         void printStats();
-        void printDictionary();
+        void printDictionary(SvcSerialCommandInterface* sci);
 };
 
 #endif

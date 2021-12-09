@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: ERISCore/lib/SdFat-master/src/iostream/StdioStream.cpp Source File</title>
+<title>ERIS CORE: StdioStream.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -222,22 +222,22 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="../../d2/de6/class_stdio_stream.html#a2d363b02abcef82b25ff025d50375bce">  159</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="../../d2/de6/class_stdio_stream.html#a2d363b02abcef82b25ff025d50375bce">StdioStream::fread</a>(<span class="keywordtype">void</span>* ptr, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a>) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  uint8_t* dst = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(ptr);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> = <span class="keyword">reinterpret_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(ptr);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">size_t</span> total = size*<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordflow">if</span> (total == 0) {</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">size_t</span> need = total;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">while</span> (need &gt; <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    memcpy(dst, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    dst += <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    memcpy(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> += <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> += <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    need -= <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a>;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d2/de6/class_stdio_stream.html#acdb0e26a73dae3dda8d07ed2a84fcdda">fillBuf</a>()) {</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="keywordflow">return</span> (total - need)/size;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  memcpy(dst, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, need);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  memcpy(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a>, need);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="../../d2/de6/class_stdio_stream.html#a16a9cb3cbad7f8ad8e49ce490262db97">m_r</a> -= need;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <a class="code" href="../../d2/de6/class_stdio_stream.html#ac6c389eebc07a4d03031cbace51829c5">m_p</a> += need;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a>;</div>
@@ -568,8 +568,9 @@ $(document).ready(function(){initNavTree('d5/d98/_stdio_stream_8cpp_source.html'
 <div class="ttc" id="aclass_stdio_stream_html_ae8aca0d1524f214fc22986057a32c146"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#ae8aca0d1524f214fc22986057a32c146">StdioStream::fillGet</a></div><div class="ttdeci">int fillGet()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/_stdio_stream_8cpp_source.html#l00370">StdioStream.cpp:370</a></div></div>
 <div class="ttc" id="aclass_stdio_stream_html_af80daa542afa09e19ea719d133e0c4a1"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#af80daa542afa09e19ea719d133e0c4a1">StdioStream::m_w</a></div><div class="ttdeci">uint8_t m_w</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00660">StdioStream.h:660</a></div></div>
 <div class="ttc" id="aclass_stdio_stream_html_afe6cfc02af02fe9ac86543747a652686"><div class="ttname"><a href="../../d2/de6/class_stdio_stream.html#afe6cfc02af02fe9ac86543747a652686">StdioStream::S_EOF</a></div><div class="ttdeci">static const uint8_t S_EOF</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00653">StdioStream.h:653</a></div></div>
-<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00051">globaldefs.h:51</a></div></div>
-<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00052">globaldefs.h:52</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_ac2254e411e388869ad4f7490e7aa3ede"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede">s</a></div><div class="ttdeci">const char PROGMEM s[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00056">globaldefs.h:56</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00057">globaldefs.h:57</a></div></div>
+<div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

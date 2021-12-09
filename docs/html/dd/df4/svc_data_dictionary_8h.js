@@ -4,6 +4,7 @@ var svc_data_dictionary_8h =
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", "dc/d43/class_svc_data_dictionary" ],
     [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", "d7/dd5/structsvc_data_dictionary_record" ],
     [ "value_container", "da/d2d/unionvalue__container.html", "da/d2d/unionvalue__container" ],
+    [ "_svcDataDictionary_", "dd/df4/svc_data_dictionary_8h.html#aef6760199b269afe762d99086b84520e", null ],
     [ "DATADICT_KEYVALUE_PAIRS", "dd/df4/svc_data_dictionary_8h.html#abe1182317d2c82fffde2a410976d3bbf", null ],
     [ "DATADICT_MAX_KEY_LEN", "dd/df4/svc_data_dictionary_8h.html#ab0d4b44bdc0c12c14053e27157a5bafb", null ],
     [ "DATADICT_USE_MALLOC", "dd/df4/svc_data_dictionary_8h.html#a2c44099526ee0462b9d7a32c420f43ce", null ],

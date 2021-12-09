@@ -749,7 +749,7 @@ table.dataTable td {
     text_align: left;
     overflow: hidden;
     font-family: 'Cutive Mono', monospace;
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 
 .explorer {
@@ -1145,6 +1145,15 @@ select {
     position: relative;
     padding: 1em;
 }
+
+#code_editor {
+    position: absolute;
+    overflow: hidden;
+    margin: 10px;
+    width: 96%;
+    height: 100%;
+}
+    
 
 #monitor {
     position: absolute;

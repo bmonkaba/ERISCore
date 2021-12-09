@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 724;
+var viewWidth = 722;
 var viewHeight = 177;
 var sectionId = 'dynsection-7';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-7';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>AudioDirector::disconnect</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-172.5 720,-172.5 720,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-172.5 718,-172.5 718,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="564,-83 564,-104 716,-104 716,-83 564,-83"/>
-<text text-anchor="middle" x="640" y="-90.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnect</text>
+<polygon fill="#bfbfbf" stroke="black" points="562,-83 562,-104 714,-104 714,-83 562,-83"/>
+<text text-anchor="middle" x="638" y="-90.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnect</text>
 </a>
 </g>
 </g>
@@ -68,63 +68,63 @@ var sectionId = 'dynsection-7';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d8/d1c/class_audio_director.html#a98d3a885908a4bcf250aedd45e5d0a73" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="368,-147 368,-168 520,-168 520,-147 368,-147"/>
-<text text-anchor="middle" x="444" y="-154.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnect</text>
+<polygon fill="white" stroke="black" points="367,-147 367,-168 519,-168 519,-147 367,-147"/>
+<text text-anchor="middle" x="443" y="-154.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnect</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M605.64,-108.15C583.83,-117.37 554.56,-129.08 528,-137.5 517.12,-140.95 505.28,-144.13 494.03,-146.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="607.28,-111.26 615.1,-104.11 604.53,-104.82 607.28,-111.26"/>
+<path fill="none" stroke="midnightblue" d="M603.63,-108.13C581.82,-117.34 552.55,-129.04 526,-137.5 515.11,-140.97 503.24,-144.18 492.01,-146.97"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="605.27,-111.23 613.1,-104.09 602.53,-104.79 605.27,-111.23"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../d8/d1c/class_audio_director.html#a0ee0c50bcd3cb021f77a10e5999c3c2f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="362,-107 362,-128 526,-128 526,-107 362,-107"/>
-<text text-anchor="middle" x="444" y="-114.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnectAll</text>
+<polygon fill="white" stroke="black" points="361,-107 361,-128 525,-128 525,-107 361,-107"/>
+<text text-anchor="middle" x="443" y="-114.4" font-family="Helvetica,sans-Serif" font-size="12.00">AudioDirector::disconnectAll</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M554.05,-104.01C544.81,-105.15 535.43,-106.31 526.24,-107.45"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="554.5,-107.48 563.99,-102.78 553.64,-100.53 554.5,-107.48"/>
+<path fill="none" stroke="midnightblue" d="M551.84,-104.09C542.93,-105.2 533.89,-106.32 525.03,-107.42"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="552.34,-107.56 561.83,-102.85 551.47,-100.61 552.34,-107.56"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic.html#a454a8eeb8687423a046a517abe6d9e50" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="374,-53.5 374,-87.5 514,-87.5 514,-53.5 374,-53.5"/>
-<text text-anchor="start" x="382" y="-73.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppAudioToPolyphonic</text>
-<text text-anchor="middle" x="444" y="-60.9" font-family="Helvetica,sans-Serif" font-size="12.00">::MessageHandler</text>
+<polygon fill="white" stroke="black" points="373,-53.5 373,-87.5 513,-87.5 513,-53.5 373,-53.5"/>
+<text text-anchor="start" x="381" y="-73.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppAudioToPolyphonic</text>
+<text text-anchor="middle" x="443" y="-60.9" font-family="Helvetica,sans-Serif" font-size="12.00">::MessageHandler</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M553.9,-83.41C540.59,-81.83 526.98,-80.22 514.09,-78.69"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="553.65,-86.91 563.99,-84.61 554.48,-79.95 553.65,-86.91"/>
+<path fill="none" stroke="midnightblue" d="M551.62,-83.33C538.8,-81.8 525.72,-80.24 513.29,-78.76"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="551.48,-86.83 561.83,-84.54 552.31,-79.88 551.48,-86.83"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="../../d9/dad/class_app_serial_command_interface.html#a78cb6587862058ba6a6b4bfd9b9ecee1" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="360,-0.5 360,-34.5 528,-34.5 528,-0.5 360,-0.5"/>
-<text text-anchor="start" x="368" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppSerialCommandInterface</text>
-<text text-anchor="middle" x="444" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">::updateRT</text>
+<g id="a_node7"><a xlink:href="../../d2/da8/class_svc_serial_command_interface.html#a6d455ea6d7ca58624ccc6ce5fd43d2c5" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="360,-0.5 360,-34.5 526,-34.5 526,-0.5 360,-0.5"/>
+<text text-anchor="start" x="368" y="-20.9" font-family="Helvetica,sans-Serif" font-size="12.00">SvcSerialCommandInterface</text>
+<text text-anchor="middle" x="443" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">::updateRT</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M607.54,-78.59C585.51,-68.41 555.25,-54.92 528,-44.5 519.08,-41.09 509.53,-37.73 500.19,-34.59"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="606.2,-81.83 616.74,-82.88 609.15,-75.48 606.2,-81.83"/>
+<path fill="none" stroke="midnightblue" d="M605.53,-78.62C583.49,-68.45 553.23,-54.97 526,-44.5 517.19,-41.11 507.74,-37.76 498.52,-34.62"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="604.19,-81.86 614.73,-82.9 607.14,-75.51 604.19,-81.86"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -139,8 +139,8 @@ var sectionId = 'dynsection-7';
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M351.85,-117.5C342.59,-117.5 333.27,-117.5 324.24,-117.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="351.85,-121 361.85,-117.5 351.85,-114 351.85,-121"/>
+<path fill="none" stroke="midnightblue" d="M350.93,-117.5C341.99,-117.5 332.99,-117.5 324.25,-117.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="351,-121 361,-117.5 351,-114 351,-121"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">

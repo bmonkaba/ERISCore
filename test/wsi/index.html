@@ -25,7 +25,7 @@
     <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="static/main.js"></script>
-
+    <script type="text/javascript" src="static/src-ace/ace.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -41,6 +41,7 @@
             <button class="button" id="cmd_showMemory">Dictionary Editor / Memory</button>
             <button class="button" id="cmd_showSymbols">Symbol Viewer</button>
             <button class="button" id="cmd_showMonitor">System Monitor</button>
+            <button class="button" id="cmd_showEditor">Editor</button>
         </div>
 
         <div class="sidebar" id="sidebar">
@@ -176,6 +177,13 @@ AA 220
                     </thead>
                 </table>
             </form>
+        </div>
+
+        <div id="code_editor" class="graphs">
+function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}
         </div>
 
         <div id="monitor_container" class="graphs">

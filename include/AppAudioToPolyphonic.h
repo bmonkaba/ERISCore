@@ -87,15 +87,15 @@ class AppAudioToPolyphonic:public AppBaseClass {
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay_1"));
-      delay->delay(0,10);
-      delay->delay(1,20);
-      delay->delay(2,300);
+      delay->delay(0,30);
+      delay->delay(1,0);
+      delay->delay(2,0);
       delay->delay(3,400);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
-      mix->gain(0,0.1);
+      mix->gain(0,0.3);
       mix->gain(1,0.001);
       mix->gain(2,0.0001);
-      mix->gain(3,0.4);
+      mix->gain(3,0.7);
       
       //oscope = new AppScope;
       oscope.setWidgetPosition(5,5);
@@ -245,18 +245,14 @@ class AppAudioToPolyphonic:public AppBaseClass {
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_2"));
-      AudioNoInterrupts();
       amp->gain(log1p(fval));
-      AudioInterrupts();
     };
     
     void FLASHMEM onAnalog2(uint16_t uval, float fval){
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthisized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
-      AudioNoInterrupts();
       filter->setLowpass(0,220.0 + (5000.0 * fval));
-      AudioInterrupts();
     };
     
     void FLASHMEM onAnalog3(uint16_t uval, float fval){
@@ -268,11 +264,9 @@ class AppAudioToPolyphonic:public AppBaseClass {
       lp = 300.0 + (18000.0 * log1p(fval));
       hp = 210.0 + (100.0 * log1p(fval));
       gain = log1p(fval);
-      AudioNoInterrupts();
       filter->setLowpass(0,lp);
       filter->setHighpass(1,hp);
       mixer->gain(2,gain);
-      AudioInterrupts();
     };
 
     void FLASHMEM onAnalog4(uint16_t uval, float fval){
@@ -280,9 +274,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       //output volume
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_1"));
       float gain = log1p(fval);
-      AudioNoInterrupts();
       amp->gain(1.0 + gain);
-      AudioInterrupts();
     };
     
     void FLASHMEM makeAudioConnections(){
@@ -293,7 +285,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
 
       //amplified input -> filter -> master mixer
       ad->connect("amp_2 0 biquad_4 0");
-      ad->connect("amp_2 0 mixer_1 1");
+      //ad->connect("amp_2 0 mixer_1 1");
       ad->connect("biquad_4 0 mixer_1 2");
       
       //master mixer -> output amp
@@ -355,7 +347,6 @@ class AppAudioToPolyphonic:public AppBaseClass {
       ad->connect("mixer_2 0 biquad_5 0");
       ad->connect("biquad_5 0 mixer_6 3");
 
-      
       AudioInterrupts();
       delay(10);
     }
@@ -364,21 +355,15 @@ class AppAudioToPolyphonic:public AppBaseClass {
       char buffer[32];
       erisAudioSynthWaveform* w;
       
-      
       for (int16_t i=1; i <= OSC_BANK_SIZE; i++){
         sprintf(buffer, "waveform_%d", i);
         w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
-        AudioNoInterrupts();
         w->begin(voice_type);
-        AudioInterrupts();
       }
       
       //change the voice of the test signal too
       w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform_17"));
-      AudioNoInterrupts();
       w->begin(voice_type);
-      AudioInterrupts();
-
       return;
     }
   protected:

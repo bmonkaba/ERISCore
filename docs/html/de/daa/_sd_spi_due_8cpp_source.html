@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: ERISCore/lib/SdFat-master/src/SpiDriver/SdSpiDue.cpp Source File</title>
+<title>ERIS CORE: SdSpiDue.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -147,10 +147,10 @@ $(document).ready(function(){initNavTree('de/daa/_sd_spi_due_8cpp_source.html','
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// start RX DMA</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> spiDmaRX(uint8_t* dst, uint16_t <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a>) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> spiDmaRX(uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, uint16_t <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a>) {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  dmac_channel_disable(SPI_DMAC_RX_CH);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  DMAC-&gt;DMAC_CH_NUM[SPI_DMAC_RX_CH].DMAC_SADDR = (uint32_t)&amp;SPI0-&gt;SPI_RDR;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  DMAC-&gt;DMAC_CH_NUM[SPI_DMAC_RX_CH].DMAC_DADDR = (uint32_t)dst;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  DMAC-&gt;DMAC_CH_NUM[SPI_DMAC_RX_CH].DMAC_DADDR = (uint32_t)<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  DMAC-&gt;DMAC_CH_NUM[SPI_DMAC_RX_CH].DMAC_DSCR =  0;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  DMAC-&gt;DMAC_CH_NUM[SPI_DMAC_RX_CH].DMAC_CTRLA = <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a7e2759cf3ce335c21536207b75f30161">count</a> |</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      DMAC_CTRLA_SRC_WIDTH_BYTE | DMAC_CTRLA_DST_WIDTH_BYTE;</div>
@@ -287,6 +287,7 @@ $(document).ready(function(){initNavTree('de/daa/_sd_spi_due_8cpp_source.html','
 <div class="ttc" id="aclass_sd_spi_arduino_driver_html_ae837a6d51bfe5518cb4744581824db88"><div class="ttname"><a href="../../dc/da1/class_sd_spi_arduino_driver.html#ae837a6d51bfe5518cb4744581824db88">SdSpiArduinoDriver::begin</a></div><div class="ttdeci">void begin(SdSpiConfig spiConfig)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d16/_sd_spi_avr_8h_source.html#l00030">SdSpiAvr.h:30</a></div></div>
 <div class="ttc" id="aclass_sd_spi_arduino_driver_html_ae88a255f533e3acb41d1221025a69b55"><div class="ttname"><a href="../../dc/da1/class_sd_spi_arduino_driver.html#ae88a255f533e3acb41d1221025a69b55">SdSpiArduinoDriver::deactivate</a></div><div class="ttdeci">void deactivate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d16/_sd_spi_avr_8h_source.html#l00039">SdSpiAvr.h:39</a></div></div>
 <div class="ttc" id="aclass_sd_spi_config_html"><div class="ttname"><a href="../../df/d9e/class_sd_spi_config.html">SdSpiConfig</a></div><div class="ttdoc">SPI card configuration.</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6a/_sd_spi_driver_8h_source.html#l00105">SdSpiDriver.h:105</a></div></div>
+<div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

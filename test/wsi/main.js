@@ -12,6 +12,7 @@ var bulk_update_buffer = [];
 var pixel;
 var pixel_color;
 var dataflow_render_by = "flow";
+var file_type;
 
 // setup the db that will be used to map ram to the symbol table
 //https://dexie.org/docs/API-Reference#quick-reference
@@ -46,7 +47,6 @@ ErisAudioNode.prototype.onExecute = function () {
 
 }
 
-
 $(document).ready(function () {
 
     var note_name = ["C0", "C#0/Db0", "D0", "D#0/Eb0", "E0", "F0", "F#0/Gb0", "G0", "G#0/Ab0", "A0", "A#0/Bb0", "B0", "C1", "C#1/Db1", "D1", "D#1/Eb1", "E1", "F1", "F#1/Gb1", "G1", "G#1/Ab1", "A1", "A#1/Bb1", "B1", "C2", "C#2/Db2", "D2", "D#2/Eb2", "E2", "F2", "F#2/Gb2", "G2", "G#2/Ab2", "A2", "A#2/Bb2", "B2", "C3", "C#3/Db3", "D3", "D#3/Eb3", "E3", "F3", "F#3/Gb3", "G3", "G#3/Ab3", "A3", "A#3/Bb3", "B3", "C4", "C#4/Db4", "D4", "D#4/Eb4", "E4", "F4", "F#4/Gb4", "G4", "G#4/Ab4", "A4", "A#4/Bb4", "B4", "C5", "C#5/Db5", "D5", "D#5/Eb5", "E5", "F5", "F#5/Gb5", "G5", "G#5/Ab5", "A5", "A#5/Bb5", "B5", "C6", "C#6/Db6", "D6", "D#6/Eb6", "E6", "F6", "F#6/Gb6", "G6", "G#6/Ab6", "A6", "A#6/Bb6", "B6", "C7", "C#7/Db7", "D7", "D#7/Eb7", "E7", "F7", "F#7/Gb7", "G7", "G#7/Ab7", "A7", "A#7/Bb7", "B7", "C8", "C#8/Db8", "D8", "D#8/Eb8", "E8", "F8", "F#8/Gb8", "G8", "G#8/Ab8", "A8", "A#8/Bb8", "B8"];
@@ -69,8 +69,20 @@ $(document).ready(function () {
     var sparks = {};
 
 
+    //ace editor
+    var code_editor = ace.edit("code_editor");
+    code_editor.setTheme("ace/theme/twilight");
+    code_editor.session.setMode("ace/mode/javascript");
+    code_editor.setReadOnly(false);
+    code_editor.setOptions({
+        theme: "ace/theme/twilight",
+        useWorker: false,
+    });
+    /*https://ace.c9.io/#nav=howto
+    */
 
-
+    code_editor.setValue("Hello.");
+    
     const pickr = Pickr.create({
         el: ".pickr",
         theme: "nano", // or "monolith", or "nano"
@@ -114,8 +126,6 @@ $(document).ready(function () {
     });
 
 
-
-
     pickr.on("change", (color, source, instance) => {
         c = color.toRGBA();
         r = (c[0].toFixed() << 8) & 0xF800;
@@ -126,8 +136,6 @@ $(document).ready(function () {
         $("#write_dd").val(c);
 
     })
-
-
 
 
     symbols_data_table = $("#symbols_table").DataTable({
@@ -150,10 +158,12 @@ $(document).ready(function () {
     });
 
 
+    $("#flow_container").hide();
     $("#graph_container").hide();
     $("#memory_container").hide();
     $("#monitor_container").hide();
     $("#symbols_container").hide();
+    $("#code_editor").show();
 
 
 
@@ -476,7 +486,7 @@ $(document).ready(function () {
                 canvas = document.getElementById("oscope_hidden");
                 ctx = canvas.getContext("2d");
                 ctx.fillStyle = "#207020"; //Math.random()
-                ctx.strokeStyle = "#C0F0C0";
+                ctx.strokeStyle = "#C0F0F0";
                 ctx.beginPath();
                 ctx.moveTo(si, canvas.height);
                 ctx.lineTo(si, canvas.height);
@@ -659,7 +669,8 @@ $(document).ready(function () {
                 if (fileStreamContainer.length == 0) {
                     file_type = s.slice(0, 6).map(num => String.fromCharCode(parseInt(num, 16))).join("");
                     console.log(file_type);
-                    if (file_type === "ILE565") {
+                    if (file_type == "ILE565") {
+                        fileStreamContainer = [];
                         end = 7 + s.slice(7, 32).findIndex(rank => rank === "0A"); //split on newline
                         split = 7 + s.slice(7, end).findIndex(rank => rank === "20"); //split on comma
                         width = s.slice(7, split); //split on comma
@@ -668,17 +679,28 @@ $(document).ready(function () {
                         height = height.map(num => String.fromCharCode(parseInt(num, 16))).join("");
                         console.log(width);
                         console.log(height);
-                        //if width is less than 320, then chunk and pad the data with zeros to complete the full row
+                        //resize the canvas
                         canvas = $("#ileview")[0];
                         ctx = canvas.getContext("2d");
                         ctx.canvas.width = parseInt(width, 10);
                         ctx.canvas.height = parseInt(height, 10);
                         fileStreamContainer = fileStreamContainer.concat(s.slice(end+2));
                         //console.log(s.slice(end+1,-1));
-                    } else console.log(s);
+                    } else{
+                       fileStreamContainer = s.map(num => String.fromCharCode(parseInt(num, 16))).join("");
+                       //console.log(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
+                       code_editor.setValue("");
+                    }
 
                 } else {
-                    fileStreamContainer = fileStreamContainer.concat(s);
+                    if (file_type == "ILE565") {
+                        fileStreamContainer = fileStreamContainer.concat(s);
+                    }else{
+                    
+                        fileStreamContainer += s.map(num => String.fromCharCode(parseInt(num, 16))).join("");
+                        //console.log(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
+                        //code_editor.insert(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
+                    }
                 }
                 break;
 
@@ -688,21 +710,26 @@ $(document).ready(function () {
                 //do something with the received data
                 //shift out the file size
                 //for (i=0; i <16;i++) fileStreamContainer.shift();
-                canvas = $("#ileview")[0];
-                ctx = canvas.getContext("2d");
-                ctx.fillStyle = "rgba(5,0,40,1)";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                var data = imageData.data;
-                var color;
-                for (i = 0; i < fileStreamContainer.length - 1; i = i + 2) {
-                    color = parseInt(Number("0x" + fileStreamContainer[i] + fileStreamContainer[i + 1]), 10);
-                    data[(i * 2)] = (color >> 8) & 0x00F8;
-                    data[(i * 2) + 1] = (color >> 3) & 0x00FC;
-                    data[(i * 2) + 2] = (color << 3) & 0x00F8;
-                    data[(i * 2) + 3] = 0x00FF;
+                if (file_type == "ILE565") {
+                    canvas = $("#ileview")[0];
+                    ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "rgba(255,0,0,1)";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    var data = imageData.data;
+                    var color;
+                    for (i = 0; i < fileStreamContainer.length - 1; i = i + 2) {
+                        color = parseInt(Number("0x" + fileStreamContainer[i] + fileStreamContainer[i + 1]), 10);
+                        data[(i * 2)] = (color >> 8) & 0x00F8;
+                        data[(i * 2) + 1] = (color >> 3) & 0x00FC;
+                        data[(i * 2) + 2] = (color << 3) & 0x00F8;
+                        data[(i * 2) + 3] = 0x00FF;
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                } else{
+                     code_editor.setValue(fileStreamContainer);
+                     code_editor.resize();
                 }
-                ctx.putImageData(imageData, 0, 0);
                 break;
 
             case "CLS":
@@ -830,6 +857,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
+        $("#code_editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -839,6 +867,7 @@ $(document).ready(function () {
         $("#graph_container").show(0.35);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
+        $("#code_editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -848,6 +877,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").show(0.35);
         $("#monitor_container").hide(0.15);
+        $("#code_editor").hide(0.15);
         $("#symbols_container").hide(0.15);
         $("#listboxDataDict").empty();
         for (spark in sparks) {
@@ -861,6 +891,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").show(0.35);
+        $("#code_editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -870,7 +901,19 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
+        $("#code_editor").hide(0.15);
         $("#symbols_container").show(0.35);
+    });
+    
+    $("#cmd_showEditor").click(function (ev) {
+        ev.preventDefault();
+        $("#flow_container").hide(0.15);
+        $("#graph_container").hide(0.15);
+        $("#memory_container").hide(0.15);
+        $("#monitor_container").hide(0.15);
+        $("#code_editor").show(0.35);
+        code_editor.resize();
+        $("#symbols_container").hide(0.15);
     });
 
 

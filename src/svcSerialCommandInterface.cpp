@@ -110,51 +110,48 @@ void replaceAll(char * str, char oldChar, char newChar)
     }
 }
 
+/**
+ * @brief Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed before being base64 encoded and sent. 
+ * The sent message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
+ * 
+ */
 void SvcSerialCommandInterface::endLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
-    
-    while(!throttle()){
-        delay(10);
-    };
-
     //compress and transport the message
     workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
     memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = indexTxBuffer;
     compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
-
-    /*
-    Serial.print("M working buffer address : ");
-    Serial.println((uint32_t)workingBuffer);
-
-    Serial.print("M compressed length : ");
-    Serial.println(compressed_len);
-
-    Serial.print("M uncompressed msg : ");
-    Serial.println(txBuffer);
-    */
-
     empty();
     encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+    while(throttle()){
+        delay(2);
+    };
     Serial.print(" ");
     Serial.print(uncompressed_len);
     Serial.print(" ");
     Serial.println(txBuffer);
-    
-
     empty();
-    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
     free(workingBuffer);
 }
 
+/**
+ * @brief returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD
+ * if the buffer falls below SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD delay for a small period of time
+ * if another check finds the buffer isn't moving then flush the buffer.
+ * returns false otherwise
+ * 
+ * @return true 
+ * @return false 
+ */
 bool SvcSerialCommandInterface::throttle(){
     uint16_t avail;
     avail = Serial.availableForWrite();
 
-    if(avail < 1000){
+    if(avail < SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD){
         uint16_t delta_avail;
         //serial tx buffer not available
-        delay(5);
+        delay(SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC);
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
@@ -163,8 +160,8 @@ bool SvcSerialCommandInterface::throttle(){
             //Serial.println(F("M WRN throttling"));//use this for debug only!
         }
     }
-    if(avail < 4500) return false;
-    return true;
+    if(avail < SERIAL_THROTTLE_BUFFER_THRESHOLD) return true;
+    return false;
 }
 
 void SvcSerialCommandInterface::txOverflowHandler(){
@@ -214,7 +211,7 @@ void SvcSerialCommandInterface::streamHandler(){
     char hexBuffer[8];
     uint16_t payload_len;
     uint16_t compressed_len,uncompressed_len;
-    if(!throttle()) return;
+    if(throttle()) return;
     if (streamPos == 0){
         Serial.println(F("FS_START"));
         periodicMessagesEnabled = false;
@@ -289,7 +286,7 @@ void SvcSerialCommandInterface::streamHandler(){
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
             //last chunk
             //Serial.flush();
-            delayMicroseconds(2000);
+            delayMicroseconds(20);
             //Serial.print(txBuffer);
             println();
             workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
@@ -309,7 +306,7 @@ void SvcSerialCommandInterface::streamHandler(){
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
-            delayMicroseconds(50000);
+            delayMicroseconds(5000);
             periodicMessagesEnabled = true;
             free(workingBuffer);
             return;
@@ -347,7 +344,7 @@ void SvcSerialCommandInterface::streamHandler(){
 
 void SvcSerialCommandInterface::updateRT(){
     //throttle 
-    throttle();
+    if (throttle()) return;
 
     char endMarker = '\n';
     boolean newRxMsg = false;
@@ -379,7 +376,7 @@ void SvcSerialCommandInterface::updateRT(){
                 bool first;
                 if (total_read < 2){
                     //send the root directory
-                    Serial.flush();
+                    delay(100);
                     empty();
                     println(F("DIR"));
                     print(F("LS . ["));
@@ -405,11 +402,11 @@ void SvcSerialCommandInterface::updateRT(){
                     }
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
-                    Serial.flush();
                     free(workingBuffer);
+                    delay(200);
                 } else{
                     //send the requested path
-                    Serial.flush();
+                    delay(100);
                     workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
                     memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     replacechar(param,':',' '); //replace space token used to tx the path
@@ -419,7 +416,7 @@ void SvcSerialCommandInterface::updateRT(){
                     println(F("DIR"));
                     strcpy(workingBuffer,txBuffer);
                     Serial.print(workingBuffer);
-                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     empty();
                     sd->chdir();
                     Serial.print(F("LS "));
@@ -427,10 +424,10 @@ void SvcSerialCommandInterface::updateRT(){
                     Serial.print(param);
                     replacechar(param,':',' '); // put the spaces back in time for the ls command
                     Serial.print(F(" ["));
-                    //delay(100);
+                    delay(10);
                     txBufferOverflowFlag = false;
                     sd->ls(this,param,false);
-                    memset(workingBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     strcpy(workingBuffer,txBuffer);
                     first = true;
                     token = strtok(workingBuffer, &newline);
@@ -441,12 +438,16 @@ void SvcSerialCommandInterface::updateRT(){
                         Serial.print(F("\""));
                         token = strtok(NULL, &newline);
                         first = false;
+                        delay(5);
+                        while(throttle()){
+                            delay(200);
+                        }
                     }
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
-                    Serial.flush();
                     empty();
                     free(workingBuffer);
+                    delay(250);
                 }
             } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
@@ -524,7 +525,7 @@ void SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 am->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
-                am->data->printDictionary();
+                am->data->printDictionary(this);
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;
@@ -565,7 +566,7 @@ void SvcSerialCommandInterface::updateRT(){
                         Serial.print(txBuffer);
                         Serial.println(F("\"}}"));
                         strcpy(txBuffer,"");
-                        delayMicroseconds(4500);
+                        delay(4);
                         throttle();
                         if(i%1024==0){
                             float32_t pct;
@@ -600,7 +601,7 @@ void SvcSerialCommandInterface::updateRT(){
                 }
                 Serial.println("\n");
                 Serial.println(F("RAM END"));
-                delayMicroseconds(200000);
+                delay(100);
                 //flush out serial input buffer
                 Serial.clear();
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
@@ -650,16 +651,16 @@ void SvcSerialCommandInterface::updateRT(){
     //tx periodic messages
     #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
     if(periodicMessagesEnabled){
-        if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
-            sincePeriodicDataDict = 0;
-            AppManager::getInstance()->data->printDictionary();
-        }
-
-        if (sincePeriodicStats > SERIAL_AUTO_TRANSMIT_STATS_PERIOD){
-            sincePeriodicStats = 0;
+        if (sincePeriodicStats > SERIAL_AUTO_TRANSMIT_STATS_PERIOD && !throttle()){
+            sincePeriodicStats = 0; 
             AppManager::getInstance()->printStats();
             ad->printStats();
-            delay(2);
+        }
+        
+        if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD && !throttle()){
+            sincePeriodicDataDict = 0;
+            sincePeriodicStats = 0; 
+            AppManager::getInstance()->data->printDictionary(this);
         }
     }
     #endif

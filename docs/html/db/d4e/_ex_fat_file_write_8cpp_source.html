@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: ERISCore/lib/SdFat-master/src/ExFatLib/ExFatFileWrite.cpp Source File</title>
+<title>ERIS CORE: ExFatFileWrite.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -763,8 +763,8 @@ $(document).ready(function(){initNavTree('db/d4e/_ex_fat_file_write_8cpp_source.
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        <a class="code" href="../../d5/dfc/_debug_macros_8h.html#a37bec5b50aeab45dfcad2149552d73fc">DBG_FAIL_MACRO</a>;</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;        <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;      }</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;      uint8_t* dst = cache + sectorOffset;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;      memcpy(dst, src, n);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;      uint8_t* <a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> = cache + sectorOffset;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;      memcpy(<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, src, n);</div>
 <div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="../../d5/d14/class_ex_fat_file.html#a49dc4e65cd3199b3e5c89ebe6a17690a">m_vol</a>-&gt;<a class="code" href="../../d4/de9/class_ex_fat_partition.html#a3859310dde1f70daaca0ebcf274cb558">bytesPerSector</a>() == (n + sectorOffset)) {</div>
 <div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        <span class="comment">// Force write if sector is full - improves large writes.</span></div>
 <div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d5/d14/class_ex_fat_file.html#a49dc4e65cd3199b3e5c89ebe6a17690a">m_vol</a>-&gt;<a class="code" href="../../d4/de9/class_ex_fat_partition.html#a5956e8c8983b6bab24002d59ce7c02d2">dataCacheSync</a>()) {</div>
@@ -919,6 +919,7 @@ $(document).ready(function(){initNavTree('db/d4e/_ex_fat_file_write_8cpp_source.
 <div class="ttc" id="aclass_fs_cache_html_a1df1d63f86fcf36e1ae08a48a05ead8b"><div class="ttname"><a href="../../d3/d77/class_fs_cache.html#a1df1d63f86fcf36e1ae08a48a05ead8b">FsCache::CACHE_FOR_READ</a></div><div class="ttdeci">static const uint8_t CACHE_FOR_READ</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0d/_fs_cache_8h_source.html#l00049">FsCache.h:49</a></div></div>
 <div class="ttc" id="aclass_fs_cache_html_ade321e6538ffc77c7f36ea200decaa6f"><div class="ttname"><a href="../../d3/d77/class_fs_cache.html#ade321e6538ffc77c7f36ea200decaa6f">FsCache::CACHE_FOR_WRITE</a></div><div class="ttdeci">static const uint8_t CACHE_FOR_WRITE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0d/_fs_cache_8h_source.html#l00051">FsCache.h:51</a></div></div>
 <div class="ttc" id="aclass_fs_cache_html_ae960459db6fda0de3d67768d3b59331d"><div class="ttname"><a href="../../d3/d77/class_fs_cache.html#ae960459db6fda0de3d67768d3b59331d">FsCache::CACHE_RESERVE_FOR_WRITE</a></div><div class="ttdeci">static const uint8_t CACHE_RESERVE_FOR_WRITE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0d/_fs_cache_8h_source.html#l00053">FsCache.h:53</a></div></div>
+<div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 <div class="ttc" id="anamespace_fs_date_time_html_a9913c0f3fe4d14e8e96f1d580cee43df"><div class="ttname"><a href="../../d9/d61/namespace_fs_date_time.html#a9913c0f3fe4d14e8e96f1d580cee43df">FsDateTime::callback</a></div><div class="ttdeci">void(* callback)(uint16_t *date, uint16_t *time, uint8_t *ms10)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dce/_fs_date_time_8cpp_source.html#l00036">FsDateTime.cpp:36</a></div></div>
 <div class="ttc" id="astruct_dir_file__t_html"><div class="ttname"><a href="../../da/d17/struct_dir_file__t.html">DirFile_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00365">FsStructs.h:365</a></div></div>
 <div class="ttc" id="astruct_dir_file__t_html_a0030dbd486a3d95de9a8a8c55a6040e4"><div class="ttname"><a href="../../da/d17/struct_dir_file__t.html#a0030dbd486a3d95de9a8a8c55a6040e4">DirFile_t::createTimeMs</a></div><div class="ttdeci">uint8_t createTimeMs</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/db3/_fs_structs_8h_source.html#l00377">FsStructs.h:377</a></div></div>

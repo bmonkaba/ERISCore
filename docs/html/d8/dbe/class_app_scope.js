@@ -46,6 +46,7 @@ var class_app_scope =
     [ "parentNode", "d8/dbe/class_app_scope.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "d8/dbe/class_app_scope.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "scale", "d8/dbe/class_app_scope.html#ad944db343566ee1a3838f0986a56136e", null ],
+    [ "sci", "d8/dbe/class_app_scope.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "scope", "d8/dbe/class_app_scope.html#a1e1341cc4255ca09fe4057696f2213f1", null ],
     [ "sd", "d8/dbe/class_app_scope.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "touch_state", "d8/dbe/class_app_scope.html#a12be372470e6826bae25db90c01c388e", null ],

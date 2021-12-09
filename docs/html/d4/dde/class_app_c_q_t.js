@@ -63,6 +63,7 @@ var class_app_c_q_t =
     [ "pll_p", "d4/dde/class_app_c_q_t.html#a059e362bae0886a846a17d789e093815", null ],
     [ "previousAppicationNode", "d4/dde/class_app_c_q_t.html#a31587f3166dcf6ea0302337c3323822c", null ],
     [ "rt_calls", "d4/dde/class_app_c_q_t.html#a383695819f9ddeffb5689576884b9928", null ],
+    [ "sci", "d4/dde/class_app_c_q_t.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "sd", "d4/dde/class_app_c_q_t.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "touch_state", "d4/dde/class_app_c_q_t.html#a12be372470e6826bae25db90c01c388e", null ],
     [ "update_call_period", "d4/dde/class_app_c_q_t.html#a5a2c77c32c3d50a837d3a03fea6e9009", null ],

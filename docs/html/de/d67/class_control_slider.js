@@ -51,6 +51,7 @@ var class_control_slider =
     [ "origin_y", "de/d67/class_control_slider.html#ab2dadde94f4c2b9ade4be05b43a251ed", null ],
     [ "parentNode", "de/d67/class_control_slider.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "de/d67/class_control_slider.html#a31587f3166dcf6ea0302337c3323822c", null ],
+    [ "sci", "de/d67/class_control_slider.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "sd", "de/d67/class_control_slider.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "text", "de/d67/class_control_slider.html#a8344ad849fc558e9dcc1c5fee8a33961", null ],
     [ "touch_state", "de/d67/class_control_slider.html#a12be372470e6826bae25db90c01c388e", null ],

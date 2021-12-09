@@ -18,6 +18,7 @@ var class_audio_director =
     [ "linkGroup", "d8/d1c/class_audio_director.html#a063dd9da4c6abd5b19d77e1722228a4e", null ],
     [ "ParseConnectString", "d8/d1c/class_audio_director.html#a632071166d2460d377ca926fe1ca26c8", null ],
     [ "printStats", "d8/d1c/class_audio_director.html#a154eaf3ab4ea4fa754fc35e0687f4c1b", null ],
+    [ "setSCI", "d8/d1c/class_audio_director.html#acd117427f6c9a7a6cdae4f7ba340eefa", null ],
     [ "unlinkAll", "d8/d1c/class_audio_director.html#ae56e605ed655b992bbe7ef7df600b07b", null ],
     [ "activeConnections", "d8/d1c/class_audio_director.html#ae124c7fca2591b44fd30f2ab9b05f70d", null ],
     [ "AudioStreamOutputPort", "d8/d1c/class_audio_director.html#aee6b0b29cb657c634e9a4188eaa1e55a", null ],
@@ -29,6 +30,7 @@ var class_audio_director =
     [ "pAudioStreamInputPort", "d8/d1c/class_audio_director.html#a816f042e16bd729ed8782e0ba8703504", null ],
     [ "pAudioStreamObjPool", "d8/d1c/class_audio_director.html#a3e2550defde3456abed3799ff8376654", null ],
     [ "pCord", "d8/d1c/class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884", null ],
+    [ "sci", "d8/d1c/class_audio_director.html#ad7d2f665e87b220b788afb13288c178d", null ],
     [ "shortNameQueryResult", "d8/d1c/class_audio_director.html#ad4853c04650773ae8c37a6e3bba2e0db", null ],
     [ "shortNameQueryResultCount", "d8/d1c/class_audio_director.html#aa485080dc3d644895c8b38b097badc5f", null ]
 ];

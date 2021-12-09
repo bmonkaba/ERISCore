@@ -52,6 +52,7 @@ var class_app_audio_to_polyphonic =
     [ "output_gate", "dc/d27/class_app_audio_to_polyphonic.html#a2befa5cd299e9cbb1c5d8b91ca5938b6", null ],
     [ "parentNode", "dc/d27/class_app_audio_to_polyphonic.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "dc/d27/class_app_audio_to_polyphonic.html#a31587f3166dcf6ea0302337c3323822c", null ],
+    [ "sci", "dc/d27/class_app_audio_to_polyphonic.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "sd", "dc/d27/class_app_audio_to_polyphonic.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "slider", "dc/d27/class_app_audio_to_polyphonic.html#a377b7441c4ffe24c0d13fb8ba918a0e6", null ],
     [ "t_lastupdate", "dc/d27/class_app_audio_to_polyphonic.html#aa6bcd9c9a72ade9ca2a00d9684d7fbed", null ],

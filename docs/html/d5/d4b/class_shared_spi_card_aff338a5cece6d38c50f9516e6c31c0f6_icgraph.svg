@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1213;
+var viewWidth = 995;
 var viewHeight = 188;
 var sectionId = 'dynsection-10';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-10';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SharedSpiCard::errorCode</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 1209,-184 1209,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 991,-184 991,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="1046,-98.5 1046,-119.5 1205,-119.5 1205,-98.5 1046,-98.5"/>
-<text text-anchor="middle" x="1125.5" y="-105.9" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::errorCode</text>
+<polygon fill="#bfbfbf" stroke="black" points="828,-98.5 828,-119.5 987,-119.5 987,-98.5 828,-98.5"/>
+<text text-anchor="middle" x="907.5" y="-105.9" font-family="Helvetica,sans-Serif" font-size="12.00">SharedSpiCard::errorCode</text>
 </a>
 </g>
 </g>
@@ -68,202 +68,172 @@ var sectionId = 'dynsection-10';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../de/d8b/class_sd_base.html#a7a5e3b08f6cdd94cfaa19a1b43df6ed9" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="883.5,-138.5 883.5,-159.5 1002.5,-159.5 1002.5,-138.5 883.5,-138.5"/>
-<text text-anchor="middle" x="943" y="-145.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::cardBegin</text>
+<polygon fill="white" stroke="black" points="665.5,-138.5 665.5,-159.5 784.5,-159.5 784.5,-138.5 665.5,-138.5"/>
+<text text-anchor="middle" x="725" y="-145.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::cardBegin</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1067.22,-121.69C1042.8,-127.11 1014.65,-133.34 991.42,-138.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1068.07,-125.09 1077.08,-119.51 1066.56,-118.26 1068.07,-125.09"/>
+<path fill="none" stroke="midnightblue" d="M849.22,-121.69C824.8,-127.11 796.65,-133.34 773.42,-138.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="850.07,-125.09 859.08,-119.51 848.56,-118.26 850.07,-125.09"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../de/d8b/class_sd_base.html#af2bb8fea732f9272a2e98772fbcc4595" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="876,-78.5 876,-99.5 1010,-99.5 1010,-78.5 876,-78.5"/>
-<text text-anchor="middle" x="943" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::sdErrorCode</text>
+<polygon fill="white" stroke="black" points="658,-78.5 658,-99.5 792,-99.5 792,-78.5 658,-78.5"/>
+<text text-anchor="middle" x="725" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::sdErrorCode</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M1035.79,-99.17C1027.19,-98.22 1018.58,-97.26 1010.25,-96.34"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1035.53,-102.66 1045.86,-100.29 1036.3,-95.71 1035.53,-102.66"/>
+<path fill="none" stroke="midnightblue" d="M817.79,-99.17C809.19,-98.22 800.58,-97.26 792.25,-96.34"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="817.53,-102.66 827.86,-100.29 818.3,-95.71 817.53,-102.66"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../de/d8b/class_sd_base.html#a5748f43d73a4272ec8dc302fb0213556" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="728,-158.5 728,-179.5 823,-179.5 823,-158.5 728,-158.5"/>
-<text text-anchor="middle" x="775.5" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::begin</text>
+<polygon fill="white" stroke="black" points="510,-158.5 510,-179.5 605,-179.5 605,-158.5 510,-158.5"/>
+<text text-anchor="middle" x="557.5" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::begin</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M872.88,-157.35C856.13,-159.38 838.61,-161.49 823.17,-163.36"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="873.68,-160.78 883.18,-156.11 872.84,-153.83 873.68,-160.78"/>
+<path fill="none" stroke="midnightblue" d="M654.88,-157.35C638.13,-159.38 620.61,-161.49 605.17,-163.36"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="655.68,-160.78 665.18,-156.11 654.84,-153.83 655.68,-160.78"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../de/d8b/class_sd_base.html#ac9d239810a48c90bd0f3a3e9c4c606a9" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="720.5,-118.5 720.5,-139.5 830.5,-139.5 830.5,-118.5 720.5,-118.5"/>
-<text text-anchor="middle" x="775.5" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorHalt</text>
+<polygon fill="white" stroke="black" points="502.5,-118.5 502.5,-139.5 612.5,-139.5 612.5,-118.5 502.5,-118.5"/>
+<text text-anchor="middle" x="557.5" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorHalt</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M888.58,-101.91C866.4,-107.27 840.99,-113.41 819.98,-118.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="889.62,-105.26 898.52,-99.51 887.97,-98.46 889.62,-105.26"/>
+<path fill="none" stroke="midnightblue" d="M670.58,-101.91C648.4,-107.27 622.99,-113.41 601.98,-118.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="671.62,-105.26 680.52,-99.51 669.97,-98.46 671.62,-105.26"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="../../de/d8b/class_sd_base.html#a22d184b3266ae7cb31ab47b7203e91ac" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="718.5,-78.5 718.5,-99.5 832.5,-99.5 832.5,-78.5 718.5,-78.5"/>
-<text text-anchor="middle" x="775.5" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorPrint</text>
+<polygon fill="white" stroke="black" points="500.5,-78.5 500.5,-99.5 614.5,-99.5 614.5,-78.5 500.5,-78.5"/>
+<text text-anchor="middle" x="557.5" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorPrint</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node4&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M865.5,-89C854.38,-89 843.11,-89 832.5,-89"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="865.64,-92.5 875.64,-89 865.64,-85.5 865.64,-92.5"/>
+<path fill="none" stroke="midnightblue" d="M647.5,-89C636.38,-89 625.11,-89 614.5,-89"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="647.64,-92.5 657.64,-89 647.64,-85.5 647.64,-92.5"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="../../de/d8b/class_sd_base.html#a918474d623107f64b7ab9ca88d6fe46f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="544,-38.5 544,-59.5 675,-59.5 675,-38.5 544,-38.5"/>
-<text text-anchor="middle" x="609.5" y="-45.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorPrint</text>
+<polygon fill="white" stroke="black" points="326,-38.5 326,-59.5 457,-59.5 457,-38.5 326,-38.5"/>
+<text text-anchor="middle" x="391.5" y="-45.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorPrint</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node9 -->
-<g id="edge13" class="edge">
+<g id="edge11" class="edge">
 <title>Node4&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M883.75,-76.47C869.49,-73.71 854.23,-71.01 840,-69 784.56,-61.17 721.12,-55.92 675.01,-52.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="883.44,-79.97 893.92,-78.48 884.79,-73.1 883.44,-79.97"/>
+<path fill="none" stroke="midnightblue" d="M665.75,-76.47C651.49,-73.71 636.23,-71.01 622,-69 566.56,-61.17 503.12,-55.92 457.01,-52.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="665.44,-79.97 675.92,-78.48 666.79,-73.1 665.44,-79.97"/>
 </g>
-<!-- Node27 -->
-<g id="node14" class="node">
-<title>Node27</title>
-<g id="a_node14"><a xlink:href="../../de/d8b/class_sd_base.html#a6a8ba118e754b2b9fa0f34410163e228" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="711,-0.5 711,-21.5 840,-21.5 840,-0.5 711,-0.5"/>
-<text text-anchor="middle" x="775.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::printSdError</text>
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:href="../../de/d8b/class_sd_base.html#a6a8ba118e754b2b9fa0f34410163e228" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="493,-0.5 493,-21.5 622,-21.5 622,-0.5 493,-0.5"/>
+<text text-anchor="middle" x="557.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::printSdError</text>
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node27 -->
-<g id="edge14" class="edge">
-<title>Node4&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M914.12,-73.51C893.84,-62.49 865.56,-47.63 840,-36 828.79,-30.9 816.2,-25.81 805.21,-21.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="912.67,-76.7 923.12,-78.43 916.02,-70.56 912.67,-76.7"/>
+<!-- Node4&#45;&gt;Node12 -->
+<g id="edge12" class="edge">
+<title>Node4&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M696.12,-73.51C675.84,-62.49 647.56,-47.63 622,-36 610.79,-30.9 598.2,-25.81 587.21,-21.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="694.67,-76.7 705.12,-78.43 698.02,-70.56 694.67,-76.7"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="../../de/d8b/class_sd_base.html#a1691b7a85fc11851a6942de035d73772" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="554.5,-118.5 554.5,-139.5 664.5,-139.5 664.5,-118.5 554.5,-118.5"/>
-<text text-anchor="middle" x="609.5" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorHalt</text>
+<polygon fill="white" stroke="black" points="336.5,-118.5 336.5,-139.5 446.5,-139.5 446.5,-118.5 336.5,-118.5"/>
+<text text-anchor="middle" x="391.5" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorHalt</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M710.08,-129C695.03,-129 679.15,-129 664.6,-129"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="710.35,-132.5 720.35,-129 710.35,-125.5 710.35,-132.5"/>
+<path fill="none" stroke="midnightblue" d="M492.08,-129C477.03,-129 461.15,-129 446.6,-129"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="492.35,-132.5 502.35,-129 492.35,-125.5 492.35,-132.5"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="../../de/d8b/class_sd_base.html#a7d119e8ae896cc4caa073e9f54823f3e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="552.5,-78.5 552.5,-99.5 666.5,-99.5 666.5,-78.5 552.5,-78.5"/>
-<text text-anchor="middle" x="609.5" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorPrint</text>
+<polygon fill="white" stroke="black" points="334.5,-78.5 334.5,-99.5 448.5,-99.5 448.5,-78.5 334.5,-78.5"/>
+<text text-anchor="middle" x="391.5" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::errorPrint</text>
 </a>
 </g>
 </g>
 <!-- Node7&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node7&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M707.79,-89C694.17,-89 679.97,-89 666.77,-89"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="708.06,-92.5 718.06,-89 708.06,-85.5 708.06,-92.5"/>
+<path fill="none" stroke="midnightblue" d="M489.79,-89C476.17,-89 461.97,-89 448.77,-89"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="490.06,-92.5 500.06,-89 490.06,-85.5 490.06,-92.5"/>
 </g>
 <!-- Node7&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node7&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M721.56,-76.09C699.59,-70.73 674.41,-64.59 653.59,-59.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="720.87,-79.52 731.41,-78.49 722.53,-72.72 720.87,-79.52"/>
+<path fill="none" stroke="midnightblue" d="M503.56,-76.09C481.59,-70.73 456.41,-64.59 435.59,-59.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="502.87,-79.52 513.41,-78.49 504.53,-72.72 502.87,-79.52"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:href="../../de/d8b/class_sd_base.html#acb8180faf22cf72d97ec81330a700b05" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="381,-38.5 381,-59.5 508,-59.5 508,-38.5 381,-38.5"/>
-<text text-anchor="middle" x="444.5" y="-45.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorHalt</text>
+<polygon fill="white" stroke="black" points="163,-38.5 163,-59.5 290,-59.5 290,-38.5 163,-38.5"/>
+<text text-anchor="middle" x="226.5" y="-45.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorHalt</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M533.35,-49C524.88,-49 516.33,-49 508.04,-49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="533.61,-52.5 543.61,-49 533.61,-45.5 533.61,-52.5"/>
+<path fill="none" stroke="midnightblue" d="M315.35,-49C306.88,-49 298.33,-49 290.04,-49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="315.61,-52.5 325.61,-49 315.61,-45.5 315.61,-52.5"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="../../da/d96/class_app_manager.html#a6221fc1ede71f2ac539c052bbe0c7f6a" target="_top" xlink:title="Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)">
-<polygon fill="white" stroke="black" points="186,-58.5 186,-79.5 345,-79.5 345,-58.5 186,-58.5"/>
-<text text-anchor="middle" x="265.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::AppManager</text>
+<g id="a_node11"><a xlink:href="../../de/d8b/class_sd_base.html#aef6fd47c67b9b8498c1398e58422f169" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-38.5 0,-59.5 127,-59.5 127,-38.5 0,-38.5"/>
+<text text-anchor="middle" x="63.5" y="-45.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorHalt</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node10&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M370.55,-57.24C362.22,-58.18 353.71,-59.15 345.3,-60.1"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="371.05,-60.71 380.6,-56.11 370.27,-53.75 371.05,-60.71"/>
-</g>
-<!-- Node26 -->
-<g id="node13" class="node">
-<title>Node26</title>
-<g id="a_node13"><a xlink:href="../../de/d8b/class_sd_base.html#aef6fd47c67b9b8498c1398e58422f169" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="202,-18.5 202,-39.5 329,-39.5 329,-18.5 202,-18.5"/>
-<text text-anchor="middle" x="265.5" y="-25.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdBase::initErrorHalt</text>
-</a>
-</g>
-</g>
-<!-- Node10&#45;&gt;Node26 -->
-<g id="edge12" class="edge">
-<title>Node10&#45;&gt;Node26</title>
-<path fill="none" stroke="midnightblue" d="M370.28,-40.73C356.64,-39.19 342.49,-37.59 329.2,-36.08"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="370.27,-44.25 380.6,-41.89 371.05,-37.29 370.27,-44.25"/>
-</g>
-<!-- Node12 -->
-<g id="node12" class="node">
-<title>Node12</title>
-<g id="a_node12"><a xlink:href="../../da/d96/class_app_manager.html#aa76d9691e8d029656413590fbe4dee86" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="0,-58.5 0,-79.5 150,-79.5 150,-58.5 0,-58.5"/>
-<text text-anchor="middle" x="75" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppManager::getInstance</text>
-</a>
-</g>
-</g>
-<!-- Node11&#45;&gt;Node12 -->
-<g id="edge11" class="edge">
-<title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M175.89,-69C167.3,-69 158.65,-69 150.22,-69"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="175.92,-72.5 185.92,-69 175.92,-65.5 175.92,-72.5"/>
+<path fill="none" stroke="midnightblue" d="M152.78,-49C144.19,-49 135.47,-49 127.04,-49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="152.79,-52.5 162.79,-49 152.79,-45.5 152.79,-52.5"/>
 </g>
 </g>
 </svg>

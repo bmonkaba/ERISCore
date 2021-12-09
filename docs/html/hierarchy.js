@@ -8,12 +8,11 @@ var hierarchy =
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", null ],
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
       [ "AppScope", "d8/dbe/class_app_scope.html", null ],
-      [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html", null ],
       [ "AppTemplate", "d9/d03/class_app_template.html", null ],
       [ "ControlButton", "df/d17/class_control_button.html", null ],
-      [ "ControlSlider", "de/d67/class_control_slider.html", null ]
+      [ "ControlSlider", "de/d67/class_control_slider.html", null ],
+      [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
-    [ "AppManager", "da/d96/class_app_manager.html", null ],
     [ "AsyncAudioInputSPDIF3", null, [
       [ "erisAsyncAudioInputSPDIF3", "da/dfb/classeris_async_audio_input_s_p_d_i_f3.html", null ]
     ] ],
@@ -357,6 +356,10 @@ var hierarchy =
         ] ]
       ] ]
     ] ],
+    [ "LZ4_stream_t_internal", "de/d3a/struct_l_z4__stream__t__internal.html", null ],
+    [ "LZ4_stream_u", "d1/dd8/union_l_z4__stream__u.html", null ],
+    [ "LZ4_streamDecode_t_internal", "d7/db6/struct_l_z4__stream_decode__t__internal.html", null ],
+    [ "LZ4_streamDecode_u", "df/d07/union_l_z4__stream_decode__u.html", null ],
     [ "masterBootRecordSector", "d6/d3c/structmaster_boot_record_sector.html", null ],
     [ "mbrPartition", "d9/d9f/structmbr_partition.html", null ],
     [ "metadata_t", "d4/da5/structmetadata__t.html", null ],
@@ -379,8 +382,8 @@ var hierarchy =
     [ "partitionBootSectorFat", "dc/da3/structpartition_boot_sector_fat.html", null ],
     [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", null, [
-      [ "AppSerialCommandInterface", "d9/dad/class_app_serial_command_interface.html", null ],
-      [ "RingBuf< F, Size >", "dc/d6f/class_ring_buf.html", null ]
+      [ "RingBuf< F, Size >", "dc/d6f/class_ring_buf.html", null ],
+      [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "PrintBasic", "da/db3/class_print_basic.html", [
       [ "PrintFile< SdBaseFile >", "d0/d9f/class_print_file.html", [

@@ -210,20 +210,22 @@ void SvcDataDictionary::printStats(){
 
 }
 
-void SvcDataDictionary::printDictionary(){
+void SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
-    Serial.print(F("DD {"));
+    sci->startLZ4Message();
+    sci->print(F("DD {"));
 
     for(int i=0;i<next;i++){
         if (record[i].data_type == DDDT_INT32){
-            Serial.printf("\"%s\":%d",record[i].key,record[i].val.int32_val);
+            sci->printf("\"%s\":%d",record[i].key,record[i].val.int32_val);
         }else if (record[i].data_type == DDDT_FLOAT32){
-            Serial.printf("\"%s\":%f",record[i].key,record[i].val.float32_val);
+            sci->printf("\"%s\":%f",record[i].key,record[i].val.float32_val);
         }
-        if (i != next-1) Serial.print(",");
+        if (i != next-1) sci->print(",");
     }
-    Serial.println("}");
+    sci->println("}");
+    sci->endLZ4Message();
     //Serial.flush();
 }
 

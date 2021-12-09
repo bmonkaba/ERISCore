@@ -40,38 +40,56 @@ class SerialProcess():
                 print("< " + d[:78].strip('\n'))
                 self.writeSerial(d)         
             
-            d = self.readSerial()              
+            d = self.readSerial()
+            
             try:
                 d = d.decode()
+              
             except:
-                #print("b64> ")
-                d = base64.b64decode(d,validate=False)
-                #print (d)
-    
+                print("First ring decode failure on MSG:")
+                print (d)
+            
+            
             if (d.find("LZ4") == 0):
                 #print("lz4> " + d)
                 sp = d.split(" ")
                 size = int(sp[1])
                 d = ''.join(sp[2:])
-                d = base64.b64decode(d,validate=False)
+                try:
+                    d = base64.b64decode(d,validate=False)
+                except:
+                    print("base64.b64decode err")
+                    break
                 
                 #print("decode> ")
                 #print(d)
                 #print(size)
-                d = lz4.block.decompress(d, uncompressed_size=size)
+                try:
+                    d = lz4.block.decompress(d, uncompressed_size=size)
+                except:
+                    print("lz4.block.decompress err")
                 #print("decompress> ")
                 #print(d)
-                d = d.decode()
+                else:
+                    try:
+                        d = d.decode()
+                    except:
+                        print("WRN: bad lz4 block")
+                        print(d)
                 
             try:
-                if (len(d) > 1):
+                if (len(d) > 1 ):#and isinstance(d,str)
                    self.output_queue.put(d)
             except:
                d = "?" * len(d) 
                print (d)
             
-            if (d.find("M ") == 0 or d.find("LS ") == 0 or d.find("F") == 0):
-                d = ''.join(s for s in d if unicodedata.category(s)[0]!="C")
+            try:
+                if (d.find("M ") == 0 or d.find("LS ") == 0 or d.find("F") == 0):
+                    d = ''.join(s for s in d if unicodedata.category(s)[0]!="C")
+            except:
+                pass
+            
                 
             
 

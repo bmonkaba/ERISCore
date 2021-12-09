@@ -47,6 +47,7 @@ var class_app_base_class =
     [ "origin_y", "db/d69/class_app_base_class.html#ab2dadde94f4c2b9ade4be05b43a251ed", null ],
     [ "parentNode", "db/d69/class_app_base_class.html#a50389da1569c64f256e008ce929b0b36", null ],
     [ "previousAppicationNode", "db/d69/class_app_base_class.html#a31587f3166dcf6ea0302337c3323822c", null ],
+    [ "sci", "db/d69/class_app_base_class.html#a24b3c843dfb167ef97f1b5f3a3e22875", null ],
     [ "sd", "db/d69/class_app_base_class.html#ab763cbfec90f6608f36dfeb36c1e11dd", null ],
     [ "touch_state", "db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e", null ],
     [ "update_call_period", "db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009", null ],
