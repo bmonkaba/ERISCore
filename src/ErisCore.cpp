@@ -7,7 +7,7 @@
 #include "HSI.h"
 #include "SPI.h"
 #include "appTemplate.h"
-#include "appAudioToPolyphonic.h"
+#include "AppAudioToPolyphonic.h"
 #include "appReprogram.h"
 #include "svcSerialCommandInterface.h"
 #include "PCM1863.h"
@@ -16,10 +16,6 @@ AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
 SvcSerialCommandInterface sci;
 AppReprogram appReprogram;
-
-
-
-
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
