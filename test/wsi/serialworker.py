@@ -53,7 +53,12 @@ class SerialProcess():
             if (d.find("LZ4") == 0):
                 #print("lz4> " + d)
                 sp = d.split(" ")
-                size = int(sp[1])
+                try:
+                    size = int(sp[1])
+                except:
+                    self.sp.close()
+                    self.sp = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=5000)
+                    
                 d = ''.join(sp[2:])
                 try:
                     d = base64.b64decode(d,validate=False)

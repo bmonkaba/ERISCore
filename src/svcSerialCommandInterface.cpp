@@ -270,6 +270,9 @@ void SvcSerialCommandInterface::streamHandler(){
             compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
             empty();
             encode_base64((unsigned char *)workingBuffer, strlen(workingBuffer), (unsigned char *)txBuffer);
+            while(throttle()){
+                delay(10);
+            }
             Serial.print(" ");
             Serial.print(uncompressed_len-2);
             Serial.print(" ");
@@ -295,6 +298,9 @@ void SvcSerialCommandInterface::streamHandler(){
             compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
             empty();
             encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+            while(throttle()){
+                delay(10);
+            }
             Serial.print(uncompressed_len);
             Serial.print(" ");
             Serial.println(txBuffer);
@@ -306,7 +312,7 @@ void SvcSerialCommandInterface::streamHandler(){
             //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
-            delayMicroseconds(5000);
+            delayMicroseconds(3000);
             periodicMessagesEnabled = true;
             free(workingBuffer);
             return;
@@ -541,7 +547,9 @@ void SvcSerialCommandInterface::updateRT(){
                     am->data->update(param,fval);
                 }
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
-                Serial.println(gWelcomeMessage);
+                startLZ4Message();
+                println(gWelcomeMessage);
+                endLZ4Message();
             }else if (strncmp(cmd, "GET_RAM",sizeof(cmd)) == 0){ 
                 char* mp;
                 long num;
@@ -656,7 +664,7 @@ void SvcSerialCommandInterface::updateRT(){
             AppManager::getInstance()->printStats();
             ad->printStats();
         }
-        
+
         if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD && !throttle()){
             sincePeriodicDataDict = 0;
             sincePeriodicStats = 0; 
