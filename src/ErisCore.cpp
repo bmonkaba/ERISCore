@@ -8,6 +8,7 @@
 #include "SPI.h"
 #include "appTemplate.h"
 #include "AppAudioToPolyphonic.h"
+#include "AppWren.h"
 #include "appReprogram.h"
 #include "svcSerialCommandInterface.h"
 #include "PCM1863.h"
@@ -16,6 +17,7 @@ AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
 SvcSerialCommandInterface sci;
 AppReprogram appReprogram;
+AppWren* appWren;
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +35,7 @@ void setup() {
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);
   }
-  //while(!Serial); //DEBUG - wait for serial connection
+  while(!Serial); //DEBUG - wait for serial connection
   //delay(500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
@@ -48,16 +50,57 @@ void setup() {
   //appReprogram = new AppReprogram();
   //appSCI = new AppSerialCommandInterface();
   //AppManager::getInstance()->getFocus(app->getId()); //focus is requested by obj id
-
+  appWren = new AppWren();
   //give the audio director a pointer to the sci class
   _ad.setSCI(&sci);
   Serial.println(F("M Setup: Setting App Focus"));
   appPoly.getFocus();
   Serial.println(F("M Setup: Init Complete"));
+
+ 
+/*
+send data TO wren
+void wrenSetSlotBool(WrenVM* vm, int slot, bool value);
+void wrenSetSlotDouble(WrenVM* vm, int slot, double value);
+void wrenSetSlotNull(WrenVM* vm, int slot);
+void wrenSetSlotBytes(WrenVM* vm, int slot, const char* bytes, size_t length);
+void wrenSetSlotString(WrenVM* vm, int slot, const char* text);
+
+get data FROM wren
+bool wrenGetSlotBool(WrenVM* vm, int slot);
+double wrenGetSlotDouble(WrenVM* vm, int slot);
+
+get top level variables from wren
+void wrenGetVariable(WrenVM* vm, const char* module,
+                     const char* name, int slot);
+
+
+// Load the class into slot 0.
+wrenEnsureSlots(vm, 1);
+wrenGetVariable(vm, "main", "GameEngine", 0);
+WrenHandle* gameEngineClass = wrenGetSlotHandle(vm, 0);
+
+Now, each time we want to call a method on GameEngine, we store that value back in slot zero:
+
+wrenSetSlotHandle(vm, 0, gameEngineClass);
+
+pass variables in slots 1..n
+wrenSetSlotDouble(vm, 1, elapsedTime);
+
+//call the method
+WrenInterpretResult wrenCall(WrenVM* vm, WrenHandle* method);
+*/
+
+  
+
+  
+
   //delay(5000);
+  Serial.println(F("M Setup: Checking for crash report"));
   if (CrashReport){
       Serial.print(CrashReport);
   }
+  Serial.println(F("M Setup: Done"));
 }
 
 void loop(void) {

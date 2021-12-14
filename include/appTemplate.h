@@ -34,6 +34,10 @@ class AppTemplate:public AppBaseClass {
             //is touched
         }
     };
-    void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
-    };
+    void onTouchDrag(uint16_t t_x, uint16_t t_y) override{};
+    void onTouchRelease(uint16_t t_x, uint16_t t_y) override{};
+    void onAnalog1(uint16_t uval, float fval) override{};
+    void onAnalog2(uint16_t uval, float fval) override{};
+    void onAnalog3(uint16_t uval, float fval) override{};
+    void onAnalog4(uint16_t uval, float fval) override{};
 };

@@ -90,7 +90,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       delay->delay(0,30);
       delay->delay(1,0);
       delay->delay(2,0);
-      delay->delay(3,400);
+      delay->delay(3,100);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_2"));
       mix->gain(0,0.3);
       mix->gain(1,0.001);
