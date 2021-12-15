@@ -780,6 +780,25 @@ table.dataTable td {
     border-radius: 7px;
 }
 
+.editoringraphs {
+    display: grid;
+    grid-template-columns: 225px 1040px;
+    grid-template-rows: 270px 270px 1024px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "cqtmsg cqt"
+        "fftmsg fft"
+        "fft2msg fft2";
+    grid-area: graphs;
+    margin: 1em;
+    padding: 1em;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: 1px solid #0e0e0e;
+    border-radius: 7px;
+}
+
 .cqtmsg {
     grid-area: cqtmsg;
     border: 1px solid #0e0e0e;
@@ -895,10 +914,12 @@ table.dataTable td {
 .button {
     cursor: pointer;
     background-color: #101010;
+    background-size: 100%;
     border: white;
     color: #3d85de;
     padding: 2px;
-    text-align: center;
+    padding-left: 32px;
+    text-align: right;
     font-family: 'Gruppo', cursive;
     text-decoration: none;
     display: inline-block;
@@ -1147,11 +1168,11 @@ select {
 }
 
 #code_editor {
-    position: absolute;
-    overflow: hidden;
+    position: relative;
     margin: 10px;
-    width: 96%;
-    height: 100%;
+    padding: 5px;
+    width: 1220px;
+    height: 238%;
 }
     
 
@@ -1190,3 +1211,207 @@ select {
    mask: none;
    filter: none;
 }
+
+
+
+.CompileButton{
+    background:url(/static/img/compile.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:40px;
+    height:40px;
+    opacity: 0.5;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.CompileButton:active
+{   
+    background:url(/static/img/compile.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.RunButton{
+    background:url(/static/img/run.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:40px;
+    height:40px;
+    opacity: 0.5;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.RunButton:active
+{   
+    background:url(/static/img/run.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.GetScriptButton{
+    background:url(/static/img/get_active_script.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:40px;
+    height:40px;
+    opacity: 0.5;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.GetScriptButton:active
+{   
+    background:url(/static/img/get_active_script.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:10px;
+    padding:10px;
+}
+
+.showEditor{
+    background:url(/static/img/wren.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 50%;
+    background-color: #101010;
+    display: inline-block;
+    background-position: -15% 50%;
+    opacity: 1.0;
+}
+.showEditor:active{
+    background:url(/static/img/wren.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 50%;
+    display: inline-block;
+    background-position: -15% 50%;
+    opacity: 1.0;
+}
+
+.showMonitor{
+    background:url(/static/img/monitor.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #101010;
+    display: inline-block;
+    background-position: -53% 50%;
+    opacity: 1.0;
+    width: 8em;
+}
+.showMonitor:active{
+    background:url(/static/img/monitor.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    display: inline-block;
+    background-position: 0% 50%;
+    opacity: 1.0;
+}
+
+.showSymbols{
+    background:url(/static/img/symbols.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #101010;
+
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 10em;
+}
+.showSymbols:active{
+    background:url(/static/img/symbols.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -10% 50%;
+    opacity: 1.0;
+}
+
+
+.showFlow{
+    background:url(/static/img/flow.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #101010;
+
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 10em;
+}
+.showFlow:active{
+    background:url(/static/img/flow.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -10% 50%;
+    opacity: 1.0;
+}
+
+
+.showMemory{
+    background:url(/static/img/dictionary.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #101010;
+
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 12em;
+}
+.showMemory:active{
+    background:url(/static/img/dictionary.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -20% 50%;
+    opacity: 1.0;
+}
+
+.showControllers{
+    background:url(/static/img/controllers.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #303040;
+
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 12em;
+}
+.showControllers:active{
+    background:url(/static/img/controllers.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -20% 50%;
+    opacity: 1.0;
+}
+
+.showAudio{
+    background:url(/static/img/graph.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #001520;
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 12em;
+}
+.showAudio:active{
+    background:url(/static/img/graph.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -20% 50%;
+    opacity: 1.0;
+}
+
+
+.showUIEditor{
+    background:url(/static/img/ui.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #001520;
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 12em;
+}
+.showUIEditor:active{
+    background:url(/static/img/ui.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -20% 50%;
+    opacity: 1.0;
+}
+

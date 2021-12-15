@@ -220,11 +220,8 @@ void SvcSerialCommandInterface::streamHandler(){
     if (pSD->exists(streamFile)){
         payload_len = 0;
         Serial.print(F("LZ4 "));
-        //Serial.print("FS ");
         empty();
         print("FS ");
-        //strcpy(txBuffer,"FS ");
-
         if(!file.open(streamFile, O_READ)){ 
             Serial.println(F("M GET_ERR FILE OPEN ERROR"));
             isStreamingFile = false;
@@ -248,7 +245,6 @@ void SvcSerialCommandInterface::streamHandler(){
                     return;
                 }
                 sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
-                //strcat(txBuffer,hexBuffer);
                 print(hexBuffer);
             }
             
@@ -260,9 +256,6 @@ void SvcSerialCommandInterface::streamHandler(){
 
         if (payload_len == 0){
             //no data to tx; @ eof
-            //Serial.print(",");
-            //Serial.println(checksum(txBuffer));
-            //println(F("0"));
             workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
             println();
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
@@ -280,17 +273,13 @@ void SvcSerialCommandInterface::streamHandler(){
             Serial.println(F("FS_END"));
             empty();
             delay(100);
-            //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
             free(workingBuffer);
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
-            //last chunk
-            //Serial.flush();
             delayMicroseconds(20);
-            //Serial.print(txBuffer);
             println();
             workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
@@ -305,11 +294,8 @@ void SvcSerialCommandInterface::streamHandler(){
             Serial.print(" ");
             Serial.println(txBuffer);
             empty();
-            //Serial.print(",");
-            //Serial.println(checksum(txBuffer));
             Serial.println(F("FS_END"));
             empty();
-            //Serial.flush();
             isStreamingFile = false;
             streamPos = 0;
             delayMicroseconds(3000);
@@ -318,7 +304,6 @@ void SvcSerialCommandInterface::streamHandler(){
             return;
         } else{
             //send file chunk
-            //Serial.print(txBuffer);
             println();
             workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
@@ -331,10 +316,6 @@ void SvcSerialCommandInterface::streamHandler(){
             Serial.println(txBuffer);
             empty();
             free(workingBuffer);
-            //Serial.print(",");
-            //Serial.println(checksum(txBuffer));
-            //Serial.flush();
-            //delayMicroseconds(4000);
             return;
         }             
     } 
@@ -361,6 +342,7 @@ void SvcSerialCommandInterface::updateRT(){
     }else if (Serial.available() > 0 && false == newRxMsg ) {
         bufferChr = Serial.read();
         receivedChars[indexRxBuffer++] = bufferChr;
+
         if(indexRxBuffer >= (SERIAL_RX_BUFFER_SIZE-16)){
             //input overflow - clear serial input and reset the index
             indexRxBuffer = 0;
@@ -368,6 +350,7 @@ void SvcSerialCommandInterface::updateRT(){
             Serial.clearReadError();
             return;
         }
+
         if (bufferChr == endMarker){
             receivedChars[--indexRxBuffer] = '\0'; //remove the end marker and null terminate the string
             indexRxBuffer = 0; //reset the input write index
@@ -460,7 +443,6 @@ void SvcSerialCommandInterface::updateRT(){
                 if (total_read < 3){
                     Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
                     Serial.println(param);
-                    //Serial.flush();
                 } else{
                     //file streaming request ok
                     //init the transfer
@@ -468,7 +450,6 @@ void SvcSerialCommandInterface::updateRT(){
                     Serial.print(param);
                     Serial.print(" ");
                     Serial.println(param2);
-                    //Serial.flush();
                     strcpy(streamPath,param);
                     strcpy(streamFile,param2);
                     isStreamingFile = true;
@@ -478,22 +459,13 @@ void SvcSerialCommandInterface::updateRT(){
                 char csBuffer[128];
                 i = 0;
                 Serial.println(F("M ACON START"));
-                /*
-                while(ad->getAudioStreamString(i,csBuffer)){
-                    i += 1;
-                    //Serial.flush();
-                    Serial.println(csBuffer);
-                    //Serial.flush();
-                }
-                i=0;
-                */
+                
                 while(ad->getConnectionString(i,csBuffer)){
                     i += 1;
                     Serial.print("M ");
                     Serial.println(csBuffer);
                 }
                 Serial.println(F("M ACON END"));
-                //Serial.flush();
 
             } else if (strncmp(cmd, "CONNECT",sizeof(cmd)) == 0){
                 int source_port;
@@ -521,9 +493,6 @@ void SvcSerialCommandInterface::updateRT(){
                 }
             } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) am->getActiveApp()->MessageHandler(this,param);
-                //Serial.print(F("AA OK "));
-                //Serial.println(AppManager::getInstance()->getActiveApp()->name);
-                //Serial.flush();
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 am->printStats();
                 ad->printStats();
@@ -532,6 +501,12 @@ void SvcSerialCommandInterface::updateRT(){
                 am->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 am->data->printDictionary(this);
+            }else if (strncmp(cmd, "GET_WREN_SCRIPT",sizeof(cmd)) == 0){ 
+                startLZ4Message();
+                println("#WREN_START!"); 
+                println(g_wrenScript);
+                println("#WREN_EOF!");
+                endLZ4Message();
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;
@@ -556,7 +531,6 @@ void SvcSerialCommandInterface::updateRT(){
                 num = strtol(param,NULL,10);
                 mp = (char*)num;
                 Serial.printf("M GET_RAM {\"addr\":\"%08X\",\"data\":\"%02X\"}\n",num,(uint8_t)*mp);
-                //Serial.printf("M DEBUG {\"addr\":\"%08X\",\"data\":\"%02X\"}\n",&g_octave_down_shift,g_octave_down_shift);
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
@@ -605,7 +579,6 @@ void SvcSerialCommandInterface::updateRT(){
                         c = '?';
                         strncat(txBuffer, &c, 1);
                     }
-                    //Serial.print(c);
                 }
                 Serial.println("\n");
                 Serial.println(F("RAM END"));
@@ -640,10 +613,7 @@ void SvcSerialCommandInterface::updateRT(){
                         c = '.';
                         strncat(txBuffer, &c, 1);
                     }
-                    
-
                     Serial.printf("%02X ",c);
-                    //Serial.print(c);
                 }
             }else if (strncmp(cmd, "AUDIO_NO_INTERRUPTS",sizeof(cmd)) == 0){
                 AudioNoInterrupts();

@@ -70,18 +70,18 @@ $(document).ready(function () {
 
 
     //ace editor
-    var code_editor = ace.edit("code_editor");
-    code_editor.setTheme("ace/theme/twilight");
-    code_editor.session.setMode("ace/mode/javascript");
-    code_editor.setReadOnly(false);
-    code_editor.setOptions({
+    var editor = ace.edit("code_editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+    editor.setReadOnly(false);
+    editor.setOptions({
         theme: "ace/theme/twilight",
         useWorker: false,
     });
     /*https://ace.c9.io/#nav=howto
     */
 
-    code_editor.setValue("Hello.");
+    editor.setValue("Hello.");
     
     const pickr = Pickr.create({
         el: ".pickr",
@@ -163,7 +163,7 @@ $(document).ready(function () {
     $("#memory_container").hide();
     $("#monitor_container").hide();
     $("#symbols_container").hide();
-    $("#code_editor").show();
+    $("#editor").show();
 
 
 
@@ -319,6 +319,16 @@ $(document).ready(function () {
             rx_bytes += message.length;
             if (com_state != "") {
                 switch (com_state) {
+                case "captureWrenScript":
+                    if (res[0] == "#WREN_EOF!") {
+                        //write the container to the editor
+                        editor.setValue(fileStreamContainer.join("\n"));
+                        editor.resize();
+                        com_state="";
+                    }else{
+                        fileStreamContainer = fileStreamContainer.concat(message);
+                    }
+                    break;
                 case "LS":
                     if (res[0] == "DIR_EOF") {
                         var tree = $.ui.fancytree.getTree("#fancy_explorer");
@@ -648,6 +658,11 @@ $(document).ready(function () {
                     $("#" + key + "_VAL").text(sparks[key][0]);
                 }
                 break;
+            case "#WREN_START!":
+                fileStreamContainer = [];
+                com_state = "captureWrenScript";
+                break;
+                  
             case "FS_START":
                 fileStreamContainer = [];
                 break;
@@ -689,7 +704,7 @@ $(document).ready(function () {
                     } else{
                        fileStreamContainer = s.map(num => String.fromCharCode(parseInt(num, 16))).join("");
                        //console.log(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
-                       code_editor.setValue("");
+                       editor.setValue("");
                     }
 
                 } else {
@@ -699,7 +714,7 @@ $(document).ready(function () {
                     
                         fileStreamContainer += s.map(num => String.fromCharCode(parseInt(num, 16))).join("");
                         //console.log(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
-                        //code_editor.insert(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
+                        //editor.insert(s.map(num => String.fromCharCode(parseInt(num, 16))).join(""));
                     }
                 }
                 break;
@@ -727,8 +742,8 @@ $(document).ready(function () {
                     }
                     ctx.putImageData(imageData, 0, 0);
                 } else{
-                     code_editor.setValue(fileStreamContainer);
-                     code_editor.resize();
+                     editor.setValue(fileStreamContainer);
+                     editor.resize();
                 }
                 break;
 
@@ -857,7 +872,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#code_editor").hide(0.15);
+        $("#editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -867,7 +882,7 @@ $(document).ready(function () {
         $("#graph_container").show(0.35);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#code_editor").hide(0.15);
+        $("#editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -877,7 +892,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").show(0.35);
         $("#monitor_container").hide(0.15);
-        $("#code_editor").hide(0.15);
+        $("#editor").hide(0.15);
         $("#symbols_container").hide(0.15);
         $("#listboxDataDict").empty();
         for (spark in sparks) {
@@ -891,7 +906,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").show(0.35);
-        $("#code_editor").hide(0.15);
+        $("#editor").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -901,7 +916,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#code_editor").hide(0.15);
+        $("#editor").hide(0.15);
         $("#symbols_container").show(0.35);
     });
     
@@ -911,8 +926,8 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#code_editor").show(0.35);
-        code_editor.resize();
+        $("#editor").show(0.35);
+        editor.resize();
         $("#symbols_container").hide(0.15);
     });
 
@@ -935,6 +950,14 @@ $(document).ready(function () {
         $("#received").empty();
         $("#memory_chunk_table tbody").empty();
     });
+
+    $("#GetScriptButton").click(function (ev) {
+         ev.preventDefault();
+         sendMessage({
+             "data": "GET_WREN_SCRIPT"
+         });
+    });
+
 
 
 

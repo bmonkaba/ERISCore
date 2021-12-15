@@ -83,4 +83,91 @@ const char UI_SLIDER_BORDER_COLOR[] PROGMEM = "UI_SLIDER_BORDER_COLOR";
 const char UI_SLIDER_SHADE_COLOR[] PROGMEM = "UI_SLIDER_SHADE_COLOR";
 const char UI_SLIDER_FILL_COLOR[] PROGMEM = "UI_SLIDER_FILL_COLOR";
 const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
+
+
+//Wren test script
+//test script
+//note: plenty of wren language scripting examples can be found here:
+//https://rosettacode.org/wiki/Category:Wren
+const char g_wrenScript[] PROGMEM = R"(
+class App {
+    construct new() {
+        __count = 0
+    }
+
+    updateRT () {
+        //System.print("M  static App::updateRT() ")
+        __count = __count + 1
+        if (__count > 50000){
+            System.print("M  App::updateRT() 500K calls")
+            __count = 0
+        }
+    }
+
+    static updateRT() {
+        //System.print("M  static App::updateRT() ")
+        __count = __count + 1
+        if (__count > 50000){
+            System.print("M  App::updateRT() 500K calls")
+            __count = 0
+        }
+    }
+
+    static update() {
+        var a = "test"
+    }
+
+    static onFocus() {
+        var a = "test"
+    }
+
+    static onFocusLost() {
+        var a = "test"
+    }
+
+    static onTouch() {
+        var a = "test"
+    }
+
+    static onTouchDrag() {
+        var a = "test"
+    }
+
+    static onTouchRelease() {
+        var a = "test"
+    }
+
+    static onAnalog1() {
+        System.print("M  App::onAnalog1() ")
+    }
+
+    static onAnalog2() {
+        System.print("M  App::onAnalog2() ")
+    }
+
+    static onAnalog3() {
+        System.print("M  App::onAnalog3() ")
+    }
+
+    static onAnalog4() {
+        System.print("M  App::onAnalog4() ")
+    }
+
+    static MessageHandler() {
+        var a = "test"
+    }
+
+    //getter
+    count { __count }
+    //setter
+    count=(value) { __count = value }
+}
+
+var ErisApp = App.new()
+ErisApp.updateRT()
+//static function call
+App.updateRT()
+
+)";
+
 #endif

@@ -34,14 +34,14 @@
         <div class="hamburger">[REDACTED]</div>
         
         <div class="menubar">
-            <button class="button" id="cmd_showFlow">Audio Flow</button>
-            <button class="button" id="cmd_showAudio">Audio Controllers</button>
-            <button class="button" id="cmd_showAudio">RT Audio View</button>
-            <button class="button" id="cmd_showAudio">UI Editor</button>
-            <button class="button" id="cmd_showMemory">Dictionary Editor / Memory</button>
-            <button class="button" id="cmd_showSymbols">Symbol Viewer</button>
-            <button class="button" id="cmd_showMonitor">System Monitor</button>
-            <button class="button" id="cmd_showEditor">Editor</button>
+            <button class="button showFlow" id="cmd_showFlow">Audio Flow</button>
+            <button class="button showControllers" id="cmd_showSontrollers">Audio Controllers</button>
+            <button class="button showAudio" id="cmd_showAudio">RT Audio View</button>
+            <button class="button showUIEditor" id="cmd_showUIEditor">UI Editor</button>
+            <button class="button showMemory" id="cmd_showMemory">Dictionary/Memory</button>
+            <button class="button showSymbols" id="cmd_showSymbols">Symbol Viewer</button>
+            <button class="button showMonitor" id="cmd_showMonitor">Monitor</button>
+            <button class="button showEditor" id="cmd_showEditor">Editor</button>
         </div>
 
         <div class="sidebar" id="sidebar">
@@ -179,13 +179,20 @@ AA 220
             </form>
         </div>
 
-        <div id="code_editor" class="graphs">
+        <div id="editor" class="editoringraphs">
+            <div>
+                
+                <button id="GetScriptButton" class="GetScriptButton"></button>&nbsp
+                <button class="CompileButton"></button>&nbsp
+                <button class="RunButton"></button>
+                <div id="code_editor">
 function foo(items) {
     var x = "All this is syntax highlighted";
     return x;
 }
+                </div>
+            </div>
         </div>
-
         <div id="monitor_container" class="graphs">
             <div>
                 <div class="titlebar">Jitter Plot</div>
