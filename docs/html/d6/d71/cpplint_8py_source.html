@@ -749,7 +749,7 @@ $(document).ready(function(){initNavTree('d6/d71/cpplint_8py_source.html','../..
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  <span class="comment"># to be noticeably expensive.</span></div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  <span class="keywordflow">if</span> pattern <span class="keywordflow">not</span> <span class="keywordflow">in</span> _regexp_compile_cache:</div>
 <div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    _regexp_compile_cache[pattern] = sre_compile.compile(pattern)</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  <span class="keywordflow">return</span> _regexp_compile_cache[pattern].match(s)</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  <span class="keywordflow">return</span> _regexp_compile_cache[pattern].<a class="code" href="../../d4/de2/wren__compiler_8c.html#af4fe195796c3e700b61d62dafd263295">match</a>(s)</div>
 <div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160; </div>
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; </div>
 <div class="line"><a name="l00667"></a><span class="lineno"><a class="line" href="../../d3/d23/namespacecpplint.html#a1b85a5657aeab8b4a0ed85e06aed3576">  667</a></span>&#160;<span class="keyword">def </span><a class="code" href="../../d3/d23/namespacecpplint.html#a1b85a5657aeab8b4a0ed85e06aed3576">ReplaceAll</a>(pattern, rep, s):</div>
@@ -4160,7 +4160,7 @@ $(document).ready(function(){initNavTree('d6/d71/cpplint_8py_source.html','../..
 <div class="line"><a name="l04072"></a><span class="lineno"> 4072</span>&#160;        <span class="keywordflow">return</span></div>
 <div class="line"><a name="l04073"></a><span class="lineno"> 4073</span>&#160;      <span class="keywordflow">if</span> closing_linenum &gt; opening_linenum:</div>
 <div class="line"><a name="l04074"></a><span class="lineno"> 4074</span>&#160;        <span class="comment"># Opening line after the {. Ignore comments here since we checked above.</span></div>
-<div class="line"><a name="l04075"></a><span class="lineno"> 4075</span>&#160;        body = list(opening_line[opening_pos+1:])</div>
+<div class="line"><a name="l04075"></a><span class="lineno"> 4075</span>&#160;        body = <a class="code" href="../../d4/de2/wren__compiler_8c.html#a0a8cb504ca7e49b97ac975d128414786">list</a>(opening_line[opening_pos+1:])</div>
 <div class="line"><a name="l04076"></a><span class="lineno"> 4076</span>&#160;        <span class="comment"># All lines until closing line, excluding closing line, with comments.</span></div>
 <div class="line"><a name="l04077"></a><span class="lineno"> 4077</span>&#160;        body.extend(clean_lines.raw_lines[opening_linenum+1:closing_linenum])</div>
 <div class="line"><a name="l04078"></a><span class="lineno"> 4078</span>&#160;        <span class="comment"># Closing line before the }. Won&#39;t (and can&#39;t) have comments.</span></div>
@@ -6558,6 +6558,8 @@ $(document).ready(function(){initNavTree('d6/d71/cpplint_8py_source.html','../..
 <div class="ttc" id="anamespacecpplint_html_af254258f584f59c87fcfd755e3c9017a"><div class="ttname"><a href="../../d3/d23/namespacecpplint.html#af254258f584f59c87fcfd755e3c9017a">cpplint.CloseExpression</a></div><div class="ttdeci">def CloseExpression(clean_lines, linenum, pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d71/cpplint_8py_source.html#l01597">cpplint.py:1597</a></div></div>
 <div class="ttc" id="anamespacecpplint_html_af644bfa65494e90ea688096bfc07e4b5"><div class="ttname"><a href="../../d3/d23/namespacecpplint.html#af644bfa65494e90ea688096bfc07e4b5">cpplint._DropCommonSuffixes</a></div><div class="ttdeci">def _DropCommonSuffixes(filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d71/cpplint_8py_source.html#l04439">cpplint.py:4439</a></div></div>
 <div class="ttc" id="anamespacecpplint_html_afc5b544f640cd11be2665e6bb4646de7"><div class="ttname"><a href="../../d3/d23/namespacecpplint.html#afc5b544f640cd11be2665e6bb4646de7">cpplint.CheckCheck</a></div><div class="ttdeci">def CheckCheck(filename, clean_lines, linenum, error)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d71/cpplint_8py_source.html#l04129">cpplint.py:4129</a></div></div>
+<div class="ttc" id="awren__compiler_8c_html_a0a8cb504ca7e49b97ac975d128414786"><div class="ttname"><a href="../../d4/de2/wren__compiler_8c.html#a0a8cb504ca7e49b97ac975d128414786">list</a></div><div class="ttdeci">static void list(Compiler *compiler, bool canAssign)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de2/wren__compiler_8c_source.html#l02146">wren_compiler.c:2146</a></div></div>
+<div class="ttc" id="awren__compiler_8c_html_af4fe195796c3e700b61d62dafd263295"><div class="ttname"><a href="../../d4/de2/wren__compiler_8c.html#af4fe195796c3e700b61d62dafd263295">match</a></div><div class="ttdeci">static bool match(Compiler *compiler, TokenType expected)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de2/wren__compiler_8c_source.html#l01257">wren_compiler.c:1257</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

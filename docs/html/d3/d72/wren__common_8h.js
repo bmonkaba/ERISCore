@@ -1,0 +1,26 @@
+var wren__common_8h =
+[
+    [ "__STDC_LIMIT_MACROS", "d3/d72/wren__common_8h.html#aeb7e7a856ab7a794b05b6b63ef36ea3e", null ],
+    [ "ALLOCATE", "d3/d72/wren__common_8h.html#a7c77e25cba5e9b688f0fb530e1184475", null ],
+    [ "ALLOCATE_ARRAY", "d3/d72/wren__common_8h.html#abc9fcb698cd68fd037fe74d5eda19c97", null ],
+    [ "ALLOCATE_FLEX", "d3/d72/wren__common_8h.html#ad29d94869fa01e59a36beacd95f6b990", null ],
+    [ "ASSERT", "d3/d72/wren__common_8h.html#aa06eedd6f738a415870e97a375337d51", null ],
+    [ "DEALLOCATE", "d3/d72/wren__common_8h.html#a5d1ae0571bfd2ac6af1ef6b6cdf8cbff", null ],
+    [ "FLEXIBLE_ARRAY", "d3/d72/wren__common_8h.html#a45e8e3f640870d096d552e4a0d1eb32d", null ],
+    [ "MAX_FIELDS", "d3/d72/wren__common_8h.html#a679dffecfb16ab6f5832ddf756b5fabd", null ],
+    [ "MAX_METHOD_NAME", "d3/d72/wren__common_8h.html#ae9f869779a6bca3e8df7e8d7f0ccb0a6", null ],
+    [ "MAX_METHOD_SIGNATURE", "d3/d72/wren__common_8h.html#a163524fe2202302c975a36e392e8cade", null ],
+    [ "MAX_MODULE_VARS", "d3/d72/wren__common_8h.html#ade69ba5a57b4ecd78cb9c4c65b66339d", null ],
+    [ "MAX_PARAMETERS", "d3/d72/wren__common_8h.html#a68c7f0498bb1932350eb092be1b5e912", null ],
+    [ "MAX_VARIABLE_NAME", "d3/d72/wren__common_8h.html#aa692dbf91cd4e231e40dea73887e02ce", null ],
+    [ "UNREACHABLE", "d3/d72/wren__common_8h.html#a0bc63b24b654ca433be7b97a3edde132", null ],
+    [ "WREN_COMPUTED_GOTO", "d3/d72/wren__common_8h.html#ae1003dfba6af291bff47c9fd4d0b10bf", null ],
+    [ "WREN_DEBUG_DUMP_COMPILED_CODE", "d3/d72/wren__common_8h.html#a896e2c7ec07e089d306961a7e02b8bd1", null ],
+    [ "WREN_DEBUG_GC_STRESS", "d3/d72/wren__common_8h.html#a50068cc0fa2ecd025686b20e90572100", null ],
+    [ "WREN_DEBUG_TRACE_GC", "d3/d72/wren__common_8h.html#ab6b3cb7c1dc2f8364b8fe46e2cf1a297", null ],
+    [ "WREN_DEBUG_TRACE_INSTRUCTIONS", "d3/d72/wren__common_8h.html#a8bcfc4b5b1090a0878b4e03cfa1c43e9", null ],
+    [ "WREN_DEBUG_TRACE_MEMORY", "d3/d72/wren__common_8h.html#aab0439e67290545460c7b1267b6382e8", null ],
+    [ "WREN_NAN_TAGGING", "d3/d72/wren__common_8h.html#a4cd2518ce00e3243388be3e69c7e37a1", null ],
+    [ "WREN_OPT_META", "d3/d72/wren__common_8h.html#a77cde3f3303ebaa06baf866bc9effb03", null ],
+    [ "WREN_OPT_RANDOM", "d3/d72/wren__common_8h.html#a536f62784b4f8623e3fed7d61e182624", null ]
+];

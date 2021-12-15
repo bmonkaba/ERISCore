@@ -1,26 +1,5 @@
 var searchData=
 [
-  ['a_20long_20name_20can_20be_20255_20characters_2etxt_2893',['A long name can be 255 characters.txt',['../d4/d14/_a_01long_01name_01can_01be_01255_01characters_8txt.html',1,'']]],
-  ['analogbinlogger_2eh_2894',['AnalogBinLogger.h',['../d1/d58/_analog_bin_logger_8h.html',1,'']]],
-  ['analoginputs_2eh_2895',['AnalogInputs.h',['../d3/ddb/_analog_inputs_8h.html',1,'']]],
-  ['appaudiotopolyphonic_2eh_2896',['AppAudioToPolyphonic.h',['../d9/db6/_app_audio_to_polyphonic_8h.html',1,'']]],
-  ['appbaseclass_2ecpp_2897',['AppBaseClass.cpp',['../d4/db1/_app_base_class_8cpp.html',1,'']]],
-  ['appbaseclass_2eh_2898',['AppBaseClass.h',['../d9/d3e/_app_base_class_8h.html',1,'']]],
-  ['appcqt_2eh_2899',['appCQT.h',['../d4/d75/app_c_q_t_8h.html',1,'']]],
-  ['appmanager_2ecpp_2900',['AppManager.cpp',['../dc/d40/_app_manager_8cpp.html',1,'']]],
-  ['appmanager_2eh_2901',['AppManager.h',['../df/d72/_app_manager_8h.html',1,'']]],
-  ['appreprogram_2eh_2902',['appReprogram.h',['../dd/d93/app_reprogram_8h.html',1,'']]],
-  ['appscope_2eh_2903',['appScope.h',['../d8/d1f/app_scope_8h.html',1,'']]],
-  ['apptemplate_2eh_2904',['appTemplate.h',['../d3/d0e/app_template_8h.html',1,'']]],
-  ['arduinofiles_2eh_2905',['ArduinoFiles.h',['../dd/dc9/_arduino_files_8h.html',1,'']]],
-  ['arduinostream_2eh_2906',['ArduinoStream.h',['../d7/d76/_arduino_stream_8h.html',1,'']]],
-  ['audiodirector_2ecpp_2907',['AudioDirector.cpp',['../d1/d2c/_audio_director_8cpp.html',1,'']]],
-  ['audiodirector_2eh_2908',['AudioDirector.h',['../db/dc8/_audio_director_8h.html',1,'']]],
-  ['audiostream_2ecpp_2909',['AudioStream.cpp',['../d3/d7e/_audio_stream_8cpp.html',1,'']]],
-  ['audiostream_2eh_2910',['AudioStream.h',['../df/d6c/_audio_stream_8h.html',1,'']]],
-  ['audioutilities_2ecpp_2911',['AudioUtilities.cpp',['../d4/dc9/_audio_utilities_8cpp.html',1,'']]],
-  ['audioutilities_2eh_2912',['AudioUtilities.h',['../dc/dac/_audio_utilities_8h.html',1,'']]],
-  ['avradclogger_2eh_2913',['AvrAdcLogger.h',['../d4/da2/_avr_adc_logger_8h.html',1,'']]],
-  ['avrdevelopersgpiopinmap_2eh_2914',['AvrDevelopersGpioPinMap.h',['../d9/d7b/_avr_developers_gpio_pin_map_8h.html',1,'']]],
-  ['readme_2emd_2915',['README.md',['../da/dca/_audio_2_r_e_a_d_m_e_8md.html',1,'']]]
+  ['0_2dhello_2dwren_2emarkdown_3845',['0-hello-wren.markdown',['../d9/d19/0-hello-wren_8markdown.html',1,'']]],
+  ['0001_2dsmarter_2dimports_2emd_3846',['0001-smarter-imports.md',['../d7/d63/0001-smarter-imports_8md.html',1,'']]]
 ];

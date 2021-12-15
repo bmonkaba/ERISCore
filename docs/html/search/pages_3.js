@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_3a_20this_20is_20sdfat_20version_202_2e_5521',['Warning: This is SdFat Version 2.',['../dd/d8e/md__e_r_i_s_core_lib__sd_fat_master__r_e_a_d_m_e.html',1,'']]]
+  ['3_2d0_2e4_2e0_2dreleased_7345',['3-0.4.0-released',['../d7/dfb/md__e_r_i_s_core_lib_wren_doc_site_blog_3_0_4_0_released.html',1,'']]]
 ];

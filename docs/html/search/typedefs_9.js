@@ -1,10 +1,4 @@
 var searchData=
 [
-  ['pair16_5ft_5130',['pair16_t',['../de/d22/upcase_8cpp.html#a06a1b964d6d954469e848abec5abd465',1,'upcase.cpp']]],
-  ['pbs_5ft_5131',['pbs_t',['../d1/db3/_fs_structs_8h.html#a5d8a8c0484f9e3accc04c465f6ae3d37',1,'FsStructs.h']]],
-  ['pbsfat_5ft_5132',['PbsFat_t',['../d1/db3/_fs_structs_8h.html#acb6508a4b99a253e87a068b7a48ef71d',1,'FsStructs.h']]],
-  ['pointer_5fcontainer_5133',['pointer_container',['../dd/df4/svc_data_dictionary_8h.html#a72d1d78e033dcdec8eb28ca3e0efc6a1',1,'svcDataDictionary.h']]],
-  ['pos_5ft_5134',['pos_t',['../df/dd5/ios_8h.html#aae8adaedc486a4b2f67576fdeaf0a585',1,'ios.h']]],
-  ['pos_5ftype_5135',['pos_type',['../d4/dc1/classios__base.html#a1f8c459d4597a781cc134e6626e00aee',1,'ios_base']]],
-  ['print_5ft_5136',['print_t',['../d9/da3/_sys_call_8h.html#ab4f210a7e2149c6c531486f1713c647b',1,'SysCall.h']]]
+  ['newalign_5ft_6656',['newalign_t',['../d9/d36/_fs_new_8h.html#aa858eeb82c4fc91593a63ad62474c1d7',1,'FsNew.h']]]
 ];

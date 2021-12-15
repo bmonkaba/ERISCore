@@ -17,6 +17,10 @@ var files_dup =
     [ "appTemplate.h", "d3/d0e/app_template_8h.html", [
       [ "AppTemplate", "d9/d03/class_app_template.html", "d9/d03/class_app_template" ]
     ] ],
+    [ "AppWren.cpp", "d7/d7e/_app_wren_8cpp.html", "d7/d7e/_app_wren_8cpp" ],
+    [ "AppWren.h", "d5/d58/_app_wren_8h.html", [
+      [ "AppWren", "d0/da0/class_app_wren.html", "d0/da0/class_app_wren" ]
+    ] ],
     [ "ArduinoFiles.h", "dd/dc9/_arduino_files_8h.html", "dd/dc9/_arduino_files_8h" ],
     [ "ArduinoStream.h", "d7/d76/_arduino_stream_8h.html", [
       [ "ArduinoInStream", "d2/d74/class_arduino_in_stream.html", "d2/d74/class_arduino_in_stream" ],
@@ -152,6 +156,7 @@ var files_dup =
     [ "LFN,NAME.TXT", "d8/d01/_l_f_n_00_n_a_m_e_8_t_x_t.html", "d8/d01/_l_f_n_00_n_a_m_e_8_t_x_t" ],
     [ "lz4.c", "d4/d05/lz4_8c.html", "d4/d05/lz4_8c" ],
     [ "lz4.h", "dd/df8/lz4_8h.html", "dd/df8/lz4_8h" ],
+    [ "main.c", "d0/d29/main_8c.html", "d0/d29/main_8c" ],
     [ "mainpage.h", "db/de0/mainpage_8h.html", null ],
     [ "MegaGpioPinMap.h", "d1/d45/_mega_gpio_pin_map_8h.html", "d1/d45/_mega_gpio_pin_map_8h" ],
     [ "MinimumSerial.cpp", "d0/d91/_minimum_serial_8cpp.html", null ],
@@ -229,5 +234,31 @@ var files_dup =
     [ "LowLatencyLoggerMPU6050/UserFunctions.cpp", "db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp.html", "db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp" ],
     [ "LowLatencyLogger/UserTypes.h", "d1/d2f/_low_latency_logger_2_user_types_8h.html", "d1/d2f/_low_latency_logger_2_user_types_8h" ],
     [ "LowLatencyLoggerADXL345/UserTypes.h", "d2/d96/_low_latency_logger_a_d_x_l345_2_user_types_8h.html", "d2/d96/_low_latency_logger_a_d_x_l345_2_user_types_8h" ],
-    [ "LowLatencyLoggerMPU6050/UserTypes.h", "d0/d75/_low_latency_logger_m_p_u6050_2_user_types_8h.html", "d0/d75/_low_latency_logger_m_p_u6050_2_user_types_8h" ]
+    [ "LowLatencyLoggerMPU6050/UserTypes.h", "d0/d75/_low_latency_logger_m_p_u6050_2_user_types_8h.html", "d0/d75/_low_latency_logger_m_p_u6050_2_user_types_8h" ],
+    [ "wren.h", "dd/d19/wren_8h.html", "dd/d19/wren_8h" ],
+    [ "wren.hpp", "d7/d36/wren_8hpp.html", null ],
+    [ "wren_common.h", "d3/d72/wren__common_8h.html", "d3/d72/wren__common_8h" ],
+    [ "wren_compiler.c", "d4/de2/wren__compiler_8c.html", "d4/de2/wren__compiler_8c" ],
+    [ "wren_compiler.h", "d7/db9/wren__compiler_8h.html", "d7/db9/wren__compiler_8h" ],
+    [ "wren_core.c", "de/d2f/wren__core_8c.html", "de/d2f/wren__core_8c" ],
+    [ "wren_core.h", "d4/da0/wren__core_8h.html", "d4/da0/wren__core_8h" ],
+    [ "wren_core.wren.inc", "dc/dff/wren__core_8wren_8inc.html", null ],
+    [ "wren_debug.c", "d8/df0/wren__debug_8c.html", "d8/df0/wren__debug_8c" ],
+    [ "wren_debug.h", "dd/df7/wren__debug_8h.html", "dd/df7/wren__debug_8h" ],
+    [ "wren_math.h", "d2/db6/wren__math_8h.html", "d2/db6/wren__math_8h" ],
+    [ "wren_opcodes.h", "da/dc1/wren__opcodes_8h.html", null ],
+    [ "wren_opt_meta.c", "de/dab/wren__opt__meta_8c.html", "de/dab/wren__opt__meta_8c" ],
+    [ "wren_opt_meta.h", "d7/db8/wren__opt__meta_8h.html", "d7/db8/wren__opt__meta_8h" ],
+    [ "wren_opt_meta.wren.inc", "d0/d5c/wren__opt__meta_8wren_8inc.html", null ],
+    [ "wren_opt_random.c", "d8/d6b/wren__opt__random_8c.html", "d8/d6b/wren__opt__random_8c" ],
+    [ "wren_opt_random.h", "dc/d5e/wren__opt__random_8h.html", "dc/d5e/wren__opt__random_8h" ],
+    [ "wren_opt_random.wren.inc", "d8/d9e/wren__opt__random_8wren_8inc.html", null ],
+    [ "wren_primitive.c", "d9/def/wren__primitive_8c.html", "d9/def/wren__primitive_8c" ],
+    [ "wren_primitive.h", "d7/d66/wren__primitive_8h.html", "d7/d66/wren__primitive_8h" ],
+    [ "wren_utils.c", "de/d0d/wren__utils_8c.html", "de/d0d/wren__utils_8c" ],
+    [ "wren_utils.h", "d1/df1/wren__utils_8h.html", "d1/df1/wren__utils_8h" ],
+    [ "wren_value.c", "da/dbe/wren__value_8c.html", "da/dbe/wren__value_8c" ],
+    [ "wren_value.h", "d2/d0a/wren__value_8h.html", "d2/d0a/wren__value_8h" ],
+    [ "wren_vm.c", "de/db2/wren__vm_8c.html", "de/db2/wren__vm_8c" ],
+    [ "wren_vm.h", "d5/db1/wren__vm_8h.html", "d5/db1/wren__vm_8h" ]
 ];

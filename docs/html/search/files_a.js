@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['mainpage_2eh_3008',['mainpage.h',['../db/de0/mainpage_8h.html',1,'']]],
-  ['megagpiopinmap_2eh_3009',['MegaGpioPinMap.h',['../d1/d45/_mega_gpio_pin_map_8h.html',1,'']]],
-  ['minimumserial_2ecpp_3010',['MinimumSerial.cpp',['../d0/d91/_minimum_serial_8cpp.html',1,'']]],
-  ['minimumserial_2eh_3011',['MinimumSerial.h',['../df/d21/_minimum_serial_8h.html',1,'']]],
-  ['mixcase_2etxt_3012',['MIXCASE.txt',['../d2/d3e/_m_i_x_c_a_s_e_8txt.html',1,'']]],
-  ['mixed_2etxt_3013',['mixed.TXT',['../d4/d39/mixed_8_t_x_t.html',1,'']]]
+  ['getting_2dstarted_2emarkdown_3969',['getting-started.markdown',['../de/dd1/getting-started_8markdown.html',1,'']]],
+  ['globaldefs_2eh_3970',['globaldefs.h',['../d8/d2c/globaldefs_8h.html',1,'']]],
+  ['gpiopinmap_2eh_3971',['GpioPinMap.h',['../d8/d82/_gpio_pin_map_8h.html',1,'']]]
 ];

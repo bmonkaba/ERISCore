@@ -1,44 +1,52 @@
 <map id="PrintBasic.h" name="PrintBasic.h">
-<area shape="rect" id="node1" title="Stream/Print like replacement for non&#45;Arduino systems." alt="" coords="659,5,766,35"/>
-<area shape="rect" id="node2" href="$d6/dc6/_print_basic_8cpp.html" title=" " alt="" coords="587,83,711,112"/>
-<area shape="rect" id="node3" href="$d9/da3/_sys_call_8h.html" title="SysCall class." alt="" coords="735,83,821,112"/>
-<area shape="rect" id="node4" href="$d8/d6a/_sys_call_bare_uno_8cpp.html" title=" " alt="" coords="5,160,172,189"/>
-<area shape="rect" id="node5" href="$d1/d0d/_fs_cache_8h.html" title="Common cache code for exFAT and FAT." alt="" coords="475,547,574,576"/>
-<area shape="rect" id="node7" href="$d7/dc8/_ex_fat_partition_8h.html" title="ExFatPartition include file." alt="" coords="349,624,482,653"/>
-<area shape="rect" id="node12" href="$d5/ddc/_sd_fat_8h.html" title="main SdFs include file." alt="" coords="1175,933,1253,963"/>
-<area shape="rect" id="node15" href="$db/dd3/_fat_partition_8h.html" title="FatPartition class." alt="" coords="647,624,762,653"/>
-<area shape="rect" id="node19" href="$df/d9b/_fs_date_time_8h.html" title=" " alt="" coords="248,160,369,189"/>
-<area shape="rect" id="node20" href="$d5/dce/_fs_date_time_8cpp.html" title=" " alt="" coords="443,237,582,267"/>
-<area shape="rect" id="node21" href="$d8/d20/_fat_formatter_8h.html" title=" " alt="" coords="746,547,871,576"/>
-<area shape="rect" id="node22" href="$d0/d91/_minimum_serial_8cpp.html" title=" " alt="" coords="759,160,915,189"/>
-<area shape="rect" id="node23" href="$df/d21/_minimum_serial_8h.html" title="Minimal AVR Serial driver." alt="" coords="939,160,1078,189"/>
-<area shape="rect" id="node24" href="$d9/d2a/_ring_buf_8h.html" title="Ring buffer for data loggers." alt="" coords="1103,160,1192,189"/>
-<area shape="rect" id="node25" href="$d2/db6/_sd_card_info_8h.html" title=" " alt="" coords="1216,160,1329,189"/>
-<area shape="rect" id="node28" href="$d5/d3e/_sdio_card_8h.html" title=" " alt="" coords="1232,315,1335,344"/>
-<area shape="rect" id="node31" href="$d8/daa/_sd_spi_card_8h.html" title="SdSpiCard class for V2 SD/SDHC cards." alt="" coords="1028,315,1141,344"/>
-<area shape="rect" id="node33" href="$da/dd5/_sd_spi_bare_uno_driver_8h.html" title="Driver to test with no Arduino includes." alt="" coords="1825,160,2008,189"/>
-<area shape="rect" id="node34" href="$d1/d6a/_sd_spi_driver_8h.html" title="SpiDriver classes." alt="" coords="1681,160,1801,189"/>
-<area shape="rect" id="node6" href="$d0/d75/_fs_cache_8cpp.html" title=" " alt="" coords="507,624,623,653"/>
-<area shape="rect" id="node8" href="$dd/ddc/_ex_fat_file_8h.html" title="ExFatFile class." alt="" coords="365,701,466,731"/>
-<area shape="rect" id="node9" href="$d6/d68/_ex_fat_volume_8h.html" title=" " alt="" coords="426,779,554,808"/>
-<area shape="rect" id="node10" href="$d8/d23/_ex_fat_lib_8h.html" title=" " alt="" coords="528,856,625,885"/>
-<area shape="rect" id="node11" href="$da/dc3/_ex_fat_dbg_8cpp.html" title=" " alt="" coords="473,933,595,963"/>
-<area shape="rect" id="node13" href="$d6/dd8/_eris_core_8cpp.html" title=" " alt="" coords="1338,1011,1453,1040"/>
-<area shape="rect" id="node14" href="$d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html" title=" " alt="" coords="1154,1011,1306,1040"/>
-<area shape="rect" id="node16" href="$d6/d7b/_fat_file_8h.html" title="FatFile class." alt="" coords="663,701,746,731"/>
-<area shape="rect" id="node17" href="$da/d0b/_fat_volume_8h.html" title="FatVolume class." alt="" coords="656,779,767,808"/>
-<area shape="rect" id="node18" href="$de/dfa/_fat_lib_8h.html" title=" " alt="" coords="769,856,848,885"/>
-<area shape="rect" id="node26" href="$d3/d5c/_sd_card_info_8cpp.html" title=" " alt="" coords="891,237,1022,267"/>
-<area shape="rect" id="node27" href="$da/d60/_sd_card_interface_8h.html" title=" " alt="" coords="1047,237,1195,267"/>
-<area shape="rect" id="node29" href="$db/d31/_sd_card_8h.html" title=" " alt="" coords="1156,392,1245,421"/>
-<area shape="rect" id="node30" href="$d7/df6/_block_device_8h.html" title=" " alt="" coords="649,469,771,499"/>
-<area shape="rect" id="node32" href="$d0/d78/_sd_spi_card_8cpp.html" title=" " alt="" coords="1001,392,1131,421"/>
-<area shape="rect" id="node35" href="$d6/df3/_sd_spi_artemis_8cpp.html" title=" " alt="" coords="2207,237,2357,267"/>
-<area shape="rect" id="node36" href="$d8/d8f/_sd_spi_chip_select_8cpp.html" title=" " alt="" coords="2382,237,2555,267"/>
-<area shape="rect" id="node37" href="$de/daa/_sd_spi_due_8cpp.html" title=" " alt="" coords="2579,237,2705,267"/>
-<area shape="rect" id="node38" href="$db/d4e/_sd_spi_e_s_p_8cpp.html" title=" " alt="" coords="1321,237,1451,267"/>
-<area shape="rect" id="node39" href="$d3/de0/_sd_spi_particle_8cpp.html" title=" " alt="" coords="1475,237,1625,267"/>
-<area shape="rect" id="node40" href="$dd/db4/_sd_spi_s_t_m32_core_8cpp.html" title=" " alt="" coords="1649,237,1832,267"/>
-<area shape="rect" id="node41" href="$d8/d87/_sd_spi_s_t_m32_8cpp.html" title=" " alt="" coords="1857,237,2003,267"/>
-<area shape="rect" id="node42" href="$d8/d65/_sd_spi_teensy3_8cpp.html" title=" " alt="" coords="2027,237,2182,267"/>
+<area shape="rect" id="node1" title="Stream/Print like replacement for non&#45;Arduino systems." alt="" coords="1325,5,1432,35"/>
+<area shape="rect" id="node2" href="$d6/dc6/_print_basic_8cpp.html" title=" " alt="" coords="1253,83,1377,112"/>
+<area shape="rect" id="node3" href="$d9/da3/_sys_call_8h.html" title="SysCall class." alt="" coords="1401,83,1487,112"/>
+<area shape="rect" id="node4" href="$d8/d6a/_sys_call_bare_uno_8cpp.html" title=" " alt="" coords="577,160,743,189"/>
+<area shape="rect" id="node5" href="$df/d9b/_fs_date_time_8h.html" title=" " alt="" coords="819,160,941,189"/>
+<area shape="rect" id="node6" href="$d5/dce/_fs_date_time_8cpp.html" title=" " alt="" coords="653,237,792,267"/>
+<area shape="rect" id="node23" href="$d5/ddc/_sd_fat_8h.html" title="main SdFs include file." alt="" coords="1632,547,1709,576"/>
+<area shape="rect" id="node26" href="$d1/d0d/_fs_cache_8h.html" title="Common cache code for exFAT and FAT." alt="" coords="1121,160,1220,189"/>
+<area shape="rect" id="node28" href="$d7/dc8/_ex_fat_partition_8h.html" title="ExFatPartition include file." alt="" coords="917,237,1051,267"/>
+<area shape="rect" id="node29" href="$db/dd3/_fat_partition_8h.html" title="FatPartition class." alt="" coords="1216,237,1331,267"/>
+<area shape="rect" id="node30" href="$d8/d20/_fat_formatter_8h.html" title=" " alt="" coords="1141,315,1267,344"/>
+<area shape="rect" id="node31" href="$d0/d91/_minimum_serial_8cpp.html" title=" " alt="" coords="2527,160,2683,189"/>
+<area shape="rect" id="node32" href="$df/d21/_minimum_serial_8h.html" title="Minimal AVR Serial driver." alt="" coords="2708,160,2847,189"/>
+<area shape="rect" id="node33" href="$d9/d2a/_ring_buf_8h.html" title="Ring buffer for data loggers." alt="" coords="2871,160,2961,189"/>
+<area shape="rect" id="node34" href="$d2/db6/_sd_card_info_8h.html" title=" " alt="" coords="1597,160,1710,189"/>
+<area shape="rect" id="node37" href="$d5/d3e/_sdio_card_8h.html" title=" " alt="" coords="1685,315,1787,344"/>
+<area shape="rect" id="node39" href="$d8/daa/_sd_spi_card_8h.html" title="SdSpiCard class for V2 SD/SDHC cards." alt="" coords="1826,315,1939,344"/>
+<area shape="rect" id="node41" href="$da/dd5/_sd_spi_bare_uno_driver_8h.html" title="Driver to test with no Arduino includes." alt="" coords="2985,160,3167,189"/>
+<area shape="rect" id="node42" href="$d1/d6a/_sd_spi_driver_8h.html" title="SpiDriver classes." alt="" coords="2332,160,2452,189"/>
+<area shape="rect" id="node7" href="$dd/ddc/_ex_fat_file_8h.html" title="ExFatFile class." alt="" coords="779,315,880,344"/>
+<area shape="rect" id="node9" href="$d6/d7b/_fat_file_8h.html" title="FatFile class." alt="" coords="919,315,1001,344"/>
+<area shape="rect" id="node8" href="$d6/d68/_ex_fat_volume_8h.html" title=" " alt="" coords="752,392,880,421"/>
+<area shape="rect" id="node10" href="$da/d0b/_fat_volume_8h.html" title="FatVolume class." alt="" coords="905,392,1015,421"/>
+<area shape="rect" id="node11" href="$de/dfa/_fat_lib_8h.html" title=" " alt="" coords="915,469,994,499"/>
+<area shape="rect" id="node12" href="$d5/d96/_fat_dbg_8cpp.html" title=" " alt="" coords="287,547,393,576"/>
+<area shape="rect" id="node13" href="$db/dc9/_fat_formatter_8cpp.html" title=" " alt="" coords="417,547,559,576"/>
+<area shape="rect" id="node14" href="$dc/dd7/_fat_file_s_f_n_8cpp.html" title=" " alt="" coords="584,547,717,576"/>
+<area shape="rect" id="node15" href="$dc/d9e/_fat_name_8cpp.html" title=" " alt="" coords="741,547,859,576"/>
+<area shape="rect" id="node16" href="$db/d91/_fat_file_print_8cpp.html" title=" " alt="" coords="883,547,1016,576"/>
+<area shape="rect" id="node17" href="$d6/d63/_fat_file_l_f_n_8cpp.html" title=" " alt="" coords="1040,547,1171,576"/>
+<area shape="rect" id="node18" href="$d5/d8b/_fat_partition_8cpp.html" title=" " alt="" coords="1195,547,1328,576"/>
+<area shape="rect" id="node19" href="$d3/ddb/_fs_file_8h.html" title="FsBaseFile include file." alt="" coords="1353,547,1431,576"/>
+<area shape="rect" id="node20" href="$d2/dcc/_fat_file_8cpp.html" title=" " alt="" coords="1456,547,1557,576"/>
+<area shape="rect" id="node21" href="$dd/df4/_fat_volume_8cpp.html" title=" " alt="" coords="5,547,133,576"/>
+<area shape="rect" id="node22" href="$db/d47/_fs_volume_8h.html" title="FsVolume include file." alt="" coords="158,547,263,576"/>
+<area shape="rect" id="node24" href="$d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html" title=" " alt="" coords="1673,624,1825,653"/>
+<area shape="rect" id="node25" href="$d6/dd8/_eris_core_8cpp.html" title=" " alt="" coords="1535,624,1649,653"/>
+<area shape="rect" id="node27" href="$d0/d75/_fs_cache_8cpp.html" title=" " alt="" coords="1075,237,1191,267"/>
+<area shape="rect" id="node35" href="$d3/d5c/_sd_card_info_8cpp.html" title=" " alt="" coords="1507,237,1637,267"/>
+<area shape="rect" id="node36" href="$da/d60/_sd_card_interface_8h.html" title=" " alt="" coords="1662,237,1810,267"/>
+<area shape="rect" id="node38" href="$db/d31/_sd_card_8h.html" title=" " alt="" coords="1785,392,1874,421"/>
+<area shape="rect" id="node40" href="$d0/d78/_sd_spi_card_8cpp.html" title=" " alt="" coords="1899,392,2029,421"/>
+<area shape="rect" id="node43" href="$d3/de0/_sd_spi_particle_8cpp.html" title=" " alt="" coords="3169,237,3319,267"/>
+<area shape="rect" id="node44" href="$d6/df3/_sd_spi_artemis_8cpp.html" title=" " alt="" coords="1937,237,2087,267"/>
+<area shape="rect" id="node45" href="$dd/db4/_sd_spi_s_t_m32_core_8cpp.html" title=" " alt="" coords="2111,237,2294,267"/>
+<area shape="rect" id="node46" href="$d8/d87/_sd_spi_s_t_m32_8cpp.html" title=" " alt="" coords="2319,237,2465,267"/>
+<area shape="rect" id="node47" href="$d8/d8f/_sd_spi_chip_select_8cpp.html" title=" " alt="" coords="2489,237,2663,267"/>
+<area shape="rect" id="node48" href="$d8/d65/_sd_spi_teensy3_8cpp.html" title=" " alt="" coords="2687,237,2841,267"/>
+<area shape="rect" id="node49" href="$db/d4e/_sd_spi_e_s_p_8cpp.html" title=" " alt="" coords="2866,237,2995,267"/>
+<area shape="rect" id="node50" href="$de/daa/_sd_spi_due_8cpp.html" title=" " alt="" coords="3020,237,3145,267"/>
 </map>

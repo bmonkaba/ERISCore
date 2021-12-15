@@ -26,6 +26,6 @@ var globaldefs_8h =
     [ "SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC", "d8/d2c/globaldefs_8h.html#adbcabab2ec38eadd8ba18dc55d7b1486", null ],
     [ "SERIAL_WORKING_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a2e63e4023af076c8c199ede80957755e", null ],
     [ "p", "d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f", null ],
-    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a72c24669179a4c4371f614b576d26f2d", null ],
+    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a793a4ff464f65a4a4fc6d73e19c2c078", null ],
     [ "s", "d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede", null ]
 ];

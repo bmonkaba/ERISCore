@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eriscore_5519',['ERISCore',['../da/da2/md__e_r_i_s_core_lib__audio__r_e_a_d_m_e.html',1,'']]]
+  ['1_2d0_2e2_2e0_2dand_2dbeyond_7343',['1-0.2.0-and-beyond',['../d2/d06/md__e_r_i_s_core_lib_wren_doc_site_blog_1_0_2_0_and_beyond.html',1,'']]]
 ];

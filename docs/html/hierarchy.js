@@ -9,6 +9,7 @@ var hierarchy =
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
       [ "AppScope", "d8/dbe/class_app_scope.html", null ],
       [ "AppTemplate", "d9/d03/class_app_template.html", null ],
+      [ "AppWren", "d0/da0/class_app_wren.html", null ],
       [ "ControlButton", "df/d17/class_control_button.html", null ],
       [ "ControlSlider", "de/d67/class_control_slider.html", null ],
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
@@ -263,7 +264,11 @@ var hierarchy =
       ] ]
     ] ],
     [ "BufferedPrint< WriteClass, BUF_DIM >", "de/de1/class_buffered_print.html", null ],
+    [ "CallFrame", "d0/d4e/struct_call_frame.html", null ],
     [ "CID", "d1/db8/struct_c_i_d.html", null ],
+    [ "class MyClass", null, [
+      [ "proposal", "d5/de1/classproposal.html", null ]
+    ] ],
     [ "csd_t", "d8/d49/unioncsd__t.html", null ],
     [ "CSDV1", "d0/dfb/struct_c_s_d_v1.html", null ],
     [ "CSDV2", "d8/d81/struct_c_s_d_v2.html", null ],
@@ -312,6 +317,7 @@ var hierarchy =
     [ "FatPos_t", "d3/df4/struct_fat_pos__t.html", null ],
     [ "FatSfn_t", "d4/df2/class_fat_sfn__t.html", null ],
     [ "FFTReadRangeStruct", "d2/d28/struct_f_f_t_read_range_struct.html", null ],
+    [ "FnDebug", "d7/dbc/struct_fn_debug.html", null ],
     [ "FsBaseFile", "d7/d76/class_fs_base_file.html", [
       [ "StreamFile< FsBaseFile, uint64_t >", "da/dc7/class_stream_file.html", [
         [ "FsFile", "d4/da1/class_fs_file.html", null ]
@@ -360,23 +366,19 @@ var hierarchy =
     [ "LZ4_stream_u", "d1/dd8/union_l_z4__stream__u.html", null ],
     [ "LZ4_streamDecode_t_internal", "d7/db6/struct_l_z4__stream_decode__t__internal.html", null ],
     [ "LZ4_streamDecode_u", "df/d07/union_l_z4__stream_decode__u.html", null ],
+    [ "MapEntry", "d2/d99/struct_map_entry.html", null ],
     [ "masterBootRecordSector", "d6/d3c/structmaster_boot_record_sector.html", null ],
     [ "mbrPartition", "d9/d9f/structmbr_partition.html", null ],
     [ "metadata_t", "d4/da5/structmetadata__t.html", null ],
-    [ "object", null, [
-      [ "cpplint.CleansedLines", "d4/d14/classcpplint_1_1_cleansed_lines.html", null ],
-      [ "cpplint.FileInfo", "db/da8/classcpplint_1_1_file_info.html", null ],
-      [ "cpplint.NestingState", "dc/d6c/classcpplint_1_1_nesting_state.html", null ],
-      [ "cpplint._BlockInfo", "d4/dac/classcpplint_1_1___block_info.html", [
-        [ "cpplint._ClassInfo", "d7/d5f/classcpplint_1_1___class_info.html", null ],
-        [ "cpplint._ExternCInfo", "d3/d6a/classcpplint_1_1___extern_c_info.html", null ],
-        [ "cpplint._NamespaceInfo", "da/dd9/classcpplint_1_1___namespace_info.html", null ]
-      ] ],
-      [ "cpplint._CppLintState", "d7/d38/classcpplint_1_1___cpp_lint_state.html", null ],
-      [ "cpplint._FunctionState", "d0/d31/classcpplint_1_1___function_state.html", null ],
-      [ "cpplint._IncludeState", "d7/d78/classcpplint_1_1___include_state.html", null ],
-      [ "cpplint._PreprocessorInfo", "d8/d28/classcpplint_1_1___preprocessor_info.html", null ]
-    ] ],
+    [ "Method", "d4/d3e/struct_method.html", null ],
+    [ "ObjClosure", "de/d02/struct_obj_closure.html", null ],
+    [ "ObjFn", "df/d87/struct_obj_fn.html", null ],
+    [ "ObjForeign", "d2/df7/struct_obj_foreign.html", null ],
+    [ "ObjInstance", "d9/d8d/struct_obj_instance.html", null ],
+    [ "ObjList", "db/d98/struct_obj_list.html", null ],
+    [ "ObjMap", "d4/db1/struct_obj_map.html", null ],
+    [ "ObjModule", "df/d81/struct_obj_module.html", null ],
+    [ "ObjRange", "d3/d4b/struct_obj_range.html", null ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
     [ "partitionBootSector", "dc/d17/structpartition_boot_sector.html", null ],
     [ "partitionBootSectorFat", "dc/da3/structpartition_boot_sector_fat.html", null ],
@@ -416,6 +418,11 @@ var hierarchy =
     [ "SharedSpiCard", "d5/d4b/class_shared_spi_card.html", [
       [ "DedicatedSpiCard", "db/d21/class_dedicated_spi_card.html", null ]
     ] ],
+    [ "sObj", "d6/d93/structs_obj.html", null ],
+    [ "sObjClass", "d7/d64/structs_obj_class.html", null ],
+    [ "sObjFiber", "d1/d2d/structs_obj_fiber.html", null ],
+    [ "sObjString", "d1/d25/structs_obj_string.html", null ],
+    [ "sObjUpvalue", "de/d13/structs_obj_upvalue.html", null ],
     [ "SoftSPI< MisoPin, MosiPin, SckPin, Mode >", "db/dbb/class_soft_s_p_i.html", null ],
     [ "SoftSPI< MisoPin, MosiPin, SckPin, 0 >", "db/dbb/class_soft_s_p_i.html", null ],
     [ "StreamBaseFile", null, [
@@ -430,7 +437,27 @@ var hierarchy =
     [ "Vol", null, [
       [ "SdBase< Vol >", "de/d8b/class_sd_base.html", null ]
     ] ],
+    [ "WrenConfiguration", "d5/df9/struct_wren_configuration.html", null ],
+    [ "WrenDoubleBits", "d7/de9/union_wren_double_bits.html", null ],
+    [ "WrenForeignClassMethods", "d4/da9/struct_wren_foreign_class_methods.html", null ],
+    [ "WrenHandle", "d7/d18/struct_wren_handle.html", null ],
+    [ "WrenLoadModuleResult", "d2/d9b/struct_wren_load_module_result.html", null ],
+    [ "WrenVM", "d7/ddb/struct_wren_v_m.html", null ],
     [ "XPT2046_Touchscreen", null, [
       [ "Touch", "d1/dff/class_touch.html", null ]
+    ] ],
+    [ "object", null, [
+      [ "cpplint.CleansedLines", "d4/d14/classcpplint_1_1_cleansed_lines.html", null ],
+      [ "cpplint.FileInfo", "db/da8/classcpplint_1_1_file_info.html", null ],
+      [ "cpplint.NestingState", "dc/d6c/classcpplint_1_1_nesting_state.html", null ],
+      [ "cpplint._BlockInfo", "d4/dac/classcpplint_1_1___block_info.html", [
+        [ "cpplint._ClassInfo", "d7/d5f/classcpplint_1_1___class_info.html", null ],
+        [ "cpplint._ExternCInfo", "d3/d6a/classcpplint_1_1___extern_c_info.html", null ],
+        [ "cpplint._NamespaceInfo", "da/dd9/classcpplint_1_1___namespace_info.html", null ]
+      ] ],
+      [ "cpplint._CppLintState", "d7/d38/classcpplint_1_1___cpp_lint_state.html", null ],
+      [ "cpplint._FunctionState", "d0/d31/classcpplint_1_1___function_state.html", null ],
+      [ "cpplint._IncludeState", "d7/d78/classcpplint_1_1___include_state.html", null ],
+      [ "cpplint._PreprocessorInfo", "d8/d28/classcpplint_1_1___preprocessor_info.html", null ]
     ] ]
 ];

@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#else  </span><span class="comment">// PRINTF_USE_FLOAT</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keywordtype">char</span> <a class="code" href="../../d0/d70/_usb_host_shield_diff_8txt.html#a92756b7c1fa9788a5d3343572bd93fd3">buf</a>[15];</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// PRINTF_USE_FLOAT</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">char</span> prefix[3];</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">char</span> <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[3];</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">unsigned</span> base;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">int</span> n;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> nc = 0;</div>
@@ -224,10 +224,10 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        ln = isLong ? va_arg(ap, <span class="keywordtype">long</span>) : va_arg(ap, <span class="keywordtype">int</span>);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span> (prec || ln) {</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;          <span class="keywordflow">if</span> (ln &lt; 0) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            prefix[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            ln = -ln;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;          } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (plusSign) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            prefix[np++] = plusSign;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = plusSign;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;          }</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;          str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#a734e1abae6b77a32b040375e741b8d58">fmtUnsigned</a>(str, ln, 10, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;          nz = prec + str - ptr;</div>
@@ -242,9 +242,9 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        f = va_arg(ap, <span class="keywordtype">double</span>);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">if</span> (f &lt; 0) {</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;          f = -f;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          prefix[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (plusSign) {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;          prefix[np++] = plusSign;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;          <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = plusSign;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#a29e6f245d52c13dc1b1d0ed44eac22b0">fmtDouble</a>(str, f, prec &lt; 0 ? 6 : prec, altForm, c);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -254,9 +254,9 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        f = va_arg(ap, <span class="keywordtype">double</span>);</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (f &lt; 0) {</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;          f = -f;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          prefix[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = <span class="charliteral">&#39;-&#39;</span>;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (plusSign) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;          prefix[np++] = plusSign;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;          <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = plusSign;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        }</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        str = <a class="code" href="../../d8/d73/_fmt_number_8cpp.html#a29e6f245d52c13dc1b1d0ed44eac22b0">fmtDouble</a>(str, f, prec &lt; 0 ? 6 : prec, altForm);</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -286,8 +286,8 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;o&#39;</span>) {</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            *--str = <span class="charliteral">&#39;0&#39;</span>;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            prefix[np++] = <span class="charliteral">&#39;0&#39;</span>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            prefix[np++] = c;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>[np++] = c;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;          }</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -320,7 +320,7 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      }</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">// Don&#39;t call write if no prefix.</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span> (np &amp;&amp; np != file-&gt;write(prefix, np)) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span> (np &amp;&amp; np != file-&gt;write(<a class="code" href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a>, np)) {</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      <span class="keywordflow">goto</span> fail;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">// Do zero padding.</span></div>
@@ -527,6 +527,7 @@ $(document).ready(function(){initNavTree('de/d4f/_print_templates_8h_source.html
 <div class="ttc" id="a_sd_error_codes_8txt_html_a0cd7d5e5ab93e00cc5747ed3ffaeb236"><div class="ttname"><a href="../../d9/dfc/_sd_error_codes_8txt.html#a0cd7d5e5ab93e00cc5747ed3ffaeb236">width</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list Symbol failed SD_CARD_ERROR_NONE No SD_CARD_ERROR_CMD0 Card reset SD_CARD_ERROR_CMD2 SDIO read SD_CARD_ERROR_CMD3 SDIO publish SD_CARD_ERROR_CMD6 Switch card SD_CARD_ERROR_CMD7 SDIO card SD_CARD_ERROR_CMD8 Send and check interface SD_CARD_ERROR_CMD9 Read CSD SD_CARD_ERROR_CMD10 Read CID SD_CARD_ERROR_CMD12 Stop multiple block SD_CARD_ERROR_CMD13 Read card SD_CARD_ERROR_CMD17 Read single SD_CARD_ERROR_CMD18 Read multiple SD_CARD_ERROR_CMD24 Write single SD_CARD_ERROR_CMD25 Write multiple SD_CARD_ERROR_CMD32 Set first erase SD_CARD_ERROR_CMD33 Set last erase SD_CARD_ERROR_CMD38 Erase selected SD_CARD_ERROR_CMD58 Read OCR SD_CARD_ERROR_CMD59 Set CRC SD_CARD_ERROR_ACMD6 Set SDIO bus width</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00026">SdErrorCodes.txt:27</a></div></div>
 <div class="ttc" id="a_sys_call_8h_html_ab979d9d4b4923f7c54d6caa6e1a61936"><div class="ttname"><a href="../../d9/da3/_sys_call_8h.html#ab979d9d4b4923f7c54d6caa6e1a61936">nullptr</a></div><div class="ttdeci">#define nullptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/da3/_sys_call_8h_source.html#l00037">SysCall.h:37</a></div></div>
 <div class="ttc" id="a_usb_host_shield_diff_8txt_html_a92756b7c1fa9788a5d3343572bd93fd3"><div class="ttname"><a href="../../d0/d70/_usb_host_shield_diff_8txt.html#a92756b7c1fa9788a5d3343572bd93fd3">buf</a></div><div class="ttdeci">C buf[i]</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d70/_usb_host_shield_diff_8txt_source.html#l00005">UsbHostShieldDiff.txt:5</a></div></div>
+<div class="ttc" id="areceiver-less_01calls_8txt_html_a129a3e5535abc54e9be509a15befda36"><div class="ttname"><a href="../../df/d75/receiver-less_01calls_8txt.html#a129a3e5535abc54e9be509a15befda36">prefix</a></div><div class="ttdeci">Q1 then really means a call to static a method on the class surrounding the enclosing class I *don t *think we want the answer to the question to vary based on the name in question We can t rely on name resolution to disambiguate because we don t know the full set of surrounding names in a single pass compiler it s semantically squishier I think the right answer it s an implicit call on this That s what you want most I think For imported we could import them with a prefix(really import them as objects bound to named variables)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

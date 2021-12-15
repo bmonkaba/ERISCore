@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['pgm_5fread_5fbyte_5403',['pgm_read_byte',['../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d',1,'FatFile.h']]],
-  ['pgm_5fread_5fword_5404',['pgm_read_word',['../d6/d7b/_fat_file_8h.html#a910fb5f01313d339d3b835d45e1e5ad0',1,'FatFile.h']]],
-  ['play_5fsd_5fraw_5fh_5f_5405',['play_sd_raw_h_',['../d2/ded/eris_audio_8h.html#a709770084c6290ef1f638e3e6e17d63e',1,'erisAudio.h']]],
-  ['play_5fsd_5fwav_5fh_5f_5406',['play_sd_wav_h_',['../d2/ded/eris_audio_8h.html#af2233d0e1a49ad626f7216b833f6d1c4',1,'erisAudio.h']]],
-  ['print_5fformat_5fprogress_5407',['PRINT_FORMAT_PROGRESS',['../d6/dac/_ex_fat_formatter_8cpp.html#a5aa382a92a8554c8f39cf96e1a729a48',1,'PRINT_FORMAT_PROGRESS():&#160;ExFatFormatter.cpp'],['../db/dc9/_fat_formatter_8cpp.html#a5aa382a92a8554c8f39cf96e1a729a48',1,'PRINT_FORMAT_PROGRESS():&#160;FatFormatter.cpp']]],
-  ['printf_5fuse_5ffloat_5408',['PRINTF_USE_FLOAT',['../de/d4f/_print_templates_8h.html#a26baac10baccbe6d4f13f98981dd202a',1,'PrintTemplates.h']]],
-  ['progmem_5409',['PROGMEM',['../d6/d7b/_fat_file_8h.html#a75acaba9e781937468d0911423bc0c35',1,'FatFile.h']]],
-  ['program_5fmode_5410',['PROGRAM_MODE',['../de/d10/_h_s_i_8h.html#ad75e81a864c853ad1c2355070b6ec340',1,'HSI.h']]],
-  ['pstr_5411',['PSTR',['../d6/d7b/_fat_file_8h.html#a9c00057fd19e916cc1aa0a5949336beb',1,'FatFile.h']]]
+  ['peek_7174',['PEEK',['../de/db2/wren__vm_8c.html#aa25dac8b80db8b8f03732eeb9ca23934',1,'wren_vm.c']]],
+  ['peek2_7175',['PEEK2',['../de/db2/wren__vm_8c.html#a7eb3d11386334057b36a2a29564502ca',1,'wren_vm.c']]],
+  ['pgm_5fread_5fbyte_7176',['pgm_read_byte',['../d6/d7b/_fat_file_8h.html#a48c60b057902adf805797f183286728d',1,'FatFile.h']]],
+  ['pgm_5fread_5fword_7177',['pgm_read_word',['../d6/d7b/_fat_file_8h.html#a910fb5f01313d339d3b835d45e1e5ad0',1,'FatFile.h']]],
+  ['play_5fsd_5fraw_5fh_5f_7178',['play_sd_raw_h_',['../d2/ded/eris_audio_8h.html#a709770084c6290ef1f638e3e6e17d63e',1,'erisAudio.h']]],
+  ['play_5fsd_5fwav_5fh_5f_7179',['play_sd_wav_h_',['../d2/ded/eris_audio_8h.html#af2233d0e1a49ad626f7216b833f6d1c4',1,'erisAudio.h']]],
+  ['pop_7180',['POP',['../de/db2/wren__vm_8c.html#a2106695e949772f765546777ef34690e',1,'wren_vm.c']]],
+  ['prefix_7181',['PREFIX',['../d4/de2/wren__compiler_8c.html#a4d3f766a087c68a45bac40c274896e15',1,'wren_compiler.c']]],
+  ['prefix_5foperator_7182',['PREFIX_OPERATOR',['../d4/de2/wren__compiler_8c.html#afab80431e74139737000d66fdcf06e1d',1,'wren_compiler.c']]],
+  ['primitive_7183',['PRIMITIVE',['../d7/d66/wren__primitive_8h.html#a7d741241a51f9a7c73fc959755a8f9c6',1,'wren_primitive.h']]],
+  ['print_5fformat_5fprogress_7184',['PRINT_FORMAT_PROGRESS',['../d6/dac/_ex_fat_formatter_8cpp.html#a5aa382a92a8554c8f39cf96e1a729a48',1,'PRINT_FORMAT_PROGRESS():&#160;ExFatFormatter.cpp'],['../db/dc9/_fat_formatter_8cpp.html#a5aa382a92a8554c8f39cf96e1a729a48',1,'PRINT_FORMAT_PROGRESS():&#160;FatFormatter.cpp']]],
+  ['printf_5fuse_5ffloat_7185',['PRINTF_USE_FLOAT',['../de/d4f/_print_templates_8h.html#a26baac10baccbe6d4f13f98981dd202a',1,'PrintTemplates.h']]],
+  ['progmem_7186',['PROGMEM',['../d6/d7b/_fat_file_8h.html#a75acaba9e781937468d0911423bc0c35',1,'FatFile.h']]],
+  ['program_5fmode_7187',['PROGRAM_MODE',['../de/d10/_h_s_i_8h.html#ad75e81a864c853ad1c2355070b6ec340',1,'HSI.h']]],
+  ['pstr_7188',['PSTR',['../d6/d7b/_fat_file_8h.html#a9c00057fd19e916cc1aa0a5949336beb',1,'FatFile.h']]],
+  ['push_7189',['PUSH',['../de/db2/wren__vm_8c.html#a0f49929253f5fcbc088ab3d3ed7562fc',1,'wren_vm.c']]]
 ];
