@@ -20,9 +20,10 @@
 #define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 20
 
 #define SERIAL_RX_BUFFER_SIZE 1024
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 16384/2
 #define SERIAL_PARAM_BUFFER_SIZE 128
-#define SERIAL_OUTPUT_BUFFER_SIZE 16384
-#define SERIAL_WORKING_BUFFER_SIZE 16384
+#define SERIAL_OUTPUT_BUFFER_SIZE 16384/2
+#define SERIAL_WORKING_BUFFER_SIZE 16384/2
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
 
 #define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
@@ -31,7 +32,7 @@
 
 //Audio Director
 #define MAX_AUDIO_STREAM_OBJECTS 52
-#define MAX_AUDIO_MEMORY_BLOCKS 200
+#define MAX_AUDIO_MEMORY_BLOCKS 120
 #define MAX_CATEGORIES 16
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 24
 #define MAX_CONNECTIONS 64 
@@ -84,7 +85,6 @@ const char UI_SLIDER_SHADE_COLOR[] PROGMEM = "UI_SLIDER_SHADE_COLOR";
 const char UI_SLIDER_FILL_COLOR[] PROGMEM = "UI_SLIDER_FILL_COLOR";
 const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
-
 //Wren test script
 //test script
 //note: plenty of wren language scripting examples can be found here:
@@ -99,7 +99,7 @@ class App {
         //System.print("M  static App::updateRT() ")
         __count = __count + 1
         if (__count > 50000){
-            System.print("M  App::updateRT() 500K calls")
+            System.print("M App::updateRT() 50K calls")
             __count = 0
         }
     }
@@ -108,7 +108,7 @@ class App {
         //System.print("M  static App::updateRT() ")
         __count = __count + 1
         if (__count > 50000){
-            System.print("M  App::updateRT() 500K calls")
+            System.print("M static App::updateRT() 50K calls")
             __count = 0
         }
     }
@@ -138,19 +138,19 @@ class App {
     }
 
     static onAnalog1() {
-        System.print("M  App::onAnalog1() ")
+        System.print("M App::onAnalog1() ")
     }
 
     static onAnalog2() {
-        System.print("M  App::onAnalog2() ")
+        System.print("M App::onAnalog2() ")
     }
 
     static onAnalog3() {
-        System.print("M  App::onAnalog3() ")
+        System.print("M App::onAnalog3() ")
     }
 
     static onAnalog4() {
-        System.print("M  App::onAnalog4() ")
+        System.print("M App::onAnalog4() ")
     }
 
     static MessageHandler() {
@@ -164,9 +164,9 @@ class App {
 }
 
 var ErisApp = App.new()
-ErisApp.updateRT()
+//ErisApp.updateRT()
 //static function call
-App.updateRT()
+//App.updateRT()
 
 )";
 

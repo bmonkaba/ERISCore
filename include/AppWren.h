@@ -15,12 +15,13 @@
 #include "globaldefs.h"
 
 /**
- * @brief Wren is a scripting language. This class embeds Wren.
- * the purpose of the class is to mirror the AppBaseClass into wren
- * the use case is to allow scripting of apps
- * the major benifit and the reason to even try this is the ability to dynamicly load applications \
- * the second benifit is program storage moves from the precious and limited microcontroller flash to the SD card
- * note: available heap defines the upper boundary of VM size
+ * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.
+ * 
+ * The use case is to allow scripting of apps
+ * Why? with this applications can be dynamically loaded and executed
+ * Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card
+ * which gives effectivly limitless program storage space.
+ * Beware: The available heap defines the upper boundary of VM size
  */
 class AppWren:public AppBaseClass {
   public:
@@ -40,6 +41,7 @@ class AppWren:public AppBaseClass {
         h_onAnalog3 = 0;
         h_onAnalog4 = 0;
         h_messageHandler = 0;
+        compileOnly = false;
         vmConstructor();
     }; 
     ~AppWren(){
@@ -59,12 +61,7 @@ class AppWren:public AppBaseClass {
         isWrenResultOK(wrenInterpret(vm, module, script));
     }
     
-    //define event handlers
-    void MessageHandler(AppBaseClass *sender, const char *message){   
-        if(sender->isName("SOME APP NAME")){
-            
-        }
-    }
+    void MessageHandler(AppBaseClass *sender, const char *message);
 
   protected:
     void restartVM(){
@@ -254,6 +251,8 @@ class AppWren:public AppBaseClass {
             };
         }
     };
+ protected:
+    bool compileOnly;
  private:
     WrenVM* vm;
     WrenHandle* h_slot0;

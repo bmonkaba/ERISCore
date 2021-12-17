@@ -30,7 +30,11 @@ INCOMMING MESSAGES:
     STATS
     CQT_CFG     request a dump of the cqt bin configs
     GET_DD      request a dump of the data dictionary   
-    GET_RAM2    reqquest a dump of ram2   
+    GET_RAM2    reqquest a dump of ram2
+    WREN_SCRIPT_START   indicates the start of a bulk text transfer
+    WREN_SCRIPT_END     ends the bulk text transfer
+    WREN_SCRIPT_EXECUTE executes the transfered script
+    WREN_SCRIPT_COMPILE compiles the transfered script and reports any errors
 
 OUTPUT MESSAGES:
 
@@ -329,15 +333,58 @@ void SvcSerialCommandInterface::streamHandler(){
 };
 
 
-void SvcSerialCommandInterface::updateRT(){
-    //throttle 
-    if (throttle()) return;
-
+void SvcSerialCommandInterface::updateRT(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
-
-    if (isStreamingFile){
+    if(isCapturingBulkData){
+        Serial.println(F("M SvcSerialCommandInterface::updateRT isCapturingBulkData"));
+        char* f;
+        do{
+            do{
+                captureBuffer[indexCaptureBuffer] = Serial.read();
+                if(captureBuffer[indexCaptureBuffer] != 0xFF) indexCaptureBuffer++;
+            }while (Serial.available() && indexCaptureBuffer < SERIAL_RX_CAPTURE_BUFFER_SIZE-1);//in case were asking for the streaming data faster than it's being sent
+            //strncat(captureBuffer,&bufferChr,1);
+            //memcpy(&captureBuffer[indexCaptureBuffer], &bufferChr, 1);
+            if(indexCaptureBuffer == SERIAL_RX_CAPTURE_BUFFER_SIZE-1){
+                Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script ERROR: Input buffer full"));
+                Serial.flush();
+                //delay(2000);
+                isCapturingBulkData = false;
+                indexCaptureBuffer = 0;
+            }
+            f = strstr(captureBuffer,"WREN_SCRIPT_END");
+            if (f > 0){
+                Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script Received"));
+                //Serial.flush();
+                //delay(2000);
+                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script STRLEN captureBuffer: "));
+                Serial.println(strlen(captureBuffer));
+                //Serial.flush();
+                //delay(2000);
+                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script indexCaptureBuffer: "));
+                Serial.println(indexCaptureBuffer);
+                //Serial.flush();
+                //delay(2000);
+                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script END STRSTR index: "));
+                Serial.println(f);
+                //Serial.flush();
+                //delay(2000);
+                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script capture buffer ptr: "));
+                Serial.println((uint32_t)captureBuffer);
+                Serial.flush();
+                //delay(2000);
+                Serial.print("M ");
+                Serial.println(captureBuffer);
+                Serial.flush();
+                //delay(2000);
+                memset(f,0,strlen("WREN_SCRIPT_END"));//remove the EOF marker
+                //stream complete
+                isCapturingBulkData = false;
+            }
+        }while(isCapturingBulkData);
+    }else if (isStreamingFile){
         streamHandler();
     }else if (Serial.available() > 0 && false == newRxMsg ) {
         bufferChr = Serial.read();
@@ -438,7 +485,7 @@ void SvcSerialCommandInterface::updateRT(){
                     free(workingBuffer);
                     delay(250);
                 }
-            } else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
+            }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
                 if (total_read < 3){
                     Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
@@ -454,7 +501,7 @@ void SvcSerialCommandInterface::updateRT(){
                     strcpy(streamFile,param2);
                     isStreamingFile = true;
                 }
-            } else if (strncmp(cmd, "ACON",sizeof(cmd)) == 0){ //audio connections
+            }else if (strncmp(cmd, "ACON",sizeof(cmd)) == 0){ //audio connections
                 uint16_t i;  
                 char csBuffer[128];
                 i = 0;
@@ -467,7 +514,7 @@ void SvcSerialCommandInterface::updateRT(){
                 }
                 Serial.println(F("M ACON END"));
 
-            } else if (strncmp(cmd, "CONNECT",sizeof(cmd)) == 0){
+            }else if (strncmp(cmd, "CONNECT",sizeof(cmd)) == 0){
                 int source_port;
                 int dest_port;
                 
@@ -478,7 +525,7 @@ void SvcSerialCommandInterface::updateRT(){
                 } else{
                     ad->connect(param,source_port,param2,dest_port);
                 }
-            } else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
+            }else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
                 total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
@@ -491,7 +538,7 @@ void SvcSerialCommandInterface::updateRT(){
                         Serial.printf(F("M FAILED DISCONNECT OF %s %d\n"),param,dest_port);
                     }
                 }
-            } else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
+            }else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) am->getActiveApp()->MessageHandler(this,param);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 am->printStats();
@@ -507,6 +554,35 @@ void SvcSerialCommandInterface::updateRT(){
                 println(g_wrenScript);
                 println("#WREN_EOF!");
                 endLZ4Message();
+            }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
+                isCapturingBulkData = true;
+                captureBuffer = (char*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+                if(captureBuffer!=NULL){
+                    memset(captureBuffer,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);
+                    indexCaptureBuffer = 0;
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer allocated and initalized"));
+                } else{
+                    isCapturingBulkData = false;
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
+                }
+            }else if (strncmp(cmd, "WREN_SCRIPT_COMPILE",sizeof(cmd)) == 0){
+                if(captureBuffer != NULL){
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script compile request"));
+                    am->sendMessage(this,"AppWren","WREN_SCRIPT_COMPILE");
+                    am->sendMessage(this,"AppWren",captureBuffer);
+                    free(captureBuffer);
+                    captureBuffer = NULL;
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));    
+            }else if (strncmp(cmd, "WREN_SCRIPT_EXECUTE",sizeof(cmd)) == 0){
+                if(captureBuffer != NULL){
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script execute request"));
+                    am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
+                    am->sendMessage(this,"AppWren",captureBuffer);
+                    free(captureBuffer);
+                    captureBuffer = NULL;
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;

@@ -1172,7 +1172,7 @@ select {
     margin: 10px;
     padding: 5px;
     width: 1220px;
-    height: 238%;
+    height: 300%;
 }
     
 
@@ -1218,12 +1218,12 @@ select {
     background:url(/static/img/compile.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:40px;
-    height:40px;
+    width:34px;
+    height:34px;
     opacity: 0.5;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .CompileButton:active
@@ -1231,20 +1231,20 @@ select {
     background:url(/static/img/compile.png) no-repeat;
     opacity: 1.0;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .RunButton{
     background:url(/static/img/run.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:40px;
-    height:40px;
+    width:34px;
+    height:34px;
     opacity: 0.5;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .RunButton:active
@@ -1252,20 +1252,20 @@ select {
     background:url(/static/img/run.png) no-repeat;
     opacity: 1.0;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .GetScriptButton{
     background:url(/static/img/get_active_script.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:40px;
-    height:40px;
+    width:34px;
+    height:34px;
     opacity: 0.5;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .GetScriptButton:active
@@ -1273,8 +1273,8 @@ select {
     background:url(/static/img/get_active_script.png) no-repeat;
     opacity: 1.0;
     background-size: 100%;
-    margin:10px;
-    padding:10px;
+    margin:2px;
+    padding:2px;
 }
 
 .showEditor{

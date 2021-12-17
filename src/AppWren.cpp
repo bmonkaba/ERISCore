@@ -62,3 +62,31 @@ void AppWren::startVM(){
     config.heapGrowthPercent = 50;
     vm = wrenNewVM(&config);
 }
+
+void AppWren::MessageHandler(AppBaseClass *sender, const char *message){   
+    if(sender->isName("SCI")){
+        if(strcmp(message,"WREN_SCRIPT_COMPILE")) {
+            Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_COMPILE -> compileOnly = true"));
+            compileOnly = true;
+            return;
+        }else if(strcmp(message,"WREN_SCRIPT_EXECUTE")) {
+            Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_EXECUTE -> compileOnly = false"));
+            compileOnly = false;
+            return;
+        }else{ //if the message payload is not a command then assume its the data
+            if(compileOnly){
+              Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
+              return;
+            }else{ //execute the script
+                Serial.println(F("M AppWren::MessageHandler: Restarting the VM"));
+                restartVM();
+                Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
+                loadScript(message);
+                Serial.println(F("M AppWren::MessageHandler: cache the wren handles"));
+                getWrenHandles();
+                wrenSetSlotHandle(vm, 0, h_slot0);//App
+                Serial.println(F("M AppWren::MessageHandler: request complete"));
+            }
+        }
+    }
+}

@@ -59,8 +59,8 @@ class AppManager {
     SdFs sd;
     AudioDirector* ad;
     SvcDataDictionary* data;//data dictionary service;
-    Surface*  fastImgCacheSurfaceP; //FAST MEM img cashe
-    Surface*  displaySurfaceP; //FAST MEM img cashe
+    Surface* fastImgCacheSurfaceP; //FAST MEM img cashe
+    Surface* displaySurfaceP; //FAST MEM img cashe
     static AppManager* getInstance() //public access to get a reference to the singleton instance
     {
       if (NULL==obj) {

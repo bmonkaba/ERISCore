@@ -60,8 +60,11 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         indexRxBuffer = 0;
         indexTxBuffer = 0;
         isStreamingFile = false;
+        isCapturingBulkData = false;
         txBufferOverflowFlag = false;
         periodicMessagesEnabled = true;
+        captureBuffer = 0;
+        workingBuffer = 0;
         strcpy(streamPath,"");
         strcpy(streamFile,"");
         streamPos = 0;
@@ -86,14 +89,18 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     SdFs *pSD;
     FsFile file;
     uint16_t indexRxBuffer;
+    uint32_t indexCaptureBuffer;
     uint16_t indexTxBuffer;
     char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];
     char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
+    //used for lz4 tx compressor
     char *workingBuffer;
+    char *captureBuffer;
     uint64_t streamPos;
     bool isStreamingFile;
+    bool isCapturingBulkData;
     bool periodicMessagesEnabled;
     volatile bool txBufferOverflowFlag;
     elapsedMillis sincePoll;

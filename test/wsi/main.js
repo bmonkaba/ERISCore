@@ -864,8 +864,6 @@ $(document).ready(function () {
     });
 
 
-
-
     $("#cmd_showFlow").click(function (ev) {
         ev.preventDefault();
         $("#flow_container").show(0.35);
@@ -940,8 +938,6 @@ $(document).ready(function () {
         });
     });
 
-
-
     $("#getRam2").click(function (ev) {
         ev.preventDefault();
         sendMessage({
@@ -951,15 +947,57 @@ $(document).ready(function () {
         $("#memory_chunk_table tbody").empty();
     });
 
-    $("#GetScriptButton").click(function (ev) {
+    $("#get_script_button").click(function (ev) {
          ev.preventDefault();
          sendMessage({
              "data": "GET_WREN_SCRIPT"
          });
     });
 
-
-
+    $("#compile_script_button").click(function (ev) {
+        ev.preventDefault();
+        //send the script
+        var code = editor.getValue();
+        sendMessage({
+            "data": "WREN_SCRIPT_START"
+        });
+        
+        sendMessage({
+            "data": code
+        });
+        
+        sendMessage({
+            "data": "WREN_SCRIPT_END"
+        });
+        
+        sendMessage({
+            "data": "WREN_SCRIPT_COMPILE"
+        });
+        
+    });
+    
+    $("#run_script_button").click(function (ev) {
+        ev.preventDefault();
+        //send the script
+        var code = editor.getValue();
+        sendMessage({
+            "data": "WREN_SCRIPT_START"
+        });
+        
+        sendMessage({
+            "data": code
+        });
+        
+        
+        sendMessage({
+            "data": "WREN_SCRIPT_END"
+        });
+        
+        sendMessage({
+            "data": "WREN_SCRIPT_EXECUTE"
+        });
+        
+    });
 
     $("#freq_slider").on("change", function (event, ui) {
         sendMessage({
@@ -967,16 +1005,13 @@ $(document).ready(function () {
         });
     });
 
-
     draw();
-
 });
 
 function draw() {
     var canvas = document.getElementById("stage");
     if (canvas.getContext) {
         var ctx = canvas.getContext("2d");
-
         ctx.fillStyle = "#D74022";
         ctx.fillStyle = "#000000";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
