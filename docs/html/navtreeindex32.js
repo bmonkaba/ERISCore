@@ -1,5 +1,10 @@
 var NAVTREEINDEX32 =
 {
+"de/d67/class_control_slider.html":[75,0,30],
+"de/d67/class_control_slider.html#a02b03e7f3c8034d8b52991d7c7a82f28":[75,0,30,29],
+"de/d67/class_control_slider.html#a08a303813204000ee12600a38fe96d18":[75,0,30,57],
+"de/d67/class_control_slider.html#a0f0bf44e9b49f745c95843f1e97d2386":[75,0,30,4],
+"de/d67/class_control_slider.html#a12be372470e6826bae25db90c01c388e":[75,0,30,54],
 "de/d67/class_control_slider.html#a1347e3dece7d16b17a81a5a20597e365":[75,0,30,16],
 "de/d67/class_control_slider.html#a15bd30c1eca8816d20b7d7557c9221b7":[75,0,30,42],
 "de/d67/class_control_slider.html#a24b3c843dfb167ef97f1b5f3a3e22875":[75,0,30,51],
@@ -234,20 +239,15 @@ var NAVTREEINDEX32 =
 "de/db2/wren__vm_8c.html#affbc2296f1411573917696552a40522f":[76,0,200,80],
 "de/db2/wren__vm_8c_source.html":[76,0,200],
 "de/db4/group__soft_s_p_i.html":[73,1],
-"de/db4/group__soft_s_p_i.html#ga4f2c19a684a848b1e3b08cf475cded11":[76,0,151,1],
 "de/db4/group__soft_s_p_i.html#ga4f2c19a684a848b1e3b08cf475cded11":[73,1,2],
+"de/db4/group__soft_s_p_i.html#ga4f2c19a684a848b1e3b08cf475cded11":[76,0,151,1],
 "de/db4/group__soft_s_p_i.html#ga51158539d4d6022c9a445e78b0abfa94":[76,0,151,3],
 "de/db4/group__soft_s_p_i.html#ga51158539d4d6022c9a445e78b0abfa94":[73,1,4],
 "de/db4/group__soft_s_p_i.html#gac9d2cd28bbc5b023abb24fc1ab56d34e":[76,0,151,4],
 "de/db4/group__soft_s_p_i.html#gac9d2cd28bbc5b023abb24fc1ab56d34e":[73,1,5],
-"de/db4/group__soft_s_p_i.html#gad26f209553f49afaa7cc789af2446ea6":[73,1,1],
 "de/db4/group__soft_s_p_i.html#gad26f209553f49afaa7cc789af2446ea6":[76,0,151,0],
+"de/db4/group__soft_s_p_i.html#gad26f209553f49afaa7cc789af2446ea6":[73,1,1],
 "de/db4/group__soft_s_p_i.html#gaee641e839770c70643f380501c3e3986":[76,0,151,2],
 "de/db4/group__soft_s_p_i.html#gaee641e839770c70643f380501c3e3986":[73,1,3],
-"de/db5/eris__synth__waveform_8h.html":[76,0,41],
-"de/db5/eris__synth__waveform_8h.html#a057e6fc51e7e44873c0488f6ffb20296":[76,0,41,2],
-"de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8":[76,0,41,5],
-"de/db5/eris__synth__waveform_8h.html#a24ee98dbaa3894cdd365968f378c20a9":[76,0,41,10],
-"de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9":[76,0,41,7],
-"de/db5/eris__synth__waveform_8h.html#a538043fe947ae9c5e59fe2fa4abf9ab2":[76,0,41,4]
+"de/db5/eris__synth__waveform_8h.html":[76,0,41]
 };

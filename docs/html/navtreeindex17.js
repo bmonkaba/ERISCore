@@ -1,5 +1,9 @@
 var NAVTREEINDEX17 =
 {
+"d6/d71/cpplint_8py.html#a0ebfae753fc7e59a9921df1bc576654c":[76,0,31,165],
+"d6/d71/cpplint_8py.html#a0f1f8da647bf9ced22d7834e1d27d065":[76,0,31,119],
+"d6/d71/cpplint_8py.html#a0f83c6a36a89cf34d052097249697389":[76,0,31,151],
+"d6/d71/cpplint_8py.html#a10f826c497fc61e200b11304e42a2e72":[76,0,31,154],
 "d6/d71/cpplint_8py.html#a127416bee5c376937479b3119a727817":[76,0,31,116],
 "d6/d71/cpplint_8py.html#a15c14b2629b12443e8f04cc4c21751a1":[76,0,31,170],
 "d6/d71/cpplint_8py.html#a15cd96cbf1c13e655e156fbd98cf0bae":[76,0,31,113],
@@ -202,11 +206,11 @@ var NAVTREEINDEX17 =
 "d6/d73/class_sd_fs.html#aef6fd47c67b9b8498c1398e58422f169":[75,0,191,30],
 "d6/d73/class_sd_fs.html#af2bb8fea732f9272a2e98772fbcc4595":[75,0,191,43],
 "d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html":[50],
-"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md300":[111],
-"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md301":[111,0],
-"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md302":[112],
-"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md303":[112,0],
-"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md304":[112,1],
+"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md301":[111],
+"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md302":[111,0],
+"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md303":[112],
+"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md304":[112,0],
+"d6/d73/md__e_r_i_s_core_lib_wren_doc_site_modules_core_fn.html#autotoc_md305":[112,1],
 "d6/d7b/_fat_file_8h.html":[76,0,61],
 "d6/d7b/_fat_file_8h.html#a135b7572768b09661aa38afaceec7296":[76,0,61,12],
 "d6/d7b/_fat_file_8h.html#a1a041207a19d2fd9a1e2739343ccb29b":[76,0,61,15],
@@ -245,9 +249,5 @@ var NAVTREEINDEX17 =
 "d6/dac/_ex_fat_formatter_8cpp.html#aefd570104b49d464219a0da97605bf76":[76,0,50,7],
 "d6/dac/_ex_fat_formatter_8cpp_source.html":[76,0,50],
 "d6/dbc/classeris_audio_analyze_tone_detect.html":[75,0,56],
-"d6/dbc/classeris_audio_analyze_tone_detect.html#a14ab6313f3bfdb6355d9d4a619c7812a":[75,0,56,0],
-"d6/dbc/classeris_audio_analyze_tone_detect.html#aa846883b7bb7415d7eb9a1462c460469":[75,0,56,1],
-"d6/dbc/classeris_audio_output_s_p_d_i_f.html":[75,0,102],
-"d6/dbc/classeris_audio_output_s_p_d_i_f.html#a783bb9797bfac0c2ed5335dc3876c993":[75,0,102,1],
-"d6/dbc/classeris_audio_output_s_p_d_i_f.html#afbb97d0b99e7b85b734447c5ffd802e3":[75,0,102,0]
+"d6/dbc/classeris_audio_analyze_tone_detect.html#a14ab6313f3bfdb6355d9d4a619c7812a":[75,0,56,0]
 };

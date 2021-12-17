@@ -88,9 +88,9 @@ $(document).ready(function(){initNavTree('d6/d73/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Fn Class</p>
 <p>A first class function&mdash;an object that wraps an executable chunk of code. <a href="../../../../functions.html">Here</a> is a friendly introduction.</p>
-<h2><a class="anchor" id="autotoc_md300"></a>
+<h2><a class="anchor" id="autotoc_md301"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md301"></a>
+<h3><a class="anchor" id="autotoc_md302"></a>
 Fn.**new**(function)</h3>
 <p>Creates a new function from... <code>function</code>. Of course, <code>function</code> is already a function, so this really just returns the argument. It exists mainly to let you create a "bare" function when you don't want to immediately pass it as a <a href="../../../functions.html#block-arguments">block argument</a> to some other method.</p>
 <pre class="snippet">
@@ -98,15 +98,15 @@ var fn = Fn.new {
   System.print("The body")
 }
 </pre><p>It is a runtime error if <code>function</code> is not a function.</p>
-<h2><a class="anchor" id="autotoc_md302"></a>
+<h2><a class="anchor" id="autotoc_md303"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md303"></a>
+<h3><a class="anchor" id="autotoc_md304"></a>
 &lt;strong&gt;arity&lt;/strong&gt;</h3>
 <p>The number of arguments the function requires.</p>
 <pre class="snippet">
 System.print(Fn.new {}.arity)             //&gt; 0
 System.print(Fn.new {|a, b, c| a }.arity) //&gt; 3
-</pre><h3><a class="anchor" id="autotoc_md304"></a>
+</pre><h3><a class="anchor" id="autotoc_md305"></a>
 &lt;strong&gt;call&lt;/strong&gt;(args...)</h3>
 <p>Invokes the function with the given arguments.</p>
 <pre class="snippet">

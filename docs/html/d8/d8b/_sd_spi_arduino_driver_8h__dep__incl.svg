@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1448;
+var viewWidth = 1148;
 var viewHeight = 436;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SdSpiArduinoDriver.h</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-432 1443.5,-432 1443.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-432 1144,-432 1144,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="SpiDriver classes for Arduino compatible systems.">
-<polygon fill="#bfbfbf" stroke="black" points="809,-406.5 809,-427.5 940,-427.5 940,-406.5 809,-406.5"/>
-<text text-anchor="middle" x="874.5" y="-413.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArduinoDriver.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="500,-406.5 500,-427.5 631,-427.5 631,-406.5 500,-406.5"/>
+<text text-anchor="middle" x="565.5" y="-413.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArduinoDriver.h</text>
 </a>
 </g>
 </g>
@@ -68,355 +68,355 @@ var sectionId = 'dynsection-1';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d1/d6a/_sd_spi_driver_8h.html" target="_top" xlink:title="SpiDriver classes.">
-<polygon fill="white" stroke="black" points="829.5,-348.5 829.5,-369.5 919.5,-369.5 919.5,-348.5 829.5,-348.5"/>
-<text text-anchor="middle" x="874.5" y="-355.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiDriver.h</text>
+<polygon fill="white" stroke="black" points="520.5,-348.5 520.5,-369.5 610.5,-369.5 610.5,-348.5 520.5,-348.5"/>
+<text text-anchor="middle" x="565.5" y="-355.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiDriver.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M874.5,-396.16C874.5,-387.16 874.5,-376.92 874.5,-369.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="871,-396.25 874.5,-406.25 878,-396.25 871,-396.25"/>
+<path fill="none" stroke="midnightblue" d="M565.5,-396.16C565.5,-387.16 565.5,-376.92 565.5,-369.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="562,-396.25 565.5,-406.25 569,-396.25 562,-396.25"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d8/daa/_sd_spi_card_8h.html" target="_top" xlink:title="SdSpiCard class for V2 SD/SDHC cards.">
-<polygon fill="white" stroke="black" points="299,-290.5 299,-311.5 384,-311.5 384,-290.5 299,-290.5"/>
-<text text-anchor="middle" x="341.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiCard.h</text>
+<g id="a_node3"><a xlink:href="../../db/d4e/_sd_spi_e_s_p_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-290.5 0,-311.5 97,-311.5 97,-290.5 0,-290.5"/>
+<text text-anchor="middle" x="48.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiESP.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M819.02,-354.41C729.29,-348.21 546.86,-334.03 393.5,-312 390.41,-311.56 387.22,-311.05 384.01,-310.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="819.02,-357.92 829.24,-355.11 819.5,-350.93 819.02,-357.92"/>
+<path fill="none" stroke="midnightblue" d="M510.2,-353.8C423.65,-346.93 251.05,-332.02 105.5,-312 102.81,-311.63 100.06,-311.23 97.28,-310.8"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="510.07,-357.3 520.32,-354.6 510.62,-350.32 510.07,-357.3"/>
 </g>
-<!-- Node77 -->
-<g id="node16" class="node">
-<title>Node77</title>
-<g id="a_node16"><a xlink:href="../../d3/de0/_sd_spi_particle_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="402.5,-290.5 402.5,-311.5 514.5,-311.5 514.5,-290.5 402.5,-290.5"/>
-<text text-anchor="middle" x="458.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiParticle.cpp</text>
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="../../d6/df3/_sd_spi_artemis_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="115,-290.5 115,-311.5 228,-311.5 228,-290.5 115,-290.5"/>
+<text text-anchor="middle" x="171.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArtemis.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node77 -->
-<g id="edge19" class="edge">
-<title>Node2&#45;&gt;Node77</title>
-<path fill="none" stroke="midnightblue" d="M819.23,-351.08C750.21,-342.35 628.54,-326.72 524.5,-312 521.29,-311.55 517.99,-311.07 514.66,-310.59"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="819.07,-354.59 829.43,-352.36 819.95,-347.64 819.07,-354.59"/>
+<!-- Node2&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node2&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M510.32,-350.45C445.12,-341.49 333.37,-325.98 237.5,-312 234.4,-311.55 231.23,-311.08 228.02,-310.61"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="510,-353.94 520.38,-351.83 510.95,-347 510,-353.94"/>
 </g>
-<!-- Node78 -->
-<g id="node17" class="node">
-<title>Node78</title>
-<g id="a_node17"><a xlink:href="../../d6/df3/_sd_spi_artemis_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="533,-290.5 533,-311.5 646,-311.5 646,-290.5 533,-290.5"/>
-<text text-anchor="middle" x="589.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiArtemis.cpp</text>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d3/de0/_sd_spi_particle_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="246.5,-290.5 246.5,-311.5 358.5,-311.5 358.5,-290.5 246.5,-290.5"/>
+<text text-anchor="middle" x="302.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiParticle.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node78 -->
-<g id="edge20" class="edge">
-<title>Node2&#45;&gt;Node78</title>
-<path fill="none" stroke="midnightblue" d="M819.52,-347.2C767.01,-336.88 688.61,-321.47 638.27,-311.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="818.85,-350.63 829.34,-349.13 820.2,-343.76 818.85,-350.63"/>
+<!-- Node2&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node2&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M510.59,-346.31C462.12,-335.99 392.36,-321.13 347.23,-311.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="510.08,-349.78 520.59,-348.44 511.54,-342.93 510.08,-349.78"/>
 </g>
-<!-- Node79 -->
-<g id="node18" class="node">
-<title>Node79</title>
-<g id="a_node18"><a xlink:href="../../dd/db4/_sd_spi_s_t_m32_core_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="664,-290.5 664,-311.5 801,-311.5 801,-290.5 664,-290.5"/>
-<text text-anchor="middle" x="732.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiSTM32Core.cpp</text>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d8/d65/_sd_spi_teensy3_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="376.5,-290.5 376.5,-311.5 492.5,-311.5 492.5,-290.5 376.5,-290.5"/>
+<text text-anchor="middle" x="434.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiTeensy3.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node79 -->
-<g id="edge21" class="edge">
-<title>Node2&#45;&gt;Node79</title>
-<path fill="none" stroke="midnightblue" d="M840.66,-344.65C814.76,-334.44 779.69,-320.61 756.59,-311.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="839.5,-347.96 850.09,-348.37 842.07,-341.45 839.5,-347.96"/>
+<!-- Node2&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node2&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M533.65,-344.38C509.82,-334.2 477.84,-320.53 456.73,-311.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="532.41,-347.66 542.98,-348.37 535.16,-341.22 532.41,-347.66"/>
 </g>
-<!-- Node80 -->
-<g id="node19" class="node">
-<title>Node80</title>
-<g id="a_node19"><a xlink:href="../../d8/d87/_sd_spi_s_t_m32_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="819.5,-290.5 819.5,-311.5 929.5,-311.5 929.5,-290.5 819.5,-290.5"/>
-<text text-anchor="middle" x="874.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiSTM32.cpp</text>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../d8/d87/_sd_spi_s_t_m32_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="510.5,-290.5 510.5,-311.5 620.5,-311.5 620.5,-290.5 510.5,-290.5"/>
+<text text-anchor="middle" x="565.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiSTM32.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node80 -->
-<g id="edge22" class="edge">
-<title>Node2&#45;&gt;Node80</title>
-<path fill="none" stroke="midnightblue" d="M874.5,-338.16C874.5,-329.16 874.5,-318.92 874.5,-311.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="871,-338.25 874.5,-348.25 878,-338.25 871,-338.25"/>
+<!-- Node2&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node2&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M565.5,-338.16C565.5,-329.16 565.5,-318.92 565.5,-311.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="562,-338.25 565.5,-348.25 569,-338.25 562,-338.25"/>
 </g>
-<!-- Node81 -->
-<g id="node20" class="node">
-<title>Node81</title>
-<g id="a_node20"><a xlink:href="../../d8/d8f/_sd_spi_chip_select_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="947.5,-290.5 947.5,-311.5 1077.5,-311.5 1077.5,-290.5 947.5,-290.5"/>
-<text text-anchor="middle" x="1012.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiChipSelect.cpp</text>
+<!-- Node8 -->
+<g id="node8" class="node">
+<title>Node8</title>
+<g id="a_node8"><a xlink:href="../../d8/d8f/_sd_spi_chip_select_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="638.5,-290.5 638.5,-311.5 768.5,-311.5 768.5,-290.5 638.5,-290.5"/>
+<text text-anchor="middle" x="703.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiChipSelect.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node81 -->
-<g id="edge23" class="edge">
-<title>Node2&#45;&gt;Node81</title>
-<path fill="none" stroke="midnightblue" d="M907.72,-344.52C932.85,-334.32 966.74,-320.57 989.09,-311.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="906.17,-341.37 898.22,-348.37 908.81,-347.86 906.17,-341.37"/>
+<!-- Node2&#45;&gt;Node8 -->
+<g id="edge7" class="edge">
+<title>Node2&#45;&gt;Node8</title>
+<path fill="none" stroke="midnightblue" d="M598.72,-344.52C623.85,-334.32 657.74,-320.57 680.09,-311.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="597.17,-341.37 589.22,-348.37 599.81,-347.86 597.17,-341.37"/>
 </g>
-<!-- Node82 -->
-<g id="node21" class="node">
-<title>Node82</title>
-<g id="a_node21"><a xlink:href="../../d8/d65/_sd_spi_teensy3_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1095.5,-290.5 1095.5,-311.5 1211.5,-311.5 1211.5,-290.5 1095.5,-290.5"/>
-<text text-anchor="middle" x="1153.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiTeensy3.cpp</text>
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="../../d8/daa/_sd_spi_card_8h.html" target="_top" xlink:title="SdSpiCard class for V2 SD/SDHC cards.">
+<polygon fill="white" stroke="black" points="787,-290.5 787,-311.5 872,-311.5 872,-290.5 787,-290.5"/>
+<text text-anchor="middle" x="829.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiCard.h</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node82 -->
-<g id="edge24" class="edge">
-<title>Node2&#45;&gt;Node82</title>
-<path fill="none" stroke="midnightblue" d="M929.6,-346.94C981.11,-336.6 1057.23,-321.32 1106.09,-311.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="928.75,-343.54 919.64,-348.94 930.13,-350.4 928.75,-343.54"/>
+<!-- Node2&#45;&gt;Node9 -->
+<g id="edge8" class="edge">
+<title>Node2&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M620.47,-346.34C669.91,-335.85 741.53,-320.66 786.79,-311.06"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="619.64,-342.94 610.58,-348.44 621.09,-349.79 619.64,-342.94"/>
 </g>
 <!-- Node83 -->
 <g id="node22" class="node">
 <title>Node83</title>
-<g id="a_node22"><a xlink:href="../../db/d4e/_sd_spi_e_s_p_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1230,-290.5 1230,-311.5 1327,-311.5 1327,-290.5 1230,-290.5"/>
-<text text-anchor="middle" x="1278.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiESP.cpp</text>
+<g id="a_node22"><a xlink:href="../../de/daa/_sd_spi_due_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="890.5,-290.5 890.5,-311.5 984.5,-311.5 984.5,-290.5 890.5,-290.5"/>
+<text text-anchor="middle" x="937.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiDue.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node83 -->
 <g id="edge25" class="edge">
 <title>Node2&#45;&gt;Node83</title>
-<path fill="none" stroke="midnightblue" d="M929.76,-351.32C998.13,-342.9 1118.08,-327.63 1220.5,-312 1223.53,-311.54 1226.65,-311.05 1229.79,-310.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="929.14,-347.87 919.64,-352.56 930,-354.82 929.14,-347.87"/>
+<path fill="none" stroke="midnightblue" d="M620.7,-350.51C683.84,-341.82 790.26,-326.78 881.5,-312 884.42,-311.53 887.43,-311.03 890.46,-310.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="620,-347.08 610.57,-351.9 620.96,-354.01 620,-347.08"/>
 </g>
 <!-- Node84 -->
 <g id="node23" class="node">
 <title>Node84</title>
-<g id="a_node23"><a xlink:href="../../de/daa/_sd_spi_due_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1345.5,-290.5 1345.5,-311.5 1439.5,-311.5 1439.5,-290.5 1345.5,-290.5"/>
-<text text-anchor="middle" x="1392.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiDue.cpp</text>
+<g id="a_node23"><a xlink:href="../../dd/db4/_sd_spi_s_t_m32_core_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1003,-290.5 1003,-311.5 1140,-311.5 1140,-290.5 1003,-290.5"/>
+<text text-anchor="middle" x="1071.5" y="-297.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiSTM32Core.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node84 -->
 <g id="edge26" class="edge">
 <title>Node2&#45;&gt;Node84</title>
-<path fill="none" stroke="midnightblue" d="M929.71,-353.89C1016.53,-347.12 1190.16,-332.32 1336.5,-312 1339.43,-311.59 1342.45,-311.14 1345.49,-310.67"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="929.26,-350.42 919.56,-354.68 929.8,-357.4 929.26,-350.42"/>
+<path fill="none" stroke="midnightblue" d="M620.55,-352.45C702.08,-344.14 859.69,-327.77 993.5,-312 996.48,-311.65 999.53,-311.28 1002.61,-310.91"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="620.11,-348.97 610.52,-353.47 620.82,-355.94 620.11,-348.97"/>
 </g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d0/d78/_sd_spi_card_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="242.5,-232.5 242.5,-253.5 340.5,-253.5 340.5,-232.5 242.5,-232.5"/>
-<text text-anchor="middle" x="291.5" y="-239.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiCard.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node3&#45;&gt;Node4 -->
-<g id="edge3" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M325.88,-282.5C317.37,-272.98 307.18,-261.56 300.11,-253.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="323.52,-285.12 332.79,-290.25 328.74,-280.46 323.52,-285.12"/>
-</g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../db/d31/_sd_card_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="359,-232.5 359,-253.5 426,-253.5 426,-232.5 359,-232.5"/>
-<text text-anchor="middle" x="392.5" y="-239.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdCard.h</text>
-</a>
-</g>
-</g>
-<!-- Node3&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M357.17,-282.79C365.9,-273.21 376.44,-261.64 383.72,-253.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="354.53,-280.5 350.38,-290.25 359.7,-285.21 354.53,-280.5"/>
-</g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d7/df6/_block_device_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="230.5,-174.5 230.5,-195.5 322.5,-195.5 322.5,-174.5 230.5,-174.5"/>
-<text text-anchor="middle" x="276.5" y="-181.9" font-family="Helvetica,sans-Serif" font-size="12.00">BlockDevice.h</text>
-</a>
-</g>
-</g>
-<!-- Node5&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M363.45,-227.97C342.44,-217.83 314.63,-204.41 296.18,-195.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="362.03,-231.18 372.56,-232.37 365.08,-224.87 362.03,-231.18"/>
-</g>
-<!-- Node38 -->
-<g id="node13" class="node">
-<title>Node38</title>
-<g id="a_node13"><a xlink:href="../../d5/ddc/_sd_fat_8h.html" target="_top" xlink:title="main SdFs include file.">
-<polygon fill="white" stroke="red" points="420.5,-0.5 420.5,-21.5 478.5,-21.5 478.5,-0.5 420.5,-0.5"/>
-<text text-anchor="middle" x="449.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdFat.h</text>
-</a>
-</g>
-</g>
-<!-- Node5&#45;&gt;Node38 -->
-<g id="edge18" class="edge">
-<title>Node5&#45;&gt;Node38</title>
-<path fill="none" stroke="midnightblue" d="M411.17,-225.32C431.21,-206.27 462.33,-173.18 478.5,-138 493.46,-105.44 500.84,-91.64 488.5,-58 483.09,-43.26 470.63,-30 461.24,-21.55"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="408.53,-222.99 403.59,-232.36 413.3,-228.12 408.53,-222.99"/>
-</g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="../../d1/d0d/_fs_cache_8h.html" target="_top" xlink:title="Common cache code for exFAT and FAT.">
-<polygon fill="white" stroke="black" points="221.5,-116.5 221.5,-137.5 295.5,-137.5 295.5,-116.5 221.5,-116.5"/>
-<text text-anchor="middle" x="258.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsCache.h</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
-<title>Node6&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M270.22,-164.45C267.3,-155.38 263.96,-145 261.6,-137.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="266.97,-165.8 273.36,-174.25 273.64,-163.65 266.97,-165.8"/>
-</g>
-<!-- Node9 -->
-<g id="node9" class="node">
-<title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d7/dc8/_ex_fat_partition_8h.html" target="_top" xlink:title="ExFatPartition include file.">
-<polygon fill="white" stroke="red" points="91.5,-58.5 91.5,-79.5 191.5,-79.5 191.5,-58.5 91.5,-58.5"/>
-<text text-anchor="middle" x="141.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatPartition.h</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node9 -->
-<g id="edge16" class="edge">
-<title>Node6&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M253.38,-168.56C240.95,-159.96 225.54,-148.84 212.5,-138 189.14,-118.58 163.94,-93.29 150.75,-79.68"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="251.6,-171.58 261.83,-174.33 255.55,-165.8 251.6,-171.58"/>
-</g>
-<!-- Node62 -->
+<!-- Node10 -->
 <g id="node10" class="node">
-<title>Node62</title>
-<g id="a_node10"><a xlink:href="../../db/dd3/_fat_partition_8h.html" target="_top" xlink:title="FatPartition class.">
-<polygon fill="white" stroke="red" points="315.5,-58.5 315.5,-79.5 401.5,-79.5 401.5,-58.5 315.5,-58.5"/>
-<text text-anchor="middle" x="358.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatPartition.h</text>
+<title>Node10</title>
+<g id="a_node10"><a xlink:href="../../db/d31/_sd_card_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="745,-232.5 745,-253.5 812,-253.5 812,-232.5 745,-232.5"/>
+<text text-anchor="middle" x="778.5" y="-239.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdCard.h</text>
 </a>
 </g>
 </g>
-<!-- Node6&#45;&gt;Node62 -->
-<g id="edge17" class="edge">
-<title>Node6&#45;&gt;Node62</title>
-<path fill="none" stroke="midnightblue" d="M289.52,-165.89C307.1,-141.45 337.8,-98.77 351.53,-79.69"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="286.49,-164.12 283.49,-174.28 292.17,-168.21 286.49,-164.12"/>
-</g>
-<!-- Node75 -->
-<g id="node11" class="node">
-<title>Node75</title>
-<g id="a_node11"><a xlink:href="../../d8/d58/_ex_fat_formatter_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="21,-116.5 21,-137.5 128,-137.5 128,-116.5 21,-116.5"/>
-<text text-anchor="middle" x="74.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatFormatter.h</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node75 -->
-<g id="edge10" class="edge">
-<title>Node6&#45;&gt;Node75</title>
-<path fill="none" stroke="midnightblue" d="M231.73,-171.59C194.62,-161.3 142.64,-146.89 108.77,-137.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="231.2,-175.07 241.77,-174.37 233.07,-168.33 231.2,-175.07"/>
-</g>
-<!-- Node76 -->
-<g id="node14" class="node">
-<title>Node76</title>
-<g id="a_node14"><a xlink:href="../../d8/d20/_fat_formatter_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="375.5,-116.5 375.5,-137.5 469.5,-137.5 469.5,-116.5 375.5,-116.5"/>
-<text text-anchor="middle" x="422.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFormatter.h</text>
-</a>
-</g>
-</g>
-<!-- Node6&#45;&gt;Node76 -->
-<g id="edge13" class="edge">
-<title>Node6&#45;&gt;Node76</title>
-<path fill="none" stroke="midnightblue" d="M310.94,-170.79C337.6,-160.56 373.88,-146.65 397.73,-137.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="309.68,-167.52 301.6,-174.37 312.19,-174.06 309.68,-167.52"/>
-</g>
-<!-- Node8 -->
-<g id="node8" class="node">
-<title>Node8</title>
-<g id="a_node8"><a xlink:href="../../d0/d75/_fs_cache_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="210,-58.5 210,-79.5 297,-79.5 297,-58.5 210,-58.5"/>
-<text text-anchor="middle" x="253.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsCache.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node7&#45;&gt;Node8 -->
-<g id="edge7" class="edge">
-<title>Node7&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M256.73,-106.16C255.92,-97.16 255.01,-86.92 254.36,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="253.25,-106.6 257.63,-116.25 260.23,-105.97 253.25,-106.6"/>
-</g>
-<!-- Node7&#45;&gt;Node9 -->
-<g id="edge8" class="edge">
-<title>Node7&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M229.2,-111.97C208.01,-101.83 179.96,-88.41 161.35,-79.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="227.86,-115.21 238.39,-116.37 230.88,-108.9 227.86,-115.21"/>
-</g>
-<!-- Node7&#45;&gt;Node62 -->
+<!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
-<title>Node7&#45;&gt;Node62</title>
-<path fill="none" stroke="midnightblue" d="M284.71,-111.32C302.57,-101.32 325.72,-88.36 341.28,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="282.93,-108.31 275.92,-116.25 286.35,-114.41 282.93,-108.31"/>
+<title>Node9&#45;&gt;Node10</title>
+<path fill="none" stroke="midnightblue" d="M813.83,-282.79C805.1,-273.21 794.56,-261.64 787.28,-253.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="811.3,-285.21 820.62,-290.25 816.47,-280.5 811.3,-285.21"/>
+</g>
+<!-- Node82 -->
+<g id="node21" class="node">
+<title>Node82</title>
+<g id="a_node21"><a xlink:href="../../d0/d78/_sd_spi_card_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="830.5,-232.5 830.5,-253.5 928.5,-253.5 928.5,-232.5 830.5,-232.5"/>
+<text text-anchor="middle" x="879.5" y="-239.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdSpiCard.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node9&#45;&gt;Node82 -->
+<g id="edge24" class="edge">
+<title>Node9&#45;&gt;Node82</title>
+<path fill="none" stroke="midnightblue" d="M845.12,-282.5C853.63,-272.98 863.82,-261.56 870.89,-253.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="842.26,-280.46 838.21,-290.25 847.48,-285.12 842.26,-280.46"/>
+</g>
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:href="../../d7/df6/_block_device_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="657.5,-174.5 657.5,-195.5 749.5,-195.5 749.5,-174.5 657.5,-174.5"/>
+<text text-anchor="middle" x="703.5" y="-181.9" font-family="Helvetica,sans-Serif" font-size="12.00">BlockDevice.h</text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node11 -->
+<g id="edge10" class="edge">
+<title>Node10&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M757.35,-226.21C744.18,-216.37 727.66,-204.04 716.41,-195.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="755.33,-229.07 765.44,-232.25 759.52,-223.46 755.33,-229.07"/>
+</g>
+<!-- Node43 -->
+<g id="node18" class="node">
+<title>Node43</title>
+<g id="a_node18"><a xlink:href="../../d5/ddc/_sd_fat_8h.html" target="_top" xlink:title="main SdFs include file.">
+<polygon fill="white" stroke="red" points="847.5,-0.5 847.5,-21.5 905.5,-21.5 905.5,-0.5 847.5,-0.5"/>
+<text text-anchor="middle" x="876.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">SdFat.h</text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node43 -->
+<g id="edge23" class="edge">
+<title>Node10&#45;&gt;Node43</title>
+<path fill="none" stroke="midnightblue" d="M806.19,-227.36C835.84,-210.14 881.8,-178.66 905.5,-138 923.54,-107.04 927.84,-91.64 915.5,-58 910.09,-43.26 897.63,-30 888.24,-21.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="804.17,-224.48 797.19,-232.44 807.61,-230.57 804.17,-224.48"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="../../d8/d23/_ex_fat_lib_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="0,-58.5 0,-79.5 73,-79.5 73,-58.5 0,-58.5"/>
-<text text-anchor="middle" x="36.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatLib.h</text>
+<g id="a_node12"><a xlink:href="../../d1/d0d/_fs_cache_8h.html" target="_top" xlink:title="Common cache code for exFAT and FAT.">
+<polygon fill="white" stroke="black" points="648.5,-116.5 648.5,-137.5 722.5,-137.5 722.5,-116.5 648.5,-116.5"/>
+<text text-anchor="middle" x="685.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsCache.h</text>
 </a>
 </g>
 </g>
-<!-- Node75&#45;&gt;Node12 -->
+<!-- Node11&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
-<title>Node75&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M62.23,-107.92C55.85,-98.52 48.31,-87.4 43.04,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="59.37,-109.94 67.88,-116.25 65.16,-106.01 59.37,-109.94"/>
+<title>Node11&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M697.22,-164.45C694.3,-155.38 690.96,-145 688.6,-137.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="693.97,-165.8 700.36,-174.25 700.64,-163.65 693.97,-165.8"/>
 </g>
-<!-- Node12&#45;&gt;Node38 -->
-<g id="edge12" class="edge">
-<title>Node12&#45;&gt;Node38</title>
-<path fill="none" stroke="midnightblue" d="M82.97,-58.05C214.81,-35.86 359.59,-20.7 420.35,-14.76"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="82.37,-54.61 73.1,-59.73 83.55,-61.51 82.37,-54.61"/>
-</g>
-<!-- Node65 -->
-<g id="node15" class="node">
-<title>Node65</title>
-<g id="a_node15"><a xlink:href="../../de/dfa/_fat_lib_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="420,-58.5 420,-79.5 479,-79.5 479,-58.5 420,-58.5"/>
-<text text-anchor="middle" x="449.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatLib.h</text>
+<!-- Node14 -->
+<g id="node14" class="node">
+<title>Node14</title>
+<g id="a_node14"><a xlink:href="../../d7/dc8/_ex_fat_partition_8h.html" target="_top" xlink:title="ExFatPartition include file.">
+<polygon fill="white" stroke="red" points="518.5,-58.5 518.5,-79.5 618.5,-79.5 618.5,-58.5 518.5,-58.5"/>
+<text text-anchor="middle" x="568.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatPartition.h</text>
 </a>
 </g>
 </g>
-<!-- Node76&#45;&gt;Node65 -->
-<g id="edge14" class="edge">
-<title>Node76&#45;&gt;Node65</title>
-<path fill="none" stroke="midnightblue" d="M431.64,-107.04C436.08,-97.83 441.23,-87.16 444.85,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="428.39,-105.72 427.2,-116.25 434.7,-108.76 428.39,-105.72"/>
+<!-- Node11&#45;&gt;Node14 -->
+<g id="edge18" class="edge">
+<title>Node11&#45;&gt;Node14</title>
+<path fill="none" stroke="midnightblue" d="M680.38,-168.56C667.95,-159.96 652.54,-148.84 639.5,-138 616.14,-118.58 590.94,-93.29 577.75,-79.68"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="678.6,-171.58 688.83,-174.33 682.55,-165.8 678.6,-171.58"/>
 </g>
-<!-- Node65&#45;&gt;Node38 -->
+<!-- Node67 -->
+<g id="node15" class="node">
+<title>Node67</title>
+<g id="a_node15"><a xlink:href="../../db/dd3/_fat_partition_8h.html" target="_top" xlink:title="FatPartition class.">
+<polygon fill="white" stroke="red" points="742.5,-58.5 742.5,-79.5 828.5,-79.5 828.5,-58.5 742.5,-58.5"/>
+<text text-anchor="middle" x="785.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatPartition.h</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node67 -->
+<g id="edge22" class="edge">
+<title>Node11&#45;&gt;Node67</title>
+<path fill="none" stroke="midnightblue" d="M716.52,-165.89C734.1,-141.45 764.8,-98.77 778.53,-79.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="713.49,-164.12 710.49,-174.28 719.17,-168.21 713.49,-164.12"/>
+</g>
+<!-- Node80 -->
+<g id="node16" class="node">
+<title>Node80</title>
+<g id="a_node16"><a xlink:href="../../d8/d58/_ex_fat_formatter_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="448,-116.5 448,-137.5 555,-137.5 555,-116.5 448,-116.5"/>
+<text text-anchor="middle" x="501.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatFormatter.h</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node80 -->
 <g id="edge15" class="edge">
-<title>Node65&#45;&gt;Node38</title>
-<path fill="none" stroke="midnightblue" d="M449.5,-48.16C449.5,-39.16 449.5,-28.92 449.5,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="446,-48.25 449.5,-58.25 453,-48.25 446,-48.25"/>
+<title>Node11&#45;&gt;Node80</title>
+<path fill="none" stroke="midnightblue" d="M658.73,-171.59C621.62,-161.3 569.64,-146.89 535.77,-137.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="658.2,-175.07 668.77,-174.37 660.07,-168.33 658.2,-175.07"/>
+</g>
+<!-- Node81 -->
+<g id="node19" class="node">
+<title>Node81</title>
+<g id="a_node19"><a xlink:href="../../d8/d20/_fat_formatter_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="802.5,-116.5 802.5,-137.5 896.5,-137.5 896.5,-116.5 802.5,-116.5"/>
+<text text-anchor="middle" x="849.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatFormatter.h</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node81 -->
+<g id="edge19" class="edge">
+<title>Node11&#45;&gt;Node81</title>
+<path fill="none" stroke="midnightblue" d="M737.94,-170.79C764.6,-160.56 800.88,-146.65 824.73,-137.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="736.68,-167.52 728.6,-174.37 739.19,-174.06 736.68,-167.52"/>
+</g>
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="../../d0/d75/_fs_cache_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="637,-58.5 637,-79.5 724,-79.5 724,-58.5 637,-58.5"/>
+<text text-anchor="middle" x="680.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FsCache.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node12&#45;&gt;Node13 -->
+<g id="edge12" class="edge">
+<title>Node12&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M683.73,-106.16C682.92,-97.16 682.01,-86.92 681.36,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="680.25,-106.6 684.63,-116.25 687.23,-105.97 680.25,-106.6"/>
+</g>
+<!-- Node12&#45;&gt;Node14 -->
+<g id="edge13" class="edge">
+<title>Node12&#45;&gt;Node14</title>
+<path fill="none" stroke="midnightblue" d="M656.2,-111.97C635.01,-101.83 606.96,-88.41 588.35,-79.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="654.86,-115.21 665.39,-116.37 657.88,-108.9 654.86,-115.21"/>
+</g>
+<!-- Node12&#45;&gt;Node67 -->
+<g id="edge14" class="edge">
+<title>Node12&#45;&gt;Node67</title>
+<path fill="none" stroke="midnightblue" d="M711.71,-111.32C729.57,-101.32 752.72,-88.36 768.28,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="709.93,-108.31 702.92,-116.25 713.35,-114.41 709.93,-108.31"/>
+</g>
+<!-- Node17 -->
+<g id="node17" class="node">
+<title>Node17</title>
+<g id="a_node17"><a xlink:href="../../d8/d23/_ex_fat_lib_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="red" points="427,-58.5 427,-79.5 500,-79.5 500,-58.5 427,-58.5"/>
+<text text-anchor="middle" x="463.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">ExFatLib.h</text>
+</a>
+</g>
+</g>
+<!-- Node80&#45;&gt;Node17 -->
+<g id="edge16" class="edge">
+<title>Node80&#45;&gt;Node17</title>
+<path fill="none" stroke="midnightblue" d="M489.23,-107.92C482.85,-98.52 475.31,-87.4 470.04,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="486.37,-109.94 494.88,-116.25 492.16,-106.01 486.37,-109.94"/>
+</g>
+<!-- Node17&#45;&gt;Node43 -->
+<g id="edge17" class="edge">
+<title>Node17&#45;&gt;Node43</title>
+<path fill="none" stroke="midnightblue" d="M509.97,-58.05C641.81,-35.86 786.59,-20.7 847.35,-14.76"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="509.37,-54.61 500.1,-59.73 510.55,-61.51 509.37,-54.61"/>
+</g>
+<!-- Node70 -->
+<g id="node20" class="node">
+<title>Node70</title>
+<g id="a_node20"><a xlink:href="../../de/dfa/_fat_lib_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="red" points="847,-58.5 847,-79.5 906,-79.5 906,-58.5 847,-58.5"/>
+<text text-anchor="middle" x="876.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">FatLib.h</text>
+</a>
+</g>
+</g>
+<!-- Node81&#45;&gt;Node70 -->
+<g id="edge20" class="edge">
+<title>Node81&#45;&gt;Node70</title>
+<path fill="none" stroke="midnightblue" d="M858.64,-107.04C863.08,-97.83 868.23,-87.16 871.85,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="855.39,-105.72 854.2,-116.25 861.7,-108.76 855.39,-105.72"/>
+</g>
+<!-- Node70&#45;&gt;Node43 -->
+<g id="edge21" class="edge">
+<title>Node70&#45;&gt;Node43</title>
+<path fill="none" stroke="midnightblue" d="M876.5,-48.16C876.5,-39.16 876.5,-28.92 876.5,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="873,-48.25 876.5,-58.25 880,-48.25 873,-48.25"/>
 </g>
 </g>
 </svg>

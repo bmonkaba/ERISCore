@@ -88,24 +88,24 @@ $(document).ready(function(){initNavTree('dc/d0f/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Stdin Class</p>
 <p>The standard input stream.</p>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md101"></a>
+<h3><a class="anchor" id="autotoc_md68"></a>
 &lt;strong&gt;isRaw&lt;/strong&gt;</h3>
 <p>Returns <code>true</code> if stdin is in raw mode. When in raw mode, input is not echoed or buffered, and all characters, even non-printing and control characters go into stdin.</p>
 <p>Defaults to <code>false</code>.</p>
-<h3><a class="anchor" id="autotoc_md102"></a>
+<h3><a class="anchor" id="autotoc_md69"></a>
 &lt;strong&gt;isRaw&lt;/strong&gt;=(value)</h3>
 <p>Sets raw mode on or off.</p>
-<h3><a class="anchor" id="autotoc_md103"></a>
+<h3><a class="anchor" id="autotoc_md70"></a>
 &lt;strong&gt;isTerminal&lt;/strong&gt;</h3>
 <p>Returns <code>true</code> if Stdin is connected to a "TTY". This is true when the user is running Wren in an interactive terminal, and false if it its input is coming from a pipe.</p>
-<h3><a class="anchor" id="autotoc_md104"></a>
+<h3><a class="anchor" id="autotoc_md71"></a>
 &lt;strong&gt;readByte&lt;/strong&gt;()</h3>
 <p>Reads one byte of input from stdin. Blocks the current fiber until a byte has been received.</p>
 <p>Returns the byte value as a number or <code>null</code> if stdin is closed.</p>
 <p>Note that output is not automatically flushed when calling this. If you want to display a prompt before reading input, you'll want to call <code>Stdout.flush()</code> after printing the prompt.</p>
-<h3><a class="anchor" id="autotoc_md105"></a>
+<h3><a class="anchor" id="autotoc_md72"></a>
 &lt;strong&gt;readLine&lt;/strong&gt;()</h3>
 <p>Reads one line of input from stdin. Blocks the current fiber until a full line of input has been received.</p>
 <p>Returns the string of input or <code>null</code> if stdin is closed.</p>

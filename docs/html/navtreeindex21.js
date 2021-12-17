@@ -1,5 +1,10 @@
 var NAVTREEINDEX21 =
 {
+"d8/d84/classeris_audio_analyze_print.html":[75,0,53],
+"d8/d84/classeris_audio_analyze_print.html#a0eb17492008936fbd3197f6ab344814d":[75,0,53,0],
+"d8/d84/classeris_audio_analyze_print.html#a6b0156052863eec68fb9820e8eb102a7":[75,0,53,1],
+"d8/d87/_sd_spi_s_t_m32_8cpp.html":[76,0,147],
+"d8/d87/_sd_spi_s_t_m32_8cpp_source.html":[76,0,147],
 "d8/d87/md__e_r_i_s_core_lib_wren_doc_site_values.html":[70],
 "d8/d87/md__e_r_i_s_core_lib_wren_doc_site_values.html#autotoc_md488":[145],
 "d8/d87/md__e_r_i_s_core_lib_wren_doc_site_values.html#autotoc_md489":[146],
@@ -17,13 +22,13 @@ var NAVTREEINDEX21 =
 "d8/daa/_sd_spi_card_8h.html#a4409fcb7f1884d57b6782df7b75bd840":[76,0,139,2],
 "d8/daa/_sd_spi_card_8h_source.html":[76,0,139],
 "d8/dab/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_stdout.html":[21],
-"d8/dab/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_stdout.html#autotoc_md79":[26],
-"d8/dab/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_stdout.html#autotoc_md80":[26,0],
+"d8/dab/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_stdout.html#autotoc_md113":[26],
+"d8/dab/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_stdout.html#autotoc_md114":[26,0],
 "d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html":[23],
-"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md138":[27],
-"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md139":[27,0],
-"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md140":[27,1],
-"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md141":[27,2],
+"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md107":[27],
+"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md108":[27,0],
+"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md109":[27,1],
+"d8/dba/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_os_platform.html#autotoc_md110":[27,2],
 "d8/dbe/class_app_scope.html":[75,0,9],
 "d8/dbe/class_app_scope.html#a02b03e7f3c8034d8b52991d7c7a82f28":[75,0,9,26],
 "d8/dbe/class_app_scope.html#a08a303813204000ee12600a38fe96d18":[75,0,9,52],
@@ -244,10 +249,5 @@ var NAVTREEINDEX21 =
 "d9/d14/class_sd_fat32.html#a4a0b98d854b037b30df8ca6c694eddc7":[75,0,189,50],
 "d9/d14/class_sd_fat32.html#a4ce6e5e6fa6e6d3ca7382b2daeb908b3":[75,0,189,10],
 "d9/d14/class_sd_fat32.html#a4df8a4126da97468950ed4e25d8fda33":[75,0,189,87],
-"d9/d14/class_sd_fat32.html#a4ecb12682599d63c7e765d31ca8e1de6":[75,0,189,34],
-"d9/d14/class_sd_fat32.html#a52812bf30f71d193229a22e472e96743":[75,0,189,98],
-"d9/d14/class_sd_fat32.html#a5319c87c1d8e028968894eb434ad2e42":[75,0,189,104],
-"d9/d14/class_sd_fat32.html#a5748f43d73a4272ec8dc302fb0213556":[75,0,189,7],
-"d9/d14/class_sd_fat32.html#a5905f403b852a5e0c5da64728a3da9b1":[75,0,189,106],
-"d9/d14/class_sd_fat32.html#a593a27482ff8d993542d6f82bd92e26c":[75,0,189,82]
+"d9/d14/class_sd_fat32.html#a4ecb12682599d63c7e765d31ca8e1de6":[75,0,189,34]
 };

@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('d2/dbd/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title 0.3.0 released! 5 June 2020</p>
 <hr  />
 <p>In this post we'll cover 0.3.0 and the goals for 0.4.0 <a href="../../#goals-for-0.4.0">#</a>.</p>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 About the 0.3.0 release</h2>
 <p>Let's revisit our goals from <a href="../../1-0.2.0-and-beyond.html">the last blog post</a>, <br  />
  and mark what we managed to get done:</p>
@@ -99,14 +99,14 @@ About the 0.3.0 release</h2>
 <li><s>Web build for embedding in docs</s> <a href="../../#web-build-for-embedding-in-docs">#</a></li>
 <li><s>Prebuilt releases</s> <a href="../../#prebuilt-releases">#</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md76"></a>
 The details</h2>
-<h3><a class="anchor" id="autotoc_md48"></a>
+<h3><a class="anchor" id="autotoc_md77"></a>
 VM / CLI split</h3>
 <p>With 0.3.0 we've separated the CLI from the Wren repo, and updated the docs to make the distinction clearer.</p>
 <p>The <a href="../../../cli">CLI now has its own corner of the docs</a>, so that the modules and API docs aren't overlapped like before. This opens up space for the CLI to get better, fuller documentation, and removes confusion about built in modules vs ones that are in the CLI only.</p>
 <p>The code structure is clearer, too, and all the tests and utils are now specific.</p>
-<h3><a class="anchor" id="autotoc_md49"></a>
+<h3><a class="anchor" id="autotoc_md79"></a>
 Build consistency/reliability</h3>
 <p>Previously, builds on Windows could be a little fickle, and there was sometimes issues with the dependencies on the CLI side.</p>
 <p>To solve this, premake is now used to generate platform specific project files that 'just work', making it a one step process to build the VM or CLI. Both projects now have a <code>projects/</code> folder which includes ready to go project files for primary platforms.</p>
@@ -114,7 +114,7 @@ Build consistency/reliability</h3>
 <p>The <b>amalgamated build</b> was fixed too, so that embedding in your own project is as simple as including a single c file (and the <code><a class="el" href="../../dd/d19/wren_8h.html">wren.h</a></code> header).</p>
 <p>On the <b>CLI</b> side, the pre-build steps were removed and dependencies vendored in repo, so that the project just builds with less potential points of error, especially across platforms.</p>
 <p>And finally the <b>docs</b>! Previously <a href="https://sass-lang.com/">SASS</a> was used, and code highlighting was done at generation time using pygments, a python code highlighter. Both of these dependencies have been removed, code highlighting is now done on the client side instead (see another reason why below). The benefit here that it is now <em>easy</em> to edit the docs, just a simple python command, no setup!</p>
-<h3><a class="anchor" id="autotoc_md53"></a>
+<h3><a class="anchor" id="autotoc_md80"></a>
 Web build for embedding in docs</h3>
 <p>The goal was two part here, one is to have a page to just try out Wren. Type in some code, run it. That's the first big step and we've now got that on the docs page.</p>
 <h4><a href="../../../try" target="_blank" class="dark-link">Try Wren directly in your browser!</a></h4>
@@ -122,11 +122,11 @@ Web build for embedding in docs</h3>
 <p>The second part of that goal is having the VM available to make examples on each page interactive. This is implemented, <em>but not activated on any pages yet</em>.</p>
 <p>In the near future inline doc examples will have a small button that you can press to see the code result right there, live. Since there's a lot of examples, and sometimes they're fragments of code that don't run in isolation, it will take time to propagate it through the pages.</p>
 <p>Mainly, I didn't want this to hold up 0.3.0, but expect to start seeing it soon.</p>
-<h3><a class="anchor" id="autotoc_md54"></a>
+<h3><a class="anchor" id="autotoc_md81"></a>
 Prebuilt releases</h3>
 <p>In addition to the browser based build that removes a barrier to trying out Wren, Wren CLI has prebuilt binaries for Mac, Windows and Linux now! This gives an easy path to just tinkering with Wren before embedding it.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 Goals for 0.4.0</h2>
 <p>With 0.4.0 the goal is to address a couple of bigger todos, but also to push the language itself, and the embedding experience forward.</p>
 <p>You can see some of the <a href="https://github.com/wren-lang/wren/pulls?q=is%3Apr+is%3Aopen+label%3A0.4.0">work in progress tasks</a> here, but there's a few things I'd like to resolve in 0.4.0.</p>
@@ -155,7 +155,7 @@ Goals for 0.4.0</h2>
 <p><b>Other goals</b> <br  />
  There's a few more things but I'm still exploring their viability. <br  />
  Keep an eye on the <a href="https://github.com/wren-lang/wren">PRs/issues</a> or the <a href="https://github.com/wren-lang/wren/pulls?q=is%3Apr+is%3Aopen+label%3A0.4.0">0.4.0 label</a> to see when they're discussed.</p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 Till next time</h2>
 <hr  />
 <ul>

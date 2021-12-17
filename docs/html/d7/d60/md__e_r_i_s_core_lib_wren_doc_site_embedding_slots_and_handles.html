@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('d7/d60/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title Slots and Handles</p>
 <p>With <code><a class="el" href="../../dd/d19/wren_8h.html#a653b065ece2f5fb52dc3ff41e7c8322a">wrenInterpret()</a></code>, we can execute code, but that code can't do anything particularly interesting. By default, the VM is isolated from the rest of the world, so pretty much all it can do is turn your laptop into a lap warmer.</p>
 <p>To make our Wren code <em>useful</em>, the VM needs to communicate with the outside world. Wren uses a single unified set of functions for passing data into and out of the VM. These functions are based on two fundamental concepts: <b>slots</b> and <b>handles</b>.</p>
-<h2><a class="anchor" id="autotoc_md191"></a>
+<h2><a class="anchor" id="autotoc_md195"></a>
 The Slot Array</h2>
 <p>When you want to send data to Wren, read data from it, or generally monkey around with Wren objects from C, you do so by going through an array of slots. Think of it as a shared message board that both the VM and your C code leave notes on for the other side to process.</p>
 <p>The array is zero-based, and each slot can hold a value of any type. It is dynamically sized, but it's your responsibility to ensure there are enough slots <em>before</em> you use them. You do this by calling:</p>
@@ -106,7 +106,7 @@ wrenEnsureSlots(vm, 4);
 int <a class="el" href="../../de/db2/wren__vm_8c.html#a878f8893f175d615198ae6e04d3b2b58">wrenGetSlotCount(WrenVM* vm)</a>;
 </pre><p>It returns the number of slots in the array. Note that this may be higher than the size you've ensured. Wren reuses the memory for this array when possible, so you may get one bigger than you need if it happened to be laying around.</p>
 <p>When Wren <a href="../../calling-c-from-wren.html">calls your C code</a> and passes data to you, it ensures there are enough slots for the objects it is sending you.</p>
-<h3><a class="anchor" id="autotoc_md195"></a>
+<h3><a class="anchor" id="autotoc_md199"></a>
 Writing slots</h3>
 <p>Once you have some slots, you store data in them using a number of functions all named <code>wrenSetSlot&lt;type&gt;()</code> where <code>&lt;type&gt;</code> is the kind of data. We'll start with the simple ones:</p>
 <pre class="snippet" data-lang="c">
@@ -122,7 +122,7 @@ void wrenSetSlotBytes(WrenVM* vm, int slot,
 void wrenSetSlotString(WrenVM* vm, int slot,
                        const char* text);
 </pre><p>Both of these copy the bytes into a new <a href="../../../values.html#strings">String</a> object managed by Wren's garbage collector, so you can free your copy of it after you call this. The difference between the two is that <code><a class="el" href="../../dd/d19/wren_8h.html#a174a3ba396a558eedecb0b3c4f118748">wrenSetSlotBytes()</a></code> takes an explicit length. Since Wren strings may contain arbitrary byte values, including the null byte, this lets you pass those in. It's also a little faster to use this for regular strings if you happen to know the length. The latter calculates the length of the string using <code>strlen()</code>.</p>
-<h3><a class="anchor" id="autotoc_md198"></a>
+<h3><a class="anchor" id="autotoc_md203"></a>
 Reading slots</h3>
 <p>You can, of course, also pull data out of slots. Here are the simple ones:</p>
 <pre class="snippet" data-lang="c">
@@ -139,7 +139,7 @@ const char* wrenGetSlotBytes(WrenVM* vm, int slot,
 <pre class="snippet" data-lang="c">
 WrenType <a class="el" href="../../de/db2/wren__vm_8c.html#a101a1db2c903f4271983ceab6ebed56f">wrenGetSlotType(WrenVM* vm, int slot)</a>;
 </pre><p>This returns an enum defining what type of value is in the slot. It only covers the primitive values that are supported by the C API. Things like ranges and instances of classes come back as <code>WREN_TYPE_UNKNOWN</code>. If you want to move that kind of data between Wren and C, you'll have to pull the object apart into simple primitive values first or use a <a href="../../storing-c-data.html">foreign class</a>.</p>
-<h3><a class="anchor" id="autotoc_md200"></a>
+<h3><a class="anchor" id="autotoc_md205"></a>
 Looking up variables</h3>
 <p>There are a few other utility functions that move data into and out of slots. Here's the first:</p>
 <pre class="snippet" data-lang="c">
@@ -147,7 +147,7 @@ void wrenGetVariable(WrenVM* vm, const char* module,
                      const char* name, int slot);
 </pre><p>This looks up a top level variable with the given name in the module with the given name and stores its value in the given slot. Note that classes are just objects stored in variables too, so you can use this to look up a class by its name. Handy for calling static methods on it.</p>
 <p>Like any method that works with strings, this one is a bit slow. It has to hash the name and look it up in the module's string table. You might want to avoid calling this in the middle of a hot loop where performance is critical. Instead, it's faster to look up the variable once outside the loop and store a reference to the object using a <a href="../../#handles">handle</a>.</p>
-<h3><a class="anchor" id="autotoc_md201"></a>
+<h3><a class="anchor" id="autotoc_md207"></a>
 Working with lists</h3>
 <p>The slot array is fine for moving a fixed number of objects between Wren and C, but sometimes you need to shuttle a larger or dynamically-sized ball of stuff. <a href="../../../lists.html">List objects</a> work well for that, so the C API lets you work with them directly.</p>
 <p>You can create a new empty list from C using:</p>
@@ -164,7 +164,7 @@ void wrenInsertInList(WrenVM* vm, int listSlot, int index,
 <li><code>elementSlot</code> identifies the slot where the value you want to insert in the list can be found.</li>
 </ul>
 <p>This API means getting a value from C into a list is a two step operation. First you move the value into a slot, then you take it from the slot and insert it in the list. This is kind of tedious, but it lets us use the same set of functions for moving values into slots of each primitive type. Otherwise, we'd need <code>wrenInsertInListDouble()</code>, <code>wrenInsertInListBool()</code>, etc.</p>
-<h2><a class="anchor" id="autotoc_md202"></a>
+<h2><a class="anchor" id="autotoc_md209"></a>
 Handles</h2>
 <p>Slots are pretty good for shuttling primitive data between C and Wren, but they have two limitations:</p>
 <ol type="1">
@@ -178,7 +178,7 @@ WrenHandle* <a class="el" href="../../de/db2/wren__vm_8c.html#a2203fe2e09540f4f9
 <pre class="snippet" data-lang="c">
 void <a class="el" href="../../de/db2/wren__vm_8c.html#a8066a0390abdc89fff247b04d9dbf833">wrenSetSlotHandle(WrenVM* vm, int slot, WrenHandle* handle)</a>;
 </pre><p>Note that this doesn't invalidate your <a class="el" href="../../d7/d18/struct_wren_handle.html">WrenHandle</a>. You can still keep using it.</p>
-<h3><a class="anchor" id="autotoc_md203"></a>
+<h3><a class="anchor" id="autotoc_md211"></a>
 Retaining and releasing handles</h3>
 <p>A handle is an opaque wrapper around an object of any type, but just as important, it's a <em>persistent</em> one. When Wren gives you a pointer to a <a class="el" href="../../d7/d18/struct_wren_handle.html">WrenHandle</a>, it guarantees that that pointer remains valid. You can keep it around as long as you want. Even if a garbage collection occurs, Wren will ensure the handle and the object it wraps are kept safely in memory.</p>
 <p>Internally, Wren keeps a list of all of the WrenHandles that have been created. That way, during garbage collection, it can find them all and make sure their objects aren't freed. But what if you don't want it to be kept around any more? Since C relies on manual memory management, <a class="el" href="../../d7/d18/struct_wren_handle.html">WrenHandle</a> does too. When you are done with one, you must explicitly release it by calling:</p>

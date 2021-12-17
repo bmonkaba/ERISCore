@@ -1,5 +1,10 @@
 var NAVTREEINDEX24 =
 {
+"d9/def/wren__primitive_8c.html#a3a06f38d3212624c903ff04e7081afd1":[76,0,194,2],
+"d9/def/wren__primitive_8c.html#a403030ef82e2c722cd6e3614672f03a7":[76,0,194,4],
+"d9/def/wren__primitive_8c.html#a614589b5ea49baea239d609c76292c1b":[76,0,194,6],
+"d9/def/wren__primitive_8c.html#a8e11757bdc1b29735a76bf2d9d863e86":[76,0,194,3],
+"d9/def/wren__primitive_8c.html#a9701be129239386f23ba6c2e5520ec56":[76,0,194,5],
 "d9/def/wren__primitive_8c.html#a974add9543a61f5a9b7a75acfcdd1115":[76,0,194,7],
 "d9/def/wren__primitive_8c.html#a9c218606ed1e865ce31120a3a6dce817":[76,0,194,0],
 "d9/def/wren__primitive_8c.html#afd4edfdae22a6d4485c1787a8dc38064":[76,0,194,8],
@@ -140,9 +145,9 @@ var NAVTREEINDEX24 =
 "da/d60/_sd_card_interface_8h.html":[76,0,126],
 "da/d60/_sd_card_interface_8h_source.html":[76,0,126],
 "da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html":[66],
-"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md480":[132],
-"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md481":[132,0],
-"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md482":[132,1],
+"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md468":[132],
+"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md475":[132,0],
+"da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md479":[132,1],
 "da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md483":[132,2],
 "da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md484":[132,3],
 "da/d73/md__e_r_i_s_core_lib_wren_doc_site_performance.html#autotoc_md485":[132,4],
@@ -244,10 +249,5 @@ var NAVTREEINDEX24 =
 "da/dbe/wren__value_8c.html#a7b9e6e22f2376aaa1ecaef9e741646fa":[76,0,198,37],
 "da/dbe/wren__value_8c.html#a81cd918cd30e1f747e2c87fd12b3111a":[76,0,198,56],
 "da/dbe/wren__value_8c.html#a83d07c4ee0d05d18ce2d55c2bf117c5f":[76,0,198,65],
-"da/dbe/wren__value_8c.html#a869b72bfd56163657b4a072bfcb50911":[76,0,198,21],
-"da/dbe/wren__value_8c.html#a90bea8e34aaf0fa708f5295061bc3965":[76,0,198,49],
-"da/dbe/wren__value_8c.html#a93c2da1228dc2f371900668dd5ac4f27":[76,0,198,27],
-"da/dbe/wren__value_8c.html#a93e55b7f27dbf099349f5585798dc335":[76,0,198,39],
-"da/dbe/wren__value_8c.html#a99dff6ea4dc8846113a8466de20785d3":[76,0,198,6],
-"da/dbe/wren__value_8c.html#a9ee197ffca886cf280c83092383cc361":[76,0,198,38]
+"da/dbe/wren__value_8c.html#a869b72bfd56163657b4a072bfcb50911":[76,0,198,21]
 };

@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('d0/d1b/md__e_r_i_s_core_lib_wren_doc_s
 <p>Fibers are a bit like threads except they are <em>cooperatively</em> scheduled. That means Wren doesn't pause one fiber and switch to another until you tell it to. You don't have to worry about context switches at random times and all of the headaches those cause.</p>
 <p>Wren takes care of all of the fibers in the VM, so they don't use OS thread resources, or require heavyweight context switches. Each just needs a bit of memory for its stack. A fiber will get garbage collected like any other object when not referenced any more, so you can create them freely.</p>
 <p>They are lightweight enough that you can, for example, have a separate fiber for each entity in a game. Wren can handle thousands of them without breaking a sweat. For example, when you run Wren in interactive mode, it creates a new fiber for every line of code you type in.</p>
-<h2><a class="anchor" id="autotoc_md204"></a>
+<h2><a class="anchor" id="autotoc_md193"></a>
 Creating fibers</h2>
 <p>All Wren code runs within the context of a fiber. When you first start a Wren script, a main fiber is created for you automatically. You can spawn new fibers using the Fiber class's constructor:</p>
 <pre class="snippet">
@@ -99,7 +99,7 @@ var fiber = Fiber.new {
   System.print("This runs in a separate fiber.")
 }
 </pre><p>It takes a <a href="../../functions.html">function</a> containing the code the fiber should execute. The function can take zero or one parameter, but no more than that. Creating the fiber does not immediately run it. It just wraps the function and sits there, waiting to be activated.</p>
-<h2><a class="anchor" id="autotoc_md205"></a>
+<h2><a class="anchor" id="autotoc_md194"></a>
 Invoking fibers</h2>
 <p>Once you've created a fiber, you run it by calling its <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code> method:</p>
 <pre class="snippet">
@@ -114,7 +114,7 @@ System.print(fiber.isDone) //&gt; false
 fiber.call() //&gt; It's alive!
 System.print(fiber.isDone) //&gt; true
 </pre><p>When a called fiber finishes, it automatically passes control <em>back</em> to the fiber that called it. It's a runtime error to try to call a fiber that is already done.</p>
-<h2><a class="anchor" id="autotoc_md207"></a>
+<h2><a class="anchor" id="autotoc_md196"></a>
 Yielding</h2>
 <p>The main difference between fibers and functions is that a fiber can be suspended in the middle of its operation and then resumed later. Calling another fiber is one way to suspend a fiber, but that's more or less the same as one function calling another.</p>
 <p>Things get interesting when a fiber <em>yields</em>. A yielded fiber passes control <em>back</em> to the fiber that ran it, but <em>remembers where it is</em>. The next time the fiber is called, it picks up right where it left off and keeps going.</p>
@@ -132,7 +132,7 @@ System.print("Calling again") //&gt; Calling again
 fiber.call() //&gt; Resumed
 System.print("All done") //&gt; All done
 </pre><p>Note that even though this program uses <em>concurrency</em>, it is still <em>deterministic</em>. You can reason precisely about what it's doing and aren't at the mercy of a thread scheduler playing Russian roulette with your code.</p>
-<h2><a class="anchor" id="autotoc_md208"></a>
+<h2><a class="anchor" id="autotoc_md197"></a>
 Passing values</h2>
 <p>Calling and yielding fibers is used for passing control, but it can also pass <em>data</em>. When you call a fiber, you can optionally pass a value to it.</p>
 <p>If you create a fiber using a function that takes a parameter, you can pass a value to it through <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code>:</p>
@@ -160,7 +160,7 @@ var fiber = Fiber.new {
 
 System.print(fiber.call()) //&gt; Reply
 </pre><p>This is sort of like how a function call may return a value, except that a fiber may return a whole sequence of values, one every time it yields.</p>
-<h2><a class="anchor" id="autotoc_md209"></a>
+<h2><a class="anchor" id="autotoc_md198"></a>
 Full coroutines</h2>
 <p>What we've seen so far is very similar to what you can do with languages like Python and C# that have <em>generators</em>. Those let you define a function call that you can suspend and resume. When using the function, it appears like a sequence you can iterate over.</p>
 <p>Wren's fibers can do that, but they can do much more. Like Lua, they are full <em>coroutines</em>&mdash;they can suspend from anywhere in the callstack. The function you use to create a fiber can call a method that calls another method that calls some third method which finally calls yield. When that happens, <em>all</em> of those method calls &mdash; the entire callstack &mdash; gets suspended. For example:</p>
@@ -171,7 +171,7 @@ var fiber = Fiber.new {
   }
 }
 </pre><p>Here, we're calling <code>yield()</code> from within a <a href="../../functions.html">function</a> being passed to the <code>each()</code> method. This works fine in Wren because that inner <code>yield()</code> call will suspend the call to <code>each()</code> and the function passed to it as a callback.</p>
-<h2><a class="anchor" id="autotoc_md211"></a>
+<h2><a class="anchor" id="autotoc_md201"></a>
 Transferring control</h2>
 <p>Fibers have one more trick up their sleeves. When you execute a fiber using <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code>, the fiber tracks which fiber it will return to when it yields. This lets you build up a chain of fiber calls that will eventually unwind back to the main fiber when all of the called ones yield or finish.</p>
 <p>This is usually what you want. But if you're doing something low level, like writing your own scheduler to manage a pool of fibers, you may not want to treat them explicitly like a stack.</p>

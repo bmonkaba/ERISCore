@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('d1/d90/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Control Flow</p>
 <p>Control flow is used to determine which chunks of code are executed and how many times. <em>Branching</em> statements and expressions decide whether or not to execute some code and <em>looping</em> ones execute something more than once.</p>
-<h2><a class="anchor" id="autotoc_md213"></a>
+<h2><a class="anchor" id="autotoc_md200"></a>
 Truth</h2>
 <p>All control flow is based on <em>deciding</em> whether or not to do something. This decision depends on some expression's value. We take the entire universe of possible objects and divide them into two buckets: some we consider "true" and the rest are "false". If the expression results in a value in the true bucket, we do one thing. Otherwise, we do something else.</p>
 <p>Obviously, the boolean <code>true</code> is in the "true" bucket and <code>false</code> is in "false", but what about values of other types? The choice is ultimately arbitrary, and different languages have different rules. Wren's rules follow Ruby:</p>
@@ -98,7 +98,7 @@ Truth</h2>
 <li>Everything else is true.</li>
 </ul>
 <p>This means <code>0</code>, empty strings, and empty collections are all considered "true" values.</p>
-<h2><a class="anchor" id="autotoc_md215"></a>
+<h2><a class="anchor" id="autotoc_md202"></a>
 If statements</h2>
 <p>The simplest branching statement, <code>if</code> lets you conditionally skip a chunk of code. It looks like this:</p>
 <pre class="snippet">
@@ -119,7 +119,7 @@ if (ready) {
 } else {
   System.print("not ready!")
 }
-</pre><h2><a class="anchor" id="autotoc_md216"></a>
+</pre><h2><a class="anchor" id="autotoc_md204"></a>
 Logical operators</h2>
 <p>Unlike most other <a href="../../method-calls.html#operators">operators</a> in Wren which are just a special syntax for <a href="../../method-calls.html">method calls</a>, the <code>&amp;&amp;</code> and <code>||</code> operators are special. This is because they only conditionally evaluate the right operand&mdash;they short-circuit.</p>
 <p>A <code>&amp;&amp;</code> ("logical and") expression evaluates the left-hand argument. If it's false, it returns that value. Otherwise it evaluates and returns the right-hand argument.</p>
@@ -130,13 +130,13 @@ System.print(1 &amp;&amp; 2)      //&gt; 2
 <pre class="snippet">
 System.print(false || 1)  //&gt; 1
 System.print(1 || 2)      //&gt; 1
-</pre><h2><a class="anchor" id="autotoc_md217"></a>
+</pre><h2><a class="anchor" id="autotoc_md206"></a>
 The conditional operator &lt;tt&gt;?:&lt;/tt&gt;</h2>
 <p>Also known as the "ternary" operator since it takes three arguments, Wren has the little "if statement in the form of an expression" you know and love from C and similar languages.</p>
 <pre class="snippet">
 System.print(1 != 2 ? "math is sane" : "math is not sane!")
 </pre><p>It takes a condition expression, followed by <code>?</code>, followed by a then expression, a <code>:</code>, then an else expression. Just like <code>if</code>, it evaluates the condition. If true, it evaluates and returns the then expression. Otherwise it does the else expression.</p>
-<h2><a class="anchor" id="autotoc_md218"></a>
+<h2><a class="anchor" id="autotoc_md208"></a>
 While statements</h2>
 <p>It's hard to write a useful program without executing some chunk of code repeatedly. To do that, you use looping statements. There are two in Wren, and they should be familiar if you've used other imperative languages.</p>
 <p>The simplest, a <code>while</code> statement executes a chunk of code as long as a condition continues to hold. For example:</p>
@@ -155,7 +155,7 @@ while (n != 1) {
 <pre class="snippet">
 var n = 27
 while (n != 1) if (n % 2 == 0) n = n / 2 else n = 3 * n + 1
-</pre><h2><a class="anchor" id="autotoc_md220"></a>
+</pre><h2><a class="anchor" id="autotoc_md210"></a>
 For statements</h2>
 <p>While statements are useful when you want to loop indefinitely or according to some complex condition. But in most cases, you're looping through a <a href="../../lists.html">list</a>, a series of numbers, or some other "sequence" object. That's what <code>for</code> is, uh, for. It looks like this:</p>
 <pre class="snippet">
@@ -168,7 +168,7 @@ for (beatle in ["george", "john", "paul", "ringo"]) {
 <li>A <em>sequence expression</em>. This determines what you're looping over. It gets evaluated <em>once</em> before the body of the loop. In this case, it's a list literal, but it can be any expression.</li>
 <li>A <em>body</em>. This is a curly block or a single statement. It gets executed once for each iteration of the loop.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md221"></a>
+<h2><a class="anchor" id="autotoc_md212"></a>
 Break statements</h2>
 <p>Sometimes, right in the middle of a loop body, you decide you want to bail out and stop. To do that, you can use a <code>break</code> statement. It's just the <code>break</code> keyword all by itself. That immediately exits out of the nearest enclosing <code>while</code> or <code>for</code> loop.</p>
 <pre class="snippet">
@@ -176,7 +176,7 @@ for (i in [1, 2, 3, 4]) {
   System.print(i)           //&gt; 1
   if (i == 3) break         //&gt; 2
 }                           //&gt; 3
-</pre><h2><a class="anchor" id="autotoc_md222"></a>
+</pre><h2><a class="anchor" id="autotoc_md213"></a>
 Continue statements</h2>
 <p>During the execution of a loop body, you might decide that you want to skip the rest of this iteration and move on to the next one. You can use a <code>continue</code> statement to do that. It's just the <code>continue</code> keyword all by itself. Execution will immediately jump to the beginning of the next loop iteration (and check the loop conditions).</p>
 <pre class="snippet">
@@ -184,7 +184,7 @@ for (i in [1, 2, 3, 4]) {
   if (i == 2) continue      //&gt; 1
   System.print(i)           //&gt; 3
 }                           //&gt; 4
-</pre><h2><a class="anchor" id="autotoc_md223"></a>
+</pre><h2><a class="anchor" id="autotoc_md214"></a>
 Numeric ranges</h2>
 <p>Lists are one common use for <code>for</code> loops, but sometimes you want to walk over a sequence of numbers, or loop a number of times. For that, you can create a <a href="../../values.html#ranges">range</a>, like so:</p>
 <pre class="snippet">
@@ -197,7 +197,7 @@ for (i in 1...100) {
   System.print(i)
 }
 </pre><p>This looks like some special "range" syntax in the <code>for</code> loop, but it's actually just a pair of operators. The <code>..</code> and <code>...</code> syntax are infix "range" operators. Like <a href="../../method-calls.html#operators">other operators</a>, they are special syntax for a regular method call. The number type implements them and returns a <a href="../../values.html#ranges">range object</a> that knows how to iterate over a series of numbers.</p>
-<h2><a class="anchor" id="autotoc_md226"></a>
+<h2><a class="anchor" id="autotoc_md215"></a>
 The iterator protocol</h2>
 <p>Lists and ranges cover the two most common kinds of loops, but you should also be able to define your own sequences. To enable that, the semantics of <code>for</code> are defined in terms of an "iterator protocol". The loop itself doesn't know anything about lists or ranges, it just knows how to call two particular methods on the object that resulted from evaluating the sequence expression.</p>
 <p>When you write a loop like this:</p>

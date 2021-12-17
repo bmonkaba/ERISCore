@@ -21,6 +21,7 @@ var globaldefs_8h =
     [ "SERIAL_PARAM_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a5c22e2c6abc159d7fafbeb6d43e4c968", null ],
     [ "SERIAL_POLLING_RATE_MAX", "d8/d2c/globaldefs_8h.html#a2bebf7301603ccdf9533cb9aa41c08ef", null ],
     [ "SERIAL_RX_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#aba0ceec384cf3acb51e0d6f45f31379c", null ],
+    [ "SERIAL_RX_CAPTURE_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a7facb41097ec90e24263ff9825caf028", null ],
     [ "SERIAL_THROTTLE_BUFFER_THRESHOLD", "d8/d2c/globaldefs_8h.html#aca228ee6133a5dbbe4c9e26751b8a28b", null ],
     [ "SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD", "d8/d2c/globaldefs_8h.html#a6eb9a70da8c657508b7ca74addedf167", null ],
     [ "SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC", "d8/d2c/globaldefs_8h.html#adbcabab2ec38eadd8ba18dc55d7b1486", null ],

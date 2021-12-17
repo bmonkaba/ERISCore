@@ -1,5 +1,9 @@
 var NAVTREEINDEX14 =
 {
+"d4/de2/wren__compiler_8c.html#aac2c091d1986fa181a49452185f36799":[76,0,179,88],
+"d4/de2/wren__compiler_8c.html#aae9d87e942ec21e7de756387b4f28f6a":[76,0,179,101],
+"d4/de2/wren__compiler_8c.html#aaecc53892786f2fa11e682f633af84c6":[76,0,179,17],
+"d4/de2/wren__compiler_8c.html#aaecc53892786f2fa11e682f633af84c6a9c17ce3e01d23ef646abc7a330a1244a":[76,0,179,17,1],
 "d4/de2/wren__compiler_8c.html#aaecc53892786f2fa11e682f633af84c6aa4cd1d716be5988e72bb08902f33270e":[76,0,179,17,2],
 "d4/de2/wren__compiler_8c.html#aaecc53892786f2fa11e682f633af84c6af828bc82c537119c89b55d2db41ec75b":[76,0,179,17,0],
 "d4/de2/wren__compiler_8c.html#aaf25e0c94fad40c04caf138b3f838484":[76,0,179,122],
@@ -153,8 +157,8 @@ var NAVTREEINDEX14 =
 "d4/dfc/eris__analyze__fft1024_8h.html#af1f4ed6c31e28ce8075c254e6ed3ab18aac99589a7b422519f7ad7bfdacfa823b":[76,0,36,4,1],
 "d4/dfc/eris__analyze__fft1024_8h_source.html":[76,0,36],
 "d5/d0a/md__e_r_i_s_core_lib_wren_doc_site_cli_usage.html":[29],
-"d5/d0a/md__e_r_i_s_core_lib_wren_doc_site_cli_usage.html#autotoc_md177":[30,0],
-"d5/d0a/md__e_r_i_s_core_lib_wren_doc_site_cli_usage.html#autotoc_md178":[30,1],
+"d5/d0a/md__e_r_i_s_core_lib_wren_doc_site_cli_usage.html#autotoc_md156":[30,0],
+"d5/d0a/md__e_r_i_s_core_lib_wren_doc_site_cli_usage.html#autotoc_md157":[30,1],
 "d5/d14/class_ex_fat_file.html":[75,0,125],
 "d5/d14/class_ex_fat_file.html#a0165e0fde12a53e419bd92cd37f9cfed":[75,0,125,75],
 "d5/d14/class_ex_fat_file.html#a044ca2c192b8f7059278dd300fa209d2":[75,0,125,93],
@@ -245,9 +249,5 @@ var NAVTREEINDEX14 =
 "d5/d14/class_ex_fat_file.html#abe72cc1886e2d32e783eb307d6fa7213":[75,0,125,2],
 "d5/d14/class_ex_fat_file.html#abeb2e21f71f9f13f893cdf0cd1350b92":[75,0,125,118],
 "d5/d14/class_ex_fat_file.html#abfbf7534ac962c1572da8615dc0c518f":[75,0,125,3],
-"d5/d14/class_ex_fat_file.html#ac0c15cff235937cdfd7860d5fb441728":[75,0,125,26],
-"d5/d14/class_ex_fat_file.html#ac2004e7bf328b3edda7d4c3acba2726f":[75,0,125,6],
-"d5/d14/class_ex_fat_file.html#ac2bc701b306a50040416f5d0ed9e11c2":[75,0,125,115],
-"d5/d14/class_ex_fat_file.html#ac3a0eced5e82101c3a94a986cccdd82a":[75,0,125,111],
-"d5/d14/class_ex_fat_file.html#ac6a951d64580dc7d20cc8a515029aae4":[75,0,125,94]
+"d5/d14/class_ex_fat_file.html#ac0c15cff235937cdfd7860d5fb441728":[75,0,125,26]
 };

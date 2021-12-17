@@ -89,13 +89,13 @@ $(document).ready(function(){initNavTree('df/d20/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title Classes</p>
 <p>Every value in Wren is an object, and every object is an instance of a class. Even <code>true</code> and <code>false</code> are full-featured objects&mdash;instances of the <a href="../../modules/core/bool.html">Bool</a> class.</p>
 <p>Classes define an objects <em>behavior</em> and <em>state</em>. Behavior is defined by <a href="../../method-calls.html"><em>methods</em></a> which live in the class. Every object of the same class supports the same methods. State is defined in <em>fields</em>, whose values are stored in each instance.</p>
-<h2><a class="anchor" id="autotoc_md131"></a>
+<h2><a class="anchor" id="autotoc_md164"></a>
 Defining a class</h2>
 <p>Classes are created using the <code>class</code> keyword, unsurprisingly:</p>
 <pre class="snippet">
 class Unicorn {}
 </pre><p>This creates a class named <code>Unicorn</code> with no methods or fields.</p>
-<h2><a class="anchor" id="autotoc_md132"></a>
+<h2><a class="anchor" id="autotoc_md165"></a>
 Methods</h2>
 <p>To let our unicorn do stuff, we need to give it methods.</p>
 <pre class="snippet">
@@ -128,7 +128,7 @@ class Unicorn {
 }
 </pre><p>It's often natural to have the same conceptual operation work with different sets of arguments. In other languages, you'd define a single method for the operation and have to check for missing optional arguments. In Wren, they are different methods that you implement separately.</p>
 <p>In addition to named methods with parameter lists, Wren has a bunch of other different syntaxes for methods. Your classes can define all of them.</p>
-<h3><a class="anchor" id="autotoc_md133"></a>
+<h3><a class="anchor" id="autotoc_md166"></a>
 Getters</h3>
 <p>A getter leaves off the parameter list and the parentheses:</p>
 <pre class="snippet">
@@ -136,7 +136,7 @@ class Unicorn {
   // Unicorns are always fancy.
   isFancy { true }
 }
-</pre><h3><a class="anchor" id="autotoc_md134"></a>
+</pre><h3><a class="anchor" id="autotoc_md167"></a>
 Setters</h3>
 <p>A setter has <code>=</code> after the name, followed by a single parenthesized parameter:</p>
 <pre class="snippet">
@@ -146,7 +146,7 @@ class Unicorn {
   }
 }
 </pre><p>By convention, the parameter is usually named <code>value</code> but you can call it whatever makes your heart flutter.</p>
-<h3><a class="anchor" id="autotoc_md137"></a>
+<h3><a class="anchor" id="autotoc_md168"></a>
 Operators</h3>
 <p>Prefix operators, like getters, have no parameter list:</p>
 <pre class="snippet">
@@ -183,7 +183,7 @@ class Unicorn {
     System.print("You can't stuff %(value) into me at %(index)!")
   }
 }
-</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md142"></a>
+</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md169"></a>
 Method Scope</h2>
 <pre class="snippet">
 Up to this point, "[scope][]" has been used to talk exclusively about
@@ -196,7 +196,7 @@ unicorn.isFancy
 <code>unicorn</code>&rdquo;. In this case, the fact that you want to look up a <em>method</em>
 <code>isFancy</code> and not a <em>variable</em> <code>isFancy</code> is explicit. That's what <code>.</code> does and
 the object to the left of the period is the object you want to look up the
-method on.</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md143"></a>
+method on.</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md172"></a>
 &lt;tt&gt;this&lt;/tt&gt;</h3>
 <pre class="snippet">
 Things get more interesting when you're inside the body of a method. When the
@@ -227,7 +227,7 @@ class Unicorn {
 </pre></pre><pre class="snippet">This is unlike Lua and JavaScript which can "forget" <code>this</code> when you create a
 callback inside a method. Wren does what you want here and retains the
 reference to the original object.</pre><pre class="snippet">(In technical terms, a function's closure includes <code>this</code>. Wren can do this
-because it makes a distinction between methods and functions.)</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md144"></a>
+because it makes a distinction between methods and functions.)</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md182"></a>
 Implicit &lt;tt&gt;this&lt;/tt&gt;</h3>
 <pre class="snippet">
 Using <code>this.</code> every time you want to call a method on yourself works, but it's
@@ -285,7 +285,7 @@ class Scope {
     System.print(Capitalized) //&gt; surrounding
   }
 }
-</pre></pre><pre class="snippet">It's a bit of a strange rule, but Ruby works more or less the same way.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md145"></a>
+</pre></pre><pre class="snippet">It's a bit of a strange rule, but Ruby works more or less the same way.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md184"></a>
 Constructors</h2>
 <pre class="snippet">
 We've seen how to define kinds of objects and how to declare methods on them.
@@ -332,7 +332,7 @@ Unicorn.brown("Dave")
 </pre></pre><pre class="snippet">That creates the new instance, then it invokes the <em>initializer</em> on that
 instance. This is where the constructor body you defined gets run.</pre><pre class="snippet">This distinction is important because it means inside the body of the
 constructor, you can access <code>this</code>, assign <a href="../../#fields">fields</a>, call superclass
-constructors, etc.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md146"></a>
+constructors, etc.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md185"></a>
 Fields</h2>
 <pre class="snippet">
 All state stored in instances is stored in <em>fields</em>. Each field has a name
@@ -350,7 +350,7 @@ of an instance method. They <em>can</em> be used inside a <a href="../../functio
 in a method. Wren will look outside any nested functions until it finds an
 enclosing method.</pre><pre class="snippet">Unlike <a href="../../variables.html">variables</a>, fields are implicitly declared by simply
 assigning to them. If you access a field before it has been initialized, its
-value is <code>null</code>.</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md147"></a>
+value is <code>null</code>.</pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md186"></a>
 Encapsulation</h3>
 <pre class="snippet">
 All fields are <em>private</em> in Wren&mdash;an object's fields can only be directly
@@ -400,10 +400,10 @@ class Rectangle is Shape {
 </pre></pre><pre class="snippet">One thing we've learned in the past forty years of software engineering is that
 encapsulating state tends to make code easier to maintain, so Wren defaults to
 keeping your object's state pretty tightly bundled up. Don't feel that you have
-to or even should define getters or setters for most of your object's fields.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md148"></a>
+to or even should define getters or setters for most of your object's fields.</pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md187"></a>
 Metaclasses and static members</h2>
 <pre class="snippet">
-<b>TODO</b></pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md149"></a>
+<b>TODO</b></pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md188"></a>
 Static fields</h3>
 <pre class="snippet">
 A name that starts with <em>two</em> underscores is a <em>static</em> field. They work
@@ -435,7 +435,7 @@ var foo2 = Foo.new()
 
 foo1.setFromInstance("second")
 foo2.printFromInstance() //&gt; second
-</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md150"></a>
+</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md189"></a>
 Inheritance</h2>
 <pre class="snippet">
 A class can inherit from a "parent" or <em>superclass</em>. When you invoke a method
@@ -485,7 +485,7 @@ class Pegasus is Unicorn {
 }
 
 Pegasus.new("Fred") //&gt; My name is Fred
-</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md151"></a>
+</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md190"></a>
 Super</h2>
 <pre class="snippet">
 <b>TODO: Integrate better into page. Should explain this before mentioning
@@ -518,7 +518,7 @@ class Derived is Base {
     super("value") //&gt; base got value
   }
 }
-</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md152"></a>
+</pre></pre><pre class="snippet"></pre><h2><a class="anchor" id="autotoc_md191"></a>
 Attributes</h2>
 <pre class="snippet">
 <small><b>experimental stage</b>: subject to minor changes</small></pre><pre class="snippet">A class and methods within a class can be tagged with 'meta attributes'.</pre><pre class="snippet">Like this:</pre><pre class="snippet"><pre class="snippet">
@@ -555,7 +555,7 @@ class Example {
   #test(skip = true, iterations = 32)
   doStuff() {}
 }
-</pre></pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md153"></a>
+</pre></pre><pre class="snippet"></pre><h3><a class="anchor" id="autotoc_md192"></a>
 Accessing attributes at runtime</h3>
 <pre class="snippet">
 By default, attributes are compiled out and ignored.</pre><pre class="snippet">For an attribute to be visible at runtime, mark it for runtime

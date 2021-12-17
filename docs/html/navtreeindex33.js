@@ -1,5 +1,10 @@
 var NAVTREEINDEX33 =
 {
+"de/db5/eris__synth__waveform_8h.html#a057e6fc51e7e44873c0488f6ffb20296":[76,0,41,2],
+"de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8":[76,0,41,5],
+"de/db5/eris__synth__waveform_8h.html#a24ee98dbaa3894cdd365968f378c20a9":[76,0,41,10],
+"de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9":[76,0,41,7],
+"de/db5/eris__synth__waveform_8h.html#a538043fe947ae9c5e59fe2fa4abf9ab2":[76,0,41,4],
 "de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3":[76,0,41,9],
 "de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905":[76,0,41,3],
 "de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468":[76,0,41,8],
@@ -7,13 +12,13 @@ var NAVTREEINDEX33 =
 "de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187":[76,0,41,6],
 "de/db5/eris__synth__waveform_8h_source.html":[76,0,41],
 "de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html":[40],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md280":[76],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md282":[77],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md285":[78],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md286":[79],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md287":[80],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md288":[81],
-"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md289":[82],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md250":[76],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md255":[77],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md256":[78],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md257":[79],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md258":[80],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md259":[81],
+"de/dc4/md__e_r_i_s_core_lib_wren_doc_site_functions.html#autotoc_md260":[82],
 "de/dd3/classeris_audio_output_t_d_m2.html":[75,0,106],
 "de/dd3/classeris_audio_output_t_d_m2.html#a6c17c8c9fffc6f3920362eed6c039e14":[75,0,106,0],
 "de/dd3/classeris_audio_output_t_d_m2.html#afdc59eef1ab14617fa2d2541a020f838":[75,0,106,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX33 =
 "df/d17/class_control_button.html#ad66a3cbbe4a3b973dea5c83a068bc79f":[75,0,29,33],
 "df/d17/class_control_button.html#ad94e41c748692bda9c38b25c876bc3e6":[75,0,29,32],
 "df/d17/class_control_button.html#ad9996440b20f31307ba26ff1f932a421":[75,0,29,68],
-"df/d17/class_control_button.html#adcc4cab229e708b438331de2971ed0f6":[75,0,29,22],
-"df/d17/class_control_button.html#ae25e514a1d183f98b5c3551ffcaf2744":[75,0,29,62],
-"df/d17/class_control_button.html#ae48421c05ab38a72f27c1face4bb50c4":[75,0,29,20],
-"df/d17/class_control_button.html#ae84fb7d2e79a6e050cfa11d8e04cbae9":[75,0,29,5],
-"df/d17/class_control_button.html#aeec9825d71fcb7e8fb0254babc9dd41a":[75,0,29,58],
-"df/d17/class_control_button.html#aef1d60f75d914b3a7abd0d44b0c266c3":[75,0,29,9]
+"df/d17/class_control_button.html#adcc4cab229e708b438331de2971ed0f6":[75,0,29,22]
 };

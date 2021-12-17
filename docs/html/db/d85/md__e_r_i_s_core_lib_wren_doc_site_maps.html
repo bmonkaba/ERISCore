@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('db/d85/md__e_r_i_s_core_lib_wren_doc_s
 <p>Keys have a few limitations. They must be one of the immutable built-in <a href="../../values.html">value types</a> in Wren. That means a number, string, range, bool, or <code>null</code>. You can also use a <a href="../../classes.html">class object</a> as a key (not an instance of that class, the actual class itself).</p>
 <p>The reason for this limitation&mdash;and the reason maps are called "*hash*
 tables" in other languages&mdash;is that each key is used to generate a numeric <em>hash code</em>. This lets a map locate the value associated with a key in constant time, even in very large maps. Since Wren only knows how to hash certain built-in types, only those can be used as keys.</p>
-<h2><a class="anchor" id="autotoc_md256"></a>
+<h2><a class="anchor" id="autotoc_md269"></a>
 Adding entries</h2>
 <p>You add new key-value pairs to the map using the <a href="../../method-calls.html#subscripts">subscript operator</a>:</p>
 <pre class="snippet">
@@ -110,7 +110,7 @@ var capitals = {}
     capitals["Idaho"] = "Boise"
     capitals["Maine"] = "Augusta"
 </pre><p>If the key isn't already present, this adds it and associates it with the given value. If the key is already there, this just replaces its value.</p>
-<h2><a class="anchor" id="autotoc_md258"></a>
+<h2><a class="anchor" id="autotoc_md271"></a>
 Looking up values</h2>
 <p>To find the value associated with some key, again you use your friend the subscript operator:</p>
 <pre class="snippet">
@@ -127,7 +127,7 @@ System.print(capitals.containsKey("Idaho"))   //&gt; false
 </pre><p>You can see how many entries a map contains using <code>count</code>:</p>
 <pre class="snippet">
 System.print(capitals.count) //&gt; 3
-</pre><h2><a class="anchor" id="autotoc_md259"></a>
+</pre><h2><a class="anchor" id="autotoc_md273"></a>
 Removing entries</h2>
 <p>To remove an entry from a map, call <code>remove()</code> and pass in the key for the entry you want to delete:</p>
 <pre class="snippet">
@@ -141,7 +141,7 @@ System.print(capitals.remove("Georgia")) //&gt; Atlanta
 <pre class="snippet">
 capitals.clear()
 System.print(capitals.count) //&gt; 0
-</pre><h2><a class="anchor" id="autotoc_md260"></a>
+</pre><h2><a class="anchor" id="autotoc_md274"></a>
 Iterating over the contents</h2>
 <p>The subscript operator works well for finding values when you know the key you're looking for, but sometimes you want to see everything that's in the map. You can use a regular for loop to iterate the contents, and map exposes two additional methods to access the contents: <code>keys</code> and <code>values</code>.</p>
 <p>The <code>keys</code> method on a map returns a <a href="../../modules/core/sequence.html">Sequence</a> that <a href="../../control-flow.html#the-iterator-protocol">iterates</a> over all of the keys in the map, and the <code>values</code> method returns one that iterates over the values.</p>

@@ -89,28 +89,28 @@ $(document).ready(function(){initNavTree('d6/dc5/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title FileFlags Class</p>
 <p>Contains constants for the various file flags used to open or create a file. These correspond directly to the flags that can be passed to the POSIX <a href="http://linux.die.net/man/2/open"><code>open()</code></a> syscall.</p>
 <p>They are integers and can be bitwise or'ed together to produce a composite flag.</p>
-<h2><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md60"></a>
+<h3><a class="anchor" id="autotoc_md58"></a>
 FileFlags.**readOnly**</h3>
 <p>The file can be read from but not written. Equivalent to <code>O_RDONLY</code>.</p>
-<h3><a class="anchor" id="autotoc_md61"></a>
+<h3><a class="anchor" id="autotoc_md59"></a>
 FileFlags.**writeOnly**</h3>
 <p>The file can be written but not read from. Equivalent to <code>O_WRONLY</code>.</p>
-<h3><a class="anchor" id="autotoc_md62"></a>
+<h3><a class="anchor" id="autotoc_md60"></a>
 FileFlags.**readWrite**</h3>
 <p>The file can be both read from and written to. Equivalent to <code>O_RDWR</code>.</p>
-<h3><a class="anchor" id="autotoc_md63"></a>
+<h3><a class="anchor" id="autotoc_md61"></a>
 FileFlags.**sync**</h3>
 <p>Writes will block until the data has been physically written to the underling hardware. This does <em>not</em> affect whether or the file API is synchronous. File operations are always asynchronous in Wren and may allow other scheduled fibers to run.</p>
 <p>This is a lower-level flag that ensures that when a write completes, it has been flushed all the way to disc.</p>
-<h3><a class="anchor" id="autotoc_md64"></a>
+<h3><a class="anchor" id="autotoc_md62"></a>
 FileFlags.**create**</h3>
 <p>Creates a new file if a file at the given path does not already exist.</p>
-<h3><a class="anchor" id="autotoc_md65"></a>
+<h3><a class="anchor" id="autotoc_md63"></a>
 FileFlags.**truncate**</h3>
 <p>If the file already exists and can be written to, its previous contents are discarded.</p>
-<h3><a class="anchor" id="autotoc_md66"></a>
+<h3><a class="anchor" id="autotoc_md64"></a>
 FileFlags.**exclusive**</h3>
 <p>Ensures that a new file must be created. If a file already exists at the given path, this flag will cause the operation to fail. </p>
 </div></div><!-- contents -->

@@ -100,7 +100,7 @@ class Math {
   foreign static add(a, b)
 }
 </pre><p>The <code>foreign</code> keyword tells Wren that the method <code>add()</code> is declared on <code>Math</code>, but implemented in C. Both static and instance methods can be foreign.</p>
-<h2><a class="anchor" id="autotoc_md206"></a>
+<h2><a class="anchor" id="autotoc_md153"></a>
 Binding Foreign Methods</h2>
 <p>When you call a foreign method, Wren needs to figure out which C function to execute. This process is called <em>binding</em>. Binding is performed on-demand by the VM. When a class that declares a foreign method is executed &ndash; when the <code>class</code> statement itself is evaluated &ndash; the VM asks the host application for the C function that should be used for the foreign method.</p>
 <p>It does this through the <code>bindForeignMethodFn</code> callback you give it when you first <a href="../../configuring-the-vm.html">configure the VM</a>. This callback isn't the foreign method itself. It's the binding function your app uses to <em>look up</em> foreign methods.</p>
@@ -140,7 +140,7 @@ WrenForeignMethodFn bindForeignMethod(
 }
 </pre><p>This implementation is pretty tedious, but you get the idea. Feel free to do something more clever here in your host application.</p>
 <p>The important part is that it returns a pointer to a C function to use for that foreign method. Wren does this binding step <em>once</em> when the class definition is first executed. It then keeps the function pointer you return and associates it with that method. This way, <em>calls</em> to the foreign method are fast.</p>
-<h2><a class="anchor" id="autotoc_md210"></a>
+<h2><a class="anchor" id="autotoc_md154"></a>
 Implementing a Foreign Method</h2>
 <p>All C functions for foreign methods have the same signature:</p>
 <pre class="snippet" data-lang="c">

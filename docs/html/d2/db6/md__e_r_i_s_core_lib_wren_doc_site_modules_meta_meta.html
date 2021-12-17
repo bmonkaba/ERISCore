@@ -91,9 +91,9 @@ $(document).ready(function(){initNavTree('d2/db6/md__e_r_i_s_core_lib_wren_doc_s
 <p>It must be imported from the <a href="../../meta.html">meta</a> module:</p>
 <pre class="snippet">
     import "meta" for Meta
-</pre><h2><a class="anchor" id="autotoc_md475"></a>
+</pre><h2><a class="anchor" id="autotoc_md431"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md476"></a>
+<h3><a class="anchor" id="autotoc_md432"></a>
 &lt;strong&gt;getModuleVariables&lt;/strong&gt;(module)</h3>
 <p>Returns a list of all module level variables defined or visible in <code>module</code>.</p>
 <p>This includes any variables explicitly imported from other modules or implicitly imported from the built-in modules. For example if we create this module:</p>
@@ -122,7 +122,7 @@ var w = 43 // still returned even though defined later
 [Object, Class, Object metaclass, Bool, Fiber, Fn, Null, Num, Sequence, MapSequence, SkipSequence, TakeSequence, WhereSequence, List, String, StringByteSequence, StringCodePointSequence, Map, MapKeySequence, MapValueSequence, <a class="el" href="../../d2/d99/struct_map_entry.html">MapEntry</a>, Range, System, Meta, M, v, f, C, w]
 </pre><p>Notice that <code>g</code> is not included in this list as it is a local variable rather than a module variable.</p>
 <p>It is a runtime error if <code>module</code> is not a string or cannot be found.</p>
-<h3><a class="anchor" id="autotoc_md477"></a>
+<h3><a class="anchor" id="autotoc_md433"></a>
 &lt;strong&gt;eval&lt;/strong&gt;(source)</h3>
 <p>Compiles Wren source code into a closure and then executes the closure automatically.</p>
 <p>It is a runtime error if <code>source</code> is not a string.</p>
@@ -138,7 +138,7 @@ var source = """
   System.print(c)
 """
 Meta.eval(source)  //&gt; 6
-</pre><h3><a class="anchor" id="autotoc_md478"></a>
+</pre><h3><a class="anchor" id="autotoc_md434"></a>
 &lt;strong&gt;compileExpression&lt;/strong&gt;(expression)</h3>
 <p>Compiles a Wren expression into a closure and then returns the closure. It does not execute it.</p>
 <p>The closure returns the value of the expression.</p>
@@ -153,7 +153,7 @@ var e = 5
 var expression = "d * e"
 var closure = Meta.compileExpression(expression)
 System.print(closure.call()) //&gt; 20
-</pre><h3><a class="anchor" id="autotoc_md479"></a>
+</pre><h3><a class="anchor" id="autotoc_md435"></a>
 &lt;strong&gt;compile&lt;/strong&gt;(source)</h3>
 <p>Compiles Wren source code into a closure and then returns the closure. It does not execute it.</p>
 <p>It is a runtime error if <code>source</code> is not a string.</p>

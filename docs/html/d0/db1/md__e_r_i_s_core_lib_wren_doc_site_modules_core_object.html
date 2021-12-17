@@ -87,22 +87,22 @@ $(document).ready(function(){initNavTree('d0/db1/md__e_r_i_s_core_lib_wren_doc_s
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>^title Object Class</p>
-<h2><a class="anchor" id="autotoc_md323"></a>
+<h2><a class="anchor" id="autotoc_md286"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md324"></a>
+<h3><a class="anchor" id="autotoc_md287"></a>
 &lt;strong&gt;same&lt;/strong&gt;(obj1, obj2)</h3>
 <p>Returns <code>true</code> if <em>obj1</em> and <em>obj2</em> are the same. For <a href="../../../../values.html">value types</a>, this returns <code>true</code> if the objects have equivalent state. In other words, numbers, strings, booleans, and ranges compare by value.</p>
 <p>For all other objects, this returns <code>true</code> only if <em>obj1</em> and <em>obj2</em> refer to the exact same object in memory.</p>
 <p>This is similar to the built in <code>==</code> operator in Object except that this cannot be overriden. It allows you to reliably access the built-in equality semantics even on user-defined classes.</p>
-<h2><a class="anchor" id="autotoc_md325"></a>
+<h2><a class="anchor" id="autotoc_md288"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md326"></a>
+<h3><a class="anchor" id="autotoc_md289"></a>
 &lt;strong&gt;!&lt;/strong&gt; operator</h3>
 <p>Returns <code>false</code>, since most objects are considered <a href="../../control-flow.html#truth">true</a>.</p>
-<h3><a class="anchor" id="autotoc_md327"></a>
+<h3><a class="anchor" id="autotoc_md290"></a>
 **==**(other) and &lt;strong&gt;!=&lt;/strong&gt;(other) operators</h3>
 <p>Compares two objects using built-in equality. This compares <a href="../../../../values.html">value types</a> by value, and all other objects are compared by identity&mdash;two objects are equal only if they are the exact same object.</p>
-<h3><a class="anchor" id="autotoc_md328"></a>
+<h3><a class="anchor" id="autotoc_md291"></a>
 &lt;strong&gt;is&lt;/strong&gt;(class) operator</h3>
 <p>Returns <code>true</code> if this object's class or one of its superclasses is <code>class</code>.</p>
 <pre class="snippet">
@@ -112,10 +112,10 @@ System.print(null is String) //&gt; false
 System.print([] is List)     //&gt; true
 System.print([] is Sequence) //&gt; true
 </pre><p>It is a runtime error if <code>class</code> is not a <a href="../../class.html">Class</a>.</p>
-<h3><a class="anchor" id="autotoc_md329"></a>
+<h3><a class="anchor" id="autotoc_md292"></a>
 &lt;strong&gt;toString&lt;/strong&gt;</h3>
 <p>A default string representation of the object.</p>
-<h3><a class="anchor" id="autotoc_md330"></a>
+<h3><a class="anchor" id="autotoc_md293"></a>
 &lt;strong&gt;type&lt;/strong&gt;</h3>
 <p>The <a href="../../class.html">Class</a> of the object. </p>
 </div></div><!-- contents -->

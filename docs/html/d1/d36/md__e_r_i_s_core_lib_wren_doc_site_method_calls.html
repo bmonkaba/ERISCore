@@ -102,7 +102,7 @@ list.clear()
 <li>Look up the method on the receiver's <a href="../../classes.html">class</a>.</li>
 <li>Invoke it, passing in the argument values.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md261"></a>
+<h2><a class="anchor" id="autotoc_md266"></a>
 Signature</h2>
 <p>Unlike most other dynamically-typed languages, in Wren a class can have multiple methods with the same <em>name</em>, as long as they have different <em>signatures</em>. The signature includes the method's name along with the number of arguments it takes. In technical terms, this means you can <em>overload by arity</em>.</p>
 <p>For example, the <a href="../../modules/random/random.html">Random</a> class has two methods for getting a random integer. One takes a minimum and maximum value and returns a value in that range. The other only takes a maximum value and uses 0 as the minimum:</p>
@@ -115,7 +115,7 @@ another parameter was passed, in which case it's min".</p>
 <p>This type of 'variadic' code isn't ideal, so Wren doesn't encourage it.</p>
 <p>In Wren, these are calls to two entirely separate methods, <code>int(_,_)</code> and <code>int(_)</code>. This makes it easier to define "overloads" like this since you don't need optional parameters or any kind of control flow to handle the different cases.</p>
 <p>It's also faster to execute. Since we know how many arguments are passed at compile time, we can compile this to directly call the right method and avoid any "if I got two arguments do this..." runtime work.</p>
-<h2><a class="anchor" id="autotoc_md262"></a>
+<h2><a class="anchor" id="autotoc_md267"></a>
 Getters</h2>
 <p>Some methods exist to expose a stored or computed property of an object. These are <em>getters</em> and have no parentheses:</p>
 <pre class="snippet">
@@ -142,14 +142,14 @@ Fiber.yield("value")
 </pre><ul>
 <li>Otherwise, it can probably be a getter.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md263"></a>
+<h2><a class="anchor" id="autotoc_md268"></a>
 Setters</h2>
 <p>A getter lets an object expose a public "property" that you can <em>read</em>. Likewise, a <em>setter</em> lets you write to a property:</p>
 <pre class="snippet">
 person.height = 74 // Grew up!
 </pre><p>Despite the <code>=</code>, this is just another syntax for a method call. From the language's perspective, the above line is just a call to the <code>height=(_)</code> method on <code>person</code>, passing in <code>74</code>.</p>
 <p>Since the <code>=(_)</code> is in the setter's signature, an object can have both a getter and setter with the same name without a collision. Defining both lets you provide a read/write property.</p>
-<h2><a class="anchor" id="autotoc_md264"></a>
+<h2><a class="anchor" id="autotoc_md270"></a>
 Operators</h2>
 <p>Wren has most of the same operators you know and love with the same precedence and associativity. We have three prefix operators:</p>
 <pre class="snippet">
@@ -162,7 +162,7 @@ Operators</h2>
 <p>Note that <code>-</code> is both a prefix and an infix operator. Since they have different signatures (<code>-</code> and <code>-(_)</code>), there's no ambiguity between them.</p>
 <p>Most of these are probably familiar already. The <code>..</code> and <code>...</code> operators are "range" operators. The number type implements those to create <a href="../../values.html#ranges">range</a> objects, but they are method calls like other operators.</p>
 <p>The <code>is</code> keyword is a "type test" operator. The base <a href="../../modules/core/object.html">Object</a> class implements it to tell if an object is an instance of a given class. You'll rarely need to, but you can override <code>is</code> in your own classes. That can be useful for things like mocks or proxies where you want an object to masquerade as a certain class.</p>
-<h2><a class="anchor" id="autotoc_md265"></a>
+<h2><a class="anchor" id="autotoc_md272"></a>
 Subscripts</h2>
 <p>Another familiar syntax from math is <em>subscripting</em> using square brackets (<code>[]</code>). It's handy for working with collection-like objects. For example:</p>
 <pre class="snippet">

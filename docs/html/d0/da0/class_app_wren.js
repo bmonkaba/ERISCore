@@ -40,6 +40,7 @@ var class_app_wren =
     [ "vmConstructor", "d0/da0/class_app_wren.html#ab96749e0e63c43368cc7121477d472a4", null ],
     [ "ad", "d0/da0/class_app_wren.html#ad66a3cbbe4a3b973dea5c83a068bc79f", null ],
     [ "am", "d0/da0/class_app_wren.html#a6baed35a61a4cae1b3c67113aa6ec1dd", null ],
+    [ "compileOnly", "d0/da0/class_app_wren.html#aff31d063b4d0e691eb3323305d606dd0", null ],
     [ "cycle_time", "d0/da0/class_app_wren.html#acff523b6c1d155a66b915e4f49158af8", null ],
     [ "cycle_time_max", "d0/da0/class_app_wren.html#a297b44dd038d30faab55f6ccf1f9e9e2", null ],
     [ "draw", "d0/da0/class_app_wren.html#a98a05e53665415395c1eb56b9a1f05e4", null ],

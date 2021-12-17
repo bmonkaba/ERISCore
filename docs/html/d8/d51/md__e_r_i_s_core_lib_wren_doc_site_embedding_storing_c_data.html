@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('d8/d51/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title Storing C Data</p>
 <p>An embedded language often needs to work with native data. You may want a pointer to some memory managed in the C heap, or maybe you want to store a chunk of data more efficiently than Wren's dynamism allows. You may want a Wren object that represents a native resource like a file handle or database connection.</p>
 <p>For those cases, you can define a <b>foreign class</b>, a chimera whose state is half Wren and half C. It is a real Wren class with a name, constructor, and methods. You can define methods on it written in Wren, or <a href="../../calling-c-from-wren.html">foreign methods</a> written in C. It produces real Wren objects that you can pass around, do <code>is</code> checks on, etc. But it also wraps a blob of raw memory that is opaque to Wren but accessible from C.</p>
-<h2><a class="anchor" id="autotoc_md212"></a>
+<h2><a class="anchor" id="autotoc_md228"></a>
 Defining a Foreign Class</h2>
 <p>You define one like so:</p>
 <pre class="snippet">
@@ -111,7 +111,7 @@ typedef struct
 </pre><p>It's a pair of function pointers. The first, <code>allocate</code>, is called by Wren whenever an instance of the foreign class is created. (We'll get to the optional <code>finalize</code> callback later.) The allocation callback has the same signature as a foreign method:</p>
 <pre class="snippet" data-lang="c">
 void allocate(WrenVM* vm);
-</pre><h2><a class="anchor" id="autotoc_md214"></a>
+</pre><h2><a class="anchor" id="autotoc_md231"></a>
 Initializing an Instance</h2>
 <p>When you create an instance of a foreign class by calling one its <a href="../../../classes.html#constructors">constructors</a>, Wren invokes the <code>allocate</code> callback you gave it when binding the foreign class. Your primary responsibility in that callback is to tell Wren how many bytes of raw memory you need. You do that by calling:</p>
 <pre class="snippet" data-lang="c">
@@ -129,7 +129,7 @@ void* data = wrenSetSlotNewForeign(vm, 0, 0, 8);
 </pre><p>The value returned by <code><a class="el" href="../../dd/d19/wren_8h.html#a28ef77143d96baea58e104aa53a8d477">wrenSetSlotNewForeign()</a></code> is the raw pointer to the requested bytes. You can cast that to whatever C type makes sense (as long as it fits within the requested number of bytes) and initialize it as you see fit.</p>
 <p>Any parameters passed to the constructor are also available in subsequent slots in the slot array. That way you can initialize the foreign data based on values passed to the constructor from Wren.</p>
 <p>After the allocate callback returns, the class's constructor in Wren is run and execution proceeds like normal. From here on out, within Wren, it appears you have a normal instance of a class. It just happens to have some extra bytes hiding inside it that can be accessed from foreign methods.</p>
-<h2><a class="anchor" id="autotoc_md219"></a>
+<h2><a class="anchor" id="autotoc_md235"></a>
 Accessing Foreign Data</h2>
 <p>Typically, the way you make use of the data stored in an instance of a foreign class is through other foreign methods. Those are usually defined on the same foreign class, but can be defined on other classes as well. Wren doesn't care.</p>
 <p>Once you have a foreign instance in a slot, you can access the raw bytes it stores by calling:</p>
@@ -137,7 +137,7 @@ Accessing Foreign Data</h2>
 void* <a class="el" href="../../de/db2/wren__vm_8c.html#aa5385e576f5ab88f396aa6b57b2b287b">wrenGetSlotForeign(WrenVM* vm, int slot)</a>;
 </pre><p>You pass in the slot index containing the foreign object and it gives you back a pointer to the raw memory the object wraps. As usual, the C API doesn't do any type or bounds checking, so it's on you to make sure the object in that slot actually <em>is</em> an instance of a foreign class and contains as much memory as you access.</p>
 <p>Given that void pointer, you can now freely read and modify the data it points to. They're your bits, Wren just holds them for you.</p>
-<h2><a class="anchor" id="autotoc_md224"></a>
+<h2><a class="anchor" id="autotoc_md236"></a>
 Freeing Resources</h2>
 <p>If your foreign instances are just holding memory and you're OK with Wren's garbage collector managing the lifetime of that memory, then you're done. Wren will keep the bytes around as long as there is still a reference to them. When the instance is no longer reachable, eventually the garbage collector will do its thing and free the memory.</p>
 <p>But, often, your foreign data refers to some resource whose lifetime needs to be explicitly managed. For example, if you have a foreign object that wraps an open file handle, you need to ensure that handle doesn't get left open when the GC frees the foreign instance.</p>
@@ -148,7 +148,7 @@ Freeing Resources</h2>
 <pre class="snippet" data-lang="c">
 void finalize(void* data);
 </pre><p>Wren gives you the pointer to your foreign function's memory, and that's it. The <em>only</em> thing you should do inside a finalizer is release any external resources referenced by that memory.</p>
-<h2><a class="anchor" id="autotoc_md228"></a>
+<h2><a class="anchor" id="autotoc_md237"></a>
 A Full Example</h2>
 <p>That's a lot to take in, so let's walk through a full example of a foreign class with a finalizer and a couple of methods. We'll do a File class that wraps the C standard file API.</p>
 <p>In Wren, the class we want looks like this:</p>
@@ -160,7 +160,7 @@ foreign class File {
   foreign close()
 }
 </pre><p>So you can create a new file given a path. Once you have one, you can write to it and then explicitly close it if you want. We also need to make sure the file gets closed if the user forgets to and the GC cleans up the object.</p>
-<h3><a class="anchor" id="autotoc_md231"></a>
+<h3><a class="anchor" id="autotoc_md238"></a>
 Setting up the VM</h3>
 <p>Over in the host, first we'll set up the VM:</p>
 <pre class="snippet" data-lang="c">
@@ -179,7 +179,7 @@ int main(int argc, const char* argv[])
 
   return 0;
 }
-</pre><h3><a class="anchor" id="autotoc_md233"></a>
+</pre><h3><a class="anchor" id="autotoc_md239"></a>
 Binding the foreign class</h3>
 <p>We give the VM two callbacks. The first is for wiring up the foreign class itself:</p>
 <pre class="snippet" data-lang="c">
@@ -233,7 +233,7 @@ static void closeFile(FILE** file)
   *file = NULL;
 }
 </pre><p>This closes the file (if it's not already closed) and also nulls out the file handle so that we don't try to use the file after it's been closed.</p>
-<h3><a class="anchor" id="autotoc_md234"></a>
+<h3><a class="anchor" id="autotoc_md240"></a>
 Binding the foreign methods</h3>
 <p>That's the foreign <em>class</em> part. Now we have a couple of foreign <em>methods</em> to handle. The host tells the VM how to find them by giving Wren a pointer to this function:</p>
 <pre class="snippet" data-lang="c">

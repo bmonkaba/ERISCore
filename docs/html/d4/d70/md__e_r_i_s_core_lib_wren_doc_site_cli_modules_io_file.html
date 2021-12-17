@@ -89,70 +89,70 @@ $(document).ready(function(){initNavTree('d4/d70/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title File Class</p>
 <p>Lets you work with files on the file system. An instance of this class represents an open file with a file descriptor.</p>
 <p>When you are done with a file object, it's a good idea to explicitly close it. If you don't, the GC will close it when the file is no longer used and gets finalized, but that may take a while. In the meantime, leaving it open wastes a file descriptor.</p>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md115"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md107"></a>
+<h3><a class="anchor" id="autotoc_md116"></a>
 File.**create**(path, fn)</h3>
 <p>Opens the file at <code>path</code> for writing and passes it to <code>fn</code>. If there is already a file at that path, it is truncated. After the function returns, the file is automatically closed.</p>
 <pre class="snippet">
 File.create("numbers.txt") {|file|
   file.writeBytes("one two three")
 }
-</pre><h3><a class="anchor" id="autotoc_md108"></a>
+</pre><h3><a class="anchor" id="autotoc_md117"></a>
 File.**delete**(path)</h3>
 <p>Deletes the file at <code>path</code>.</p>
-<h3><a class="anchor" id="autotoc_md109"></a>
+<h3><a class="anchor" id="autotoc_md118"></a>
 File.**exists**(path)</h3>
 <p>Whether a regular file exists at <code>path</code>. This returns <code>false</code> for directories or other special file system entities.</p>
-<h3><a class="anchor" id="autotoc_md110"></a>
+<h3><a class="anchor" id="autotoc_md119"></a>
 File.**open**(path, fn)</h3>
 <p>Opens the file at <code>path</code> for reading and passes it to <code>fn</code>. After the function returns, the file is automatically closed.</p>
 <pre class="snippet">
 File.open("words.txt") {|file|
   file.readBytes(5)
 }
-</pre><h3><a class="anchor" id="autotoc_md111"></a>
+</pre><h3><a class="anchor" id="autotoc_md120"></a>
 File.**read**(path)</h3>
 <p>Reads the entire contents of the file at <code>path</code> and returns it as a string.</p>
 <pre class="snippet">
 File.read("words.txt")
 </pre><p>No encoding or decoding is done. If the file is UTF-8, then the resulting string will be a UTF-8 string. Otherwise, it will be a string of bytes in whatever encoding the file uses.</p>
-<h3><a class="anchor" id="autotoc_md112"></a>
+<h3><a class="anchor" id="autotoc_md121"></a>
 File.**realPath**(path)</h3>
 <p>Resolves <code>path</code>, traversing symlinks and removining any unneeded <code>./</code> and <code>../</code> components. Returns the canonical absolute path to the file.</p>
 <pre class="snippet">
 var path = "/some/./symlink/a/../b/file.txt"
 System.print(File.realPath(path)) //&gt; /real/path/a/file.txt
-</pre><h3><a class="anchor" id="autotoc_md113"></a>
+</pre><h3><a class="anchor" id="autotoc_md122"></a>
 File.**size**(path)</h3>
 <p>Returns the size in bytes of the contents of the file at <code>path</code>.</p>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md123"></a>
 Constructors</h2>
-<h3><a class="anchor" id="autotoc_md115"></a>
+<h3><a class="anchor" id="autotoc_md124"></a>
 File.**create**(path)</h3>
 <p>Opens the file at <code>path</code> for writing. If there is already a file at that path, it is truncated.</p>
 <pre class="snippet">
 var file = File.create("colors.txt")
 file.writeBytes("chartreuse lime teal")
 file.close()
-</pre><h3><a class="anchor" id="autotoc_md116"></a>
+</pre><h3><a class="anchor" id="autotoc_md125"></a>
 File.**open**(path)</h3>
 <p>Opens the file at <code>path</code> for reading. You are responsible for closing it when done with it.</p>
-<h2><a class="anchor" id="autotoc_md117"></a>
+<h2><a class="anchor" id="autotoc_md126"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md118"></a>
+<h3><a class="anchor" id="autotoc_md127"></a>
 &lt;strong&gt;descriptor&lt;/strong&gt;</h3>
 <p>The numeric file descriptor used to access the file.</p>
-<h3><a class="anchor" id="autotoc_md119"></a>
+<h3><a class="anchor" id="autotoc_md128"></a>
 &lt;strong&gt;isOpen&lt;/strong&gt;</h3>
 <p>Whether the file is still open or has been closed.</p>
-<h3><a class="anchor" id="autotoc_md120"></a>
+<h3><a class="anchor" id="autotoc_md129"></a>
 &lt;strong&gt;size&lt;/strong&gt;</h3>
 <p>The size of the contents of the file in bytes.</p>
-<h3><a class="anchor" id="autotoc_md121"></a>
+<h3><a class="anchor" id="autotoc_md130"></a>
 &lt;strong&gt;close&lt;/strong&gt;()</h3>
 <p>Closes the file. After calling this, you can't read or write from it.</p>
-<h3><a class="anchor" id="autotoc_md122"></a>
+<h3><a class="anchor" id="autotoc_md131"></a>
 &lt;strong&gt;readBytes&lt;/strong&gt;(count)</h3>
 <p>Reads up to <code>count</code> bytes starting from the beginning of the file.</p>
 <pre class="snippet">
@@ -160,7 +160,7 @@ Methods</h2>
 File.open("example.txt") {|file|
   System.print(file.readBytes(6)) //&gt; I am a
 }
-</pre><h3><a class="anchor" id="autotoc_md123"></a>
+</pre><h3><a class="anchor" id="autotoc_md132"></a>
 &lt;strong&gt;readBytes&lt;/strong&gt;(count, offset)</h3>
 <p>Reads up to <code>count</code> bytes starting at <code>offset</code> bytes from the beginning of the file.</p>
 <pre class="snippet">
@@ -168,10 +168,10 @@ File.open("example.txt") {|file|
 File.open("example.txt") {|file|
   System.print(file.readBytes(6, 2)) //&gt; am a f
 }
-</pre><h3><a class="anchor" id="autotoc_md124"></a>
+</pre><h3><a class="anchor" id="autotoc_md133"></a>
 &lt;strong&gt;writeBytes&lt;/strong&gt;(bytes)</h3>
 <p>Writes the raw bytes of the string <code>bytes</code> to the end of the file.</p>
-<h3><a class="anchor" id="autotoc_md125"></a>
+<h3><a class="anchor" id="autotoc_md134"></a>
 &lt;strong&gt;writeBytes&lt;/strong&gt;(bytes, offset)</h3>
 <p>Writes the raw bytes of the string <code>bytes</code> to the to the file, starting at <code>offset</code>. Any overlapping bytes already in the file at the offset are overwritten. </p>
 </div></div><!-- contents -->

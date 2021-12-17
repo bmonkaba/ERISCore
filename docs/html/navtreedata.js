@@ -41,54 +41,54 @@ var NAVTREE =
     [ "Warning: This is SdFat Version 2.", "dd/d8e/md__e_r_i_s_core_lib__sd_fat_master__r_e_a_d_m_e.html", null ],
     [ "import syntax", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html", null ],
     [ "wrenInterpret()", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html", [
-      [ "wrenCall()", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md17", null ],
-      [ "Foreign calls", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md18", null ],
-      [ "Nested foreign calls", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md19", null ],
-      [ "Calling re-entrant fibers", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md20", null ],
-      [ "Suspending during re-entrancy", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md21", null ]
+      [ "wrenCall()", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md3", null ],
+      [ "Foreign calls", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md4", null ],
+      [ "Nested foreign calls", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md5", null ],
+      [ "Calling re-entrant fibers", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md6", null ],
+      [ "Suspending during re-entrancy", "df/dd4/md__e_r_i_s_core_lib_wren_doc_notes_re_entrancy.html#autotoc_md7", null ]
     ] ],
     [ "Smarter Imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html", [
-      [ "Motivation", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md67", [
-        [ "Background", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md25", [
-          [ "Use a modifier (\"modifier\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md26", null ],
-          [ "Use different keywords (\"keyword\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md27", null ],
-          [ "Use different syntax for the path (\"syntax\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md28", null ],
-          [ "Use a signifier in the import string itself to distinguish (\"string\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md30", null ]
+      [ "Motivation", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md65", [
+        [ "Background", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md15", [
+          [ "Use a modifier (\"modifier\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md16", null ],
+          [ "Use different keywords (\"keyword\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md17", null ],
+          [ "Use different syntax for the path (\"syntax\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md18", null ],
+          [ "Use a signifier in the import string itself to distinguish (\"string\")", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md19", null ]
         ] ],
-        [ "Contenders", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md31", [
-          [ "Node-style (string)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md32", null ],
-          [ "Use (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md33", null ],
-          [ "Slashes (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md34", null ],
-          [ "Relative (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md35", null ]
+        [ "Contenders", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md20", [
+          [ "Node-style (string)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md21", null ],
+          [ "Use (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md22", null ],
+          [ "Slashes (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md23", null ],
+          [ "Relative (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md24", null ]
         ] ],
-        [ "Rejected", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md36", [
-          [ "Package identifier (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md37", null ],
-          [ "Dotted (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md38", null ],
-          [ "Include (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md39", null ],
-          [ "Require (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md40", null ],
-          [ "Angle-brackets (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md41", null ],
-          [ "URI scheme (string)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md42", null ],
-          [ "Package (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md43", null ],
-          [ "From (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md44", null ]
+        [ "Rejected", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md25", [
+          [ "Package identifier (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md26", null ],
+          [ "Dotted (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md27", null ],
+          [ "Include (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md28", null ],
+          [ "Require (keyword)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md29", null ],
+          [ "Angle-brackets (syntax)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md30", null ],
+          [ "URI scheme (string)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md31", null ],
+          [ "Package (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md32", null ],
+          [ "From (modifier)", "d3/d2c/md__e_r_i_s_core_lib_wren_doc_notes_import_syntax.html#autotoc_md33", null ]
         ] ],
-        [ "Relative imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md68", null ],
-        [ "Logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md69", null ],
-        [ "Only logical imports?", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md70", null ],
-        [ "Ambiguity?", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md71", null ]
+        [ "Relative imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md66", null ],
+        [ "Logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md73", null ],
+        [ "Only logical imports?", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md78", null ],
+        [ "Ambiguity?", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md84", null ]
       ] ],
-      [ "Proposal", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md72", [
-        [ "Relative imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md73", null ],
-        [ "Logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md74", null ]
+      [ "Proposal", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md87", [
+        [ "Relative imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md88", null ],
+        [ "Logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md89", null ]
       ] ],
-      [ "Implementation", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md75", [
-        [ "VM", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md76", null ],
-        [ "CLI", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md77", null ],
-        [ "Finding logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md78", null ]
+      [ "Implementation", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md90", [
+        [ "VM", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md91", null ],
+        [ "CLI", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md95", null ],
+        [ "Finding logical imports", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md99", null ]
       ] ],
-      [ "Migration", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md81", null ],
-      [ "Alternatives", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md82", [
-        [ "Node-style", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md83", null ],
-        [ "Unquoted identifiers", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md84", null ]
+      [ "Migration", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md100", null ],
+      [ "Alternatives", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md101", [
+        [ "Node-style", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md102", null ],
+        [ "Unquoted identifiers", "d9/d1e/md__e_r_i_s_core_lib_wren_doc_rfc_0001_smarter_imports.html#autotoc_md103", null ]
       ] ]
     ] ],
     [ "0-hello-wren", "d4/dde/md__e_r_i_s_core_lib_wren_doc_site_blog_0_hello_wren.html", null ],
@@ -200,41 +200,41 @@ var NAVTREEINDEX =
 "annotated.html",
 "d0/d55/classeris_audio_analyze_f_f_t1024.html#a8e1d12d061b83e2f737aec1a763b7286",
 "d0/d91/classibufstream.html#aba68729fea0a046bcc91bbbef4ab28b8",
-"d0/dfb/struct_c_s_d_v1.html#ae41d1ca9965de11f425f3f73af2f4c21",
-"d1/da2/classeris_audio_mixer4.html#ae39726ab3224d6f8d6dacd5b9e880eb8",
-"d2/d0a/wren__value_8h.html#a55ed1aa901b5e571d47fec3286988c24",
-"d2/da8/class_svc_serial_command_interface.html",
-"d2/dbe/class_fat_lfn__t.html#a7c414c913fbdc66f6e669231849ce5cb",
-"d3/d23/namespacecpplint.html#aefff9c2eefe99656a226d11ce4d9b555",
-"d3/d77/class_fs_cache.html#a9aee9d706e0f6abca522ee893e7a6049",
-"d4/d05/lz4_8c.html#aa8a9ba402bf00e8e6c21691085ae9601",
-"d4/d74/_ex_fat_file_8cpp.html#ab7723be37d52c9e1f6b0d62feb5c66ac",
-"d4/da1/class_fs_file.html#aa669c695a839e68e417fb15eebe3de13",
-"d4/dde/class_app_c_q_t.html#a5a2c77c32c3d50a837d3a03fea6e9009",
-"d4/de2/wren__compiler_8c.html#aaecc53892786f2fa11e682f633af84c6aa4cd1d716be5988e72bb08902f33270e",
-"d5/d14/class_ex_fat_file.html#ac89fd267991bfce2b4315e92fe54156f",
-"d5/d96/_fat_dbg_8cpp.html#a9d7bd8f0b2423a60103830a037f7482d",
-"d6/d71/cpplint_8py.html#a127416bee5c376937479b3119a727817",
-"d6/dc5/md__e_r_i_s_core_lib_wren_doc_site_cli_modules_io_file_flags.html",
-"d7/d78/classcpplint_1_1___include_state.html#ab1a8864f105dd145d84fe88ba04c3565",
-"d7/df9/classfstream.html#aed23877c52f828cab8de7a23603b3b6c",
-"d8/d87/md__e_r_i_s_core_lib_wren_doc_site_values.html",
-"d9/d14/class_sd_fat32.html#a5a28c1b85462f00bef1640c445764492",
-"d9/d43/class_audio_synth_waveform_modulated.html#ae4dd74cd53837d32b7fedd472bfab01b",
-"d9/def/wren__primitive_8c.html#a974add9543a61f5a9b7a75acfcdd1115",
-"da/dbe/wren__value_8c.html#aa132b5b4ebe892a6764d5216c84c989a",
-"db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp.html",
-"db/d75/class_ex_file.html#af89079da3793cc7778b6b8adb46e1fde",
-"dc/d43/class_svc_data_dictionary.html#a6003ef94d7c4d9afce8c3a74b4c21444",
-"dc/dbc/_fs_api_constants_8h.html#a8418da03a9d0bec43de84dbcf8b91de4",
-"dd/d23/class_sd_ex_fat.html#aedaebff39e7cbae66f226e9c7593b5b6",
-"de/d10/_h_s_i_8h.html#a3572ba4e929ec4380493fcfbbde0efa2",
-"de/d67/class_control_slider.html#a1347e3dece7d16b17a81a5a20597e365",
-"de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3",
-"df/d17/class_control_button.html#af28f5829bfcd32a46727dd7b4eab89f0",
-"df/dc5/classeris_audio_synth_waveform.html#a0bfdc8888172e1256c35d3b6bdc7799d",
-"df/dfc/class_file32.html#a87df00f4c68e43e58c47eb2ce19002e2",
-"globals_vars_f.html"
+"d0/dfb/struct_c_s_d_v1.html#adfec8df7c230379bccd0ee89a5ff822a",
+"d1/da2/classeris_audio_mixer4.html#a10680cabde04daef9bf726ba1ae8708d",
+"d2/d0a/wren__value_8h.html#a54ca628b58d707c7c56621fd3e3dc219",
+"d2/d9b/struct_wren_load_module_result.html#afb1c3a291c51d31fa575e6b83a6846cc",
+"d2/dbe/class_fat_lfn__t.html#a31739a04cd70895da1bec1a533b5d058",
+"d3/d23/namespacecpplint.html#ae51e76d6d73b36b9e965d2ac9d21d7c2",
+"d3/d77/class_fs_cache.html#a84e91f8d006b8ba521805bb3bc6e83e6",
+"d4/d05/lz4_8c.html#aa6b38d492364d98453284934ed7caee9",
+"d4/d73/class_sd_spi_base_class.html#ad0cef6e2a3d21e438a2b7f428a218c03",
+"d4/da1/class_fs_file.html#a936fc1e3fb13a6ae1352d027bf0a70f7",
+"d4/dde/class_app_c_q_t.html#a50389da1569c64f256e008ce929b0b36",
+"d4/de2/wren__compiler_8c.html#aac2c091d1986fa181a49452185f36799",
+"d5/d14/class_ex_fat_file.html#ac2004e7bf328b3edda7d4c3acba2726f",
+"d5/d96/_fat_dbg_8cpp.html#a4ad59bb1518c57d77ff6bbdd6ea8643d",
+"d6/d71/cpplint_8py.html#a0ebfae753fc7e59a9921df1bc576654c",
+"d6/dbc/classeris_audio_analyze_tone_detect.html#aa846883b7bb7415d7eb9a1462c460469",
+"d7/d78/classcpplint_1_1___include_state.html#a82d8b92a431437ee181e950517c71cbb",
+"d7/df9/classfstream.html#ae8451bc86d83828892d9d67c67b7f02b",
+"d8/d84/classeris_audio_analyze_print.html",
+"d9/d14/class_sd_fat32.html#a52812bf30f71d193229a22e472e96743",
+"d9/d43/class_audio_synth_waveform_modulated.html#aca9f35470c81e90ebeba776629ab977e",
+"d9/def/wren__primitive_8c.html#a3a06f38d3212624c903ff04e7081afd1",
+"da/dbe/wren__value_8c.html#a90bea8e34aaf0fa708f5295061bc3965",
+"db/d31/_sd_card_8h.html",
+"db/d75/class_ex_file.html#af212f71a9a7b0a94a9dc6a66b87b628e",
+"dc/d43/class_svc_data_dictionary.html#a27f3d033c0751ccf72bcb370191f5bf3",
+"dc/dbc/_fs_api_constants_8h.html#a4ec110203cfed20252fff83d27a203f1",
+"dd/d23/class_sd_ex_fat.html#ade318d2517a1bd3abe56e9e530fdcd78",
+"de/d10/_h_s_i_8h.html#a0c454fb6fe20e97bd598ee176b77e11d",
+"de/d67/class_control_slider.html",
+"de/db5/eris__synth__waveform_8h.html#a057e6fc51e7e44873c0488f6ffb20296",
+"df/d17/class_control_button.html#ae25e514a1d183f98b5c3551ffcaf2744",
+"df/dba/class_sys_call.html#a9b1ef8900e97f572ca561760b4dd4191",
+"df/dfc/class_file32.html#a858c0d7e0c1be7ad8e47ab8bc4cd0665",
+"globals_vars_a.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,10 @@
 var NAVTREEINDEX26 =
 {
+"db/d31/_sd_card_8h.html":[76,0,123],
+"db/d31/_sd_card_8h.html#a14fc08ce19cefbffd26dbbcea7744058":[76,0,123,1],
+"db/d31/_sd_card_8h.html#a1a52e8b56ee856308028764beb9aa0a8":[76,0,123,3],
+"db/d31/_sd_card_8h.html#a9cb07a02f5c21ea3d4493717f3db949d":[76,0,123,2],
+"db/d31/_sd_card_8h_source.html":[76,0,123],
 "db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp.html":[76,0,172],
 "db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp.html#a41681a4f770a4314939bd47e174cab0c":[76,0,172,3],
 "db/d39/_low_latency_logger_m_p_u6050_2_user_functions_8cpp.html#a7fea37d637a692fdcf5ae8abf9318715":[76,0,172,2],
@@ -21,8 +26,8 @@ var NAVTREEINDEX26 =
 "db/d4e/_sd_spi_e_s_p_8cpp.html":[76,0,143],
 "db/d4e/_sd_spi_e_s_p_8cpp_source.html":[76,0,143],
 "db/d62/md__e_r_i_s_core_lib_wren_doc_site_modules_index.html":[61],
-"db/d62/md__e_r_i_s_core_lib_wren_doc_site_modules_index.html#autotoc_md331":[127],
-"db/d62/md__e_r_i_s_core_lib_wren_doc_site_modules_index.html#autotoc_md332":[128],
+"db/d62/md__e_r_i_s_core_lib_wren_doc_site_modules_index.html#autotoc_md404":[127],
+"db/d62/md__e_r_i_s_core_lib_wren_doc_site_modules_index.html#autotoc_md405":[128],
 "db/d68/namespace_fs_utf.html":[74,0,2],
 "db/d68/namespace_fs_utf.html#a57c68964f6a1ca905bb103ad5dc65f0b":[74,0,2,2],
 "db/d68/namespace_fs_utf.html#a7149a13b2f8a68943ba696d5169f2230":[74,0,2,7],
@@ -244,10 +249,5 @@ var NAVTREEINDEX26 =
 "db/d75/class_ex_file.html#aea5b18625a06892a03a8d17c66b71717":[75,0,129,15],
 "db/d75/class_ex_file.html#aec19b983f153fd2ca7bcf353f30ce3e2":[75,0,129,110],
 "db/d75/class_ex_file.html#aef692067cf5648cc74554fa039d77628":[75,0,129,151],
-"db/d75/class_ex_file.html#af0da96e502485133ca0cff27fa130082":[75,0,129,60],
-"db/d75/class_ex_file.html#af212f71a9a7b0a94a9dc6a66b87b628e":[75,0,129,126],
-"db/d75/class_ex_file.html#af301fb2e23cd8c6845164996b6562eb9":[75,0,129,67],
-"db/d75/class_ex_file.html#af601285f95db8398c140b3927cf9111c":[75,0,129,37],
-"db/d75/class_ex_file.html#af664c1da1bfa0bb5f6eb933bc25f757e":[75,0,129,57],
-"db/d75/class_ex_file.html#af73d06d040bdc62c42716d7daf4be1a2":[75,0,129,0]
+"db/d75/class_ex_file.html#af0da96e502485133ca0cff27fa130082":[75,0,129,60]
 };

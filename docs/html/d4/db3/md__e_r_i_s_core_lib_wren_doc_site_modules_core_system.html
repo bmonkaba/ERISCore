@@ -88,34 +88,34 @@ $(document).ready(function(){initNavTree('d4/db3/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title System Class</p>
 <p>The System class is a grab-bag of functionality exposed by the VM, mostly for use during development or debugging.</p>
-<h2><a class="anchor" id="autotoc_md315"></a>
+<h2><a class="anchor" id="autotoc_md406"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md316"></a>
+<h3><a class="anchor" id="autotoc_md407"></a>
 System.**clock**</h3>
 <p>Returns the number of seconds (including fractional seconds) since the program was started. This is usually used for benchmarking.</p>
-<h3><a class="anchor" id="autotoc_md317"></a>
+<h3><a class="anchor" id="autotoc_md408"></a>
 System.**gc**()</h3>
 <p>Requests that the VM perform an immediate garbage collection to free unused memory.</p>
-<h3><a class="anchor" id="autotoc_md318"></a>
+<h3><a class="anchor" id="autotoc_md409"></a>
 System.**print**()</h3>
 <p>Prints a single newline to the console.</p>
-<h3><a class="anchor" id="autotoc_md319"></a>
+<h3><a class="anchor" id="autotoc_md410"></a>
 System.**print**(object)</h3>
 <p>Prints <code>object</code> to the console followed by a newline. If not already a string, the object is converted to a string by calling <code>toString</code> on it.</p>
 <pre class="snippet">
 System.print("I like bananas") //&gt; I like bananas
-</pre><h3><a class="anchor" id="autotoc_md320"></a>
+</pre><h3><a class="anchor" id="autotoc_md411"></a>
 System.**printAll**(sequence)</h3>
 <p>Iterates over <code>sequence</code> and prints each element, then prints a single newline at the end. Each element is converted to a string by calling <code>toString</code> on it.</p>
 <pre class="snippet">
 System.printAll([1, [2, 3], 4]) //&gt; 1[2, 3]4
-</pre><h3><a class="anchor" id="autotoc_md321"></a>
+</pre><h3><a class="anchor" id="autotoc_md412"></a>
 System.**write**(object)</h3>
 <p>Prints a single value to the console, but does not print a newline character afterwards. Converts the value to a string by calling <code>toString</code> on it.</p>
 <pre class="snippet">
 System.write(4 + 5) //&gt; 9
 </pre><p>In the above example, the result of <code>4 + 5</code> is printed, and then the prompt is printed on the same line because no newline character was printed afterwards.</p>
-<h3><a class="anchor" id="autotoc_md322"></a>
+<h3><a class="anchor" id="autotoc_md413"></a>
 System.**writeAll**(sequence)</h3>
 <p>Iterates over <code>sequence</code> and prints each element, but does not print a newline character afterwards. Each element is converted to a string by calling <code>toString</code> on it. </p>
 </div></div><!-- contents -->

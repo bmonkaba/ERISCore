@@ -89,39 +89,39 @@ $(document).ready(function(){initNavTree('d7/dcc/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title Range Class</p>
 <p>A range defines a bounded range of values from a starting point to a possibly exclusive endpoint. <a href="../../../../values.html#ranges">Here</a> is a friendly introduction.</p>
 <p>Extends <a href="../../sequence.html">Sequence</a>.</p>
-<h2><a class="anchor" id="autotoc_md308"></a>
+<h2><a class="anchor" id="autotoc_md294"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md309"></a>
+<h3><a class="anchor" id="autotoc_md295"></a>
 &lt;strong&gt;from&lt;/strong&gt;</h3>
 <p>The starting point of the range. A range may be backwards, so this can be greater than [to].</p>
 <pre class="snippet">
 System.print((3..5).from) //&gt; 3
 System.print((4..2).from) //&gt; 4
-</pre><h3><a class="anchor" id="autotoc_md310"></a>
+</pre><h3><a class="anchor" id="autotoc_md296"></a>
 &lt;strong&gt;to&lt;/strong&gt;</h3>
 <p>The endpoint of the range. If the range is inclusive, this value is included, otherwise it is not.</p>
 <pre class="snippet">
 System.print((3..5).to) //&gt; 5
 System.print((4..2).to) //&gt; 2
-</pre><h3><a class="anchor" id="autotoc_md311"></a>
+</pre><h3><a class="anchor" id="autotoc_md297"></a>
 &lt;strong&gt;min&lt;/strong&gt;</h3>
 <p>The minimum bound of the range. Returns either <code>from</code>, or <code>to</code>, whichever is lower.</p>
 <pre class="snippet">
 System.print((3..5).min) //&gt; 3
 System.print((4..2).min) //&gt; 2
-</pre><h3><a class="anchor" id="autotoc_md312"></a>
+</pre><h3><a class="anchor" id="autotoc_md298"></a>
 &lt;strong&gt;max&lt;/strong&gt;</h3>
 <p>The maximum bound of the range. Returns either <code>from</code>, or <code>to</code>, whichever is greater.</p>
 <pre class="snippet">
 System.print((3..5).max) //&gt; 5
 System.print((4..2).max) //&gt; 4
-</pre><h3><a class="anchor" id="autotoc_md313"></a>
+</pre><h3><a class="anchor" id="autotoc_md299"></a>
 &lt;strong&gt;isInclusive&lt;/strong&gt;</h3>
 <p>Whether or not the range includes <code>to</code>. (<code>from</code> is always included.)</p>
 <pre class="snippet">
 System.print((3..5).isInclusive)   //&gt; true
 System.print((3...5).isInclusive)  //&gt; false
-</pre><h3><a class="anchor" id="autotoc_md314"></a>
+</pre><h3><a class="anchor" id="autotoc_md300"></a>
 &lt;strong&gt;iterate&lt;/strong&gt;(iterator), &lt;strong&gt;iteratorValue&lt;/strong&gt;(iterator)</h3>
 <p>Iterates over the range. Starts at <code>from</code> and increments by one towards <code>to</code> until the endpoint is reached. </p>
 </div></div><!-- contents -->

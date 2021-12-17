@@ -92,22 +92,22 @@ $(document).ready(function(){initNavTree('d9/de9/md__e_r_i_s_core_lib_wren_doc_s
 <p>It must be imported from the <a href="../../../">random</a> module:</p>
 <pre class="snippet">
     import "random" for Random
-</pre><h2><a class="anchor" id="autotoc_md454"></a>
+</pre><h2><a class="anchor" id="autotoc_md469"></a>
 Constructors</h2>
-<h3><a class="anchor" id="autotoc_md455"></a>
+<h3><a class="anchor" id="autotoc_md470"></a>
 Random.**new**()</h3>
 <p>Creates a new generator whose state is seeded based on the current time.</p>
 <pre class="snippet">
 var random = Random.new()
-</pre><h3><a class="anchor" id="autotoc_md457"></a>
+</pre><h3><a class="anchor" id="autotoc_md471"></a>
 Random.**new**(seed)</h3>
 <p>Creates a new generator initialized with [seed]. The seed can either be a number, or a non-empty sequence of numbers. If the sequnce has more than 16 elements, only the first 16 are used. If it has fewer, the elements are cycled to generate 16 seed values.</p>
 <pre class="snippet">
 Random.new(12345)
 Random.new("appleseed".codePoints)
-</pre><h2><a class="anchor" id="autotoc_md460"></a>
+</pre><h2><a class="anchor" id="autotoc_md472"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md462"></a>
+<h3><a class="anchor" id="autotoc_md473"></a>
 &lt;strong&gt;float&lt;/strong&gt;()</h3>
 <p>Returns a floating point value between 0.0 and 1.0, including 0.0, but excluding 1.0.</p>
 <pre class="snippet">
@@ -115,7 +115,7 @@ var random = Random.new(12345)
 System.print(random.float()) //&gt; 0.53178795980617
 System.print(random.float()) //&gt; 0.20180515043262
 System.print(random.float()) //&gt; 0.43371948658705
-</pre><h3><a class="anchor" id="autotoc_md465"></a>
+</pre><h3><a class="anchor" id="autotoc_md474"></a>
 &lt;strong&gt;float&lt;/strong&gt;(end)</h3>
 <p>Returns a floating point value between 0.0 and <code>end</code>, including 0.0 but excluding <code>end</code>.</p>
 <pre class="snippet">
@@ -123,7 +123,7 @@ var random = Random.new(12345)
 System.print(random.float(0))     //&gt; 0
 System.print(random.float(100))   //&gt; 20.180515043262
 System.print(random.float(-100))  //&gt; -43.371948658705
-</pre><h3><a class="anchor" id="autotoc_md469"></a>
+</pre><h3><a class="anchor" id="autotoc_md476"></a>
 &lt;strong&gt;float&lt;/strong&gt;(start, end)</h3>
 <p>Returns a floating point value between <code>start</code> and <code>end</code>, including <code>start</code> but excluding <code>end</code>.</p>
 <pre class="snippet">
@@ -131,7 +131,7 @@ var random = Random.new(12345)
 System.print(random.float(3, 4))    //&gt; 3.5317879598062
 System.print(random.float(-10, 10)) //&gt; -5.9638969913476
 System.print(random.float(-4, 2))   //&gt; -1.3976830804777
-</pre><h3><a class="anchor" id="autotoc_md470"></a>
+</pre><h3><a class="anchor" id="autotoc_md477"></a>
 &lt;strong&gt;int&lt;/strong&gt;(end)</h3>
 <p>Returns an integer between 0 and <code>end</code>, including 0 but excluding <code>end</code>.</p>
 <pre class="snippet">
@@ -139,7 +139,7 @@ var random = Random.new(12345)
 System.print(random.int(1))    //&gt; 0
 System.print(random.int(10))   //&gt; 2
 System.print(random.int(-50))  //&gt; -22
-</pre><h3><a class="anchor" id="autotoc_md471"></a>
+</pre><h3><a class="anchor" id="autotoc_md478"></a>
 &lt;strong&gt;int&lt;/strong&gt;(start, end)</h3>
 <p>Returns an integer between <code>start</code> and <code>end</code>, including <code>start</code> but excluding <code>end</code>.</p>
 <pre class="snippet">
@@ -147,16 +147,16 @@ var random = Random.new(12345)
 System.print(random.int(3, 4))    //&gt; 3
 System.print(random.int(-10, 10)) //&gt; -6
 System.print(random.int(-4, 2))   //&gt; -2
-</pre><h3><a class="anchor" id="autotoc_md472"></a>
+</pre><h3><a class="anchor" id="autotoc_md480"></a>
 &lt;strong&gt;sample&lt;/strong&gt;(list)</h3>
 <p>Selects a random element from <code>list</code>.</p>
-<h3><a class="anchor" id="autotoc_md473"></a>
+<h3><a class="anchor" id="autotoc_md481"></a>
 &lt;strong&gt;sample&lt;/strong&gt;(list, count)</h3>
 <p>Samples <code>count</code> randomly chosen unique elements from <code>list</code>.</p>
 <p>This uses "random without replacement" sampling&mdash;no index in the list will be selected more than once.</p>
 <p>Returns a new list of the selected elements.</p>
 <p>It is an error if <code>count</code> is greater than the number of elements in the list.</p>
-<h3><a class="anchor" id="autotoc_md474"></a>
+<h3><a class="anchor" id="autotoc_md482"></a>
 &lt;strong&gt;shuffle&lt;/strong&gt;(list)</h3>
 <p>Randomly shuffles the elements in <code>list</code>. The items are randomly re-ordered in place.</p>
 <pre class="snippet">

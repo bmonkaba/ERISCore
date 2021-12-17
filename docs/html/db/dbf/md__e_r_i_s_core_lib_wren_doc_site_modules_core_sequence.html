@@ -88,53 +88,53 @@ $(document).ready(function(){initNavTree('db/dbf/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Sequence Class</p>
 <p>An abstract base class for any iterable object. Any class that implements the core <a href="../../../../control-flow.html#the-iterator-protocol">iterator protocol</a> can extend this to get a number of helpful methods.</p>
-<h2><a class="anchor" id="autotoc_md415"></a>
+<h2><a class="anchor" id="autotoc_md414"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md416"></a>
+<h3><a class="anchor" id="autotoc_md415"></a>
 &lt;strong&gt;all&lt;/strong&gt;(predicate)</h3>
 <p>Tests whether all the elements in the sequence pass the <code>predicate</code>.</p>
 <p>Iterates over the sequence, passing each element to the function <code>predicate</code>. If it returns something <a href="../../../control-flow.html#truth">false</a>, stops iterating and returns the value. Otherwise, returns <code>true</code>.</p>
 <pre class="snippet">
 System.print([1, 2, 3].all {|n| n &gt; 2}) //&gt; false
 System.print([1, 2, 3].all {|n| n &lt; 4}) //&gt; true
-</pre><h3><a class="anchor" id="autotoc_md417"></a>
+</pre><h3><a class="anchor" id="autotoc_md416"></a>
 &lt;strong&gt;any&lt;/strong&gt;(predicate)</h3>
 <p>Tests whether any element in the sequence passes the <code>predicate</code>.</p>
 <p>Iterates over the sequence, passing each element to the function <code>predicate</code>. If it returns something <a href="../../../../control-flow.html#truth">true</a>, stops iterating and returns that value. Otherwise, returns <code>false</code>.</p>
 <pre class="snippet">
 System.print([1, 2, 3].any {|n| n &lt; 1}) //&gt; false
 System.print([1, 2, 3].any {|n| n &gt; 2}) //&gt; true
-</pre><h3><a class="anchor" id="autotoc_md419"></a>
+</pre><h3><a class="anchor" id="autotoc_md417"></a>
 &lt;strong&gt;contains&lt;/strong&gt;(element)</h3>
 <p>Returns whether the sequence contains any element equal to the given element.</p>
-<h3><a class="anchor" id="autotoc_md420"></a>
+<h3><a class="anchor" id="autotoc_md418"></a>
 &lt;strong&gt;count&lt;/strong&gt;</h3>
 <p>The number of elements in the sequence.</p>
 <p>Unless a more efficient override is available, this will iterate over the sequence in order to determine how many elements it contains.</p>
-<h3><a class="anchor" id="autotoc_md421"></a>
+<h3><a class="anchor" id="autotoc_md419"></a>
 &lt;strong&gt;count&lt;/strong&gt;(predicate)</h3>
 <p>Returns the number of elements in the sequence that pass the <code>predicate</code>.</p>
 <p>Iterates over the sequence, passing each element to the function <code>predicate</code> and counting the number of times the returned value evaluates to <code>true</code>.</p>
 <pre class="snippet">
 System.print([1, 2, 3].count {|n| n &gt; 2}) //&gt; 1
 System.print([1, 2, 3].count {|n| n &lt; 4}) //&gt; 3
-</pre><h3><a class="anchor" id="autotoc_md422"></a>
+</pre><h3><a class="anchor" id="autotoc_md420"></a>
 &lt;strong&gt;each&lt;/strong&gt;(function)</h3>
 <p>Iterates over the sequence, passing each element to the given <code>function</code>.</p>
 <pre class="snippet">
 ["one", "two", "three"].each {|word| System.print(word) }
-</pre><h3><a class="anchor" id="autotoc_md424"></a>
+</pre><h3><a class="anchor" id="autotoc_md421"></a>
 &lt;strong&gt;isEmpty&lt;/strong&gt;</h3>
 <p>Returns whether the sequence contains any elements.</p>
 <p>This can be more efficient that <code>count == 0</code> because this does not iterate over the entire sequence.</p>
-<h3><a class="anchor" id="autotoc_md425"></a>
+<h3><a class="anchor" id="autotoc_md422"></a>
 &lt;strong&gt;join&lt;/strong&gt;(separator)</h3>
 <p>Converts every element in the sequence to a string and then joins the results together into a single string, each separated by <code>separator</code>.</p>
 <p>It is a runtime error if <code>separator</code> is not a string.</p>
-<h3><a class="anchor" id="autotoc_md426"></a>
+<h3><a class="anchor" id="autotoc_md423"></a>
 &lt;strong&gt;join&lt;/strong&gt;()</h3>
 <p>Converts every element in the sequence to a string and then joins the results together into a single string.</p>
-<h3><a class="anchor" id="autotoc_md427"></a>
+<h3><a class="anchor" id="autotoc_md424"></a>
 &lt;strong&gt;map&lt;/strong&gt;(transformation)</h3>
 <p>Creates a new sequence that applies the <code>transformation</code> to each element in the original sequence while it is iterated.</p>
 <pre class="snippet">
@@ -152,28 +152,28 @@ var numbers = [1, 2, 3]
 var doubles = numbers.map {|n| n * 2 }.toList
 numbers.add(4)
 System.print(doubles) //&gt; [2, 4, 6]
-</pre><h3><a class="anchor" id="autotoc_md428"></a>
+</pre><h3><a class="anchor" id="autotoc_md425"></a>
 &lt;strong&gt;reduce&lt;/strong&gt;(function)</h3>
 <p>Reduces the sequence down to a single value. <code>function</code> is a function that takes two arguments, the accumulator and sequence item and returns the new accumulator value. The accumulator is initialized from the first item in the sequence. Then, the function is invoked on each remaining item in the sequence, iteratively updating the accumulator.</p>
 <p>It is a runtime error to call this on an empty sequence.</p>
-<h3><a class="anchor" id="autotoc_md429"></a>
+<h3><a class="anchor" id="autotoc_md426"></a>
 &lt;strong&gt;reduce&lt;/strong&gt;(seed, function)</h3>
 <p>Similar to above, but uses <code>seed</code> for the initial value of the accumulator. If the sequence is empty, returns <code>seed</code>.</p>
-<h3><a class="anchor" id="autotoc_md430"></a>
+<h3><a class="anchor" id="autotoc_md427"></a>
 &lt;strong&gt;skip&lt;/strong&gt;(count)</h3>
 <p>Creates a new sequence that skips the first <code>count</code> elements of the original sequence.</p>
 <p>The returned sequence is <em>lazy</em>. The first <code>count</code> elements are only skipped once you start to iterate the returned sequence. Changes to the original sequence will be reflected in the filtered sequence.</p>
-<h3><a class="anchor" id="autotoc_md431"></a>
+<h3><a class="anchor" id="autotoc_md428"></a>
 &lt;strong&gt;take&lt;/strong&gt;(count)</h3>
 <p>Creates a new sequence that iterates only the first <code>count</code> elements of the original sequence.</p>
 <p>The returned sequence is <em>lazy</em>. Changes to the original sequence will be reflected in the filtered sequence.</p>
-<h3><a class="anchor" id="autotoc_md433"></a>
+<h3><a class="anchor" id="autotoc_md429"></a>
 &lt;strong&gt;toList&lt;/strong&gt;</h3>
 <p>Creates a <a href="../../list.html">list</a> containing all the elements in the sequence.</p>
 <pre class="snippet">
 System.print((1..3).toList)  //&gt; [1, 2, 3]
 </pre><p>If the sequence is already a list, this creates a copy of it.</p>
-<h3><a class="anchor" id="autotoc_md434"></a>
+<h3><a class="anchor" id="autotoc_md430"></a>
 &lt;strong&gt;where&lt;/strong&gt;(predicate)</h3>
 <p>Creates a new sequence containing only the elements from the original sequence that pass the <code>predicate</code>.</p>
 <p>During iteration, each element in the original sequence is passed to the function <code>predicate</code>. If it returns <code>false</code>, the element is skipped.</p>

@@ -88,18 +88,18 @@ $(document).ready(function(){initNavTree('d5/d64/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Fiber Class</p>
 <p>A lightweight coroutine. <a href="../../../../concurrency.html">Here</a> is a gentle introduction.</p>
-<h2><a class="anchor" id="autotoc_md266"></a>
+<h2><a class="anchor" id="autotoc_md306"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md267"></a>
+<h3><a class="anchor" id="autotoc_md307"></a>
 Fiber.**abort**(message)</h3>
 <p>Raises a runtime error with the provided message:</p>
 <pre class="snippet">
 Fiber.abort("Something bad happened.")
 </pre><p>If the message is <code>null</code>, does nothing.</p>
-<h3><a class="anchor" id="autotoc_md268"></a>
+<h3><a class="anchor" id="autotoc_md308"></a>
 Fiber.**current**</h3>
 <p>The currently executing fiber.</p>
-<h3><a class="anchor" id="autotoc_md269"></a>
+<h3><a class="anchor" id="autotoc_md309"></a>
 Fiber.**new**(function)</h3>
 <p>Creates a new fiber that executes <code>function</code> in a separate coroutine when the fiber is run. Does not immediately start running the fiber.</p>
 <pre class="snippet">
@@ -107,12 +107,12 @@ var fiber = Fiber.new {
   System.print("I won't get printed")
 }
 </pre><p><code>function</code> must be a function (an actual <a href="../../fn.html">Fn</a> instance, not just an object with a <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code> method) and it may only take zero or one parameters.</p>
-<h3><a class="anchor" id="autotoc_md270"></a>
+<h3><a class="anchor" id="autotoc_md310"></a>
 Fiber.**suspend**()</h3>
 <p>Pauses the current fiber, and stops the interpreter. Control returns to the host application.</p>
 <p>Typically, you store a reference to the fiber using <code>Fiber.current</code> before calling this. The fiber can be resumed later by calling or transferring to that reference. If there are no references to it, it is eventually garbage collected.</p>
 <p>Much like <code>yield()</code>, returns the value passed to <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code> or <code>transfer()</code> when the fiber is resumed.</p>
-<h3><a class="anchor" id="autotoc_md271"></a>
+<h3><a class="anchor" id="autotoc_md311"></a>
 Fiber.**yield**()</h3>
 <p>Pauses the current fiber and transfers control to the parent fiber. "Parent" here means the last fiber that was started using <code>call</code> and not <code>transfer</code>.</p>
 <pre class="snippet">
@@ -139,7 +139,7 @@ fiber.call("value") // Resume the fiber.
 <pre class="snippet">
 Fiber.yield()
 System.print("this does not get reached")
-</pre><h3><a class="anchor" id="autotoc_md272"></a>
+</pre><h3><a class="anchor" id="autotoc_md312"></a>
 Fiber.**yield**(value)</h3>
 <p>Similar to <code>Fiber.yield</code> but provides a value to return to the parent fiber's <code>call</code>.</p>
 <pre class="snippet">
@@ -148,14 +148,14 @@ var fiber = Fiber.new {
 }
 
 System.print(fiber.call()) //&gt; value
-</pre><h2><a class="anchor" id="autotoc_md273"></a>
+</pre><h2><a class="anchor" id="autotoc_md313"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md274"></a>
+<h3><a class="anchor" id="autotoc_md314"></a>
 &lt;strong&gt;call&lt;/strong&gt;()</h3>
 <p>Starts or resumes the fiber if it is in a paused state. Equivalent to:</p>
 <pre class="snippet">
 fiber.call(null)
-</pre><h3><a class="anchor" id="autotoc_md275"></a>
+</pre><h3><a class="anchor" id="autotoc_md315"></a>
 &lt;strong&gt;call&lt;/strong&gt;(value)</h3>
 <p>Start or resumes the fiber if it is in a paused state. If the fiber is being started for the first time, and its function takes a parameter, <code>value</code> is passed to it.</p>
 <pre class="snippet">
@@ -172,7 +172,7 @@ var fiber = Fiber.new {
 
 fiber.call()
 fiber.call("resume")
-</pre><h3><a class="anchor" id="autotoc_md276"></a>
+</pre><h3><a class="anchor" id="autotoc_md316"></a>
 &lt;strong&gt;error&lt;/strong&gt;</h3>
 <p>The error message that was passed when aborting the fiber, or <code>null</code> if the fiber has not been aborted.</p>
 <pre class="snippet">
@@ -182,10 +182,10 @@ var fiber = Fiber.new {
 
 fiber.try()
 System.print(fiber.error) //&gt; Num does not implement method 'badMethod'.
-</pre><h3><a class="anchor" id="autotoc_md277"></a>
+</pre><h3><a class="anchor" id="autotoc_md319"></a>
 &lt;strong&gt;isDone&lt;/strong&gt;</h3>
 <p>Whether the fiber's main function has completed and the fiber can no longer be run. This returns <code>false</code> if the fiber is currently running or has yielded.</p>
-<h3><a class="anchor" id="autotoc_md278"></a>
+<h3><a class="anchor" id="autotoc_md320"></a>
 &lt;strong&gt;try&lt;/strong&gt;()</h3>
 <p>Tries to run the fiber. If a runtime error occurs in the called fiber, the error is captured and is returned as a string.</p>
 <pre class="snippet">
@@ -196,7 +196,7 @@ var fiber = Fiber.new {
 var error = fiber.try()
 System.print("Caught error: " + error)
 </pre><p>If the called fiber raises an error, it can no longer be used.</p>
-<h3><a class="anchor" id="autotoc_md279"></a>
+<h3><a class="anchor" id="autotoc_md323"></a>
 &lt;strong&gt;try&lt;/strong&gt;(value)</h3>
 <p>Tries to run the fiber. If a runtime error occurs in the called fiber, the error is captured and is returned as a string. If the fiber is being started for the first time, and its function takes a parameter, <code>value</code> is passed to it.</p>
 <pre class="snippet">
@@ -207,7 +207,7 @@ var fiber = Fiber.new {|value|
 var error = fiber.try("just a string")
 System.print("Caught error: " + error)
 </pre><p>If the called fiber raises an error, it can no longer be used.</p>
-<h3><a class="anchor" id="autotoc_md281"></a>
+<h3><a class="anchor" id="autotoc_md326"></a>
 &lt;strong&gt;transfer&lt;/strong&gt;()</h3>
 <p>Pauses execution of the current running fiber, and transfers control to this fiber.</p>
 <p><a href="../../../../concurrency.html#transferring-control">Read more</a> about the difference between <code>call</code> and <code>transfer</code>. Unlike <code>call</code>, <code>transfer</code> doesn't track the origin of the transfer.</p>
@@ -225,7 +225,7 @@ fiber.transfer()      //&gt; #1: print "inside 'fiber'" via #2
                       //&gt; this fiber is now paused by #1
 
 System.print("main")  //&gt; #4: prints "main", unpaused by #3
-</pre><h3><a class="anchor" id="autotoc_md283"></a>
+</pre><h3><a class="anchor" id="autotoc_md329"></a>
 &lt;strong&gt;transfer&lt;/strong&gt;(value)</h3>
 <p>Pauses execution of the current running fiber, and transfers control to this fiber.</p>
 <p>Similar to <code>transfer</code>, but a value can be passed between the fibers.</p>
@@ -244,7 +244,7 @@ var fiber = Fiber.new {|value|
 var message = fiber.transfer(5)   //&gt; #1: send to 'value'
 System.print("... %(message)")    //&gt; #4: ... hello?
 fiber.transfer(32)                //&gt; #5: send to 'result'
-</pre><h3><a class="anchor" id="autotoc_md284"></a>
+</pre><h3><a class="anchor" id="autotoc_md331"></a>
 &lt;strong&gt;transferError&lt;/strong&gt;(error)</h3>
 <p>Transfer to this fiber, but set this fiber into an error state. The <code>fiber.error</code> value will be populated with the value in <code>error</code>.</p>
 <pre class="snippet">

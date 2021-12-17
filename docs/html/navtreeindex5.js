@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"d2/d0a/wren__value_8h.html#a54ca628b58d707c7c56621fd3e3dc219":[76,0,199,118],
 "d2/d0a/wren__value_8h.html#a55ed1aa901b5e571d47fec3286988c24":[76,0,199,26],
 "d2/d0a/wren__value_8h.html#a5607f451a18f6167a61948b73af9d473":[76,0,199,38],
 "d2/d0a/wren__value_8h.html#a59813fe4b53e8c1fab4de560fe06271f":[76,0,199,84],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "d2/d99/struct_map_entry.html#ab4ac6925a8accf38133fdbe66ff9944d":[75,0,160,1],
 "d2/d9b/struct_wren_load_module_result.html":[75,0,226],
 "d2/d9b/struct_wren_load_module_result.html#a82d3543ae633d7597b5f3b83bdfed2fb":[75,0,226,1],
-"d2/d9b/struct_wren_load_module_result.html#ab1608f384a2efe61a6d0204ab8e48fda":[75,0,226,2],
-"d2/d9b/struct_wren_load_module_result.html#afb1c3a291c51d31fa575e6b83a6846cc":[75,0,226,0]
+"d2/d9b/struct_wren_load_module_result.html#ab1608f384a2efe61a6d0204ab8e48fda":[75,0,226,2]
 };

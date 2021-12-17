@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('d7/dfb/md__e_r_i_s_core_lib_wren_doc_s
 <hr  />
 <p>This post is all about the 0.4.0 release since it's a big one! <br  />
  <small>(A separate post for 0.5.0 goals would likely come later.)</small></p>
-<h2><a class="anchor" id="autotoc_md161"></a>
+<h2><a class="anchor" id="autotoc_md138"></a>
 0.4.0 details</h2>
 <p><b>0.4.0 contains 145 commits from 28 contributors.</b></p>
 <p>The <a href="https://github.com/wren-lang/wren/releases/tag/0.4.0">full release notes</a> link to each PR or commit, and contains a lot more details than this post.</p>
@@ -98,26 +98,26 @@ $(document).ready(function(){initNavTree('d7/dfb/md__e_r_i_s_core_lib_wren_doc_s
  As usual, let's revisit the goals from the <a href="../../2-0.3.0-released.html#goals-for-0.4.0">0.3.0 post</a>.</p>
 <p>Most importantly - compound operators didn't land in 0.4.0 for various reasons. Still working on it, it's just a fun and nuanced problem and I don't want to keep 0.4.0 back cos of it.</p>
 <p>With that out the way, let's see what 0.4.0 contains!</p>
-<h2><a class="anchor" id="autotoc_md162"></a>
+<h2><a class="anchor" id="autotoc_md139"></a>
 0.4.0 highlights</h2>
 <p>Below we'll highlight some key features, fixes and improvements from the release.</p>
 <p><b>A lot of work came from the community, much thanks to everyone contributing!</b></p>
 <p>You can find all the details and the contributions in the <a href="https://github.com/wren-lang/wren/releases/tag/0.4.0">release notes</a>.</p>
 <p><b>Take note!</b> There are two minor breaking changes in the API on the release notes.</p>
 <hr  />
-<h3><a class="anchor" id="autotoc_md164"></a>
+<h3><a class="anchor" id="autotoc_md141"></a>
 Bug fixes</h3>
 <p>Several important bugs have been fixed, sneaky stack corruptions and some user experience fixes that clarify confusing states.</p>
-<h3><a class="anchor" id="autotoc_md165"></a>
+<h3><a class="anchor" id="autotoc_md142"></a>
 Documentation</h3>
 <p>A lot of work has gone into documentation this release, revising, fixing, adding and closing gaps that were left. For example, Wren supports multi-line strings but this was never mentioned anywhere!</p>
-<h3><a class="anchor" id="autotoc_md166"></a>
+<h3><a class="anchor" id="autotoc_md143"></a>
 New &lt;strong&gt;continue&lt;/strong&gt; keyword</h3>
 <p>Loops can now use continue, which is a welcome addition.</p>
-<h3><a class="anchor" id="autotoc_md167"></a>
+<h3><a class="anchor" id="autotoc_md144"></a>
 New &lt;strong&gt;as&lt;/strong&gt; keyword</h3>
 <p>You can now use <code>import "..." for Name as OtherName</code> to avoid name conflicts, or to use aliases/shorthand for imported variables.</p>
-<h3><a class="anchor" id="autotoc_md168"></a>
+<h3><a class="anchor" id="autotoc_md145"></a>
 Raw strings</h3>
 <p>Wren now supports triple quotes for a string <code>"""</code>.</p>
 <p>This type of string is only unique in how it's parsed, the content of the string is ignored (no interpolation or escapes are processed), which allows complex strings to be expressed without needing to escape things.</p>
@@ -130,7 +130,7 @@ var json = """
     "from" : "json"
   }
 """
-</pre><h3><a class="anchor" id="autotoc_md169"></a>
+</pre><h3><a class="anchor" id="autotoc_md146"></a>
 Attributes</h3>
 <p>Attributes are user-defined metadata associated with a class or method that can be used at runtime, by external tools (and potentially by Wren itself).</p>
 <pre class="snippet">
@@ -160,7 +160,7 @@ class Example {}
 <li><code>YourClass.attributes.methods</code> for the method attributes</li>
 </ul>
 <p>All the details for <a href="https://wren.io/classes.html#attributes">Attributes can be found here</a>.</p>
-<h3><a class="anchor" id="autotoc_md170"></a>
+<h3><a class="anchor" id="autotoc_md147"></a>
 Chained methods fixes ('fluent interfaces')</h3>
 <p>Mentioned in the last post, you can now use this pattern in code as intended, the same-line requirement for the <code>.</code> has been removed.</p>
 <pre class="snippet">
@@ -168,11 +168,11 @@ Chained methods fixes ('fluent interfaces')</h3>
     .some()
     .functions()
     .<a class="el" href="../../d0/de9/receiver-less_01calls_012_8txt.html#a64dabd50289685168f7b46f497df2b60">here()</a>
-</pre><h3><a class="anchor" id="autotoc_md171"></a>
+</pre><h3><a class="anchor" id="autotoc_md148"></a>
 List additions</h3>
 <p>Lists are now sortable via <code>list.sort()</code> and <code>list.sort {|a, b| ... }</code>. You can find an index of something via <code>list.indexOf(value)</code>, and remove a value via <code>list.remove(value)</code>. There's also <code>list.swap(index0, index1)</code> for moving items around within a list.</p>
 <p>For the API, <code>wrenSetListElement</code> now exists, and both set and <code>wrenGetListElement</code> now accept negative indices same as the language side.</p>
-<h3><a class="anchor" id="autotoc_md172"></a>
+<h3><a class="anchor" id="autotoc_md149"></a>
 Num additions</h3>
 <p>A few new constants:</p>
 <ul>
@@ -190,7 +190,7 @@ Num additions</h3>
 <li><code>num.exp</code></li>
 <li><code>num.log2</code></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md173"></a>
+<h3><a class="anchor" id="autotoc_md150"></a>
 Map access from the API</h3>
 <p>You can now create and access maps from the API:</p>
 <ul>
@@ -201,7 +201,7 @@ Map access from the API</h3>
 <li><code>wrenSetMapValue</code></li>
 <li><code>wrenRemoveMapValue</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md174"></a>
+<h2><a class="anchor" id="autotoc_md151"></a>
 Till next time</h2>
 <hr  />
 <ul>

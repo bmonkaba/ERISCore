@@ -88,16 +88,16 @@ $(document).ready(function(){initNavTree('d7/d61/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Process Class</p>
 <p>The Process class lets you work with operating system processes, including the currently running one.</p>
-<h2><a class="anchor" id="autotoc_md128"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 Static Methods</h2>
-<h3><a class="anchor" id="autotoc_md129"></a>
+<h3><a class="anchor" id="autotoc_md105"></a>
 &lt;strong&gt;allArguments&lt;/strong&gt;</h3>
 <p>The list of command-line arguments that were passed when the Wren process was spawned. This includes the Wren executable itself, the path to the file being run (if any), and any other options passed to Wren itself.</p>
 <p>If you run: </p><pre class="fragment">$ wren file.wren arg
 </pre><p> This returns:</p>
 <pre class="snippet">
 System.print(Process.allArguments) //&gt; ["wren", "file.wren", "arg"]
-</pre><h3><a class="anchor" id="autotoc_md130"></a>
+</pre><h3><a class="anchor" id="autotoc_md106"></a>
 &lt;strong&gt;arguments&lt;/strong&gt;</h3>
 <p>The list of command-line arguments that were passed to your program when the Wren process was spawned. This does not include arguments handled by Wren itself.</p>
 <p>If you run: </p><pre class="fragment">$ wren file.wren arg

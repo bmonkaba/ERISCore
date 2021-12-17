@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('de/dc4/md__e_r_i_s_core_lib_wren_doc_s
 <p>Notice there's a difference between <em>function</em> and <em>method</em>.</p>
 <p>Since Wren is object-oriented, most of your code will live in methods on classes, but free-floating functions are still eminently handy.</p>
 <p>Functions are objects like everything else in Wren, instances of the <code>Fn</code> class.</p>
-<h2><a class="anchor" id="autotoc_md280"></a>
+<h2><a class="anchor" id="autotoc_md250"></a>
 Creating a function</h2>
 <p>To create a function, we call <code>Fn.new</code>, which takes a block to execute. To call the function, we use <code>.<a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code> on the function instance.</p>
 <pre class="snippet">
@@ -99,7 +99,7 @@ var sayHello = Fn.new { System.print("hello") }
 
 sayHello.call() //&gt; hello
 </pre><p>Note that we'll see a shorthand syntax for creating a function below.</p>
-<h2><a class="anchor" id="autotoc_md282"></a>
+<h2><a class="anchor" id="autotoc_md255"></a>
 Function parameters</h2>
 <p>Of course, functions aren't very useful if you can't pass values to them. The function above takes no arguments. To change that, you can provide a parameter list surrounded by <code>|</code> immediately after the opening brace of the body.</p>
 <p>To pass arguments to the function, pass them to the <code>call</code> method:</p>
@@ -110,7 +110,7 @@ var sayMessage = Fn.new {|recipient, message|
 
 sayMessage.call("Bob", "Good day!")
 </pre><p>It's an error to call a function with fewer arguments than its parameter list expects. If you pass too <em>many</em> arguments, the extras are ignored.</p>
-<h2><a class="anchor" id="autotoc_md285"></a>
+<h2><a class="anchor" id="autotoc_md256"></a>
 Returning values</h2>
 <p>The body of a function is a <a href="../../syntax.html#blocks">block</a>. If it is a single expression&mdash;more precisely if there is no newline after the <code>{</code> or parameter list&mdash;then the function implicitly returns the value of the expression.</p>
 <p>Otherwise, the body returns <code>null</code> by default. You can explicitly return a value using a <code>return</code> statement. In other words, these two functions do the same thing:</p>
@@ -125,7 +125,7 @@ Fn.new {
 var fn = Fn.new { "some value" }
 var result = fn.call()
 System.print(result) //&gt; some value
-</pre><h2><a class="anchor" id="autotoc_md286"></a>
+</pre><h2><a class="anchor" id="autotoc_md257"></a>
 Closures</h2>
 <p>As you expect, functions are closures&mdash;they can access variables defined outside of their scope. They will hold onto closed-over variables even after leaving the scope where the function is defined:</p>
 <pre class="snippet">
@@ -141,7 +141,7 @@ var counter = Counter.create()
 System.print(counter.call()) //&gt; 1
 System.print(counter.call()) //&gt; 2
 System.print(counter.call()) //&gt; 3
-</pre><h2><a class="anchor" id="autotoc_md287"></a>
+</pre><h2><a class="anchor" id="autotoc_md258"></a>
 Callable classes</h2>
 <p>Because <code>Fn</code> is a class, and responds to <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code>, any class can respond to <code><a class="el" href="../../d4/de2/wren__compiler_8c.html#abc28d53c9cefc405f7f74cd877d037d1">call()</a></code> and be used in place of a function. This is particularly handy when the function is passed to a method to be called, like a callback or event.</p>
 <pre class="snippet">
@@ -154,7 +154,7 @@ class Callable {
 
 var fn = Callable.new()
 fn.call("wren", "0.4.0")
-</pre><h2><a class="anchor" id="autotoc_md288"></a>
+</pre><h2><a class="anchor" id="autotoc_md259"></a>
 Block arguments</h2>
 <p>Very frequently, functions are passed to methods to be called. There are countless examples of this in Wren, like <a href="../../lists.html">list</a> can be filtered using a method <code>where</code> which accepts a function:</p>
 <pre class="snippet">
@@ -170,7 +170,7 @@ System.print(filtered.toList) //&gt; [4, 5]
 </pre><p>We've seen this before in a previous page using <code>map</code> and <code>where</code>:</p>
 <pre class="snippet">
 numbers.map {|n| n * 2 }.where {|n| n &lt; 100 }
-</pre><h2><a class="anchor" id="autotoc_md289"></a>
+</pre><h2><a class="anchor" id="autotoc_md260"></a>
 Block argument example</h2>
 <p>Let's look at a complete example, so we can see both ends.</p>
 <p>Here's a fictional class for something that will call a function when a click event is sent to it. It allows us to pass just a function and assume the left mouse button, or to pass a button and a function.</p>

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 974;
+var viewWidth = 936;
 var viewHeight = 146;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,219 +54,219 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>wren_vm.h</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-142 969.5,-142 969.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-142 931.5,-142 931.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="408.5,-116.5 408.5,-137.5 480.5,-137.5 480.5,-116.5 408.5,-116.5"/>
-<text text-anchor="middle" x="444.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_vm.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="354.5,-116.5 354.5,-137.5 426.5,-137.5 426.5,-116.5 354.5,-116.5"/>
+<text text-anchor="middle" x="390.5" y="-123.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_vm.h</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../d7/d66/wren__primitive_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="39,-58.5 39,-79.5 140,-79.5 140,-58.5 39,-58.5"/>
-<text text-anchor="middle" x="89.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_primitive.h</text>
+<g id="a_node2"><a xlink:href="../../de/d0d/wren__utils_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-58.5 0,-79.5 77,-79.5 77,-58.5 0,-58.5"/>
+<text text-anchor="middle" x="38.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_utils.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M398.18,-118.93C340.06,-110.02 237.36,-94.17 149.5,-80 146.48,-79.51 143.37,-79.01 140.23,-78.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="397.73,-122.4 408.15,-120.46 398.79,-115.48 397.73,-122.4"/>
+<path fill="none" stroke="midnightblue" d="M344.13,-119.79C284.4,-111.62 177.45,-96.34 86.5,-80 83.48,-79.46 80.37,-78.87 77.24,-78.26"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="343.98,-123.31 354.36,-121.19 344.92,-116.37 343.98,-123.31"/>
+</g>
+<!-- Node3 -->
+<g id="node3" class="node">
+<title>Node3</title>
+<g id="a_node3"><a xlink:href="../../dd/df7/wren__debug_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="95.5,-58.5 95.5,-79.5 185.5,-79.5 185.5,-58.5 95.5,-58.5"/>
+<text text-anchor="middle" x="140.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_debug.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node3 -->
+<g id="edge2" class="edge">
+<title>Node1&#45;&gt;Node3</title>
+<path fill="none" stroke="midnightblue" d="M344.4,-115.67C298.35,-105.36 228.13,-89.63 183.28,-79.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="343.89,-119.15 354.41,-117.92 345.42,-112.32 343.89,-119.15"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../de/db2/wren__vm_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="217.5,-0.5 217.5,-21.5 289.5,-21.5 289.5,-0.5 217.5,-0.5"/>
-<text text-anchor="middle" x="253.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_vm.c</text>
+<polygon fill="white" stroke="black" points="190.5,-0.5 190.5,-21.5 262.5,-21.5 262.5,-0.5 190.5,-0.5"/>
+<text text-anchor="middle" x="226.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_vm.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
-<g id="edge16" class="edge">
+<g id="edge15" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M397.97,-122.72C363.41,-118.07 317,-106.87 285.5,-80 267.43,-64.59 258.88,-36.72 255.45,-21.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="397.94,-126.24 408.29,-123.96 398.78,-119.29 397.94,-126.24"/>
+<path fill="none" stroke="midnightblue" d="M344.12,-125.79C307.89,-122.93 259.32,-112.65 232.5,-80 218.81,-63.33 221.55,-36 224.28,-21.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="344.26,-129.3 354.46,-126.43 344.7,-122.31 344.26,-129.3"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../da/dbe/wren__value_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="402.5,-58.5 402.5,-79.5 486.5,-79.5 486.5,-58.5 402.5,-58.5"/>
-<text text-anchor="middle" x="444.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_value.c</text>
+<g id="a_node6"><a xlink:href="../../d4/da0/wren__core_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="241.5,-58.5 241.5,-79.5 321.5,-79.5 321.5,-58.5 241.5,-58.5"/>
+<text text-anchor="middle" x="281.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_core.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M444.5,-106.16C444.5,-97.16 444.5,-86.92 444.5,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="441,-106.25 444.5,-116.25 448,-106.25 441,-106.25"/>
-</g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="../../de/d0d/wren__utils_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="505,-58.5 505,-79.5 582,-79.5 582,-58.5 505,-58.5"/>
-<text text-anchor="middle" x="543.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_utils.c</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M470.94,-111.05C488.55,-101.08 511.18,-88.28 526.45,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="468.73,-108.28 461.74,-116.25 472.17,-114.37 468.73,-108.28"/>
+<path fill="none" stroke="midnightblue" d="M362.47,-111.6C342.93,-101.56 317.39,-88.44 300.27,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="361.02,-114.79 371.51,-116.25 364.22,-108.56 361.02,-114.79"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="../../d4/da0/wren__core_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="158.5,-58.5 158.5,-79.5 238.5,-79.5 238.5,-58.5 158.5,-58.5"/>
-<text text-anchor="middle" x="198.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_core.h</text>
+<g id="a_node8"><a xlink:href="../../da/dbe/wren__value_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="459.5,-58.5 459.5,-79.5 543.5,-79.5 543.5,-58.5 459.5,-58.5"/>
+<text text-anchor="middle" x="501.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_value.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
-<g id="edge7" class="edge">
+<g id="edge8" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M398.47,-115.52C352.49,-105.06 282.53,-89.13 238.72,-79.16"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="397.94,-118.99 408.47,-117.8 399.49,-112.16 397.94,-118.99"/>
+<path fill="none" stroke="midnightblue" d="M418.57,-111.84C438.64,-101.71 465.09,-88.37 482.67,-79.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="416.93,-108.74 409.58,-116.37 420.09,-114.99 416.93,-108.74"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="../../de/dab/wren__opt__meta_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="600,-58.5 600,-79.5 707,-79.5 707,-58.5 600,-58.5"/>
-<text text-anchor="middle" x="653.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_opt_meta.c</text>
+<polygon fill="white" stroke="black" points="562,-58.5 562,-79.5 669,-79.5 669,-58.5 562,-58.5"/>
+<text text-anchor="middle" x="615.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_opt_meta.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node9 -->
-<g id="edge10" class="edge">
+<g id="edge9" class="edge">
 <title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M490.33,-113.72C528.76,-103.42 582.85,-88.93 618.04,-79.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="489.18,-110.4 480.43,-116.37 490.99,-117.17 489.18,-110.4"/>
+<path fill="none" stroke="midnightblue" d="M436.5,-114.55C477.98,-104.23 538.26,-89.22 577.18,-79.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="435.51,-111.19 426.65,-117 437.2,-117.98 435.51,-111.19"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="../../dd/df7/wren__debug_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="294.5,-58.5 294.5,-79.5 384.5,-79.5 384.5,-58.5 294.5,-58.5"/>
-<text text-anchor="middle" x="339.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_debug.h</text>
+<g id="a_node10"><a xlink:href="../../d8/d6b/wren__opt__random_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="687.5,-58.5 687.5,-79.5 807.5,-79.5 807.5,-58.5 687.5,-58.5"/>
+<text text-anchor="middle" x="747.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_opt_random.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node10 -->
-<g id="edge11" class="edge">
+<g id="edge10" class="edge">
 <title>Node1&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M417.24,-111.46C398.45,-101.44 374,-88.4 357.58,-79.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="415.74,-114.63 426.21,-116.25 419.03,-108.45 415.74,-114.63"/>
+<path fill="none" stroke="midnightblue" d="M436.9,-118.72C500.95,-108.67 616.55,-90.54 687.22,-79.46"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="436.03,-115.31 426.7,-120.32 437.12,-122.23 436.03,-115.31"/>
 </g>
-<!-- Node12 -->
-<g id="node12" class="node">
-<title>Node12</title>
-<g id="a_node12"><a xlink:href="../../d8/d6b/wren__opt__random_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="725.5,-58.5 725.5,-79.5 845.5,-79.5 845.5,-58.5 725.5,-58.5"/>
-<text text-anchor="middle" x="785.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_opt_random.c</text>
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:href="../../d7/d66/wren__primitive_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="340,-58.5 340,-79.5 441,-79.5 441,-58.5 340,-58.5"/>
+<text text-anchor="middle" x="390.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_primitive.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node12 -->
-<g id="edge14" class="edge">
-<title>Node1&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M490.85,-118.39C552.33,-108.29 660.83,-90.47 727.62,-79.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="489.97,-114.99 480.67,-120.06 491.11,-121.89 489.97,-114.99"/>
+<!-- Node1&#45;&gt;Node11 -->
+<g id="edge11" class="edge">
+<title>Node1&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M390.5,-106.16C390.5,-97.16 390.5,-86.92 390.5,-79.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="387,-106.25 390.5,-116.25 394,-106.25 387,-106.25"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:href="../../d4/de2/wren__compiler_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="863.5,-58.5 863.5,-79.5 965.5,-79.5 965.5,-58.5 863.5,-58.5"/>
-<text text-anchor="middle" x="914.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_compiler.c</text>
+<polygon fill="white" stroke="black" points="825.5,-58.5 825.5,-79.5 927.5,-79.5 927.5,-58.5 825.5,-58.5"/>
+<text text-anchor="middle" x="876.5" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_compiler.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node13 -->
-<g id="edge15" class="edge">
+<g id="edge16" class="edge">
 <title>Node1&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M490.69,-121.63C566.7,-114.26 722.89,-98.34 854.5,-80 857.43,-79.59 860.43,-79.15 863.47,-78.7"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="490.12,-118.17 480.5,-122.61 490.79,-125.14 490.12,-118.17"/>
-</g>
-<!-- Node3 -->
-<g id="node3" class="node">
-<title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d9/def/wren__primitive_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-0.5 0,-21.5 101,-21.5 101,-0.5 0,-0.5"/>
-<text text-anchor="middle" x="50.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_primitive.c</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node3 -->
-<g id="edge2" class="edge">
-<title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M76.91,-49.92C70.36,-40.52 62.62,-29.4 57.22,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="74.12,-52.04 82.71,-58.25 79.86,-48.04 74.12,-52.04"/>
+<path fill="none" stroke="midnightblue" d="M436.8,-121.88C515.15,-114.71 678.79,-98.9 816.5,-80 819.43,-79.6 822.44,-79.16 825.47,-78.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="436.41,-118.4 426.77,-122.79 437.05,-125.37 436.41,-118.4"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../de/d2f/wren__core_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="119.5,-0.5 119.5,-21.5 199.5,-21.5 199.5,-0.5 119.5,-0.5"/>
-<text text-anchor="middle" x="159.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_core.c</text>
+<g id="a_node4"><a xlink:href="../../d8/df0/wren__debug_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="82.5,-0.5 82.5,-21.5 172.5,-21.5 172.5,-0.5 82.5,-0.5"/>
+<text text-anchor="middle" x="127.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_debug.c</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node4 -->
+<!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
-<title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M109.59,-51.93C121.83,-42.14 137.05,-29.96 147.45,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="107.32,-49.27 101.69,-58.25 111.69,-54.73 107.32,-49.27"/>
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M135.96,-48.45C133.86,-39.38 131.45,-29 129.74,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="132.56,-49.3 138.24,-58.25 139.38,-47.71 132.56,-49.3"/>
 </g>
-<!-- Node2&#45;&gt;Node5 -->
+<!-- Node3&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
-<title>Node2&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M127.4,-55.06C157.42,-44.81 198.65,-30.73 225.68,-21.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="126.03,-51.83 117.69,-58.37 128.29,-58.45 126.03,-51.83"/>
+<title>Node3&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M163.89,-52.77C179.13,-42.85 198.55,-30.2 211.69,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="161.95,-49.86 155.48,-58.25 165.77,-55.72 161.95,-49.86"/>
 </g>
-<!-- Node8&#45;&gt;Node4 -->
-<g id="edge8" class="edge">
-<title>Node8&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M185.91,-49.92C179.36,-40.52 171.62,-29.4 166.22,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="183.12,-52.04 191.71,-58.25 188.86,-48.04 183.12,-52.04"/>
+<!-- Node6&#45;&gt;Node5 -->
+<g id="edge6" class="edge">
+<title>Node6&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M264.88,-51.08C255.41,-41.44 243.9,-29.72 235.97,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="262.42,-53.56 271.92,-58.25 267.41,-48.66 262.42,-53.56"/>
 </g>
-<!-- Node8&#45;&gt;Node5 -->
-<g id="edge9" class="edge">
-<title>Node8&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M215.12,-51.08C224.59,-41.44 236.1,-29.72 244.03,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="212.59,-48.66 208.08,-58.25 217.58,-53.56 212.59,-48.66"/>
-</g>
-<!-- Node10&#45;&gt;Node5 -->
-<g id="edge13" class="edge">
-<title>Node10&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M316.11,-52.77C300.87,-42.85 281.45,-30.2 268.31,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="314.23,-55.72 324.52,-58.25 318.05,-49.86 314.23,-55.72"/>
-</g>
-<!-- Node11 -->
-<g id="node11" class="node">
-<title>Node11</title>
-<g id="a_node11"><a xlink:href="../../d8/df0/wren__debug_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="307.5,-0.5 307.5,-21.5 397.5,-21.5 397.5,-0.5 307.5,-0.5"/>
-<text text-anchor="middle" x="352.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_debug.c</text>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../de/d2f/wren__core_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="280.5,-0.5 280.5,-21.5 360.5,-21.5 360.5,-0.5 280.5,-0.5"/>
+<text text-anchor="middle" x="320.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_core.c</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node11 -->
+<!-- Node6&#45;&gt;Node7 -->
+<g id="edge7" class="edge">
+<title>Node6&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M294.09,-49.92C300.64,-40.52 308.38,-29.4 313.78,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="291.14,-48.04 288.29,-58.25 296.88,-52.04 291.14,-48.04"/>
+</g>
+<!-- Node11&#45;&gt;Node5 -->
+<g id="edge13" class="edge">
+<title>Node11&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M352.6,-55.06C322.58,-44.81 281.35,-30.73 254.32,-21.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="351.71,-58.45 362.31,-58.37 353.97,-51.83 351.71,-58.45"/>
+</g>
+<!-- Node11&#45;&gt;Node7 -->
+<g id="edge14" class="edge">
+<title>Node11&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M370.41,-51.93C358.17,-42.14 342.95,-29.96 332.55,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="368.31,-54.73 378.31,-58.25 372.68,-49.27 368.31,-54.73"/>
+</g>
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:href="../../d9/def/wren__primitive_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="379,-0.5 379,-21.5 480,-21.5 480,-0.5 379,-0.5"/>
+<text text-anchor="middle" x="429.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">wren_primitive.c</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node12 -->
 <g id="edge12" class="edge">
-<title>Node10&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M344.04,-48.45C346.14,-39.38 348.55,-29 350.26,-21.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="340.62,-47.71 341.76,-58.25 347.44,-49.3 340.62,-47.71"/>
+<title>Node11&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M403.09,-49.92C409.64,-40.52 417.38,-29.4 422.78,-21.64"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="400.14,-48.04 397.29,-58.25 405.88,-52.04 400.14,-48.04"/>
 </g>
 </g>
 </svg>

@@ -88,11 +88,11 @@ $(document).ready(function(){initNavTree('db/d62/md__e_r_i_s_core_lib_wren_doc_s
 <div class="contents">
 <div class="textblock"><p>^title Modules</p>
 <p>Wren comes with two kinds of modules, the core module (built-in), and a few optional modules that the host embedding Wren can enable.</p>
-<h2><a class="anchor" id="autotoc_md331"></a>
+<h2><a class="anchor" id="autotoc_md404"></a>
 Core module</h2>
 <p>The core module is built directly into the VM and is implicitly imported by every other module. You don't need to <code>import</code> anything to use it. It contains objects and types for the language itself like <a href="../../core/num.html">numbers</a> and <a href="../../core/string.html">strings</a>.</p>
 <p>Because Wren is designed for [embedding in applications][embedding], its core module is minimal and is focused on working with objects within Wren. For stuff like file IO, graphics, etc., it is up to the host application to provide interfaces for this.</p>
-<h2><a class="anchor" id="autotoc_md332"></a>
+<h2><a class="anchor" id="autotoc_md405"></a>
 Optional modules</h2>
 <p>Optional modules are available in the Wren project, but whether they are included is up to the host. They are written in Wren and C, with no external dependencies, so including them in your application is as easy as a simple compile flag.</p>
 <p>Since they aren't <em>needed</em> by the VM itself to function, you can disable some or all of them, so check if your host has them available.</p>

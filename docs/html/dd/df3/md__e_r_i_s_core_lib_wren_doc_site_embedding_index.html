@@ -97,13 +97,13 @@ $(document).ready(function(){initNavTree('dd/df3/md__e_r_i_s_core_lib_wren_doc_s
 <li><b>We want the API to be pleasant to use.</b> This is the last constraint because it's the softest. Of course, we want a beautiful, usable API. But we really <em>need</em> to handle the above, so we're willing to make things a bit more of a chore to reach the first three goals.</li>
 </ol>
 <p>Fortunately, we aren't the first people to tackle this. If you're familiar with <a href="https://www.lua.org/pil/24.html">Lua's C API</a>, you'll find Wren's similar.</p>
-<h3><a class="anchor" id="autotoc_md192"></a>
+<h3><a class="anchor" id="autotoc_md216"></a>
 Performance and safety</h3>
 <p>When code is safely snuggled within the confines of the VM, it's pretty safe. <a class="el" href="../../d4/d3e/struct_method.html">Method</a> calls are dynamically checked and generate runtime errors which can be caught and handled. The stack grows if it gets close to overflowing. In general, when you're within Wren code, it tries very hard to avoid crashing and burning.</p>
 <p>This is why you use a high level language after all&mdash;it's safer and more productive than C. C, meanwhile, really assumes you know what you're doing. You can cast pointers in invalid ways, misinterpret bits, use memory after freeing it, etc. What you get in return is blazing performance. Many of the reasons C is fast are because it takes all the governors and guardrails off.</p>
 <p>Wren's embedding API defines the border between those worlds, and takes on some of the characteristics of C. When you call any of the embedding API functions, it assumes you are calling them correctly. If you invoke a Wren method from C that expects three arguments, it trusts that you gave it three arguments.</p>
 <p>In debug builds, Wren has assertions to check as many things as it can, but in release builds, Wren expects you to do the right thing. This means you need to take care when using the embedding API, just like you do in all C code you write. In return, you get an API that is quite fast.</p>
-<h2><a class="anchor" id="autotoc_md193"></a>
+<h2><a class="anchor" id="autotoc_md217"></a>
 Including Wren</h2>
 <p>There are two (well, three) ways to get the Wren VM into your program:</p>
 <ol type="1">
@@ -117,7 +117,7 @@ Including Wren</h2>
 <p>If your program is in C++ but you are linking to the Wren library compiled as C, this header handles the differences in calling conventions between C and C++:</p>
 <pre class="snippet" data-lang="c">
 #include "wren.hpp"
-</pre><h2><a class="anchor" id="autotoc_md194"></a>
+</pre><h2><a class="anchor" id="autotoc_md218"></a>
 Creating a Wren VM</h2>
 <p>Once you've integrated the code into your executable, you need to create a virtual machine. To do that, you create a <code><a class="el" href="../../d5/df9/struct_wren_configuration.html">WrenConfiguration</a></code> object and initialize it.</p>
 <pre class="snippet" data-lang="c">
@@ -139,7 +139,7 @@ void <a class="el" href="../../d0/d29/main_8c.html#ad0c26c660738b28a098f1400caef
 WrenVM* vm = wrenNewVM(&amp;config);
 </pre><p>This allocates memory for a new VM and initializes it. The Wren C implementation has no global state, so every single bit of data Wren uses is bundled up inside a <a class="el" href="../../d7/ddb/struct_wren_v_m.html">WrenVM</a>. You can have multiple Wren VMs running independently of each other without any problems, even concurrently on different threads.</p>
 <p><code><a class="el" href="../../dd/d19/wren_8h.html#a564a87c8703d1d01c6cc5d165e3c819a">wrenNewVM()</a></code> stores its own copy of the configuration, so after calling it, you can discard the <a class="el" href="../../d5/df9/struct_wren_configuration.html">WrenConfiguration</a> struct you filled in. Now you have a live VM, waiting to run some code!</p>
-<h2><a class="anchor" id="autotoc_md196"></a>
+<h2><a class="anchor" id="autotoc_md219"></a>
 Executing Wren code</h2>
 <p>You execute a string of Wren source code like so:</p>
 <pre class="snippet" data-lang="c">
@@ -151,14 +151,14 @@ WrenInterpretResult result = wrenInterpret(
 <p>Otherwise, Wren spins up a new <a href="../../../concurrency.html">fiber</a> and executes the code in that. Your code can in turn spawn whatever other fibers it wants. It keeps running fibers until they all complete or one <a href="../../../modules/core/fiber.html#fiber.suspend()">suspends</a>.</p>
 <p>If a <a href="../../../error-handling.html">runtime error</a> occurs (and another fiber doesn't handle it), Wren aborts fibers all the way back to the main one and returns <code>WREN_RESULT_RUNTIME_ERROR</code>. Otherwise, when the last fiber successfully returns, it returns <code>WREN_RESULT_SUCCESS</code>.</p>
 <p>All code passed to <code><a class="el" href="../../dd/d19/wren_8h.html#a653b065ece2f5fb52dc3ff41e7c8322a">wrenInterpret()</a></code> runs in a special "main" module. That way, top-level names defined in one call can be accessed in later ones. It's similar to a REPL session.</p>
-<h2><a class="anchor" id="autotoc_md197"></a>
+<h2><a class="anchor" id="autotoc_md220"></a>
 Shutting down a VM</h2>
 <p>Once the party is over and you're ready to end your relationship with a VM, you need to free any memory it allocated. You do that like so:</p>
 <pre class="snippet" data-lang="c">
 wrenFreeVM(vm);
 </pre><p>After calling that, you obviously cannot use the <code>WrenVM*</code> you passed to it again. It's dead.</p>
 <p>Note that Wren will yell at you if you still have any live <a href="../../slots-and-handles.html#handles">WrenHandle</a> objects when you call this. This makes sure you haven't lost track of any of them (which leaks memory) and you don't try to use any of them after the VM has been freed.</p>
-<h2><a class="anchor" id="autotoc_md199"></a>
+<h2><a class="anchor" id="autotoc_md221"></a>
 A complete example</h2>
 <p>Below is a complete example of the above. You can find this file in the <a href="https://github.com/wren-lang/wren/blob/main/example/embedding/main.c">example</a> folder.</p>
 <pre class="snippet" data-lang="c">

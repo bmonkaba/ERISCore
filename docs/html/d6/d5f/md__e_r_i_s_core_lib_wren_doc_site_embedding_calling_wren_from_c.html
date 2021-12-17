@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('d6/d5f/md__e_r_i_s_core_lib_wren_doc_s
 <li><b>The arguments to pass to the method.</b></li>
 </ul>
 <p>We'll tackle these one at a time.</p>
-<h3><a class="anchor" id="autotoc_md225"></a>
+<h3><a class="anchor" id="autotoc_md229"></a>
 Getting a Method Handle</h3>
 <p>When you run a chunk of Wren code like this:</p>
 <pre class="snippet">
@@ -110,7 +110,7 @@ object.someMethod(1, 2, 3)
 WrenHandle* <a class="el" href="../../de/db2/wren__vm_8c.html#a7d0c3d6e0b8d6766eab22c6a07d2f10d">wrenMakeCallHandle(WrenVM* vm, const char* signature)</a>;
 </pre><p>That takes a method signature as a string and gives you back an opaque handle that represents the compiled method symbol. Now you have a <em>reusable</em> handle that can be used to very quickly call a certain method given a receiver and some arguments.</p>
 <p>This is just a regular <a class="el" href="../../d7/d18/struct_wren_handle.html">WrenHandle</a>, which means you can hold onto it as long as you like. Typically, you'd call this once outside of your application's performance critical loops and reuse it as long as you need. It is us up to you to release it when you no longer need it by calling <code><a class="el" href="../../dd/d19/wren_8h.html#a146d920cb320a0069edef09a8de86a43">wrenReleaseHandle()</a></code>.</p>
-<h2><a class="anchor" id="autotoc_md227"></a>
+<h2><a class="anchor" id="autotoc_md230"></a>
 Setting Up a Receiver</h2>
 <p>OK, we have a method, but who are we calling it on? We need a receiver, and as you can probably guess after reading the <a href="../../slots-and-handles.html">last section</a>, we give that to Wren by storing it in a slot. In particular, <b>the receiver for a method call goes in slot zero.</b></p>
 <p>Any object you store in that slot can be used as a receiver. You could even call <code>+</code> on a number by storing a number in there if you felt like it.</p>
@@ -138,19 +138,19 @@ WrenHandle* gameEngineClass = wrenGetSlotHandle(vm, 0);
 <pre class="snippet" data-lang="c">
 wrenSetSlotHandle(vm, 0, gameEngineClass);
 </pre><p>Just like we hoisted <code><a class="el" href="../../dd/d19/wren_8h.html#abe767089c421873af8384fba0934cd26">wrenMakeCallHandle()</a></code> out of our performance critical loop, we can hoist the call to <code><a class="el" href="../../dd/d19/wren_8h.html#aa479b76893c2f35d2dd3c5aab0e69bb2">wrenGetVariable()</a></code> out. Of course, if your code isn't performance critical, you don't have to do this.</p>
-<h2><a class="anchor" id="autotoc_md229"></a>
+<h2><a class="anchor" id="autotoc_md232"></a>
 Passing Arguments</h2>
 <p>We've got a receiver in slot zero now, next we need to pass in any other arguments. In our GameEngine example, that's just the elapsed time. <a class="el" href="../../d4/d3e/struct_method.html">Method</a> arguments go in consecutive slots after the receiver. So the elapsed time goes into slot one. You can use any of the slot functions to set this up. For the example, it's just:</p>
 <pre class="snippet" data-lang="c">
 wrenSetSlotDouble(vm, 1, elapsedTime);
-</pre><h2><a class="anchor" id="autotoc_md230"></a>
+</pre><h2><a class="anchor" id="autotoc_md233"></a>
 Calling the Method</h2>
 <p>We have all of the data in place, so all that's left is to pull the trigger and tell the VM to start running some code:</p>
 <pre class="snippet" data-lang="c">
 WrenInterpretResult <a class="el" href="../../de/db2/wren__vm_8c.html#a645b672702feb103a02be79be37a2aaf">wrenCall(WrenVM* vm, WrenHandle* method)</a>;
 </pre><p>It takes the method handle we created using <code><a class="el" href="../../dd/d19/wren_8h.html#abe767089c421873af8384fba0934cd26">wrenMakeCallHandle()</a></code>. Now Wren starts running code. It looks up the method on the receiver, executes it and keeps running until either the method returns or a fiber <a href="../../../modules/core/fiber.html#fiber.suspend()">suspends</a>.</p>
 <p><code><a class="el" href="../../dd/d19/wren_8h.html#a4bbb5e4dc3f5b794c88b4210e30927ba">wrenCall()</a></code> returns the same WrenInterpretResult enum as <code><a class="el" href="../../dd/d19/wren_8h.html#a653b065ece2f5fb52dc3ff41e7c8322a">wrenInterpret()</a></code> to tell you if the method completed successfully or a runtime error occurred. (<code><a class="el" href="../../dd/d19/wren_8h.html#a4bbb5e4dc3f5b794c88b4210e30927ba">wrenCall()</a></code> never returns <code>WREN_ERROR_COMPILE</code> since it doesn't compile anything.)</p>
-<h2><a class="anchor" id="autotoc_md232"></a>
+<h2><a class="anchor" id="autotoc_md234"></a>
 Getting the Return Value</h2>
 <p>When <code><a class="el" href="../../dd/d19/wren_8h.html#a4bbb5e4dc3f5b794c88b4210e30927ba">wrenCall()</a></code> returns, it leaves the slot array in place. In slot zero, you can find the method's return value, which you can access using any of the slot reading functions. If you don't need the return value, you can ignore it.</p>
 <p>This is how you drive Wren from C, but how do you put control in Wren's hands? For that, you'll need the next section...</p>

@@ -89,45 +89,45 @@ $(document).ready(function(){initNavTree('d1/dd6/md__e_r_i_s_core_lib_wren_doc_s
 <div class="textblock"><p>^title Map Class</p>
 <p>Extends <a href="../../sequence.html">Sequence</a>.</p>
 <p>An associative collection that maps keys to values. More details <a href="../../../../maps.html">here</a>.</p>
-<h2><a class="anchor" id="autotoc_md333"></a>
+<h2><a class="anchor" id="autotoc_md392"></a>
 Static Method</h2>
-<h3><a class="anchor" id="autotoc_md334"></a>
+<h3><a class="anchor" id="autotoc_md393"></a>
 Map.**new**()</h3>
 <p>Creates a new empty map. Equivalent to <code>{}</code>.</p>
-<h2><a class="anchor" id="autotoc_md335"></a>
+<h2><a class="anchor" id="autotoc_md394"></a>
 Methods</h2>
-<h3><a class="anchor" id="autotoc_md336"></a>
+<h3><a class="anchor" id="autotoc_md395"></a>
 &lt;strong&gt;clear&lt;/strong&gt;()</h3>
 <p>Removes all entries from the map.</p>
-<h3><a class="anchor" id="autotoc_md337"></a>
+<h3><a class="anchor" id="autotoc_md396"></a>
 &lt;strong&gt;containsKey&lt;/strong&gt;(key)</h3>
 <p>Returns <code>true</code> if the map contains <code>key</code> or <code>false</code> otherwise.</p>
-<h3><a class="anchor" id="autotoc_md338"></a>
+<h3><a class="anchor" id="autotoc_md397"></a>
 &lt;strong&gt;count&lt;/strong&gt;</h3>
 <p>The number of entries in the map.</p>
-<h3><a class="anchor" id="autotoc_md339"></a>
+<h3><a class="anchor" id="autotoc_md398"></a>
 &lt;strong&gt;keys&lt;/strong&gt;</h3>
 <p>A <a href="../../sequence.html">Sequence</a> that can be used to iterate over the keys in the map. Note that iteration order is undefined. All keys will be iterated over, but may be in any order, and may even change between invocations of Wren.</p>
-<h3><a class="anchor" id="autotoc_md340"></a>
+<h3><a class="anchor" id="autotoc_md399"></a>
 &lt;strong&gt;remove&lt;/strong&gt;(key)</h3>
 <p>Removes <code>key</code> and the value associated with it from the map. Returns the value.</p>
 <p>If the key was not present, returns <code>null</code>.</p>
-<h3><a class="anchor" id="autotoc_md341"></a>
+<h3><a class="anchor" id="autotoc_md400"></a>
 &lt;strong&gt;values&lt;/strong&gt;</h3>
 <p>A <a href="../../sequence.html">Sequence</a> that can be used to iterate over the values in the map. Note that iteration order is undefined. All values will be iterated over, but may be in any order, and may even change between invocations of Wren.</p>
 <p>If multiple keys are associated with the same value, the value will appear multiple times in the sequence.</p>
-<h3><a class="anchor" id="autotoc_md342"></a>
+<h3><a class="anchor" id="autotoc_md401"></a>
 &lt;strong&gt;[**key&lt;/strong&gt;]** operator</h3>
 <p>Gets the value associated with <code>key</code> in the map. If <code>key</code> is not present in the map, returns <code>null</code>.</p>
 <pre class="snippet">
 var map = {"george": "harrison", "ringo": "starr"}
 System.print(map["ringo"]) //&gt; starr
 System.print(map["pete"])  //&gt; null
-</pre><h3><a class="anchor" id="autotoc_md343"></a>
+</pre><h3><a class="anchor" id="autotoc_md402"></a>
 &lt;strong&gt;[**key&lt;/strong&gt;]=**(value) operator</h3>
 <p>Associates <code>value</code> with <code>key</code> in the map. If <code>key</code> was already in the map, this replaces the previous association.</p>
 <p>It is a runtime error if the key is not a <a href="../../bool.html">Bool</a>, <a href="../../class.html">Class</a>, <a href="../../null.html">Null</a>, <a href="../../num.html">Num</a>, <a href="../../range.html">Range</a>, or <a href="../../string.html">String</a>.</p>
-<h3><a class="anchor" id="autotoc_md344"></a>
+<h3><a class="anchor" id="autotoc_md403"></a>
 &lt;strong&gt;iterate&lt;/strong&gt;(iterator), &lt;strong&gt;iteratorValue&lt;/strong&gt;(iterator)</h3>
 <p>Implements the <a href="../../../../control-flow.html#the-iterator-protocol">iterator protocol</a> for iterating over the keys and values of a map at the same time.</p>
 <p>When a map (as opposed to its keys or values separately) is iterated over, each key/value pair is wrapped in a <code><a class="el" href="../../d2/d99/struct_map_entry.html">MapEntry</a></code> object. <code><a class="el" href="../../d2/d99/struct_map_entry.html">MapEntry</a></code> is a small helper class which has read-only <code>key</code> and <code>value</code> properties and a familiar <code>toString</code> representation.</p>

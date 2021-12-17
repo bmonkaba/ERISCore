@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('de/d22/md__e_r_i_s_core_lib_wren_doc_s
 <pre class="snippet">
 [1, "banana", true]
 </pre><p>Here, we've created a list of three elements. Notice that the elements don't have to be the same type.</p>
-<h2><a class="anchor" id="autotoc_md252"></a>
+<h2><a class="anchor" id="autotoc_md261"></a>
 Accessing elements</h2>
 <p>You can access an element from a list by calling the [subscript operator][] on it with the index of the element you want. Like most languages, indexes start at zero:</p>
 <pre class="snippet">
@@ -105,7 +105,7 @@ System.print(trees[-2]) //&gt; oak
 </pre><p>It's a runtime error to pass an index outside of the bounds of the list. If you don't know what those bounds are, you can find out using count:</p>
 <pre class="snippet">
 System.print(trees.count) //&gt; 4
-</pre><h2><a class="anchor" id="autotoc_md253"></a>
+</pre><h2><a class="anchor" id="autotoc_md262"></a>
 Slices and ranges</h2>
 <p>Sometimes you want to copy a chunk of elements from a list. You can do that by passing a <a href="../../values.html#ranges">range</a> to the subscript operator, like so:</p>
 <pre class="snippet">
@@ -114,7 +114,7 @@ System.print(trees[1..2]) //&gt; [birch, oak]
 <p>Negative bounds also work like they do when passing a single number, so to copy a list, you can just do:</p>
 <pre class="snippet">
 trees[0..-1]
-</pre><h2><a class="anchor" id="autotoc_md254"></a>
+</pre><h2><a class="anchor" id="autotoc_md263"></a>
 Adding elements</h2>
 <p>Lists are <em>mutable</em>, meaning their contents can be changed. You can swap out an existing element in the list using the subscript setter:</p>
 <pre class="snippet">
@@ -135,7 +135,7 @@ letters.insert(3, "d")   // OK: inserts at end.
 System.print(letters)    //&gt; [a, b, c, d]
 letters.insert(-2, "e")  // Counts back from size after insert.
 System.print(letters)    //&gt; [a, b, c, e, d]
-</pre><h2><a class="anchor" id="autotoc_md255"></a>
+</pre><h2><a class="anchor" id="autotoc_md264"></a>
 Adding lists together</h2>
 <p>Lists have the ability to be added together via the <code>+</code> operator. This is often known as concatenation.</p>
 <pre class="snippet">
@@ -143,7 +143,7 @@ var letters = ["a", "b", "c"]
 var other = ["d", "e", "f"]
 var combined = letters + other
 System.print(combined)  //&gt; [a, b, c, d, e, f]
-</pre><h2><a class="anchor" id="autotoc_md257"></a>
+</pre><h2><a class="anchor" id="autotoc_md265"></a>
 Removing elements</h2>
 <p>The opposite of <code>insert</code> is <code>removeAt</code>. It removes a single element from a given position in the list.</p>
 <p>To remove a specific <em>value</em> instead, use <code>remove</code>. The first value that matches using regular equality will be removed.</p>

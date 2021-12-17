@@ -87,13 +87,13 @@ $(document).ready(function(){initNavTree('dd/d9c/md__e_r_i_s_core_lib_wren_doc_s
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>^title Q &amp; A</p>
-<h2><a class="anchor" id="autotoc_md418"></a>
+<h2><a class="anchor" id="autotoc_md463"></a>
 Why did you create Wren?</h2>
 <p>Other creative endeavors aren't immediately met with existential crises, but for some reason programmers don't seem to like new languages. Here's the niche I'm trying to fill:</p>
 <p>There are a few scripting languages used for embedding in applications. Lua is the main one. TCL used to be. There's also Guile, increasingly JavaScript, and some applications embed Python. I'm an ex-game developer, so when I think "scripting", I tend to think "game scripting".</p>
 <p>Lua is nice: it's small, simple, and fast. But&mdash;and I don't mean this as a criticism&mdash;it's also weird if you're used to languages like C++ and Java. The syntax is different. The semantics, especially the object model are unusual. Anyone can get used to 1-based indexing, but things like metatables really show that objects were bolted onto Lua after the fact.</p>
 <p>I think there's room for a language as simple as Lua, but that feels natural to someone with an OOP background. Wren is my attempt at that.</p>
-<h2><a class="anchor" id="autotoc_md423"></a>
+<h2><a class="anchor" id="autotoc_md464"></a>
 Why classes?</h2>
 <p>Thanks to JavaScript's popularity, lots of people are discovering prototypes right now, and the paradigm is experiencing a popularity boom. I think prototypes are interesting, but after <a href="http://finch.stuffwithstuff.com/">several years playing with them</a>, I concluded (like many people on the original Self project that invented prototypes) that classes are more usable.</p>
 <p>Here's an example of that kind of object-oriented programming in Lua:</p>
@@ -131,14 +131,14 @@ var account = Account.new(1000)
 account.withdraw(100)
 </pre><p>Classes have a reputation for complexity because most of the widely used languages with them are quite complex: C++, Java, C#, Ruby, and Python. I hope to show with Wren that it is those languages that are complex, and not classes themselves.</p>
 <p>Smalltalk, the language that inspired most of those languages, is famously simple. Its syntax <a href="http://www.jarober.com/blog/blogView?showComments=true&amp;title=Readability+is+Key&amp;entry=3506312690">fits on an index card</a>. My aim is to keep Wren that minimal while still having the expressive power of <a href="../../classes.html">classes</a>.</p>
-<h2><a class="anchor" id="autotoc_md432"></a>
+<h2><a class="anchor" id="autotoc_md465"></a>
 Why compile to bytecode?</h2>
 <p>The <a href="../../performance.html">performance page</a> has more details, but the short answer is that bytecode is a nice trade-off between performance and simplicity. Also:</p>
 <ul>
 <li>Many devices like iPhones and game consoles don't allow executing code generated at runtime, which rules out just-in-time compilation.</li>
 <li>I think <a href="../../concurrency.html">fibers</a> are a really powerful tool, and implementing them is straightforward in a bytecode VM that doesn't use the native stack.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md435"></a>
+<h2><a class="anchor" id="autotoc_md466"></a>
 Why is the VM stack-based instead of register-based?</h2>
 <p>Bytecode VMs come in two flavors. Stack-based VMs have short (usually one byte) instructions whose operands are implicitly understood to be at the top of the stack. That means you often have a couple of instructions to push some stuff on the stack and then an instruction to do something.</p>
 <p>Register-based VMs have big instructions (usually 32 bits) that contain both an opcode and a couple of numbers indicating where in the stack the operands can be found. This is cool because it means, that, for example, this Lua statement:</p>
@@ -151,7 +151,7 @@ a = b + c
 <p>The calling convention for methods requires all of their parameters to be at the top of the caller's stack so that they can become bottom of the callee's stack frame window. To call <code>+</code> in Wren, we still have to push the arguments on top of the stack. Likewise, the method calling convention places the return value where the first argument was, so we'd have to move it back down to the destination slot after the call.</p>
 <p>It may be worth having dedicated instructions for arithmetic that special case the built-in types before falling back to user-defined operator methods (which I assume is what Lua does since they added operator overloading late in the language's development). If that happens, it may be possible to switch to register-based.</p>
 <p>But I'm not convinced it would be an actual performance win. A lot of details of the language affect whether a register-based VM is better. For example, assignments are statements in Lua but expressions in Wren, which would make them harder to compile to efficient register-based code.</p>
-<h2><a class="anchor" id="autotoc_md436"></a>
+<h2><a class="anchor" id="autotoc_md467"></a>
 What about your other languages?</h2>
 <p>This is a strange question if you don't happen to know <a href="http://journal.stuffwithstuff.com">who I am</a>. In the past, I've hacked on and blogged about a couple of other hobby languages like <a href="http://finch.stuffwithstuff.com/">Finch</a> and <a href="http://magpie-lang.org/">Magpie</a>.</p>
 <p>I started Finch to learn more about implementing an interpreter and also about the prototype paradigm. I learned a ton about both. Critically, I learned that I really prefer classes over prototypes. I started retrofitting classes into Finch but realized it was too big of a change, and thus Wren was born.</p>
