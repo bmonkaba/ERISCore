@@ -9,8 +9,8 @@
  * 
  */
 #include "AppManager.h"
+#include "globaldefs.h"
 
-#define SHOW_ACTIVE_TIME_MILLISEC 150
 
 extern const ILI9341_t3_font_t Arial_9;
 

@@ -18,6 +18,7 @@ AudioDirector::AudioDirector(){
   activeConnections = 0;
   categoryCount=0;
   shortNameQueryResultCount=0;
+  printStatsSelect = 0;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
   for (uint16_t i=0; i < MAX_UNIQUE_NAMES_PER_CATEGORY; i++){
@@ -122,72 +123,76 @@ void AudioDirector::printStats(){
 
   if (sci==NULL) return;
 
-  sci->startLZ4Message();
-  sci->print(F("STATS {\"AudioDirector\":{"));  
-  //send audio object pool info
-  sci->print(F("\"AudioStreamObjPool\":{"));
-  for(uint16_t i=0; i < objCount;i++){
-    sci->print(F("\""));
-    sci->print(pAudioStreamObjPool[i]->shortName);sci->print(F("_"));
-    sci->print(pAudioStreamObjPool[i]->instance);
-    sci->print(F("\":{\"processorUsage\":"));
-    sci->print(pAudioStreamObjPool[i]->processorUsage());
-    sci->print(F(",\"processorUsageMax\":"));
-    sci->print(pAudioStreamObjPool[i]->processorUsageMax());
-    sci->print(F(",\"category\":\""));
-    sci->print(pAudioStreamObjPool[i]->category);sci->print(F("\""));
-    sci->print(F(",\"inputs\":"));
-    sci->print(pAudioStreamObjPool[i]->unum_inputs);
-    sci->print(F(",\"outputs\":"));
-    sci->print(pAudioStreamObjPool[i]->unum_outputs);
-    sci->print("}"); //close obj
-    if ( i < (objCount -1)) sci->print(",");
-  }
-  sci->print("},");
-  sci->endLZ4Message();
-  //send connection pool info
-  sci->startLZ4Message();
-  sci->print(F("\"AudioConnectionPool\":{"));
-  sci->print(F("\"activeConnections\":"));
-  sci->print(activeConnections);
-  //for each...
-  for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
-    sci->print(F(",\""));
-    sci->print(i); //connection index used as a container
-    sci->print(F("\":{"));
-
-    sci->print(F("\"isConnected\":"));
-    sci->print(pCord[i]->isConnected);
-    if (pCord[i]->isConnected == true){
-        //assigned connections
-        sci->print(F(",\"sourceName\":\""));
-        sci->print(pCord[i]->pSrc->shortName);
-        sci->print(F("\",\"sourceInstance\":"));
-        sci->print(pCord[i]->pSrc->instance);
-        sci->print(F(",\"sourcePort\":"));
-        sci->print(pCord[i]->src_index);
-
-        sci->print(F(",\"destName\":\""));
-        sci->print(pCord[i]->pDst->shortName);
-        sci->print(F("\",\"destInstance\":"));
-        sci->print(pCord[i]->pDst->instance);
-        sci->print(F(",\"destPort\":"));
-        sci->print(pCord[i]->dest_index);
-    }else{
-        //unassigned connections
+  if (printStatsSelect==0){
+    printStatsSelect++;
+    sci->startLZ4Message();
+    sci->print(F("STATS {\"AudioDirector\":{"));  
+    sci->print(F("\"AudioStreams\":{"));
+    
+    for(uint16_t i=0; i < objCount;i++){
+      sci->print(F("\""));
+      sci->print(pAudioStreamObjPool[i]->shortName);sci->print(F("_"));
+      sci->print(pAudioStreamObjPool[i]->instance);
+      sci->print(F("\":{\"cpu\":"));
+      sci->print(pAudioStreamObjPool[i]->processorUsage());
+      sci->print(F(",\"cpu_max\":"));
+      sci->print(pAudioStreamObjPool[i]->processorUsageMax());
+      sci->print(F(",\"category\":\""));
+      sci->print(pAudioStreamObjPool[i]->category);sci->print(F("\""));
+      sci->print(F(",\"inputs\":"));
+      sci->print(pAudioStreamObjPool[i]->unum_inputs);
+      sci->print(F(",\"outputs\":"));
+      sci->print(pAudioStreamObjPool[i]->unum_outputs);
+      sci->print("}"); //close obj
+      if ( i < (objCount -1)) sci->print(",");
     }
-    sci->print(F("}")); //close the connection container
+    sci->println("}}");
+    sci->endLZ4Message();
+  }else{ 
+    printStatsSelect = 0;
+    sci->startLZ4Message();
+    sci->print(F("STATS {\"AudioDirector\":{"));  
+    sci->print(F("\"AudioConnectionPool\":{"));
+    sci->print(F("\"activeConnections\":"));
+    sci->print(activeConnections);
+    for(uint16_t i=0; i < MAX_CONNECTIONS;i++){ //for each...
+      while(sci->throttle()){delay(1);}
+      sci->print(F(",\""));
+      sci->print(i); //connection index used as a container
+      sci->print(F("\":{"));
+      sci->print(F("\"inUse\":"));
+      sci->print(pCord[i]->isConnected);
+      if (pCord[i]->isConnected == true){ //assigned connections
+          sci->print(F(",\"srcType\":\""));
+          sci->print(pCord[i]->pSrc->shortName);
+          sci->print(F("\",\"srcInstance\":"));
+          sci->print(pCord[i]->pSrc->instance);
+          sci->print(F(",\"srcPort\":"));
+          sci->print(pCord[i]->src_index);
+
+          sci->print(F(",\"destType\":\""));
+          sci->print(pCord[i]->pDst->shortName);
+          sci->print(F("\",\"destInstance\":"));
+          sci->print(pCord[i]->pDst->instance);
+          sci->print(F(",\"destPort\":"));
+          sci->print(pCord[i]->dest_index);
+      }else{
+          //unassigned connections
+      }
+      sci->print(F("}")); //close the connection container
+    }
+    sci->print(F("}}}")); //close the connection container
+    sci->endLZ4Message();
   }
-  sci->print(F("}")); // close the coonection pool container
-  sci->endLZ4Message();
+  //sci->startLZ4Message();
+  //sci->print(F("}")); // close the coonection pool container
   //throw in some audio director stats
-  sci->startLZ4Message();
-  sci->print(F(",\"AudioStreamObjCount\":")); sci->print(objCount);
-  sci->print(F(",\"memory\":"));
-  sci->print(e-s);
-  sci->println(F("}}"));
-  sci->endLZ4Message();
-  //sci->flush();
+  //sci->print(F(",\"AudioStreamObjCount\":")); sci->print(objCount);
+  //sci->print(F(",\"memory\":"));
+  //sci->print(e-s);
+  //sci->println(F("}}"));
+  //sci->endLZ4Message();
+  
 }
 
 void AudioDirector::generateCategoryList(){

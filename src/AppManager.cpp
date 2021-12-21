@@ -178,14 +178,14 @@ void AppManager::update(){
         if (exclusive_app_render == false){
           do{
               app_time=0;
-              if (node->update_call_period > node->update_call_period_max) node->update_call_period_max = node->update_call_period;
+              if (node->update_period > node->update_period_max) node->update_period_max = node->update_period;
               node->update(); //update active window
-              node->update_loop_time = app_time;
-              if (node->update_loop_time > node->update_loop_time_max){
-                  node->update_loop_time_max = node->update_loop_time;
+              node->update_cpu_time = app_time;
+              if (node->update_cpu_time > node->update_cpu_time_max){
+                  node->update_cpu_time_max = node->update_cpu_time;
               }
               //update the data dictionary
-              node->update_call_period =0;
+              node->update_period =0;
               node=node->nextAppicationNode;//check next node
             }while(node !=NULL);
         };
@@ -219,11 +219,11 @@ void AppManager::update(){
       if (node->updateRT_priority > 0){
         node->updateRT_priority--;
       }else{
-        if (node->updateRT_call_period > node->updateRT_call_period_max) node->updateRT_call_period_max = node->updateRT_call_period;
+        if (node->updateRT_period > node->updateRT_period_max) node->updateRT_period_max = node->updateRT_period;
         node->updateRT(); //real time update (always called)
-        node->updateRT_loop_time = app_time;
-        if (node->updateRT_loop_time > node->updateRT_loop_time_max) node->updateRT_loop_time_max = node->updateRT_loop_time;
-        node->updateRT_call_period =0;
+        node->updateRT_cpu_time = app_time;
+        if (node->updateRT_cpu_time > node->updateRT_cpu_time_max) node->updateRT_cpu_time_max = node->updateRT_cpu_time;
+        node->updateRT_period =0;
       }
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
@@ -449,22 +449,17 @@ void AppManager::printStats (){
     sci->print(F("\""));
     sci->print(node->name);
     sci->print(F("\":{"));
-    //sci->print("\tupdate_loop_time: ");sci->print(node->update_loop_time);
-    sci->print(F("\"update_loop_time_max\":"));sci->print(node->update_loop_time_max);sci->print(F(","));
-    //sci->print("\tupdateRT_loop_time: ");sci->print(node->updateRT_loop_time);
-    sci->print(F("\"updateRT_loop_time_max\":"));sci->print(node->updateRT_loop_time_max);sci->print(F(","));
-    //sci->print("\tcycle_time: ");sci->print(node->cycle_time);
-    sci->print(F("\"cycle_time_max\":"));sci->print(node->cycle_time_max);sci->print(F(","));
-    //sci->print("\tupdate_call_period: ");sci->print(node->update_call_period);
-    sci->print(F("\"update_call_period_max\":"));sci->print(node->update_call_period_max);sci->print(F(","));
-    sci->print(F("\"updateRT_call_period_max\":"));sci->print(node->updateRT_call_period_max);
+    sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
+    sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);sci->print(F(","));
+    sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
+    sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);
     sci->print(F("},"));
     //clear the stats
-    node->update_loop_time_max = 0;
-    node->updateRT_loop_time_max = 0;
+    node->update_cpu_time_max = 0;
+    node->updateRT_cpu_time_max = 0;
     node->cycle_time_max = 0;
-    node->update_call_period_max = 0;
-    node->updateRT_call_period_max = 0;
+    node->update_period_max = 0;
+    node->updateRT_period_max = 0;
     node=node->nextAppicationNode;//check next node
   }while(node !=NULL);
   if (root != 0){
@@ -473,13 +468,13 @@ void AppManager::printStats (){
     sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
   }
   sci->println(F("}}"));
-  sci->endLZ4Message();
+  //sci->endLZ4Message();
 
   //print app manager stats
-  sci->startLZ4Message();
+  //sci->startLZ4Message();
   sci->print(F("STATS {\"APPMANAGER\":{"));
-  sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
-  sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
+  sci->print(F("\"cpu_time\":"));sci->print(cycle_time);sci->print(F(","));
+  sci->print(F("\"cpu_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
   sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
   sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
   sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);

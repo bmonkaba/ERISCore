@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2021
  * 
  */
-
 #include <ctype.h>
 #include "svcSerialCommandInterface.h"
 #include "AppManager.h"
@@ -129,7 +128,7 @@ void SvcSerialCommandInterface::endLZ4Message(){
     empty();
     encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
     while(throttle()){
-        delay(2);
+        delayMicroseconds(500);
     };
     Serial.print(" ");
     Serial.print(uncompressed_len);
@@ -137,6 +136,9 @@ void SvcSerialCommandInterface::endLZ4Message(){
     Serial.println(txBuffer);
     empty();
     free(workingBuffer);
+    while(throttle()){
+        delayMicroseconds(500);
+    };
 }
 
 /**
@@ -357,6 +359,7 @@ void SvcSerialCommandInterface::updateRT(){
             f = strstr(captureBuffer,"WREN_SCRIPT_END");
             if (f > 0){
                 Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script Received"));
+                /*
                 //Serial.flush();
                 //delay(2000);
                 Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script STRLEN captureBuffer: "));
@@ -379,6 +382,7 @@ void SvcSerialCommandInterface::updateRT(){
                 Serial.println(captureBuffer);
                 Serial.flush();
                 //delay(2000);
+                */
                 memset(f,0,strlen("WREN_SCRIPT_END"));//remove the EOF marker
                 //stream complete
                 isCapturingBulkData = false;
@@ -541,9 +545,9 @@ void SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
                 if (total_read > 1) am->getActiveApp()->MessageHandler(this,param);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
-                am->printStats();
                 ad->printStats();
-                delay(5);
+                while(throttle()){delay(2);}
+                am->printStats();
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 am->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
@@ -610,9 +614,12 @@ void SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
-                delayMicroseconds(100000);
-                Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
-                strcpy(txBuffer," ");
+                char* tmp;
+                tmp = (char*)malloc(1000);
+                while(throttle()){delay(1);}
+                startLZ4Message();
+                strcpy(tmp,"");
+                printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
                 //RAM2 always ends at 0x20280000
                 for(uint32_t i = 0x20000000; i < 0x20280000; i+=1){
                     if (i == 0x20010000) i = 0x20200000;
@@ -620,12 +627,12 @@ void SvcSerialCommandInterface::updateRT(){
                     c = *mp;
                     c = (c & 0xFF);
                     if(i%32==0 && i != 0x20000000){
-                        Serial.print(F("\",\"decode\":\""));
-                        Serial.print(txBuffer);
-                        Serial.println(F("\"}}"));
-                        strcpy(txBuffer,"");
-                        delay(4);
-                        throttle();
+                        print(F("\",\"decode\":\""));
+                        print(tmp);
+                        println(F("\"}}"));
+                        endLZ4Message();
+                        strcpy(tmp,"");
+                        while(throttle()){delay(1);}
                         if(i%1024==0){
                             float32_t pct;
                             pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
@@ -635,32 +642,34 @@ void SvcSerialCommandInterface::updateRT(){
                             }
                             Serial.println("");
                         }
-                        Serial.printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),i);
+                        startLZ4Message();
+                        printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),i);
                     }
 
-                    Serial.printf("%02X ",(uint8_t)c);
+                    printf("%02X ",(uint8_t)c);
                     const char* escape = "\\";
                     if (c=='"'){                        
-                        strncat(txBuffer, escape, 1);
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, escape, 1);
+                        strncat(tmp, &c, 1);
                     }else if (c=='\''){
-                        strncat(txBuffer, escape, 1);
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, escape, 1);
+                        strncat(tmp, &c, 1);
                     }else if (isprint((int)c)){ 
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, &c, 1);
                     }else if (iscntrl((int)c)){
                         c = '.';
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, &c, 1);
                     }else{
                         c = '?';
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, &c, 1);
                     }
                 }
-                Serial.println("\n");
-                Serial.println(F("RAM END"));
-                delay(100);
+                println("\n");
+                println(F("RAM END"));
+                endLZ4Message();
                 //flush out serial input buffer
                 Serial.clear();
+                free(tmp);
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
@@ -709,9 +718,7 @@ void SvcSerialCommandInterface::updateRT(){
             sincePeriodicStats = 0; 
             AppManager::getInstance()->printStats();
             ad->printStats();
-        }
-
-        if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD && !throttle()){
+        }else if (sincePeriodicDataDict > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD && !throttle()){
             sincePeriodicDataDict = 0;
             sincePeriodicStats = 0; 
             AppManager::getInstance()->data->printDictionary(this);

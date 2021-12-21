@@ -133,6 +133,26 @@ void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos
   }
 }
 
+void ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color){
+  int16_t dest_x,dest_y;
+  uint16_t *dstBuffer;
+  uint32_t write_index;
+  dstBuffer = dest->getSurfaceBufferP();
+  for (dest_y=0; dest_y < dest->getHeight();dest_y +=1){
+    for (dest_x=0; dest_x < dest->getWidth();dest_x +=1){
+      write_index = (dest_y * dest->getWidth()) + dest_x;
+      dstBuffer[write_index] = color;
+    }
+  }
+};
+
+void ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color){
+  uint16_t *dstBuffer;
+  dstBuffer = dest->getSurfaceBufferP();
+  dstBuffer[(y * dest->getWidth()) + x] = color;
+}
+
+
 void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   bltSD(_pfbtft, 320, path, filename,x,y,alpha_type);
   return;

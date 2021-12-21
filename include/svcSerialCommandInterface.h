@@ -59,6 +59,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         sincePeriodicStats = 0;
         indexRxBuffer = 0;
         indexTxBuffer = 0;
+        indexCaptureBuffer = 0;
         isStreamingFile = false;
         isCapturingBulkData = false;
         txBufferOverflowFlag = false;
@@ -85,6 +86,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     }
 
     void endLZ4Message();
+    bool throttle();
   protected:
     SdFs *pSD;
     FsFile file;
@@ -107,7 +109,6 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     elapsedMillis sincePeriodicDataDict;
     elapsedMillis sincePeriodicStats;
     uint16_t checksum(const char *msg);
-    bool throttle();
     void streamHandler();
     void update() override{};    //called only when the app is active
     void updateRT() override;
@@ -126,7 +127,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     };
     void flush(){
       while(Serial.availableForWrite() < 6000){
-        delay(15);
+        delay(1);
       }
       if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
       memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);

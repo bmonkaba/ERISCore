@@ -36,7 +36,7 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 101
+#define TX_PERIOD 37
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
@@ -87,6 +87,7 @@ class AppCQT:public AppBaseClass {
         //init the object to the default state
         osc[i]->begin(0.0, 0, WAVEFORM_SINE);
       }
+      
       AudioInterrupts();
       //take care to downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_1"));

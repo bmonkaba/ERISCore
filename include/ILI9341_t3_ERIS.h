@@ -192,7 +192,7 @@ class Animation{
         int16_t last_frame;
         uint16_t chunk;
         char filename[64];
-        char _path[64];
+        char _path[128];
 };
 
 enum bltAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};
@@ -214,13 +214,28 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //void flipBuffer();
         //void flipWritePointer();
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
-        void bltMem(Surface *dest, Surface *source,int16_t x,int16_t y,bltAlphaType alpha_type);
+        
         void bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
         void bltSDAnimationFullScreen(Animation *an);
         bool busy(){return _busy();} //(_dma_state & ILI9341_DMA_ACTIVE);}
         bool updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont);
+        //wrappers for drawing to a designated surface other than the main frame buffer(s)
+        //write methods
+        void bltMem(Surface *dest, Surface *source,int16_t x,int16_t y,bltAlphaType alpha_type);
+        void fillSurface(Surface *dest,uint16_t color);
+        void drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color);
+        void drawFastVLine(Surface *dest,int16_t x, int16_t y, int16_t h, uint16_t color);
+        void drawFastHLine(Surface *dest,int16_t x, int16_t y, int16_t w, uint16_t color);
+        void fillRect(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
+        void fillRectHGradient(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color1, uint16_t color2);
+        void fillRectVGradient(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color1, uint16_t color2);
+        void fillScreenVGradient(Surface *dest,uint16_t color1, uint16_t color2);
+        void fillScreenHGradient(Surface *dest,uint16_t color1, uint16_t color2);
+        //read methods
+        uint16_t readPixel(Surface *dest,int16_t x, int16_t y);
+
     protected:
         uint32_t tft_write_speed;
         uint32_t tft_read_speed;

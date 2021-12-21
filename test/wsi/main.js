@@ -324,6 +324,7 @@ $(document).ready(function () {
                         //write the container to the editor
                         editor.setValue(fileStreamContainer.join("\n"));
                         editor.resize();
+                        editor.navigateFileStart();
                         com_state="";
                     }else{
                         fileStreamContainer = fileStreamContainer.concat(message);
@@ -746,7 +747,17 @@ $(document).ready(function () {
                      editor.resize();
                 }
                 break;
+            case "VM":
+                message = message.replace("VM","");
 
+                var total = $("#vm_terminal")[0].value.split("\n");
+                if (total.length > 1000) 
+                   total = total.slice(total.length - 1000);              
+                $("#vm_terminal")[0].value = total.join("\n");
+                $("#vm_terminal")[0].value += message + "\n";
+                //$("#vm_terminal").append("\n");
+                $("#vm_terminal").scrollTop(10000000000);
+                break;
             case "CLS":
                 $("#received").empty();
                 break;
@@ -870,7 +881,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#editor").hide(0.15);
+        $("#editor_container").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -880,7 +891,7 @@ $(document).ready(function () {
         $("#graph_container").show(0.35);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#editor").hide(0.15);
+        $("#editor_container").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -890,7 +901,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").show(0.35);
         $("#monitor_container").hide(0.15);
-        $("#editor").hide(0.15);
+        $("#editor_container").hide(0.15);
         $("#symbols_container").hide(0.15);
         $("#listboxDataDict").empty();
         for (spark in sparks) {
@@ -904,7 +915,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").show(0.35);
-        $("#editor").hide(0.15);
+        $("#editor_container").hide(0.15);
         $("#symbols_container").hide(0.15);
     });
 
@@ -914,7 +925,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#editor").hide(0.15);
+        $("#editor_container").hide(0.15);
         $("#symbols_container").show(0.35);
     });
     
@@ -924,7 +935,7 @@ $(document).ready(function () {
         $("#graph_container").hide(0.15);
         $("#memory_container").hide(0.15);
         $("#monitor_container").hide(0.15);
-        $("#editor").show(0.35);
+        $("#editor_container").show(0.35);
         editor.resize();
         $("#symbols_container").hide(0.15);
     });
@@ -1083,14 +1094,14 @@ function renderMonitor() {
                 ctx.putImageData(pixel, x, c.height-2);
                 */
 
-                x = watch.APPS[key].updateRT_call_period_max / 20;
+                x = watch.APPS[key].updateRT_period_max / 20;
                 ctx.beginPath();
                 ctx.moveTo(x, c.height - 1);
                 pixel_color[0] = 0;
                 pixel_color[1] = 255;
                 pixel_color[2] = 255;
                 pixel_color[3] = 80;
-                x2 = x + watch.APPS[key].updateRT_loop_time_max / 20;
+                x2 = x + watch.APPS[key].updateRT_cpu_time_max / 20;
                 ctx.lineTo(x2, c.height - 1);
                 ctx.stroke();
                 ctx.putImageData(pixel, x, c.height - 2);
@@ -1264,9 +1275,9 @@ function renderAudioBlocksByFlow() {
         x -= 400;
         for (c in watch.AudioDirector.AudioConnectionPool) {
             //for each connection in the pool
-            i = watch.AudioDirector.AudioConnectionPool[(c).toString()].destName + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            i = watch.AudioDirector.AudioConnectionPool[(c).toString()].destType + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
             if (rank.includes(i)) {
-                s = watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceName + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].sourceInstance;
+                s = watch.AudioDirector.AudioConnectionPool[(c).toString()].srcType + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].srcInstance;
                 next_rank.push(s);
             }
         }

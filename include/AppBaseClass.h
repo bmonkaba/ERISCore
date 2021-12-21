@@ -54,16 +54,16 @@ class AppBaseClass {
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
     uint16_t updateRT_priority;
-    uint16_t update_loop_time;
-    uint16_t update_loop_time_max;
-    uint16_t updateRT_loop_time;
-    uint16_t updateRT_loop_time_max;
+    uint16_t update_cpu_time;
+    uint16_t update_cpu_time_max;
+    uint16_t updateRT_cpu_time;
+    uint16_t updateRT_cpu_time_max;
     uint16_t cycle_time;
     uint16_t cycle_time_max;
-    elapsedMicros update_call_period;
-    uint16_t update_call_period_max;
-    elapsedMicros updateRT_call_period;
-    uint16_t updateRT_call_period_max;
+    elapsedMicros update_period;
+    uint16_t update_period_max;
+    elapsedMicros updateRT_period;
+    uint16_t updateRT_period_max;
   public:
     int16_t origin_x;
     int16_t origin_y;
@@ -115,7 +115,6 @@ class AppBaseClass {
     void releasePopUp();
     void setRTPriority(uint16_t level);
     void selfRegister();
-  private:
     void _updatePosition();
 };
 

@@ -782,14 +782,13 @@ table.dataTable td {
 
 .editoringraphs {
     display: grid;
-    grid-template-columns: 225px 1040px;
-    grid-template-rows: 270px 270px 1024px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 32px 95%;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-        "cqtmsg cqt"
-        "fftmsg fft"
-        "fft2msg fft2";
+        "editor_toolbar editor_toolbar_right"
+        "text_editor vm_terminal";
     grid-area: graphs;
     margin: 1em;
     padding: 1em;
@@ -797,6 +796,36 @@ table.dataTable td {
     overflow-y: hidden;
     border: 1px solid #0e0e0e;
     border-radius: 7px;
+    background: radial-gradient(circle, rgb(1 5 6 / 36%) 10%, rgb(0 0 0 / 67%) 100%);
+}
+
+.editor {
+    grid-area: text_editor;
+    margin: 5px;
+    padding: 5px;
+    width: 95%;
+    height: 100%%;
+    border-radius: 7px;
+}
+}
+
+.vm_terminal {
+    grid-area: vm_terminal;
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    height: 80%%;
+    white-space: pre-wrap;
+    color: #6698aa;
+}
+
+.vm_terminal_textarea {
+    margin: 5px;
+    padding: 5px;
+    width: 95%;
+    height: 95%;
+    white-space: pre-wrap;
+    color: #6698aa;
 }
 
 .cqtmsg {
@@ -926,17 +955,17 @@ table.dataTable td {
     font-size: 1.2em;
     margin: 2px 2px;
     border-radius: 7px;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
     height: 1.8em;
 }
 
 .button:hover {
-    background-color: #101015;
+    background-color: #101545;
     color: #6db5FF;
 }
 
 .button:active {
-    background-color: rgba(128, 8, 64, 0.9);
+    background-color: rgba(128, 8, 64, 1);
     color: #6db5FF;
 }
 
@@ -1167,13 +1196,7 @@ select {
     padding: 1em;
 }
 
-#code_editor {
-    position: relative;
-    margin: 10px;
-    padding: 5px;
-    width: 1220px;
-    height: 300%;
-}
+
     
 
 #monitor {
@@ -1213,13 +1236,216 @@ select {
 }
 
 
+.SendButton{
+    background:url(/static/img/send.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.SendButton:hover
+{  
+    opacity: 0.82;
+}
+.SendButton:active
+{   
+    background:url(/static/img/send.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+.ClearButton{
+    background:url(/static/img/clear.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.ClearButton:hover
+{  
+    opacity: 0.82;
+}
+.ClearButton:active
+{   
+    background:url(/static/img/clear.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+
+.AudioConnectionsButton{
+    background:url(/static/img/connections.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.AudioConnectionsButton:hover
+{  
+    opacity: 0.82;
+}
+.AudioConnectionsButton:active
+{   
+    background:url(/static/img/connections.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+.GetCQTConfigButton{
+    background:url(/static/img/cqt.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.GetCQTConfigButton:hover
+{  
+    opacity: 0.82;
+}
+.GetCQTConfigButton:active
+{   
+    background:url(/static/img/cqt.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+
+
+.PinkNoiseButton{
+    background:url(/static/img/pinknoise.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.PinkNoiseButton:hover
+{  
+    opacity: 0.82;
+}
+.PinkNoiseButton:active
+{   
+    background:url(/static/img/pinknoise.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+
+
+
+.TestToneButton{
+    background:url(/static/img/test_tone.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.TestToneButton:hover
+{  
+    opacity: 0.82;
+}
+.TestToneButton:active
+{   
+    background:url(/static/img/test_tone.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
+
+.MuteButton{
+    background:url(/static/img/mute.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:21px;
+    height:21px;
+    opacity: 0.7;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: #101015;
+    color: #6db5FF;
+}
+.MuteButton:hover
+{  
+    opacity: 0.82;
+}
+.MuteButton:active
+{   
+    background:url(/static/img/mute.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+    background-color: rgba(128, 8, 64, 1);
+    color: #6db5FF;
+}
+
 
 .CompileButton{
     background:url(/static/img/compile.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:34px;
-    height:34px;
+    width:20px;
+    height:20px;
     opacity: 0.5;
     background-size: 100%;
     margin:2px;
@@ -1239,8 +1465,8 @@ select {
     background:url(/static/img/run.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:34px;
-    height:34px;
+    width:20px;
+    height:20px;
     opacity: 0.5;
     background-size: 100%;
     margin:2px;
@@ -1260,8 +1486,8 @@ select {
     background:url(/static/img/get_active_script.png) no-repeat;
     cursor:pointer;
     border:none;
-    width:34px;
-    height:34px;
+    width:20px;
+    height:20px;
     opacity: 0.5;
     background-size: 100%;
     margin:2px;
@@ -1279,7 +1505,7 @@ select {
 
 .showEditor{
     background:url(/static/img/wren.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
-    background-size: 50%;
+    background-size: 16%;
     background-color: #101010;
     display: inline-block;
     background-position: -15% 50%;
@@ -1288,9 +1514,9 @@ select {
 .showEditor:active{
     background:url(/static/img/wren.png) no-repeat;
     background-color: rgba(128, 8, 64, 0.9);
-    background-size: 50%;
+    background-size: 16%;
     display: inline-block;
-    background-position: -15% 50%;
+    background-position: 0% 50%;
     opacity: 1.0;
 }
 
@@ -1414,4 +1640,22 @@ select {
     background-position: -20% 50%;
     opacity: 1.0;
 }
+
+
+.GetRamButton{
+    background:url(/static/img/snapshot.png) no-repeat, linear-gradient(rgb(50 58 75) 0%, rgb(0 25 52) 100%);
+    background-size: 40%;
+    background-color: #001520;
+    background-position: -57% 50%;
+    opacity: 1.0;
+    width: 12em;
+}
+.GetRamButton:active{
+    background:url(/static/img/snapshot.png) no-repeat;
+    background-color: rgba(128, 8, 64, 0.9);
+    background-size: 40%;
+    background-position: -20% 50%;
+    opacity: 1.0;
+}
+
 

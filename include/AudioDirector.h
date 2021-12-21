@@ -57,6 +57,7 @@ class AudioDirector{
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
+    uint16_t printStatsSelect; 
     uint16_t activeConnections; 
     uint16_t objCount;
     uint16_t categoryCount;

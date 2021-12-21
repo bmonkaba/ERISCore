@@ -20,6 +20,8 @@ clients = []
 
 input_queue = multiprocessing.Queue()
 output_queue = multiprocessing.Queue()
+vm_input_queue = multiprocessing.Queue()
+vm_output_queue = multiprocessing.Queue()
  
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
@@ -51,6 +53,13 @@ def checkQueue():
         message += output_queue.get()
     for c in clients:
         c.write_message(message)
+    message = ""
+    while not vm_output_queue.empty():
+        message += vm_output_queue.get()
+    for c in clients:
+        if(len(message)>1):
+            message = "VM "+ message
+        c.write_message(message)
 
 if __name__ == '__main__':
     print("Eris Audio System Test Tool Web Server")
@@ -58,7 +67,12 @@ if __name__ == '__main__':
     print("http://localhost:8080")
     ###
     ## start the serial worker in background (as a deamon)
-    sp = serialworker.SerialProcess(input_queue, output_queue)
+    sp = serialworker.SerialProcess('COM7',input_queue, output_queue)
+    x = threading.Thread(target=sp.run)
+    x.start()
+
+    #connection to the virtual machine
+    sp = serialworker.SerialProcess('COM8',vm_input_queue, vm_output_queue)
     x = threading.Thread(target=sp.run)
     x.start()
 

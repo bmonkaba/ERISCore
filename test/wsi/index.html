@@ -41,7 +41,7 @@
             <button class="button showMemory" id="cmd_showMemory">Dictionary/Memory</button>
             <button class="button showSymbols" id="cmd_showSymbols">Symbol Viewer</button>
             <button class="button showMonitor" id="cmd_showMonitor">Monitor</button>
-            <button class="button showEditor" id="cmd_showEditor">Editor</button>
+            <button class="button showEditor" id="cmd_showEditor">VM Interface & Script Editor</button>
         </div>
 
         <div class="sidebar" id="sidebar">
@@ -68,7 +68,7 @@
             <div id="tx" class="outbox">
                 <div class="titlebar">Serial Transmit</div>
                 <form id="sent">
-                    <textarea id="cmd_value" name="asdf" rows="10" cols="40">
+                    <textarea id="cmd_value" name="asdf" rows="10" cols="40" spellcheck="false">
 AUDIO_NO_INTERRUPTS
 DISCONNECT biquad_1 0
 DISCONNECT biquad_2 0
@@ -78,18 +78,17 @@ DISCONNECT mixer_5 3
 AUDIO_INTERRUPTS
 AA 220
 </textarea><br>
-                    <button class="button" id="cmd_send">Send</button>
-                    <button class="button" id="clear">Clear</button><br>
+                    <button class="button SendButton" id="cmd_send" title="Send"></button>
+                    <button class="button ClearButton" id="clear" title="Clear"></button><br>
                     <input type="checkbox" id="sweep_checkbox" value="enable">
                     <label for="sweep_checkbox"> Enable Freq Sweep</label><br>
                     <input type="range" min="30" max="2400" value="50" class="slider" id="freq_slider">
                 </form><br>
-                <button class="button" id="ACON">Audio Connections</button>
-                <button class="button" id="STATS">Stats</button>
-                <button class="button" id="CQT_CFG">CQT Config</button><br>
-                <button class="button" id="PINK_NOISE">Pink Noise</button>
-                <button class="button" id="TONE">Tone</button>
-                <button class="button" id="MUTE">MUTE</button>
+                <button class="button AudioConnectionsButton" id="ACON" title="Request Audio Connections"></button>
+                <button class="button GetCQTConfigButton" id="CQT_CFG" title="Request the CQT config matrix"></button><br>
+                <button class="button PinkNoiseButton" id="PINK_NOISE" title="Pink Noise"></button>
+                <button class="button TestToneButton" id="TONE" title="Test Tone"></button>
+                <button class="button MuteButton" id="MUTE" title="MUTE"></button>
             </div>
 
             <div id="scroll_me" class="messages">
@@ -148,8 +147,8 @@ AA 220
                 <br><br>
             </form><br>
             <form>
-                <button class="button" id="getRam1">Ram1 Snapshot</button>
-                <button class="button" id="getRam2">Ram2 Snapshot</button><br><br><br>
+                <button class="button GetRamButton" id="getRam1">Ram1 Snapshot</button>
+                <button class="button GetRamButton" id="getRam2">Ram2 Snapshot</button><br><br><br>
                 <table id="memory_chunk_table" width="1280px" class="cell-border compact stripe">
                     <thead>
                         <tr>
@@ -178,21 +177,19 @@ AA 220
                 </table>
             </form>
         </div>
-
-        <div id="editor" class="editoringraphs">
-            <div>
-                
-                <button id="get_script_button" class="GetScriptButton"></button>&nbsp
-                <button id="compile_script_button"class="CompileButton"></button>&nbsp
-                <button id="run_script_button"class="RunButton"></button>
-                <div id="code_editor">
-function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
-}
-                </div>
-            </div>
+        
+        
+        <div id="editor_container" class="editoringraphs">
+            <div id="editor_toolbar" class="editor_toolbar">
+                <button id="get_script_button" class="GetScriptButton" title="Get the default script template"></button>&nbsp
+                <button id="compile_script_button"class="CompileButton" title="Compile Only"></button>&nbsp
+                <button id="run_script_button"class="RunButton" title="Restart the VM and execute the script"></button>
+            </div>   
+            <div id="editor_toolbar_right" class="editor_toolbar_right"><div class="titlebar">Wren Scripting and Virtual Machine Interface</div></div>           
+            <div id="code_editor" class="editor"></div>
+            <div class="vm_terminal"><textarea  id="vm_terminal" class="vm_terminal_textarea" spellcheck="false"></textarea></div>
         </div>
+ 
         <div id="monitor_container" class="graphs">
             <div>
                 <div class="titlebar">Jitter Plot</div>

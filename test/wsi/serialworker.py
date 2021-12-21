@@ -4,12 +4,12 @@ import base64
 import lz4.block
 
 ## Change this to match your local settings
-SERIAL_PORT = 'COM6'
+#SERIAL_PORT = 'COM7'
 SERIAL_BAUDRATE = 1500000
 
 class SerialProcess():
-    def __init__(self, input_queue, output_queue):
-        
+    def __init__(self, serial_port, input_queue, output_queue):
+        SERIAL_PORT = serial_port
         self.input_queue = input_queue
         self.output_queue = output_queue
         self.sp = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=5000)
