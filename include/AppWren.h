@@ -27,6 +27,9 @@
  * Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax. 
  * Wren is small. The VM implementation is under 4,000 semicolons"
  */
+
+
+
 class AppWren:public AppBaseClass {
   public:
     AppWren():AppBaseClass(){
@@ -51,6 +54,7 @@ class AppWren:public AppBaseClass {
         usingImage = true;
         time_active = 0;
         surface_cache = NULL;
+        draw_buffer = NULL;
         vmConstructor();
         widget_width = 64;
         widget_height = 64;
@@ -94,47 +98,16 @@ class AppWren:public AppBaseClass {
     void restartVM(){
         releaseWrenHandles();
         wrenFreeVM(vm);
+        if(surface_cache){
+            //delete(surface_cache); TODO 
+            //surface_cache = NULL;
+        }
         startVM();
     }
 
     void startVM();
-    
-    void releaseWrenHandles(){
-        //release any existing handles
-        if (h_slot0!=NULL) wrenReleaseHandle(vm, h_slot0);
-        if (h_update!=NULL) wrenReleaseHandle(vm, h_update);
-        if (h_updateRT!=NULL) wrenReleaseHandle(vm, h_updateRT);
-        if (h_onFocus!=NULL) wrenReleaseHandle(vm, h_onFocus);
-        if (h_onFocusLost!=NULL) wrenReleaseHandle(vm, h_onFocusLost);
-        if (h_onTouch!=NULL) wrenReleaseHandle(vm, h_onTouch);
-        if (h_onTouchDrag!=NULL) wrenReleaseHandle(vm, h_onTouchDrag);
-        if (h_onTouchRelease!=NULL) wrenReleaseHandle(vm, h_onTouchRelease);
-        if (h_onAnalog1!=NULL) wrenReleaseHandle(vm, h_onAnalog1);
-        if (h_onAnalog2!=NULL) wrenReleaseHandle(vm, h_onAnalog2);
-        if (h_onAnalog3!=NULL) wrenReleaseHandle(vm, h_onAnalog3);
-        if (h_onAnalog4!=NULL) wrenReleaseHandle(vm, h_onAnalog4);
-        if (h_messageHandler!=NULL) wrenReleaseHandle(vm, h_messageHandler);
-    }
-
-    void getWrenHandles(){
-        wrenEnsureSlots(vm, 1);
-        wrenGetVariable(vm, "main", "App", 0);
-        //get the handles
-        h_slot0 = wrenGetSlotHandle(vm, 0);
-        h_update = wrenMakeCallHandle(vm, "update()");
-        h_updateRT = wrenMakeCallHandle(vm, "updateRT()");
-        
-        h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
-        h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
-        h_onTouch = wrenMakeCallHandle(vm, "onTouch()");
-        h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag()");
-        h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease()");
-        h_onAnalog1 = wrenMakeCallHandle(vm, "onAnalog1()");
-        h_onAnalog2 = wrenMakeCallHandle(vm, "onAnalog2()");
-        h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3()");
-        h_onAnalog4 = wrenMakeCallHandle(vm, "onAnalog4()");
-        h_messageHandler = wrenMakeCallHandle(vm, "messageHandler()");
-    }
+    void releaseWrenHandles();
+    void getWrenHandles();
 
     bool isWrenResultOK(WrenInterpretResult res){
         switch (res){
@@ -151,52 +124,7 @@ class AppWren:public AppBaseClass {
         
     }
 
-    void update() override{
-        if (h_update==0){ //if no script loaded
-            return;
-        } else{
-            wrenEnsureSlots(vm, 1);
-            wrenSetSlotHandle(vm, 0, h_slot0);//App
-            if (!isWrenResultOK(wrenCall(vm,h_update))){
-
-            }else{
-                if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
-                        show_active = false;
-                        time_active = 0;
-                }
-                if(usingImage){
-                    if(!surface_cache){
-                        //allocate space
-                        surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
-                        if(!surface_cache){ 
-                            Serial.println(F("M ERROR imgcache out of mem"));
-                            Serial.flush();
-                            delete(surface_cache);
-                            return;
-                        }
-                    } else{
-                        draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
-                    }
-                }else{
-                    draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
-                    draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
-                }
-                if (show_active){
-                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
-                } else{
-                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
-                }
-                
-                if(!usingImage){
-                    draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
-                    draw->setCursor(x+(w/2),y+(h/2),true);
-                    draw->setFont(Arial_9);
-                    //draw->print(text);
-                }
-            }
-        }
-        wrenCollectGarbage(vm);
-    };    //called only when the app is active
+    void update() override;//called only when the app is active
 
     void updateRT() override{
         if (h_updateRT==0){ //if no script loaded
@@ -316,6 +244,7 @@ class AppWren:public AppBaseClass {
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
     Surface* surface_cache;
+    uint16_t* draw_buffer;
     bool isPressed;
     bool usingImage;
     bool imgloaded;

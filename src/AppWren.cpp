@@ -46,10 +46,31 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
   }
 }
 
+char * getSourceForModule(const char * name){
+  return NULL;
+}
+
+static void loadModuleComplete(WrenVM* vm, 
+                               const char* module,
+                               WrenLoadModuleResult result) 
+{
+  if(result.source) {
+    //for example, if we used malloc to allocate
+    //our source string, we use free to release it.
+    free((void*)result.source);
+  }
+}
+
+
 WrenLoadModuleResult loadModule(WrenVM* vm, const char* name){
   //callback for the VM to request a module be loaded from the filesystem
-
+  SerialUSB1.printf("VM: loadModule %s\n", name);
+  WrenLoadModuleResult result = {0};
+    result.onComplete = loadModuleComplete;
+    result.source = getSourceForModule(name);
+  return result;
 }
+
 
 //EXPORTED STATIC FUNCTIONS
 
@@ -132,37 +153,34 @@ WrenForeignMethodFn bindForeignMethod(
   //callback for the VM to request a pointer to the c function.
   if (strcmp(module, "main") == 0)
   {
-    if (strcmp(className, "App") == 0)
+    if (strcmp(className, "App") == 0) //these are static methods... attach them to the class, not an instance
     {
-      if (isStatic && strcmp(signature, "sendMessage(_,_)") == 0){
+      if (strcmp(signature, "sendMessage(_,_)") == 0){
         return sendMessageCallback;
-      }else if (isStatic && strcmp(signature, "setPosition(_,_)") == 0){
+      }else if (strcmp(signature, "setPosition(_,_)") == 0){
         return setPositionCallback;
-      }else if (isStatic && strcmp(signature, "setDimension(_,_)") == 0){
+      }else if (strcmp(signature, "setDimension(_,_)") == 0){
         return setDimensionCallback;
-      }else if (isStatic && strcmp(signature, "setWidgetPosition(_,_)") == 0){
+      }else if (strcmp(signature, "setWidgetPosition(_,_)") == 0){
         return setWidgetPositionCallback;
-      }else if (isStatic && strcmp(signature, "setWidgetDimension(_,_)") == 0){
+      }else if (strcmp(signature, "setWidgetDimension(_,_)") == 0){
         return setWidgetDimensionCallback;
-      }else if (isStatic && strcmp(signature, "requestPopUp(_)") == 0){
+      }else if (strcmp(signature, "requestPopUp(_)") == 0){
         return requestPopUpCallback;
-      }else if (isStatic && strcmp(signature, "releasePopUp()") == 0){
+      }else if (strcmp(signature, "releasePopUp()") == 0){
         return releasePopUpCallback;
-      }else if (isStatic && strcmp(signature, "getFocus()") == 0){
+      }else if (strcmp(signature, "getFocus()") == 0){
         return getFocusCallback;
-      }else if (isStatic && strcmp(signature, "returnFocus()") == 0){
+      }else if (strcmp(signature, "returnFocus()") == 0){
         return returnFocusCallback;
-      }else if (isStatic && strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
+      }else if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
         return setPixelCallback;
       }
-
       // Other foreign methods on Math...
     }
     // Other classes in main...
   }
   // Other modules...
-
-
   //else return NULL?
   return NULL;
 }
@@ -185,9 +203,9 @@ void AppWren::startVM(){
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
-    config.initialHeapSize = 65535;
-    config.minHeapSize = 65535;
-    config.heapGrowthPercent = 0;
+    config.initialHeapSize = 15534;
+    config.minHeapSize = 15534;
+    config.heapGrowthPercent = 50;
     config.bindForeignMethodFn = &bindForeignMethod;
     vm = wrenNewVM(&config);
 }
@@ -218,4 +236,87 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
             }
         }
     }
+}
+
+
+ void AppWren::update(){
+        if (h_update==0){ //if no script loaded
+            return;
+        } else{
+            wrenEnsureSlots(vm, 1);
+            wrenSetSlotHandle(vm, 0, h_slot0);//App
+            if (!isWrenResultOK(wrenCall(vm,h_update))){
+
+            }else{
+                if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+                        show_active = false;
+                        time_active = 0;
+                }
+                if(usingImage){
+                    if(!surface_cache){                        
+                        surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
+                        if(!surface_cache){ 
+                            Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
+                            return;
+                        }else Serial.println(F("M AppWren::update() Surface created"));
+                    } else{
+                        draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
+                    }
+                }else{
+                    draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
+                    draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
+                }
+                if (show_active){
+                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
+                } else{
+                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
+                }
+                
+                if(!usingImage){
+                    draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
+                    draw->setCursor(x+(w/2),y+(h/2),true);
+                    draw->setFont(Arial_9);
+                    //draw->print(text);
+                }
+            }
+        }
+        wrenCollectGarbage(vm);
+    };    //called only when the app is active
+
+
+void AppWren::releaseWrenHandles(){
+  //release any existing handles
+  if (h_slot0!=NULL) wrenReleaseHandle(vm, h_slot0);
+  if (h_update!=NULL) wrenReleaseHandle(vm, h_update);
+  if (h_updateRT!=NULL) wrenReleaseHandle(vm, h_updateRT);
+  if (h_onFocus!=NULL) wrenReleaseHandle(vm, h_onFocus);
+  if (h_onFocusLost!=NULL) wrenReleaseHandle(vm, h_onFocusLost);
+  if (h_onTouch!=NULL) wrenReleaseHandle(vm, h_onTouch);
+  if (h_onTouchDrag!=NULL) wrenReleaseHandle(vm, h_onTouchDrag);
+  if (h_onTouchRelease!=NULL) wrenReleaseHandle(vm, h_onTouchRelease);
+  if (h_onAnalog1!=NULL) wrenReleaseHandle(vm, h_onAnalog1);
+  if (h_onAnalog2!=NULL) wrenReleaseHandle(vm, h_onAnalog2);
+  if (h_onAnalog3!=NULL) wrenReleaseHandle(vm, h_onAnalog3);
+  if (h_onAnalog4!=NULL) wrenReleaseHandle(vm, h_onAnalog4);
+  if (h_messageHandler!=NULL) wrenReleaseHandle(vm, h_messageHandler);
+}
+
+void AppWren::getWrenHandles(){
+  wrenEnsureSlots(vm, 1);
+  wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
+  //get the handles
+  h_slot0 = wrenGetSlotHandle(vm, 0);
+  h_update = wrenMakeCallHandle(vm, "update()");
+  h_updateRT = wrenMakeCallHandle(vm, "updateRT()");
+  
+  h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
+  h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
+  h_onTouch = wrenMakeCallHandle(vm, "onTouch()");
+  h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag()");
+  h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease()");
+  h_onAnalog1 = wrenMakeCallHandle(vm, "onAnalog1()");
+  h_onAnalog2 = wrenMakeCallHandle(vm, "onAnalog2()");
+  h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3()");
+  h_onAnalog4 = wrenMakeCallHandle(vm, "onAnalog4()");
+  h_messageHandler = wrenMakeCallHandle(vm, "messageHandler()");
 }

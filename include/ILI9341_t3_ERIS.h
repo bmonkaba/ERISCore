@@ -110,6 +110,13 @@ class Surface {
         Serial.println(guid);
     }
 
+    Surface(int16_t width, int16_t height){
+        //allocate and attach a buffer as the surface buffer
+        uint16_t *buffer;
+        buffer = (uint16_t*)malloc(width*height*sizeof(uint16_t));
+        Surface(buffer,width,height);
+    }
+
     uint16_t* requestSubSurfaceBufferP(uint32_t size){
         /* provides an interface to enable childern subsurfaces
            to request a portion of the parents surface buffer
