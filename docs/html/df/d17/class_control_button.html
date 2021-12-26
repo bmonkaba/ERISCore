@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('df/d17/class_control_button.html','../
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="../../d5/d08/class_control_button-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ControlButton Class Reference</div>  </div>
@@ -192,6 +191,8 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a32e44666dd58b3cd733c8ac64957dce3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a32e44666dd58b3cd733c8ac64957dce3">_updatePosition</a> ()</td></tr>
+<tr class="separator:a32e44666dd58b3cd733c8ac64957dce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae23eccd0472c7c835d4f9cdf8b4daea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d17/class_control_button.html#aae23eccd0472c7c835d4f9cdf8b4daea">onFocusLost</a> () override</td></tr>
 <tr class="separator:aae23eccd0472c7c835d4f9cdf8b4daea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d8a17272d25046b2aab11276a894bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d17/class_control_button.html#a5d8a17272d25046b2aab11276a894bd1">onTouch</a> (uint16_t t_x, uint16_t t_y) override</td></tr>
@@ -249,7 +250,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a31587f3166dcf6ea0302337c3323822c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b3c843dfb167ef97f1b5f3a3e22875"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/da8/class_svc_serial_command_interface.html">SvcSerialCommandInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a24b3c843dfb167ef97f1b5f3a3e22875">sci</a></td></tr>
 <tr class="separator:a24b3c843dfb167ef97f1b5f3a3e22875"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab763cbfec90f6608f36dfeb36c1e11dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ab763cbfec90f6608f36dfeb36c1e11dd">sd</a></td></tr>
+<tr class="memitem:ab763cbfec90f6608f36dfeb36c1e11dd"><td class="memItemLeft" align="right" valign="top">SdFs *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ab763cbfec90f6608f36dfeb36c1e11dd">sd</a></td></tr>
 <tr class="separator:ab763cbfec90f6608f36dfeb36c1e11dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d6442baec567b87cb44adcc7bce0eb8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d17/class_control_button.html#a4d6442baec567b87cb44adcc7bce0eb8">show_active</a></td></tr>
 <tr class="separator:a4d6442baec567b87cb44adcc7bce0eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,31 +260,26 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a19fd501eb21c9012d198cae90b74876a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12be372470e6826bae25db90c01c388e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a12be372470e6826bae25db90c01c388e">touch_state</a></td></tr>
 <tr class="separator:a12be372470e6826bae25db90c01c388e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a2c77c32c3d50a837d3a03fea6e9009"><td class="memItemLeft" align="right" valign="top">elapsedMicros&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a5a2c77c32c3d50a837d3a03fea6e9009">update_call_period</a></td></tr>
-<tr class="separator:a5a2c77c32c3d50a837d3a03fea6e9009"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae25e514a1d183f98b5c3551ffcaf2744"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ae25e514a1d183f98b5c3551ffcaf2744">update_call_period_max</a></td></tr>
-<tr class="separator:ae25e514a1d183f98b5c3551ffcaf2744"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a303813204000ee12600a38fe96d18"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a08a303813204000ee12600a38fe96d18">update_loop_time</a></td></tr>
-<tr class="separator:a08a303813204000ee12600a38fe96d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acec8429a0d867221c0c4f47f4f7d00d4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#acec8429a0d867221c0c4f47f4f7d00d4">update_loop_time_max</a></td></tr>
-<tr class="separator:acec8429a0d867221c0c4f47f4f7d00d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c2bd2a942c2228c8556dc2cb918e020"><td class="memItemLeft" align="right" valign="top">elapsedMicros&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a2c2bd2a942c2228c8556dc2cb918e020">updateRT_call_period</a></td></tr>
-<tr class="separator:a2c2bd2a942c2228c8556dc2cb918e020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fe0832f15327eed5bf0eecf5c368bd"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a52fe0832f15327eed5bf0eecf5c368bd">updateRT_call_period_max</a></td></tr>
-<tr class="separator:a52fe0832f15327eed5bf0eecf5c368bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6da03c9c3c5243d8dd2281dc963011"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a3d6da03c9c3c5243d8dd2281dc963011">updateRT_loop_time</a></td></tr>
-<tr class="separator:a3d6da03c9c3c5243d8dd2281dc963011"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9996440b20f31307ba26ff1f932a421"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ad9996440b20f31307ba26ff1f932a421">updateRT_loop_time_max</a></td></tr>
-<tr class="separator:ad9996440b20f31307ba26ff1f932a421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f993fea13d519da399132f3d0969b1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a83f993fea13d519da399132f3d0969b1">update_cpu_time</a></td></tr>
+<tr class="separator:a83f993fea13d519da399132f3d0969b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cdd69770690bfe8079eb0789487103b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a8cdd69770690bfe8079eb0789487103b">update_cpu_time_max</a></td></tr>
+<tr class="separator:a8cdd69770690bfe8079eb0789487103b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b520daeb29f2389a8515bdff029d894"><td class="memItemLeft" align="right" valign="top">elapsedMicros&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a3b520daeb29f2389a8515bdff029d894">update_period</a></td></tr>
+<tr class="separator:a3b520daeb29f2389a8515bdff029d894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21a5b7145c38fd17042971a6b357208"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ac21a5b7145c38fd17042971a6b357208">update_period_max</a></td></tr>
+<tr class="separator:ac21a5b7145c38fd17042971a6b357208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad95515dfef2582afd78055e9cb854061"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#ad95515dfef2582afd78055e9cb854061">updateRT_cpu_time</a></td></tr>
+<tr class="separator:ad95515dfef2582afd78055e9cb854061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f4a888dd21576343cf37a90a88e70ec"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a8f4a888dd21576343cf37a90a88e70ec">updateRT_cpu_time_max</a></td></tr>
+<tr class="separator:a8f4a888dd21576343cf37a90a88e70ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fbc009ba95e015c48d44065cb4589f2"><td class="memItemLeft" align="right" valign="top">elapsedMicros&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a5fbc009ba95e015c48d44065cb4589f2">updateRT_period</a></td></tr>
+<tr class="separator:a5fbc009ba95e015c48d44065cb4589f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748bf9596070dfeaf278dcef44120890"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a748bf9596070dfeaf278dcef44120890">updateRT_period_max</a></td></tr>
+<tr class="separator:a748bf9596070dfeaf278dcef44120890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a761416a75d8cb476c2c08072c7cb7261"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a761416a75d8cb476c2c08072c7cb7261">updateRT_priority</a></td></tr>
 <tr class="separator:a761416a75d8cb476c2c08072c7cb7261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff296d00d45aade7bef65f8ffc113305"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d17/class_control_button.html#aff296d00d45aade7bef65f8ffc113305">usingImage</a></td></tr>
 <tr class="separator:aff296d00d45aade7bef65f8ffc113305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a32e44666dd58b3cd733c8ac64957dce3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class.html#a32e44666dd58b3cd733c8ac64957dce3">_updatePosition</a> ()</td></tr>
-<tr class="separator:a32e44666dd58b3cd733c8ac64957dce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -322,13 +318,12 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#aff296d00d45aade7bef65f8ffc113305">usingImage</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#a1eb8fbecdf620c77133c611a6265f53b">imgloaded</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#a19fd501eb21c9012d198cae90b74876a">time_active</a> = 0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#acc0fdcf0a39e544f891eb922a8b80bcb">imgcache</a> = <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#acc0fdcf0a39e544f891eb922a8b80bcb">imgcache</a> = NULL;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        strcpy(<a class="code" href="../../df/d17/class_control_button.html#aeec9825d71fcb7e8fb0254babc9dd41a">text</a>,<span class="stringliteral">&quot;ControlButton&quot;</span>);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        strcpy(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,<span class="stringliteral">&quot;ControlButton&quot;</span>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        strcpy(<a class="code" href="../../df/d17/class_control_button.html#a32648faf06bcd3bae3986ec24e8663de">img_filename</a>,<span class="stringliteral">&quot;NONE&quot;</span>);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        strcpy(<a class="code" href="../../df/d17/class_control_button.html#a522b01fbb2ee8a5510fe68476bd30914">img_path</a>,<span class="stringliteral">&quot;NONE&quot;</span>);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
-<div class="ttc" id="a_stdio_stream_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00092">StdioStream.h:92</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_ab52309ab6ada18b53b674f23b01dded2"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">AppBaseClass::name</a></div><div class="ttdeci">char name[MAX_NAME_LENGTH]</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass.h:77</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_af66b6dc0a061770fcb4c8425987d9ea9"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#af66b6dc0a061770fcb4c8425987d9ea9">AppBaseClass::setParent</a></div><div class="ttdeci">void setParent(AppBaseClass *parent)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00091">AppBaseClass.h:91</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_afc31089c73d88d7b768aa71cbabf0465"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#afc31089c73d88d7b768aa71cbabf0465">AppBaseClass::AppBaseClass</a></div><div class="ttdeci">AppBaseClass()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass.cpp:16</a></div></div>
@@ -343,7 +338,7 @@ Private Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_control_button_html_aeec9825d71fcb7e8fb0254babc9dd41a"><div class="ttname"><a href="../../df/d17/class_control_button.html#aeec9825d71fcb7e8fb0254babc9dd41a">ControlButton::text</a></div><div class="ttdeci">char text[MAX_TEXT_LENGTH]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/control_button_8h_source.html#l00063">controlButton.h:59</a></div></div>
 <div class="ttc" id="aclass_control_button_html_aff296d00d45aade7bef65f8ffc113305"><div class="ttname"><a href="../../df/d17/class_control_button.html#aff296d00d45aade7bef65f8ffc113305">ControlButton::usingImage</a></div><div class="ttdeci">bool usingImage</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/control_button_8h_source.html#l00069">controlButton.h:69</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00064">img_filename</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00065">img_path</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00066">imgcache</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00070">imgloaded</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00067">isDirty</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00068">isPressed</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass::name</a>, <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00092">NULL</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00091">AppBaseClass::setParent()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00072">show_active</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00059">text</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00071">time_active</a>, and <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>.</p>
+<p class="reference">References <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00064">img_filename</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00065">img_path</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00066">imgcache</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00070">imgloaded</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00067">isDirty</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00068">isPressed</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass::name</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00091">AppBaseClass::setParent()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00072">show_active</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00059">text</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00071">time_active</a>, and <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -374,7 +369,7 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -457,7 +452,7 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00109">AppBaseClass::has_focus</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d6/dd8/_eris_core_8cpp_source.html#l00022">setup()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00086">AppWren::getFocus()</a>, and <a class="el" href="../../d6/dd8/_eris_core_8cpp_source.html#l00022">setup()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -471,7 +466,7 @@ Private Member Functions</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_afcd9194843e5eb3f6140e28cc3c9e8f9_icgraph.svg" width="462" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_afcd9194843e5eb3f6140e28cc3c9e8f9_icgraph.svg" width="100%" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -534,15 +529,14 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00081">81</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                         {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordtype">bool</span> <a class="code" href="../../d0/de9/receiver-less_01calls_012_8txt.html#aa43085ab0f9d0ad0d284712150876ace">is</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      (0==strncmp(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,name_string,<span class="keyword">sizeof</span>(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>)))?<a class="code" href="../../d0/de9/receiver-less_01calls_012_8txt.html#aa43085ab0f9d0ad0d284712150876ace">is</a>=<span class="keyword">true</span>:<a class="code" href="../../d0/de9/receiver-less_01calls_012_8txt.html#aa43085ab0f9d0ad0d284712150876ace">is</a>=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="../../d0/de9/receiver-less_01calls_012_8txt.html#aa43085ab0f9d0ad0d284712150876ace">is</a>; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordtype">bool</span> is;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      (0==strncmp(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>,name_string,<span class="keyword">sizeof</span>(<a class="code" href="../../db/d69/class_app_base_class.html#ab52309ab6ada18b53b674f23b01dded2">name</a>)))?is=<span class="keyword">true</span>:is=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">return</span> is; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    };</div>
-<div class="ttc" id="areceiver-less_01calls_012_8txt_html_aa43085ab0f9d0ad0d284712150876ace"><div class="ttname"><a href="../../d0/de9/receiver-less_01calls_012_8txt.html#aa43085ab0f9d0ad0d284712150876ace">is</a></div><div class="ttdeci">var how do we tell if it is</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de9/receiver-less_01calls_012_8txt_source.html#l00017">receiver-less calls 2.txt:26</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d0/de9/receiver-less_01calls_012_8txt_source.html#l00026">is</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass::name</a>.</p>
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass::name</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00199">AppAudioToPolyphonic::MessageHandler()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00436">AppCQT::MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00066">AppWren::MessageHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00199">AppAudioToPolyphonic::MessageHandler()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00437">AppCQT::MessageHandler()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00021">AppTemplate::MessageHandler()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00434">AppWren::MessageHandler()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1045,7 +1039,7 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00112">AppBaseClass::has_pop</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, and <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00089">AppWren::releasePopUp()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -1059,7 +1053,7 @@ Private Member Functions</h2></td></tr>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a84d1a45250dacc61c7f3fd1c06547a3a_icgraph.svg" width="460" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a84d1a45250dacc61c7f3fd1c06547a3a_icgraph.svg" width="100%" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1099,7 +1093,7 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00112">AppBaseClass::has_pop</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, and <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00088">AppWren::requestPopUp()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -1113,7 +1107,7 @@ Private Member Functions</h2></td></tr>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a5c284e20788663354eb4d8a862d3a91d_icgraph.svg" width="460" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a5c284e20788663354eb4d8a862d3a91d_icgraph.svg" width="100%" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1152,12 +1146,22 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}  </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00109">AppBaseClass::has_focus</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00087">AppWren::returnFocus()</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a9f95ae78f35aefdb005560509aa683ad_cgraph.svg" width="528" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a9f95ae78f35aefdb005560509aa683ad_icgraph.svg" width="456" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1190,11 +1194,11 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{AppManager::getInstance()-&gt;RegisterApp(<span class="keyword">this</span>); }<span class="comment">//self register on construction</span></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a932d7b1d01e2809a7d844daceba8f52f_icgraph.svg" width="520" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -1240,21 +1244,21 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00071">AppBaseClass::height</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00070">AppBaseClass::width</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_cgraph.svg" width="542" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
+<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00083">AppWren::setDimension()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00149">setDimensionCallback()</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_cgraph.svg" width="542" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_ae48421c05ab38a72f27c1face4bb50c4_icgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1295,11 +1299,11 @@ Private Member Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00064">img_filename</a>, <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00014">MAX_TEXT_LENGTH</a>, and <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00043">setImage()</a>.</p>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_a027de4bfde2b55a9411eaea5b362c317_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -1353,19 +1357,19 @@ Private Member Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00066">imgcache</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00070">imgloaded</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00050">setFile()</a>, and <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00056">setPath()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_adcc4cab229e708b438331de2971ed0f6_cgraph.svg" width="424" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
 <div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-19-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_adcc4cab229e708b438331de2971ed0f6_cgraph.svg" width="424" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_adcc4cab229e708b438331de2971ed0f6_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -1406,11 +1410,11 @@ Private Member Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00013">MAX_NAME_LENGTH</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">AppBaseClass::name</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a953a8c57a54994f8f550221eb4b7e47b_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -1446,13 +1450,13 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00046">AppBaseClass::parentNode</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00022">ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00017">ControlSlider::ControlSlider()</a>, and <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00022">ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00017">ControlSlider::ControlSlider()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00081">AppWren::setParent()</a>.</p>
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9_icgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9_icgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1491,11 +1495,11 @@ Private Member Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00065">img_path</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00014">MAX_TEXT_LENGTH</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00043">setImage()</a>.</p>
-<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-22-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_a7c5cba4f04f14fd14c6619c8683c5da0_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -1541,21 +1545,21 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00068">AppBaseClass::origin_x</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00069">AppBaseClass::origin_y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-23-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-23-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_cgraph.svg" width="524" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
+<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00082">AppWren::setPosition()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00137">setPositionCallback()</a>.</p>
 <div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-24-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-24-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-24-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_cgraph.svg" width="524" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_aa9f84b5a03adc7115a476219022e12b5_icgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1630,11 +1634,11 @@ Private Member Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00014">MAX_TEXT_LENGTH</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00059">text</a>, and <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-25-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_a95258d44736955381bcc79eb6c003c91_icgraph.svg" width="663" height="58"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -1680,21 +1684,21 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00075">AppBaseClass::widget_height</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00074">AppBaseClass::widget_width</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-26-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-26-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a801f8d24d3623f8d5e2d654b6b3b7d32_cgraph.svg" width="592" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
+<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00085">AppWren::setWidgetDimension()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00173">setWidgetDimensionCallback()</a>.</p>
 <div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-27-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-27-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-27-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-27-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a801f8d24d3623f8d5e2d654b6b3b7d32_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a801f8d24d3623f8d5e2d654b6b3b7d32_cgraph.svg" width="592" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-28-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-28-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-28-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a801f8d24d3623f8d5e2d654b6b3b7d32_icgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1739,21 +1743,21 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00072">AppBaseClass::widget_origin_x</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00073">AppBaseClass::widget_origin_y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>.</p>
-<div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-28-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-28-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-28-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a02b03e7f3c8034d8b52991d7c7a82f28_cgraph.svg" width="574" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
+<p class="reference">Referenced by <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00084">AppWren::setWidgetPosition()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00161">setWidgetPositionCallback()</a>.</p>
 <div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-29-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+  <img id="dynsection-29-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-29-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-29-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a02b03e7f3c8034d8b52991d7c7a82f28_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a02b03e7f3c8034d8b52991d7c7a82f28_cgraph.svg" width="574" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-30-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/d69/class_app_base_class_a02b03e7f3c8034d8b52991d7c7a82f28_icgraph.svg" width="100%" height="444"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1788,7 +1792,7 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                          {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#a9a846391540f48156ab18d84e9098063">isDirty</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="../../df/d17/class_control_button.html#a124cd5e0a83da39ef356dc9261e961bc">isPressed</a>==<span class="keyword">false</span> &amp;&amp; <a class="code" href="../../df/d17/class_control_button.html#a4d6442baec567b87cb44adcc7bce0eb8">show_active</a> == <span class="keyword">true</span> &amp;&amp; <a class="code" href="../../df/d17/class_control_button.html#a19fd501eb21c9012d198cae90b74876a">time_active</a> &gt; <a class="code" href="../../dc/ddf/control_button_8h.html#a9acedcace229ff6b54e6ed963a84751d">SHOW_ACTIVE_TIME_MILLISEC</a>){</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="../../df/d17/class_control_button.html#a124cd5e0a83da39ef356dc9261e961bc">isPressed</a>==<span class="keyword">false</span> &amp;&amp; <a class="code" href="../../df/d17/class_control_button.html#a4d6442baec567b87cb44adcc7bce0eb8">show_active</a> == <span class="keyword">true</span> &amp;&amp; <a class="code" href="../../df/d17/class_control_button.html#a19fd501eb21c9012d198cae90b74876a">time_active</a> &gt; <a class="code" href="../../d8/d2c/globaldefs_8h.html#a9acedcace229ff6b54e6ed963a84751d">SHOW_ACTIVE_TIME_MILLISEC</a>){</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="../../df/d17/class_control_button.html#a4d6442baec567b87cb44adcc7bce0eb8">show_active</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <a class="code" href="../../df/d17/class_control_button.html#a9a846391540f48156ab18d84e9098063">isDirty</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="../../df/d17/class_control_button.html#a19fd501eb21c9012d198cae90b74876a">time_active</a> = 0;</div>
@@ -1799,7 +1803,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="comment">//allocate space</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <a class="code" href="../../df/d17/class_control_button.html#acc0fdcf0a39e544f891eb922a8b80bcb">imgcache</a> = <span class="keyword">new</span> <a class="code" href="../../d1/d1a/class_surface.html">Surface</a>(<a class="code" href="../../db/d69/class_app_base_class.html#a6baed35a61a4cae1b3c67113aa6ec1dd">am</a>-&gt;fastImgCacheSurfaceP, &amp;<a class="code" href="../../db/d69/class_app_base_class.html#a6baed35a61a4cae1b3c67113aa6ec1dd">am</a>-&gt;sd, <a class="code" href="../../df/d17/class_control_button.html#a522b01fbb2ee8a5510fe68476bd30914">img_path</a>, <a class="code" href="../../df/d17/class_control_button.html#a32648faf06bcd3bae3986ec24e8663de">img_filename</a>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">if</span>(!<a class="code" href="../../df/d17/class_control_button.html#acc0fdcf0a39e544f891eb922a8b80bcb">imgcache</a>){ </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;M ERROR imgcache out of mem&quot;</span>));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    Serial.println(F(<span class="stringliteral">&quot;M ERROR imgcache out of mem&quot;</span>));</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    Serial.flush();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keyword">delete</span>(<a class="code" href="../../df/d17/class_control_button.html#acc0fdcf0a39e544f891eb922a8b80bcb">imgcache</a>);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span>;</div>
@@ -1829,25 +1833,24 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="../../df/d17/class_control_button.html#a9a846391540f48156ab18d84e9098063">isDirty</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    };</div>
-<div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8h_html_a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502"><div class="ttname"><a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502">AT_NONE</a></div><div class="ttdeci">@ AT_NONE</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00198">ILI9341_t3_ERIS.h:198</a></div></div>
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00042">PrintBasic.h:42</a></div></div>
+<div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8h_html_a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502"><div class="ttname"><a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502">AT_NONE</a></div><div class="ttdeci">@ AT_NONE</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00205">ILI9341_t3_ERIS.h:205</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a6baed35a61a4cae1b3c67113aa6ec1dd"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a6baed35a61a4cae1b3c67113aa6ec1dd">AppBaseClass::am</a></div><div class="ttdeci">AppManager * am</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00042">AppBaseClass.h:42</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html_a98a05e53665415395c1eb56b9a1f05e4"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a98a05e53665415395c1eb56b9a1f05e4">AppBaseClass::draw</a></div><div class="ttdeci">ILI9341_t3_ERIS * draw</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00045">AppBaseClass.h:45</a></div></div>
 <div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_html_aa98b1e826474433e1f06f13823cc7a48"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aa98b1e826474433e1f06f13823cc7a48">ILI9341_t3_ERIS::bltMem</a></div><div class="ttdeci">void bltMem(Surface *dest, Surface *source, int16_t x, int16_t y, bltAlphaType alpha_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00099">ILI9341_t3_ERIS.cpp:99</a></div></div>
-<div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_html_aaebb83a17112fb0ec445e4d654628750"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aaebb83a17112fb0ec445e4d654628750">ILI9341_t3_ERIS::bltSD</a></div><div class="ttdeci">void bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width, const char *path, const char *filename, int16_t x, int16_t y, bltAlphaType alpha_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00141">ILI9341_t3_ERIS.cpp:141</a></div></div>
+<div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_html_aaebb83a17112fb0ec445e4d654628750"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html#aaebb83a17112fb0ec445e4d654628750">ILI9341_t3_ERIS::bltSD</a></div><div class="ttdeci">void bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width, const char *path, const char *filename, int16_t x, int16_t y, bltAlphaType alpha_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00161">ILI9341_t3_ERIS.cpp:161</a></div></div>
 <div class="ttc" id="aclass_surface_html"><div class="ttname"><a href="../../d1/d1a/class_surface.html">Surface</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00033">ILI9341_t3_ERIS.h:33</a></div></div>
-<div class="ttc" id="aclass_surface_html_a5d3958cf977d83b61cf670385d2b21e9"><div class="ttname"><a href="../../d1/d1a/class_surface.html#a5d3958cf977d83b61cf670385d2b21e9">Surface::getSurfaceBufferP</a></div><div class="ttdeci">uint16_t * getSurfaceBufferP()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00139">ILI9341_t3_ERIS.h:139</a></div></div>
-<div class="ttc" id="aclass_surface_html_ad4db48c3e6d5382017fe2f39e3be882d"><div class="ttname"><a href="../../d1/d1a/class_surface.html#ad4db48c3e6d5382017fe2f39e3be882d">Surface::getWidth</a></div><div class="ttdeci">int16_t getWidth()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00140">ILI9341_t3_ERIS.h:140</a></div></div>
+<div class="ttc" id="aclass_surface_html_a5d3958cf977d83b61cf670385d2b21e9"><div class="ttname"><a href="../../d1/d1a/class_surface.html#a5d3958cf977d83b61cf670385d2b21e9">Surface::getSurfaceBufferP</a></div><div class="ttdeci">uint16_t * getSurfaceBufferP()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00146">ILI9341_t3_ERIS.h:146</a></div></div>
+<div class="ttc" id="aclass_surface_html_ad4db48c3e6d5382017fe2f39e3be882d"><div class="ttname"><a href="../../d1/d1a/class_surface.html#ad4db48c3e6d5382017fe2f39e3be882d">Surface::getWidth</a></div><div class="ttdeci">int16_t getWidth()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00147">ILI9341_t3_ERIS.h:147</a></div></div>
 <div class="ttc" id="acontrol_button_8h_html_a6eec6508ad3423ae351f1830e8e7afb6"><div class="ttname"><a href="../../dc/ddf/control_button_8h.html#a6eec6508ad3423ae351f1830e8e7afb6">Arial_9</a></div><div class="ttdeci">const ILI9341_t3_font_t Arial_9</div></div>
-<div class="ttc" id="acontrol_button_8h_html_a9acedcace229ff6b54e6ed963a84751d"><div class="ttname"><a href="../../dc/ddf/control_button_8h.html#a9acedcace229ff6b54e6ed963a84751d">SHOW_ACTIVE_TIME_MILLISEC</a></div><div class="ttdeci">#define SHOW_ACTIVE_TIME_MILLISEC</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/control_button_8h_source.html#l00013">controlButton.h:13</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_a9acedcace229ff6b54e6ed963a84751d"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#a9acedcace229ff6b54e6ed963a84751d">SHOW_ACTIVE_TIME_MILLISEC</a></div><div class="ttdeci">#define SHOW_ACTIVE_TIME_MILLISEC</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00016">globaldefs.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00042">AppBaseClass::am</a>, <a class="el" href="../../dc/ddf/control_button_8h.html#a6eec6508ad3423ae351f1830e8e7afb6">Arial_9</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00198">AT_NONE</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00099">ILI9341_t3_ERIS::bltMem()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00141">ILI9341_t3_ERIS::bltSD()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00045">AppBaseClass::draw</a>, <a class="el" href="../../d1/d27/_print_basic_8h_source.html#l00042">F</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00139">Surface::getSurfaceBufferP()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00140">Surface::getWidth()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::h</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00064">img_filename</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00065">img_path</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00066">imgcache</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00070">imgloaded</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00067">isDirty</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00068">isPressed</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00072">show_active</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00013">SHOW_ACTIVE_TIME_MILLISEC</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00059">text</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00071">time_active</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::w</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::x</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::y</a>.</p>
-<div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-30-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00042">AppBaseClass::am</a>, <a class="el" href="../../dc/ddf/control_button_8h.html#a6eec6508ad3423ae351f1830e8e7afb6">Arial_9</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00205">AT_NONE</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00099">ILI9341_t3_ERIS::bltMem()</a>, <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00161">ILI9341_t3_ERIS::bltSD()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00045">AppBaseClass::draw</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00146">Surface::getSurfaceBufferP()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00147">Surface::getWidth()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::h</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00064">img_filename</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00065">img_path</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00066">imgcache</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00070">imgloaded</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00067">isDirty</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00068">isPressed</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00072">show_active</a>, <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00016">SHOW_ACTIVE_TIME_MILLISEC</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00059">text</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00071">time_active</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00069">usingImage</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::w</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::x</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">AppBaseClass::y</a>.</p>
+<div id="dynsection-31" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-31-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-30-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_a2e7fe7a681fb8dc79080fc5e7a22bb83_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-31-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d17/class_control_button_a2e7fe7a681fb8dc79080fc5e7a22bb83_cgraph.svg" width="443" height="200"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1908,7 +1911,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00041">41</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00017">AppScope::AppScope()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00354">AppAudioToPolyphonic::changeVoice()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00280">AppAudioToPolyphonic::makeAudioConnections()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00199">AppAudioToPolyphonic::MessageHandler()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00244">AppAudioToPolyphonic::onAnalog1()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00251">AppAudioToPolyphonic::onAnalog2()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00258">AppAudioToPolyphonic::onAnalog3()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00272">AppAudioToPolyphonic::onAnalog4()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00137">AppAudioToPolyphonic::update()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00017">AppScope::AppScope()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00354">AppAudioToPolyphonic::changeVoice()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00280">AppAudioToPolyphonic::makeAudioConnections()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00199">AppAudioToPolyphonic::MessageHandler()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00244">AppAudioToPolyphonic::onAnalog1()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00251">AppAudioToPolyphonic::onAnalog2()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00258">AppAudioToPolyphonic::onAnalog3()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00272">AppAudioToPolyphonic::onAnalog4()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00137">AppAudioToPolyphonic::update()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -1934,7 +1937,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00042">42</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00239">AppAudioToPolyphonic::onFocus()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00137">AppAudioToPolyphonic::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00315">AppCQT::updateOscillatorBank()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00265">AppCQT::updateRT()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00069">AppScope::updateRT()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00239">AppAudioToPolyphonic::onFocus()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00137">AppAudioToPolyphonic::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00316">AppCQT::updateOscillatorBank()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00266">AppCQT::updateRT()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00069">AppScope::updateRT()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -2012,7 +2015,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00045">45</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00093">AppWren::setPixel()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -2038,7 +2041,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">76</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00174">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00162">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -2090,7 +2093,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00112">112</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00092">AppBaseClass::releasePopUp()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00085">AppBaseClass::requestPopUp()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00092">AppBaseClass::releasePopUp()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00085">AppBaseClass::requestPopUp()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>.</p>
 
 </div>
 </div>
@@ -2116,7 +2119,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00071">71</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00093">AppBaseClass::setDimension()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00093">AppBaseClass::setDimension()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00083">AppWren::setDimension()</a>.</p>
 
 </div>
 </div>
@@ -2324,7 +2327,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00077">77</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00018">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00017">AppScope::AppScope()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00028">AppWren::AppWren()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00022">ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00017">ControlSlider::ControlSlider()</a>, <a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html#l00056">SvcSerialCommandInterface::SvcSerialCommandInterface()</a>, <a class="el" href="../../d6/d71/cpplint_8py_source.html#l02300">cpplint._ClassInfo::CheckEnd()</a>, <a class="el" href="../../d6/d71/cpplint_8py_source.html#l02339">cpplint._NamespaceInfo::CheckEnd()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00081">AppBaseClass::isName()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00086">AppBaseClass::setName()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00018">AppReprogram::AppReprogram()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00017">AppScope::AppScope()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00035">AppWren::AppWren()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00022">ControlButton()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00017">ControlSlider::ControlSlider()</a>, <a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html#l00056">SvcSerialCommandInterface::SvcSerialCommandInterface()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00078">AppCQT::init()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00043">AppAudioToPolyphonic::initMyAppExample()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00081">AppBaseClass::isName()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00434">AppWren::MessageHandler()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00086">AppBaseClass::setName()</a>.</p>
 
 </div>
 </div>
@@ -2480,7 +2483,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00043">43</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00436">AppCQT::MessageHandler()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00437">AppCQT::MessageHandler()</a>, and <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>.</p>
 
 </div>
 </div>
@@ -2494,7 +2497,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a>* AppBaseClass::sd</td>
+          <td class="memname">SdFs* AppBaseClass::sd</td>
         </tr>
       </table>
   </td>
@@ -2506,7 +2509,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00044">44</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -2614,8 +2617,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a2c77c32c3d50a837d3a03fea6e9009"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a2c77c32c3d50a837d3a03fea6e9009">&#9670;&nbsp;</a></span>update_call_period</h2>
+<a id="a83f993fea13d519da399132f3d0969b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f993fea13d519da399132f3d0969b1">&#9670;&nbsp;</a></span>update_cpu_time</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2624,59 +2627,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">elapsedMicros AppBaseClass::update_call_period</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00063">63</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
-
-</div>
-</div>
-<a id="ae25e514a1d183f98b5c3551ffcaf2744"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae25e514a1d183f98b5c3551ffcaf2744">&#9670;&nbsp;</a></span>update_call_period_max</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t AppBaseClass::update_call_period_max</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00064">64</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
-
-</div>
-</div>
-<a id="a08a303813204000ee12600a38fe96d18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08a303813204000ee12600a38fe96d18">&#9670;&nbsp;</a></span>update_loop_time</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t AppBaseClass::update_loop_time</td>
+          <td class="memname">uint16_t AppBaseClass::update_cpu_time</td>
         </tr>
       </table>
   </td>
@@ -2692,8 +2643,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acec8429a0d867221c0c4f47f4f7d00d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acec8429a0d867221c0c4f47f4f7d00d4">&#9670;&nbsp;</a></span>update_loop_time_max</h2>
+<a id="a8cdd69770690bfe8079eb0789487103b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cdd69770690bfe8079eb0789487103b">&#9670;&nbsp;</a></span>update_cpu_time_max</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2702,7 +2653,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t AppBaseClass::update_loop_time_max</td>
+          <td class="memname">uint16_t AppBaseClass::update_cpu_time_max</td>
         </tr>
       </table>
   </td>
@@ -2718,8 +2669,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2c2bd2a942c2228c8556dc2cb918e020"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c2bd2a942c2228c8556dc2cb918e020">&#9670;&nbsp;</a></span>updateRT_call_period</h2>
+<a id="a3b520daeb29f2389a8515bdff029d894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b520daeb29f2389a8515bdff029d894">&#9670;&nbsp;</a></span>update_period</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2728,7 +2679,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">elapsedMicros AppBaseClass::updateRT_call_period</td>
+          <td class="memname">elapsedMicros AppBaseClass::update_period</td>
         </tr>
       </table>
   </td>
@@ -2738,14 +2689,14 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00065">65</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00063">63</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
 
 </div>
 </div>
-<a id="a52fe0832f15327eed5bf0eecf5c368bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52fe0832f15327eed5bf0eecf5c368bd">&#9670;&nbsp;</a></span>updateRT_call_period_max</h2>
+<a id="ac21a5b7145c38fd17042971a6b357208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac21a5b7145c38fd17042971a6b357208">&#9670;&nbsp;</a></span>update_period_max</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2754,7 +2705,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t AppBaseClass::updateRT_call_period_max</td>
+          <td class="memname">uint16_t AppBaseClass::update_period_max</td>
         </tr>
       </table>
   </td>
@@ -2764,14 +2715,14 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00066">66</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00064">64</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
 
 </div>
 </div>
-<a id="a3d6da03c9c3c5243d8dd2281dc963011"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d6da03c9c3c5243d8dd2281dc963011">&#9670;&nbsp;</a></span>updateRT_loop_time</h2>
+<a id="ad95515dfef2582afd78055e9cb854061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95515dfef2582afd78055e9cb854061">&#9670;&nbsp;</a></span>updateRT_cpu_time</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2780,7 +2731,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t AppBaseClass::updateRT_loop_time</td>
+          <td class="memname">uint16_t AppBaseClass::updateRT_cpu_time</td>
         </tr>
       </table>
   </td>
@@ -2796,8 +2747,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad9996440b20f31307ba26ff1f932a421"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9996440b20f31307ba26ff1f932a421">&#9670;&nbsp;</a></span>updateRT_loop_time_max</h2>
+<a id="a8f4a888dd21576343cf37a90a88e70ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f4a888dd21576343cf37a90a88e70ec">&#9670;&nbsp;</a></span>updateRT_cpu_time_max</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2806,7 +2757,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t AppBaseClass::updateRT_loop_time_max</td>
+          <td class="memname">uint16_t AppBaseClass::updateRT_cpu_time_max</td>
         </tr>
       </table>
   </td>
@@ -2817,6 +2768,58 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00060">60</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
+
+</div>
+</div>
+<a id="a5fbc009ba95e015c48d44065cb4589f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbc009ba95e015c48d44065cb4589f2">&#9670;&nbsp;</a></span>updateRT_period</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">elapsedMicros AppBaseClass::updateRT_period</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00065">65</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
+
+</div>
+</div>
+<a id="a748bf9596070dfeaf278dcef44120890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748bf9596070dfeaf278dcef44120890">&#9670;&nbsp;</a></span>updateRT_period_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t AppBaseClass::updateRT_period_max</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00066">66</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>.</p>
 
@@ -2844,7 +2847,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00056">56</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00101">AppBaseClass::setRTPriority()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00098">AppBaseClass::updateRT()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00265">AppCQT::updateRT()</a>, and <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00025">AppReprogram::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00101">AppBaseClass::setRTPriority()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00098">AppBaseClass::updateRT()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00266">AppCQT::updateRT()</a>, and <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00025">AppReprogram::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -2896,7 +2899,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">76</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00354">AppAudioToPolyphonic::changeVoice()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00174">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00354">AppAudioToPolyphonic::changeVoice()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00162">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -2922,7 +2925,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00075">75</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass::setWidgetDimension()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00035">AppWren::AppWren()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass::setWidgetDimension()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>.</p>
 
 </div>
 </div>
@@ -2948,7 +2951,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00072">72</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass::setWidgetPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00035">AppWren::AppWren()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass::setWidgetPosition()</a>.</p>
 
 </div>
 </div>
@@ -2974,7 +2977,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00073">73</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass::setWidgetPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00035">AppWren::AppWren()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass::setWidgetPosition()</a>.</p>
 
 </div>
 </div>
@@ -3000,7 +3003,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00074">74</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass::setWidgetDimension()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00035">AppWren::AppWren()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass::setWidgetDimension()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>.</p>
 
 </div>
 </div>
@@ -3052,7 +3055,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">76</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00174">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00162">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00093">AppWren::setPixel()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
 
 </div>
 </div>
@@ -3078,7 +3081,7 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00076">76</a> of file <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html">AppBaseClass.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00297">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00174">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00159">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00016">AppBaseClass::AppBaseClass()</a>, <a class="el" href="../../d4/db1/_app_base_class_8cpp_source.html#l00055">AppBaseClass::_updatePosition()</a>, <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00172">AppAudioToPolyphonic::onTouch()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00298">AppCQT::onTouch()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00096">AppScope::onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00054">ControlSlider::onTouch()</a>, <a class="el" href="../../d3/d0e/app_template_8h_source.html#l00031">AppTemplate::onTouch()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00162">AppWren::onTouch()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00118">onTouch()</a>, <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00072">ControlSlider::onTouchRelease()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00128">onTouchRelease()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00093">AppWren::setPixel()</a>, <a class="el" href="../../d4/d75/app_c_q_t_8h_source.html#l00160">AppCQT::update()</a>, <a class="el" href="../../d8/d1f/app_scope_8h_source.html#l00027">AppScope::update()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00473">AppWren::update()</a>, <a class="el" href="../../dc/ddf/control_button_8h_source.html#l00073">update()</a>, and <a class="el" href="../../d4/d50/control_slider_8h_source.html#l00040">ControlSlider::update()</a>.</p>
 
 </div>
 </div>

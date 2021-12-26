@@ -118,7 +118,7 @@ Variables</h2></td></tr>
 <tr class="separator:a462ba08568f93a3fec6a44898d5989da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4b2f46f6bc0178f1f3efc5dba880bf8"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp.html#ab4b2f46f6bc0178f1f3efc5dba880bf8">newline</a> = '\n'</td></tr>
 <tr class="separator:ab4b2f46f6bc0178f1f3efc5dba880bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6385eecb021ea6dc1e9b5597cfe94b85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a></td></tr>
+<tr class="memitem:a6385eecb021ea6dc1e9b5597cfe94b85"><td class="memItemLeft" align="right" valign="top">SdFs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a></td></tr>
 <tr class="separator:a6385eecb021ea6dc1e9b5597cfe94b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d71425d9df28667d528833a4db10432"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp.html#a1d71425d9df28667d528833a4db10432">token</a></td></tr>
 <tr class="separator:a1d71425d9df28667d528833a4db10432"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,14 +156,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00108">108</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">while</span>(str[i] != <span class="charliteral">&#39;\0&#39;</span>){</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span>(str[i] == oldChar) str[i] = newChar;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        i++;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">while</span>(str[i] != <span class="charliteral">&#39;\0&#39;</span>){</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">if</span>(str[i] == oldChar) str[i] = newChar;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        i++;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,21 +199,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">char</span> *ix = str;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">int</span> n = 0;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">while</span>((ix = strchr(ix, orig)) != <a class="code" href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        *ix++ = rep;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        n++;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="ttc" id="a_stdio_stream_8h_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="../../da/d2d/_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d2d/_stdio_stream_8h_source.html#l00092">StdioStream.h:92</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00088">88</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">char</span> *ix = str;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> n = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">while</span>((ix = strchr(ix, orig)) != NULL) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        *ix++ = rep;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        n++;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../da/d2d/_stdio_stream_8h_source.html#l00092">NULL</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -263,9 +260,9 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral">&quot;M .▀▀▀▀▀▀▀▀▀▀▀..▀▀▀▀▀▀▀▀▀▀▀..▀.........▀..▀▀▀▀▀▀▀▀▀▀▀.\n&quot;</span></div>
 <div class="line"><span class="stringliteral">&quot;M Connected to the Serial Command Interface           \n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -281,9 +278,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00171">SvcSerialCommandInterface::txOverflowHandler()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00173">SvcSerialCommandInterface::txOverflowHandler()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>
@@ -297,7 +294,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/d73/class_sd_fs.html">SdFs</a> sd</td>
+          <td class="memname">SdFs sd</td>
         </tr>
       </table>
   </td>
@@ -321,9 +318,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d4/de2/wren__compiler_8c_source.html#l01394">declareVariable()</a>, <a class="el" href="../../d4/de2/wren__compiler_8c_source.html#l00459">error()</a>, <a class="el" href="../../d4/d05/lz4_8c_source.html#l00860">LZ4_compress_generic_validated()</a>, <a class="el" href="../../d4/d05/lz4_8c_source.html#l01759">LZ4_decompress_generic()</a>, <a class="el" href="../../d4/de2/wren__compiler_8c_source.html#l02364">name()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00316">AudioDirector::ParseConnectString()</a>, <a class="el" href="../../d4/de2/wren__compiler_8c_source.html#l01936">signatureFromToken()</a>, <a class="el" href="../../d4/de2/wren__compiler_8c_source.html#l02333">staticField()</a>, <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00171">SvcSerialCommandInterface::txOverflowHandler()</a>, <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00336">SvcSerialCommandInterface::updateRT()</a>, and <a class="el" href="../../d0/d78/_sd_spi_card_8cpp_source.html#l00558">SharedSpiCard::writeData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d4/d05/lz4_8c_source.html#l00860">LZ4_compress_generic_validated()</a>, <a class="el" href="../../d4/d05/lz4_8c_source.html#l01759">LZ4_decompress_generic()</a>, <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00321">AudioDirector::ParseConnectString()</a>, <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00173">SvcSerialCommandInterface::txOverflowHandler()</a>, and <a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html#l00338">SvcSerialCommandInterface::updateRT()</a>.</p>
 
 </div>
 </div>

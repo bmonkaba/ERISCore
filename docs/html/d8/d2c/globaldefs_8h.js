@@ -26,7 +26,8 @@ var globaldefs_8h =
     [ "SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD", "d8/d2c/globaldefs_8h.html#a6eb9a70da8c657508b7ca74addedf167", null ],
     [ "SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC", "d8/d2c/globaldefs_8h.html#adbcabab2ec38eadd8ba18dc55d7b1486", null ],
     [ "SERIAL_WORKING_BUFFER_SIZE", "d8/d2c/globaldefs_8h.html#a2e63e4023af076c8c199ede80957755e", null ],
+    [ "SHOW_ACTIVE_TIME_MILLISEC", "d8/d2c/globaldefs_8h.html#a9acedcace229ff6b54e6ed963a84751d", null ],
     [ "p", "d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f", null ],
-    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#a793a4ff464f65a4a4fc6d73e19c2c078", null ],
+    [ "PROGMEM", "d8/d2c/globaldefs_8h.html#ad25ce6438e8b7d4c8cc17381862f642e", null ],
     [ "s", "d8/d2c/globaldefs_8h.html#ac2254e411e388869ad4f7490e7aa3ede", null ]
 ];

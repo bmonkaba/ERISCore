@@ -1,22 +1,7 @@
 var searchData=
 [
-  ['fatfile_3740',['FatFile',['../d3/d51/class_fat_file.html',1,'']]],
-  ['fatformatter_3741',['FatFormatter',['../d9/d74/class_fat_formatter.html',1,'']]],
-  ['fatlfn_5ft_3742',['FatLfn_t',['../d2/dbe/class_fat_lfn__t.html',1,'']]],
-  ['fatpartition_3743',['FatPartition',['../d0/d12/class_fat_partition.html',1,'']]],
-  ['fatpos_5ft_3744',['FatPos_t',['../d3/df4/struct_fat_pos__t.html',1,'']]],
-  ['fatsfn_5ft_3745',['FatSfn_t',['../d4/df2/class_fat_sfn__t.html',1,'']]],
-  ['fatvolume_3746',['FatVolume',['../d9/d27/class_fat_volume.html',1,'']]],
-  ['fftreadrangestruct_3747',['FFTReadRangeStruct',['../d2/d28/struct_f_f_t_read_range_struct.html',1,'']]],
-  ['file32_3748',['File32',['../df/dfc/class_file32.html',1,'']]],
-  ['fileinfo_3749',['FileInfo',['../db/da8/classcpplint_1_1_file_info.html',1,'cpplint']]],
-  ['fndebug_3750',['FnDebug',['../d7/dbc/struct_fn_debug.html',1,'']]],
-  ['fsbasefile_3751',['FsBaseFile',['../d7/d76/class_fs_base_file.html',1,'']]],
-  ['fscache_3752',['FsCache',['../d3/d77/class_fs_cache.html',1,'']]],
-  ['fsfile_3753',['FsFile',['../d4/da1/class_fs_file.html',1,'']]],
-  ['fsinfosector_3754',['FsInfoSector',['../d7/d39/struct_fs_info_sector.html',1,'']]],
-  ['fsname_3755',['FsName',['../d8/dcc/class_fs_name.html',1,'']]],
-  ['fspos_5ft_3756',['fspos_t',['../df/da6/structfspos__t.html',1,'']]],
-  ['fstream_3757',['fstream',['../d7/df9/classfstream.html',1,'']]],
-  ['fsvolume_3758',['FsVolume',['../df/dd9/class_fs_volume.html',1,'']]]
+  ['lz4_5fstream_5ft_5finternal_1158',['LZ4_stream_t_internal',['../de/d3a/struct_l_z4__stream__t__internal.html',1,'']]],
+  ['lz4_5fstream_5fu_1159',['LZ4_stream_u',['../d1/dd8/union_l_z4__stream__u.html',1,'']]],
+  ['lz4_5fstreamdecode_5ft_5finternal_1160',['LZ4_streamDecode_t_internal',['../d7/db6/struct_l_z4__stream_decode__t__internal.html',1,'']]],
+  ['lz4_5fstreamdecode_5fu_1161',['LZ4_streamDecode_u',['../df/d07/union_l_z4__stream_decode__u.html',1,'']]]
 ];

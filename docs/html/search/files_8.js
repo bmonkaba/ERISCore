@@ -1,31 +1,4 @@
 var searchData=
 [
-  ['eris_5fanalyze_5ffft1024_2ecpp_3904',['eris_analyze_fft1024.cpp',['../d7/d78/eris__analyze__fft1024_8cpp.html',1,'']]],
-  ['eris_5fanalyze_5ffft1024_2eh_3905',['eris_analyze_fft1024.h',['../d4/dfc/eris__analyze__fft1024_8h.html',1,'']]],
-  ['eris_5fanalyze_5fscope_2ecpp_3906',['eris_analyze_scope.cpp',['../d4/d9a/eris__analyze__scope_8cpp.html',1,'']]],
-  ['eris_5fanalyze_5fscope_2eh_3907',['eris_analyze_scope.h',['../d8/dc5/eris__analyze__scope_8h.html',1,'']]],
-  ['eris_5fmixer_5fext_2ecpp_3908',['eris_mixer_ext.cpp',['../db/d39/eris__mixer__ext_8cpp.html',1,'']]],
-  ['eris_5fmixer_5fext_2eh_3909',['eris_mixer_ext.h',['../d4/dd6/eris__mixer__ext_8h.html',1,'']]],
-  ['eris_5fsynth_5fwaveform_2eh_3910',['eris_synth_waveform.h',['../de/db5/eris__synth__waveform_8h.html',1,'']]],
-  ['erisaudio_2eh_3911',['erisAudio.h',['../d2/ded/eris_audio_8h.html',1,'']]],
-  ['eriscore_2ecpp_3912',['ErisCore.cpp',['../d6/dd8/_eris_core_8cpp.html',1,'']]],
-  ['error_2dhandling_2emarkdown_3913',['error-handling.markdown',['../d2/d65/error-handling_8markdown.html',1,'']]],
-  ['error_2dhandling_2etxt_3914',['error-handling.txt',['../d0/daa/error-handling_8txt.html',1,'']]],
-  ['exfatconfig_2eh_3915',['ExFatConfig.h',['../da/df6/_ex_fat_config_8h.html',1,'']]],
-  ['exfatdbg_2ecpp_3916',['ExFatDbg.cpp',['../da/dc3/_ex_fat_dbg_8cpp.html',1,'']]],
-  ['exfatfile_2ecpp_3917',['ExFatFile.cpp',['../d4/d74/_ex_fat_file_8cpp.html',1,'']]],
-  ['exfatfile_2eh_3918',['ExFatFile.h',['../dd/ddc/_ex_fat_file_8h.html',1,'']]],
-  ['exfatfileprint_2ecpp_3919',['ExFatFilePrint.cpp',['../d3/d2b/_ex_fat_file_print_8cpp.html',1,'']]],
-  ['exfatfilewrite_2ecpp_3920',['ExFatFileWrite.cpp',['../db/d4e/_ex_fat_file_write_8cpp.html',1,'']]],
-  ['exfatformatter_2ecpp_3921',['ExFatFormatter.cpp',['../d6/dac/_ex_fat_formatter_8cpp.html',1,'']]],
-  ['exfatformatter_2eh_3922',['ExFatFormatter.h',['../d8/d58/_ex_fat_formatter_8h.html',1,'']]],
-  ['exfatlib_2eh_3923',['ExFatLib.h',['../d8/d23/_ex_fat_lib_8h.html',1,'']]],
-  ['exfatlogger_2eh_3924',['ExFatLogger.h',['../d8/d50/_ex_fat_logger_8h.html',1,'']]],
-  ['exfatname_2ecpp_3925',['ExFatName.cpp',['../d8/d04/_ex_fat_name_8cpp.html',1,'']]],
-  ['exfatpartition_2ecpp_3926',['ExFatPartition.cpp',['../d2/df9/_ex_fat_partition_8cpp.html',1,'']]],
-  ['exfatpartition_2eh_3927',['ExFatPartition.h',['../d7/dc8/_ex_fat_partition_8h.html',1,'']]],
-  ['exfatvolume_2ecpp_3928',['ExFatVolume.cpp',['../dc/d94/_ex_fat_volume_8cpp.html',1,'']]],
-  ['exfatvolume_2eh_3929',['ExFatVolume.h',['../d6/d68/_ex_fat_volume_8h.html',1,'']]],
-  ['index_2emarkdown_3930',['index.markdown',['../d0/dcf/embedding_2index_8markdown.html',1,'']]],
-  ['readme_2etxt_3931',['readme.txt',['../d2/d2f/examples_2examples_v1_2_0gattic_2readme_8txt.html',1,'(Global Namespace)'],['../d9/d27/examples_2examples_v1_2_low_latency_logger_a_d_x_l345_2readme_8txt.html',1,'(Global Namespace)'],['../d2/d46/extras_2_u_s_b___host___shield_2readme_8txt.html',1,'(Global Namespace)']]]
+  ['pcm1863_2eh_1207',['PCM1863.h',['../dc/d47/_p_c_m1863_8h.html',1,'']]]
 ];

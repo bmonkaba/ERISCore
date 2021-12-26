@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['0_2dhello_2dwren_7353',['0-hello-wren',['../d4/dde/md__e_r_i_s_core_lib_wren_doc_site_blog_0_hello_wren.html',1,'']]]
+  ['eriscore_2233',['ERISCore',['../da/da2/md__e_r_i_s_core_lib__audio__r_e_a_d_m_e.html',1,'']]]
 ];

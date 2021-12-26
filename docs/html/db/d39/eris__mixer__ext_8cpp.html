@@ -103,9 +103,9 @@ $(document).ready(function(){initNavTree('db/d39/eris__mixer__ext_8cpp.html','..
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a78e85d87b5302dc20a329d098a999be1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d39/eris__mixer__ext_8cpp.html#a78e85d87b5302dc20a329d098a999be1">applyGain2</a> (int16_t *<a class="el" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>, int32_t mult)</td></tr>
+<tr class="memitem:a78e85d87b5302dc20a329d098a999be1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d39/eris__mixer__ext_8cpp.html#a78e85d87b5302dc20a329d098a999be1">applyGain2</a> (int16_t *data, int32_t mult)</td></tr>
 <tr class="separator:a78e85d87b5302dc20a329d098a999be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a2056e0e66b8b833a8fcdc6e1d8250e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d39/eris__mixer__ext_8cpp.html#a3a2056e0e66b8b833a8fcdc6e1d8250e">applyGainThenAdd2</a> (int16_t *<a class="el" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>, const int16_t *in, int32_t mult)</td></tr>
+<tr class="memitem:a3a2056e0e66b8b833a8fcdc6e1d8250e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d39/eris__mixer__ext_8cpp.html#a3a2056e0e66b8b833a8fcdc6e1d8250e">applyGainThenAdd2</a> (int16_t *data, const int16_t *in, int32_t mult)</td></tr>
 <tr class="separator:a3a2056e0e66b8b833a8fcdc6e1d8250e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -145,8 +145,8 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html">eris_mixer_ext.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = (uint32_t *)<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a> + <a class="code" href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> = (uint32_t *)data;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(data + <a class="code" href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a>);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">do</span> {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        uint32_t tmp32 = *<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a>; <span class="comment">// read 2 samples from *data</span></div>
@@ -158,10 +158,9 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (<a class="code" href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a> &lt; end);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="ttc" id="a_audio_stream_8h_html_ad762f9826d4325643328dc53fae4fcb6"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a></div><div class="ttdeci">#define AUDIO_BLOCK_SAMPLES</div><div class="ttdoc">modified version from lib basline</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00058">AudioStream.h:58</a></div></div>
-<div class="ttc" id="a_sd_error_codes_8txt_html_aab48e590387241bed659ca8b5009c990"><div class="ttname"><a href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list Symbol failed SD_CARD_ERROR_NONE No SD_CARD_ERROR_CMD0 Card reset SD_CARD_ERROR_CMD2 SDIO read SD_CARD_ERROR_CMD3 SDIO publish SD_CARD_ERROR_CMD6 Switch card SD_CARD_ERROR_CMD7 SDIO card SD_CARD_ERROR_CMD8 Send and check interface SD_CARD_ERROR_CMD9 Read CSD data</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00013">SdErrorCodes.txt:14</a></div></div>
-<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00053">globaldefs.h:53</a></div></div>
+<div class="ttc" id="aglobaldefs_8h_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00055">globaldefs.h:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, <a class="el" href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00014">data</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00053">p</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, and <a class="el" href="../../d8/d2c/globaldefs_8h_source.html#l00055">p</a>.</p>
 
 </div>
 </div>
@@ -207,9 +206,9 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html#l00021">21</a> of file <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html">eris_mixer_ext.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint32_t *<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> = (uint32_t *)<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint32_t *<a class="code" href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a> = (uint32_t *)data;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> uint32_t *src = (uint32_t *)in;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#aab48e590387241bed659ca8b5009c990">data</a> + <a class="code" href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(data + <a class="code" href="../../df/d6c/_audio_stream_8h.html#ad762f9826d4325643328dc53fae4fcb6">AUDIO_BLOCK_SAMPLES</a>);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (mult == 65536) {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">do</span> {</div>
@@ -233,7 +232,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="ttc" id="alz4_8h_html_a961c13eb7fcda15b167b953cac1ab3ec"><div class="ttname"><a href="../../dd/df8/lz4_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/lz4_8h_source.html#l00724">lz4.h:724</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, <a class="el" href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00014">data</a>, and <a class="el" href="../../dd/df8/lz4_8h_source.html#l00724">dst</a>.</p>
+<p class="reference">References <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00058">AUDIO_BLOCK_SAMPLES</a>, and <a class="el" href="../../dd/df8/lz4_8h_source.html#l00724">dst</a>.</p>
 
 </div>
 </div>

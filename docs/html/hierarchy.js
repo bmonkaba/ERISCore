@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "adcdata_t", "d9/d43/structadcdata__t.html", null ],
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", null ],
     [ "Animation", "d4/d7c/class_animation.html", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", [
@@ -249,215 +248,24 @@ var hierarchy =
     [ "AudioSynthWavetable", null, [
       [ "erisAudioSynthWavetable", "d7/d42/classeris_audio_synth_wavetable.html", null ]
     ] ],
-    [ "BaseFile", null, [
-      [ "PrintFile< BaseFile >", "d0/d9f/class_print_file.html", null ],
-      [ "StreamFile< BaseFile, PosType >", "da/dc7/class_stream_file.html", null ]
-    ] ],
-    [ "biosParameterBlockExFat", "d8/dda/structbios_parameter_block_ex_fat.html", null ],
-    [ "biosParameterBlockFat16", "da/dd0/structbios_parameter_block_fat16.html", null ],
-    [ "biosParameterBlockFat32", "d3/df3/structbios_parameter_block_fat32.html", null ],
-    [ "block16_t", "d4/d4a/structblock16__t.html", null ],
-    [ "block8_t", "dc/deb/structblock8__t.html", null ],
-    [ "BlockDeviceInterface", "d5/d82/class_block_device_interface.html", [
-      [ "SdCardInterface", "de/d3a/class_sd_card_interface.html", [
-        [ "SdioCard", "d4/d82/class_sdio_card.html", null ]
-      ] ]
-    ] ],
-    [ "BufferedPrint< WriteClass, BUF_DIM >", "de/de1/class_buffered_print.html", null ],
-    [ "CallFrame", "d0/d4e/struct_call_frame.html", null ],
-    [ "CID", "d1/db8/struct_c_i_d.html", null ],
-    [ "class MyClass", null, [
-      [ "proposal", "d5/de1/classproposal.html", null ]
-    ] ],
-    [ "csd_t", "d8/d49/unioncsd__t.html", null ],
-    [ "CSDV1", "d0/dfb/struct_c_s_d_v1.html", null ],
-    [ "CSDV2", "d8/d81/struct_c_s_d_v2.html", null ],
-    [ "data_t", "dd/de8/structdata__t.html", null ],
-    [ "DigitalPin< PinNumber >", "dc/dc3/class_digital_pin.html", null ],
-    [ "DirBitmap_t", "d6/d2e/struct_dir_bitmap__t.html", null ],
-    [ "DirFat_t", "db/da4/struct_dir_fat__t.html", null ],
-    [ "DirFile_t", "da/d17/struct_dir_file__t.html", null ],
-    [ "DirGeneric_t", "db/da2/struct_dir_generic__t.html", null ],
-    [ "DirLabel_t", "df/ddf/struct_dir_label__t.html", null ],
-    [ "DirLfn_t", "de/d14/struct_dir_lfn__t.html", null ],
-    [ "DirName_t", "d3/dcb/struct_dir_name__t.html", null ],
-    [ "DirPos_t", "dc/da7/struct_dir_pos__t.html", null ],
-    [ "DirStream_t", "da/db6/struct_dir_stream__t.html", null ],
-    [ "DirUpcase_t", "df/db5/struct_dir_upcase__t.html", null ],
-    [ "Exception", null, [
-      [ "cpplint._IncludeError", "dc/d7c/classcpplint_1_1___include_error.html", null ]
-    ] ],
-    [ "ExFatBootSector", "df/de1/struct_ex_fat_boot_sector.html", null ],
-    [ "ExFatFile", "d5/d14/class_ex_fat_file.html", [
-      [ "StreamFile< ExFatFile, uint64_t >", "da/dc7/class_stream_file.html", [
-        [ "ExFile", "db/d75/class_ex_file.html", null ]
-      ] ]
-    ] ],
-    [ "ExFatFormatter", "dc/d53/class_ex_fat_formatter.html", null ],
-    [ "ExFatPartition", "d4/de9/class_ex_fat_partition.html", [
-      [ "ExFatVolume", "da/d35/class_ex_fat_volume.html", [
-        [ "SdBase< ExFatVolume >", "de/d8b/class_sd_base.html", [
-          [ "SdExFat", "dd/d23/class_sd_ex_fat.html", null ]
-        ] ]
-      ] ]
-    ] ],
-    [ "FatFile", "d3/d51/class_fat_file.html", [
-      [ "StreamFile< FatFile, uint32_t >", "da/dc7/class_stream_file.html", [
-        [ "File32", "df/dfc/class_file32.html", null ]
-      ] ]
-    ] ],
-    [ "FatFormatter", "d9/d74/class_fat_formatter.html", null ],
-    [ "FatPartition", "d0/d12/class_fat_partition.html", [
-      [ "FatVolume", "d9/d27/class_fat_volume.html", [
-        [ "SdBase< FatVolume >", "de/d8b/class_sd_base.html", [
-          [ "SdFat32", "d9/d14/class_sd_fat32.html", null ]
-        ] ]
-      ] ]
-    ] ],
-    [ "FatPos_t", "d3/df4/struct_fat_pos__t.html", null ],
-    [ "FatSfn_t", "d4/df2/class_fat_sfn__t.html", null ],
     [ "FFTReadRangeStruct", "d2/d28/struct_f_f_t_read_range_struct.html", null ],
-    [ "FnDebug", "d7/dbc/struct_fn_debug.html", null ],
-    [ "FsBaseFile", "d7/d76/class_fs_base_file.html", [
-      [ "StreamFile< FsBaseFile, uint64_t >", "da/dc7/class_stream_file.html", [
-        [ "FsFile", "d4/da1/class_fs_file.html", null ]
-      ] ]
-    ] ],
-    [ "FsCache", "d3/d77/class_fs_cache.html", null ],
-    [ "FsInfoSector", "d7/d39/struct_fs_info_sector.html", null ],
-    [ "FsName", "d8/dcc/class_fs_name.html", [
-      [ "ExName_t", "da/dd3/class_ex_name__t.html", null ],
-      [ "FatLfn_t", "d2/dbe/class_fat_lfn__t.html", null ]
-    ] ],
-    [ "fspos_t", "df/da6/structfspos__t.html", null ],
-    [ "FsVolume", "df/dd9/class_fs_volume.html", [
-      [ "SdBase< FsVolume >", "de/d8b/class_sd_base.html", [
-        [ "SdFs", "d6/d73/class_sd_fs.html", null ]
-      ] ]
-    ] ],
     [ "ILI9341_t3n", null, [
       [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", null ]
-    ] ],
-    [ "ios_base", "d4/dc1/classios__base.html", [
-      [ "ios", "df/d02/classios.html", [
-        [ "StreamBaseClass", "d3/dc7/class_stream_base_class.html", [
-          [ "fstream", "d7/df9/classfstream.html", null ],
-          [ "ifstream", "d0/d68/classifstream.html", null ],
-          [ "ofstream", "d9/d93/classofstream.html", null ]
-        ] ],
-        [ "istream", "d4/d07/classistream.html", [
-          [ "ibufstream", "d0/d91/classibufstream.html", [
-            [ "ArduinoInStream", "d2/d74/class_arduino_in_stream.html", null ]
-          ] ],
-          [ "ifstream", "d0/d68/classifstream.html", null ],
-          [ "iostream", "d1/d31/classiostream.html", [
-            [ "fstream", "d7/df9/classfstream.html", null ]
-          ] ]
-        ] ],
-        [ "ostream", "d0/d43/classostream.html", [
-          [ "ArduinoOutStream", "dc/d67/class_arduino_out_stream.html", null ],
-          [ "iostream", "d1/d31/classiostream.html", null ],
-          [ "obufstream", "df/d20/classobufstream.html", null ],
-          [ "ofstream", "d9/d93/classofstream.html", null ]
-        ] ]
-      ] ]
     ] ],
     [ "LZ4_stream_t_internal", "de/d3a/struct_l_z4__stream__t__internal.html", null ],
     [ "LZ4_stream_u", "d1/dd8/union_l_z4__stream__u.html", null ],
     [ "LZ4_streamDecode_t_internal", "d7/db6/struct_l_z4__stream_decode__t__internal.html", null ],
     [ "LZ4_streamDecode_u", "df/d07/union_l_z4__stream_decode__u.html", null ],
-    [ "MapEntry", "d2/d99/struct_map_entry.html", null ],
-    [ "masterBootRecordSector", "d6/d3c/structmaster_boot_record_sector.html", null ],
-    [ "mbrPartition", "d9/d9f/structmbr_partition.html", null ],
-    [ "metadata_t", "d4/da5/structmetadata__t.html", null ],
-    [ "Method", "d4/d3e/struct_method.html", null ],
-    [ "ObjClosure", "de/d02/struct_obj_closure.html", null ],
-    [ "ObjFn", "df/d87/struct_obj_fn.html", null ],
-    [ "ObjForeign", "d2/df7/struct_obj_foreign.html", null ],
-    [ "ObjInstance", "d9/d8d/struct_obj_instance.html", null ],
-    [ "ObjList", "db/d98/struct_obj_list.html", null ],
-    [ "ObjMap", "d4/db1/struct_obj_map.html", null ],
-    [ "ObjModule", "df/d81/struct_obj_module.html", null ],
-    [ "ObjRange", "d3/d4b/struct_obj_range.html", null ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
-    [ "partitionBootSector", "dc/d17/structpartition_boot_sector.html", null ],
-    [ "partitionBootSectorFat", "dc/da3/structpartition_boot_sector_fat.html", null ],
     [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", null, [
-      [ "RingBuf< F, Size >", "dc/d6f/class_ring_buf.html", null ],
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
-    ] ],
-    [ "PrintBasic", "da/db3/class_print_basic.html", [
-      [ "PrintFile< SdBaseFile >", "d0/d9f/class_print_file.html", [
-        [ "SdFile", "d1/dfe/class_sd_file.html", null ]
-      ] ],
-      [ "StreamFile< ExFatFile, uint64_t >", "da/dc7/class_stream_file.html", null ],
-      [ "StreamFile< FsBaseFile, uint64_t >", "da/dc7/class_stream_file.html", null ],
-      [ "StreamFile< FatFile, uint32_t >", "da/dc7/class_stream_file.html", null ],
-      [ "MinimumSerial", "d0/dcb/class_minimum_serial.html", null ],
-      [ "PrintFile< BaseFile >", "d0/d9f/class_print_file.html", null ],
-      [ "StreamBasic", "d9/db5/class_stream_basic.html", null ],
-      [ "StreamFile< BaseFile, PosType >", "da/dc7/class_stream_file.html", null ]
-    ] ],
-    [ "SdBaseFile", null, [
-      [ "PrintFile< SdBaseFile >", "d0/d9f/class_print_file.html", null ]
-    ] ],
-    [ "SdCardFactory", "d9/d30/class_sd_card_factory.html", null ],
-    [ "SdioConfig", "de/daf/class_sdio_config.html", null ],
-    [ "SdSpiArduinoDriver", "dc/da1/class_sd_spi_arduino_driver.html", null ],
-    [ "SdSpiBaseClass", "d4/d73/class_sd_spi_base_class.html", null ],
-    [ "SdSpiConfig", "df/d9e/class_sd_spi_config.html", null ],
-    [ "SdSpiDriverBareUno", "dd/d8c/class_sd_spi_driver_bare_uno.html", null ],
-    [ "SdSpiSoftDriver", "dc/dd3/class_sd_spi_soft_driver.html", [
-      [ "SoftSpiDriver< MisoPin, MosiPin, SckPin >", "d7/dd8/class_soft_spi_driver.html", null ]
-    ] ],
-    [ "SdStatus", "d6/d4a/struct_sd_status.html", null ],
-    [ "setfill", "d6/dce/structsetfill.html", null ],
-    [ "setprecision", "dd/da8/structsetprecision.html", null ],
-    [ "setw", "df/d54/structsetw.html", null ],
-    [ "SharedSpiCard", "d5/d4b/class_shared_spi_card.html", [
-      [ "DedicatedSpiCard", "db/d21/class_dedicated_spi_card.html", null ]
-    ] ],
-    [ "sObj", "d6/d93/structs_obj.html", null ],
-    [ "sObjClass", "d7/d64/structs_obj_class.html", null ],
-    [ "sObjFiber", "d1/d2d/structs_obj_fiber.html", null ],
-    [ "sObjString", "d1/d25/structs_obj_string.html", null ],
-    [ "sObjUpvalue", "de/d13/structs_obj_upvalue.html", null ],
-    [ "SoftSPI< MisoPin, MosiPin, SckPin, Mode >", "db/dbb/class_soft_s_p_i.html", null ],
-    [ "SoftSPI< MisoPin, MosiPin, SckPin, 0 >", "db/dbb/class_soft_s_p_i.html", null ],
-    [ "StreamBaseFile", null, [
-      [ "StdioStream", "d2/de6/class_stdio_stream.html", null ],
-      [ "StreamBaseClass", "d3/dc7/class_stream_base_class.html", null ]
     ] ],
     [ "Surface", "d1/d1a/class_surface.html", null ],
     [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
     [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
-    [ "SysCall", "df/dba/class_sys_call.html", null ],
     [ "value_container", "da/d2d/unionvalue__container.html", null ],
-    [ "Vol", null, [
-      [ "SdBase< Vol >", "de/d8b/class_sd_base.html", null ]
-    ] ],
-    [ "WrenConfiguration", "d5/df9/struct_wren_configuration.html", null ],
-    [ "WrenDoubleBits", "d7/de9/union_wren_double_bits.html", null ],
-    [ "WrenForeignClassMethods", "d4/da9/struct_wren_foreign_class_methods.html", null ],
-    [ "WrenHandle", "d7/d18/struct_wren_handle.html", null ],
-    [ "WrenLoadModuleResult", "d2/d9b/struct_wren_load_module_result.html", null ],
-    [ "WrenVM", "d7/ddb/struct_wren_v_m.html", null ],
     [ "XPT2046_Touchscreen", null, [
       [ "Touch", "d1/dff/class_touch.html", null ]
-    ] ],
-    [ "object", null, [
-      [ "cpplint.CleansedLines", "d4/d14/classcpplint_1_1_cleansed_lines.html", null ],
-      [ "cpplint.FileInfo", "db/da8/classcpplint_1_1_file_info.html", null ],
-      [ "cpplint.NestingState", "dc/d6c/classcpplint_1_1_nesting_state.html", null ],
-      [ "cpplint._BlockInfo", "d4/dac/classcpplint_1_1___block_info.html", [
-        [ "cpplint._ClassInfo", "d7/d5f/classcpplint_1_1___class_info.html", null ],
-        [ "cpplint._ExternCInfo", "d3/d6a/classcpplint_1_1___extern_c_info.html", null ],
-        [ "cpplint._NamespaceInfo", "da/dd9/classcpplint_1_1___namespace_info.html", null ]
-      ] ],
-      [ "cpplint._CppLintState", "d7/d38/classcpplint_1_1___cpp_lint_state.html", null ],
-      [ "cpplint._FunctionState", "d0/d31/classcpplint_1_1___function_state.html", null ],
-      [ "cpplint._IncludeState", "d7/d78/classcpplint_1_1___include_state.html", null ],
-      [ "cpplint._PreprocessorInfo", "d8/d28/classcpplint_1_1___preprocessor_info.html", null ]
     ] ]
 ];

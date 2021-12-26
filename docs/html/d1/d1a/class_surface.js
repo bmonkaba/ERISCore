@@ -4,6 +4,7 @@ var class_surface =
     [ "Surface", "d1/d1a/class_surface.html#aab9be3ba52911f1c15f62ad2ce0885cc", null ],
     [ "Surface", "d1/d1a/class_surface.html#a37c8fd892a831fa269feeada97914b51", null ],
     [ "Surface", "d1/d1a/class_surface.html#a55fae8db813e5eafae5993e641cf4fee", null ],
+    [ "Surface", "d1/d1a/class_surface.html#ae20fe7444b1e5b682e71df6a37c15b1e", null ],
     [ "allocate", "d1/d1a/class_surface.html#abaac1e3f1bf778f32c86a589b0fd5e61", null ],
     [ "getHeight", "d1/d1a/class_surface.html#a9a1d2ee56f355253c031171d5096888a", null ],
     [ "getSurfaceBufferP", "d1/d1a/class_surface.html#a5d3958cf977d83b61cf670385d2b21e9", null ],

@@ -517,7 +517,7 @@ EXTRACT_STATIC         = YES
 # for Java sources.
 # The default value is: YES.
 
-EXTRACT_LOCAL_CLASSES  = NO
+EXTRACT_LOCAL_CLASSES  = YES
 
 # This flag is only useful for Objective-C code. If set to YES, local methods,
 # which are defined in the implementation section but not in the interface are
@@ -957,7 +957,10 @@ RECURSIVE              = YES
 # run.
 
 EXCLUDE                = ../lib/SdFat-beta-master \
-                         ../lib/ILI9341_t3n-master
+                         ../lib/ILI9341_t3n-master \
+                         ../lib/SdFat-master \
+                         ../projectfile-cppcheck-build-dir \
+                         ../lib/wren
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

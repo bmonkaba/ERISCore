@@ -8,7 +8,7 @@ var class_animation =
     [ "setPath", "d4/d7c/class_animation.html#a997d1203ae9418f121f355a5bd0700f0", null ],
     [ "setSD", "d4/d7c/class_animation.html#ab5af4d2f56dce439c18ba9c4655f98f0", null ],
     [ "ILI9341_t3_ERIS", "d4/d7c/class_animation.html#ad0a0f7899f9e4c9f9aecf73fe69ebae7", null ],
-    [ "_path", "d4/d7c/class_animation.html#a8c8239d1be6e593fb886d227aebe8420", null ],
+    [ "_path", "d4/d7c/class_animation.html#ad890e742613a81ce42a096b0ea6be37f", null ],
     [ "chunk", "d4/d7c/class_animation.html#a7b2fcf64d28c6938687ceef45110299b", null ],
     [ "filename", "d4/d7c/class_animation.html#af61f3b12f0557d2c28baadbab3fa6abd", null ],
     [ "frame", "d4/d7c/class_animation.html#ab7c3aee40a7aeef92c593764225cb1af", null ],

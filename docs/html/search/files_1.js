@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['1_2d0_2e2_2e0_2dand_2dbeyond_2emarkdown_3852',['1-0.2.0-and-beyond.markdown',['../d1/dc4/1-0_82_80-and-beyond_8markdown.html',1,'']]]
+  ['controlbutton_2eh_1188',['controlButton.h',['../dc/ddf/control_button_8h.html',1,'']]],
+  ['controlslider_2eh_1189',['controlSlider.h',['../d4/d50/control_slider_8h.html',1,'']]]
 ];

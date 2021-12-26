@@ -1,43 +1,23 @@
 <map id="AppAudioToPolyphonic" name="AppAudioToPolyphonic">
-<area shape="rect" id="node1" title=" " alt="" coords="3335,171,3521,200"/>
-<area shape="rect" id="node2" href="$db/d69/class_app_base_class.html" title=" " alt="" coords="2610,220,2738,249"/>
-<area shape="rect" id="node25" href="$d2/da8/class_svc_serial_command_interface.html" title=" " alt="" coords="2895,403,3116,432"/>
-<area shape="rect" id="node33" href="$d4/dde/class_app_c_q_t.html" title="Implements the AppCQT class." alt="" coords="2963,492,3047,521"/>
-<area shape="rect" id="node37" href="$de/d67/class_control_slider.html" title=" " alt="" coords="2949,171,3062,200"/>
-<area shape="rect" id="node38" href="$d8/dbe/class_app_scope.html" title=" " alt="" coords="2957,289,3054,319"/>
-<area shape="rect" id="node40" href="$df/d17/class_control_button.html" title=" " alt="" coords="2947,117,3063,147"/>
-<area shape="rect" id="node3" href="$d6/d73/class_sd_fs.html" title="SD file system class for FAT16, FAT32, and exFAT volumes." alt="" coords="2093,256,2153,285"/>
-<area shape="rect" id="node17" href="$d8/d5a/class_i_l_i9341__t3___e_r_i_s.html" title=" " alt="" coords="2303,323,2443,352"/>
-<area shape="rect" id="node4" href="$de/d8b/class_sd_base.html" title=" " alt="" coords="1308,244,1484,273"/>
-<area shape="rect" id="node5" href="$df/dd9/class_fs_volume.html" title="FsVolume class." alt="" coords="1104,244,1197,273"/>
-<area shape="rect" id="node6" href="$d5/d4b/class_shared_spi_card.html" title="Raw access to SD and SDHC flash memory cards via shared SPI port." alt="" coords="305,151,437,180"/>
-<area shape="rect" id="node9" href="$d4/de9/class_ex_fat_partition.html" title="Access exFat partitions on raw file devices." alt="" coords="581,309,703,339"/>
-<area shape="rect" id="node12" href="$d0/d12/class_fat_partition.html" title="Access FAT16 and FAT32 partitions on raw file devices." alt="" coords="591,371,693,400"/>
-<area shape="rect" id="node14" href="$de/d8b/class_sd_base.html" title="base SD file system template class." alt="" coords="864,72,992,101"/>
-<area shape="rect" id="node16" href="$d9/d30/class_sd_card_factory.html" title="Setup a SPI card or SDIO card." alt="" coords="577,99,707,128"/>
-<area shape="rect" id="node7" href="$dc/da1/class_sd_spi_arduino_driver.html" title="Optimized SPI class for access to SD and SDHC flash memory cards." alt="" coords="5,151,168,180"/>
-<area shape="rect" id="node8" href="$da/d35/class_ex_fat_volume.html" title="exFAT volume." alt="" coords="870,244,986,273"/>
-<area shape="rect" id="node10" href="$d5/d14/class_ex_fat_file.html" title="Basic file class." alt="" coords="597,252,687,281"/>
-<area shape="rect" id="node22" href="$d7/d76/class_fs_base_file.html" title="FsBaseFile class." alt="" coords="1345,369,1447,399"/>
-<area shape="rect" id="node11" href="$d9/d27/class_fat_volume.html" title="Integration class for the FatLib library." alt="" coords="879,391,977,420"/>
-<area shape="rect" id="node13" href="$d3/d51/class_fat_file.html" title="Basic file class." alt="" coords="1115,391,1186,420"/>
-<area shape="rect" id="node15" title=" " alt="" coords="619,45,665,75"/>
-<area shape="rect" id="node18" title=" " alt="" coords="2072,337,2175,367"/>
-<area shape="rect" id="node19" href="$d4/da1/class_fs_file.html" title="FsBaseFile file with Arduino Stream." alt="" coords="2090,419,2157,448"/>
-<area shape="rect" id="node20" href="$da/dc7/class_stream_file.html" title=" " alt="" coords="1708,413,1905,459"/>
-<area shape="rect" id="node21" href="$da/db3/class_print_basic.html" title=" " alt="" coords="1109,444,1192,473"/>
-<area shape="rect" id="node23" href="$da/dc7/class_stream_file.html" title="StreamFile class." alt="" coords="1307,474,1485,521"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1108,497,1193,527"/>
-<area shape="rect" id="node27" href="$d8/d1c/class_audio_director.html" title=" " alt="" coords="3369,660,3487,689"/>
-<area shape="rect" id="node26" title=" " alt="" coords="2647,471,2701,500"/>
-<area shape="rect" id="node28" href="$dc/d96/classeris_audio_output_i2_s.html" title=" " alt="" coords="2927,660,3084,689"/>
-<area shape="rect" id="node29" title=" " alt="" coords="2609,660,2739,689"/>
-<area shape="rect" id="node30" href="$d2/d7c/class_audio_connection.html" title=" " alt="" coords="1735,711,1878,740"/>
-<area shape="rect" id="node31" href="$d5/d96/class_audio_stream.html" title=" " alt="" coords="2066,663,2181,692"/>
-<area shape="rect" id="node34" href="$d0/d55/classeris_audio_analyze_f_f_t1024.html" title=" " alt="" coords="2269,544,2477,573"/>
-<area shape="rect" id="node36" href="$d4/dd5/class_audio_synth_waveform.html" title=" " alt="" coords="2287,641,2459,671"/>
-<area shape="rect" id="node39" href="$d4/d81/classeris_audio_analyze_scope.html" title=" " alt="" coords="2279,476,2468,505"/>
-<area shape="rect" id="node32" href="$de/dd6/structaudio__block__struct.html" title=" " alt="" coords="1730,541,1883,571"/>
-<area shape="rect" id="node35" href="$df/dc5/classeris_audio_synth_waveform.html" title=" " alt="" coords="2575,607,2773,636"/>
-<area shape="rect" id="node41" href="$d1/d1a/class_surface.html" title=" " alt="" coords="2636,21,2712,51"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1552,417,1739,447"/>
+<area shape="rect" id="node2" href="$db/d69/class_app_base_class.html" title=" " alt="" coords="827,324,955,353"/>
+<area shape="rect" id="node5" href="$d2/da8/class_svc_serial_command_interface.html" title=" " alt="" coords="1112,189,1333,219"/>
+<area shape="rect" id="node13" href="$d4/dde/class_app_c_q_t.html" title="Implements the AppCQT class." alt="" coords="1181,547,1265,576"/>
+<area shape="rect" id="node17" href="$de/d67/class_control_slider.html" title=" " alt="" coords="1166,313,1279,343"/>
+<area shape="rect" id="node18" href="$d8/dbe/class_app_scope.html" title=" " alt="" coords="1174,471,1271,500"/>
+<area shape="rect" id="node20" href="$df/d17/class_control_button.html" title=" " alt="" coords="1165,417,1281,447"/>
+<area shape="rect" id="node3" href="$d8/d5a/class_i_l_i9341__t3___e_r_i_s.html" title=" " alt="" coords="521,184,661,213"/>
+<area shape="rect" id="node4" title=" " alt="" coords="325,151,428,180"/>
+<area shape="rect" id="node7" href="$d8/d1c/class_audio_director.html" title=" " alt="" coords="1586,132,1705,161"/>
+<area shape="rect" id="node6" title=" " alt="" coords="864,195,919,224"/>
+<area shape="rect" id="node8" href="$dc/d96/classeris_audio_output_i2_s.html" title=" " alt="" coords="1144,8,1301,37"/>
+<area shape="rect" id="node9" title=" " alt="" coords="826,8,957,37"/>
+<area shape="rect" id="node10" href="$d2/d7c/class_audio_connection.html" title=" " alt="" coords="11,115,153,144"/>
+<area shape="rect" id="node11" href="$d5/d96/class_audio_stream.html" title=" " alt="" coords="319,328,434,357"/>
+<area shape="rect" id="node14" href="$d0/d55/classeris_audio_analyze_f_f_t1024.html" title=" " alt="" coords="487,399,695,428"/>
+<area shape="rect" id="node16" href="$d4/dd5/class_audio_synth_waveform.html" title=" " alt="" coords="505,345,677,375"/>
+<area shape="rect" id="node19" href="$d4/d81/classeris_audio_analyze_scope.html" title=" " alt="" coords="496,292,685,321"/>
+<area shape="rect" id="node12" href="$de/dd6/structaudio__block__struct.html" title=" " alt="" coords="5,328,159,357"/>
+<area shape="rect" id="node15" href="$df/dc5/classeris_audio_synth_waveform.html" title=" " alt="" coords="792,557,991,587"/>
+<area shape="rect" id="node21" href="$d1/d1a/class_surface.html" title=" " alt="" coords="853,417,929,447"/>
 </map>

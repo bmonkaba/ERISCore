@@ -30,6 +30,7 @@ var class_audio_director =
     [ "pAudioStreamInputPort", "d8/d1c/class_audio_director.html#a816f042e16bd729ed8782e0ba8703504", null ],
     [ "pAudioStreamObjPool", "d8/d1c/class_audio_director.html#a3e2550defde3456abed3799ff8376654", null ],
     [ "pCord", "d8/d1c/class_audio_director.html#a1708e7f4e5871ab4f98b7e7d12925884", null ],
+    [ "printStatsSelect", "d8/d1c/class_audio_director.html#a1219d5aac9c13b1047d720641e167426", null ],
     [ "sci", "d8/d1c/class_audio_director.html#ad7d2f665e87b220b788afb13288c178d", null ],
     [ "shortNameQueryResult", "d8/d1c/class_audio_director.html#ad4853c04650773ae8c37a6e3bba2e0db", null ],
     [ "shortNameQueryResultCount", "d8/d1c/class_audio_director.html#aa485080dc3d644895c8b38b097badc5f", null ]

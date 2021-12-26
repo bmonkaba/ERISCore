@@ -1,7 +1,26 @@
 var searchData=
 [
-  ['qa_2478',['qa',['../dd/d9c/md__e_r_i_s_core_lib_wren_doc_site_qa.html',1,'']]],
-  ['qa_2emarkdown_2479',['qa.markdown',['../d0/d40/qa_8markdown.html',1,'']]],
-  ['qnan_2480',['QNAN',['../d2/d0a/wren__value_8h.html#a67f015e7738730124bf5958c6957b4e4',1,'wren_value.h']]],
-  ['quiet_2481',['quiet',['../d7/d38/classcpplint_1_1___cpp_lint_state.html#a69221fabd3b9b361ef934fee11c0c4c2',1,'cpplint::_CppLintState']]]
+  ['w_1022',['w',['../db/d69/class_app_base_class.html#a7681137fa3cb2aa9534625f1d9006970',1,'AppBaseClass::w()'],['../d1/d1a/class_surface.html#a73cd7eedd4a31861b75acf69ab4ad2b9',1,'Surface::w()']]],
+  ['waveform_5farbitrary_1023',['WAVEFORM_ARBITRARY',['../de/db5/eris__synth__waveform_8h.html#a057e6fc51e7e44873c0488f6ffb20296',1,'eris_synth_waveform.h']]],
+  ['waveform_5fpulse_1024',['WAVEFORM_PULSE',['../de/db5/eris__synth__waveform_8h.html#a8dce7063fb7cff9ccf09d8ee5640a905',1,'eris_synth_waveform.h']]],
+  ['waveform_5fsample_5fhold_1025',['WAVEFORM_SAMPLE_HOLD',['../de/db5/eris__synth__waveform_8h.html#a538043fe947ae9c5e59fe2fa4abf9ab2',1,'eris_synth_waveform.h']]],
+  ['waveform_5fsawtooth_1026',['WAVEFORM_SAWTOOTH',['../de/db5/eris__synth__waveform_8h.html#a178da4a81fe33f9fbbebd284d3e0dda8',1,'eris_synth_waveform.h']]],
+  ['waveform_5fsawtooth_5freverse_1027',['WAVEFORM_SAWTOOTH_REVERSE',['../de/db5/eris__synth__waveform_8h.html#acac6ccc6dc691e3fa9849e39f9988187',1,'eris_synth_waveform.h']]],
+  ['waveform_5fsine_1028',['WAVEFORM_SINE',['../de/db5/eris__synth__waveform_8h.html#a495c5edee5c99b494e036344665da8d9',1,'eris_synth_waveform.h']]],
+  ['waveform_5fsquare_1029',['WAVEFORM_SQUARE',['../de/db5/eris__synth__waveform_8h.html#ac28d7ff4364b4cfbb2f3d2f9e010c468',1,'eris_synth_waveform.h']]],
+  ['waveform_5ftriangle_1030',['WAVEFORM_TRIANGLE',['../de/db5/eris__synth__waveform_8h.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3',1,'eris_synth_waveform.h']]],
+  ['waveform_5ftriangle_5fvariable_1031',['WAVEFORM_TRIANGLE_VARIABLE',['../de/db5/eris__synth__waveform_8h.html#a24ee98dbaa3894cdd365968f378c20a9',1,'eris_synth_waveform.h']]],
+  ['widget_5fheight_1032',['widget_height',['../db/d69/class_app_base_class.html#a759c6df44dea772abc58db8867f2b93c',1,'AppBaseClass']]],
+  ['widget_5forigin_5fx_1033',['widget_origin_x',['../db/d69/class_app_base_class.html#ab64e8963a503983f937b7d659dd37b4e',1,'AppBaseClass']]],
+  ['widget_5forigin_5fy_1034',['widget_origin_y',['../db/d69/class_app_base_class.html#a6c4b0270ec71171609d675fb8fdbb2aa',1,'AppBaseClass']]],
+  ['widget_5fwidth_1035',['widget_width',['../db/d69/class_app_base_class.html#af7f8d7d2e26895cbd304112f41aa3e22',1,'AppBaseClass']]],
+  ['width_1036',['width',['../db/d69/class_app_base_class.html#ab09a10b13273bf5b5a99c412f3835c0d',1,'AppBaseClass']]],
+  ['wildcopylength_1037',['WILDCOPYLENGTH',['../d4/d05/lz4_8c.html#ade83a0730ce39465e00284b8d1b29784',1,'lz4.c']]],
+  ['window_1038',['window',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#aa912b4a80d03e8ed2bea94f02361b73d',1,'erisAudioAnalyzeFFT1024']]],
+  ['window_5ff32_1039',['window_f32',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#a85ffb58a9a40df085141b0b836f3008a',1,'erisAudioAnalyzeFFT1024']]],
+  ['windowfunction_1040',['windowFunction',['../d0/d55/classeris_audio_analyze_f_f_t1024.html#a1249776e32ff21356c4fa50be5f2fa98',1,'erisAudioAnalyzeFFT1024']]],
+  ['withprefix64k_1041',['withPrefix64k',['../d4/d05/lz4_8c.html#ab22d25a446ad3e8288401052deccda4ca34c34b9cfe0046130ff97acf6914519d',1,'lz4.c']]],
+  ['workingbuffer_1042',['workingBuffer',['../d2/da8/class_svc_serial_command_interface.html#a14dcb2238348af05007d490900e47441',1,'SvcSerialCommandInterface']]],
+  ['write_1043',['write',['../d2/da8/class_svc_serial_command_interface.html#a9c179c537eefc3807911a2658fac7d7e',1,'SvcSerialCommandInterface']]],
+  ['writefn_1044',['writeFn',['../d7/d7e/_app_wren_8cpp.html#ad0c26c660738b28a098f1400caef81e2',1,'AppWren.cpp']]]
 ];

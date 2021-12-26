@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['fiberstate_6721',['FiberState',['../d2/d0a/wren__value_8h.html#aa46b252b2423d361256beb80879eef8d',1,'wren_value.h']]]
+  ['subsample_5frange_1999',['subsample_range',['../d4/dfc/eris__analyze__fft1024_8h.html#af1f4ed6c31e28ce8075c254e6ed3ab18',1,'eris_analyze_fft1024.h']]],
+  ['svcdatadictionarydatatype_2000',['svcDataDictionaryDataType',['../dd/df4/svc_data_dictionary_8h.html#ad86fa9822c5136dd63651f82b9db8f37',1,'svcDataDictionary.h']]],
+  ['svcdatadictionaryrecordtype_2001',['svcDataDictionaryRecordType',['../dd/df4/svc_data_dictionary_8h.html#a6c450b4b92bd1fec7468641d98871eda',1,'svcDataDictionary.h']]]
 ];

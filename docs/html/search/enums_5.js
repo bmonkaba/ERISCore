@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['limitedoutput_5fdirective_6722',['limitedOutput_directive',['../d4/d05/lz4_8c.html#ab93acf685743debab05876250a1cbe28',1,'lz4.c']]]
+  ['tabletype_5ft_2002',['tableType_t',['../d4/d05/lz4_8c.html#ae86e1d8a28953326b685d6ebb243a699',1,'lz4.c']]]
 ];

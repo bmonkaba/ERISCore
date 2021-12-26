@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../dc/d47/_p_c_m1863_8h.html#a0d9ccf7656803723e1115c96b21820aa">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a0d9ccf7656803723e1115c96b21820aa">I2CReset</a>(){</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">//MANUAL RESET OF I2C BUS</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>, <a class="code" href="../../da/dd5/_sd_spi_bare_uno_driver_8h.html#a61a3c9a18380aafb6e430e79bf596557">OUTPUT</a>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a>, <a class="code" href="../../da/dd5/_sd_spi_bare_uno_driver_8h.html#a61a3c9a18380aafb6e430e79bf596557">OUTPUT</a>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>, OUTPUT);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a>, OUTPUT);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,1);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  delay(5);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 32; i++){</div>
@@ -131,24 +131,24 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../dc/d47/_p_c_m1863_8h.html#a54b34fb2981dbbdc69d1f273034c5dc5">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a54b34fb2981dbbdc69d1f273034c5dc5">ExtADCPrintStatus</a>(){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;ADC &quot;</span>));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;{\&quot;State(15:RUNNING)\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;ADC &quot;</span>));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;{\&quot;State(15:RUNNING)\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(114));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;SampleFreq:\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;,\&quot;SampleFreq:\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(115));</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;BCLK Ratio:\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;,\&quot;BCLK Ratio:\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  Serial.print((<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(116) &gt;&gt; 4) &amp; 0x7);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;SCLK Ratio:\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;,\&quot;SCLK Ratio:\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(116) &amp; 0x7);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;CLK Error:\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;,\&quot;CLK Error:\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(117));</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;Voltage(7:OK):\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Serial.print(F(<span class="stringliteral">&quot;,\&quot;Voltage(7:OK):\&quot;:&quot;</span>));</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(120));</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i =0; i &lt; 12;i++){</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;,\&quot;CONFIG REG&quot;</span>));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;,\&quot;CONFIG REG&quot;</span>));</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    Serial.print(i);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;:\&quot;:&quot;</span>));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(i),<a class="code" href="../../d1/d27/_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Serial.print(F(<span class="stringliteral">&quot;:\&quot;:&quot;</span>));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    Serial.print(<a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a>(i),HEX);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Serial.println(<span class="stringliteral">&quot;}&quot;</span>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">//Serial.flush();</span></div>
@@ -222,10 +222,10 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
 <div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../dc/d47/_p_c_m1863_8h.html#a783f335e2c15ea37a020ee3997aeb28a">  144</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/d47/_p_c_m1863_8h.html#a783f335e2c15ea37a020ee3997aeb28a">I2CBusScan</a>()</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">byte</span> <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a>, address;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">byte</span> error, address;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordtype">int</span> nDevices;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: Scanning&quot;</span>));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  Serial.println(F(<span class="stringliteral">&quot;I2CBusScan: Scanning&quot;</span>));</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  nDevices = 0;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">for</span>(address = 1; address &lt; 127; address++ )</div>
@@ -234,28 +234,28 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// the Write.endTransmisstion to see if</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// a device did acknowledge to the address.</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    Wire.beginTransmission(address);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a> = Wire.endTransmission();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    error = Wire.endTransmission();</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a> == 0)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (error == 0)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: I2C device found at address &quot;</span>));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      Serial.print(F(<span class="stringliteral">&quot;I2CBusScan: I2C device found at address &quot;</span>));</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">if</span> (address&lt;16)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;0&quot;</span>));</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        Serial.print(F(<span class="stringliteral">&quot;0&quot;</span>));</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      <span class="comment">//Serial.print(address,HEX);</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      Serial.print(address);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      nDevices++;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a>==4)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (error==4)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: Unknown error at address 0x&quot;</span>));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      Serial.print(F(<span class="stringliteral">&quot;I2CBusScan: Unknown error at address 0x&quot;</span>));</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordflow">if</span> (address&lt;16)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        Serial.print(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;0&quot;</span>));</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      Serial.println(address,<a class="code" href="../../d1/d27/_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        Serial.print(F(<span class="stringliteral">&quot;0&quot;</span>));</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      Serial.println(address,HEX);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  }</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">if</span> (nDevices == 0)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    Serial.println(<a class="code" href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a>(<span class="stringliteral">&quot;I2CBusScan: No I2C devices found\n&quot;</span>));</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;I2CBusScan: No I2C devices found\n&quot;</span>));</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
 <div class="ttc" id="a_h_s_i_8h_html"><div class="ttname"><a href="../../de/d10/_h_s_i_8h.html">HSI.h</a></div></div>
 <div class="ttc" id="a_h_s_i_8h_html_a9415ed4aa4ea94a91d37fc99f344c3d4"><div class="ttname"><a href="../../de/d10/_h_s_i_8h.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a></div><div class="ttdeci">#define I2C_DATA</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/_h_s_i_8h_source.html#l00031">HSI.h:31</a></div></div>
@@ -267,10 +267,6 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="ttc" id="a_p_c_m1863_8h_html_a9956c2ea4162d70e6ee8db10139e2d2e"><div class="ttname"><a href="../../dc/d47/_p_c_m1863_8h.html#a9956c2ea4162d70e6ee8db10139e2d2e">ExtADCConfig</a></div><div class="ttdeci">void ExtADCConfig()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d47/_p_c_m1863_8h_source.html#l00078">PCM1863.h:78</a></div></div>
 <div class="ttc" id="a_p_c_m1863_8h_html_ae7450a4ba0cc321d2581194c4387583b"><div class="ttname"><a href="../../dc/d47/_p_c_m1863_8h.html#ae7450a4ba0cc321d2581194c4387583b">I2C_NOSTOP</a></div><div class="ttdeci">#define I2C_NOSTOP</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d47/_p_c_m1863_8h_source.html#l00017">PCM1863.h:17</a></div></div>
 <div class="ttc" id="a_p_c_m1863_8h_html_ae97924b7877c5f26955e82ab97470b95"><div class="ttname"><a href="../../dc/d47/_p_c_m1863_8h.html#ae97924b7877c5f26955e82ab97470b95">I2C_STOP</a></div><div class="ttdeci">#define I2C_STOP</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d47/_p_c_m1863_8h_source.html#l00016">PCM1863.h:16</a></div></div>
-<div class="ttc" id="a_print_basic_8h_html_a0e3009529aac180ed5f48296d6670d6b"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a0e3009529aac180ed5f48296d6670d6b">F</a></div><div class="ttdeci">#define F(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00042">PrintBasic.h:42</a></div></div>
-<div class="ttc" id="a_print_basic_8h_html_a9075d93e0ab26ccd6e059fa06aa4e3de"><div class="ttname"><a href="../../d1/d27/_print_basic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a></div><div class="ttdeci">#define HEX</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d27/_print_basic_8h_source.html#l00051">PrintBasic.h:51</a></div></div>
-<div class="ttc" id="a_sd_error_codes_8txt_html_a28b2faa456e735d5c125e31fc4c1c863"><div class="ttname"><a href="../../d9/dfc/_sd_error_codes_8txt.html#a28b2faa456e735d5c125e31fc4c1c863">error</a></div><div class="ttdeci">Run the SdErrorCode example to produce an updated list Symbol failed SD_CARD_ERROR_NONE No error</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dfc/_sd_error_codes_8txt_source.html#l00006">SdErrorCodes.txt:7</a></div></div>
-<div class="ttc" id="a_sd_spi_bare_uno_driver_8h_html_a61a3c9a18380aafb6e430e79bf596557"><div class="ttname"><a href="../../da/dd5/_sd_spi_bare_uno_driver_8h.html#a61a3c9a18380aafb6e430e79bf596557">OUTPUT</a></div><div class="ttdeci">#define OUTPUT</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd5/_sd_spi_bare_uno_driver_8h_source.html#l00045">SdSpiBareUnoDriver.h:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

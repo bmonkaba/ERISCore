@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp.html','../../');
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/d2c/globaldefs_8h_source.html">globaldefs.h</a>&quot;</code><br />
+<code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&gt;</code><br />
+<code>#include &lt;boarddefs.h&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for AppWren.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -108,12 +111,83 @@ Functions</h2></td></tr>
 <tr class="memitem:a909740b4329fab2bccd1f3e6e2cf67ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a909740b4329fab2bccd1f3e6e2cf67ca">_gettimeofday</a> (struct timeval *tv, struct timezone *tz)</td></tr>
 <tr class="separator:a909740b4329fab2bccd1f3e6e2cf67ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8644b4c39e86e5b2bf962860bbb4bf00"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a8644b4c39e86e5b2bf962860bbb4bf00">_kill</a> (pid_t pid, int signum)</td></tr>
+<tr class="memdesc:a8644b4c39e86e5b2bf962860bbb4bf00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wren system interface.  <a href="../../d7/d7e/_app_wren_8cpp.html#a8644b4c39e86e5b2bf962860bbb4bf00">More...</a><br /></td></tr>
 <tr class="separator:a8644b4c39e86e5b2bf962860bbb4bf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cacb5131478b34d6bbae016efb18543"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a9cacb5131478b34d6bbae016efb18543">_times</a> (void)</td></tr>
 <tr class="separator:a9cacb5131478b34d6bbae016efb18543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2ce68e399aa9789b4f49cc5256f27c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ad2ce68e399aa9789b4f49cc5256f27c2">errorFn</a> (<a class="el" href="../../d7/ddb/struct_wren_v_m.html">WrenVM</a> *vm, <a class="el" href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971">WrenErrorType</a> errorType, const char *module, const int line, const char *msg)</td></tr>
+<tr class="memitem:af75d96be639ca6825082ffa47934be07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#af75d96be639ca6825082ffa47934be07">audioDirectorConnectCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:af75d96be639ca6825082ffa47934be07"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren.  <a href="../../d7/d7e/_app_wren_8cpp.html#af75d96be639ca6825082ffa47934be07">More...</a><br /></td></tr>
+<tr class="separator:af75d96be639ca6825082ffa47934be07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58685c4e3619dc6ddfdfaeb04f8c95fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a58685c4e3619dc6ddfdfaeb04f8c95fc">audioDirectorDisconnectAllCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a58685c4e3619dc6ddfdfaeb04f8c95fc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren.  <a href="../../d7/d7e/_app_wren_8cpp.html#a58685c4e3619dc6ddfdfaeb04f8c95fc">More...</a><br /></td></tr>
+<tr class="separator:a58685c4e3619dc6ddfdfaeb04f8c95fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49d4fea05c06629b1d47f199557ba3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#af49d4fea05c06629b1d47f199557ba3b">audioDirectorDisconnectCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:af49d4fea05c06629b1d47f199557ba3b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren.  <a href="../../d7/d7e/_app_wren_8cpp.html#af49d4fea05c06629b1d47f199557ba3b">More...</a><br /></td></tr>
+<tr class="separator:af49d4fea05c06629b1d47f199557ba3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80ed1f0719f8c9f67ac2cd3d8145bc5"><td class="memItemLeft" align="right" valign="top">WrenForeignMethodFn&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ab80ed1f0719f8c9f67ac2cd3d8145bc5">bindForeignMethod</a> (WrenVM *vm, const char *module, const char *className, bool isStatic, const char *signature)</td></tr>
+<tr class="memdesc:ab80ed1f0719f8c9f67ac2cd3d8145bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback function for Wren to request an exported function bindings  <a href="../../d7/d7e/_app_wren_8cpp.html#ab80ed1f0719f8c9f67ac2cd3d8145bc5">More...</a><br /></td></tr>
+<tr class="separator:ab80ed1f0719f8c9f67ac2cd3d8145bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001c0ccb759e6d820931591c06ff273d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a001c0ccb759e6d820931591c06ff273d">dataDictReadCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a001c0ccb759e6d820931591c06ff273d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a001c0ccb759e6d820931591c06ff273d">More...</a><br /></td></tr>
+<tr class="separator:a001c0ccb759e6d820931591c06ff273d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1f2538f4efc1d16a962797648c4e3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a8a1f2538f4efc1d16a962797648c4e3d">dataDictReadFloatCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a8a1f2538f4efc1d16a962797648c4e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a8a1f2538f4efc1d16a962797648c4e3d">More...</a><br /></td></tr>
+<tr class="separator:a8a1f2538f4efc1d16a962797648c4e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f7cda21c2bbe03929840d8e117ed8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a03f7cda21c2bbe03929840d8e117ed8f">dataDictUpdateCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a03f7cda21c2bbe03929840d8e117ed8f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a03f7cda21c2bbe03929840d8e117ed8f">More...</a><br /></td></tr>
+<tr class="separator:a03f7cda21c2bbe03929840d8e117ed8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d6e46721275ddbf997cc4f93494982"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a75d6e46721275ddbf997cc4f93494982">dataDictUpdateFloatCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a75d6e46721275ddbf997cc4f93494982"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a75d6e46721275ddbf997cc4f93494982">More...</a><br /></td></tr>
+<tr class="separator:a75d6e46721275ddbf997cc4f93494982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ce68e399aa9789b4f49cc5256f27c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ad2ce68e399aa9789b4f49cc5256f27c2">errorFn</a> (WrenVM *vm, WrenErrorType errorType, const char *module, const int line, const char *msg)</td></tr>
+<tr class="memdesc:ad2ce68e399aa9789b4f49cc5256f27c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">error function system callback for the Wren VM. Stdout/Stderr is SerialUSB1  <a href="../../d7/d7e/_app_wren_8cpp.html#ad2ce68e399aa9789b4f49cc5256f27c2">More...</a><br /></td></tr>
 <tr class="separator:ad2ce68e399aa9789b4f49cc5256f27c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c26c660738b28a098f1400caef81e2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ad0c26c660738b28a098f1400caef81e2">writeFn</a> (<a class="el" href="../../d7/ddb/struct_wren_v_m.html">WrenVM</a> *vm, const char *text)</td></tr>
+<tr class="memitem:ad76d44200b483213c78a903735937d55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ad76d44200b483213c78a903735937d55">getFocusCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:ad76d44200b483213c78a903735937d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Focus Callback object.AppWren exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#ad76d44200b483213c78a903735937d55">More...</a><br /></td></tr>
+<tr class="separator:ad76d44200b483213c78a903735937d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2469bc30d12bb4b85e4a318a873ec7be"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a> (const char *name)</td></tr>
+<tr class="memdesc:a2469bc30d12bb4b85e4a318a873ec7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Source For Module object requested by the Wren VM.  <a href="../../d7/d7e/_app_wren_8cpp.html#a2469bc30d12bb4b85e4a318a873ec7be">More...</a><br /></td></tr>
+<tr class="separator:a2469bc30d12bb4b85e4a318a873ec7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8862be3048f99b67cf6ccc12d2c2ae74"><td class="memItemLeft" align="right" valign="top">WrenLoadModuleResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a8862be3048f99b67cf6ccc12d2c2ae74">loadModule</a> (WrenVM *vm, const char *name)</td></tr>
+<tr class="memdesc:a8862be3048f99b67cf6ccc12d2c2ae74"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback for the VM to request a module be loaded from the filesystem  <a href="../../d7/d7e/_app_wren_8cpp.html#a8862be3048f99b67cf6ccc12d2c2ae74">More...</a><br /></td></tr>
+<tr class="separator:a8862be3048f99b67cf6ccc12d2c2ae74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085afb683548c1082208ee513452dd24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a> (WrenVM *vm, const char *module, WrenLoadModuleResult result)</td></tr>
+<tr class="memdesc:a085afb683548c1082208ee513452dd24"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback function for the VM to indicate to the system that it's ok to release any memory allocated during the module load request  <a href="../../d7/d7e/_app_wren_8cpp.html#a085afb683548c1082208ee513452dd24">More...</a><br /></td></tr>
+<tr class="separator:a085afb683548c1082208ee513452dd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d25f1406cc969202b654e1b0ff5eec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a25d25f1406cc969202b654e1b0ff5eec">releasePopUpCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a25d25f1406cc969202b654e1b0ff5eec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a25d25f1406cc969202b654e1b0ff5eec">More...</a><br /></td></tr>
+<tr class="separator:a25d25f1406cc969202b654e1b0ff5eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8156eadb16530b87de97824abd487921"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a8156eadb16530b87de97824abd487921">requestPopUpCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a8156eadb16530b87de97824abd487921"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a8156eadb16530b87de97824abd487921">More...</a><br /></td></tr>
+<tr class="separator:a8156eadb16530b87de97824abd487921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d888714ebd3a2befec867833015d7f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a7d888714ebd3a2befec867833015d7f2">returnFocusCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a7d888714ebd3a2befec867833015d7f2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a7d888714ebd3a2befec867833015d7f2">More...</a><br /></td></tr>
+<tr class="separator:a7d888714ebd3a2befec867833015d7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a2a584aa9624610a07f621a52c2cd4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a5a2a584aa9624610a07f621a52c2cd4c">sendMessageCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a5a2a584aa9624610a07f621a52c2cd4c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a5a2a584aa9624610a07f621a52c2cd4c">More...</a><br /></td></tr>
+<tr class="separator:a5a2a584aa9624610a07f621a52c2cd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f554db1c07c31f60f5167060279699"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a> (uint32_t frequency)</td></tr>
+<tr class="separator:a01f554db1c07c31f60f5167060279699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef047c3a796bec18d6d761edee67f418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#aef047c3a796bec18d6d761edee67f418">setClockSpeedCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:aef047c3a796bec18d6d761edee67f418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the CPU Clock Speed Callback object.  <a href="../../d7/d7e/_app_wren_8cpp.html#aef047c3a796bec18d6d761edee67f418">More...</a><br /></td></tr>
+<tr class="separator:aef047c3a796bec18d6d761edee67f418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1af842755d61bd4e87bf767b1a64116e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a1af842755d61bd4e87bf767b1a64116e">setDimensionCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a1af842755d61bd4e87bf767b1a64116e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Dimension Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a1af842755d61bd4e87bf767b1a64116e">More...</a><br /></td></tr>
+<tr class="separator:a1af842755d61bd4e87bf767b1a64116e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1db7563238658e013cce74318dcb63a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ab1db7563238658e013cce74318dcb63a">setPixelCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:ab1db7563238658e013cce74318dcb63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Pixel Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#ab1db7563238658e013cce74318dcb63a">More...</a><br /></td></tr>
+<tr class="separator:ab1db7563238658e013cce74318dcb63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf638e5457d5fe7abf8a52f9ab3476ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#adf638e5457d5fe7abf8a52f9ab3476ab">setPositionCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:adf638e5457d5fe7abf8a52f9ab3476ab"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#adf638e5457d5fe7abf8a52f9ab3476ab">More...</a><br /></td></tr>
+<tr class="separator:adf638e5457d5fe7abf8a52f9ab3476ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6665e4ce88da8beffe58df7644ce3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a8b6665e4ce88da8beffe58df7644ce3f">setWidgetDimensionCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a8b6665e4ce88da8beffe58df7644ce3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Widget Dimension Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a8b6665e4ce88da8beffe58df7644ce3f">More...</a><br /></td></tr>
+<tr class="separator:a8b6665e4ce88da8beffe58df7644ce3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe5cd9f6d4f102b8f94385f4291222d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a6fe5cd9f6d4f102b8f94385f4291222d">setWidgetPositionCallback</a> (WrenVM *vm)</td></tr>
+<tr class="memdesc:a6fe5cd9f6d4f102b8f94385f4291222d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Widget Position Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp.html#a6fe5cd9f6d4f102b8f94385f4291222d">More...</a><br /></td></tr>
+<tr class="separator:a6fe5cd9f6d4f102b8f94385f4291222d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0c26c660738b28a098f1400caef81e2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp.html#ad0c26c660738b28a098f1400caef81e2">writeFn</a> (WrenVM *vm, const char *text)</td></tr>
+<tr class="memdesc:ad0c26c660738b28a098f1400caef81e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">write function system callback for the Wren VM. Stdout/Stderr is SerialUSB1  <a href="../../d7/d7e/_app_wren_8cpp.html#ad0c26c660738b28a098f1400caef81e2">More...</a><br /></td></tr>
 <tr class="separator:ad0c26c660738b28a098f1400caef81e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -140,8 +214,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00017">17</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{<span class="keywordflow">return</span> 1;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{<span class="keywordflow">return</span> 1;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -171,8 +245,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,8 +276,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
+<p>Wren system interface. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -223,9 +299,467 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00018">18</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{<span class="keywordflow">return</span> 0;}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="af75d96be639ca6825082ffa47934be07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75d96be639ca6825082ffa47934be07">&#9670;&nbsp;</a></span>audioDirectorConnectCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audioDirectorConnectCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00255">255</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                             {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordtype">bool</span> b = am-&gt;ad-&gt;connect(wrenGetSlotString(vm, 1));</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  wrenSetSlotBool(vm, 0,b);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af75d96be639ca6825082ffa47934be07_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a58685c4e3619dc6ddfdfaeb04f8c95fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58685c4e3619dc6ddfdfaeb04f8c95fc">&#9670;&nbsp;</a></span>audioDirectorDisconnectAllCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audioDirectorDisconnectAllCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00276">276</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                                   {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordtype">bool</span> b = am-&gt;ad-&gt;disconnectAll();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  wrenSetSlotBool(vm, 0,b);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a58685c4e3619dc6ddfdfaeb04f8c95fc_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="af49d4fea05c06629b1d47f199557ba3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49d4fea05c06629b1d47f199557ba3b">&#9670;&nbsp;</a></span>audioDirectorDisconnectCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audioDirectorDisconnectCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> callback for wren. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00266">266</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                                {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <span class="keywordtype">bool</span> b = am-&gt;ad-&gt;disconnect(wrenGetSlotString(vm, 1));</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  wrenSetSlotBool(vm, 0,b);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af49d4fea05c06629b1d47f199557ba3b_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ab80ed1f0719f8c9f67ac2cd3d8145bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab80ed1f0719f8c9f67ac2cd3d8145bc5">&#9670;&nbsp;</a></span>bindForeignMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WrenForeignMethodFn bindForeignMethod </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>module</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isStatic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>signature</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>callback function for Wren to request an exported function bindings </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">module</td><td></td></tr>
+    <tr><td class="paramname">className</td><td></td></tr>
+    <tr><td class="paramname">isStatic</td><td></td></tr>
+    <tr><td class="paramname">signature</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>WrenForeignMethodFn </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">338</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;{</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="comment">//callback for the VM to request a pointer to the c function.</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">if</span> (strcmp(module, <span class="stringliteral">&quot;main&quot;</span>) == 0)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">if</span> (strcmp(className, <span class="stringliteral">&quot;App&quot;</span>) == 0) <span class="comment">//these are static methods... attach them to the class, not an instance</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;sendMessage(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a5a2a584aa9624610a07f621a52c2cd4c">sendMessageCallback</a>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setPosition(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#adf638e5457d5fe7abf8a52f9ab3476ab">setPositionCallback</a>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setDimension(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a1af842755d61bd4e87bf767b1a64116e">setDimensionCallback</a>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setWidgetPosition(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a6fe5cd9f6d4f102b8f94385f4291222d">setWidgetPositionCallback</a>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setWidgetDimension(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a8b6665e4ce88da8beffe58df7644ce3f">setWidgetDimensionCallback</a>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;requestPopUp(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a8156eadb16530b87de97824abd487921">requestPopUpCallback</a>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;releasePopUp()&quot;</span>) == 0){</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a25d25f1406cc969202b654e1b0ff5eec">releasePopUpCallback</a>;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;getFocus()&quot;</span>) == 0){</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#ad76d44200b483213c78a903735937d55">getFocusCallback</a>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;returnFocus()&quot;</span>) == 0){</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a7d888714ebd3a2befec867833015d7f2">returnFocusCallback</a>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setPixel(_,_,_,_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#ab1db7563238658e013cce74318dcb63a">setPixelCallback</a>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;setClockSpeed(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#aef047c3a796bec18d6d761edee67f418">setClockSpeedCallback</a>;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      <span class="comment">// Other foreign methods on Math...</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(className, <span class="stringliteral">&quot;Data&quot;</span>) == 0){ <span class="comment">//these are static methods... attach them to the class, not an instance</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;update(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a03f7cda21c2bbe03929840d8e117ed8f">dataDictUpdateCallback</a>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;read(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a001c0ccb759e6d820931591c06ff273d">dataDictReadCallback</a>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;updatef(_,_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a75d6e46721275ddbf997cc4f93494982">dataDictUpdateFloatCallback</a>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;readf(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a8a1f2538f4efc1d16a962797648c4e3d">dataDictReadFloatCallback</a>;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;      }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(className, <span class="stringliteral">&quot;AudioDirector&quot;</span>) == 0){ <span class="comment">//these are static methods... attach them to the class, not an instance</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;connect(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#af75d96be639ca6825082ffa47934be07">audioDirectorConnectCallback</a>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;disconnect(_)&quot;</span>) == 0){</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#af49d4fea05c06629b1d47f199557ba3b">audioDirectorDisconnectCallback</a>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(signature, <span class="stringliteral">&quot;disconnectAll()&quot;</span>) == 0){</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a58685c4e3619dc6ddfdfaeb04f8c95fc">audioDirectorDisconnectAllCallback</a>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="comment">// Other classes in main...</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  <span class="comment">// Other modules...</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  <span class="comment">//else return NULL?</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
+<div class="ttc" id="a_app_wren_8cpp_html_a001c0ccb759e6d820931591c06ff273d"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a001c0ccb759e6d820931591c06ff273d">dataDictReadCallback</a></div><div class="ttdeci">void dataDictReadCallback(WrenVM *vm)</div><div class="ttdoc">SvcDataDictionary exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00299">AppWren.cpp:299</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a03f7cda21c2bbe03929840d8e117ed8f"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a03f7cda21c2bbe03929840d8e117ed8f">dataDictUpdateCallback</a></div><div class="ttdeci">void dataDictUpdateCallback(WrenVM *vm)</div><div class="ttdoc">SvcDataDictionary exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00289">AppWren.cpp:289</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a1af842755d61bd4e87bf767b1a64116e"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a1af842755d61bd4e87bf767b1a64116e">setDimensionCallback</a></div><div class="ttdeci">void setDimensionCallback(WrenVM *vm)</div><div class="ttdoc">Set the Dimension Callback object. AppWren exported method which can be called from within a Wren VM ...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00149">AppWren.cpp:149</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a25d25f1406cc969202b654e1b0ff5eec"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a25d25f1406cc969202b654e1b0ff5eec">releasePopUpCallback</a></div><div class="ttdeci">void releasePopUpCallback(WrenVM *vm)</div><div class="ttdoc">AppWren exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00195">AppWren.cpp:195</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a58685c4e3619dc6ddfdfaeb04f8c95fc"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a58685c4e3619dc6ddfdfaeb04f8c95fc">audioDirectorDisconnectAllCallback</a></div><div class="ttdeci">void audioDirectorDisconnectAllCallback(WrenVM *vm)</div><div class="ttdoc">AudioDirector callback for wren.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00276">AppWren.cpp:276</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a5a2a584aa9624610a07f621a52c2cd4c"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a5a2a584aa9624610a07f621a52c2cd4c">sendMessageCallback</a></div><div class="ttdeci">void sendMessageCallback(WrenVM *vm)</div><div class="ttdoc">AppWren exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00125">AppWren.cpp:125</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a6fe5cd9f6d4f102b8f94385f4291222d"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a6fe5cd9f6d4f102b8f94385f4291222d">setWidgetPositionCallback</a></div><div class="ttdeci">void setWidgetPositionCallback(WrenVM *vm)</div><div class="ttdoc">Set the Widget Position Callback object. AppWren exported method which can be called from within a Wr...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00161">AppWren.cpp:161</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a75d6e46721275ddbf997cc4f93494982"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a75d6e46721275ddbf997cc4f93494982">dataDictUpdateFloatCallback</a></div><div class="ttdeci">void dataDictUpdateFloatCallback(WrenVM *vm)</div><div class="ttdoc">SvcDataDictionary exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00310">AppWren.cpp:310</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a7d888714ebd3a2befec867833015d7f2"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a7d888714ebd3a2befec867833015d7f2">returnFocusCallback</a></div><div class="ttdeci">void returnFocusCallback(WrenVM *vm)</div><div class="ttdoc">AppWren exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00217">AppWren.cpp:217</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a8156eadb16530b87de97824abd487921"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a8156eadb16530b87de97824abd487921">requestPopUpCallback</a></div><div class="ttdeci">void requestPopUpCallback(WrenVM *vm)</div><div class="ttdoc">AppWren exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00184">AppWren.cpp:184</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a8a1f2538f4efc1d16a962797648c4e3d"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a8a1f2538f4efc1d16a962797648c4e3d">dataDictReadFloatCallback</a></div><div class="ttdeci">void dataDictReadFloatCallback(WrenVM *vm)</div><div class="ttdoc">SvcDataDictionary exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00320">AppWren.cpp:320</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a8b6665e4ce88da8beffe58df7644ce3f"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a8b6665e4ce88da8beffe58df7644ce3f">setWidgetDimensionCallback</a></div><div class="ttdeci">void setWidgetDimensionCallback(WrenVM *vm)</div><div class="ttdoc">Set the Widget Dimension Callback object. AppWren exported method which can be called from within a W...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00173">AppWren.cpp:173</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_ab1db7563238658e013cce74318dcb63a"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#ab1db7563238658e013cce74318dcb63a">setPixelCallback</a></div><div class="ttdeci">void setPixelCallback(WrenVM *vm)</div><div class="ttdoc">Set the Pixel Callback object. AppWren exported method which can be called from within a Wren VM inst...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00228">AppWren.cpp:228</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_ad76d44200b483213c78a903735937d55"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#ad76d44200b483213c78a903735937d55">getFocusCallback</a></div><div class="ttdeci">void getFocusCallback(WrenVM *vm)</div><div class="ttdoc">Get the Focus Callback object.AppWren exported method which can be called from within a Wren VM insta...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00206">AppWren.cpp:206</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_adf638e5457d5fe7abf8a52f9ab3476ab"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#adf638e5457d5fe7abf8a52f9ab3476ab">setPositionCallback</a></div><div class="ttdeci">void setPositionCallback(WrenVM *vm)</div><div class="ttdoc">AppWren exported method which can be called from within a Wren VM instance.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00137">AppWren.cpp:137</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_aef047c3a796bec18d6d761edee67f418"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#aef047c3a796bec18d6d761edee67f418">setClockSpeedCallback</a></div><div class="ttdeci">void setClockSpeedCallback(WrenVM *vm)</div><div class="ttdoc">Set the CPU Clock Speed Callback object.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00243">AppWren.cpp:243</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_af49d4fea05c06629b1d47f199557ba3b"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#af49d4fea05c06629b1d47f199557ba3b">audioDirectorDisconnectCallback</a></div><div class="ttdeci">void audioDirectorDisconnectCallback(WrenVM *vm)</div><div class="ttdoc">AudioDirector callback for wren.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00266">AppWren.cpp:266</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_af75d96be639ca6825082ffa47934be07"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#af75d96be639ca6825082ffa47934be07">audioDirectorConnectCallback</a></div><div class="ttdeci">void audioDirectorConnectCallback(WrenVM *vm)</div><div class="ttdoc">AudioDirector callback for wren.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00255">AppWren.cpp:255</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00255">audioDirectorConnectCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00276">audioDirectorDisconnectAllCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00266">audioDirectorDisconnectCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00299">dataDictReadCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00320">dataDictReadFloatCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00289">dataDictUpdateCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00310">dataDictUpdateFloatCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00206">getFocusCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00195">releasePopUpCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00184">requestPopUpCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00217">returnFocusCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00125">sendMessageCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00243">setClockSpeedCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00149">setDimensionCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00228">setPixelCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00137">setPositionCallback()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00173">setWidgetDimensionCallback()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00161">setWidgetPositionCallback()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00420">AppWren::startVM()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ab80ed1f0719f8c9f67ac2cd3d8145bc5_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ab80ed1f0719f8c9f67ac2cd3d8145bc5_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a001c0ccb759e6d820931591c06ff273d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a001c0ccb759e6d820931591c06ff273d">&#9670;&nbsp;</a></span>dataDictReadCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataDictReadCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00299">299</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                     {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  int32_t d = am-&gt;data-&gt;read(wrenGetSlotString(vm, 1));</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  wrenSetSlotDouble(vm, 0,d);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a001c0ccb759e6d820931591c06ff273d_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8a1f2538f4efc1d16a962797648c4e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1f2538f4efc1d16a962797648c4e3d">&#9670;&nbsp;</a></span>dataDictReadFloatCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataDictReadFloatCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00320">320</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                          {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  float32_t f = am-&gt;data-&gt;readf(wrenGetSlotString(vm, 1));</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  wrenSetSlotDouble(vm, 0,f);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8a1f2538f4efc1d16a962797648c4e3d_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a03f7cda21c2bbe03929840d8e117ed8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f7cda21c2bbe03929840d8e117ed8f">&#9670;&nbsp;</a></span>dataDictUpdateCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataDictUpdateCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                       {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="keywordtype">bool</span> b = am-&gt;data-&gt;update(wrenGetSlotString(vm, 1),(int32_t)wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  wrenSetSlotBool(vm, 0,b);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a03f7cda21c2bbe03929840d8e117ed8f_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a75d6e46721275ddbf997cc4f93494982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d6e46721275ddbf997cc4f93494982">&#9670;&nbsp;</a></span>dataDictUpdateFloatCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataDictUpdateFloatCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00310">310</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                            {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordtype">bool</span> b = am-&gt;data-&gt;update(wrenGetSlotString(vm, 1),(<span class="keywordtype">float</span>)wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  wrenSetSlotBool(vm, 0,b);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a75d6e46721275ddbf997cc4f93494982_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <a id="ad2ce68e399aa9789b4f49cc5256f27c2"></a>
@@ -237,13 +771,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void errorFn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/ddb/struct_wren_v_m.html">WrenVM</a> *&#160;</td>
+          <td class="paramtype">WrenVM *&#160;</td>
           <td class="paramname"><em>vm</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971">WrenErrorType</a>&#160;</td>
+          <td class="paramtype">WrenErrorType&#160;</td>
           <td class="paramname"><em>errorType</em>, </td>
         </tr>
         <tr>
@@ -272,37 +806,849 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">switch</span> (errorType)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971a4d8e7d0210dea8b187e040d7e6ca6ca3">WREN_ERROR_COMPILE</a>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      Serial.printf(<span class="stringliteral">&quot;M WREN_ERR [%s line %d] [Error] %s\n&quot;</span>, module, line, msg);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971a396a93cdad2d42671679f1d93af2fcb1">WREN_ERROR_STACK_TRACE</a>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      Serial.printf(<span class="stringliteral">&quot;M WREN_ERR [%s line %d] in %s\n&quot;</span>, module, line, msg);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971abf27994ebb24db6f349a84048c9cb614">WREN_ERROR_RUNTIME</a>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="comment">//Serial.printf(&quot;M WREN_ERR [Runtime Error] %s\n&quot;, msg);</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="ttc" id="awren_8h_html_ab1c7acdbcc2c71e81c92d6b1b060f971a396a93cdad2d42671679f1d93af2fcb1"><div class="ttname"><a href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971a396a93cdad2d42671679f1d93af2fcb1">WREN_ERROR_STACK_TRACE</a></div><div class="ttdeci">@ WREN_ERROR_STACK_TRACE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d19/wren_8h_source.html#l00115">wren.h:114</a></div></div>
-<div class="ttc" id="awren_8h_html_ab1c7acdbcc2c71e81c92d6b1b060f971a4d8e7d0210dea8b187e040d7e6ca6ca3"><div class="ttname"><a href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971a4d8e7d0210dea8b187e040d7e6ca6ca3">WREN_ERROR_COMPILE</a></div><div class="ttdeci">@ WREN_ERROR_COMPILE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d19/wren_8h_source.html#l00108">wren.h:108</a></div></div>
-<div class="ttc" id="awren_8h_html_ab1c7acdbcc2c71e81c92d6b1b060f971abf27994ebb24db6f349a84048c9cb614"><div class="ttname"><a href="../../dd/d19/wren_8h.html#ab1c7acdbcc2c71e81c92d6b1b060f971abf27994ebb24db6f349a84048c9cb614">WREN_ERROR_RUNTIME</a></div><div class="ttdeci">@ WREN_ERROR_RUNTIME</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d19/wren_8h_source.html#l00111">wren.h:111</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../dd/d19/wren_8h_source.html#l00108">WREN_ERROR_COMPILE</a>, <a class="el" href="../../dd/d19/wren_8h_source.html#l00111">WREN_ERROR_RUNTIME</a>, and <a class="el" href="../../dd/d19/wren_8h_source.html#l00114">WREN_ERROR_STACK_TRACE</a>.</p>
+<p>error function system callback for the Wren VM. Stdout/Stderr is SerialUSB1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">errorType</td><td></td></tr>
+    <tr><td class="paramname">module</td><td></td></tr>
+    <tr><td class="paramname">line</td><td></td></tr>
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00055">AppWren::startVM()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">switch</span> (errorType)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">case</span> WREN_ERROR_COMPILE:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;     SerialUSB1.printf(<span class="stringliteral">&quot;VM WREN_ERR [%s line %d] [Error] %s\n&quot;</span>, module, line, msg);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">case</span> WREN_ERROR_STACK_TRACE:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      SerialUSB1.printf(<span class="stringliteral">&quot;VM WREN_ERR [%s line %d] in %s\n&quot;</span>, module, line, msg);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> WREN_ERROR_RUNTIME:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="comment">//Serial.printf(&quot;VM M WREN_ERR [Runtime Error] %s\n&quot;, msg);</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00420">AppWren::startVM()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ad2ce68e399aa9789b4f49cc5256f27c2_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ad76d44200b483213c78a903735937d55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad76d44200b483213c78a903735937d55">&#9670;&nbsp;</a></span>getFocusCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getFocusCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Focus Callback object.AppWren exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00206">206</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                 {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="comment">//(void)</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren.html#abfe45ee73ddb0f8d35c5e45342a5fe05">getFocus</a>();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_html"><div class="ttname"><a href="../../d0/da0/class_app_wren.html">AppWren</a></div><div class="ttdoc">Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00033">AppWren.h:33</a></div></div>
+<div class="ttc" id="aclass_app_wren_html_abfe45ee73ddb0f8d35c5e45342a5fe05"><div class="ttname"><a href="../../d0/da0/class_app_wren.html#abfe45ee73ddb0f8d35c5e45342a5fe05">AppWren::getFocus</a></div><div class="ttdeci">void getFocus()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00086">AppWren.h:86</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00086">AppWren::getFocus()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ad76d44200b483213c78a903735937d55_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ad76d44200b483213c78a903735937d55_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a2469bc30d12bb4b85e4a318a873ec7be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2469bc30d12bb4b85e4a318a873ec7be">&#9670;&nbsp;</a></span>getSourceForModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* getSourceForModule </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Source For Module object requested by the Wren VM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>const char* </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                  {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> g_math_wren;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00108">loadModule()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8862be3048f99b67cf6ccc12d2c2ae74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8862be3048f99b67cf6ccc12d2c2ae74">&#9670;&nbsp;</a></span>loadModule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WrenLoadModuleResult loadModule </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>callback for the VM to request a module be loaded from the filesystem </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>WrenLoadModuleResult </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00108">108</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                                             {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">//callback for the VM to request a module be loaded from the filesystem</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  Serial.printf(<span class="stringliteral">&quot;M VM: loadModule %s\n&quot;</span>, name);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  WrenLoadModuleResult result = {0};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    result.onComplete = <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    result.source = <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a>(name);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="ttc" id="a_app_wren_8cpp_html_a085afb683548c1082208ee513452dd24"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a></div><div class="ttdeci">static void loadModuleComplete(WrenVM *vm, const char *module, WrenLoadModuleResult result)</div><div class="ttdoc">callback function for the VM to indicate to the system that it's ok to release any memory allocated d...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00089">AppWren.cpp:89</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_html_a2469bc30d12bb4b85e4a318a873ec7be"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a></div><div class="ttdeci">const char * getSourceForModule(const char *name)</div><div class="ttdoc">Get the Source For Module object requested by the Wren VM.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00078">AppWren.cpp:78</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00078">getSourceForModule()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00089">loadModuleComplete()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00420">AppWren::startVM()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8862be3048f99b67cf6ccc12d2c2ae74_cgraph.svg" width="332" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8862be3048f99b67cf6ccc12d2c2ae74_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a085afb683548c1082208ee513452dd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a085afb683548c1082208ee513452dd24">&#9670;&nbsp;</a></span>loadModuleComplete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void loadModuleComplete </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>module</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WrenLoadModuleResult&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>callback function for the VM to indicate to the system that it's ok to release any memory allocated during the module load request </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">module</td><td></td></tr>
+    <tr><td class="paramname">result</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">if</span>(result.source) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">//for example, if we used malloc to allocate</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">//our source string, we use free to release it.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">//free((void*)result.source);</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00108">loadModule()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a25d25f1406cc969202b654e1b0ff5eec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25d25f1406cc969202b654e1b0ff5eec">&#9670;&nbsp;</a></span>releasePopUpCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void releasePopUpCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00195">195</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                     {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="comment">//(void)</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren.html#ab7a97ed3ad7b7b7ccd2a629448679e20">releasePopUp</a>();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_html_ab7a97ed3ad7b7b7ccd2a629448679e20"><div class="ttname"><a href="../../d0/da0/class_app_wren.html#ab7a97ed3ad7b7b7ccd2a629448679e20">AppWren::releasePopUp</a></div><div class="ttdeci">void releasePopUp()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00089">AppWren.h:89</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00089">AppWren::releasePopUp()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a25d25f1406cc969202b654e1b0ff5eec_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a25d25f1406cc969202b654e1b0ff5eec_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8156eadb16530b87de97824abd487921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8156eadb16530b87de97824abd487921">&#9670;&nbsp;</a></span>requestPopUpCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void requestPopUpCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00184">184</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                     {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="comment">//(void)</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren.html#a8a02cff13a6da29a75d2070218902c26">requestPopUp</a>(wrenGetSlotBool(vm, 1));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_html_a8a02cff13a6da29a75d2070218902c26"><div class="ttname"><a href="../../d0/da0/class_app_wren.html#a8a02cff13a6da29a75d2070218902c26">AppWren::requestPopUp</a></div><div class="ttdeci">void requestPopUp(bool exclusive=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00088">AppWren.h:88</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00088">AppWren::requestPopUp()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8156eadb16530b87de97824abd487921_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8156eadb16530b87de97824abd487921_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a7d888714ebd3a2befec867833015d7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d888714ebd3a2befec867833015d7f2">&#9670;&nbsp;</a></span>returnFocusCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void returnFocusCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00217">217</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                    {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="comment">//(void)</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren.html#a514b3b6b2c8059bde367709b11bc55a8">setWidgetDimension</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_html_a514b3b6b2c8059bde367709b11bc55a8"><div class="ttname"><a href="../../d0/da0/class_app_wren.html#a514b3b6b2c8059bde367709b11bc55a8">AppWren::setWidgetDimension</a></div><div class="ttdeci">void setWidgetDimension(int16_t new_width, int16_t new_height)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00085">AppWren.h:85</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00085">AppWren::setWidgetDimension()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a7d888714ebd3a2befec867833015d7f2_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a7d888714ebd3a2befec867833015d7f2_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a5a2a584aa9624610a07f621a52c2cd4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a2a584aa9624610a07f621a52c2cd4c">&#9670;&nbsp;</a></span>sendMessageCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sendMessageCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">//callback params can be found in the slots</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">//return value goes into slot 0</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  wrenSetSlotBool(vm, 0, am-&gt;sendMessage(am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>),wrenGetSlotString(vm, 1),wrenGetSlotString(vm, 2)));</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a5a2a584aa9624610a07f621a52c2cd4c_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a01f554db1c07c31f60f5167060279699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f554db1c07c31f60f5167060279699">&#9670;&nbsp;</a></span>set_arm_clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t set_arm_clock </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>frequency</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00243">setClockSpeedCallback()</a>.</p>
+<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-24-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-24-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a01f554db1c07c31f60f5167060279699_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aef047c3a796bec18d6d761edee67f418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef047c3a796bec18d6d761edee67f418">&#9670;&nbsp;</a></span>setClockSpeedCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setClockSpeedCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the CPU Clock Speed Callback object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00243">243</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                      {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="comment">//(uint16_t cpu_speed)</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <a class="code" href="../../d7/d7e/_app_wren_8cpp.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a>(wrenGetSlotDouble(vm, 1));</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
+<div class="ttc" id="a_app_wren_8cpp_html_a01f554db1c07c31f60f5167060279699"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a></div><div class="ttdeci">uint32_t set_arm_clock(uint32_t frequency)</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp.html#a01f554db1c07c31f60f5167060279699">set_arm_clock()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_aef047c3a796bec18d6d761edee67f418_cgraph.svg" width="374" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_aef047c3a796bec18d6d761edee67f418_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a1af842755d61bd4e87bf767b1a64116e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1af842755d61bd4e87bf767b1a64116e">&#9670;&nbsp;</a></span>setDimensionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setDimensionCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Dimension Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00149">149</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                     {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">//(int16_t new_width, int16_t new_height)</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* app = am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  app-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">setDimension</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="ttc" id="aclass_app_base_class_html"><div class="ttname"><a href="../../db/d69/class_app_base_class.html">AppBaseClass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00038">AppBaseClass.h:38</a></div></div>
+<div class="ttc" id="aclass_app_base_class_html_ae48421c05ab38a72f27c1face4bb50c4"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#ae48421c05ab38a72f27c1face4bb50c4">AppBaseClass::setDimension</a></div><div class="ttdeci">void setDimension(int16_t new_width, int16_t new_height)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00093">AppBaseClass.h:93</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00093">AppBaseClass::setDimension()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-27-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-27-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-27-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a1af842755d61bd4e87bf767b1a64116e_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-28-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-28-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-28-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a1af842755d61bd4e87bf767b1a64116e_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ab1db7563238658e013cce74318dcb63a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1db7563238658e013cce74318dcb63a">&#9670;&nbsp;</a></span>setPixelCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setPixelCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Pixel Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00228">228</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                 {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="comment">//(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren.html#acd797662d50ea1d4dc11eff65cd5ab18">setPixel</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_html_acd797662d50ea1d4dc11eff65cd5ab18"><div class="ttname"><a href="../../d0/da0/class_app_wren.html#acd797662d50ea1d4dc11eff65cd5ab18">AppWren::setPixel</a></div><div class="ttdeci">void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00093">AppWren.h:93</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00093">AppWren::setPixel()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-29-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-29-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-29-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ab1db7563238658e013cce74318dcb63a_cgraph.svg" width="612" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-30-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ab1db7563238658e013cce74318dcb63a_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="adf638e5457d5fe7abf8a52f9ab3476ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf638e5457d5fe7abf8a52f9ab3476ab">&#9670;&nbsp;</a></span>setPositionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setPositionCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00137">137</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                    {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="comment">//(int16_t newOriginX, int16_t newOriginY)</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* app = am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  app-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">setPosition</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;};</div>
+<div class="ttc" id="aclass_app_base_class_html_aa9f84b5a03adc7115a476219022e12b5"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#aa9f84b5a03adc7115a476219022e12b5">AppBaseClass::setPosition</a></div><div class="ttdeci">void setPosition(int16_t newOriginX, int16_t newOriginY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00092">AppBaseClass.h:92</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00092">AppBaseClass::setPosition()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-31" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-31-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-31-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_adf638e5457d5fe7abf8a52f9ab3476ab_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-32" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-32-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-32-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-32-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_adf638e5457d5fe7abf8a52f9ab3476ab_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8b6665e4ce88da8beffe58df7644ce3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6665e4ce88da8beffe58df7644ce3f">&#9670;&nbsp;</a></span>setWidgetDimensionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setWidgetDimensionCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Widget Dimension Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00173">173</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                           {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="comment">//(int16_t new_width, int16_t new_height)</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* app = am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  app-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#a801f8d24d3623f8d5e2d654b6b3b7d32">setWidgetDimension</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="ttc" id="aclass_app_base_class_html_a801f8d24d3623f8d5e2d654b6b3b7d32"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a801f8d24d3623f8d5e2d654b6b3b7d32">AppBaseClass::setWidgetDimension</a></div><div class="ttdeci">void setWidgetDimension(int16_t new_width, int16_t new_height)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass.h:95</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00095">AppBaseClass::setWidgetDimension()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-33" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-33-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-33-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-33-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8b6665e4ce88da8beffe58df7644ce3f_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-34" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-34-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-34-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-34-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8b6665e4ce88da8beffe58df7644ce3f_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a6fe5cd9f6d4f102b8f94385f4291222d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fe5cd9f6d4f102b8f94385f4291222d">&#9670;&nbsp;</a></span>setWidgetPositionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setWidgetPositionCallback </td>
+          <td>(</td>
+          <td class="paramtype">WrenVM *&#160;</td>
+          <td class="paramname"><em>vm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Widget Position Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00161">161</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                          {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="comment">//(int16_t newOriginX, int16_t newOriginY)</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* app = am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  app-&gt;<a class="code" href="../../db/d69/class_app_base_class.html#a02b03e7f3c8034d8b52991d7c7a82f28">setWidgetPosition</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
+<div class="ttc" id="aclass_app_base_class_html_a02b03e7f3c8034d8b52991d7c7a82f28"><div class="ttname"><a href="../../db/d69/class_app_base_class.html#a02b03e7f3c8034d8b52991d7c7a82f28">AppBaseClass::setWidgetPosition</a></div><div class="ttdeci">void setWidgetPosition(int16_t newOriginX, int16_t newOriginY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass.h:94</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00094">AppBaseClass::setWidgetPosition()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00338">bindForeignMethod()</a>.</p>
+<div id="dynsection-35" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-35-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-35-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-35-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a6fe5cd9f6d4f102b8f94385f4291222d_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-36" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-36-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-36-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-36-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a6fe5cd9f6d4f102b8f94385f4291222d_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -320,7 +1666,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">static void writeFn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/ddb/struct_wren_v_m.html">WrenVM</a> *&#160;</td>
+          <td class="paramtype">WrenVM *&#160;</td>
           <td class="paramname"><em>vm</em>, </td>
         </tr>
         <tr>
@@ -342,15 +1688,26 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00022">22</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{Serial.printf(<span class="stringliteral">&quot;%s&quot;</span>, text);}</div>
+<p>write function system callback for the Wren VM. Stdout/Stderr is SerialUSB1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vm</td><td></td></tr>
+    <tr><td class="paramname">text</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                  {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  SerialUSB1.printf(<span class="stringliteral">&quot;VM %s&quot;</span>, text);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00055">AppWren::startVM()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00420">AppWren::startVM()</a>.</p>
+<div id="dynsection-37" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-37-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-37-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-37-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_ad0c26c660738b28a098f1400caef81e2_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
