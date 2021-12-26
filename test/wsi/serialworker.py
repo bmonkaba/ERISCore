@@ -74,6 +74,7 @@ class SerialProcess():
                     d = lz4.block.decompress(d, uncompressed_size=size)
                 except:
                     print("lz4.block.decompress err")
+                    print (d)
                 #print("decompress> ")
                 #print(d)
                 else:

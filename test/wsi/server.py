@@ -58,8 +58,8 @@ def checkQueue():
         message += vm_output_queue.get()
     for c in clients:
         if(len(message)>1):
-            message = "VM "+ message
-        c.write_message(message)
+            #message = "VM "+ message
+            c.write_message(message)
 
 if __name__ == '__main__':
     print("Eris Audio System Test Tool Web Server")

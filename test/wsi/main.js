@@ -748,7 +748,7 @@ $(document).ready(function () {
                 }
                 break;
             case "VM":
-                message = message.replace("VM","");
+                message = message.replaceAll("VM","");
 
                 var total = $("#vm_terminal")[0].value.split("\n");
                 if (total.length > 1000) 

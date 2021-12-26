@@ -7,7 +7,7 @@
 #define DISPLAY_UPDATE_PERIOD  120
 #define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 1500 
 
-#define AM_IMG_CACHE_SIZE 64*64*12
+#define AM_IMG_CACHE_SIZE 64*64*9
 
 //AppBaseClass
 #define MAX_NAME_LENGTH 36
@@ -17,12 +17,12 @@
 
 //AppSCI
 #define SERIAL_POLLING_RATE_MAX 15
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 5700
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 2900
 #define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 2000
 #define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 20
 
 #define SERIAL_RX_BUFFER_SIZE 1024
-#define SERIAL_RX_CAPTURE_BUFFER_SIZE 16384
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 8000
 #define SERIAL_PARAM_BUFFER_SIZE 128
 #define SERIAL_OUTPUT_BUFFER_SIZE 16384/3
 #define SERIAL_WORKING_BUFFER_SIZE 16384/3
@@ -41,7 +41,7 @@
 #define MAX_CONNECTION_STRING_LENGTH 96
 
 //ILI9341_t3_ERIS
-#define ANIMATION_CHUNKS_PER_FRAME 6
+#define ANIMATION_CHUNKS_PER_FRAME 12
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -90,23 +90,42 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 const char g_wrenScript[] PROGMEM = R"(
 /*  
-    Eris Core Wren Script Template
+    Eris Core Wren Script Template / Demonstration
     see https://wren.io/ for more information about the programming language
     note: plenty of wren language scripting examples can be found here:
     https://rosettacode.org/wiki/Category:Wren
-    The App class is a close approximation of the C++ AppBase class with some extra goodies builtin.
-    Such as methods for drawing directly to a pre allocated buffer which is automatically rendered to the screen 
-    as soon as the App update method returns
-    The example below adapts the julia rendering example from rosettacode into the Eris Core framework
+    The App class is a close approximation of the C++ AppBase class with some 
+    extra goodies builtin. Such as methods for drawing directly to a pre 
+    allocated buffer which is automatically rendered to the screen 
+    as soon as the wren App update method returns
+    
+    The example below adapts the julia rendering example from rosettacode 
+    into the Eris Core framework
 */
+//audio director interface for making/breaking audiostream connections
+class AudioDirector{
+    //foreign methods are implemented in C/C++
+    foreign static connect(connection_string)
+    foreign static disconnect(connection_string)
+    foreign static disconnectAll()
+}
+//SvcDataDictionary interface for accessing & sharing variables between components
+class Data {
+    foreign static read(key)
+    foreign static update(key,double_value)
+    foreign static readf(key)
+    foreign static updatef(key,float_value)
+}
+//AppBase Class interface for implementing the scripts actions & behaviors
 class App {
     construct new() {
-        //static vars
+        //double underscores indicate static vars
         __x = 64
         __y = 64
         __w = 64
         __h = 64
-        //instance vars
+        //single underscores indicate class instance vars
+        //in wren the class itself is an object so it will also have instance vars
         _count = 0
         _r = 0
         _g = 0
@@ -120,6 +139,9 @@ class App {
         _CY = 0.27015
         _jx = 0
         _jy = 0
+        _dx = 2
+        _dy = -2
+        
     }
     
     foreign static sendMessage(to, message)
@@ -132,7 +154,11 @@ class App {
     foreign static getFocus()
     foreign static returnFocus()
     foreign static setPixel(x,y,r,g,b)
+    foreign static setClockSpeed(hz)
     
+    //
+    //  example specific method
+    //
     createJulia() {
         var zx = 1.5 * (_jx - __w / 2) / (0.5 * _Zoom * __w) + _MoveX
         var zy = (_jy - __h / 2) / (0.5 * _Zoom * __h) + _MoveY
@@ -166,29 +192,38 @@ class App {
         if (r < 0) r = 0
         if (g < 0) g = 20
         if (b < 0) b = 0
-        
-        
         App.setPixel(_jx, _jy,r,g,b)
     }
     
-    updateRT () {
-        //System.print("App::updateRT() ")
+    //
+    //  required methods - the VM host (C++ side) provides the AppBase class wrappers which will 
+    //  forward the method calls here for execution
+    //
+    updateRT() {
         _count = _count + 1
         if (_count > 15000){
-            //System.print("App::updateRT() 50K calls")
-            //System.print([__x,__y])
-            System.print( _MaxIters )
+            System.print(["FREE_MEM",Data.read("FREE_MEM")])
+            System.print(["CPU_TEMP",Data.read("CPU_TEMP")])
             _count = 0
         }
     }
     update() {
         App.setWidgetPosition(__x, __y)
-        for (y in 0...(__w)) {
+        //every pixel is calculated by many iterations
+        //kick up the clock speed for this section
+        App.setClockSpeed(740000000)
+        for (y in 0...(__w/16)) {
             createJulia()
         }
-       
-        __x = 64
-        __y = 64
+        //and bring the clock speed back down 
+        App.setClockSpeed(600000000)
+        //let the widget window bounce of the edges of the screen
+        __x = __x + _dx
+        __y = __y + _dy
+        if (__x < 0 - 32) _dx = _dx * -1
+        if (__y < 0 - 32) _dy = _dy * -1
+        if (__x > 320 - 32) _dx = _dx * -1
+        if (__y > 240 - 32) _dy = _dy * -1
     }
     onFocus() {
         var a = "test"
@@ -217,17 +252,276 @@ class App {
     onAnalog4() {
         
     }
-    MessageHandler() {
-        var a = "test"
+    MessageHandler(sender,message) {
+        System.println([sender,message])
     }
-    //getter
+    //example getter
     count { _count }
-    //setter
+    //example setter
     count=(value) { _count = value }
 }
+//static methods can be called directly on the class object
 App.setDimension(64, 64)
 App.setWidgetDimension(64, 64)
+//or a class instance may be created
+//The host (C/C++ side) expects a top level variable named ErisApp of 
+//type class App
+//it's this instance for which the event methods will be called
 var ErisApp = App.new()
 )";
 
+
+const char g_math_wren[] PROGMEM = R"(
+/* Module "math.wren" */
+ 
+/* Math supplements the Num class with various other operations on numbers. */
+class Math {
+    // Constants.
+    static e    { 2.71828182845904523536 } // base of natural logarithms
+    static phi  { 1.6180339887498948482  } // golden ratio
+    static ln2  { 0.69314718055994530942 } // natural logarithm of 2
+    static ln10 { 2.30258509299404568402 } // natural logarithm of 10
+ 
+    // Log function.
+    static log10(x) { x.log/ln10 }  // Base 10 logarithm
+ 
+    // Hyperbolic trig functions.
+    static sinh(x) { (x.exp - (-x).exp)/2 } // sine
+    static cosh(x) { (x.exp + (-x).exp)/2 } // cosine
+    static tanh(x) { sinh(x)/cosh(x)      } // tangent
+ 
+    // Inverse hyperbolic trig functions.
+    static asinh(x) { (x + (x*x + 1).sqrt).log } // sine
+    static acosh(x) { (x + (x*x - 1).sqrt).log } // cosine
+    static atanh(x) { ((1+x)/(1-x)).log/2 }      // tangent
+ 
+    // Angle conversions.
+    static radians(d) { d * Num.pi / 180}
+    static degrees(r) { r * 180 / Num.pi }
+ 
+    // Returns the square root of 'x' squared + 'y' squared.
+    static hypot(x, y) { (x*x + y*y).sqrt }
+ 
+    // Returns the integer and fractional parts of 'x'. Both values have the same sign as 'x'.
+    static modf(x) { [x.truncate, x.fraction] }
+ 
+    // Returns the IEEE 754 floating-point remainder of 'x/y'.
+    static rem(x, y) {
+        if (x.isNan || y.isNan || x.isInfinity || y == 0) return nan
+        if (!x.isInfinity && y.isInfinity) return x
+        var nf = modf(x/y)
+        if (nf[1] != 0.5) {
+            return x - (x/y).round * y
+        } else {
+            var n = nf[0]
+            if (n%2 == 1) n = (n > 0) ? n + 1 : n - 1
+            return x - n * y
+        }
+    }
+ 
+    // Round away from zero.
+    static roundUp(x) { (x >= 0) ? x.ceil : x.floor }
+  
+    // Convenience version of above method which uses 0 for the 'mode' parameter.
+    static toPlaces(x, p) { toPlaces(x, p, 0) }
+ 
+    // Static alternatives to instance methods in Num class.
+    // Clearer when both arguments are complex expressions.    
+    static min(x, y)  { (x < y) ? x : y }
+    static max(x, y)  { (x > y) ? x : y }
+    static atan(x, y) { x.atan(y) }
+}
+ 
+/* Int contains various routines which are only applicable to integers. */
+class Int {
+ 
+    // Returns the remainder when 'b' raised to the power 'e' is divided by 'm'.
+    static modPow(b, e, m) {
+        if (m == 1) return 0
+        var r = 1
+        b = b % m
+        while (e > 0) {
+            if (e%2 == 1) r = (r*b) % m
+            e = e >> 1
+            b = (b*b) % m
+        }
+        return r
+    }
+ 
+    // Private helper method which checks a number and base for validity.
+    static check_(n, b) {
+        if (!(n is Num && n.isInteger && n >= 0)) {
+            Fiber.abort("Number must be a non-negative integer.")
+        }
+        if (!(b is Num && b.isInteger && b >= 2 && b < 64)) {
+            Fiber.abort("Base must be an integer between 2 and 63.")
+        }
+    }
+ 
+    // Returns a list of an integer n's digits in base b. Optionally checks n and b are valid.
+    static digits(n, b, check) {
+        if (check) check_(n, b)
+        if (n == 0) return [0]
+        var digs = []
+        while (n > 0) {
+            digs.add(n%b)
+            n = (n/b).floor
+        }
+        return digs[-1..0]
+    }
+ 
+    // Returns the sum of an integer n's digits in base b. Optionally checks n and b are valid.
+    static digitSum(n, b, check) {
+        if (check) check_(n, b)
+        var sum = 0
+        while (n > 0) {
+            sum = sum + (n%b)
+            n = (n/b).floor
+        }
+        return sum
+    } 
+ 
+    // Returns the digital root and additive persistence of an integer n in base b.
+    // Optionally checks n and b are valid.
+    static digitalRoot(n, b, check) {
+        if (check) check_(n, b)
+        var ap = 0
+        while (n > b - 1) {
+            n = digitSum(n, b)
+            ap = ap + 1
+        }
+        return [n, ap]
+    }
+ 
+    // Convenience versions of the above methods which never check for validity
+    // and/or use base 10 by default.    
+    static digits(n, b)      { digits(n, b, false) }
+    static digits(n)         { digits(n, 10, false) }
+    static digitSum(n, b)    { digitSum(n, b, false) }
+    static digitSum(n)       { digitSum(n, 10, false) }
+    static digitalRoot(n, b) { digitalRoot(n, b, false) }
+    static digitalRoot(n)    { digitalRoot(n, 10, false) }
+ 
+    // Returns the unique non-negative integer that is associated with a pair 
+    // of non-negative integers 'x' and 'y' according to Cantor's pairing function. 
+    static cantorPair(x, y) {
+        if (x.type != Num || !x.isInteger || x < 0) {
+            Fiber.abort("Arguments must be non-negative integers.")
+        }
+        if (y.type != Num || !y.isInteger || y < 0) {
+            Fiber.abort("Arguments must be non-negative integers.")
+        }
+        return (x*x + 3*x + 2*x*y + y + y*y) / 2
+    }
+ 
+    // Returns the pair of non-negative integers that are associated with a single 
+    // non-negative integer 'z' according to Cantor's pairing function. 
+    static cantorUnpair(z) {
+        if (z.type != Num || !z.isInteger || z < 0) {
+            Fiber.abort("Argument must be a non-negative integer.")
+        }
+        var i = (((1 + 8*z).sqrt-1)/2).floor      
+        return [z - i*(1+i)/2, i*(3+i)/2 - z]
+    }
+}
+ 
+/*
+    Nums contains various routines applicable to lists or ranges of numbers
+    many of which are useful for statistical purposes.
+*/
+class Nums {
+    // Methods to calculate sum, various means, product and maximum/minimum element of 'a'.
+    // The sum and product of an empty list are considered to be 0 and 1 respectively.
+    static sum(a)  { a.reduce(0) { |acc, x| acc + x } }
+    static mean(a) { sum(a)/a.count }
+    static geometricMean(a) { a.reduce { |prod, x| prod * x}.pow(1/a.count) }
+    static harmonicMean(a) { a.count / a.reduce { |acc, x| acc + 1/x } }
+    static quadraticMean(a) { (a.reduce(0) { |acc, x| acc + x*x }/a.count).sqrt }
+    static prod(a) { a.reduce(1) { |acc, x| acc * x } }
+    static max(a)  { a.reduce { |acc, x| (x > acc) ? x : acc } }
+    static min(a)  { a.reduce { |acc, x| (x < acc) ? x : acc } }
+ 
+    // Returns the median of a sorted list 'a'.
+    static median(a) {
+        var c = a.count
+        if (c == 0) {
+            Fiber.abort("An empty list cannot have a median")
+        } else if (c%2 == 1) {
+            return a[(c/2).floor]
+        } else {
+            var d = (c/2).floor
+            return (a[d] + a[d-1])/2
+        }
+    }
+ 
+    // Returns a list whose first element is a list of the mode(s) of 'a'
+    // and whose second element is the number of times the mode(s) occur.
+    static modes(a) {
+        var m = {}
+        for (e in a) m[e] = (!m[e]) ? 1 : m[e] + 1
+        var max = 0
+        for (e in a) if (m[e] > max) max = m[e]
+        var res = []
+        for (k in m.keys) if (m[k] == max) res.add(k)
+        return [max, res]
+    }
+ 
+    // Returns the sample variance of 'a'.
+    static variance(a) {
+        var m = mean(a)
+        var c = a.count
+        return (a.reduce(0) { |acc, x| acc + x*x } - m*m*c) / (c-1)
+    }
+ 
+    // Returns the population variance of 'a'.
+    static popVariance(a) {
+        var m = mean(a)
+        return (a.reduce(0) { |acc, x| acc + x*x }) / a.count - m*m
+    }
+ 
+    // Returns the sample standard deviation of 'a'.
+    static stdDev(a) { variance(a).sqrt }
+ 
+    // Returns the population standard deviation of 'a'.
+    static popStdDev(a) { popVariance(a).sqrt }
+ 
+    // Returns the mean deviation of 'a'.
+    static meanDev(a) {
+        var m = mean(a)
+        return a.reduce { |acc, x| acc + (x - m).abs } / a.count
+    }
+}
+ 
+/* Boolean supplements the Bool class with bitwise operations on boolean values. */
+class Boolean {
+    // Private helper method to convert a boolean to an integer.
+    static btoi_(b) { b ? 1 : 0 }
+ 
+    // Private helper method to convert an integer to a boolean.
+    static itob_(i) { i != 0 }
+ 
+    // Private helper method to check its arguments are both booleans.
+    static check_(b1, b2) {
+        if (!((b1 is Bool) && (b2 is Bool))) Fiber.abort("Both arguments must be booleans.")
+    }
+ 
+    // Returns the logical 'and' of its boolean arguments.
+    static and(b1, b2) {
+        check_(b1, b2)
+        return itob_(btoi_(b1) & btoi_(b2))
+    }
+ 
+    // Returns the logical 'or' of its boolean arguments.
+    static or(b1, b2) {
+        check_(b1, b2)
+        return itob_(btoi_(b1) | btoi_(b2))
+    }
+ 
+    // Returns the logical 'xor' of its boolean arguments.
+    static xor(b1, b2) {
+        check_(b1, b2)
+        return itob_(btoi_(b1) ^ btoi_(b2))
+    }
+}
+)";
 #endif

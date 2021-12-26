@@ -409,7 +409,7 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin <= highRange) && (low_range_switch == true)) || ((oscBank[i].cqtBin > highRange) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = sqrt(oscBank[i].avgValueFast)/10.0;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = sqrt(oscBank[i].avgValueFast)/5.0;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
             if(!isnan(a)){
               //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
