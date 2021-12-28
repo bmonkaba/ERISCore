@@ -1100,6 +1100,10 @@ tr {
     overflow-y: scroll;
 }
 
+#flowimg {
+display: inline;
+}
+
 $green: #88ce02;
 $dark: #262626;
 
@@ -1473,9 +1477,30 @@ select {
     padding:2px;
 }
 
-.RunButton:active
+.SaveButton:active
 {   
-    background:url(/static/img/run.png) no-repeat;
+    background:url(/static/img/save.png) no-repeat;
+    opacity: 1.0;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+}
+
+.SaveButton{
+    background:url(/static/img/save.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:20px;
+    height:20px;
+    opacity: 0.5;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+}
+
+.SaveButton:active
+{   
+    background:url(/static/img/save.png) no-repeat;
     opacity: 1.0;
     background-size: 100%;
     margin:2px;

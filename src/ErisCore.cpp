@@ -47,6 +47,12 @@ void setup() {
   ExtADCPrintStatus();
   //I2CBusScan();  
   Serial.println(F("M Setup: Loading Applications"));
+  //Reset PSRAM clock to 132 Mhz
+	  CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_OFF);
+	  CCM_CBCMR = (CCM_CBCMR & ~(CCM_CBCMR_FLEXSPI2_PODF_MASK | CCM_CBCMR_FLEXSPI2_CLK_SEL_MASK))
+		  | CCM_CBCMR_FLEXSPI2_PODF(4) | CCM_CBCMR_FLEXSPI2_CLK_SEL(2); // 528/5 = 132 MHz
+	  CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_ON);
+
   //app = new MyAppExample();    //note: The AppBaseClass constructor self registers with the app manager
   //appReprogram = new AppReprogram();
   //appSCI = new AppSerialCommandInterface();

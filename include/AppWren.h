@@ -49,6 +49,7 @@ class AppWren:public AppBaseClass {
         h_onAnalog4 = 0;
         h_messageHandler = 0;
         compileOnly = false;
+        save_module = false;
         isPressed = false;
         show_active = false;
         usingImage = true;
@@ -89,6 +90,9 @@ class AppWren:public AppBaseClass {
     void releasePopUp(){AppBaseClass::releasePopUp();}
     void setRTPriority(uint16_t level);
 
+    //provide an interface for wren callbacks to request the draw object
+    ILI9341_t3_ERIS* getDraw(){return draw;}
+    AudioDirector* getAudioDirector(){return ad;} 
     //and now we go a step further by integrating draw and data object methods directly into the AppWren class
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
         if (surface_cache && draw) draw->drawPixel(surface_cache,x,y,CL(r,g,b));
@@ -165,8 +169,10 @@ class AppWren:public AppBaseClass {
             if (h_onTouch==0){ //if no script loaded
                 return;
             } else{
-                wrenEnsureSlots(vm, 1);
+                wrenEnsureSlots(vm, 3);
                 wrenSetSlotHandle(vm, 0, h_slot0);//App
+                wrenSetSlotDouble(vm, 0, t_x);//param
+                wrenSetSlotDouble(vm, 0, t_y);//param
                 if (isWrenResultOK(wrenCall(vm,h_onTouch))){
                     
                 };
@@ -177,8 +183,10 @@ class AppWren:public AppBaseClass {
         if (h_onTouchDrag==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 0, t_x);//param
+            wrenSetSlotDouble(vm, 0, t_y);//param
             if (isWrenResultOK(wrenCall(vm,h_onTouchDrag))){
                 
             };
@@ -188,8 +196,10 @@ class AppWren:public AppBaseClass {
         if (h_onTouchRelease==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 0, t_x);//param
+            wrenSetSlotDouble(vm, 0, t_y);//param
             if (isWrenResultOK(wrenCall(vm,h_onTouchRelease))){
                 
             };
@@ -199,8 +209,9 @@ class AppWren:public AppBaseClass {
         if (h_onAnalog1==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 1, fval);//param
             if (isWrenResultOK(wrenCall(vm,h_onAnalog1))){
                 
             };
@@ -210,8 +221,9 @@ class AppWren:public AppBaseClass {
         if (h_onAnalog2==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 1, fval);//param
             if (isWrenResultOK(wrenCall(vm,h_onAnalog2))){
                 
             };
@@ -221,8 +233,9 @@ class AppWren:public AppBaseClass {
         if (h_onAnalog3==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 1, fval);//param
             if (isWrenResultOK(wrenCall(vm,h_onAnalog3))){
                 
             };
@@ -232,8 +245,9 @@ class AppWren:public AppBaseClass {
         if (h_onAnalog4==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
+            wrenSetSlotDouble(vm, 1, fval);//param
             if (isWrenResultOK(wrenCall(vm,h_onAnalog4))){
                 
             };
@@ -241,8 +255,10 @@ class AppWren:public AppBaseClass {
     };
  protected:
     bool compileOnly;
+    bool save_module;
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
+    char save_module_as[MAX_TEXT_LENGTH];
     Surface* surface_cache;
     uint16_t* draw_buffer;
     bool isPressed;

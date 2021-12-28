@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 37
+#define TX_PERIOD 370
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 37
+#define TX_CQT_PERIOD 370
 
 // Constant Q Transform App
 //
@@ -242,8 +242,8 @@ class AppCQT:public AppBaseClass {
         if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*oscBank[i].cqtBin);
-        if (signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,CL(0xFF,0xA0,(uint8_t)(200*oscBank[i].transientValue)));
-        if (signal > 10 && has_pop){
+        if ((y+h - (uint16_t)signal) < h && signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,CL(0xFF,0xA0,(uint8_t)(300*oscBank[i].transientValue)));
+        if ((y+h - (uint16_t)signal) < h && has_pop){
           draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 15);
           draw->print(note_name[oscBank[i].cqtBin]);
           draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 25);  

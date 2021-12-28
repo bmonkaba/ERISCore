@@ -253,8 +253,11 @@ void setClockSpeedCallback(WrenVM* vm){
  * @param vm 
  */
 void audioDirectorConnectCallback(WrenVM* vm){
+  //(char* source, uint16_t source_port,char* dest, uint16_t dest_port)
   AppManager* am = AppManager::getInstance();
-  bool b = am->ad->connect(wrenGetSlotString(vm, 1));
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  const char* s = wrenGetSlotString(vm, 1);
+  bool b = app->getAudioDirector()->connect((char*)wrenGetSlotString(vm, 1),wrenGetSlotDouble(vm, 2),(char*)wrenGetSlotString(vm, 3),wrenGetSlotDouble(vm, 4));
   wrenSetSlotBool(vm, 0,b);
 }
 
@@ -264,8 +267,11 @@ void audioDirectorConnectCallback(WrenVM* vm){
  * @param vm 
  */
 void audioDirectorDisconnectCallback(WrenVM* vm){
+  //(char* dest, uint16_t dest_port)
   AppManager* am = AppManager::getInstance();
-  bool b = am->ad->disconnect(wrenGetSlotString(vm, 1));
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  const char* s = wrenGetSlotString(vm, 1);
+  bool b = app->getAudioDirector()->disconnect((char*)wrenGetSlotString(vm, 1),wrenGetSlotDouble(vm, 2));
   wrenSetSlotBool(vm, 0,b);
 }
 /**
@@ -274,8 +280,11 @@ void audioDirectorDisconnectCallback(WrenVM* vm){
  * @param vm 
  */
 void audioDirectorDisconnectAllCallback(WrenVM* vm){
+  //()
   AppManager* am = AppManager::getInstance();
-  bool b = am->ad->disconnectAll();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  const char* s = wrenGetSlotString(vm, 1);
+  bool b = app->getAudioDirector()->disconnectAll();
   wrenSetSlotBool(vm, 0,b);
 }
 
@@ -321,6 +330,57 @@ void dataDictReadFloatCallback(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   float32_t f = am->data->readf(wrenGetSlotString(vm, 1));
   wrenSetSlotDouble(vm, 0,f);
+}
+
+
+//Draw Callbacks
+/**
+ * @brief Set the Text Color Callback object
+ * 
+ * @param vm 
+ */
+void setTextColorCallback(WrenVM* vm){
+  //(int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->getDraw()->setTextColor(app->getDraw()->color565(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3)));
+}
+/**
+ * @brief Set the Cursor Callback object
+ * 
+ * @param vm 
+ */
+void setCursorCallback(WrenVM* vm){
+  //(int16_t x, int16_t y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->getDraw()->setCursor(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),false);
+}
+/**
+ * @brief Set the Print Callback object
+ * 
+ * @param vm 
+ */
+void printCallback(WrenVM* vm){
+  //(char* string)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->getDraw()->print(wrenGetSlotString(vm,1));
+}
+/**
+ * @brief Set the Font Size Callback object
+ * 
+ * @param vm 
+ */
+void setFontSizeCallback(WrenVM* vm){
+  //TODO
+}
+
+void loadImageCallback(WrenVM* vm){
+  //(char* path,char* filename,int16_t x, int16_t y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_NONE);
 }
 
 
@@ -370,7 +430,6 @@ WrenForeignMethodFn bindForeignMethod(
       }else if (strcmp(signature, "setClockSpeed(_)") == 0){
         return setClockSpeedCallback;
       }
-      // Other foreign methods on Math...
     }else if (strcmp(className, "Data") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "update(_,_)") == 0){
         return dataDictUpdateCallback;
@@ -383,15 +442,27 @@ WrenForeignMethodFn bindForeignMethod(
         return dataDictReadFloatCallback;
       }
     }else if (strcmp(className, "AudioDirector") == 0){ //these are static methods... attach them to the class, not an instance
-      if (strcmp(signature, "connect(_)") == 0){
+      if (strcmp(signature, "connect(_,_,_,_)") == 0){
         return audioDirectorConnectCallback;
-      } else if (strcmp(signature, "disconnect(_)") == 0){
+      } else if (strcmp(signature, "disconnect(_,_)") == 0){
         return audioDirectorDisconnectCallback;
       }else if (strcmp(signature, "disconnectAll()") == 0){
         return audioDirectorDisconnectAllCallback;
       }
-
-
+    }else if (strcmp(className, "Draw") == 0){ //these are static methods... attach them to the class, not an instance
+      if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
+        return setPixelCallback;
+      }else if (strcmp(signature, "setTextColor(_,_,_)") == 0){
+        return setTextColorCallback;
+      }else if (strcmp(signature, "setCursor(_,_)") == 0){
+        return setCursorCallback;
+      }else if (strcmp(signature, "print(_)") == 0){
+        return printCallback;
+      }else if (strcmp(signature, "setFontSize(_)") == 0){
+        return setFontSizeCallback;
+      }else if (strcmp(signature, "loadImage(_,_,_,_)") == 0){
+        return loadImageCallback;
+      }
     }
     // Other classes in main...
   }
@@ -423,8 +494,8 @@ void AppWren::startVM(){
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
-    config.initialHeapSize = 15534;
-    config.minHeapSize = 15534;
+    config.initialHeapSize = 32000;
+    config.minHeapSize = 32000;
     config.heapGrowthPercent = 50;
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
@@ -441,8 +512,31 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
             Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_EXECUTE -> compileOnly = true"));
             compileOnly = true;
             return;
+        }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
+            char cmd[128],file_name[128];
+            int total_read;
+            total_read = sscanf(message, "%s %s\n" , cmd, save_module_as);
+            if (total_read==2){
+              //save the file
+              //strcpy(file_name,"/wren/");
+              strcat(save_module_as,".wren");
+              //strcat(file_name,save_module_as);
+              //strcpy(save_module_as,file_name);
+              Serial.print(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE as: "));
+              Serial.println(save_module_as);
+              save_module = true;
+            }
+            return;
         }else{ //if the message payload is not a command then assume its the data
-            if(compileOnly){
+            if(save_module){
+              FsFile file;
+              sd->chdir("/wren");
+              file = sd->open(save_module_as, O_WRONLY|O_CREAT|O_SYNC);
+              file.write(message,strlen(message));
+              file.close();
+              save_module = false;
+              Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
+            }else if(compileOnly){
               Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
               return;
             }else{ //execute the script
@@ -455,17 +549,17 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
                 wrenEnsureSlots(vm, 1);
                 wrenSetSlotHandle(vm, 0, h_slot0);//App
                 Serial.println(F("M AppWren::MessageHandler: request complete"));
+                return;
             }
         }
     } else{
       //All other messages from senders other than the SCI will be forwarded to the VM
-      //SerialUSB1 is dedicated to serial comms with the VM for stdio
+      //SerialUSB1 is dedicated to serial comms with the VM for stdio/stderr
       wrenEnsureSlots(vm, 3);
       wrenSetSlotHandle(vm, 0, h_slot0);//App
       wrenSetSlotString(vm, 1, sender->name);//sender
       wrenSetSlotString(vm, 2, message);//message
       isWrenResultOK(wrenCall(vm,h_messageHandler));
-
     }
 }
 
@@ -491,7 +585,7 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
                             return;
                         }else Serial.println(F("M AppWren::update() Surface created"));
                     } else{
-                        draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_HATCHXOR);
+                        draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
                     }
                 }else{
                     draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
@@ -542,12 +636,12 @@ void AppWren::getWrenHandles(){
   
   h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
   h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
-  h_onTouch = wrenMakeCallHandle(vm, "onTouch()");
-  h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag()");
-  h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease()");
-  h_onAnalog1 = wrenMakeCallHandle(vm, "onAnalog1()");
-  h_onAnalog2 = wrenMakeCallHandle(vm, "onAnalog2()");
-  h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3()");
-  h_onAnalog4 = wrenMakeCallHandle(vm, "onAnalog4()");
+  h_onTouch = wrenMakeCallHandle(vm, "onTouch(x,y)");
+  h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag(x,y)");
+  h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease(x,y)");
+  h_onAnalog1 = wrenMakeCallHandle(vm, "onAnalog1(_)");
+  h_onAnalog2 = wrenMakeCallHandle(vm, "onAnalog2(_)");
+  h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3(_)");
+  h_onAnalog4 = wrenMakeCallHandle(vm, "onAnalog4(_)");
   h_messageHandler = wrenMakeCallHandle(vm, "messageHandler(_,_)");
 }

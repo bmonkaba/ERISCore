@@ -16,21 +16,21 @@
 #define SHOW_ACTIVE_TIME_MILLISEC 150
 
 //AppSCI
-#define SERIAL_POLLING_RATE_MAX 15
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 2900
-#define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 2000
-#define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 20
+#define SERIAL_POLLING_RATE_MAX 5
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 1000
+#define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 500
+#define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 60
 
 #define SERIAL_RX_BUFFER_SIZE 1024
-#define SERIAL_RX_CAPTURE_BUFFER_SIZE 8000
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 32768
 #define SERIAL_PARAM_BUFFER_SIZE 128
-#define SERIAL_OUTPUT_BUFFER_SIZE 16384/3
-#define SERIAL_WORKING_BUFFER_SIZE 16384/3
+#define SERIAL_OUTPUT_BUFFER_SIZE 16384
+#define SERIAL_WORKING_BUFFER_SIZE 16384
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
 
 #define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
 #define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 1777
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 1551
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 250
 
 //Audio Director
 #define MAX_AUDIO_STREAM_OBJECTS 52
@@ -105,8 +105,9 @@ const char g_wrenScript[] PROGMEM = R"(
 //audio director interface for making/breaking audiostream connections
 class AudioDirector{
     //foreign methods are implemented in C/C++
-    foreign static connect(connection_string)
-    foreign static disconnect(connection_string)
+    foreign static connect(source_audio_stream,source_port,
+        dest_audio_stream,dest_port)
+    foreign static disconnect(audio_stream,port)
     foreign static disconnectAll()
 }
 //SvcDataDictionary interface for accessing & sharing variables between components
@@ -115,6 +116,14 @@ class Data {
     foreign static update(key,double_value)
     foreign static readf(key)
     foreign static updatef(key,float_value)
+}
+//Drawing interface for writing to the framebuffer
+class Draw {
+    foreign static loadImage(path,filename,x,y)
+    foreign static setPixel(x,y,r,g,b)
+    foreign static setTextColor(r,g,b)
+    foreign static setCursor(x,y)
+    foreign static print(string)
 }
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
@@ -139,11 +148,14 @@ class App {
         _CY = 0.27015
         _jx = 0
         _jy = 0
-        _dx = 2
-        _dy = -2
-        
+        _dx = 1
+        _dy = -1
+        //AudioDirector.disconnect("biquad_4", 0)
     }
+    //it's possible to include foreign methods within a wren class
+    //which can interact outside the virtual machine
     
+    //these methods bring the AppBase class functionality into the VM
     foreign static sendMessage(to, message)
     foreign static setPosition(x, y)
     foreign static setDimension(width, height)
@@ -153,11 +165,12 @@ class App {
     foreign static releasePopUp()
     foreign static getFocus()
     foreign static returnFocus()
-    foreign static setPixel(x,y,r,g,b)
+    
+    //extra functions - extending beyond the AppBase class
     foreign static setClockSpeed(hz)
     
     //
-    //  example specific method
+    //  example specific method - render one pixel of the julia fractal
     //
     createJulia() {
         var zx = 1.5 * (_jx - __w / 2) / (0.5 * _Zoom * __w) + _MoveX
@@ -185,19 +198,18 @@ class App {
                 }
             }
         } else _jx = _jx + 1
-        //setPixel(jx, jy, (jy/3 +(zy/i))%128,(zx/i)%128,jx/2)
         var r = (2* i*_jx/__w)%(220)
         var g = (2 * i*_jy/__h)%(220)
         var b = (i*2)%220
         if (r < 0) r = 0
         if (g < 0) g = 20
         if (b < 0) b = 0
-        App.setPixel(_jx, _jy,r,g,b)
+        Draw.setPixel(_jx, _jy,r,g,b)
     }
     
     //
-    //  required methods - the VM host (C++ side) provides the AppBase class wrappers which will 
-    //  forward the method calls here for execution
+    //  required methods - the VM host (C++ side) provides the AppBase class 
+    //  wrappers which will forward the method calls here for execution
     //
     updateRT() {
         _count = _count + 1
@@ -212,9 +224,11 @@ class App {
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
         App.setClockSpeed(740000000)
-        for (y in 0...(__w/16)) {
+        for (y in 0...(__w)) {
             createJulia()
         }
+        Draw.setCursor(5 + __x,__y -9)
+        Draw.print("WREN VM")
         //and bring the clock speed back down 
         App.setClockSpeed(600000000)
         //let the widget window bounce of the edges of the screen
@@ -232,25 +246,25 @@ class App {
         var a = "test"
     }
     onTouch() {
-        var a = "test"
+        System.print(["Touch_Press",x,y])
     }
     onTouchDrag() {
-        var a = "test"
+        System.print(["Touch_Drag",x,y])
     }
     onTouchRelease() {
-        var a = "test"
+        System.print(["Touch_Release",x,y])
     }
-    onAnalog1() {
-       
+    onAnalog1(fval) {
+        System.print(["ANALOG_1",fval])
     }
-    onAnalog2() {
-       
+    onAnalog2(fval) {
+        System.print(["ANALOG_2",fval])
     }
-    onAnalog3() {
-        
+    onAnalog3(fval) {
+        System.print(["ANALOG_3",fval])
     }
-    onAnalog4() {
-        
+    onAnalog4(fval) {
+        System.print(["ANALOG_4",fval])
     }
     MessageHandler(sender,message) {
         System.println([sender,message])
@@ -265,8 +279,8 @@ App.setDimension(64, 64)
 App.setWidgetDimension(64, 64)
 //or a class instance may be created
 //The host (C/C++ side) expects a top level variable named ErisApp of 
-//type class App
-//it's this instance for which the event methods will be called
+//type class App it's this object instance for which the event methods 
+//will be called
 var ErisApp = App.new()
 )";
 

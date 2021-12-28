@@ -18,7 +18,7 @@ AudioDirector::AudioDirector(){
   activeConnections = 0;
   categoryCount=0;
   shortNameQueryResultCount=0;
-  printStatsSelect = 0;
+  printStatsSelect = false;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
   for (uint16_t i=0; i < MAX_UNIQUE_NAMES_PER_CATEGORY; i++){
@@ -123,8 +123,8 @@ void AudioDirector::printStats(){
 
   if (sci==NULL) return;
 
-  if (printStatsSelect==0){
-    printStatsSelect++;
+  if (printStatsSelect == true){
+    printStatsSelect=false;
     sci->startLZ4Message();
     sci->print(F("STATS {\"AudioDirector\":{"));  
     sci->print(F("\"AudioStreams\":{"));
@@ -146,17 +146,16 @@ void AudioDirector::printStats(){
       sci->print("}"); //close obj
       if ( i < (objCount -1)) sci->print(",");
     }
-    sci->println("}}");
+    sci->println("}}}");
     sci->endLZ4Message();
   }else{ 
-    printStatsSelect = 0;
+    printStatsSelect = true;
     sci->startLZ4Message();
     sci->print(F("STATS {\"AudioDirector\":{"));  
     sci->print(F("\"AudioConnectionPool\":{"));
     sci->print(F("\"activeConnections\":"));
     sci->print(activeConnections);
     for(uint16_t i=0; i < MAX_CONNECTIONS;i++){ //for each...
-      while(sci->throttle()){delay(1);}
       sci->print(F(",\""));
       sci->print(i); //connection index used as a container
       sci->print(F("\":{"));
@@ -181,7 +180,7 @@ void AudioDirector::printStats(){
       }
       sci->print(F("}")); //close the connection container
     }
-    sci->print(F("}}}")); //close the connection container
+    sci->println(F("}}}")); //close the connection container
     sci->endLZ4Message();
   }
   //sci->startLZ4Message();
@@ -314,7 +313,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   return false; //no empty connection slots  
 }
 
-bool AudioDirector::connect(char* from,uint8_t from_port,char* to,uint8_t to_port){
+bool AudioDirector::connect(const char* from,uint8_t from_port,const char* to,uint8_t to_port){
   return connect(getAudioStreamObjByName((char* )from),from_port,getAudioStreamObjByName((char* )to),to_port);
 }
 
@@ -365,7 +364,7 @@ bool AudioDirector::connect(const char* connectionString){
   return false;
 }
 
-bool AudioDirector::disconnect(char* to,uint8_t to_port){
+bool AudioDirector::disconnect(const char* to,uint8_t to_port){
   return disconnect(getAudioStreamObjByName((char* )to),to_port);
 }
 

@@ -3,9 +3,8 @@ import unicodedata
 import base64
 import lz4.block
 
-## Change this to match your local settings
-#SERIAL_PORT = 'COM7'
 SERIAL_BAUDRATE = 1500000
+SERIAL_PORT = ''
 
 class SerialProcess():
     def __init__(self, serial_port, input_queue, output_queue):

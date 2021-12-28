@@ -35,13 +35,13 @@ class AudioDirector{
     AudioDirector(const AudioDirector &) = delete;	//delete the copy constructor
     bool addAudioStreamObj(AudioStream* obj);
     bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
-    bool connect(char* from,uint8_t from_port,char* to,uint8_t to_port);
+    bool connect(const char* from,uint8_t from_port,const char* to,uint8_t to_port);
     bool connect(const char* connectionString);
     bool getAudioStreamString(uint16_t streamIndex, char* streamStringBuffer);
     bool getConnectionString(uint16_t connectionIndex, char* connectionStringBuffer);
     bool disconnectAll();
     bool disconnect(AudioStream* destination,int destinationInput);
-    bool disconnect(char* to,uint8_t to_port);
+    bool disconnect(const char* to,uint8_t to_port);
     bool disconnect(const char* connectionString);
     int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
@@ -57,7 +57,7 @@ class AudioDirector{
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    uint16_t printStatsSelect; 
+    bool printStatsSelect; 
     uint16_t activeConnections; 
     uint16_t objCount;
     uint16_t categoryCount;

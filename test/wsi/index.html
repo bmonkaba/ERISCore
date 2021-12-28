@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Gruppo&family=Roboto+Mono:wght@400&family=VT323&display=swap" rel="stylesheet">
     <style>
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="https://cdn.rawgit.com/fnando/sparkline/master/dist/sparkline.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.js"></script>
@@ -183,7 +184,9 @@ AA 220
             <div id="editor_toolbar" class="editor_toolbar">
                 <button id="get_script_button" class="GetScriptButton" title="Get the default script template"></button>&nbsp
                 <button id="compile_script_button"class="CompileButton" title="Compile Only"></button>&nbsp
-                <button id="run_script_button"class="RunButton" title="Restart the VM and execute the script"></button>
+                <button id="run_script_button"class="RunButton" title="Restart the VM and execute the script"></button>&nbsp
+                <label for="module_name">Module Name:</label><input type="text" id="module_name" name="module_name">
+                <button id="save_script_button"class="SaveButton" title="Save the script as a module (writes to SD Card)"></button>&nbsp
             </div>   
             <div id="editor_toolbar_right" class="editor_toolbar_right"><div class="titlebar">Wren Scripting and Virtual Machine Interface</div></div>           
             <div id="code_editor" class="editor"></div>
@@ -200,8 +203,8 @@ AA 220
         <div id="flow_container" class="graphs">
             <div class="flowimg">
                 <div class="titlebar">Data Flow Graph</div>
-                <button class="button" id="df_orderby_type">Order By Type</button>
-                <button class="button" id="df_orderby_flow">Order By Flow</button>
+                <button class="button" id="df_orderby_type">Order By Type</button>&nbsp
+                <button class="button" id="df_orderby_flow">Order By Flow</button>&nbsp
                 <button class="button" id="df_orderby_flow">Toggle Edit / Monitor Mode</button>
                 <canvas id="connections" width="1200" height="1024"></canvas>
             </div>

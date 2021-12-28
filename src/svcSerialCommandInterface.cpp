@@ -587,6 +587,15 @@ void SvcSerialCommandInterface::updateRT(){
                     captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+            }else if (strncmp(cmd, "WREN_SCRIPT_SAVE",sizeof(cmd)) == 0){
+                if(captureBuffer != NULL){
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script save request"));
+                    am->sendMessage(this,"AppWren",receivedChars);//"WREN_SCRIPT_SAVE [modulename]");
+                    am->sendMessage(this,"AppWren",captureBuffer);
+                    free(captureBuffer);
+                    captureBuffer = NULL;
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;
