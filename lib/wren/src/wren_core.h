@@ -2,7 +2,7 @@
 #define wren_core_h
 
 #include "wren_vm.h"
-
+#include <Arduino.h>
 // This module defines the built-in classes and their primitives methods that
 // are implemented directly in C code. Some languages try to implement as much
 // of the core module itself in the primary language instead of in the host
@@ -18,6 +18,6 @@
 // behavior. For example, `System.print` should call `toString` on its argument,
 // including user-defined `toString` methods on user-defined classes.
 
-void wrenInitializeCore(WrenVM* vm);
+void FLASHMEM wrenInitializeCore(WrenVM* vm);
 
 #endif

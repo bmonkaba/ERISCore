@@ -55,12 +55,13 @@ class AppWren:public AppBaseClass {
         usingImage = true;
         time_active = 0;
         surface_cache = NULL;
-        draw_buffer = NULL;
+        module_load_buffer = NULL;
         vmConstructor();
         widget_width = 64;
         widget_height = 64;
         widget_origin_x = 320 - 64 - 5;
         widget_origin_y = 240 - 64 - 5;
+        //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
     };
 
     ~AppWren(){
@@ -80,22 +81,48 @@ class AppWren:public AppBaseClass {
     //in the AppBase class these are protected methods.. we need to expose them here publicly to set up the Wren callbacks.
     //void _updatePosition(){AppBaseClass::_updatePosition();}
     void setParent(AppBaseClass *parent){AppBaseClass::setParent(parent);}
-    void setPosition(int16_t newOriginX, int16_t newOriginY){AppBaseClass::setPosition(newOriginX, newOriginY);}
-    void setDimension(int16_t new_width, int16_t new_height){AppBaseClass::setDimension(new_width, height);}
-    void setWidgetPosition(int16_t newOriginX, int16_t newOriginY){AppBaseClass::setWidgetPosition(newOriginX, newOriginY);}
-    void setWidgetDimension(int16_t new_width, int16_t new_height){AppBaseClass::setWidgetDimension(new_width, new_height);}
+    void setPosition(int16_t newOriginX, int16_t newOriginY);
+    void setDimension(int16_t new_width, int16_t new_height);
+    void setWidgetPosition(int16_t newOriginX, int16_t newOriginY);
+    void setWidgetDimension(int16_t new_width, int16_t new_height);
     void getFocus(){AppBaseClass::getFocus();}
     void returnFocus(){AppBaseClass::returnFocus();}
     void requestPopUp(bool exclusive=false){AppBaseClass::requestPopUp(exclusive);}
     void releasePopUp(){AppBaseClass::releasePopUp();}
     void setRTPriority(uint16_t level);
 
+    //interface for requesting a module be loaded
+    const char* loadModuleSource(const char * name);
+    void freeModuleSource();
     //provide an interface for wren callbacks to request the draw object
     ILI9341_t3_ERIS* getDraw(){return draw;}
     AudioDirector* getAudioDirector(){return ad;} 
     //and now we go a step further by integrating draw and data object methods directly into the AppWren class
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
-        if (surface_cache && draw) draw->drawPixel(surface_cache,x,y,CL(r,g,b));
+        dynamicSurfaceManager();
+        if (!surface_cache) return;
+        if (x >= surface_cache->getWidth()) return;
+        if (y >= surface_cache->getHeight()) return;
+        if (x < 0 || y < 0) return;
+        if (draw) draw->drawPixel(surface_cache,x,y,CL(r,g,b));
+    }
+    void drawLine(int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b){
+        dynamicSurfaceManager();
+        if (!surface_cache) return;
+        if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
+        if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
+        if (start_x < 0 ) start_x = 0;
+        if (start_y < 0 ) start_y = 0;
+
+        if (end_x >= surface_cache->getWidth()) end_x = surface_cache->getWidth()-1;
+        if (end_y >= surface_cache->getHeight()) end_y = surface_cache->getHeight()-1;
+        if (end_x < 0 ) end_x = 0;
+        if (end_y < 0 ) end_y = 0;
+        if ((start_x == end_x) && (start_y == end_y)){
+            if (draw) draw->drawPixel(surface_cache,start_x,start_y,CL(r,g,b));
+            return;
+        }
+        if (draw) draw->drawSurfaceLine(surface_cache, start_x, start_y, end_x, end_y, CL(r,g,b));
     }
 
   protected:
@@ -112,21 +139,22 @@ class AppWren:public AppBaseClass {
     void startVM();
     void releaseWrenHandles();
     void getWrenHandles();
-
     bool isWrenResultOK(WrenInterpretResult res){
         switch (res){
-        case WREN_RESULT_COMPILE_ERROR:
-            { Serial.printf("M WREN: Compile Error!\n"); } return false;
-        case WREN_RESULT_RUNTIME_ERROR:
-            //{ Serial.printf("M WREN: Runtime Error!\n"); } 
-            return false;
-        case WREN_RESULT_SUCCESS:
-            return true;
-        default:
-            return false; //should never execute
-        }
-        
+            case WREN_RESULT_COMPILE_ERROR:
+                Serial.printf("M WREN: Compile Error!\n");
+                return false;
+            case WREN_RESULT_RUNTIME_ERROR:
+                //Serial.printf("M WREN: Runtime Error!\n");
+                return false;
+            case WREN_RESULT_SUCCESS:
+                return true;
+            default:
+                return false; //should never execute
+        } 
     }
+
+    bool dynamicSurfaceManager();
 
     void update() override;//called only when the app is active
 
@@ -259,8 +287,9 @@ class AppWren:public AppBaseClass {
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
     char save_module_as[MAX_TEXT_LENGTH];
+    char* module_load_buffer;
     Surface* surface_cache;
-    uint16_t* draw_buffer;
+    uint16_t* surface_mempool;
     bool isPressed;
     bool usingImage;
     bool imgloaded;

@@ -1232,7 +1232,7 @@ static ObjClass* defineClass(WrenVM* vm, ObjModule* module, const char* name)
   return classObj;
 }
 
-void wrenInitializeCore(WrenVM* vm)
+void FLASHMEM wrenInitializeCore(WrenVM* vm)
 {
   ObjModule* coreModule = wrenNewModule(vm, NULL);
   wrenPushRoot(vm, (Obj*)coreModule);

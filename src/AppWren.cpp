@@ -15,7 +15,8 @@
 #include <boarddefs.h>
 
 
-
+uint16_t FASTRUN wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+char DMAMEM wrenFastVMRam[1]__attribute__ ((aligned (16)));
 
 /**
  * @brief Wren system interface 
@@ -76,7 +77,9 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
  * @return const char* 
  */
 const char * getSourceForModule(const char * name){
-  return g_math_wren;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  return app->loadModuleSource(name);
 }
 
 /**
@@ -94,6 +97,9 @@ static void loadModuleComplete(WrenVM* vm,
     //for example, if we used malloc to allocate
     //our source string, we use free to release it.
     //free((void*)result.source);
+    AppManager* am = AppManager::getInstance();
+    AppWren* app = (AppWren*)am->getAppByName("AppWren");
+    return app->freeModuleSource();
   }
 }
 
@@ -113,6 +119,19 @@ WrenLoadModuleResult loadModule(WrenVM* vm, const char* name){
     result.source = getSourceForModule(name);
   return result;
 }
+
+
+static void* wrenFastMemoryAllocator(void* ptr, size_t newSize, void* _)
+{
+  if (newSize == 0) return NULL;
+  if(64000 < newSize) return NULL;
+  //realloc(ptr, newSize);
+  //ram is fixed in this integration. 
+  //therfore all memory allocation requests will return the fast ram vm buffer
+  //unless the request size is too large. 
+  return (void*)&wrenFastVMRam[0];
+}
+
 
 
 //EXPORTED STATIC FUNCTIONS
@@ -220,18 +239,6 @@ void returnFocusCallback(WrenVM* vm){
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->setWidgetDimension(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
 }
-/**
- * @brief Set the Pixel Callback object. AppWren exported method which can be called from within a Wren VM instance
- * 
- * @param vm 
- */
-void setPixelCallback(WrenVM* vm){
-  //(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)
-  AppManager* am = AppManager::getInstance();
-  AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
-}
-
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);
 
@@ -383,6 +390,25 @@ void loadImageCallback(WrenVM* vm){
   app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_NONE);
 }
 
+/**
+ * @brief Set the Pixel Callback object. AppWren exported method which can be called from within a Wren VM instance
+ * 
+ * @param vm 
+ */
+void setPixelCallback(WrenVM* vm){
+  //(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
+}
+
+void drawLineCallback(WrenVM* vm){
+  //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->drawLine(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6), wrenGetSlotDouble(vm, 7));
+}
+
 
 //EXPORTED FUNCTION BINDINGS
 /**
@@ -462,6 +488,8 @@ WrenForeignMethodFn bindForeignMethod(
         return setFontSizeCallback;
       }else if (strcmp(signature, "loadImage(_,_,_,_)") == 0){
         return loadImageCallback;
+      }else if (strcmp(signature, "line(_,_,_,_,_,_,_)") == 0){
+        return drawLineCallback;
       }
     }
     // Other classes in main...
@@ -494,11 +522,12 @@ void AppWren::startVM(){
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
-    config.initialHeapSize = 32000;
-    config.minHeapSize = 32000;
-    config.heapGrowthPercent = 50;
+    config.initialHeapSize = WREN_VM_HEAP_SIZE;
+    config.minHeapSize = WREN_VM_HEAP_SIZE;
+    config.heapGrowthPercent = 0;
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
+    //config.reallocateFn = &wrenFastMemoryAllocator; 
     vm = wrenNewVM(&config);
 }
 
@@ -513,7 +542,7 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
             compileOnly = true;
             return;
         }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
-            char cmd[128],file_name[128];
+            char cmd[128], file_name[128];
             int total_read;
             total_read = sscanf(message, "%s %s\n" , cmd, save_module_as);
             if (total_read==2){
@@ -563,6 +592,42 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
     }
 }
 
+/**
+ * @brief responsible for managing the surface buffer memory allocation
+ * 
+ * @return true 
+ * @return false 
+ */
+  bool AppWren::dynamicSurfaceManager(){
+    if(!surface_cache){
+      surface_mempool = wrenFastRam;
+      if (has_pop || has_focus){
+        surface_cache = new Surface(surface_mempool,width,height);
+        memset(surface_mempool,0,sizeof(uint16_t)*width*height);
+      }else{
+        surface_cache = new Surface(surface_mempool, widget_width, widget_height);
+        memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
+      }  
+    }else{
+      //check for state changes and adjust the buffer accordingly
+      if (has_pop || has_focus){
+        if( (width != surface_cache->getWidth()) || (height != surface_cache->getHeight()) ){
+          delete(surface_cache);
+          surface_cache = new Surface(surface_mempool, width, height);
+          memset(surface_mempool,0,sizeof(uint16_t)*width*height);
+        }
+      }else{
+        if( (widget_width != surface_cache->getWidth()) || (widget_height != surface_cache->getHeight()) ){
+          delete(surface_cache);
+          surface_cache = new Surface(surface_mempool, widget_width, widget_height);
+          memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
+        }
+      }  
+    }
+    if (surface_cache==NULL)return false;
+    wrenCollectGarbage(vm);
+    return true;
+  }
 
  void AppWren::update(){
         if (h_update==0){ //if no script loaded
@@ -579,8 +644,8 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
                 }
                 if(usingImage){
                     if(!surface_cache){                        
-                        surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
-                        if(!surface_cache){ 
+                        //surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
+                        if(!dynamicSurfaceManager()){ 
                             Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
                             return;
                         }else Serial.println(F("M AppWren::update() Surface created"));
@@ -644,4 +709,46 @@ void AppWren::getWrenHandles(){
   h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3(_)");
   h_onAnalog4 = wrenMakeCallHandle(vm, "onAnalog4(_)");
   h_messageHandler = wrenMakeCallHandle(vm, "messageHandler(_,_)");
+}
+
+const char * AppWren::loadModuleSource(const char * name){
+  char file_name[128];
+  FsFile file;
+  int16_t file_size; //max file size 32K
+  strcpy(file_name,name);
+  strcat(file_name,".wren");
+  sd->chdir("/wren");
+  file = sd->open(file_name, O_RDONLY);
+  file_size = file.available();
+  module_load_buffer = (char*)malloc(file_size+32);
+  if (module_load_buffer == NULL){
+    Serial.println(F("M AppWren::loadModuleSource ERROR: Not Enough Memory"));
+    return NULL;
+  }
+  file.read(module_load_buffer,file_size);
+  file.close();
+  return module_load_buffer;
+}
+
+void AppWren::freeModuleSource(){
+  if (module_load_buffer != NULL) free(module_load_buffer);
+  module_load_buffer = NULL;
+  return;
+}
+void AppWren::setPosition(int16_t newOriginX, int16_t newOriginY){
+  origin_x = newOriginX;
+  origin_y = newOriginY;
+}
+void AppWren::setDimension(int16_t new_width, int16_t new_height){
+  width = new_width;
+  height = new_height;
+}
+
+void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
+  widget_origin_x = newOriginX;
+  widget_origin_y = newOriginY;
+}
+void AppWren::setWidgetDimension(int16_t new_width, int16_t new_height){
+  widget_width = new_width;
+  widget_height = new_height;
 }

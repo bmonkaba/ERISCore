@@ -19,6 +19,7 @@ SvcSerialCommandInterface sci;
 AppReprogram appReprogram;
 AppWren* appWren;
 
+
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
   //always run this first to ensure programming mode can be entered through the hmi

@@ -60,7 +60,6 @@ AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioMixer8);
 
   addAudioStreamObj(new erisAudioEffectDelay);
-
   
   Serial.print(F("M AudioDirector::AudioDirector() objects: "));
   Serial.println(objCount);
@@ -86,7 +85,6 @@ AudioDirector::AudioDirector(){
   long e = (uint32_t)heapEnd;
   Serial.print(e-s);
   Serial.println(F(" Bytes"));
-  //Serial.flush();
 };
 
 bool AudioDirector::addAudioStreamObj(AudioStream* obj){
@@ -117,7 +115,7 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   return false;
 };
 
-void AudioDirector::printStats(){
+void FLASHMEM AudioDirector::printStats(){
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
 

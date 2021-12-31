@@ -40,6 +40,7 @@ class SerialProcess():
                 self.writeSerial(d)         
             
             d = self.readSerial()
+            #print(d)
             
             try:
                 d = d.decode()

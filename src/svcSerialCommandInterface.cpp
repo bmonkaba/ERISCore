@@ -13,6 +13,8 @@
 #include "AppManager.h"
 #include "lz4.h"
 #include <base64.hpp>
+#include <pgmspace.h>
+
 // AppSerialCommandInterface
 //
 /*
@@ -142,6 +144,20 @@ void SvcSerialCommandInterface::endLZ4Message(){
 }
 
 /**
+ * @brief immediately transmit then clear the txBuffer
+ * 
+ */
+void SvcSerialCommandInterface::send(){
+    while(throttle()){
+        delay(150);
+    }
+    if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
+    memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+    indexTxBuffer = 0;
+    txBufferOverflowFlag = false;
+}
+
+/**
  * @brief returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD
  * if the buffer falls below SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD delay for a small period of time
  * if another check finds the buffer isn't moving then flush the buffer.
@@ -161,6 +177,7 @@ bool SvcSerialCommandInterface::throttle(){
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
+            Serial.println(F("!FLUSH"));
             Serial.println(F("M WRN flush"));
         } else{
             //Serial.println(F("M WRN throttling"));//use this for debug only!
@@ -172,44 +189,36 @@ bool SvcSerialCommandInterface::throttle(){
 
 void SvcSerialCommandInterface::txOverflowHandler(){
     char* s;
-    bool first;
-    bool full;
-    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-    //delay(200);
-    s = strrchr(txBuffer,'\n');//find last new line
-    indexTxBuffer = (s-txBuffer);//len
-    if (indexTxBuffer < SERIAL_OUTPUT_BUFFER_SIZE-1){ 
-        full = false;
-        memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-        memcpy(workingBuffer,txBuffer,indexTxBuffer);
-        s += 1;
-        //indexTxBuffer+=1;
-        //copy any remaining chars to the begining of the txBuffer
-        strcpy(txBuffer,s);
-        memset(txBuffer + strlen(s)+1,0,SERIAL_OUTPUT_BUFFER_SIZE - strlen(s));
-        indexTxBuffer = strlen(txBuffer);
-    } else{
-        full = true;
-        memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-        memcpy(workingBuffer,txBuffer,SERIAL_OUTPUT_BUFFER_SIZE);
-        empty();
-    }
-    token = strtok(workingBuffer, &newline);
-    first = true;
-    while( token != NULL ) {                        
-        if (first && !txBufferOverflowFlag){
+    s = strrchr(txBuffer,'\r');//find last new line
+    s[0] = 0;
+    token = strtok(txBuffer, &newline);
+    while( token != NULL ) {     
+        while(throttle()){
+            delay(160);
+        }                
+        if (txBufferOverflowFlag==false){
+            //txBufferOverflowFlag=true;
             Serial.print(F("\""));
         }else{
-            if (full) Serial.print(F(",\""));
-            else Serial.print(F(",\""));
+            Serial.print(F(",\""));
         }
+        //replaceAll(token,'\r',0);
         Serial.print(token);
         Serial.print(F("\""));
         token = strtok(NULL, &newline);
-        first = false;
     }
-    //Serial.print(",\"dummy_value\"");
-    free(workingBuffer);
+    //close the tag
+    Serial.println("]");
+    //start the next part of the multipart message
+    Serial.print(&multiPartHeader[0]);
+    s = strrchr(txBuffer,'\r');//find last new line
+    //s = strrchr(s,'\r');//find last new line
+    s+=2;
+    SerialUSB1.printf("VM %s %s\n",&multiPartHeader[0],s);
+    //SerialUSB1.flush();
+    indexTxBuffer = strlen(s);
+    strcpy(txBuffer,s);
+    //SerialUSB1.printf("VM remainder %s",txBuffer);
 }
 
 void SvcSerialCommandInterface::streamHandler(){
@@ -335,7 +344,7 @@ void SvcSerialCommandInterface::streamHandler(){
 };
 
 
-void SvcSerialCommandInterface::updateRT(){ 
+void FASTRUN SvcSerialCommandInterface::updateRT(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
@@ -446,48 +455,40 @@ void SvcSerialCommandInterface::updateRT(){
                     delay(200);
                 } else{
                     //send the requested path
-                    delay(100);
-                    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
                     replacechar(param,':',' '); //replace space token used to tx the path
                     empty();
                     print(F("M "));
                     println(param);
                     println(F("DIR"));
-                    strcpy(workingBuffer,txBuffer);
-                    Serial.print(workingBuffer);
-                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-                    empty();
+                    send();
                     sd->chdir();
-                    Serial.print(F("LS "));
                     replacechar(param,' ',':'); //replace any spaces in the transmitted path to ':'
-                    Serial.print(param);
+                    sprintf(multiPartHeader, "LS %s [", param);
+                    Serial.print(multiPartHeader);
                     replacechar(param,':',' '); // put the spaces back in time for the ls command
-                    Serial.print(F(" ["));
-                    delay(10);
-                    txBufferOverflowFlag = false;
                     sd->ls(this,param,false);
-                    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-                    strcpy(workingBuffer,txBuffer);
+                    //memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+                    //strcpy(workingBuffer,txBuffer);
                     first = true;
-                    token = strtok(workingBuffer, &newline);
-                    while( token != NULL ) {                        
+                    token = strtok(txBuffer, &newline);
+                    while( token != NULL && indexTxBuffer > 1) {                        
                         if (first && !txBufferOverflowFlag) Serial.print(F("\""));
                         else Serial.print(F(",\""));
+                        replacechar(token,'\r',0);
                         Serial.print(token);
                         Serial.print(F("\""));
                         token = strtok(NULL, &newline);
                         first = false;
-                        delay(5);
                         while(throttle()){
-                            delay(200);
+                            delay(160);
                         }
                     }
+                    //if(txBufferOverflowFlag)Serial.println(F("]"));
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
-                    empty();
-                    free(workingBuffer);
-                    delay(250);
+                    //empty();
+                    //free(workingBuffer);
+                    //delay(250);
                 }
             }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
                 total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);

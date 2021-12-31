@@ -84,8 +84,8 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
       empty();
       Serial.print("LZ4");
     }
-
     void endLZ4Message();
+    void send();
     bool throttle();
   protected:
     SdFs *pSD;
@@ -93,6 +93,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     uint16_t indexRxBuffer;
     uint32_t indexCaptureBuffer;
     uint16_t indexTxBuffer;
+    char multiPartHeader[SERIAL_TX_HEADER_BUFFER_SIZE];
     char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];
@@ -115,23 +116,20 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     void txOverflowHandler();
     size_t write(uint8_t c){
       txBuffer[indexTxBuffer++] = c;
-      if (indexTxBuffer == SERIAL_OUTPUT_BUFFER_SIZE){
+      if (indexTxBuffer == SERIAL_OUTPUT_BUFFER_SIZE-10){
+        txBuffer[indexTxBuffer++] = 0; //make sure the buffer is null terminated
         txOverflowHandler();
-        //set the flag after the handler 
-        //this allows the handler to detect multiple overflows
-        //which is expected when streaming data larger than
-        //the transmit buffer size
-        txBufferOverflowFlag = true;
       }
       return 1;
     };
     void flush(){
-      while(Serial.availableForWrite() < 6000){
-        delay(1);
+      while(throttle()){
+        delay(50);
       }
       if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
       memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
       indexTxBuffer = 0;
+      txBufferOverflowFlag = false;
     };
 };
 

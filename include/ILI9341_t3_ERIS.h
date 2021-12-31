@@ -76,10 +76,12 @@ class Surface {
         if (alloc_size < SURFACE_MIN_ALLOC_SIZE) alloc_size = SURFACE_MIN_ALLOC_SIZE;
         pSB = SubSurfaceFrom->requestSubSurfaceBufferP(alloc_size);
         //attempt to allocate a sub surface buffer then clear it
-        Serial.print(F("M SubSurface buffer allocated with a size of: "));
-        Serial.println(alloc_size);
-        Serial.print(F("M Surface GUID: "));
+        /*
+        Serial.print(F("M SubSurface alloted: "));
+        Serial.print(alloc_size);
+        Serial.print(F(" pixels GUID: "));
         Serial.println(guid);
+        */
     }
     
     Surface(uint16_t *buffer,uint32_t length){
@@ -90,10 +92,12 @@ class Surface {
         h = 0;
         alloc_size = length;
         head = 0; //used for sub surface allocation
-        Serial.print(F("M Surface buffer attached with a size of: "));
-        Serial.println(alloc_size);
-        Serial.print(F("M Surface GUID: "));
+        /*
+        Serial.print(F("M Surface assigned: "));
+        Serial.print(alloc_size);
+        Serial.print(F(" pixels GUID: "));
         Serial.println(guid);
+        */
     }
 
     Surface(uint16_t *buffer,int16_t width, int16_t height){
@@ -104,10 +108,12 @@ class Surface {
         h = height;
         alloc_size = w*h;
         head = 0; //used for sub surface allocation
-        Serial.print(F("M Surface buffer attached with a size of: "));
-        Serial.println(alloc_size);
-        Serial.print(F("M Surface GUID: "));
+        /*
+        Serial.print(F("M Surface assigned: "));
+        Serial.print(alloc_size);
+        Serial.print(F(" pixels GUID: "));
         Serial.println(guid);
+        */
     }
 
     Surface(int16_t width, int16_t height){
@@ -115,6 +121,10 @@ class Surface {
         uint16_t *buffer;
         buffer = (uint16_t*)malloc(width*height*sizeof(uint16_t));
         Surface(buffer,width,height);
+        Serial.print(F("M Surface buffer allocated: "));
+        Serial.print(alloc_size);
+        Serial.print(F(" pixels Surface GUID: "));
+        Serial.println(guid);
     }
 
     uint16_t* requestSubSurfaceBufferP(uint32_t size){
@@ -233,6 +243,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void bltMem(Surface *dest, Surface *source,int16_t x,int16_t y,bltAlphaType alpha_type);
         void fillSurface(Surface *dest,uint16_t color);
         void drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color);
+        void drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color);
         void drawFastVLine(Surface *dest,int16_t x, int16_t y, int16_t h, uint16_t color);
         void drawFastHLine(Surface *dest,int16_t x, int16_t y, int16_t w, uint16_t color);
         void fillRect(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);

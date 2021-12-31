@@ -30,7 +30,7 @@ static int16_t besttwoavg( int16_t x , int16_t y , int16_t z ) {
   return (reta);
 }
 
-void Touch::update()
+void FLASHMEM Touch::update()
 {
 	//Serial.println("Touch:update");
 	int16_t data[6];
