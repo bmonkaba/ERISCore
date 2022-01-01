@@ -344,7 +344,7 @@ void SvcSerialCommandInterface::streamHandler(){
 };
 
 
-void FASTRUN SvcSerialCommandInterface::updateRT(){ 
+void FLASHMEM SvcSerialCommandInterface::updateRT(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
@@ -356,42 +356,15 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 captureBuffer[indexCaptureBuffer] = Serial.read();
                 if(captureBuffer[indexCaptureBuffer] != 0xFF) indexCaptureBuffer++;
             }while (Serial.available() && indexCaptureBuffer < SERIAL_RX_CAPTURE_BUFFER_SIZE-1);//in case were asking for the streaming data faster than it's being sent
-            //strncat(captureBuffer,&bufferChr,1);
-            //memcpy(&captureBuffer[indexCaptureBuffer], &bufferChr, 1);
             if(indexCaptureBuffer == SERIAL_RX_CAPTURE_BUFFER_SIZE-1){
                 Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script ERROR: Input buffer full"));
                 Serial.flush();
-                //delay(2000);
                 isCapturingBulkData = false;
                 indexCaptureBuffer = 0;
             }
             f = strstr(captureBuffer,"WREN_SCRIPT_END");
             if (f > 0){
                 Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script Received"));
-                /*
-                //Serial.flush();
-                //delay(2000);
-                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script STRLEN captureBuffer: "));
-                Serial.println(strlen(captureBuffer));
-                //Serial.flush();
-                //delay(2000);
-                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script indexCaptureBuffer: "));
-                Serial.println(indexCaptureBuffer);
-                //Serial.flush();
-                //delay(2000);
-                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script END STRSTR index: "));
-                Serial.println(f);
-                //Serial.flush();
-                //delay(2000);
-                Serial.print(F("M SvcSerialCommandInterface::updateRT Wren Script capture buffer ptr: "));
-                Serial.println((uint32_t)captureBuffer);
-                Serial.flush();
-                //delay(2000);
-                Serial.print("M ");
-                Serial.println(captureBuffer);
-                Serial.flush();
-                //delay(2000);
-                */
                 memset(f,0,strlen("WREN_SCRIPT_END"));//remove the EOF marker
                 //stream complete
                 isCapturingBulkData = false;
@@ -561,7 +534,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 endLZ4Message();
             }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
                 isCapturingBulkData = true;
-                captureBuffer = (char*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+                captureBuffer = (char*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);
                 if(captureBuffer!=NULL){
                     memset(captureBuffer,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);
                     indexCaptureBuffer = 0;
@@ -569,13 +542,15 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 } else{
                     isCapturingBulkData = false;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
+                    Serial.flush();
                 }
             }else if (strncmp(cmd, "WREN_SCRIPT_COMPILE",sizeof(cmd)) == 0){
                 if(captureBuffer != NULL){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script compile request"));
                     am->sendMessage(this,"AppWren","WREN_SCRIPT_COMPILE");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    free(captureBuffer);
+                    //free(captureBuffer);
+                    captureBuffer = (char*)realloc(captureBuffer,0);
                     captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));    
@@ -584,7 +559,8 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script execute request"));
                     am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    free(captureBuffer);
+                    //free(captureBuffer);
+                    captureBuffer = (char*)realloc(captureBuffer,0);
                     captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
@@ -593,7 +569,8 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script save request"));
                     am->sendMessage(this,"AppWren",receivedChars);//"WREN_SCRIPT_SAVE [modulename]");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    free(captureBuffer);
+                    //free(captureBuffer);
+                    captureBuffer = (char*)realloc(captureBuffer,0);
                     captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));

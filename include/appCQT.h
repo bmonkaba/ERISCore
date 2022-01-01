@@ -263,7 +263,7 @@ class AppCQT:public AppBaseClass {
       }
     }; //called only when the app is active
     
-    void updateRT(){
+    void FLASHMEM updateRT(){
       updateRT_priority = 0;
       if (!isActive) return;
       rt_calls++;

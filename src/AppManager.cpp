@@ -19,6 +19,7 @@
 #include "AppManager.h"
 #include "globaldefs.h"
 #include "svcSerialCommandInterface.h"
+#include <pgmspace.h>
 
 extern AudioDirector _ad;
 extern SvcSerialCommandInterface sci;
@@ -106,7 +107,7 @@ AppManager:: AppManager(){
  * @brief AppManager update executes single update of the state machine
  * 
  */
-void AppManager::update(){
+void FLASHMEM AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
     uint32_t drt;

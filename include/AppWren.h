@@ -104,7 +104,12 @@ class AppWren:public AppBaseClass {
         if (x >= surface_cache->getWidth()) return;
         if (y >= surface_cache->getHeight()) return;
         if (x < 0 || y < 0) return;
-        if (draw) draw->drawPixel(surface_cache,x,y,CL(r,g,b));
+        if (draw){
+            if (has_pop){
+                draw->ILI9341_t3n::drawPixel(x,y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
+            }else draw->drawPixel(surface_cache,x,y,CL(r,g,b));
+
+        } 
     }
     void drawLine(int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b){
         dynamicSurfaceManager();
@@ -127,6 +132,7 @@ class AppWren:public AppBaseClass {
 
   protected:
     void restartVM(){
+        if(has_pop) am->releasePopUp();
         releaseWrenHandles();
         wrenFreeVM(vm);
         if(surface_cache){

@@ -12,7 +12,7 @@
 
 const char* nullStr = "NULL";
 
-AudioDirector::AudioDirector(){
+FLASHMEM AudioDirector::AudioDirector(){
   sci = NULL;
   objCount=0;
   activeConnections = 0;

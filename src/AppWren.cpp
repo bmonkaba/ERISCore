@@ -57,7 +57,7 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
   {
     case WREN_ERROR_COMPILE:
     {
-     SerialUSB1.printf("VM WREN_ERR [%s line %d] [Error] %s\n", module, line, msg);
+      SerialUSB1.printf("VM WREN_ERR [%s line %d] [Error] %s\n", module, line, msg);
     } break;
     case WREN_ERROR_STACK_TRACE:
     {
@@ -156,7 +156,7 @@ void sendMessageCallback(WrenVM* vm){
 void setPositionCallback(WrenVM* vm){
   //(int16_t newOriginX, int16_t newOriginY)
   AppManager* am = AppManager::getInstance();
-  AppBaseClass* app = am->getAppByName("AppWren");
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->setPosition(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
 };
 
@@ -168,7 +168,7 @@ void setPositionCallback(WrenVM* vm){
 void setDimensionCallback(WrenVM* vm){
   //(int16_t new_width, int16_t new_height)
   AppManager* am = AppManager::getInstance();
-  AppBaseClass* app = am->getAppByName("AppWren");
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->setDimension(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
 }
 
@@ -180,7 +180,7 @@ void setDimensionCallback(WrenVM* vm){
 void setWidgetPositionCallback(WrenVM* vm){
   //(int16_t newOriginX, int16_t newOriginY)
   AppManager* am = AppManager::getInstance();
-  AppBaseClass* app = am->getAppByName("AppWren");
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->setWidgetPosition(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
 }
 
@@ -192,7 +192,7 @@ void setWidgetPositionCallback(WrenVM* vm){
 void setWidgetDimensionCallback(WrenVM* vm){
   //(int16_t new_width, int16_t new_height)
   AppManager* am = AppManager::getInstance();
-  AppBaseClass* app = am->getAppByName("AppWren");
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->setWidgetDimension(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
 }
 /**
@@ -524,7 +524,7 @@ void AppWren::startVM(){
     config.errorFn = &errorFn;
     config.initialHeapSize = WREN_VM_HEAP_SIZE;
     config.minHeapSize = WREN_VM_HEAP_SIZE;
-    config.heapGrowthPercent = 0;
+    config.heapGrowthPercent = 1;
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
@@ -558,10 +558,17 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
             return;
         }else{ //if the message payload is not a command then assume its the data
             if(save_module){
+              set_arm_clock(600000000);
               FsFile file;
               sd->chdir("/wren");
-              file = sd->open(save_module_as, O_WRONLY|O_CREAT|O_SYNC);
+              sd->remove(save_module_as);
+              sd->remove("temp.wren");
+              sd->remove("test.wren");
+              sd->remove("test2.wren");
+              sd->remove(save_module_as);
+              file = sd->open(save_module_as, O_WRONLY|O_CREAT);
               file.write(message,strlen(message));
+              //file.write("//DEBUG\n\n",strlen("//DEBUG\n\n"));
               file.close();
               save_module = false;
               Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
@@ -670,6 +677,7 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
                 }
             }
         }
+        set_arm_clock(600000000);
         wrenCollectGarbage(vm);
     };    //called only when the app is active
 
@@ -720,7 +728,7 @@ const char * AppWren::loadModuleSource(const char * name){
   sd->chdir("/wren");
   file = sd->open(file_name, O_RDONLY);
   file_size = file.available();
-  module_load_buffer = (char*)malloc(file_size+32);
+  module_load_buffer = (char*)malloc(file_size);
   if (module_load_buffer == NULL){
     Serial.println(F("M AppWren::loadModuleSource ERROR: Not Enough Memory"));
     return NULL;
@@ -736,8 +744,7 @@ void AppWren::freeModuleSource(){
   return;
 }
 void AppWren::setPosition(int16_t newOriginX, int16_t newOriginY){
-  origin_x = newOriginX;
-  origin_y = newOriginY;
+  AppBaseClass::setPosition(newOriginX, newOriginY);
 }
 void AppWren::setDimension(int16_t new_width, int16_t new_height){
   width = new_width;
@@ -745,8 +752,7 @@ void AppWren::setDimension(int16_t new_width, int16_t new_height){
 }
 
 void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
-  widget_origin_x = newOriginX;
-  widget_origin_y = newOriginY;
+  AppBaseClass::setWidgetPosition(newOriginX, newOriginY);
 }
 void AppWren::setWidgetDimension(int16_t new_width, int16_t new_height){
   widget_width = new_width;

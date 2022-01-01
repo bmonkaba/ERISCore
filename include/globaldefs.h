@@ -23,10 +23,10 @@
 
 #define SERIAL_TX_HEADER_BUFFER_SIZE 64
 #define SERIAL_RX_BUFFER_SIZE 1024
-#define SERIAL_RX_CAPTURE_BUFFER_SIZE 12000
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 16000
 #define SERIAL_PARAM_BUFFER_SIZE 128
-#define SERIAL_OUTPUT_BUFFER_SIZE 8000
-#define SERIAL_WORKING_BUFFER_SIZE 8000
+#define SERIAL_OUTPUT_BUFFER_SIZE 6000
+#define SERIAL_WORKING_BUFFER_SIZE 6000
 #define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
 
 #define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
@@ -89,8 +89,8 @@ const char UI_SLIDER_FILL_COLOR[] PROGMEM = "UI_SLIDER_FILL_COLOR";
 const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
-#define WREN_VM_HEAP_SIZE 8000
-#define WREN_FRAME_BUFFER_SIZE 128*128
+#define WREN_VM_HEAP_SIZE 16000
+#define WREN_FRAME_BUFFER_SIZE 120*120
 
 const char g_wrenScript[] PROGMEM = R"(
 /*  
@@ -218,8 +218,7 @@ class App {
     updateRT() {
         _count = _count + 1
         if (_count > 15000){
-            System.print(["FREE_MEM",Data.read("FREE_MEM")])
-            System.print(["CPU_TEMP",Data.read("CPU_TEMP")])
+            System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
             _count = 0
         }
     }
@@ -227,14 +226,14 @@ class App {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
-        App.setClockSpeed(740000000)
+        App.setClockSpeed(700000000)
         for (y in 0...(__w)) {
             createJulia()
         }
         Draw.setCursor(5 + __x,__y -9)
         Draw.print("WREN VM")
         //and bring the clock speed back down 
-        App.setClockSpeed(600000000)
+        App.setClockSpeed(500000000)
         //let the widget window bounce of the edges of the screen
         __x = __x + _dx
         __y = __y + _dy
@@ -259,19 +258,19 @@ class App {
         System.print(["Touch_Release",x,y])
     }
     onAnalog1(fval) {
-        System.print(["ANALOG_1",fval])
+        //System.print(["ANALOG_1",fval])
     }
     onAnalog2(fval) {
-        System.print(["ANALOG_2",fval])
+        //System.print(["ANALOG_2",fval])
     }
     onAnalog3(fval) {
-        System.print(["ANALOG_3",fval])
+        //System.print(["ANALOG_3",fval])
     }
     onAnalog4(fval) {
-        System.print(["ANALOG_4",fval])
+        //System.print(["ANALOG_4",fval])
     }
     MessageHandler(sender,message) {
-        System.println([sender,message])
+        //System.println([sender,message])
     }
     //example getter
     count { _count }
