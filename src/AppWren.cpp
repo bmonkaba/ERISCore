@@ -271,7 +271,6 @@ void audioDirectorConnectCallback(WrenVM* vm){
   //(char* source, uint16_t source_port,char* dest, uint16_t dest_port)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  const char* s = wrenGetSlotString(vm, 1);
   bool b = app->getAudioDirector()->connect((char*)wrenGetSlotString(vm, 1),wrenGetSlotDouble(vm, 2),(char*)wrenGetSlotString(vm, 3),wrenGetSlotDouble(vm, 4));
   wrenSetSlotBool(vm, 0,b);
 }
@@ -285,7 +284,6 @@ void audioDirectorDisconnectCallback(WrenVM* vm){
   //(char* dest, uint16_t dest_port)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  const char* s = wrenGetSlotString(vm, 1);
   bool b = app->getAudioDirector()->disconnect((char*)wrenGetSlotString(vm, 1),wrenGetSlotDouble(vm, 2));
   wrenSetSlotBool(vm, 0,b);
 }
@@ -298,7 +296,6 @@ void audioDirectorDisconnectAllCallback(WrenVM* vm){
   //()
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  const char* s = wrenGetSlotString(vm, 1);
   bool b = app->getAudioDirector()->disconnectAll();
   wrenSetSlotBool(vm, 0,b);
 }
@@ -577,7 +574,7 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
             compileOnly = true;
             return;
         }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
-            char cmd[128], file_name[128];
+            char cmd[128];
             int total_read;
             total_read = sscanf(message, "%s %s\n" , cmd, save_module_as);
             if (total_read==2){
@@ -766,7 +763,7 @@ const char * FLASHMEM AppWren::loadModuleSource(const char * name){
   char file_name[128];
   FsFile file;
   int16_t file_size; //max file size 32K
-  strcpy(file_name,name);
+  strncpy(file_name,name,sizeof(file_name));
   strcat(file_name,".wren");
   sd->chdir("/wren");
   file = sd->open(file_name, O_RDONLY);

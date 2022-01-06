@@ -116,8 +116,6 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
 };
 
 void FLASHMEM AudioDirector::printStats(){
-  long s = (uint32_t)heapStart;
-  long e = (uint32_t)heapEnd;
 
   if (sci==NULL) return;
 

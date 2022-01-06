@@ -222,7 +222,7 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     SerialUSB1.printf("VM %s %s\n",&multiPartHeader[0],s);
     //SerialUSB1.flush();
     indexTxBuffer = strlen(s);
-    strcpy(txBuffer,s);
+    strncpy(txBuffer,s,sizeof(txBuffer));
     //SerialUSB1.printf("VM remainder %s",txBuffer);
 }
 
@@ -268,7 +268,7 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
                 print(hexBuffer);
             }
             
-            txBuffer[--indexTxBuffer] = '\0'; //remove last comma
+            if(indexTxBuffer > 0) txBuffer[--indexTxBuffer] = '\0'; //remove last comma
             streamPos = file.position();
             delay(20);
         }

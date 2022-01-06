@@ -125,8 +125,10 @@ class AppWren:public AppBaseClass {
                 if (x < 0 || y < 0) return ILI9341_MAGENTA;
                 return draw->readSurfacePixel(surface_cache,x,y);
             }
-        } 
+        }
+        return 0; 
     }
+    
     void drawLine(int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b){
         
         if ((start_x == end_x) && (start_y == end_y)){

@@ -36,6 +36,7 @@ SvcDataDictionary FASTRUN _data;
  * 
  */
 AppManager:: AppManager(){
+  ad = 0;
   data = &_data;
   root = 0;
   activeID = 0;
