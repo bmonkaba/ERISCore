@@ -219,7 +219,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 72000000;
+            tft_write_speed = 74000000;
             tft_read_speed = 20000000;
             pSD = NULL;
             backlight = 0;
@@ -244,6 +244,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void fillSurface(Surface *dest,uint16_t color);
         void drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color);
         void drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color);
+        void drawSurfaceFill(Surface *dest,uint16_t color);
         void drawFastVLine(Surface *dest,int16_t x, int16_t y, int16_t h, uint16_t color);
         void drawFastHLine(Surface *dest,int16_t x, int16_t y, int16_t w, uint16_t color);
         void fillRect(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
@@ -252,7 +253,8 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void fillScreenVGradient(Surface *dest,uint16_t color1, uint16_t color2);
         void fillScreenHGradient(Surface *dest,uint16_t color1, uint16_t color2);
         //read methods
-        uint16_t readPixel(Surface *dest,int16_t x, int16_t y);
+        uint16_t readSurfacePixel(Surface *dest,int16_t x, int16_t y);
+        uint16_t readPixel(int16_t x, int16_t y);
 
     protected:
         uint32_t tft_write_speed;

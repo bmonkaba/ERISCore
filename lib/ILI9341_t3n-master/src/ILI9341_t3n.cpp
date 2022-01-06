@@ -1378,7 +1378,7 @@ void ILI9341_t3n::fillScreenHGradient(uint16_t color1, uint16_t color2) {
 #define MADCTL_BGR 0x08
 #define MADCTL_MH 0x04
 
-void ILI9341_t3n::setRotation(uint8_t m) {
+void FLASHMEM ILI9341_t3n::setRotation(uint8_t m) {
   rotation = m % 4; // can't be higher than 3
   beginSPITransaction(_SPI_CLOCK);
   writecommand_cont(ILI9341_MADCTL);
@@ -1412,14 +1412,14 @@ void ILI9341_t3n::setRotation(uint8_t m) {
   cursor_y = 0;
 }
 
-void ILI9341_t3n::setScroll(uint16_t offset) {
+void FLASHMEM ILI9341_t3n::setScroll(uint16_t offset) {
   beginSPITransaction(_SPI_CLOCK);
   writecommand_cont(ILI9341_VSCRSADD);
   writedata16_last(offset);
   endSPITransaction();
 }
 
-void ILI9341_t3n::invertDisplay(boolean i) {
+void FLASHMEM ILI9341_t3n::invertDisplay(boolean i) {
   beginSPITransaction(_SPI_CLOCK);
   writecommand_last(i ? ILI9341_INVON : ILI9341_INVOFF);
   endSPITransaction();

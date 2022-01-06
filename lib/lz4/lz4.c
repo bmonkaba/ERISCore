@@ -41,7 +41,7 @@
  * in memory stack (0:default, fastest), or in memory heap (1:requires malloc()).
  */
 #ifndef LZ4_HEAPMODE
-#define LZ4_HEAPMODE 1
+#define LZ4_HEAPMODE 0
 #endif
 
 /*

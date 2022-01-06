@@ -37,10 +37,10 @@ class AppAudioToPolyphonic:public AppBaseClass {
     uint32_t t_lastupdate;
 
     AppAudioToPolyphonic():AppBaseClass(){
-      initMyAppExample();
+      initalize();
     };
 
-    void FLASHMEM initMyAppExample(){
+    void FLASHMEM initalize(){
       sprintf(name, APPNAME);
       Serial.println(F("MyApp constructor called"));
 
@@ -149,7 +149,6 @@ class AppAudioToPolyphonic:public AppBaseClass {
         mixer->gain(1,0.0);
         mixer->gain(2,0.0);
         mixer->gain(3,0.3);
-
       }
 
       mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer_6"));

@@ -624,7 +624,7 @@ $(document).ready(function () {
                 } catch (e) {
                     //do nothing - bad data?
                 }
-                if (Math.random() > 0.8) {
+                if (Math.random() > 0.01) {
                     //don"t need to redraw every time data is received" 
                     renderAudioBlocks();
                 }

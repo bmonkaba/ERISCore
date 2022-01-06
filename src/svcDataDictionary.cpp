@@ -50,7 +50,6 @@ uint32_t SvcDataDictionary::hash(const char* s){
 bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
-    record[next].pval = 0;
     record[next].owner = owner;
     record[next].record_type = DDRT_READ;
     record[next].key_hash = hash(key);
@@ -61,7 +60,6 @@ bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
 bool SvcDataDictionary::create(const char* key,int32_t val){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
-    record[next].pval = 0;
     record[next].owner = 0;
     record[next].record_type = DDRT_READWRITE;
     record[next].data_type = DDDT_INT32;
@@ -73,7 +71,6 @@ bool SvcDataDictionary::create(const char* key,int32_t val){
 bool SvcDataDictionary::create(const char* key,float32_t val){
     if (!copyKey(key)) return false;
     record[next].val.float32_val = val;
-    record[next].pval = 0;
     record[next].owner = 0;
     record[next].record_type = DDRT_READWRITE;
     record[next].data_type = DDDT_FLOAT32;

@@ -71,9 +71,9 @@ class AppCQT:public AppBaseClass {
     erisAudioAnalyzeFFT1024* fft;
     erisAudioAnalyzeFFT1024* fft2;
     FFTReadRange fftRVal __attribute__ ((aligned (4)));
-    FFTReadRange fftHighRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (32)));
-    FFTReadRange fftLowRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (32)));
-    FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (32)));
+    FFTReadRange fftHighRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (16)));
+    FFTReadRange fftLowRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (16)));
+    FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
 
     void FLASHMEM init(){
       osc_bank_size = OSC_BANK_SIZE;

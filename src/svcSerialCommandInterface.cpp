@@ -122,22 +122,27 @@ void replaceAll(char * str, char oldChar, char newChar)
  */
 void SvcSerialCommandInterface::endLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
+    char wb[SERIAL_WORKING_BUFFER_SIZE];
+
     //compress and transport the message
-    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+    //workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+    //memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+    memset(wb,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = indexTxBuffer;
-    compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+    //compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+    compressed_len = LZ4_compress_fast(txBuffer,wb,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
     empty();
-    encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+    //encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
+    encode_base64((unsigned char *)wb, compressed_len, (unsigned char *)txBuffer);
     while(throttle()){
-        delayMicroseconds(500);
+        delay(50);
     };
     Serial.print(" ");
     Serial.print(uncompressed_len);
     Serial.print(" ");
     Serial.println(txBuffer);
     empty();
-    free(workingBuffer);
+    //free(workingBuffer);
     while(throttle()){
         delayMicroseconds(500);
     };
@@ -221,7 +226,7 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     //SerialUSB1.printf("VM remainder %s",txBuffer);
 }
 
-void SvcSerialCommandInterface::streamHandler(){
+void FLASHMEM SvcSerialCommandInterface::streamHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
@@ -551,7 +556,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     am->sendMessage(this,"AppWren",captureBuffer);
                     //free(captureBuffer);
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    captureBuffer = NULL;
+                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));    
             }else if (strncmp(cmd, "WREN_SCRIPT_EXECUTE",sizeof(cmd)) == 0){
@@ -561,7 +566,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     am->sendMessage(this,"AppWren",captureBuffer);
                     //free(captureBuffer);
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    captureBuffer = NULL;
+                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "WREN_SCRIPT_SAVE",sizeof(cmd)) == 0){
@@ -571,7 +576,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     am->sendMessage(this,"AppWren",captureBuffer);
                     //free(captureBuffer);
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    captureBuffer = NULL;
+                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){

@@ -23,7 +23,7 @@
 
 #define SERIAL_TX_HEADER_BUFFER_SIZE 64
 #define SERIAL_RX_BUFFER_SIZE 1024
-#define SERIAL_RX_CAPTURE_BUFFER_SIZE 16000
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 10000
 #define SERIAL_PARAM_BUFFER_SIZE 128
 #define SERIAL_OUTPUT_BUFFER_SIZE 6000
 #define SERIAL_WORKING_BUFFER_SIZE 6000
@@ -89,8 +89,8 @@ const char UI_SLIDER_FILL_COLOR[] PROGMEM = "UI_SLIDER_FILL_COLOR";
 const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
-#define WREN_VM_HEAP_SIZE 16000
-#define WREN_FRAME_BUFFER_SIZE 120*120
+#define WREN_VM_HEAP_SIZE 8000
+#define WREN_FRAME_BUFFER_SIZE 128*128
 
 const char g_wrenScript[] PROGMEM = R"(
 /*  
@@ -125,6 +125,9 @@ class Data {
 class Draw {
     foreign static loadImage(path,filename,x,y)
     foreign static setPixel(x,y,r,g,b)
+    foreign static getPixel(x,y)
+    foreign static line(x,y,to_x,to_y,r,g,b)
+    foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
     foreign static print(string)
@@ -226,14 +229,14 @@ class App {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
-        App.setClockSpeed(700000000)
+        App.setClockSpeed(600000000)
         for (y in 0...(__w)) {
             createJulia()
         }
         Draw.setCursor(5 + __x,__y -9)
         Draw.print("WREN VM")
         //and bring the clock speed back down 
-        App.setClockSpeed(500000000)
+        App.setClockSpeed(600000000)
         //let the widget window bounce of the edges of the screen
         __x = __x + _dx
         __y = __y + _dy
@@ -278,8 +281,8 @@ class App {
     count=(value) { _count = value }
 }
 //static methods can be called directly on the class object
-App.setDimension(64, 64)
-App.setWidgetDimension(64, 64)
+App.setDimension(120, 120)
+App.setWidgetDimension(120, 120)
 //or a class instance may be created
 //The host (C/C++ side) expects a top level variable named ErisApp of 
 //type class App it's this object instance for which the event methods 

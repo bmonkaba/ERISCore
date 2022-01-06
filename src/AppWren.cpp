@@ -252,7 +252,15 @@ void setClockSpeedCallback(WrenVM* vm){
   set_arm_clock(wrenGetSlotDouble(vm, 1));
 }
 
-
+/**
+ * @brief Set the Random Callback object
+ * 
+ * @param vm 
+ */
+void setRandomCallback(WrenVM* vm){
+  //(uint16_t how_big)
+  wrenSetSlotDouble(vm,0,random(wrenGetSlotDouble(vm, 1)));
+}
 
 /**
  * @brief AudioDirector callback for wren
@@ -402,11 +410,32 @@ void setPixelCallback(WrenVM* vm){
   app->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
 }
 
+
+/**
+ * @brief Get the Pixel Callback object
+ * 
+ * @param vm 
+ */
+void getPixelCallback(WrenVM* vm){
+  //(int16_t x, int16_t y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->getPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2)));
+}
+
+
 void drawLineCallback(WrenVM* vm){
   //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->drawLine(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6), wrenGetSlotDouble(vm, 7));
+}
+
+void drawFillCallback(WrenVM* vm){
+  //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->drawFill(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3));
 }
 
 
@@ -421,7 +450,7 @@ void drawLineCallback(WrenVM* vm){
  * @param signature 
  * @return WrenForeignMethodFn 
  */
-WrenForeignMethodFn bindForeignMethod(
+WrenForeignMethodFn FLASHMEM bindForeignMethod(
     WrenVM* vm,
     const char* module,
     const char* className,
@@ -455,6 +484,8 @@ WrenForeignMethodFn bindForeignMethod(
         return setPixelCallback;
       }else if (strcmp(signature, "setClockSpeed(_)") == 0){
         return setClockSpeedCallback;
+      }else if (strcmp(signature, "random(_)") == 0){
+        return setRandomCallback;
       }
     }else if (strcmp(className, "Data") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "update(_,_)") == 0){
@@ -478,6 +509,8 @@ WrenForeignMethodFn bindForeignMethod(
     }else if (strcmp(className, "Draw") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
         return setPixelCallback;
+      }else if (strcmp(signature, "getPixel(_,_)") == 0){
+        return getPixelCallback;
       }else if (strcmp(signature, "setTextColor(_,_,_)") == 0){
         return setTextColorCallback;
       }else if (strcmp(signature, "setCursor(_,_)") == 0){
@@ -490,6 +523,8 @@ WrenForeignMethodFn bindForeignMethod(
         return loadImageCallback;
       }else if (strcmp(signature, "line(_,_,_,_,_,_,_)") == 0){
         return drawLineCallback;
+      }else if (strcmp(signature, "fill(_,_,_)") == 0){
+        return drawFillCallback;
       }
     }
     // Other classes in main...
@@ -516,22 +551,22 @@ void AppWren::vmConstructor(){
     isWrenResultOK(wrenCall(vm,h_updateRT));
 }
 
-void AppWren::startVM(){
+void FLASHMEM AppWren::startVM(){
     Serial.println(F("CLS\nM AppWren::startVM()"));
     WrenConfiguration config;
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
-    config.initialHeapSize = WREN_VM_HEAP_SIZE;
+    config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
     config.minHeapSize = WREN_VM_HEAP_SIZE;
-    config.heapGrowthPercent = 1;
+    config.heapGrowthPercent = 10;
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
     vm = wrenNewVM(&config);
 }
 
-void AppWren::MessageHandler(AppBaseClass *sender, const char *message){   
+void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message){   
     if(sender->isName("SCI")){
         if(0 == strncmp(message,"WREN_SCRIPT_EXECUTE",strlen("WREN_SCRIPT_EXECUTE"))) {
             Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_COMPILE -> compileOnly = false"));
@@ -605,12 +640,12 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
  * @return true 
  * @return false 
  */
-  bool AppWren::dynamicSurfaceManager(){
+  bool FLASHMEM AppWren::dynamicSurfaceManager(){
     if(!surface_cache){
       surface_mempool = wrenFastRam;
       if (has_pop || has_focus){
-        surface_cache = new Surface(surface_mempool,width,height);
-        memset(surface_mempool,0,sizeof(uint16_t)*width*height);
+        surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),128,128);
+        memset((uint16_t *)draw->getFrameAddress(),200,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
       }else{
         surface_cache = new Surface(surface_mempool, widget_width, widget_height);
         memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
@@ -657,23 +692,31 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
                             return;
                         }else Serial.println(F("M AppWren::update() Surface created"));
                     } else{
+                      if(has_pop || has_focus){
+                        //do nothing
+                      }else{
                         draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
+                      }
                     }
                 }else{
                     draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
                     draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
                 }
-                if (show_active){
-                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
-                } else{
-                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
-                }
-                
-                if(!usingImage){
-                    draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
-                    draw->setCursor(x+(w/2),y+(h/2),true);
-                    draw->setFont(Arial_9);
-                    //draw->print(text);
+                if(has_pop || has_focus){
+                  //do nothing
+                }else{
+                  if (show_active){
+                      draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
+                  } else{
+                      draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
+                  }
+                  
+                  if(!usingImage){
+                      draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
+                      draw->setCursor(x+(w/2),y+(h/2),true);
+                      draw->setFont(Arial_9);
+                      //draw->print(text);
+                  }
                 }
             }
         }
@@ -682,7 +725,7 @@ void AppWren::MessageHandler(AppBaseClass *sender, const char *message){
     };    //called only when the app is active
 
 
-void AppWren::releaseWrenHandles(){
+void FLASHMEM AppWren::releaseWrenHandles(){
   //release any existing handles
   if (h_slot0!=NULL) wrenReleaseHandle(vm, h_slot0);
   if (h_update!=NULL) wrenReleaseHandle(vm, h_update);
@@ -699,7 +742,7 @@ void AppWren::releaseWrenHandles(){
   if (h_messageHandler!=NULL) wrenReleaseHandle(vm, h_messageHandler);
 }
 
-void AppWren::getWrenHandles(){
+void FLASHMEM AppWren::getWrenHandles(){
   wrenEnsureSlots(vm, 1);
   wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
   //get the handles
@@ -719,7 +762,7 @@ void AppWren::getWrenHandles(){
   h_messageHandler = wrenMakeCallHandle(vm, "messageHandler(_,_)");
 }
 
-const char * AppWren::loadModuleSource(const char * name){
+const char * FLASHMEM AppWren::loadModuleSource(const char * name){
   char file_name[128];
   FsFile file;
   int16_t file_size; //max file size 32K
@@ -738,7 +781,7 @@ const char * AppWren::loadModuleSource(const char * name){
   return module_load_buffer;
 }
 
-void AppWren::freeModuleSource(){
+void FLASHMEM AppWren::freeModuleSource(){
   if (module_load_buffer != NULL) free(module_load_buffer);
   module_load_buffer = NULL;
   return;
@@ -749,6 +792,7 @@ void AppWren::setPosition(int16_t newOriginX, int16_t newOriginY){
 void AppWren::setDimension(int16_t new_width, int16_t new_height){
   width = new_width;
   height = new_height;
+  //dynamicSurfaceManager();
 }
 
 void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
@@ -757,4 +801,5 @@ void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
 void AppWren::setWidgetDimension(int16_t new_width, int16_t new_height){
   widget_width = new_width;
   widget_height = new_height;
+  //dynamicSurfaceManager();
 }

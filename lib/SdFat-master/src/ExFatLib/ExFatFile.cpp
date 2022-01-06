@@ -234,7 +234,7 @@ bool ExFatFile::openNext(ExFatFile* dir, oflag_t oflag) {
   return false;
 }
 //------------------------------------------------------------------------------
-bool ExFatFile::openPrivate(ExFatFile* dir, ExName_t* fname, oflag_t oflag) {
+bool FLASHMEM ExFatFile::openPrivate(ExFatFile* dir, ExName_t* fname, oflag_t oflag) {
   int n;
   uint8_t modeFlags;
   uint32_t curCluster __attribute__((unused));
@@ -532,7 +532,7 @@ int ExFatFile::peek() {
   return c;
 }
 //------------------------------------------------------------------------------
-int ExFatFile::read(void* buf, size_t count) {
+int FLASHMEM ExFatFile::read(void* buf, size_t count) {
   uint8_t* dst = reinterpret_cast<uint8_t*>(buf);
   int8_t fg;
   size_t toRead = count;
@@ -626,7 +626,7 @@ int ExFatFile::read(void* buf, size_t count) {
   return -1;
 }
 //------------------------------------------------------------------------------
-bool ExFatFile::remove(const char* path) {
+bool FLASHMEM ExFatFile::remove(const char* path) {
   ExFatFile file;
   if (!file.open(this, path, O_WRONLY)) {
     DBG_FAIL_MACRO;
@@ -638,7 +638,7 @@ bool ExFatFile::remove(const char* path) {
   return false;
 }
 //------------------------------------------------------------------------------
-bool ExFatFile::seekSet(uint64_t pos) {
+bool FLASHMEM ExFatFile::seekSet(uint64_t pos) {
   uint32_t nCur;
   uint32_t nNew;
   uint32_t tmp = m_curCluster;

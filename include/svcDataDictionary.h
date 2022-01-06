@@ -53,11 +53,7 @@ enum svcDataDictionaryDataType{
 };
 
 typedef union value_container{
-    int16_t int16_val;
-    uint16_t uint16_val;
     int32_t int32_val;
-    uint32_t uint32_val;
-    float32_t float16_val;
     float32_t float32_val;
 } value_container;
 
@@ -81,7 +77,6 @@ typedef struct svcDataDictionaryRecord
 #endif
     value_container val;
     uint32_t *owner;
-    pointer_container *pval;
     svcDataDictionaryRecordType record_type;
     svcDataDictionaryDataType data_type;
 }svcDataDictionaryRecord;// __attribute__ ((aligned (32)));
@@ -98,7 +93,6 @@ class SvcDataDictionary{
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 record[i].owner = 0;
                 record[i].val.int32_val = 0;
-                record[i].pval = 0;
                 record[i].record_type = DDRT_READWRITE;
                 record[i].data_type = DDDT_INT32;
                 record[i].key_hash = 48879; //0xBEEF

@@ -152,6 +152,18 @@ void ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t col
   dstBuffer[(y * dest->getWidth()) + x] = color;
 }
 
+uint16_t ILI9341_t3_ERIS::readSurfacePixel(Surface *dest,int16_t x, int16_t y){
+  uint16_t *dstBuffer;
+  dstBuffer = dest->getSurfaceBufferP();
+  return dstBuffer[(y * dest->getWidth()) + x];
+}
+
+uint16_t ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){
+  uint16_t *dstBuffer; 
+  return _pfbtft[(y * _width) + x];
+}
+
+
 void ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color){
   uint16_t *dstBuffer;
   dstBuffer = dest->getSurfaceBufferP();
@@ -160,6 +172,19 @@ void ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int16_t sta
   _width = dest->getWidth();
   _height = dest->getHeight();
   drawLine(start_x, start_y, end_x, end_y, color);
+  _pfbtft = save;
+  _width = 320;
+  _height = 240;
+}
+
+void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
+  uint16_t *dstBuffer;
+  dstBuffer = dest->getSurfaceBufferP();
+  uint16_t* save = _pfbtft;
+  _pfbtft = dstBuffer;
+  _width = dest->getWidth();
+  _height = dest->getHeight();
+  fillScreen(color);
   _pfbtft = save;
   _width = 320;
   _height = 240;

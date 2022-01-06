@@ -43,7 +43,12 @@
 			"sstream": "cpp",
 			"stdexcept": "cpp",
 			"streambuf": "cpp",
-			"random": "cpp"
+			"random": "cpp",
+			"wren_common.h": "c",
+			"wren_vm.h": "c",
+			"wren_utils.h": "c",
+			"wren_compiler.h": "c",
+			"wren.h": "c"
 		},
 		"git.ignoreLimitWarning": true
 	}

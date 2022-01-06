@@ -48,11 +48,11 @@
 // these or not. By default, they are all available. To disable one, set the
 // corresponding `WREN_OPT_<name>` define to `0`.
 #ifndef WREN_OPT_META
-  #define WREN_OPT_META 1
+  #define WREN_OPT_META 0
 #endif
 
 #ifndef WREN_OPT_RANDOM
-  #define WREN_OPT_RANDOM 1
+  #define WREN_OPT_RANDOM 0
 #endif
 
 // These flags are useful for debugging and hacking on Wren itself. They are not

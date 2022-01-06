@@ -284,7 +284,7 @@ bool FatFile::makeUniqueSfn(FatLfn_t* fname) {
   return true;
 }
 //------------------------------------------------------------------------------
-bool FatFile::open(FatFile* dirFile, FatLfn_t* fname, oflag_t oflag) {
+bool FLASHMEM FatFile::open(FatFile* dirFile, FatLfn_t* fname, oflag_t oflag) {
   bool fnameFound = false;
   uint8_t lfnOrd = 0;
   uint8_t freeNeed;
@@ -517,7 +517,7 @@ bool FatFile::parsePathName(const char* path,
   return false;
 }
 //------------------------------------------------------------------------------
-bool FatFile::remove() {
+bool FLASHMEM FatFile::remove() {
   bool last;
   uint8_t checksum;
   FatFile dirFile;

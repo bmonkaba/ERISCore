@@ -99,40 +99,96 @@ class AppWren:public AppBaseClass {
     AudioDirector* getAudioDirector(){return ad;} 
     //and now we go a step further by integrating draw and data object methods directly into the AppWren class
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
-        dynamicSurfaceManager();
-        if (!surface_cache) return;
-        if (x >= surface_cache->getWidth()) return;
-        if (y >= surface_cache->getHeight()) return;
-        if (x < 0 || y < 0) return;
         if (draw){
             if (has_pop){
                 draw->ILI9341_t3n::drawPixel(x,y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
-            }else draw->drawPixel(surface_cache,x,y,CL(r,g,b));
-
+            }else{
+                dynamicSurfaceManager();
+                if (!surface_cache) return;
+                if (x >= surface_cache->getWidth()) return;
+                if (y >= surface_cache->getHeight()) return;
+                if (x < 0 || y < 0) return;
+                draw->drawPixel(surface_cache,x,y,CL(r,g,b));
+            }
+        } 
+    }
+    
+    uint16_t getPixel(int16_t x, int16_t y){
+        if (draw){
+            if (has_pop){
+                //return draw->readPixel(x,y);
+                return ILI9341_YELLOW;//draw->ILI9341_t3n::readPixel(x,y);
+            }else{
+                if (!surface_cache) return ILI9341_MAGENTA;
+                if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;
+                if (y >= surface_cache->getHeight()) return ILI9341_MAGENTA;
+                if (x < 0 || y < 0) return ILI9341_MAGENTA;
+                return draw->readSurfacePixel(surface_cache,x,y);
+            }
         } 
     }
     void drawLine(int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b){
-        dynamicSurfaceManager();
-        if (!surface_cache) return;
-        if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
-        if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
-        if (start_x < 0 ) start_x = 0;
-        if (start_y < 0 ) start_y = 0;
-
-        if (end_x >= surface_cache->getWidth()) end_x = surface_cache->getWidth()-1;
-        if (end_y >= surface_cache->getHeight()) end_y = surface_cache->getHeight()-1;
-        if (end_x < 0 ) end_x = 0;
-        if (end_y < 0 ) end_y = 0;
+        
         if ((start_x == end_x) && (start_y == end_y)){
-            if (draw) draw->drawPixel(surface_cache,start_x,start_y,CL(r,g,b));
+            if (draw){
+                if (has_pop){
+                    draw->ILI9341_t3n::drawPixel(start_x,start_y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
+                } else{
+                    dynamicSurfaceManager();
+                    if (!surface_cache) return;
+                    if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
+                    if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
+                    if (start_x < 0 ) start_x = 0;
+                    if (start_y < 0 ) start_y = 0;
+
+                    if (end_x >= surface_cache->getWidth()) end_x = surface_cache->getWidth()-1;
+                    if (end_y >= surface_cache->getHeight()) end_y = surface_cache->getHeight()-1;
+                    if (end_x < 0 ) end_x = 0;
+                    if (end_y < 0 ) end_y = 0;
+                    draw->drawPixel(surface_cache,start_x,start_y,CL(r,g,b));
+                }
+            }
             return;
+        }else if (draw){
+            if (has_pop){
+                draw->ILI9341_t3n::drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
+            }else{
+                dynamicSurfaceManager();
+                if (!surface_cache) return;
+                if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
+                if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
+                if (start_x < 0 ) start_x = 0;
+                if (start_y < 0 ) start_y = 0;
+
+                if (end_x >= surface_cache->getWidth()) end_x = surface_cache->getWidth()-1;
+                if (end_y >= surface_cache->getHeight()) end_y = surface_cache->getHeight()-1;
+                if (end_x < 0 ) end_x = 0;
+                if (end_y < 0 ) end_y = 0;
+                draw->drawSurfaceLine(surface_cache, start_x, start_y, end_x, end_y, CL(r,g,b));
+            }
+            return;   
         }
-        if (draw) draw->drawSurfaceLine(surface_cache, start_x, start_y, end_x, end_y, CL(r,g,b));
+    }
+
+    void drawFill(int16_t r, int16_t g, int16_t b){
+        dynamicSurfaceManager();
+        if (draw){
+            if (has_pop){
+                draw->ILI9341_t3n::fillScreen(CL(r,g,b));
+            } else{
+                if (!surface_cache) return;
+                draw->fillSurface(surface_cache,CL(r,g,b));
+            }
+        }
+        return;
     }
 
   protected:
     void restartVM(){
-        if(has_pop) am->releasePopUp();
+        if(has_pop){
+            am->releasePopUp();
+            has_pop = false;
+        }
         releaseWrenHandles();
         wrenFreeVM(vm);
         if(surface_cache){
