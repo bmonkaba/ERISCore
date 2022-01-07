@@ -76,6 +76,6 @@ var eris_audio_8h =
     [ "erisAudioSynthWaveformSineHires", "d5/d99/classeris_audio_synth_waveform_sine_hires.html", "d5/d99/classeris_audio_synth_waveform_sine_hires" ],
     [ "erisAudioSynthWaveformSineModulated", "d5/d33/classeris_audio_synth_waveform_sine_modulated.html", "d5/d33/classeris_audio_synth_waveform_sine_modulated" ],
     [ "erisAudioSynthWavetable", "d7/d42/classeris_audio_synth_wavetable.html", "d7/d42/classeris_audio_synth_wavetable" ],
-    [ "play_sd_raw_h_", "d2/ded/eris_audio_8h.html#a709770084c6290ef1f638e3e6e17d63e", null ],
-    [ "play_sd_wav_h_", "d2/ded/eris_audio_8h.html#af2233d0e1a49ad626f7216b833f6d1c4", null ]
+    [ "play_sd_raw_h_", "d2/ded/eris_audio_8h_a709770084c6290ef1f638e3e6e17d63e.html#a709770084c6290ef1f638e3e6e17d63e", null ],
+    [ "play_sd_wav_h_", "d2/ded/eris_audio_8h_af2233d0e1a49ad626f7216b833f6d1c4.html#af2233d0e1a49ad626f7216b833f6d1c4", null ]
 ];

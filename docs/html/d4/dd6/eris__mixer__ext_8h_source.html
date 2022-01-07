@@ -25,6 +25,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../ErisCore_Documentation_Logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ERIS CORE
    </div>
@@ -92,12 +93,12 @@ $(document).ready(function(){initNavTree('d4/dd6/eris__mixer__ext_8h_source.html
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#if defined(__ARM_ARCH_7EM__)</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef _erisMIXERext</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define _erisMIXERext</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span>AudioMixer8 : <span class="keyword">public</span> <a class="code" href="../../d5/d96/class_audio_stream.html">AudioStream</a>{</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/d3d/class_audio_mixer8.html">AudioMixer8</a> : <span class="keyword">public</span> <a class="code" href="../../d5/d96/class_audio_stream.html">AudioStream</a>{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    AudioMixer8(<span class="keywordtype">void</span>) : <a class="code" href="../../d5/d96/class_audio_stream.html">AudioStream</a>(8, inputQueueArray) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="../../d0/d3d/class_audio_mixer8.html">AudioMixer8</a>(<span class="keywordtype">void</span>) : <a class="code" href="../../d5/d96/class_audio_stream.html">AudioStream</a>(8, inputQueueArray) {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;8; i++) multiplier[i] = 65536;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d5/d96/class_audio_stream.html#af8edc89a3fa56c9d6fcc4828735210d5">update</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> gain(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> channel, <span class="keywordtype">float</span> gain) {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">if</span> (channel &gt;= 8) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">if</span> (gain &gt; 32767.0f) gain = 32767.0f;</div>
@@ -111,8 +112,8 @@ $(document).ready(function(){initNavTree('d4/dd6/eris__mixer__ext_8h_source.html
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_audio_stream_8h_html"><div class="ttname"><a href="../../df/d6c/_audio_stream_8h.html">AudioStream.h</a></div></div>
+<div class="ttc" id="aclass_audio_mixer8_html"><div class="ttname"><a href="../../d0/d3d/class_audio_mixer8.html">AudioMixer8</a></div></div>
 <div class="ttc" id="aclass_audio_stream_html"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html">AudioStream</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00139">AudioStream.h:140</a></div></div>
-<div class="ttc" id="aclass_audio_stream_html_af8edc89a3fa56c9d6fcc4828735210d5"><div class="ttname"><a href="../../d5/d96/class_audio_stream.html#af8edc89a3fa56c9d6fcc4828735210d5">AudioStream::update</a></div><div class="ttdeci">virtual void update(void)=0</div></div>
 <div class="ttc" id="astructaudio__block__struct_html"><div class="ttname"><a href="../../de/dd6/structaudio__block__struct.html">audio_block_struct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00073">AudioStream.h:73</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,19 +1,17 @@
 var searchData=
 [
-  ['uint16_5fval_1934',['uint16_val',['../da/d2d/unionvalue__container.html#abb24f19160402be77c8bbc99d1119a99',1,'value_container']]],
-  ['uint32_5fval_1935',['uint32_val',['../da/d2d/unionvalue__container.html#a303c1c885a09c5badec32b0539936856',1,'value_container']]],
-  ['unum_5finputs_1936',['unum_inputs',['../d5/d96/class_audio_stream.html#a643f654eb80d440b0535cd0e6244a85c',1,'AudioStream']]],
-  ['unum_5foutputs_1937',['unum_outputs',['../d5/d96/class_audio_stream.html#a1ca258955ea281b46625381746c733f5',1,'AudioStream']]],
-  ['update_5fcalls_1938',['update_calls',['../d4/dde/class_app_c_q_t.html#ad44c783cf9c188d4c38a787cc1e04237',1,'AppCQT']]],
-  ['update_5fcpu_5ftime_1939',['update_cpu_time',['../db/d69/class_app_base_class.html#a83f993fea13d519da399132f3d0969b1',1,'AppBaseClass']]],
-  ['update_5fcpu_5ftime_5fmax_1940',['update_cpu_time_max',['../db/d69/class_app_base_class.html#a8cdd69770690bfe8079eb0789487103b',1,'AppBaseClass']]],
-  ['update_5fperiod_1941',['update_period',['../db/d69/class_app_base_class.html#a3b520daeb29f2389a8515bdff029d894',1,'AppBaseClass']]],
-  ['update_5fperiod_5fmax_1942',['update_period_max',['../db/d69/class_app_base_class.html#ac21a5b7145c38fd17042971a6b357208',1,'AppBaseClass']]],
-  ['update_5fscheduled_1943',['update_scheduled',['../d5/d96/class_audio_stream.html#aba25b939ec5ee19afe4d607391a82c01',1,'AudioStream']]],
-  ['updatert_5fcpu_5ftime_1944',['updateRT_cpu_time',['../db/d69/class_app_base_class.html#ad95515dfef2582afd78055e9cb854061',1,'AppBaseClass']]],
-  ['updatert_5fcpu_5ftime_5fmax_1945',['updateRT_cpu_time_max',['../db/d69/class_app_base_class.html#a8f4a888dd21576343cf37a90a88e70ec',1,'AppBaseClass']]],
-  ['updatert_5fperiod_1946',['updateRT_period',['../db/d69/class_app_base_class.html#a5fbc009ba95e015c48d44065cb4589f2',1,'AppBaseClass']]],
-  ['updatert_5fperiod_5fmax_1947',['updateRT_period_max',['../db/d69/class_app_base_class.html#a748bf9596070dfeaf278dcef44120890',1,'AppBaseClass']]],
-  ['updatert_5fpriority_1948',['updateRT_priority',['../db/d69/class_app_base_class.html#a761416a75d8cb476c2c08072c7cb7261',1,'AppBaseClass']]],
-  ['usingimage_1949',['usingImage',['../d0/da0/class_app_wren.html#ab674666602adb6b2a5322c89381851f9',1,'AppWren::usingImage()'],['../df/d17/class_control_button.html#aff296d00d45aade7bef65f8ffc113305',1,'ControlButton::usingImage()']]]
+  ['unum_5finputs_2136',['unum_inputs',['../d5/d96/class_audio_stream_a643f654eb80d440b0535cd0e6244a85c.html#a643f654eb80d440b0535cd0e6244a85c',1,'AudioStream']]],
+  ['unum_5foutputs_2137',['unum_outputs',['../d5/d96/class_audio_stream_a1ca258955ea281b46625381746c733f5.html#a1ca258955ea281b46625381746c733f5',1,'AudioStream']]],
+  ['update_5fcalls_2138',['update_calls',['../d4/dde/class_app_c_q_t_ad44c783cf9c188d4c38a787cc1e04237.html#ad44c783cf9c188d4c38a787cc1e04237',1,'AppCQT']]],
+  ['update_5fcpu_5ftime_2139',['update_cpu_time',['../db/d69/class_app_base_class_a83f993fea13d519da399132f3d0969b1.html#a83f993fea13d519da399132f3d0969b1',1,'AppBaseClass']]],
+  ['update_5fcpu_5ftime_5fmax_2140',['update_cpu_time_max',['../db/d69/class_app_base_class_a8cdd69770690bfe8079eb0789487103b.html#a8cdd69770690bfe8079eb0789487103b',1,'AppBaseClass']]],
+  ['update_5fperiod_2141',['update_period',['../db/d69/class_app_base_class_a3b520daeb29f2389a8515bdff029d894.html#a3b520daeb29f2389a8515bdff029d894',1,'AppBaseClass']]],
+  ['update_5fperiod_5fmax_2142',['update_period_max',['../db/d69/class_app_base_class_ac21a5b7145c38fd17042971a6b357208.html#ac21a5b7145c38fd17042971a6b357208',1,'AppBaseClass']]],
+  ['update_5fscheduled_2143',['update_scheduled',['../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01',1,'AudioStream']]],
+  ['updatert_5fcpu_5ftime_2144',['updateRT_cpu_time',['../db/d69/class_app_base_class_ad95515dfef2582afd78055e9cb854061.html#ad95515dfef2582afd78055e9cb854061',1,'AppBaseClass']]],
+  ['updatert_5fcpu_5ftime_5fmax_2145',['updateRT_cpu_time_max',['../db/d69/class_app_base_class_a8f4a888dd21576343cf37a90a88e70ec.html#a8f4a888dd21576343cf37a90a88e70ec',1,'AppBaseClass']]],
+  ['updatert_5fperiod_2146',['updateRT_period',['../db/d69/class_app_base_class_a5fbc009ba95e015c48d44065cb4589f2.html#a5fbc009ba95e015c48d44065cb4589f2',1,'AppBaseClass']]],
+  ['updatert_5fperiod_5fmax_2147',['updateRT_period_max',['../db/d69/class_app_base_class_a748bf9596070dfeaf278dcef44120890.html#a748bf9596070dfeaf278dcef44120890',1,'AppBaseClass']]],
+  ['updatert_5fpriority_2148',['updateRT_priority',['../db/d69/class_app_base_class_a761416a75d8cb476c2c08072c7cb7261.html#a761416a75d8cb476c2c08072c7cb7261',1,'AppBaseClass']]],
+  ['usingimage_2149',['usingImage',['../d0/da0/class_app_wren_ab674666602adb6b2a5322c89381851f9.html#ab674666602adb6b2a5322c89381851f9',1,'AppWren::usingImage()'],['../df/d17/class_control_button_aff296d00d45aade7bef65f8ffc113305.html#aff296d00d45aade7bef65f8ffc113305',1,'ControlButton::usingImage()']]]
 ];

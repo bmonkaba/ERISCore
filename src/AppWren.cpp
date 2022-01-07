@@ -237,7 +237,7 @@ void returnFocusCallback(WrenVM* vm){
   //(void)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->setWidgetDimension(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2));
+  app->returnFocus();
 }
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);
@@ -609,6 +609,13 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
               return;
             }else{ //execute the script
                 Serial.println(F("M AppWren::MessageHandler: Restarting the VM"));
+                if(!has_focus){ 
+                  //cycling the focus triggers the parent app to recover any system changes made by the VM
+                  getFocus(); 
+                  returnFocus();
+                }else{
+                  returnFocus();
+                }
                 restartVM();
                 Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
                 loadScript(message);
@@ -717,7 +724,7 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
                 }
             }
         }
-        set_arm_clock(600000000);
+        //set_arm_clock(600000000);
         wrenCollectGarbage(vm);
     };    //called only when the app is active
 

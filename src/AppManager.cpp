@@ -368,8 +368,13 @@ bool AppManager::releasePopUp(){
  * @return false 
  */
 bool AppManager::getFocus(uint16_t id){
-  if (appPopUpStackIndex == 8) return false;
+  if (appFocusStackIndex == 8) return false;
   appFocusStack[appFocusStackIndex++] = activeID;
+  if (pActiveApp!=NULL){
+    pActiveApp->onFocusLost();
+  }
+  pActiveApp = getApp(id);
+  pActiveApp->onFocus();
   activeID=id;
   return true;
 } 
@@ -381,7 +386,10 @@ bool AppManager::getFocus(uint16_t id){
  */
 bool AppManager::returnFocus(){
   if (appFocusStackIndex == 0) return false;
+  getApp(activeID)->onFocusLost();
   activeID = appFocusStack[--appFocusStackIndex];//load from the stack
+  pActiveApp = getApp(activeID);
+  if(pActiveApp!=NULL) pActiveApp->onFocus();
   appFocusStack[appFocusStackIndex] = 0;
   return true;
 } 
