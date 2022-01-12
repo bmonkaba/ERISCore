@@ -14,7 +14,7 @@ multiprocessing.set_start_method('spawn')
 
 import serialworker
 
-define("port", default=8080, help="run on the given port", type=int)
+define("port", default=8088, help="run on the given port", type=int)
  
 clients = [] 
 
@@ -64,7 +64,6 @@ def checkQueue():
 if __name__ == '__main__':
     print("Eris Audio System Test Tool Web Server")
     print("warning: this app is running an open access local static webserver and USB serial websocket")
-    print("http://localhost:8080")
     ###
     ## start the serial worker in background (as a deamon)
     sp = serialworker.SerialProcess('COM9',input_queue, output_queue)

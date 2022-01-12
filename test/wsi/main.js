@@ -55,7 +55,7 @@ $(document).ready(function () {
     var sidebar = $("#sidebar");
     var scroll = $("#scroll_me");
     var kbs = $("#kbs");
-    var socket = new WebSocket("ws://ryzen:8080/ws");
+    var socket = new WebSocket("ws://ryzen:8088/ws");
     var osi;
     var si = 0;
     var rx_bytes = 0;
