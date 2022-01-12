@@ -58,8 +58,8 @@ void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 30000);
-    analogWrite(backlight, 220);
+    analogWriteFrequency(backlight, 420);
+    analogWrite(backlight, 190);
 }
 
 void FLASHMEM ILI9341_t3_ERIS::begin(){
@@ -80,7 +80,7 @@ void FLASHMEM ILI9341_t3_ERIS::begin(){
     setTextColor(CL(174, 143, 255));
     setTextSize(1);
     setRotation(1);
-    println("Online...");      
+    println("Display Online...");      
     updateScreen();
     dmabusy=false;
 }

@@ -163,9 +163,10 @@ freadAN2
 freadAN3
 freadAN4
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
 requestSubSurfaceBufferP call:[F,print,println]
 getSurfaceBufferP
 getWidth
@@ -179,7 +180,6 @@ getPath
 ILI9341_t3_ERIS
 getFrameAddress call:[return]
 busy call:[_busy] noreturn:[_busy]
-connectionCount
 getId
 isName call:[sizeof,strncmp]
 setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
@@ -205,16 +205,25 @@ getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+connectionCount
+setSCI
 AppManager global:[UI_ANIMATED_WALLPAPER_PATH,UI_BUTTON_ACTIVE_BORDER_COLOR,UI_BUTTON_FILL_COLOR,UI_BUTTON_INACTIVE_BORDER_COLOR,UI_BUTTON_SHADE_COLOR,UI_BUTTON_TEXT_COLOR,UI_SLIDER_BORDER_COLOR,UI_SLIDER_FILL_COLOR,UI_SLIDER_SHADE_COLOR,UI_SLIDER_TEXT_COLOR,touch] call:[F,SdioConfig,Surface,begin,create,initErrorHalt,memset,println,setCalibrationInputs,setFrameBuffer,setPWMPin,setPath,setRotation,setSD,sizeof,tempmon_init,useFrameBuffer] noreturn:[initErrorHalt,println]
-update global:[AM_AN1,AM_AN2,AM_AN3,AM_AN4,AM_AUDIO_CPU,AM_AUDIO_CPU_MAX,AM_AUDIO_MEM,AM_AUDIO_MEM_MAX,AM_LOOP_TIME,AM_REDRAW_BG,AM_SERIAL_AVAIL,CPU_TEMP,FREE_MEM,HEAP_FREE,LOCAL_MEM,RENDER,RENDER_FRAME,RENDER_PERIOD,RT_CALLS,UPDATE_CALLS,touch] call:[AudioMemoryUsage,AudioMemoryUsageMax,AudioMemoryUsageMaxReset,AudioProcessorUsage,AudioProcessorUsageMax,AudioProcessorUsageMaxReset,F,availableForWrite,bltSDAnimationFullScreen,busy,freadAN1,freadAN2,freadAN3,freadAN4,free,getApp,getNextFrameChunk,getPoint,increment,isFrameComplete,malloc,memset,onAnalog1,onAnalog2,onAnalog3,onAnalog4,onFocus,onFocusLost,onTouch,onTouchDrag,onTouchRelease,println,read,readAN1,readAN2,readAN3,readAN4,tempmonGetTemp,touched,update,updateRT,updateScreenAsync,while] noreturn:[AudioMemoryUsageMaxReset,malloc,onAnalog4,onFocusLost,onTouchDrag,onTouchRelease,println,update,while]
+update global:[AM_AN1,AM_AN2,AM_AN3,AM_AN4,AM_AUDIO_CPU,AM_AUDIO_CPU_MAX,AM_AUDIO_MEM,AM_AUDIO_MEM_MAX,AM_LOOP_TIME,AM_REDRAW_BG,AM_SERIAL_AVAIL,CPU_TEMP,FREE_HEAP,FREE_LOCAL,FREE_MEM,FREE_STACK,RENDER,RENDER_FRAME,RENDER_PERIOD,RT_CALLS,UPDATE_CALLS,touch] call:[AudioMemoryUsage,AudioMemoryUsageMax,AudioMemoryUsageMaxReset,AudioProcessorUsage,AudioProcessorUsageMax,AudioProcessorUsageMaxReset,F,FreeStack,availableForWrite,bltSDAnimationFullScreen,busy,freadAN1,freadAN2,freadAN3,freadAN4,free,getApp,getNextFrameChunk,getPoint,increment,isFrameComplete,malloc,memset,onAnalog1,onAnalog2,onAnalog3,onAnalog4,onFocus,onFocusLost,onTouch,onTouchDrag,onTouchRelease,println,read,readAN1,readAN2,readAN3,readAN4,tempmonGetTemp,touched,update,updateRT,updateScreenAsync,while] noreturn:[AudioMemoryUsageMaxReset,malloc,onAnalog4,onFocusLost,onTouchDrag,onTouchRelease,println,update,while]
 getSD
 getApp call:[while]
 requestPopUp
 releasePopUp
-getFocus
-returnFocus
+getFocus call:[getApp,onFocus,onFocusLost] noreturn:[onFocusLost]
+returnFocus call:[getApp,onFocus,onFocusLost] noreturn:[onFocus]
 peekAppFocus
 getActiveApp
 sendMessage call:[MessageHandler,isName,while]
-printStats call:[F,print,println,while] noreturn:[print]
-RegisterApp
+getAppByName call:[isName,while]
+printStats call:[F,endLZ4Message,getAppByName,print,println,startLZ4Message,while] noreturn:[print]
+RegisterApp global:[_ad,sci]

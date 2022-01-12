@@ -163,9 +163,10 @@ freadAN2
 freadAN3
 freadAN4
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
 requestSubSurfaceBufferP call:[F,print,println]
 getSurfaceBufferP
 getWidth
@@ -179,7 +180,6 @@ getPath
 ILI9341_t3_ERIS
 getFrameAddress call:[return]
 busy call:[_busy] noreturn:[_busy]
-connectionCount
 getId
 isName call:[sizeof,strncmp]
 setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
@@ -205,6 +205,14 @@ getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+connectionCount
+setSCI
 AppTemplate
 MessageHandler call:[isName]
 update
@@ -212,7 +220,12 @@ updateRT
 onFocus
 onFocusLost
 onTouch
+onTouchDrag
 onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
 ControlButton call:[setParent,strcpy] noreturn:[strcpy]
 setText call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
 setImage call:[delete,setFile,setPath] noreturn:[delete]
@@ -240,39 +253,61 @@ onTouch call:[releasePopUp,requestPopUp] noreturn:[releasePopUp,requestPopUp]
 onTouchRelease
 AppCQT call:[init] noreturn:[init]
 init global:[FFT_AGE_THRESHOLD,OCTAVE_DOWN_INTERVAL] call:[AudioInterrupts,AudioNoInterrupts,begin,create,enableFFT,getAudioStreamObjByName,memset,sizeof,sprintf,toggleActiveRange] noreturn:[AudioInterrupts,begin]
-update call:[CL,F,availableForWrite,drawLine,drawRoundRect,fillRoundRect,log1p,print,printf,println,setCursor,setFont,setTextColor,sizeof,sort_fftrr_by_cqt_bin] noreturn:[fillRoundRect,print,printf,println,setTextColor]
-updateRT global:[CQT_UPDATE_COUNT] call:[AudioInterrupts,AudioNoInterrupts,analyze,capture,increment,updateOscillatorBank] noreturn:[increment]
+update call:[CL,F,availableForWrite,drawLine,drawRoundRect,endLZ4Message,fillRoundRect,log1p,print,printf,println,setCursor,setFont,setTextColor,sizeof,sort_fftrr_by_cqt_bin,startLZ4Message] noreturn:[endLZ4Message,fillRoundRect,print,printf,println,setTextColor]
+updateRT global:[CQT_UPDATE_COUNT] call:[analyze,capture,increment,updateOscillatorBank] noreturn:[increment]
 onFocus call:[F,enableFFT,println] noreturn:[println]
 onFocusLost call:[F,enableFFT,println] noreturn:[println]
 onTouch call:[releasePopUp,requestPopUp] noreturn:[releasePopUp,requestPopUp]
 onTouchRelease
-updateOscillatorBank global:[OCTAVE_DOWN_INTERVAL] call:[AudioInterrupts,AudioNoInterrupts,amplitude,frequency,getPhase,isnan,phase,read,sort_fftrr_by_cqt_bin,sort_fftrr_by_value] noreturn:[phase,read,sort_fftrr_by_cqt_bin,sort_fftrr_by_value]
-MessageHandler global:[CQT_INFO,DISABLE,ENABLE] call:[F,isName,onFocus,onFocusLost,print,printf,println,sort_fftrr_by_cqt_bin,strcmp] noreturn:[onFocus,onFocusLost,printf]
-AppAudioToPolyphonic call:[initMyAppExample] noreturn:[initMyAppExample]
-initMyAppExample global:[APPNAME] call:[ControlButton,ControlSlider,F,amplitude,create,damping,delay,gain,getAudioStreamObjByName,micros,println,readf,roomsize,setDimension,setImage,setLowpass,setName,setNotch,setParent,setPosition,setText,setValue,setWidgetDimension,setWidgetPosition,sizeof,sprintf]
+updateOscillatorBank global:[OCTAVE_DOWN_INTERVAL] call:[AudioInterrupts,AudioNoInterrupts,amplitude,frequency,getPhase,isnan,phase,read,sort_fftrr_by_cqt_bin,sort_fftrr_by_value,sqrt] noreturn:[phase,read,sort_fftrr_by_cqt_bin,sort_fftrr_by_value]
+MessageHandler global:[CQT_INFO,DISABLE,ENABLE] call:[F,endLZ4Message,isName,onFocus,onFocusLost,print,printf,println,sort_fftrr_by_cqt_bin,startLZ4Message,strcmp] noreturn:[endLZ4Message,onFocus,onFocusLost]
+AppAudioToPolyphonic call:[initalize] noreturn:[initalize]
+initalize global:[APPNAME] call:[ControlButton,ControlSlider,F,amplitude,create,damping,delay,gain,getAudioStreamObjByName,micros,println,readf,roomsize,setDimension,setImage,setLowpass,setName,setNotch,setParent,setPosition,setText,setValue,setWidgetDimension,setWidgetPosition,sizeof,sprintf]
 update global:[INPUT_PEAK,REVERB_DAMPING,REVERB_ROOM_SIZE] call:[damping,gain,getAudioStreamObjByName,read,readf,roomsize,setValue] noreturn:[gain,setValue]
 onTouch
 onTouchRelease
 onTouchDrag
 MessageHandler call:[AudioInterrupts,AudioNoInterrupts,amplitude,atoi,changeVoice,connect,disconnect,frequency,getAudioStreamObjByName,isName] noreturn:[AudioInterrupts,amplitude,changeVoice]
 onFocus call:[makeAudioConnections,sendMessage] noreturn:[sendMessage]
-onAnalog1 call:[AudioInterrupts,AudioNoInterrupts,gain,getAudioStreamObjByName,log1p] noreturn:[AudioInterrupts]
-onAnalog2 call:[AudioInterrupts,AudioNoInterrupts,getAudioStreamObjByName,setLowpass] noreturn:[AudioInterrupts]
-onAnalog3 call:[AudioInterrupts,AudioNoInterrupts,gain,getAudioStreamObjByName,log1p,setHighpass,setLowpass] noreturn:[AudioInterrupts]
-onAnalog4 call:[AudioInterrupts,AudioNoInterrupts,gain,getAudioStreamObjByName,log1p] noreturn:[AudioInterrupts]
+onAnalog1 call:[gain,getAudioStreamObjByName,log1p] noreturn:[gain]
+onAnalog2 call:[getAudioStreamObjByName,setLowpass] noreturn:[setLowpass]
+onAnalog3 call:[gain,getAudioStreamObjByName,log1p,setHighpass,setLowpass] noreturn:[gain]
+onAnalog4 call:[gain,getAudioStreamObjByName,log1p] noreturn:[gain]
 makeAudioConnections call:[AudioInterrupts,AudioNoInterrupts,connect,delay,disconnectAll] noreturn:[delay]
-changeVoice call:[AudioInterrupts,AudioNoInterrupts,begin,getAudioStreamObjByName,sprintf] noreturn:[AudioInterrupts]
+changeVoice call:[begin,getAudioStreamObjByName,sprintf] noreturn:[begin]
+AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
+AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
+loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
+rebootRequest call:[printf,sizeof,strncpy] noreturn:[strncpy]
+setParent call:[setParent] noreturn:[setParent]
+getFocus call:[getFocus] noreturn:[getFocus]
+returnFocus call:[returnFocus] noreturn:[returnFocus]
+requestPopUp call:[requestPopUp] noreturn:[requestPopUp]
+releasePopUp call:[releasePopUp] noreturn:[releasePopUp]
+getDraw
+getAudioDirector
+setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel]
+getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
+drawLine call:[CL,drawLine,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawLine,drawPixel,drawSurfaceLine]
+drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
+restartVM call:[releasePopUp,releaseWrenHandles,startVM,wrenFreeVM] noreturn:[startVM]
+isWrenResultOK call:[printf]
+updateRT call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onFocus call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onFocusLost call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onTouch call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onTouchDrag call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onTouchRelease call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog1 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog2 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog3 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog4 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
 AppReprogram call:[pinMode,sprintf] noreturn:[pinMode]
 updateRT call:[asm,delay,digitalRead,println]
-AppSerialCommandInterface call:[getInstance,getSD,memset,strcpy] noreturn:[memset]
-update
-write call:[txOverflowHandler]
-flush call:[availableForWrite,delay,memset,print,strlen] noreturn:[delay,print]
-empty call:[memset]
 I2CReset call:[begin,delay,delayMicroseconds,digitalWrite,pinMode] noreturn:[begin,delayMicroseconds]
 ExtADCReadReg call:[beginTransmission,endTransmission,read,requestFrom,write] noreturn:[read]
 ExtADCPrintStatus call:[ExtADCReadReg,F,print,println] noreturn:[print,println]
 ExtADCConfig call:[beginTransmission,delay,endTransmission,requestFrom,write] noreturn:[endTransmission]
 I2CBusScan call:[F,beginTransmission,endTransmission,print,println] noreturn:[print,println]
-setup global:[appPoly] call:[ExtADCConfig,ExtADCPrintStatus,F,I2CReset,asm,begin,delay,digitalRead,getFocus,pinMode,print,println] noreturn:[print]
+setup global:[_ad,appPoly,appWren,sci] call:[AppWren,CCM_CBCMR_FLEXSPI2_CLK_SEL,CCM_CBCMR_FLEXSPI2_PODF,CCM_CCGR7_FLEXSPI2,ExtADCConfig,ExtADCPrintStatus,F,I2CReset,asm,begin,delay,digitalRead,getFocus,millis,pinMode,print,println,setParent,setSCI] noreturn:[print,println]
 loop call:[getInstance,update] noreturn:[update]

@@ -118,6 +118,10 @@ class Surface {
 
     Surface(int16_t width, int16_t height){
         //allocate and attach a buffer as the surface buffer
+        pSB = NULL;
+        w = width;
+        h = height;
+        head = 0;
         uint16_t *buffer;
         buffer = (uint16_t*)malloc(width*height*sizeof(uint16_t));
         Surface(buffer,width,height);
@@ -219,8 +223,8 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 74000000;
-            tft_read_speed = 20000000;
+            tft_write_speed = 72000000;
+            tft_read_speed = 25000000;
             pSD = NULL;
             backlight = 0;
             pFB = NULL;    

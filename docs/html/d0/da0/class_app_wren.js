@@ -24,6 +24,7 @@ var class_app_wren =
     [ "onTouch", "d0/da0/class_app_wren_a99464400376dff63908bd4157b710363.html#a99464400376dff63908bd4157b710363", null ],
     [ "onTouchDrag", "d0/da0/class_app_wren_ab87659bde90d678b995ff8c7f1ee042f.html#ab87659bde90d678b995ff8c7f1ee042f", null ],
     [ "onTouchRelease", "d0/da0/class_app_wren_ae86344b2db061b7b70bd914cd1790067.html#ae86344b2db061b7b70bd914cd1790067", null ],
+    [ "rebootRequest", "d0/da0/class_app_wren_a81c8cc0aa95f7cb269b865c8f9621229.html#a81c8cc0aa95f7cb269b865c8f9621229", null ],
     [ "releasePopUp", "d0/da0/class_app_wren_ab7a97ed3ad7b7b7ccd2a629448679e20.html#ab7a97ed3ad7b7b7ccd2a629448679e20", null ],
     [ "releaseWrenHandles", "d0/da0/class_app_wren_ab6016f4a08eee6f678b3e389f35a2fbd.html#ab6016f4a08eee6f678b3e389f35a2fbd", null ],
     [ "requestPopUp", "d0/da0/class_app_wren_a8a02cff13a6da29a75d2070218902c26.html#a8a02cff13a6da29a75d2070218902c26", null ],
@@ -39,7 +40,7 @@ var class_app_wren =
     [ "startVM", "d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc", null ],
     [ "update", "d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83", null ],
     [ "updateRT", "d0/da0/class_app_wren_ab54563e10b08b5a6b03fad6d5c801c0b.html#ab54563e10b08b5a6b03fad6d5c801c0b", null ],
-    [ "vmConstructor", "d0/da0/class_app_wren_ab96749e0e63c43368cc7121477d472a4.html#ab96749e0e63c43368cc7121477d472a4", null ],
+    [ "vmConstructor", "d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3", null ],
     [ "compileOnly", "d0/da0/class_app_wren_aff31d063b4d0e691eb3323305d606dd0.html#aff31d063b4d0e691eb3323305d606dd0", null ],
     [ "h_messageHandler", "d0/da0/class_app_wren_a6c4ecc22fad94da5c709b603f36eeb2f.html#a6c4ecc22fad94da5c709b603f36eeb2f", null ],
     [ "h_onAnalog1", "d0/da0/class_app_wren_aa826203bc90d2ed51c35dcee9223c49c.html#aa826203bc90d2ed51c35dcee9223c49c", null ],
@@ -59,12 +60,13 @@ var class_app_wren =
     [ "imgloaded", "d0/da0/class_app_wren_aca966dab9cc480e5d156520b394fa9a7.html#aca966dab9cc480e5d156520b394fa9a7", null ],
     [ "isPressed", "d0/da0/class_app_wren_a3d218d61716a624a217882a663a93394.html#a3d218d61716a624a217882a663a93394", null ],
     [ "module_load_buffer", "d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97", null ],
+    [ "reboot_request", "d0/da0/class_app_wren_a783c0f6ff7c9bd61b9104f177682605a.html#a783c0f6ff7c9bd61b9104f177682605a", null ],
     [ "save_module", "d0/da0/class_app_wren_a83ceeb770c9d48b6ca13f11463ff38ff.html#a83ceeb770c9d48b6ca13f11463ff38ff", null ],
-    [ "save_module_as", "d0/da0/class_app_wren_a1d026f23e1a35bdecdbfc7dfadb7887c.html#a1d026f23e1a35bdecdbfc7dfadb7887c", null ],
     [ "show_active", "d0/da0/class_app_wren_a7248caa425e819d404a177099ded2c69.html#a7248caa425e819d404a177099ded2c69", null ],
     [ "surface_cache", "d0/da0/class_app_wren_a2bc17d4ff786d900a1d08631aafc85d3.html#a2bc17d4ff786d900a1d08631aafc85d3", null ],
     [ "surface_mempool", "d0/da0/class_app_wren_abeb1ea5c2fd1499884be0131bf7ea617.html#abeb1ea5c2fd1499884be0131bf7ea617", null ],
     [ "time_active", "d0/da0/class_app_wren_aa6b73fd2c6c1ec291782bc3c28529ef3.html#aa6b73fd2c6c1ec291782bc3c28529ef3", null ],
     [ "usingImage", "d0/da0/class_app_wren_ab674666602adb6b2a5322c89381851f9.html#ab674666602adb6b2a5322c89381851f9", null ],
-    [ "vm", "d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec", null ]
+    [ "vm", "d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec", null ],
+    [ "wren_module_name", "d0/da0/class_app_wren_a177719148ea60e521d0e8608fafdaed3.html#a177719148ea60e521d0e8608fafdaed3", null ]
 ];

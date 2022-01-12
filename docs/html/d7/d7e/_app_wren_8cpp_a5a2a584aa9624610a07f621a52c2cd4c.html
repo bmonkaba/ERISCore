@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a5a2a584aa962461
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<p><a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren....">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vm</td><td></td></tr>
@@ -107,15 +107,15 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a5a2a584aa962461
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00144">144</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                    {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">//callback params can be found in the slots</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">//return value goes into slot 0</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  AppManager* am = AppManager::getInstance();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  wrenSetSlotBool(vm, 0, am-&gt;sendMessage(am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>),wrenGetSlotString(vm, 1),wrenGetSlotString(vm, 2)));</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00151">151</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                    {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//callback params can be found in the slots</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">//return value goes into slot 0</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  wrenSetSlotBool(vm, 0, am-&gt;sendMessage(am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>),wrenGetSlotString(vm, 1),wrenGetSlotString(vm, 2)));</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00450">bindForeignMethod()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00487">bindForeignMethod()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

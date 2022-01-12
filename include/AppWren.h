@@ -14,26 +14,29 @@
 #include "wren.hpp"
 #include "globaldefs.h"
 /**
- * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.
- * 
- * The use case is to allow scripting of apps
- * Why? with this, applications can be dynamically loaded and executed
- * Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card
- * which gives effectivly limitless program storage space.
- * Beware: The available heap defines the upper boundary of VM size
- * 
- * From https://wren.io/:
- * "Wren is a small, fast, class-based concurrent scripting language. 
- * Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax. 
- * Wren is small. The VM implementation is under 4,000 semicolons"
+ * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.\n 
+ * \n  
+ * The use case is to allow scripting of apps\n 
+ * Why? with this, applications can be dynamically loaded and executed\n 
+ * Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card\n 
+ * which gives effectivly limitless program storage space.\n 
+ * Beware: The available heap defines the upper boundary of VM size\n 
+ * \n 
+ * From https://wren.io/:\n 
+ * "Wren is a small, fast, class-based concurrent scripting language. \n 
+ * Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax.\n 
+ * Wren is small. The VM implementation is under 4,000 semicolons"\n 
  */
-
-
 
 class AppWren:public AppBaseClass {
   public:
     AppWren():AppBaseClass(){
         strcpy(name,"AppWren");
+        strcpy(img_filename,"");
+        strcpy(img_path,"");
+        strcpy(wren_module_name,"");
+        surface_mempool = NULL;
+        imgloaded = false;
         h_slot0 = 0;
         vm = 0;
         h_update = 0;
@@ -50,13 +53,14 @@ class AppWren:public AppBaseClass {
         h_messageHandler = 0;
         compileOnly = false;
         save_module = false;
+        reboot_request = false;
         isPressed = false;
         show_active = false;
         usingImage = true;
         time_active = 0;
         surface_cache = NULL;
         module_load_buffer = NULL;
-        vmConstructor();
+        vmConstructor(&g_wrenScript[0]);
         widget_width = 64;
         widget_height = 64;
         widget_origin_x = 320 - 64 - 5;
@@ -68,36 +72,153 @@ class AppWren:public AppBaseClass {
         wrenFreeVM(vm);
     };
 
-    void vmConstructor();
+    /**
+     * @brief start, load and configure the handles of the VM
+     * 
+     */
+    void vmConstructor(const char* initial_script);
 
+    /**
+     * @brief load a script into the running VM
+     * 
+     * @param script 
+     */
     void loadScript(const char* script){
         const char* module = "main";
-        Serial.println(F("M AppWren: Loading script into the VM"));
-        isWrenResultOK(wrenInterpret(vm, module, script));
+        Serial.printf("M AppWren:loadScript: Loading script (size: %d bytes)\n",strlen(script));
+        if (isWrenResultOK(wrenInterpret(vm, module, script))){
+            Serial.println(F("M AppWren::loadScript: OK"));
+            getWrenHandles();
+            wrenEnsureSlots(vm, 1);
+            wrenSetSlotHandle(vm, 0, h_slot0);//App
+        }
     }
 
+     /**
+     * @brief c callback support to allow wren scripts to request a VM reboot & script load\n
+     * 
+     * @param script_name 
+     */
+    void rebootRequest(char* script_name){
+        //the actual reboot load request will be completed in the AppWren::update loop.
+        Serial.printf("M AppWren:rebootRequest: %s\n",script_name);
+        reboot_request = true;
+        strncpy(wren_module_name,script_name,sizeof(wren_module_name));
+    }
+
+    /**
+     * @brief handles messages from other sw components
+     * 
+     * @param sender 
+     * @param message 
+     */
     void MessageHandler(AppBaseClass *sender, const char *message);
 
     //in the AppBase class these are protected methods.. we need to expose them here publicly to set up the Wren callbacks.
     //void _updatePosition(){AppBaseClass::_updatePosition();}
+
+    /**
+     * @brief Set the Parent object
+     * 
+     * @param parent 
+     */
     void setParent(AppBaseClass *parent){AppBaseClass::setParent(parent);}
+    
+    /**
+     * @brief Set the Position object/n
+     * receiver for the wren c callback function setPositionCallback
+     * 
+     * @param newOriginX 
+     * @param newOriginY 
+     */
     void setPosition(int16_t newOriginX, int16_t newOriginY);
+    
+    /**
+     * @brief Set the Dimension object\n
+     * receiver for the wren c callback function setDimensionCallback
+     * @param new_width 
+     * @param new_height 
+     */
     void setDimension(int16_t new_width, int16_t new_height);
+    
+    /**
+     * @brief Set the Widget Position object\n
+     * receiver for the wren c callback function setWidgetPositionCallback
+     * @param newOriginX 
+     * @param newOriginY 
+     */
     void setWidgetPosition(int16_t newOriginX, int16_t newOriginY);
+    
+    /**
+     * @brief Set the Widget Dimension object\n
+     * receiver for the wren c callback function setWidgetDimensionCallback
+     * @param new_width 
+     * @param new_height 
+     */
     void setWidgetDimension(int16_t new_width, int16_t new_height);
+    
+    /**
+     * @brief Get the Focus object
+     * 
+     */
     void getFocus(){AppBaseClass::getFocus();}
+    
+    /**
+     * @brief 
+     * 
+     */
     void returnFocus(){AppBaseClass::returnFocus();}
+    
+    /**
+     * @brief 
+     * 
+     * @param exclusive 
+     */
     void requestPopUp(bool exclusive=false){AppBaseClass::requestPopUp(exclusive);}
+    
+    /**
+     * @brief 
+     * 
+     */
     void releasePopUp(){AppBaseClass::releasePopUp();}
+    
+    /**
+     * @brief 
+     * 
+     * @param level 
+     */
     void setRTPriority(uint16_t level);
 
-    //interface for requesting a module be loaded
+    /**
+     * @brief receiver for the wren c callback function getSourceForModule
+     * 
+     * @param name 
+     * @return const char* 
+     */
     const char* loadModuleSource(const char * name);
+
+    /**
+     * @brief receiver for the wren c callback function loadModuleComplete indicating it's now ok to release the module_load_buffer
+     * 
+     */
     void freeModuleSource();
-    //provide an interface for wren callbacks to request the draw object
+
+    /**
+     * @brief Get the Draw object
+     * 
+     * @return ILI9341_t3_ERIS* 
+     */
     ILI9341_t3_ERIS* getDraw(){return draw;}
+
+    /**
+     * @brief Get the Audio Director object
+     * 
+     * @return AudioDirector* 
+     */
     AudioDirector* getAudioDirector(){return ad;} 
-    //and now we go a step further by integrating draw and data object methods directly into the AppWren class
+    
+
+    
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
         if (draw){
             if (has_pop){
@@ -201,8 +322,19 @@ class AppWren:public AppBaseClass {
     }
 
     void startVM();
+    
+    /**
+     * @brief release any/all Wren embedded call handles
+     * 
+     */
     void releaseWrenHandles();
+
+    /**
+     * @brief VM post module load support function creates/updates the Wren embedded call handles
+     * 
+     */
     void getWrenHandles();
+    
     bool isWrenResultOK(WrenInterpretResult res){
         switch (res){
             case WREN_RESULT_COMPILE_ERROR:
@@ -218,6 +350,12 @@ class AppWren:public AppBaseClass {
         } 
     }
 
+    /**
+     * @brief responsible for managing the surface buffer memory allocation
+     * 
+     * @return true 
+     * @return false 
+     */
     bool dynamicSurfaceManager();
 
     void update() override;//called only when the app is active
@@ -348,9 +486,10 @@ class AppWren:public AppBaseClass {
  protected:
     bool compileOnly;
     bool save_module;
+    bool reboot_request;
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
-    char save_module_as[MAX_TEXT_LENGTH];
+    char wren_module_name[MAX_TEXT_LENGTH];
     char* module_load_buffer;
     Surface* surface_cache;
     uint16_t* surface_mempool;

@@ -1,7 +1,8 @@
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
 requestSubSurfaceBufferP call:[F,print,println]
 getSurfaceBufferP
 getWidth
@@ -167,7 +168,18 @@ erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
 erisAudioAnalyzePrint
 update call:[update] noreturn:[update]
-connectionCount
+Touch
+setCalibrationInputs
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
 getId
 isName call:[sizeof,strncmp]
 setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
@@ -188,24 +200,20 @@ onAnalog2
 onAnalog3
 onAnalog4
 MessageHandler
-Touch
-setCalibrationInputs
-AnalogInputs call:[analogReadAveraging,analogReadResolution]
-update call:[abs,analogRead]
-readAN1 call:[return]
-readAN2 call:[return]
-readAN3 call:[return]
-readAN4 call:[return]
-freadAN1
-freadAN2
-freadAN3
-freadAN4
 SvcDataDictionary
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
-AppBaseClass global:[_ad] call:[selfRegister,strcpy] noreturn:[selfRegister]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+connectionCount
+setSCI
+AppBaseClass call:[selfRegister,strcpy] noreturn:[selfRegister]
 selfRegister call:[RegisterApp,getInstance] noreturn:[RegisterApp]
 _updatePosition
 getFocus call:[_updatePosition,getFocus,getInstance]

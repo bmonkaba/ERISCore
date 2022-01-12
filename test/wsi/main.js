@@ -624,9 +624,9 @@ $(document).ready(function () {
                 } catch (e) {
                     //do nothing - bad data?
                 }
-                if (Math.random() > 0.01) {
+                if (Math.random() > 0.05) {
                     //don"t need to redraw every time data is received" 
-                    renderAudioBlocks();
+                    if (!$("#flow_container").is(":hidden")) renderAudioBlocks();
                 }
                 renderMonitor();
                 break;

@@ -1,23 +1,50 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="869379570">
+<analyzerinfo checksum="1858448807">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="57" column="9"/>
+            <symbol>sincePoll</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="58" column="9"/>
+            <symbol>sincePeriodicDataDict</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="59" column="9"/>
+            <symbol>sincePeriodicStats</symbol>
+        </error>
         <error id="noOperatorEq" severity="warning" msg="Class &apos;AudioDirector&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;AudioDirector&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398" file0="src/AudioDirector.cpp">
-            <location file="src\AudioDirector.cpp" line="28" column="3"/>
+            <location file="src\AudioDirector.cpp" line="30" column="3"/>
             <symbol>AudioDirector</symbol>
         </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
+            <symbol>Touch</symbol>
+        </error>
         <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;connectionIndex&lt;activeConnections&apos; is always true" verbose="Condition &apos;connectionIndex&lt;activeConnections&apos; is always true" cwe="571" file0="src/AudioDirector.cpp">
-            <location file="src\AudioDirector.cpp" line="252" column="29" info="Condition &apos;connectionIndex&lt;activeConnections&apos; is always true"/>
-            <location file="src\AudioDirector.cpp" line="237" column="23" info="Assuming that condition &apos;connectionIndex&gt;=activeConnections&apos; is not redundant"/>
+            <location file="src\AudioDirector.cpp" line="256" column="29" info="Condition &apos;connectionIndex&lt;activeConnections&apos; is always true"/>
+            <location file="src\AudioDirector.cpp" line="241" column="23" info="Assuming that condition &apos;connectionIndex&gt;=activeConnections&apos; is not redundant"/>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;count&apos; can be reduced." verbose="The scope of the variable &apos;count&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/AudioDirector.cpp">
-            <location file="src\AudioDirector.cpp" line="92" column="11"/>
+            <location file="src\AudioDirector.cpp" line="91" column="11"/>
             <symbol>count</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;found&apos; can be reduced." verbose="The scope of the variable &apos;found&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/AudioDirector.cpp">
-            <location file="src\AudioDirector.cpp" line="191" column="8"/>
+            <location file="src\AudioDirector.cpp" line="195" column="8"/>
             <symbol>found</symbol>
         </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="13" info="Shadowed declaration"/>
+            <symbol>h</symbol>
+        </error>
+        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/AudioDirector.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="127" column="9"/>
+            <symbol>Surface</symbol>
+        </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="354" col="21" call-argexpr="&amp;p" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="354" col="21" call-argexpr="p" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:10" call-funcname="ParseConnectString" call-argnr="1" file="src/AudioDirector.cpp" line="354" col="3" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:38:10" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:68:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="358" col="21" call-argexpr="&amp;p" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:68:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="358" col="21" call-argexpr="p" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:68:10" call-funcname="ParseConnectString" call-argnr="1" file="src/AudioDirector.cpp" line="358" col="3" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:39:10" my-argnr="1"/>
   </FileInfo>
   <FileInfo check="Class">
 <class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
@@ -96,31 +123,51 @@
 <class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
 <class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
 <class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
-<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="20" col="9" hash="16558433732527854572"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="5429400104627854940"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="2911627910700264153"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="21" col="9" hash="5139491191325099632"/>
   </FileInfo>
   <FileInfo check="Null pointer">
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:46:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="209" col="17" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="320" col="13" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:47:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="213" col="17" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:68:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="324" col="13" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:46:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="209" col="17" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="320" col="13" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:71:5" my-argnr="1" my-argname="SubSurfaceFrom" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="72" col="28" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:87:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="89" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:103:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="105" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="178" col="22" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:47:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="213" col="17" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:68:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="324" col="13" value="0"/>
   </FileInfo>
   <FileInfo check="CheckUnusedFunctions">
-    <functiondecl functionName="addAudioStreamObj" lineNumber="91"/>
-    <functiondecl functionName="printStats" lineNumber="119"/>
-    <functiondecl functionName="generateCategoryList" lineNumber="189"/>
-    <functiondecl functionName="getAudioStreamObjByName" lineNumber="205"/>
-    <functiondecl functionName="getAudioStreamString" lineNumber="224"/>
-    <functiondecl functionName="getConnectionString" lineNumber="233"/>
-    <functiondecl functionName="connect" lineNumber="260"/>
-    <functiondecl functionName="connect" lineNumber="308"/>
-    <functiondecl functionName="ParseConnectString" lineNumber="312"/>
-    <functiondecl functionName="connect" lineNumber="352"/>
-    <functiondecl functionName="disconnect" lineNumber="359"/>
+    <functiondecl functionName="addAudioStreamObj" lineNumber="90"/>
+    <functiondecl functionName="printStats" lineNumber="118"/>
+    <functiondecl functionName="generateCategoryList" lineNumber="193"/>
+    <functiondecl functionName="getAudioStreamObjByName" lineNumber="209"/>
+    <functiondecl functionName="getAudioStreamString" lineNumber="228"/>
+    <functiondecl functionName="getConnectionString" lineNumber="237"/>
+    <functiondecl functionName="connect" lineNumber="264"/>
+    <functiondecl functionName="connect" lineNumber="312"/>
+    <functiondecl functionName="ParseConnectString" lineNumber="316"/>
+    <functiondecl functionName="connect" lineNumber="356"/>
     <functiondecl functionName="disconnect" lineNumber="363"/>
-    <functiondecl functionName="disconnect" lineNumber="388"/>
-    <functiondecl functionName="disconnectAll" lineNumber="392"/>
+    <functiondecl functionName="disconnect" lineNumber="367"/>
+    <functiondecl functionName="disconnect" lineNumber="392"/>
+    <functiondecl functionName="disconnectAll" lineNumber="396"/>
+    <functioncall functionName="AT_HATCHBLK"/>
+    <functioncall functionName="AT_HATCHXOR"/>
+    <functioncall functionName="AT_NONE"/>
+    <functioncall functionName="AT_TRANS"/>
+    <functioncall functionName="AppBaseClass"/>
+    <functioncall functionName="AppManager"/>
     <functioncall functionName="AsyncAudioInputSPDIF3"/>
     <functioncall functionName="AudioAmplifier"/>
     <functioncall functionName="AudioAnalyzeFFT1024"/>
@@ -202,20 +249,60 @@
     <functioncall functionName="AudioSynthWaveformSineHires"/>
     <functioncall functionName="AudioSynthWaveformSineModulated"/>
     <functioncall functionName="AudioSynthWavetable"/>
+    <functioncall functionName="DDDT_EMPTY"/>
+    <functioncall functionName="DDDT_FLOAT16"/>
+    <functioncall functionName="DDDT_FLOAT32"/>
+    <functioncall functionName="DDDT_INT16"/>
+    <functioncall functionName="DDDT_INT32"/>
+    <functioncall functionName="DDDT_PFLOAT16"/>
+    <functioncall functionName="DDDT_PFLOAT32"/>
+    <functioncall functionName="DDDT_PINT16"/>
+    <functioncall functionName="DDDT_PINT32"/>
+    <functioncall functionName="DDDT_PUINT132"/>
+    <functioncall functionName="DDDT_PUINT16"/>
+    <functioncall functionName="DDDT_UINT132"/>
+    <functioncall functionName="DDDT_UINT16"/>
+    <functioncall functionName="DDRT_EMPTY"/>
+    <functioncall functionName="DDRT_POINTER"/>
+    <functioncall functionName="DDRT_READ"/>
+    <functioncall functionName="DDRT_READWRITE"/>
     <functioncall functionName="F"/>
+    <functioncall functionName="ILI9341_t3n"/>
     <functioncall functionName="NULL"/>
+    <functioncall functionName="O_READ"/>
     <functioncall functionName="ParseConnectString"/>
+    <functioncall functionName="Surface"/>
+    <functioncall functionName="Touch"/>
+    <functioncall functionName="XPT2046_Touchscreen"/>
+    <functioncall functionName="_busy"/>
+    <functioncall functionName="_path"/>
+    <functioncall functionName="_pfbtft"/>
+    <functioncall functionName="_updatePosition"/>
+    <functioncall functionName="abs"/>
     <functioncall functionName="activeConnections"/>
     <functioncall functionName="addAudioStreamObj"/>
+    <functioncall functionName="alloc_size"/>
+    <functioncall functionName="analogRead"/>
+    <functioncall functionName="analogReadAveraging"/>
+    <functioncall functionName="analogReadResolution"/>
     <functioncall functionName="atoi"/>
+    <functioncall functionName="atol"/>
+    <functioncall functionName="available"/>
     <functioncall functionName="buffer"/>
+    <functioncall functionName="c"/>
     <functioncall functionName="category"/>
     <functioncall functionName="categoryCount"/>
     <functioncall functionName="char"/>
+    <functioncall functionName="chdir"/>
+    <functioncall functionName="close"/>
     <functioncall functionName="connect"/>
     <functioncall functionName="connectionString"/>
     <functioncall functionName="connectionStringBuffer"/>
     <functioncall functionName="count"/>
+    <functioncall functionName="cs"/>
+    <functioncall functionName="cspin"/>
+    <functioncall functionName="dc"/>
+    <functioncall functionName="delay"/>
     <functioncall functionName="delete"/>
     <functioncall functionName="dest_index"/>
     <functioncall functionName="destination"/>
@@ -223,36 +310,82 @@
     <functioncall functionName="disconnect"/>
     <functioncall functionName="dst"/>
     <functioncall functionName="dst_port"/>
+    <functioncall functionName="empty"/>
+    <functioncall functionName="endLZ4Message"/>
     <functioncall functionName="erisAudioInputI2S"/>
+    <functioncall functionName="extmem_malloc"/>
     <functioncall functionName="false"/>
+    <functioncall functionName="fgets"/>
+    <functioncall functionName="fileName"/>
+    <functioncall functionName="filename"/>
     <functioncall functionName="for"/>
     <functioncall functionName="from"/>
     <functioncall functionName="from_port"/>
     <functioncall functionName="generateCategoryList"/>
     <functioncall functionName="getAudioStreamObjByName"/>
+    <functioncall functionName="getInstance"/>
+    <functioncall functionName="getSD"/>
+    <functioncall functionName="guid"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="hash"/>
+    <functioncall functionName="head"/>
     <functioncall functionName="heapEnd"/>
     <functioncall functionName="heapStart"/>
+    <functioncall functionName="height"/>
     <functioncall functionName="i"/>
     <functioncall functionName="if"/>
     <functioncall functionName="instance"/>
     <functioncall functionName="isConnected"/>
     <functioncall functionName="j"/>
+    <functioncall functionName="lastTrigger"/>
+    <functioncall functionName="length"/>
+    <functioncall functionName="ls"/>
+    <functioncall functionName="malloc"/>
     <functioncall functionName="memset"/>
+    <functioncall functionName="miso"/>
+    <functioncall functionName="mosi"/>
+    <functioncall functionName="multiPartHeader"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="name_string"/>
+    <functioncall functionName="newOriginX"/>
+    <functioncall functionName="newOriginY"/>
+    <functioncall functionName="new_height"/>
+    <functioncall functionName="new_width"/>
     <functioncall functionName="nullStr"/>
     <functioncall functionName="obj"/>
     <functioncall functionName="objCount"/>
+    <functioncall functionName="open"/>
+    <functioncall functionName="override"/>
     <functioncall functionName="p"/>
     <functioncall functionName="pAudioStreamInputPort"/>
+    <functioncall functionName="pSB"/>
+    <functioncall functionName="parent"/>
+    <functioncall functionName="path"/>
     <functioncall functionName="print"/>
     <functioncall functionName="println"/>
     <functioncall functionName="processorUsage"/>
     <functioncall functionName="processorUsageMax"/>
     <functioncall functionName="ptr"/>
+    <functioncall functionName="raw_maxx"/>
+    <functioncall functionName="raw_maxy"/>
+    <functioncall functionName="raw_minx"/>
+    <functioncall functionName="raw_miny"/>
+    <functioncall functionName="receivedChars"/>
     <functioncall functionName="reconnect"/>
+    <functioncall functionName="redraw_background"/>
+    <functioncall functionName="redraw_objects"/>
+    <functioncall functionName="redraw_popup"/>
+    <functioncall functionName="redraw_render"/>
+    <functioncall functionName="redraw_wait"/>
+    <functioncall functionName="requestSubSurfaceBufferP"/>
     <functioncall functionName="return"/>
     <functioncall functionName="rewire"/>
+    <functioncall functionName="rst"/>
     <functioncall functionName="s"/>
+    <functioncall functionName="sclk"/>
+    <functioncall functionName="serialCommandInterface"/>
     <functioncall functionName="shortName"/>
+    <functioncall functionName="size"/>
     <functioncall functionName="sizeof"/>
     <functioncall functionName="source"/>
     <functioncall functionName="sourceOutput"/>
@@ -260,23 +393,35 @@
     <functioncall functionName="src"/>
     <functioncall functionName="src_index"/>
     <functioncall functionName="src_port"/>
+    <functioncall functionName="startLZ4Message"/>
+    <functioncall functionName="str"/>
     <functioncall functionName="strcmp"/>
     <functioncall functionName="strcpy"/>
+    <functioncall functionName="streamFile"/>
     <functioncall functionName="streamIndex"/>
+    <functioncall functionName="streamPath"/>
     <functioncall functionName="streamStringBuffer"/>
     <functioncall functionName="strlen"/>
     <functioncall functionName="strncmp"/>
+    <functioncall functionName="strncpy"/>
     <functioncall functionName="strstr"/>
     <functioncall functionName="strtok"/>
     <functioncall functionName="strtoul"/>
+    <functioncall functionName="throttle"/>
+    <functioncall functionName="tirq"/>
     <functioncall functionName="to"/>
     <functioncall functionName="to_port"/>
     <functioncall functionName="token"/>
     <functioncall functionName="true"/>
+    <functioncall functionName="txBuffer"/>
+    <functioncall functionName="txOverflowHandler"/>
+    <functioncall functionName="uint16_t"/>
     <functioncall functionName="uint32_t"/>
     <functioncall functionName="uint8_t"/>
     <functioncall functionName="unum_inputs"/>
     <functioncall functionName="unum_outputs"/>
     <functioncall functionName="update"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="width"/>
   </FileInfo>
 </analyzerinfo>

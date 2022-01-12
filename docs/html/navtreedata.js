@@ -55,12 +55,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/da8/class_svc_serial_command_interface_a1f875279bdb55468447043f87f334584.html#a1f875279bdb55468447043f87f334584",
-"d4/d71/classeris_audio_analyze_r_m_s_af5fff1969d312f518aa4ed7e162e3168.html#af5fff1969d312f518aa4ed7e162e3168",
-"d5/d96/class_audio_stream_aae750491f0dbedac3bd763d6dc62c1bb.html#aae750491f0dbedac3bd763d6dc62c1bb",
-"d8/d5a/class_i_l_i9341__t3___e_r_i_s_af88c4985a57a44e94a9bf4d76368f61b.html#af88c4985a57a44e94a9bf4d76368f61b",
-"dc/d43/class_svc_data_dictionary_ac24fc984a57549307f64a4e2979c1718.html#ac24fc984a57549307f64a4e2979c1718",
-"de/d67/class_control_slider.html"
+"d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f",
+"d4/d71/classeris_audio_analyze_r_m_s.html",
+"d5/d96/class_audio_stream_a9599ba022ef3e214243ce4dee9717019.html#a9599ba022ef3e214243ce4dee9717019",
+"d8/d5a/class_i_l_i9341__t3___e_r_i_s_acaa55520092d6b9974963132c366b458.html#acaa55520092d6b9974963132c366b458",
+"dc/d43/class_svc_data_dictionary_a8f8da1203864a57b4511876907f03eb3.html#a8f8da1203864a57b4511876907f03eb3",
+"de/d5d/unionpointer__container_a685602050263d8b7f45c3e9f744e336b.html#a685602050263d8b7f45c3e9f744e336b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

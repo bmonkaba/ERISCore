@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_ab1db7563238658e
       </table>
 </div><div class="memdoc">
 
-<p>Set the Pixel Callback object. <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.">AppWren</a> exported method which can be called from within a Wren VM instance. </p>
+<p>VM callback for extention method. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vm</td><td></td></tr>
@@ -107,19 +107,19 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_ab1db7563238658e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00403">403</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                                 {</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="comment">//(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  AppManager* am = AppManager::getInstance();</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18">setPixel</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
-<div class="ttc" id="aclass_app_wren_acd797662d50ea1d4dc11eff65cd5ab18_html_acd797662d50ea1d4dc11eff65cd5ab18"><div class="ttname"><a href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18">AppWren::setPixel</a></div><div class="ttdeci">void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00101">AppWren.h:101</a></div></div>
-<div class="ttc" id="aclass_app_wren_html"><div class="ttname"><a href="../../d0/da0/class_app_wren.html">AppWren</a></div><div class="ttdoc">Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00033">AppWren.h:33</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00432">432</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                                 {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;  <span class="comment">//(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  AppManager* am = AppManager::getInstance();</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18">setPixel</a>(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_acd797662d50ea1d4dc11eff65cd5ab18_html_acd797662d50ea1d4dc11eff65cd5ab18"><div class="ttname"><a href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18">AppWren::setPixel</a></div><div class="ttdeci">void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00222">AppWren.h:222</a></div></div>
+<div class="ttc" id="aclass_app_wren_html"><div class="ttname"><a href="../../d0/da0/class_app_wren.html">AppWren</a></div><div class="ttdoc">Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren....</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00031">AppWren.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00101">AppWren::setPixel()</a>.</p>
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00222">AppWren::setPixel()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00450">bindForeignMethod()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00487">bindForeignMethod()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

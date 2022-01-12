@@ -32,33 +32,33 @@
 <path fill="none" stroke="midnightblue" d="M728.88,-107.22C711.42,-120.59 685.46,-138.55 660,-149 580.91,-181.46 482.58,-196.87 421.04,-203.8"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="731.47,-109.64 737.18,-100.71 727.15,-104.13 731.47,-109.64"/>
 </g>
-<!-- Node10 -->
+<!-- Node11 -->
 <g id="node5" class="node">
-<title>Node10</title>
+<title>Node11</title>
 <g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_a743e89bcfef0064cc5aaae3863ba2ac3.html#a743e89bcfef0064cc5aaae3863ba2ac3" target="_top" xlink:title="responsible for managing the surface buffer memory allocation">
 <polygon fill="none" stroke="black" points="457,-118.5 457,-139.5 660,-139.5 660,-118.5 457,-118.5"/>
 <text text-anchor="middle" x="558.5" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::dynamicSurfaceManager</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node10 -->
+<!-- Node1&#45;&gt;Node11 -->
 <g id="edge4" class="edge">
-<title>Node1&#45;&gt;Node10</title>
+<title>Node1&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M688.9,-102.51C663.75,-107.66 634.93,-113.56 610.89,-118.48"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="689.6,-105.94 698.7,-100.5 688.2,-99.08 689.6,-105.94"/>
 </g>
-<!-- Node13 -->
+<!-- Node14 -->
 <g id="node8" class="node">
-<title>Node13</title>
+<title>Node14</title>
 <g id="a_node8"><a xlink:href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="304.5,-78.5 304.5,-99.5 417.5,-99.5 417.5,-78.5 304.5,-78.5"/>
 <text text-anchor="middle" x="361" y="-85.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::setPixel</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node13 -->
+<!-- Node1&#45;&gt;Node14 -->
 <g id="edge16" class="edge">
-<title>Node1&#45;&gt;Node13</title>
+<title>Node1&#45;&gt;Node14</title>
 <path fill="none" stroke="midnightblue" d="M685.4,-89.83C610.52,-89.64 488.36,-89.33 417.56,-89.14"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="685.63,-93.33 695.64,-89.86 685.65,-86.33 685.63,-93.33"/>
 </g>
@@ -95,7 +95,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a1f62a053a4e57d9fb4db0f1eb831fe27.html#a1f62a053a4e57d9fb4db0f1eb831fe27" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a1f62a053a4e57d9fb4db0f1eb831fe27.html#a1f62a053a4e57d9fb4db0f1eb831fe27" target="_top" xlink:title="VM callback for extention method.">
 <polygon fill="none" stroke="black" points="155,-195.5 155,-216.5 265,-216.5 265,-195.5 155,-195.5"/>
 <text text-anchor="middle" x="210" y="-202.9" font-family="Helvetica,sans-Serif" font-size="12.00">drawLineCallback</text>
 </a>
@@ -122,94 +122,94 @@
 <path fill="none" stroke="midnightblue" d="M172.96,-191.65C166.94,-189.16 160.77,-186.55 155,-184 129.56,-172.77 100.78,-158.89 81.73,-149.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="171.65,-194.9 182.23,-195.45 174.3,-188.42 171.65,-194.9"/>
 </g>
-<!-- Node10&#45;&gt;Node2 -->
+<!-- Node11&#45;&gt;Node2 -->
 <g id="edge8" class="edge">
-<title>Node10&#45;&gt;Node2</title>
+<title>Node11&#45;&gt;Node2</title>
 <path fill="none" stroke="midnightblue" d="M524.56,-143.87C490.86,-159.02 440.71,-181.34 421,-189 412.63,-192.25 403.49,-195.5 394.95,-198.4"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="526.34,-146.91 534.02,-139.62 523.46,-140.53 526.34,-146.91"/>
 </g>
-<!-- Node11 -->
+<!-- Node12 -->
 <g id="node6" class="node">
-<title>Node11</title>
+<title>Node12</title>
 <g id="a_node6"><a xlink:href="../../d0/da0/class_app_wren_aa761e4678db21f1920899fa4fc781654.html#aa761e4678db21f1920899fa4fc781654" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="304.5,-158.5 304.5,-179.5 417.5,-179.5 417.5,-158.5 304.5,-158.5"/>
 <text text-anchor="middle" x="361" y="-165.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::drawFill</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node11 -->
+<!-- Node11&#45;&gt;Node12 -->
 <g id="edge5" class="edge">
-<title>Node10&#45;&gt;Node11</title>
+<title>Node11&#45;&gt;Node12</title>
 <path fill="none" stroke="midnightblue" d="M496.16,-141.55C469.55,-146.99 438.74,-153.3 413.36,-158.49"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="497.04,-144.94 506.13,-139.51 495.64,-138.09 497.04,-144.94"/>
 </g>
-<!-- Node10&#45;&gt;Node13 -->
+<!-- Node11&#45;&gt;Node14 -->
 <g id="edge9" class="edge">
-<title>Node10&#45;&gt;Node13</title>
+<title>Node11&#45;&gt;Node14</title>
 <path fill="none" stroke="midnightblue" d="M496.16,-116.45C469.55,-111.01 438.74,-104.7 413.36,-99.51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="495.64,-119.91 506.13,-118.49 497.04,-113.06 495.64,-119.91"/>
 </g>
-<!-- Node15 -->
+<!-- Node8 -->
 <g id="node10" class="node">
-<title>Node15</title>
+<title>Node8</title>
 <g id="a_node10"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="307,-118.5 307,-139.5 415,-139.5 415,-118.5 307,-118.5"/>
 <text text-anchor="middle" x="361" y="-125.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::update</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node15 -->
+<!-- Node11&#45;&gt;Node8 -->
 <g id="edge12" class="edge">
-<title>Node10&#45;&gt;Node15</title>
+<title>Node11&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M446.79,-129C435.84,-129 425.11,-129 415.17,-129"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="446.89,-132.5 456.89,-129 446.89,-125.5 446.89,-132.5"/>
 </g>
-<!-- Node12 -->
+<!-- Node13 -->
 <g id="node7" class="node">
-<title>Node12</title>
-<g id="a_node7"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a16b4da7165c003f4b9a70869b7828084.html#a16b4da7165c003f4b9a70869b7828084" target="_top" xlink:title=" ">
+<title>Node13</title>
+<g id="a_node7"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a16b4da7165c003f4b9a70869b7828084.html#a16b4da7165c003f4b9a70869b7828084" target="_top" xlink:title="VM callback for extention method.">
 <polygon fill="none" stroke="black" points="158.5,-153.5 158.5,-174.5 261.5,-174.5 261.5,-153.5 158.5,-153.5"/>
 <text text-anchor="middle" x="210" y="-160.9" font-family="Helvetica,sans-Serif" font-size="12.00">drawFillCallback</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node12 -->
+<!-- Node12&#45;&gt;Node13 -->
 <g id="edge6" class="edge">
-<title>Node11&#45;&gt;Node12</title>
+<title>Node12&#45;&gt;Node13</title>
 <path fill="none" stroke="midnightblue" d="M293.88,-166.78C283.13,-166.42 272.13,-166.05 261.82,-165.71"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="293.98,-170.29 304.09,-167.12 294.22,-163.29 293.98,-170.29"/>
 </g>
-<!-- Node12&#45;&gt;Node4 -->
+<!-- Node13&#45;&gt;Node4 -->
 <g id="edge7" class="edge">
-<title>Node12&#45;&gt;Node4</title>
+<title>Node13&#45;&gt;Node4</title>
 <path fill="none" stroke="midnightblue" d="M148.39,-153.8C138.73,-152.17 128.75,-150.49 119.14,-148.87"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="147.87,-157.26 158.31,-155.47 149.03,-150.35 147.87,-157.26"/>
 </g>
-<!-- Node14 -->
+<!-- Node15 -->
 <g id="node9" class="node">
-<title>Node14</title>
-<g id="a_node9"><a xlink:href="../../d7/d7e/_app_wren_8cpp_ab1db7563238658e013cce74318dcb63a.html#ab1db7563238658e013cce74318dcb63a" target="_top" xlink:title="Set the Pixel Callback object. AppWren exported method which can be called from within a Wren VM inst...">
+<title>Node15</title>
+<g id="a_node9"><a xlink:href="../../d7/d7e/_app_wren_8cpp_ab1db7563238658e013cce74318dcb63a.html#ab1db7563238658e013cce74318dcb63a" target="_top" xlink:title="VM callback for extention method.">
 <polygon fill="none" stroke="black" points="158,-108.5 158,-129.5 262,-129.5 262,-108.5 158,-108.5"/>
 <text text-anchor="middle" x="210" y="-115.9" font-family="Helvetica,sans-Serif" font-size="12.00">setPixelCallback</text>
 </a>
 </g>
 </g>
-<!-- Node13&#45;&gt;Node14 -->
+<!-- Node14&#45;&gt;Node15 -->
 <g id="edge10" class="edge">
-<title>Node13&#45;&gt;Node14</title>
+<title>Node14&#45;&gt;Node15</title>
 <path fill="none" stroke="midnightblue" d="M297.64,-101.56C285.78,-103.94 273.51,-106.41 262.06,-108.72"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="298.36,-104.98 307.47,-99.58 296.97,-98.12 298.36,-104.98"/>
 </g>
-<!-- Node14&#45;&gt;Node4 -->
+<!-- Node15&#45;&gt;Node4 -->
 <g id="edge11" class="edge">
-<title>Node14&#45;&gt;Node4</title>
+<title>Node15&#45;&gt;Node4</title>
 <path fill="none" stroke="midnightblue" d="M147.76,-127.25C138.28,-128.52 128.52,-129.84 119.1,-131.11"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="148.45,-130.69 157.89,-125.88 147.52,-123.75 148.45,-130.69"/>
 </g>
 <!-- Node17 -->
 <g id="node12" class="node">
 <title>Node17</title>
-<g id="a_node12"><a xlink:href="../../d7/d7e/_app_wren_8cpp_afe23afa4404b8c417f9e67bd9ac974c1.html#afe23afa4404b8c417f9e67bd9ac974c1" target="_top" xlink:title="Get the Pixel Callback object.">
+<g id="a_node12"><a xlink:href="../../d7/d7e/_app_wren_8cpp_afe23afa4404b8c417f9e67bd9ac974c1.html#afe23afa4404b8c417f9e67bd9ac974c1" target="_top" xlink:title="VM callback for extention method.">
 <polygon fill="none" stroke="black" points="158,-58.5 158,-79.5 262,-79.5 262,-58.5 158,-58.5"/>
 <text text-anchor="middle" x="210" y="-65.9" font-family="Helvetica,sans-Serif" font-size="12.00">getPixelCallback</text>
 </a>

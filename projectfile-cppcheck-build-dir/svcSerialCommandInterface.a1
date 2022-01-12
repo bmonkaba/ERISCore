@@ -1,82 +1,61 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="4291627533">
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\appSerialCommandInterface.h" line="56" column="9"/>
+<analyzerinfo checksum="1317579194">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="57" column="9"/>
             <symbol>sincePoll</symbol>
         </error>
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\appSerialCommandInterface.h" line="57" column="9"/>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="58" column="9"/>
             <symbol>sincePeriodicDataDict</symbol>
         </error>
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\appSerialCommandInterface.h" line="58" column="9"/>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="59" column="9"/>
             <symbol>sincePeriodicStats</symbol>
         </error>
-        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/appSerialCommandInterface.cpp">
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/svcSerialCommandInterface.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
             <symbol>Touch</symbol>
         </error>
-        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;false==newRxMsg&apos; is always true" verbose="Condition &apos;false==newRxMsg&apos; is always true" cwe="571" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="274" column="47" info="Condition &apos;false==newRxMsg&apos; is always true"/>
-            <location file="src\appSerialCommandInterface.cpp" line="269" column="24" info="Assignment &apos;newRxMsg=false&apos;, assigned value is 0"/>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;false==newRxMsg&apos; is always true" verbose="Condition &apos;false==newRxMsg&apos; is always true" cwe="571" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="408" column="47" info="Condition &apos;false==newRxMsg&apos; is always true"/>
+            <location file="src\svcSerialCommandInterface.cpp" line="382" column="24" info="Assignment &apos;newRxMsg=false&apos;, assigned value is 0"/>
         </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="293" column="26"/>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;f&apos; can be reduced." verbose="The scope of the variable &apos;f&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="386" column="15"/>
+            <symbol>f</symbol>
         </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="362" column="30"/>
-        </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="405" column="30"/>
-        </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="414" column="30"/>
-        </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="441" column="30"/>
-        </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="443" column="34"/>
-        </error>
-        <error id="invalidscanf" severity="warning" msg="sscanf() without field width limits can crash with huge input data." verbose="sscanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c" cwe="119" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="449" column="34"/>
-        </error>
-        <error id="variableScope" severity="style" msg="The scope of the variable &apos;hexBuffer&apos; can be reduced." verbose="The scope of the variable &apos;hexBuffer&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="173" column="10"/>
-            <symbol>hexBuffer</symbol>
-        </error>
-        <error id="variableScope" severity="style" msg="The scope of the variable &apos;payload_len&apos; can be reduced." verbose="The scope of the variable &apos;payload_len&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="174" column="14"/>
-            <symbol>payload_len</symbol>
-        </error>
-        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mp&apos; can be reduced." verbose="The scope of the variable &apos;mp&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="462" column="23"/>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mp&apos; can be reduced." verbose="The scope of the variable &apos;mp&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="713" column="23"/>
             <symbol>mp</symbol>
         </error>
-        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mp&apos; can be reduced." verbose="The scope of the variable &apos;mp&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="517" column="23"/>
-            <symbol>mp</symbol>
-        </error>
-        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/appSerialCommandInterface.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="155" column="18" info="Shadow variable"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="146" column="13" info="Shadowed declaration"/>
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/svcSerialCommandInterface.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="13" info="Shadowed declaration"/>
             <symbol>h</symbol>
         </error>
-        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="462" column="26"/>
+        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/svcSerialCommandInterface.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="127" column="9"/>
+            <symbol>Surface</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;compressed_len&apos; is assigned a value that is never used." verbose="Variable &apos;compressed_len&apos; is assigned a value that is never used." cwe="563" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="291" column="28"/>
+            <symbol>compressed_len</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="645" column="26"/>
             <symbol>mp</symbol>
         </error>
-        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="517" column="26"/>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="713" column="26"/>
             <symbol>mp</symbol>
         </error>
-        <error id="unreadVariable" severity="style" msg="Variable &apos;newRxMsg&apos; is assigned a value that is never used." verbose="Variable &apos;newRxMsg&apos; is assigned a value that is never used." cwe="563" file0="src/appSerialCommandInterface.cpp">
-            <location file="src\appSerialCommandInterface.cpp" line="555" column="22"/>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;newRxMsg&apos; is assigned a value that is never used." verbose="Variable &apos;newRxMsg&apos; is assigned a value that is never used." cwe="563" file0="src/svcSerialCommandInterface.cpp">
+            <location file="src\svcSerialCommandInterface.cpp" line="748" column="22"/>
             <symbol>newRxMsg</symbol>
         </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:91:14" call-funcname="checksum" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="222" col="36" call-argexpr="txBuffer" call-argvaluetype="7" call-argvalue="1025"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:91:14" call-funcname="checksum" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="236" col="36" call-argexpr="txBuffer" call-argvaluetype="7" call-argvalue="1025"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:91:14" call-funcname="checksum" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="248" col="36" call-argexpr="txBuffer" call-argvaluetype="7" call-argvalue="1025"/><function-call call-id="src/appSerialCommandInterface.cpp:82:5" call-funcname="replacechar" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="326" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/appSerialCommandInterface.cpp:82:5" call-funcname="replacechar" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="337" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/appSerialCommandInterface.cpp:82:5" call-funcname="replacechar" call-argnr="1" file="src/appSerialCommandInterface.cpp" line="339" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
+<function-call call-id="src/svcSerialCommandInterface.cpp:90:5" call-funcname="replacechar" call-argnr="1" file="src/svcSerialCommandInterface.cpp" line="472" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/svcSerialCommandInterface.cpp:90:5" call-funcname="replacechar" call-argnr="1" file="src/svcSerialCommandInterface.cpp" line="479" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/svcSerialCommandInterface.cpp:90:5" call-funcname="replacechar" call-argnr="1" file="src/svcSerialCommandInterface.cpp" line="482" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/svcSerialCommandInterface.cpp:90:5" call-funcname="replacechar" call-argnr="3" file="src/svcSerialCommandInterface.cpp" line="489" col="36" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
   </FileInfo>
   <FileInfo check="Class">
 <class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
@@ -155,39 +134,41 @@
 <class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
 <class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
 <class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
-<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="6736505690563411468"/>
-<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="20" col="9" hash="16558433732527854572"/>
-<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="71" col="9" hash="17793245868371730131"/>
-<class name="AppSerialCommandInterface" file="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h" line="53" col="1" hash="2066288582552179485"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="5429400104627854940"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="21" col="9" hash="5139491191325099632"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="2911627910700264153"/>
+<class name="SvcSerialCommandInterface" file="D:/brian/Dev/Eris/ERISCore/include/svcSerialCommandInterface.h" line="54" col="1" hash="7907202496003856653"/>
   </FileInfo>
   <FileInfo check="Null pointer">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:176:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="177" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:91:14" my-argnr="1" my-argname="msg" file="src/appSerialCommandInterface.cpp" line="95" col="33" value="0"/>
-    <unsafe-usage my-id="src/appSerialCommandInterface.cpp:101:6" my-argnr="1" my-argname="str" file="src/appSerialCommandInterface.cpp" line="104" col="11" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcSerialCommandInterface.h:118:14" my-argnr="1" my-argname="msg" file="src/svcSerialCommandInterface.cpp" line="103" col="33" value="0"/>
+    <unsafe-usage my-id="src/svcSerialCommandInterface.cpp:109:6" my-argnr="1" my-argname="str" file="src/svcSerialCommandInterface.cpp" line="112" col="11" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:71:5" my-argnr="1" my-argname="SubSurfaceFrom" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="72" col="28" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:85:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="87" col="27" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:99:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="101" col="27" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="157" col="22" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:176:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="177" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:87:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="89" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:103:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="105" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="178" col="22" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/appSerialCommandInterface.h:91:14" my-argnr="1" my-argname="msg" file="src/appSerialCommandInterface.cpp" line="95" col="33" value="0"/>
-    <unsafe-usage my-id="src/appSerialCommandInterface.cpp:101:6" my-argnr="1" my-argname="str" file="src/appSerialCommandInterface.cpp" line="104" col="11" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcSerialCommandInterface.h:118:14" my-argnr="1" my-argname="msg" file="src/svcSerialCommandInterface.cpp" line="103" col="33" value="0"/>
+    <unsafe-usage my-id="src/svcSerialCommandInterface.cpp:109:6" my-argnr="1" my-argname="str" file="src/svcSerialCommandInterface.cpp" line="112" col="11" value="0"/>
   </FileInfo>
   <FileInfo check="CheckUnusedFunctions">
-    <functiondecl functionName="replacechar" lineNumber="82"/>
-    <functiondecl functionName="checksum" lineNumber="92"/>
-    <functiondecl functionName="replaceAll" lineNumber="101"/>
-    <functiondecl functionName="throttle" lineNumber="110"/>
-    <functiondecl functionName="txOverflowHandler" lineNumber="130"/>
-    <functiondecl functionName="streamHandler" lineNumber="171"/>
-    <functiondecl functionName="updateRT" lineNumber="264"/>
+    <functiondecl functionName="replacechar" lineNumber="90"/>
+    <functiondecl functionName="checksum" lineNumber="100"/>
+    <functiondecl functionName="replaceAll" lineNumber="109"/>
+    <functiondecl functionName="endLZ4Message" lineNumber="123"/>
+    <functiondecl functionName="send" lineNumber="159"/>
+    <functiondecl functionName="throttle" lineNumber="178"/>
+    <functiondecl functionName="txOverflowHandler" lineNumber="199"/>
+    <functiondecl functionName="streamHandler" lineNumber="233"/>
+    <functiondecl functionName="updateRT" lineNumber="380"/>
     <functioncall functionName="AT_HATCHBLK"/>
     <functioncall functionName="AT_HATCHXOR"/>
     <functioncall functionName="AT_NONE"/>
@@ -292,6 +273,7 @@
     <functioncall functionName="DDRT_READWRITE"/>
     <functioncall functionName="F"/>
     <functioncall functionName="ILI9341_t3n"/>
+    <functioncall functionName="LZ4_compress_fast"/>
     <functioncall functionName="MessageHandler"/>
     <functioncall functionName="NULL"/>
     <functioncall functionName="O_READ"/>
@@ -313,12 +295,13 @@
     <functioncall functionName="buffer"/>
     <functioncall functionName="bufferChr"/>
     <functioncall functionName="c"/>
+    <functioncall functionName="captureBuffer"/>
     <functioncall functionName="chdir"/>
-    <functioncall functionName="checksum"/>
     <functioncall functionName="clear"/>
     <functioncall functionName="clearReadError"/>
     <functioncall functionName="close"/>
     <functioncall functionName="cmd"/>
+    <functioncall functionName="compressed_len"/>
     <functioncall functionName="connect"/>
     <functioncall functionName="cs"/>
     <functioncall functionName="csBuffer"/>
@@ -330,8 +313,12 @@
     <functioncall functionName="dest_port"/>
     <functioncall functionName="disconnect"/>
     <functioncall functionName="empty"/>
+    <functioncall functionName="encode_base64"/>
+    <functioncall functionName="endLZ4Message"/>
     <functioncall functionName="escape"/>
     <functioncall functionName="exists"/>
+    <functioncall functionName="extmem_malloc"/>
+    <functioncall functionName="f"/>
     <functioncall functionName="false"/>
     <functioncall functionName="fgets"/>
     <functioncall functionName="fileName"/>
@@ -339,9 +326,9 @@
     <functioncall functionName="float"/>
     <functioncall functionName="flush"/>
     <functioncall functionName="for"/>
-    <functioncall functionName="full"/>
     <functioncall functionName="fval"/>
     <functioncall functionName="gWelcomeMessage"/>
+    <functioncall functionName="g_wrenScript"/>
     <functioncall functionName="getActiveApp"/>
     <functioncall functionName="getConnectionString"/>
     <functioncall functionName="getInstance"/>
@@ -354,8 +341,10 @@
     <functioncall functionName="hexBuffer"/>
     <functioncall functionName="i"/>
     <functioncall functionName="if"/>
+    <functioncall functionName="indexCaptureBuffer"/>
     <functioncall functionName="indexTxBuffer"/>
     <functioncall functionName="int"/>
+    <functioncall functionName="isCapturingBulkData"/>
     <functioncall functionName="isStreamingFile"/>
     <functioncall functionName="iscntrl"/>
     <functioncall functionName="isprint"/>
@@ -363,11 +352,12 @@
     <functioncall functionName="lastTrigger"/>
     <functioncall functionName="length"/>
     <functioncall functionName="ls"/>
-    <functioncall functionName="memcpy"/>
+    <functioncall functionName="malloc"/>
     <functioncall functionName="memset"/>
     <functioncall functionName="miso"/>
     <functioncall functionName="mosi"/>
     <functioncall functionName="msg"/>
+    <functioncall functionName="multiPartHeader"/>
     <functioncall functionName="name"/>
     <functioncall functionName="name_string"/>
     <functioncall functionName="newChar"/>
@@ -413,7 +403,9 @@
     <functioncall functionName="s"/>
     <functioncall functionName="sclk"/>
     <functioncall functionName="seek"/>
+    <functioncall functionName="send"/>
     <functioncall functionName="sendMessage"/>
+    <functioncall functionName="serialCommandInterface"/>
     <functioncall functionName="sincePeriodicDataDict"/>
     <functioncall functionName="sincePeriodicStats"/>
     <functioncall functionName="size"/>
@@ -421,8 +413,8 @@
     <functioncall functionName="source_port"/>
     <functioncall functionName="sprintf"/>
     <functioncall functionName="sscanf"/>
+    <functioncall functionName="startLZ4Message"/>
     <functioncall functionName="str"/>
-    <functioncall functionName="strcat"/>
     <functioncall functionName="strchr"/>
     <functioncall functionName="strcpy"/>
     <functioncall functionName="streamFile"/>
@@ -434,11 +426,13 @@
     <functioncall functionName="strncmp"/>
     <functioncall functionName="strncpy"/>
     <functioncall functionName="strrchr"/>
+    <functioncall functionName="strstr"/>
     <functioncall functionName="strtok"/>
     <functioncall functionName="strtol"/>
     <functioncall functionName="this"/>
     <functioncall functionName="throttle"/>
     <functioncall functionName="tirq"/>
+    <functioncall functionName="tmp"/>
     <functioncall functionName="token"/>
     <functioncall functionName="total_read"/>
     <functioncall functionName="true"/>
@@ -448,6 +442,7 @@
     <functioncall functionName="uint16_t"/>
     <functioncall functionName="uint32_t"/>
     <functioncall functionName="uint8_t"/>
+    <functioncall functionName="uncompressed_len"/>
     <functioncall functionName="update"/>
     <functioncall functionName="val"/>
     <functioncall functionName="while"/>

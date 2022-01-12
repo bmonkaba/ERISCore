@@ -1,6 +1,6 @@
 var _app_wren_8cpp =
 [
-    [ "__attribute__", "d7/d7e/_app_wren_8cpp_ace9f258b58a6b1d7cf7340616e5a3bf9.html#ace9f258b58a6b1d7cf7340616e5a3bf9", null ],
+    [ "__attribute__", "d7/d7e/_app_wren_8cpp_a6ede207defe18595d2818f2b159a32e7.html#a6ede207defe18595d2818f2b159a32e7", null ],
     [ "_getpid", "d7/d7e/_app_wren_8cpp_ad1f206883946ce8cb8bb983464f9b102.html#ad1f206883946ce8cb8bb983464f9b102", null ],
     [ "_gettimeofday", "d7/d7e/_app_wren_8cpp_a909740b4329fab2bccd1f3e6e2cf67ca.html#a909740b4329fab2bccd1f3e6e2cf67ca", null ],
     [ "_kill", "d7/d7e/_app_wren_8cpp_a8644b4c39e86e5b2bf962860bbb4bf00.html#a8644b4c39e86e5b2bf962860bbb4bf00", null ],
@@ -25,6 +25,7 @@ var _app_wren_8cpp =
     [ "printCallback", "d7/d7e/_app_wren_8cpp_a0631bad43a765513733dbc934ebc5620.html#a0631bad43a765513733dbc934ebc5620", null ],
     [ "releasePopUpCallback", "d7/d7e/_app_wren_8cpp_a25d25f1406cc969202b654e1b0ff5eec.html#a25d25f1406cc969202b654e1b0ff5eec", null ],
     [ "requestPopUpCallback", "d7/d7e/_app_wren_8cpp_a8156eadb16530b87de97824abd487921.html#a8156eadb16530b87de97824abd487921", null ],
+    [ "restartVMCallback", "d7/d7e/_app_wren_8cpp_a6f9be9275117d2c40ad5806defa0841e.html#a6f9be9275117d2c40ad5806defa0841e", null ],
     [ "returnFocusCallback", "d7/d7e/_app_wren_8cpp_a7d888714ebd3a2befec867833015d7f2.html#a7d888714ebd3a2befec867833015d7f2", null ],
     [ "sendMessageCallback", "d7/d7e/_app_wren_8cpp_a5a2a584aa9624610a07f621a52c2cd4c.html#a5a2a584aa9624610a07f621a52c2cd4c", null ],
     [ "set_arm_clock", "d7/d7e/_app_wren_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699", null ],

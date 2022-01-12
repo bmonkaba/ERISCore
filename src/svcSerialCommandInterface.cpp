@@ -122,18 +122,17 @@ void replaceAll(char * str, char oldChar, char newChar)
  */
 void SvcSerialCommandInterface::endLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
-    char wb[SERIAL_WORKING_BUFFER_SIZE];
+#ifdef USE_EXTMEM
+    //do nothing - one time malloc in the constructor
+#else
+    char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
+#endif
 
-    //compress and transport the message
-    //workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-    //memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-    memset(wb,0,SERIAL_WORKING_BUFFER_SIZE);
+    memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = indexTxBuffer;
-    //compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
-    compressed_len = LZ4_compress_fast(txBuffer,wb,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
+    compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
     empty();
-    //encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
-    encode_base64((unsigned char *)wb, compressed_len, (unsigned char *)txBuffer);
+    encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
     while(throttle()){
         delay(50);
     };
@@ -142,10 +141,15 @@ void SvcSerialCommandInterface::endLZ4Message(){
     Serial.print(" ");
     Serial.println(txBuffer);
     empty();
-    //free(workingBuffer);
     while(throttle()){
         delayMicroseconds(500);
     };
+
+#ifdef USE_EXTMEM
+    //do nothing - one time malloc in the constructor
+#else
+    //do nothing - local var
+#endif
 }
 
 /**
@@ -276,9 +280,13 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
 
         if (payload_len == 0){
             //no data to tx; @ eof
-            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-            println();
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
+#endif
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
+            println();
             uncompressed_len = indexTxBuffer;
             compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
             empty();
@@ -295,13 +303,21 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
             delay(100);
             isStreamingFile = false;
             streamPos = 0;
-            free(workingBuffer);
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            //do nothing - local var
+#endif
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
             delayMicroseconds(20);
             println();
-            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
+#endif
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
             uncompressed_len = indexTxBuffer;
             compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
@@ -320,12 +336,20 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
             streamPos = 0;
             delayMicroseconds(3000);
             periodicMessagesEnabled = true;
-            free(workingBuffer);
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            //do nothing-- local var
+#endif
             return;
         } else{
             //send file chunk
             println();
-            workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            char wb[SERIAL_WORKING_BUFFER_SIZE];
+#endif
             memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
             uncompressed_len = indexTxBuffer;
             compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
@@ -335,7 +359,11 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
             Serial.print(" ");
             Serial.println(txBuffer);
             empty();
-            free(workingBuffer);
+#ifdef USE_EXTMEM
+            //do nothing - one time malloc in the constructor
+#else
+            //do nothing - local var
+#endif
             return;
         }             
     } 
@@ -398,7 +426,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
         if (newRxMsg){
             char cmd[128], param[128],param2[128];
             int total_read;
-            total_read = sscanf(receivedChars, "%s %s" , cmd, param);
+            total_read = sscanf(receivedChars, "%127s %127s" , cmd, param);
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 bool first;
                 if (total_read < 2){
@@ -407,7 +435,11 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     empty();
                     println(F("DIR"));
                     print(F("LS . ["));
+#ifdef USE_EXTMEM
+                    //do nothing - one time malloc in the constructor
+#else
                     workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+#endif
                     strcpy(workingBuffer,txBuffer);
                     empty();
                     Serial.print(workingBuffer);
@@ -429,7 +461,11 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     }
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
+#ifdef USE_EXTMEM                    
+                    //do nothing - one time malloc in the constructor
+#else
                     free(workingBuffer);
+#endif
                     delay(200);
                 } else{
                     //send the requested path
@@ -445,8 +481,6 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     Serial.print(multiPartHeader);
                     replacechar(param,':',' '); // put the spaces back in time for the ls command
                     sd->ls(this,param,false);
-                    //memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-                    //strcpy(workingBuffer,txBuffer);
                     first = true;
                     token = strtok(txBuffer, &newline);
                     while( token != NULL && indexTxBuffer > 1) {                        
@@ -461,15 +495,11 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                             delay(160);
                         }
                     }
-                    //if(txBufferOverflowFlag)Serial.println(F("]"));
                     Serial.println(F("]"));
                     Serial.println(F("DIR_EOF"));
-                    //empty();
-                    //free(workingBuffer);
-                    //delay(250);
                 }
             }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
-                total_read = sscanf(receivedChars, "%s %s %s" , cmd, param,param2);
+                total_read = sscanf(receivedChars, "%127s %127s %127s" , cmd, param,param2);
                 if (total_read < 3){
                     Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
                     Serial.println(param);
@@ -501,7 +531,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                 int source_port;
                 int dest_port;
                 
-                total_read = sscanf(receivedChars, "%s %s %d %s %d" , cmd, param,&source_port,param2,&dest_port);
+                total_read = sscanf(receivedChars, "%127s %127s %d %127s %d" , cmd, param,&source_port,param2,&dest_port);
                 if (total_read < 3){
                     Serial.print(F("M CONNECT WRONG PARAM COUNT "));
                     Serial.println(receivedChars);
@@ -510,7 +540,7 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                 }
             }else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
-                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,&dest_port);
+                total_read = sscanf(receivedChars, "%127s %127s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
                     Serial.print(F("M DISCONNECT WRONG PARAM COUNT "));
                     Serial.println(receivedChars);
@@ -539,14 +569,22 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                 endLZ4Message();
             }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
                 isCapturingBulkData = true;
-                captureBuffer = (char*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);
+#ifndef USE_EXTMEM
+                char* tmp;
+                tmp = (char*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);
+                if(tmp==NULL){
+                    //realloc failed; release the pointer and try again
+                    free(captureBuffer);
+                    captureBuffer = (char*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+                } else captureBuffer = tmp;
+#endif
                 if(captureBuffer!=NULL){
                     memset(captureBuffer,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);
                     indexCaptureBuffer = 0;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer allocated and initalized"));
                 } else{
                     isCapturingBulkData = false;
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
+                    Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: realloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
                     Serial.flush();
                 }
             }else if (strncmp(cmd, "WREN_SCRIPT_COMPILE",sizeof(cmd)) == 0){
@@ -554,43 +592,43 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script compile request"));
                     am->sendMessage(this,"AppWren","WREN_SCRIPT_COMPILE");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    //free(captureBuffer);
+#ifndef USE_EXTMEM
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+#endif
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));    
             }else if (strncmp(cmd, "WREN_SCRIPT_EXECUTE",sizeof(cmd)) == 0){
                 if(captureBuffer != NULL){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script execute request"));
                     am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    //free(captureBuffer);
+#ifndef USE_EXTMEM
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+#endif
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "WREN_SCRIPT_SAVE",sizeof(cmd)) == 0){
                 if(captureBuffer != NULL){
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: script save request"));
                     am->sendMessage(this,"AppWren",receivedChars);//"WREN_SCRIPT_SAVE [modulename]");
                     am->sendMessage(this,"AppWren",captureBuffer);
-                    //free(captureBuffer);
+#ifndef USE_EXTMEM
                     captureBuffer = (char*)realloc(captureBuffer,0);
-                    //captureBuffer = NULL;
                     Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+#endif
                 } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
                 int32_t val;
                 float32_t fval;
-                total_read = sscanf(receivedChars, "%s %s %d" , cmd, param,(int*)&val);
+                total_read = sscanf(receivedChars, "%127s %127s %d" , cmd, param,(int*)&val);
                 if (total_read < 3){
-                    total_read = sscanf(receivedChars, "%s %s %f" , cmd, param,(float32_t*)&fval);
+                    total_read = sscanf(receivedChars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
                     if (total_read < 3){
                         Serial.print(F("M WRONG PARAM COUNT"));
                         Serial.println(total_read);
                     } else am->data->update(param,fval); 
                 }else if(!am->data->update(param,val)){
-                    total_read = sscanf(receivedChars, "%s %s %f" , cmd, param,(float32_t*)&fval);
+                    total_read = sscanf(receivedChars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
                     am->data->update(param,fval);
                 }
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
@@ -606,8 +644,13 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
+#ifdef USE_EXTMEM
+                char tmp[1000];
+                //tmp = (char*)extmem_malloc(1000);
+#else
                 char* tmp;
                 tmp = (char*)malloc(1000);
+#endif
                 while(throttle()){delay(1);}
                 startLZ4Message();
                 strcpy(tmp,"");
@@ -661,7 +704,11 @@ void FLASHMEM SvcSerialCommandInterface::updateRT(){
                 endLZ4Message();
                 //flush out serial input buffer
                 Serial.clear();
+#ifdef USE_EXTMEM
+                //do nothing - local var
+#else       
                 free(tmp);
+#endif
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;

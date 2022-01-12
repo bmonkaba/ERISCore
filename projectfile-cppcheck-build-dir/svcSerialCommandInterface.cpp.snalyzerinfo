@@ -163,9 +163,10 @@ freadAN2
 freadAN3
 freadAN4
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[F,print,println,requestSubSurfaceBufferP] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
-Surface call:[F,print,println] noreturn:[println]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
 requestSubSurfaceBufferP call:[F,print,println]
 getSurfaceBufferP
 getWidth
@@ -180,6 +181,7 @@ ILI9341_t3_ERIS
 getFrameAddress call:[return]
 busy call:[_busy] noreturn:[_busy]
 connectionCount
+setSCI
 getId
 isName call:[sizeof,strncmp]
 setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
@@ -205,15 +207,18 @@ getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
-AppSerialCommandInterface call:[getInstance,getSD,memset,strcpy] noreturn:[memset]
-update
-write call:[txOverflowHandler]
-flush call:[availableForWrite,delay,memset,print,strlen] noreturn:[delay,print]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
 empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 replacechar call:[strchr]
 checksum call:[strlen]
 replaceAll
+endLZ4Message call:[LZ4_compress_fast,delay,delayMicroseconds,empty,encode_base64,memset,print,println,throttle] noreturn:[delay,delayMicroseconds]
+send call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 throttle call:[F,availableForWrite,delay,flush,println] noreturn:[println]
-txOverflowHandler global:[newline,token] call:[F,empty,memcpy,memset,print,strcpy,strlen,strrchr,strtok] noreturn:[empty,print,strlen]
-streamHandler call:[F,available,chdir,checksum,close,delay,delayMicroseconds,exists,flush,open,position,print,println,read,seek,sprintf,strcat,strcpy,strlen,throttle] noreturn:[delay,strcat]
-updateRT global:[gWelcomeMessage,newline,sd,token] call:[AudioInterrupts,AudioNoInterrupts,F,MessageHandler,available,chdir,clear,clearReadError,connect,delay,delayMicroseconds,disconnect,empty,flush,getActiveApp,getConnectionString,getInstance,iscntrl,isprint,ls,memset,print,printDictionary,printStats,printf,println,read,replacechar,sendMessage,sizeof,sscanf,strcpy,streamHandler,strncat,strncmp,strtok,strtol,throttle,update] noreturn:[AudioInterrupts,AudioNoInterrupts,MessageHandler,clear,connect,delay,empty,flush,print,printDictionary,printf,println,sendMessage,streamHandler,strncat,update]
+txOverflowHandler global:[newline,token] call:[F,delay,print,printf,println,sizeof,strlen,strncpy,strrchr,strtok,throttle] noreturn:[delay,print,strncpy,strtok]
+streamHandler call:[F,LZ4_compress_fast,available,chdir,close,delay,delayMicroseconds,empty,encode_base64,exists,memset,open,position,print,println,read,seek,sprintf,strlen,throttle] noreturn:[delay,print]
+updateRT global:[gWelcomeMessage,g_wrenScript,newline,sd,token] call:[AudioInterrupts,AudioNoInterrupts,F,MessageHandler,available,chdir,clear,clearReadError,connect,delay,disconnect,empty,endLZ4Message,flush,getActiveApp,getConnectionString,getInstance,iscntrl,isprint,ls,memset,print,printDictionary,printStats,printf,println,read,replacechar,send,sendMessage,sizeof,sprintf,sscanf,startLZ4Message,strcpy,streamHandler,strlen,strncat,strncmp,strstr,strtok,strtol,throttle,update,while] noreturn:[AudioInterrupts,AudioNoInterrupts,MessageHandler,clear,connect,delay,endLZ4Message,flush,print,printDictionary,printStats,printf,println,sendMessage,streamHandler,strncat,update,while]

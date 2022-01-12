@@ -67,12 +67,12 @@ if __name__ == '__main__':
     print("http://localhost:8080")
     ###
     ## start the serial worker in background (as a deamon)
-    sp = serialworker.SerialProcess('COM7',input_queue, output_queue)
+    sp = serialworker.SerialProcess('COM9',input_queue, output_queue)
     x = threading.Thread(target=sp.run)
     x.start()
 
     #connection to the virtual machine
-    sp = serialworker.SerialProcess('COM8',vm_input_queue, vm_output_queue)
+    sp = serialworker.SerialProcess('COM10',vm_input_queue, vm_output_queue)
     x = threading.Thread(target=sp.run)
     x.start()
 

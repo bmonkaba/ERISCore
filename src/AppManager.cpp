@@ -20,6 +20,7 @@
 #include "globaldefs.h"
 #include "svcSerialCommandInterface.h"
 #include <pgmspace.h>
+#include "FreeStack.h"
 
 extern AudioDirector _ad;
 extern SvcSerialCommandInterface sci;
@@ -299,8 +300,10 @@ void FLASHMEM AppManager::update(){
       }
       
       data->update(FREE_MEM,(int32_t)(free_mem - 1000));
-      data->update(HEAP_FREE,(int32_t)(0x20280000 - heapTop));
-      data->update(LOCAL_MEM,(int32_t)(0x2007F000 - (uint32_t)(&heapTop)));
+      data->update(FREE_HEAP,(int32_t)(0x20280000 - heapTop));
+      data->update(FREE_LOCAL,(int32_t)(0x2007F000 - (uint32_t)(&heapTop)));
+      data->update(FREE_STACK,(int32_t)FreeStack());
+       
       heapTop = 0;
       data->update(CPU_TEMP,(float32_t)tempmonGetTemp());
       AudioProcessorUsageMaxReset();

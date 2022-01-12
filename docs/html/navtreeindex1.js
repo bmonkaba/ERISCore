@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f":[1,0,182,4],
+"d2/da8/class_svc_serial_command_interface_a14dcb2238348af05007d490900e47441.html#a14dcb2238348af05007d490900e47441":[1,0,182,32],
 "d2/da8/class_svc_serial_command_interface_a1f875279bdb55468447043f87f334584.html#a1f875279bdb55468447043f87f334584":[1,0,182,11],
 "d2/da8/class_svc_serial_command_interface_a26e409a8edd45f983a488b119d37baec.html#a26e409a8edd45f983a488b119d37baec":[1,0,182,26],
 "d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50":[1,0,182,6],
@@ -155,8 +157,8 @@ var NAVTREEINDEX1 =
 "d4/d05/lz4_8c_a9f23ad1797bc66e6b6dff6cf3acfd351.html#a9f23ad1797bc66e6b6dff6cf3acfd351":[2,0,34,47],
 "d4/d05/lz4_8c_a9f23ad1797bc66e6b6dff6cf3acfd351.html#a9f23ad1797bc66e6b6dff6cf3acfd351a2a95ee19c5c0704200f9154a4abcf115":[2,0,34,47,0],
 "d4/d05/lz4_8c_a9f23ad1797bc66e6b6dff6cf3acfd351.html#a9f23ad1797bc66e6b6dff6cf3acfd351a4609b423b2c861fd5968b33837c76236":[2,0,34,47,1],
-"d4/d05/lz4_8c_a9f6dad34ffe2a398c20ed5ed3792152a.html#a9f6dad34ffe2a398c20ed5ed3792152a":[2,0,34,25],
 "d4/d05/lz4_8c_a9f6dad34ffe2a398c20ed5ed3792152a.html#a9f6dad34ffe2a398c20ed5ed3792152a":[2,0,34,24],
+"d4/d05/lz4_8c_a9f6dad34ffe2a398c20ed5ed3792152a.html#a9f6dad34ffe2a398c20ed5ed3792152a":[2,0,34,25],
 "d4/d05/lz4_8c_a9fa2e6e61caea57ae1c3ef996f0e9ac9.html#a9fa2e6e61caea57ae1c3ef996f0e9ac9":[2,0,34,70],
 "d4/d05/lz4_8c_aa04e6d12be3e13001d9b01cd73c58111.html#aa04e6d12be3e13001d9b01cd73c58111":[2,0,34,85],
 "d4/d05/lz4_8c_aa0672ea7123854cc5f51902a06c473fb.html#aa0672ea7123854cc5f51902a06c473fb":[2,0,34,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "d4/d56/classeris_audio_output_i2_s_quad_acbf755e10366b6da5a83ea87aebb8321.html#acbf755e10366b6da5a83ea87aebb8321":[1,0,141,0],
 "d4/d69/classeris_audio_effect_granular.html":[1,0,112],
 "d4/d69/classeris_audio_effect_granular_a1a28575d00a383c9a2dfdb0f1689e240.html#a1a28575d00a383c9a2dfdb0f1689e240":[1,0,112,1],
-"d4/d69/classeris_audio_effect_granular_a77514d92bb60632af9ab886077e12467.html#a77514d92bb60632af9ab886077e12467":[1,0,112,0],
-"d4/d71/classeris_audio_analyze_r_m_s.html":[1,0,99],
-"d4/d71/classeris_audio_analyze_r_m_s_a397d516bd2b68554ac76f37a7686c77b.html#a397d516bd2b68554ac76f37a7686c77b":[1,0,99,1]
+"d4/d69/classeris_audio_effect_granular_a77514d92bb60632af9ab886077e12467.html#a77514d92bb60632af9ab886077e12467":[1,0,112,0]
 };

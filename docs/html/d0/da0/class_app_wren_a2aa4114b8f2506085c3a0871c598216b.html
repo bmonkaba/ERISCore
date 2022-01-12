@@ -107,24 +107,39 @@ $(document).ready(function(){initNavTree('d0/da0/class_app_wren_a2aa4114b8f25060
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00073">73</a> of file <a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                       {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* module = <span class="stringliteral">&quot;main&quot;</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;M AppWren: Loading script into the VM&quot;</span>));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="../../d0/da0/class_app_wren_a701371012a8d0ca93203257c69a7204a.html#a701371012a8d0ca93203257c69a7204a">isWrenResultOK</a>(wrenInterpret(<a class="code" href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">vm</a>, module, script));</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="ttc" id="aclass_app_wren_a701371012a8d0ca93203257c69a7204a_html_a701371012a8d0ca93203257c69a7204a"><div class="ttname"><a href="../../d0/da0/class_app_wren_a701371012a8d0ca93203257c69a7204a.html#a701371012a8d0ca93203257c69a7204a">AppWren::isWrenResultOK</a></div><div class="ttdeci">bool isWrenResultOK(WrenInterpretResult res)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00206">AppWren.h:206</a></div></div>
-<div class="ttc" id="aclass_app_wren_aa5963bc2b9491522044e2eccbce2fdec_html_aa5963bc2b9491522044e2eccbce2fdec"><div class="ttname"><a href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">AppWren::vm</a></div><div class="ttdeci">WrenVM * vm</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00363">AppWren.h:363</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00206">isWrenResultOK()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00363">vm</a>.</p>
+<p>load a script into the running VM </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">script</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00566">MessageHandler()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00540">vmConstructor()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00086">86</a> of file <a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                       {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* module = <span class="stringliteral">&quot;main&quot;</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        Serial.printf(<span class="stringliteral">&quot;M AppWren:loadScript: Loading script (size: %d bytes)\n&quot;</span>,strlen(script));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d0/da0/class_app_wren_a701371012a8d0ca93203257c69a7204a.html#a701371012a8d0ca93203257c69a7204a">isWrenResultOK</a>(wrenInterpret(<a class="code" href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">vm</a>, module, script))){</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;M AppWren::loadScript: OK&quot;</span>));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="../../d0/da0/class_app_wren_adb53a44e9d80fddb8fd27cde67c9047a.html#adb53a44e9d80fddb8fd27cde67c9047a">getWrenHandles</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            wrenEnsureSlots(<a class="code" href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">vm</a>, 1);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            wrenSetSlotHandle(<a class="code" href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">vm</a>, 0, <a class="code" href="../../d0/da0/class_app_wren_aa9996e3894f8c75c848da0b86caaeddb.html#aa9996e3894f8c75c848da0b86caaeddb">h_slot0</a>);<span class="comment">//App</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="ttc" id="aclass_app_wren_a701371012a8d0ca93203257c69a7204a_html_a701371012a8d0ca93203257c69a7204a"><div class="ttname"><a href="../../d0/da0/class_app_wren_a701371012a8d0ca93203257c69a7204a.html#a701371012a8d0ca93203257c69a7204a">AppWren::isWrenResultOK</a></div><div class="ttdeci">bool isWrenResultOK(WrenInterpretResult res)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00338">AppWren.h:338</a></div></div>
+<div class="ttc" id="aclass_app_wren_aa5963bc2b9491522044e2eccbce2fdec_html_aa5963bc2b9491522044e2eccbce2fdec"><div class="ttname"><a href="../../d0/da0/class_app_wren_aa5963bc2b9491522044e2eccbce2fdec.html#aa5963bc2b9491522044e2eccbce2fdec">AppWren::vm</a></div><div class="ttdeci">WrenVM * vm</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00502">AppWren.h:502</a></div></div>
+<div class="ttc" id="aclass_app_wren_aa9996e3894f8c75c848da0b86caaeddb_html_aa9996e3894f8c75c848da0b86caaeddb"><div class="ttname"><a href="../../d0/da0/class_app_wren_aa9996e3894f8c75c848da0b86caaeddb.html#aa9996e3894f8c75c848da0b86caaeddb">AppWren::h_slot0</a></div><div class="ttdeci">WrenHandle * h_slot0</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00503">AppWren.h:503</a></div></div>
+<div class="ttc" id="aclass_app_wren_adb53a44e9d80fddb8fd27cde67c9047a_html_adb53a44e9d80fddb8fd27cde67c9047a"><div class="ttname"><a href="../../d0/da0/class_app_wren_adb53a44e9d80fddb8fd27cde67c9047a.html#adb53a44e9d80fddb8fd27cde67c9047a">AppWren::getWrenHandles</a></div><div class="ttdeci">void getWrenHandles()</div><div class="ttdoc">VM post module load support function creates/updates the Wren embedded call handles.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00781">AppWren.cpp:781</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00781">getWrenHandles()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00503">h_slot0</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00338">isWrenResultOK()</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00502">vm</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00605">MessageHandler()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00702">update()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00575">vmConstructor()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b_a2aa4114b8f2506085c3a0871c598216b_cgraph.svg" width="436" height="40"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b_a2aa4114b8f2506085c3a0871c598216b_cgraph.svg" width="438" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -132,7 +147,7 @@ $(document).ready(function(){initNavTree('d0/da0/class_app_wren_a2aa4114b8f25060
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b_a2aa4114b8f2506085c3a0871c598216b_icgraph.svg" width="651" height="94"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b_a2aa4114b8f2506085c3a0871c598216b_icgraph.svg" width="651" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

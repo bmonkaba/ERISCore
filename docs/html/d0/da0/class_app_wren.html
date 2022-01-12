@@ -94,7 +94,20 @@ $(document).ready(function(){initNavTree('d0/da0/class_app_wren.html','../../');
 </div><!--header-->
 <div class="contents">
 
-<p>Wren is a scripting language. This class is a proxy which mirrors the <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> into wren.  
+<p>Wren is a scripting language. This class is a proxy which mirrors the <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> into wren.<br  />
+ <br  />
+ <br  />
+ The use case is to allow scripting of apps<br  />
+ Why? with this, applications can be dynamically loaded and executed<br  />
+ Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card<br  />
+ which gives effectivly limitless program storage space.<br  />
+ Beware: The available heap defines the upper boundary of VM size<br  />
+ <br  />
+ From <a href="https://wren.io/:">https://wren.io/:</a><br  />
+ "Wren is a small, fast, class-based concurrent scripting language. <br  />
+ Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax.<br  />
+ Wren is small. The VM implementation is under 4,000 semicolons"<br  />
+.  
  <a href="../../d0/da0/class_app_wren.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>&gt;</code></p>
@@ -126,21 +139,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad339a4b95cdb501d58fed6442216391d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ad339a4b95cdb501d58fed6442216391d.html#ad339a4b95cdb501d58fed6442216391d">drawLine</a> (int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)</td></tr>
 <tr class="separator:ad339a4b95cdb501d58fed6442216391d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae04f239760ccc2afba7e901fd95cc645"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">freeModuleSource</a> ()</td></tr>
+<tr class="memdesc:ae04f239760ccc2afba7e901fd95cc645"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiver for the wren c callback function loadModuleComplete indicating it's now ok to release the module_load_buffer  <a href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">More...</a><br /></td></tr>
 <tr class="separator:ae04f239760ccc2afba7e901fd95cc645"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b7bb694345971558aff2dc19fc1eaa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a5b7bb694345971558aff2dc19fc1eaa4.html#a5b7bb694345971558aff2dc19fc1eaa4">getAudioDirector</a> ()</td></tr>
+<tr class="memdesc:a5b7bb694345971558aff2dc19fc1eaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Audio Director object.  <a href="../../d0/da0/class_app_wren_a5b7bb694345971558aff2dc19fc1eaa4.html#a5b7bb694345971558aff2dc19fc1eaa4">More...</a><br /></td></tr>
 <tr class="separator:a5b7bb694345971558aff2dc19fc1eaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d27edc5e5b53b98175c5882e822854"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s.html">ILI9341_t3_ERIS</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ad7d27edc5e5b53b98175c5882e822854.html#ad7d27edc5e5b53b98175c5882e822854">getDraw</a> ()</td></tr>
+<tr class="memdesc:ad7d27edc5e5b53b98175c5882e822854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Draw object.  <a href="../../d0/da0/class_app_wren_ad7d27edc5e5b53b98175c5882e822854.html#ad7d27edc5e5b53b98175c5882e822854">More...</a><br /></td></tr>
 <tr class="separator:ad7d27edc5e5b53b98175c5882e822854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe45ee73ddb0f8d35c5e45342a5fe05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_abfe45ee73ddb0f8d35c5e45342a5fe05.html#abfe45ee73ddb0f8d35c5e45342a5fe05">getFocus</a> ()</td></tr>
+<tr class="memdesc:abfe45ee73ddb0f8d35c5e45342a5fe05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Focus object.  <a href="../../d0/da0/class_app_wren_abfe45ee73ddb0f8d35c5e45342a5fe05.html#abfe45ee73ddb0f8d35c5e45342a5fe05">More...</a><br /></td></tr>
 <tr class="separator:abfe45ee73ddb0f8d35c5e45342a5fe05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeea1fb2273947441e89ee259d0eec139"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_aeea1fb2273947441e89ee259d0eec139.html#aeea1fb2273947441e89ee259d0eec139">getPixel</a> (int16_t <a class="el" href="../../db/d69/class_app_base_class_a3d5594a6a0d365be1098e9cdb2748c3d.html#a3d5594a6a0d365be1098e9cdb2748c3d">x</a>, int16_t <a class="el" href="../../db/d69/class_app_base_class_a3351e0160fb9d0fc79e5ac6db652645a.html#a3351e0160fb9d0fc79e5ac6db652645a">y</a>)</td></tr>
 <tr class="separator:aeea1fb2273947441e89ee259d0eec139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4004b3e5ab5e04b4dd8ab3e6bcde2baf"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a4004b3e5ab5e04b4dd8ab3e6bcde2baf.html#a4004b3e5ab5e04b4dd8ab3e6bcde2baf">loadModuleSource</a> (const char *<a class="el" href="../../db/d69/class_app_base_class_ab52309ab6ada18b53b674f23b01dded2.html#ab52309ab6ada18b53b674f23b01dded2">name</a>)</td></tr>
+<tr class="memdesc:a4004b3e5ab5e04b4dd8ab3e6bcde2baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiver for the wren c callback function getSourceForModule  <a href="../../d0/da0/class_app_wren_a4004b3e5ab5e04b4dd8ab3e6bcde2baf.html#a4004b3e5ab5e04b4dd8ab3e6bcde2baf">More...</a><br /></td></tr>
 <tr class="separator:a4004b3e5ab5e04b4dd8ab3e6bcde2baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aa4114b8f2506085c3a0871c598216b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b.html#a2aa4114b8f2506085c3a0871c598216b">loadScript</a> (const char *script)</td></tr>
+<tr class="memdesc:a2aa4114b8f2506085c3a0871c598216b"><td class="mdescLeft">&#160;</td><td class="mdescRight">load a script into the running VM  <a href="../../d0/da0/class_app_wren_a2aa4114b8f2506085c3a0871c598216b.html#a2aa4114b8f2506085c3a0871c598216b">More...</a><br /></td></tr>
 <tr class="separator:a2aa4114b8f2506085c3a0871c598216b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9545f907e7bca8484595d63ade9abe96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a9545f907e7bca8484595d63ade9abe96.html#a9545f907e7bca8484595d63ade9abe96">MessageHandler</a> (<a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> *sender, const char *message)</td></tr>
+<tr class="memdesc:a9545f907e7bca8484595d63ade9abe96"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles messages from other sw components  <a href="../../d0/da0/class_app_wren_a9545f907e7bca8484595d63ade9abe96.html#a9545f907e7bca8484595d63ade9abe96">More...</a><br /></td></tr>
 <tr class="separator:a9545f907e7bca8484595d63ade9abe96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c8cc0aa95f7cb269b865c8f9621229"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a81c8cc0aa95f7cb269b865c8f9621229.html#a81c8cc0aa95f7cb269b865c8f9621229">rebootRequest</a> (char *script_name)</td></tr>
+<tr class="memdesc:a81c8cc0aa95f7cb269b865c8f9621229"><td class="mdescLeft">&#160;</td><td class="mdescRight">c callback support to allow wren scripts to request a VM reboot &amp; script load<br  />
+ <a href="../../d0/da0/class_app_wren_a81c8cc0aa95f7cb269b865c8f9621229.html#a81c8cc0aa95f7cb269b865c8f9621229">More...</a><br /></td></tr>
+<tr class="separator:a81c8cc0aa95f7cb269b865c8f9621229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7a97ed3ad7b7b7ccd2a629448679e20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ab7a97ed3ad7b7b7ccd2a629448679e20.html#ab7a97ed3ad7b7b7ccd2a629448679e20">releasePopUp</a> ()</td></tr>
 <tr class="separator:ab7a97ed3ad7b7b7ccd2a629448679e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a02cff13a6da29a75d2070218902c26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a8a02cff13a6da29a75d2070218902c26.html#a8a02cff13a6da29a75d2070218902c26">requestPopUp</a> (bool exclusive=false)</td></tr>
@@ -148,22 +172,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acda2652e5756c39eda8413c87f0868d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_acda2652e5756c39eda8413c87f0868d0.html#acda2652e5756c39eda8413c87f0868d0">returnFocus</a> ()</td></tr>
 <tr class="separator:acda2652e5756c39eda8413c87f0868d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadebc6ad4b48ffc375c78f4a2309cd95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_aadebc6ad4b48ffc375c78f4a2309cd95.html#aadebc6ad4b48ffc375c78f4a2309cd95">setDimension</a> (int16_t new_width, int16_t new_height)</td></tr>
+<tr class="memdesc:aadebc6ad4b48ffc375c78f4a2309cd95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Dimension object<br  />
+receiver for the wren c callback function setDimensionCallback.  <a href="../../d0/da0/class_app_wren_aadebc6ad4b48ffc375c78f4a2309cd95.html#aadebc6ad4b48ffc375c78f4a2309cd95">More...</a><br /></td></tr>
 <tr class="separator:aadebc6ad4b48ffc375c78f4a2309cd95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f43ff2f48f72d186161822ed1917f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a7f43ff2f48f72d186161822ed1917f5b.html#a7f43ff2f48f72d186161822ed1917f5b">setParent</a> (<a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> *parent)</td></tr>
+<tr class="memdesc:a7f43ff2f48f72d186161822ed1917f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Parent object.  <a href="../../d0/da0/class_app_wren_a7f43ff2f48f72d186161822ed1917f5b.html#a7f43ff2f48f72d186161822ed1917f5b">More...</a><br /></td></tr>
 <tr class="separator:a7f43ff2f48f72d186161822ed1917f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd797662d50ea1d4dc11eff65cd5ab18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18">setPixel</a> (int16_t <a class="el" href="../../db/d69/class_app_base_class_a3d5594a6a0d365be1098e9cdb2748c3d.html#a3d5594a6a0d365be1098e9cdb2748c3d">x</a>, int16_t <a class="el" href="../../db/d69/class_app_base_class_a3351e0160fb9d0fc79e5ac6db652645a.html#a3351e0160fb9d0fc79e5ac6db652645a">y</a>, int16_t r, int16_t g, int16_t b)</td></tr>
 <tr class="separator:acd797662d50ea1d4dc11eff65cd5ab18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac60892eccc79d5e682f6c287d0743fe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ac60892eccc79d5e682f6c287d0743fe4.html#ac60892eccc79d5e682f6c287d0743fe4">setPosition</a> (int16_t newOriginX, int16_t newOriginY)</td></tr>
+<tr class="memdesc:ac60892eccc79d5e682f6c287d0743fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Position object/n receiver for the wren c callback function setPositionCallback.  <a href="../../d0/da0/class_app_wren_ac60892eccc79d5e682f6c287d0743fe4.html#ac60892eccc79d5e682f6c287d0743fe4">More...</a><br /></td></tr>
 <tr class="separator:ac60892eccc79d5e682f6c287d0743fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8102c4c95021693cb5aa2a21cce25ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_af8102c4c95021693cb5aa2a21cce25ce.html#af8102c4c95021693cb5aa2a21cce25ce">setRTPriority</a> (uint16_t level)</td></tr>
 <tr class="separator:af8102c4c95021693cb5aa2a21cce25ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a514b3b6b2c8059bde367709b11bc55a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a514b3b6b2c8059bde367709b11bc55a8.html#a514b3b6b2c8059bde367709b11bc55a8">setWidgetDimension</a> (int16_t new_width, int16_t new_height)</td></tr>
+<tr class="memdesc:a514b3b6b2c8059bde367709b11bc55a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Widget Dimension object<br  />
+receiver for the wren c callback function setWidgetDimensionCallback.  <a href="../../d0/da0/class_app_wren_a514b3b6b2c8059bde367709b11bc55a8.html#a514b3b6b2c8059bde367709b11bc55a8">More...</a><br /></td></tr>
 <tr class="separator:a514b3b6b2c8059bde367709b11bc55a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af432685cfe347e1d7b730c48b4a2f650"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_af432685cfe347e1d7b730c48b4a2f650.html#af432685cfe347e1d7b730c48b4a2f650">setWidgetPosition</a> (int16_t newOriginX, int16_t newOriginY)</td></tr>
+<tr class="memdesc:af432685cfe347e1d7b730c48b4a2f650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Widget Position object<br  />
+receiver for the wren c callback function setWidgetPositionCallback.  <a href="../../d0/da0/class_app_wren_af432685cfe347e1d7b730c48b4a2f650.html#af432685cfe347e1d7b730c48b4a2f650">More...</a><br /></td></tr>
 <tr class="separator:af432685cfe347e1d7b730c48b4a2f650"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab96749e0e63c43368cc7121477d472a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ab96749e0e63c43368cc7121477d472a4.html#ab96749e0e63c43368cc7121477d472a4">vmConstructor</a> ()</td></tr>
-<tr class="memdesc:ab96749e0e63c43368cc7121477d472a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">start, load and configure the handles of the VM  <a href="../../d0/da0/class_app_wren_ab96749e0e63c43368cc7121477d472a4.html#ab96749e0e63c43368cc7121477d472a4">More...</a><br /></td></tr>
-<tr class="separator:ab96749e0e63c43368cc7121477d472a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9fc192669efcd782a665bc5918aaaa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3">vmConstructor</a> (const char *initial_script)</td></tr>
+<tr class="memdesc:af9fc192669efcd782a665bc5918aaaa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">start, load and configure the handles of the VM  <a href="../../d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3">More...</a><br /></td></tr>
+<tr class="separator:af9fc192669efcd782a665bc5918aaaa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_app_base_class"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_app_base_class')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a></td></tr>
 <tr class="memitem:afc31089c73d88d7b768aa71cbabf0465 inherit pub_methods_class_app_base_class"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class_afc31089c73d88d7b768aa71cbabf0465.html#afc31089c73d88d7b768aa71cbabf0465">AppBaseClass</a> ()</td></tr>
 <tr class="separator:afc31089c73d88d7b768aa71cbabf0465 inherit pub_methods_class_app_base_class"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +228,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a743e89bcfef0064cc5aaae3863ba2ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">responsible for managing the surface buffer memory allocation  <a href="../../d0/da0/class_app_wren_a743e89bcfef0064cc5aaae3863ba2ac3.html#a743e89bcfef0064cc5aaae3863ba2ac3">More...</a><br /></td></tr>
 <tr class="separator:a743e89bcfef0064cc5aaae3863ba2ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb53a44e9d80fddb8fd27cde67c9047a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_adb53a44e9d80fddb8fd27cde67c9047a.html#adb53a44e9d80fddb8fd27cde67c9047a">getWrenHandles</a> ()</td></tr>
+<tr class="memdesc:adb53a44e9d80fddb8fd27cde67c9047a"><td class="mdescLeft">&#160;</td><td class="mdescRight">VM post module load support function creates/updates the Wren embedded call handles.  <a href="../../d0/da0/class_app_wren_adb53a44e9d80fddb8fd27cde67c9047a.html#adb53a44e9d80fddb8fd27cde67c9047a">More...</a><br /></td></tr>
 <tr class="separator:adb53a44e9d80fddb8fd27cde67c9047a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a701371012a8d0ca93203257c69a7204a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a701371012a8d0ca93203257c69a7204a.html#a701371012a8d0ca93203257c69a7204a">isWrenResultOK</a> (WrenInterpretResult res)</td></tr>
 <tr class="separator:a701371012a8d0ca93203257c69a7204a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,6 +251,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae86344b2db061b7b70bd914cd1790067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ae86344b2db061b7b70bd914cd1790067.html#ae86344b2db061b7b70bd914cd1790067">onTouchRelease</a> (uint16_t t_x, uint16_t t_y) override</td></tr>
 <tr class="separator:ae86344b2db061b7b70bd914cd1790067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6016f4a08eee6f678b3e389f35a2fbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ab6016f4a08eee6f678b3e389f35a2fbd.html#ab6016f4a08eee6f678b3e389f35a2fbd">releaseWrenHandles</a> ()</td></tr>
+<tr class="memdesc:ab6016f4a08eee6f678b3e389f35a2fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">release any/all Wren embedded call handles  <a href="../../d0/da0/class_app_wren_ab6016f4a08eee6f678b3e389f35a2fbd.html#ab6016f4a08eee6f678b3e389f35a2fbd">More...</a><br /></td></tr>
 <tr class="separator:ab6016f4a08eee6f678b3e389f35a2fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf9a5e77ba482fde47e52125e9ca292"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292">restartVM</a> ()</td></tr>
 <tr class="separator:aedf9a5e77ba482fde47e52125e9ca292"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,10 +289,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a3d218d61716a624a217882a663a93394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af7972f7fceb2faed342b31c5fc0e97"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a></td></tr>
 <tr class="separator:a9af7972f7fceb2faed342b31c5fc0e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783c0f6ff7c9bd61b9104f177682605a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a783c0f6ff7c9bd61b9104f177682605a.html#a783c0f6ff7c9bd61b9104f177682605a">reboot_request</a></td></tr>
+<tr class="separator:a783c0f6ff7c9bd61b9104f177682605a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83ceeb770c9d48b6ca13f11463ff38ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a83ceeb770c9d48b6ca13f11463ff38ff.html#a83ceeb770c9d48b6ca13f11463ff38ff">save_module</a></td></tr>
 <tr class="separator:a83ceeb770c9d48b6ca13f11463ff38ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d026f23e1a35bdecdbfc7dfadb7887c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a1d026f23e1a35bdecdbfc7dfadb7887c.html#a1d026f23e1a35bdecdbfc7dfadb7887c">save_module_as</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_a9a90baeac9b3273d185357200b599b39.html#a9a90baeac9b3273d185357200b599b39">MAX_TEXT_LENGTH</a>]</td></tr>
-<tr class="separator:a1d026f23e1a35bdecdbfc7dfadb7887c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7248caa425e819d404a177099ded2c69"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a7248caa425e819d404a177099ded2c69.html#a7248caa425e819d404a177099ded2c69">show_active</a></td></tr>
 <tr class="separator:a7248caa425e819d404a177099ded2c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc17d4ff786d900a1d08631aafc85d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1a/class_surface.html">Surface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a2bc17d4ff786d900a1d08631aafc85d3.html#a2bc17d4ff786d900a1d08631aafc85d3">surface_cache</a></td></tr>
@@ -269,6 +303,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aa6b73fd2c6c1ec291782bc3c28529ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab674666602adb6b2a5322c89381851f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_ab674666602adb6b2a5322c89381851f9.html#ab674666602adb6b2a5322c89381851f9">usingImage</a></td></tr>
 <tr class="separator:ab674666602adb6b2a5322c89381851f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177719148ea60e521d0e8608fafdaed3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da0/class_app_wren_a177719148ea60e521d0e8608fafdaed3.html#a177719148ea60e521d0e8608fafdaed3">wren_module_name</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_a9a90baeac9b3273d185357200b599b39.html#a9a90baeac9b3273d185357200b599b39">MAX_TEXT_LENGTH</a>]</td></tr>
+<tr class="separator:a177719148ea60e521d0e8608fafdaed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_app_base_class"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_app_base_class')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a></td></tr>
 <tr class="memitem:ad66a3cbbe4a3b973dea5c83a068bc79f inherit pro_attribs_class_app_base_class"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d1c/class_audio_director.html">AudioDirector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a></td></tr>
 <tr class="separator:ad66a3cbbe4a3b973dea5c83a068bc79f inherit pro_attribs_class_app_base_class"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -379,11 +415,22 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3351e0160fb9d0fc79e5ac6db652645a inherit pub_attribs_class_app_base_class"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wren is a scripting language. This class is a proxy which mirrors the <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> into wren. </p>
-<p>The use case is to allow scripting of apps Why? with this, applications can be dynamically loaded and executed Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card which gives effectivly limitless program storage space. Beware: The available heap defines the upper boundary of VM size</p>
-<p>From <a href="https://wren.io/:">https://wren.io/:</a> "Wren is a small, fast, class-based concurrent scripting language. Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax. Wren is small. The VM implementation is under 4,000 semicolons" </p>
+<div class="textblock"><p>Wren is a scripting language. This class is a proxy which mirrors the <a class="el" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> into wren.<br  />
+ <br  />
+ <br  />
+ The use case is to allow scripting of apps<br  />
+ Why? with this, applications can be dynamically loaded and executed<br  />
+ Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card<br  />
+ which gives effectivly limitless program storage space.<br  />
+ Beware: The available heap defines the upper boundary of VM size<br  />
+ <br  />
+ From <a href="https://wren.io/:">https://wren.io/:</a><br  />
+ "Wren is a small, fast, class-based concurrent scripting language. <br  />
+ Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in a familiar, modern syntax.<br  />
+ Wren is small. The VM implementation is under 4,000 semicolons"<br  />
+. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00033">33</a> of file <a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00031">31</a> of file <a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a></li>
 <li><a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a></li>

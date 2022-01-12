@@ -119,21 +119,21 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a8862be3048f99b6
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WrenLoadModuleResult </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00114">114</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                                             {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="comment">//callback for the VM to request a module be loaded from the filesystem</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  Serial.printf(<span class="stringliteral">&quot;M VM: loadModule %s\n&quot;</span>, name);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  WrenLoadModuleResult result = {0};</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    result.onComplete = <a class="code" href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    result.source = <a class="code" href="../../d7/d7e/_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a>(name);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="ttc" id="a_app_wren_8cpp_a085afb683548c1082208ee513452dd24_html_a085afb683548c1082208ee513452dd24"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a></div><div class="ttdeci">static void loadModuleComplete(WrenVM *vm, const char *module, WrenLoadModuleResult result)</div><div class="ttdoc">callback function for the VM to indicate to the system that it's ok to release any memory allocated d...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00092">AppWren.cpp:92</a></div></div>
-<div class="ttc" id="a_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be_html_a2469bc30d12bb4b85e4a318a873ec7be"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a></div><div class="ttdeci">const char * getSourceForModule(const char *name)</div><div class="ttdoc">Get the Source For Module object requested by the Wren VM.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00079">AppWren.cpp:79</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00121">121</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                             {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="comment">//callback for the VM to request a module be loaded from the filesystem</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  Serial.printf(<span class="stringliteral">&quot;M VM: loadModule %s\n&quot;</span>, name);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  WrenLoadModuleResult result = {0};</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    result.onComplete = <a class="code" href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    result.source = <a class="code" href="../../d7/d7e/_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a>(name);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="ttc" id="a_app_wren_8cpp_a085afb683548c1082208ee513452dd24_html_a085afb683548c1082208ee513452dd24"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24">loadModuleComplete</a></div><div class="ttdeci">static void loadModuleComplete(WrenVM *vm, const char *module, WrenLoadModuleResult result)</div><div class="ttdoc">callback function for the VM to indicate to the system that it's ok to release any memory allocated d...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00099">AppWren.cpp:99</a></div></div>
+<div class="ttc" id="a_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be_html_a2469bc30d12bb4b85e4a318a873ec7be"><div class="ttname"><a href="../../d7/d7e/_app_wren_8cpp_a2469bc30d12bb4b85e4a318a873ec7be.html#a2469bc30d12bb4b85e4a318a873ec7be">getSourceForModule</a></div><div class="ttdeci">const char * getSourceForModule(const char *name)</div><div class="ttdoc">Get the Source For Module object requested by the Wren VM.</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00086">AppWren.cpp:86</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00079">getSourceForModule()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00092">loadModuleComplete()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00086">getSourceForModule()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00099">loadModuleComplete()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00551">AppWren::startVM()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00584">AppWren::startVM()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a8862be3048f99b6
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8862be3048f99b67cf6ccc12d2c2ae74_a8862be3048f99b67cf6ccc12d2c2ae74_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a8862be3048f99b67cf6ccc12d2c2ae74_a8862be3048f99b67cf6ccc12d2c2ae74_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

@@ -1,6 +1,9 @@
-#pragma GCC optimize ("Ofast")
+//#pragma GCC optimize ("Ofast")
 #define BUILTIN_SDCARD 254
 #include <Arduino.h>
+#include <TimeLib.h>
+#include <DS1307RTC.h>  // a basic DS1307 library that returns time as a time_t
+
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
 #include <SdFat.h>

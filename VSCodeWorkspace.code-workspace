@@ -48,7 +48,9 @@
 			"wren_vm.h": "c",
 			"wren_utils.h": "c",
 			"wren_compiler.h": "c",
-			"wren.h": "c"
+			"wren.h": "c",
+			"*.inc": "c",
+			"wren_primitive.h": "c"
 		},
 		"git.ignoreLimitWarning": true
 	}

@@ -150,10 +150,72 @@ erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
 erisAudioAnalyzePrint
 update call:[update] noreturn:[update]
+Touch
+setCalibrationInputs
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
+getId
+isName call:[sizeof,strncmp]
+setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
+setParent
+setPosition call:[_updatePosition] noreturn:[_updatePosition]
+setDimension call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
+update
+updateRT
+onFocus
+onFocusLost
+onTouch
+onTouchDrag
+onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
+MessageHandler
+SvcDataDictionary
+getInstance call:[AppManager] noreturn:[AppManager]
+chdir call:[chdir] noreturn:[chdir]
+chdir call:[chdir] noreturn:[chdir]
+ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 connectionCount
+setSCI
 AudioDirector global:[nullStr] call:[AudioConnection,AudioMemory,F,addAudioStreamObj,erisAudioInputI2S,generateCategoryList,getAudioStreamObjByName,print,println] noreturn:[AudioConnection,addAudioStreamObj,println]
 addAudioStreamObj call:[F,print,println,strcmp]
-printStats call:[F,print,println,processorUsage,processorUsageMax] noreturn:[print,println]
+printStats call:[F,endLZ4Message,print,println,processorUsage,processorUsageMax,startLZ4Message] noreturn:[endLZ4Message,print]
 generateCategoryList call:[strcmp]
 getAudioStreamObjByName call:[F,print,println,strlen,strncmp,strstr,strtoul]
 getAudioStreamString call:[sprintf,strcpy]

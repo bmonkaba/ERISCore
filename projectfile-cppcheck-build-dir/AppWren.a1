@@ -1,0 +1,630 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="3307246347">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="57" column="9"/>
+            <symbol>sincePoll</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="58" column="9"/>
+            <symbol>sincePeriodicDataDict</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="59" column="9"/>
+            <symbol>sincePeriodicStats</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
+            <symbol>Touch</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;MessageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;MessageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppWren.h" line="115" column="10" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="109" column="18" info="Virtual function in base class"/>
+            <symbol>MessageHandler</symbol>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="88" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="108" column="20"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="166" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="178" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="190" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="202" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="213" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="224" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="235" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="246" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="281" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="295" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="308" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="320" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="379" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="391" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="402" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="423" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="435" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="447" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="459" column="18"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="src/AppWren.cpp">
+            <location file="src\AppWren.cpp" line="471" column="18"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="13" info="Shadowed declaration"/>
+            <symbol>h</symbol>
+        </error>
+        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="127" column="9"/>
+            <symbol>Surface</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;end_x&apos; is assigned a value that is never used." verbose="Variable &apos;end_x&apos; is assigned a value that is never used." cwe="563" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppWren.h" line="269" column="43"/>
+            <symbol>end_x</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;end_y&apos; is assigned a value that is never used." verbose="Variable &apos;end_y&apos; is assigned a value that is never used." cwe="563" file0="src/AppWren.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppWren.h" line="270" column="43"/>
+            <symbol>end_y</symbol>
+        </error>
+  <FileInfo check="ctu">
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:198:17" call-funcname="loadModuleSource" call-argnr="1" file="src/AppWren.cpp" line="710" col="40" call-argexpr="wren_module_name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:86:10" call-funcname="loadScript" call-argnr="1" file="src/AppWren.cpp" line="577" col="5" my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:79:10" my-argnr="1"/>
+  </FileInfo>
+  <FileInfo check="Class">
+<class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
+<class name="erisAudioInputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="98" col="1" hash="17019316723196514384"/>
+<class name="erisAudioInputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="108" col="1" hash="12889149348684469767"/>
+<class name="erisAudioInputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="118" col="1" hash="6028903301171554901"/>
+<class name="erisAudioInputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="128" col="1" hash="4968706929110944895"/>
+<class name="erisAudioInputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="138" col="1" hash="15809457002258706000"/>
+<class name="erisAudioInputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="148" col="1" hash="11406150109657359798"/>
+<class name="erisAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="158" col="1" hash="1372926380654507372"/>
+<class name="erisAsyncAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="168" col="1" hash="17940064596614591134"/>
+<class name="erisAudioInputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="178" col="1" hash="5469694701424856321"/>
+<class name="erisAudioInputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="188" col="1" hash="12061529731085099603"/>
+<class name="erisAudioInputPDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="198" col="1" hash="10033901636159097191"/>
+<class name="erisAudioInputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="208" col="1" hash="15259063952535369549"/>
+<class name="erisAudioInputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="218" col="1" hash="14856942719287723931"/>
+<class name="erisAudioOutputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="228" col="1" hash="1836933379248046551"/>
+<class name="erisAudioOutputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="238" col="1" hash="5990769019527883701"/>
+<class name="erisAudioOutputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="248" col="1" hash="11434018027038360475"/>
+<class name="erisAudioOutputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="258" col="1" hash="9571367478623596901"/>
+<class name="erisAudioOutputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="268" col="1" hash="12702726595264855518"/>
+<class name="erisAudioOutputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="278" col="1" hash="17892985148605244015"/>
+<class name="erisAudioOutputSPDIF" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="288" col="1" hash="18316701196461237528"/>
+<class name="erisAudioOutputSPDIF2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="298" col="1" hash="7797447031346815706"/>
+<class name="erisAudioOutputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="308" col="1" hash="16751863684456004246"/>
+<class name="erisAudioOutputPT8211" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="318" col="1" hash="4359577722567632146"/>
+<class name="erisAudioOutputPT8211_2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="328" col="1" hash="7628113483695143906"/>
+<class name="erisAudioOutputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="338" col="1" hash="3756956596770590231"/>
+<class name="erisAudioOutputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="348" col="1" hash="8647170536430879707"/>
+<class name="erisAudioOutputPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="358" col="1" hash="1444287441411935465"/>
+<class name="erisAudioOutputMQS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="368" col="1" hash="17079401432311194794"/>
+<class name="erisAudioOutputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="378" col="1" hash="7708984035535973941"/>
+<class name="erisAudioOutputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="388" col="1" hash="3988180730731542175"/>
+<class name="erisAudioOutputADAT" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="398" col="1" hash="6185472866387283372"/>
+<class name="erisAudioAmplifier" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="408" col="1" hash="8763940027999518862"/>
+<class name="erisAudioMixer4" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="418" col="1" hash="10114398071111466314"/>
+<class name="erisAudioPlayMemory" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="428" col="1" hash="15124706446371980787"/>
+<class name="erisAudioPlaySerialflashRaw" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="438" col="1" hash="17168942511083914767"/>
+<class name="erisAudioPlayQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="448" col="1" hash="9884993907786335155"/>
+<class name="erisAudioRecordQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="458" col="1" hash="13400521790657212627"/>
+<class name="erisAudioSynthWavetable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="468" col="1" hash="6862551364167213219"/>
+<class name="erisAudioSynthSimpleDrum" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="478" col="1" hash="16260344283374880339"/>
+<class name="erisAudioSynthKarplusStrong" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="488" col="1" hash="15428449321585163997"/>
+<class name="erisAudioSynthWaveformSine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="498" col="1" hash="5554398737258808582"/>
+<class name="erisAudioSynthWaveformSineHires" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="508" col="1" hash="1243266091286715710"/>
+<class name="erisAudioSynthWaveformSineModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="518" col="1" hash="6613027986117435692"/>
+<class name="erisAudioSynthWaveform" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="528" col="1" hash="10661082739031984725"/>
+<class name="erisAudioSynthWaveformModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="538" col="1" hash="9070137649144748664"/>
+<class name="erisAudioSynthWaveformPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="548" col="1" hash="16282031523987132795"/>
+<class name="erisAudioSynthToneSweep" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="558" col="1" hash="14902423390283889489"/>
+<class name="erisAudioSynthWaveformDc" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="568" col="1" hash="11332563550291126986"/>
+<class name="erisAudioSynthNoiseWhite" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="578" col="1" hash="18369753233789786926"/>
+<class name="erisAudioSynthNoisePink" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="588" col="1" hash="7666074944499152605"/>
+<class name="erisAudioEffectFade" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="598" col="1" hash="8097214233170311102"/>
+<class name="erisAudioEffectChorus" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="608" col="1" hash="11711887291647211682"/>
+<class name="erisAudioEffectFlange" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="618" col="1" hash="13039206121562521986"/>
+<class name="erisAudioEffectReverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="628" col="1" hash="9600413015891836070"/>
+<class name="erisAudioEffectFreeverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="638" col="1" hash="4348153898252324090"/>
+<class name="erisAudioEffectFreeverbStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="648" col="1" hash="826130359863801218"/>
+<class name="erisAudioEffectEnvelope" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="658" col="1" hash="17600207697407804882"/>
+<class name="erisAudioEffectMultiply" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="668" col="1" hash="10764948352547471841"/>
+<class name="erisAudioEffectDelay" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="678" col="1" hash="15486994146812610059"/>
+<class name="erisAudioEffectDelayExternal" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="688" col="1" hash="11642970270825282913"/>
+<class name="erisAudioEffectBitcrusher" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="698" col="1" hash="5438129528292805314"/>
+<class name="erisAudioEffectMidSide" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="708" col="1" hash="15786039691290954372"/>
+<class name="erisAudioEffectWaveshaper" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="718" col="1" hash="11726647589586739582"/>
+<class name="erisAudioEffectGranular" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="728" col="1" hash="481857465943148790"/>
+<class name="erisAudioEffectDigitalCombine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="738" col="1" hash="17907310203245797863"/>
+<class name="erisAudioFilterBiquad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="748" col="1" hash="5155133181386169548"/>
+<class name="erisAudioFilterFIR" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="758" col="1" hash="11650491588858295672"/>
+<class name="erisAudioFilterStateVariable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="768" col="1" hash="16639294264589236216"/>
+<class name="erisAudioAnalyzePeak" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="778" col="1" hash="17986091572680821655"/>
+<class name="erisAudioAnalyzeRMS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="788" col="1" hash="16353966212412028487"/>
+<class name="erisAudioAnalyzeFFT256" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="798" col="1" hash="16952353100907895819"/>
+<class name="__erisAudioAnalyzeFFT1024" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="808" col="1" hash="3142326671534559013"/>
+<class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
+<class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
+<class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="5429400104627854940"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="2911627910700264153"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="21" col="9" hash="5139491191325099632"/>
+  </FileInfo>
+  <FileInfo check="Null pointer">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:86:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="88" col="88" value="0"/>
+    <unsafe-usage my-id="src/AppWren.cpp:487:30" my-argnr="2" my-argname="module" file="src/AppWren.cpp" line="495" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:115:10" my-argnr="1" my-argname="sender" file="src/AppWren.cpp" line="606" col="8" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:198:17" my-argnr="1" my-argname="name" file="src/AppWren.cpp" line="804" col="21" value="0"/>
+  </FileInfo>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:71:5" my-argnr="1" my-argname="SubSurfaceFrom" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="72" col="28" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:87:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="89" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:103:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="105" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="178" col="22" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:86:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="88" col="88" value="0"/>
+    <unsafe-usage my-id="src/AppWren.cpp:487:30" my-argnr="2" my-argname="module" file="src/AppWren.cpp" line="495" col="14" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:115:10" my-argnr="1" my-argname="sender" file="src/AppWren.cpp" line="606" col="8" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:198:17" my-argnr="1" my-argname="name" file="src/AppWren.cpp" line="804" col="21" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="_kill" lineNumber="33"/>
+    <functiondecl functionName="_getpid" lineNumber="34"/>
+    <functiondecl functionName="_times" lineNumber="35"/>
+    <functiondecl functionName="_gettimeofday" lineNumber="36"/>
+    <functiondecl functionName="writeFn" lineNumber="46"/>
+    <functiondecl functionName="errorFn" lineNumber="59"/>
+    <functiondecl functionName="getSourceForModule" lineNumber="86"/>
+    <functiondecl functionName="loadModuleComplete" lineNumber="99"/>
+    <functiondecl functionName="loadModule" lineNumber="121"/>
+    <functiondecl functionName="wrenFastMemoryAllocator" lineNumber="131"/>
+    <functiondecl functionName="sendMessageCallback" lineNumber="151"/>
+    <functiondecl functionName="setPositionCallback" lineNumber="163"/>
+    <functiondecl functionName="setDimensionCallback" lineNumber="175"/>
+    <functiondecl functionName="setWidgetPositionCallback" lineNumber="187"/>
+    <functiondecl functionName="setWidgetDimensionCallback" lineNumber="199"/>
+    <functiondecl functionName="requestPopUpCallback" lineNumber="210"/>
+    <functiondecl functionName="releasePopUpCallback" lineNumber="221"/>
+    <functiondecl functionName="getFocusCallback" lineNumber="232"/>
+    <functiondecl functionName="returnFocusCallback" lineNumber="243"/>
+    <functiondecl functionName="setClockSpeedCallback" lineNumber="257"/>
+    <functiondecl functionName="setRandomCallback" lineNumber="267"/>
+    <functiondecl functionName="restartVMCallback" lineNumber="278"/>
+    <functiondecl functionName="audioDirectorConnectCallback" lineNumber="292"/>
+    <functiondecl functionName="audioDirectorDisconnectCallback" lineNumber="305"/>
+    <functiondecl functionName="audioDirectorDisconnectAllCallback" lineNumber="317"/>
+    <functiondecl functionName="dataDictUpdateCallback" lineNumber="332"/>
+    <functiondecl functionName="dataDictReadCallback" lineNumber="342"/>
+    <functiondecl functionName="dataDictUpdateFloatCallback" lineNumber="353"/>
+    <functiondecl functionName="dataDictReadFloatCallback" lineNumber="363"/>
+    <functiondecl functionName="setTextColorCallback" lineNumber="376"/>
+    <functiondecl functionName="setCursorCallback" lineNumber="388"/>
+    <functiondecl functionName="printCallback" lineNumber="399"/>
+    <functiondecl functionName="setFontSizeCallback" lineNumber="411"/>
+    <functiondecl functionName="loadImageCallback" lineNumber="420"/>
+    <functiondecl functionName="setPixelCallback" lineNumber="432"/>
+    <functiondecl functionName="getPixelCallback" lineNumber="444"/>
+    <functiondecl functionName="drawLineCallback" lineNumber="456"/>
+    <functiondecl functionName="drawFillCallback" lineNumber="468"/>
+    <functiondecl functionName="bindForeignMethod" lineNumber="487"/>
+    <functiondecl functionName="vmConstructor" lineNumber="575"/>
+    <functiondecl functionName="startVM" lineNumber="584"/>
+    <functiondecl functionName="MessageHandler" lineNumber="605"/>
+    <functiondecl functionName="dynamicSurfaceManager" lineNumber="671"/>
+    <functiondecl functionName="update" lineNumber="702"/>
+    <functiondecl functionName="releaseWrenHandles" lineNumber="764"/>
+    <functiondecl functionName="getWrenHandles" lineNumber="781"/>
+    <functiondecl functionName="loadModuleSource" lineNumber="800"/>
+    <functiondecl functionName="freeModuleSource" lineNumber="824"/>
+    <functiondecl functionName="setPosition" lineNumber="837"/>
+    <functiondecl functionName="setDimension" lineNumber="841"/>
+    <functiondecl functionName="setWidgetPosition" lineNumber="846"/>
+    <functiondecl functionName="setWidgetDimension" lineNumber="850"/>
+    <functioncall functionName="AT_HATCHBLK"/>
+    <functioncall functionName="AT_HATCHXOR"/>
+    <functioncall functionName="AT_NONE"/>
+    <functioncall functionName="AT_TRANS"/>
+    <functioncall functionName="AppBaseClass"/>
+    <functioncall functionName="AppManager"/>
+    <functioncall functionName="Arial_9"/>
+    <functioncall functionName="AsyncAudioInputSPDIF3"/>
+    <functioncall functionName="AudioAmplifier"/>
+    <functioncall functionName="AudioAnalyzeFFT1024"/>
+    <functioncall functionName="AudioAnalyzeFFT256"/>
+    <functioncall functionName="AudioAnalyzeNoteFrequency"/>
+    <functioncall functionName="AudioAnalyzePeak"/>
+    <functioncall functionName="AudioAnalyzePrint"/>
+    <functioncall functionName="AudioAnalyzeRMS"/>
+    <functioncall functionName="AudioAnalyzeToneDetect"/>
+    <functioncall functionName="AudioDirector"/>
+    <functioncall functionName="AudioEffectBitcrusher"/>
+    <functioncall functionName="AudioEffectChorus"/>
+    <functioncall functionName="AudioEffectDelay"/>
+    <functioncall functionName="AudioEffectDelayExternal"/>
+    <functioncall functionName="AudioEffectDigitalCombine"/>
+    <functioncall functionName="AudioEffectEnvelope"/>
+    <functioncall functionName="AudioEffectFade"/>
+    <functioncall functionName="AudioEffectFlange"/>
+    <functioncall functionName="AudioEffectFreeverb"/>
+    <functioncall functionName="AudioEffectFreeverbStereo"/>
+    <functioncall functionName="AudioEffectGranular"/>
+    <functioncall functionName="AudioEffectMidSide"/>
+    <functioncall functionName="AudioEffectMultiply"/>
+    <functioncall functionName="AudioEffectReverb"/>
+    <functioncall functionName="AudioEffectWaveshaper"/>
+    <functioncall functionName="AudioFilterBiquad"/>
+    <functioncall functionName="AudioFilterFIR"/>
+    <functioncall functionName="AudioFilterStateVariable"/>
+    <functioncall functionName="AudioInputAnalog"/>
+    <functioncall functionName="AudioInputAnalogStereo"/>
+    <functioncall functionName="AudioInputI2S"/>
+    <functioncall functionName="AudioInputI2S2"/>
+    <functioncall functionName="AudioInputI2SHex"/>
+    <functioncall functionName="AudioInputI2SOct"/>
+    <functioncall functionName="AudioInputI2SQuad"/>
+    <functioncall functionName="AudioInputI2Sslave"/>
+    <functioncall functionName="AudioInputPDM"/>
+    <functioncall functionName="AudioInputSPDIF3"/>
+    <functioncall functionName="AudioInputTDM"/>
+    <functioncall functionName="AudioInputTDM2"/>
+    <functioncall functionName="AudioMixer4"/>
+    <functioncall functionName="AudioMixer8"/>
+    <functioncall functionName="AudioOutputADAT"/>
+    <functioncall functionName="AudioOutputAnalog"/>
+    <functioncall functionName="AudioOutputAnalogStereo"/>
+    <functioncall functionName="AudioOutputI2S"/>
+    <functioncall functionName="AudioOutputI2S2"/>
+    <functioncall functionName="AudioOutputI2SHex"/>
+    <functioncall functionName="AudioOutputI2SOct"/>
+    <functioncall functionName="AudioOutputI2SQuad"/>
+    <functioncall functionName="AudioOutputI2Sslave"/>
+    <functioncall functionName="AudioOutputMQS"/>
+    <functioncall functionName="AudioOutputPT8211"/>
+    <functioncall functionName="AudioOutputPT8211_2"/>
+    <functioncall functionName="AudioOutputPWM"/>
+    <functioncall functionName="AudioOutputSPDIF"/>
+    <functioncall functionName="AudioOutputSPDIF2"/>
+    <functioncall functionName="AudioOutputSPDIF3"/>
+    <functioncall functionName="AudioOutputTDM"/>
+    <functioncall functionName="AudioOutputTDM2"/>
+    <functioncall functionName="AudioPlayMemory"/>
+    <functioncall functionName="AudioPlayQueue"/>
+    <functioncall functionName="AudioPlaySerialflashRaw"/>
+    <functioncall functionName="AudioRecordQueue"/>
+    <functioncall functionName="AudioSynthKarplusStrong"/>
+    <functioncall functionName="AudioSynthNoisePink"/>
+    <functioncall functionName="AudioSynthNoiseWhite"/>
+    <functioncall functionName="AudioSynthSimpleDrum"/>
+    <functioncall functionName="AudioSynthToneSweep"/>
+    <functioncall functionName="AudioSynthWaveform"/>
+    <functioncall functionName="AudioSynthWaveformDc"/>
+    <functioncall functionName="AudioSynthWaveformModulated"/>
+    <functioncall functionName="AudioSynthWaveformPWM"/>
+    <functioncall functionName="AudioSynthWaveformSine"/>
+    <functioncall functionName="AudioSynthWaveformSineHires"/>
+    <functioncall functionName="AudioSynthWaveformSineModulated"/>
+    <functioncall functionName="AudioSynthWavetable"/>
+    <functioncall functionName="CL"/>
+    <functioncall functionName="DDDT_EMPTY"/>
+    <functioncall functionName="DDDT_FLOAT16"/>
+    <functioncall functionName="DDDT_FLOAT32"/>
+    <functioncall functionName="DDDT_INT16"/>
+    <functioncall functionName="DDDT_INT32"/>
+    <functioncall functionName="DDDT_PFLOAT16"/>
+    <functioncall functionName="DDDT_PFLOAT32"/>
+    <functioncall functionName="DDDT_PINT16"/>
+    <functioncall functionName="DDDT_PINT32"/>
+    <functioncall functionName="DDDT_PUINT132"/>
+    <functioncall functionName="DDDT_PUINT16"/>
+    <functioncall functionName="DDDT_UINT132"/>
+    <functioncall functionName="DDDT_UINT16"/>
+    <functioncall functionName="DDRT_EMPTY"/>
+    <functioncall functionName="DDRT_POINTER"/>
+    <functioncall functionName="DDRT_READ"/>
+    <functioncall functionName="DDRT_READWRITE"/>
+    <functioncall functionName="F"/>
+    <functioncall functionName="ILI9341_t3n"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="O_CREAT"/>
+    <functioncall functionName="O_RDONLY"/>
+    <functioncall functionName="O_READ"/>
+    <functioncall functionName="Surface"/>
+    <functioncall functionName="Touch"/>
+    <functioncall functionName="XPT2046_Touchscreen"/>
+    <functioncall functionName="_busy"/>
+    <functioncall functionName="_path"/>
+    <functioncall functionName="_pfbtft"/>
+    <functioncall functionName="_updatePosition"/>
+    <functioncall functionName="abs"/>
+    <functioncall functionName="alloc_size"/>
+    <functioncall functionName="analogRead"/>
+    <functioncall functionName="analogReadAveraging"/>
+    <functioncall functionName="analogReadResolution"/>
+    <functioncall functionName="atol"/>
+    <functioncall functionName="available"/>
+    <functioncall functionName="b"/>
+    <functioncall functionName="bindForeignMethod"/>
+    <functioncall functionName="bltMem"/>
+    <functioncall functionName="bltSD"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="buffer"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="chdir"/>
+    <functioncall functionName="className"/>
+    <functioncall functionName="close"/>
+    <functioncall functionName="cmd"/>
+    <functioncall functionName="color565"/>
+    <functioncall functionName="compileOnly"/>
+    <functioncall functionName="config"/>
+    <functioncall functionName="connect"/>
+    <functioncall functionName="cs"/>
+    <functioncall functionName="cspin"/>
+    <functioncall functionName="d"/>
+    <functioncall functionName="dc"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="delay"/>
+    <functioncall functionName="delete"/>
+    <functioncall functionName="disconnect"/>
+    <functioncall functionName="disconnectAll"/>
+    <functioncall functionName="displaySurfaceP"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="drawFill"/>
+    <functioncall functionName="drawLine"/>
+    <functioncall functionName="drawPixel"/>
+    <functioncall functionName="drawRoundRect"/>
+    <functioncall functionName="drawSurfaceLine"/>
+    <functioncall functionName="dynamicSurfaceManager"/>
+    <functioncall functionName="empty"/>
+    <functioncall functionName="end_x"/>
+    <functioncall functionName="end_y"/>
+    <functioncall functionName="errorFn"/>
+    <functioncall functionName="errorType"/>
+    <functioncall functionName="exclusive"/>
+    <functioncall functionName="extmem_free"/>
+    <functioncall functionName="extmem_malloc"/>
+    <functioncall functionName="f"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="fgets"/>
+    <functioncall functionName="fileName"/>
+    <functioncall functionName="file_name"/>
+    <functioncall functionName="file_size"/>
+    <functioncall functionName="filename"/>
+    <functioncall functionName="fillRoundRect"/>
+    <functioncall functionName="fillScreen"/>
+    <functioncall functionName="fillSurface"/>
+    <functioncall functionName="float"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="freeModuleSource"/>
+    <functioncall functionName="fval"/>
+    <functioncall functionName="g"/>
+    <functioncall functionName="getAppByName"/>
+    <functioncall functionName="getAudioDirector"/>
+    <functioncall functionName="getDraw"/>
+    <functioncall functionName="getFocus"/>
+    <functioncall functionName="getFrameAddress"/>
+    <functioncall functionName="getHeight"/>
+    <functioncall functionName="getInstance"/>
+    <functioncall functionName="getPixel"/>
+    <functioncall functionName="getSD"/>
+    <functioncall functionName="getSourceForModule"/>
+    <functioncall functionName="getWidth"/>
+    <functioncall functionName="getWrenHandles"/>
+    <functioncall functionName="guid"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="h_messageHandler"/>
+    <functioncall functionName="h_onAnalog1"/>
+    <functioncall functionName="h_onAnalog2"/>
+    <functioncall functionName="h_onAnalog3"/>
+    <functioncall functionName="h_onAnalog4"/>
+    <functioncall functionName="h_onFocus"/>
+    <functioncall functionName="h_onFocusLost"/>
+    <functioncall functionName="h_onTouch"/>
+    <functioncall functionName="h_onTouchDrag"/>
+    <functioncall functionName="h_onTouchRelease"/>
+    <functioncall functionName="h_slot0"/>
+    <functioncall functionName="h_update"/>
+    <functioncall functionName="h_updateRT"/>
+    <functioncall functionName="has_focus"/>
+    <functioncall functionName="has_pop"/>
+    <functioncall functionName="hash"/>
+    <functioncall functionName="head"/>
+    <functioncall functionName="height"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="img_filename"/>
+    <functioncall functionName="img_path"/>
+    <functioncall functionName="initial_script"/>
+    <functioncall functionName="int32_t"/>
+    <functioncall functionName="isName"/>
+    <functioncall functionName="isWrenResultOK"/>
+    <functioncall functionName="lastTrigger"/>
+    <functioncall functionName="length"/>
+    <functioncall functionName="line"/>
+    <functioncall functionName="loadModule"/>
+    <functioncall functionName="loadModuleComplete"/>
+    <functioncall functionName="loadModuleSource"/>
+    <functioncall functionName="loadScript"/>
+    <functioncall functionName="ls"/>
+    <functioncall functionName="malloc"/>
+    <functioncall functionName="memset"/>
+    <functioncall functionName="message"/>
+    <functioncall functionName="millis"/>
+    <functioncall functionName="miso"/>
+    <functioncall functionName="module"/>
+    <functioncall functionName="module_load_buffer"/>
+    <functioncall functionName="mosi"/>
+    <functioncall functionName="msg"/>
+    <functioncall functionName="multiPartHeader"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="name_string"/>
+    <functioncall functionName="newOriginX"/>
+    <functioncall functionName="newOriginY"/>
+    <functioncall functionName="new_height"/>
+    <functioncall functionName="new_width"/>
+    <functioncall functionName="open"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="pSB"/>
+    <functioncall functionName="parent"/>
+    <functioncall functionName="path"/>
+    <functioncall functionName="print"/>
+    <functioncall functionName="printf"/>
+    <functioncall functionName="println"/>
+    <functioncall functionName="r"/>
+    <functioncall functionName="random"/>
+    <functioncall functionName="raw_maxx"/>
+    <functioncall functionName="raw_maxy"/>
+    <functioncall functionName="raw_minx"/>
+    <functioncall functionName="raw_miny"/>
+    <functioncall functionName="read"/>
+    <functioncall functionName="readSurfacePixel"/>
+    <functioncall functionName="readf"/>
+    <functioncall functionName="rebootRequest"/>
+    <functioncall functionName="reboot_request"/>
+    <functioncall functionName="receivedChars"/>
+    <functioncall functionName="redraw_background"/>
+    <functioncall functionName="redraw_objects"/>
+    <functioncall functionName="redraw_popup"/>
+    <functioncall functionName="redraw_render"/>
+    <functioncall functionName="redraw_wait"/>
+    <functioncall functionName="releasePopUp"/>
+    <functioncall functionName="releaseWrenHandles"/>
+    <functioncall functionName="remove"/>
+    <functioncall functionName="requestPopUp"/>
+    <functioncall functionName="requestSubSurfaceBufferP"/>
+    <functioncall functionName="res"/>
+    <functioncall functionName="restartVM"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="returnFocus"/>
+    <functioncall functionName="rst"/>
+    <functioncall functionName="save_module"/>
+    <functioncall functionName="sclk"/>
+    <functioncall functionName="script"/>
+    <functioncall functionName="script_name"/>
+    <functioncall functionName="sendMessage"/>
+    <functioncall functionName="serialCommandInterface"/>
+    <functioncall functionName="setCursor"/>
+    <functioncall functionName="setDimension"/>
+    <functioncall functionName="setFont"/>
+    <functioncall functionName="setParent"/>
+    <functioncall functionName="setPixel"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setTextColor"/>
+    <functioncall functionName="setWidgetDimension"/>
+    <functioncall functionName="setWidgetPosition"/>
+    <functioncall functionName="set_arm_clock"/>
+    <functioncall functionName="show_active"/>
+    <functioncall functionName="signature"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="sizeof"/>
+    <functioncall functionName="source"/>
+    <functioncall functionName="sscanf"/>
+    <functioncall functionName="startVM"/>
+    <functioncall functionName="start_x"/>
+    <functioncall functionName="start_y"/>
+    <functioncall functionName="str"/>
+    <functioncall functionName="strcat"/>
+    <functioncall functionName="strcmp"/>
+    <functioncall functionName="strcpy"/>
+    <functioncall functionName="streamFile"/>
+    <functioncall functionName="streamPath"/>
+    <functioncall functionName="strlen"/>
+    <functioncall functionName="strncmp"/>
+    <functioncall functionName="strncpy"/>
+    <functioncall functionName="strtok"/>
+    <functioncall functionName="surface_cache"/>
+    <functioncall functionName="surface_mempool"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="t_x"/>
+    <functioncall functionName="t_y"/>
+    <functioncall functionName="tempmonGetTemp"/>
+    <functioncall functionName="text"/>
+    <functioncall functionName="throttle"/>
+    <functioncall functionName="tirq"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="txBuffer"/>
+    <functioncall functionName="txOverflowHandler"/>
+    <functioncall functionName="uint16_t"/>
+    <functioncall functionName="uint32_t"/>
+    <functioncall functionName="update"/>
+    <functioncall functionName="usingImage"/>
+    <functioncall functionName="vm"/>
+    <functioncall functionName="vmConstructor"/>
+    <functioncall functionName="void"/>
+    <functioncall functionName="w"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="widget_height"/>
+    <functioncall functionName="widget_width"/>
+    <functioncall functionName="width"/>
+    <functioncall functionName="wrenCall"/>
+    <functioncall functionName="wrenCollectGarbage"/>
+    <functioncall functionName="wrenEnsureSlots"/>
+    <functioncall functionName="wrenFastRam"/>
+    <functioncall functionName="wrenFreeVM"/>
+    <functioncall functionName="wrenGetSlotBool"/>
+    <functioncall functionName="wrenGetSlotDouble"/>
+    <functioncall functionName="wrenGetSlotHandle"/>
+    <functioncall functionName="wrenGetSlotString"/>
+    <functioncall functionName="wrenGetVariable"/>
+    <functioncall functionName="wrenInitConfiguration"/>
+    <functioncall functionName="wrenInterpret"/>
+    <functioncall functionName="wrenMakeCallHandle"/>
+    <functioncall functionName="wrenNewVM"/>
+    <functioncall functionName="wrenReleaseHandle"/>
+    <functioncall functionName="wrenSetSlotBool"/>
+    <functioncall functionName="wrenSetSlotDouble"/>
+    <functioncall functionName="wrenSetSlotHandle"/>
+    <functioncall functionName="wrenSetSlotString"/>
+    <functioncall functionName="wren_module_name"/>
+    <functioncall functionName="write"/>
+    <functioncall functionName="writeFn"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="y"/>
+  </FileInfo>
+</analyzerinfo>

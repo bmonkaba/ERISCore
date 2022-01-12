@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Set the Print Callback object.">
+<g id="a_node1"><a xlink:title="VM callback for extention method.">
 <polygon fill="#bfbfbf" stroke="black" points="487,-20.5 487,-41.5 572,-41.5 572,-20.5 487,-20.5"/>
 <text text-anchor="middle" x="529.5" y="-27.9" font-family="Helvetica,sans-Serif" font-size="12.00">printCallback</text>
 </a>
@@ -108,18 +108,18 @@ var sectionId = 'dynsection-1';
 <path fill="none" stroke="midnightblue" d="M172.68,-39.03C160.24,-40.54 147.29,-42.12 135.03,-43.62"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="173.47,-42.46 182.98,-37.77 172.63,-35.51 173.47,-42.46"/>
 </g>
-<!-- Node6 -->
+<!-- Node7 -->
 <g id="node5" class="node">
-<title>Node6</title>
-<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_ab96749e0e63c43368cc7121477d472a4.html#ab96749e0e63c43368cc7121477d472a4" target="_top" xlink:title="start, load and configure the handles of the VM">
+<title>Node7</title>
+<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3" target="_top" xlink:title="start, load and configure the handles of the VM">
 <polygon fill="none" stroke="red" points="0,-0.5 0,-21.5 147,-21.5 147,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="73.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::vmConstructor</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node6 -->
+<!-- Node3&#45;&gt;Node7 -->
 <g id="edge4" class="edge">
-<title>Node3&#45;&gt;Node6</title>
+<title>Node3&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M172.81,-22.99C164.36,-21.96 155.67,-20.9 147.12,-19.86"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="172.63,-26.49 182.98,-24.23 173.47,-19.54 172.63,-26.49"/>
 </g>

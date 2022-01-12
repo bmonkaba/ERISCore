@@ -28,6 +28,7 @@ var globaldefs_8h =
     [ "SERIAL_TX_HEADER_BUFFER_SIZE", "d8/d2c/globaldefs_8h_aba078466f8c92cfd4dc882f635bf4cf6.html#aba078466f8c92cfd4dc882f635bf4cf6", null ],
     [ "SERIAL_WORKING_BUFFER_SIZE", "d8/d2c/globaldefs_8h_a2e63e4023af076c8c199ede80957755e.html#a2e63e4023af076c8c199ede80957755e", null ],
     [ "SHOW_ACTIVE_TIME_MILLISEC", "d8/d2c/globaldefs_8h_a9acedcace229ff6b54e6ed963a84751d.html#a9acedcace229ff6b54e6ed963a84751d", null ],
+    [ "USE_EXTMEM", "d8/d2c/globaldefs_8h_a178f01dcc44f6ea02064cdfc139f1c41.html#a178f01dcc44f6ea02064cdfc139f1c41", null ],
     [ "WREN_FRAME_BUFFER_SIZE", "d8/d2c/globaldefs_8h_aba7a4bf881cf9126d15c406f3d2fb08d.html#aba7a4bf881cf9126d15c406f3d2fb08d", null ],
     [ "WREN_VM_HEAP_SIZE", "d8/d2c/globaldefs_8h_a29a2c759e0dfd3655349a9d78b7936c6.html#a29a2c759e0dfd3655349a9d78b7936c6", null ],
     [ "p", "d8/d2c/globaldefs_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f", null ],

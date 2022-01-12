@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Get the Audio Director object.">
 <polygon fill="#bfbfbf" stroke="black" points="545,-40.5 545,-61.5 706,-61.5 706,-40.5 545,-40.5"/>
 <text text-anchor="middle" x="625.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">AppWren::getAudioDirector</text>
 </a>
@@ -78,33 +78,33 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M557.58,-63.33C527.78,-68.83 493.05,-75.23 464.51,-80.49"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="558.29,-66.76 567.49,-61.51 557.02,-59.88 558.29,-66.76"/>
 </g>
-<!-- Node9 -->
+<!-- Node10 -->
 <g id="node5" class="node">
-<title>Node9</title>
+<title>Node10</title>
 <g id="a_node5"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a58685c4e3619dc6ddfdfaeb04f8c95fc.html#a58685c4e3619dc6ddfdfaeb04f8c95fc" target="_top" xlink:title="AudioDirector callback for wren.">
 <polygon fill="none" stroke="black" points="304,-40.5 304,-61.5 509,-61.5 509,-40.5 304,-40.5"/>
 <text text-anchor="middle" x="406.5" y="-47.9" font-family="Helvetica,sans-Serif" font-size="12.00">audioDirectorDisconnectAllCallback</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node9 -->
+<!-- Node1&#45;&gt;Node10 -->
 <g id="edge4" class="edge">
-<title>Node1&#45;&gt;Node9</title>
+<title>Node1&#45;&gt;Node10</title>
 <path fill="none" stroke="midnightblue" d="M534.75,-51C526.34,-51 517.77,-51 509.25,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="534.93,-54.5 544.93,-51 534.93,-47.5 534.93,-54.5"/>
 </g>
-<!-- Node10 -->
+<!-- Node11 -->
 <g id="node6" class="node">
-<title>Node10</title>
+<title>Node11</title>
 <g id="a_node6"><a xlink:href="../../d7/d7e/_app_wren_8cpp_af49d4fea05c06629b1d47f199557ba3b.html#af49d4fea05c06629b1d47f199557ba3b" target="_top" xlink:title="AudioDirector callback for wren.">
 <polygon fill="none" stroke="black" points="310.5,-0.5 310.5,-21.5 502.5,-21.5 502.5,-0.5 310.5,-0.5"/>
 <text text-anchor="middle" x="406.5" y="-7.9" font-family="Helvetica,sans-Serif" font-size="12.00">audioDirectorDisconnectCallback</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node10 -->
+<!-- Node1&#45;&gt;Node11 -->
 <g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node10</title>
+<title>Node1&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M557.58,-38.67C527.78,-33.17 493.05,-26.77 464.51,-21.51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="557.02,-42.12 567.49,-40.49 558.29,-35.24 557.02,-42.12"/>
 </g>
@@ -138,15 +138,15 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M138.43,-51C129.99,-51 121.45,-51 113.24,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="138.65,-54.5 148.65,-51 138.65,-47.5 138.65,-54.5"/>
 </g>
-<!-- Node9&#45;&gt;Node3 -->
+<!-- Node10&#45;&gt;Node3 -->
 <g id="edge5" class="edge">
-<title>Node9&#45;&gt;Node3</title>
+<title>Node10&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M293.5,-51C284.8,-51 276.25,-51 268.13,-51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="293.77,-54.5 303.77,-51 293.77,-47.5 293.77,-54.5"/>
 </g>
-<!-- Node10&#45;&gt;Node3 -->
+<!-- Node11&#45;&gt;Node3 -->
 <g id="edge7" class="edge">
-<title>Node10&#45;&gt;Node3</title>
+<title>Node11&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M341.39,-23.49C328.98,-25.95 316.08,-28.53 304,-31 289.21,-34.02 273.14,-37.39 258.52,-40.49"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="342.08,-26.92 351.22,-21.55 340.73,-20.05 342.08,-26.92"/>
 </g>

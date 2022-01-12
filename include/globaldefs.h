@@ -2,47 +2,167 @@
 #ifndef _GlobalDefines_
 #define _GlobalDefines_
 
+
+/**
+ * @brief uncomment if using external ram/n
+ * if so,only 16MB (2x8MB) is supported
+ */
+#define USE_EXTMEM
+
+
 //AppManager
 #define ENABLE_ASYNC_SCREEN_UPDATES
-#define DISPLAY_UPDATE_PERIOD  120
-#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 1500 
 
+#define DISPLAY_UPDATE_PERIOD  120
+/**
+ * @brief rate at which the app manager will update the data dictionary
+ * 
+ */
+#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 100 
+/**
+ * @brief application manager shared image cache size\n
+ * note: the reason for the multiplication here is to easily get an idea of\n 
+ * how many surfaces and of what size the cache can support.\n
+ * the default 64*64*8 can support 8 subsurfaces 64x64 in size
+ */
 #define AM_IMG_CACHE_SIZE 64*64*8
 
 //AppBaseClass
-#define MAX_NAME_LENGTH 36
-#define MAX_TEXT_LENGTH 32
-
+/**
+ * @brief max AppBaseClass::name string length
+ * 
+ */
+#define MAX_NAME_LENGTH 24
+/**
+ * @brief max AppBaseClass::text string length
+ * 
+ */
+#define MAX_TEXT_LENGTH 24
+/**
+ * @brief control activation display time\n 
+ * for example this defines how long a button will display as pressed
+ */
 #define SHOW_ACTIVE_TIME_MILLISEC 150
 
 //AppSCI
+/**
+ * @brief max serial polling rate
+ * 
+ */
 #define SERIAL_POLLING_RATE_MAX 5
+/**
+ * @brief threshold at which point serial transmission is throttled
+ * 
+ */
 #define SERIAL_THROTTLE_BUFFER_THRESHOLD 1000
+/**
+ * @brief delta threshold after throttle which will trigger an output flush
+ * 
+ */
 #define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 500
+/**
+ * @brief throttle delay used to capture the delta change used in the delta threshold check
+ * 
+ */
 #define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 60
-
+/**
+ * @brief max tx header size\n
+ *  this is used to support multipart transmissions by capturing the start of message header
+ */
 #define SERIAL_TX_HEADER_BUFFER_SIZE 64
+/**
+ * @brief serial rx buffer size 
+ * 
+ */
 #define SERIAL_RX_BUFFER_SIZE 1024
+/**
+ * @brief serial rx capture buffer size
+ * 
+ */
+#ifdef USE_EXTMEM
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 32000
+#else
 #define SERIAL_RX_CAPTURE_BUFFER_SIZE 10000
+#endif
+/**
+ * @brief max serial command parameter length
+ * 
+ */
 #define SERIAL_PARAM_BUFFER_SIZE 128
+/**
+ * @brief output buffer size
+ * 
+ */
 #define SERIAL_OUTPUT_BUFFER_SIZE 6000
-#define SERIAL_WORKING_BUFFER_SIZE 6000
-#define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
+/**
+ * @brief working buffer size
+ * 
+ */
+#ifdef USE_EXTMEM
+#define SERIAL_WORKING_BUFFER_SIZE 32000
+#else
+#define SERIAL_WORKING_BUFFER_SIZE 10000
+#endif
 
+/**
+ * @brief filestream payload size\n
+ * used for multipart transmission of files
+ */
+#define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
+/**
+ * @brief enables periodic messages to be transmitted
+ * 
+ */
 #define SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 777
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 350
+/**
+ * @brief transmission rate of the data dictionary
+ * 
+ */
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 391
+/**
+ * @brief transmission rate of the stats
+ * 
+ */
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 151
 
 //Audio Director
+/**
+ * @brief max number of audio stream objects
+ * 
+ */
 #define MAX_AUDIO_STREAM_OBJECTS 52
+/**
+ * @brief max number of audio memory blocks
+ * 
+ */
 #define MAX_AUDIO_MEMORY_BLOCKS 120
+/**
+ * @brief max number of audio stream catagories
+ * 
+ */
 #define MAX_CATEGORIES 16
+/**
+ * @brief max number of catagory types
+ * 
+ */
 #define MAX_UNIQUE_NAMES_PER_CATEGORY 24
+/**
+ * @brief max number of audio connections
+ * 
+ */
 #define MAX_CONNECTIONS 64 
+/**
+ * @brief max audio connection string length
+ * 
+ */
 #define MAX_CONNECTION_STRING_LENGTH 96
 
 //ILI9341_t3_ERIS
-#define ANIMATION_CHUNKS_PER_FRAME 12
+/**
+ * @brief defines how many slices per image\n
+ * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
+ */
+#define ANIMATION_CHUNKS_PER_FRAME 4
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -58,8 +178,9 @@ const char INPUT_PEAK[] PROGMEM = "INPUT_PEAK";
 
 //STRINGS - ERIS CORE
 const char FREE_MEM[] PROGMEM = "FREE_MEM";
-const char HEAP_FREE[] PROGMEM = "HEAP_FREE";
-const char LOCAL_MEM[] PROGMEM = "LOCAL_MEM";
+const char FREE_HEAP[] PROGMEM = "FREE_HEAP";
+const char FREE_LOCAL[] PROGMEM = "FREE_LOCAL";
+const char FREE_STACK[] PROGMEM = "FREE_STACK";
 const char CPU_TEMP[] PROGMEM = "CPU_TEMP";
 const char AM_LOOP_TIME[] PROGMEM = "AM_LOOP_TIME";
 const char AM_SERIAL_AVAIL[] PROGMEM = "AM_SERIAL_AVAIL";
@@ -89,8 +210,13 @@ const char UI_SLIDER_FILL_COLOR[] PROGMEM = "UI_SLIDER_FILL_COLOR";
 const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
-#define WREN_VM_HEAP_SIZE 8000
-#define WREN_FRAME_BUFFER_SIZE 128*128
+#ifdef USE_EXTMEM
+#define WREN_VM_HEAP_SIZE 32000
+#define WREN_FRAME_BUFFER_SIZE 320*240
+#else
+#define WREN_VM_HEAP_SIZE 16000
+#define WREN_FRAME_BUFFER_SIZE 120*120
+#endif
 
 const char g_wrenScript[] PROGMEM = R"(
 /*  

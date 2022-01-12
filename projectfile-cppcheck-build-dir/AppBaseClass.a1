@@ -1,25 +1,41 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="3218505812">
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;update_call_period&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;update_call_period&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
-            <location file="src\AppBaseClass.cpp" line="44" column="3"/>
-            <symbol>update_call_period</symbol>
+<analyzerinfo checksum="2909380541">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="57" column="9"/>
+            <symbol>sincePoll</symbol>
         </error>
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;updateRT_call_period&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;updateRT_call_period&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="58" column="9"/>
+            <symbol>sincePeriodicDataDict</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="59" column="9"/>
+            <symbol>sincePeriodicStats</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;update_period&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;update_period&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
+            <location file="src\AppBaseClass.cpp" line="44" column="3"/>
+            <symbol>update_period</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;updateRT_period&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;updateRT_period&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AppBaseClass.cpp">
             <location file="src\AppBaseClass.cpp" line="46" column="3"/>
-            <symbol>updateRT_call_period</symbol>
+            <symbol>updateRT_period</symbol>
         </error>
         <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/AppBaseClass.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
             <symbol>Touch</symbol>
         </error>
         <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/AppBaseClass.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="155" column="18" info="Shadow variable"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="146" column="13" info="Shadowed declaration"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="13" info="Shadowed declaration"/>
             <symbol>h</symbol>
         </error>
+        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/AppBaseClass.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="127" column="9"/>
+            <symbol>Surface</symbol>
+        </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
   </FileInfo>
   <FileInfo check="Class">
 <class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
@@ -98,23 +114,23 @@
 <class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
 <class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
 <class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
-<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="20" col="9" hash="16558433732527854572"/>
-<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="6736505690563411468"/>
-<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="71" col="9" hash="17793245868371730131"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="5429400104627854940"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="2911627910700264153"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="21" col="9" hash="5139491191325099632"/>
   </FileInfo>
   <FileInfo check="Null pointer">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:176:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="177" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:71:5" my-argnr="1" my-argname="SubSurfaceFrom" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="72" col="28" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:85:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="87" col="27" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:99:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="101" col="27" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:153:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="157" col="22" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:176:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="177" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:87:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="89" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:103:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="105" col="27" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="178" col="22" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
   </FileInfo>
@@ -234,7 +250,6 @@
     <functioncall functionName="Surface"/>
     <functioncall functionName="Touch"/>
     <functioncall functionName="XPT2046_Touchscreen"/>
-    <functioncall functionName="_ad"/>
     <functioncall functionName="_busy"/>
     <functioncall functionName="_path"/>
     <functioncall functionName="_pfbtft"/>
@@ -253,8 +268,11 @@
     <functioncall functionName="cs"/>
     <functioncall functionName="cspin"/>
     <functioncall functionName="dc"/>
+    <functioncall functionName="delay"/>
     <functioncall functionName="delete"/>
+    <functioncall functionName="empty"/>
     <functioncall functionName="exclusive"/>
+    <functioncall functionName="extmem_malloc"/>
     <functioncall functionName="false"/>
     <functioncall functionName="fgets"/>
     <functioncall functionName="fileName"/>
@@ -262,6 +280,7 @@
     <functioncall functionName="for"/>
     <functioncall functionName="getFocus"/>
     <functioncall functionName="getInstance"/>
+    <functioncall functionName="getSD"/>
     <functioncall functionName="guid"/>
     <functioncall functionName="h"/>
     <functioncall functionName="has_focus"/>
@@ -276,9 +295,11 @@
     <functioncall functionName="length"/>
     <functioncall functionName="level"/>
     <functioncall functionName="ls"/>
+    <functioncall functionName="malloc"/>
     <functioncall functionName="memset"/>
     <functioncall functionName="miso"/>
     <functioncall functionName="mosi"/>
+    <functioncall functionName="multiPartHeader"/>
     <functioncall functionName="name"/>
     <functioncall functionName="name_string"/>
     <functioncall functionName="newOriginX"/>
@@ -288,6 +309,7 @@
     <functioncall functionName="open"/>
     <functioncall functionName="origin_x"/>
     <functioncall functionName="origin_y"/>
+    <functioncall functionName="override"/>
     <functioncall functionName="pSB"/>
     <functioncall functionName="parent"/>
     <functioncall functionName="path"/>
@@ -297,6 +319,7 @@
     <functioncall functionName="raw_maxy"/>
     <functioncall functionName="raw_minx"/>
     <functioncall functionName="raw_miny"/>
+    <functioncall functionName="receivedChars"/>
     <functioncall functionName="redraw_background"/>
     <functioncall functionName="redraw_objects"/>
     <functioncall functionName="redraw_popup"/>
@@ -310,17 +333,23 @@
     <functioncall functionName="rst"/>
     <functioncall functionName="sclk"/>
     <functioncall functionName="selfRegister"/>
+    <functioncall functionName="serialCommandInterface"/>
     <functioncall functionName="size"/>
     <functioncall functionName="sizeof"/>
     <functioncall functionName="str"/>
     <functioncall functionName="strcpy"/>
+    <functioncall functionName="streamFile"/>
+    <functioncall functionName="streamPath"/>
     <functioncall functionName="strlen"/>
     <functioncall functionName="strncmp"/>
     <functioncall functionName="strncpy"/>
     <functioncall functionName="strtok"/>
     <functioncall functionName="this"/>
+    <functioncall functionName="throttle"/>
     <functioncall functionName="tirq"/>
     <functioncall functionName="true"/>
+    <functioncall functionName="txBuffer"/>
+    <functioncall functionName="txOverflowHandler"/>
     <functioncall functionName="uint16_t"/>
     <functioncall functionName="uint32_t"/>
     <functioncall functionName="update"/>

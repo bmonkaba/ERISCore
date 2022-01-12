@@ -64,8 +64,14 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         isCapturingBulkData = false;
         txBufferOverflowFlag = false;
         periodicMessagesEnabled = true;
+#ifdef USE_EXTMEM
+        captureBuffer = (char*)extmem_malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+        workingBuffer = (char*)extmem_malloc(SERIAL_WORKING_BUFFER_SIZE);
+#else
         captureBuffer = 0;
         workingBuffer = 0;
+#endif
+        strcpy(multiPartHeader,"");
         strcpy(streamPath,"");
         strcpy(streamFile,"");
         streamPos = 0;

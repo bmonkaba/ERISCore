@@ -3,7 +3,6 @@
 #include <float.h>
 #include <math.h>
 #include <string.h>
-#include <time.h>
 
 #include "wren_common.h"
 #include "wren_core.h"
@@ -12,6 +11,8 @@
 #include "wren_value.h"
 
 #include "wren_core.wren.inc"
+
+
 
 DEF_PRIMITIVE(bool_not)
 {
@@ -1197,9 +1198,15 @@ DEF_PRIMITIVE(string_toString)
   RETURN_VAL(args[0]);
 }
 
+
+
 DEF_PRIMITIVE(system_clock)
 {
-  RETURN_NUM((double)clock() / CLOCKS_PER_SEC);
+  //modified to suppport integration into eris core
+  float fakeclock;
+  fakeclock = millis()/1000.00;
+  //RETURN_NUM((double)clock() / CLOCKS_PER_SEC);
+  RETURN_NUM(fakeclock);
 }
 
 DEF_PRIMITIVE(system_gc)

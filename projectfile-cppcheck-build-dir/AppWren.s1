@@ -1,0 +1,294 @@
+Touch
+setCalibrationInputs
+erisAudioMixer8
+update call:[update] noreturn:[update]
+erisAudioInputI2S
+update call:[update] noreturn:[update]
+erisAudioInputI2SQuad
+update call:[update] noreturn:[update]
+erisAudioInputI2SHex
+update call:[update] noreturn:[update]
+erisAudioInputI2SOct
+update call:[update] noreturn:[update]
+erisAudioInputI2Sslave
+update call:[update] noreturn:[update]
+erisAudioInputI2S2
+update call:[update] noreturn:[update]
+erisAudioInputSPDIF3
+update call:[update] noreturn:[update]
+erisAsyncAudioInputSPDIF3
+update call:[update] noreturn:[update]
+erisAudioInputAnalog
+update call:[update] noreturn:[update]
+erisAudioInputAnalogStereo
+update call:[update] noreturn:[update]
+erisAudioInputPDM
+update call:[update] noreturn:[update]
+erisAudioInputTDM
+update call:[update] noreturn:[update]
+erisAudioInputTDM2
+update call:[update] noreturn:[update]
+erisAudioOutputI2S
+update call:[update] noreturn:[update]
+erisAudioOutputI2SQuad
+update call:[update] noreturn:[update]
+erisAudioOutputI2SHex
+update call:[update] noreturn:[update]
+erisAudioOutputI2SOct
+update call:[update] noreturn:[update]
+erisAudioOutputI2Sslave
+update call:[update] noreturn:[update]
+erisAudioOutputI2S2
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF2
+update call:[update] noreturn:[update]
+erisAudioOutputSPDIF3
+update call:[update] noreturn:[update]
+erisAudioOutputPT8211
+update call:[update] noreturn:[update]
+erisAudioOutputPT8211_2
+update call:[update] noreturn:[update]
+erisAudioOutputAnalog
+update call:[update] noreturn:[update]
+erisAudioOutputAnalogStereo
+update call:[update] noreturn:[update]
+erisAudioOutputPWM
+update call:[update] noreturn:[update]
+erisAudioOutputMQS
+update call:[update] noreturn:[update]
+erisAudioOutputTDM
+update call:[update] noreturn:[update]
+erisAudioOutputTDM2
+update call:[update] noreturn:[update]
+erisAudioOutputADAT
+update call:[update] noreturn:[update]
+erisAudioAmplifier
+update call:[update] noreturn:[update]
+erisAudioMixer4
+update call:[update] noreturn:[update]
+erisAudioPlayMemory
+update call:[update] noreturn:[update]
+erisAudioPlaySerialflashRaw
+update call:[update] noreturn:[update]
+erisAudioPlayQueue
+update call:[update] noreturn:[update]
+erisAudioRecordQueue
+update call:[update] noreturn:[update]
+erisAudioSynthWavetable
+update call:[update] noreturn:[update]
+erisAudioSynthSimpleDrum
+update call:[update] noreturn:[update]
+erisAudioSynthKarplusStrong
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSine
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSineHires
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformSineModulated
+update call:[update] noreturn:[update]
+erisAudioSynthWaveform
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformModulated
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformPWM
+update call:[update] noreturn:[update]
+erisAudioSynthToneSweep
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformDc
+update call:[update] noreturn:[update]
+erisAudioSynthNoiseWhite
+update call:[update] noreturn:[update]
+erisAudioSynthNoisePink
+update call:[update] noreturn:[update]
+erisAudioEffectFade
+update call:[update] noreturn:[update]
+erisAudioEffectChorus
+update call:[update] noreturn:[update]
+erisAudioEffectFlange
+update call:[update] noreturn:[update]
+erisAudioEffectReverb
+update call:[update] noreturn:[update]
+erisAudioEffectFreeverb
+update call:[update] noreturn:[update]
+erisAudioEffectFreeverbStereo
+update call:[update] noreturn:[update]
+erisAudioEffectEnvelope
+update call:[update] noreturn:[update]
+erisAudioEffectMultiply
+update call:[update] noreturn:[update]
+erisAudioEffectDelay
+update call:[update] noreturn:[update]
+erisAudioEffectDelayExternal
+update call:[update] noreturn:[update]
+erisAudioEffectBitcrusher
+update call:[update] noreturn:[update]
+erisAudioEffectMidSide
+update call:[update] noreturn:[update]
+erisAudioEffectWaveshaper
+update call:[update] noreturn:[update]
+erisAudioEffectGranular
+update call:[update] noreturn:[update]
+erisAudioEffectDigitalCombine
+update call:[update] noreturn:[update]
+erisAudioFilterBiquad
+update call:[update] noreturn:[update]
+erisAudioFilterFIR
+update call:[update] noreturn:[update]
+erisAudioFilterStateVariable
+update call:[update] noreturn:[update]
+erisAudioAnalyzePeak
+update call:[update] noreturn:[update]
+erisAudioAnalyzeRMS
+update call:[update] noreturn:[update]
+erisAudioAnalyzeFFT256
+update call:[update] noreturn:[update]
+__erisAudioAnalyzeFFT1024
+update call:[update] noreturn:[update]
+erisAudioAnalyzeToneDetect
+update call:[update] noreturn:[update]
+erisAudioAnalyzeNoteFrequency
+update call:[update] noreturn:[update]
+erisAudioAnalyzePrint
+update call:[update] noreturn:[update]
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
+getId
+isName call:[sizeof,strncmp]
+setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
+setParent
+setPosition call:[_updatePosition] noreturn:[_updatePosition]
+setDimension call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
+setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
+update
+updateRT
+onFocus
+onFocusLost
+onTouch
+onTouchDrag
+onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
+MessageHandler
+SvcDataDictionary
+getInstance call:[AppManager] noreturn:[AppManager]
+chdir call:[chdir] noreturn:[chdir]
+chdir call:[chdir] noreturn:[chdir]
+ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+startLZ4Message call:[empty,print] noreturn:[print]
+update
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+connectionCount
+setSCI
+AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
+AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
+loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
+rebootRequest call:[printf,sizeof,strncpy] noreturn:[strncpy]
+setParent call:[setParent] noreturn:[setParent]
+getFocus call:[getFocus] noreturn:[getFocus]
+returnFocus call:[returnFocus] noreturn:[returnFocus]
+requestPopUp call:[requestPopUp] noreturn:[requestPopUp]
+releasePopUp call:[releasePopUp] noreturn:[releasePopUp]
+getDraw
+getAudioDirector
+setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel]
+getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
+drawLine call:[CL,drawLine,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawLine,drawPixel,drawSurfaceLine]
+drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
+restartVM call:[releasePopUp,releaseWrenHandles,startVM,wrenFreeVM] noreturn:[startVM]
+isWrenResultOK call:[printf]
+updateRT call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onFocus call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onFocusLost call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
+onTouch call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onTouchDrag call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onTouchRelease call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog1 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog2 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog3 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+onAnalog4 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+_kill
+_getpid
+_times
+_gettimeofday call:[millis]
+writeFn call:[printf] noreturn:[printf]
+errorFn call:[printf] noreturn:[printf]
+getSourceForModule call:[getAppByName,getInstance,loadModuleSource] noreturn:[loadModuleSource]
+loadModuleComplete call:[freeModuleSource,getAppByName,getInstance] noreturn:[freeModuleSource]
+loadModule call:[getSourceForModule,printf]
+wrenFastMemoryAllocator call:[return]
+sendMessageCallback call:[getAppByName,getInstance,sendMessage,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+setPositionCallback call:[getAppByName,getInstance,setPosition,wrenGetSlotDouble] noreturn:[setPosition]
+setDimensionCallback call:[getAppByName,getInstance,setDimension,wrenGetSlotDouble] noreturn:[setDimension]
+setWidgetPositionCallback call:[getAppByName,getInstance,setWidgetPosition,wrenGetSlotDouble] noreturn:[setWidgetPosition]
+setWidgetDimensionCallback call:[getAppByName,getInstance,setWidgetDimension,wrenGetSlotDouble] noreturn:[setWidgetDimension]
+requestPopUpCallback call:[getAppByName,getInstance,requestPopUp,wrenGetSlotBool] noreturn:[requestPopUp]
+releasePopUpCallback call:[getAppByName,getInstance,releasePopUp] noreturn:[releasePopUp]
+getFocusCallback call:[getAppByName,getFocus,getInstance] noreturn:[getFocus]
+returnFocusCallback call:[getAppByName,getInstance,returnFocus] noreturn:[returnFocus]
+setClockSpeedCallback call:[set_arm_clock,wrenGetSlotDouble] noreturn:[set_arm_clock]
+setRandomCallback call:[random,wrenGetSlotDouble,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
+restartVMCallback call:[getAppByName,getInstance,rebootRequest,wrenGetSlotString] noreturn:[rebootRequest]
+audioDirectorConnectCallback call:[connect,getAppByName,getAudioDirector,getInstance,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+audioDirectorDisconnectCallback call:[disconnect,getAppByName,getAudioDirector,getInstance,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+audioDirectorDisconnectAllCallback call:[disconnectAll,getAppByName,getAudioDirector,getInstance,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+dataDictUpdateCallback call:[getInstance,update,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+dataDictReadCallback call:[getInstance,read,wrenGetSlotString,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
+dataDictUpdateFloatCallback call:[getInstance,update,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+dataDictReadFloatCallback call:[getInstance,readf,wrenGetSlotString,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
+setTextColorCallback call:[color565,getAppByName,getDraw,getInstance,setTextColor,wrenGetSlotDouble] noreturn:[setTextColor]
+setCursorCallback call:[getAppByName,getDraw,getInstance,setCursor,wrenGetSlotDouble] noreturn:[setCursor]
+printCallback call:[getAppByName,getDraw,getInstance,print,wrenGetSlotString] noreturn:[print]
+setFontSizeCallback
+loadImageCallback call:[bltSD,getAppByName,getDraw,getInstance,wrenGetSlotDouble,wrenGetSlotString] noreturn:[bltSD]
+setPixelCallback call:[getAppByName,getInstance,setPixel,wrenGetSlotDouble] noreturn:[setPixel]
+getPixelCallback call:[getAppByName,getInstance,getPixel,wrenGetSlotDouble,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
+drawLineCallback call:[drawLine,getAppByName,getInstance,wrenGetSlotDouble] noreturn:[drawLine]
+drawFillCallback call:[drawFill,getAppByName,getInstance,wrenGetSlotDouble] noreturn:[drawFill]
+bindForeignMethod call:[strcmp]
+vmConstructor call:[getWrenHandles,isWrenResultOK,loadScript,startVM,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[isWrenResultOK]
+startVM call:[F,println,wrenInitConfiguration,wrenNewVM] noreturn:[wrenNewVM]
+MessageHandler call:[F,chdir,close,getFocus,isName,isWrenResultOK,loadScript,open,print,println,remove,restartVM,returnFocus,set_arm_clock,sscanf,strcat,strlen,strncmp,wrenCall,wrenEnsureSlots,wrenSetSlotHandle,wrenSetSlotString,write] noreturn:[isWrenResultOK,println,returnFocus]
+dynamicSurfaceManager call:[Surface,delete,getFrameAddress,getHeight,getWidth,memset,sizeof,wrenCollectGarbage] noreturn:[memset]
+update call:[F,bltMem,drawRoundRect,dynamicSurfaceManager,fillRoundRect,freeModuleSource,isWrenResultOK,loadModuleSource,loadScript,println,read,restartVM,setCursor,setFont,setTextColor,set_arm_clock,tempmonGetTemp,wrenCall,wrenCollectGarbage,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[bltMem,drawRoundRect,fillRoundRect,println,setFont,set_arm_clock,wrenCollectGarbage]
+releaseWrenHandles call:[wrenReleaseHandle] noreturn:[wrenReleaseHandle]
+getWrenHandles call:[wrenEnsureSlots,wrenGetSlotHandle,wrenGetVariable,wrenMakeCallHandle] noreturn:[wrenMakeCallHandle]
+loadModuleSource call:[F,available,chdir,close,extmem_malloc,memset,open,println,read,sizeof,strcat,strncpy]
+freeModuleSource call:[extmem_free] noreturn:[extmem_free]
+setPosition call:[setPosition] noreturn:[setPosition]
+setDimension
+setWidgetPosition call:[setWidgetPosition] noreturn:[setWidgetPosition]
+setWidgetDimension

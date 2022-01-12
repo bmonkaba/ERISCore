@@ -665,7 +665,7 @@ table.dataTable td {
     grid-area: sidebar;
     border: 1px solid #0e0e0e;
     background-color: #202020;
-    background: radial-gradient(circle, rgb(193 193 193 / 29%) 10%, rgb(42 42 42 / 60%) 100%);
+    background: radial-gradient(circle, rgb(193 193 193 / 9%) 10%, #071829 100%);
     font-family: 'Cutive Mono', monospace;
     font-size: 0.75em;
     border-radius: 7px;
@@ -744,7 +744,7 @@ table.dataTable td {
 .watchbar {
     grid-area: watchbar;
     border: 1px solid #0e0e0e;
-    background: radial-gradient(circle, rgb(193 193 193 / 29%) 10%, rgb(42 42 42 / 60%) 100%);
+    background: radial-gradient(circle, #42536594 10%, #0f1e2d 100%);
     border-radius: 7px;
     text_align: left;
     overflow: hidden;

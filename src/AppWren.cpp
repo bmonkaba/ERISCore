@@ -10,12 +10,18 @@
  */
 #include "AppWren.h"
 #include "globaldefs.h"
-#include <Arduino.h>
+
+
 #include <AppManager.h>
 #include <boarddefs.h>
 
 
-uint16_t FASTRUN wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+
+#ifdef USE_EXTMEM
+uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+#else
+uint16_t DMAMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+#endif
 char DMAMEM wrenFastVMRam[1]__attribute__ ((aligned (16)));
 
 /**
@@ -27,7 +33,8 @@ extern "C" {
   int _kill (pid_t pid, int signum){return 0;}
   pid_t _getpid(void){return 1;}
   int _times(void){return 0;}
-  int _gettimeofday(struct timeval *tv, struct timezone *tz){return 0;}
+  int _gettimeofday(struct timeval *tv, struct timezone *tz){return millis()/1000;}
+  
 }
 
 /**
@@ -262,6 +269,21 @@ void setRandomCallback(WrenVM* vm){
   wrenSetSlotDouble(vm,0,random(wrenGetSlotDouble(vm, 1)));
 }
 
+
+/**
+ * @brief restartVM callback for wren
+ * 
+ * @param vm 
+ */
+void restartVMCallback(WrenVM* vm){
+  //(char* script)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  char* script = (char*)wrenGetSlotString(vm, 1);
+  app->rebootRequest(script);
+}
+
+
 /**
  * @brief AudioDirector callback for wren
  * 
@@ -347,7 +369,7 @@ void dataDictReadFloatCallback(WrenVM* vm){
 
 //Draw Callbacks
 /**
- * @brief Set the Text Color Callback object
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -357,8 +379,9 @@ void setTextColorCallback(WrenVM* vm){
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->getDraw()->setTextColor(app->getDraw()->color565(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3)));
 }
+
 /**
- * @brief Set the Cursor Callback object
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -369,7 +392,7 @@ void setCursorCallback(WrenVM* vm){
   app->getDraw()->setCursor(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),false);
 }
 /**
- * @brief Set the Print Callback object
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -379,8 +402,9 @@ void printCallback(WrenVM* vm){
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->getDraw()->print(wrenGetSlotString(vm,1));
 }
+
 /**
- * @brief Set the Font Size Callback object
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -388,6 +412,11 @@ void setFontSizeCallback(WrenVM* vm){
   //TODO
 }
 
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
 void loadImageCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
@@ -396,7 +425,7 @@ void loadImageCallback(WrenVM* vm){
 }
 
 /**
- * @brief Set the Pixel Callback object. AppWren exported method which can be called from within a Wren VM instance
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -407,9 +436,8 @@ void setPixelCallback(WrenVM* vm){
   app->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
 }
 
-
 /**
- * @brief Get the Pixel Callback object
+ * @brief VM callback for extention method
  * 
  * @param vm 
  */
@@ -420,7 +448,11 @@ void getPixelCallback(WrenVM* vm){
   wrenSetSlotDouble(vm,0,app->getPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2)));
 }
 
-
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
 void drawLineCallback(WrenVM* vm){
   //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
   AppManager* am = AppManager::getInstance();
@@ -428,6 +460,11 @@ void drawLineCallback(WrenVM* vm){
   app->drawLine(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6), wrenGetSlotDouble(vm, 7));
 }
 
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
 void drawFillCallback(WrenVM* vm){
   //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
   AppManager* am = AppManager::getInstance();
@@ -483,6 +520,8 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return setClockSpeedCallback;
       }else if (strcmp(signature, "random(_)") == 0){
         return setRandomCallback;
+      }else if (strcmp(signature, "restartVM(_)") == 0){
+        return restartVMCallback;
       }
     }else if (strcmp(className, "Data") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "update(_,_)") == 0){
@@ -533,15 +572,9 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
 
 //end wren callbacks
 
-/**
- * @brief start, load and configure the handles of the VM
- * 
- */
-void AppWren::vmConstructor(){
-    
-    Serial.println(F("M AppWren: Starting the VM"));
+void AppWren::vmConstructor(const char* initial_script){
     startVM();
-    loadScript(g_wrenScript);
+    loadScript(initial_script);
     getWrenHandles();
     wrenEnsureSlots(vm, 1);
     wrenSetSlotHandle(vm, 0, h_slot0);//App
@@ -549,14 +582,20 @@ void AppWren::vmConstructor(){
 }
 
 void FLASHMEM AppWren::startVM(){
-    Serial.println(F("CLS\nM AppWren::startVM()"));
+    Serial.println(F("\nM AppWren::startVM()"));
     WrenConfiguration config;
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
+#ifdef USE_EXTMEM
+    config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
+    config.minHeapSize = WREN_VM_HEAP_SIZE;
+    config.heapGrowthPercent = 100;
+#else
     config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
     config.minHeapSize = WREN_VM_HEAP_SIZE;
     config.heapGrowthPercent = 10;
+#endif
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
@@ -576,15 +615,11 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
         }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
             char cmd[128];
             int total_read;
-            total_read = sscanf(message, "%s %s\n" , cmd, save_module_as);
+            total_read = sscanf(message, "%127s %23s\n" , cmd, wren_module_name);
             if (total_read==2){
-              //save the file
-              //strcpy(file_name,"/wren/");
-              strcat(save_module_as,".wren");
-              //strcat(file_name,save_module_as);
-              //strcpy(save_module_as,file_name);
+              strcat(wren_module_name,".wren");
               Serial.print(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE as: "));
-              Serial.println(save_module_as);
+              Serial.println(wren_module_name);
               save_module = true;
             }
             return;
@@ -593,14 +628,9 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
               set_arm_clock(600000000);
               FsFile file;
               sd->chdir("/wren");
-              sd->remove(save_module_as);
-              sd->remove("temp.wren");
-              sd->remove("test.wren");
-              sd->remove("test2.wren");
-              sd->remove(save_module_as);
-              file = sd->open(save_module_as, O_WRONLY|O_CREAT);
+              sd->remove(wren_module_name);
+              file = sd->open(wren_module_name, O_WRONLY|O_CREAT);
               file.write(message,strlen(message));
-              //file.write("//DEBUG\n\n",strlen("//DEBUG\n\n"));
               file.close();
               save_module = false;
               Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
@@ -608,6 +638,7 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
               Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
               return;
             }else{ //execute the script
+                Serial.println(F("M ************************************************************************"));
                 Serial.println(F("M AppWren::MessageHandler: Restarting the VM"));
                 if(!has_focus){ 
                   //cycling the focus triggers the parent app to recover any system changes made by the VM
@@ -619,11 +650,10 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
                 restartVM();
                 Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
                 loadScript(message);
-                Serial.println(F("M AppWren::MessageHandler: cache the wren handles"));
-                getWrenHandles();
-                wrenEnsureSlots(vm, 1);
-                wrenSetSlotHandle(vm, 0, h_slot0);//App
+                
+                
                 Serial.println(F("M AppWren::MessageHandler: request complete"));
+                Serial.println(F("M ************************************************************************"));
                 return;
             }
         }
@@ -638,96 +668,98 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
     }
 }
 
-/**
- * @brief responsible for managing the surface buffer memory allocation
- * 
- * @return true 
- * @return false 
- */
-  bool FLASHMEM AppWren::dynamicSurfaceManager(){
-    if(!surface_cache){
-      surface_mempool = wrenFastRam;
-      if (has_pop || has_focus){
-        surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),128,128);
-        memset((uint16_t *)draw->getFrameAddress(),200,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
-      }else{
+bool FLASHMEM AppWren::dynamicSurfaceManager(){
+  if(!surface_cache){
+    surface_mempool = wrenFastRam;
+    if (has_pop || has_focus){
+      surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),128,128);
+      memset((uint16_t *)draw->getFrameAddress(),200,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
+    }else{
+      surface_cache = new Surface(surface_mempool, widget_width, widget_height);
+      memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
+    }  
+  }else{
+    //check for state changes and adjust the buffer accordingly
+    if (has_pop || has_focus){
+      if( (width != surface_cache->getWidth()) || (height != surface_cache->getHeight()) ){
+        delete(surface_cache);
+        surface_cache = new Surface(surface_mempool, width, height);
+        memset(surface_mempool,0,sizeof(uint16_t)*width*height);
+      }
+    }else{
+      if( (widget_width != surface_cache->getWidth()) || (widget_height != surface_cache->getHeight()) ){
+        delete(surface_cache);
         surface_cache = new Surface(surface_mempool, widget_width, widget_height);
         memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
-      }  
-    }else{
-      //check for state changes and adjust the buffer accordingly
-      if (has_pop || has_focus){
-        if( (width != surface_cache->getWidth()) || (height != surface_cache->getHeight()) ){
-          delete(surface_cache);
-          surface_cache = new Surface(surface_mempool, width, height);
-          memset(surface_mempool,0,sizeof(uint16_t)*width*height);
-        }
-      }else{
-        if( (widget_width != surface_cache->getWidth()) || (widget_height != surface_cache->getHeight()) ){
-          delete(surface_cache);
-          surface_cache = new Surface(surface_mempool, widget_width, widget_height);
-          memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
-        }
-      }  
-    }
-    if (surface_cache==NULL)return false;
-    wrenCollectGarbage(vm);
-    return true;
+      }
+    }  
   }
+  if (surface_cache==NULL)return false;
+  wrenCollectGarbage(vm);
+  return true;
+}
 
  void AppWren::update(){
         if (h_update==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
-            wrenSetSlotHandle(vm, 0, h_slot0);//App
-            if (!isWrenResultOK(wrenCall(vm,h_update))){
+          if(reboot_request){
+            reboot_request = false;
+            //handle the reboot request from the running wren script
+            restartVM();
+            loadScript(loadModuleSource(wren_module_name));
+            freeModuleSource();
+            return;
+          }
+          wrenEnsureSlots(vm, 1);
+          wrenSetSlotHandle(vm, 0, h_slot0);//App
+          if (!isWrenResultOK(wrenCall(vm,h_update))){
 
-            }else{
-                if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
-                        show_active = false;
-                        time_active = 0;
-                }
-                if(usingImage){
-                    if(!surface_cache){                        
-                        //surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
-                        if(!dynamicSurfaceManager()){ 
-                            Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
-                            return;
-                        }else Serial.println(F("M AppWren::update() Surface created"));
-                    } else{
-                      if(has_pop || has_focus){
-                        //do nothing
-                      }else{
-                        draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
-                      }
-                    }
-                }else{
-                    draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
-                    draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
-                }
-                if(has_pop || has_focus){
-                  //do nothing
-                }else{
-                  if (show_active){
-                      draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
+          }else{
+              if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+                      show_active = false;
+                      time_active = 0;
+              }
+              if(usingImage){
+                  if(!surface_cache){                        
+                      //surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
+                      if(!dynamicSurfaceManager()){ 
+                          Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
+                          return;
+                      }else Serial.println(F("M AppWren::update() Surface created"));
                   } else{
-                      draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
+                    if(has_pop || has_focus){
+                      //do nothing
+                    }else{
+                      draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
+                    }
                   }
-                  
-                  if(!usingImage){
-                      draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
-                      draw->setCursor(x+(w/2),y+(h/2),true);
-                      draw->setFont(Arial_9);
-                      //draw->print(text);
-                  }
+              }else{
+                  draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
+                  draw->fillRoundRect(x,y+h/2,w,h/2,3,am->data->read("UI_BUTTON_SHADE_COLOR"));
+              }
+              if(has_pop || has_focus){
+                //do nothing
+              }else{
+                if (show_active){
+                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_ACTIVE_BORDER_COLOR")); 
+                } else{
+                    draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
                 }
-            }
+                
+                if(!usingImage){
+                    draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
+                    draw->setCursor(x+(w/2),y+(h/2),true);
+                    draw->setFont(Arial_9);
+                    //draw->print(text);
+                }
+              }
+          }
         }
-        //set_arm_clock(600000000);
+        if(tempmonGetTemp()>63.0) set_arm_clock(400000000);//thermal guard (safer but not failsafe)
+        
         wrenCollectGarbage(vm);
     };    //called only when the app is active
-
 
 void FLASHMEM AppWren::releaseWrenHandles(){
   //release any existing handles
@@ -752,8 +784,7 @@ void FLASHMEM AppWren::getWrenHandles(){
   //get the handles
   h_slot0 = wrenGetSlotHandle(vm, 0);
   h_update = wrenMakeCallHandle(vm, "update()");
-  h_updateRT = wrenMakeCallHandle(vm, "updateRT()");
-  
+  h_updateRT = wrenMakeCallHandle(vm, "updateRT()");  
   h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
   h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
   h_onTouch = wrenMakeCallHandle(vm, "onTouch(x,y)");
@@ -767,43 +798,56 @@ void FLASHMEM AppWren::getWrenHandles(){
 }
 
 const char * FLASHMEM AppWren::loadModuleSource(const char * name){
-  char file_name[128];
+  char file_name[128]; 
   FsFile file;
   int16_t file_size; //max file size 32K
   strncpy(file_name,name,sizeof(file_name));
   strcat(file_name,".wren");
   sd->chdir("/wren");
   file = sd->open(file_name, O_RDONLY);
-  file_size = file.available();
+  file_size = file.available() + 1;
+#ifdef USE_EXTMEM  
+  module_load_buffer = (char*)extmem_malloc(file_size);
+#else
   module_load_buffer = (char*)malloc(file_size);
+#endif
   if (module_load_buffer == NULL){
     Serial.println(F("M AppWren::loadModuleSource ERROR: Not Enough Memory"));
     return NULL;
   }
+  memset(module_load_buffer,0,file_size);
   file.read(module_load_buffer,file_size);
   file.close();
   return module_load_buffer;
 }
 
 void FLASHMEM AppWren::freeModuleSource(){
+
+#ifdef USE_EXTMEM 
+  if (module_load_buffer != NULL){
+    extmem_free(module_load_buffer);
+  }
+#else
   if (module_load_buffer != NULL) free(module_load_buffer);
+#endif
   module_load_buffer = NULL;
   return;
 }
+
 void AppWren::setPosition(int16_t newOriginX, int16_t newOriginY){
   AppBaseClass::setPosition(newOriginX, newOriginY);
 }
+
 void AppWren::setDimension(int16_t new_width, int16_t new_height){
   width = new_width;
   height = new_height;
-  //dynamicSurfaceManager();
 }
 
 void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
   AppBaseClass::setWidgetPosition(newOriginX, newOriginY);
 }
+
 void AppWren::setWidgetDimension(int16_t new_width, int16_t new_height){
   widget_width = new_width;
   widget_height = new_height;
-  //dynamicSurfaceManager();
 }
