@@ -1106,8 +1106,8 @@ function renderMonitor() {
     var c = document.getElementById("monitor_canvas");
     if (c.getContext) {
         var ctx = c.getContext("2d");
-        ctx.fillStyle = "#D74022";
-        ctx.strokeStyle = "#FF205020";
+        //ctx.fillStyle = "#D740F2";
+        ctx.strokeStyle = "#3d85de60";
 
         for (const [key, value] of Object.entries(watch.APPS)) {
             if (key != "root") {
@@ -1120,7 +1120,7 @@ function renderMonitor() {
                 ctx.putImageData(pixel, x, c.height-2);
                 */
 
-                x = watch.APPS[key].updateRT_period_max / 20;
+                x = watch.APPS[key].updateRT_period_max / 100;
                 ctx.beginPath();
                 ctx.moveTo(x, c.height - 1);
                 pixel_color[0] = 0;
@@ -1135,7 +1135,7 @@ function renderMonitor() {
         }
         //slide the image up
 
-        if (Math.random() > 0.75) {
+        if (Math.random() > 0.0001) {
             ctx.fillStyle = "#000000";
             ctx.strokeStyle = "#000000";
 

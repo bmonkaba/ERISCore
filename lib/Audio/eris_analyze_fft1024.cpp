@@ -45,7 +45,6 @@
 
 
 
-
 // Approximates atan2(y, x) normalized to the [0,4] range
 // with a maximum error of 0.1620 degrees
 float normalized_atan2( float y, float x )
@@ -145,6 +144,7 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 
 	if (is_analyzed) return;
 	//(NVIC_DISABLE_IRQ(IRQ_SOFTWARE));
+
 	apply_window_to_fft_buffer_f32((float32_t*)tmp_buffer, window_f32);
 	arm_fill_f32(0,(float32_t*)&tmp_buffer[1024],1024);
 	arm_cfft_radix4_f32(&fft_inst, (float32_t*)tmp_buffer);
@@ -158,6 +158,7 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 	
 	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
 	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
+
 	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
 
 	//spectralFilter();

@@ -10,6 +10,15 @@
  */
 #include "AudioDirector.h"
 
+#ifdef USE_EXTMEM
+#undef AudioMemory
+#define AudioMemory(num) ({ \
+	static EXTMEM audio_block_t data[num] __attribute__ ((aligned(32))); \
+	AudioStream::initialize_memory(data, num); \
+})
+#endif
+
+
 const char* nullStr = "NULL";
 
 FLASHMEM AudioDirector::AudioDirector(){

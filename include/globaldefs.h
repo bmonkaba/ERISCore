@@ -135,7 +135,7 @@
  * @brief max number of audio memory blocks
  * 
  */
-#define MAX_AUDIO_MEMORY_BLOCKS 120
+#define MAX_AUDIO_MEMORY_BLOCKS 220
 /**
  * @brief max number of audio stream catagories
  * 

@@ -204,21 +204,29 @@ class AppWren:public AppBaseClass {
     void freeModuleSource();
 
     /**
-     * @brief Get the Draw object
+     * @brief provides an interface for wren c call backfunctions to get the ILI9341_t3_ERIS draw object.
      * 
      * @return ILI9341_t3_ERIS* 
      */
     ILI9341_t3_ERIS* getDraw(){return draw;}
 
     /**
-     * @brief Get the Audio Director object
+     * @brief provides an interface for wren c call backfunctions to get the AudioDirector object
      * 
      * @return AudioDirector* 
      */
     AudioDirector* getAudioDirector(){return ad;} 
     
 
-    
+    /**
+     * @brief set a pixel on the render target
+     * 
+     * @param x 
+     * @param y 
+     * @param r 
+     * @param g 
+     * @param b 
+     */
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
         if (draw){
             if (has_pop){
@@ -234,6 +242,13 @@ class AppWren:public AppBaseClass {
         } 
     }
     
+    /**
+     * @brief get a pixel from the render target
+     * 
+     * @param x 
+     * @param y 
+     * @return uint16_t 
+     */
     uint16_t getPixel(int16_t x, int16_t y){
         if (draw){
             if (has_pop){
@@ -250,6 +265,17 @@ class AppWren:public AppBaseClass {
         return 0; 
     }
 
+    /**
+     * @brief draws a line on the render target
+     * 
+     * @param start_x 
+     * @param start_y 
+     * @param end_x 
+     * @param end_y 
+     * @param r 
+     * @param g 
+     * @param b 
+     */
     void drawLine(int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b){
         
         if ((start_x == end_x) && (start_y == end_y)){
@@ -293,6 +319,13 @@ class AppWren:public AppBaseClass {
         }
     }
 
+    /**
+     * @brief fills the render target (either a surface or the framebuffer depending on )
+     * 
+     * @param r 
+     * @param g 
+     * @param b 
+     */
     void drawFill(int16_t r, int16_t g, int16_t b){
         dynamicSurfaceManager();
         if (draw){
