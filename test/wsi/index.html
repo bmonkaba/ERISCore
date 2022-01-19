@@ -70,14 +70,11 @@
                 <div class="titlebar">Serial Transmit</div>
                 <form id="sent">
                     <textarea id="cmd_value" name="asdf" rows="10" cols="40" spellcheck="false">
+
 AUDIO_NO_INTERRUPTS
-DISCONNECT biquad_1 0
-DISCONNECT biquad_2 0
-CONNECT waveform_16 0 biquad_1 0
-CONNECT waveform_16 0 biquad_2 0
-DISCONNECT mixer_5 3
+DISCONNECT amp_2
+CONNECT pink_1 0 amp_2 0
 AUDIO_INTERRUPTS
-AA 220
 </textarea><br>
                     <button class="button SendButton" id="cmd_send" title="Send"></button>
                     <button class="button ClearButton" id="clear" title="Clear"></button><br>
@@ -184,7 +181,8 @@ AA 220
             <div id="editor_toolbar" class="editor_toolbar">
                 <button id="get_script_button" class="GetScriptButton" title="Get the default script template"></button>&nbsp
                 <button id="compile_script_button"class="CompileButton" title="Compile Only"></button>&nbsp
-                <button id="run_script_button"class="RunButton" title="Restart the VM and execute the script"></button>&nbsp&nbsp&nbsp&nbsp
+                <button id="restart_script_button"class="RestartButton" title="Restart the VM and execute the script"></button>&nbsp
+                <button id="run_script_button"class="RunButton" title="Run the script in the current VM"></button>&nbsp&nbsp&nbsp&nbsp
                 <label for="module_name">Module Name:</label><input type="text" id="module_name" name="module_name">
                 <button id="save_script_button"class="SaveButton" title="Save the script as a module (writes to SD Card)"></button>&nbsp
             </div>   

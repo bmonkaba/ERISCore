@@ -1,13 +1,13 @@
 <map id="AppWren::dynamicSurfaceManager" name="AppWren::dynamicSurfaceManager">
 <area shape="rect" id="node1" title="responsible for managing the surface buffer memory allocation" alt="" coords="1611,92,1963,128"/>
-<area shape="rect" id="node2" href="$d0/da0/class_app_wren_aa761e4678db21f1920899fa4fc781654.html#aa761e4678db21f1920899fa4fc781654" title=" " alt="" coords="1365,61,1555,97"/>
-<area shape="rect" id="node8" href="$d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" title=" " alt="" coords="53,5,235,41"/>
-<area shape="rect" id="node11" href="$d0/da0/class_app_wren_ad339a4b95cdb501d58fed6442216391d.html#ad339a4b95cdb501d58fed6442216391d" title=" " alt="" coords="1357,181,1563,217"/>
-<area shape="rect" id="node13" href="$d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18" title=" " alt="" coords="1363,121,1557,157"/>
+<area shape="rect" id="node2" href="$d0/da0/class_app_wren_aa761e4678db21f1920899fa4fc781654.html#aa761e4678db21f1920899fa4fc781654" title="fills the render target (either a surface or the framebuffer depending on )" alt="" coords="1365,61,1555,97"/>
+<area shape="rect" id="node8" href="$d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" title="class specific update implementation" alt="" coords="53,5,235,41"/>
+<area shape="rect" id="node11" href="$d0/da0/class_app_wren_ad339a4b95cdb501d58fed6442216391d.html#ad339a4b95cdb501d58fed6442216391d" title="draws a line on the render target" alt="" coords="1357,181,1563,217"/>
+<area shape="rect" id="node13" href="$d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18" title="set a pixel on the render target" alt="" coords="1363,121,1557,157"/>
 <area shape="rect" id="node3" href="$d7/d7e/_app_wren_8cpp_a16b4da7165c003f4b9a70869b7828084.html#a16b4da7165c003f4b9a70869b7828084" title="VM callback for extention method." alt="" coords="1130,61,1302,97"/>
 <area shape="rect" id="node4" href="$d7/d7e/_app_wren_8cpp_afe955d602a19a51c186913d9dc8ff707.html#afe955d602a19a51c186913d9dc8ff707" title="callback function for Wren to request an exported function bindings" alt="" coords="875,121,1075,157"/>
-<area shape="rect" id="node5" href="$d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" title=" " alt="" coords="635,121,827,157"/>
-<area shape="rect" id="node6" href="$d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" title=" " alt="" coords="353,65,564,101"/>
+<area shape="rect" id="node5" href="$d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" title="start the VM" alt="" coords="635,121,827,157"/>
+<area shape="rect" id="node6" href="$d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" title="shutsdown then starts the VM" alt="" coords="353,65,564,101"/>
 <area shape="rect" id="node9" href="$d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3" title="start, load and configure the handles of the VM" alt="" coords="331,125,587,161"/>
 <area shape="rect" id="node7" href="$d0/da0/class_app_wren_a9545f907e7bca8484595d63ade9abe96.html#a9545f907e7bca8484595d63ade9abe96" title="handles messages from other sw components" alt="" coords="5,65,283,101"/>
 <area shape="rect" id="node10" href="$d0/da0/class_app_wren_aa63148d0906a6b5eabbba7058f568eae.html#aa63148d0906a6b5eabbba7058f568eae" title=" " alt="" coords="41,125,247,161"/>

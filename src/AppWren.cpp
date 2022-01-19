@@ -11,10 +11,9 @@
 #include "AppWren.h"
 #include "globaldefs.h"
 
-
 #include <AppManager.h>
 #include <boarddefs.h>
-
+#include "ErisUtils.h"
 
 
 #ifdef USE_EXTMEM
@@ -65,16 +64,20 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
     case WREN_ERROR_COMPILE:
     {
       SerialUSB1.printf("VM WREN_ERR [%s line %d] [Error] %s\n", module, line, msg);
-    } break;
+      break;
+    } 
     case WREN_ERROR_STACK_TRACE:
     {
       SerialUSB1.printf("VM WREN_ERR [%s line %d] in %s\n", module, line, msg);
-    } break;
+      break;
+    } 
     case WREN_ERROR_RUNTIME:
     {
-      //Serial.printf("VM M WREN_ERR [Runtime Error] %s\n", msg);
-    } break;
+      SerialUSB1.printf("VM WREN_ERR [Runtime Error] %s\n", msg);
+      break;
+    } 
   }
+
 }
 
 /**
@@ -247,8 +250,6 @@ void returnFocusCallback(WrenVM* vm){
   app->returnFocus();
 }
 
-extern "C" uint32_t set_arm_clock(uint32_t frequency);
-
 /**
  * @brief Set the CPU Clock Speed Callback object
  * 
@@ -256,7 +257,8 @@ extern "C" uint32_t set_arm_clock(uint32_t frequency);
  */
 void setClockSpeedCallback(WrenVM* vm){
   //(uint16_t cpu_speed)
-  set_arm_clock(wrenGetSlotDouble(vm, 1));
+  AppManager* am = AppManager::getInstance();
+  am->request_arm_set_clock(wrenGetSlotDouble(vm, 1));
 }
 
 /**
@@ -625,7 +627,6 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
             return;
         }else{ //if the message payload is not a command then assume its the data
             if(save_module){
-              set_arm_clock(600000000);
               FsFile file;
               sd->chdir("/wren");
               sd->remove(wren_module_name);
@@ -649,7 +650,10 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
                 }
                 restartVM();
                 Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
-                loadScript(message);
+                if(!loadScript(message)){
+                    enable_call_forwarding = false;
+                    restartVM();
+                } else enable_call_forwarding = true;
                 
                 
                 Serial.println(F("M AppWren::MessageHandler: request complete"));
@@ -695,26 +699,29 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
     }  
   }
   if (surface_cache==NULL)return false;
-  wrenCollectGarbage(vm);
+  //wrenCollectGarbage(vm);
   return true;
 }
 
  void AppWren::update(){
-        if (h_update==0){ //if no script loaded
+        if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
           if(reboot_request){
             reboot_request = false;
             //handle the reboot request from the running wren script
             restartVM();
-            loadScript(loadModuleSource(wren_module_name));
+            if(!loadScript(loadModuleSource(wren_module_name))){
+                enable_call_forwarding = false;
+                restartVM();
+            } else enable_call_forwarding = true;
             freeModuleSource();
             return;
           }
           wrenEnsureSlots(vm, 1);
           wrenSetSlotHandle(vm, 0, h_slot0);//App
           if (!isWrenResultOK(wrenCall(vm,h_update))){
-
+            releaseWrenHandles();
           }else{
               if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
                       show_active = false;
@@ -756,29 +763,43 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
               }
           }
         }
-        if(tempmonGetTemp()>63.0) set_arm_clock(400000000);//thermal guard (safer but not failsafe)
-        
         wrenCollectGarbage(vm);
     };    //called only when the app is active
 
+
+void AppWren::updateRT(){
+  if (enable_call_forwarding == false){ //if no script loaded
+      return;
+  } else{
+    wrenEnsureSlots(vm, 1);
+    wrenSetSlotHandle(vm, 0, h_slot0);//App
+    if (!isWrenResultOK(wrenCall(vm,h_updateRT))){
+        releaseWrenHandles();
+    };
+  }
+}; //allways called even if app is not active
+
 void FLASHMEM AppWren::releaseWrenHandles(){
+  Serial.printf(F("M AppWren::releaseWrenHandles\n"));
   //release any existing handles
-  if (h_slot0!=NULL) wrenReleaseHandle(vm, h_slot0);
-  if (h_update!=NULL) wrenReleaseHandle(vm, h_update);
-  if (h_updateRT!=NULL) wrenReleaseHandle(vm, h_updateRT);
-  if (h_onFocus!=NULL) wrenReleaseHandle(vm, h_onFocus);
-  if (h_onFocusLost!=NULL) wrenReleaseHandle(vm, h_onFocusLost);
-  if (h_onTouch!=NULL) wrenReleaseHandle(vm, h_onTouch);
-  if (h_onTouchDrag!=NULL) wrenReleaseHandle(vm, h_onTouchDrag);
-  if (h_onTouchRelease!=NULL) wrenReleaseHandle(vm, h_onTouchRelease);
-  if (h_onAnalog1!=NULL) wrenReleaseHandle(vm, h_onAnalog1);
-  if (h_onAnalog2!=NULL) wrenReleaseHandle(vm, h_onAnalog2);
-  if (h_onAnalog3!=NULL) wrenReleaseHandle(vm, h_onAnalog3);
-  if (h_onAnalog4!=NULL) wrenReleaseHandle(vm, h_onAnalog4);
-  if (h_messageHandler!=NULL) wrenReleaseHandle(vm, h_messageHandler);
+  if (h_slot0!=NULL) {wrenReleaseHandle(vm, h_slot0); h_slot0=NULL;}
+  if (h_update!=NULL) {wrenReleaseHandle(vm, h_update); h_update=NULL;}
+  if (h_updateRT!=NULL) {wrenReleaseHandle(vm, h_updateRT); h_updateRT=NULL;}
+  if (h_onFocus!=NULL) {wrenReleaseHandle(vm, h_onFocus); h_onFocus=NULL;}
+  if (h_onFocusLost!=NULL) {wrenReleaseHandle(vm, h_onFocusLost); h_onFocusLost=NULL;}
+  if (h_onTouch!=NULL) {wrenReleaseHandle(vm, h_onTouch); h_onTouch=NULL;}
+  if (h_onTouchDrag!=NULL) {wrenReleaseHandle(vm, h_onTouchDrag); h_onTouchDrag=NULL;}
+  if (h_onTouchRelease!=NULL) {wrenReleaseHandle(vm, h_onTouchRelease); h_onTouchRelease=NULL;}
+  if (h_onAnalog1!=NULL) {wrenReleaseHandle(vm, h_onAnalog1); h_onAnalog1=NULL;}
+  if (h_onAnalog2!=NULL) {wrenReleaseHandle(vm, h_onAnalog2); h_onAnalog2=NULL;}
+  if (h_onAnalog3!=NULL) {wrenReleaseHandle(vm, h_onAnalog3); h_onAnalog3=NULL;}
+  if (h_onAnalog4!=NULL) {wrenReleaseHandle(vm, h_onAnalog4); h_onAnalog4=NULL;}
+  if (h_messageHandler!=NULL) {wrenReleaseHandle(vm, h_messageHandler); h_messageHandler=NULL;}
+  enable_call_forwarding = false;
 }
 
 void FLASHMEM AppWren::getWrenHandles(){
+  Serial.println(F("M AppWren::getWrenHandles"));
   wrenEnsureSlots(vm, 1);
   wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
   //get the handles
@@ -801,7 +822,7 @@ const char * FLASHMEM AppWren::loadModuleSource(const char * name){
   char file_name[128]; 
   FsFile file;
   int16_t file_size; //max file size 32K
-  strncpy(file_name,name,sizeof(file_name));
+  safer_strncpy(file_name,name,sizeof(file_name));
   strcat(file_name,".wren");
   sd->chdir("/wren");
   file = sd->open(file_name, O_RDONLY);

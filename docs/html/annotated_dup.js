@@ -4,7 +4,7 @@ var annotated_dup =
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", "d5/d8f/class_analog_inputs" ],
     [ "Animation", "d4/d7c/class_animation.html", "d4/d7c/class_animation" ],
     [ "AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic.html", "dc/d27/class_app_audio_to_polyphonic" ],
-    [ "AppBaseClass", "db/d69/class_app_base_class.html", "db/d69/class_app_base_class" ],
+    [ "AppBaseClass", "db/d69/class_app_base_class.html", null ],
     [ "AppCQT", "d4/dde/class_app_c_q_t.html", "d4/dde/class_app_c_q_t" ],
     [ "AppReprogram", "d5/d25/class_app_reprogram.html", "d5/d25/class_app_reprogram" ],
     [ "AppScope", "d8/dbe/class_app_scope.html", "d8/dbe/class_app_scope" ],

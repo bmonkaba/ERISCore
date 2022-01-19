@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 559;
+var viewWidth = 708;
 var viewHeight = 80;
 var sectionId = 'dynsection-0';
 </script>
@@ -78,18 +78,18 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M96.29,-42.15C104.38,-43.29 113.01,-44.5 121.79,-45.74"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="121.34,-49.21 131.73,-47.14 122.32,-42.28 121.34,-49.21"/>
 </g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24" target="_top" xlink:title="callback function for the VM to indicate to the system that it&#39;s ok to release any memory allocated d...">
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24" target="_top" xlink:title="callback function for the VM to indicate to the system that it&#39;s ok to release any memory allocated d...">
 <polygon fill="none" stroke="black" points="132.5,-0.5 132.5,-26.5 294.5,-26.5 294.5,-0.5 132.5,-0.5"/>
 <text text-anchor="middle" x="213.5" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">loadModuleComplete</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node4 -->
-<g id="edge3" class="edge">
-<title>Node1&#45;&gt;Node4</title>
+<!-- Node1&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node1&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M96.29,-29.14C104.51,-28.03 113.31,-26.85 122.24,-25.65"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="122.91,-29.09 132.35,-24.28 121.97,-22.15 122.91,-29.09"/>
 </g>
@@ -108,18 +108,33 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M295.27,-58.5C303.54,-58.5 312.06,-58.5 320.62,-58.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="320.69,-62 330.69,-58.5 320.69,-55 320.69,-62"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645" target="_top" xlink:title="receiver for the wren c callback function loadModuleComplete indicating it&#39;s now ok to release the mo...">
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="../../df/d51/_eris_utils_8h_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1" target="_top" xlink:title="a safer strncpy">
+<polygon fill="none" stroke="black" points="587,-45.5 587,-71.5 700,-71.5 700,-45.5 587,-45.5"/>
+<text text-anchor="middle" x="643.5" y="-54.7" font-family="Helvetica,sans-Serif" font-size="16.00">safer_strncpy</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M551.05,-58.5C559.77,-58.5 568.4,-58.5 576.67,-58.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="576.94,-62 586.94,-58.5 576.94,-55 576.94,-62"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645" target="_top" xlink:title="receiver for the wren c callback function loadModuleComplete indicating it&#39;s now ok to release the mo...">
 <polygon fill="none" stroke="black" points="332,-0.5 332,-26.5 550,-26.5 550,-0.5 332,-0.5"/>
 <text text-anchor="middle" x="441" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::freeModuleSource</text>
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node4&#45;&gt;Node5</title>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M294.64,-13.5C303.38,-13.5 312.4,-13.5 321.47,-13.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="321.73,-17 331.73,-13.5 321.73,-10 321.73,-17"/>
 </g>

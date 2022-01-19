@@ -46,9 +46,10 @@ class SerialProcess():
                 d = d.decode()
               
             except:
-                print("First ring decode failure on MSG:")
-                print (d)
-                d = ""
+                if(len(d) > 0):
+                    print("First ring decode failure on MSG:")
+                    print (d)
+                    d = ""
             
             
             if (d.find("LZ4") == 0):

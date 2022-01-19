@@ -101,16 +101,14 @@ $(document).ready(function(){initNavTree('d5/d25/class_app_reprogram_a4909d74616
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class_ad94e41c748692bda9c38b25c876bc3e6.html#ad94e41c748692bda9c38b25c876bc3e6">AppBaseClass</a>.</p>
-
 <p class="definition">Definition at line <a class="el" href="../../dd/d93/app_reprogram_8h_source.html#l00025">25</a> of file <a class="el" href="../../dd/d93/app_reprogram_8h_source.html">appReprogram.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="../../db/d69/class_app_base_class_a761416a75d8cb476c2c08072c7cb7261.html#a761416a75d8cb476c2c08072c7cb7261">updateRT_priority</a> = 10000;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        updateRT_priority = 20000;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">//Enter program mode if both TAP_INPUT and SW_D </span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//switches are pressed at the same time.</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">if</span> (digitalRead(<a class="code" href="../../de/d10/_h_s_i_8h_adc0e0e96b45f4b7d0e3667db2e3504f6.html#adc0e0e96b45f4b7d0e3667db2e3504f6">TAP_INPUT</a>) == LOW &amp;&amp; digitalRead(<a class="code" href="../../de/d10/_h_s_i_8h_ae3a0dc447dd469068db0af568a1145a8.html#ae3a0dc447dd469068db0af568a1145a8">SW_D</a>) == LOW){</div>
@@ -122,9 +120,8 @@ $(document).ready(function(){initNavTree('d5/d25/class_app_reprogram_a4909d74616
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="ttc" id="a_h_s_i_8h_adc0e0e96b45f4b7d0e3667db2e3504f6_html_adc0e0e96b45f4b7d0e3667db2e3504f6"><div class="ttname"><a href="../../de/d10/_h_s_i_8h_adc0e0e96b45f4b7d0e3667db2e3504f6.html#adc0e0e96b45f4b7d0e3667db2e3504f6">TAP_INPUT</a></div><div class="ttdeci">#define TAP_INPUT</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/_h_s_i_8h_source.html#l00045">HSI.h:45</a></div></div>
 <div class="ttc" id="a_h_s_i_8h_ae3a0dc447dd469068db0af568a1145a8_html_ae3a0dc447dd469068db0af568a1145a8"><div class="ttname"><a href="../../de/d10/_h_s_i_8h_ae3a0dc447dd469068db0af568a1145a8.html#ae3a0dc447dd469068db0af568a1145a8">SW_D</a></div><div class="ttdeci">#define SW_D</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/_h_s_i_8h_source.html#l00044">HSI.h:44</a></div></div>
-<div class="ttc" id="aclass_app_base_class_a761416a75d8cb476c2c08072c7cb7261_html_a761416a75d8cb476c2c08072c7cb7261"><div class="ttname"><a href="../../db/d69/class_app_base_class_a761416a75d8cb476c2c08072c7cb7261.html#a761416a75d8cb476c2c08072c7cb7261">AppBaseClass::updateRT_priority</a></div><div class="ttdeci">uint16_t updateRT_priority</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00056">AppBaseClass.h:56</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00044">SW_D</a>, <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00045">TAP_INPUT</a>, and <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00056">AppBaseClass::updateRT_priority</a>.</p>
+<p class="reference">References <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00044">SW_D</a>, and <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00045">TAP_INPUT</a>.</p>
 
 </div>
 </div>

@@ -9,7 +9,6 @@ var svc_data_dictionary_8h =
     [ "DATADICT_MAX_KEY_LEN", "dd/df4/svc_data_dictionary_8h_ab0d4b44bdc0c12c14053e27157a5bafb.html#ab0d4b44bdc0c12c14053e27157a5bafb", null ],
     [ "DATADICT_USE_MALLOC", "dd/df4/svc_data_dictionary_8h_a2c44099526ee0462b9d7a32c420f43ce.html#a2c44099526ee0462b9d7a32c420f43ce", null ],
     [ "pointer_container", "dd/df4/svc_data_dictionary_8h_a72d1d78e033dcdec8eb28ca3e0efc6a1.html#a72d1d78e033dcdec8eb28ca3e0efc6a1", null ],
-    [ "svcDataDictionaryRecord", "dd/df4/svc_data_dictionary_8h_a4d0e1b4ebad6f5f7a2fb0ee55e501a67.html#a4d0e1b4ebad6f5f7a2fb0ee55e501a67", null ],
     [ "value_container", "dd/df4/svc_data_dictionary_8h_aefc9c71bdd370385f95579f73468477e.html#aefc9c71bdd370385f95579f73468477e", null ],
     [ "svcDataDictionaryDataType", "dd/df4/svc_data_dictionary_8h_ad86fa9822c5136dd63651f82b9db8f37.html#ad86fa9822c5136dd63651f82b9db8f37", [
       [ "DDDT_INT16", "dd/df4/svc_data_dictionary_8h_ad86fa9822c5136dd63651f82b9db8f37.html#ad86fa9822c5136dd63651f82b9db8f37accfdd4c22b7d44c487f4b146e0696b34", null ],
@@ -31,5 +30,13 @@ var svc_data_dictionary_8h =
       [ "DDRT_READWRITE", "dd/df4/svc_data_dictionary_8h_a6c450b4b92bd1fec7468641d98871eda.html#a6c450b4b92bd1fec7468641d98871edaa18e18ac986c9ffcf9546fad8aff78b24", null ],
       [ "DDRT_POINTER", "dd/df4/svc_data_dictionary_8h_a6c450b4b92bd1fec7468641d98871eda.html#a6c450b4b92bd1fec7468641d98871edaa4d96e6a8a19ad2fd1e90185ff9eea9bc", null ],
       [ "DDRT_EMPTY", "dd/df4/svc_data_dictionary_8h_a6c450b4b92bd1fec7468641d98871eda.html#a6c450b4b92bd1fec7468641d98871edaad4d67c47512ac0e225fbf95568ddbf7f", null ]
-    ] ]
+    ] ],
+    [ "__attribute__", "dd/df4/svc_data_dictionary_8h_a371e88702ed9181b13583adb4535c415.html#a371e88702ed9181b13583adb4535c415", null ],
+    [ "__attribute__", "dd/df4/svc_data_dictionary_8h_afb644fd3c82a6873cf0e68c4072e77a0.html#afb644fd3c82a6873cf0e68c4072e77a0", null ],
+    [ "data_type", "dd/df4/svc_data_dictionary_8h_a92c482e1428171720c36df732f6752c3.html#a92c482e1428171720c36df732f6752c3", null ],
+    [ "key", "dd/df4/svc_data_dictionary_8h_a5892a9181e6a332f84d27aecd41dcd12.html#a5892a9181e6a332f84d27aecd41dcd12", null ],
+    [ "key_hash", "dd/df4/svc_data_dictionary_8h_af5018c52017bb6ac3f4ad520a244ad2f.html#af5018c52017bb6ac3f4ad520a244ad2f", null ],
+    [ "owner", "dd/df4/svc_data_dictionary_8h_a743e9412f11fe56ae277d25f0f844d18.html#a743e9412f11fe56ae277d25f0f844d18", null ],
+    [ "record_type", "dd/df4/svc_data_dictionary_8h_a0fec1f78e864dd22a42a67f744208598.html#a0fec1f78e864dd22a42a67f744208598", null ],
+    [ "val", "dd/df4/svc_data_dictionary_8h_a84509605415cab3d8d733f473d99bb46.html#a84509605415cab3d8d733f473d99bb46", null ]
 ];

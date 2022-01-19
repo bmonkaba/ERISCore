@@ -42,8 +42,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
 
     void FLASHMEM initalize(){
       sprintf(name, APPNAME);
-      Serial.println(F("MyApp constructor called"));
-
+      updateRT_priority = 5800; //set to higher priority
       id = 1;
       t_lastupdate = micros();
 
@@ -59,7 +58,8 @@ class AppAudioToPolyphonic:public AppBaseClass {
       pink->amplitude(1.0);
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_1"));
-      filter->setLowpass(0, 1100,0.6);
+      filter->setLowpass(0, 1100);
+      filter->setHighpass(1, 270);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_2"));
       filter->setLowpass(0, 300);
@@ -244,7 +244,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp_2"));
-      amp->gain(log1p(fval));
+      amp->gain(1 + log1p(fval));
     };
     
     void FLASHMEM onAnalog2(uint16_t uval, float fval){

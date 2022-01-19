@@ -11,6 +11,33 @@
 
 
 //AppManager
+
+/**
+ * @brief base operating frequency of the system
+ * 
+ */
+#define CPU_BASE_FREQ 725000000
+
+/**
+ * @brief thermal throttled operating frequency of the system
+ * 
+ */
+#define CPU_LOW_POWER_MODE_FREQ 500000000
+
+
+/**
+ * @brief max boost operating frequency of the system
+ * 
+ */
+#define CPU_BOOST_MAX_FREQ 760000000
+
+/**
+ * @brief thermal throttle trip point temp
+ * 
+ */
+#define CPU_THERMAL_THROTTLE_TEMP 72.0
+
+
 #define ENABLE_ASYNC_SCREEN_UPDATES
 
 #define DISPLAY_UPDATE_PERIOD  120
@@ -64,7 +91,7 @@
  * @brief throttle delay used to capture the delta change used in the delta threshold check
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 60
+#define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 20
 /**
  * @brief max tx header size\n
  *  this is used to support multipart transmissions by capturing the start of message header
@@ -118,12 +145,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 391
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 1803
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 151
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 1051
 
 //Audio Director
 /**
@@ -354,15 +381,11 @@ class App {
     update() {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
-        //kick up the clock speed for this section
-        App.setClockSpeed(600000000)
         for (y in 0...(__w)) {
             createJulia()
         }
         Draw.setCursor(5 + __x,__y -9)
         Draw.print("WREN VM")
-        //and bring the clock speed back down 
-        App.setClockSpeed(600000000)
         //let the widget window bounce of the edges of the screen
         __x = __x + _dx
         __y = __y + _dy
@@ -670,4 +693,5 @@ class Boolean {
     }
 }
 )";
+
 #endif

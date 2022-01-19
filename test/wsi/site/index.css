@@ -1477,6 +1477,18 @@ select {
     padding:2px;
 }
 
+.RestartButton{
+    background:url(/static/img/restart.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:20px;
+    height:20px;
+    opacity: 0.5;
+    background-size: 100%;
+    margin:2px;
+    padding:2px;
+}
+
 .SaveButton:active
 {   
     background:url(/static/img/save.png) no-repeat;

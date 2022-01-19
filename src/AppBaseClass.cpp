@@ -45,12 +45,13 @@ AppBaseClass::AppBaseClass(){
   update_period_max =0;
   updateRT_period =0;
   updateRT_period_max =0;
-  updateRT_priority = 0;
+  updateRT_priority = 65535;
+  updateRT_priority_counter = 0;
   strcpy(name,"NONE");
   selfRegister();
 }
 
-void AppBaseClass::selfRegister(){AppManager::getInstance()->RegisterApp(this); }//self register on construction
+void AppBaseClass::selfRegister(){AppManager::getInstance()->registerApp(this); }//self register on construction
 
 void AppBaseClass::_updatePosition(){
   if(has_focus || has_pop){

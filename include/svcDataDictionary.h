@@ -7,13 +7,13 @@
  * @file svcDataDictionary.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
  * @brief Data Dictionary service 
- * provides an interface to a data dictionary service
- * the service shall provide a CRUD (create,read,update,destroy) interface
- * data shall be globaly readable
- * create operation shall require a pointer to the owner
- * update and destroy operations can only be made by the owner
- * the owner pointer shall never be dereferenced or accessed by the service; it only serves as an ID
- * NULL pointers are OK. They can be utilized to create globaly modifiable (update,destroy) records
+ * provides an interface to a data dictionary service\n
+ * the service shall provide a CRUD (create,read,update,destroy) interface\n
+ * data shall be globaly readable\n
+ * create operation shall offer an ownership interface requiring a pointer to the owner\n
+ * update and destroy operations on owned keys can only be made by the owner\n
+ * the owner pointer shall never be dereferenced or accessed by the service; it only serves as an owner ID\n
+ * NULL pointers are OK. They can be utilized to create globaly modifiable (update,destroy) records\n
  * 
  * 
  * @version 0.1
@@ -52,11 +52,6 @@ enum svcDataDictionaryDataType{
     DDDT_EMPTY
 };
 
-typedef union value_container{
-    int32_t int32_val;
-    float32_t float32_val;
-} value_container;
-
 typedef union pointer_container{
     int16_t* pint16_val;
     uint16_t* puint16_val;
@@ -65,6 +60,13 @@ typedef union pointer_container{
     float32_t* pfloat16_val;
     float32_t* pfloat32_val;
 } pointer_container;
+
+typedef union value_container{
+    int32_t int32_val;
+    float32_t float32_val;
+    pointer_container pointer_container_val;
+} value_container;
+
 
 typedef struct svcDataDictionaryRecord
 {
@@ -79,31 +81,12 @@ typedef struct svcDataDictionaryRecord
     uint32_t *owner;
     svcDataDictionaryRecordType record_type;
     svcDataDictionaryDataType data_type;
-}svcDataDictionaryRecord;// __attribute__ ((aligned (32)));
+} svcDataDictionaryRecord __attribute__ ((aligned (4)));
 
 class SvcDataDictionary{
-    private:
-        svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
-        uint16_t next;
-
-    bool copyKey(const char* key);
+    
     public:
-        SvcDataDictionary(){
-            next=0;
-            for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
-                record[i].owner = 0;
-                record[i].val.int32_val = 0;
-                record[i].record_type = DDRT_READWRITE;
-                record[i].data_type = DDDT_INT32;
-                record[i].key_hash = 48879; //0xBEEF
-                #ifdef DATADICT_USE_MALLOC
-                record[i].key = NULL;
-                #else
-                memset(record[i].key,0,sizeof(record[i].key));
-                #endif
-            }
-        }
-        
+        SvcDataDictionary();
         uint32_t hash(const char* s);
         bool create(const char* key,int32_t val,uint32_t* owner);
         bool create(const char* key,int32_t val);
@@ -118,6 +101,12 @@ class SvcDataDictionary{
         //serial interface
         void printStats();
         void printDictionary(SvcSerialCommandInterface* sci);
+    
+    private:
+        svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
+        uint16_t next;
+        bool copyKey(const char* key);
+
 };
 
 #endif

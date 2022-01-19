@@ -18,42 +18,42 @@
 #include <SdFat.h>
 #include <Print.h>
 //#include <SdFat.h>
-// AppSerialCommandInterface
-//
-/*
 
-INCOMMING MESSAGES:
-
-    LS [PATH]
-    GET [PATH]  (get file is responded with FS messages)
-    ACON        (request current audio block connections)
-    CONNECT     (make an audio block connection)
-    DISCONNECT  (break an audio block connection)
-    AA          (broadcast message to active app )
-    STATS
-    CQT_CFG     request a dump of the cqt bin configs
-    GET_DD      request a dump of the data dictionary       
-    UPDATE_DD key val   set a key value 
-OUTPUT MESSAGES:
-
-    CQT_H  (CQT BINS - High Range)
-    CQT_L  (CQT  "     Low Range")
-    CQT_EOF (End of analysis frame)
-    DIR  (directory contents - aka the result of the ls command)
-    DIR_EOF
-    S   (FFT window stream)
-    FS   (file stream)
-    FS_END (file stream end, indicate to client eof)
-    GET_ERR (error response )
-    ACON START (begin audio connection list)
-    ACON END (end audio connection list)
-    RAM   JSON container
-*/
-//
-
+/**
+ * @brief  Serial communication service and interface
+ *  Serial commands (rx):
+ *
+ *   LS [PATH] 
+ *   GET [PATH]  (get file is responded with FS messages)
+ *   ACON        (request current audio block connections)
+ *   CONNECT     (make an audio block connection)
+ *   DISCONNECT  (break an audio block connection)
+ *   AA          (broadcast message to active app )
+ *   STATS       
+ *   CQT_CFG     request a dump of the cqt bin configs
+ *   GET_DD      request a dump of the data dictionary       
+ *   UPDATE_DD   key val   set a key value 
+ *
+ * Serial messages (tx):
+ *
+ *   CQT_H  (CQT BINS - High Range)
+ *   CQT_L  (CQT  "     Low Range")
+ *   CQT_EOF (End of analysis frame)
+ *   DIR  (directory contents - aka the result of the ls command)
+ *   DIR_EOF
+ *   S   (FFT window stream)
+ *   FS   (file stream)
+ *   FS_END (file stream end, indicate to client eof)
+ *   GET_ERR (file request error response )
+ *   ACON START (begin audio connection list)
+ *   ACON END (end audio connection list)
+ *   RAM1   JSON container
+ *   RAM2   JSON container
+ */
 class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:
     SvcSerialCommandInterface():AppBaseClass(){
+        updateRT_priority = 0;  //set to max priority
         sincePoll = 0;
         sincePeriodicDataDict = 0;
         sincePeriodicStats = 0;

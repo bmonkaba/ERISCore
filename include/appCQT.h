@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 370
+#define TX_PERIOD 25
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 370
+#define TX_CQT_PERIOD 41
 
 // Constant Q Transform App
 //
@@ -76,6 +76,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
 
     void FLASHMEM init(){
+      updateRT_priority = 0; //set to high priority
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
@@ -264,7 +265,6 @@ class AppCQT:public AppBaseClass {
     }; //called only when the app is active
     
     void FLASHMEM updateRT(){
-      updateRT_priority = 0;
       if (!isActive) return;
       rt_calls++;
       //if (rt_calls < 10000) return;    

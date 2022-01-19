@@ -40,7 +40,23 @@ bool FLASHMEM SvcDataDictionary::copyKey(const char* key){
     return true;
 }
 
-uint32_t SvcDataDictionary::hash(const char* s){
+FLASHMEM SvcDataDictionary::SvcDataDictionary(){
+            next=0;
+            for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
+                record[i].owner = 0;
+                record[i].val.int32_val = 0;
+                record[i].record_type = DDRT_READWRITE;
+                record[i].data_type = DDDT_INT32;
+                record[i].key_hash = 48879; //0xBEEF
+                #ifdef DATADICT_USE_MALLOC
+                record[i].key = NULL;
+                #else
+                memset(record[i].key,0,sizeof(record[i].key));
+                #endif
+            }
+}
+
+uint32_t FASTRUN SvcDataDictionary::hash(const char* s){
     //uint32 djb2 string hash
     uint32_t h = 5381;
     int c;
@@ -79,7 +95,7 @@ bool FLASHMEM SvcDataDictionary::create(const char* key,float32_t val){
     return true;
 }
 
-int32_t SvcDataDictionary::read(const char* key){
+int32_t FASTRUN SvcDataDictionary::read(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -90,7 +106,7 @@ int32_t SvcDataDictionary::read(const char* key){
     return 0;
 }
 
-float32_t SvcDataDictionary::readf(const char* key){
+float32_t FASTRUN SvcDataDictionary::readf(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -139,7 +155,7 @@ bool FLASHMEM SvcDataDictionary::update(const char* key,float32_t val,uint32_t* 
     return create(key, val, owner);
 }
 
-bool FLASHMEM SvcDataDictionary::update(const char* key,int32_t val){
+bool FASTRUN SvcDataDictionary::update(const char* key,int32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -158,7 +174,7 @@ bool FLASHMEM SvcDataDictionary::update(const char* key,int32_t val){
     return create(key, val);
 }
 
-bool FLASHMEM SvcDataDictionary::update(const char* key,float32_t val){
+bool FASTRUN SvcDataDictionary::update(const char* key,float32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -177,7 +193,7 @@ bool FLASHMEM SvcDataDictionary::update(const char* key,float32_t val){
     return create(key, val);
 }
 
-bool FLASHMEM SvcDataDictionary::increment(const char* key){
+bool FASTRUN SvcDataDictionary::increment(const char* key){
     uint32_t h;
     h = hash(key);
 

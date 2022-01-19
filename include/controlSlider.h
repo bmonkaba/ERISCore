@@ -9,6 +9,7 @@
  * 
  */
 #include "AppManager.h"
+#include "ErisUtils.h"
 // Slider 
 //
 
@@ -16,6 +17,7 @@ class ControlSlider:public AppBaseClass {
   public:
     ControlSlider(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
+        updateRT_priority = 5;
         isPressed = false;
         isDirty = true;
         strcpy(text,"ControlSlider");
@@ -27,7 +29,7 @@ class ControlSlider:public AppBaseClass {
     void setValue(int16_t new_value){value = new_value;}
     void setText(const char* name_string){
       if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
-      } else strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
+      } else safer_strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
     }
     //define event handlers
     int16_t value;

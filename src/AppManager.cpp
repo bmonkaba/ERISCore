@@ -22,6 +22,7 @@
 #include <pgmspace.h>
 #include "FreeStack.h"
 
+extern "C" uint32_t set_arm_clock(uint32_t frequency);
 extern AudioDirector _ad;
 extern SvcSerialCommandInterface sci;
 
@@ -124,11 +125,13 @@ void FLASHMEM AppManager::update(){
     touch_updated = false;
     node = root;
 
+    request_arm_set_clock(CPU_BASE_FREQ);
+
     if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
       return;
     }
-  
+
     //update analog inputs
     update_analog = analog.update();
     
@@ -219,9 +222,10 @@ void FLASHMEM AppManager::update(){
     bool isactive_child;
     do{
       app_time=0;
-      if (node->updateRT_priority > 0){
-        node->updateRT_priority--;
+      if (node->updateRT_priority > node->updateRT_priority_counter){
+        node->updateRT_priority_counter++;
       }else{
+        node->updateRT_priority_counter = 0;
         if (node->updateRT_period > node->updateRT_period_max) node->updateRT_period_max = node->updateRT_period;
         node->updateRT(); //real time update (always called)
         node->updateRT_cpu_time = app_time;
@@ -462,10 +466,10 @@ void AppManager::printStats (){
     sci->print(F("\""));
     sci->print(node->name);
     sci->print(F("\":{"));
-    sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
-    sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);sci->print(F(","));
     sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
-    sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);
+    sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
+    sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);sci->print(F(","));
+    sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);
     sci->print(F("},"));
     //clear the stats
     node->update_cpu_time_max = 0;
@@ -486,8 +490,8 @@ void AppManager::printStats (){
   //print app manager stats
   //sci->startLZ4Message();
   sci->print(F("STATS {\"APPMANAGER\":{"));
-  sci->print(F("\"cpu_time\":"));sci->print(cycle_time);sci->print(F(","));
-  sci->print(F("\"cpu_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
+  sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
+  sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
   sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
   sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
   sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
@@ -502,7 +506,7 @@ void AppManager::printStats (){
  * 
  * @param app 
  */
-void AppManager::RegisterApp(AppBaseClass *app){
+void AppManager::registerApp(AppBaseClass *app){
   //assign a unique id to the object
   app->id = nextIDAssignment++;
   app->draw = &draw;
@@ -519,6 +523,23 @@ void AppManager::RegisterApp(AppBaseClass *app){
     app->previousAppicationNode = endNode;
   }
 };
+
+bool AppManager::request_arm_set_clock(uint32_t requested_cpu_frequency){
+    //set cpu freq based on thermal performance
+    if(tempmonGetTemp() > CPU_THERMAL_THROTTLE_TEMP){
+      set_arm_clock(CPU_LOW_POWER_MODE_FREQ);//thermal guard (safer but not failsafe)
+      data->update("F_CPU_ACTUAL",(int32_t)F_CPU_ACTUAL);
+      return false;
+    } else {
+      //silently cap the requested freq 
+      if(requested_cpu_frequency > CPU_BOOST_MAX_FREQ) requested_cpu_frequency = CPU_BOOST_MAX_FREQ;
+      set_arm_clock(requested_cpu_frequency);
+      data->update("F_CPU_ACTUAL",(int32_t)F_CPU_ACTUAL);
+      return true;
+    }
+}
+
+
 
 AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 

@@ -6,43 +6,50 @@
 <br>
 # What is Eris Core:
 
-Eris core is a audio focused development & test framework realized as a hardware/software subsystem component intended for further integration into projects & products.
+Eris core is a audio focused operating system and rapid application development & test framework realized as a hardware/software subsystem component and pc interface software intended for further integration into projects & products.
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
 
 # Hardware Features:
 
 * 192khz@32bit stereo I/O\* (hardware capable)
-* Low noise balanced thermal power supply design
-* TFT touch screen interface
-* ADIO connector for interfacing for analog inputs, digital i/o & encoder inputs
-* Serial connector for interfacing external I2C & SPI devices
-* The ADC's audio front end supports single-ended input levels from small-mV microphone inputs to 2.1-VRMS line inputs
-* The ADC's front-end mixer (MIX), multiplexer (MUX), and PGA also support differential (Diff), pseudo-differential, and single-ended (SE) inputs.
+* Low noise linear power supply section with a balanced thermal design
+* TFT screen with touch interface
+* Analog/Digital (ADIO) connector for interfacing external analog inputs, digital i/o & encoder inputs
+* 8 pin Multi-format Serial Data (SDIO) connector for interfacing external I2C & SPI devices.
+* The audio front end supports single-ended input levels from small-mV microphone inputs to 2.1-VRMS line inputs
+* The front-end mixer (MIX), multiplexer (MUX), and programable gain amplifier (PGA) also supports differential (Diff), pseudo-differential, and single-ended (SE) inputs.
 
 <br>
 ## Software Features: (subject to change)
 
-* Custom single threaded c**ooperative multitasking system / Framework**
-* **Coperative scheduler with granular realtime priority control**
-* **String based messaging, no enums = easy to add/use new functionality across C++, serial port or the virtual machine**
-* Wraps the standard Teensy 4.1 Audio library components
-* 32 bit FFT Audio Block
-* 2xFFT CQT Polyphonic app example
+* Custom single threaded cooperative multitasking system / Framework
+* Coperative scheduler with granular realtime priority control
+* Universal 'human readable' string based messaging. No enums to maintain across development environments = easy to add/use new functionality across software components; whether native C/C++, a pc communicating across the serial port or with a script running in the virtual machine.
+* Shared Data Dictionary - int32\_t / float32\_t hash based key value store with key buffer storage (again 'human readable'). Interfaces support either anonymous global r/w access or owner based r/w control for each key store.
+* Wraps the standard Teensy 4.1 Audio library components.
+* (New) Sliding window 32 bit FFT Audio Block with subsampling control
+* 2xFFT CQT Polyphonic application example
 * Refactored the Teensy 4.1 Audio library to allow full dynamic control of audio connections
-* Seamless LZ4 compression/decompression between the device and PC through the web socket interface (wsi)
-* Integrated Wren compiler & virtual machine
-* Animated wallpaper
-* Single frame buffer. Secondary buffers implemented as surfaces
-* Image blt to the frame buffer from sd or surface, or from surface to surface
+* Serial communication LZ4 compression/decompression transport layer between the device and the web socket interface (wsi) can improve both latency and and bandwith.
+* Integrated Wren compiler & virtual machine (VM)
+* [TODO] VM file system is sandboxed. the search path is the script location, then the standard system asset paths. system assets are always read only. No paths required, or accepted, for file access.
+* VM extention allows scripts to 'request' a reboot of the VM at a safe time and pass control to another script. This provides the possibility of limitless program size given each sw unit (or whatever the sw paritioning concept deployed could be) stays within the memory allocated to the VM. Default: 32K for the extended ram variant or 16K for the no extended ram variant
+* Configurable animated or static wallpaper automatically rendered at the start of each frame by the system. 
+* Single frame buffer. Secondary buffers implemented as surfaces.
+* Multiple source/destination image block transfer (blt) interfaces:
+    * SD card to framebuffer
+    * SD card to surface
+    * Surface to surface
+    * Surface to framebuffer
 * Web based development tool provides:
-    * serial command interface
-    * data dictionary monitor
-    * audiostream flow monitor/editor
-    * ram dump
-    * jitter monitor
+    * Serial command interface
+    * Data dictionary monitor
+    * Audiostream flow monitor/editor
+    * Ram dump
+    * Application jitter monitor
     * FFT & CQT visualization
-    * scripting editor / dedicated VM serial terminal
-    * and more...
+    * Scripting editor & dedicated VM serial terminal
+    * And more...
 
 # Hardware Specs:
 

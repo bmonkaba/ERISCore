@@ -125,7 +125,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title="class specific update implementation">
 <polygon fill="none" stroke="black" points="35.5,-251.5 35.5,-277.5 172.5,-277.5 172.5,-251.5 35.5,-251.5"/>
 <text text-anchor="middle" x="104" y="-260.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::update</text>
 </a>
@@ -146,7 +146,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d0/da0/class_app_wren_ad339a4b95cdb501d58fed6442216391d.html#ad339a4b95cdb501d58fed6442216391d" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="../../d0/da0/class_app_wren_ad339a4b95cdb501d58fed6442216391d.html#ad339a4b95cdb501d58fed6442216391d" target="_top" xlink:title="draws a line on the render target">
 <polygon fill="none" stroke="black" points="1021,-72.5 1021,-98.5 1175,-98.5 1175,-72.5 1021,-72.5"/>
 <text text-anchor="middle" x="1098" y="-81.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::drawLine</text>
 </a>
@@ -161,7 +161,7 @@
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="../../d0/da0/class_app_wren_acd797662d50ea1d4dc11eff65cd5ab18.html#acd797662d50ea1d4dc11eff65cd5ab18" target="_top" xlink:title="set a pixel on the render target">
 <polygon fill="none" stroke="black" points="1025,-117.5 1025,-143.5 1171,-143.5 1171,-117.5 1025,-117.5"/>
 <text text-anchor="middle" x="1098" y="-126.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::setPixel</text>
 </a>
@@ -206,7 +206,7 @@
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title="start the VM">
 <polygon fill="none" stroke="black" points="472,-130.5 472,-156.5 616,-156.5 616,-130.5 472,-130.5"/>
 <text text-anchor="middle" x="544" y="-139.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::startVM</text>
 </a>
@@ -221,7 +221,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title="shutsdown then starts the VM">
 <polygon fill="none" stroke="black" points="261,-196.5 261,-222.5 419,-222.5 419,-196.5 261,-196.5"/>
 <text text-anchor="middle" x="340" y="-205.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::restartVM</text>
 </a>
@@ -314,7 +314,7 @@
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node19"><a xlink:href="../../d0/da0/class_app_wren_aa761e4678db21f1920899fa4fc781654.html#aa761e4678db21f1920899fa4fc781654" target="_top" xlink:title=" ">
+<g id="a_node19"><a xlink:href="../../d0/da0/class_app_wren_aa761e4678db21f1920899fa4fc781654.html#aa761e4678db21f1920899fa4fc781654" target="_top" xlink:title="fills the render target (either a surface or the framebuffer depending on )">
 <polygon fill="none" stroke="black" points="1026.5,-21.5 1026.5,-47.5 1169.5,-47.5 1169.5,-21.5 1026.5,-21.5"/>
 <text text-anchor="middle" x="1098" y="-30.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::drawFill</text>
 </a>
@@ -350,7 +350,7 @@
 <!-- Node22 -->
 <g id="node22" class="node">
 <title>Node22</title>
-<g id="a_node22"><a xlink:href="../../d0/da0/class_app_wren_aeea1fb2273947441e89ee259d0eec139.html#aeea1fb2273947441e89ee259d0eec139" target="_top" xlink:title=" ">
+<g id="a_node22"><a xlink:href="../../d0/da0/class_app_wren_aeea1fb2273947441e89ee259d0eec139.html#aeea1fb2273947441e89ee259d0eec139" target="_top" xlink:title="get a pixel from the render target">
 <polygon fill="none" stroke="black" points="1025,-172.5 1025,-198.5 1171,-198.5 1171,-172.5 1025,-172.5"/>
 <text text-anchor="middle" x="1098" y="-181.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::getPixel</text>
 </a>

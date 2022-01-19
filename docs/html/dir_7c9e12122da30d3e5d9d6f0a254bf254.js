@@ -2,7 +2,7 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
 [
     [ "AnalogInputs.h", "d3/ddb/_analog_inputs_8h.html", "d3/ddb/_analog_inputs_8h" ],
     [ "AppAudioToPolyphonic.h", "d9/db6/_app_audio_to_polyphonic_8h.html", "d9/db6/_app_audio_to_polyphonic_8h" ],
-    [ "AppBaseClass.h", "d9/d3e/_app_base_class_8h.html", "d9/d3e/_app_base_class_8h" ],
+    [ "AppBaseClass.h", "d9/d3e/_app_base_class_8h.html", null ],
     [ "appCQT.h", "d4/d75/app_c_q_t_8h.html", "d4/d75/app_c_q_t_8h" ],
     [ "AppManager.h", "df/d72/_app_manager_8h.html", null ],
     [ "appReprogram.h", "dd/d93/app_reprogram_8h.html", [
@@ -26,6 +26,7 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
       [ "ControlSlider", "de/d67/class_control_slider.html", "de/d67/class_control_slider" ]
     ] ],
     [ "erisAudio.h", "d2/ded/eris_audio_8h.html", "d2/ded/eris_audio_8h" ],
+    [ "ErisUtils.h", "df/d51/_eris_utils_8h.html", "df/d51/_eris_utils_8h" ],
     [ "globaldefs.h", "d8/d2c/globaldefs_8h.html", "d8/d2c/globaldefs_8h" ],
     [ "HSI.h", "de/d10/_h_s_i_8h.html", "de/d10/_h_s_i_8h" ],
     [ "ILI9341_t3_ERIS.h", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h" ],

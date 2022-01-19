@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Get the Draw object.">
+<g id="a_node1"><a xlink:title="provides an interface for wren c call backfunctions to get the ILI9341_t3_ERIS draw object.">
 <polygon fill="#bfbfbf" stroke="black" points="1039,-67.5 1039,-93.5 1188,-93.5 1188,-67.5 1039,-67.5"/>
 <text text-anchor="middle" x="1113.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::getDraw</text>
 </a>
@@ -95,7 +95,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title="start the VM">
 <polygon fill="none" stroke="black" points="472,-67.5 472,-93.5 616,-93.5 616,-67.5 472,-67.5"/>
 <text text-anchor="middle" x="544" y="-76.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::startVM</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title="shutsdown then starts the VM">
 <polygon fill="none" stroke="black" points="261,-90.5 261,-116.5 419,-116.5 419,-90.5 261,-90.5"/>
 <text text-anchor="middle" x="340" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::restartVM</text>
 </a>
@@ -155,7 +155,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title="class specific update implementation">
 <polygon fill="none" stroke="black" points="35.5,-90.5 35.5,-116.5 172.5,-116.5 172.5,-90.5 35.5,-90.5"/>
 <text text-anchor="middle" x="104" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::update</text>
 </a>

@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="fills the render target (either a surface or the framebuffer depending on )">
 <polygon fill="#bfbfbf" stroke="black" points="1003,-22.5 1003,-48.5 1146,-48.5 1146,-22.5 1003,-22.5"/>
 <text text-anchor="middle" x="1074.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::drawFill</text>
 </a>
@@ -96,7 +96,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_a0b139e8eac17bd02ffaff68532c3e4fc.html#a0b139e8eac17bd02ffaff68532c3e4fc" target="_top" xlink:title="start the VM">
 <polygon fill="none" stroke="black" points="472,-22.5 472,-48.5 616,-48.5 616,-22.5 472,-22.5"/>
 <text text-anchor="middle" x="544" y="-31.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::startVM</text>
 </a>
@@ -111,7 +111,7 @@ var sectionId = 'dynsection-1';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_aedf9a5e77ba482fde47e52125e9ca292.html#aedf9a5e77ba482fde47e52125e9ca292" target="_top" xlink:title="shutsdown then starts the VM">
 <polygon fill="none" stroke="black" points="261,-45.5 261,-71.5 419,-71.5 419,-45.5 261,-45.5"/>
 <text text-anchor="middle" x="340" y="-54.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::restartVM</text>
 </a>
@@ -156,7 +156,7 @@ var sectionId = 'dynsection-1';
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title="class specific update implementation">
 <polygon fill="none" stroke="black" points="35.5,-45.5 35.5,-71.5 172.5,-71.5 172.5,-45.5 35.5,-45.5"/>
 <text text-anchor="middle" x="104" y="-54.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::update</text>
 </a>

@@ -14,6 +14,7 @@
 #include "lz4.h"
 #include <base64.hpp>
 #include <pgmspace.h>
+#include "ErisUtils.h"
 
 // AppSerialCommandInterface
 //
@@ -186,10 +187,10 @@ bool SvcSerialCommandInterface::throttle(){
         delta_avail = Serial.availableForWrite();
         if(avail == delta_avail){
             Serial.flush();
-            Serial.println(F("!FLUSH"));
             Serial.println(F("M WRN flush"));
         } else{
             //Serial.println(F("M WRN throttling"));//use this for debug only!
+            am->data->increment("SERIAL_THROTTLE_EVENTS");
         }
     }
     if(avail < SERIAL_THROTTLE_BUFFER_THRESHOLD) return true;
@@ -226,7 +227,7 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     SerialUSB1.printf("VM %s %s\n",&multiPartHeader[0],s);
     //SerialUSB1.flush();
     indexTxBuffer = strlen(s);
-    strncpy(txBuffer,s,sizeof(txBuffer));
+    safer_strncpy(txBuffer,s,sizeof(txBuffer));
     //SerialUSB1.printf("VM remainder %s",txBuffer);
 }
 
@@ -377,7 +378,7 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
 };
 
 
-void FLASHMEM SvcSerialCommandInterface::updateRT(){ 
+void FASTRUN SvcSerialCommandInterface::updateRT(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;

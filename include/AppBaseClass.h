@@ -14,7 +14,6 @@
 //#define SERIAL_PRINT_APP_LOOP_TIME
 #include "globaldefs.h"
 #include <Arduino.h>
-
 //#include <vector>
 #include "HSI.h"
 //#include "touch.h"
@@ -22,6 +21,7 @@
 #include "ILI9341_t3_ERIS.h"
 #include "ili9341_t3n_font_Arial.h"
 #include "AudioDirector.h"
+#include "ErisUtils.h"
 
 //#include "AppManager.h"
 
@@ -54,6 +54,7 @@ class AppBaseClass {
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
     uint16_t updateRT_priority;
+    uint16_t updateRT_priority_counter;
     uint16_t update_cpu_time;
     uint16_t update_cpu_time_max;
     uint16_t updateRT_cpu_time;
@@ -85,7 +86,7 @@ class AppBaseClass {
     };
     void setName(const char* name_string){
       if (strlen(name_string) < MAX_NAME_LENGTH - 1){strcpy(name,name_string);
-      } else strncpy(name,name_string,MAX_NAME_LENGTH - 1);
+      } else safer_strncpy(name,name_string,MAX_NAME_LENGTH - 1);
     }
     void RegisterApp(AppBaseClass *app);
     void setParent(AppBaseClass *parent){parentNode = parent;};
@@ -95,7 +96,7 @@ class AppBaseClass {
     void setWidgetDimension(int16_t new_width, int16_t new_height){widget_width=new_width;widget_height=new_height;_updatePosition();}
     void getFocus();
     virtual void update(){};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
-    virtual void updateRT(){updateRT_priority = 65535;}; //will be called every loop and prior to a potential update call
+    virtual void updateRT(){}; //will be called every loop and prior to a potential update call
     //Event handlers
     virtual void onFocus(){};
     virtual void onFocusLost(){};

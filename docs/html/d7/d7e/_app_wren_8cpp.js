@@ -28,7 +28,6 @@ var _app_wren_8cpp =
     [ "restartVMCallback", "d7/d7e/_app_wren_8cpp_a6f9be9275117d2c40ad5806defa0841e.html#a6f9be9275117d2c40ad5806defa0841e", null ],
     [ "returnFocusCallback", "d7/d7e/_app_wren_8cpp_a7d888714ebd3a2befec867833015d7f2.html#a7d888714ebd3a2befec867833015d7f2", null ],
     [ "sendMessageCallback", "d7/d7e/_app_wren_8cpp_a5a2a584aa9624610a07f621a52c2cd4c.html#a5a2a584aa9624610a07f621a52c2cd4c", null ],
-    [ "set_arm_clock", "d7/d7e/_app_wren_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699", null ],
     [ "setClockSpeedCallback", "d7/d7e/_app_wren_8cpp_aef047c3a796bec18d6d761edee67f418.html#aef047c3a796bec18d6d761edee67f418", null ],
     [ "setCursorCallback", "d7/d7e/_app_wren_8cpp_ac544ec6ebbf44fc70c8321cfa9b72ff7.html#ac544ec6ebbf44fc70c8321cfa9b72ff7", null ],
     [ "setDimensionCallback", "d7/d7e/_app_wren_8cpp_a1af842755d61bd4e87bf767b1a64116e.html#a1af842755d61bd4e87bf767b1a64116e", null ],

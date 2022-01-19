@@ -11,7 +11,7 @@ var class_svc_serial_command_interface =
     [ "throttle", "d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0", null ],
     [ "txOverflowHandler", "d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc", null ],
     [ "update", "d2/da8/class_svc_serial_command_interface_aaf8d92ee48c609a7a9c73efc9dee4852.html#aaf8d92ee48c609a7a9c73efc9dee4852", null ],
-    [ "updateRT", "d2/da8/class_svc_serial_command_interface_a1f875279bdb55468447043f87f334584.html#a1f875279bdb55468447043f87f334584", null ],
+    [ "updateRT", "d2/da8/class_svc_serial_command_interface_a1e29f06d24eb83870212bf52563fd173.html#a1e29f06d24eb83870212bf52563fd173", null ],
     [ "write", "d2/da8/class_svc_serial_command_interface_a9c179c537eefc3807911a2658fac7d7e.html#a9c179c537eefc3807911a2658fac7d7e", null ],
     [ "captureBuffer", "d2/da8/class_svc_serial_command_interface_acc0df222a573d56a5b5ed2d340141211.html#acc0df222a573d56a5b5ed2d340141211", null ],
     [ "file", "d2/da8/class_svc_serial_command_interface_ac17addc8ec6cc9ff4f15c2afcd4f472c.html#ac17addc8ec6cc9ff4f15c2afcd4f472c", null ],

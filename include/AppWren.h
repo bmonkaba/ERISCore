@@ -14,12 +14,10 @@
 #include "wren.hpp"
 #include "globaldefs.h"
 /**
- * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren.\n 
+ * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and hosts a VM.\n 
  * \n  
- * The use case is to allow scripting of apps\n 
- * Why? with this, applications can be dynamically loaded and executed\n 
- * Need another reason? script storage moves from the precious and limited microcontroller flash to the SD card\n 
- * which gives effectivly limitless program storage space.\n 
+ * The use case for this class is to allow scripting of apps\n 
+ * With this interface, applications can be dynamically loaded and executed\n 
  * Beware: The available heap defines the upper boundary of VM size\n 
  * \n 
  * From https://wren.io/:\n 
@@ -35,6 +33,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
+        updateRT_priority = 0; //set to highest priority
         surface_mempool = NULL;
         imgloaded = false;
         h_slot0 = 0;
@@ -54,6 +53,7 @@ class AppWren:public AppBaseClass {
         compileOnly = false;
         save_module = false;
         reboot_request = false;
+        enable_call_forwarding = false;
         isPressed = false;
         show_active = false;
         usingImage = true;
@@ -78,20 +78,66 @@ class AppWren:public AppBaseClass {
      */
     void vmConstructor(const char* initial_script);
 
+
     /**
-     * @brief load a script into the running VM
+     * @brief shutdown the VM
+     * 
+     */
+    void shutdownVM(){
+        if(has_pop){
+            am->releasePopUp();
+            has_pop = false;
+        }
+        releaseWrenHandles();
+        wrenFreeVM(vm);
+        if(surface_cache){
+            //delete(surface_cache); TODO 
+            //surface_cache = NULL;
+        }
+    }
+
+    /**
+     * @brief shutsdown then starts the VM
+     * 
+     */
+    void restartVM(){
+        shutdownVM();
+        startVM();
+    }
+
+    /**
+     * @brief start the VM
+     * 
+     */
+    void startVM();
+
+    /**
+     * @brief halts forwarding of the AppBase class method calls/n
+     * this allows scripts to run without utilizing the App interface within wren\n 
+     */
+    void haltCallForwarding(){
+        enable_call_forwarding = false;
+    }
+
+    /**
+     * @brief runs the script in the VM
      * 
      * @param script 
+     * @return true wrenInterpret result is ok
+     * @return false wrenInterpret result is not ok
      */
-    void loadScript(const char* script){
+    bool loadScript(const char* script){
         const char* module = "main";
+        bool res;
         Serial.printf("M AppWren:loadScript: Loading script (size: %d bytes)\n",strlen(script));
-        if (isWrenResultOK(wrenInterpret(vm, module, script))){
+        res = isWrenResultOK(wrenInterpret(vm, module, script));
+        if (res){
             Serial.println(F("M AppWren::loadScript: OK"));
             getWrenHandles();
             wrenEnsureSlots(vm, 1);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-        }
+        };
+        return res;
     }
 
      /**
@@ -103,7 +149,7 @@ class AppWren:public AppBaseClass {
         //the actual reboot load request will be completed in the AppWren::update loop.
         Serial.printf("M AppWren:rebootRequest: %s\n",script_name);
         reboot_request = true;
-        strncpy(wren_module_name,script_name,sizeof(wren_module_name));
+        safer_strncpy(wren_module_name,script_name,sizeof(wren_module_name));
     }
 
     /**
@@ -340,21 +386,6 @@ class AppWren:public AppBaseClass {
     }
 
   protected:
-    void restartVM(){
-        if(has_pop){
-            am->releasePopUp();
-            has_pop = false;
-        }
-        releaseWrenHandles();
-        wrenFreeVM(vm);
-        if(surface_cache){
-            //delete(surface_cache); TODO 
-            //surface_cache = NULL;
-        }
-        startVM();
-    }
-
-    void startVM();
     
     /**
      * @brief release any/all Wren embedded call handles
@@ -369,16 +400,21 @@ class AppWren:public AppBaseClass {
     void getWrenHandles();
     
     bool isWrenResultOK(WrenInterpretResult res){
+        AppManager* am = AppManager::getInstance();
+        AppWren* app = (AppWren*)am->getAppByName("AppWren");
         switch (res){
             case WREN_RESULT_COMPILE_ERROR:
-                Serial.printf("M WREN: Compile Error!\n");
+                Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_COMPILE_ERROR\n"));
+                SerialUSB1.printf(F("VM WREN_ERR Compilation Failed\n"));
                 return false;
             case WREN_RESULT_RUNTIME_ERROR:
-                //Serial.printf("M WREN: Runtime Error!\n");
+                Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_RUNTIME_ERROR\n"));
+                SerialUSB1.printf(F("VM WREN_WRN [Implementation Warning] call forwarding will be disabled until next script load.\n"));
                 return false;
             case WREN_RESULT_SUCCESS:
                 return true;
             default:
+                Serial.printf(F("M AppWren::isWrenResultOK UNDEFINED RESULT!\n"));
                 return false; //should never execute
         } 
     }
@@ -391,128 +427,185 @@ class AppWren:public AppBaseClass {
      */
     bool dynamicSurfaceManager();
 
+    /**
+     * @brief class specific update implementation
+     * 
+     */
     void update() override;//called only when the app is active
 
-    void updateRT() override{
-        if (h_updateRT==0){ //if no script loaded
-            return;
-        } else{
-            wrenEnsureSlots(vm, 1);
-            wrenSetSlotHandle(vm, 0, h_slot0);//App
-            if (isWrenResultOK(wrenCall(vm,h_updateRT))){
-                
-            };
-        }
-    }; //allways called even if app is not active
+    /**
+     * @brief class specific updateRT implementation
+     * 
+     */
+    void updateRT() override;
+
+    /**
+     * @brief class specific OnFocus implementation
+     * 
+     */
     void onFocus() override{
-        if (h_onFocus==0){ //if no script loaded
+        if (!enable_call_forwarding || h_onFocus==0){ //if no script loaded
             return;
         } else{
             wrenEnsureSlots(vm, 1);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-            if (isWrenResultOK(wrenCall(vm,h_onFocus))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onFocus))){
+                releaseWrenHandles();
             };
         }
     };   //called when given focus
+
+    /**
+     * @brief class specific onFocusLost implementation
+     * 
+     */
     void onFocusLost() override{
-        if (h_onFocusLost==0){ //if no script loaded
+        if (!enable_call_forwarding || h_onFocusLost==0){ //if no script loaded
             return;
         } else{
             wrenEnsureSlots(vm, 1);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-            if (isWrenResultOK(wrenCall(vm,h_onFocusLost))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onFocusLost))){
+                releaseWrenHandles();
             };
         }
     }; //called when focus is taken
+
+    /**
+     * @brief class specific onTouch implementation
+     * 
+     * @param t_x 
+     * @param t_y 
+     */
     void onTouch(uint16_t t_x, uint16_t t_y) override{
         //check if touch point is within the application bounding box
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
-            if (h_onTouch==0){ //if no script loaded
+            if (!enable_call_forwarding || h_onTouch==0){ //if no script loaded
                 return;
             } else{
                 wrenEnsureSlots(vm, 3);
                 wrenSetSlotHandle(vm, 0, h_slot0);//App
                 wrenSetSlotDouble(vm, 0, t_x);//param
                 wrenSetSlotDouble(vm, 0, t_y);//param
-                if (isWrenResultOK(wrenCall(vm,h_onTouch))){
-                    
+                if (!isWrenResultOK(wrenCall(vm,h_onTouch))){
+                    releaseWrenHandles();
                 };
             }
         }
     };
+
+    /**
+     * @brief class specific onTouchDrag implementation
+     * 
+     * @param t_x 
+     * @param t_y 
+     */
     void onTouchDrag(uint16_t t_x, uint16_t t_y) override{
-        if (h_onTouchDrag==0){ //if no script loaded
+        if (!enable_call_forwarding || h_onTouchDrag==0){ //if no script loaded
             return;
         } else{
             wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 0, t_x);//param
             wrenSetSlotDouble(vm, 0, t_y);//param
-            if (isWrenResultOK(wrenCall(vm,h_onTouchDrag))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onTouchDrag))){
+                releaseWrenHandles();
             };
         }
     };
+
+    /**
+     * @brief class specific onTouchRelease implementation
+     * 
+     * @param t_x 
+     * @param t_y 
+     */
     void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
-        if (h_onTouchRelease==0){ //if no script loaded
+        if (!enable_call_forwarding || h_onTouchRelease==0){ //if no script loaded
             return;
         } else{
             wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 0, t_x);//param
             wrenSetSlotDouble(vm, 0, t_y);//param
-            if (isWrenResultOK(wrenCall(vm,h_onTouchRelease))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onTouchRelease))){
+                releaseWrenHandles();
             };
         }
     };
+
+    /**
+     * @brief class specific onAnalog1 implementation
+     * 
+     * @param uval 
+     * @param fval 
+     */
     void onAnalog1(uint16_t uval, float fval) override{
-        if (h_onAnalog1==0){
+        if (!enable_call_forwarding || h_onAnalog1==0){
             return;
         } else{
             wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
-            if (isWrenResultOK(wrenCall(vm,h_onAnalog1))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onAnalog1))){
+                releaseWrenHandles();
             };
         }
     };
+
+    /**
+     * @brief class specific onAnalog2 implementation
+     * 
+     * @param uval 
+     * @param fval 
+     */
     void onAnalog2(uint16_t uval, float fval) override{
-        if (h_onAnalog2==0){
+        if (!enable_call_forwarding || h_onAnalog2==0){
             return;
         } else{
             wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
-            if (isWrenResultOK(wrenCall(vm,h_onAnalog2))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onAnalog2))){
+                releaseWrenHandles();
             };
         }
     };
+
+    /**
+     * @brief class specific onAnalog3 implementation
+     * 
+     * @param uval 
+     * @param fval 
+     */
     void onAnalog3(uint16_t uval, float fval) override{
-        if (h_onAnalog3==0){
+        if (!enable_call_forwarding || h_onAnalog3==0){
             return;
         } else{
             wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
-            if (isWrenResultOK(wrenCall(vm,h_onAnalog3))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onAnalog3))){
+                releaseWrenHandles();
             };
         }
     };
+
+    /**
+     * @brief class specific onAnalog4 implementation
+     * 
+     * @param uval 
+     * @param fval 
+     */
     void onAnalog4(uint16_t uval, float fval) override{
-        if (h_onAnalog4==0){
+        if (!enable_call_forwarding || h_onAnalog4==0){
             return;
         } else{
             wrenEnsureSlots(vm, 2);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
-            if (isWrenResultOK(wrenCall(vm,h_onAnalog4))){
-                
+            if (!isWrenResultOK(wrenCall(vm,h_onAnalog4))){
+                releaseWrenHandles();
             };
         }
     };
@@ -520,6 +613,7 @@ class AppWren:public AppBaseClass {
     bool compileOnly;
     bool save_module;
     bool reboot_request;
+    bool enable_call_forwarding;
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
     char wren_module_name[MAX_TEXT_LENGTH];

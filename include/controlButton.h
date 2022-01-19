@@ -10,7 +10,7 @@
  */
 #include "AppManager.h"
 #include "globaldefs.h"
-
+#include "ErisUtils.h"
 
 extern const ILI9341_t3_font_t Arial_9;
 
@@ -21,6 +21,7 @@ class ControlButton:public AppBaseClass {
   public:
     ControlButton(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
+        updateRT_priority = 35000;
         isDirty = true;
         isPressed = false;
         show_active = false;
@@ -36,7 +37,7 @@ class ControlButton:public AppBaseClass {
 
     void setText(const char* name_string){
       if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
-      } else strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
+      } else safer_strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
       usingImage=false;
     };
 
@@ -49,13 +50,13 @@ class ControlButton:public AppBaseClass {
 
     void setFile(const char* filename){
       if (strlen(filename) < MAX_TEXT_LENGTH - 1){strcpy(img_filename,filename);
-      } else strncpy(img_filename,filename,MAX_TEXT_LENGTH - 1);
+      } else safer_strncpy(img_filename,filename,MAX_TEXT_LENGTH - 1);
       usingImage=true;
     };
 
     void setPath(const char* path){
       if (strlen(path) < MAX_TEXT_LENGTH - 1){strcpy(img_path,path);
-      } else strncpy(img_path,path,MAX_TEXT_LENGTH - 1);
+      } else safer_strncpy(img_path,path,MAX_TEXT_LENGTH - 1);
     };
 
     
