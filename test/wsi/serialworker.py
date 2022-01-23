@@ -76,9 +76,9 @@ class SerialProcess():
                 except:
                     print("lz4.block.decompress err")
                     print (d)
-                #print("decompress> ")
-                #print(d)
                 else:
+                    #print("decompress> ")
+                    #print(d)
                     try:
                         d = d.decode()
                     except:
@@ -95,6 +95,7 @@ class SerialProcess():
             try:
                 if (d.find("M ") == 0 or d.find("LS ") == 0 or d.find("F") == 0):
                     d = ''.join(s for s in d if unicodedata.category(s)[0]!="C")
+                    #print (d)
             except:
                 pass
             

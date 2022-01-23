@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 25
+#define TX_PERIOD 62
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 41
+#define TX_CQT_PERIOD 51
 
 // Constant Q Transform App
 //
@@ -163,37 +163,38 @@ class AppCQT:public AppBaseClass {
       update_calls++;
       #ifdef TX_PERIODIC_FFT
         if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5000){
-          sci->startLZ4Message();
-          fft_buffer_serial_transmit_elapsed = 0;
-          if(fft_buffer_select_for_serial_transmit < 2){
-            sci->printf(F("S 512")); 
-            for(int i = 0; i < 512; i+=1){
-              //transmitt low range then high range
-              //if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
-              if(fft_buffer_select_for_serial_transmit == 0) sci->printf(F(",%d"),(int)(100.0*fft2->output[i])); 
-              if(fft_buffer_select_for_serial_transmit == 1) sci->printf(F(",%d"),(int)(100.0*fft->output[i]));
-              //if ((i % 127)==0) Serial.flush();
+          if(sci->requestStartLZ4Message()){
+            fft_buffer_serial_transmit_elapsed = 0;
+            if(fft_buffer_select_for_serial_transmit < 2){
+              sci->printf(F("S 512")); 
+              for(int i = 0; i < 512; i+=1){
+                //transmitt low range then high range
+                //if(Serial.availableForWrite() < 1000){delayMicroseconds(10000);}
+                if(fft_buffer_select_for_serial_transmit == 0) sci->printf(F(",%d"),(int)(100.0*fft2->output[i])); 
+                if(fft_buffer_select_for_serial_transmit == 1) sci->printf(F(",%d"),(int)(100.0*fft->output[i]));
+                //if ((i % 127)==0) Serial.flush();
+              }
+              sci->println(""); 
             }
-            sci->println(""); 
+            fft_buffer_select_for_serial_transmit += 1;
+            if(fft_buffer_select_for_serial_transmit >= 2) 
+            {
+              fft_buffer_select_for_serial_transmit = 0;
+              sci->println(F("S FIN")); // end of series data
+            }
+            sci->sendLZ4Message();
           }
-          fft_buffer_select_for_serial_transmit += 1;
-          if(fft_buffer_select_for_serial_transmit >= 2) 
-          {
-            fft_buffer_select_for_serial_transmit = 0;
-            sci->println(F("S FIN")); // end of series data
-          }
-          sci->endLZ4Message();
         } 
       #endif
       if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5000){
-        sci->startLZ4Message();
-        for (uint16_t i=0;i < osc_bank_size;i++){
-          if (oscBank[i].cqtBin < highRange) sci->printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
-          if (oscBank[i].cqtBin >= highRange) sci->printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
+        if(sci->requestStartLZ4Message()){
+          for (uint16_t i=0;i < osc_bank_size;i++){
+            if (oscBank[i].cqtBin < highRange) sci->printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
+            if (oscBank[i].cqtBin >= highRange) sci->printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
+          }
+          sci->printf(F("CQT_EOF\n"));
+          sci->sendLZ4Message();
         }
-        sci->printf(F("CQT_EOF\n"));
-        sci->endLZ4Message();
-       
         //Serial.flush();
         cqt_serial_transmit_elapsed = 0;
       }
@@ -450,10 +451,11 @@ class AppCQT:public AppBaseClass {
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
         for (uint16_t i=1;i< NOTE_ARRAY_LENGTH - 1;i++){
-          sci->startLZ4Message();
-          sci->printf(F("M L %d,%f,%f,%d,%d,%d\t\t\t"),fftLowRR[i].cqtBin,fftLowRR[i].startFrequency,fftLowRR[i].stopFrequency,fftLowRR[i].startBin,fftLowRR[i].stopBin,fftLowRR[i].stopBin-fftLowRR[i].startBin);
-          sci->printf(F("M H %d,%f,%f,%d,%d,%d\n"),fftHighRR[i].cqtBin,fftHighRR[i].startFrequency,fftHighRR[i].stopFrequency,fftHighRR[i].startBin,fftHighRR[i].stopBin,fftHighRR[i].stopBin-fftHighRR[i].startBin);
-          sci->endLZ4Message();
+          if(sci->requestStartLZ4Message()){
+            sci->printf(F("M L %d,%f,%f,%d,%d,%d\t\t\t"),fftLowRR[i].cqtBin,fftLowRR[i].startFrequency,fftLowRR[i].stopFrequency,fftLowRR[i].startBin,fftLowRR[i].stopBin,fftLowRR[i].stopBin-fftLowRR[i].startBin);
+            sci->printf(F("M H %d,%f,%f,%d,%d,%d\n"),fftHighRR[i].cqtBin,fftHighRR[i].startFrequency,fftHighRR[i].stopFrequency,fftHighRR[i].startBin,fftHighRR[i].stopBin,fftHighRR[i].stopBin-fftHighRR[i].startBin);
+            sci->sendLZ4Message();
+          }
         }
         //Serial.flush();
       }

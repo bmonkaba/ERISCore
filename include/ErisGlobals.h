@@ -2,13 +2,11 @@
 #ifndef _GlobalDefines_
 #define _GlobalDefines_
 
-
 /**
- * @brief uncomment if using external ram/n
+ * @brief uncomment if using external ram /n
  * if so,only 16MB (2x8MB) is supported
  */
 #define USE_EXTMEM
-
 
 //AppManager
 
@@ -16,36 +14,35 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 725000000
+#define CPU_BASE_FREQ 720000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 500000000
-
+#define CPU_LOW_POWER_MODE_FREQ 600000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 760000000
+#define CPU_BOOST_MAX_FREQ 740000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 72.0
+#define CPU_THERMAL_THROTTLE_TEMP 63.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
 
-#define DISPLAY_UPDATE_PERIOD  120
+#define DISPLAY_UPDATE_PERIOD  65
 /**
  * @brief rate at which the app manager will update the data dictionary
  * 
  */
-#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 100 
+#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 /**
  * @brief application manager shared image cache size\n
  * note: the reason for the multiplication here is to easily get an idea of\n 
@@ -65,6 +62,7 @@
  * 
  */
 #define MAX_TEXT_LENGTH 24
+
 /**
  * @brief control activation display time\n 
  * for example this defines how long a button will display as pressed
@@ -81,9 +79,9 @@
  * @brief threshold at which point serial transmission is throttled
  * 
  */
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 1000
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 600
 /**
- * @brief delta threshold after throttle which will trigger an output flush
+ * @brief min delta threshold after a throttle event which will trigger an output flush
  * 
  */
 #define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 500
@@ -91,7 +89,7 @@
  * @brief throttle delay used to capture the delta change used in the delta threshold check
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC 20
+#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 100
 /**
  * @brief max tx header size\n
  *  this is used to support multipart transmissions by capturing the start of message header
@@ -126,16 +124,16 @@
  * 
  */
 #ifdef USE_EXTMEM
-#define SERIAL_WORKING_BUFFER_SIZE 32000
+#define SERIAL_WORKING_BUFFER_SIZE 6000
 #else
-#define SERIAL_WORKING_BUFFER_SIZE 10000
+#define SERIAL_WORKING_BUFFER_SIZE 6000
 #endif
 
 /**
  * @brief filestream payload size\n
  * used for multipart transmission of files
  */
-#define SERIAL_FILESTREAM_PAYLOAD_SIZE 1024
+#define SERIAL_FILESTREAM_PAYLOAD_SIZE 768
 /**
  * @brief enables periodic messages to be transmitted
  * 
@@ -145,12 +143,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 1803
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 283
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 1051
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 251
 
 //Audio Director
 /**
@@ -189,7 +187,7 @@
  * @brief defines how many slices per image\n
  * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 4
+#define ANIMATION_CHUNKS_PER_FRAME 8
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";

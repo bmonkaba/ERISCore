@@ -9,7 +9,7 @@
  * 
  */
 #include "AppManager.h"
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 #include "ErisUtils.h"
 
 extern const ILI9341_t3_font_t Arial_9;
@@ -90,7 +90,7 @@ class ControlButton:public AppBaseClass {
                     delete(imgcache);
                     return;
                 }else{
-                    draw->bltSD(imgcache->getSurfaceBufferP(), imgcache->getWidth(),img_path, img_filename,0,0,AT_NONE); //load img into cache      
+                    draw->bltSDB(imgcache->getSurfaceBufferP(), imgcache->getWidth(), imgcache->getHeight(), img_path, img_filename, 0, 0, AT_NONE); //load img into cache      
                     imgloaded = true;
                     return;
                 }

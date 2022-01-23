@@ -1,5 +1,5 @@
 #include "ILI9341_t3_ERIS.h"
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 
 
 static volatile bool dmabusy;
@@ -96,9 +96,9 @@ void ILI9341_t3_ERIS::flipBuffer(){
   }
 };
 */
-void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t dest_x,int16_t dest_y,bltAlphaType alpha_type){
   bool toggle = false;
-  int16_t source_x,source_y, dest_x,dest_y;
+  int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
   uint16_t *srcBuffer;
   uint16_t *dstBuffer;
@@ -108,17 +108,17 @@ void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t pos
   if (!srcBuffer) return;
   if (!dstBuffer) return;
   //check for off surface blt attempt
-  if ((pos_x > dest->getWidth()) || (0 > (dest->getWidth() + pos_x))) return;
-  if ((pos_y > dest->getHeight()) || (0 > (dest->getHeight() + pos_y))) return;
+  if ((dest_x > dest->getWidth()) || (0 > (dest->getWidth() + dest_x))) return;
+  if ((dest_y > dest->getHeight()) || (0 > (dest->getHeight() + dest_y))) return;
   //for each pixel in the source buffer, write to the dest buffer if the x,y coords are within bounds
   for (source_y=0; source_y < source->getHeight();source_y +=1){
     for (source_x=0; source_x < source->getWidth();source_x +=1){
       //translate the source coords to the destination coords
-      dest_x = pos_x + source_x; 
-      dest_y = pos_y + source_y;
-      write_index = (dest_y * dest->getWidth()) + dest_x;
+      d_x = dest_x + source_x; 
+      d_y = dest_y + source_y;
+      write_index = (d_y * dest->getWidth()) + d_x;
       read_index = (source_y * source->getWidth()) + source_x;
-      if(dest_x < 320 && dest_x >= 0 && dest_y < 240 && dest_y >= 0){
+      if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
         //if in bounds then ok to write
         if (AT_NONE == alpha_type){
           dstBuffer[write_index] = srcBuffer[read_index];
@@ -158,8 +158,7 @@ uint16_t ILI9341_t3_ERIS::readSurfacePixel(Surface *dest,int16_t x, int16_t y){
   return dstBuffer[(y * dest->getWidth()) + x];
 }
 
-uint16_t ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){
-  uint16_t *dstBuffer; 
+uint16_t ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){ 
   return _pfbtft[(y * _width) + x];
 }
 
@@ -192,11 +191,11 @@ void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
 
 
 void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
-  bltSD(_pfbtft, 320, path, filename,x,y,alpha_type);
+  bltSDB(_pfbtft, _width, _height, path, filename,x,y,alpha_type);
   return;
 }
 
-void FLASHMEM ILI9341_t3_ERIS::bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -238,7 +237,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSD(uint16_t *dest_buffer, uint16_t dest_buffer
   }
   for (iy = y; iy < y + h; iy += 1){ //for each row
     toggle ^= true;
-    if (iy < 240L) //clip in y dimension (bottom) - simply don't draw anything
+    if (iy < dest_buffer_height) //clip in y dimension (bottom) - simply don't draw anything
     {
       mx = 0; nx = 0;
       if (x < 0L){file.seekCur(x * -2L);mx = -1L * x;} //clip in x dimension (left) - skip offscreen data
@@ -280,7 +279,7 @@ void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
     return;
   }
   //for (unsigned long i = (320 * 64) ; i < (320 * 240); i += 32){
-  uint32_t chunk_size = (320 * 240)/ANIMATION_CHUNKS_PER_FRAME;
+  uint32_t chunk_size = (_width * _height)/ANIMATION_CHUNKS_PER_FRAME;
   uint32_t i = an->chunk * chunk_size;
   file.seekSet(15 + (i*2)); //skip the header - header will always be 15 bytes for full screen wallpaper
   file.read(&_pfbtft[i],chunk_size*2);

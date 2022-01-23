@@ -1,3 +1,6 @@
+#ifndef __PCM1863__
+#define __PCM1863__
+
 /**
  * @file PCM1863.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
@@ -51,27 +54,27 @@ uint8_t ExtADCReadReg(uint8_t control_register){
     return Wire.read();
 }
 
-void ExtADCPrintStatus(){
-  Serial.print(F("ADC "));
-  Serial.print(F("{\"State(15:RUNNING)\":"));
-  Serial.print(ExtADCReadReg(114));
-  Serial.print(F(",\"SampleFreq:\":"));
-  Serial.print(ExtADCReadReg(115));
-  Serial.print(F(",\"BCLK Ratio:\":"));
-  Serial.print((ExtADCReadReg(116) >> 4) & 0x7);
-  Serial.print(F(",\"SCLK Ratio:\":"));
-  Serial.print(ExtADCReadReg(116) & 0x7);
-  Serial.print(F(",\"CLK Error:\":"));
-  Serial.print(ExtADCReadReg(117));
-  Serial.print(F(",\"Voltage(7:OK):\":"));
-  Serial.print(ExtADCReadReg(120));
+void ExtADCPrintStatus(Print *p){
+  p->print(F("\"ADC\":"));
+  p->print(F("{\"STATE_15RUNNING\":"));
+  p->printf("\"%#04X\"",ExtADCReadReg(114));
+  p->print(F(",\"SAMPLE_FREQ:\":"));
+  p->printf("\"%#04X\"",ExtADCReadReg(115));
+  p->print(F(",\"BCLK_RATIO\":"));
+  p->printf("\"%#04X\"",(ExtADCReadReg(116) >> 4) & 0x7);
+  p->print(F(",\"SCLK_RATIO:\":"));
+  p->printf("\"%#04X\"",ExtADCReadReg(116) & 0x7);
+  p->print(F(",\"CLK_ERROR:\":"));
+  p->printf("\"%#04X\"",ExtADCReadReg(117));
+  p->print(F(",\"VOLTAGE_7OK:\":"));
+  p->printf("\"%#04X\"",ExtADCReadReg(120));
   for (int i =0; i < 12;i++){
-    Serial.print(F(",\"CONFIG REG"));
-    Serial.print(i);
-    Serial.print(F(":\":"));
-    Serial.print(ExtADCReadReg(i),HEX);
+    p->print(F(",\"CONFIG_REG_"));
+    p->print(i);
+    p->print(F("\":"));
+    p->printf("\"%#04X\"",ExtADCReadReg(i),HEX);
   }
-  Serial.println("}");
+  p->print("}");
   //Serial.flush();
 }
 
@@ -178,3 +181,5 @@ void I2CBusScan()
   if (nDevices == 0)
     Serial.println(F("I2CBusScan: No I2C devices found\n"));
 }
+
+#endif

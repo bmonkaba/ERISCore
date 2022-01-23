@@ -15,7 +15,7 @@
 #include <base64.hpp>
 #include <pgmspace.h>
 #include "ErisUtils.h"
-
+#include <base64.hpp>
 // AppSerialCommandInterface
 //
 /*
@@ -107,21 +107,12 @@ uint16_t SvcSerialCommandInterface::checksum(const char *msg){
     return csum;
 }
 
-void replaceAll(char * str, char oldChar, char newChar)
-{
-    int i = 0;
-    while(str[i] != '\0'){
-        if(str[i] == oldChar) str[i] = newChar;
-        i++;
-    }
-}
-
 /**
  * @brief Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed before being base64 encoded and sent. 
  * The sent message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
  * 
  */
-void SvcSerialCommandInterface::endLZ4Message(){
+void SvcSerialCommandInterface::sendLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
 #ifdef USE_EXTMEM
     //do nothing - one time malloc in the constructor
@@ -135,16 +126,16 @@ void SvcSerialCommandInterface::endLZ4Message(){
     empty();
     encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
     while(throttle()){
-        delay(50);
+        delay(5);
     };
     Serial.print(" ");
     Serial.print(uncompressed_len);
     Serial.print(" ");
     Serial.println(txBuffer);
-    empty();
-    while(throttle()){
-        delayMicroseconds(500);
-    };
+    //empty();
+    //while(throttle()){
+    //    delay(50);
+    //};
 
 #ifdef USE_EXTMEM
     //do nothing - one time malloc in the constructor
@@ -159,7 +150,7 @@ void SvcSerialCommandInterface::endLZ4Message(){
  */
 void SvcSerialCommandInterface::send(){
     while(throttle()){
-        delay(150);
+        delay(50);
     }
     if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
     memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
@@ -182,9 +173,15 @@ bool SvcSerialCommandInterface::throttle(){
 
     if(avail < SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD){
         uint16_t delta_avail;
+        uint16_t msec_delay_counter = 0;
         //serial tx buffer not available
-        delay(SERIAL_THROTTLE_CHECK_CONNECTION_DELAY_MSEC);
-        delta_avail = Serial.availableForWrite();
+        do{
+            delay(80);
+            msec_delay_counter += 80;
+            delta_avail = Serial.availableForWrite();
+            if (delta_avail > SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) break;
+        } while (msec_delay_counter < SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY);
+        
         if(avail == delta_avail){
             Serial.flush();
             Serial.println(F("M WRN flush"));
@@ -204,7 +201,7 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     token = strtok(txBuffer, &newline);
     while( token != NULL ) {     
         while(throttle()){
-            delay(160);
+            delay(50);
         }                
         if (txBufferOverflowFlag==false){
             //txBufferOverflowFlag=true;
@@ -231,28 +228,25 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     //SerialUSB1.printf("VM remainder %s",txBuffer);
 }
 
-void FLASHMEM SvcSerialCommandInterface::streamHandler(){
+void SvcSerialCommandInterface::streamHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
     uint16_t compressed_len,uncompressed_len;
-    if(throttle()) return;
-    if (streamPos == 0){
-        Serial.println(F("FS_START"));
-        periodicMessagesEnabled = false;
-    }
+    if(Serial.availableForWrite() < 6000) return;
     pSD->chdir(streamPath);
     if (pSD->exists(streamFile)){
         payload_len = 0;
-        Serial.print(F("LZ4 "));
-        empty();
-        print("FS ");
         if(!file.open(streamFile, O_READ)){ 
             Serial.println(F("M GET_ERR FILE OPEN ERROR"));
             isStreamingFile = false;
+            periodicMessagesEnabled = true;
             streamPos = 0;
             return;
         }
+        //updateRT_priority = 10;
+        startLZ4Message();
+        print("FS ");
         file.seek(streamPos);
         //send the next chunked message until eof
         uint64_t i;
@@ -263,8 +257,9 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
             for(;i > 0; i--){
                 payload_len += 1;
                 if (file.read(&bufferChr,1) < 0){
-                    Serial.println(F("M GET_ERR FILE READ ERROR"));
+                    Serial.println(F("\nM GET_ERR FILE READ ERROR"));
                     isStreamingFile = false;
+                    periodicMessagesEnabled = true;
                     streamPos = 0;
                     file.close();
                     return;
@@ -272,99 +267,34 @@ void FLASHMEM SvcSerialCommandInterface::streamHandler(){
                 sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
                 print(hexBuffer);
             }
-            
             if(indexTxBuffer > 0) txBuffer[--indexTxBuffer] = '\0'; //remove last comma
             streamPos = file.position();
-            delay(20);
+            println("");
         }
         file.close();
-
         if (payload_len == 0){
             //no data to tx; @ eof
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
-#endif
-            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-            println();
-            uncompressed_len = indexTxBuffer;
-            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
-            empty();
-            encode_base64((unsigned char *)workingBuffer, strlen(workingBuffer), (unsigned char *)txBuffer);
-            while(throttle()){
-                delay(10);
-            }
-            Serial.print(" ");
-            Serial.print(uncompressed_len-2);
-            Serial.print(" ");
-            Serial.println(txBuffer);
-            Serial.println(F("FS_END"));
-            empty();
-            delay(100);
+            sendLZ4Message();
+            Serial.println("FS_END");
             isStreamingFile = false;
+            periodicMessagesEnabled = true;
             streamPos = 0;
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            //do nothing - local var
-#endif
+            updateRT_priority = 0;
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
-            delayMicroseconds(20);
-            println();
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
-#endif
-            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-            uncompressed_len = indexTxBuffer;
-            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
-            empty();
-            encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
-            while(throttle()){
-                delay(10);
-            }
-            Serial.print(uncompressed_len);
-            Serial.print(" ");
-            Serial.println(txBuffer);
-            empty();
-            Serial.println(F("FS_END"));
+            sendLZ4Message();
+            Serial.println("FS_END");
             empty();
             isStreamingFile = false;
-            streamPos = 0;
-            delayMicroseconds(3000);
             periodicMessagesEnabled = true;
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            //do nothing-- local var
-#endif
+            streamPos = 0;
+            updateRT_priority = 0;
+            //delayMicroseconds(3000);
             return;
         } else{
             //send file chunk
-            println();
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            char wb[SERIAL_WORKING_BUFFER_SIZE];
-#endif
-            memset(workingBuffer,0,SERIAL_WORKING_BUFFER_SIZE);
-            uncompressed_len = indexTxBuffer;
-            compressed_len = LZ4_compress_fast(txBuffer,workingBuffer,indexTxBuffer,SERIAL_WORKING_BUFFER_SIZE,1);
-            empty();
-            encode_base64((unsigned char *)workingBuffer, compressed_len, (unsigned char *)txBuffer);
-            Serial.print(uncompressed_len);
-            Serial.print(" ");
-            Serial.println(txBuffer);
-            empty();
-#ifdef USE_EXTMEM
-            //do nothing - one time malloc in the constructor
-#else
-            //do nothing - local var
-#endif
+            sendLZ4Message();
             return;
         }             
     } 
@@ -432,7 +362,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 bool first;
                 if (total_read < 2){
                     //send the root directory
-                    delay(100);
+                    //delay(100);
                     empty();
                     println(F("DIR"));
                     print(F("LS . ["));
@@ -467,7 +397,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
 #else
                     free(workingBuffer);
 #endif
-                    delay(200);
+                    //delay(200);
                 } else{
                     //send the requested path
                     replacechar(param,':',' '); //replace space token used to tx the path
@@ -493,7 +423,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                         token = strtok(NULL, &newline);
                         first = false;
                         while(throttle()){
-                            delay(160);
+                            delay(50);
                         }
                     }
                     Serial.println(F("]"));
@@ -513,7 +443,10 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                     Serial.println(param2);
                     strcpy(streamPath,param);
                     strcpy(streamFile,param2);
+                    Serial.println(F("FS_START"));
                     isStreamingFile = true;
+                    periodicMessagesEnabled = false;
+                    streamPos = 0;
                 }
             }else if (strncmp(cmd, "ACON",sizeof(cmd)) == 0){ //audio connections
                 uint16_t i;  
@@ -563,11 +496,11 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 am->data->printDictionary(this);
             }else if (strncmp(cmd, "GET_WREN_SCRIPT",sizeof(cmd)) == 0){ 
-                startLZ4Message();
+                if(!requestStartLZ4Message()) return;
                 println("#WREN_START!"); 
                 println(g_wrenScript);
                 println("#WREN_EOF!");
-                endLZ4Message();
+                sendLZ4Message();
             }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
                 isCapturingBulkData = true;
 #ifndef USE_EXTMEM
@@ -633,9 +566,10 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                     am->data->update(param,fval);
                 }
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
-                startLZ4Message();
-                println(gWelcomeMessage);
-                endLZ4Message();
+                if(requestStartLZ4Message()){
+                    println(gWelcomeMessage);
+                    sendLZ4Message();
+                }
             }else if (strncmp(cmd, "GET_RAM",sizeof(cmd)) == 0){ 
                 char* mp;
                 long num;
@@ -652,8 +586,8 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 char* tmp;
                 tmp = (char*)malloc(1000);
 #endif
-                while(throttle()){delay(1);}
-                startLZ4Message();
+                while(throttle()){delay(10);}
+                if(!requestStartLZ4Message()) return;
                 strcpy(tmp,"");
                 printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
                 //RAM2 always ends at 0x20280000
@@ -666,9 +600,9 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                         print(F("\",\"decode\":\""));
                         print(tmp);
                         println(F("\"}}"));
-                        endLZ4Message();
+                        sendLZ4Message();
                         strcpy(tmp,"");
-                        while(throttle()){delay(1);}
+                        while(throttle()){delay(10);}
                         if(i%1024==0){
                             float32_t pct;
                             pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
@@ -702,7 +636,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 }
                 println("\n");
                 println(F("RAM END"));
-                endLZ4Message();
+                sendLZ4Message();
                 //flush out serial input buffer
                 Serial.clear();
 #ifdef USE_EXTMEM
@@ -725,7 +659,9 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                         Serial.printf("%08X",i);
                         Serial.print("  ");
 
-                        delay(80);
+                        while(throttle()){
+                            delay(50);
+                        };
                     }
 
                     if (isprint((int)c)){ 

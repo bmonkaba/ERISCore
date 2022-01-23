@@ -12,7 +12,7 @@
 //#define DISPLAY_UPDATE_PERIOD 40
 //#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
 //#define SERIAL_PRINT_APP_LOOP_TIME
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 #include <Arduino.h>
 //#include <vector>
 #include "HSI.h"

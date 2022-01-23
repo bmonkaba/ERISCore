@@ -158,13 +158,13 @@ class Surface {
     }
 
     uint16_t* getSurfaceBufferP(){return pSB;}
-    int16_t getWidth(){return w;}
-    int16_t getHeight(){return h;}
+    uint16_t getWidth(){return w;}
+    uint16_t getHeight(){return h;}
         
   protected:        
     uint16_t *pSB;
-    int16_t w;
-    int16_t h;
+    uint16_t w;
+    uint16_t h;
     uint32_t alloc_size;
     uint32_t guid;
     uint32_t head;
@@ -236,7 +236,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //void flipWritePointer();
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
         
-        void bltSD(uint16_t *dest_buffer, uint16_t dest_buffer_width,const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
+        void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
         void bltSDAnimationFullScreen(Animation *an);

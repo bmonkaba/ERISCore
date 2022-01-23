@@ -76,7 +76,7 @@ $(document).ready(function () {
     editor.setReadOnly(false);
     editor.setOptions({
         theme: "ace/theme/twilight",
-        useWorker: false,
+        useWorker: true,
     });
     /*https://ace.c9.io/#nav=howto
     */
@@ -932,13 +932,13 @@ $(document).ready(function () {
     
     $("#cmd_showEditor").click(function (ev) {
         ev.preventDefault();
-        $("#flow_container").hide(0.15);
-        $("#graph_container").hide(0.15);
-        $("#memory_container").hide(0.15);
-        $("#monitor_container").hide(0.15);
-        $("#editor_container").show(0.35);
+        $("#flow_container").hide(0);
+        $("#graph_container").hide(0);
+        $("#memory_container").hide(0);
+        $("#monitor_container").hide(0);
+        $("#symbols_container").hide(0);
+        $("#editor_container").show(0);
         editor.resize();
-        $("#symbols_container").hide(0.15);
     });
 
 

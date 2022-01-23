@@ -9,7 +9,7 @@
  * 
  */
 #include <Arduino.h>
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 #include "HSI.h"
 #include "touch.h"
 #include "AnalogInputs.h"

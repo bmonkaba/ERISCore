@@ -11,7 +11,7 @@
 #ifndef _AppSCI_
 #define _AppSCI_
 
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 #include <string.h>
 #include "AppManager.h"
 #include "AppBaseClass.h"
@@ -60,6 +60,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         indexRxBuffer = 0;
         indexTxBuffer = 0;
         indexCaptureBuffer = 0;
+        streamPos = 0;
         isStreamingFile = false;
         isCapturingBulkData = false;
         txBufferOverflowFlag = false;
@@ -86,11 +87,12 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
       indexTxBuffer = 0;
     }
 
-    void startLZ4Message(){
-      empty();
-      Serial.print("LZ4");
+    bool requestStartLZ4Message(){
+      if(isStreamingFile) return false;
+      startLZ4Message();
+      return true;
     }
-    void endLZ4Message();
+    void sendLZ4Message();
     void send();
     bool throttle();
   protected:
@@ -103,7 +105,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
     char streamPath[SERIAL_PARAM_BUFFER_SIZE];
     char streamFile[SERIAL_PARAM_BUFFER_SIZE];
-    char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE + 1];
+    char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE];
     //used for lz4 tx compressor
     char *workingBuffer;
     char *captureBuffer;
@@ -120,6 +122,10 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     void update() override{};    //called only when the app is active
     void updateRT() override;
     void txOverflowHandler();
+    void startLZ4Message(){ 
+      empty();
+      Serial.print("LZ4");
+    }
     size_t write(uint8_t c){
       txBuffer[indexTxBuffer++] = c;
       if (indexTxBuffer == SERIAL_OUTPUT_BUFFER_SIZE-10){

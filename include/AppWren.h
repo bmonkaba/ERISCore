@@ -12,7 +12,7 @@
  */
 #include "AppManager.h"
 #include "wren.hpp"
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 /**
  * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and hosts a VM.\n 
  * \n  
@@ -33,7 +33,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        updateRT_priority = 0; //set to highest priority
+        updateRT_priority = 2; //set to highest priority
         surface_mempool = NULL;
         imgloaded = false;
         h_slot0 = 0;
@@ -91,8 +91,8 @@ class AppWren:public AppBaseClass {
         releaseWrenHandles();
         wrenFreeVM(vm);
         if(surface_cache){
-            //delete(surface_cache); TODO 
-            //surface_cache = NULL;
+            delete(surface_cache);
+            surface_cache = NULL;
         }
     }
 
@@ -265,6 +265,30 @@ class AppWren:public AppBaseClass {
     
 
     /**
+     * @brief block tramsfer from SD to surface
+     * 
+     * @param path 
+     * @param filename 
+     * @param x 
+     * @param y 
+     */
+    void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltAlphaType alpha_type){
+        dynamicSurfaceManager();
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        draw->bltSDB(sb,surface_cache->getWidth(),surface_cache->getHeight(),path,filename,x,y,alpha_type);
+    }
+
+
+    void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltAlphaType alpha_type){
+        dynamicSurfaceManager();
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
+        Surface dest(draw->getFrameBuffer(),320,240);
+        //bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type)
+        draw->bltMem(&dest,&source,to_x,to_y,AT_NONE);
+    }
+
+    /**
      * @brief set a pixel on the render target
      * 
      * @param x 
@@ -298,8 +322,8 @@ class AppWren:public AppBaseClass {
     uint16_t getPixel(int16_t x, int16_t y){
         if (draw){
             if (has_pop){
-                //return draw->readPixel(x,y);
-                return ILI9341_YELLOW;//draw->ILI9341_t3n::readPixel(x,y);
+                return draw->readPixel(x,y);
+                //return draw->ILI9341_t3n::readPixel(x,y);
             }else{
                 if (!surface_cache) return ILI9341_MAGENTA;
                 if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;

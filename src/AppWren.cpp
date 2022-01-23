@@ -9,7 +9,7 @@
  * 
  */
 #include "AppWren.h"
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 
 #include <AppManager.h>
 #include <boarddefs.h>
@@ -431,6 +431,30 @@ void loadImageCallback(WrenVM* vm){
  * 
  * @param vm 
  */
+void loadImageSurfaceCallback(WrenVM* vm){
+  //(char* path,char* filename,int16_t x, int16_t y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_NONE);
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void bltCallback(WrenVM* vm){
+  //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),AT_NONE);
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
 void setPixelCallback(WrenVM* vm){
   //(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)
   AppManager* am = AppManager::getInstance();
@@ -516,8 +540,6 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return getFocusCallback;
       }else if (strcmp(signature, "returnFocus()") == 0){
         return returnFocusCallback;
-      }else if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
-        return setPixelCallback;
       }else if (strcmp(signature, "setClockSpeed(_)") == 0){
         return setClockSpeedCallback;
       }else if (strcmp(signature, "random(_)") == 0){
@@ -559,6 +581,10 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return setFontSizeCallback;
       }else if (strcmp(signature, "loadImage(_,_,_,_)") == 0){
         return loadImageCallback;
+      }else if (strcmp(signature, "loadImageToSurface(_,_,_,_)") == 0){
+        return loadImageSurfaceCallback;
+      }else if (strcmp(signature, "blt(_,_,_,_,_,_)") == 0){
+        return bltCallback;
       }else if (strcmp(signature, "line(_,_,_,_,_,_,_)") == 0){
         return drawLineCallback;
       }else if (strcmp(signature, "fill(_,_,_)") == 0){

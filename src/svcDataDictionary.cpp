@@ -226,19 +226,18 @@ void FLASHMEM SvcDataDictionary::printStats(){
 void FLASHMEM SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
-    sci->startLZ4Message();
-    sci->print(F("DD {"));
-
-    for(int i=0;i<next;i++){
-        if (record[i].data_type == DDDT_INT32){
-            sci->printf("\"%s\":%d",record[i].key,record[i].val.int32_val);
-        }else if (record[i].data_type == DDDT_FLOAT32){
-            sci->printf("\"%s\":%f",record[i].key,record[i].val.float32_val);
+    if(sci->requestStartLZ4Message()){
+        sci->print(F("DD {"));
+        for(int i=0;i<next;i++){
+            if (record[i].data_type == DDDT_INT32){
+                sci->printf("\"%s\":%d",record[i].key,record[i].val.int32_val);
+            }else if (record[i].data_type == DDDT_FLOAT32){
+                sci->printf("\"%s\":%f",record[i].key,record[i].val.float32_val);
+            }
+            if (i != next-1) sci->print(",");
         }
-        if (i != next-1) sci->print(",");
+        sci->println("}");
+        sci->sendLZ4Message();
     }
-    sci->println("}");
-    sci->endLZ4Message();
-    //Serial.flush();
 }
 

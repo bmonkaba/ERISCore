@@ -1,20 +1,20 @@
 //#pragma GCC optimize ("Ofast")
 #define BUILTIN_SDCARD 254
 #include <Arduino.h>
-#include <TimeLib.h>
-#include <DS1307RTC.h>  // a basic DS1307 library that returns time as a time_t
+//#include <TimeLib.h>
+//#include <DS1307RTC.h>  // a basic DS1307 library that returns time as a time_t
 
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
 #include <SdFat.h>
 #include "HSI.h"
 #include "SPI.h"
-#include "appTemplate.h"
+#include "AppTemplate.h"
 #include "AppAudioToPolyphonic.h"
 #include "AppWren.h"
-#include "appReprogram.h"
-#include "svcSerialCommandInterface.h"
-#include "PCM1863.h"
+#include "AppReprogram.h"
+#include "SvcSerialCommandInterface.h"
+
 
 AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
@@ -46,9 +46,7 @@ void setup() {
   //reset the i2c bus and config the external ADC
   Serial.println(F("M Setup: Initalizing"));
   Serial.println(F("M Setup: Configuring Audio Hardware"));
-  I2CReset();
-  ExtADCConfig();
-  ExtADCPrintStatus();
+  _ad.initAudioHardware();
   //I2CBusScan();  
   Serial.println(F("M Setup: Loading Applications"));
   //Reset PSRAM clock to 132 Mhz

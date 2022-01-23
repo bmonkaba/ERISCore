@@ -11,10 +11,10 @@
 #ifndef __AudioDirector
 #define  __AudioDirector
 
-#include "globaldefs.h"
+#include "ErisGlobals.h"
 #include <string.h>
-#include "erisAudio.h"
-#include "svcSerialCommandInterface.h"
+#include "ErisAudio.h"
+#include "SvcSerialCommandInterface.h"
 
 class SvcSerialCommandInterface;
 
@@ -33,6 +33,7 @@ class AudioDirector{
   public:
     AudioDirector();
     AudioDirector(const AudioDirector &) = delete;	//delete the copy constructor
+    bool initAudioHardware();
     bool addAudioStreamObj(AudioStream* obj);
     bool connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput);
     bool connect(const char* from,uint8_t from_port,const char* to,uint8_t to_port);
@@ -57,7 +58,7 @@ class AudioDirector{
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    bool printStatsSelect; 
+    uint8_t printStatsSelect; 
     uint16_t activeConnections; 
     uint16_t objCount;
     uint16_t categoryCount;

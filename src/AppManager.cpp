@@ -12,13 +12,13 @@
 //#define SERIAL_PRINT_APP_LOOP_TIME
 #include <Arduino.h>
 #include "HSI.h"
-#include "touch.h"
+#include "Touch.h"
 #include "AnalogInputs.h"
 #include "ILI9341_t3_ERIS.h"
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
-#include "globaldefs.h"
-#include "svcSerialCommandInterface.h"
+#include "ErisGlobals.h"
+#include "SvcSerialCommandInterface.h"
 #include <pgmspace.h>
 #include "FreeStack.h"
 
@@ -110,7 +110,7 @@ AppManager:: AppManager(){
  * @brief AppManager update executes single update of the state machine
  * 
  */
-void FLASHMEM AppManager::update(){
+void AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
     uint32_t drt;
@@ -458,47 +458,48 @@ AppBaseClass* AppManager::getAppByName(const char *appName){
  */
 void AppManager::printStats (){
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
-  sci->startLZ4Message();
-  AppBaseClass *node = root;
-  if (node == NULL) return;
-  sci->print(F("STATS {\"APPS\":{"));
-  do{
-    sci->print(F("\""));
-    sci->print(node->name);
-    sci->print(F("\":{"));
-    sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
-    sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
-    sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);sci->print(F(","));
-    sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);
-    sci->print(F("},"));
-    //clear the stats
-    node->update_cpu_time_max = 0;
-    node->updateRT_cpu_time_max = 0;
-    node->cycle_time_max = 0;
-    node->update_period_max = 0;
-    node->updateRT_period_max = 0;
-    node=node->nextAppicationNode;//check next node
-  }while(node !=NULL);
-  if (root != 0){
-    sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
-  }else{
-    sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
-  }
-  sci->println(F("}}"));
-  //sci->endLZ4Message();
+  if(sci->requestStartLZ4Message()){
+    AppBaseClass *node = root;
+    if (node == NULL) return;
+    sci->print(F("STATS {\"APPS\":{"));
+    do{
+      sci->print(F("\""));
+      sci->print(node->name);
+      sci->print(F("\":{"));
+      sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
+      sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
+      sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);sci->print(F(","));
+      sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);
+      sci->print(F("},"));
+      //clear the stats
+      node->update_cpu_time_max = 0;
+      node->updateRT_cpu_time_max = 0;
+      node->cycle_time_max = 0;
+      node->update_period_max = 0;
+      node->updateRT_period_max = 0;
+      node=node->nextAppicationNode;//check next node
+    }while(node !=NULL);
+    if (root != 0){
+      sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
+    }else{
+      sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
+    }
+    sci->println(F("}}"));
+    //sci->endLZ4Message();
 
-  //print app manager stats
-  //sci->startLZ4Message();
-  sci->print(F("STATS {\"APPMANAGER\":{"));
-  sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
-  sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
-  sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
-  sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
-  sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
-  sci->println(F("}}"));
-  sci->endLZ4Message();
-  //clear the app manager stats
-  cycle_time_max = 0;
+    //print app manager stats
+    //sci->startLZ4Message();
+    sci->print(F("STATS {\"APPMANAGER\":{"));
+    sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
+    sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
+    sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
+    sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
+    sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
+    sci->println(F("}}"));
+    sci->sendLZ4Message();
+    //clear the app manager stats
+    cycle_time_max = 0;
+  }
   return;
 }
 /**
