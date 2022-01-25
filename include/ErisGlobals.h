@@ -187,7 +187,7 @@
  * @brief defines how many slices per image\n
  * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 8
+#define ANIMATION_CHUNKS_PER_FRAME 2
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -223,7 +223,7 @@ const char AM_AUDIO_CPU_MAX[] PROGMEM = "AM_AUDIO_CPU_MAX";
 const char AM_AUDIO_CPU[] PROGMEM = "AM_AUDIO_CPU";
 const char AM_AUDIO_MEM_MAX[] PROGMEM = "AM_AUDIO_MEM_MAX";
 const char AM_AUDIO_MEM[] PROGMEM = "AM_AUDIO_MEM";
-const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/POINTSOLIGHT";
+const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/REDCITY";
 const char UI_BUTTON_FILL_COLOR[] PROGMEM = "UI_BUTTON_FILL_COLOR";
 const char UI_BUTTON_SHADE_COLOR[] PROGMEM = "UI_BUTTON_SHADE_COLOR";
 const char UI_BUTTON_ACTIVE_BORDER_COLOR[] PROGMEM = "UI_BUTTON_ACTIVE_BORDER_COLOR";

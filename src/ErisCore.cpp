@@ -15,14 +15,16 @@
 #include "AppReprogram.h"
 #include "SvcSerialCommandInterface.h"
 #include "SvcErisAudioParameterController.h"
+#include "AppAIfES.h"
+
 
 AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
 SvcSerialCommandInterface sci;
-SvcErisAudioParameterController apc;
+SvcErisAudioParameterController EXTMEM apc;
 AppReprogram appReprogram;
 AppWren* appWren;
-
+AppAIfES EXTMEM ai;
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////

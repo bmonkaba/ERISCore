@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#ifndef _touch_
-#define _touch_
+#ifndef Touch__
+#define Touch__
 
 #include <XPT2046_Touchscreen.h>
 

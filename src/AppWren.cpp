@@ -617,8 +617,8 @@ void FLASHMEM AppWren::startVM(){
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
     config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = WREN_VM_HEAP_SIZE;
-    config.heapGrowthPercent = 100;
+    config.minHeapSize = WREN_VM_HEAP_SIZE/10;
+    config.heapGrowthPercent = 5;
 #else
     config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
     config.minHeapSize = WREN_VM_HEAP_SIZE;

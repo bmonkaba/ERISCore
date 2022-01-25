@@ -1,7 +1,7 @@
 #include "ErisAudio.h"
 #include "SvcErisAudioParameterController.h"
 
-void SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
+void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
     char c[64], i[64],m[64],p[64],objName[64];
     int total_read;
     //class,instance,method,params
@@ -139,7 +139,7 @@ void SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const
             //total_read = sscanf(p, "" , ); // ['void']
             eac->readPeakToPeak();
         }
-    }else if(strncmp(gPC_ERISAUDIOANALYZEPRINT,c,sizeof(gPC_ERISAUDIOANALYZEPRINT)) == 0 &&\
+    /*}else if(strncmp(gPC_ERISAUDIOANALYZEPRINT,c,sizeof(gPC_ERISAUDIOANALYZEPRINT)) == 0 &&\
         strncmp(gPM_TRIGGER,m,sizeof(gPM_TRIGGER)) == 0){
         strcpy(objName,erisAudioAnalyzePrint::short_name_lookup);
         strcpy(objName,"_");strcpy(objName,i);
@@ -158,7 +158,7 @@ void SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const
 			int16_t edge;
             total_read = sscanf(p, "%f,%hi" , &level,&edge); // ['float level', 'int edge']
             eac->trigger(level,edge);
-        }
+        }*/
     }else if(strncmp(gPC_ERISAUDIOANALYZERMS,c,sizeof(gPC_ERISAUDIOANALYZERMS)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeRMS::short_name_lookup);
