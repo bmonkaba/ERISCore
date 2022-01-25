@@ -486,7 +486,10 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                     }
                 }
             }else if (strncmp(cmd, "AA",sizeof(cmd)) == 0){         //active app message
-                if (total_read > 1) am->getActiveApp()->MessageHandler(this,param);
+                if (total_read > 1) am->getActiveApp()->messageHandler(this,param);
+            }else if (strncmp(cmd, "APC",sizeof(cmd)) == 0){
+                //forward the message to the SvcErisAudioParameterController
+                am->getAppByName("APC")->messageHandler(this,param);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 ad->printStats();
                 while(throttle()){delay(2);}

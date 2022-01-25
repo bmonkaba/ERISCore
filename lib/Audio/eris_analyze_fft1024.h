@@ -76,7 +76,7 @@ class erisAudioAnalyzeFFT1024 : public AudioStream
 {
 public:
 	erisAudioAnalyzeFFT1024() : AudioStream(1, inputQueueArray),
-	  sample_block(0), outputflag(false) {
+	  sample_block(0), outputflag(false ) {
 		#ifdef ENABLE_F32_FFT
 		arm_cfft_radix4_init_f32(&fft_inst,1024, 0, 1);
 		window_f32 = AudioWindowHamming1024_f32;//AudioWindowHamming1024_f32;//AudioWindowBlackman1024_f32;//AudioWindowKaiser12_1024_f32;//
@@ -86,7 +86,7 @@ public:
 		window_f32 = NULL;
 		window = AudioWindowHanning1024;
 		#endif
-		shortName="fft1024";
+		short_name="fft1024";
 		unum_inputs=1;
 		unum_outputs=0;
 		category="analyze-function";
@@ -348,7 +348,8 @@ private:
 	void copy_to_fft_buffer(void *destination, const void *source,int subsample);
 	const int16_t *window;
 	const float32_t *window_f32;
-public: //tmp for debug
+public:
+	static const char* short_name_lookup;
 	uint16_t sample_block;
 	bool enabled; //FAT Audio
 	uint16_t MEM_STEP;

@@ -11,6 +11,7 @@ var hierarchy =
       [ "AppWren", "d0/da0/class_app_wren.html", null ],
       [ "ControlButton", "df/d17/class_control_button.html", null ],
       [ "ControlSlider", "de/d67/class_control_slider.html", null ],
+      [ "SvcErisAudioParameterController", "d8/de8/class_svc_eris_audio_parameter_controller.html", null ],
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "AsyncAudioInputSPDIF3", "dd/df3/class_async_audio_input_s_p_d_i_f3.html", [
@@ -253,14 +254,10 @@ var hierarchy =
       [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", null ]
     ] ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
-    [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", "d8/d90/class_print.html", [
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "Surface", "d1/d1a/class_surface.html", null ],
-    [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
-    [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
-    [ "value_container", "da/d2d/unionvalue__container.html", null ],
     [ "XPT2046_Touchscreen", "d8/d45/class_x_p_t2046___touchscreen.html", [
       [ "Touch", "d1/dff/class_touch.html", null ]
     ] ]

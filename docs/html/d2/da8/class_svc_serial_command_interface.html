@@ -93,10 +93,11 @@ $(document).ready(function(){initNavTree('d2/da8/class_svc_serial_command_interf
 </div><!--header-->
 <div class="contents">
 
-<p>Serial communication service and interface Serial commands (rx):  
+<p>Serial communication service and interface Serial commands (rx): <br  />
+.  
  <a href="../../d2/da8/class_svc_serial_command_interface.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html">svcSerialCommandInterface.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html">SvcSerialCommandInterface.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Inheritance diagram for SvcSerialCommandInterface:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -120,14 +121,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a08a98a3919c878724c5d1864174bca5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a809cc3d22320bdd8c54044e278e188f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0">empty</a> ()</td></tr>
 <tr class="separator:a809cc3d22320bdd8c54044e278e188f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0793e6bc9aee7207b4d7f59932e6508"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_af0793e6bc9aee7207b4d7f59932e6508.html#af0793e6bc9aee7207b4d7f59932e6508">endLZ4Message</a> ()</td></tr>
-<tr class="memdesc:af0793e6bc9aee7207b4d7f59932e6508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed before being base64 encoded and sent. The sent message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]".  <a href="../../d2/da8/class_svc_serial_command_interface_af0793e6bc9aee7207b4d7f59932e6508.html#af0793e6bc9aee7207b4d7f59932e6508">More...</a><br /></td></tr>
-<tr class="separator:af0793e6bc9aee7207b4d7f59932e6508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0793f597a16bd5e1b99084354ac0415e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e.html#a0793f597a16bd5e1b99084354ac0415e">requestStartLZ4Message</a> ()</td></tr>
+<tr class="separator:a0793f597a16bd5e1b99084354ac0415e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c889fc44a89c71adbcb1bf1bddbf397"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397">send</a> ()</td></tr>
 <tr class="memdesc:a0c889fc44a89c71adbcb1bf1bddbf397"><td class="mdescLeft">&#160;</td><td class="mdescRight">immediately transmit then clear the txBuffer  <a href="../../d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397">More...</a><br /></td></tr>
 <tr class="separator:a0c889fc44a89c71adbcb1bf1bddbf397"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42055ffe62395b2d4ee7ca7ef44f1a50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50">startLZ4Message</a> ()</td></tr>
-<tr class="separator:a42055ffe62395b2d4ee7ca7ef44f1a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa3d36d4c1a1784a1c18f87d756296e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_adaa3d36d4c1a1784a1c18f87d756296e.html#adaa3d36d4c1a1784a1c18f87d756296e">sendLZ4Message</a> ()</td></tr>
+<tr class="memdesc:adaa3d36d4c1a1784a1c18f87d756296e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed before being base64 encoded and sent. The sent message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]".  <a href="../../d2/da8/class_svc_serial_command_interface_adaa3d36d4c1a1784a1c18f87d756296e.html#adaa3d36d4c1a1784a1c18f87d756296e">More...</a><br /></td></tr>
+<tr class="separator:adaa3d36d4c1a1784a1c18f87d756296e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72fa7592492598637d233d9abe27f8f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0">throttle</a> ()</td></tr>
 <tr class="memdesc:a72fa7592492598637d233d9abe27f8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if the buffer falls below SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD delay for a small period of time if another check finds the buffer isn't moving then flush the buffer. returns false otherwise  <a href="../../d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0">More...</a><br /></td></tr>
 <tr class="separator:a72fa7592492598637d233d9abe27f8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,8 +139,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ac0a8b5ba3a88dcc655f0f6c6c4818291"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dda6b0439992b5739cb72db9be6784f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f">flush</a> ()</td></tr>
 <tr class="separator:a0dda6b0439992b5739cb72db9be6784f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae049736228144211f46ad0d61bdffea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_ae049736228144211f46ad0d61bdffea5.html#ae049736228144211f46ad0d61bdffea5">streamHandler</a> ()</td></tr>
-<tr class="separator:ae049736228144211f46ad0d61bdffea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42055ffe62395b2d4ee7ca7ef44f1a50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50">startLZ4Message</a> ()</td></tr>
+<tr class="separator:a42055ffe62395b2d4ee7ca7ef44f1a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add54582c8a1dae31f0d69bea84c65c84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_add54582c8a1dae31f0d69bea84c65c84.html#add54582c8a1dae31f0d69bea84c65c84">streamHandler</a> ()</td></tr>
+<tr class="separator:add54582c8a1dae31f0d69bea84c65c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad90206ca0d83334fb9ce0cc4633d97dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc">txOverflowHandler</a> ()</td></tr>
 <tr class="separator:ad90206ca0d83334fb9ce0cc4633d97dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8d92ee48c609a7a9c73efc9dee4852"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_aaf8d92ee48c609a7a9c73efc9dee4852.html#aaf8d92ee48c609a7a9c73efc9dee4852">update</a> () override</td></tr>
@@ -165,13 +168,13 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:af530234a4b4248131758f9e15201bbd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ddd77ae6635081251f77b69c42aa7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_ac0ddd77ae6635081251f77b69c42aa7f.html#ac0ddd77ae6635081251f77b69c42aa7f">isStreamingFile</a></td></tr>
 <tr class="separator:ac0ddd77ae6635081251f77b69c42aa7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdfc428556318945b5e44381ff31e65f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_afdfc428556318945b5e44381ff31e65f.html#afdfc428556318945b5e44381ff31e65f">multiPartHeader</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_aba078466f8c92cfd4dc882f635bf4cf6.html#aba078466f8c92cfd4dc882f635bf4cf6">SERIAL_TX_HEADER_BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:afdfc428556318945b5e44381ff31e65f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_afdfc428556318945b5e44381ff31e65f.html#afdfc428556318945b5e44381ff31e65f">multiPartHeader</a> [<a class="el" href="../../db/d46/_eris_globals_8h_aba078466f8c92cfd4dc882f635bf4cf6.html#aba078466f8c92cfd4dc882f635bf4cf6">SERIAL_TX_HEADER_BUFFER_SIZE</a>]</td></tr>
 <tr class="separator:afdfc428556318945b5e44381ff31e65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6685b5a9e9d7fa59c350d85351e8d127"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a6685b5a9e9d7fa59c350d85351e8d127.html#a6685b5a9e9d7fa59c350d85351e8d127">periodicMessagesEnabled</a></td></tr>
 <tr class="separator:a6685b5a9e9d7fa59c350d85351e8d127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3703a222fbeffe5cacd625dfacdde9f"><td class="memItemLeft" align="right" valign="top">SdFs *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_ad3703a222fbeffe5cacd625dfacdde9f.html#ad3703a222fbeffe5cacd625dfacdde9f">pSD</a></td></tr>
 <tr class="separator:ad3703a222fbeffe5cacd625dfacdde9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ff407fbbdfb7ec25517dd3b6af06aba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a9ff407fbbdfb7ec25517dd3b6af06aba.html#a9ff407fbbdfb7ec25517dd3b6af06aba">receivedChars</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_aba0ceec384cf3acb51e0d6f45f31379c.html#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:a9ff407fbbdfb7ec25517dd3b6af06aba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a9ff407fbbdfb7ec25517dd3b6af06aba.html#a9ff407fbbdfb7ec25517dd3b6af06aba">receivedChars</a> [<a class="el" href="../../db/d46/_eris_globals_8h_aba0ceec384cf3acb51e0d6f45f31379c.html#aba0ceec384cf3acb51e0d6f45f31379c">SERIAL_RX_BUFFER_SIZE</a>]</td></tr>
 <tr class="separator:a9ff407fbbdfb7ec25517dd3b6af06aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e318f5f33dcfc4bd62bec438e94fbde"><td class="memItemLeft" align="right" valign="top">elapsedMillis&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a5e318f5f33dcfc4bd62bec438e94fbde.html#a5e318f5f33dcfc4bd62bec438e94fbde">sincePeriodicDataDict</a></td></tr>
 <tr class="separator:a5e318f5f33dcfc4bd62bec438e94fbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,31 +182,55 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aae03d5fec51eb6615fc25c8039e7ce05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26e409a8edd45f983a488b119d37baec"><td class="memItemLeft" align="right" valign="top">elapsedMillis&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a26e409a8edd45f983a488b119d37baec.html#a26e409a8edd45f983a488b119d37baec">sincePoll</a></td></tr>
 <tr class="separator:a26e409a8edd45f983a488b119d37baec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa79d31d472f72770bb82507dec1a5118"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_aa79d31d472f72770bb82507dec1a5118.html#aa79d31d472f72770bb82507dec1a5118">streamFile</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_a5c22e2c6abc159d7fafbeb6d43e4c968.html#a5c22e2c6abc159d7fafbeb6d43e4c968">SERIAL_PARAM_BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:aa79d31d472f72770bb82507dec1a5118"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_aa79d31d472f72770bb82507dec1a5118.html#aa79d31d472f72770bb82507dec1a5118">streamFile</a> [<a class="el" href="../../db/d46/_eris_globals_8h_a5c22e2c6abc159d7fafbeb6d43e4c968.html#a5c22e2c6abc159d7fafbeb6d43e4c968">SERIAL_PARAM_BUFFER_SIZE</a>]</td></tr>
 <tr class="separator:aa79d31d472f72770bb82507dec1a5118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacadb16155215163a35c07f46ae2b6f3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_aacadb16155215163a35c07f46ae2b6f3.html#aacadb16155215163a35c07f46ae2b6f3">streamPath</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_a5c22e2c6abc159d7fafbeb6d43e4c968.html#a5c22e2c6abc159d7fafbeb6d43e4c968">SERIAL_PARAM_BUFFER_SIZE</a>]</td></tr>
+<tr class="memitem:aacadb16155215163a35c07f46ae2b6f3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_aacadb16155215163a35c07f46ae2b6f3.html#aacadb16155215163a35c07f46ae2b6f3">streamPath</a> [<a class="el" href="../../db/d46/_eris_globals_8h_a5c22e2c6abc159d7fafbeb6d43e4c968.html#a5c22e2c6abc159d7fafbeb6d43e4c968">SERIAL_PARAM_BUFFER_SIZE</a>]</td></tr>
 <tr class="separator:aacadb16155215163a35c07f46ae2b6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac426831e3532cc5efd4c3a686a909e1e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_ac426831e3532cc5efd4c3a686a909e1e.html#ac426831e3532cc5efd4c3a686a909e1e">streamPos</a></td></tr>
 <tr class="separator:ac426831e3532cc5efd4c3a686a909e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f65fc72243065223b816e77cd544184"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a7f65fc72243065223b816e77cd544184.html#a7f65fc72243065223b816e77cd544184">txBuffer</a> [<a class="el" href="../../d8/d2c/globaldefs_8h_abfe80eb43785493f268187a201692d8e.html#abfe80eb43785493f268187a201692d8e">SERIAL_OUTPUT_BUFFER_SIZE</a>+1]</td></tr>
-<tr class="separator:a7f65fc72243065223b816e77cd544184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29e47fe3e96d2a437cd20fcf2c7d4260"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a29e47fe3e96d2a437cd20fcf2c7d4260.html#a29e47fe3e96d2a437cd20fcf2c7d4260">txBuffer</a> [<a class="el" href="../../db/d46/_eris_globals_8h_abfe80eb43785493f268187a201692d8e.html#abfe80eb43785493f268187a201692d8e">SERIAL_OUTPUT_BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a29e47fe3e96d2a437cd20fcf2c7d4260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd0db53dd82efae44b27d19e357ffe6"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a4dd0db53dd82efae44b27d19e357ffe6.html#a4dd0db53dd82efae44b27d19e357ffe6">txBufferOverflowFlag</a></td></tr>
 <tr class="separator:a4dd0db53dd82efae44b27d19e357ffe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14dcb2238348af05007d490900e47441"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da8/class_svc_serial_command_interface_a14dcb2238348af05007d490900e47441.html#a14dcb2238348af05007d490900e47441">workingBuffer</a></td></tr>
 <tr class="separator:a14dcb2238348af05007d490900e47441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Serial communication service and interface Serial commands (rx): </p>
-<p>LS [PATH] GET [PATH] (get file is responded with FS messages) ACON (request current audio block connections) CONNECT (make an audio block connection) DISCONNECT (break an audio block connection) AA (broadcast message to active app ) STATS <br  />
- CQT_CFG request a dump of the cqt bin configs GET_DD request a dump of the data dictionary <br  />
- UPDATE_DD key val set a key value</p>
-<p>Serial messages (tx):</p>
-<p>CQT_H (CQT BINS - High Range) CQT_L (CQT "     Low Range") CQT_EOF (End of analysis frame) DIR (directory contents - aka the result of the ls command) DIR_EOF S (FFT window stream) FS (file stream) FS_END (file stream end, indicate to client eof) GET_ERR (file request error response ) ACON START (begin audio connection list) ACON END (end audio connection list) RAM1 JSON container RAM2 JSON container </p>
+<div class="textblock"><p>Serial communication service and interface Serial commands (rx): <br  />
+. </p>
+<p>LS [PATH] GET [PATH] get file is responded with FS messages <br  />
+ ACON request current audio block connections <br  />
+ CONNECT make an audio block connection <br  />
+ DISCONNECT break an audio block connection <br  />
+ APC audio block parameter control message <br  />
+ AA broadcast message to active app <br  />
+ STATS <br  />
+ CQT_CFG request a dump of the cqt bin configs <br  />
+ GET_DD request a dump of the data dictionary <br  />
+ <br  />
+ UPDATE_DD key val set a key value <br  />
+<br  />
+ Serial messages (tx):<br  />
+<br  />
+ CQT_H (CQT BINS - High Range) <br  />
+ CQT_L (CQT "     Low Range") <br  />
+ CQT_EOF (End of analysis frame) <br  />
+ DIR (directory contents - aka the result of the ls command) <br  />
+ DIR_EOF <br  />
+ S (FFT window stream) <br  />
+ FS (file stream) <br  />
+ FS_END (file stream end, indicate to client eof) <br  />
+ GET_ERR (file request error response ) <br  />
+ ACON START (begin audio connection list) <br  />
+ ACON END (end audio connection list) <br  />
+ RAM1 JSON container <br  />
+ RAM2 JSON container <br  />
+</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html#l00053">53</a> of file <a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html">svcSerialCommandInterface.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00054">54</a> of file <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html">SvcSerialCommandInterface.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>ERISCore/include/<a class="el" href="../../db/db5/svc_serial_command_interface_8h_source.html">svcSerialCommandInterface.h</a></li>
-<li>ERISCore/src/<a class="el" href="../../dd/dbe/svc_serial_command_interface_8cpp_source.html">svcSerialCommandInterface.cpp</a></li>
+<li>ERISCore/include/<a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html">SvcSerialCommandInterface.h</a></li>
+<li>ERISCore/src/<a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

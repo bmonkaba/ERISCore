@@ -58,8 +58,8 @@ void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 420);
-    analogWrite(backlight, 190);
+    analogWriteFrequency(backlight, 840);
+    analogWrite(backlight, 80);
 }
 
 void FLASHMEM ILI9341_t3_ERIS::begin(){

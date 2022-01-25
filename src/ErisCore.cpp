@@ -14,11 +14,12 @@
 #include "AppWren.h"
 #include "AppReprogram.h"
 #include "SvcSerialCommandInterface.h"
-
+#include "SvcErisAudioParameterController.h"
 
 AudioDirector _ad;
 AppAudioToPolyphonic appPoly;
 SvcSerialCommandInterface sci;
+SvcErisAudioParameterController apc;
 AppReprogram appReprogram;
 AppWren* appWren;
 
@@ -63,6 +64,7 @@ void setup() {
   appWren->setParent(&appPoly);
   //give the audio director a pointer to the sci class
   _ad.setSCI(&sci);
+  _ad.setAPC(&apc);
   Serial.println(F("M Setup: Setting App Focus"));
   appPoly.getFocus();
   Serial.println(F("M Setup: Init Complete"));

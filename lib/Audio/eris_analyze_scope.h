@@ -52,7 +52,7 @@ class erisAudioAnalyzeScope : public AudioStream
 public:
 	erisAudioAnalyzeScope(void) : AudioStream(2, inputQueueArray),
 	  myname(NULL), state(0), trigger_edge(0), delay_length(0), mem_length(OSCOPE_CAPTURE_LENGTH/2) {
-		shortName="scope";
+		short_name="scope";
 		unum_inputs=2;
 		unum_outputs=0;
 		category="analyze-function";

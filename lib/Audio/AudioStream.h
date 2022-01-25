@@ -166,7 +166,7 @@ public:
 			unum_inputs=0;
 			unum_outputs=0;
 
-			shortName = 0;
+			short_name = 0;
 			category = 0;
 		}
 	static void initialize_memory(audio_block_t *data, unsigned int num);
@@ -181,7 +181,7 @@ public:
 	static uint16_t memory_used;
 	static uint16_t memory_used_max;
 
-	const char* shortName;
+	const char* short_name;
 	const char* category;
 	uint8_t unum_inputs;
     uint8_t unum_outputs;

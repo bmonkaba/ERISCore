@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['z_5fthreshold_921',['Z_THRESHOLD',['../db/dfc/touch_8cpp_a5cd8cec6af62011935a3a4970068b2f3.html#a5cd8cec6af62011935a3a4970068b2f3',1,'touch.cpp']]],
-  ['z_5fthreshold_5fint_922',['Z_THRESHOLD_INT',['../db/dfc/touch_8cpp_a812b93d7d16f53447d3188c0d5c63f27.html#a812b93d7d16f53447d3188c0d5c63f27',1,'touch.cpp']]],
-  ['zraw_923',['zraw',['../d1/dff/class_touch_adf855b2e7256a4d33da25ed8d0ec5f51.html#adf855b2e7256a4d33da25ed8d0ec5f51',1,'Touch']]]
+  ['_7eappwren_892',['~AppWren',['../d0/da0/class_app_wren_a9fcd48d21e31b650f0926420eee346d0.html#a9fcd48d21e31b650f0926420eee346d0',1,'AppWren']]],
+  ['_7eaudioconnection_893',['~AudioConnection',['../d2/d7c/class_audio_connection_ae0bd3df10a34f954a9f2128363cc7939.html#ae0bd3df10a34f954a9f2128363cc7939',1,'AudioConnection']]]
 ];

@@ -37,6 +37,7 @@ var classeris_audio_analyze_f_f_t1024 =
     [ "outputflag", "d0/d55/classeris_audio_analyze_f_f_t1024_aea6497b66755dd3d6f96ae3286f15927.html#aea6497b66755dd3d6f96ae3286f15927", null ],
     [ "sample_block", "d0/d55/classeris_audio_analyze_f_f_t1024_a57c40498a4375d38bc4c05b77fe763ed.html#a57c40498a4375d38bc4c05b77fe763ed", null ],
     [ "SAMPLING_INDEX", "d0/d55/classeris_audio_analyze_f_f_t1024_a2fd4c8c1a3c0fbd59f741442d01cfc56.html#a2fd4c8c1a3c0fbd59f741442d01cfc56", null ],
+    [ "short_name_lookup", "d0/d55/classeris_audio_analyze_f_f_t1024_ae56c5b2ce09ec1d604c76e0dbedd5336.html#ae56c5b2ce09ec1d604c76e0dbedd5336", null ],
     [ "ssr", "d0/d55/classeris_audio_analyze_f_f_t1024_ae5ad1f76be2a9ed7c8479838f0783f22.html#ae5ad1f76be2a9ed7c8479838f0783f22", null ],
     [ "subsample_by", "d0/d55/classeris_audio_analyze_f_f_t1024_a21d7f8bf6b0b75d69d0ddf4e4f988879.html#a21d7f8bf6b0b75d69d0ddf4e4f988879", null ],
     [ "subsample_highfreqrange", "d0/d55/classeris_audio_analyze_f_f_t1024_a030afe911464dfa088492c820bf122bf.html#a030afe911464dfa088492c820bf122bf", null ],

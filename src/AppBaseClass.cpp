@@ -19,9 +19,9 @@ AppBaseClass::AppBaseClass(){
   //Serial.println("AppBaseClass constructor called");
   has_focus=false;
   has_pop=false;
-  parentNode=NULL;          //set by the parent
-  nextAppicationNode=NULL;
-  previousAppicationNode=NULL;
+  parent_node=NULL;          //set by the parent
+  next_app_node=NULL;
+  previous_app_node=NULL;
   touch_state = false;      //set by the application manager
   origin_x=0;
   origin_y=0;

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 845;
+var viewWidth = 844;
 var viewHeight = 125;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-0';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="VM post module load support function creates/updates the Wren embedded call handles.">
-<polygon fill="#bfbfbf" stroke="black" points="631,-22.5 631,-48.5 837,-48.5 837,-22.5 631,-22.5"/>
-<text text-anchor="middle" x="734" y="-31.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::getWrenHandles</text>
+<polygon fill="#bfbfbf" stroke="black" points="630,-22.5 630,-48.5 836,-48.5 836,-22.5 630,-22.5"/>
+<text text-anchor="middle" x="733" y="-31.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::getWrenHandles</text>
 </a>
 </g>
 </g>
@@ -67,67 +67,67 @@ var sectionId = 'dynsection-0';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d0/da0/class_app_wren_a3a28abc3311f5f59c42437ff5614c92c.html#a3a28abc3311f5f59c42437ff5614c92c" target="_top" xlink:title="runs the script in the VM">
-<polygon fill="none" stroke="black" points="435,-44.5 435,-70.5 595,-70.5 595,-44.5 435,-44.5"/>
-<text text-anchor="middle" x="515" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::loadScript</text>
+<polygon fill="none" stroke="black" points="434,-44.5 434,-70.5 594,-70.5 594,-44.5 434,-44.5"/>
+<text text-anchor="middle" x="514" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::loadScript</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M620.73,-46.88C612.11,-47.76 603.52,-48.63 595.18,-49.47"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="621.26,-50.35 630.85,-45.86 620.55,-43.38 621.26,-50.35"/>
+<path fill="none" stroke="midnightblue" d="M619.73,-46.88C611.11,-47.76 602.52,-48.63 594.18,-49.47"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="620.26,-50.35 629.85,-45.86 619.55,-43.38 620.26,-50.35"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../d0/da0/class_app_wren_af9fc192669efcd782a665bc5918aaaa3.html#af9fc192669efcd782a665bc5918aaaa3" target="_top" xlink:title="start, load and configure the handles of the VM">
-<polygon fill="none" stroke="black" points="199,-0.5 199,-26.5 391,-26.5 391,-0.5 199,-0.5"/>
-<text text-anchor="middle" x="295" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::vmConstructor</text>
+<polygon fill="none" stroke="black" points="198.5,-0.5 198.5,-26.5 390.5,-26.5 390.5,-0.5 198.5,-0.5"/>
+<text text-anchor="middle" x="294.5" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::vmConstructor</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M620.49,-29.84C549.44,-26.26 458.67,-21.69 391.21,-18.29"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="620.66,-33.35 630.82,-30.36 621.01,-26.36 620.66,-33.35"/>
+<path fill="none" stroke="midnightblue" d="M619.61,-29.84C548.65,-26.26 457.98,-21.69 390.6,-18.29"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="619.77,-33.35 629.94,-30.36 620.12,-26.36 619.77,-33.35"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_a9545f907e7bca8484595d63ade9abe96.html#a9545f907e7bca8484595d63ade9abe96" target="_top" xlink:title="handles messages from other sw components">
-<polygon fill="none" stroke="black" points="191,-90.5 191,-116.5 399,-116.5 399,-90.5 191,-90.5"/>
-<text text-anchor="middle" x="295" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::MessageHandler</text>
+<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_aaa5357f4f5b7d4ffdd9f804e95d4a8e9.html#aaa5357f4f5b7d4ffdd9f804e95d4a8e9" target="_top" xlink:title="handles messages from other sw components">
+<polygon fill="none" stroke="black" points="191,-90.5 191,-116.5 398,-116.5 398,-90.5 191,-90.5"/>
+<text text-anchor="middle" x="294.5" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::messageHandler</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M442.22,-72.65C414.88,-78.42 383.98,-84.93 357.66,-90.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="443.05,-76.05 452.11,-70.56 441.61,-69.2 443.05,-76.05"/>
+<path fill="none" stroke="midnightblue" d="M441.38,-72.65C414.1,-78.42 383.28,-84.93 357.02,-90.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="442.2,-76.05 451.26,-70.56 440.75,-69.2 442.2,-76.05"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_a46ef63c583efb89334bc8fbf20cf7a83.html#a46ef63c583efb89334bc8fbf20cf7a83" target="_top" xlink:title="class specific update implementation">
-<polygon fill="none" stroke="black" points="226.5,-45.5 226.5,-71.5 363.5,-71.5 363.5,-45.5 226.5,-45.5"/>
-<text text-anchor="middle" x="295" y="-54.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::update</text>
+<polygon fill="none" stroke="black" points="226,-45.5 226,-71.5 363,-71.5 363,-45.5 226,-45.5"/>
+<text text-anchor="middle" x="294.5" y="-54.7" font-family="Helvetica,sans-Serif" font-size="16.00">AppWren::update</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M424.73,-57.91C404.31,-58 382.93,-58.1 363.6,-58.19"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="425,-61.41 434.99,-57.86 424.97,-54.41 425,-61.41"/>
+<path fill="none" stroke="midnightblue" d="M423.7,-57.91C403.45,-58 382.28,-58.1 363.11,-58.19"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="423.88,-61.41 433.86,-57.86 423.85,-54.41 423.88,-61.41"/>
 </g>
 <!-- Node2&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node2&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M439.45,-42.45C413.87,-37.29 385.47,-31.56 360.73,-26.57"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="438.98,-45.93 449.48,-44.48 440.37,-39.07 438.98,-45.93"/>
+<path fill="none" stroke="midnightblue" d="M438.63,-42.45C413.1,-37.29 384.77,-31.56 360.09,-26.57"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="438.13,-45.92 448.63,-44.48 439.52,-39.06 438.13,-45.92"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
@@ -141,8 +141,8 @@ var sectionId = 'dynsection-0';
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M188.51,-13.5C177.22,-13.5 165.9,-13.5 155.04,-13.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="188.85,-17 198.85,-13.5 188.85,-10 188.85,-17"/>
+<path fill="none" stroke="midnightblue" d="M188.11,-13.5C177.04,-13.5 165.95,-13.5 155.29,-13.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="188.26,-17 198.26,-13.5 188.26,-10 188.26,-17"/>
 </g>
 </g>
 </svg>

@@ -1,5 +1,6 @@
 var classeris_audio_amplifier =
 [
     [ "erisAudioAmplifier", "d0/ddd/classeris_audio_amplifier_a7662b3f85390bcf954a39c0f71ef2e82.html#a7662b3f85390bcf954a39c0f71ef2e82", null ],
-    [ "update", "d0/ddd/classeris_audio_amplifier_a497e4e646a55be392ae5f0bbe390f89d.html#a497e4e646a55be392ae5f0bbe390f89d", null ]
+    [ "update", "d0/ddd/classeris_audio_amplifier_a497e4e646a55be392ae5f0bbe390f89d.html#a497e4e646a55be392ae5f0bbe390f89d", null ],
+    [ "short_name_lookup", "d0/ddd/classeris_audio_amplifier_a453749472cd2f52905dd6929f451ff6d.html#a453749472cd2f52905dd6929f451ff6d", null ]
 ];

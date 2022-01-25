@@ -195,7 +195,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       x_last = t_x;
       y_last = t_y;
     }
-    void FLASHMEM MessageHandler(AppBaseClass *sender, const char *message){   
+    void FLASHMEM messageHandler(AppBaseClass *sender, const char *message){   
         if (sender == slider){ //can detect message sender by ptr...
           //erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad_3"));
           //filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));

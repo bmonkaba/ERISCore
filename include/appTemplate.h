@@ -18,7 +18,7 @@ class AppTemplate:public AppBaseClass {
         
     }; 
     //define event handlers
-    void MessageHandler(AppBaseClass *sender, const char *message){   
+    void messageHandler(AppBaseClass *sender, const char *message){   
         if(sender->isName("SOME APP NAME")){
          //do something
         }

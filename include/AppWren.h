@@ -35,7 +35,7 @@ class AppWren:public AppBaseClass {
         strcpy(wren_module_name,"");
         updateRT_priority = 2; //set to highest priority
         surface_mempool = NULL;
-        imgloaded = false;
+        image_loaded = false;
         h_slot0 = 0;
         vm = 0;
         h_update = 0;
@@ -50,13 +50,13 @@ class AppWren:public AppBaseClass {
         h_onAnalog3 = 0;
         h_onAnalog4 = 0;
         h_messageHandler = 0;
-        compileOnly = false;
+        compile_only = false;
         save_module = false;
         reboot_request = false;
         enable_call_forwarding = false;
-        isPressed = false;
+        is_pressed = false;
         show_active = false;
-        usingImage = true;
+        using_image = true;
         time_active = 0;
         surface_cache = NULL;
         module_load_buffer = NULL;
@@ -158,7 +158,7 @@ class AppWren:public AppBaseClass {
      * @param sender 
      * @param message 
      */
-    void MessageHandler(AppBaseClass *sender, const char *message);
+    void messageHandler(AppBaseClass *sender, const char *message);
 
     //in the AppBase class these are protected methods.. we need to expose them here publicly to set up the Wren callbacks.
     //void _updatePosition(){AppBaseClass::_updatePosition();}
@@ -634,7 +634,7 @@ class AppWren:public AppBaseClass {
         }
     };
  protected:
-    bool compileOnly;
+    bool compile_only;
     bool save_module;
     bool reboot_request;
     bool enable_call_forwarding;
@@ -644,9 +644,9 @@ class AppWren:public AppBaseClass {
     char* module_load_buffer;
     Surface* surface_cache;
     uint16_t* surface_mempool;
-    bool isPressed;
-    bool usingImage;
-    bool imgloaded;
+    bool is_pressed;
+    bool using_image;
+    bool image_loaded;
     elapsedMillis time_active;
     bool show_active;
  private:

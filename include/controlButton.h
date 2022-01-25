@@ -129,7 +129,7 @@ class ControlButton:public AppBaseClass {
     void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
-            parentNode->MessageHandler(this,"Pressed");
+            parent_node->messageHandler(this,"Pressed");
         }
         isPressed = false;
         time_active = 0;

@@ -15,8 +15,10 @@
 #include <string.h>
 #include "ErisAudio.h"
 #include "SvcSerialCommandInterface.h"
+#include "SvcErisAudioParameterController.h"
 
 class SvcSerialCommandInterface;
+class SvcErisAudioParameterController;
 
 typedef struct{
   char src[MAX_NAME_LENGTH];
@@ -47,9 +49,11 @@ class AudioDirector{
     int16_t connectionCount(){return activeConnections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
     void setSCI(SvcSerialCommandInterface *serialCommandInterface){sci = serialCommandInterface;}
+    void setAPC(SvcErisAudioParameterController *audioParameterController){parameter_controller = audioParameterController;}
     void printStats();
   protected:
     SvcSerialCommandInterface* sci;
+    SvcErisAudioParameterController* parameter_controller;
     void*  heapStart;  //used to estamate total heap allocation size
     void*  heapEnd;    //
     AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool

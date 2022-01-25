@@ -81,7 +81,7 @@ FLASHMEM AudioDirector::AudioDirector(){
 
   AudioStream* test = getAudioStreamObjByName("mixer_2");
   Serial.println(F("M AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
-  Serial.print(test->shortName);
+  Serial.print(test->short_name);
   Serial.print(F("_"));
   Serial.println(test->instance);
 
@@ -114,10 +114,10 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
     Serial.print(F("M AudioDirector::addAudioStreamObj adding obj :"));
     Serial.print(obj->category);
     Serial.print(F("->"));
-    Serial.print(obj->shortName);  
+    Serial.print(obj->short_name);  
     if (objCount > 0){
       for(uint16_t i=0; i < objCount;i++){
-        if(strcmp(obj->shortName,pAudioStreamObjPool[i]->shortName)==0) count += 1;
+        if(strcmp(obj->short_name,pAudioStreamObjPool[i]->short_name)==0) count += 1;
       }
     } else{
       heapStart = (void *)obj;  
@@ -146,7 +146,7 @@ void FLASHMEM AudioDirector::printStats(){
       
       for(uint16_t i=0; i < objCount;i++){
         sci->print(F("\""));
-        sci->print(pAudioStreamObjPool[i]->shortName);sci->print(F("_"));
+        sci->print(pAudioStreamObjPool[i]->short_name);sci->print(F("_"));
         sci->print(pAudioStreamObjPool[i]->instance);
         sci->print(F("\":{\"cpu\":"));
         sci->print(pAudioStreamObjPool[i]->processorUsage());
@@ -179,14 +179,14 @@ void FLASHMEM AudioDirector::printStats(){
         sci->print(pCord[i]->isConnected);
         if (pCord[i]->isConnected == true){ //assigned connections
             sci->print(F(",\"srcType\":\""));
-            sci->print(pCord[i]->pSrc->shortName);
+            sci->print(pCord[i]->pSrc->short_name);
             sci->print(F("\",\"srcInstance\":"));
             sci->print(pCord[i]->pSrc->instance);
             sci->print(F(",\"srcPort\":"));
             sci->print(pCord[i]->src_index);
 
             sci->print(F(",\"destType\":\""));
-            sci->print(pCord[i]->pDst->shortName);
+            sci->print(pCord[i]->pDst->short_name);
             sci->print(F("\",\"destInstance\":"));
             sci->print(pCord[i]->pDst->instance);
             sci->print(F(",\"destPort\":"));
@@ -245,7 +245,7 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
   for (uint16_t i = 0; i < objCount; i++){
     //test the index first, then the string
     if (instance == pAudioStreamObjPool[i]->instance){
-        if (0==strncmp(AudioStreamObjName,pAudioStreamObjPool[i]->shortName,strlen(pAudioStreamObjPool[i]->shortName))) return pAudioStreamObjPool[i];
+        if (0==strncmp(AudioStreamObjName,pAudioStreamObjPool[i]->short_name,strlen(pAudioStreamObjPool[i]->short_name))) return pAudioStreamObjPool[i];
     }
   }
   //not found return null
@@ -259,7 +259,7 @@ bool AudioDirector::getAudioStreamString(uint16_t streamIndex, char* streamStrin
     strcpy(streamStringBuffer,"");
     return false;
   }
-  sprintf(streamStringBuffer,"%s %s_%d",pAudioStreamObjPool[streamIndex]->category,pAudioStreamObjPool[streamIndex]->shortName,pAudioStreamObjPool[streamIndex]->instance);
+  sprintf(streamStringBuffer,"%s %s_%d",pAudioStreamObjPool[streamIndex]->category,pAudioStreamObjPool[streamIndex]->short_name,pAudioStreamObjPool[streamIndex]->instance);
   return true;
 }
 
@@ -276,10 +276,10 @@ bool AudioDirector::getConnectionString(uint16_t connectionIndex, char* connecti
       if(count == connectionIndex){
         //build connection string into the buffer
         sprintf(connectionStringBuffer,"connect(%s_%d,%d,%s_%d,%d);",
-          pCord[i]->pSrc->shortName,
+          pCord[i]->pSrc->short_name,
           pCord[i]->pSrc->instance,
           pCord[i]->src_index,
-          pCord[i]->pDst->shortName,
+          pCord[i]->pDst->short_name,
           pCord[i]->pDst->instance,
           pCord[i]->dest_index);
         if (connectionIndex < activeConnections) return true;
@@ -412,7 +412,7 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
     }
   }
   Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
-  Serial.println(destination->shortName);
+  Serial.println(destination->short_name);
   Serial.println(destination->instance);
   //Serial.flush();
   return false; 

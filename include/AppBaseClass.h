@@ -14,6 +14,7 @@
 //#define SERIAL_PRINT_APP_LOOP_TIME
 #include "ErisGlobals.h"
 #include <Arduino.h>
+#include <elapsedMillis.h>
 //#include <vector>
 #include "HSI.h"
 //#include "touch.h"
@@ -43,9 +44,9 @@ class AppBaseClass {
     SvcSerialCommandInterface* sci;
     SdFs* sd;
     ILI9341_t3_ERIS* draw;
-    AppBaseClass *parentNode;
-    AppBaseClass *previousAppicationNode;
-    AppBaseClass *nextAppicationNode;
+    AppBaseClass *parent_node;
+    AppBaseClass *previous_app_node;
+    AppBaseClass *next_app_node;
     bool touch_state;   //set by the app manager
     uint16_t id; //app id for derived class instances
                   // 65000 - reserved for the base class (unused)
@@ -88,8 +89,8 @@ class AppBaseClass {
       if (strlen(name_string) < MAX_NAME_LENGTH - 1){strcpy(name,name_string);
       } else safer_strncpy(name,name_string,MAX_NAME_LENGTH - 1);
     }
-    void RegisterApp(AppBaseClass *app);
-    void setParent(AppBaseClass *parent){parentNode = parent;};
+    void registerApp(AppBaseClass *app);
+    void setParent(AppBaseClass *parent){parent_node = parent;};
     void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;_updatePosition();}
     void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;_updatePosition();}
     void setWidgetPosition(int16_t newOriginX, int16_t newOriginY){widget_origin_x=newOriginX;widget_origin_y=newOriginY;_updatePosition();}
@@ -107,7 +108,7 @@ class AppBaseClass {
     virtual void onAnalog2(uint16_t uval, float fval){};
     virtual void onAnalog3(uint16_t uval, float fval){};
     virtual void onAnalog4(uint16_t uval, float fval){};
-    virtual void MessageHandler(AppBaseClass *sender, const char *message){};
+    virtual void messageHandler(AppBaseClass *sender, const char *message){};
   protected:
     bool has_focus;
     bool has_pop;

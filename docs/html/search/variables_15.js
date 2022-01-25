@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['w_1780',['w',['../d1/d1a/class_surface_a73cd7eedd4a31861b75acf69ab4ad2b9.html#a73cd7eedd4a31861b75acf69ab4ad2b9',1,'Surface']]],
-  ['window_1781',['window',['../d0/d55/classeris_audio_analyze_f_f_t1024_aa912b4a80d03e8ed2bea94f02361b73d.html#aa912b4a80d03e8ed2bea94f02361b73d',1,'erisAudioAnalyzeFFT1024']]],
-  ['window_5ff32_1782',['window_f32',['../d0/d55/classeris_audio_analyze_f_f_t1024_a85ffb58a9a40df085141b0b836f3008a.html#a85ffb58a9a40df085141b0b836f3008a',1,'erisAudioAnalyzeFFT1024']]],
-  ['workingbuffer_1783',['workingBuffer',['../d2/da8/class_svc_serial_command_interface_a14dcb2238348af05007d490900e47441.html#a14dcb2238348af05007d490900e47441',1,'SvcSerialCommandInterface']]],
-  ['wren_5fmodule_5fname_1784',['wren_module_name',['../d0/da0/class_app_wren_a177719148ea60e521d0e8608fafdaed3.html#a177719148ea60e521d0e8608fafdaed3',1,'AppWren']]]
+  ['x_5fend_1744',['x_end',['../dc/d27/class_app_audio_to_polyphonic_ad9a5e5ed381185019ea6a1cf26311e69.html#ad9a5e5ed381185019ea6a1cf26311e69',1,'AppAudioToPolyphonic']]],
+  ['x_5flast_1745',['x_last',['../dc/d27/class_app_audio_to_polyphonic_a2df465d28f7911897cfa0464c331fa4f.html#a2df465d28f7911897cfa0464c331fa4f',1,'AppAudioToPolyphonic']]],
+  ['x_5fstart_1746',['x_start',['../dc/d27/class_app_audio_to_polyphonic_a33ec2ce0edb5dd54fc374fcadd4a0f22.html#a33ec2ce0edb5dd54fc374fcadd4a0f22',1,'AppAudioToPolyphonic']]],
+  ['xraw_1747',['xraw',['../d1/dff/class_touch_afa7c3f3af79310502eaaf18a73287c8f.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
 ];

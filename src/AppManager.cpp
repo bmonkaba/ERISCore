@@ -125,7 +125,7 @@ void AppManager::update(){
     touch_updated = false;
     node = root;
 
-    request_arm_set_clock(CPU_BASE_FREQ);
+    requestArmSetClock(CPU_BASE_FREQ);
 
     if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
@@ -192,7 +192,7 @@ void AppManager::update(){
               }
               //update the data dictionary
               node->update_period =0;
-              node=node->nextAppicationNode;//check next node
+              node=node->next_app_node;//check next node
             }while(node !=NULL);
         };
         data->update(RENDER,(int32_t)2);
@@ -240,7 +240,7 @@ void AppManager::update(){
             pActiveApp = node;
           }
       }
-      if (node->parentNode!=NULL){if(node->parentNode->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
+      if (node->parent_node!=NULL){if(node->parent_node->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
       if (node->id == activeID || isactive_child) {
           //Serial.print("AppManager::updating active application");Serial.println(activeID);
           //trigger any events and then call the update function for this 'active' app or child node
@@ -275,7 +275,7 @@ void AppManager::update(){
       if (node->cycle_time > node->cycle_time_max){
           node->cycle_time_max = node->cycle_time;
       }
-      node=node->nextAppicationNode;//check next node
+      node=node->next_app_node;//check next node
     }while(node !=NULL);
 
     if (cycle_time > cycle_time_max){
@@ -335,7 +335,7 @@ AppBaseClass* AppManager::getApp(uint16_t id){
       if (node->id == id){
         return node;
       }
-      node=node->nextAppicationNode;
+      node=node->next_app_node;
     }while(node !=NULL);
     return NULL;
 }
@@ -426,10 +426,10 @@ bool AppManager::sendMessage(AppBaseClass *sender, const char *to_app, const cha
   AppBaseClass *node = root;
   do{
     if (node->isName(to_app)){
-      node->MessageHandler(sender,message);
+      node->messageHandler(sender,message);
       return true;
     }
-    node=node->nextAppicationNode;//check next node
+    node=node->next_app_node;//check next node
   }while(node !=NULL);
   return false;
 }
@@ -447,7 +447,7 @@ AppBaseClass* AppManager::getAppByName(const char *appName){
     if (node->isName(appName)){
       return node;
     }
-    node=node->nextAppicationNode;//check next node
+    node=node->next_app_node;//check next node
   }while(node !=NULL);
   return NULL;
 }
@@ -477,7 +477,7 @@ void AppManager::printStats (){
       node->cycle_time_max = 0;
       node->update_period_max = 0;
       node->updateRT_period_max = 0;
-      node=node->nextAppicationNode;//check next node
+      node=node->next_app_node;//check next node
     }while(node !=NULL);
     if (root != 0){
       sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
@@ -519,13 +519,13 @@ void AppManager::registerApp(AppBaseClass *app){
   else{
     AppBaseClass *endNode = root;
     //add to the linked list
-    while(endNode->nextAppicationNode !=0){endNode=endNode->nextAppicationNode;}
-    endNode->nextAppicationNode = app;
-    app->previousAppicationNode = endNode;
+    while(endNode->next_app_node !=0){endNode=endNode->next_app_node;}
+    endNode->next_app_node = app;
+    app->previous_app_node = endNode;
   }
 };
 
-bool AppManager::request_arm_set_clock(uint32_t requested_cpu_frequency){
+bool AppManager::requestArmSetClock(uint32_t requested_cpu_frequency){
     //set cpu freq based on thermal performance
     if(tempmonGetTemp() > CPU_THERMAL_THROTTLE_TEMP){
       set_arm_clock(CPU_LOW_POWER_MODE_FREQ);//thermal guard (safer but not failsafe)

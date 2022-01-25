@@ -91,7 +91,7 @@ class AppManager {
 
     void registerApp(AppBaseClass *app);
     
-    bool request_arm_set_clock(uint32_t requested_cpu_frequency);
+    bool requestArmSetClock(uint32_t requested_cpu_frequency);
 };
 
 #endif

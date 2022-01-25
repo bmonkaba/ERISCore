@@ -435,7 +435,7 @@ class AppCQT:public AppBaseClass {
       return;
     }
 
-  void MessageHandler(AppBaseClass *sender, const char *message){
+  void messageHandler(AppBaseClass *sender, const char *message){
     if(strcmp(message,ENABLE)==0){
       onFocus();
     }else if(strcmp(message,DISABLE)==0){

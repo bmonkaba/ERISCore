@@ -1,14 +1,13 @@
 <map id="SvcSerialCommandInterface::throttle" name="SvcSerialCommandInterface::throttle">
-<area shape="rect" id="node1" title="returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if..." alt="" coords="963,255,1327,291"/>
-<area shape="rect" id="node2" href="$d2/da8/class_svc_serial_command_interface_af0793e6bc9aee7207b4d7f59932e6508.html#af0793e6bc9aee7207b4d7f59932e6508" title="Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed..." alt="" coords="451,112,908,148"/>
-<area shape="rect" id="node7" href="$d2/da8/class_svc_serial_command_interface_a1e29f06d24eb83870212bf52563fd173.html#a1e29f06d24eb83870212bf52563fd173" title=" " alt="" coords="5,271,396,307"/>
-<area shape="rect" id="node8" href="$d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f" title=" " alt="" coords="508,224,851,260"/>
-<area shape="rect" id="node9" href="$d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397" title="immediately transmit then clear the txBuffer" alt="" coords="507,284,852,320"/>
-<area shape="rect" id="node10" href="$d2/da8/class_svc_serial_command_interface_ae049736228144211f46ad0d61bdffea5.html#ae049736228144211f46ad0d61bdffea5" title=" " alt="" coords="462,344,897,380"/>
-<area shape="rect" id="node11" href="$d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc" title=" " alt="" coords="444,404,915,440"/>
-<area shape="rect" id="node3" href="$d4/dde/class_app_c_q_t_af9d5de8b802d76e6180e57ff7b68cf95.html#af9d5de8b802d76e6180e57ff7b68cf95" title=" " alt="" coords="66,5,335,41"/>
-<area shape="rect" id="node4" href="$dc/d43/class_svc_data_dictionary_af5a33ee937a583b4a0040b367492040c.html#af5a33ee937a583b4a0040b367492040c" title=" " alt="" coords="28,65,373,101"/>
-<area shape="rect" id="node5" href="$d8/d1c/class_audio_director_a0e1e6093fa5c9c76f11483ac5c9cc776.html#a0e1e6093fa5c9c76f11483ac5c9cc776" title=" " alt="" coords="75,125,326,161"/>
-<area shape="rect" id="node6" href="$d4/dde/class_app_c_q_t_a0e1d9e850811f24577f20ac1900dd4f8.html#a0e1d9e850811f24577f20ac1900dd4f8" title=" " alt="" coords="113,185,288,221"/>
-<area shape="rect" id="node12" href="$d2/da8/class_svc_serial_command_interface_a9c179c537eefc3807911a2658fac7d7e.html#a9c179c537eefc3807911a2658fac7d7e" title=" " alt="" coords="28,404,373,440"/>
+<area shape="rect" id="node1" title="returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if..." alt="" coords="1445,121,1809,157"/>
+<area shape="rect" id="node2" href="$d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f" title=" " alt="" coords="991,5,1333,41"/>
+<area shape="rect" id="node3" href="$d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397" title="immediately transmit then clear the txBuffer" alt="" coords="989,65,1335,101"/>
+<area shape="rect" id="node4" href="$d2/da8/class_svc_serial_command_interface_a1e29f06d24eb83870212bf52563fd173.html#a1e29f06d24eb83870212bf52563fd173" title=" " alt="" coords="5,147,396,183"/>
+<area shape="rect" id="node5" href="$d2/da8/class_svc_serial_command_interface_adaa3d36d4c1a1784a1c18f87d756296e.html#adaa3d36d4c1a1784a1c18f87d756296e" title="Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed..." alt="" coords="928,257,1396,293"/>
+<area shape="rect" id="node10" href="$d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc" title=" " alt="" coords="927,407,1397,443"/>
+<area shape="rect" id="node6" href="$d4/dde/class_app_c_q_t_a5c33a48120697387e5435ae9d80aeb7c.html#a5c33a48120697387e5435ae9d80aeb7c" title=" " alt="" coords="527,228,795,264"/>
+<area shape="rect" id="node7" href="$d8/d1c/class_audio_director_a0e1e6093fa5c9c76f11483ac5c9cc776.html#a0e1e6093fa5c9c76f11483ac5c9cc776" title=" " alt="" coords="536,288,787,324"/>
+<area shape="rect" id="node8" href="$d2/da8/class_svc_serial_command_interface_add54582c8a1dae31f0d69bea84c65c84.html#add54582c8a1dae31f0d69bea84c65c84" title=" " alt="" coords="444,348,879,384"/>
+<area shape="rect" id="node9" href="$d4/dde/class_app_c_q_t_a0e1d9e850811f24577f20ac1900dd4f8.html#a0e1d9e850811f24577f20ac1900dd4f8" title=" " alt="" coords="574,408,749,444"/>
+<area shape="rect" id="node11" href="$d2/da8/class_svc_serial_command_interface_a9c179c537eefc3807911a2658fac7d7e.html#a9c179c537eefc3807911a2658fac7d7e" title=" " alt="" coords="489,468,834,504"/>
 </map>

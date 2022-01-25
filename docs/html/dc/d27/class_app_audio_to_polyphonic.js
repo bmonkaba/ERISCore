@@ -4,7 +4,7 @@ var class_app_audio_to_polyphonic =
     [ "changeVoice", "dc/d27/class_app_audio_to_polyphonic_a3d364aed0498754d8e63c082205be0a2.html#a3d364aed0498754d8e63c082205be0a2", null ],
     [ "initalize", "dc/d27/class_app_audio_to_polyphonic_aee6cbedf9885036f5fbb8d560e9a931b.html#aee6cbedf9885036f5fbb8d560e9a931b", null ],
     [ "makeAudioConnections", "dc/d27/class_app_audio_to_polyphonic_a805fac8a86e2d7b45054a818f79b45ac.html#a805fac8a86e2d7b45054a818f79b45ac", null ],
-    [ "MessageHandler", "dc/d27/class_app_audio_to_polyphonic_a454a8eeb8687423a046a517abe6d9e50.html#a454a8eeb8687423a046a517abe6d9e50", null ],
+    [ "messageHandler", "dc/d27/class_app_audio_to_polyphonic_a07757c615d81725236318fa3825d4e23.html#a07757c615d81725236318fa3825d4e23", null ],
     [ "onAnalog1", "dc/d27/class_app_audio_to_polyphonic_a9ce317d28f95391ac32bf335c35d04a9.html#a9ce317d28f95391ac32bf335c35d04a9", null ],
     [ "onAnalog2", "dc/d27/class_app_audio_to_polyphonic_ae81754e73d2f415b3906727b6c0c3009.html#ae81754e73d2f415b3906727b6c0c3009", null ],
     [ "onAnalog3", "dc/d27/class_app_audio_to_polyphonic_ab02258ccc069dbec717a098d9272c02b.html#ab02258ccc069dbec717a098d9272c02b", null ],

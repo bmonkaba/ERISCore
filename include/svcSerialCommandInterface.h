@@ -21,34 +21,35 @@
 
 /**
  * @brief  Serial communication service and interface
- *  Serial commands (rx):
+ *  Serial commands (rx): \n
  *
  *   LS [PATH] 
- *   GET [PATH]  (get file is responded with FS messages)
- *   ACON        (request current audio block connections)
- *   CONNECT     (make an audio block connection)
- *   DISCONNECT  (break an audio block connection)
- *   AA          (broadcast message to active app )
- *   STATS       
- *   CQT_CFG     request a dump of the cqt bin configs
- *   GET_DD      request a dump of the data dictionary       
- *   UPDATE_DD   key val   set a key value 
- *
- * Serial messages (tx):
- *
- *   CQT_H  (CQT BINS - High Range)
- *   CQT_L  (CQT  "     Low Range")
- *   CQT_EOF (End of analysis frame)
- *   DIR  (directory contents - aka the result of the ls command)
- *   DIR_EOF
- *   S   (FFT window stream)
- *   FS   (file stream)
- *   FS_END (file stream end, indicate to client eof)
- *   GET_ERR (file request error response )
- *   ACON START (begin audio connection list)
- *   ACON END (end audio connection list)
- *   RAM1   JSON container
- *   RAM2   JSON container
+ *   GET [PATH]  get file is responded with FS messages \n
+ *   ACON        request current audio block connections \n
+ *   CONNECT     make an audio block connection \n
+ *   DISCONNECT  break an audio block connection \n
+ *   APC         audio block parameter control message \n
+ *   AA          broadcast message to active app \n
+ *   STATS \n
+ *   CQT_CFG     request a dump of the cqt bin configs \n
+ *   GET_DD      request a dump of the data dictionary \n    
+ *   UPDATE_DD   key val   set a key value \n
+ *\n
+ * Serial messages (tx):\n
+ *\n
+ *   CQT_H  (CQT BINS - High Range) \n
+ *   CQT_L  (CQT  "     Low Range") \n
+ *   CQT_EOF (End of analysis frame) \n
+ *   DIR  (directory contents - aka the result of the ls command) \n
+ *   DIR_EOF \n
+ *   S   (FFT window stream) \n
+ *   FS   (file stream) \n
+ *   FS_END (file stream end, indicate to client eof) \n
+ *   GET_ERR (file request error response ) \n
+ *   ACON START (begin audio connection list) \n
+ *   ACON END (end audio connection list) \n
+ *   RAM1   JSON container \n
+ *   RAM2   JSON container \n
  */
 class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:

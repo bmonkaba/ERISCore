@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['key_1642',['key',['../d7/dd5/structsvc_data_dictionary_record_ac6cffcaffb12c6004039810e5b892123.html#ac6cffcaffb12c6004039810e5b892123',1,'svcDataDictionaryRecord::key()'],['../dd/df4/svc_data_dictionary_8h_a5892a9181e6a332f84d27aecd41dcd12.html#a5892a9181e6a332f84d27aecd41dcd12',1,'key():&#160;svcDataDictionary.h']]],
-  ['key_5fhash_1643',['key_hash',['../d7/dd5/structsvc_data_dictionary_record_a21e8e5eeb4ade3b2369fcbd11d15e9d7.html#a21e8e5eeb4ade3b2369fcbd11d15e9d7',1,'svcDataDictionaryRecord::key_hash()'],['../dd/df4/svc_data_dictionary_8h_af5018c52017bb6ac3f4ad520a244ad2f.html#af5018c52017bb6ac3f4ad520a244ad2f',1,'key_hash():&#160;svcDataDictionary.h']]]
+  ['last_5fframe_1612',['last_frame',['../d4/d7c/class_animation_a72c333aeb88aa7dd9a3a614d414e1c4a.html#a72c333aeb88aa7dd9a3a614d414e1c4a',1,'Animation']]],
+  ['last_5fx_1613',['last_x',['../de/d67/class_control_slider_afc35d14324896d8ad5674fabcb7166ec.html#afc35d14324896d8ad5674fabcb7166ec',1,'ControlSlider']]],
+  ['lasttrigger_1614',['lastTrigger',['../d5/d8f/class_analog_inputs_a8535eccc492342f73b8a997309cad97c.html#a8535eccc492342f73b8a997309cad97c',1,'AnalogInputs']]],
+  ['lastupdate_1615',['lastUpdate',['../d5/d8f/class_analog_inputs_a5444b5bc7f3db3eb230cdc0cc10eca3f.html#a5444b5bc7f3db3eb230cdc0cc10eca3f',1,'AnalogInputs']]]
 ];

@@ -44,6 +44,8 @@
 #include "arm_const_structs.h" //WILL BE NEEDED FOR IMPLEMENTING f32 FFT
 
 
+//static name used for looking up shortname by classname 
+const char* erisAudioAnalyzeFFT1024::short_name_lookup = "fft1024";
 
 // Approximates atan2(y, x) normalized to the [0,4] range
 // with a maximum error of 0.1620 degrees

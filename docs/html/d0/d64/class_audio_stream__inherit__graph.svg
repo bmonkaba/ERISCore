@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1386;
+var viewWidth = 1399;
 var viewHeight = 2297;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,53 +58,53 @@ var sectionId = 'dynsection-0';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="455.5,-1472.5 455.5,-2288.5 796.5,-2288.5 796.5,-1472.5 455.5,-1472.5"/>
-<text text-anchor="middle" x="626" y="-2271.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioStream</text>
-<polyline fill="none" stroke="black" points="455.5,-2262.5 796.5,-2262.5 "/>
-<text text-anchor="start" x="463.5" y="-2245.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * category</text>
-<text text-anchor="start" x="463.5" y="-2227.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles</text>
-<text text-anchor="start" x="463.5" y="-2209.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles_max</text>
-<text text-anchor="start" x="463.5" y="-2191.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t instance</text>
-<text text-anchor="start" x="463.5" y="-2173.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * shortName</text>
-<text text-anchor="start" x="463.5" y="-2155.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_inputs</text>
-<text text-anchor="start" x="463.5" y="-2137.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_outputs</text>
-<text text-anchor="start" x="463.5" y="-2119.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t cpu_cycles_total</text>
-<text text-anchor="start" x="463.5" y="-2101.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t cpu_cycles_total_max</text>
-<text text-anchor="start" x="463.5" y="-2083.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t memory_used</text>
-<text text-anchor="start" x="463.5" y="-2065.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t memory_used_max</text>
-<text text-anchor="start" x="463.5" y="-2047.7" font-family="Helvetica,sans-Serif" font-size="16.00"># bool active</text>
-<text text-anchor="start" x="463.5" y="-2029.7" font-family="Helvetica,sans-Serif" font-size="16.00"># unsigned char num_inputs</text>
-<text text-anchor="start" x="463.5" y="-2011.7" font-family="Helvetica,sans-Serif" font-size="16.00"># uint8_t numConnections</text>
-<text text-anchor="start" x="463.5" y="-1993.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; AudioConnection * destination_list</text>
-<text text-anchor="start" x="463.5" y="-1975.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t ** inputQueue</text>
-<text text-anchor="start" x="463.5" y="-1957.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; AudioStream * next_update</text>
-<text text-anchor="start" x="463.5" y="-1939.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static AudioStream * first_update</text>
-<text text-anchor="start" x="463.5" y="-1921.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static audio_block_t * memory_pool</text>
-<text text-anchor="start" x="463.5" y="-1903.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static uint32_t memory_pool_available_mask</text>
-<text text-anchor="start" x="463.5" y="-1885.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static uint16_t memory_pool_first_mask</text>
-<text text-anchor="start" x="463.5" y="-1867.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static bool update_scheduled</text>
-<polyline fill="none" stroke="black" points="455.5,-1858.5 796.5,-1858.5 "/>
-<text text-anchor="start" x="463.5" y="-1841.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioStream()</text>
-<text text-anchor="start" x="463.5" y="-1823.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioStream(unsigned char ninput,</text>
-<text text-anchor="start" x="463.5" y="-1805.7" font-family="Helvetica,sans-Serif" font-size="16.00"> audio_block_t **iqueue)</text>
-<text text-anchor="start" x="463.5" y="-1787.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool isActive(void)</text>
-<text text-anchor="start" x="463.5" y="-1769.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int processorUsage(void)</text>
-<text text-anchor="start" x="463.5" y="-1751.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int processorUsageMax(void)</text>
-<text text-anchor="start" x="463.5" y="-1733.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void processorUsageMaxReset(void)</text>
-<text text-anchor="start" x="463.5" y="-1715.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void initialize_memory(audio</text>
-<text text-anchor="start" x="463.5" y="-1697.7" font-family="Helvetica,sans-Serif" font-size="16.00">_block_t *data, unsigned int num)</text>
-<text text-anchor="start" x="463.5" y="-1679.7" font-family="Helvetica,sans-Serif" font-size="16.00"># audio_block_t * receiveReadOnly(unsigned</text>
-<text text-anchor="start" x="463.5" y="-1661.7" font-family="Helvetica,sans-Serif" font-size="16.00"> int index=0)</text>
-<text text-anchor="start" x="463.5" y="-1643.7" font-family="Helvetica,sans-Serif" font-size="16.00"># audio_block_t * receiveWritable(unsigned</text>
-<text text-anchor="start" x="463.5" y="-1625.7" font-family="Helvetica,sans-Serif" font-size="16.00"> int index=0)</text>
-<text text-anchor="start" x="463.5" y="-1607.7" font-family="Helvetica,sans-Serif" font-size="16.00"># void transmit(audio_block_t *block,</text>
-<text text-anchor="start" x="463.5" y="-1589.7" font-family="Helvetica,sans-Serif" font-size="16.00"> unsigned char index=0)</text>
-<text text-anchor="start" x="463.5" y="-1571.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static audio_block_t * allocate(void)</text>
-<text text-anchor="start" x="463.5" y="-1553.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void release(audio_block_t *block)</text>
-<text text-anchor="start" x="463.5" y="-1535.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void update_all(void)</text>
-<text text-anchor="start" x="463.5" y="-1517.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static bool update_setup(void)</text>
-<text text-anchor="start" x="463.5" y="-1499.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void update_stop(void)</text>
-<text text-anchor="start" x="463.5" y="-1481.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; virtual void update(void)=0</text>
+<polygon fill="#bfbfbf" stroke="black" points="468.5,-1472.5 468.5,-2288.5 809.5,-2288.5 809.5,-1472.5 468.5,-1472.5"/>
+<text text-anchor="middle" x="639" y="-2271.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioStream</text>
+<polyline fill="none" stroke="black" points="468.5,-2262.5 809.5,-2262.5 "/>
+<text text-anchor="start" x="476.5" y="-2245.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * category</text>
+<text text-anchor="start" x="476.5" y="-2227.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles</text>
+<text text-anchor="start" x="476.5" y="-2209.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles_max</text>
+<text text-anchor="start" x="476.5" y="-2191.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t instance</text>
+<text text-anchor="start" x="476.5" y="-2173.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * short_name</text>
+<text text-anchor="start" x="476.5" y="-2155.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_inputs</text>
+<text text-anchor="start" x="476.5" y="-2137.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_outputs</text>
+<text text-anchor="start" x="476.5" y="-2119.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t cpu_cycles_total</text>
+<text text-anchor="start" x="476.5" y="-2101.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t cpu_cycles_total_max</text>
+<text text-anchor="start" x="476.5" y="-2083.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t memory_used</text>
+<text text-anchor="start" x="476.5" y="-2065.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t memory_used_max</text>
+<text text-anchor="start" x="476.5" y="-2047.7" font-family="Helvetica,sans-Serif" font-size="16.00"># bool active</text>
+<text text-anchor="start" x="476.5" y="-2029.7" font-family="Helvetica,sans-Serif" font-size="16.00"># unsigned char num_inputs</text>
+<text text-anchor="start" x="476.5" y="-2011.7" font-family="Helvetica,sans-Serif" font-size="16.00"># uint8_t numConnections</text>
+<text text-anchor="start" x="476.5" y="-1993.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; AudioConnection * destination_list</text>
+<text text-anchor="start" x="476.5" y="-1975.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t ** inputQueue</text>
+<text text-anchor="start" x="476.5" y="-1957.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; AudioStream * next_update</text>
+<text text-anchor="start" x="476.5" y="-1939.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static AudioStream * first_update</text>
+<text text-anchor="start" x="476.5" y="-1921.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static audio_block_t * memory_pool</text>
+<text text-anchor="start" x="476.5" y="-1903.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static uint32_t memory_pool_available_mask</text>
+<text text-anchor="start" x="476.5" y="-1885.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static uint16_t memory_pool_first_mask</text>
+<text text-anchor="start" x="476.5" y="-1867.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; static bool update_scheduled</text>
+<polyline fill="none" stroke="black" points="468.5,-1858.5 809.5,-1858.5 "/>
+<text text-anchor="start" x="476.5" y="-1841.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioStream()</text>
+<text text-anchor="start" x="476.5" y="-1823.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioStream(unsigned char ninput,</text>
+<text text-anchor="start" x="476.5" y="-1805.7" font-family="Helvetica,sans-Serif" font-size="16.00"> audio_block_t **iqueue)</text>
+<text text-anchor="start" x="476.5" y="-1787.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool isActive(void)</text>
+<text text-anchor="start" x="476.5" y="-1769.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int processorUsage(void)</text>
+<text text-anchor="start" x="476.5" y="-1751.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int processorUsageMax(void)</text>
+<text text-anchor="start" x="476.5" y="-1733.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void processorUsageMaxReset(void)</text>
+<text text-anchor="start" x="476.5" y="-1715.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void initialize_memory(audio</text>
+<text text-anchor="start" x="476.5" y="-1697.7" font-family="Helvetica,sans-Serif" font-size="16.00">_block_t *data, unsigned int num)</text>
+<text text-anchor="start" x="476.5" y="-1679.7" font-family="Helvetica,sans-Serif" font-size="16.00"># audio_block_t * receiveReadOnly(unsigned</text>
+<text text-anchor="start" x="476.5" y="-1661.7" font-family="Helvetica,sans-Serif" font-size="16.00"> int index=0)</text>
+<text text-anchor="start" x="476.5" y="-1643.7" font-family="Helvetica,sans-Serif" font-size="16.00"># audio_block_t * receiveWritable(unsigned</text>
+<text text-anchor="start" x="476.5" y="-1625.7" font-family="Helvetica,sans-Serif" font-size="16.00"> int index=0)</text>
+<text text-anchor="start" x="476.5" y="-1607.7" font-family="Helvetica,sans-Serif" font-size="16.00"># void transmit(audio_block_t *block,</text>
+<text text-anchor="start" x="476.5" y="-1589.7" font-family="Helvetica,sans-Serif" font-size="16.00"> unsigned char index=0)</text>
+<text text-anchor="start" x="476.5" y="-1571.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static audio_block_t * allocate(void)</text>
+<text text-anchor="start" x="476.5" y="-1553.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void release(audio_block_t *block)</text>
+<text text-anchor="start" x="476.5" y="-1535.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void update_all(void)</text>
+<text text-anchor="start" x="476.5" y="-1517.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static bool update_setup(void)</text>
+<text text-anchor="start" x="476.5" y="-1499.7" font-family="Helvetica,sans-Serif" font-size="16.00"># static void update_stop(void)</text>
+<text text-anchor="start" x="476.5" y="-1481.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; virtual void update(void)=0</text>
 </a>
 </g>
 </g>
@@ -112,280 +112,281 @@ var sectionId = 'dynsection-0';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d4/dd5/class_audio_synth_waveform.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="0,-565.5 0,-1003.5 278,-1003.5 278,-565.5 0,-565.5"/>
-<text text-anchor="middle" x="139" y="-986.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioSynthWaveform</text>
-<polyline fill="none" stroke="black" points="0,-977.5 278,-977.5 "/>
-<text text-anchor="start" x="8" y="-960.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const int16_t * arbdata</text>
-<text text-anchor="start" x="8" y="-942.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t magnitude</text>
-<text text-anchor="start" x="8" y="-924.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_accumulator</text>
-<text text-anchor="start" x="8" y="-906.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_increment</text>
-<text text-anchor="start" x="8" y="-888.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_offset</text>
-<text text-anchor="start" x="8" y="-870.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t pulse_width</text>
-<text text-anchor="start" x="8" y="-852.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t sample</text>
-<text text-anchor="start" x="8" y="-834.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t tone_offset</text>
-<text text-anchor="start" x="8" y="-816.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ short tone_type</text>
-<polyline fill="none" stroke="black" points="0,-807.5 278,-807.5 "/>
-<text text-anchor="start" x="8" y="-790.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioSynthWaveform(void)</text>
-<text text-anchor="start" x="8" y="-772.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void amplitude(float n)</text>
-<text text-anchor="start" x="8" y="-754.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void arbitraryWaveform(const int16</text>
-<text text-anchor="start" x="8" y="-736.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t *data, float maxFreq)</text>
-<text text-anchor="start" x="8" y="-718.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(float t_amp, float t_freq,</text>
-<text text-anchor="start" x="8" y="-700.7" font-family="Helvetica,sans-Serif" font-size="16.00"> short t_type)</text>
-<text text-anchor="start" x="8" y="-682.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(short t_type)</text>
-<text text-anchor="start" x="8" y="-664.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequency(float freq)</text>
-<text text-anchor="start" x="8" y="-646.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float getPhase()</text>
-<text text-anchor="start" x="8" y="-628.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void offset(float n)</text>
-<text text-anchor="start" x="8" y="-610.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void phase(float angle)</text>
-<text text-anchor="start" x="8" y="-592.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void pulseWidth(float n)</text>
-<text text-anchor="start" x="8" y="-574.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
+<polygon fill="none" stroke="black" points="11,-565.5 11,-1003.5 289,-1003.5 289,-565.5 11,-565.5"/>
+<text text-anchor="middle" x="150" y="-986.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioSynthWaveform</text>
+<polyline fill="none" stroke="black" points="11,-977.5 289,-977.5 "/>
+<text text-anchor="start" x="19" y="-960.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const int16_t * arbdata</text>
+<text text-anchor="start" x="19" y="-942.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t magnitude</text>
+<text text-anchor="start" x="19" y="-924.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_accumulator</text>
+<text text-anchor="start" x="19" y="-906.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_increment</text>
+<text text-anchor="start" x="19" y="-888.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t phase_offset</text>
+<text text-anchor="start" x="19" y="-870.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint32_t pulse_width</text>
+<text text-anchor="start" x="19" y="-852.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t sample</text>
+<text text-anchor="start" x="19" y="-834.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t tone_offset</text>
+<text text-anchor="start" x="19" y="-816.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ short tone_type</text>
+<polyline fill="none" stroke="black" points="11,-807.5 289,-807.5 "/>
+<text text-anchor="start" x="19" y="-790.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioSynthWaveform(void)</text>
+<text text-anchor="start" x="19" y="-772.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void amplitude(float n)</text>
+<text text-anchor="start" x="19" y="-754.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void arbitraryWaveform(const int16</text>
+<text text-anchor="start" x="19" y="-736.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t *data, float maxFreq)</text>
+<text text-anchor="start" x="19" y="-718.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(float t_amp, float t_freq,</text>
+<text text-anchor="start" x="19" y="-700.7" font-family="Helvetica,sans-Serif" font-size="16.00"> short t_type)</text>
+<text text-anchor="start" x="19" y="-682.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(short t_type)</text>
+<text text-anchor="start" x="19" y="-664.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequency(float freq)</text>
+<text text-anchor="start" x="19" y="-646.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float getPhase()</text>
+<text text-anchor="start" x="19" y="-628.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void offset(float n)</text>
+<text text-anchor="start" x="19" y="-610.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void phase(float angle)</text>
+<text text-anchor="start" x="19" y="-592.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void pulseWidth(float n)</text>
+<text text-anchor="start" x="19" y="-574.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M449.03,-1685.73C389.85,-1612.06 328.46,-1524.48 287,-1436 223.06,-1299.53 185.88,-1133.72 164.78,-1003.67"/>
-<polygon fill="none" stroke="midnightblue" points="446.49,-1688.14 455.49,-1693.72 451.93,-1683.74 446.49,-1688.14"/>
+<path fill="none" stroke="midnightblue" d="M461.96,-1685.39C402.86,-1611.78 341.54,-1524.32 300,-1436 235.81,-1299.53 198.12,-1133.73 176.58,-1003.67"/>
+<polygon fill="none" stroke="midnightblue" points="459.41,-1687.8 468.41,-1693.39 464.86,-1683.41 459.41,-1687.8"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d9/d43/class_audio_synth_waveform_modulated.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="296,-556.5 296,-1012.5 606,-1012.5 606,-556.5 296,-556.5"/>
-<text text-anchor="middle" x="451" y="-995.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioSynthWaveformModulated</text>
-<polyline fill="none" stroke="black" points="296,-986.5 606,-986.5 "/>
-<text text-anchor="start" x="304" y="-969.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const int16_t * arbdata</text>
-<text text-anchor="start" x="304" y="-951.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
-<text text-anchor="start" x="304" y="-933.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t magnitude</text>
-<text text-anchor="start" x="304" y="-915.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t modulation_factor</text>
-<text text-anchor="start" x="304" y="-897.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t modulation_type</text>
-<text text-anchor="start" x="304" y="-879.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phase_accumulator</text>
-<text text-anchor="start" x="304" y="-861.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phase_increment</text>
-<text text-anchor="start" x="304" y="-843.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phasedata</text>
-<text text-anchor="start" x="304" y="-825.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t sample</text>
-<text text-anchor="start" x="304" y="-807.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t tone_offset</text>
-<text text-anchor="start" x="304" y="-789.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t tone_type</text>
-<polyline fill="none" stroke="black" points="296,-780.5 606,-780.5 "/>
-<text text-anchor="start" x="304" y="-763.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioSynthWaveformModulated(void)</text>
-<text text-anchor="start" x="304" y="-745.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void amplitude(float n)</text>
-<text text-anchor="start" x="304" y="-727.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void arbitraryWaveform(const int16</text>
-<text text-anchor="start" x="304" y="-709.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t *data, float maxFreq)</text>
-<text text-anchor="start" x="304" y="-691.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(float t_amp, float t_freq,</text>
-<text text-anchor="start" x="304" y="-673.7" font-family="Helvetica,sans-Serif" font-size="16.00"> short t_type)</text>
-<text text-anchor="start" x="304" y="-655.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(short t_type)</text>
-<text text-anchor="start" x="304" y="-637.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequency(float freq)</text>
-<text text-anchor="start" x="304" y="-619.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequencyModulation(float octaves)</text>
-<text text-anchor="start" x="304" y="-601.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void offset(float n)</text>
-<text text-anchor="start" x="304" y="-583.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void phaseModulation(float degrees)</text>
-<text text-anchor="start" x="304" y="-565.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
+<polygon fill="none" stroke="black" points="309,-556.5 309,-1012.5 619,-1012.5 619,-556.5 309,-556.5"/>
+<text text-anchor="middle" x="464" y="-995.7" font-family="Helvetica,sans-Serif" font-size="16.00">AudioSynthWaveformModulated</text>
+<polyline fill="none" stroke="black" points="309,-986.5 619,-986.5 "/>
+<text text-anchor="start" x="317" y="-969.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const int16_t * arbdata</text>
+<text text-anchor="start" x="317" y="-951.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
+<text text-anchor="start" x="317" y="-933.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t magnitude</text>
+<text text-anchor="start" x="317" y="-915.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t modulation_factor</text>
+<text text-anchor="start" x="317" y="-897.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t modulation_type</text>
+<text text-anchor="start" x="317" y="-879.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phase_accumulator</text>
+<text text-anchor="start" x="317" y="-861.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phase_increment</text>
+<text text-anchor="start" x="317" y="-843.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t phasedata</text>
+<text text-anchor="start" x="317" y="-825.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t sample</text>
+<text text-anchor="start" x="317" y="-807.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t tone_offset</text>
+<text text-anchor="start" x="317" y="-789.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t tone_type</text>
+<polyline fill="none" stroke="black" points="309,-780.5 619,-780.5 "/>
+<text text-anchor="start" x="317" y="-763.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ AudioSynthWaveformModulated(void)</text>
+<text text-anchor="start" x="317" y="-745.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void amplitude(float n)</text>
+<text text-anchor="start" x="317" y="-727.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void arbitraryWaveform(const int16</text>
+<text text-anchor="start" x="317" y="-709.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t *data, float maxFreq)</text>
+<text text-anchor="start" x="317" y="-691.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(float t_amp, float t_freq,</text>
+<text text-anchor="start" x="317" y="-673.7" font-family="Helvetica,sans-Serif" font-size="16.00"> short t_type)</text>
+<text text-anchor="start" x="317" y="-655.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void begin(short t_type)</text>
+<text text-anchor="start" x="317" y="-637.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequency(float freq)</text>
+<text text-anchor="start" x="317" y="-619.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void frequencyModulation(float octaves)</text>
+<text text-anchor="start" x="317" y="-601.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void offset(float n)</text>
+<text text-anchor="start" x="317" y="-583.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void phaseModulation(float degrees)</text>
+<text text-anchor="start" x="317" y="-565.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M559.23,-1462.1C534.81,-1309.42 508.1,-1142.44 487.32,-1012.57"/>
-<polygon fill="none" stroke="midnightblue" points="555.8,-1462.81 560.84,-1472.13 562.71,-1461.71 555.8,-1462.81"/>
+<path fill="none" stroke="midnightblue" d="M572.23,-1462.1C547.81,-1309.42 521.1,-1142.44 500.32,-1012.57"/>
+<polygon fill="none" stroke="midnightblue" points="568.8,-1462.81 573.84,-1472.13 575.71,-1461.71 568.8,-1462.81"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="../../d0/d55/classeris_audio_analyze_f_f_t1024.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="624,-259.5 624,-1309.5 980,-1309.5 980,-259.5 624,-259.5"/>
-<text text-anchor="middle" x="802" y="-1292.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioAnalyzeFFT1024</text>
-<polyline fill="none" stroke="black" points="624,-1283.5 980,-1283.5 "/>
-<text text-anchor="start" x="632" y="-1266.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t BLOCK_REFRESH_SIZE</text>
-<text text-anchor="start" x="632" y="-1248.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t BLOCKS_PER_FFT</text>
-<text text-anchor="start" x="632" y="-1230.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool enabled</text>
-<text text-anchor="start" x="632" y="-1212.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ arm_cfft_radix4_instance_f32 fft_inst</text>
-<text text-anchor="start" x="632" y="-1194.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t MEM_STEP</text>
-<text text-anchor="start" x="632" y="-1176.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t sample_block</text>
-<text text-anchor="start" x="632" y="-1158.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int SAMPLING_INDEX</text>
-<text text-anchor="start" x="632" y="-1140.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ subsample_range ssr</text>
-<text text-anchor="start" x="632" y="-1122.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int subsample_by</text>
-<text text-anchor="start" x="632" y="-1104.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t subsample_highfreqrange</text>
-<text text-anchor="start" x="632" y="-1086.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t subsample_lowfreqrange</text>
-<text text-anchor="start" x="632" y="-1068.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
-<text text-anchor="start" x="632" y="-1050.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile bool is_analyzed</text>
-<text text-anchor="start" x="632" y="-1032.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile bool outputflag</text>
-<text text-anchor="start" x="632" y="-1014.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const int16_t * window</text>
-<text text-anchor="start" x="632" y="-996.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const float32_t * window_f32</text>
-<polyline fill="none" stroke="black" points="624,-987.5 980,-987.5 "/>
-<text text-anchor="start" x="632" y="-970.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioAnalyzeFFT1024()</text>
-<text text-anchor="start" x="632" y="-952.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t buffer[2048] __attribute_</text>
-<text text-anchor="start" x="632" y="-934.7" font-family="Helvetica,sans-Serif" font-size="16.00">_((aligned(2)))</text>
-<text text-anchor="start" x="632" y="-916.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ volatile float32_t tmp_buffer[2048]</text>
-<text text-anchor="start" x="632" y="-898.7" font-family="Helvetica,sans-Serif" font-size="16.00"> __attribute__((aligned(4)))</text>
-<text text-anchor="start" x="632" y="-880.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ volatile float32_t output[1024] _</text>
-<text text-anchor="start" x="632" y="-862.7" font-family="Helvetica,sans-Serif" font-size="16.00">_attribute__((aligned(4)))</text>
-<text text-anchor="start" x="632" y="-844.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float32_t phase[512] __attribute_</text>
-<text text-anchor="start" x="632" y="-826.7" font-family="Helvetica,sans-Serif" font-size="16.00">_((aligned(4)))</text>
-<text text-anchor="start" x="632" y="-808.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void analyze(void)</text>
-<text text-anchor="start" x="632" y="-790.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool available()</text>
-<text text-anchor="start" x="632" y="-772.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void averageTogether(uint8_t n)</text>
-<text text-anchor="start" x="632" y="-754.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool capture(void)</text>
-<text text-anchor="start" x="632" y="-736.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void configSubsample(uint16_t subsample,</text>
-<text text-anchor="start" x="632" y="-718.7" font-family="Helvetica,sans-Serif" font-size="16.00"> subsample_range range)</text>
-<text text-anchor="start" x="632" y="-700.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void enableFFT(bool enable_state)</text>
-<text text-anchor="start" x="632" y="-682.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(FFTReadRange *fftRR)</text>
-<text text-anchor="start" x="632" y="-664.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(float freq_from, float</text>
-<text text-anchor="start" x="632" y="-646.7" font-family="Helvetica,sans-Serif" font-size="16.00"> freq_to, FFTReadRange *fftRR=NULL)</text>
-<text text-anchor="start" x="632" y="-628.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(unsigned int binFirst,</text>
-<text text-anchor="start" x="632" y="-610.7" font-family="Helvetica,sans-Serif" font-size="16.00"> unsigned int binLast, FFTReadRange</text>
-<text text-anchor="start" x="632" y="-592.7" font-family="Helvetica,sans-Serif" font-size="16.00"> *fftRR=NULL)</text>
-<text text-anchor="start" x="632" y="-574.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(unsigned int binNumber)</text>
-<text text-anchor="start" x="632" y="-556.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void reset()</text>
-<text text-anchor="start" x="632" y="-538.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void setActiveRange(subsample_range range)</text>
-<text text-anchor="start" x="632" y="-520.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void spectralFilter()</text>
-<text text-anchor="start" x="632" y="-502.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void toggleActiveRange()</text>
-<text text-anchor="start" x="632" y="-484.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
-<text text-anchor="start" x="632" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void windowFunction(const int16_t *w)</text>
-<text text-anchor="start" x="632" y="-448.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static int compare_fftrr_cqt_bin(const</text>
-<text text-anchor="start" x="632" y="-430.7" font-family="Helvetica,sans-Serif" font-size="16.00"> void *p, const void *q)</text>
-<text text-anchor="start" x="632" y="-412.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static int compare_fftrr_value(const</text>
-<text text-anchor="start" x="632" y="-394.7" font-family="Helvetica,sans-Serif" font-size="16.00"> void *p, const void *q)</text>
-<text text-anchor="start" x="632" y="-376.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void sort_fftrr_by_cqt_bin</text>
-<text text-anchor="start" x="632" y="-358.7" font-family="Helvetica,sans-Serif" font-size="16.00">(FFTReadRange *a, size_t n)</text>
-<text text-anchor="start" x="632" y="-340.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void sort_fftrr_by_value(FFTReadRange</text>
-<text text-anchor="start" x="632" y="-322.7" font-family="Helvetica,sans-Serif" font-size="16.00"> *a, size_t n)</text>
-<text text-anchor="start" x="632" y="-304.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; void copy_to_fft_buffer(void *destination,</text>
-<text text-anchor="start" x="632" y="-286.7" font-family="Helvetica,sans-Serif" font-size="16.00"> const void *source, int subsample)</text>
-<text text-anchor="start" x="632" y="-268.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; void init(void)</text>
+<polygon fill="none" stroke="black" points="637,-250.5 637,-1318.5 993,-1318.5 993,-250.5 637,-250.5"/>
+<text text-anchor="middle" x="815" y="-1301.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioAnalyzeFFT1024</text>
+<polyline fill="none" stroke="black" points="637,-1292.5 993,-1292.5 "/>
+<text text-anchor="start" x="645" y="-1275.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t BLOCK_REFRESH_SIZE</text>
+<text text-anchor="start" x="645" y="-1257.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t BLOCKS_PER_FFT</text>
+<text text-anchor="start" x="645" y="-1239.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool enabled</text>
+<text text-anchor="start" x="645" y="-1221.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ arm_cfft_radix4_instance_f32 fft_inst</text>
+<text text-anchor="start" x="645" y="-1203.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t MEM_STEP</text>
+<text text-anchor="start" x="645" y="-1185.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t sample_block</text>
+<text text-anchor="start" x="645" y="-1167.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int SAMPLING_INDEX</text>
+<text text-anchor="start" x="645" y="-1149.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ subsample_range ssr</text>
+<text text-anchor="start" x="645" y="-1131.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int subsample_by</text>
+<text text-anchor="start" x="645" y="-1113.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t subsample_highfreqrange</text>
+<text text-anchor="start" x="645" y="-1095.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t subsample_lowfreqrange</text>
+<text text-anchor="start" x="645" y="-1077.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static const char * short_name_lookup</text>
+<text text-anchor="start" x="645" y="-1059.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
+<text text-anchor="start" x="645" y="-1041.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile bool is_analyzed</text>
+<text text-anchor="start" x="645" y="-1023.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile bool outputflag</text>
+<text text-anchor="start" x="645" y="-1005.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const int16_t * window</text>
+<text text-anchor="start" x="645" y="-987.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const float32_t * window_f32</text>
+<polyline fill="none" stroke="black" points="637,-978.5 993,-978.5 "/>
+<text text-anchor="start" x="645" y="-961.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioAnalyzeFFT1024()</text>
+<text text-anchor="start" x="645" y="-943.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t buffer[2048] __attribute_</text>
+<text text-anchor="start" x="645" y="-925.7" font-family="Helvetica,sans-Serif" font-size="16.00">_((aligned(2)))</text>
+<text text-anchor="start" x="645" y="-907.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ volatile float32_t tmp_buffer[2048]</text>
+<text text-anchor="start" x="645" y="-889.7" font-family="Helvetica,sans-Serif" font-size="16.00"> __attribute__((aligned(4)))</text>
+<text text-anchor="start" x="645" y="-871.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ volatile float32_t output[1024] _</text>
+<text text-anchor="start" x="645" y="-853.7" font-family="Helvetica,sans-Serif" font-size="16.00">_attribute__((aligned(4)))</text>
+<text text-anchor="start" x="645" y="-835.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float32_t phase[512] __attribute_</text>
+<text text-anchor="start" x="645" y="-817.7" font-family="Helvetica,sans-Serif" font-size="16.00">_((aligned(4)))</text>
+<text text-anchor="start" x="645" y="-799.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void analyze(void)</text>
+<text text-anchor="start" x="645" y="-781.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool available()</text>
+<text text-anchor="start" x="645" y="-763.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void averageTogether(uint8_t n)</text>
+<text text-anchor="start" x="645" y="-745.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool capture(void)</text>
+<text text-anchor="start" x="645" y="-727.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void configSubsample(uint16_t subsample,</text>
+<text text-anchor="start" x="645" y="-709.7" font-family="Helvetica,sans-Serif" font-size="16.00"> subsample_range range)</text>
+<text text-anchor="start" x="645" y="-691.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void enableFFT(bool enable_state)</text>
+<text text-anchor="start" x="645" y="-673.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(FFTReadRange *fftRR)</text>
+<text text-anchor="start" x="645" y="-655.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(float freq_from, float</text>
+<text text-anchor="start" x="645" y="-637.7" font-family="Helvetica,sans-Serif" font-size="16.00"> freq_to, FFTReadRange *fftRR=NULL)</text>
+<text text-anchor="start" x="645" y="-619.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(unsigned int binFirst,</text>
+<text text-anchor="start" x="645" y="-601.7" font-family="Helvetica,sans-Serif" font-size="16.00"> unsigned int binLast, FFTReadRange</text>
+<text text-anchor="start" x="645" y="-583.7" font-family="Helvetica,sans-Serif" font-size="16.00"> *fftRR=NULL)</text>
+<text text-anchor="start" x="645" y="-565.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ float read(unsigned int binNumber)</text>
+<text text-anchor="start" x="645" y="-547.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void reset()</text>
+<text text-anchor="start" x="645" y="-529.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void setActiveRange(subsample_range range)</text>
+<text text-anchor="start" x="645" y="-511.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void spectralFilter()</text>
+<text text-anchor="start" x="645" y="-493.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void toggleActiveRange()</text>
+<text text-anchor="start" x="645" y="-475.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
+<text text-anchor="start" x="645" y="-457.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void windowFunction(const int16_t *w)</text>
+<text text-anchor="start" x="645" y="-439.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static int compare_fftrr_cqt_bin(const</text>
+<text text-anchor="start" x="645" y="-421.7" font-family="Helvetica,sans-Serif" font-size="16.00"> void *p, const void *q)</text>
+<text text-anchor="start" x="645" y="-403.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static int compare_fftrr_value(const</text>
+<text text-anchor="start" x="645" y="-385.7" font-family="Helvetica,sans-Serif" font-size="16.00"> void *p, const void *q)</text>
+<text text-anchor="start" x="645" y="-367.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void sort_fftrr_by_cqt_bin</text>
+<text text-anchor="start" x="645" y="-349.7" font-family="Helvetica,sans-Serif" font-size="16.00">(FFTReadRange *a, size_t n)</text>
+<text text-anchor="start" x="645" y="-331.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static void sort_fftrr_by_value(FFTReadRange</text>
+<text text-anchor="start" x="645" y="-313.7" font-family="Helvetica,sans-Serif" font-size="16.00"> *a, size_t n)</text>
+<text text-anchor="start" x="645" y="-295.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; void copy_to_fft_buffer(void *destination,</text>
+<text text-anchor="start" x="645" y="-277.7" font-family="Helvetica,sans-Serif" font-size="16.00"> const void *source, int subsample)</text>
+<text text-anchor="start" x="645" y="-259.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; void init(void)</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M693.14,-1462.18C701.17,-1412.27 709.44,-1360.84 717.67,-1309.68"/>
-<polygon fill="none" stroke="midnightblue" points="689.67,-1461.71 691.54,-1472.13 696.58,-1462.82 689.67,-1461.71"/>
+<path fill="none" stroke="midnightblue" d="M706.15,-1462.13C713.71,-1415.14 721.48,-1366.79 729.24,-1318.59"/>
+<polygon fill="none" stroke="midnightblue" points="702.67,-1461.71 704.54,-1472.13 709.58,-1462.82 702.67,-1461.71"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="../../d4/d81/classeris_audio_analyze_scope.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="998,-133.5 998,-1435.5 1378,-1435.5 1378,-133.5 998,-133.5"/>
-<text text-anchor="middle" x="1188" y="-1418.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioAnalyzeScope</text>
-<polyline fill="none" stroke="black" points="998,-1409.5 1378,-1409.5 "/>
-<text text-anchor="start" x="1006" y="-1392.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int8_t auto_h_div</text>
-<text text-anchor="start" x="1006" y="-1374.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; bool autoTrigger</text>
-<text text-anchor="start" x="1006" y="-1356.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t count</text>
-<text text-anchor="start" x="1006" y="-1338.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t delay_length</text>
-<text text-anchor="start" x="1006" y="-1320.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; q63_t dot</text>
-<text text-anchor="start" x="1006" y="-1302.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile q63_t dot_output</text>
-<text text-anchor="start" x="1006" y="-1284.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAccel</text>
-<text text-anchor="start" x="1006" y="-1266.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAccel_output</text>
-<text text-anchor="start" x="1006" y="-1248.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAvg</text>
-<text text-anchor="start" x="1006" y="-1230.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAvg_output</text>
-<text text-anchor="start" x="1006" y="-1212.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAvgSlow</text>
-<text text-anchor="start" x="1006" y="-1194.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAvgSlow_output</text>
-<text text-anchor="start" x="1006" y="-1176.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotDelta</text>
-<text text-anchor="start" x="1006" y="-1158.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotDelta_output</text>
-<text text-anchor="start" x="1006" y="-1140.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotDeltaMACD</text>
-<text text-anchor="start" x="1006" y="-1122.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotDeltaMACD_output</text>
-<text text-anchor="start" x="1006" y="-1104.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; q63_t dotLast</text>
-<text text-anchor="start" x="1006" y="-1086.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile q63_t dotLast_output</text>
-<text text-anchor="start" x="1006" y="-1068.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotMACD</text>
-<text text-anchor="start" x="1006" y="-1050.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotMACD_output</text>
-<text text-anchor="start" x="1006" y="-1032.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeCount</text>
-<text text-anchor="start" x="1006" y="-1014.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeCount_ch2</text>
-<text text-anchor="start" x="1006" y="-996.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeCount_ch2_output</text>
-<text text-anchor="start" x="1006" y="-978.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeCount_output</text>
-<text text-anchor="start" x="1006" y="-960.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeDelay</text>
-<text text-anchor="start" x="1006" y="-942.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeDelay2</text>
-<text text-anchor="start" x="1006" y="-924.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeDelay2_output</text>
-<text text-anchor="start" x="1006" y="-906.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeDelay_output</text>
-<text text-anchor="start" x="1006" y="-888.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeTimer</text>
-<text text-anchor="start" x="1006" y="-870.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeTimer2</text>
-<text text-anchor="start" x="1006" y="-852.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t h_div</text>
-<text text-anchor="start" x="1006" y="-834.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int8_t h_div_count</text>
-<text text-anchor="start" x="1006" y="-816.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
-<text text-anchor="start" x="1006" y="-798.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; bool isAvailable</text>
-<text text-anchor="start" x="1006" y="-780.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t mem_length</text>
-<text text-anchor="start" x="1006" y="-762.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const char * myname</text>
-<text text-anchor="start" x="1006" y="-744.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t peakValue</text>
-<text text-anchor="start" x="1006" y="-726.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int16_t peakValue_output</text>
-<text text-anchor="start" x="1006" y="-708.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t state</text>
-<text text-anchor="start" x="1006" y="-690.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t trigger_edge</text>
-<text text-anchor="start" x="1006" y="-672.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t trigger_level</text>
-<text text-anchor="start" x="1006" y="-654.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t trigger_wait_count</text>
-<polyline fill="none" stroke="black" points="998,-645.5 1378,-645.5 "/>
-<text text-anchor="start" x="1006" y="-628.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioAnalyzeScope(void)</text>
-<text text-anchor="start" x="1006" y="-610.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool available(void)</text>
-<text text-anchor="start" x="1006" y="-592.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void delay(uint32_t num)</text>
-<text text-anchor="start" x="1006" y="-574.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotAcceleration()</text>
-<text text-anchor="start" x="1006" y="-556.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotDelta()</text>
-<text text-anchor="start" x="1006" y="-538.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotDeltaMACD()</text>
-<text text-anchor="start" x="1006" y="-520.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotMACD()</text>
-<text text-anchor="start" x="1006" y="-502.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProduct()</text>
-<text text-anchor="start" x="1006" y="-484.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProductAvg()</text>
-<text text-anchor="start" x="1006" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProductAvgSlow()</text>
-<text text-anchor="start" x="1006" y="-448.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeCount()</text>
-<text text-anchor="start" x="1006" y="-430.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeCount_ch2()</text>
-<text text-anchor="start" x="1006" y="-412.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeDelay()</text>
-<text text-anchor="start" x="1006" y="-394.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeDelay2()</text>
-<text text-anchor="start" x="1006" y="-376.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t getHDiv()</text>
-<text text-anchor="start" x="1006" y="-358.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t getPeakValue()</text>
-<text text-anchor="start" x="1006" y="-340.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void hdivide(int8_t horizontal_division)</text>
-<text text-anchor="start" x="1006" y="-322.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void length(uint32_t num)</text>
-<text text-anchor="start" x="1006" y="-304.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void name(const char *str)</text>
-<text text-anchor="start" x="1006" y="-286.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t read(int8_t channel, uint16</text>
-<text text-anchor="start" x="1006" y="-268.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t mem_index)</text>
-<text text-anchor="start" x="1006" y="-250.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void trigger(float level, int edge)</text>
-<text text-anchor="start" x="1006" y="-232.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void trigger(void)</text>
-<text text-anchor="start" x="1006" y="-214.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
-<text text-anchor="start" x="1006" y="-196.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t memory[2][OSCOPE_CAPTURE_LENGTH]</text>
-<text text-anchor="start" x="1006" y="-178.7" font-family="Helvetica,sans-Serif" font-size="16.00"> __attribute__((aligned(4)))</text>
-<text text-anchor="start" x="1006" y="-160.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t _memory[2][OSCOPE_CAPTURE</text>
-<text text-anchor="start" x="1006" y="-142.7" font-family="Helvetica,sans-Serif" font-size="16.00">_LENGTH] __attribute__((aligned(4)))</text>
+<polygon fill="none" stroke="black" points="1011,-133.5 1011,-1435.5 1391,-1435.5 1391,-133.5 1011,-133.5"/>
+<text text-anchor="middle" x="1201" y="-1418.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioAnalyzeScope</text>
+<polyline fill="none" stroke="black" points="1011,-1409.5 1391,-1409.5 "/>
+<text text-anchor="start" x="1019" y="-1392.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int8_t auto_h_div</text>
+<text text-anchor="start" x="1019" y="-1374.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; bool autoTrigger</text>
+<text text-anchor="start" x="1019" y="-1356.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t count</text>
+<text text-anchor="start" x="1019" y="-1338.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t delay_length</text>
+<text text-anchor="start" x="1019" y="-1320.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; q63_t dot</text>
+<text text-anchor="start" x="1019" y="-1302.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile q63_t dot_output</text>
+<text text-anchor="start" x="1019" y="-1284.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAccel</text>
+<text text-anchor="start" x="1019" y="-1266.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAccel_output</text>
+<text text-anchor="start" x="1019" y="-1248.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAvg</text>
+<text text-anchor="start" x="1019" y="-1230.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAvg_output</text>
+<text text-anchor="start" x="1019" y="-1212.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotAvgSlow</text>
+<text text-anchor="start" x="1019" y="-1194.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotAvgSlow_output</text>
+<text text-anchor="start" x="1019" y="-1176.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotDelta</text>
+<text text-anchor="start" x="1019" y="-1158.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotDelta_output</text>
+<text text-anchor="start" x="1019" y="-1140.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotDeltaMACD</text>
+<text text-anchor="start" x="1019" y="-1122.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotDeltaMACD_output</text>
+<text text-anchor="start" x="1019" y="-1104.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; q63_t dotLast</text>
+<text text-anchor="start" x="1019" y="-1086.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile q63_t dotLast_output</text>
+<text text-anchor="start" x="1019" y="-1068.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int32_t dotMACD</text>
+<text text-anchor="start" x="1019" y="-1050.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int32_t dotMACD_output</text>
+<text text-anchor="start" x="1019" y="-1032.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeCount</text>
+<text text-anchor="start" x="1019" y="-1014.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeCount_ch2</text>
+<text text-anchor="start" x="1019" y="-996.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeCount_ch2_output</text>
+<text text-anchor="start" x="1019" y="-978.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeCount_output</text>
+<text text-anchor="start" x="1019" y="-960.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeDelay</text>
+<text text-anchor="start" x="1019" y="-942.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeDelay2</text>
+<text text-anchor="start" x="1019" y="-924.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeDelay2_output</text>
+<text text-anchor="start" x="1019" y="-906.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile uint32_t edgeDelay_output</text>
+<text text-anchor="start" x="1019" y="-888.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeTimer</text>
+<text text-anchor="start" x="1019" y="-870.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t edgeTimer2</text>
+<text text-anchor="start" x="1019" y="-852.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t h_div</text>
+<text text-anchor="start" x="1019" y="-834.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int8_t h_div_count</text>
+<text text-anchor="start" x="1019" y="-816.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; audio_block_t * inputQueueArray</text>
+<text text-anchor="start" x="1019" y="-798.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; bool isAvailable</text>
+<text text-anchor="start" x="1019" y="-780.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint32_t mem_length</text>
+<text text-anchor="start" x="1019" y="-762.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; const char * myname</text>
+<text text-anchor="start" x="1019" y="-744.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t peakValue</text>
+<text text-anchor="start" x="1019" y="-726.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; volatile int16_t peakValue_output</text>
+<text text-anchor="start" x="1019" y="-708.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t state</text>
+<text text-anchor="start" x="1019" y="-690.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; uint8_t trigger_edge</text>
+<text text-anchor="start" x="1019" y="-672.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t trigger_level</text>
+<text text-anchor="start" x="1019" y="-654.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t trigger_wait_count</text>
+<polyline fill="none" stroke="black" points="1011,-645.5 1391,-645.5 "/>
+<text text-anchor="start" x="1019" y="-628.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioAnalyzeScope(void)</text>
+<text text-anchor="start" x="1019" y="-610.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ bool available(void)</text>
+<text text-anchor="start" x="1019" y="-592.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void delay(uint32_t num)</text>
+<text text-anchor="start" x="1019" y="-574.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotAcceleration()</text>
+<text text-anchor="start" x="1019" y="-556.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotDelta()</text>
+<text text-anchor="start" x="1019" y="-538.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotDeltaMACD()</text>
+<text text-anchor="start" x="1019" y="-520.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotMACD()</text>
+<text text-anchor="start" x="1019" y="-502.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProduct()</text>
+<text text-anchor="start" x="1019" y="-484.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProductAvg()</text>
+<text text-anchor="start" x="1019" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getDotProductAvgSlow()</text>
+<text text-anchor="start" x="1019" y="-448.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeCount()</text>
+<text text-anchor="start" x="1019" y="-430.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeCount_ch2()</text>
+<text text-anchor="start" x="1019" y="-412.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeDelay()</text>
+<text text-anchor="start" x="1019" y="-394.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int32_t getEdgeDelay2()</text>
+<text text-anchor="start" x="1019" y="-376.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t getHDiv()</text>
+<text text-anchor="start" x="1019" y="-358.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t getPeakValue()</text>
+<text text-anchor="start" x="1019" y="-340.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void hdivide(int8_t horizontal_division)</text>
+<text text-anchor="start" x="1019" y="-322.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void length(uint32_t num)</text>
+<text text-anchor="start" x="1019" y="-304.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void name(const char *str)</text>
+<text text-anchor="start" x="1019" y="-286.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t read(int8_t channel, uint16</text>
+<text text-anchor="start" x="1019" y="-268.7" font-family="Helvetica,sans-Serif" font-size="16.00">_t mem_index)</text>
+<text text-anchor="start" x="1019" y="-250.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void trigger(float level, int edge)</text>
+<text text-anchor="start" x="1019" y="-232.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void trigger(void)</text>
+<text text-anchor="start" x="1019" y="-214.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ virtual void update(void)</text>
+<text text-anchor="start" x="1019" y="-196.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t memory[2][OSCOPE_CAPTURE_LENGTH]</text>
+<text text-anchor="start" x="1019" y="-178.7" font-family="Helvetica,sans-Serif" font-size="16.00"> __attribute__((aligned(4)))</text>
+<text text-anchor="start" x="1019" y="-160.7" font-family="Helvetica,sans-Serif" font-size="16.00">&#45; int16_t _memory[2][OSCOPE_CAPTURE</text>
+<text text-anchor="start" x="1019" y="-142.7" font-family="Helvetica,sans-Serif" font-size="16.00">_LENGTH] __attribute__((aligned(4)))</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M803.28,-1696.11C868.95,-1620.35 939.41,-1528.66 989,-1436 992,-1430.4 994.95,-1424.75 997.87,-1419.06"/>
-<polygon fill="none" stroke="midnightblue" points="800.46,-1694.02 796.53,-1703.86 805.74,-1698.61 800.46,-1694.02"/>
+<path fill="none" stroke="midnightblue" d="M816.28,-1696.11C881.95,-1620.35 952.41,-1528.66 1002,-1436 1005,-1430.4 1007.95,-1424.75 1010.87,-1419.06"/>
+<polygon fill="none" stroke="midnightblue" points="813.46,-1694.02 809.53,-1703.86 818.74,-1698.61 813.46,-1694.02"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../df/dc5/classeris_audio_synth_waveform.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="30,-0.5 30,-96.5 248,-96.5 248,-0.5 30,-0.5"/>
-<text text-anchor="middle" x="139" y="-79.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioSynthWaveform</text>
-<polyline fill="none" stroke="black" points="30,-70.5 248,-70.5 "/>
-<text text-anchor="middle" x="139" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="black" points="30,-44.5 248,-44.5 "/>
-<text text-anchor="start" x="38" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveform()</text>
-<text text-anchor="start" x="38" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
+<polygon fill="none" stroke="black" points="0,-0.5 0,-96.5 298,-96.5 298,-0.5 0,-0.5"/>
+<text text-anchor="middle" x="149" y="-79.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioSynthWaveform</text>
+<polyline fill="none" stroke="black" points="0,-70.5 298,-70.5 "/>
+<text text-anchor="start" x="8" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static const char * short_name_lookup</text>
+<polyline fill="none" stroke="black" points="0,-44.5 298,-44.5 "/>
+<text text-anchor="start" x="8" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveform()</text>
+<text text-anchor="start" x="8" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M139,-555.12C139,-392.67 139,-187.75 139,-96.75"/>
-<polygon fill="none" stroke="midnightblue" points="135.5,-555.26 139,-565.26 142.5,-555.26 135.5,-555.26"/>
+<path fill="none" stroke="midnightblue" d="M149.69,-555.12C149.47,-392.67 149.19,-187.75 149.06,-96.75"/>
+<polygon fill="none" stroke="midnightblue" points="146.19,-555.27 149.7,-565.26 153.19,-555.26 146.19,-555.27"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../df/d13/classeris_audio_synth_waveform_modulated.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="306,-0.5 306,-96.5 596,-96.5 596,-0.5 306,-0.5"/>
-<text text-anchor="middle" x="451" y="-79.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioSynthWaveformModulated</text>
-<polyline fill="none" stroke="black" points="306,-70.5 596,-70.5 "/>
-<text text-anchor="middle" x="451" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="black" points="306,-44.5 596,-44.5 "/>
-<text text-anchor="start" x="314" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveformModulated()</text>
-<text text-anchor="start" x="314" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
+<polygon fill="none" stroke="black" points="316,-0.5 316,-96.5 614,-96.5 614,-0.5 316,-0.5"/>
+<text text-anchor="middle" x="465" y="-79.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioSynthWaveformModulated</text>
+<polyline fill="none" stroke="black" points="316,-70.5 614,-70.5 "/>
+<text text-anchor="start" x="324" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static const char * short_name_lookup</text>
+<polyline fill="none" stroke="black" points="316,-44.5 614,-44.5 "/>
+<text text-anchor="start" x="324" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveformModulated()</text>
+<text text-anchor="start" x="324" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M451,-546.22C451,-385.16 451,-185.85 451,-96.59"/>
-<polygon fill="none" stroke="midnightblue" points="447.5,-546.28 451,-556.28 454.5,-546.28 447.5,-546.28"/>
+<path fill="none" stroke="midnightblue" d="M464.32,-546.22C464.54,-385.16 464.81,-185.85 464.94,-96.59"/>
+<polygon fill="none" stroke="midnightblue" points="460.82,-546.28 464.31,-556.28 467.82,-546.29 460.82,-546.28"/>
 </g>
 </g>
 </svg>

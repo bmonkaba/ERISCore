@@ -36,7 +36,7 @@ var class_audio_stream =
     [ "next_update", "d5/d96/class_audio_stream_af9cd6c94cd50aa817ed928bc4a2d71e8.html#af9cd6c94cd50aa817ed928bc4a2d71e8", null ],
     [ "num_inputs", "d5/d96/class_audio_stream_adc3bac67eb13d51375cc49a48c3328b1.html#adc3bac67eb13d51375cc49a48c3328b1", null ],
     [ "numConnections", "d5/d96/class_audio_stream_aae8e555ac9f257e10abbd3545a78f88c.html#aae8e555ac9f257e10abbd3545a78f88c", null ],
-    [ "shortName", "d5/d96/class_audio_stream_ac242dd9497117769db00c076d9b71710.html#ac242dd9497117769db00c076d9b71710", null ],
+    [ "short_name", "d5/d96/class_audio_stream_ad357cfab8a25e27826f111b7c1b8b6b4.html#ad357cfab8a25e27826f111b7c1b8b6b4", null ],
     [ "unum_inputs", "d5/d96/class_audio_stream_a643f654eb80d440b0535cd0e6244a85c.html#a643f654eb80d440b0535cd0e6244a85c", null ],
     [ "unum_outputs", "d5/d96/class_audio_stream_a1ca258955ea281b46625381746c733f5.html#a1ca258955ea281b46625381746c733f5", null ],
     [ "update_scheduled", "d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01", null ]

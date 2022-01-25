@@ -12,13 +12,13 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="25.5,-0.5 25.5,-96.5 315.5,-96.5 315.5,-0.5 25.5,-0.5"/>
+<polygon fill="#bfbfbf" stroke="black" points="21.5,-0.5 21.5,-96.5 319.5,-96.5 319.5,-0.5 21.5,-0.5"/>
 <text text-anchor="middle" x="170.5" y="-79.7" font-family="Helvetica,sans-Serif" font-size="16.00">erisAudioSynthWaveformModulated</text>
-<polyline fill="none" stroke="black" points="25.5,-70.5 315.5,-70.5 "/>
-<text text-anchor="middle" x="170.5" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="black" points="25.5,-44.5 315.5,-44.5 "/>
-<text text-anchor="start" x="33.5" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveformModulated()</text>
-<text text-anchor="start" x="33.5" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
+<polyline fill="none" stroke="black" points="21.5,-70.5 319.5,-70.5 "/>
+<text text-anchor="start" x="29.5" y="-53.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static const char * short_name_lookup</text>
+<polyline fill="none" stroke="black" points="21.5,-44.5 319.5,-44.5 "/>
+<text text-anchor="start" x="29.5" y="-27.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ erisAudioSynthWaveformModulated()</text>
+<text text-anchor="start" x="29.5" y="-9.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ void update()</text>
 </a>
 </g>
 </g>
@@ -73,7 +73,7 @@
 <text text-anchor="start" x="8" y="-1381.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles</text>
 <text text-anchor="start" x="8" y="-1363.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t cpu_cycles_max</text>
 <text text-anchor="start" x="8" y="-1345.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t instance</text>
-<text text-anchor="start" x="8" y="-1327.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * shortName</text>
+<text text-anchor="start" x="8" y="-1327.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ const char * short_name</text>
 <text text-anchor="start" x="8" y="-1309.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_inputs</text>
 <text text-anchor="start" x="8" y="-1291.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint8_t unum_outputs</text>
 <text text-anchor="start" x="8" y="-1273.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ static uint16_t cpu_cycles_total</text>

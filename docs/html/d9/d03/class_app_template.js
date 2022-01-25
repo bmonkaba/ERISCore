@@ -1,7 +1,7 @@
 var class_app_template =
 [
     [ "AppTemplate", "d9/d03/class_app_template_ad0b8e99e9349f77ff2306f0f467c807d.html#ad0b8e99e9349f77ff2306f0f467c807d", null ],
-    [ "MessageHandler", "d9/d03/class_app_template_ac7c5855ea2346c407f91c56965c0dc8e.html#ac7c5855ea2346c407f91c56965c0dc8e", null ],
+    [ "messageHandler", "d9/d03/class_app_template_aeb3f488fbb982c837777850cec65b3f7.html#aeb3f488fbb982c837777850cec65b3f7", null ],
     [ "onAnalog1", "d9/d03/class_app_template_a4082cf4771707d53c0e87bbf035caa83.html#a4082cf4771707d53c0e87bbf035caa83", null ],
     [ "onAnalog2", "d9/d03/class_app_template_a1ddb61b0467c968cf4ebfeebab5f4a56.html#a1ddb61b0467c968cf4ebfeebab5f4a56", null ],
     [ "onAnalog3", "d9/d03/class_app_template_a037e49b53118e311543e9d1f208ae4e0.html#a037e49b53118e311543e9d1f208ae4e0", null ],

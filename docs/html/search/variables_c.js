@@ -1,18 +1,11 @@
 var searchData=
 [
-  ['magnitude_1648',['magnitude',['../d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab',1,'AudioSynthWaveform::magnitude()'],['../d9/d43/class_audio_synth_waveform_modulated_aca9f35470c81e90ebeba776629ab977e.html#aca9f35470c81e90ebeba776629ab977e',1,'AudioSynthWaveformModulated::magnitude()']]],
-  ['mem_5flength_1649',['mem_length',['../d4/d81/classeris_audio_analyze_scope_a009dbb6d75e51083fa061bb26b5b8528.html#a009dbb6d75e51083fa061bb26b5b8528',1,'erisAudioAnalyzeScope']]],
-  ['mem_5fstep_1650',['MEM_STEP',['../d0/d55/classeris_audio_analyze_f_f_t1024_a50000ac8856adf1d02c82188bedb5868.html#a50000ac8856adf1d02c82188bedb5868',1,'erisAudioAnalyzeFFT1024']]],
-  ['memory_5fpool_1651',['memory_pool',['../d5/d96/class_audio_stream_a760fb58e212788dbec27664ea23bbd32.html#a760fb58e212788dbec27664ea23bbd32',1,'AudioStream']]],
-  ['memory_5fpool_5favailable_5fmask_1652',['memory_pool_available_mask',['../d5/d96/class_audio_stream_a6f70806d5f6baccccf03482dae743192.html#a6f70806d5f6baccccf03482dae743192',1,'AudioStream']]],
-  ['memory_5fpool_5ffirst_5fmask_1653',['memory_pool_first_mask',['../d5/d96/class_audio_stream_a09743ebc10ac1be3e977b806b51468d7.html#a09743ebc10ac1be3e977b806b51468d7',1,'AudioStream']]],
-  ['memory_5fpool_5findex_1654',['memory_pool_index',['../de/dd6/structaudio__block__struct_af299f9fc881ff8bbf3ad6fbf1ba4f7b3.html#af299f9fc881ff8bbf3ad6fbf1ba4f7b3',1,'audio_block_struct']]],
-  ['memory_5fused_1655',['memory_used',['../d5/d96/class_audio_stream_a743e19367946485719cd96436da38970.html#a743e19367946485719cd96436da38970',1,'AudioStream']]],
-  ['memory_5fused_5fmax_1656',['memory_used_max',['../d5/d96/class_audio_stream_a43ccf2427001ee57a44a0998226f8e38.html#a43ccf2427001ee57a44a0998226f8e38',1,'AudioStream']]],
-  ['modulation_5ffactor_1657',['modulation_factor',['../d9/d43/class_audio_synth_waveform_modulated_a1b7944259bbc90c2b22909a6de3cf958.html#a1b7944259bbc90c2b22909a6de3cf958',1,'AudioSynthWaveformModulated']]],
-  ['modulation_5ftype_1658',['modulation_type',['../d9/d43/class_audio_synth_waveform_modulated_a1f2cbf62c1505092deaae0c0172a3668.html#a1f2cbf62c1505092deaae0c0172a3668',1,'AudioSynthWaveformModulated']]],
-  ['module_5fload_5fbuffer_1659',['module_load_buffer',['../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97',1,'AppWren']]],
-  ['msraw_1660',['msraw',['../d1/dff/class_touch_a6803048a87b2667442fe6c64360454fa.html#a6803048a87b2667442fe6c64360454fa',1,'Touch']]],
-  ['multipartheader_1661',['multiPartHeader',['../d2/da8/class_svc_serial_command_interface_afdfc428556318945b5e44381ff31e65f.html#afdfc428556318945b5e44381ff31e65f',1,'SvcSerialCommandInterface']]],
-  ['myname_1662',['myname',['../d4/d81/classeris_audio_analyze_scope_a6054babe529afcc2578de59b31868485.html#a6054babe529afcc2578de59b31868485',1,'erisAudioAnalyzeScope']]]
+  ['newline_1631',['newline',['../da/d7d/_svc_serial_command_interface_8cpp_ab4b2f46f6bc0178f1f3efc5dba880bf8.html#ab4b2f46f6bc0178f1f3efc5dba880bf8',1,'SvcSerialCommandInterface.cpp']]],
+  ['next_5fdest_1632',['next_dest',['../d2/d7c/class_audio_connection_a86103ac904d649232382774eae387a84.html#a86103ac904d649232382774eae387a84',1,'AudioConnection']]],
+  ['next_5fupdate_1633',['next_update',['../d5/d96/class_audio_stream_af9cd6c94cd50aa817ed928bc4a2d71e8.html#af9cd6c94cd50aa817ed928bc4a2d71e8',1,'AudioStream']]],
+  ['note_5ffreq_1634',['note_freq',['../dc/dac/_audio_utilities_8h_af6d1c471accf787e079027d03a69fc35.html#af6d1c471accf787e079027d03a69fc35',1,'AudioUtilities.h']]],
+  ['note_5fname_1635',['note_name',['../dc/dac/_audio_utilities_8h_a0a239e6eab8de7c74d8679a1668fc70a.html#a0a239e6eab8de7c74d8679a1668fc70a',1,'AudioUtilities.h']]],
+  ['nullstr_1636',['nullStr',['../d1/d2c/_audio_director_8cpp_a426c7b3dbd9cded3b276dbeace90e537.html#a426c7b3dbd9cded3b276dbeace90e537',1,'AudioDirector.cpp']]],
+  ['num_5finputs_1637',['num_inputs',['../d5/d96/class_audio_stream_adc3bac67eb13d51375cc49a48c3328b1.html#adc3bac67eb13d51375cc49a48c3328b1',1,'AudioStream']]],
+  ['numconnections_1638',['numConnections',['../d5/d96/class_audio_stream_aae8e555ac9f257e10abbd3545a78f88c.html#aae8e555ac9f257e10abbd3545a78f88c',1,'AudioStream']]]
 ];

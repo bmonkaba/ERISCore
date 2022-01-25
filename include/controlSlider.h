@@ -65,7 +65,7 @@ class ControlSlider:public AppBaseClass {
         if(isPressed){
             value += ((t_x-last_x)/2);
             if (value>100)value = 100;
-            if (last_x != t_x) parentNode->MessageHandler(this,"Changed");
+            if (last_x != t_x) parent_node->messageHandler(this,"Changed");
             last_x = t_x;
             isDirty = true;
         }
@@ -73,7 +73,7 @@ class ControlSlider:public AppBaseClass {
 
     void onTouchRelease (uint16_t t_x, uint16_t t_y){
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
-            parentNode->MessageHandler(this,"Set");
+            parent_node->messageHandler(this,"Set");
         }
         isPressed = false;
         last_x = x;

@@ -3,11 +3,12 @@ var class_svc_serial_command_interface =
     [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface_a08a98a3919c878724c5d1864174bca5d.html#a08a98a3919c878724c5d1864174bca5d", null ],
     [ "checksum", "d2/da8/class_svc_serial_command_interface_ac0a8b5ba3a88dcc655f0f6c6c4818291.html#ac0a8b5ba3a88dcc655f0f6c6c4818291", null ],
     [ "empty", "d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0", null ],
-    [ "endLZ4Message", "d2/da8/class_svc_serial_command_interface_af0793e6bc9aee7207b4d7f59932e6508.html#af0793e6bc9aee7207b4d7f59932e6508", null ],
     [ "flush", "d2/da8/class_svc_serial_command_interface_a0dda6b0439992b5739cb72db9be6784f.html#a0dda6b0439992b5739cb72db9be6784f", null ],
+    [ "requestStartLZ4Message", "d2/da8/class_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e.html#a0793f597a16bd5e1b99084354ac0415e", null ],
     [ "send", "d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397", null ],
+    [ "sendLZ4Message", "d2/da8/class_svc_serial_command_interface_adaa3d36d4c1a1784a1c18f87d756296e.html#adaa3d36d4c1a1784a1c18f87d756296e", null ],
     [ "startLZ4Message", "d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50", null ],
-    [ "streamHandler", "d2/da8/class_svc_serial_command_interface_ae049736228144211f46ad0d61bdffea5.html#ae049736228144211f46ad0d61bdffea5", null ],
+    [ "streamHandler", "d2/da8/class_svc_serial_command_interface_add54582c8a1dae31f0d69bea84c65c84.html#add54582c8a1dae31f0d69bea84c65c84", null ],
     [ "throttle", "d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0", null ],
     [ "txOverflowHandler", "d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc", null ],
     [ "update", "d2/da8/class_svc_serial_command_interface_aaf8d92ee48c609a7a9c73efc9dee4852.html#aaf8d92ee48c609a7a9c73efc9dee4852", null ],
@@ -30,7 +31,7 @@ var class_svc_serial_command_interface =
     [ "streamFile", "d2/da8/class_svc_serial_command_interface_aa79d31d472f72770bb82507dec1a5118.html#aa79d31d472f72770bb82507dec1a5118", null ],
     [ "streamPath", "d2/da8/class_svc_serial_command_interface_aacadb16155215163a35c07f46ae2b6f3.html#aacadb16155215163a35c07f46ae2b6f3", null ],
     [ "streamPos", "d2/da8/class_svc_serial_command_interface_ac426831e3532cc5efd4c3a686a909e1e.html#ac426831e3532cc5efd4c3a686a909e1e", null ],
-    [ "txBuffer", "d2/da8/class_svc_serial_command_interface_a7f65fc72243065223b816e77cd544184.html#a7f65fc72243065223b816e77cd544184", null ],
+    [ "txBuffer", "d2/da8/class_svc_serial_command_interface_a29e47fe3e96d2a437cd20fcf2c7d4260.html#a29e47fe3e96d2a437cd20fcf2c7d4260", null ],
     [ "txBufferOverflowFlag", "d2/da8/class_svc_serial_command_interface_a4dd0db53dd82efae44b27d19e357ffe6.html#a4dd0db53dd82efae44b27d19e357ffe6", null ],
     [ "workingBuffer", "d2/da8/class_svc_serial_command_interface_a14dcb2238348af05007d490900e47441.html#a14dcb2238348af05007d490900e47441", null ]
 ];

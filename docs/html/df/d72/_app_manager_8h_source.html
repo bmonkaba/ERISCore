@@ -89,15 +89,15 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h_source.html','.
 <div class="contents">
 <a href="../../df/d72/_app_manager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d8/d2c/globaldefs_8h.html">globaldefs.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d46/_eris_globals_8h.html">ErisGlobals.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d10/_h_s_i_8h.html">HSI.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d4e/touch_8h.html">touch.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dfc/_touch_8h.html">touch.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d3/ddb/_analog_inputs_8h.html">AnalogInputs.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html">ILI9341_t3_ERIS.h</a>&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//#include &quot;font_Arial.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/dc8/_audio_director_8h.html">AudioDirector.h</a>&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d3e/_app_base_class_8h.html">AppBaseClass.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/df4/svc_data_dictionary_8h.html">svcDataDictionary.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d7/d5f/_svc_data_dictionary_8h.html">svcDataDictionary.h</a>&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef _AppManager_</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define _AppManager_</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h_source.html','.
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    elapsedMillis monitor_dd_update_timer;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d4/d7c/class_animation.html">Animation</a> animated_wallpaper;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    loopState state;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TS_Point <a class="code" href="../../d8/d2c/globaldefs_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TS_Point <a class="code" href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> touch_state;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    uint16_t appFocusStack[8]; <span class="comment">//supports application switching</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint16_t appPopUpStack[8]; <span class="comment">//supports ordered overlay rendering</span></div>
@@ -136,9 +136,9 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h_source.html','.
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    AppManager();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    SdFs <a class="code" href="../../dd/dbe/svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    SdFs <a class="code" href="../../da/d7d/_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="../../d8/d1c/class_audio_director.html">AudioDirector</a>* ad;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a>* data;<span class="comment">//data dictionary service;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    SvcDataDictionary* data;<span class="comment">//data dictionary service;</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="../../d1/d1a/class_surface.html">Surface</a>* fastImgCacheSurfaceP; <span class="comment">//FAST MEM img cashe</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../d1/d1a/class_surface.html">Surface</a>* displaySurfaceP; <span class="comment">//FAST MEM img cashe</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">static</span> AppManager* getInstance() <span class="comment">//public access to get a reference to the singleton instance</span></div>
@@ -158,9 +158,9 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h_source.html','.
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* getActiveApp();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a>* getAppByName(<span class="keyword">const</span> <span class="keywordtype">char</span> *appName);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> chdir(){<span class="keywordflow">return</span> <a class="code" href="../../dd/dbe/svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.chdir();};</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> chdir(<span class="keyword">const</span> <span class="keywordtype">char</span>* path){<span class="keywordflow">return</span> <a class="code" href="../../dd/dbe/svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.chdir(path);};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> ls(){<span class="keywordflow">return</span> <a class="code" href="../../dd/dbe/svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.ls();};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> chdir(){<span class="keywordflow">return</span> <a class="code" href="../../da/d7d/_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.chdir();};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> chdir(<span class="keyword">const</span> <span class="keywordtype">char</span>* path){<span class="keywordflow">return</span> <a class="code" href="../../da/d7d/_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.chdir(path);};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> ls(){<span class="keywordflow">return</span> <a class="code" href="../../da/d7d/_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a>.ls();};</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> requestPopUp(uint16_t <span class="keywordtype">id</span>,<span class="keywordtype">bool</span> exclusive=<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> releasePopUp();</div>
@@ -171,26 +171,25 @@ $(document).ready(function(){initNavTree('df/d72/_app_manager_8h_source.html','.
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> registerApp(<a class="code" href="../../db/d69/class_app_base_class.html">AppBaseClass</a> *app);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> request_arm_set_clock(uint32_t requested_cpu_frequency);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> requestArmSetClock(uint32_t requested_cpu_frequency);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_analog_inputs_8h_html"><div class="ttname"><a href="../../d3/ddb/_analog_inputs_8h.html">AnalogInputs.h</a></div></div>
 <div class="ttc" id="a_app_base_class_8h_html"><div class="ttname"><a href="../../d9/d3e/_app_base_class_8h.html">AppBaseClass.h</a></div></div>
 <div class="ttc" id="a_audio_director_8h_html"><div class="ttname"><a href="../../db/dc8/_audio_director_8h.html">AudioDirector.h</a></div></div>
+<div class="ttc" id="a_eris_globals_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d46/_eris_globals_8h_source.html#l00201">ErisGlobals.h:201</a></div></div>
+<div class="ttc" id="a_eris_globals_8h_html"><div class="ttname"><a href="../../db/d46/_eris_globals_8h.html">ErisGlobals.h</a></div></div>
 <div class="ttc" id="a_h_s_i_8h_html"><div class="ttname"><a href="../../de/d10/_h_s_i_8h.html">HSI.h</a></div></div>
 <div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8h_html"><div class="ttname"><a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html">ILI9341_t3_ERIS.h</a></div></div>
+<div class="ttc" id="a_svc_data_dictionary_8h_html"><div class="ttname"><a href="../../d7/d5f/_svc_data_dictionary_8h.html">SvcDataDictionary.h</a></div><div class="ttdoc">Data Dictionary service provides an interface to a data dictionary service the service shall provide ...</div></div>
+<div class="ttc" id="a_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85_html_a6385eecb021ea6dc1e9b5597cfe94b85"><div class="ttname"><a href="../../da/d7d/_svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a></div><div class="ttdeci">SdFs sd</div></div>
+<div class="ttc" id="a_touch_8h_html"><div class="ttname"><a href="../../d4/dfc/_touch_8h.html">Touch.h</a></div></div>
 <div class="ttc" id="aclass_analog_inputs_html"><div class="ttname"><a href="../../d5/d8f/class_analog_inputs.html">AnalogInputs</a></div><div class="ttdoc">Used for filtering the analog inputs and change detection.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/ddb/_analog_inputs_8h_source.html#l00025">AnalogInputs.h:25</a></div></div>
 <div class="ttc" id="aclass_animation_html"><div class="ttname"><a href="../../d4/d7c/class_animation.html">Animation</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00188">ILI9341_t3_ERIS.h:188</a></div></div>
 <div class="ttc" id="aclass_app_base_class_html"><div class="ttname"><a href="../../db/d69/class_app_base_class.html">AppBaseClass</a></div></div>
-<div class="ttc" id="aclass_audio_director_html"><div class="ttname"><a href="../../d8/d1c/class_audio_director.html">AudioDirector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc8/_audio_director_8h_source.html#l00032">AudioDirector.h:32</a></div></div>
+<div class="ttc" id="aclass_audio_director_html"><div class="ttname"><a href="../../d8/d1c/class_audio_director.html">AudioDirector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc8/_audio_director_8h_source.html#l00034">AudioDirector.h:34</a></div></div>
 <div class="ttc" id="aclass_surface_html"><div class="ttname"><a href="../../d1/d1a/class_surface.html">Surface</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00033">ILI9341_t3_ERIS.h:33</a></div></div>
-<div class="ttc" id="aclass_svc_data_dictionary_html"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary.html">SvcDataDictionary</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/svc_data_dictionary_8h_source.html#l00086">svcDataDictionary.h:86</a></div></div>
-<div class="ttc" id="aglobaldefs_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2c/globaldefs_8h_source.html#l00203">globaldefs.h:203</a></div></div>
-<div class="ttc" id="aglobaldefs_8h_html"><div class="ttname"><a href="../../d8/d2c/globaldefs_8h.html">globaldefs.h</a></div></div>
-<div class="ttc" id="asvc_data_dictionary_8h_html"><div class="ttname"><a href="../../dd/df4/svc_data_dictionary_8h.html">svcDataDictionary.h</a></div><div class="ttdoc">Data Dictionary service provides an interface to a data dictionary service the service shall provide ...</div></div>
-<div class="ttc" id="asvc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85_html_a6385eecb021ea6dc1e9b5597cfe94b85"><div class="ttname"><a href="../../dd/dbe/svc_serial_command_interface_8cpp_a6385eecb021ea6dc1e9b5597cfe94b85.html#a6385eecb021ea6dc1e9b5597cfe94b85">sd</a></div><div class="ttdeci">SdFs sd</div></div>
-<div class="ttc" id="atouch_8h_html"><div class="ttname"><a href="../../d1/d4e/touch_8h.html">touch.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

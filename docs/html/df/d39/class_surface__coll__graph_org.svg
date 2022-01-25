@@ -26,9 +26,9 @@
 <text text-anchor="start" x="8" y="-189.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ Surface(uint16_t *buffer, int16_t</text>
 <text text-anchor="start" x="8" y="-171.7" font-family="Helvetica,sans-Serif" font-size="16.00"> width, int16_t height)</text>
 <text text-anchor="start" x="8" y="-153.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ Surface(uint16_t *buffer, uint32_t length)</text>
-<text text-anchor="start" x="8" y="-135.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t getHeight()</text>
+<text text-anchor="start" x="8" y="-135.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t getHeight()</text>
 <text text-anchor="start" x="8" y="-117.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t * getSurfaceBufferP()</text>
-<text text-anchor="start" x="8" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ int16_t getWidth()</text>
+<text text-anchor="start" x="8" y="-99.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t getWidth()</text>
 <text text-anchor="start" x="8" y="-81.7" font-family="Helvetica,sans-Serif" font-size="16.00">+ uint16_t * requestSubSurfaceBufferP</text>
 <text text-anchor="start" x="8" y="-63.7" font-family="Helvetica,sans-Serif" font-size="16.00">(uint32_t size)</text>
 <text text-anchor="start" x="8" y="-45.7" font-family="Helvetica,sans-Serif" font-size="16.00"># void allocate()</text>
@@ -41,64 +41,45 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:title=" ">
-<polygon fill="none" stroke="#bfbfbf" points="29,-457.5 29,-535.5 102,-535.5 102,-457.5 29,-457.5"/>
-<text text-anchor="middle" x="65.5" y="-518.7" font-family="Helvetica,sans-Serif" font-size="16.00">uint16_t</text>
-<polyline fill="none" stroke="#bfbfbf" points="29,-509.5 102,-509.5 "/>
-<text text-anchor="middle" x="65.5" y="-492.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="29,-483.5 102,-483.5 "/>
-<text text-anchor="middle" x="65.5" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
+<polygon fill="none" stroke="#bfbfbf" points="75,-457.5 75,-535.5 148,-535.5 148,-457.5 75,-457.5"/>
+<text text-anchor="middle" x="111.5" y="-518.7" font-family="Helvetica,sans-Serif" font-size="16.00">uint16_t</text>
+<polyline fill="none" stroke="#bfbfbf" points="75,-509.5 148,-509.5 "/>
+<text text-anchor="middle" x="111.5" y="-492.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="75,-483.5 148,-483.5 "/>
+<text text-anchor="middle" x="111.5" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M76.66,-457.37C82.82,-436.29 91,-408.35 99.77,-378.38"/>
-<polygon fill="none" stroke="#404040" points="99.79,-378.32 97.63,-371.44 103.16,-366.8 105.31,-373.68 99.79,-378.32"/>
-<text text-anchor="middle" x="119" y="-408.2" font-family="Helvetica,sans-Serif" font-size="16.00"> #pSB</text>
+<path fill="none" stroke="#404040" d="M117.02,-457.37C120.05,-436.39 124.07,-408.6 128.39,-378.77"/>
+<polygon fill="none" stroke="#404040" points="128.4,-378.68 125.3,-372.17 130.12,-366.8 133.22,-373.31 128.4,-378.68"/>
+<text text-anchor="middle" x="147" y="-426.2" font-family="Helvetica,sans-Serif" font-size="16.00"> #h</text>
+<text text-anchor="middle" x="147" y="-408.2" font-family="Helvetica,sans-Serif" font-size="16.00">#pSB</text>
+<text text-anchor="middle" x="147" y="-390.2" font-family="Helvetica,sans-Serif" font-size="16.00">#w</text>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="none" stroke="#bfbfbf" points="120,-457.5 120,-535.5 193,-535.5 193,-457.5 120,-457.5"/>
-<text text-anchor="middle" x="156.5" y="-518.7" font-family="Helvetica,sans-Serif" font-size="16.00">uint32_t</text>
-<polyline fill="none" stroke="#bfbfbf" points="120,-509.5 193,-509.5 "/>
-<text text-anchor="middle" x="156.5" y="-492.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="120,-483.5 193,-483.5 "/>
-<text text-anchor="middle" x="156.5" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
+<polygon fill="none" stroke="#bfbfbf" points="166,-457.5 166,-535.5 239,-535.5 239,-457.5 166,-457.5"/>
+<text text-anchor="middle" x="202.5" y="-518.7" font-family="Helvetica,sans-Serif" font-size="16.00">uint32_t</text>
+<polyline fill="none" stroke="#bfbfbf" points="166,-509.5 239,-509.5 "/>
+<text text-anchor="middle" x="202.5" y="-492.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="166,-483.5 239,-483.5 "/>
+<text text-anchor="middle" x="202.5" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node1 -->
 <g id="edge2" class="edge">
 <title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M156.5,-457.37C156.5,-436.48 156.5,-408.84 156.5,-379.17"/>
-<polygon fill="none" stroke="#404040" points="156.5,-378.8 152.5,-372.8 156.5,-366.8 160.5,-372.8 156.5,-378.8"/>
-<text text-anchor="middle" x="198" y="-426.2" font-family="Helvetica,sans-Serif" font-size="16.00"> #alloc_size</text>
-<text text-anchor="middle" x="198" y="-408.2" font-family="Helvetica,sans-Serif" font-size="16.00">#guid</text>
-<text text-anchor="middle" x="198" y="-390.2" font-family="Helvetica,sans-Serif" font-size="16.00">#head</text>
-</g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:title=" ">
-<polygon fill="none" stroke="#bfbfbf" points="230,-457.5 230,-535.5 295,-535.5 295,-457.5 230,-457.5"/>
-<text text-anchor="middle" x="262.5" y="-518.7" font-family="Helvetica,sans-Serif" font-size="16.00">int16_t</text>
-<polyline fill="none" stroke="#bfbfbf" points="230,-509.5 295,-509.5 "/>
-<text text-anchor="middle" x="262.5" y="-492.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="230,-483.5 295,-483.5 "/>
-<text text-anchor="middle" x="262.5" y="-466.7" font-family="Helvetica,sans-Serif" font-size="16.00"> </text>
-</a>
-</g>
-</g>
-<!-- Node4&#45;&gt;Node1 -->
-<g id="edge3" class="edge">
-<title>Node4&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M256.86,-457.44C253.19,-435.92 247.73,-408.66 240.5,-385 239.81,-382.73 239.1,-380.46 238.37,-378.17"/>
-<polygon fill="none" stroke="#404040" points="238.35,-378.1 232.69,-373.64 234.63,-366.7 240.29,-371.16 238.35,-378.1"/>
-<text text-anchor="middle" x="263.5" y="-417.2" font-family="Helvetica,sans-Serif" font-size="16.00"> #h</text>
-<text text-anchor="middle" x="263.5" y="-399.2" font-family="Helvetica,sans-Serif" font-size="16.00">#w</text>
+<path fill="none" stroke="#404040" d="M196.86,-457.37C193.76,-436.39 189.65,-408.6 185.24,-378.77"/>
+<polygon fill="none" stroke="#404040" points="185.22,-378.67 180.39,-373.32 183.46,-366.8 188.3,-372.15 185.22,-378.67"/>
+<text text-anchor="middle" x="235" y="-426.2" font-family="Helvetica,sans-Serif" font-size="16.00"> #alloc_size</text>
+<text text-anchor="middle" x="235" y="-408.2" font-family="Helvetica,sans-Serif" font-size="16.00">#guid</text>
+<text text-anchor="middle" x="235" y="-390.2" font-family="Helvetica,sans-Serif" font-size="16.00">#head</text>
 </g>
 </g>
 </svg>

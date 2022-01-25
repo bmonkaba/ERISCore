@@ -258,7 +258,7 @@ void returnFocusCallback(WrenVM* vm){
 void setClockSpeedCallback(WrenVM* vm){
   //(uint16_t cpu_speed)
   AppManager* am = AppManager::getInstance();
-  am->request_arm_set_clock(wrenGetSlotDouble(vm, 1));
+  am->requestArmSetClock(wrenGetSlotDouble(vm, 1));
 }
 
 /**
@@ -630,15 +630,15 @@ void FLASHMEM AppWren::startVM(){
     vm = wrenNewVM(&config);
 }
 
-void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message){   
+void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){   
     if(sender->isName("SCI")){
         if(0 == strncmp(message,"WREN_SCRIPT_EXECUTE",strlen("WREN_SCRIPT_EXECUTE"))) {
             Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_COMPILE -> compileOnly = false"));
-            compileOnly = false;
+            compile_only = false;
             return;
         }else if(0 == strncmp(message,"WREN_SCRIPT_COMPILE",strlen("WREN_SCRIPT_COMPILE"))) {
             Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_EXECUTE -> compileOnly = true"));
-            compileOnly = true;
+            compile_only = true;
             return;
         }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
             char cmd[128];
@@ -661,7 +661,7 @@ void FLASHMEM AppWren::MessageHandler(AppBaseClass *sender, const char *message)
               file.close();
               save_module = false;
               Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
-            }else if(compileOnly){
+            }else if(compile_only){
               Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
               return;
             }else{ //execute the script
@@ -749,11 +749,11 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
           if (!isWrenResultOK(wrenCall(vm,h_update))){
             releaseWrenHandles();
           }else{
-              if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+              if(is_pressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
                       show_active = false;
                       time_active = 0;
               }
-              if(usingImage){
+              if(using_image){
                   if(!surface_cache){                        
                       //surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
                       if(!dynamicSurfaceManager()){ 
@@ -780,7 +780,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
                     draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
                 }
                 
-                if(!usingImage){
+                if(!using_image){
                     draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
                     draw->setCursor(x+(w/2),y+(h/2),true);
                     draw->setFont(Arial_9);

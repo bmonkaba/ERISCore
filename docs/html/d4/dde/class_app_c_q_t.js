@@ -6,7 +6,7 @@ var class_app_c_q_t =
     [ "__attribute__", "d4/dde/class_app_c_q_t_a4a19f0ad9780a84d50c1392a5c62f62b.html#a4a19f0ad9780a84d50c1392a5c62f62b", null ],
     [ "__attribute__", "d4/dde/class_app_c_q_t_a1ca4e432022b3dd9486e057df6656d05.html#a1ca4e432022b3dd9486e057df6656d05", null ],
     [ "init", "d4/dde/class_app_c_q_t_a5b262ebd84f1446cb830f3e1c5437791.html#a5b262ebd84f1446cb830f3e1c5437791", null ],
-    [ "MessageHandler", "d4/dde/class_app_c_q_t_af9d5de8b802d76e6180e57ff7b68cf95.html#af9d5de8b802d76e6180e57ff7b68cf95", null ],
+    [ "messageHandler", "d4/dde/class_app_c_q_t_a5c33a48120697387e5435ae9d80aeb7c.html#a5c33a48120697387e5435ae9d80aeb7c", null ],
     [ "onFocus", "d4/dde/class_app_c_q_t_a3c3eec3552e1f40ba9ff5a73f93f6842.html#a3c3eec3552e1f40ba9ff5a73f93f6842", null ],
     [ "onFocusLost", "d4/dde/class_app_c_q_t_acf9fa18df2c07e18c4c0fa4418ac2e6e.html#acf9fa18df2c07e18c4c0fa4418ac2e6e", null ],
     [ "onTouch", "d4/dde/class_app_c_q_t_afe46b4d45e1666ab30dafbdd9b091db2.html#afe46b4d45e1666ab30dafbdd9b091db2", null ],
