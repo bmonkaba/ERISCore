@@ -7,21 +7,22 @@
 
 # What is Eris Core:
 
-Eris core is a audio focused operating system and rapid application development & test framework realized as a hardware/software subsystem component and pc interface software intended for further integration into projects & products.
+Eris core is a audio focused operating system and rapid application development & test framework realized as a hardware/software subsystem component and pc interface software intended for further integration into projects & products.<br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
 
 # Development State
 
-The complete system is currently pre-alpha. 
+* System is currently pre-alpha. 
+* Software is currently pre-alpha
+* Hardware design is currently beta 2
+* SLA Mechanical design is currently beta 2
 
-The software is currently pre-alpha
-* All interfaces are subject to modification
-The hardware design is currently beta 2
+# WIP / Known issues
+
 * Ultra performance variant design requires bulk capacitor selection & integration to support short period extreme overclock boosting while under full load
-The mechanical design is currently beta 2
 * Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy
 * Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion
-* Ultra performance variant protect for heat sink clearance
+* Ultra performance variant  heat sink design clearances and internal/external airflow
 
 # Hardware Features:
 
@@ -125,5 +126,5 @@ The mechanical design is currently beta 2
 
 # mvp-01
 
-The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
+The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.<br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">
