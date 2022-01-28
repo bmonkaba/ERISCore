@@ -51,6 +51,10 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioEffectFreeverb);
   addAudioStreamObj(new erisAudioSynthNoisePink);
 
+  addAudioStreamObj(new erisAudioSynthToneSweep);
+  addAudioStreamObj(new erisAudioSynthWaveformSineHires);
+  addAudioStreamObj(new erisAudioSynthWaveformSineModulated);
+  
   //generate audio component pool
   for (int i=0; i < 17; i++){
     //addAudioStreamObj(new erisAudioEffectEnvelope);

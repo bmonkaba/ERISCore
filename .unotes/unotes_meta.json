@@ -81,7 +81,44 @@
     "tools": {
       "name": "tools",
       "isOrdered": true,
-      "folders": {},
+      "folders": {
+        "autowrapper": {
+          "name": "autowrapper",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "convert": {
+          "name": "convert",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "datawindows": {
+          "name": "datawindows",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "scripts": {
+          "name": "scripts",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "templates": {
+          "name": "templates",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "web": {
+          "name": "web",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
       "files": {}
     },
     "pcb": {

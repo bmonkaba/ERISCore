@@ -489,7 +489,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 if (total_read > 1) am->getActiveApp()->messageHandler(this,param);
             }else if (strncmp(cmd, "APC",sizeof(cmd)) == 0){
                 //forward the message to the SvcErisAudioParameterController
-                am->getAppByName("APC")->messageHandler(this,param);
+                am->getAppByName("APC")->messageHandler(this,receivedChars + 4);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 ad->printStats();
                 while(throttle()){delay(2);}
@@ -589,7 +589,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 char* tmp;
                 tmp = (char*)malloc(1000);
 #endif
-                while(throttle()){delay(10);}
+                while(throttle()){delay(100);}
                 if(!requestStartLZ4Message()) return;
                 strcpy(tmp,"");
                 printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
@@ -605,7 +605,7 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                         println(F("\"}}"));
                         sendLZ4Message();
                         strcpy(tmp,"");
-                        while(throttle()){delay(10);}
+                        while(throttle()){delay(50);}
                         if(i%1024==0){
                             float32_t pct;
                             pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
@@ -640,8 +640,6 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
                 println("\n");
                 println(F("RAM END"));
                 sendLZ4Message();
-                //flush out serial input buffer
-                Serial.clear();
 #ifdef USE_EXTMEM
                 //do nothing - local var
 #else       
@@ -650,35 +648,69 @@ void FASTRUN SvcSerialCommandInterface::updateRT(){
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;
-                strcpy(txBuffer," ");
-                for(uint32_t i = 0x0007A1E0; i < 0x7F000; i+=1){ 
+#ifdef USE_EXTMEM
+                char tmp[1000];
+                //tmp = (char*)extmem_malloc(1000);
+#else
+                char* tmp;
+                tmp = (char*)malloc(1000);
+#endif
+                while(throttle()){delay(100);}
+                if(!requestStartLZ4Message()) return;
+                strcpy(tmp,"");
+                printf(F("RAM {\"RAM1\":{\"addr\":\"%08X\",\"chunk\":\""),0x000000);
+                
+                for(uint32_t i = 0x00070000; i < 0x0007F000; i+=1){
+                    //if (i == 0x20010000) i = 0x20200000;
                     mp = (char*)i;
                     c = *mp;
                     c = (c & 0xFF);
-                    if(i%64==0){
-                        Serial.println(txBuffer);
-                        strcpy(txBuffer," ");
-    
-                        Serial.printf("%08X",i);
-                        Serial.print("  ");
-
-                        while(throttle()){
-                            delay(50);
-                        };
+                    if(i%32==0 && i != 0x00070000){
+                        print(F("\",\"decode\":\""));
+                        print(tmp);
+                        println(F("\"}}"));
+                        sendLZ4Message();
+                        strcpy(tmp,"");
+                        while(throttle()){delay(150);}
+                        if(i%1024==0){
+                            float32_t pct;
+                            pct = 100.0 * ((float)(i-0x00070000)/(float)(0x0007F000));
+                            Serial.printf(F("CLS\nM GET_RAM1 %08X %.0f pct "),i,pct);
+                            for(uint16_t div = 0; div < (uint16_t)pct; div += 5){
+                                Serial.printf("*");
+                            }
+                            Serial.println("");
+                        }
+                        startLZ4Message();
+                        printf(F("RAM {\"RAM1\":{\"addr\":\"%08X\",\"chunk\":\""),i);
                     }
 
-                    if (isprint((int)c)){ 
-                        strncat(txBuffer, &c, 1);
-                    }
-                    else if (c==0){
-                        c = '*';
-                        strncat(txBuffer, &c, 1);
-                    } else{
+                    printf("%02X ",(uint8_t)c);
+                    const char* escape = "\\";
+                    if (c=='"'){                        
+                        strncat(tmp, escape, 1);
+                        strncat(tmp, &c, 1);
+                    }else if (c=='\''){
+                        strncat(tmp, escape, 1);
+                        strncat(tmp, &c, 1);
+                    }else if (isprint((int)c)){ 
+                        strncat(tmp, &c, 1);
+                    }else if (iscntrl((int)c)){
                         c = '.';
-                        strncat(txBuffer, &c, 1);
+                        strncat(tmp, &c, 1);
+                    }else{
+                        c = '?';
+                        strncat(tmp, &c, 1);
                     }
-                    Serial.printf("%02X ",c);
                 }
+                println("\n");
+                println(F("RAM END"));
+                sendLZ4Message();
+#ifdef USE_EXTMEM
+                //do nothing - local var
+#else       
+                free(tmp);
+#endif
             }else if (strncmp(cmd, "AUDIO_NO_INTERRUPTS",sizeof(cmd)) == 0){
                 AudioNoInterrupts();
             }else if (strncmp(cmd, "AUDIO_INTERRUPTS",sizeof(cmd)) == 0){

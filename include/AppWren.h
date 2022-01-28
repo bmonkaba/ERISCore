@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#include "AppManager.h"
+#include "AppBaseClass.h"
 #include "wren.hpp"
 #include "ErisGlobals.h"
 /**
@@ -321,16 +321,11 @@ class AppWren:public AppBaseClass {
      */
     uint16_t getPixel(int16_t x, int16_t y){
         if (draw){
-            if (has_pop){
-                return draw->readPixel(x,y);
-                //return draw->ILI9341_t3n::readPixel(x,y);
-            }else{
-                if (!surface_cache) return ILI9341_MAGENTA;
-                if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;
-                if (y >= surface_cache->getHeight()) return ILI9341_MAGENTA;
-                if (x < 0 || y < 0) return ILI9341_MAGENTA;
-                return draw->readSurfacePixel(surface_cache,x,y);
-            }
+            if (!surface_cache) return ILI9341_MAGENTA;
+            if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;
+            if (y >= surface_cache->getHeight()) return ILI9341_MAGENTA;
+            if (x < 0 || y < 0) return ILI9341_MAGENTA;
+            return draw->readSurfacePixel(surface_cache,x,y);
         }
         return 0; 
     }
@@ -351,7 +346,7 @@ class AppWren:public AppBaseClass {
         if ((start_x == end_x) && (start_y == end_y)){
             if (draw){
                 if (has_pop){
-                    draw->ILI9341_t3n::drawPixel(start_x,start_y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
+                    //draw->ILI9341_t3n::drawPixel(start_x,start_y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
                 } else{
                     dynamicSurfaceManager();
                     if (!surface_cache) return;
@@ -370,7 +365,7 @@ class AppWren:public AppBaseClass {
             return;
         }else if (draw){
             if (has_pop){
-                draw->ILI9341_t3n::drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
+                //draw->ILI9341_t3n::drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
             }else{
                 dynamicSurfaceManager();
                 if (!surface_cache) return;

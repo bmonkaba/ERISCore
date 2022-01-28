@@ -18,10 +18,12 @@
 
 #ifdef USE_EXTMEM
 uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+//char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (32)));
 #else
 uint16_t DMAMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
+//char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (16)));
 #endif
-char DMAMEM wrenFastVMRam[1]__attribute__ ((aligned (16)));
+char wrenFastVMRam[1]__attribute__ ((aligned (16)));
 
 /**
  * @brief Wren system interface 
@@ -510,7 +512,7 @@ void drawFillCallback(WrenVM* vm){
  * @param signature 
  * @return WrenForeignMethodFn 
  */
-WrenForeignMethodFn FLASHMEM bindForeignMethod(
+WrenForeignMethodFn FASTRUN bindForeignMethod(
     WrenVM* vm,
     const char* module,
     const char* className,
@@ -617,8 +619,9 @@ void FLASHMEM AppWren::startVM(){
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
     config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = WREN_VM_HEAP_SIZE/10;
-    config.heapGrowthPercent = 5;
+    config.minHeapSize = WREN_VM_HEAP_SIZE;
+    config.heapGrowthPercent = 100;
+    //config.reallocateFn = &wrenFastMemoryAllocator; 
 #else
     config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
     config.minHeapSize = WREN_VM_HEAP_SIZE;
@@ -626,7 +629,7 @@ void FLASHMEM AppWren::startVM(){
 #endif
     config.bindForeignMethodFn = &bindForeignMethod;
     config.loadModuleFn = &loadModule;
-    //config.reallocateFn = &wrenFastMemoryAllocator; 
+    
     vm = wrenNewVM(&config);
 }
 
@@ -702,7 +705,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
   if(!surface_cache){
     surface_mempool = wrenFastRam;
     if (has_pop || has_focus){
-      surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),128,128);
+      surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),width,height);
       memset((uint16_t *)draw->getFrameAddress(),200,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
     }else{
       surface_cache = new Surface(surface_mempool, widget_width, widget_height);

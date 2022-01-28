@@ -29,11 +29,11 @@ static void* defaultReallocate(void* ptr, size_t newSize, void* _)
 {
   if (newSize == 0)
   {
-    free(ptr);
+    extmem_free(ptr);
     return NULL;
   }
 
-  return realloc(ptr, newSize);
+  return extmem_realloc(ptr, newSize);
 }
 
 int wrenGetVersionNumber() 
@@ -823,7 +823,7 @@ inline static bool checkArity(WrenVM* vm, Value value, int numArgs)
 
 // The main bytecode interpreter loop. This is where the magic happens. It is
 // also, as you can imagine, highly performance critical.
-static WrenInterpretResult runInterpreter(WrenVM* vm, register ObjFiber* fiber)
+static WrenInterpretResult FASTRUN runInterpreter(WrenVM* vm, register ObjFiber* fiber)
 {
   // Remember the current fiber so we can find it if a GC happens.
   vm->fiber = fiber;
@@ -1439,7 +1439,7 @@ WrenHandle* wrenMakeCallHandle(WrenVM* vm, const char* signature)
   return value;
 }
 
-WrenInterpretResult wrenCall(WrenVM* vm, WrenHandle* method)
+WrenInterpretResult FASTRUN wrenCall(WrenVM* vm, WrenHandle* method)
 {
   ASSERT(method != NULL, "Method cannot be NULL.");
   ASSERT(IS_CLOSURE(method->value), "Method must be a method handle.");

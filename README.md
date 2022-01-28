@@ -4,25 +4,50 @@
 <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a>
 <img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg">
 <br>
-
 # What is Eris Core:
 
-Eris core is a audio focused operating system and rapid application development & test framework realized as a hardware/software subsystem component and pc interface software intended for further integration into projects & products.<br>
+Eris core is:
+\* an AI/ML Audio focused "crossover operating system" for a crossover microcontroller
+\* a rapid application development & test framework
+\* a subsystem component complete with mechanical housing examples
+\* supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
+\* intended as a foundation for further integration into projects & products
+\* a low-cost high performance design for intended for use by anyone from beginners to advanced developers
+
+<br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
+pre-alpha sys stress, integration, regression testing / demo:
+[![youtube video](https://i9.ytimg.com/vi_webp/QZLU7C8BaJI/mqdefault.webp?sqp=CLiwzI8G&rs=AOn4CLB2NgaH1Qb9FbgtQtrb76kH-IHBeA)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
+
+# 3rd party code licence
+
+* Wren - MIT Licence
+* LZ4 - BSD 2-Clause License
+* AIeFS - GNU Affero General Public License
+* Arduino/Teensyduino - MIT Licence
+
+# 3D print, STL & housing graphics
+
+* Creative Commons Attribution 4.0 International Public License
+
+<img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20v158.png?raw=true" width="300"> <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">
+<br>
+# ErisCore software
+
+* web based serial interface - MIT Licence
+* other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.
 
 # Development State
 
-* System is currently pre-alpha. 
+* System is currently pre-alpha.
 * Software is currently pre-alpha
 * Hardware design is currently beta 2
 * SLA Mechanical design is currently beta 2
 
 # WIP / Known issues
 
-* Ultra performance variant design requires bulk capacitor selection & integration to support short period extreme overclock boosting while under full load
 * Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy
 * Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion
-* Ultra performance variant  heat sink design clearances and internal/external airflow
 
 # Hardware Features:
 
@@ -43,14 +68,14 @@ Eris core is a audio focused operating system and rapid application development 
 * VM extention allows scripts to 'request' a VM reboot to pass control to another script.
 * Rapid application development framework
 * Dynamic CPU clock scaling automatically maintains maximum performance while remaining within thermal limits
-* Universal 'human readable' string based messaging.
+* Universal 'human readable' string based messaging
 * Shared Data Dictionary - int32\_t / float32\_t hash based lookup key value store with key buffer storage (again 'human readable')
 * Extends the standard Teensy 4.1 Audio library to allow full dynamic control of audio connections
 * Audio block parameter controller exposes most public methods to the universal messaging system without using run time reflectors
 * (New) Sliding window 32 bit FFT Audio Block with subsampling control
 * 2xFFT CQT Polyphonic application example
 * Transparent LZ4 compression/decompression transport layer between the device and the web socket interface (wsi) can improve both latency and and bandwith
-* Configurable animated or static wallpaper automatically rendered at the start of each frame by the system. 
+* Configurable animated or static wallpaper automatically rendered at the start of each frame by the system.
 * Single frame buffer. Secondary buffers implemented as surfaces.
 * Multiple source/destination image block transfer (blt) interfaces:
     * SD card to framebuffer
@@ -58,6 +83,8 @@ Eris core is a audio focused operating system and rapid application development 
     * Surface to surface
     * Surface to framebuffer
 * Web based development tool provides:
+Software Documentation (WIP):
+https://bmonkaba.github.io/ERISCore/html/
     * Serial command interface
     * Data dictionary monitor
     * Audiostream flow monitor/editor
@@ -126,5 +153,5 @@ Eris core is a audio focused operating system and rapid application development 
 
 # mvp-01
 
-The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.<br>
+The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">

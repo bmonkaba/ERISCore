@@ -70,11 +70,9 @@
                 <div class="titlebar">Serial Transmit</div>
                 <form id="sent">
                     <textarea id="cmd_value" name="asdf" rows="10" cols="40" spellcheck="false">
-
-AUDIO_NO_INTERRUPTS
 DISCONNECT amp_2
-CONNECT pink_1 0 amp_2 0
-AUDIO_INTERRUPTS
+CONNECT tonesweep_1 0 amp_2 0
+APC erisAudioSynthToneSweep 1 play 0.15,20,2100,5.0
 </textarea><br>
                     <button class="button SendButton" id="cmd_send" title="Send"></button>
                     <button class="button ClearButton" id="clear" title="Clear"></button><br>

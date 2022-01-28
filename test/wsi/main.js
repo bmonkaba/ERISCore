@@ -834,7 +834,7 @@ $(document).ready(function () {
     $("#TONE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT amp_2 0\nCONNECT waveform_16 0 amp_2 0\nDISCONNECT mixer_5 3\nAA 220"
+            "data": "DISCONNECT amp_2\nCONNECT tonesweep_1 0 amp_2 0\nAPC erisAudioSynthToneSweep 1 play 0.15,20,2100,10.0"
         });
         $("#received").empty();
     });
@@ -950,6 +950,15 @@ $(document).ready(function () {
         });
     });
 
+    $("#getRam1").click(function (ev) {
+        ev.preventDefault();
+        sendMessage({
+            "data": "GET_RAM1"
+        });
+        $("#received").empty();
+        $("#memory_chunk_table tbody").empty();
+    });
+    
     $("#getRam2").click(function (ev) {
         ev.preventDefault();
         sendMessage({

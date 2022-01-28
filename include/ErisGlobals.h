@@ -26,13 +26,13 @@
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 740000000
+#define CPU_BOOST_MAX_FREQ 780000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 63.0
+#define CPU_THERMAL_THROTTLE_TEMP 67.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -187,7 +187,7 @@
  * @brief defines how many slices per image\n
  * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 2
+#define ANIMATION_CHUNKS_PER_FRAME 3
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -236,7 +236,7 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 32000
+#define WREN_VM_HEAP_SIZE 64000
 #define WREN_FRAME_BUFFER_SIZE 320*240
 #else
 #define WREN_VM_HEAP_SIZE 16000
