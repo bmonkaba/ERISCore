@@ -16,7 +16,9 @@ Eris core is:
 
 <br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
+<br>
 pre-alpha sys stress, integration, regression testing / demo:
+
 [![youtube video](https://i9.ytimg.com/vi_webp/QZLU7C8BaJI/mqdefault.webp?sqp=CLiwzI8G&rs=AOn4CLB2NgaH1Qb9FbgtQtrb76kH-IHBeA)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
 
 # 3rd party code licence
@@ -32,24 +34,37 @@ pre-alpha sys stress, integration, regression testing / demo:
 
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20v158.png?raw=true" width="300"> <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">
 <br>
+
 # ErisCore software
 
 * web based serial interface - MIT Licence
 * other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.
+* Software Documentation (WIP): https://bmonkaba.github.io/ERISCore/html/
 
-# Development State
+
+## Development State
 
 * System is currently pre-alpha.
 * Software is currently pre-alpha
 * Hardware design is currently beta 2
 * SLA Mechanical design is currently beta 2
 
-# WIP / Known issues
+## WIP / Known issues
 
 * Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy
 * Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion
+* API interface changes - update and updateRT methods will be renamed render and update. consistency changes/ naming conventions to be applied
+* SCI refactoring into individual message handlers w/enumerated states
 
-# Hardware Features:
+## TODO
+* wren wrappers for AIeFS?
+* decide on concept for the virtual VM filesystem 
+* define an access concept for requesting assets from the actual filesystem.
+* import a custom genetic algo module from an older project and port from from python to wren
+* import a custom chord identification/scoring module from an older project
+* etc...
+
+## Hardware Features:
 
 * 192khz@32bit stereo I/O\* (hardware capable)
 * Low noise linear power supply section with a balanced thermal design
@@ -59,7 +74,7 @@ pre-alpha sys stress, integration, regression testing / demo:
 * The audio front end supports single-ended input levels from small-mV microphone inputs to 2.1-VRMS line inputs
 * The front-end mixer (MIX), multiplexer (MUX), and programable gain amplifier (PGA) also supports differential (Diff), pseudo-differential, and single-ended (SE) inputs
 
-# Software Features:
+## Software Features:
 
 * Custom crossover single threaded cooperative multitasking system
 * Coperative scheduler with granular realtime priority control
@@ -83,8 +98,6 @@ pre-alpha sys stress, integration, regression testing / demo:
     * Surface to surface
     * Surface to framebuffer
 * Web based development tool provides:
-Software Documentation (WIP):
-https://bmonkaba.github.io/ERISCore/html/
     * Serial command interface
     * Data dictionary monitor
     * Audiostream flow monitor/editor
@@ -146,12 +159,12 @@ https://bmonkaba.github.io/ERISCore/html/
 
 ## Display
 
-* Various
+* 3rd party various
 * 320x240 TFT w/ Touch
-* Chipset: ILI9341
+* IC driver: ILI9341
 * Serial Interface
 
 # mvp-01
 
-The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
+The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.<br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">
