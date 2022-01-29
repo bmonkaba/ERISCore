@@ -317,7 +317,7 @@ class App {
     //  - in case these methods are not found in a scrip, method forwarding will halt
     //    until the next restartVM() call or external script load event 
 
-    updateRT() {
+    render() {
         _count = _count + 1
         if (_count > 15000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])

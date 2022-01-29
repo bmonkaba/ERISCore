@@ -46,7 +46,7 @@ class AudioDirector{
     bool disconnect(AudioStream* destination,int destinationInput);
     bool disconnect(const char* to,uint8_t to_port);
     bool disconnect(const char* connectionString);
-    int16_t connectionCount(){return activeConnections;};
+    int16_t connectionCount(){return active_connections;};
     AudioStream* getAudioStreamObjByName(const char* AudioStreamObjName);
     void setSCI(SvcSerialCommandInterface *serialCommandInterface){sci = serialCommandInterface;}
     void setAPC(SvcErisAudioParameterController *audioParameterController){parameter_controller = audioParameterController;}
@@ -56,20 +56,20 @@ class AudioDirector{
     SvcErisAudioParameterController* parameter_controller;
     void*  heapStart;  //used to estamate total heap allocation size
     void*  heapEnd;    //
-    AudioStream* pAudioStreamObjPool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
-    AudioStream* pAudioStreamInputPort; //ADC Audio Input(s)
-    erisAudioOutputI2S AudioStreamOutputPort; //DAC Audio Output(s)
+    AudioStream* p_audiostream_obj_pool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
+    AudioStream* p_audiostream_input_port; //ADC Audio Input(s)
+    erisAudioOutputI2S p_audiostream_output_port; //DAC Audio Output(s)
     void unlinkAll();
     void linkGroup();
     void generateCategoryList();
-    uint8_t printStatsSelect; 
-    uint16_t activeConnections; 
-    uint16_t objCount;
-    uint16_t categoryCount;
-    uint16_t shortNameQueryResultCount;
+    uint8_t printstats_select; 
+    uint16_t active_connections; 
+    uint16_t obj_count;
+    uint16_t category_count;
+    uint16_t short_name_query_result_count;
     char** categoryList[MAX_CATEGORIES];
-    char* shortNameQueryResult[MAX_UNIQUE_NAMES_PER_CATEGORY];
-    AudioConnection* pCord[MAX_CONNECTIONS];
+    char* short_name_query_result[MAX_UNIQUE_NAMES_PER_CATEGORY];
+    AudioConnection* p_cord[MAX_CONNECTIONS];
     void ParseConnectString(const char* connectionString,ParsedConnection *p);
 };
 

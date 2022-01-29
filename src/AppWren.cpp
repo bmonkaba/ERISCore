@@ -608,7 +608,7 @@ void AppWren::vmConstructor(const char* initial_script){
     getWrenHandles();
     wrenEnsureSlots(vm, 1);
     wrenSetSlotHandle(vm, 0, h_slot0);//App
-    isWrenResultOK(wrenCall(vm,h_updateRT));
+    isWrenResultOK(wrenCall(vm,h_update));
 }
 
 void FLASHMEM AppWren::startVM(){
@@ -732,7 +732,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void AppWren::update(){
+ void AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
@@ -749,7 +749,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
           }
           wrenEnsureSlots(vm, 1);
           wrenSetSlotHandle(vm, 0, h_slot0);//App
-          if (!isWrenResultOK(wrenCall(vm,h_update))){
+          if (!isWrenResultOK(wrenCall(vm,h_render))){
             releaseWrenHandles();
           }else{
               if(is_pressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
@@ -796,13 +796,13 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
     };    //called only when the app is active
 
 
-void AppWren::updateRT(){
+void AppWren::update(){
   if (enable_call_forwarding == false){ //if no script loaded
       return;
   } else{
     wrenEnsureSlots(vm, 1);
     wrenSetSlotHandle(vm, 0, h_slot0);//App
-    if (!isWrenResultOK(wrenCall(vm,h_updateRT))){
+    if (!isWrenResultOK(wrenCall(vm,h_update))){
         releaseWrenHandles();
     };
   }
@@ -812,8 +812,8 @@ void FLASHMEM AppWren::releaseWrenHandles(){
   Serial.printf(F("M AppWren::releaseWrenHandles\n"));
   //release any existing handles
   if (h_slot0!=NULL) {wrenReleaseHandle(vm, h_slot0); h_slot0=NULL;}
+  if (h_render!=NULL) {wrenReleaseHandle(vm, h_render); h_render=NULL;}
   if (h_update!=NULL) {wrenReleaseHandle(vm, h_update); h_update=NULL;}
-  if (h_updateRT!=NULL) {wrenReleaseHandle(vm, h_updateRT); h_updateRT=NULL;}
   if (h_onFocus!=NULL) {wrenReleaseHandle(vm, h_onFocus); h_onFocus=NULL;}
   if (h_onFocusLost!=NULL) {wrenReleaseHandle(vm, h_onFocusLost); h_onFocusLost=NULL;}
   if (h_onTouch!=NULL) {wrenReleaseHandle(vm, h_onTouch); h_onTouch=NULL;}
@@ -833,8 +833,8 @@ void FLASHMEM AppWren::getWrenHandles(){
   wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
   //get the handles
   h_slot0 = wrenGetSlotHandle(vm, 0);
-  h_update = wrenMakeCallHandle(vm, "update()");
-  h_updateRT = wrenMakeCallHandle(vm, "updateRT()");  
+  h_render = wrenMakeCallHandle(vm, "render()");
+  h_update = wrenMakeCallHandle(vm, "update()");  
   h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
   h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
   h_onTouch = wrenMakeCallHandle(vm, "onTouch(x,y)");

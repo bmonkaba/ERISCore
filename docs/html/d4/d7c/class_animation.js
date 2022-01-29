@@ -13,5 +13,5 @@ var class_animation =
     [ "filename", "d4/d7c/class_animation_af61f3b12f0557d2c28baadbab3fa6abd.html#af61f3b12f0557d2c28baadbab3fa6abd", null ],
     [ "frame", "d4/d7c/class_animation_ab7c3aee40a7aeef92c593764225cb1af.html#ab7c3aee40a7aeef92c593764225cb1af", null ],
     [ "last_frame", "d4/d7c/class_animation_a72c333aeb88aa7dd9a3a614d414e1c4a.html#a72c333aeb88aa7dd9a3a614d414e1c4a", null ],
-    [ "pSD", "d4/d7c/class_animation_a24c169e65c063b5b2235ce88b2f09953.html#a24c169e65c063b5b2235ce88b2f09953", null ]
+    [ "p_SD", "d4/d7c/class_animation_ab9ec468061f96ad4489ca3238bcd4afe.html#ab9ec468061f96ad4489ca3238bcd4afe", null ]
 ];

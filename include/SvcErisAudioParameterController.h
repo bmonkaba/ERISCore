@@ -271,8 +271,8 @@ class SvcErisAudioParameterController:public AppBaseClass {
     //define event handlers
     void messageHandler(AppBaseClass *sender, const char *message) override;
   protected:
-    void update() override{};    //called only when the app is active
-    void updateRT() override{}; //allways called even if app is not active
+    void render() override{};    //called only when the app is active
+    void update() override{}; //allways called even if app is not active
     void onFocus() override{};   //called when given focus
     void onFocusLost() override{}; //called when focus is taken
     void onTouch(uint16_t t_x, uint16_t t_y) override{

@@ -27,8 +27,8 @@ var class_i_l_i9341__t3___e_r_i_s =
     [ "updateScreenAsyncFrom", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae309692439e0ea13772be6833c81809c.html#ae309692439e0ea13772be6833c81809c", null ],
     [ "backlight", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a2adb973df693f879736b4009d798238d.html#a2adb973df693f879736b4009d798238d", null ],
     [ "file", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d", null ],
+    [ "p_SD", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a6e80c34247b19417581147faa3f0676c.html#a6e80c34247b19417581147faa3f0676c", null ],
     [ "pFB", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a8001f25157bb1b6ebb28e4f8e1b32c3e.html#a8001f25157bb1b6ebb28e4f8e1b32c3e", null ],
-    [ "pSD", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a43a11ace3671a2d9cb3d5e112956ad9c.html#a43a11ace3671a2d9cb3d5e112956ad9c", null ],
     [ "tft_read_speed", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a5db8a7c5742e03f5376f7632917be724.html#a5db8a7c5742e03f5376f7632917be724", null ],
     [ "tft_write_speed", "d8/d5a/class_i_l_i9341__t3___e_r_i_s_a02625a6326def65841032070c1a768d9.html#a02625a6326def65841032070c1a768d9", null ]
 ];

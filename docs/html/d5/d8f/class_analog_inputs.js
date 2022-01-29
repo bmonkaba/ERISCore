@@ -11,6 +11,6 @@ var class_analog_inputs =
     [ "readAN4", "d5/d8f/class_analog_inputs_a377de243cab0ee18857220e7b1d5fc33.html#a377de243cab0ee18857220e7b1d5fc33", null ],
     [ "update", "d5/d8f/class_analog_inputs_a0de9a56bcfaa560efb631be277ea8502.html#a0de9a56bcfaa560efb631be277ea8502", null ],
     [ "ai", "d5/d8f/class_analog_inputs_a7cbfe719c1153447d41c7e74ad26e4cf.html#a7cbfe719c1153447d41c7e74ad26e4cf", null ],
-    [ "lastTrigger", "d5/d8f/class_analog_inputs_a8535eccc492342f73b8a997309cad97c.html#a8535eccc492342f73b8a997309cad97c", null ],
-    [ "lastUpdate", "d5/d8f/class_analog_inputs_a5444b5bc7f3db3eb230cdc0cc10eca3f.html#a5444b5bc7f3db3eb230cdc0cc10eca3f", null ]
+    [ "et_last_trigger", "d5/d8f/class_analog_inputs_ad7c6c1a1a96121d9410d7cb55c1766f0.html#ad7c6c1a1a96121d9410d7cb55c1766f0", null ],
+    [ "et_last_update", "d5/d8f/class_analog_inputs_aa4f523202e3dc9760fbe43580c5e6ffb.html#aa4f523202e3dc9760fbe43580c5e6ffb", null ]
 ];

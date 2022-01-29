@@ -110,7 +110,7 @@ class AppAIfES:public AppBaseClass {
     aitensor_t *x_test;
     aitensor_t *y_test;
 
-    void update() override{
+    void render() override{
         //perform the training
         uint16_t x_train_shape[2] = {3, 3};
         float x_train_data[3*3] = {0.0f, 0.0f, 0.0f,
@@ -141,7 +141,7 @@ class AppAIfES:public AppBaseClass {
         //aiprint(": test loss: "); aiprint_float("%f", loss);
         //aiprint("\n");
     };    //called only when the app is active
-    void updateRT() override{}; //allways called even if app is not active
+    void update() override{}; //allways called even if app is not active
     void onFocus() override{};   //called when given focus
     void onFocusLost() override{}; //called when focus is taken
     void onTouch(uint16_t t_x, uint16_t t_y) override{

@@ -1,11 +1,16 @@
 var annotated_dup =
 [
+    [ "Markdown", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
+    [ "Jekyll Themes", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
+    [ "Support or Contact", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", null ],
     [ "__erisAudioAnalyzeFFT1024", "d3/db2/class____eris_audio_analyze_f_f_t1024.html", "d3/db2/class____eris_audio_analyze_f_f_t1024" ],
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", "d5/d8f/class_analog_inputs" ],
     [ "Animation", "d4/d7c/class_animation.html", "d4/d7c/class_animation" ],
+    [ "AppAIfES", "d8/deb/class_app_a_if_e_s.html", "d8/deb/class_app_a_if_e_s" ],
     [ "AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic.html", "dc/d27/class_app_audio_to_polyphonic" ],
-    [ "AppBaseClass", "db/d69/class_app_base_class.html", null ],
+    [ "AppBaseClass", "db/d69/class_app_base_class.html", "db/d69/class_app_base_class" ],
     [ "AppCQT", "d4/dde/class_app_c_q_t.html", "d4/dde/class_app_c_q_t" ],
+    [ "AppManager", "da/d96/class_app_manager.html", "da/d96/class_app_manager" ],
     [ "AppReprogram", "d5/d25/class_app_reprogram.html", "d5/d25/class_app_reprogram" ],
     [ "AppScope", "d8/dbe/class_app_scope.html", "d8/dbe/class_app_scope" ],
     [ "AppTemplate", "d9/d03/class_app_template.html", "d9/d03/class_app_template" ],

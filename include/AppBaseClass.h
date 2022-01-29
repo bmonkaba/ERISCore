@@ -54,18 +54,18 @@ class AppBaseClass {
                   // 253 - widgets (always active)
                   // 253 - widgets (active off dashboard)
                   // 1-250 - applications
-    uint16_t updateRT_priority;
-    uint16_t updateRT_priority_counter;
+    uint16_t update_priority;
+    uint16_t update_priority_counter;
+    uint16_t render_cpu_time;
+    uint16_t render_cpu_time_max;
     uint16_t update_cpu_time;
     uint16_t update_cpu_time_max;
-    uint16_t updateRT_cpu_time;
-    uint16_t updateRT_cpu_time_max;
     uint16_t cycle_time;
     uint16_t cycle_time_max;
-    elapsedMicros update_period;
+    elapsedMicros et_render_period;
+    uint16_t render_period_max;
+    elapsedMicros et_update_period;
     uint16_t update_period_max;
-    elapsedMicros updateRT_period;
-    uint16_t updateRT_period_max;
   public:
     int16_t origin_x;
     int16_t origin_y;
@@ -91,13 +91,13 @@ class AppBaseClass {
     }
     void registerApp(AppBaseClass *app);
     void setParent(AppBaseClass *parent){parent_node = parent;};
-    void setPosition(int16_t newOriginX, int16_t newOriginY){origin_x=newOriginX;origin_y=newOriginY;_updatePosition();}
+    void setPosition(int16_t new_origin_x, int16_t new_origin_y){origin_x=new_origin_x;origin_y=new_origin_y;_updatePosition();}
     void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;_updatePosition();}
-    void setWidgetPosition(int16_t newOriginX, int16_t newOriginY){widget_origin_x=newOriginX;widget_origin_y=newOriginY;_updatePosition();}
+    void setWidgetPosition(int16_t new_origin_x, int16_t new_origin_y){widget_origin_x=new_origin_x;widget_origin_y=new_origin_y;_updatePosition();}
     void setWidgetDimension(int16_t new_width, int16_t new_height){widget_width=new_width;widget_height=new_height;_updatePosition();}
     void getFocus();
-    virtual void update(){};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
-    virtual void updateRT(){}; //will be called every loop and prior to a potential update call
+    virtual void render(){};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
+    virtual void update(){}; //will be called every loop and prior to a potential update call
     //Event handlers
     virtual void onFocus(){};
     virtual void onFocusLost(){};

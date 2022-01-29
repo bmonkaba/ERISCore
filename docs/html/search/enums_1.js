@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subsample_5frange_1757',['subsample_range',['../d4/dfc/eris__analyze__fft1024_8h_af1f4ed6c31e28ce8075c254e6ed3ab18.html#af1f4ed6c31e28ce8075c254e6ed3ab18',1,'eris_analyze_fft1024.h']]]
+  ['loopstate_2220',['loopState',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8d',1,'AppManager.h']]]
 ];

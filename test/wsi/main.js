@@ -1129,14 +1129,14 @@ function renderMonitor() {
                 ctx.putImageData(pixel, x, c.height-2);
                 */
 
-                x = watch.APPS[key].updateRT_period_max / 100;
+                x = watch.APPS[key].update_period_max / 500.0;
                 ctx.beginPath();
                 ctx.moveTo(x, c.height - 1);
                 pixel_color[0] = 0;
                 pixel_color[1] = 255;
                 pixel_color[2] = 255;
                 pixel_color[3] = 80;
-                x2 = x + watch.APPS[key].updateRT_cpu_time_max / 20;
+                x2 = x + watch.APPS[key].update_cpu_time_max / 20;
                 ctx.lineTo(x2, c.height - 1);
                 ctx.stroke();
                 ctx.putImageData(pixel, x, c.height - 2);
@@ -1144,7 +1144,7 @@ function renderMonitor() {
         }
         //slide the image up
 
-        if (Math.random() > 0.0001) {
+        if (1) { //Math.random() > 0.0001
             ctx.fillStyle = "#000000";
             ctx.strokeStyle = "#000000";
 

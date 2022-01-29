@@ -17,9 +17,9 @@ class ControlSlider:public AppBaseClass {
   public:
     ControlSlider(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
-        updateRT_priority = 253;
-        isPressed = false;
-        isDirty = true;
+        update_priority = 253;
+        is_pressed = false;
+        is_dirty = true;
         strcpy(text,"ControlSlider");
         strcpy(name,"ControlSlider");
         last_x = 0;
@@ -37,11 +37,11 @@ class ControlSlider:public AppBaseClass {
   private:
     uint16_t last_x;
   protected:
-    bool isDirty;
-    bool isPressed;
-    void update() override{
-        isDirty = true;
-        if (isDirty){
+    bool is_dirty;
+    bool is_pressed;
+    void render() override{
+        is_dirty = true;
+        if (is_dirty){
             int16_t marker = w*((float)value/100.0);
             draw->fillRoundRect(x+1, y, marker+2, h/2 + 4,4, am->data->read("UI_SLIDER_FILL_COLOR"));
             draw->fillRoundRect(x+1, y+ h/2, marker+2, h/2,4, am->data->read("UI_SLIDER_SHADE_COLOR"));
@@ -49,25 +49,25 @@ class ControlSlider:public AppBaseClass {
             draw->setTextColor(am->data->read("UI_SLIDER_TEXT_COLOR"));
             draw->setCursor(x+(w/2),y+(h/2),true);
             draw->print(text);
-            isDirty = false;
+            is_dirty = false;
         }
     };
-    void onFocusLost() override{isPressed=false;};
+    void onFocusLost() override{is_pressed=false;};
     void onTouch (uint16_t t_x, uint16_t t_y){
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
-            isPressed = true;
+            is_pressed = true;
             last_x = t_x;
-            isDirty = true;
+            is_dirty = true;
         }
     };
 
     void onTouchDrag (uint16_t t_x, uint16_t t_y){
-        if(isPressed){
+        if(is_pressed){
             value += ((t_x-last_x)/2);
             if (value>100)value = 100;
             if (last_x != t_x) parent_node->messageHandler(this,"Changed");
             last_x = t_x;
-            isDirty = true;
+            is_dirty = true;
         }
     }
 
@@ -75,7 +75,7 @@ class ControlSlider:public AppBaseClass {
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             parent_node->messageHandler(this,"Set");
         }
-        isPressed = false;
+        is_pressed = false;
         last_x = x;
     };
 };

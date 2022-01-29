@@ -189,14 +189,14 @@ void AppManager::update(){
         if (exclusive_app_render == false){
           do{
               app_time=0;
-              if (node->update_period > node->update_period_max) node->update_period_max = node->update_period;
-              node->update(); //update active window
-              node->update_cpu_time = app_time;
-              if (node->update_cpu_time > node->update_cpu_time_max){
-                  node->update_cpu_time_max = node->update_cpu_time;
+              if (node->et_render_period > node->render_period_max) node->render_period_max = node->et_render_period;
+              node->render(); //update active window
+              node->render_cpu_time = app_time;
+              if (node->render_cpu_time > node->render_cpu_time_max){
+                  node->render_cpu_time_max = node->render_cpu_time;
               }
               //update the data dictionary
-              node->update_period =0;
+              node->et_render_period =0;
               node=node->next_app_node;//check next node
             }while(node !=NULL);
         };
@@ -212,7 +212,7 @@ void AppManager::update(){
           node = getApp(appPopUpStack[appPopUpStackIndex-1]);
           if (node != 0){
             //Serial.println(F("AppManager::redraw_popup"));
-            node->update();
+            node->render();
           }
         }
         data->update(RENDER,(int32_t)3);
@@ -227,15 +227,15 @@ void AppManager::update(){
     bool isactive_child;
     do{
       app_time=0;
-      if (node->updateRT_priority > node->updateRT_priority_counter){
-        node->updateRT_priority_counter++;
+      if (node->update_priority > node->update_priority_counter){
+        node->update_priority_counter++;
       }else{
-        node->updateRT_priority_counter = 0;
-        if (node->updateRT_period > node->updateRT_period_max) node->updateRT_period_max = node->updateRT_period;
-        node->updateRT(); //real time update (always called)
-        node->updateRT_cpu_time = app_time;
-        if (node->updateRT_cpu_time > node->updateRT_cpu_time_max) node->updateRT_cpu_time_max = node->updateRT_cpu_time;
-        node->updateRT_period =0;
+        node->update_priority_counter = 0;
+        if (node->et_update_period > node->update_period_max) node->update_period_max = node->et_update_period;
+        node->update(); //real time update (always called)
+        node->update_cpu_time = app_time;
+        if (node->update_cpu_time > node->update_cpu_time_max) node->update_cpu_time_max = node->update_cpu_time;
+        node->et_update_period =0;
       }
       isactive_child = false;
       if (node->id == activeID && !draw.busy()) {
@@ -471,17 +471,17 @@ void AppManager::printStats (){
       sci->print(F("\""));
       sci->print(node->name);
       sci->print(F("\":{"));
+      sci->print(F("\"render_period_max\":"));sci->print(node->render_period_max);sci->print(F(","));
+      sci->print(F("\"render_cpu_time_max\":"));sci->print(node->render_cpu_time_max);sci->print(F(","));
       sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
-      sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);sci->print(F(","));
-      sci->print(F("\"updateRT_period_max\":"));sci->print(node->updateRT_period_max);sci->print(F(","));
-      sci->print(F("\"updateRT_cpu_time_max\":"));sci->print(node->updateRT_cpu_time_max);
+      sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);
       sci->print(F("},"));
       //clear the stats
+      node->render_cpu_time_max = 0;
       node->update_cpu_time_max = 0;
-      node->updateRT_cpu_time_max = 0;
       node->cycle_time_max = 0;
+      node->render_period_max = 0;
       node->update_period_max = 0;
-      node->updateRT_period_max = 0;
       node=node->next_app_node;//check next node
     }while(node !=NULL);
     if (root != 0){

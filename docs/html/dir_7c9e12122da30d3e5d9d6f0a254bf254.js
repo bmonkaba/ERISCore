@@ -1,10 +1,13 @@
 var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
 [
     [ "AnalogInputs.h", "d3/ddb/_analog_inputs_8h.html", "d3/ddb/_analog_inputs_8h" ],
+    [ "AppAIfES.h", "d2/d14/_app_a_if_e_s_8h.html", [
+      [ "AppAIfES", "d8/deb/class_app_a_if_e_s.html", "d8/deb/class_app_a_if_e_s" ]
+    ] ],
     [ "AppAudioToPolyphonic.h", "d9/db6/_app_audio_to_polyphonic_8h.html", "d9/db6/_app_audio_to_polyphonic_8h" ],
-    [ "AppBaseClass.h", "d9/d3e/_app_base_class_8h.html", null ],
+    [ "AppBaseClass.h", "d9/d3e/_app_base_class_8h.html", "d9/d3e/_app_base_class_8h" ],
     [ "AppCQT.h", "d8/db0/_app_c_q_t_8h.html", "d8/db0/_app_c_q_t_8h" ],
-    [ "AppManager.h", "df/d72/_app_manager_8h.html", null ],
+    [ "AppManager.h", "df/d72/_app_manager_8h.html", "df/d72/_app_manager_8h" ],
     [ "AppReprogram.h", "d5/d98/_app_reprogram_8h.html", [
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", "d5/d25/class_app_reprogram" ]
     ] ],

@@ -24,24 +24,24 @@ const char* nullStr = "NULL";
 
 FLASHMEM AudioDirector::AudioDirector(){
   sci = NULL;
-  objCount=0;
-  activeConnections = 0;
-  categoryCount=0;
-  shortNameQueryResultCount=0;
-  printStatsSelect = 0;
+  obj_count=0;
+  active_connections = 0;
+  category_count=0;
+  short_name_query_result_count=0;
+  printstats_select = 0;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
   for (uint16_t i=0; i < MAX_UNIQUE_NAMES_PER_CATEGORY; i++){
-    shortNameQueryResult[i]=0;
+    short_name_query_result[i]=0;
   }
   for (uint16_t j = 0; j < MAX_CATEGORIES; j++){
     categoryList[j] = (char**)&nullStr;
   }
-  pAudioStreamInputPort = new erisAudioInputI2S();
-  heapStart = pAudioStreamInputPort;
+  p_audiostream_input_port = new erisAudioInputI2S();
+  heapStart = p_audiostream_input_port;
 
-  addAudioStreamObj(pAudioStreamInputPort);
-  addAudioStreamObj(&AudioStreamOutputPort);
+  addAudioStreamObj(p_audiostream_input_port);
+  addAudioStreamObj(&p_audiostream_output_port);
 
   
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
@@ -76,12 +76,12 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioEffectDelay);
   
   Serial.print(F("M AudioDirector::AudioDirector() objects: "));
-  Serial.println(objCount);
+  Serial.println(obj_count);
 
   generateCategoryList();
   Serial.print(F("M AudioDirector::AudioDirector() object categories: "));
-  Serial.println(categoryCount);
-  for (uint16_t j = 0; j < categoryCount; j++)Serial.println(*categoryList[j]);
+  Serial.println(category_count);
+  for (uint16_t j = 0; j < category_count; j++)Serial.println(*categoryList[j]);
 
   AudioStream* test = getAudioStreamObjByName("mixer_2");
   Serial.println(F("M AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
@@ -91,9 +91,9 @@ FLASHMEM AudioDirector::AudioDirector(){
 
   Serial.println(F("M AudioDirector::AudioDirector() building AudioConnection pool"));
   for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
-    pCord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
+    p_cord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
   }
-  heapEnd = pCord[MAX_CONNECTIONS-1] + (pCord[MAX_CONNECTIONS-1] - pCord[MAX_CONNECTIONS-2]);
+  heapEnd = p_cord[MAX_CONNECTIONS-1] + (p_cord[MAX_CONNECTIONS-1] - p_cord[MAX_CONNECTIONS-2]);
   Serial.print(F("M AudioDirector::AudioDirector() Estimated Memory Useage: "));
   long s = (uint32_t)heapStart;
   long e = (uint32_t)heapEnd;
@@ -113,15 +113,15 @@ bool AudioDirector::initAudioHardware(){
 bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   uint8_t count = 0; 
 
-  if (obj !=0 && objCount < MAX_AUDIO_STREAM_OBJECTS){
-    pAudioStreamObjPool[objCount++] = obj;
+  if (obj !=0 && obj_count < MAX_AUDIO_STREAM_OBJECTS){
+    p_audiostream_obj_pool[obj_count++] = obj;
     Serial.print(F("M AudioDirector::addAudioStreamObj adding obj :"));
     Serial.print(obj->category);
     Serial.print(F("->"));
     Serial.print(obj->short_name);  
-    if (objCount > 0){
-      for(uint16_t i=0; i < objCount;i++){
-        if(strcmp(obj->short_name,pAudioStreamObjPool[i]->short_name)==0) count += 1;
+    if (obj_count > 0){
+      for(uint16_t i=0; i < obj_count;i++){
+        if(strcmp(obj->short_name,p_audiostream_obj_pool[i]->short_name)==0) count += 1;
       }
     } else{
       heapStart = (void *)obj;  
@@ -142,59 +142,59 @@ void FLASHMEM AudioDirector::printStats(){
 
   if (sci==NULL) return;
 
-  if (printStatsSelect == 0){
+  if (printstats_select == 0){
     if(sci->requestStartLZ4Message()){
-      printStatsSelect += 1;
+      printstats_select += 1;
       sci->print(F("STATS {\"AudioDirector\":{"));  
       sci->print(F("\"AudioStreams\":{"));
       
-      for(uint16_t i=0; i < objCount;i++){
+      for(uint16_t i=0; i < obj_count;i++){
         sci->print(F("\""));
-        sci->print(pAudioStreamObjPool[i]->short_name);sci->print(F("_"));
-        sci->print(pAudioStreamObjPool[i]->instance);
+        sci->print(p_audiostream_obj_pool[i]->short_name);sci->print(F("_"));
+        sci->print(p_audiostream_obj_pool[i]->instance);
         sci->print(F("\":{\"cpu\":"));
-        sci->print(pAudioStreamObjPool[i]->processorUsage());
+        sci->print(p_audiostream_obj_pool[i]->processorUsage());
         sci->print(F(",\"cpu_max\":"));
-        sci->print(pAudioStreamObjPool[i]->processorUsageMax());
+        sci->print(p_audiostream_obj_pool[i]->processorUsageMax());
         sci->print(F(",\"category\":\""));
-        sci->print(pAudioStreamObjPool[i]->category);sci->print(F("\""));
+        sci->print(p_audiostream_obj_pool[i]->category);sci->print(F("\""));
         sci->print(F(",\"inputs\":"));
-        sci->print(pAudioStreamObjPool[i]->unum_inputs);
+        sci->print(p_audiostream_obj_pool[i]->unum_inputs);
         sci->print(F(",\"outputs\":"));
-        sci->print(pAudioStreamObjPool[i]->unum_outputs);
+        sci->print(p_audiostream_obj_pool[i]->unum_outputs);
         sci->print("}"); //close obj
-        if ( i < (objCount -1)) sci->print(",");
+        if ( i < (obj_count -1)) sci->print(",");
       }
       sci->print("}}}");
       sci->sendLZ4Message();
     }
-  }else if (printStatsSelect == 1){ 
+  }else if (printstats_select == 1){ 
     if(sci->requestStartLZ4Message()){
-      printStatsSelect += 1;
+      printstats_select += 1;
       sci->print(F("STATS {\"AudioDirector\":{"));  
       sci->print(F("\"AudioConnectionPool\":{"));
-      sci->print(F("\"activeConnections\":"));
-      sci->print(activeConnections);
+      sci->print(F("\"active_connections\":"));
+      sci->print(active_connections);
       for(uint16_t i=0; i < MAX_CONNECTIONS;i++){ //for each...
         sci->print(F(",\""));
         sci->print(i); //connection index used as a container
         sci->print(F("\":{"));
         sci->print(F("\"inUse\":"));
-        sci->print(pCord[i]->isConnected);
-        if (pCord[i]->isConnected == true){ //assigned connections
+        sci->print(p_cord[i]->isConnected);
+        if (p_cord[i]->isConnected == true){ //assigned connections
             sci->print(F(",\"srcType\":\""));
-            sci->print(pCord[i]->pSrc->short_name);
+            sci->print(p_cord[i]->pSrc->short_name);
             sci->print(F("\",\"srcInstance\":"));
-            sci->print(pCord[i]->pSrc->instance);
+            sci->print(p_cord[i]->pSrc->instance);
             sci->print(F(",\"srcPort\":"));
-            sci->print(pCord[i]->src_index);
+            sci->print(p_cord[i]->src_index);
 
             sci->print(F(",\"destType\":\""));
-            sci->print(pCord[i]->pDst->short_name);
+            sci->print(p_cord[i]->pDst->short_name);
             sci->print(F("\",\"destInstance\":"));
-            sci->print(pCord[i]->pDst->instance);
+            sci->print(p_cord[i]->pDst->instance);
             sci->print(F(",\"destPort\":"));
-            sci->print(pCord[i]->dest_index);
+            sci->print(p_cord[i]->dest_index);
         }else{
             //unassigned connections
         }
@@ -205,7 +205,7 @@ void FLASHMEM AudioDirector::printStats(){
     }
   }else{
     if(sci->requestStartLZ4Message()){
-      printStatsSelect = 0;
+      printstats_select = 0;
       sci->print(F("STATS {"));  
       ExtADCPrintStatus(sci);
       sci->println(F("}"));
@@ -215,7 +215,7 @@ void FLASHMEM AudioDirector::printStats(){
   //sci->startLZ4Message();
   //sci->print(F("}")); // close the coonection pool container
   //throw in some audio director stats
-  //sci->print(F(",\"AudioStreamObjCount\":")); sci->print(objCount);
+  //sci->print(F(",\"AudioStreamObjCount\":")); sci->print(obj_count);
   //sci->print(F(",\"memory\":"));
   //sci->print(e-s);
   //sci->println(F("}}"));
@@ -226,16 +226,16 @@ void FLASHMEM AudioDirector::printStats(){
 void AudioDirector::generateCategoryList(){
   //called from the constructor
   bool found;
-  categoryCount=0;  
-  for (uint16_t i = 0; i < objCount; i++){           //for each object
+  category_count=0;  
+  for (uint16_t i = 0; i < obj_count; i++){           //for each object
     found = false;
     for (uint16_t j = 0; j < MAX_CATEGORIES; j++){   //check if cat name is already in the list
       if (categoryList[j] != 0){ //dont test unitialized string pointers
-        if (strcmp(*categoryList[j],pAudioStreamObjPool[i]->category)==0) found = true;
+        if (strcmp(*categoryList[j],p_audiostream_obj_pool[i]->category)==0) found = true;
       } 
     }
-    if (found==false) categoryList[categoryCount++] = (char**)&pAudioStreamObjPool[i]->category; //add to the list if not existing
-    if (categoryCount==MAX_CATEGORIES) return; //limit the result list to the size of the category buffer 
+    if (found==false) categoryList[category_count++] = (char**)&p_audiostream_obj_pool[i]->category; //add to the list if not existing
+    if (category_count==MAX_CATEGORIES) return; //limit the result list to the size of the category buffer 
   }
 }
 
@@ -246,10 +246,10 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
   pch = strstr (AudioStreamObjName,"_");
   uint8_t instance = (uint8_t)strtoul(pch+1,&ptr,10);//instance starts 1 char from '_' and is always base 10
 
-  for (uint16_t i = 0; i < objCount; i++){
+  for (uint16_t i = 0; i < obj_count; i++){
     //test the index first, then the string
-    if (instance == pAudioStreamObjPool[i]->instance){
-        if (0==strncmp(AudioStreamObjName,pAudioStreamObjPool[i]->short_name,strlen(pAudioStreamObjPool[i]->short_name))) return pAudioStreamObjPool[i];
+    if (instance == p_audiostream_obj_pool[i]->instance){
+        if (0==strncmp(AudioStreamObjName,p_audiostream_obj_pool[i]->short_name,strlen(p_audiostream_obj_pool[i]->short_name))) return p_audiostream_obj_pool[i];
     }
   }
   //not found return null
@@ -259,11 +259,11 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
 }
 
 bool AudioDirector::getAudioStreamString(uint16_t streamIndex, char* streamStringBuffer){
-  if (streamIndex >= objCount){
+  if (streamIndex >= obj_count){
     strcpy(streamStringBuffer,"");
     return false;
   }
-  sprintf(streamStringBuffer,"%s %s_%d",pAudioStreamObjPool[streamIndex]->category,pAudioStreamObjPool[streamIndex]->short_name,pAudioStreamObjPool[streamIndex]->instance);
+  sprintf(streamStringBuffer,"%s %s_%d",p_audiostream_obj_pool[streamIndex]->category,p_audiostream_obj_pool[streamIndex]->short_name,p_audiostream_obj_pool[streamIndex]->instance);
   return true;
 }
 
@@ -271,22 +271,22 @@ bool AudioDirector::getConnectionString(uint16_t connectionIndex, char* connecti
   //STUB
   uint16_t i;
   uint16_t count = 0;
-  if (connectionIndex >= activeConnections){
+  if (connectionIndex >= active_connections){
     strcpy(connectionStringBuffer,"");
     return false;
   }
   for(i=0; i < MAX_CONNECTIONS;i++){
-    if (pCord[i]->isConnected == true){
+    if (p_cord[i]->isConnected == true){
       if(count == connectionIndex){
         //build connection string into the buffer
         sprintf(connectionStringBuffer,"connect(%s_%d,%d,%s_%d,%d);",
-          pCord[i]->pSrc->short_name,
-          pCord[i]->pSrc->instance,
-          pCord[i]->src_index,
-          pCord[i]->pDst->short_name,
-          pCord[i]->pDst->instance,
-          pCord[i]->dest_index);
-        if (connectionIndex < activeConnections) return true;
+          p_cord[i]->pSrc->short_name,
+          p_cord[i]->pSrc->instance,
+          p_cord[i]->src_index,
+          p_cord[i]->pDst->short_name,
+          p_cord[i]->pDst->instance,
+          p_cord[i]->dest_index);
+        if (connectionIndex < active_connections) return true;
       }
       count++;
     }
@@ -299,11 +299,11 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   if (NULL==source||NULL==destination) return false;
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
-    if(source==pCord[i]->pSrc && destination==pCord[i]->pDst && sourceOutput==pCord[i]->src_index && destinationInput==pCord[i]->dest_index){
+    if(source==p_cord[i]->pSrc && destination==p_cord[i]->pDst && sourceOutput==p_cord[i]->src_index && destinationInput==p_cord[i]->dest_index){
       //Serial.print(F("M AudioDirector::connect() found existing connection; reconnecting at index  "));
       //Serial.println(i);
       //Serial.flush();
-      if(pCord[i]->reconnect()) activeConnections++;
+      if(p_cord[i]->reconnect()) active_connections++;
       return true;
     }
   }
@@ -311,16 +311,16 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   //find a free connection from the pool
   for(i=0; i < MAX_CONNECTIONS;i++){
     //find any already existing but unused connections
-    if (NULL!=pCord[i]){
-      if (pCord[i]->isConnected == false){
+    if (NULL!=p_cord[i]){
+      if (p_cord[i]->isConnected == false){
         //Serial.printf(F("M \tAudioDirector::connect() connection index: %d\t"),i);
         //Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
         //Serial.flush();
-        if(pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) activeConnections++;
+        if(p_cord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) active_connections++;
         return true;
       }
     }
-    if (NULL==pCord[i]){
+    if (NULL==p_cord[i]){
       Serial.print(F("M AudioDirector::connect() making a new AudioConnection at index "));
       Serial.println(i);
       /*
@@ -333,8 +333,8 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       //Serial.flush();
       //need to rewire after creation as the reference based approach was bypassed 
       //in favor of pointers in order to facilitate the extention of the audio connection base class
-      pCord[i] = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
-      pCord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
+      p_cord[i] = new AudioConnection(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
+      p_cord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput);
       return true; 
     }
   }
@@ -405,11 +405,11 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
   //find the connection within the pool
   uint16_t i;
   for(i=0; i < MAX_CONNECTIONS;i++){
-    if (pCord[i]->pDst == destination && pCord[i]->dest_index == destinationInput){
+    if (p_cord[i]->pDst == destination && p_cord[i]->dest_index == destinationInput){
       Serial.print(F("M AudioDirector::disconnect() found AudioConnection at index "));
       Serial.println(i);
       //disconnect the audio connection
-      if(pCord[i]->disconnect()) activeConnections--;
+      if(p_cord[i]->disconnect()) active_connections--;
       Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
       //Serial.flush();
       return true; 
@@ -428,7 +428,7 @@ bool AudioDirector::disconnect(const char* connectionString){
 
 bool AudioDirector::disconnectAll(){
   for(uint16_t i=0; i < MAX_CONNECTIONS; i++){
-    if(pCord[i]->disconnect()) activeConnections--;
+    if(p_cord[i]->disconnect()) active_connections--;
   }
   return false;
 };

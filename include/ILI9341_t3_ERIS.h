@@ -189,7 +189,7 @@ class Animation{
     friend class ILI9341_t3_ERIS;
     public:
         Animation(){
-            frame = 1;chunk=0;last_frame=-1;pSD=NULL;
+            frame = 1;chunk=0;last_frame=-1;p_SD=NULL;
             memset(filename,0,sizeof(filename));
             memset(_path,0,sizeof(_path));
         
@@ -208,7 +208,7 @@ class Animation{
         char* getFileName(){return filename;};
         char* getPath(){return _path;};
     protected:
-        SdFs* pSD;
+        SdFs* p_SD;
         uint16_t frame;
         int16_t last_frame;
         uint16_t chunk;
@@ -223,9 +223,9 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 74000000;
+            tft_write_speed = 50000000;
             tft_read_speed = 25000000;
-            pSD = NULL;
+            p_SD = NULL;
             backlight = 0;
             pFB = NULL;    
         };
@@ -263,7 +263,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
     protected:
         uint32_t tft_write_speed;
         uint32_t tft_read_speed;
-        SdFs *pSD;
+        SdFs *p_SD;
         FsFile file;
         uint16_t *pFB;  //framebuffer pointer     
         uint8_t backlight;

@@ -107,26 +107,29 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_af6333a4f51f9587
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00434">434</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                         {</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  <span class="comment">//(char* path,char* filename,int16_t x, int16_t y)</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  AppManager* am = AppManager::getInstance();</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren_a26f0dd0c98d9503915f3bede0ccccb71.html#a26f0dd0c98d9503915f3bede0ccccb71">bltSD2Surface</a>(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),<a class="code" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502">AT_NONE</a>);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00436">436</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                         {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <span class="comment">//(char* path,char* filename,int16_t x, int16_t y)</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;  app-&gt;<a class="code" href="../../d0/da0/class_app_wren_a26f0dd0c98d9503915f3bede0ccccb71.html#a26f0dd0c98d9503915f3bede0ccccb71">bltSD2Surface</a>(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),<a class="code" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502">AT_NONE</a>);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;}</div>
 <div class="ttc" id="a_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022_html_a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502"><div class="ttname"><a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502">AT_NONE</a></div><div class="ttdeci">@ AT_NONE</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00219">ILI9341_t3_ERIS.h:219</a></div></div>
+<div class="ttc" id="aclass_app_manager_a08daaf40a3ddaa938603039eb1e67d09_html_a08daaf40a3ddaa938603039eb1e67d09"><div class="ttname"><a href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">AppManager::getAppByName</a></div><div class="ttdeci">AppBaseClass * getAppByName(const char *appName)</div><div class="ttdoc">Get the App pointer By Name. Returns NULL if not found.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager.cpp:449</a></div></div>
+<div class="ttc" id="aclass_app_manager_aa76d9691e8d029656413590fbe4dee86_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager.h:64</a></div></div>
+<div class="ttc" id="aclass_app_manager_html"><div class="ttname"><a href="../../da/d96/class_app_manager.html">AppManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00033">AppManager.h:33</a></div></div>
 <div class="ttc" id="aclass_app_wren_a26f0dd0c98d9503915f3bede0ccccb71_html_a26f0dd0c98d9503915f3bede0ccccb71"><div class="ttname"><a href="../../d0/da0/class_app_wren_a26f0dd0c98d9503915f3bede0ccccb71.html#a26f0dd0c98d9503915f3bede0ccccb71">AppWren::bltSD2Surface</a></div><div class="ttdeci">void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y, bltAlphaType alpha_type)</div><div class="ttdoc">block tramsfer from SD to surface</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00275">AppWren.h:275</a></div></div>
 <div class="ttc" id="aclass_app_wren_html"><div class="ttname"><a href="../../d0/da0/class_app_wren.html">AppWren</a></div><div class="ttdoc">Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00029">AppWren.h:29</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00219">AT_NONE</a>, and <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00275">AppWren::bltSD2Surface()</a>.</p>
+<p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00219">AT_NONE</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00275">AppWren::bltSD2Surface()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager::getAppByName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager::getInstance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00513">bindForeignMethod()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00515">bindForeignMethod()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af6333a4f51f95873539f5053e80c1104_af6333a4f51f95873539f5053e80c1104_cgraph.svg" width="100%" height="541"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af6333a4f51f95873539f5053e80c1104_af6333a4f51f95873539f5053e80c1104_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -134,7 +137,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_af6333a4f51f9587
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af6333a4f51f95873539f5053e80c1104_af6333a4f51f95873539f5053e80c1104_icgraph.svg" width="100%" height="425"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_af6333a4f51f95873539f5053e80c1104_af6333a4f51f95873539f5053e80c1104_icgraph.svg" width="100%" height="431"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

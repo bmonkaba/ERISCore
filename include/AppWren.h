@@ -33,13 +33,13 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        updateRT_priority = 2; //set to highest priority
+        update_priority = 2; //set to highest priority
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
         vm = 0;
+        h_render = 0;
         h_update = 0;
-        h_updateRT = 0;
         h_onFocus = 0;
         h_onFocusLost = 0;
         h_onTouch = 0;
@@ -450,13 +450,13 @@ class AppWren:public AppBaseClass {
      * @brief class specific update implementation
      * 
      */
-    void update() override;//called only when the app is active
+    void render() override;//called only when the app is active
 
     /**
-     * @brief class specific updateRT implementation
+     * @brief class specific update implementation
      * 
      */
-    void updateRT() override;
+    void update() override;
 
     /**
      * @brief class specific OnFocus implementation
@@ -647,8 +647,8 @@ class AppWren:public AppBaseClass {
  private:
     WrenVM* vm;
     WrenHandle* h_slot0;
+    WrenHandle* h_render;
     WrenHandle* h_update;
-    WrenHandle* h_updateRT;
     WrenHandle* h_onFocus;
     WrenHandle* h_onFocusLost;
     WrenHandle* h_onTouch;

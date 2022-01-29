@@ -7,12 +7,12 @@
 # What is Eris Core:
 
 Eris core is:
-\* an AI/ML Audio focused "crossover operating system" for a crossover microcontroller
-\* a rapid application development & test framework
-\* a subsystem component complete with mechanical housing examples
-\* supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
-\* intended as a foundation for further integration into projects & products
-\* a low-cost high performance design for intended for use by anyone from beginners to advanced developers
+* an AI/ML Audio focused "crossover operating system" for a crossover microcontroller
+* a rapid application development & test framework
+* a subsystem component complete with mechanical housing examples
+* supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
+* intended as a foundation for further integration into projects & products
+* a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
 <br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
@@ -21,12 +21,19 @@ pre-alpha sys stress, integration, regression testing / demo:
 
 [![youtube video](https://i9.ytimg.com/vi_webp/QZLU7C8BaJI/mqdefault.webp?sqp=CLiwzI8G&rs=AOn4CLB2NgaH1Qb9FbgtQtrb76kH-IHBeA)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
 
-# 3rd party code licence
+# 3rd party code 
+
+## Licence
 
 * Wren - MIT Licence
 * LZ4 - BSD 2-Clause License
 * AIeFS - GNU Affero General Public License
 * Arduino/Teensyduino - MIT Licence
+
+## External dependancies
+
+    densaugeo/base64@^1.2.0
+	fraunhofer-ims/AIfES for Arduino@^2.1.1
 
 # 3D print, STL & housing graphics
 

@@ -1,10 +1,25 @@
 var searchData=
 [
-  ['reboot_5frequest_1673',['reboot_request',['../d0/da0/class_app_wren_a783c0f6ff7c9bd61b9104f177682605a.html#a783c0f6ff7c9bd61b9104f177682605a',1,'AppWren']]],
-  ['receivedchars_1674',['receivedChars',['../d2/da8/class_svc_serial_command_interface_a9ff407fbbdfb7ec25517dd3b6af06aba.html#a9ff407fbbdfb7ec25517dd3b6af06aba',1,'SvcSerialCommandInterface']]],
-  ['ref_5fcount_1675',['ref_count',['../de/dd6/structaudio__block__struct_aebaed5308ff4d02b54a3d11c4d516526.html#aebaed5308ff4d02b54a3d11c4d516526',1,'audio_block_struct']]],
-  ['reflector_1676',['reflector',['../da/d1c/ideas_8txt_ac371554e6ffc34648abdd800a7cec9b4.html#ac371554e6ffc34648abdd800a7cec9b4',1,'ideas.txt']]],
-  ['reserved1_1677',['reserved1',['../de/dd6/structaudio__block__struct_a01d021533181c5fe46b62ff06217018f.html#a01d021533181c5fe46b62ff06217018f',1,'audio_block_struct']]],
-  ['rotation_1678',['rotation',['../d1/dff/class_touch_a399fab37167c025b8595c4c2c1e44902.html#a399fab37167c025b8595c4c2c1e44902',1,'Touch']]],
-  ['rt_5fcalls_1679',['rt_calls',['../d4/dde/class_app_c_q_t_a383695819f9ddeffb5689576884b9928.html#a383695819f9ddeffb5689576884b9928',1,'AppCQT']]]
+  ['reboot_5frequest_2073',['reboot_request',['../d0/da0/class_app_wren_a783c0f6ff7c9bd61b9104f177682605a.html#a783c0f6ff7c9bd61b9104f177682605a',1,'AppWren']]],
+  ['received_5fchars_2074',['received_chars',['../d2/da8/class_svc_serial_command_interface_a80229feee4cd0f6a7676374b0c3f73d3.html#a80229feee4cd0f6a7676374b0c3f73d3',1,'SvcSerialCommandInterface']]],
+  ['recording_2075',['recording',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_ae3ef358decdb9b845296d3b8977564ed.html#ae3ef358decdb9b845296d3b8977564ed',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['reduce_2076',['reduce',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a9b45f987819ec86feca0f95349852b8f.html#a9b45f987819ec86feca0f95349852b8f',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['ref_5fcount_2077',['ref_count',['../de/dd6/structaudio__block__struct_aebaed5308ff4d02b54a3d11c4d516526.html#aebaed5308ff4d02b54a3d11c4d516526',1,'audio_block_struct']]],
+  ['reflector_2078',['reflector',['../da/d1c/ideas_8txt_ac371554e6ffc34648abdd800a7cec9b4.html#ac371554e6ffc34648abdd800a7cec9b4',1,'ideas.txt']]],
+  ['reformed_2079',['reformed',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_afb62eb4094b88d42260a7725d71edde7.html#afb62eb4094b88d42260a7725d71edde7',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['reinstates_2080',['reinstates',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a33e04f38d63a86bf0c1e3458370e4b71.html#a33e04f38d63a86bf0c1e3458370e4b71',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['render_5fcpu_5ftime_2081',['render_cpu_time',['../db/d69/class_app_base_class_aeca0ac43d739228f6140352db8763a8a.html#aeca0ac43d739228f6140352db8763a8a',1,'AppBaseClass']]],
+  ['render_5fcpu_5ftime_5fmax_2082',['render_cpu_time_max',['../db/d69/class_app_base_class_a96c51c890b1ba2c065ad9955ac341eed.html#a96c51c890b1ba2c065ad9955ac341eed',1,'AppBaseClass']]],
+  ['render_5fperiod_5fmax_2083',['render_period_max',['../db/d69/class_app_base_class_aee2b256dd8bb53a07368534a9e70182b.html#aee2b256dd8bb53a07368534a9e70182b',1,'AppBaseClass']]],
+  ['reproduce_2084',['reproduce',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_ad46c49cfbdca0060e05657f513524ae6.html#ad46c49cfbdca0060e05657f513524ae6',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['reproduction_2085',['reproduction',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_ad67d72a8ec841308797d118e8f9f77b2.html#ad67d72a8ec841308797d118e8f9f77b2',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['reserved1_2086',['reserved1',['../de/dd6/structaudio__block__struct_a01d021533181c5fe46b62ff06217018f.html#a01d021533181c5fe46b62ff06217018f',1,'audio_block_struct']]],
+  ['restrict_2087',['restrict',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a8c69093df992e7a5759be51d94b266a9.html#a8c69093df992e7a5759be51d94b266a9',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['reuse_2088',['reuse',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_afb9e5099e76c36fa53e955ad5b3db160.html#afb9e5099e76c36fa53e955ad5b3db160',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['rights_2089',['rights',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_afd589ac6674e601c437e06a2006c5a1b.html#afd589ac6674e601c437e06a2006c5a1b',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['rights_2090',['Rights',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a3a3a893a27961ad18d16f8b5080dd6a2.html#a3a3a893a27961ad18d16f8b5080dd6a2',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['română_2091',['română',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_afd192e92bfe306c344e73b8f97c14399.html#afd192e92bfe306c344e73b8f97c14399',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
+  ['root_2092',['root',['../da/d96/class_app_manager_a1609289f7b35f217c9f9aec1a1948832.html#a1609289f7b35f217c9f9aec1a1948832',1,'AppManager']]],
+  ['rotation_2093',['rotation',['../d1/dff/class_touch_a399fab37167c025b8595c4c2c1e44902.html#a399fab37167c025b8595c4c2c1e44902',1,'Touch']]],
+  ['rt_5fcalls_2094',['rt_calls',['../d4/dde/class_app_c_q_t_a383695819f9ddeffb5689576884b9928.html#a383695819f9ddeffb5689576884b9928',1,'AppCQT']]]
 ];

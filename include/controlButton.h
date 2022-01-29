@@ -21,14 +21,14 @@ class ControlButton:public AppBaseClass {
   public:
     ControlButton(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
-        updateRT_priority = 35000;
-        isDirty = true;
-        isPressed = false;
+        update_priority = 35000;
+        is_dirty = true;
+        is_pressed = false;
         show_active = false;
-        usingImage = false;
-        imgloaded = false;
+        using_image = false;
+        img_loaded = false;
         time_active = 0;
-        imgcache = NULL;
+        img_cache = NULL;
         strcpy(text,"ControlButton");
         strcpy(name,"ControlButton");
         strcpy(img_filename,"NONE");
@@ -38,20 +38,20 @@ class ControlButton:public AppBaseClass {
     void setText(const char* name_string){
       if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
       } else safer_strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
-      usingImage=false;
+      using_image=false;
     };
 
     void setImage(const char* path,const char* filename){
         setPath(path);
         setFile(filename);
-        if(imgloaded) delete(imgcache);
-        imgloaded = false;
+        if(img_loaded) delete(img_cache);
+        img_loaded = false;
     }
 
     void setFile(const char* filename){
       if (strlen(filename) < MAX_TEXT_LENGTH - 1){strcpy(img_filename,filename);
       } else safer_strncpy(img_filename,filename,MAX_TEXT_LENGTH - 1);
-      usingImage=true;
+      using_image=true;
     };
 
     void setPath(const char* path){
@@ -64,38 +64,38 @@ class ControlButton:public AppBaseClass {
     char text[MAX_TEXT_LENGTH];
     char img_filename[MAX_TEXT_LENGTH];
     char img_path[MAX_TEXT_LENGTH];
-    Surface* imgcache;
-    bool isDirty;
-    bool isPressed;
-    bool usingImage;
-    bool imgloaded;
+    Surface* img_cache;
+    bool is_dirty;
+    bool is_pressed;
+    bool using_image;
+    bool img_loaded;
     elapsedMillis time_active;
     bool show_active;
-    void update() override{
-        isDirty = true;
+    void render() override{
+        is_dirty = true;
         
-        if(isPressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
+        if(is_pressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
                 show_active = false;
-                isDirty = true;
+                is_dirty = true;
                 time_active = 0;
         }
-        if (!isDirty) return;
-        if(usingImage){
-            if(!imgloaded){
+        if (!is_dirty) return;
+        if(using_image){
+            if(!img_loaded){
                 //allocate space
-                imgcache = new Surface(am->fastImgCacheSurfaceP, &am->sd, img_path, img_filename);
-                if(!imgcache){ 
-                    Serial.println(F("M ERROR imgcache out of mem"));
+                img_cache = new Surface(am->fastImgCacheSurfaceP, &am->sd, img_path, img_filename);
+                if(!img_cache){ 
+                    Serial.println(F("M ERROR img_cache out of mem"));
                     Serial.flush();
-                    delete(imgcache);
+                    delete(img_cache);
                     return;
                 }else{
-                    draw->bltSDB(imgcache->getSurfaceBufferP(), imgcache->getWidth(), imgcache->getHeight(), img_path, img_filename, 0, 0, AT_NONE); //load img into cache      
-                    imgloaded = true;
+                    draw->bltSDB(img_cache->getSurfaceBufferP(), img_cache->getWidth(), img_cache->getHeight(), img_path, img_filename, 0, 0, AT_NONE); //load img into cache      
+                    img_loaded = true;
                     return;
                 }
             } else{
-                draw->bltMem(am->displaySurfaceP,imgcache,x,y,AT_NONE);
+                draw->bltMem(am->displaySurfaceP,img_cache,x,y,AT_NONE);
             }
         }else{
             draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));
@@ -107,23 +107,23 @@ class ControlButton:public AppBaseClass {
             draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));//ILI9341_MAGENTA
         }
         
-        if(!usingImage){
+        if(!using_image){
             draw->setTextColor(am->data->read("UI_BUTTON_TEXT_COLOR"));
             draw->setCursor(x+(w/2),y+(h/2),true);
             draw->setFont(Arial_9);
             draw->print(text);
         }
-        isDirty = false;
+        is_dirty = false;
     };
-    void onFocusLost() override{isPressed=false;};
+    void onFocusLost() override{is_pressed=false;};
     void onTouch(uint16_t t_x, uint16_t t_y) override{
         //Serial.println("MyButton:onTouch");
         //check if touch point is within the application bounding box
         if ((t_x > x && t_x < x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouch Button Pressed");
-            isPressed = true;
+            is_pressed = true;
             show_active = true;
-            isDirty = true;
+            is_dirty = true;
         }
     };
     void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
@@ -131,8 +131,8 @@ class ControlButton:public AppBaseClass {
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
             parent_node->messageHandler(this,"Pressed");
         }
-        isPressed = false;
+        is_pressed = false;
         time_active = 0;
-        isDirty = true;
+        is_dirty = true;
     };
 };

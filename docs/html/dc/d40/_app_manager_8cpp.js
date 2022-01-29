@@ -1,6 +1,7 @@
 var _app_manager_8cpp =
 [
     [ "__attribute__", "dc/d40/_app_manager_8cpp_adfcca630ebdb1128cd5f77fcb9fcd496.html#adfcca630ebdb1128cd5f77fcb9fcd496", null ],
+    [ "__attribute__", "dc/d40/_app_manager_8cpp_a48bb114c0cba9a011da06142f47d71e0.html#a48bb114c0cba9a011da06142f47d71e0", null ],
     [ "draw", "dc/d40/_app_manager_8cpp_a5db3dd95011fd6a678ae291290091314.html#a5db3dd95011fd6a678ae291290091314", null ],
     [ "set_arm_clock", "dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699", null ],
     [ "_ad", "dc/d40/_app_manager_8cpp_a157365f8e98c70c9d571a9840268c25d.html#a157365f8e98c70c9d571a9840268c25d", null ],

@@ -54,42 +54,42 @@
 class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:
     SvcSerialCommandInterface():AppBaseClass(){
-        updateRT_priority = 0;  //set to max priority
-        sincePoll = 0;
-        sincePeriodicDataDict = 0;
-        sincePeriodicStats = 0;
-        indexRxBuffer = 0;
-        indexTxBuffer = 0;
-        indexCaptureBuffer = 0;
-        streamPos = 0;
-        isStreamingFile = false;
-        isCapturingBulkData = false;
-        txBufferOverflowFlag = false;
-        periodicMessagesEnabled = true;
+        update_priority = 0;  //set to max priority
+        et_since_poll = 0;
+        et_since_periodic_data_dict_tx = 0;
+        et_since_periodic_stats_tx = 0;
+        index_rx_buffer = 0;
+        index_tx_buffer = 0;
+        index_capture_buffer = 0;
+        stream_pos = 0;
+        is_streaming_file = false;
+        is_capturing_bulk_data = false;
+        tx_buffer_overflow_flag = false;
+        is_periodic_messages_enabled = true;
 #ifdef USE_EXTMEM
-        captureBuffer = (char*)extmem_malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
-        workingBuffer = (char*)extmem_malloc(SERIAL_WORKING_BUFFER_SIZE);
+        p_capture_buffer = (char*)extmem_malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+        p_working_buffer = (char*)extmem_malloc(SERIAL_WORKING_BUFFER_SIZE);
 #else
         captureBuffer = 0;
         workingBuffer = 0;
 #endif
-        strcpy(multiPartHeader,"");
-        strcpy(streamPath,"");
-        strcpy(streamFile,"");
-        streamPos = 0;
-        pSD = AppManager::getInstance()->getSD();
+        strcpy(multipart_header,"");
+        strcpy(stream_path,"");
+        strcpy(stream_file,"");
+        stream_pos = 0;
+        p_SD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
-        memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
-        memset(receivedChars,0,SERIAL_RX_BUFFER_SIZE);
+        memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memset(received_chars,0,SERIAL_RX_BUFFER_SIZE);
     }; 
     
     void empty(){
-      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
-      indexTxBuffer = 0;
+      memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      index_tx_buffer = 0;
     }
 
     bool requestStartLZ4Message(){
-      if(isStreamingFile) return false;
+      if(is_streaming_file) return false;
       startLZ4Message();
       return true;
     }
@@ -97,40 +97,40 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     void send();
     bool throttle();
   protected:
-    SdFs *pSD;
+    SdFs *p_SD;
     FsFile file;
-    uint16_t indexRxBuffer;
-    uint32_t indexCaptureBuffer;
-    uint16_t indexTxBuffer;
-    char multiPartHeader[SERIAL_TX_HEADER_BUFFER_SIZE];
-    char receivedChars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
-    char streamPath[SERIAL_PARAM_BUFFER_SIZE];
-    char streamFile[SERIAL_PARAM_BUFFER_SIZE];
-    char txBuffer[SERIAL_OUTPUT_BUFFER_SIZE];
+    uint16_t index_rx_buffer;
+    uint32_t index_capture_buffer;
+    uint16_t index_tx_buffer;
+    char multipart_header[SERIAL_TX_HEADER_BUFFER_SIZE];
+    char received_chars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
+    char stream_path[SERIAL_PARAM_BUFFER_SIZE];
+    char stream_file[SERIAL_PARAM_BUFFER_SIZE];
+    char tx_Buffer[SERIAL_OUTPUT_BUFFER_SIZE];
     //used for lz4 tx compressor
-    char *workingBuffer;
-    char *captureBuffer;
-    uint64_t streamPos;
-    bool isStreamingFile;
-    bool isCapturingBulkData;
-    bool periodicMessagesEnabled;
-    volatile bool txBufferOverflowFlag;
-    elapsedMillis sincePoll;
-    elapsedMillis sincePeriodicDataDict;
-    elapsedMillis sincePeriodicStats;
+    char *p_working_buffer;
+    char *p_capture_buffer;
+    uint64_t stream_pos;
+    bool is_streaming_file;
+    bool is_capturing_bulk_data;
+    bool is_periodic_messages_enabled;
+    volatile bool tx_buffer_overflow_flag;
+    elapsedMillis et_since_poll;
+    elapsedMillis et_since_periodic_data_dict_tx;
+    elapsedMillis et_since_periodic_stats_tx;
     uint16_t checksum(const char *msg);
     void streamHandler();
-    void update() override{};    //called only when the app is active
-    void updateRT() override;
+    void render() override{};    //called only when the app is active
+    void update() override;
     void txOverflowHandler();
     void startLZ4Message(){ 
       empty();
       Serial.print("LZ4");
     }
     size_t write(uint8_t c){
-      txBuffer[indexTxBuffer++] = c;
-      if (indexTxBuffer == SERIAL_OUTPUT_BUFFER_SIZE-10){
-        txBuffer[indexTxBuffer++] = 0; //make sure the buffer is null terminated
+      tx_Buffer[index_tx_buffer++] = c;
+      if (index_tx_buffer == SERIAL_OUTPUT_BUFFER_SIZE-10){
+        tx_Buffer[index_tx_buffer++] = 0; //make sure the buffer is null terminated
         txOverflowHandler();
       }
       return 1;
@@ -139,10 +139,10 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
       while(throttle()){
         delay(50);
       }
-      if (strlen(txBuffer) > 0 ) Serial.print(txBuffer);
-      memset(txBuffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
-      indexTxBuffer = 0;
-      txBufferOverflowFlag = false;
+      if (strlen(tx_Buffer) > 0 ) Serial.print(tx_Buffer);
+      memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      index_tx_buffer = 0;
+      tx_buffer_overflow_flag = false;
     };
 };
 

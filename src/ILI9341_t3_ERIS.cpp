@@ -24,21 +24,21 @@ bool ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_co
 }
 
 bool Animation::getNextFrameChunk(){
-  if (pSD == NULL) return false;
+  if (p_SD == NULL) return false;
   if (chunk==0){
     chunk++;
     sprintf(filename,"%03u.ile",frame);
     frame++;
     if(last_frame > 0 && frame > last_frame) frame = 1;
-    pSD->chdir(_path);
-    if(pSD->exists(filename)){
+    p_SD->chdir(_path);
+    if(p_SD->exists(filename)){
         //Serial.println("M Animation::getNextFrameChunk(): OK");    
         return true; 
     }else{
         last_frame = frame - 1;
         frame = 1;
         sprintf(filename,"%03u.ile",frame);
-        if(pSD->exists(filename)){
+        if(p_SD->exists(filename)){
             //Serial.println("M Animation::getNextFrameChunk(): CYCLE OK");
             return true;
         }
@@ -51,9 +51,9 @@ bool Animation::getNextFrameChunk(){
   return true;
 }
 
-void Animation::setSD(SdFs *ptr){pSD = ptr;}
+void Animation::setSD(SdFs *ptr){p_SD = ptr;}
 
-void ILI9341_t3_ERIS::setSD(SdFs *ptr){pSD = ptr;}
+void ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
 
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
@@ -207,7 +207,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
   char *c;           //char pointer
   bool toggle = false;
   //pSD->chdir();
-  if (!pSD->chdir(path)){ //change file path
+  if (!p_SD->chdir(path)){ //change file path
     Serial.print(F("M ILI9341_t3_ERIS::bltSD Path not found: "));
     Serial.println(path);
     return;             
@@ -271,7 +271,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
 
 void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
   //full screen block transfer with no clipping - used for full screen images matching the screen resolution
-  pSD->chdir(an->getPath());
+  p_SD->chdir(an->getPath());
   file.open(an->getFileName(), O_READ);
   if (file.available() == 0){ //file not found
     Serial.print(F("M ILI9341_t3_ERIS::bltSDFullScreen File Not Found:"));
@@ -289,12 +289,12 @@ void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
 
 void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   //full screen block transfer with no clipping - used for full screen images matching the screen resolution
-  pSD->chdir("/I/U/W");
+  p_SD->chdir("/I/U/W");
   file.open(filename, O_READ);
   if (file.available() == 0){ //file not found
     Serial.print(F("M ILI9341_t3_ERIS::bltSDFullScreen File Not Found:"));
     Serial.println(filename);
-    pSD->ls();
+    p_SD->ls();
     return;
   }
   file.seekSet(15); //skip the header - header will always be 15 bytes for full screen wallpaper

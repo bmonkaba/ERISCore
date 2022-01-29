@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['osc_5fbank_5fsize_1829',['OSC_BANK_SIZE',['../d8/db0/_app_c_q_t_8h_a268431ac67111c44f5346b92590c5f17.html#a268431ac67111c44f5346b92590c5f17',1,'AppCQT.h']]],
-  ['oscope_5fcapture_5flength_1830',['OSCOPE_CAPTURE_LENGTH',['../d8/dc5/eris__analyze__scope_8h_a77e10d0c22749f52b2a9ff528527e466.html#a77e10d0c22749f52b2a9ff528527e466',1,'eris_analyze_scope.h']]]
+  ['note_5farray_5flength_2299',['NOTE_ARRAY_LENGTH',['../dc/dac/_audio_utilities_8h_aac23af68a20c6f639cb6b7a4ce48219f.html#aac23af68a20c6f639cb6b7a4ce48219f',1,'AudioUtilities.h']]],
+  ['num_5fmasks_2300',['NUM_MASKS',['../d3/d7e/_audio_stream_8cpp_afafef2836e4436b9b750b94e62666ab3.html#afafef2836e4436b9b750b94e62666ab3',1,'AudioStream.cpp']]]
 ];

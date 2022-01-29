@@ -19,13 +19,13 @@ class AppScope:public AppBaseClass {
         scope->trigger();
         strcpy(name,"AppScope");
         scale = 0;
-        updateRT_priority = 0;
+        update_priority = 0;
     }; 
 
   protected:
     erisAudioAnalyzeScope* scope;
     float32_t scale;
-    void update(){
+    void render(){
         
         uint16_t y_last_scope;
         uint16_t y_last_scope_ch2;
@@ -67,7 +67,7 @@ class AppScope:public AppBaseClass {
         draw->drawRoundRect(x,y,w,h,4,ILI9341_MAGENTA);
     };    //called only when the app is active
 
-    void updateRT(){
+    void update(){
         am->data->update("INPUT_PEAK",(int32_t)scope->getPeakValue());
         /*
         //publish the scopes math functions

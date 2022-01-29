@@ -8,6 +8,7 @@ var globals_dup =
     [ "e", "globals_e.html", null ],
     [ "f", "globals_f.html", null ],
     [ "g", "globals_g.html", null ],
+    [ "h", "globals_h.html", null ],
     [ "i", "globals_i.html", null ],
     [ "l", "globals_l.html", null ],
     [ "m", "globals_m.html", null ],
@@ -18,6 +19,15 @@ var globals_dup =
     [ "s", "globals_s.html", null ],
     [ "t", "globals_t.html", null ],
     [ "u", "globals_u.html", null ],
+    [ "v", "globals_v.html", null ],
     [ "w", "globals_w.html", null ],
-    [ "z", "globals_z.html", null ]
+    [ "y", "globals_y.html", null ],
+    [ "z", "globals_z.html", null ],
+    [ "č", "globals_0xc48d.html", null ],
+    [ "Ε", "globals_0xce95.html", null ],
+    [ "р", "globals_0xd180.html", null ],
+    [ "у", "globals_0xd183.html", null ],
+    [ "中", "globals_0xe4b8ad.html", null ],
+    [ "日", "globals_0xe697a5.html", null ],
+    [ "한", "globals_0xed959c.html", null ]
 ];

@@ -3,6 +3,7 @@ var hierarchy =
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", null ],
     [ "Animation", "d4/d7c/class_animation.html", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class.html", [
+      [ "AppAIfES", "d8/deb/class_app_a_if_e_s.html", null ],
       [ "AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic.html", null ],
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", null ],
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", null ],
@@ -14,6 +15,7 @@ var hierarchy =
       [ "SvcErisAudioParameterController", "d8/de8/class_svc_eris_audio_parameter_controller.html", null ],
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
+    [ "AppManager", "da/d96/class_app_manager.html", null ],
     [ "AsyncAudioInputSPDIF3", "dd/df3/class_async_audio_input_s_p_d_i_f3.html", [
       [ "erisAsyncAudioInputSPDIF3", "da/dfb/classeris_async_audio_input_s_p_d_i_f3.html", null ]
     ] ],

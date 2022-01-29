@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['ss_5fhighfreq_1762',['SS_HIGHFREQ',['../d4/dfc/eris__analyze__fft1024_8h_af1f4ed6c31e28ce8075c254e6ed3ab18.html#af1f4ed6c31e28ce8075c254e6ed3ab18aac99589a7b422519f7ad7bfdacfa823b',1,'eris_analyze_fft1024.h']]],
-  ['ss_5flowfreq_1763',['SS_LOWFREQ',['../d4/dfc/eris__analyze__fft1024_8h_af1f4ed6c31e28ce8075c254e6ed3ab18.html#af1f4ed6c31e28ce8075c254e6ed3ab18a5600bd44fc82db1c9a04eacb575b576f',1,'eris_analyze_fft1024.h']]]
+  ['redraw_5fbackground_2226',['redraw_background',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8daed707e9e2e6fad55cb60beeab7dbf154',1,'AppManager.h']]],
+  ['redraw_5fobjects_2227',['redraw_objects',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8da0e56e7f34306a8c87edb6c5db20b1404',1,'AppManager.h']]],
+  ['redraw_5fpopup_2228',['redraw_popup',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8da135d34d614004e8e92013cc63bdfcd6a',1,'AppManager.h']]],
+  ['redraw_5frender_2229',['redraw_render',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8dabb001eb5547bf2fa3628aac15c71b028',1,'AppManager.h']]],
+  ['redraw_5fwait_2230',['redraw_wait',['../df/d72/_app_manager_8h_a0923efccff3ec345030a674b118b8a8d.html#a0923efccff3ec345030a674b118b8a8da7e4aef62c291af0ea8f8035c75ab3f85',1,'AppManager.h']]]
 ];

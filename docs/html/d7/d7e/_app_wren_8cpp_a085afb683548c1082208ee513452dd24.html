@@ -133,29 +133,32 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a085afb683548c10
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00102">102</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">if</span>(result.source) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">//for example, if we used malloc to allocate</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">//our source string, we use free to release it.</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">//free((void*)result.source);</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    AppManager* am = AppManager::getInstance();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;getAppByName(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> app-&gt;<a class="code" href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">freeModuleSource</a>();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
-<div class="ttc" id="aclass_app_wren_ae04f239760ccc2afba7e901fd95cc645_html_ae04f239760ccc2afba7e901fd95cc645"><div class="ttname"><a href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">AppWren::freeModuleSource</a></div><div class="ttdeci">void freeModuleSource()</div><div class="ttdoc">receiver for the wren c callback function loadModuleComplete indicating it's now ok to release the mo...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00871">AppWren.cpp:871</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span>(result.source) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">//for example, if we used malloc to allocate</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">//our source string, we use free to release it.</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">//free((void*)result.source);</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> app-&gt;<a class="code" href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">freeModuleSource</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="ttc" id="aclass_app_manager_a08daaf40a3ddaa938603039eb1e67d09_html_a08daaf40a3ddaa938603039eb1e67d09"><div class="ttname"><a href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">AppManager::getAppByName</a></div><div class="ttdeci">AppBaseClass * getAppByName(const char *appName)</div><div class="ttdoc">Get the App pointer By Name. Returns NULL if not found.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager.cpp:449</a></div></div>
+<div class="ttc" id="aclass_app_manager_aa76d9691e8d029656413590fbe4dee86_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager.h:64</a></div></div>
+<div class="ttc" id="aclass_app_manager_html"><div class="ttname"><a href="../../da/d96/class_app_manager.html">AppManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00033">AppManager.h:33</a></div></div>
+<div class="ttc" id="aclass_app_wren_ae04f239760ccc2afba7e901fd95cc645_html_ae04f239760ccc2afba7e901fd95cc645"><div class="ttname"><a href="../../d0/da0/class_app_wren_ae04f239760ccc2afba7e901fd95cc645.html#ae04f239760ccc2afba7e901fd95cc645">AppWren::freeModuleSource</a></div><div class="ttdeci">void freeModuleSource()</div><div class="ttdoc">receiver for the wren c callback function loadModuleComplete indicating it's now ok to release the mo...</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d7e/_app_wren_8cpp_source.html#l00874">AppWren.cpp:874</a></div></div>
 <div class="ttc" id="aclass_app_wren_html"><div class="ttname"><a href="../../d0/da0/class_app_wren.html">AppWren</a></div><div class="ttdoc">Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00029">AppWren.h:29</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00871">AppWren::freeModuleSource()</a>.</p>
+<p class="reference">References <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00874">AppWren::freeModuleSource()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager::getAppByName()</a>, and <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager::getInstance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00124">loadModule()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00126">loadModule()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24_a085afb683548c1082208ee513452dd24_cgraph.svg" width="566" height="47"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24_a085afb683548c1082208ee513452dd24_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -163,7 +166,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a085afb683548c10
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24_a085afb683548c1082208ee513452dd24_icgraph.svg" width="100%" height="425"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24_a085afb683548c1082208ee513452dd24_icgraph.svg" width="100%" height="431"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

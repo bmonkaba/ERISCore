@@ -25,8 +25,8 @@
 class AnalogInputs {
     private:
         int16_t ai[4];
-        elapsedMillis lastUpdate;
-        elapsedMillis lastTrigger;
+        elapsedMillis et_last_update;
+        elapsedMillis et_last_trigger;
     public:
         AnalogInputs(){
             analogReadAveraging(32);
@@ -50,8 +50,8 @@ class AnalogInputs {
             bool trigger;
             trigger=false;
             //rate limit the updates
-            if (lastUpdate < MAX_POLLING_RATE) return false;
-            lastUpdate = 0;
+            if (et_last_update < MAX_POLLING_RATE) return false;
+            et_last_update = 0;
             const int16_t old_ai[4] = {ai[0],ai[1],ai[2],ai[3]};
             //AudioNoInterrupts();
             ai[0] = (ai[0] * 0.4) + (analogRead(AN1) * 0.6);
@@ -64,9 +64,9 @@ class AnalogInputs {
             if (abs(ai[1] - old_ai[1])>TRIGGER_DELTA) trigger = true;
             if (abs(ai[2] - old_ai[2])>TRIGGER_DELTA) trigger = true;
             if (abs(ai[3] - old_ai[3])>TRIGGER_DELTA) trigger = true;
-            if (lastTrigger > ANALOG_INPUTS_PERIODIC_UPDATE) trigger = true;
+            if (et_last_trigger > ANALOG_INPUTS_PERIODIC_UPDATE) trigger = true;
             if (trigger == true){
-                lastTrigger = 0;
+                et_last_trigger = 0;
                 return true;
             }
             return false;

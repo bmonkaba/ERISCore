@@ -35,18 +35,18 @@ AppBaseClass::AppBaseClass(){
   y=0;
   w=320;
   h=240;
+  render_cpu_time =0;
+  render_cpu_time_max =0;
   update_cpu_time =0;
   update_cpu_time_max =0;
-  updateRT_cpu_time =0;
-  updateRT_cpu_time_max =0;
   cycle_time =0;
   cycle_time_max =0;
-  update_period =0;
+  et_render_period =0;
+  render_period_max =0;
+  et_update_period =0;
   update_period_max =0;
-  updateRT_period =0;
-  updateRT_period_max =0;
-  updateRT_priority = 65535;
-  updateRT_priority_counter = 0;
+  update_priority = 65535;
+  update_priority_counter = 0;
   strcpy(name,"NONE");
   selfRegister();
 }
@@ -100,7 +100,7 @@ void AppBaseClass::releasePopUp(){
 
 
 void AppBaseClass::setRTPriority(uint16_t level){
-    updateRT_priority = level;
+    update_priority = level;
     return;
 }
 

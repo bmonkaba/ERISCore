@@ -42,7 +42,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
 
     void FLASHMEM initalize(){
       sprintf(name, APPNAME);
-      updateRT_priority = 5800; //set to higher priority
+      update_priority = 5800; //set to higher priority
       id = 1;
       t_lastupdate = micros();
 
@@ -134,7 +134,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     } 
     //define event handlers
-    void update(){
+    void render(){
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
       reverb->damping(am->data->readf(REVERB_DAMPING));

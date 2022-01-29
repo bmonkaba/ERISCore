@@ -3,19 +3,30 @@ output_filename = "ErisParameterController.h"
 output = open(output_filename,"w")
 
 #templates
-header = """
-void messageHandler(AppBaseClass *sender, const char *message){
-    char c[64], i[64],m[64],p[64],objName[64];
+header = """#include "ErisAudio.h"
+#include "SvcErisAudioParameterController.h"
+
+void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
+    char c[64];
+    char i[64];
+    char m[64];
+    char p[64];
+    char objName[64];
+
     int total_read;
     //class,instance,method,params
-    total_read = sscanf(message, "%64s %64s %64s %64s" , c, i, m, p);
+    sci->printf("M ");sci->println(message);
+
+    total_read = sscanf(message, "%s %s %s %s" , c, i, m, p);
+    sci->printf("M APC Request: class: %64s instance: %64s method:%64s params: %64s" , c, i, m, p);//"%64s %64s %64s %64s" , c, i, m, p
+    sci->send();
     if(0){}"""
     
 class_code_template = \
 """else if(strncmp(gPC_{GLOBAL_CLASS_STR},c,sizeof(gPC_{GLOBAL_CLASS_STR})) == 0 &&\\
         strncmp(gPM_{METHOD},m,sizeof(gPM_{METHOD})) == 0){
-        strcpy(objName,{CLASS}::short_name);
-        strcpy(objName,"_");strcpy(objName,i);
+        strcpy(objName,{CLASS}::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
         {INNER_CODE}
     }"""
 
@@ -23,7 +34,7 @@ inner_code_template = \
 """{CLASS}* eac = ({CLASS}*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 {VARS}
-            total_read = sscanf(p, "{SCAN}" , {ARGS}); // {NATIVE_TYPE}
+            total_read = sscanf(p, "{SCAN}" , {ARGS_ADDR}); // {NATIVE_TYPE}
             eac->{METHOD}({ARGS});
         }"""
 
@@ -45,27 +56,27 @@ def buildParameterString(a):
         if p.find("-")>0:
             t = p.split("-")[0]
             n = p.split("-")[1]
-            args += n + ","
+            args += "&" + n + ","
             if t == "uint8_t":
                 ret += "\t\t\tuint8_t " + n + ";\n"
-                scan += "%d,"
+                scan += "%c,"
             if t == "int8_t":
                 ret += "\t\t\tint8_t " + n + ";\n"
                 scan += "%d,"
             
             if t == "uint16_t":
                 ret += "\t\t\tuint16_t " + n + ";\n"
-                scan += "%d,"    
+                scan += "%hu,"    
             if t == "int16_t":
                 ret += "\t\t\tint16_t " + n + ";\n"
-                scan += "%d,"
+                scan += "%hi,"
                 
             if t == "uint32_t":
                 ret += "\t\t\tuint32_t " + n + ";\n"
-                scan += "%f,"
+                scan += "%lu,"
             if t == "int32_t":
                 ret += "\t\t\tint32_t " + n + ";\n"
-                scan += "%f,"
+                scan += "%li,"
             
             if t == "int":
                 ret += "\t\t\tint16_t " + n + ";\n"
@@ -85,9 +96,8 @@ def buildParameterString(a):
                 scan += "%Lf,"
             if t == "bool":
                 ret += "\t\t\tbool " + n + ";\n"
-                scan += "%d,"
+                scan += "%c,"
                 
-    
     return [ret[:-1],scan[:-1],args[:-1]]
             
 def autocode(r,c,m,a):
@@ -101,6 +111,8 @@ def autocode(r,c,m,a):
     (var,scan,args) = buildParameterString(a)
     inner = inner_code_template
     inner = inner.replace("{SCAN}",scan)
+    inner = inner.replace("{ARGS_ADDR}",args)
+    args = args.replace("&","")
     inner = inner.replace("{ARGS}",args)
     if len(args) < 1:
         inner = inner.replace("total_read","//total_read")
@@ -117,6 +129,7 @@ def autocode(r,c,m,a):
     #remove any blank lines
     ret = "\n".join([s for s in ret.split('\n') if s])
     output.write(ret)
+    print(ret)
     return
     
 
