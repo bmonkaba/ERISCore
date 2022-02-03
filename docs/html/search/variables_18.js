@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['čeština_2110',['čeština',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_ac0036fbd8daf1e0a0c20761a86fe5d19.html#ac0036fbd8daf1e0a0c20761a86fe5d19',1,'Creative Commons Attribution 4.0 International Public License.txt']]]
+  ['zraw_1791',['zraw',['../d1/dff/class_touch_adf855b2e7256a4d33da25ed8d0ec5f51.html#adf855b2e7256a4d33da25ed8d0ec5f51',1,'Touch']]]
 ];

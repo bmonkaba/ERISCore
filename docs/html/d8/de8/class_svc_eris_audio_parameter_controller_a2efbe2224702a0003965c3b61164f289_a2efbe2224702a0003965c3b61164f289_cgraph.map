@@ -1,21 +1,24 @@
 <map id="SvcErisAudioParameterController::messageHandler" name="SvcErisAudioParameterController::messageHandler">
-<area shape="rect" id="node1" title=" " alt="" coords="5,507,580,545"/>
+<area shape="rect" id="node1" title="receiver method for inter&#45;app string based communication" alt="" coords="5,476,580,515"/>
 <area shape="rect" id="node2" href="$d4/dd5/class_audio_synth_waveform_ab5d0141790b5564716115191b82c5f48.html#ab5d0141790b5564716115191b82c5f48" title=" " alt="" coords="744,5,1119,44"/>
 <area shape="rect" id="node3" href="$d9/d43/class_audio_synth_waveform_modulated_a1aff0e5aa86a1bff7578e82fd026e7fc.html#a1aff0e5aa86a1bff7578e82fd026e7fc" title=" " alt="" coords="688,68,1175,107"/>
 <area shape="rect" id="node4" href="$d0/d55/classeris_audio_analyze_f_f_t1024_a6942413450de223b739c755c1532f7fd.html#a6942413450de223b739c755c1532f7fd" title=" " alt="" coords="726,131,1137,169"/>
-<area shape="rect" id="node5" href="$de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a497e3d0ae5481c638bca24b31d7fd29c.html#a497e3d0ae5481c638bca24b31d7fd29c" title=" " alt="" coords="912,193,951,232"/>
-<area shape="rect" id="node6" href="$d4/dd5/class_audio_synth_waveform_a61d94d86e578cc851270e6d50a993c6f.html#a61d94d86e578cc851270e6d50a993c6f" title=" " alt="" coords="767,256,1095,295"/>
-<area shape="rect" id="node7" href="$d9/d43/class_audio_synth_waveform_modulated_a3115ea45095008e478e7b1554e9d2445.html#a3115ea45095008e478e7b1554e9d2445" title=" " alt="" coords="711,319,1152,357"/>
-<area shape="rect" id="node8" href="$d4/dd5/class_audio_synth_waveform_a395cff98439e97ba08854b343eed4317.html#a395cff98439e97ba08854b343eed4317" title=" " alt="" coords="744,381,1119,420"/>
-<area shape="rect" id="node9" href="$d9/d43/class_audio_synth_waveform_modulated_a4da60875f4b350e2cc76d6cd9c33a078.html#a4da60875f4b350e2cc76d6cd9c33a078" title=" " alt="" coords="687,444,1175,483"/>
-<area shape="rect" id="node10" href="$d9/d43/class_audio_synth_waveform_modulated_a00d411c4863945c1bb379c47bd1125a2.html#a00d411c4863945c1bb379c47bd1125a2" title=" " alt="" coords="628,507,1235,545"/>
-<area shape="rect" id="node11" href="$d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df" title=" " alt="" coords="690,569,1173,608"/>
-<area shape="rect" id="node12" href="$d4/dd5/class_audio_synth_waveform_ad70a484961cd7107e1d5b5132ae4d1f5.html#ad70a484961cd7107e1d5b5132ae4d1f5" title=" " alt="" coords="768,632,1095,671"/>
-<area shape="rect" id="node13" href="$d9/d43/class_audio_synth_waveform_modulated_aa1b591fd33de8b18ea6ecea009957e8c.html#aa1b591fd33de8b18ea6ecea009957e8c" title=" " alt="" coords="711,695,1151,733"/>
-<area shape="rect" id="node14" href="$d4/dd5/class_audio_synth_waveform_ad43a5ae00497ef4a163767a245a0919f.html#ad43a5ae00497ef4a163767a245a0919f" title=" " alt="" coords="764,757,1099,796"/>
-<area shape="rect" id="node15" href="$d9/d43/class_audio_synth_waveform_modulated_a9e628e5d0a231a45a67648d5ef3643e1.html#a9e628e5d0a231a45a67648d5ef3643e1" title=" " alt="" coords="649,820,1214,859"/>
-<area shape="rect" id="node16" href="$d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19" title=" " alt="" coords="736,883,1127,921"/>
-<area shape="rect" id="node17" href="$d0/d55/classeris_audio_analyze_f_f_t1024_aa8d3a4a1acf9560568d517d843382f79.html#aa8d3a4a1acf9560568d517d843382f79" title=" " alt="" coords="749,945,1113,984"/>
-<area shape="rect" id="node18" href="$d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397" title="immediately transmit then clear the txBuffer" alt="" coords="735,1008,1128,1047"/>
-<area shape="rect" id="node19" href="$d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0" title="returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if..." alt="" coords="1283,1008,1697,1047"/>
+<area shape="rect" id="node5" href="$d4/dd5/class_audio_synth_waveform_a61d94d86e578cc851270e6d50a993c6f.html#a61d94d86e578cc851270e6d50a993c6f" title=" " alt="" coords="767,193,1095,232"/>
+<area shape="rect" id="node6" href="$d9/d43/class_audio_synth_waveform_modulated_a3115ea45095008e478e7b1554e9d2445.html#a3115ea45095008e478e7b1554e9d2445" title=" " alt="" coords="711,256,1152,295"/>
+<area shape="rect" id="node7" href="$d4/dd5/class_audio_synth_waveform_a395cff98439e97ba08854b343eed4317.html#a395cff98439e97ba08854b343eed4317" title=" " alt="" coords="744,319,1119,357"/>
+<area shape="rect" id="node8" href="$d9/d43/class_audio_synth_waveform_modulated_a4da60875f4b350e2cc76d6cd9c33a078.html#a4da60875f4b350e2cc76d6cd9c33a078" title=" " alt="" coords="687,381,1175,420"/>
+<area shape="rect" id="node9" href="$d9/d43/class_audio_synth_waveform_modulated_a00d411c4863945c1bb379c47bd1125a2.html#a00d411c4863945c1bb379c47bd1125a2" title=" " alt="" coords="628,444,1235,483"/>
+<area shape="rect" id="node10" href="$d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df" title=" " alt="" coords="690,507,1173,545"/>
+<area shape="rect" id="node11" href="$d4/dd5/class_audio_synth_waveform_ad70a484961cd7107e1d5b5132ae4d1f5.html#ad70a484961cd7107e1d5b5132ae4d1f5" title=" " alt="" coords="768,569,1095,608"/>
+<area shape="rect" id="node12" href="$d9/d43/class_audio_synth_waveform_modulated_aa1b591fd33de8b18ea6ecea009957e8c.html#aa1b591fd33de8b18ea6ecea009957e8c" title=" " alt="" coords="711,632,1151,671"/>
+<area shape="rect" id="node13" href="$d4/dd5/class_audio_synth_waveform_ad43a5ae00497ef4a163767a245a0919f.html#ad43a5ae00497ef4a163767a245a0919f" title=" " alt="" coords="764,695,1099,733"/>
+<area shape="rect" id="node14" href="$d9/d43/class_audio_synth_waveform_modulated_a9e628e5d0a231a45a67648d5ef3643e1.html#a9e628e5d0a231a45a67648d5ef3643e1" title=" " alt="" coords="649,757,1214,796"/>
+<area shape="rect" id="node15" href="$d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19" title=" " alt="" coords="736,820,1127,859"/>
+<area shape="rect" id="node16" href="$d0/d55/classeris_audio_analyze_f_f_t1024_aa8d3a4a1acf9560568d517d843382f79.html#aa8d3a4a1acf9560568d517d843382f79" title=" " alt="" coords="749,883,1113,921"/>
+<area shape="rect" id="node17" href="$d2/da8/class_svc_serial_command_interface_a0c889fc44a89c71adbcb1bf1bddbf397.html#a0c889fc44a89c71adbcb1bf1bddbf397" title="immediately transmit then clear the txBuffer" alt="" coords="735,945,1128,984"/>
+<area shape="rect" id="node18" href="$d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0" title="returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if..." alt="" coords="1283,945,1697,984"/>
+<area shape="rect" id="node19" href="$dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300.html#aab72733da062e89f277308ca64daf300" title="increments the value of a global record &#160;creates a new record if one does not exist and &#160;initalizes i..." alt="" coords="1745,945,2083,984"/>
+<area shape="rect" id="node20" href="$dc/d43/class_svc_data_dictionary_a3b09dc582adbb4d5c6f99f6e983a81f1.html#a3b09dc582adbb4d5c6f99f6e983a81f1" title="create a record with ownership" alt="" coords="2131,916,2428,955"/>
+<area shape="rect" id="node22" href="$dc/d43/class_svc_data_dictionary_ae2f81369b9db1eb6558036740fb1986c.html#ae2f81369b9db1eb6558036740fb1986c" title=" " alt="" coords="2495,973,2779,1012"/>
+<area shape="rect" id="node21" href="$dc/d43/class_svc_data_dictionary_a7c7bd48b97fbcf18ef64337e12022619.html#a7c7bd48b97fbcf18ef64337e12022619" title=" " alt="" coords="2476,911,2799,949"/>
 </map>

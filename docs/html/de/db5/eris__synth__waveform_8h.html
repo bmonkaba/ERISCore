@@ -85,32 +85,12 @@ $(document).ready(function(){initNavTree('de/db5/eris__synth__waveform_8h.html',
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">eris_synth_waveform.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../df/d6c/_audio_stream_8h_source.html">AudioStream.h</a>&quot;</code><br />
-<code>#include &quot;arm_math.h&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for eris_synth_waveform.h:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/d2e/eris__synth__waveform_8h__incl.svg" width="519" height="223"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../de/d08/eris__synth__waveform_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-</div>
+
 <p><a href="../../de/db5/eris__synth__waveform_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -119,27 +99,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d43/class_audio_synth_waveform_modulated.html">AudioSynthWaveformModulated</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a057e6fc51e7e44873c0488f6ffb20296"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a057e6fc51e7e44873c0488f6ffb20296.html#a057e6fc51e7e44873c0488f6ffb20296">WAVEFORM_ARBITRARY</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a057e6fc51e7e44873c0488f6ffb20296"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dce7063fb7cff9ccf09d8ee5640a905"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a8dce7063fb7cff9ccf09d8ee5640a905.html#a8dce7063fb7cff9ccf09d8ee5640a905">WAVEFORM_PULSE</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a8dce7063fb7cff9ccf09d8ee5640a905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a538043fe947ae9c5e59fe2fa4abf9ab2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a538043fe947ae9c5e59fe2fa4abf9ab2.html#a538043fe947ae9c5e59fe2fa4abf9ab2">WAVEFORM_SAMPLE_HOLD</a>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a538043fe947ae9c5e59fe2fa4abf9ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a178da4a81fe33f9fbbebd284d3e0dda8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a178da4a81fe33f9fbbebd284d3e0dda8.html#a178da4a81fe33f9fbbebd284d3e0dda8">WAVEFORM_SAWTOOTH</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a178da4a81fe33f9fbbebd284d3e0dda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acac6ccc6dc691e3fa9849e39f9988187"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_acac6ccc6dc691e3fa9849e39f9988187.html#acac6ccc6dc691e3fa9849e39f9988187">WAVEFORM_SAWTOOTH_REVERSE</a>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:acac6ccc6dc691e3fa9849e39f9988187"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a495c5edee5c99b494e036344665da8d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a495c5edee5c99b494e036344665da8d9.html#a495c5edee5c99b494e036344665da8d9">WAVEFORM_SINE</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a495c5edee5c99b494e036344665da8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac28d7ff4364b4cfbb2f3d2f9e010c468"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_ac28d7ff4364b4cfbb2f3d2f9e010c468.html#ac28d7ff4364b4cfbb2f3d2f9e010c468">WAVEFORM_SQUARE</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ac28d7ff4364b4cfbb2f3d2f9e010c468"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57f0fcfbcdf334fda2f7b03df5fe1ea3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a57f0fcfbcdf334fda2f7b03df5fe1ea3.html#a57f0fcfbcdf334fda2f7b03df5fe1ea3">WAVEFORM_TRIANGLE</a>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a57f0fcfbcdf334fda2f7b03df5fe1ea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24ee98dbaa3894cdd365968f378c20a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db5/eris__synth__waveform_8h_a24ee98dbaa3894cdd365968f378c20a9.html#a24ee98dbaa3894cdd365968f378c20a9">WAVEFORM_TRIANGLE_VARIABLE</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:a24ee98dbaa3894cdd365968f378c20a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

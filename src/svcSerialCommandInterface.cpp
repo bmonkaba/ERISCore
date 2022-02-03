@@ -108,9 +108,9 @@ uint16_t SvcSerialCommandInterface::checksum(const char *msg){
 }
 
 /**
- * @brief Calling this function signals the end of a compressed message. The current txBuffer is lz4 compressed before being base64 encoded and sent. 
- * The sent message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
- * 
+ * @brief Calling this function signals the end of a compressed message.\n 
+ * The txBuffer contents are lz4 compressed, base64 encoded and finaly sent.\n 
+ * The serial message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
  */
 void SvcSerialCommandInterface::sendLZ4Message(){
     uint16_t compressed_len,uncompressed_len;

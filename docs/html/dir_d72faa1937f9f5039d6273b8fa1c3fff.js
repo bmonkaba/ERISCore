@@ -7,9 +7,13 @@ var dir_d72faa1937f9f5039d6273b8fa1c3fff =
     [ "data_windows_f32.h", "da/d3d/data__windows__f32_8h.html", "da/d3d/data__windows__f32_8h" ],
     [ "eris_analyze_fft1024.cpp", "d7/d78/eris__analyze__fft1024_8cpp.html", "d7/d78/eris__analyze__fft1024_8cpp" ],
     [ "eris_analyze_fft1024.h", "d4/dfc/eris__analyze__fft1024_8h.html", "d4/dfc/eris__analyze__fft1024_8h" ],
-    [ "eris_analyze_scope.cpp", "d4/d9a/eris__analyze__scope_8cpp.html", "d4/d9a/eris__analyze__scope_8cpp" ],
-    [ "eris_analyze_scope.h", "d8/dc5/eris__analyze__scope_8h.html", "d8/dc5/eris__analyze__scope_8h" ],
+    [ "eris_analyze_scope.cpp", "d4/d9a/eris__analyze__scope_8cpp.html", null ],
+    [ "eris_analyze_scope.h", "d8/dc5/eris__analyze__scope_8h.html", [
+      [ "erisAudioAnalyzeScope", "d4/d81/classeris_audio_analyze_scope.html", "d4/d81/classeris_audio_analyze_scope" ]
+    ] ],
     [ "eris_mixer_ext.cpp", "db/d39/eris__mixer__ext_8cpp.html", "db/d39/eris__mixer__ext_8cpp" ],
-    [ "eris_mixer_ext.h", "d4/dd6/eris__mixer__ext_8h.html", null ],
+    [ "eris_mixer_ext.h", "d4/dd6/eris__mixer__ext_8h.html", [
+      [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", "d0/d3d/class_audio_mixer8" ]
+    ] ],
     [ "eris_synth_waveform.h", "de/db5/eris__synth__waveform_8h.html", "de/db5/eris__synth__waveform_8h" ]
 ];

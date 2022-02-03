@@ -21,7 +21,7 @@
  */
 
 
-bool FLASHMEM SvcDataDictionary::copyKey(const char* key){
+bool SvcDataDictionary::copyKey(const char* key){
     //if dictionary full
     if (next == DATADICT_KEYVALUE_PAIRS) return false;
     record[next].key = strndup(key,DATADICT_MAX_KEY_LEN);
@@ -40,7 +40,7 @@ bool FLASHMEM SvcDataDictionary::copyKey(const char* key){
     return true;
 }
 
-FLASHMEM SvcDataDictionary::SvcDataDictionary(){
+SvcDataDictionary::SvcDataDictionary(){
             next=0;
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 record[i].owner = 0;
@@ -56,14 +56,14 @@ FLASHMEM SvcDataDictionary::SvcDataDictionary(){
             }
 }
 
-uint32_t FASTRUN SvcDataDictionary::hash(const char* s){
+uint32_t SvcDataDictionary::hash(const char* s){
     //uint32 djb2 string hash
     uint32_t h = 5381;
     int c;
     while (c = (*s++)){h = ((h << 5) + h) + c;}
     return h;
 }
-bool FLASHMEM SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
+bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
     record[next].owner = owner;
@@ -73,7 +73,7 @@ bool FLASHMEM SvcDataDictionary::create(const char* key,int32_t val,uint32_t* ow
     return true;
 }
 
-bool FLASHMEM SvcDataDictionary::create(const char* key,int32_t val){
+bool SvcDataDictionary::create(const char* key,int32_t val){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
     record[next].owner = 0;
@@ -84,7 +84,7 @@ bool FLASHMEM SvcDataDictionary::create(const char* key,int32_t val){
     return true;
 }
 
-bool FLASHMEM SvcDataDictionary::create(const char* key,float32_t val){
+bool SvcDataDictionary::create(const char* key,float32_t val){
     if (!copyKey(key)) return false;
     record[next].val.float32_val = val;
     record[next].owner = 0;
@@ -95,7 +95,7 @@ bool FLASHMEM SvcDataDictionary::create(const char* key,float32_t val){
     return true;
 }
 
-int32_t FASTRUN SvcDataDictionary::read(const char* key){
+int32_t SvcDataDictionary::read(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -106,7 +106,7 @@ int32_t FASTRUN SvcDataDictionary::read(const char* key){
     return 0;
 }
 
-float32_t FASTRUN SvcDataDictionary::readf(const char* key){
+float32_t SvcDataDictionary::readf(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -117,7 +117,7 @@ float32_t FASTRUN SvcDataDictionary::readf(const char* key){
     return 0;
 }
 
-bool FLASHMEM SvcDataDictionary::update(const char* key,int32_t val,uint32_t* owner){
+bool SvcDataDictionary::update(const char* key,int32_t val,uint32_t* owner){
     uint32_t h;
     h = hash(key);
 
@@ -136,7 +136,7 @@ bool FLASHMEM SvcDataDictionary::update(const char* key,int32_t val,uint32_t* ow
     return create(key, val, owner);
 }
 
-bool FLASHMEM SvcDataDictionary::update(const char* key,float32_t val,uint32_t* owner){
+bool SvcDataDictionary::update(const char* key,float32_t val,uint32_t* owner){
     uint32_t h;
     h = hash(key);
 
@@ -155,7 +155,7 @@ bool FLASHMEM SvcDataDictionary::update(const char* key,float32_t val,uint32_t* 
     return create(key, val, owner);
 }
 
-bool FASTRUN SvcDataDictionary::update(const char* key,int32_t val){
+bool SvcDataDictionary::update(const char* key,int32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -174,7 +174,7 @@ bool FASTRUN SvcDataDictionary::update(const char* key,int32_t val){
     return create(key, val);
 }
 
-bool FASTRUN SvcDataDictionary::update(const char* key,float32_t val){
+bool SvcDataDictionary::update(const char* key,float32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -193,7 +193,7 @@ bool FASTRUN SvcDataDictionary::update(const char* key,float32_t val){
     return create(key, val);
 }
 
-bool FASTRUN SvcDataDictionary::increment(const char* key){
+bool SvcDataDictionary::increment(const char* key){
     uint32_t h;
     h = hash(key);
 
@@ -219,11 +219,11 @@ bool FASTRUN SvcDataDictionary::increment(const char* key){
 }
 
 //serial interface
-void FLASHMEM SvcDataDictionary::printStats(){
+void SvcDataDictionary::printStats(){
 
 }
 
-void FLASHMEM SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
+void SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
     if(sci->requestStartLZ4Message()){

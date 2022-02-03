@@ -89,25 +89,12 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp.html','../../');
 <div class="title">AppWren.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d5/d58/_app_wren_8h_source.html">AppWren.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/d46/_eris_globals_8h_source.html">ErisGlobals.h</a>&quot;</code><br />
-<code>#include &lt;<a class="el" href="../../df/d72/_app_manager_8h_source.html">AppManager.h</a>&gt;</code><br />
-<code>#include &lt;boarddefs.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../df/d51/_eris_utils_8h_source.html">ErisUtils.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Include dependency graph for AppWren.cpp:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../df/d45/_app_wren_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-</div>
+
 <p><a href="../../d7/d7e/_app_wren_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a95941c1f876cf1649c3222e41550c1d8"><td class="memItemLeft" align="right" valign="top">uint16_t EXTMEM wrenFastRam[<a class="el" href="../../db/d46/_eris_globals_8h_aba7a4bf881cf9126d15c406f3d2fb08d.html#aba7a4bf881cf9126d15c406f3d2fb08d">WREN_FRAME_BUFFER_SIZE</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a95941c1f876cf1649c3222e41550c1d8.html#a95941c1f876cf1649c3222e41550c1d8">__attribute__</a> ((aligned(16)))</td></tr>
+<tr class="memitem:a95941c1f876cf1649c3222e41550c1d8"><td class="memItemLeft" align="right" valign="top">uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a95941c1f876cf1649c3222e41550c1d8.html#a95941c1f876cf1649c3222e41550c1d8">__attribute__</a> ((aligned(16)))</td></tr>
 <tr class="separator:a95941c1f876cf1649c3222e41550c1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f206883946ce8cb8bb983464f9b102"><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_ad1f206883946ce8cb8bb983464f9b102.html#ad1f206883946ce8cb8bb983464f9b102">_getpid</a> (void)</td></tr>
 <tr class="separator:ad1f206883946ce8cb8bb983464f9b102"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,16 +121,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:a8b7abca12ebc0b6eb21b5af397b17648"><td class="mdescLeft">&#160;</td><td class="mdescRight">VM callback for extention method.  <a href="../../d7/d7e/_app_wren_8cpp_a8b7abca12ebc0b6eb21b5af397b17648.html#a8b7abca12ebc0b6eb21b5af397b17648">More...</a><br /></td></tr>
 <tr class="separator:a8b7abca12ebc0b6eb21b5af397b17648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001c0ccb759e6d820931591c06ff273d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a001c0ccb759e6d820931591c06ff273d.html#a001c0ccb759e6d820931591c06ff273d">dataDictReadCallback</a> (WrenVM *vm)</td></tr>
-<tr class="memdesc:a001c0ccb759e6d820931591c06ff273d"><td class="mdescLeft">&#160;</td><td class="mdescRight">SvcDataDictionary exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a001c0ccb759e6d820931591c06ff273d.html#a001c0ccb759e6d820931591c06ff273d">More...</a><br /></td></tr>
+<tr class="memdesc:a001c0ccb759e6d820931591c06ff273d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a001c0ccb759e6d820931591c06ff273d.html#a001c0ccb759e6d820931591c06ff273d">More...</a><br /></td></tr>
 <tr class="separator:a001c0ccb759e6d820931591c06ff273d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a1f2538f4efc1d16a962797648c4e3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a8a1f2538f4efc1d16a962797648c4e3d.html#a8a1f2538f4efc1d16a962797648c4e3d">dataDictReadFloatCallback</a> (WrenVM *vm)</td></tr>
-<tr class="memdesc:a8a1f2538f4efc1d16a962797648c4e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">SvcDataDictionary exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a8a1f2538f4efc1d16a962797648c4e3d.html#a8a1f2538f4efc1d16a962797648c4e3d">More...</a><br /></td></tr>
+<tr class="memdesc:a8a1f2538f4efc1d16a962797648c4e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a8a1f2538f4efc1d16a962797648c4e3d.html#a8a1f2538f4efc1d16a962797648c4e3d">More...</a><br /></td></tr>
 <tr class="separator:a8a1f2538f4efc1d16a962797648c4e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03f7cda21c2bbe03929840d8e117ed8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a03f7cda21c2bbe03929840d8e117ed8f.html#a03f7cda21c2bbe03929840d8e117ed8f">dataDictUpdateCallback</a> (WrenVM *vm)</td></tr>
-<tr class="memdesc:a03f7cda21c2bbe03929840d8e117ed8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">SvcDataDictionary exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a03f7cda21c2bbe03929840d8e117ed8f.html#a03f7cda21c2bbe03929840d8e117ed8f">More...</a><br /></td></tr>
+<tr class="memdesc:a03f7cda21c2bbe03929840d8e117ed8f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a03f7cda21c2bbe03929840d8e117ed8f.html#a03f7cda21c2bbe03929840d8e117ed8f">More...</a><br /></td></tr>
 <tr class="separator:a03f7cda21c2bbe03929840d8e117ed8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75d6e46721275ddbf997cc4f93494982"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a75d6e46721275ddbf997cc4f93494982.html#a75d6e46721275ddbf997cc4f93494982">dataDictUpdateFloatCallback</a> (WrenVM *vm)</td></tr>
-<tr class="memdesc:a75d6e46721275ddbf997cc4f93494982"><td class="mdescLeft">&#160;</td><td class="mdescRight">SvcDataDictionary exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a75d6e46721275ddbf997cc4f93494982.html#a75d6e46721275ddbf997cc4f93494982">More...</a><br /></td></tr>
+<tr class="memdesc:a75d6e46721275ddbf997cc4f93494982"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service">SvcDataDictionary</a> exported method which can be called from within a Wren VM instance.  <a href="../../d7/d7e/_app_wren_8cpp_a75d6e46721275ddbf997cc4f93494982.html#a75d6e46721275ddbf997cc4f93494982">More...</a><br /></td></tr>
 <tr class="separator:a75d6e46721275ddbf997cc4f93494982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16b4da7165c003f4b9a70869b7828084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7e/_app_wren_8cpp_a16b4da7165c003f4b9a70869b7828084.html#a16b4da7165c003f4b9a70869b7828084">drawFillCallback</a> (WrenVM *vm)</td></tr>
 <tr class="memdesc:a16b4da7165c003f4b9a70869b7828084"><td class="mdescLeft">&#160;</td><td class="mdescRight">VM callback for extention method.  <a href="../../d7/d7e/_app_wren_8cpp_a16b4da7165c003f4b9a70869b7828084.html#a16b4da7165c003f4b9a70869b7828084">More...</a><br /></td></tr>

@@ -1,27 +1,6 @@
 var searchData=
 [
-  ['magnitude_1872',['magnitude',['../d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab',1,'AudioSynthWaveform::magnitude()'],['../d9/d43/class_audio_synth_waveform_modulated_aca9f35470c81e90ebeba776629ab977e.html#aca9f35470c81e90ebeba776629ab977e',1,'AudioSynthWaveformModulated::magnitude()']]],
-  ['material_1873',['Material',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a405e15f5bf0ac51af6d0a0dba5be9db0.html#a405e15f5bf0ac51af6d0a0dba5be9db0',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
-  ['means_1874',['means',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a586d6e6c1b2857dd439b958a0941dc20.html#a586d6e6c1b2857dd439b958a0941dc20',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
-  ['mem_5flength_1875',['mem_length',['../d4/d81/classeris_audio_analyze_scope_a009dbb6d75e51083fa061bb26b5b8528.html#a009dbb6d75e51083fa061bb26b5b8528',1,'erisAudioAnalyzeScope']]],
-  ['mem_5fstep_1876',['MEM_STEP',['../d0/d55/classeris_audio_analyze_f_f_t1024_a50000ac8856adf1d02c82188bedb5868.html#a50000ac8856adf1d02c82188bedb5868',1,'erisAudioAnalyzeFFT1024']]],
-  ['memory_5fpool_1877',['memory_pool',['../d5/d96/class_audio_stream_a760fb58e212788dbec27664ea23bbd32.html#a760fb58e212788dbec27664ea23bbd32',1,'AudioStream']]],
-  ['memory_5fpool_5favailable_5fmask_1878',['memory_pool_available_mask',['../d5/d96/class_audio_stream_a6f70806d5f6baccccf03482dae743192.html#a6f70806d5f6baccccf03482dae743192',1,'AudioStream']]],
-  ['memory_5fpool_5ffirst_5fmask_1879',['memory_pool_first_mask',['../d5/d96/class_audio_stream_a09743ebc10ac1be3e977b806b51468d7.html#a09743ebc10ac1be3e977b806b51468d7',1,'AudioStream']]],
-  ['memory_5fpool_5findex_1880',['memory_pool_index',['../de/dd6/structaudio__block__struct_af299f9fc881ff8bbf3ad6fbf1ba4f7b3.html#af299f9fc881ff8bbf3ad6fbf1ba4f7b3',1,'audio_block_struct']]],
-  ['memory_5fused_1881',['memory_used',['../d5/d96/class_audio_stream_a743e19367946485719cd96436da38970.html#a743e19367946485719cd96436da38970',1,'AudioStream']]],
-  ['memory_5fused_5fmax_1882',['memory_used_max',['../d5/d96/class_audio_stream_a43ccf2427001ee57a44a0998226f8e38.html#a43ccf2427001ee57a44a0998226f8e38',1,'AudioStream']]],
-  ['merchantability_1883',['merchantability',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a51e1c6097a52a761e5dcaf4a5f3eaa12.html#a51e1c6097a52a761e5dcaf4a5f3eaa12',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
-  ['model_1884',['model',['../d8/deb/class_app_a_if_e_s_a3ef0ed2c3555e1c8feeafd5aad8cdaa2.html#a3ef0ed2c3555e1c8feeafd5aad8cdaa2',1,'AppAIfES']]],
-  ['modifications_1885',['modifications',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_a6be3e1ddd578042791d171307cf9597c.html#a6be3e1ddd578042791d171307cf9597c',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
-  ['modulation_5ffactor_1886',['modulation_factor',['../d9/d43/class_audio_synth_waveform_modulated_a1b7944259bbc90c2b22909a6de3cf958.html#a1b7944259bbc90c2b22909a6de3cf958',1,'AudioSynthWaveformModulated']]],
-  ['modulation_5ftype_1887',['modulation_type',['../d9/d43/class_audio_synth_waveform_modulated_a1f2cbf62c1505092deaae0c0172a3668.html#a1f2cbf62c1505092deaae0c0172a3668',1,'AudioSynthWaveformModulated']]],
-  ['module_5fload_5fbuffer_1888',['module_load_buffer',['../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97',1,'AppWren']]],
-  ['monitor_5fdd_5fupdate_5ftimer_1889',['monitor_dd_update_timer',['../da/d96/class_app_manager_a4efa38607f2334ff20047536d4e83e45.html#a4efa38607f2334ff20047536d4e83e45',1,'AppManager']]],
-  ['monkaba_1890',['Monkaba',['../d8/d96/rename_8txt_a55313f61dd04c249537e48fef941e73d.html#a55313f61dd04c249537e48fef941e73d',1,'rename.txt']]],
-  ['msraw_1891',['msraw',['../d1/dff/class_touch_a6803048a87b2667442fe6c64360454fa.html#a6803048a87b2667442fe6c64360454fa',1,'Touch']]],
-  ['multipart_5fheader_1892',['multipart_header',['../d2/da8/class_svc_serial_command_interface_afefe4ffe8389e6e818892e5cd935f161.html#afefe4ffe8389e6e818892e5cd935f161',1,'SvcSerialCommandInterface']]],
-  ['must_1893',['must',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_af695bac4bb6234d3b2a662bddc82489c.html#af695bac4bb6234d3b2a662bddc82489c',1,'Creative Commons Attribution 4.0 International Public License.txt']]],
-  ['myname_1894',['myname',['../d4/d81/classeris_audio_analyze_scope_a6054babe529afcc2578de59b31868485.html#a6054babe529afcc2578de59b31868485',1,'erisAudioAnalyzeScope']]],
-  ['māori_1895',['Māori',['../de/d24/_creative_01_commons_01_attribution_014_80_01_international_01_public_01_license_8txt_ab1ccb607b93e55352a8d5847a23b02fe.html#ab1ccb607b93e55352a8d5847a23b02fe',1,'Creative Commons Attribution 4.0 International Public License.txt']]]
+  ['last_5fframe_1600',['last_frame',['../d4/d7c/class_animation_a72c333aeb88aa7dd9a3a614d414e1c4a.html#a72c333aeb88aa7dd9a3a614d414e1c4a',1,'Animation']]],
+  ['last_5fx_1601',['last_x',['../de/d67/class_control_slider_afc35d14324896d8ad5674fabcb7166ec.html#afc35d14324896d8ad5674fabcb7166ec',1,'ControlSlider']]],
+  ['leaky_5frelu_5flayer_1602',['leaky_relu_layer',['../d8/deb/class_app_a_if_e_s_a93bf04a8741d32709438e7fe67c5c6e1.html#a93bf04a8741d32709438e7fe67c5c6e1',1,'AppAIfES']]]
 ];

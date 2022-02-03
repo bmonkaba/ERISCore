@@ -83,11 +83,22 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         memset(received_chars,0,SERIAL_RX_BUFFER_SIZE);
     }; 
     
+    /**
+     * @brief zero out the transmit buffer and reset the write index
+     * 
+     */
     void empty(){
       memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
       index_tx_buffer = 0;
     }
 
+    /**
+     * @brief request to start a lz4 compressed message \n
+     * starts the message and returns true if available
+     * returns false if busy
+     * @return true
+     * @return false
+     */
     bool requestStartLZ4Message(){
       if(is_streaming_file) return false;
       startLZ4Message();

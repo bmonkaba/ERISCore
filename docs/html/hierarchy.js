@@ -115,9 +115,6 @@ var hierarchy =
     [ "AudioMixer4", "d9/d6e/class_audio_mixer4.html", [
       [ "erisAudioMixer4", "d1/da2/classeris_audio_mixer4.html", null ]
     ] ],
-    [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", [
-      [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", null ]
-    ] ],
     [ "AudioOutputI2S", "d0/d68/class_audio_output_i2_s.html", [
       [ "erisAudioOutputI2S", "dc/d96/classeris_audio_output_i2_s.html", null ]
     ] ],
@@ -149,6 +146,9 @@ var hierarchy =
       [ "erisAudioRecordQueue", "de/d1d/classeris_audio_record_queue.html", null ]
     ] ],
     [ "AudioStream", "d5/d96/class_audio_stream.html", [
+      [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", [
+        [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", null ]
+      ] ],
       [ "AudioSynthWaveform", "d4/dd5/class_audio_synth_waveform.html", [
         [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", null ]
       ] ],
@@ -196,10 +196,14 @@ var hierarchy =
       [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", null ]
     ] ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
+    [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", "d8/d90/class_print.html", [
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "Surface", "d1/d1a/class_surface.html", null ],
+    [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", null ],
+    [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", null ],
+    [ "value_container", "da/d2d/unionvalue__container.html", null ],
     [ "XPT2046_Touchscreen", "d8/d45/class_x_p_t2046___touchscreen.html", [
       [ "Touch", "d1/dff/class_touch.html", null ]
     ] ]

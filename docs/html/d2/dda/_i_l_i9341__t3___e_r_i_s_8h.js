@@ -3,7 +3,6 @@ var _i_l_i9341__t3___e_r_i_s_8h =
     [ "Animation", "d4/d7c/class_animation.html", "d4/d7c/class_animation" ],
     [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", "d8/d5a/class_i_l_i9341__t3___e_r_i_s" ],
     [ "Surface", "d1/d1a/class_surface.html", "d1/d1a/class_surface" ],
-    [ "SURFACE_MIN_ALLOC_SIZE", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a036df648ffa2347d68b5a24374ee0074.html#a036df648ffa2347d68b5a24374ee0074", null ],
     [ "bltAlphaType", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022", [
       [ "AT_NONE", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022aab8427d808615bee7617cc69c8f01502", null ],
       [ "AT_TRANS", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a8a2e216721cae4a7e86de65bfe5ff022.html#a8a2e216721cae4a7e86de65bfe5ff022a403d9cd6524f34fa9f1f106681b5fe36", null ],

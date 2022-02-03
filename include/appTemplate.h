@@ -9,9 +9,10 @@
  * 
  */
 #include "AppManager.h"
-// Basic App Template
-//
-
+/**
+ * @brief application template containing the required methods for implementation 
+ * 
+ */
 class AppTemplate:public AppBaseClass {
   public:
     AppTemplate():AppBaseClass(){

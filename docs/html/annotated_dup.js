@@ -50,7 +50,7 @@ var annotated_dup =
     [ "AudioInputI2SQuad", "d4/dd1/class_audio_input_i2_s_quad.html", null ],
     [ "AudioInputI2Sslave", "d6/dbf/class_audio_input_i2_sslave.html", null ],
     [ "AudioMixer4", "d9/d6e/class_audio_mixer4.html", null ],
-    [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", null ],
+    [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", "d0/d3d/class_audio_mixer8" ],
     [ "AudioOutputI2S", "d0/d68/class_audio_output_i2_s.html", null ],
     [ "AudioOutputI2S2", "d0/d2d/class_audio_output_i2_s2.html", null ],
     [ "AudioOutputI2SHex", "d1/d05/class_audio_output_i2_s_hex.html", null ],
@@ -138,10 +138,14 @@ var annotated_dup =
     [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", "d8/d5a/class_i_l_i9341__t3___e_r_i_s" ],
     [ "ILI9341_t3n", "d5/d0e/class_i_l_i9341__t3n.html", null ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", "da/dca/struct_parsed_connection" ],
+    [ "pointer_container", "de/d5d/unionpointer__container.html", "de/d5d/unionpointer__container" ],
     [ "Print", "d8/d90/class_print.html", null ],
     [ "Surface", "d1/d1a/class_surface.html", "d1/d1a/class_surface" ],
+    [ "SvcDataDictionary", "dc/d43/class_svc_data_dictionary.html", "dc/d43/class_svc_data_dictionary" ],
+    [ "svcDataDictionaryRecord", "d7/dd5/structsvc_data_dictionary_record.html", "d7/dd5/structsvc_data_dictionary_record" ],
     [ "SvcErisAudioParameterController", "d8/de8/class_svc_eris_audio_parameter_controller.html", "d8/de8/class_svc_eris_audio_parameter_controller" ],
     [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", "d2/da8/class_svc_serial_command_interface" ],
     [ "Touch", "d1/dff/class_touch.html", "d1/dff/class_touch" ],
+    [ "value_container", "da/d2d/unionvalue__container.html", "da/d2d/unionvalue__container" ],
     [ "XPT2046_Touchscreen", "d8/d45/class_x_p_t2046___touchscreen.html", null ]
 ];

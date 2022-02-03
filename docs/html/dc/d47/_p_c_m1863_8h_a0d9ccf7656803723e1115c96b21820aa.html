@@ -101,34 +101,30 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_a0d9ccf7656803723
 <p class="definition">Definition at line <a class="el" href="../../dc/d47/_p_c_m1863_8h_source.html#l00024">24</a> of file <a class="el" href="../../dc/d47/_p_c_m1863_8h_source.html">PCM1863.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;               {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">//MANUAL RESET OF I2C BUS</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>, OUTPUT);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  pinMode(<a class="code" href="../../de/d10/_h_s_i_8h_a9415ed4aa4ea94a91d37fc99f344c3d4.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a>, OUTPUT);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,1);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  pinMode(I2C_CLK, OUTPUT);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  pinMode(I2C_DATA, OUTPUT);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  digitalWrite(I2C_CLK,1);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  delay(5);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 32; i++){</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    digitalWrite(I2C_CLK,0);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    delayMicroseconds(100);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,1);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    digitalWrite(I2C_CLK,1);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    delayMicroseconds(100);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,0);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  digitalWrite(I2C_CLK,0);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  delayMicroseconds(100);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_a9415ed4aa4ea94a91d37fc99f344c3d4.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a>,0);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  digitalWrite(I2C_DATA,0);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  delayMicroseconds(100);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a>,1);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  digitalWrite(I2C_CLK,1);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  delayMicroseconds(100);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  digitalWrite(<a class="code" href="../../de/d10/_h_s_i_8h_a9415ed4aa4ea94a91d37fc99f344c3d4.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a>,1);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  digitalWrite(I2C_DATA,1);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  delay(5);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">//END MANUAL I2C BUS RESET</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">// Setup I2C for Master mode, pins 18/19, external pullups, 400k, 200ms timeout</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Wire.begin();<span class="comment">//I2C_MASTER, 0x00, I2C_PINS_18_19, I2C_PULLUP_EXT, 400000);</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">//Wire.setDefaultTimeout(200000); // 200ms</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="ttc" id="a_h_s_i_8h_a9415ed4aa4ea94a91d37fc99f344c3d4_html_a9415ed4aa4ea94a91d37fc99f344c3d4"><div class="ttname"><a href="../../de/d10/_h_s_i_8h_a9415ed4aa4ea94a91d37fc99f344c3d4.html#a9415ed4aa4ea94a91d37fc99f344c3d4">I2C_DATA</a></div><div class="ttdeci">#define I2C_DATA</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/_h_s_i_8h_source.html#l00031">HSI.h:31</a></div></div>
-<div class="ttc" id="a_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364_html_ab5f0572ec4591ff6f7763fe13cdbe364"><div class="ttname"><a href="../../de/d10/_h_s_i_8h_ab5f0572ec4591ff6f7763fe13cdbe364.html#ab5f0572ec4591ff6f7763fe13cdbe364">I2C_CLK</a></div><div class="ttdeci">#define I2C_CLK</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/_h_s_i_8h_source.html#l00032">HSI.h:32</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00032">I2C_CLK</a>, and <a class="el" href="../../de/d10/_h_s_i_8h_source.html#l00031">I2C_DATA</a>.</p>
-
 <p class="reference">Referenced by <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00104">AudioDirector::initAudioHardware()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>

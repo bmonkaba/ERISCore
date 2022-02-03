@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="request to start a lz4 compressed message &#160;starts the message and returns true if available returns f...">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-28.5 457,-28.5 457,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="228.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface::requestStartLZ4Message</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="../../d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0" target="_top" xlink:title="zero out the transmit buffer and reset the write index">
 <polygon fill="none" stroke="black" points="922,-0.5 922,-28.5 1227,-28.5 1227,-0.5 922,-0.5"/>
 <text text-anchor="middle" x="1074.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface::empty</text>
 </a>

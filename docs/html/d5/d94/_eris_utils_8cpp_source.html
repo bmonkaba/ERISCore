@@ -89,7 +89,23 @@ $(document).ready(function(){initNavTree('d5/d94/_eris_utils_8cpp_source.html','
 <div class="contents">
 <a href="../../d5/d94/_eris_utils_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d51/_eris_utils_8h.html">ErisUtils.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @brief a safer strncpy </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * strncpy will fill the entire available buffer until full\n </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * if the source string is larger than the destination then the null termination char will be omitted when using the standard lib strncpy.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * this wrapper always writes a null char at the end of the destination to protect for this condition.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * a string length check is then performed.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * if the source is larger than the destination a partial copy will be made, up to the size of the available dest buffer, the return value will be FALSE in this case</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * other wise the string will be copied and return TRUE</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * @param dest </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * @param source </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * @param dest_size </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * @return true </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * @return false </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../df/d51/_eris_utils_8h_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1">   20</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/d94/_eris_utils_8cpp_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1">safer_strncpy</a>(<span class="keywordtype">char</span>* dest,<span class="keyword">const</span> <span class="keywordtype">char</span>* source,uint16_t dest_size){</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    strncpy(dest,source,dest_size);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    dest[dest_size-1] = 0; <span class="comment">//ensure copied string is null terminated</span></div>

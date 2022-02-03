@@ -65,13 +65,12 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
+        [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", "globals_vars" ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Enumerator", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]
@@ -80,16 +79,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/da2/classeris_audio_mixer4_ace58cd360f679b58e0092c0fa9d8ea18.html#ace58cd360f679b58e0092c0fa9d8ea18",
-"d4/d7c/class_animation_af61f3b12f0557d2c28baadbab3fa6abd.html#af61f3b12f0557d2c28baadbab3fa6abd",
-"d4/dde/class_app_c_q_t.html#af7f8d7d2e26895cbd304112f41aa3e22",
-"d7/d2f/classeris_audio_analyze_f_f_t256_a861493faacc4f9fd30dfd87b0eca6829.html#a861493faacc4f9fd30dfd87b0eca6829",
-"d8/de8/class_svc_eris_audio_parameter_controller.html#a759c6df44dea772abc58db8867f2b93c",
-"d9/d43/class_audio_synth_waveform_modulated_a9e628e5d0a231a45a67648d5ef3643e1.html#a9e628e5d0a231a45a67648d5ef3643e1",
-"dc/d27/class_app_audio_to_polyphonic.html#a801f8d24d3623f8d5e2d654b6b3b7d32",
-"de/d67/class_control_slider_a9cc22c612dcb614838ae1b96f35c1c77.html#a9cc22c612dcb614838ae1b96f35c1c77",
-"df/dc5/classeris_audio_synth_waveform.html#aecf68a61a0e321c6cf4aebce9cad6bba",
-"index.html#autotoc_md6"
+"d0/da6/classeris_audio_synth_karplus_strong_afaa74e633c42abfcb4a86a95d907379e.html#afaa74e633c42abfcb4a86a95d907379e",
+"d3/daf/classeris_audio_mixer8.html#a743e19367946485719cd96436da38970",
+"d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19",
+"d5/d96/class_audio_stream_aedbf0b4a808724dc4f4115c60b615622.html#aedbf0b4a808724dc4f4115c60b615622",
+"d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae5f490cbef146e51d9b6d17b14af336c.html#ae5f490cbef146e51d9b6d17b14af336c",
+"d9/d03/class_app_template.html#a759c6df44dea772abc58db8867f2b93c",
+"db/d69/class_app_base_class_acff523b6c1d155a66b915e4f49158af8.html#acff523b6c1d155a66b915e4f49158af8",
+"de/d67/class_control_slider.html#a7681137fa3cb2aa9534625f1d9006970",
+"df/dc5/classeris_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

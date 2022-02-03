@@ -83,23 +83,125 @@ typedef struct svcDataDictionaryRecord
     svcDataDictionaryDataType data_type;
 } svcDataDictionaryRecord __attribute__ ((aligned (4)));
 
+/**
+ * @brief implements a data dictionary (map) service
+ * 
+ */
 class SvcDataDictionary{
     
     public:
         SvcDataDictionary();
         uint32_t hash(const char* s);
+        /**
+         * @brief create a record with ownership
+         * 
+         * @param key 
+         * @param val 
+         * @param owner 
+         * @return true 
+         * @return false 
+         */
         bool create(const char* key,int32_t val,uint32_t* owner);
+        /**
+         * @brief create a global r/w record
+         * 
+         * @param key 
+         * @param val 
+         * @return true 
+         * @return false 
+         */
         bool create(const char* key,int32_t val);
+        /**
+         * @brief create a global r/w record
+         * 
+         * @param key 
+         * @param val 
+         * @return true 
+         * @return false 
+         */
         bool create(const char* key,float32_t val);
+        /**
+         * @brief returns the int32_t value of the record
+         * 
+         * @param key 
+         * @return int32_t 
+         */
         int32_t read(const char* key);
+        /**
+         * @brief returns the float32_t value of the record
+         * 
+         * @param key 
+         * @return float32_t 
+         */
         float32_t readf(const char* key);
+        /**
+         * @brief update the value of an owned record\n 
+         * creates a new record if one does not exist and\n 
+         * initalizes its value to zero
+         * 
+         * @param key 
+         * @param val 
+         * @param owner 
+         * @return true 
+         * @return false 
+         */
         bool update(const char* key,int32_t val,uint32_t* owner);
+        /**
+         * @brief update the value of an owned record\n 
+         * creates a new record if one does not exist and\n 
+         * initalizes its value to zero
+         * 
+         * @param key 
+         * @param val 
+         * @param owner 
+         * @return true 
+         * @return false 
+         */
         bool update(const char* key,float32_t val,uint32_t* owner);
+        /**
+         * @brief update the value of a global record\n 
+         * creates a new record if one does not exist and\n 
+         * initalizes its value to zero
+         * 
+         * @param key 
+         * @param val 
+         * @param owner 
+         * @return true 
+         * @return false 
+         */
         bool update(const char* key,int32_t val);
+        /**
+         * @brief update the value of a global record\n 
+         * creates a new record if one does not exist and\n 
+         * initalizes its value to zero
+         * 
+         * @param key 
+         * @param val 
+         * @param owner 
+         * @return true 
+         * @return false 
+         */
         bool update(const char* key,float32_t val);
+        /**
+         * @brief increments the value of a global record\n 
+         * creates a new record if one does not exist and\n 
+         * initalizes its value to zero
+         * 
+         * @param key 
+         * @return true 
+         * @return false 
+         */
         bool increment(const char* key);
-        //serial interface
+        /**
+         * @brief printStats function
+         * 
+         */
         void printStats();
+        /**
+         * @brief prints the dictionary to the SvcSerialCommandInterface
+         * 
+         * @param sci 
+         */
         void printDictionary(SvcSerialCommandInterface* sci);
     
     private:
