@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
+
 // The Wren semantic version number components.
 #define WREN_VERSION_MAJOR 0
 #define WREN_VERSION_MINOR 4
@@ -316,7 +318,8 @@ WREN_API WrenVM* wrenNewVM(WrenConfiguration* configuration);
 WREN_API void wrenFreeVM(WrenVM* vm);
 
 // Immediately run the garbage collector to free unused memory.
-WREN_API void wrenCollectGarbage(WrenVM* vm);
+//erisCore change: return type from void to instead return the current bytesAllocated
+WREN_API size_t wrenCollectGarbage(WrenVM* vm);
 
 // Runs [source], a string of Wren source code in a new fiber in [vm] in the
 // context of resolved [module].

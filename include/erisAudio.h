@@ -175,7 +175,7 @@ public:
 	void update(){this->AudioInputI2S2::update();}
 };
 
-
+/*
 class erisAudioInputSPDIF3:public AudioInputSPDIF3{
 public:
 	erisAudioInputSPDIF3():AudioInputSPDIF3(){
@@ -265,6 +265,7 @@ public:
 	static const char* short_name_lookup;
 	void update(){this->AudioInputTDM2::update();}
 };
+*/
 
 
 class erisAudioOutputI2S:public AudioOutputI2S{
@@ -344,7 +345,7 @@ public:
 	void update(){this->AudioOutputI2S2::update();}
 };
 
-
+/*
 class erisAudioOutputSPDIF:public AudioOutputSPDIF{
 public:
 	erisAudioOutputSPDIF():AudioOutputSPDIF(){
@@ -498,7 +499,7 @@ public:
 	static const char* short_name_lookup;
 	void update(){this->AudioOutputADAT::update();}
 };
-
+*/
 
 class erisAudioAmplifier:public AudioAmplifier{
 public:
@@ -1057,7 +1058,7 @@ public:
 	void update(){this->AudioAnalyzeNoteFrequency::update();}
 };
 
-
+/*
 class erisAudioAnalyzePrint:public AudioAnalyzePrint{
 public:
 	erisAudioAnalyzePrint():AudioAnalyzePrint(){
@@ -1069,5 +1070,6 @@ public:
 	static const char* short_name_lookup;
 	void update(){this->AudioAnalyzePrint::update();}
 };
+*/
 
 #endif

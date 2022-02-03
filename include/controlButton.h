@@ -35,26 +35,26 @@ class ControlButton:public AppBaseClass {
         strcpy(img_path,"NONE");
     };
 
-    void setText(const char* name_string){
+    void FLASHMEM setText(const char* name_string){
       if (strlen(name_string) < MAX_TEXT_LENGTH - 1){strcpy(text,name_string);
       } else safer_strncpy(text,name_string,MAX_TEXT_LENGTH - 1);
       using_image=false;
     };
 
-    void setImage(const char* path,const char* filename){
+    void FLASHMEM setImage(const char* path,const char* filename){
         setPath(path);
         setFile(filename);
         if(img_loaded) delete(img_cache);
         img_loaded = false;
     }
 
-    void setFile(const char* filename){
+    void FLASHMEM setFile(const char* filename){
       if (strlen(filename) < MAX_TEXT_LENGTH - 1){strcpy(img_filename,filename);
       } else safer_strncpy(img_filename,filename,MAX_TEXT_LENGTH - 1);
       using_image=true;
     };
 
-    void setPath(const char* path){
+    void FLASHMEM setPath(const char* path){
       if (strlen(path) < MAX_TEXT_LENGTH - 1){strcpy(img_path,path);
       } else safer_strncpy(img_path,path,MAX_TEXT_LENGTH - 1);
     };
@@ -71,7 +71,7 @@ class ControlButton:public AppBaseClass {
     bool img_loaded;
     elapsedMillis time_active;
     bool show_active;
-    void render() override{
+    void FLASHMEM render() override{
         is_dirty = true;
         
         if(is_pressed==false && show_active == true && time_active > SHOW_ACTIVE_TIME_MILLISEC){
@@ -115,8 +115,8 @@ class ControlButton:public AppBaseClass {
         }
         is_dirty = false;
     };
-    void onFocusLost() override{is_pressed=false;};
-    void onTouch(uint16_t t_x, uint16_t t_y) override{
+    void FLASHMEM onFocusLost() override{is_pressed=false;};
+    void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y) override{
         //Serial.println("MyButton:onTouch");
         //check if touch point is within the application bounding box
         if ((t_x > x && t_x < x + w) && t_y > y && t_y < (y + h)){
@@ -126,7 +126,7 @@ class ControlButton:public AppBaseClass {
             is_dirty = true;
         }
     };
-    void onTouchRelease(uint16_t t_x, uint16_t t_y) override{
+    void FLASHMEM onTouchRelease(uint16_t t_x, uint16_t t_y) override{
         if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
             //Serial.println("MyButton:onTouchRelease Button Press Event Triggered");
             parent_node->messageHandler(this,"Pressed");

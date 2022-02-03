@@ -300,7 +300,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
     if(source==p_cord[i]->pSrc && destination==p_cord[i]->pDst && sourceOutput==p_cord[i]->src_index && destinationInput==p_cord[i]->dest_index){
-      //Serial.print(F("M AudioDirector::connect() found existing connection; reconnecting at index  "));
+      Serial.printf(F("M AudioDirector::connect() found existing connection; reconnecting at index %hu\n"),i);
       //Serial.println(i);
       //Serial.flush();
       if(p_cord[i]->reconnect()) active_connections++;
@@ -313,7 +313,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     //find any already existing but unused connections
     if (NULL!=p_cord[i]){
       if (p_cord[i]->isConnected == false){
-        //Serial.printf(F("M \tAudioDirector::connect() connection index: %d\t"),i);
+        Serial.printf(F("M AudioDirector::connect() connection index: %hu\n"),i);
         //Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
         //Serial.flush();
         if(p_cord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) active_connections++;
@@ -321,8 +321,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       }
     }
     if (NULL==p_cord[i]){
-      Serial.print(F("M AudioDirector::connect() making a new AudioConnection at index "));
-      Serial.println(i);
+      Serial.printf(F("M AudioDirector::connect() making a new AudioConnection at index %hu\n"),i);
       /*
       Serial.print(source->shortName);Serial.print(F(":"));
       Serial.print(sourceOutput);
@@ -375,14 +374,12 @@ void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnec
   token = strtok(NULL, " ");
   p->dst_port = atoi(token);
   
-  /*
-  Serial.print(F("AudioDirector::ParseConnectString "));
-  //Serial.println(connectionString);
-  Serial.print(F("Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.print(p->src_port);
+  
+  Serial.print(F("M AudioDirector::ParseConnectString "));
+  Serial.println(connectionString);
+  Serial.print(F("M Source: "));Serial.print(p->src);Serial.print(F(" Port:"));Serial.print(p->src_port);
   Serial.print(F("\tDest: "));Serial.print(p->dst);Serial.print(F(" Port:"));Serial.println(p->dst_port);
   //Serial.flush();
-  */
- 
   return;
 }
 

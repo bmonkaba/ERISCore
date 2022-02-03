@@ -30,7 +30,7 @@ Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 #ifdef USE_EXTMEM
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
-uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (32)));
+uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (8)));
 #else
 uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
 uint16_t DMAMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
@@ -42,7 +42,7 @@ SvcDataDictionary FASTRUN _data;
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
  * 
  */
-AppManager:: AppManager(){
+FLASHMEM AppManager:: AppManager(){
   ad = 0;
   data = &_data;
   root = 0;

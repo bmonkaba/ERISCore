@@ -199,9 +199,9 @@ void  LZ4_free(void* p);
 # define FREEMEM(p)        LZ4_free(p)
 #else
 # include <stdlib.h>   /* malloc, calloc, free */
-# define ALLOC(s)          malloc(s)
-# define ALLOC_AND_ZERO(s) calloc(1,s)
-# define FREEMEM(p)        free(p)
+# define ALLOC(s)          extmem_malloc(s)
+# define ALLOC_AND_ZERO(s) extmem_calloc(1,s)
+# define FREEMEM(p)        extmem_free(p)
 #endif
 
 #include <string.h>   /* memset, memcpy */

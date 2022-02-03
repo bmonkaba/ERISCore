@@ -9,6 +9,8 @@
 #include "wren_primitive.h"
 #include "wren_vm.h"
 
+#include <HardwareSerial.h>
+
 #if WREN_OPT_META
   #include "wren_opt_meta.h"
 #endif
@@ -32,7 +34,6 @@ static void* defaultReallocate(void* ptr, size_t newSize, void* _)
     extmem_free(ptr);
     return NULL;
   }
-
   return extmem_realloc(ptr, newSize);
 }
 
@@ -50,7 +51,7 @@ void wrenInitConfiguration(WrenConfiguration* config)
   config->bindForeignClassFn = NULL;
   config->writeFn = NULL;
   config->errorFn = NULL;
-  config->initialHeapSize = 1024 * 1024 * 10;
+  config->initialHeapSize = 1024 * 1024 * 2;
   config->minHeapSize = 1024 * 1024;
   config->heapGrowthPercent = 50;
   config->userData = NULL;
@@ -122,7 +123,7 @@ void wrenFreeVM(WrenVM* vm)
   DEALLOCATE(vm, vm);
 }
 
-void wrenCollectGarbage(WrenVM* vm)
+size_t wrenCollectGarbage(WrenVM* vm)
 {
 #if WREN_DEBUG_TRACE_MEMORY || WREN_DEBUG_TRACE_GC
   printf("-- gc --\n");
@@ -198,16 +199,17 @@ void wrenCollectGarbage(WrenVM* vm)
   if (vm->nextGC < vm->config.minHeapSize) vm->nextGC = vm->config.minHeapSize;
 
 #if WREN_DEBUG_TRACE_MEMORY || WREN_DEBUG_TRACE_GC
-  double elapsed = ((double)clock() / CLOCKS_PER_SEC) - startTime;
+  //double elapsed = ((double)clock() / CLOCKS_PER_SEC) - startTime;
   // Explicit cast because size_t has different sizes on 32-bit and 64-bit and
   // we need a consistent type for the format string.
-  printf("GC %lu before, %lu after (%lu collected), next at %lu. Took %.3fms.\n",
+  printf("M GC %lu before, %lu after (%lu collected), next at %lu. Took %.3fms.\n",
          (unsigned long)before,
          (unsigned long)vm->bytesAllocated,
          (unsigned long)(before - vm->bytesAllocated),
          (unsigned long)vm->nextGC,
-         elapsed*1000.0);
+         0);
 #endif
+return vm->bytesAllocated;
 }
 
 void* wrenReallocate(WrenVM* vm, void* memory, size_t oldSize, size_t newSize)

@@ -505,7 +505,7 @@ void dumpDMA_TCD(DMABaseClass *dmabc, const char *psz_title) {
 #ifdef ENABLE_ILI9341_FRAMEBUFFER
 //==============================================
 #ifdef ENABLE_ILI9341_FRAMEBUFFER
-void ILI9341_t3n::initDMASettings(void) {
+void FLASHMEM ILI9341_t3n::initDMASettings(void) {
   //  Serial.printf("initDMASettings called %d\n", _dma_state);
   if (_dma_state & ILI9341_DMA_INIT) { // should test for init, but...
     return;                            // we already init this.
@@ -2711,7 +2711,7 @@ void ILI9341_t3n::fillCircleHelper(int16_t x0, int16_t y0, int16_t r,
 }
 
 // Bresenham's algorithm - thx wikpedia
-void ILI9341_t3n::drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
+void FLASHMEM ILI9341_t3n::drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
                            uint16_t color) {
   if (y0 == y1) {
     if (x1 > x0) {
@@ -3049,7 +3049,7 @@ size_t ILI9341_t3n::write(const uint8_t *buffer, size_t size) {
 }
 
 // Draw a character
-void ILI9341_t3n::drawChar(int16_t x, int16_t y, unsigned char c,
+void FLASHMEM ILI9341_t3n::drawChar(int16_t x, int16_t y, unsigned char c,
                            uint16_t fgcolor, uint16_t bgcolor, uint8_t size_x,
                            uint8_t size_y) {
   if ((x >= _width) ||              // Clip right
@@ -3398,7 +3398,7 @@ uint32_t ILI9341_t3n::fetchpixel(const uint8_t *p, uint32_t index, uint32_t x) {
   return (b >> s) & fontbppmask;
 }
 
-void ILI9341_t3n::drawFontChar(unsigned int c) {
+void FLASHMEM ILI9341_t3n::drawFontChar(unsigned int c) {
   uint32_t bitoffset;
   const uint8_t *data;
 
@@ -4238,7 +4238,7 @@ void ILI9341_t3n::drawFontBits(bool opaque, uint32_t bits, uint32_t numbits,
   }
 }
 
-void ILI9341_t3n::drawGFXFontChar(unsigned int c) {
+void FLASHMEM ILI9341_t3n::drawGFXFontChar(unsigned int c) {
   // Lets do Adafruit GFX character output here as well
   if (c == '\r')
     return;

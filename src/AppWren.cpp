@@ -18,12 +18,12 @@
 
 #ifdef USE_EXTMEM
 uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
-//char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (32)));
+//char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (16)));
 #else
 uint16_t DMAMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
 //char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (16)));
 #endif
-char wrenFastVMRam[1]__attribute__ ((aligned (16)));
+//char wrenFastVMRam[1]__attribute__ ((aligned (16)));
 
 /**
  * @brief Wren system interface 
@@ -141,7 +141,8 @@ static void* wrenFastMemoryAllocator(void* ptr, size_t newSize, void* _)
   //ram is fixed in this integration. 
   //therfore all memory allocation requests will return the fast ram vm buffer
   //unless the request size is too large. 
-  return (void*)&wrenFastVMRam[0];
+  //return (void*)&wrenFastVMRam[0];
+  return extmem_realloc(ptr,newSize);
 }
 
 
@@ -619,8 +620,8 @@ void FLASHMEM AppWren::startVM(){
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
     config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = WREN_VM_HEAP_SIZE;
-    config.heapGrowthPercent = 100;
+    config.minHeapSize = 32000;
+    config.heapGrowthPercent = 5;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
 #else
     config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
@@ -792,7 +793,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
               }
           }
         }
-        wrenCollectGarbage(vm);
+        am->data->update("VM_BYTES_ALLOCATED",(int32_t)wrenCollectGarbage(vm));
     };    //called only when the app is active
 
 

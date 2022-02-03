@@ -1,5 +1,21 @@
-Touch
-setCalibrationInputs
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
 erisAudioMixer8
 update call:[update] noreturn:[update]
 erisAudioInputI2S
@@ -152,6 +168,8 @@ erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
 erisAudioAnalyzePrint
 update call:[update] noreturn:[update]
+Touch
+setCalibrationInputs
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
 update call:[abs,analogRead]
 readAN1 call:[return]
@@ -162,34 +180,16 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
-Surface
-Surface
-Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
-requestSubSurfaceBufferP call:[F,print,println]
-getSurfaceBufferP
-getWidth
-getHeight
-hash
-Animation call:[memset,sizeof] noreturn:[memset]
-setPath call:[strcpy,strlen] noreturn:[strcpy]
-isFrameComplete
-getFileName
-getPath
-ILI9341_t3_ERIS
-getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
 getId
 isName call:[sizeof,strncmp]
-setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
+setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
 setPosition call:[_updatePosition] noreturn:[_updatePosition]
 setDimension call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
+render
 update
-updateRT
 onFocus
 onFocusLost
 onTouch
@@ -199,24 +199,40 @@ onAnalog1
 onAnalog2
 onAnalog3
 onAnalog4
-MessageHandler
-SvcDataDictionary
+messageHandler
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
 SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
 empty call:[memset]
+requestStartLZ4Message call:[startLZ4Message]
+render
 startLZ4Message call:[empty,print] noreturn:[print]
-update
 write call:[txOverflowHandler] noreturn:[txOverflowHandler]
 flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+SvcErisAudioParameterController call:[strcpy] noreturn:[strcpy]
+render
+update
+onFocus
+onFocusLost
+onTouch
+onTouchDrag
+onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
 connectionCount
 setSCI
+setAPC
 AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
 AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
+shutdownVM call:[delete,releasePopUp,releaseWrenHandles,wrenFreeVM]
+restartVM call:[shutdownVM,startVM] noreturn:[startVM]
+haltCallForwarding
 loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
-rebootRequest call:[printf,sizeof,strncpy] noreturn:[strncpy]
+rebootRequest call:[printf,safer_strncpy,sizeof] noreturn:[safer_strncpy]
 setParent call:[setParent] noreturn:[setParent]
 getFocus call:[getFocus] noreturn:[getFocus]
 returnFocus call:[returnFocus] noreturn:[returnFocus]
@@ -224,32 +240,32 @@ requestPopUp call:[requestPopUp] noreturn:[requestPopUp]
 releasePopUp call:[releasePopUp] noreturn:[releasePopUp]
 getDraw
 getAudioDirector
+bltSD2Surface call:[bltSDB,dynamicSurfaceManager,getHeight,getSurfaceBufferP,getWidth] noreturn:[bltSDB]
+bltSurface2FrameBuffer call:[bltMem,dest,dynamicSurfaceManager,getFrameBuffer,getSurfaceBufferP,getWidth,source] noreturn:[bltMem]
 setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel]
 getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
-drawLine call:[CL,drawLine,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawLine,drawPixel,drawSurfaceLine]
+drawLine call:[CL,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel,drawSurfaceLine]
 drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
-restartVM call:[releasePopUp,releaseWrenHandles,startVM,wrenFreeVM] noreturn:[startVM]
-isWrenResultOK call:[printf]
-updateRT call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
-onFocus call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
-onFocusLost call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotHandle]
-onTouch call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onTouchDrag call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onTouchRelease call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onAnalog1 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onAnalog2 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onAnalog3 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
-onAnalog4 call:[isWrenResultOK,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle]
+isWrenResultOK call:[F,getAppByName,getInstance,printf]
+onFocus call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onFocusLost call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouch call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouchDrag call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouchRelease call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog1 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog2 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog3 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog4 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
 _kill
 _getpid
 _times
 _gettimeofday call:[millis]
 writeFn call:[printf] noreturn:[printf]
-errorFn call:[printf] noreturn:[printf]
+errorFn call:[printf]
 getSourceForModule call:[getAppByName,getInstance,loadModuleSource] noreturn:[loadModuleSource]
 loadModuleComplete call:[freeModuleSource,getAppByName,getInstance] noreturn:[freeModuleSource]
 loadModule call:[getSourceForModule,printf]
-wrenFastMemoryAllocator call:[return]
+wrenFastMemoryAllocator global:[wrenFastVMRam] call:[return]
 sendMessageCallback call:[getAppByName,getInstance,sendMessage,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
 setPositionCallback call:[getAppByName,getInstance,setPosition,wrenGetSlotDouble] noreturn:[setPosition]
 setDimensionCallback call:[getAppByName,getInstance,setDimension,wrenGetSlotDouble] noreturn:[setDimension]
@@ -259,7 +275,7 @@ requestPopUpCallback call:[getAppByName,getInstance,requestPopUp,wrenGetSlotBool
 releasePopUpCallback call:[getAppByName,getInstance,releasePopUp] noreturn:[releasePopUp]
 getFocusCallback call:[getAppByName,getFocus,getInstance] noreturn:[getFocus]
 returnFocusCallback call:[getAppByName,getInstance,returnFocus] noreturn:[returnFocus]
-setClockSpeedCallback call:[set_arm_clock,wrenGetSlotDouble] noreturn:[set_arm_clock]
+setClockSpeedCallback call:[getInstance,requestArmSetClock,wrenGetSlotDouble] noreturn:[requestArmSetClock]
 setRandomCallback call:[random,wrenGetSlotDouble,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
 restartVMCallback call:[getAppByName,getInstance,rebootRequest,wrenGetSlotString] noreturn:[rebootRequest]
 audioDirectorConnectCallback call:[connect,getAppByName,getAudioDirector,getInstance,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
@@ -274,6 +290,8 @@ setCursorCallback call:[getAppByName,getDraw,getInstance,setCursor,wrenGetSlotDo
 printCallback call:[getAppByName,getDraw,getInstance,print,wrenGetSlotString] noreturn:[print]
 setFontSizeCallback
 loadImageCallback call:[bltSD,getAppByName,getDraw,getInstance,wrenGetSlotDouble,wrenGetSlotString] noreturn:[bltSD]
+loadImageSurfaceCallback call:[bltSD2Surface,getAppByName,getInstance,wrenGetSlotDouble,wrenGetSlotString] noreturn:[bltSD2Surface]
+bltCallback call:[bltSurface2FrameBuffer,getAppByName,getInstance,wrenGetSlotDouble] noreturn:[bltSurface2FrameBuffer]
 setPixelCallback call:[getAppByName,getInstance,setPixel,wrenGetSlotDouble] noreturn:[setPixel]
 getPixelCallback call:[getAppByName,getInstance,getPixel,wrenGetSlotDouble,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
 drawLineCallback call:[drawLine,getAppByName,getInstance,wrenGetSlotDouble] noreturn:[drawLine]
@@ -281,12 +299,13 @@ drawFillCallback call:[drawFill,getAppByName,getInstance,wrenGetSlotDouble] nore
 bindForeignMethod call:[strcmp]
 vmConstructor call:[getWrenHandles,isWrenResultOK,loadScript,startVM,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[isWrenResultOK]
 startVM call:[F,println,wrenInitConfiguration,wrenNewVM] noreturn:[wrenNewVM]
-MessageHandler call:[F,chdir,close,getFocus,isName,isWrenResultOK,loadScript,open,print,println,remove,restartVM,returnFocus,set_arm_clock,sscanf,strcat,strlen,strncmp,wrenCall,wrenEnsureSlots,wrenSetSlotHandle,wrenSetSlotString,write] noreturn:[isWrenResultOK,println,returnFocus]
-dynamicSurfaceManager call:[Surface,delete,getFrameAddress,getHeight,getWidth,memset,sizeof,wrenCollectGarbage] noreturn:[memset]
-update call:[F,bltMem,drawRoundRect,dynamicSurfaceManager,fillRoundRect,freeModuleSource,isWrenResultOK,loadModuleSource,loadScript,println,read,restartVM,setCursor,setFont,setTextColor,set_arm_clock,tempmonGetTemp,wrenCall,wrenCollectGarbage,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[bltMem,drawRoundRect,fillRoundRect,println,setFont,set_arm_clock,wrenCollectGarbage]
-releaseWrenHandles call:[wrenReleaseHandle] noreturn:[wrenReleaseHandle]
-getWrenHandles call:[wrenEnsureSlots,wrenGetSlotHandle,wrenGetVariable,wrenMakeCallHandle] noreturn:[wrenMakeCallHandle]
-loadModuleSource call:[F,available,chdir,close,extmem_malloc,memset,open,println,read,sizeof,strcat,strncpy]
+messageHandler call:[F,chdir,close,getFocus,isName,isWrenResultOK,loadScript,open,print,println,remove,restartVM,returnFocus,sscanf,strcat,strlen,strncmp,wrenCall,wrenEnsureSlots,wrenSetSlotHandle,wrenSetSlotString,write] noreturn:[isWrenResultOK,println,restartVM,returnFocus]
+dynamicSurfaceManager call:[Surface,delete,getFrameAddress,getHeight,getWidth,memset,sizeof] noreturn:[memset]
+render call:[F,bltMem,drawRoundRect,dynamicSurfaceManager,fillRoundRect,freeModuleSource,isWrenResultOK,loadModuleSource,loadScript,println,read,releaseWrenHandles,restartVM,setCursor,setFont,setTextColor,wrenCall,wrenCollectGarbage,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[bltMem,drawRoundRect,fillRoundRect,println,releaseWrenHandles,restartVM,setFont,wrenCollectGarbage]
+update call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+releaseWrenHandles call:[F,printf,wrenReleaseHandle]
+getWrenHandles call:[F,println,wrenEnsureSlots,wrenGetSlotHandle,wrenGetVariable,wrenMakeCallHandle] noreturn:[wrenMakeCallHandle]
+loadModuleSource call:[F,available,chdir,close,extmem_malloc,memset,open,println,read,safer_strncpy,sizeof,strcat]
 freeModuleSource call:[extmem_free] noreturn:[extmem_free]
 setPosition call:[setPosition] noreturn:[setPosition]
 setDimension

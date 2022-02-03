@@ -150,18 +150,6 @@ erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
 erisAudioAnalyzePrint
 update call:[update] noreturn:[update]
-Touch
-setCalibrationInputs
-AnalogInputs call:[analogReadAveraging,analogReadResolution]
-update call:[abs,analogRead]
-readAN1 call:[return]
-readAN2 call:[return]
-readAN3 call:[return]
-readAN4 call:[return]
-freadAN1
-freadAN2
-freadAN3
-freadAN4
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
 Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
 Surface
@@ -180,6 +168,18 @@ getPath
 ILI9341_t3_ERIS
 getFrameAddress call:[return]
 busy call:[_busy] noreturn:[_busy]
+Touch
+setCalibrationInputs
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
 getId
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
@@ -211,6 +211,9 @@ render
 startLZ4Message call:[empty,print] noreturn:[print]
 write call:[txOverflowHandler] noreturn:[txOverflowHandler]
 flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+connectionCount
+setSCI
+setAPC
 SvcErisAudioParameterController call:[strcpy] noreturn:[strcpy]
 render
 update
@@ -223,27 +226,4 @@ onAnalog1
 onAnalog2
 onAnalog3
 onAnalog4
-connectionCount
-setSCI
-setAPC
-I2CReset call:[begin,delay,delayMicroseconds,digitalWrite,pinMode] noreturn:[begin,delayMicroseconds]
-ExtADCReadReg call:[beginTransmission,endTransmission,read,requestFrom,write] noreturn:[read]
-ExtADCPrintStatus call:[ExtADCReadReg,F,print,printf] noreturn:[print,printf]
-ExtADCConfig call:[beginTransmission,delay,endTransmission,requestFrom,write] noreturn:[endTransmission]
-I2CBusScan call:[F,beginTransmission,endTransmission,print,println] noreturn:[print,println]
-AudioDirector global:[nullStr] call:[AudioConnection,F,addAudioStreamObj,erisAudioInputI2S,generateCategoryList,getAudioStreamObjByName,initialize_memory,print,println] noreturn:[AudioConnection,addAudioStreamObj,println]
-initAudioHardware call:[ExtADCConfig,I2CReset]
-addAudioStreamObj call:[F,print,println,strcmp]
-printStats call:[ExtADCPrintStatus,F,print,println,processorUsage,processorUsageMax,requestStartLZ4Message,sendLZ4Message] noreturn:[print,sendLZ4Message]
-generateCategoryList call:[strcmp]
-getAudioStreamObjByName call:[F,print,println,strlen,strncmp,strstr,strtoul]
-getAudioStreamString call:[sprintf,strcpy]
-getConnectionString call:[sprintf,strcpy]
-connect call:[AudioConnection,F,print,println,reconnect,rewire]
-connect call:[connect,getAudioStreamObjByName] noreturn:[connect]
-ParseConnectString call:[atoi,memset,sizeof,strcpy,strlen,strtok]
-connect call:[ParseConnectString,connect]
-disconnect call:[disconnect,getAudioStreamObjByName] noreturn:[disconnect]
-disconnect call:[F,disconnect,print,println]
-disconnect
-disconnectAll call:[disconnect]
+messageHandler global:[gPC_ERISASYNCAUDIOINPUTSPDIF3,gPC_ERISAUDIOAMPLIFIER,gPC_ERISAUDIOANALYZEFFT1024,gPC_ERISAUDIOANALYZEFFT256,gPC_ERISAUDIOANALYZENOTEFREQUENCY,gPC_ERISAUDIOANALYZEPEAK,gPC_ERISAUDIOANALYZERMS,gPC_ERISAUDIOANALYZETONEDETECT,gPC_ERISAUDIOEFFECTBITCRUSHER,gPC_ERISAUDIOEFFECTCHORUS,gPC_ERISAUDIOEFFECTDELAY,gPC_ERISAUDIOEFFECTDELAYEXTERNAL,gPC_ERISAUDIOEFFECTDIGITALCOMBINE,gPC_ERISAUDIOEFFECTENVELOPE,gPC_ERISAUDIOEFFECTFADE,gPC_ERISAUDIOEFFECTFLANGE,gPC_ERISAUDIOEFFECTFREEVERB,gPC_ERISAUDIOEFFECTFREEVERBSTEREO,gPC_ERISAUDIOEFFECTGRANULAR,gPC_ERISAUDIOEFFECTREVERB,gPC_ERISAUDIOFILTERFIR,gPC_ERISAUDIOFILTERSTATEVARIABLE,gPC_ERISAUDIOINPUTI2S,gPC_ERISAUDIOINPUTI2S2,gPC_ERISAUDIOINPUTI2SHEX,gPC_ERISAUDIOINPUTI2SOCT,gPC_ERISAUDIOINPUTI2SQUAD,gPC_ERISAUDIOINPUTI2SSLAVE,gPC_ERISAUDIOINPUTPDM,gPC_ERISAUDIOINPUTSPDIF3,gPC_ERISAUDIOINPUTTDM,gPC_ERISAUDIOINPUTTDM2,gPC_ERISAUDIOMIXER4,gPC_ERISAUDIOOUTPUTANALOG,gPC_ERISAUDIOOUTPUTANALOGSTEREO,gPC_ERISAUDIOOUTPUTI2S,gPC_ERISAUDIOOUTPUTI2S2,gPC_ERISAUDIOOUTPUTI2SHEX,gPC_ERISAUDIOOUTPUTI2SOCT,gPC_ERISAUDIOOUTPUTI2SQUAD,gPC_ERISAUDIOOUTPUTI2SSLAVE,gPC_ERISAUDIOOUTPUTMQS,gPC_ERISAUDIOOUTPUTPT8211,gPC_ERISAUDIOOUTPUTPT8211_2,gPC_ERISAUDIOOUTPUTSPDIF,gPC_ERISAUDIOOUTPUTSPDIF2,gPC_ERISAUDIOOUTPUTSPDIF3,gPC_ERISAUDIOOUTPUTTDM,gPC_ERISAUDIOOUTPUTTDM2,gPC_ERISAUDIOPLAYMEMORY,gPC_ERISAUDIOPLAYQUEUE,gPC_ERISAUDIOPLAYSERIALFLASHRAW,gPC_ERISAUDIORECORDQUEUE,gPC_ERISAUDIOSYNTHKARPLUSSTRONG,gPC_ERISAUDIOSYNTHNOISEPINK,gPC_ERISAUDIOSYNTHNOISEWHITE,gPC_ERISAUDIOSYNTHSIMPLEDRUM,gPC_ERISAUDIOSYNTHTONESWEEP,gPC_ERISAUDIOSYNTHWAVEFORM,gPC_ERISAUDIOSYNTHWAVEFORMDC,gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,gPC_ERISAUDIOSYNTHWAVEFORMPWM,gPC_ERISAUDIOSYNTHWAVEFORMSINE,gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES,gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED,gPC_ERISAUDIOSYNTHWAVETABLE,gPM_AMPLITUDE,gPM_ATTACK,gPM_AVAILABLE,gPM_AVERAGETOGETHER,gPM_BEGIN,gPM_BEGINFREEZE,gPM_BEGINPITCHSHIFT,gPM_BITS,gPM_CLEAR,gPM_DAMPING,gPM_DECAY,gPM_DELAY,gPM_DISABLE,gPM_END,gPM_FADEIN,gPM_FADEOUT,gPM_FREEBUFFER,gPM_FREQUENCY,gPM_FREQUENCYMODULATION,gPM_GAIN,gPM_GETENVSTATE,gPM_HOLD,gPM_ISACTIVE,gPM_ISPLAYING,gPM_ISSUSTAIN,gPM_LENGTH,gPM_LENGTHMILLIS,gPM_NOTEOFF,gPM_NOTEON,gPM_OCTAVECONTROL,gPM_OFFSET,gPM_PHASE,gPM_PHASEMODULATION,gPM_PITCHMOD,gPM_PLAY,gPM_PLAYBUFFER,gPM_POSITIONMILLIS,gPM_PROBABILITY,gPM_PULSEWIDTH,gPM_READ,gPM_READPEAKTOPEAK,gPM_RELEASE,gPM_RELEASENOTEON,gPM_RESONANCE,gPM_REVERBTIME,gPM_ROOMSIZE,gPM_SAMPLERATE,gPM_SECONDMIX,gPM_SETCOMBINEMODE,gPM_SETFREQUENCY,gPM_SETSPEED,gPM_SET_PARAMS,gPM_STOP,gPM_SUSTAIN,gPM_THRESHOLD,gPM_VOICES] call:[amplitude,attack,available,averageTogether,begin,beginFreeze,beginPitchShift,bits,clear,damping,decay,delay,disable,end,fadeIn,fadeOut,freeBuffer,frequency,frequencyModulation,gain,getAudioStreamObjByName,getEnvState,hold,isActive,isPlaying,isSustain,length,lengthMillis,noteOff,noteOn,octaveControl,offset,phase,phaseModulation,pitchMod,play,playBuffer,positionMillis,print,printf,println,probability,pulseWidth,read,readPeakToPeak,release,releaseNoteOn,resonance,reverbTime,roomsize,sampleRate,secondMix,send,setCombineMode,setFrequency,setSpeed,set_params,sizeof,sscanf,stop,strcat,strcpy,strncmp,sustain,threshold,voices] noreturn:[amplitude,attack,available,averageTogether,begin,beginFreeze,beginPitchShift,bits,clear,damping,decay,delay,disable,end,fadeIn,fadeOut,freeBuffer,frequency,frequencyModulation,gain,getEnvState,hold,isActive,isPlaying,isSustain,length,lengthMillis,noteOff,noteOn,octaveControl,offset,phase,phaseModulation,pitchMod,play,playBuffer,positionMillis,probability,pulseWidth,read,readPeakToPeak,release,releaseNoteOn,resonance,reverbTime,roomsize,sampleRate,secondMix,setCombineMode,setFrequency,setSpeed,set_params,stop,sustain,threshold,voices]

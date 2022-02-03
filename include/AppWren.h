@@ -91,8 +91,8 @@ class AppWren:public AppBaseClass {
         releaseWrenHandles();
         wrenFreeVM(vm);
         if(surface_cache){
-            delete(surface_cache);
-            surface_cache = NULL;
+            //delete(surface_cache);
+            //surface_cache = NULL;
         }
     }
 

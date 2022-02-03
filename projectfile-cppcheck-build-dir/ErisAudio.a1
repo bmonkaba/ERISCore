@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="765536034">
+  <FileInfo check="Class">
+<class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="40" col="1" hash="2404511787732881590"/>
+<class name="erisAudioInputI2S" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="101" col="1" hash="15110483932447753153"/>
+<class name="erisAudioInputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="114" col="1" hash="8762464498791733820"/>
+<class name="erisAudioInputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="127" col="1" hash="2545496999555304309"/>
+<class name="erisAudioInputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="140" col="1" hash="7549776302099559531"/>
+<class name="erisAudioInputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="153" col="1" hash="13445279627204906286"/>
+<class name="erisAudioInputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="166" col="1" hash="15279945432212734494"/>
+<class name="erisAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="179" col="1" hash="10854778513031649610"/>
+<class name="erisAsyncAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="192" col="1" hash="14901938155102166170"/>
+<class name="erisAudioInputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="205" col="1" hash="13278826385939621697"/>
+<class name="erisAudioInputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="218" col="1" hash="14448497398795772589"/>
+<class name="erisAudioInputPDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="231" col="1" hash="15650372692156959215"/>
+<class name="erisAudioInputTDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="244" col="1" hash="8826349923397809763"/>
+<class name="erisAudioInputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="257" col="1" hash="4106195188738415611"/>
+<class name="erisAudioOutputI2S" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="270" col="1" hash="296988356262770621"/>
+<class name="erisAudioOutputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="283" col="1" hash="848759807590747433"/>
+<class name="erisAudioOutputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="296" col="1" hash="2175474691191362105"/>
+<class name="erisAudioOutputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="309" col="1" hash="7788723368760279979"/>
+<class name="erisAudioOutputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="322" col="1" hash="16513593715108377618"/>
+<class name="erisAudioOutputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="335" col="1" hash="5898224904136941527"/>
+<class name="erisAudioOutputSPDIF" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="348" col="1" hash="15198192574090948178"/>
+<class name="erisAudioOutputSPDIF2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="361" col="1" hash="5256616601554099106"/>
+<class name="erisAudioOutputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="374" col="1" hash="17150398103639125062"/>
+<class name="erisAudioOutputPT8211" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="387" col="1" hash="13810338694865384626"/>
+<class name="erisAudioOutputPT8211_2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="400" col="1" hash="3718353408305980510"/>
+<class name="erisAudioOutputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="413" col="1" hash="17857247320805986477"/>
+<class name="erisAudioOutputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="426" col="1" hash="17842758226273144531"/>
+<class name="erisAudioOutputPWM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="439" col="1" hash="3172830439305777055"/>
+<class name="erisAudioOutputMQS" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="452" col="1" hash="9231666810625101120"/>
+<class name="erisAudioOutputTDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="465" col="1" hash="16838743294208126065"/>
+<class name="erisAudioOutputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="477" col="1" hash="13278550475997872341"/>
+<class name="erisAudioOutputADAT" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="490" col="1" hash="2857279996766523472"/>
+<class name="erisAudioAmplifier" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="503" col="1" hash="12395060632365590538"/>
+<class name="erisAudioMixer4" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="516" col="1" hash="15682419920236664062"/>
+<class name="erisAudioPlayMemory" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="529" col="1" hash="9575170552273585881"/>
+<class name="erisAudioPlaySerialflashRaw" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="542" col="1" hash="16851261332678046899"/>
+<class name="erisAudioPlayQueue" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="555" col="1" hash="8457871350923910474"/>
+<class name="erisAudioRecordQueue" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="568" col="1" hash="8109420286717965711"/>
+<class name="erisAudioSynthWavetable" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="581" col="1" hash="6069830872694247959"/>
+<class name="erisAudioSynthSimpleDrum" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="594" col="1" hash="7130115926776308453"/>
+<class name="erisAudioSynthKarplusStrong" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="607" col="1" hash="2401571472910568163"/>
+<class name="erisAudioSynthWaveformSine" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="620" col="1" hash="5929894565584248896"/>
+<class name="erisAudioSynthWaveformSineHires" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="633" col="1" hash="4429583439552524184"/>
+<class name="erisAudioSynthWaveformSineModulated" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="646" col="1" hash="6061499178605032404"/>
+<class name="erisAudioSynthWaveform" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="659" col="1" hash="6114064864666628363"/>
+<class name="erisAudioSynthWaveformModulated" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="672" col="1" hash="3018206861311669496"/>
+<class name="erisAudioSynthWaveformPWM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="685" col="1" hash="5337866342626412755"/>
+<class name="erisAudioSynthToneSweep" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="698" col="1" hash="1610414097409375661"/>
+<class name="erisAudioSynthWaveformDc" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="711" col="1" hash="14395055368035914684"/>
+<class name="erisAudioSynthNoiseWhite" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="724" col="1" hash="4293039010652676938"/>
+<class name="erisAudioSynthNoisePink" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="737" col="1" hash="5060752653109804455"/>
+<class name="erisAudioEffectFade" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="750" col="1" hash="15250802513480830398"/>
+<class name="erisAudioEffectChorus" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="763" col="1" hash="9890528155922421794"/>
+<class name="erisAudioEffectFlange" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="776" col="1" hash="5405498939140782774"/>
+<class name="erisAudioEffectReverb" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="789" col="1" hash="7596027336946088154"/>
+<class name="erisAudioEffectFreeverb" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="802" col="1" hash="7954428269825098154"/>
+<class name="erisAudioEffectFreeverbStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="815" col="1" hash="14301253097221995152"/>
+<class name="erisAudioEffectEnvelope" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="828" col="1" hash="3872340026307866578"/>
+<class name="erisAudioEffectMultiply" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="841" col="1" hash="11998361841165663497"/>
+<class name="erisAudioEffectDelay" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="854" col="1" hash="2022409934071843029"/>
+<class name="erisAudioEffectDelayExternal" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="867" col="1" hash="1226598597264325049"/>
+<class name="erisAudioEffectBitcrusher" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="880" col="1" hash="14228412095550811642"/>
+<class name="erisAudioEffectMidSide" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="893" col="1" hash="3785204951474430794"/>
+<class name="erisAudioEffectWaveshaper" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="906" col="1" hash="18171605972558839884"/>
+<class name="erisAudioEffectGranular" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="919" col="1" hash="5823521078291961378"/>
+<class name="erisAudioEffectDigitalCombine" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="932" col="1" hash="1885222951910632665"/>
+<class name="erisAudioFilterBiquad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="945" col="1" hash="10395134083909115784"/>
+<class name="erisAudioFilterFIR" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="958" col="1" hash="10027829644631180422"/>
+<class name="erisAudioFilterStateVariable" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="971" col="1" hash="13943399407507463116"/>
+<class name="erisAudioAnalyzePeak" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="984" col="1" hash="17268258192672624717"/>
+<class name="erisAudioAnalyzeRMS" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="996" col="1" hash="5654733930068070763"/>
+<class name="erisAudioAnalyzeFFT256" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1009" col="1" hash="18002437703109215581"/>
+<class name="__erisAudioAnalyzeFFT1024" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1022" col="1" hash="8675293204710813329"/>
+<class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1035" col="1" hash="4719929220758676674"/>
+<class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1048" col="1" hash="5325887165579370315"/>
+<class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1061" col="1" hash="11172198267483762469"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functioncall functionName="AsyncAudioInputSPDIF3"/>
+    <functioncall functionName="AudioAmplifier"/>
+    <functioncall functionName="AudioAnalyzeFFT1024"/>
+    <functioncall functionName="AudioAnalyzeFFT256"/>
+    <functioncall functionName="AudioAnalyzeNoteFrequency"/>
+    <functioncall functionName="AudioAnalyzePeak"/>
+    <functioncall functionName="AudioAnalyzePrint"/>
+    <functioncall functionName="AudioAnalyzeRMS"/>
+    <functioncall functionName="AudioAnalyzeToneDetect"/>
+    <functioncall functionName="AudioEffectBitcrusher"/>
+    <functioncall functionName="AudioEffectChorus"/>
+    <functioncall functionName="AudioEffectDelay"/>
+    <functioncall functionName="AudioEffectDelayExternal"/>
+    <functioncall functionName="AudioEffectDigitalCombine"/>
+    <functioncall functionName="AudioEffectEnvelope"/>
+    <functioncall functionName="AudioEffectFade"/>
+    <functioncall functionName="AudioEffectFlange"/>
+    <functioncall functionName="AudioEffectFreeverb"/>
+    <functioncall functionName="AudioEffectFreeverbStereo"/>
+    <functioncall functionName="AudioEffectGranular"/>
+    <functioncall functionName="AudioEffectMidSide"/>
+    <functioncall functionName="AudioEffectMultiply"/>
+    <functioncall functionName="AudioEffectReverb"/>
+    <functioncall functionName="AudioEffectWaveshaper"/>
+    <functioncall functionName="AudioFilterBiquad"/>
+    <functioncall functionName="AudioFilterFIR"/>
+    <functioncall functionName="AudioFilterStateVariable"/>
+    <functioncall functionName="AudioInputAnalog"/>
+    <functioncall functionName="AudioInputAnalogStereo"/>
+    <functioncall functionName="AudioInputI2S"/>
+    <functioncall functionName="AudioInputI2S2"/>
+    <functioncall functionName="AudioInputI2SHex"/>
+    <functioncall functionName="AudioInputI2SOct"/>
+    <functioncall functionName="AudioInputI2SQuad"/>
+    <functioncall functionName="AudioInputI2Sslave"/>
+    <functioncall functionName="AudioInputPDM"/>
+    <functioncall functionName="AudioInputSPDIF3"/>
+    <functioncall functionName="AudioInputTDM"/>
+    <functioncall functionName="AudioInputTDM2"/>
+    <functioncall functionName="AudioMixer4"/>
+    <functioncall functionName="AudioMixer8"/>
+    <functioncall functionName="AudioOutputADAT"/>
+    <functioncall functionName="AudioOutputAnalog"/>
+    <functioncall functionName="AudioOutputAnalogStereo"/>
+    <functioncall functionName="AudioOutputI2S"/>
+    <functioncall functionName="AudioOutputI2S2"/>
+    <functioncall functionName="AudioOutputI2SHex"/>
+    <functioncall functionName="AudioOutputI2SOct"/>
+    <functioncall functionName="AudioOutputI2SQuad"/>
+    <functioncall functionName="AudioOutputI2Sslave"/>
+    <functioncall functionName="AudioOutputMQS"/>
+    <functioncall functionName="AudioOutputPT8211"/>
+    <functioncall functionName="AudioOutputPT8211_2"/>
+    <functioncall functionName="AudioOutputPWM"/>
+    <functioncall functionName="AudioOutputSPDIF"/>
+    <functioncall functionName="AudioOutputSPDIF2"/>
+    <functioncall functionName="AudioOutputSPDIF3"/>
+    <functioncall functionName="AudioOutputTDM"/>
+    <functioncall functionName="AudioOutputTDM2"/>
+    <functioncall functionName="AudioPlayMemory"/>
+    <functioncall functionName="AudioPlayQueue"/>
+    <functioncall functionName="AudioPlaySerialflashRaw"/>
+    <functioncall functionName="AudioRecordQueue"/>
+    <functioncall functionName="AudioSynthKarplusStrong"/>
+    <functioncall functionName="AudioSynthNoisePink"/>
+    <functioncall functionName="AudioSynthNoiseWhite"/>
+    <functioncall functionName="AudioSynthSimpleDrum"/>
+    <functioncall functionName="AudioSynthToneSweep"/>
+    <functioncall functionName="AudioSynthWaveform"/>
+    <functioncall functionName="AudioSynthWaveformDc"/>
+    <functioncall functionName="AudioSynthWaveformModulated"/>
+    <functioncall functionName="AudioSynthWaveformPWM"/>
+    <functioncall functionName="AudioSynthWaveformSine"/>
+    <functioncall functionName="AudioSynthWaveformSineHires"/>
+    <functioncall functionName="AudioSynthWaveformSineModulated"/>
+    <functioncall functionName="AudioSynthWavetable"/>
+    <functioncall functionName="short_name_lookup"/>
+    <functioncall functionName="update"/>
+  </FileInfo>
+</analyzerinfo>

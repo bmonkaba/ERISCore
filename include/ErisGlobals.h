@@ -26,13 +26,13 @@
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 780000000
+#define CPU_BOOST_MAX_FREQ 740000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 67.0
+#define CPU_THERMAL_THROTTLE_TEMP 65.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -49,7 +49,11 @@
  * how many surfaces and of what size the cache can support.\n
  * the default 64*64*8 can support 8 subsurfaces 64x64 in size
  */
+#ifdef USE_EXTMEM
 #define AM_IMG_CACHE_SIZE 64*64*8
+#else
+#define AM_IMG_CACHE_SIZE 64*64*8
+#endif
 
 //AppBaseClass
 /**
@@ -223,7 +227,7 @@ const char AM_AUDIO_CPU_MAX[] PROGMEM = "AM_AUDIO_CPU_MAX";
 const char AM_AUDIO_CPU[] PROGMEM = "AM_AUDIO_CPU";
 const char AM_AUDIO_MEM_MAX[] PROGMEM = "AM_AUDIO_MEM_MAX";
 const char AM_AUDIO_MEM[] PROGMEM = "AM_AUDIO_MEM";
-const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/REDCITY";
+const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/WRMMM";
 const char UI_BUTTON_FILL_COLOR[] PROGMEM = "UI_BUTTON_FILL_COLOR";
 const char UI_BUTTON_SHADE_COLOR[] PROGMEM = "UI_BUTTON_SHADE_COLOR";
 const char UI_BUTTON_ACTIVE_BORDER_COLOR[] PROGMEM = "UI_BUTTON_ACTIVE_BORDER_COLOR";

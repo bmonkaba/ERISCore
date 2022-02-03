@@ -158,7 +158,7 @@ class AppCQT:public AppBaseClass {
       AudioInterrupts();
     }; 
 
-    void render (){
+    void FLASHMEM render (){
       if (!is_active) return;
       update_calls++;
       #ifdef TX_PERIODIC_FFT
@@ -281,7 +281,7 @@ class AppCQT:public AppBaseClass {
       //Serial.flush();
     }; //allways called even if app is not active
     
-    void onFocus(){ //called when given focus
+    void FLASHMEM onFocus(){ //called when given focus
       fft->enableFFT(true);
       fft2->enableFFT(true);
       is_active = true;
@@ -289,14 +289,14 @@ class AppCQT:public AppBaseClass {
 
     };
 
-    void onFocusLost(){ //called when focus is taken
+    void FLASHMEM onFocusLost(){ //called when focus is taken
       fft->enableFFT(false);
       fft2->enableFFT(false);
       is_active = false;
       Serial.println(F("M ** CQT LOST FOCUS"));
     };
 
-    void onTouch(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
       //check if touch point is within the application bounding box
       if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
           //is touched
@@ -314,7 +314,7 @@ class AppCQT:public AppBaseClass {
     void onTouchRelease(uint16_t x, uint16_t y){
     };
 
-    void updateOscillatorBank(bool low_range_switch){
+    void FLASHMEM updateOscillatorBank(bool low_range_switch){
       bool found;
       float peak_read=-1000;
       float peak;

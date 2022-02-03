@@ -18,12 +18,12 @@
 #include "AppAIfES.h"
 
 
-AudioDirector _ad;
-AppAudioToPolyphonic appPoly;
-SvcSerialCommandInterface sci;
+AudioDirector DMAMEM _ad;
+AppAudioToPolyphonic EXTMEM appPoly;
+SvcSerialCommandInterface FASTRUN sci;
 SvcErisAudioParameterController EXTMEM apc;
-AppReprogram appReprogram;
-AppWren* appWren;
+AppReprogram EXTMEM appReprogram;
+AppWren* FASTRUN appWren;
 AppAIfES EXTMEM ai;
 
 void setup() {

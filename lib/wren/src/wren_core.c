@@ -13,7 +13,6 @@
 #include "wren_core.wren.inc"
 
 
-
 DEF_PRIMITIVE(bool_not)
 {
   RETURN_BOOL(!AS_BOOL(args[0]));
@@ -63,7 +62,8 @@ DEF_PRIMITIVE(fiber_new)
   ObjClosure* closure = AS_CLOSURE(args[1]);
   if (closure->fn->arity > 1)
   {
-    RETURN_ERROR("Function cannot take more than one parameter.");
+    const char msg[] = "Function cannot take more than one parameter.";
+    RETURN_ERROR(msg);
   }
   
   RETURN_OBJ(wrenNewFiber(vm, closure));

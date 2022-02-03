@@ -134,7 +134,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     } 
     //define event handlers
-    void render(){
+    void FLASHMEM render(){
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb_1"));
       reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
       reverb->damping(am->data->readf(REVERB_DAMPING));

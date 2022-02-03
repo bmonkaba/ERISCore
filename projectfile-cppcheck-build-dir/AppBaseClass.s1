@@ -182,14 +182,14 @@ freadAN3
 freadAN4
 getId
 isName call:[sizeof,strncmp]
-setName call:[strcpy,strlen,strncpy] noreturn:[strcpy,strncpy]
+setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
 setPosition call:[_updatePosition] noreturn:[_updatePosition]
 setDimension call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetPosition call:[_updatePosition] noreturn:[_updatePosition]
 setWidgetDimension call:[_updatePosition] noreturn:[_updatePosition]
+render
 update
-updateRT
 onFocus
 onFocusLost
 onTouch
@@ -199,22 +199,35 @@ onAnalog1
 onAnalog2
 onAnalog3
 onAnalog4
-MessageHandler
-SvcDataDictionary
+messageHandler
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]
 ls call:[ls] noreturn:[ls]
 SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
 empty call:[memset]
+requestStartLZ4Message call:[startLZ4Message]
+render
 startLZ4Message call:[empty,print] noreturn:[print]
-update
 write call:[txOverflowHandler] noreturn:[txOverflowHandler]
 flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+SvcErisAudioParameterController call:[strcpy] noreturn:[strcpy]
+render
+update
+onFocus
+onFocusLost
+onTouch
+onTouchDrag
+onTouchRelease
+onAnalog1
+onAnalog2
+onAnalog3
+onAnalog4
 connectionCount
 setSCI
+setAPC
 AppBaseClass call:[selfRegister,strcpy] noreturn:[selfRegister]
-selfRegister call:[RegisterApp,getInstance] noreturn:[RegisterApp]
+selfRegister call:[getInstance,registerApp] noreturn:[registerApp]
 _updatePosition
 getFocus call:[_updatePosition,getFocus,getInstance]
 returnFocus call:[_updatePosition,getInstance,returnFocus]

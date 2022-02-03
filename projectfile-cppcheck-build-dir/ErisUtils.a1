@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="4260025320">
+  <FileInfo check="Null pointer">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" my-argnr="1" my-argname="dest" file="src/ErisUtils.cpp" line="21" col="13" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" my-argnr="2" my-argname="source" file="src/ErisUtils.cpp" line="21" col="18" value="0"/>
+  </FileInfo>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" my-argnr="2" my-argname="source" file="src/ErisUtils.cpp" line="21" col="18" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="safer_strncpy" lineNumber="20"/>
+    <functioncall functionName="dest"/>
+    <functioncall functionName="dest_size"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="source"/>
+    <functioncall functionName="strlen"/>
+    <functioncall functionName="strncpy"/>
+  </FileInfo>
+</analyzerinfo>

@@ -1675,6 +1675,386 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
             //total_read = sscanf(p, "" , ); // ['void']
             eac->clear_buffers();
         }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_RESET,m,sizeof(gPM_RESET)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->reset();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_ENABLEFFT,m,sizeof(gPM_ENABLEFFT)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			bool enable_state;
+            total_read = sscanf(p, "%c" , &enable_state); // ['bool enable_state']
+            eac->enableFFT(enable_state);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_CONFIGSUBSAMPLE,m,sizeof(gPM_CONFIGSUBSAMPLE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint16_t subsample;
+            total_read = sscanf(p, "%hu" , &subsample,&range); // ['uint16_t subsample', 'subsample_range range']
+            eac->configSubsample(subsample,range);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_SETACTIVERANGE,m,sizeof(gPM_SETACTIVERANGE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            total_read = sscanf(p, "" , &range); // ['subsample_range range']
+            eac->setActiveRange(range);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_TOGGLEACTIVERANGE,m,sizeof(gPM_TOGGLEACTIVERANGE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->toggleActiveRange();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->available();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t binNumber;
+            total_read = sscanf(p, "%lu" , &binNumber); // ['uint32_t binNumber']
+            eac->read(binNumber);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_AVERAGETOGETHER,m,sizeof(gPM_AVERAGETOGETHER)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint8_t n;
+            total_read = sscanf(p, "%c" , &n); // ['uint8_t n']
+            eac->averageTogether(n);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_SPECTRALFILTER,m,sizeof(gPM_SPECTRALFILTER)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->spectralFilter();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_CAPTURE,m,sizeof(gPM_CAPTURE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['void']
+            eac->capture();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_ANALYZE,m,sizeof(gPM_ANALYZE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['void']
+            eac->analyze();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISERISAUDIOANALYZEFFT1024)) == 0 &&\
+        strncmp(gPM_INIT,m,sizeof(gPM_INIT)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeFFT1024::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeFFT1024* eac = (eriserisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['void']
+            eac->init();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_TRIGGER,m,sizeof(gPM_TRIGGER)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['void']
+            eac->trigger();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_TRIGGER,m,sizeof(gPM_TRIGGER)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float level;
+			int16_t edge;
+            total_read = sscanf(p, "%f,%f" , &level,&edge); // ['float level', 'int edge']
+            eac->trigger(level,edge);
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['void']
+            eac->available();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTPRODUCT,m,sizeof(gPM_GETDOTPRODUCT)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotProduct();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTPRODUCTAVG,m,sizeof(gPM_GETDOTPRODUCTAVG)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotProductAvg();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTPRODUCTAVGSLOW,m,sizeof(gPM_GETDOTPRODUCTAVGSLOW)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotProductAvgSlow();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTMACD,m,sizeof(gPM_GETDOTMACD)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotMACD();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTDELTA,m,sizeof(gPM_GETDOTDELTA)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotDelta();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTACCELERATION,m,sizeof(gPM_GETDOTACCELERATION)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotAcceleration();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETDOTDELTAMACD,m,sizeof(gPM_GETDOTDELTAMACD)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getDotDeltaMACD();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETEDGECOUNT,m,sizeof(gPM_GETEDGECOUNT)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getEdgeCount();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETEDGECOUNT_CH2,m,sizeof(gPM_GETEDGECOUNT_CH2)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getEdgeCount_ch2();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETEDGEDELAY,m,sizeof(gPM_GETEDGEDELAY)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getEdgeDelay();
+        }
+    }else if(strncmp(gPC_ERISERISAUDIOANALYZESCOPE,c,sizeof(gPC_ERISERISAUDIOANALYZESCOPE)) == 0 &&\
+        strncmp(gPM_GETEDGEDELAY2,m,sizeof(gPM_GETEDGEDELAY2)) == 0){
+        strcpy(objName,eriserisAudioAnalyzeScope::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        eriserisAudioAnalyzeScope* eac = (eriserisAudioAnalyzeScope*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            //total_read = sscanf(p, "" , ); // ['']
+            eac->getEdgeDelay2();
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float freq;
+            total_read = sscanf(p, "%f" , &freq); // ['float freq']
+            eac->frequency(freq);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_PHASE,m,sizeof(gPM_PHASE)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float angle;
+            total_read = sscanf(p, "%f" , &angle); // ['float angle']
+            eac->phase(angle);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float n;
+            total_read = sscanf(p, "%f" , &n); // ['float n']
+            eac->amplitude(n);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_OFFSET,m,sizeof(gPM_OFFSET)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float n;
+            total_read = sscanf(p, "%f" , &n); // ['float n']
+            eac->offset(n);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_PULSEWIDTH,m,sizeof(gPM_PULSEWIDTH)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float n;
+            total_read = sscanf(p, "%f" , &n); // ['float n']
+            eac->pulseWidth(n);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            total_read = sscanf(p, "" , &t_type); // ['short t_type']
+            eac->begin(t_type);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
+        strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
+        strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float t_amp;
+			float t_freq;
+            total_read = sscanf(p, "%f,%f" , &t_amp,&t_freq,&t_type); // ['float t_amp', 'float t_freq', 'short t_type']
+            eac->begin(t_amp,t_freq,t_type);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float freq;
+            total_read = sscanf(p, "%f" , &freq); // ['float freq']
+            eac->frequency(freq);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float n;
+            total_read = sscanf(p, "%f" , &n); // ['float n']
+            eac->amplitude(n);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_OFFSET,m,sizeof(gPM_OFFSET)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float n;
+            total_read = sscanf(p, "%f" , &n); // ['float n']
+            eac->offset(n);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+            total_read = sscanf(p, "" , &t_type); // ['short t_type']
+            eac->begin(t_type);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float t_amp;
+			float t_freq;
+            total_read = sscanf(p, "%f,%f" , &t_amp,&t_freq,&t_type); // ['float t_amp', 'float t_freq', 'short t_type']
+            eac->begin(t_amp,t_freq,t_type);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_FREQUENCYMODULATION,m,sizeof(gPM_FREQUENCYMODULATION)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float octaves;
+            total_read = sscanf(p, "%f" , &octaves); // ['float octaves']
+            eac->frequencyModulation(octaves);
+        }
+    }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
+        strncmp(gPM_PHASEMODULATION,m,sizeof(gPM_PHASEMODULATION)) == 0){
+        strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			float degrees;
+            total_read = sscanf(p, "%f" , &degrees); // ['float degrees']
+            eac->phaseModulation(degrees);
+        }
     }else if(strncmp(gPC_ERISAUDIOFILTERFIR,c,sizeof(gPC_ERISAUDIOFILTERFIR)) == 0 &&\
         strncmp(gPM_END,m,sizeof(gPM_END)) == 0){
         strcpy(objName,erisAudioFilterFIR::short_name_lookup);
@@ -3069,6 +3449,10 @@ const char gPC_ERISAUDIOEFFECTFREEVERB[] PROGMEM = "erisAudioEffectFreeverb";
 const char gPC_ERISAUDIOEFFECTFREEVERBSTEREO[] PROGMEM = "erisAudioEffectFreeverbStereo";
 const char gPC_ERISAUDIOEFFECTGRANULAR[] PROGMEM = "erisAudioEffectGranular";
 const char gPC_ERISAUDIOEFFECTREVERB[] PROGMEM = "erisAudioEffectReverb";
+const char gPC_ERISERISAUDIOANALYZEFFT1024[] PROGMEM = "eriserisAudioAnalyzeFFT1024";
+const char gPC_ERISERISAUDIOANALYZESCOPE[] PROGMEM = "eriserisAudioAnalyzeScope";
+const char gPC_ERISAUDIOSYNTHWAVEFORM[] PROGMEM = "erisAudioSynthWaveform";
+const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED[] PROGMEM = "erisAudioSynthWaveformModulated";
 const char gPC_ERISAUDIOFILTERFIR[] PROGMEM = "erisAudioFilterFIR";
 const char gPC_ERISAUDIOFILTERLADDER[] PROGMEM = "erisAudioFilterLadder";
 const char gPC_ERISAUDIOFILTERSTATEVARIABLE[] PROGMEM = "erisAudioFilterStateVariable";
@@ -3122,8 +3506,6 @@ const char gPC_ERISAUDIOSYNTHWAVEFORMSINE[] PROGMEM = "erisAudioSynthWaveformSin
 const char gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES[] PROGMEM = "erisAudioSynthWaveformSineHires";
 const char gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED[] PROGMEM = "erisAudioSynthWaveformSineModulated";
 const char gPC_ERISAUDIOSYNTHTONESWEEP[] PROGMEM = "erisAudioSynthToneSweep";
-const char gPC_ERISAUDIOSYNTHWAVEFORM[] PROGMEM = "erisAudioSynthWaveform";
-const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED[] PROGMEM = "erisAudioSynthWaveformModulated";
 const char gPC_ERISAUDIOSYNTHWAVETABLE[] PROGMEM = "erisAudioSynthWavetable";
 const char gPC_ERISAUDIOSYNTHNOISEWHITE[] PROGMEM = "erisAudioSynthNoiseWhite";
 const char gPM_AVAILABLE[] PROGMEM = "available";
@@ -3237,8 +3619,33 @@ const char gPM_BEGINPITCHSHIFT_INT[] PROGMEM = "beginPitchShift_int";
 const char gPM_REVERBTIME[] PROGMEM = "reverbTime";
 const char gPM_INIT_COMB_FILTERS[] PROGMEM = "init_comb_filters";
 const char gPM_CLEAR_BUFFERS[] PROGMEM = "clear_buffers";
-const char gPM_END[] PROGMEM = "end";
+const char gPM_RESET[] PROGMEM = "reset";
+const char gPM_ENABLEFFT[] PROGMEM = "enableFFT";
+const char gPM_CONFIGSUBSAMPLE[] PROGMEM = "configSubsample";
+const char gPM_SETACTIVERANGE[] PROGMEM = "setActiveRange";
+const char gPM_TOGGLEACTIVERANGE[] PROGMEM = "toggleActiveRange";
+const char gPM_SPECTRALFILTER[] PROGMEM = "spectralFilter";
+const char gPM_CAPTURE[] PROGMEM = "capture";
+const char gPM_ANALYZE[] PROGMEM = "analyze";
+const char gPM_GETDOTPRODUCT[] PROGMEM = "getDotProduct";
+const char gPM_GETDOTPRODUCTAVG[] PROGMEM = "getDotProductAvg";
+const char gPM_GETDOTPRODUCTAVGSLOW[] PROGMEM = "getDotProductAvgSlow";
+const char gPM_GETDOTMACD[] PROGMEM = "getDotMACD";
+const char gPM_GETDOTDELTA[] PROGMEM = "getDotDelta";
+const char gPM_GETDOTACCELERATION[] PROGMEM = "getDotAcceleration";
+const char gPM_GETDOTDELTAMACD[] PROGMEM = "getDotDeltaMACD";
+const char gPM_GETEDGECOUNT[] PROGMEM = "getEdgeCount";
+const char gPM_GETEDGECOUNT_CH2[] PROGMEM = "getEdgeCount_ch2";
+const char gPM_GETEDGEDELAY[] PROGMEM = "getEdgeDelay";
+const char gPM_GETEDGEDELAY2[] PROGMEM = "getEdgeDelay2";
 const char gPM_FREQUENCY[] PROGMEM = "frequency";
+const char gPM_PHASE[] PROGMEM = "phase";
+const char gPM_AMPLITUDE[] PROGMEM = "amplitude";
+const char gPM_OFFSET[] PROGMEM = "offset";
+const char gPM_PULSEWIDTH[] PROGMEM = "pulseWidth";
+const char gPM_FREQUENCYMODULATION[] PROGMEM = "frequencyModulation";
+const char gPM_PHASEMODULATION[] PROGMEM = "phaseModulation";
+const char gPM_END[] PROGMEM = "end";
 const char gPM_RESONANCE[] PROGMEM = "resonance";
 const char gPM_OCTAVECONTROL[] PROGMEM = "octaveControl";
 const char gPM_PASSBANDGAIN[] PROGMEM = "passbandGain";
@@ -3259,7 +3666,6 @@ const char gPM_ISPAUSED[] PROGMEM = "isPaused";
 const char gPM_ISSTOPPED[] PROGMEM = "isStopped";
 const char gPM_CONSUME[] PROGMEM = "consume";
 const char gPM_PARSE_FORMAT[] PROGMEM = "parse_format";
-const char gPM_RESET[] PROGMEM = "reset";
 const char gPM_CLEAR[] PROGMEM = "clear";
 const char gPM_FREEBUFFER[] PROGMEM = "freeBuffer";
 const char gPM_ADDTOSAMPLEDIFF[] PROGMEM = "addToSampleDiff";
@@ -3269,15 +3675,9 @@ const char gPM_INITIALIZED[] PROGMEM = "initialized";
 const char gPM_GETKAISEREXACT[] PROGMEM = "getKaiserExact";
 const char gPM_SETKAISERWINDOW[] PROGMEM = "setKaiserWindow";
 const char gPM_SETFILTER[] PROGMEM = "setFilter";
-const char gPM_AMPLITUDE[] PROGMEM = "amplitude";
 const char gPM_LENGTH[] PROGMEM = "length";
 const char gPM_SECONDMIX[] PROGMEM = "secondMix";
 const char gPM_PITCHMOD[] PROGMEM = "pitchMod";
-const char gPM_PHASE[] PROGMEM = "phase";
-const char gPM_OFFSET[] PROGMEM = "offset";
-const char gPM_PULSEWIDTH[] PROGMEM = "pulseWidth";
-const char gPM_FREQUENCYMODULATION[] PROGMEM = "frequencyModulation";
-const char gPM_PHASEMODULATION[] PROGMEM = "phaseModulation";
 const char gPM_SETFREQUENCY[] PROGMEM = "setFrequency";
 const char gPM_GETENVSTATE[] PROGMEM = "getEnvState";
 const char gPM_SETSTATE[] PROGMEM = "setState";

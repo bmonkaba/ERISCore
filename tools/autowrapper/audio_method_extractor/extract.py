@@ -101,6 +101,10 @@ def buildParameterString(a):
     return [ret[:-1],scan[:-1],args[:-1]]
             
 def autocode(r,c,m,a):
+    s = str([c,m,a])
+    s = s.replace('Audio','erisAudio')
+    s = s.replace('eriseris','eris')
+    print(s + ", \\")
     c = "eris" + c  #framework name
     ret = class_code_template
     ret = ret.replace("{GLOBAL_CLASS_STR}",c.upper())
@@ -129,7 +133,7 @@ def autocode(r,c,m,a):
     #remove any blank lines
     ret = "\n".join([s for s in ret.split('\n') if s])
     output.write(ret)
-    print(ret)
+    #print(ret)
     return
     
 

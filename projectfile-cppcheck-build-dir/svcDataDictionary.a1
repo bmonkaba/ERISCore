@@ -1,132 +1,135 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="18712737">
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePoll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePoll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcDataDictionary.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="57" column="9"/>
-            <symbol>sincePoll</symbol>
+<analyzerinfo checksum="1658209356">
+        <error id="bufferAccessOutOfBounds" severity="error" msg="Buffer is accessed out of bounds: tx_Buffer" verbose="Buffer is accessed out of bounds: tx_Buffer" cwe="788" file0="src/SvcDataDictionary.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="82" column="16" info="Buffer overrun"/>
         </error>
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicDataDict&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicDataDict&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcDataDictionary.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="58" column="9"/>
-            <symbol>sincePeriodicDataDict</symbol>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_poll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_poll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/SvcDataDictionary.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="58" column="9"/>
+            <symbol>et_since_poll</symbol>
         </error>
-        <error id="useInitializationList" severity="performance" msg="Variable &apos;sincePeriodicStats&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;sincePeriodicStats&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/svcDataDictionary.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\svcSerialCommandInterface.h" line="59" column="9"/>
-            <symbol>sincePeriodicStats</symbol>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_periodic_data_dict_tx&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_periodic_data_dict_tx&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/SvcDataDictionary.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="59" column="9"/>
+            <symbol>et_since_periodic_data_dict_tx</symbol>
         </error>
-        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/svcDataDictionary.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\touch.h" line="20" column="9"/>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_periodic_stats_tx&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_periodic_stats_tx&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/SvcDataDictionary.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="60" column="9"/>
+            <symbol>et_since_periodic_stats_tx</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Touch&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/SvcDataDictionary.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\Touch.h" line="20" column="9"/>
             <symbol>Touch</symbol>
         </error>
-        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/svcDataDictionary.cpp">
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/SvcDataDictionary.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="13" info="Shadowed declaration"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="167" column="14" info="Shadowed declaration"/>
             <symbol>h</symbol>
         </error>
-        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/svcDataDictionary.cpp">
+        <error id="unusedScopedObject" severity="style" msg="Instance of &apos;Surface&apos; object is destroyed immediately." verbose="Instance of &apos;Surface&apos; object is destroyed immediately." cwe="563" file0="src/SvcDataDictionary.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="127" column="9"/>
             <symbol>Surface</symbol>
         </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:109:14" call-funcname="create" call-argnr="2" file="src/svcDataDictionary.cpp" line="194" col="20" call-argexpr="(int32_t)0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="90" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:92:14" call-funcname="create" call-argnr="2" file="src/SvcDataDictionary.cpp" line="210" col="20" call-argexpr="(int32_t)0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:89:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="51" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:108:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:89:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="61" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:109:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:89:10" call-funcname="copyKey" call-argnr="1" file="src/svcDataDictionary.cpp" line="72" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:110:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="84" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:111:17" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="95" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:112:19" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="106" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:113:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="125" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:114:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="144" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:115:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="163" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:116:14" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" call-funcname="hash" call-argnr="1" file="src/svcDataDictionary.cpp" line="182" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:117:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:108:14" call-funcname="copyKey" call-argnr="1" file="src/SvcDataDictionary.cpp" line="67" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:91:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:108:14" call-funcname="copyKey" call-argnr="1" file="src/SvcDataDictionary.cpp" line="77" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:92:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:108:14" call-funcname="copyKey" call-argnr="1" file="src/SvcDataDictionary.cpp" line="88" col="10" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:93:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="100" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:94:17" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="111" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:95:19" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="122" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:96:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="141" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:97:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="160" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:98:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="179" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:99:14" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" call-funcname="hash" call-argnr="1" file="src/SvcDataDictionary.cpp" line="198" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:100:14" my-argnr="1"/>
   </FileInfo>
   <FileInfo check="Class">
-<class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="40" col="1" hash="4962262188751970786"/>
-<class name="erisAudioInputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="98" col="1" hash="17019316723196514384"/>
-<class name="erisAudioInputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="108" col="1" hash="12889149348684469767"/>
-<class name="erisAudioInputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="118" col="1" hash="6028903301171554901"/>
-<class name="erisAudioInputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="128" col="1" hash="4968706929110944895"/>
-<class name="erisAudioInputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="138" col="1" hash="15809457002258706000"/>
-<class name="erisAudioInputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="148" col="1" hash="11406150109657359798"/>
-<class name="erisAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="158" col="1" hash="1372926380654507372"/>
-<class name="erisAsyncAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="168" col="1" hash="17940064596614591134"/>
-<class name="erisAudioInputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="178" col="1" hash="5469694701424856321"/>
-<class name="erisAudioInputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="188" col="1" hash="12061529731085099603"/>
-<class name="erisAudioInputPDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="198" col="1" hash="10033901636159097191"/>
-<class name="erisAudioInputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="208" col="1" hash="15259063952535369549"/>
-<class name="erisAudioInputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="218" col="1" hash="14856942719287723931"/>
-<class name="erisAudioOutputI2S" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="228" col="1" hash="1836933379248046551"/>
-<class name="erisAudioOutputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="238" col="1" hash="5990769019527883701"/>
-<class name="erisAudioOutputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="248" col="1" hash="11434018027038360475"/>
-<class name="erisAudioOutputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="258" col="1" hash="9571367478623596901"/>
-<class name="erisAudioOutputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="268" col="1" hash="12702726595264855518"/>
-<class name="erisAudioOutputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="278" col="1" hash="17892985148605244015"/>
-<class name="erisAudioOutputSPDIF" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="288" col="1" hash="18316701196461237528"/>
-<class name="erisAudioOutputSPDIF2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="298" col="1" hash="7797447031346815706"/>
-<class name="erisAudioOutputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="308" col="1" hash="16751863684456004246"/>
-<class name="erisAudioOutputPT8211" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="318" col="1" hash="4359577722567632146"/>
-<class name="erisAudioOutputPT8211_2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="328" col="1" hash="7628113483695143906"/>
-<class name="erisAudioOutputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="338" col="1" hash="3756956596770590231"/>
-<class name="erisAudioOutputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="348" col="1" hash="8647170536430879707"/>
-<class name="erisAudioOutputPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="358" col="1" hash="1444287441411935465"/>
-<class name="erisAudioOutputMQS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="368" col="1" hash="17079401432311194794"/>
-<class name="erisAudioOutputTDM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="378" col="1" hash="7708984035535973941"/>
-<class name="erisAudioOutputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="388" col="1" hash="3988180730731542175"/>
-<class name="erisAudioOutputADAT" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="398" col="1" hash="6185472866387283372"/>
-<class name="erisAudioAmplifier" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="408" col="1" hash="8763940027999518862"/>
-<class name="erisAudioMixer4" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="418" col="1" hash="10114398071111466314"/>
-<class name="erisAudioPlayMemory" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="428" col="1" hash="15124706446371980787"/>
-<class name="erisAudioPlaySerialflashRaw" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="438" col="1" hash="17168942511083914767"/>
-<class name="erisAudioPlayQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="448" col="1" hash="9884993907786335155"/>
-<class name="erisAudioRecordQueue" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="458" col="1" hash="13400521790657212627"/>
-<class name="erisAudioSynthWavetable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="468" col="1" hash="6862551364167213219"/>
-<class name="erisAudioSynthSimpleDrum" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="478" col="1" hash="16260344283374880339"/>
-<class name="erisAudioSynthKarplusStrong" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="488" col="1" hash="15428449321585163997"/>
-<class name="erisAudioSynthWaveformSine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="498" col="1" hash="5554398737258808582"/>
-<class name="erisAudioSynthWaveformSineHires" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="508" col="1" hash="1243266091286715710"/>
-<class name="erisAudioSynthWaveformSineModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="518" col="1" hash="6613027986117435692"/>
-<class name="erisAudioSynthWaveform" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="528" col="1" hash="10661082739031984725"/>
-<class name="erisAudioSynthWaveformModulated" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="538" col="1" hash="9070137649144748664"/>
-<class name="erisAudioSynthWaveformPWM" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="548" col="1" hash="16282031523987132795"/>
-<class name="erisAudioSynthToneSweep" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="558" col="1" hash="14902423390283889489"/>
-<class name="erisAudioSynthWaveformDc" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="568" col="1" hash="11332563550291126986"/>
-<class name="erisAudioSynthNoiseWhite" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="578" col="1" hash="18369753233789786926"/>
-<class name="erisAudioSynthNoisePink" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="588" col="1" hash="7666074944499152605"/>
-<class name="erisAudioEffectFade" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="598" col="1" hash="8097214233170311102"/>
-<class name="erisAudioEffectChorus" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="608" col="1" hash="11711887291647211682"/>
-<class name="erisAudioEffectFlange" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="618" col="1" hash="13039206121562521986"/>
-<class name="erisAudioEffectReverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="628" col="1" hash="9600413015891836070"/>
-<class name="erisAudioEffectFreeverb" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="638" col="1" hash="4348153898252324090"/>
-<class name="erisAudioEffectFreeverbStereo" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="648" col="1" hash="826130359863801218"/>
-<class name="erisAudioEffectEnvelope" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="658" col="1" hash="17600207697407804882"/>
-<class name="erisAudioEffectMultiply" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="668" col="1" hash="10764948352547471841"/>
-<class name="erisAudioEffectDelay" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="678" col="1" hash="15486994146812610059"/>
-<class name="erisAudioEffectDelayExternal" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="688" col="1" hash="11642970270825282913"/>
-<class name="erisAudioEffectBitcrusher" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="698" col="1" hash="5438129528292805314"/>
-<class name="erisAudioEffectMidSide" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="708" col="1" hash="15786039691290954372"/>
-<class name="erisAudioEffectWaveshaper" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="718" col="1" hash="11726647589586739582"/>
-<class name="erisAudioEffectGranular" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="728" col="1" hash="481857465943148790"/>
-<class name="erisAudioEffectDigitalCombine" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="738" col="1" hash="17907310203245797863"/>
-<class name="erisAudioFilterBiquad" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="748" col="1" hash="5155133181386169548"/>
-<class name="erisAudioFilterFIR" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="758" col="1" hash="11650491588858295672"/>
-<class name="erisAudioFilterStateVariable" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="768" col="1" hash="16639294264589236216"/>
-<class name="erisAudioAnalyzePeak" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="778" col="1" hash="17986091572680821655"/>
-<class name="erisAudioAnalyzeRMS" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="788" col="1" hash="16353966212412028487"/>
-<class name="erisAudioAnalyzeFFT256" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="798" col="1" hash="16952353100907895819"/>
-<class name="__erisAudioAnalyzeFFT1024" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="808" col="1" hash="3142326671534559013"/>
-<class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="818" col="1" hash="6261411856635826908"/>
-<class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="828" col="1" hash="8632626151773195289"/>
-<class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/erisAudio.h" line="838" col="1" hash="5429679981121095601"/>
-<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="5429400104627854940"/>
-<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="21" col="9" hash="5139491191325099632"/>
-<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="69" col="9" hash="2911627910700264153"/>
-<class name="SvcDataDictionary" file="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h" line="84" col="1" hash="9464447947148653651"/>
+<class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="40" col="1" hash="2404511787732881590"/>
+<class name="erisAudioInputI2S" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="101" col="1" hash="15110483932447753153"/>
+<class name="erisAudioInputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="114" col="1" hash="8762464498791733820"/>
+<class name="erisAudioInputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="127" col="1" hash="2545496999555304309"/>
+<class name="erisAudioInputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="140" col="1" hash="7549776302099559531"/>
+<class name="erisAudioInputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="153" col="1" hash="13445279627204906286"/>
+<class name="erisAudioInputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="166" col="1" hash="15279945432212734494"/>
+<class name="erisAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="179" col="1" hash="10854778513031649610"/>
+<class name="erisAsyncAudioInputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="192" col="1" hash="14901938155102166170"/>
+<class name="erisAudioInputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="205" col="1" hash="13278826385939621697"/>
+<class name="erisAudioInputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="218" col="1" hash="14448497398795772589"/>
+<class name="erisAudioInputPDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="231" col="1" hash="15650372692156959215"/>
+<class name="erisAudioInputTDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="244" col="1" hash="8826349923397809763"/>
+<class name="erisAudioInputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="257" col="1" hash="4106195188738415611"/>
+<class name="erisAudioOutputI2S" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="270" col="1" hash="296988356262770621"/>
+<class name="erisAudioOutputI2SQuad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="283" col="1" hash="848759807590747433"/>
+<class name="erisAudioOutputI2SHex" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="296" col="1" hash="2175474691191362105"/>
+<class name="erisAudioOutputI2SOct" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="309" col="1" hash="7788723368760279979"/>
+<class name="erisAudioOutputI2Sslave" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="322" col="1" hash="16513593715108377618"/>
+<class name="erisAudioOutputI2S2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="335" col="1" hash="5898224904136941527"/>
+<class name="erisAudioOutputSPDIF" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="348" col="1" hash="15198192574090948178"/>
+<class name="erisAudioOutputSPDIF2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="361" col="1" hash="5256616601554099106"/>
+<class name="erisAudioOutputSPDIF3" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="374" col="1" hash="17150398103639125062"/>
+<class name="erisAudioOutputPT8211" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="387" col="1" hash="13810338694865384626"/>
+<class name="erisAudioOutputPT8211_2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="400" col="1" hash="3718353408305980510"/>
+<class name="erisAudioOutputAnalog" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="413" col="1" hash="17857247320805986477"/>
+<class name="erisAudioOutputAnalogStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="426" col="1" hash="17842758226273144531"/>
+<class name="erisAudioOutputPWM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="439" col="1" hash="3172830439305777055"/>
+<class name="erisAudioOutputMQS" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="452" col="1" hash="9231666810625101120"/>
+<class name="erisAudioOutputTDM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="465" col="1" hash="16838743294208126065"/>
+<class name="erisAudioOutputTDM2" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="477" col="1" hash="13278550475997872341"/>
+<class name="erisAudioOutputADAT" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="490" col="1" hash="2857279996766523472"/>
+<class name="erisAudioAmplifier" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="503" col="1" hash="12395060632365590538"/>
+<class name="erisAudioMixer4" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="516" col="1" hash="15682419920236664062"/>
+<class name="erisAudioPlayMemory" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="529" col="1" hash="9575170552273585881"/>
+<class name="erisAudioPlaySerialflashRaw" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="542" col="1" hash="16851261332678046899"/>
+<class name="erisAudioPlayQueue" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="555" col="1" hash="8457871350923910474"/>
+<class name="erisAudioRecordQueue" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="568" col="1" hash="8109420286717965711"/>
+<class name="erisAudioSynthWavetable" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="581" col="1" hash="6069830872694247959"/>
+<class name="erisAudioSynthSimpleDrum" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="594" col="1" hash="7130115926776308453"/>
+<class name="erisAudioSynthKarplusStrong" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="607" col="1" hash="2401571472910568163"/>
+<class name="erisAudioSynthWaveformSine" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="620" col="1" hash="5929894565584248896"/>
+<class name="erisAudioSynthWaveformSineHires" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="633" col="1" hash="4429583439552524184"/>
+<class name="erisAudioSynthWaveformSineModulated" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="646" col="1" hash="6061499178605032404"/>
+<class name="erisAudioSynthWaveform" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="659" col="1" hash="6114064864666628363"/>
+<class name="erisAudioSynthWaveformModulated" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="672" col="1" hash="3018206861311669496"/>
+<class name="erisAudioSynthWaveformPWM" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="685" col="1" hash="5337866342626412755"/>
+<class name="erisAudioSynthToneSweep" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="698" col="1" hash="1610414097409375661"/>
+<class name="erisAudioSynthWaveformDc" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="711" col="1" hash="14395055368035914684"/>
+<class name="erisAudioSynthNoiseWhite" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="724" col="1" hash="4293039010652676938"/>
+<class name="erisAudioSynthNoisePink" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="737" col="1" hash="5060752653109804455"/>
+<class name="erisAudioEffectFade" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="750" col="1" hash="15250802513480830398"/>
+<class name="erisAudioEffectChorus" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="763" col="1" hash="9890528155922421794"/>
+<class name="erisAudioEffectFlange" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="776" col="1" hash="5405498939140782774"/>
+<class name="erisAudioEffectReverb" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="789" col="1" hash="7596027336946088154"/>
+<class name="erisAudioEffectFreeverb" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="802" col="1" hash="7954428269825098154"/>
+<class name="erisAudioEffectFreeverbStereo" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="815" col="1" hash="14301253097221995152"/>
+<class name="erisAudioEffectEnvelope" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="828" col="1" hash="3872340026307866578"/>
+<class name="erisAudioEffectMultiply" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="841" col="1" hash="11998361841165663497"/>
+<class name="erisAudioEffectDelay" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="854" col="1" hash="2022409934071843029"/>
+<class name="erisAudioEffectDelayExternal" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="867" col="1" hash="1226598597264325049"/>
+<class name="erisAudioEffectBitcrusher" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="880" col="1" hash="14228412095550811642"/>
+<class name="erisAudioEffectMidSide" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="893" col="1" hash="3785204951474430794"/>
+<class name="erisAudioEffectWaveshaper" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="906" col="1" hash="18171605972558839884"/>
+<class name="erisAudioEffectGranular" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="919" col="1" hash="5823521078291961378"/>
+<class name="erisAudioEffectDigitalCombine" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="932" col="1" hash="1885222951910632665"/>
+<class name="erisAudioFilterBiquad" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="945" col="1" hash="10395134083909115784"/>
+<class name="erisAudioFilterFIR" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="958" col="1" hash="10027829644631180422"/>
+<class name="erisAudioFilterStateVariable" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="971" col="1" hash="13943399407507463116"/>
+<class name="erisAudioAnalyzePeak" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="984" col="1" hash="17268258192672624717"/>
+<class name="erisAudioAnalyzeRMS" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="996" col="1" hash="5654733930068070763"/>
+<class name="erisAudioAnalyzeFFT256" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1009" col="1" hash="18002437703109215581"/>
+<class name="__erisAudioAnalyzeFFT1024" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1022" col="1" hash="8675293204710813329"/>
+<class name="erisAudioAnalyzeToneDetect" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1035" col="1" hash="4719929220758676674"/>
+<class name="erisAudioAnalyzeNoteFrequency" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1048" col="1" hash="5325887165579370315"/>
+<class name="erisAudioAnalyzePrint" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="1061" col="1" hash="11172198267483762469"/>
+<class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="1569662565653300258"/>
+<class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="23" col="9" hash="5139491191325099632"/>
+<class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h" line="71" col="9" hash="2911627910700264153"/>
+<class name="SvcDataDictionary" file="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h" line="86" col="1" hash="7587676093219561296"/>
   </FileInfo>
   <FileInfo check="Null pointer">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:120:14" my-argnr="1" my-argname="sci" file="src/svcDataDictionary.cpp" line="213" col="5" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:83:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="85" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:88:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="89" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:103:14" my-argnr="1" my-argname="sci" file="src/SvcDataDictionary.cpp" line="229" col="8" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
@@ -135,26 +138,26 @@
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:103:5" my-argnr="1" my-argname="buffer" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="105" col="27" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" my-argnr="1" my-argname="s" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="178" col="22" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:81:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="83" col="24" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:86:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="87" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:107:18" my-argnr="1" my-argname="s" file="src/svcDataDictionary.cpp" line="47" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/svcDataDictionary.h:120:14" my-argnr="1" my-argname="sci" file="src/svcDataDictionary.cpp" line="213" col="5" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:83:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="85" col="24" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:88:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="89" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:90:18" my-argnr="1" my-argname="s" file="src/SvcDataDictionary.cpp" line="63" col="18" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h:103:14" my-argnr="1" my-argname="sci" file="src/SvcDataDictionary.cpp" line="229" col="8" value="0"/>
   </FileInfo>
   <FileInfo check="CheckUnusedFunctions">
     <functiondecl functionName="copyKey" lineNumber="24"/>
-    <functiondecl functionName="hash" lineNumber="43"/>
-    <functiondecl functionName="create" lineNumber="50"/>
-    <functiondecl functionName="create" lineNumber="60"/>
-    <functiondecl functionName="create" lineNumber="71"/>
-    <functiondecl functionName="read" lineNumber="82"/>
-    <functiondecl functionName="readf" lineNumber="93"/>
-    <functiondecl functionName="update" lineNumber="104"/>
-    <functiondecl functionName="update" lineNumber="123"/>
-    <functiondecl functionName="update" lineNumber="142"/>
-    <functiondecl functionName="update" lineNumber="161"/>
-    <functiondecl functionName="increment" lineNumber="180"/>
-    <functiondecl functionName="printStats" lineNumber="206"/>
-    <functiondecl functionName="printDictionary" lineNumber="210"/>
+    <functiondecl functionName="hash" lineNumber="59"/>
+    <functiondecl functionName="create" lineNumber="66"/>
+    <functiondecl functionName="create" lineNumber="76"/>
+    <functiondecl functionName="create" lineNumber="87"/>
+    <functiondecl functionName="read" lineNumber="98"/>
+    <functiondecl functionName="readf" lineNumber="109"/>
+    <functiondecl functionName="update" lineNumber="120"/>
+    <functiondecl functionName="update" lineNumber="139"/>
+    <functiondecl functionName="update" lineNumber="158"/>
+    <functiondecl functionName="update" lineNumber="177"/>
+    <functiondecl functionName="increment" lineNumber="196"/>
+    <functiondecl functionName="printStats" lineNumber="222"/>
+    <functiondecl functionName="printDictionary" lineNumber="226"/>
     <functioncall functionName="AT_HATCHBLK"/>
     <functioncall functionName="AT_HATCHXOR"/>
     <functioncall functionName="AT_NONE"/>
@@ -260,6 +263,7 @@
     <functioncall functionName="NULL"/>
     <functioncall functionName="O_READ"/>
     <functioncall functionName="Surface"/>
+    <functioncall functionName="SvcDataDictionary"/>
     <functioncall functionName="Touch"/>
     <functioncall functionName="XPT2046_Touchscreen"/>
     <functioncall functionName="_busy"/>
@@ -272,6 +276,7 @@
     <functioncall functionName="analogReadAveraging"/>
     <functioncall functionName="analogReadResolution"/>
     <functioncall functionName="atol"/>
+    <functioncall functionName="audioParameterController"/>
     <functioncall functionName="available"/>
     <functioncall functionName="break"/>
     <functioncall functionName="buffer"/>
@@ -286,7 +291,7 @@
     <functioncall functionName="delay"/>
     <functioncall functionName="delete"/>
     <functioncall functionName="empty"/>
-    <functioncall functionName="endLZ4Message"/>
+    <functioncall functionName="et_last_trigger"/>
     <functioncall functionName="extmem_malloc"/>
     <functioncall functionName="false"/>
     <functioncall functionName="fgets"/>
@@ -306,20 +311,20 @@
     <functioncall functionName="index"/>
     <functioncall functionName="int32_t"/>
     <functioncall functionName="int32_val"/>
+    <functioncall functionName="is_streaming_file"/>
     <functioncall functionName="key"/>
-    <functioncall functionName="lastTrigger"/>
     <functioncall functionName="length"/>
     <functioncall functionName="ls"/>
     <functioncall functionName="malloc"/>
     <functioncall functionName="memset"/>
     <functioncall functionName="miso"/>
     <functioncall functionName="mosi"/>
-    <functioncall functionName="multiPartHeader"/>
+    <functioncall functionName="multipart_header"/>
     <functioncall functionName="name"/>
     <functioncall functionName="name_string"/>
-    <functioncall functionName="newOriginX"/>
-    <functioncall functionName="newOriginY"/>
     <functioncall functionName="new_height"/>
+    <functioncall functionName="new_origin_x"/>
+    <functioncall functionName="new_origin_y"/>
     <functioncall functionName="new_width"/>
     <functioncall functionName="next"/>
     <functioncall functionName="open"/>
@@ -335,38 +340,43 @@
     <functioncall functionName="raw_maxy"/>
     <functioncall functionName="raw_minx"/>
     <functioncall functionName="raw_miny"/>
-    <functioncall functionName="receivedChars"/>
+    <functioncall functionName="received_chars"/>
     <functioncall functionName="redraw_background"/>
     <functioncall functionName="redraw_objects"/>
     <functioncall functionName="redraw_popup"/>
     <functioncall functionName="redraw_render"/>
     <functioncall functionName="redraw_wait"/>
+    <functioncall functionName="requestStartLZ4Message"/>
     <functioncall functionName="requestSubSurfaceBufferP"/>
     <functioncall functionName="return"/>
     <functioncall functionName="rst"/>
+    <functioncall functionName="safer_strncpy"/>
     <functioncall functionName="sclk"/>
+    <functioncall functionName="sendLZ4Message"/>
     <functioncall functionName="serialCommandInterface"/>
+    <functioncall functionName="short_name_lookup"/>
     <functioncall functionName="size"/>
     <functioncall functionName="sizeof"/>
     <functioncall functionName="startLZ4Message"/>
     <functioncall functionName="str"/>
     <functioncall functionName="strcpy"/>
-    <functioncall functionName="streamFile"/>
-    <functioncall functionName="streamPath"/>
+    <functioncall functionName="stream_file"/>
+    <functioncall functionName="stream_path"/>
     <functioncall functionName="strlen"/>
     <functioncall functionName="strncmp"/>
-    <functioncall functionName="strncpy"/>
     <functioncall functionName="strndup"/>
     <functioncall functionName="strtok"/>
+    <functioncall functionName="t_x"/>
     <functioncall functionName="throttle"/>
     <functioncall functionName="tirq"/>
     <functioncall functionName="true"/>
-    <functioncall functionName="txBuffer"/>
     <functioncall functionName="txOverflowHandler"/>
+    <functioncall functionName="tx_Buffer"/>
     <functioncall functionName="uint16_t"/>
     <functioncall functionName="uint32_t"/>
     <functioncall functionName="update"/>
     <functioncall functionName="val"/>
+    <functioncall functionName="w"/>
     <functioncall functionName="while"/>
     <functioncall functionName="width"/>
   </FileInfo>
