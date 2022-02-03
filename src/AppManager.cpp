@@ -46,21 +46,21 @@ FLASHMEM AppManager:: AppManager(){
   ad = 0;
   data = &_data;
   root = 0;
-  activeID = 0;
-  pActiveApp = 0;
-  nextIDAssignment = 1; //id 0 is reserved
+  active_app_id = 0;
+  p_active_app = 0;
+  next_id_assignment = 1; //id 0 is reserved
   monitor_dd_update_timer = 0;
   state = redraw_objects;
   //attach the global imgCache buffer to a surface
   memset(imgCache,0,sizeof(imgCache));
-  fastImgCacheSurfaceP = new Surface(&imgCache[0],AM_IMG_CACHE_SIZE);
-  displaySurfaceP = new Surface(&FB1[0],320,240);
+  p_fast_img_cache_surface = new Surface(&imgCache[0],AM_IMG_CACHE_SIZE);
+  p_display_surface = new Surface(&FB1[0],320,240);
 
   //init the app focus and app stacks
-  memset(&appFocusStack,0,sizeof(appFocusStack));
-  memset(&appPopUpStack,0,sizeof(appPopUpStack));
-  appFocusStackIndex = 0;
-  appPopUpStackIndex = 0;
+  memset(&app_focus_stack,0,sizeof(app_focus_stack));
+  memset(&app_popup_stack,0,sizeof(app_popup_stack));
+  app_focus_stack_index = 0;
+  app_popup_stack_index = 0;
   exclusive_app_render = false;
   cycle_time_max = 0;
   //init the sd card
@@ -208,8 +208,8 @@ void AppManager::update(){
       case redraw_popup:
         app_time=0;
         //draw any popups
-        if (!appPopUpStackIndex==0 && appPopUpStack[appPopUpStackIndex-1] != 0){
-          node = getApp(appPopUpStack[appPopUpStackIndex-1]);
+        if (!app_popup_stack_index==0 && app_popup_stack[app_popup_stack_index-1] != 0){
+          node = getApp(app_popup_stack[app_popup_stack_index-1]);
           if (node != 0){
             //Serial.println(F("AppManager::redraw_popup"));
             node->render();
@@ -238,16 +238,16 @@ void AppManager::update(){
         node->et_update_period =0;
       }
       isactive_child = false;
-      if (node->id == activeID && !draw.busy()) {
-          if (pActiveApp != node){
-            if (pActiveApp != 0) pActiveApp->onFocusLost();
+      if (node->id == active_app_id && !draw.busy()) {
+          if (p_active_app != node){
+            if (p_active_app != 0) p_active_app->onFocusLost();
             node->onFocus();
-            pActiveApp = node;
+            p_active_app = node;
           }
       }
-      if (node->parent_node!=NULL){if(node->parent_node->id == activeID){isactive_child = true;}}; //send event triggers to any child apps
-      if (node->id == activeID || isactive_child) {
-          //Serial.print("AppManager::updating active application");Serial.println(activeID);
+      if (node->parent_node!=NULL){if(node->parent_node->id == active_app_id){isactive_child = true;}}; //send event triggers to any child apps
+      if (node->id == active_app_id || isactive_child) {
+          //Serial.print("AppManager::updating active application");Serial.println(active_app_id);
           //trigger any events and then call the update function for this 'active' app or child node
           if (update_analog){
             data->update(AM_AN1,(int32_t)analog.readAN1());
@@ -353,9 +353,9 @@ AppBaseClass* AppManager::getApp(uint16_t id){
  * @return false 
  */
 bool AppManager::requestPopUp(uint16_t id,bool exclusive){
-  if (appPopUpStackIndex == 8) return false;
-  appPopUpStack[appPopUpStackIndex] = id;
-  appPopUpStackIndex+=1;
+  if (app_popup_stack_index == 8) return false;
+  app_popup_stack[app_popup_stack_index] = id;
+  app_popup_stack_index+=1;
   exclusive_app_render = exclusive;
   return true;
 }
@@ -366,9 +366,9 @@ bool AppManager::requestPopUp(uint16_t id,bool exclusive){
  * @return false 
  */
 bool AppManager::releasePopUp(){
-  if (appFocusStackIndex == 0)return false;
-  appPopUpStackIndex-=1;
-  appPopUpStack[appPopUpStackIndex] = 0;
+  if (app_focus_stack_index == 0)return false;
+  app_popup_stack_index-=1;
+  app_popup_stack[app_popup_stack_index] = 0;
   exclusive_app_render = false;
   return true;
 }
@@ -380,14 +380,14 @@ bool AppManager::releasePopUp(){
  * @return false 
  */
 bool AppManager::getFocus(uint16_t id){
-  if (appFocusStackIndex == 8) return false;
-  appFocusStack[appFocusStackIndex++] = activeID;
-  if (pActiveApp!=NULL){
-    pActiveApp->onFocusLost();
+  if (app_focus_stack_index == 8) return false;
+  app_focus_stack[app_focus_stack_index++] = active_app_id;
+  if (p_active_app!=NULL){
+    p_active_app->onFocusLost();
   }
-  pActiveApp = getApp(id);
-  pActiveApp->onFocus();
-  activeID=id;
+  p_active_app = getApp(id);
+  p_active_app->onFocus();
+  active_app_id=id;
   return true;
 } 
 /**
@@ -397,12 +397,12 @@ bool AppManager::getFocus(uint16_t id){
  * @return false 
  */
 bool AppManager::returnFocus(){
-  if (appFocusStackIndex == 0) return false;
-  getApp(activeID)->onFocusLost();
-  activeID = appFocusStack[--appFocusStackIndex];//load from the stack
-  pActiveApp = getApp(activeID);
-  if(pActiveApp!=NULL) pActiveApp->onFocus();
-  appFocusStack[appFocusStackIndex] = 0;
+  if (app_focus_stack_index == 0) return false;
+  getApp(active_app_id)->onFocusLost();
+  active_app_id = app_focus_stack[--app_focus_stack_index];//load from the stack
+  p_active_app = getApp(active_app_id);
+  if(p_active_app!=NULL) p_active_app->onFocus();
+  app_focus_stack[app_focus_stack_index] = 0;
   return true;
 } 
 /**
@@ -410,13 +410,13 @@ bool AppManager::returnFocus(){
  * 
  * @return uint16_t 
  */
-uint16_t AppManager::peekAppFocus(){return activeID;}
+uint16_t AppManager::peekAppFocus(){return active_app_id;}
 /**
  * @brief provides an interface for apps to request the active app object
  * 
  * @return AppBaseClass* 
  */
-AppBaseClass* AppManager::getActiveApp(){ return pActiveApp;}
+AppBaseClass* AppManager::getActiveApp(){ return p_active_app;}
 /**
  * @brief provides an interface for apps to send messages to other apps
  * 
@@ -461,7 +461,7 @@ AppBaseClass* AppManager::getAppByName(const char *appName){
  * @brief prints out some stats in JSON format to the serial port
  * 
  */
-void AppManager::printStats (){
+void FLASHMEM AppManager::printStats (){
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
   if(sci->requestStartLZ4Message()){
     AppBaseClass *node = root;
@@ -498,7 +498,7 @@ void AppManager::printStats (){
     sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
     sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
     sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
-    sci->print(F("\"active_app_id\":"));sci->print(activeID);sci->print(F(","));
+    sci->print(F("\"active_app_id\":"));sci->print(active_app_id);sci->print(F(","));
     sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
     sci->println(F("}}"));
     sci->sendLZ4Message();
@@ -514,7 +514,7 @@ void AppManager::printStats (){
  */
 void AppManager::registerApp(AppBaseClass *app){
   //assign a unique id to the object
-  app->id = nextIDAssignment++;
+  app->id = next_id_assignment++;
   app->draw = &draw;
   app->am = this;
   app->ad = &_ad;

@@ -83,7 +83,7 @@ class ControlButton:public AppBaseClass {
         if(using_image){
             if(!img_loaded){
                 //allocate space
-                img_cache = new Surface(am->fastImgCacheSurfaceP, &am->sd, img_path, img_filename);
+                img_cache = new Surface(am->p_fast_img_cache_surface, &am->sd, img_path, img_filename);
                 if(!img_cache){ 
                     Serial.println(F("M ERROR img_cache out of mem"));
                     Serial.flush();
@@ -95,7 +95,7 @@ class ControlButton:public AppBaseClass {
                     return;
                 }
             } else{
-                draw->bltMem(am->displaySurfaceP,img_cache,x,y,AT_NONE);
+                draw->bltMem(am->p_display_surface,img_cache,x,y,AT_NONE);
             }
         }else{
             draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));

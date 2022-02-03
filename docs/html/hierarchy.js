@@ -16,9 +16,6 @@ var hierarchy =
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "AppManager", "da/d96/class_app_manager.html", null ],
-    [ "AsyncAudioInputSPDIF3", "dd/df3/class_async_audio_input_s_p_d_i_f3.html", [
-      [ "erisAsyncAudioInputSPDIF3", "da/dfb/classeris_async_audio_input_s_p_d_i_f3.html", null ]
-    ] ],
     [ "audio_block_struct", "de/dd6/structaudio__block__struct.html", null ],
     [ "AudioAmplifier", "d5/dd2/class_audio_amplifier.html", [
       [ "erisAudioAmplifier", "d0/ddd/classeris_audio_amplifier.html", null ]
@@ -34,9 +31,6 @@ var hierarchy =
     ] ],
     [ "AudioAnalyzePeak", "dd/d9d/class_audio_analyze_peak.html", [
       [ "erisAudioAnalyzePeak", "dd/d04/classeris_audio_analyze_peak.html", null ]
-    ] ],
-    [ "AudioAnalyzePrint", "dd/dd1/class_audio_analyze_print.html", [
-      [ "erisAudioAnalyzePrint", "d8/d84/classeris_audio_analyze_print.html", null ]
     ] ],
     [ "AudioAnalyzeRMS", "dc/dcf/class_audio_analyze_r_m_s.html", [
       [ "erisAudioAnalyzeRMS", "d4/d71/classeris_audio_analyze_r_m_s.html", null ]
@@ -100,12 +94,6 @@ var hierarchy =
     [ "AudioFilterStateVariable", "d7/df5/class_audio_filter_state_variable.html", [
       [ "erisAudioFilterStateVariable", "d9/dcd/classeris_audio_filter_state_variable.html", null ]
     ] ],
-    [ "AudioInputAnalog", "de/ded/class_audio_input_analog.html", [
-      [ "erisAudioInputAnalog", "d9/dfb/classeris_audio_input_analog.html", null ]
-    ] ],
-    [ "AudioInputAnalogStereo", "d2/d84/class_audio_input_analog_stereo.html", [
-      [ "erisAudioInputAnalogStereo", "d4/dd7/classeris_audio_input_analog_stereo.html", null ]
-    ] ],
     [ "AudioInputI2S", "d3/d7e/class_audio_input_i2_s.html", [
       [ "erisAudioInputI2S", "d8/d01/classeris_audio_input_i2_s.html", null ]
     ] ],
@@ -124,32 +112,11 @@ var hierarchy =
     [ "AudioInputI2Sslave", "d6/dbf/class_audio_input_i2_sslave.html", [
       [ "erisAudioInputI2Sslave", "d5/d19/classeris_audio_input_i2_sslave.html", null ]
     ] ],
-    [ "AudioInputPDM", "d5/d91/class_audio_input_p_d_m.html", [
-      [ "erisAudioInputPDM", "d2/d2a/classeris_audio_input_p_d_m.html", null ]
-    ] ],
-    [ "AudioInputSPDIF3", "d8/d5f/class_audio_input_s_p_d_i_f3.html", [
-      [ "erisAudioInputSPDIF3", "d4/d0f/classeris_audio_input_s_p_d_i_f3.html", null ]
-    ] ],
-    [ "AudioInputTDM", "d5/d78/class_audio_input_t_d_m.html", [
-      [ "erisAudioInputTDM", "d1/dcb/classeris_audio_input_t_d_m.html", null ]
-    ] ],
-    [ "AudioInputTDM2", "d2/ddb/class_audio_input_t_d_m2.html", [
-      [ "erisAudioInputTDM2", "df/dae/classeris_audio_input_t_d_m2.html", null ]
-    ] ],
     [ "AudioMixer4", "d9/d6e/class_audio_mixer4.html", [
       [ "erisAudioMixer4", "d1/da2/classeris_audio_mixer4.html", null ]
     ] ],
     [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", [
       [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", null ]
-    ] ],
-    [ "AudioOutputADAT", "de/d4e/class_audio_output_a_d_a_t.html", [
-      [ "erisAudioOutputADAT", "d7/d4a/classeris_audio_output_a_d_a_t.html", null ]
-    ] ],
-    [ "AudioOutputAnalog", "d7/d88/class_audio_output_analog.html", [
-      [ "erisAudioOutputAnalog", "d0/d8d/classeris_audio_output_analog.html", null ]
-    ] ],
-    [ "AudioOutputAnalogStereo", "d4/df9/class_audio_output_analog_stereo.html", [
-      [ "erisAudioOutputAnalogStereo", "d0/d3d/classeris_audio_output_analog_stereo.html", null ]
     ] ],
     [ "AudioOutputI2S", "d0/d68/class_audio_output_i2_s.html", [
       [ "erisAudioOutputI2S", "dc/d96/classeris_audio_output_i2_s.html", null ]
@@ -168,33 +135,6 @@ var hierarchy =
     ] ],
     [ "AudioOutputI2Sslave", "d1/d9f/class_audio_output_i2_sslave.html", [
       [ "erisAudioOutputI2Sslave", "d8/d26/classeris_audio_output_i2_sslave.html", null ]
-    ] ],
-    [ "AudioOutputMQS", "d9/ddd/class_audio_output_m_q_s.html", [
-      [ "erisAudioOutputMQS", "db/dfe/classeris_audio_output_m_q_s.html", null ]
-    ] ],
-    [ "AudioOutputPT8211", "d4/d98/class_audio_output_p_t8211.html", [
-      [ "erisAudioOutputPT8211", "de/d3b/classeris_audio_output_p_t8211.html", null ]
-    ] ],
-    [ "AudioOutputPT8211_2", "d4/de0/class_audio_output_p_t8211__2.html", [
-      [ "erisAudioOutputPT8211_2", "d7/d3c/classeris_audio_output_p_t8211__2.html", null ]
-    ] ],
-    [ "AudioOutputPWM", "d7/d04/class_audio_output_p_w_m.html", [
-      [ "erisAudioOutputPWM", "dd/d10/classeris_audio_output_p_w_m.html", null ]
-    ] ],
-    [ "AudioOutputSPDIF", "d1/d9f/class_audio_output_s_p_d_i_f.html", [
-      [ "erisAudioOutputSPDIF", "d6/dbc/classeris_audio_output_s_p_d_i_f.html", null ]
-    ] ],
-    [ "AudioOutputSPDIF2", "d5/dad/class_audio_output_s_p_d_i_f2.html", [
-      [ "erisAudioOutputSPDIF2", "d5/d62/classeris_audio_output_s_p_d_i_f2.html", null ]
-    ] ],
-    [ "AudioOutputSPDIF3", "da/de0/class_audio_output_s_p_d_i_f3.html", [
-      [ "erisAudioOutputSPDIF3", "dd/d2b/classeris_audio_output_s_p_d_i_f3.html", null ]
-    ] ],
-    [ "AudioOutputTDM", "d7/da3/class_audio_output_t_d_m.html", [
-      [ "erisAudioOutputTDM", "de/df9/classeris_audio_output_t_d_m.html", null ]
-    ] ],
-    [ "AudioOutputTDM2", "d7/d0c/class_audio_output_t_d_m2.html", [
-      [ "erisAudioOutputTDM2", "de/dd3/classeris_audio_output_t_d_m2.html", null ]
     ] ],
     [ "AudioPlayMemory", "d3/dd5/class_audio_play_memory.html", [
       [ "erisAudioPlayMemory", "d4/dc8/classeris_audio_play_memory.html", null ]

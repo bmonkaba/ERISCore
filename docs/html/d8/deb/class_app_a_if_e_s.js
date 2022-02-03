@@ -25,7 +25,7 @@ var class_app_a_if_e_s =
     [ "setName", "d8/deb/class_app_a_if_e_s.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "d8/deb/class_app_a_if_e_s.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d8/deb/class_app_a_if_e_s.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "d8/deb/class_app_a_if_e_s.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "d8/deb/class_app_a_if_e_s.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "d8/deb/class_app_a_if_e_s.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "d8/deb/class_app_a_if_e_s.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "update", "d8/deb/class_app_a_if_e_s_a25a623b4330116c1ae041de14227044c.html#a25a623b4330116c1ae041de14227044c", null ],

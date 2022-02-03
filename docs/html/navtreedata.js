@@ -27,25 +27,28 @@ var NAVTREE =
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
       [ "What is Eris Core:", "index.html#autotoc_md5", null ],
-      [ "3rd party code licence", "index.html#autotoc_md6", null ],
-      [ "3D print, STL & housing graphics", "index.html#autotoc_md7", null ],
-      [ "ErisCore software", "index.html#autotoc_md8", [
-        [ "Development State", "index.html#autotoc_md9", null ],
-        [ "WIP / Known issues", "index.html#autotoc_md10", null ],
-        [ "TODO", "index.html#autotoc_md11", null ],
-        [ "Hardware Features:", "index.html#autotoc_md12", null ],
-        [ "Software Features:", "index.html#autotoc_md13", null ]
+      [ "3rd party code", "index.html#autotoc_md6", [
+        [ "Licence", "index.html#autotoc_md7", null ],
+        [ "External dependancies", "index.html#autotoc_md8", null ]
       ] ],
-      [ "Hardware Specs:", "index.html#autotoc_md14", [
-        [ "Microcontroller:", "index.html#autotoc_md15", null ],
-        [ "Mass Storage:", "index.html#autotoc_md16", null ],
-        [ "Power:", "index.html#autotoc_md17", null ],
-        [ "Analog to Digital Converter:", "index.html#autotoc_md18", null ],
-        [ "Digital to Audio Converter:", "index.html#autotoc_md19", null ],
-        [ "MIDI", "index.html#autotoc_md20", null ],
-        [ "Display", "index.html#autotoc_md21", null ]
+      [ "3D print, STL & housing graphics", "index.html#autotoc_md9", null ],
+      [ "ErisCore software", "index.html#autotoc_md10", [
+        [ "Development State", "index.html#autotoc_md11", null ],
+        [ "WIP / Known issues", "index.html#autotoc_md12", null ],
+        [ "TODO", "index.html#autotoc_md13", null ],
+        [ "Hardware Features:", "index.html#autotoc_md14", null ],
+        [ "Software Features:", "index.html#autotoc_md15", null ]
       ] ],
-      [ "mvp-01", "index.html#autotoc_md22", null ]
+      [ "Hardware Specs:", "index.html#autotoc_md16", [
+        [ "Microcontroller:", "index.html#autotoc_md17", null ],
+        [ "Mass Storage:", "index.html#autotoc_md18", null ],
+        [ "Power:", "index.html#autotoc_md19", null ],
+        [ "Analog to Digital Converter:", "index.html#autotoc_md20", null ],
+        [ "Digital to Audio Converter:", "index.html#autotoc_md21", null ],
+        [ "MIDI", "index.html#autotoc_md22", null ],
+        [ "Display", "index.html#autotoc_md23", null ]
+      ] ],
+      [ "mvp-01", "index.html#autotoc_md24", null ]
     ] ],
     [ "Welcome to GitHub Pages", "d8/d48/md__e_r_i_s_core_docs_index.html", null ],
     [ "Classes", "annotated.html", [
@@ -77,16 +80,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/d9b/class_audio_filter_biquad.html",
-"d4/d56/classeris_audio_output_i2_s_quad_acbf755e10366b6da5a83ea87aebb8321.html#acbf755e10366b6da5a83ea87aebb8321",
-"d4/dde/class_app_c_q_t.html#a953a8c57a54994f8f550221eb4b7e47b",
-"d6/d59/_svc_eris_audio_parameter_controller_8h.html",
-"d8/dbe/class_app_scope.html#aaa74712d2ba6ab22802702f395c7dff9",
-"d9/d03/class_app_template_ab4904b530b6550b01881b9b6e69f0a61.html#ab4904b530b6550b01881b9b6e69f0a61",
-"db/d69/class_app_base_class_acff523b6c1d155a66b915e4f49158af8.html#acff523b6c1d155a66b915e4f49158af8",
-"de/d10/_h_s_i_8h_ad75e81a864c853ad1c2355070b6ec340.html#ad75e81a864c853ad1c2355070b6ec340",
-"df/d17/class_control_button_a32648faf06bcd3bae3986ec24e8663de.html#a32648faf06bcd3bae3986ec24e8663de",
-"functions_vars_p.html"
+"d1/da2/classeris_audio_mixer4_ace58cd360f679b58e0092c0fa9d8ea18.html#ace58cd360f679b58e0092c0fa9d8ea18",
+"d4/d7c/class_animation_af61f3b12f0557d2c28baadbab3fa6abd.html#af61f3b12f0557d2c28baadbab3fa6abd",
+"d4/dde/class_app_c_q_t.html#af7f8d7d2e26895cbd304112f41aa3e22",
+"d7/d2f/classeris_audio_analyze_f_f_t256_a861493faacc4f9fd30dfd87b0eca6829.html#a861493faacc4f9fd30dfd87b0eca6829",
+"d8/de8/class_svc_eris_audio_parameter_controller.html#a759c6df44dea772abc58db8867f2b93c",
+"d9/d43/class_audio_synth_waveform_modulated_a9e628e5d0a231a45a67648d5ef3643e1.html#a9e628e5d0a231a45a67648d5ef3643e1",
+"dc/d27/class_app_audio_to_polyphonic.html#a801f8d24d3623f8d5e2d654b6b3b7d32",
+"de/d67/class_control_slider_a9cc22c612dcb614838ae1b96f35c1c77.html#a9cc22c612dcb614838ae1b96f35c1c77",
+"df/dc5/classeris_audio_synth_waveform.html#aecf68a61a0e321c6cf4aebce9cad6bba",
+"index.html#autotoc_md6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

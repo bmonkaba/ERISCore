@@ -38,7 +38,7 @@ FLASHMEM AudioDirector::AudioDirector(){
     categoryList[j] = (char**)&nullStr;
   }
   p_audiostream_input_port = new erisAudioInputI2S();
-  heapStart = p_audiostream_input_port;
+  p_heap_start = p_audiostream_input_port;
 
   addAudioStreamObj(p_audiostream_input_port);
   addAudioStreamObj(&p_audiostream_output_port);
@@ -93,10 +93,10 @@ FLASHMEM AudioDirector::AudioDirector(){
   for(uint16_t i=0; i < MAX_CONNECTIONS;i++){
     p_cord[i] = new AudioConnection(NULL, (unsigned char)0,NULL, (unsigned char)0);
   }
-  heapEnd = p_cord[MAX_CONNECTIONS-1] + (p_cord[MAX_CONNECTIONS-1] - p_cord[MAX_CONNECTIONS-2]);
+  p_heap_end = p_cord[MAX_CONNECTIONS-1] + (p_cord[MAX_CONNECTIONS-1] - p_cord[MAX_CONNECTIONS-2]);
   Serial.print(F("M AudioDirector::AudioDirector() Estimated Memory Useage: "));
-  long s = (uint32_t)heapStart;
-  long e = (uint32_t)heapEnd;
+  long s = (uint32_t)p_heap_start;
+  long e = (uint32_t)p_heap_end;
   Serial.print(e-s);
   Serial.println(F(" Bytes"));
 };
@@ -124,14 +124,14 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
         if(strcmp(obj->short_name,p_audiostream_obj_pool[i]->short_name)==0) count += 1;
       }
     } else{
-      heapStart = (void *)obj;  
+      p_heap_start = (void *)obj;  
     }
     obj->instance = count;
     Serial.print(F(" instance: "));
     Serial.print(obj->instance);
     Serial.print(F(" ptr: "));
     Serial.println((uint32_t)obj);
-    heapEnd = (void *)obj;
+    p_heap_end = (void *)obj;
     //Serial.flush();
     return true;
   }

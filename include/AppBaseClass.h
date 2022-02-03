@@ -115,7 +115,7 @@ class AppBaseClass {
     void returnFocus();
     void requestPopUp(bool exclusive=false);
     void releasePopUp();
-    void setRTPriority(uint16_t level);
+    void setUpdatePriority(uint16_t level);
     void selfRegister();
     void _updatePosition();
 };

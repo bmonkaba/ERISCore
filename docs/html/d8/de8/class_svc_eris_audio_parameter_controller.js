@@ -25,7 +25,7 @@ var class_svc_eris_audio_parameter_controller =
     [ "setName", "d8/de8/class_svc_eris_audio_parameter_controller.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "d8/de8/class_svc_eris_audio_parameter_controller.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d8/de8/class_svc_eris_audio_parameter_controller.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "d8/de8/class_svc_eris_audio_parameter_controller.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "d8/de8/class_svc_eris_audio_parameter_controller.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "d8/de8/class_svc_eris_audio_parameter_controller.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "d8/de8/class_svc_eris_audio_parameter_controller.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "update", "d8/de8/class_svc_eris_audio_parameter_controller_a82c04772f222d42e746a3bb442eb84b0.html#a82c04772f222d42e746a3bb442eb84b0", null ],

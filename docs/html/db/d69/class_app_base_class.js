@@ -26,7 +26,7 @@ var class_app_base_class =
     [ "setName", "db/d69/class_app_base_class_a953a8c57a54994f8f550221eb4b7e47b.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "db/d69/class_app_base_class_af439b748f5a38e3d88c34c1ab2477e8a.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "db/d69/class_app_base_class_aaa74712d2ba6ab22802702f395c7dff9.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "db/d69/class_app_base_class_a8e41bd95ac4cde63e2ce27dc5b9629f8.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "db/d69/class_app_base_class_a801f8d24d3623f8d5e2d654b6b3b7d32.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "db/d69/class_app_base_class_a37ad4da7f5396aad9651b7958bee83b7.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "update", "db/d69/class_app_base_class_a0c2ee195056463d26b529f8c5218e8b9.html#a0c2ee195056463d26b529f8c5218e8b9", null ],

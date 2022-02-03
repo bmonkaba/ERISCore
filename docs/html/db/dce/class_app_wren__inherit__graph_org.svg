@@ -82,7 +82,7 @@
 <text text-anchor="start" x="8" y="-650.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t r, int16_t g, int16_t b)</text>
 <text text-anchor="start" x="8" y="-630.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setPosition(int16_t newOriginX,</text>
 <text text-anchor="start" x="8" y="-610.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t newOriginY)</text>
-<text text-anchor="start" x="8" y="-590.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setRTPriority(uint16_t level)</text>
+<text text-anchor="start" x="8" y="-590.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setUpdatePriority(uint16_t level)</text>
 <text text-anchor="start" x="8" y="-570.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetDimension(int16_t new</text>
 <text text-anchor="start" x="8" y="-550.1" font-family="Helvetica,sans-Serif" font-size="18.00">_width, int16_t new_height)</text>
 <text text-anchor="start" x="8" y="-530.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetPosition(int16_t newOriginX,</text>
@@ -201,7 +201,7 @@
 <text text-anchor="start" x="10" y="-2071.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void requestPopUp(bool exclusive=false)</text>
 <text text-anchor="start" x="10" y="-2051.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void returnFocus()</text>
 <text text-anchor="start" x="10" y="-2031.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void selfRegister()</text>
-<text text-anchor="start" x="10" y="-2011.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void setRTPriority(uint16_t level)</text>
+<text text-anchor="start" x="10" y="-2011.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void setUpdatePriority(uint16_t level)</text>
 </a>
 </g>
 </g>

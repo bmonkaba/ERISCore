@@ -25,7 +25,7 @@ var class_app_template =
     [ "setName", "d9/d03/class_app_template.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "d9/d03/class_app_template.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d9/d03/class_app_template.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "d9/d03/class_app_template.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "d9/d03/class_app_template.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "d9/d03/class_app_template.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "d9/d03/class_app_template.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "update", "d9/d03/class_app_template_a06ee52ad8474b0e72a56f71eb0b527f1.html#a06ee52ad8474b0e72a56f71eb0b527f1", null ],

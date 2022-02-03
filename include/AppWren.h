@@ -233,7 +233,7 @@ class AppWren:public AppBaseClass {
      * 
      * @param level 
      */
-    void setRTPriority(uint16_t level);
+    void setUpdatePriority(uint16_t level);
 
     /**
      * @brief receiver for the wren c callback function getSourceForModule

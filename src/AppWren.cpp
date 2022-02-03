@@ -513,7 +513,7 @@ void drawFillCallback(WrenVM* vm){
  * @param signature 
  * @return WrenForeignMethodFn 
  */
-WrenForeignMethodFn FASTRUN bindForeignMethod(
+WrenForeignMethodFn FLASHMEM bindForeignMethod(
     WrenVM* vm,
     const char* module,
     const char* className,
@@ -603,7 +603,7 @@ WrenForeignMethodFn FASTRUN bindForeignMethod(
 
 //end wren callbacks
 
-void AppWren::vmConstructor(const char* initial_script){
+void FLASHMEM AppWren::vmConstructor(const char* initial_script){
     startVM();
     loadScript(initial_script);
     getWrenHandles();
@@ -759,7 +759,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
               }
               if(using_image){
                   if(!surface_cache){                        
-                      //surface_cache = new Surface(am->fastImgCacheSurfaceP, widget_width, widget_height);
+                      //surface_cache = new Surface(am->p_fast_img_cache_surface, widget_width, widget_height);
                       if(!dynamicSurfaceManager()){ 
                           Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
                           return;
@@ -768,7 +768,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
                     if(has_pop || has_focus){
                       //do nothing
                     }else{
-                      draw->bltMem(am->displaySurfaceP,surface_cache,x,y,AT_NONE);
+                      draw->bltMem(am->p_display_surface,surface_cache,x,y,AT_NONE);
                     }
                   }
               }else{

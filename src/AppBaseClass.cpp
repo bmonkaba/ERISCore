@@ -99,7 +99,7 @@ void AppBaseClass::releasePopUp(){
 }
 
 
-void AppBaseClass::setRTPriority(uint16_t level){
+void AppBaseClass::setUpdatePriority(uint16_t level){
     update_priority = level;
     return;
 }

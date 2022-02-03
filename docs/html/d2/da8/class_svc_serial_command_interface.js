@@ -31,7 +31,7 @@ var class_svc_serial_command_interface =
     [ "setName", "d2/da8/class_svc_serial_command_interface.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "d2/da8/class_svc_serial_command_interface.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d2/da8/class_svc_serial_command_interface.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "d2/da8/class_svc_serial_command_interface.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "d2/da8/class_svc_serial_command_interface.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "d2/da8/class_svc_serial_command_interface.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "d2/da8/class_svc_serial_command_interface.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "startLZ4Message", "d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50", null ],

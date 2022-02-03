@@ -104,28 +104,34 @@ What is Eris Core:</h1>
  pre-alpha sys stress, integration, regression testing / demo:</p>
 <p><a href="https://www.youtube.com/watch?v=QZLU7C8BaJI" title="pre alpha video demo"><img src="https://i9.ytimg.com/vi_webp/QZLU7C8BaJI/mqdefault.webp?sqp=CLiwzI8G&amp;rs=AOn4CLB2NgaH1Qb9FbgtQtrb76kH-IHBeA" alt="youtube video" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md6"></a>
-3rd party code licence</h1>
+3rd party code</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Licence</h2>
 <ul>
 <li>Wren - MIT Licence</li>
 <li>LZ4 - BSD 2-Clause License</li>
 <li>AIeFS - GNU Affero General Public License</li>
 <li>Arduino/Teensyduino - MIT Licence</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
+External dependancies</h2>
+<pre class="fragment">densaugeo/base64@^1.2.0
+fraunhofer-ims/AIfES for Arduino@^2.1.1
+</pre> <h1><a class="anchor" id="autotoc_md9"></a>
 3D print, STL &amp; housing graphics</h1>
 <ul>
 <li>Creative Commons Attribution 4.0 International Public License</li>
 </ul>
 <p><img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20v158.png?raw=true" alt="" width="300" class="inline"/> <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" alt="" width="300" class="inline"/> <br  />
 </p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 ErisCore software</h1>
 <ul>
 <li>web based serial interface - MIT Licence</li>
 <li>other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.</li>
 <li>Software Documentation (WIP): <a href="https://bmonkaba.github.io/ERISCore/html/">https://bmonkaba.github.io/ERISCore/html/</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Development State</h2>
 <ul>
 <li>System is currently pre-alpha.</li>
@@ -133,7 +139,7 @@ Development State</h2>
 <li>Hardware design is currently beta 2</li>
 <li>SLA Mechanical design is currently beta 2</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 WIP / Known issues</h2>
 <ul>
 <li>Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy</li>
@@ -141,7 +147,7 @@ WIP / Known issues</h2>
 <li>API interface changes - update and updateRT methods will be renamed render and update. consistency changes/ naming conventions to be applied</li>
 <li>SCI refactoring into individual message handlers w/enumerated states</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 TODO</h2>
 <ul>
 <li>wren wrappers for AIeFS?</li>
@@ -151,7 +157,7 @@ TODO</h2>
 <li>import a custom chord identification/scoring module from an older project</li>
 <li>etc...</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Hardware Features:</h2>
 <ul>
 <li>192khz@32bit stereo I/O* (hardware capable)</li>
@@ -162,7 +168,7 @@ Hardware Features:</h2>
 <li>The audio front end supports single-ended input levels from small-mV microphone inputs to 2.1-VRMS line inputs</li>
 <li>The front-end mixer (MIX), multiplexer (MUX), and programable gain amplifier (PGA) also supports differential (Diff), pseudo-differential, and single-ended (SE) inputs</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Software Features:</h2>
 <ul>
 <li>Custom crossover single threaded cooperative multitasking system</li>
@@ -202,9 +208,9 @@ Software Features:</h2>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Hardware Specs:</h1>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Microcontroller:</h2>
 <ul>
 <li>NXP IMXRT1060</li>
@@ -217,18 +223,18 @@ Microcontroller:</h2>
 <li>Programmable FlexIO</li>
 <li>Pixel Processing Pipeline</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Mass Storage:</h2>
 <ul>
 <li>32GB SD Card</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Power:</h2>
 <ul>
 <li>9v DC center negative power jack</li>
 <li>Low noise thermaly balanced serial power supply design.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Analog to Digital Converter:</h2>
 <ul>
 <li>TI PCM1864</li>
@@ -238,7 +244,7 @@ Analog to Digital Converter:</h2>
 <li>ADC SNR (Typ) (dB) 103</li>
 <li>Power Dissipation &lt; 145mW</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Digital to Audio Converter:</h2>
 <ul>
 <li>TI PCM5100A</li>
@@ -253,12 +259,12 @@ Digital to Audio Converter:</h2>
 <li>SW-Controlled Gain: –12 dB to +32 dB</li>
 <li>Power Dissipation &lt; 145mW</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 MIDI</h2>
 <ul>
 <li>MIDI In/Out Type-A connectors</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Display</h2>
 <ul>
 <li>3rd party various</li>
@@ -266,7 +272,7 @@ Display</h2>
 <li>IC driver: ILI9341</li>
 <li>Serial Interface</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 mvp-01</h1>
 <p>The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o&#160;<em>device</em> with two footswitches, four potentiometers, touch screen and MIDI I/O.<br  />
  <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" alt="" width="300" class="inline"/> </p>

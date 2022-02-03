@@ -54,8 +54,8 @@ class AudioDirector{
   protected:
     SvcSerialCommandInterface* sci;
     SvcErisAudioParameterController* parameter_controller;
-    void*  heapStart;  //used to estamate total heap allocation size
-    void*  heapEnd;    //
+    void*  p_heap_start;  //used to estamate total heap allocation size
+    void*  p_heap_end;    //
     AudioStream* p_audiostream_obj_pool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
     AudioStream* p_audiostream_input_port; //ADC Audio Input(s)
     erisAudioOutputI2S p_audiostream_output_port; //DAC Audio Output(s)

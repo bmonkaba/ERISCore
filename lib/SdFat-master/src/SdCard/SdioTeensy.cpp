@@ -639,7 +639,7 @@ static bool waitTransferComplete() {
 //==============================================================================
 // Start of SdioCard member functions.
 //==============================================================================
-bool SdioCard::begin(SdioConfig sdioConfig) {
+bool FLASHMEM SdioCard::begin(SdioConfig sdioConfig) {
   uint32_t kHzSdClk;
   uint32_t arg;
   m_sdioConfig = sdioConfig;

@@ -35,9 +35,9 @@ class AppManager {
     static AppManager* obj; //make appManager a singleton
     AnalogInputs analog;
     AppBaseClass *root; //root linked list node
-    AppBaseClass *pActiveApp; //active app
-    uint16_t nextIDAssignment;
-    uint16_t activeID; //active app
+    AppBaseClass *p_active_app; //active app
+    uint16_t next_id_assignment;
+    uint16_t active_app_id; //active app
     uint16_t cycle_time_max;
     elapsedMillis display_refresh_time;
     elapsedMicros cycle_time;
@@ -46,10 +46,10 @@ class AppManager {
     loopState state;
     TS_Point p;
     bool touch_state;
-    uint16_t appFocusStack[8]; //supports application switching
-    uint16_t appPopUpStack[8]; //supports ordered overlay rendering
-    uint8_t appFocusStackIndex;
-    uint8_t appPopUpStackIndex;
+    uint16_t app_focus_stack[8]; //supports application switching
+    uint16_t app_popup_stack[8]; //supports ordered overlay rendering
+    uint8_t app_focus_stack_index;
+    uint8_t app_popup_stack_index;
     bool exclusive_app_render;
 
                       //TODO: implement an active id push/pop stack for nesting apps
@@ -59,8 +59,8 @@ class AppManager {
     SdFs sd;
     AudioDirector* ad;
     SvcDataDictionary* data;//data dictionary service;
-    Surface* fastImgCacheSurfaceP; //FAST MEM img cashe
-    Surface* displaySurfaceP; //FAST MEM img cashe
+    Surface* p_fast_img_cache_surface; //FAST MEM img cashe
+    Surface* p_display_surface; //FAST MEM img cashe
     static AppManager* getInstance() //public access to get a reference to the singleton instance
     {
       if (NULL==obj) {

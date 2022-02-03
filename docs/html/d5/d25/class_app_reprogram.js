@@ -25,7 +25,7 @@ var class_app_reprogram =
     [ "setName", "d5/d25/class_app_reprogram.html#a953a8c57a54994f8f550221eb4b7e47b", null ],
     [ "setParent", "d5/d25/class_app_reprogram.html#af66b6dc0a061770fcb4c8425987d9ea9", null ],
     [ "setPosition", "d5/d25/class_app_reprogram.html#af439b748f5a38e3d88c34c1ab2477e8a", null ],
-    [ "setRTPriority", "d5/d25/class_app_reprogram.html#aaa74712d2ba6ab22802702f395c7dff9", null ],
+    [ "setUpdatePriority", "d5/d25/class_app_reprogram.html#a8e41bd95ac4cde63e2ce27dc5b9629f8", null ],
     [ "setWidgetDimension", "d5/d25/class_app_reprogram.html#a801f8d24d3623f8d5e2d654b6b3b7d32", null ],
     [ "setWidgetPosition", "d5/d25/class_app_reprogram.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "update", "d5/d25/class_app_reprogram_a1819301fc6735856f1bc1d342dd91902.html#a1819301fc6735856f1bc1d342dd91902", null ],

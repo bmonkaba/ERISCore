@@ -317,7 +317,7 @@ void ILI9341_t3n::process_dma_interrupt(void) {
 // Constructor when using hardware ILI9241_KINETISK__pspi->  Faster, but must
 // use SPI pins
 // specific to each board type (e.g. 11,13 for Uno, 51,52 for Mega, etc.)
-ILI9341_t3n::ILI9341_t3n(uint8_t cs, uint8_t dc, uint8_t rst, uint8_t mosi,
+FLASHMEM ILI9341_t3n::ILI9341_t3n(uint8_t cs, uint8_t dc, uint8_t rst, uint8_t mosi,
                          uint8_t sclk, uint8_t miso) {
   _cs = cs;
   _dc = dc;
@@ -689,7 +689,7 @@ void ILI9341_t3n::dumpDMASettings() {
 #endif
 }
 
-bool ILI9341_t3n::updateScreenAsync(
+bool FLASHMEM ILI9341_t3n::updateScreenAsync(
     bool update_cont) // call to say update the screen now.
 {
 // Not sure if better here to check flag or check existence of buffer.
@@ -1794,7 +1794,7 @@ void ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
   endSPITransaction();
 }
 #elif defined(__IMXRT1052__) || defined(__IMXRT1062__) // Teensy 4.x
-void ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
+void FLASHMEM ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
                            uint16_t *pcolors) {
   // Use our Origin.
   x += _originx;
@@ -2867,7 +2867,7 @@ void ILI9341_t3n::drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
 }
 
 // Fill a triangle
-void ILI9341_t3n::fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
+void FLASHMEM ILI9341_t3n::fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
                                int16_t x2, int16_t y2, uint16_t color) {
 
   int16_t a, b, y, last;
@@ -2965,7 +2965,7 @@ void ILI9341_t3n::drawBitmap(int16_t x, int16_t y, const uint8_t *bitmap,
 
 size_t ILI9341_t3n::write(uint8_t c) { return write(&c, 1); }
 
-size_t ILI9341_t3n::write(const uint8_t *buffer, size_t size) {
+size_t FLASHMEM ILI9341_t3n::write(const uint8_t *buffer, size_t size) {
   // Lets try to handle some of the special font centering code that was done
   // for default fonts.
   if (_center_x_text || _center_y_text) {
@@ -3263,7 +3263,7 @@ void FLASHMEM ILI9341_t3n::drawChar(int16_t x, int16_t y, unsigned char c,
   }
 }
 
-void ILI9341_t3n::setFont(const ILI9341_t3_font_t &f) {
+void FLASHMEM ILI9341_t3n::setFont(const ILI9341_t3_font_t &f) {
   font = &f;
   _gfx_last_char_x_write = 0; // Don't use cached data here
   if (gfxFont) {
@@ -3286,7 +3286,7 @@ void ILI9341_t3n::setFont(const ILI9341_t3_font_t &f) {
 }
 
 // Maybe support GFX Fonts as well?
-void ILI9341_t3n::setFont(const GFXfont *f) {
+void FLASHMEM ILI9341_t3n::setFont(const GFXfont *f) {
   font = NULL;                // turn off the other font...
   _gfx_last_char_x_write = 0; // Don't use cached data here
   if (f == gfxFont)
@@ -3389,7 +3389,7 @@ static uint32_t fetchbits_signed(const uint8_t *p, uint32_t index,
   return (int32_t)val;
 }
 
-uint32_t ILI9341_t3n::fetchpixel(const uint8_t *p, uint32_t index, uint32_t x) {
+uint32_t FLASHMEM ILI9341_t3n::fetchpixel(const uint8_t *p, uint32_t index, uint32_t x) {
   // The byte
   uint8_t b = p[index >> 3];
   // Shift to LSB position and mask to get value
@@ -3915,7 +3915,7 @@ void FLASHMEM ILI9341_t3n::drawFontChar(unsigned int c) {
 }
 
 // strPixelLen			- gets pixel length of given ASCII string
-int16_t ILI9341_t3n::strPixelLen(const char *str) {
+int16_t FLASHMEM ILI9341_t3n::strPixelLen(const char *str) {
   //	//Serial.printf("strPixelLen %s\n", str);
   if (!str)
     return (0);
@@ -4001,7 +4001,7 @@ int16_t ILI9341_t3n::strPixelLen(const char *str) {
   return (maxlen);
 }
 
-void ILI9341_t3n::charBounds(char c, int16_t *x, int16_t *y, int16_t *minx,
+void FLASHMEM ILI9341_t3n::charBounds(char c, int16_t *x, int16_t *y, int16_t *minx,
                              int16_t *miny, int16_t *maxx, int16_t *maxy) {
 
   // BUGBUG:: Not handling offset/clip
@@ -4124,7 +4124,7 @@ void ILI9341_t3n::charBounds(char c, int16_t *x, int16_t *y, int16_t *minx,
 }
 
 // Add in Adafruit versions of text bounds calculations.
-void ILI9341_t3n::getTextBounds(const uint8_t *buffer, uint16_t len, int16_t x,
+void FLASHMEM ILI9341_t3n::getTextBounds(const uint8_t *buffer, uint16_t len, int16_t x,
                                 int16_t y, int16_t *x1, int16_t *y1,
                                 uint16_t *w, uint16_t *h) {
   *x1 = x;
