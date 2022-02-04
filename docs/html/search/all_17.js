@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['y_860',['y',['../db/d69/class_app_base_class_a3351e0160fb9d0fc79e5ac6db652645a.html#a3351e0160fb9d0fc79e5ac6db652645a',1,'AppBaseClass::y()'],['../db/d4b/doxygen__log_8txt_aaadf66027dec7bf10c0f7e457700de9b.html#aaadf66027dec7bf10c0f7e457700de9b',1,'y():&#160;doxygen_log.txt']]],
-  ['y_5fend_861',['y_end',['../dc/d27/class_app_audio_to_polyphonic_af06a00d86da8f3ba59f4b6bd060a9929.html#af06a00d86da8f3ba59f4b6bd060a9929',1,'AppAudioToPolyphonic']]],
-  ['y_5flast_862',['y_last',['../dc/d27/class_app_audio_to_polyphonic_aa89d42e13dff1c7d165baacbd3032b50.html#aa89d42e13dff1c7d165baacbd3032b50',1,'AppAudioToPolyphonic']]],
-  ['y_5flast_5fscope_863',['y_last_scope',['../dc/d27/class_app_audio_to_polyphonic_ad5c1d86177b4903efc311cfb3f773bb0.html#ad5c1d86177b4903efc311cfb3f773bb0',1,'AppAudioToPolyphonic']]],
-  ['y_5fstart_864',['y_start',['../dc/d27/class_app_audio_to_polyphonic_ab1e43c59c7b0658f77c5393e2202fd6e.html#ab1e43c59c7b0658f77c5393e2202fd6e',1,'AppAudioToPolyphonic']]],
-  ['y_5ftest_865',['y_test',['../d8/deb/class_app_a_if_e_s_ac13d105d4539bee3cee8552ea044d73b.html#ac13d105d4539bee3cee8552ea044d73b',1,'AppAIfES']]],
-  ['y_5ftrain_866',['y_train',['../d8/deb/class_app_a_if_e_s_a1c1fe3646ac68df45ee0a0c8609ac704.html#a1c1fe3646ac68df45ee0a0c8609ac704',1,'AppAIfES']]],
-  ['yraw_867',['yraw',['../d1/dff/class_touch_a881986fd337f4436f290dd097c6559b3.html#a881986fd337f4436f290dd097c6559b3',1,'Touch']]]
+  ['x_861',['x',['../db/d69/class_app_base_class_a3d5594a6a0d365be1098e9cdb2748c3d.html#a3d5594a6a0d365be1098e9cdb2748c3d',1,'AppBaseClass::x()'],['../db/d4b/doxygen__log_8txt_a52820c3f6501ec476d32f47facf310c3.html#a52820c3f6501ec476d32f47facf310c3',1,'x():&#160;doxygen_log.txt']]],
+  ['x_5fend_862',['x_end',['../dc/d27/class_app_audio_to_polyphonic_ad9a5e5ed381185019ea6a1cf26311e69.html#ad9a5e5ed381185019ea6a1cf26311e69',1,'AppAudioToPolyphonic']]],
+  ['x_5flast_863',['x_last',['../dc/d27/class_app_audio_to_polyphonic_a2df465d28f7911897cfa0464c331fa4f.html#a2df465d28f7911897cfa0464c331fa4f',1,'AppAudioToPolyphonic']]],
+  ['x_5flayer_864',['x_layer',['../d8/deb/class_app_a_if_e_s_ac84808a352b3c6bad842db080f09a96f.html#ac84808a352b3c6bad842db080f09a96f',1,'AppAIfES']]],
+  ['x_5fstart_865',['x_start',['../dc/d27/class_app_audio_to_polyphonic_a33ec2ce0edb5dd54fc374fcadd4a0f22.html#a33ec2ce0edb5dd54fc374fcadd4a0f22',1,'AppAudioToPolyphonic']]],
+  ['x_5ftest_866',['x_test',['../d8/deb/class_app_a_if_e_s_ab49b5cd512a0b57413e88b3c7a539794.html#ab49b5cd512a0b57413e88b3c7a539794',1,'AppAIfES']]],
+  ['x_5ftrain_867',['x_train',['../d8/deb/class_app_a_if_e_s_a09f4fccb0ba2fd6256bd57bb0f31466b.html#a09f4fccb0ba2fd6256bd57bb0f31466b',1,'AppAIfES']]],
+  ['xpt2046_5ftouchscreen_868',['XPT2046_Touchscreen',['../d8/d45/class_x_p_t2046___touchscreen.html',1,'']]],
+  ['xraw_869',['xraw',['../d1/dff/class_touch_afa7c3f3af79310502eaaf18a73287c8f.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
 ];

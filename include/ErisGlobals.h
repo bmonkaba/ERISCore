@@ -164,17 +164,17 @@
  * @brief max number of audio memory blocks
  * 
  */
-#define MAX_AUDIO_MEMORY_BLOCKS 220
+#define MAX_AUDIO_MEMORY_BLOCKS 800
 /**
  * @brief max number of audio stream catagories
  * 
  */
-#define MAX_CATEGORIES 16
+#define MAX_AUDIO_FUNCTION_CATEGORIES 16
 /**
- * @brief max number of catagory types
+ * @brief max number of catagory types - query result container size
  * 
  */
-#define MAX_UNIQUE_NAMES_PER_CATEGORY 24
+#define MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT 24
 /**
  * @brief max number of audio connections
  * 
@@ -206,6 +206,7 @@ const char PROGMEM p[][16] = {"DOUBLE.ile","GRAIN.ile","PHASER.ile","BITCRUSH.il
 const char INPUT_PEAK[] PROGMEM = "INPUT_PEAK";
 
 //STRINGS - ERIS CORE
+const char nullStr[] PROGMEM = "NULL";
 const char FREE_MEM[] PROGMEM = "FREE_MEM";
 const char FREE_HEAP[] PROGMEM = "FREE_HEAP";
 const char FREE_LOCAL[] PROGMEM = "FREE_LOCAL";

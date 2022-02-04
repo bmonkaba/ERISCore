@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"d3/daf/classeris_audio_mixer8.html#a743e19367946485719cd96436da38970":[2,0,110,30],
 "d3/daf/classeris_audio_mixer8.html#a760fb58e212788dbec27664ea23bbd32":[2,0,110,27],
 "d3/daf/classeris_audio_mixer8.html#a76e57ea7b1d52d78545f1a35e287d10c":[2,0,110,16],
 "d3/daf/classeris_audio_mixer8.html#a7b7229bf13432eed30b08bfaf3d7a7ce":[2,0,110,25],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "d4/dd5/class_audio_synth_waveform_a8ce788d9982b1dd31429c8e84976b707.html#a8ce788d9982b1dd31429c8e84976b707":[2,0,67,45],
 "d4/dd5/class_audio_synth_waveform_a8f721d44e5cbda20dfd536ecd7539a7a.html#a8f721d44e5cbda20dfd536ecd7539a7a":[2,0,67,20],
 "d4/dd5/class_audio_synth_waveform_a9b3b6d96d89686e45376c2dd6fb1fb9a.html#a9b3b6d96d89686e45376c2dd6fb1fb9a":[2,0,67,50],
-"d4/dd5/class_audio_synth_waveform_aac2a3bafe78c684f9a7600eb0d62ddef.html#aac2a3bafe78c684f9a7600eb0d62ddef":[2,0,67,48]
+"d4/dd5/class_audio_synth_waveform_aac2a3bafe78c684f9a7600eb0d62ddef.html#aac2a3bafe78c684f9a7600eb0d62ddef":[2,0,67,48],
+"d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19":[2,0,67,15]
 };

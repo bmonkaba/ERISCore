@@ -59,7 +59,7 @@ class SerialProcess():
                 self.writeSerial(d)         
             
             d = self.readSerial()
-            #print(d)
+            print(d)
             
             try:
                 d = d.decode()

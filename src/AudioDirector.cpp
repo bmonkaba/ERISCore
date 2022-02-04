@@ -20,22 +20,20 @@
 #endif
 
 
-const char* nullStr = "NULL";
-
 FLASHMEM AudioDirector::AudioDirector(){
   sci = NULL;
   obj_count=0;
   active_connections = 0;
   category_count=0;
-  short_name_query_result_count=0;
+  query_result_count=0;
   printstats_select = 0;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
-  for (uint16_t i=0; i < MAX_UNIQUE_NAMES_PER_CATEGORY; i++){
-    short_name_query_result[i]=0;
+  for (uint16_t i=0; i < MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT; i++){
+    query_result[i]=0;
   }
-  for (uint16_t j = 0; j < MAX_CATEGORIES; j++){
-    categoryList[j] = (char**)&nullStr;
+  for (uint16_t j = 0; j < MAX_AUDIO_FUNCTION_CATEGORIES; j++){
+    functionsList[j] =0;
   }
   p_audiostream_input_port = new erisAudioInputI2S();
   p_heap_start = p_audiostream_input_port;
@@ -78,10 +76,10 @@ FLASHMEM AudioDirector::AudioDirector(){
   Serial.print(F("M AudioDirector::AudioDirector() objects: "));
   Serial.println(obj_count);
 
-  generateCategoryList();
+  generateFunctionList();
   Serial.print(F("M AudioDirector::AudioDirector() object categories: "));
   Serial.println(category_count);
-  for (uint16_t j = 0; j < category_count; j++)Serial.println(*categoryList[j]);
+  for (uint16_t j = 0; j < category_count; j++)Serial.printf("M %s\n",*functionsList[j]);
 
   AudioStream* test = getAudioStreamObjByName("mixer_2");
   Serial.println(F("M AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
@@ -223,20 +221,80 @@ void FLASHMEM AudioDirector::printStats(){
   
 }
 
-void AudioDirector::generateCategoryList(){
-  //called from the constructor
-  bool found;
-  category_count=0;  
+
+/**
+ * @brief get the list of function types in the obj pool
+ * 
+ */
+void AudioDirector::generateFunctionList(){
+  //init the count and the container
+  category_count=0;
+  for (uint16_t j = 0; j < MAX_AUDIO_FUNCTION_CATEGORIES; j++){
+    functionsList[j] = 0;
+  }
+
   for (uint16_t i = 0; i < obj_count; i++){           //for each object
+    bool found;
     found = false;
-    for (uint16_t j = 0; j < MAX_CATEGORIES; j++){   //check if cat name is already in the list
-      if (categoryList[j] != 0){ //dont test unitialized string pointers
-        if (strcmp(*categoryList[j],p_audiostream_obj_pool[i]->category)==0) found = true;
+    for (uint16_t j = 0; j < MAX_AUDIO_FUNCTION_CATEGORIES; j++){   //check if cat name is already in the list
+      if (functionsList[j] != 0){ //dont test unitialized string pointers
+        if (strcmp(*functionsList[j],p_audiostream_obj_pool[i]->category)==0) found = true;
       } 
     }
-    if (found==false) categoryList[category_count++] = (char**)&p_audiostream_obj_pool[i]->category; //add to the list if not existing
-    if (category_count==MAX_CATEGORIES) return; //limit the result list to the size of the category buffer 
+    if (found==false) functionsList[category_count++] = (char**)&p_audiostream_obj_pool[i]->category; //add to the list if not existing
+    if (category_count==MAX_AUDIO_FUNCTION_CATEGORIES) return; //limit the result list to the size of the category buffer 
   }
+}
+
+/**
+ * @brief query the obj pool for the list of audio blocks belonging to the given function type
+ * 
+ * @param function 
+ * @return uint16_t 
+ */
+uint16_t AudioDirector::queryTypesByFunction(const char * function){
+  query_result_count=0;
+  for (uint16_t j = 0; j < MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT; j++){
+    query_result[j] = 0;
+  }
+
+  for (uint16_t i = 0; i < obj_count; i++){           //for each object
+    bool found;
+    found = false;
+    for (uint16_t j = 0; j < MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT; j++){   //check if cat name is already in the list
+      if (query_result[j] != 0){ //dont test unitialized string pointers
+        if ((strcmp(*query_result[j],p_audiostream_obj_pool[i]->short_name)==0)) found = true;
+      } 
+    }
+    if (found==false && (strcmp(function,p_audiostream_obj_pool[i]->category)==0)) query_result[query_result_count++] = (char**)&p_audiostream_obj_pool[i]->short_name; //add to the list if not existing
+    if (query_result_count==MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT) return query_result_count; //limit the result list to the size of the category buffer 
+  }
+
+  return query_result_count;
+}
+
+uint16_t AudioDirector::getTypeInstanceCount(const char* type){
+  query_result_count=0;
+  for (uint16_t i = 0; i < obj_count; i++){           //for each object
+    if ((strcmp(type,p_audiostream_obj_pool[i]->short_name)==0)) query_result_count++;
+  }
+  return query_result_count;
+}
+
+/**
+ * @brief returns the requested index of the type list\n 
+ * if the requested index is out of bounds the string "NULL" is returned
+ * 
+ * @param function 
+ * @param i 
+ * @return char* 
+ */
+char* AudioDirector::getTypeListItem(const char * function,uint16_t i){
+  uint16_t count = queryTypesByFunction(function);
+  if (i > count) return (char*)nullStr; //out of bounds index return "NULL"
+  char* p;
+  p = *query_result[i];
+  return p;
 }
 
 AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjName){

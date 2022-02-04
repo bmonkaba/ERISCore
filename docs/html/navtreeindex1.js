@@ -27,7 +27,6 @@ var NAVTREEINDEX1 =
 "d1/d1a/class_surface_adac470df64fa8ed57a8d5df6bc06baba.html#adac470df64fa8ed57a8d5df6bc06baba":[2,0,140,13],
 "d1/d1a/class_surface_ae20fe7444b1e5b682e71df6a37c15b1e.html#ae20fe7444b1e5b682e71df6a37c15b1e":[2,0,140,4],
 "d1/d2c/_audio_director_8cpp.html":[3,0,0,3,3],
-"d1/d2c/_audio_director_8cpp_a426c7b3dbd9cded3b276dbeace90e537.html#a426c7b3dbd9cded3b276dbeace90e537":[3,0,0,3,3,0],
 "d1/d2c/_audio_director_8cpp_source.html":[3,0,0,3,3],
 "d1/d4e/class_audio_synth_noise_pink.html":[2,0,63],
 "d1/d50/classeris_audio_output_i2_s_hex.html":[2,0,113],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "d3/daf/classeris_audio_mixer8.html#a61f36ead45d4188e26aee0bb1ebe4496":[2,0,110,22],
 "d3/daf/classeris_audio_mixer8.html#a643f654eb80d440b0535cd0e6244a85c":[2,0,110,38],
 "d3/daf/classeris_audio_mixer8.html#a6f70806d5f6baccccf03482dae743192":[2,0,110,28],
-"d3/daf/classeris_audio_mixer8.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[2,0,110,4]
+"d3/daf/classeris_audio_mixer8.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[2,0,110,4],
+"d3/daf/classeris_audio_mixer8.html#a743e19367946485719cd96436da38970":[2,0,110,30]
 };

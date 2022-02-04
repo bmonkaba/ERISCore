@@ -1,5 +1,13 @@
 var NAVTREEINDEX8 =
 {
+"de/d67/class_control_slider.html#a4ac102588c6857a17930b6e0da35b650":[2,0,76,48],
+"de/d67/class_control_slider.html#a53c663808513ec64776645ee98da4a1f":[2,0,76,11],
+"de/d67/class_control_slider.html#a5c284e20788663354eb4d8a862d3a91d":[2,0,76,19],
+"de/d67/class_control_slider.html#a5cd34ff4f1f9bd936c25227496db7302":[2,0,76,41],
+"de/d67/class_control_slider.html#a66d43516f1f6e88e091fa974f4d5460d":[2,0,76,40],
+"de/d67/class_control_slider.html#a6baed35a61a4cae1b3c67113aa6ec1dd":[2,0,76,33],
+"de/d67/class_control_slider.html#a6c4b0270ec71171609d675fb8fdbb2aa":[2,0,76,69],
+"de/d67/class_control_slider.html#a759c6df44dea772abc58db8867f2b93c":[2,0,76,67],
 "de/d67/class_control_slider.html#a7681137fa3cb2aa9534625f1d9006970":[2,0,76,66],
 "de/d67/class_control_slider.html#a7e6bfd905fbbe914a6147ed8644fbca8":[2,0,76,16],
 "de/d67/class_control_slider.html#a7f85f42f0aec6aabd77825f19d604cc6":[2,0,76,42],
@@ -241,13 +249,5 @@ var NAVTREEINDEX8 =
 "df/dc5/classeris_audio_synth_waveform.html#a43ccf2427001ee57a44a0998226f8e38":[2,0,126,40],
 "df/dc5/classeris_audio_synth_waveform.html#a61d94d86e578cc851270e6d50a993c6f":[2,0,126,5],
 "df/dc5/classeris_audio_synth_waveform.html#a61f36ead45d4188e26aee0bb1ebe4496":[2,0,126,31],
-"df/dc5/classeris_audio_synth_waveform.html#a643f654eb80d440b0535cd0e6244a85c":[2,0,126,53],
-"df/dc5/classeris_audio_synth_waveform.html#a6f70806d5f6baccccf03482dae743192":[2,0,126,37],
-"df/dc5/classeris_audio_synth_waveform.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[2,0,126,9],
-"df/dc5/classeris_audio_synth_waveform.html#a743e19367946485719cd96436da38970":[2,0,126,39],
-"df/dc5/classeris_audio_synth_waveform.html#a760fb58e212788dbec27664ea23bbd32":[2,0,126,36],
-"df/dc5/classeris_audio_synth_waveform.html#a76e57ea7b1d52d78545f1a35e287d10c":[2,0,126,24],
-"df/dc5/classeris_audio_synth_waveform.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d":[2,0,126,25],
-"df/dc5/classeris_audio_synth_waveform.html#a871d776e57f1dff63e1d2121bd1d6bf3":[2,0,126,32],
-"df/dc5/classeris_audio_synth_waveform.html#a8b64af9348ca38d5374514343fb78382":[2,0,126,12]
+"df/dc5/classeris_audio_synth_waveform.html#a643f654eb80d440b0535cd0e6244a85c":[2,0,126,53]
 };

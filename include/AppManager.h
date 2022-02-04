@@ -68,6 +68,10 @@ class AppManager {
       }
       return obj;
     }
+    /**
+     * @brief this is the main update loop for ErisCore
+     * 
+     */
     void update();
     bool sendMessage(AppBaseClass *sender, const char *to_app, const char *message);
     void printStats();

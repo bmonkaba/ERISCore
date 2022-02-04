@@ -327,6 +327,68 @@ void audioDirectorDisconnectAllCallback(WrenVM* vm){
   wrenSetSlotBool(vm, 0,b);
 }
 
+/**
+ * @brief AudioDirector callback for wren
+ * 
+ * @param vm 
+ */
+void audioDirectorGetFunctionListCallback(WrenVM* vm){
+  //()
+  int num_slots;
+	int slot = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  AudioDirector* ad = app->getAudioDirector();
+  num_slots = ad->getFunctionCount()+1;
+  wrenEnsureSlots(vm, num_slots);
+  wrenSetSlotNewList(vm, slot);
+  while(++slot < num_slots) {
+    char* cat_list;
+    cat_list = ad->getFunctionListItem(slot-1);
+		wrenSetSlotString(vm, slot, cat_list);
+		wrenInsertInList(vm, 0, -1, slot);
+	}
+}
+
+/**
+ * @brief AudioDirector callback for wren
+ * 
+ * @param vm 
+ */
+void audioDirectorGetTypeListCallback(WrenVM* vm){
+  //(char* function)
+  int num_slots;
+	int slot = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  AudioDirector* ad = app->getAudioDirector();
+  const char * function = wrenGetSlotString(vm, 1);
+  num_slots = ad->getTypeCountByFunction(function)+1;
+  wrenEnsureSlots(vm, num_slots);
+  wrenSetSlotNewList(vm, slot);
+  while(++slot < num_slots) {
+    char* cat_list;
+    cat_list = ad->getTypeListItem(function,slot-1);
+		wrenSetSlotString(vm, slot, cat_list);
+		wrenInsertInList(vm, 0, -1, slot);
+	}
+}
+
+/**
+ * @brief AudioDirector callback for wren
+ * 
+ * @param vm 
+ */
+void audioDirectorGetTypeInstanceCountCallback(WrenVM* vm){
+  //(char* type)
+  int num_slots;
+	int slot = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  AudioDirector* ad = app->getAudioDirector();
+  const char * type = wrenGetSlotString(vm, 1);
+  wrenSetSlotDouble(vm, 0,ad->getTypeInstanceCount(type));
+}
 
 // DATA DICT CALLBACKS
 /**
@@ -568,6 +630,12 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return audioDirectorDisconnectCallback;
       }else if (strcmp(signature, "disconnectAll()") == 0){
         return audioDirectorDisconnectAllCallback;
+      }else if (strcmp(signature, "getFunctionList()") == 0){
+        return audioDirectorGetFunctionListCallback;
+      }else if (strcmp(signature, "getTypeList(_)") == 0){
+        return audioDirectorGetTypeListCallback;
+      }else if (strcmp(signature, "getTypeInstanceCount(_)") == 0){
+        return audioDirectorGetTypeInstanceCountCallback;
       }
     }else if (strcmp(className, "Draw") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){

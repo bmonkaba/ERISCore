@@ -80,14 +80,14 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d0/da6/classeris_audio_synth_karplus_strong_afaa74e633c42abfcb4a86a95d907379e.html#afaa74e633c42abfcb4a86a95d907379e",
-"d3/daf/classeris_audio_mixer8.html#a743e19367946485719cd96436da38970",
-"d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19",
-"d5/d96/class_audio_stream_aedbf0b4a808724dc4f4115c60b615622.html#aedbf0b4a808724dc4f4115c60b615622",
-"d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae5f490cbef146e51d9b6d17b14af336c.html#ae5f490cbef146e51d9b6d17b14af336c",
-"d9/d03/class_app_template.html#a759c6df44dea772abc58db8867f2b93c",
-"db/d69/class_app_base_class_acff523b6c1d155a66b915e4f49158af8.html#acff523b6c1d155a66b915e4f49158af8",
-"de/d67/class_control_slider.html#a7681137fa3cb2aa9534625f1d9006970",
-"df/dc5/classeris_audio_synth_waveform.html#a8ce788d9982b1dd31429c8e84976b707"
+"d3/daf/classeris_audio_mixer8.html#a760fb58e212788dbec27664ea23bbd32",
+"d4/dd5/class_audio_synth_waveform_ab4104997f78ad2349cfb0eed8596c9f2.html#ab4104997f78ad2349cfb0eed8596c9f2",
+"d5/d96/class_audio_stream_af2e5c5dbc5f0b1cf74a2067d6f23a010.html#af2e5c5dbc5f0b1cf74a2067d6f23a010",
+"d8/d5a/class_i_l_i9341__t3___e_r_i_s_a99cda068bb048ccd5bcb41f47bb8043b.html#a99cda068bb048ccd5bcb41f47bb8043b",
+"d9/d03/class_app_template.html#a3d5594a6a0d365be1098e9cdb2748c3d",
+"db/d69/class_app_base_class_ab2dadde94f4c2b9ade4be05b43a251ed.html#ab2dadde94f4c2b9ade4be05b43a251ed",
+"de/d67/class_control_slider.html#a4ac102588c6857a17930b6e0da35b650",
+"df/dc5/classeris_audio_synth_waveform.html#a6f70806d5f6baccccf03482dae743192"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

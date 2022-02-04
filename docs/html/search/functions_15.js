@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['_7eappwren_1424',['~AppWren',['../d0/da0/class_app_wren_a9fcd48d21e31b650f0926420eee346d0.html#a9fcd48d21e31b650f0926420eee346d0',1,'AppWren']]],
-  ['_7eaudioconnection_1425',['~AudioConnection',['../d2/d7c/class_audio_connection_ae0bd3df10a34f954a9f2128363cc7939.html#ae0bd3df10a34f954a9f2128363cc7939',1,'AudioConnection']]]
+  ['windowfunction_1439',['windowFunction',['../d0/d55/classeris_audio_analyze_f_f_t1024_a1249776e32ff21356c4fa50be5f2fa98.html#a1249776e32ff21356c4fa50be5f2fa98',1,'erisAudioAnalyzeFFT1024']]],
+  ['wrenfastmemoryallocator_1440',['wrenFastMemoryAllocator',['../d7/d7e/_app_wren_8cpp_a9d291325e8690d86b1170d217a7f679c.html#a9d291325e8690d86b1170d217a7f679c',1,'AppWren.cpp']]],
+  ['write_1441',['write',['../d2/da8/class_svc_serial_command_interface_a9c179c537eefc3807911a2658fac7d7e.html#a9c179c537eefc3807911a2658fac7d7e',1,'SvcSerialCommandInterface']]],
+  ['writefn_1442',['writeFn',['../d7/d7e/_app_wren_8cpp_ad0c26c660738b28a098f1400caef81e2.html#ad0c26c660738b28a098f1400caef81e2',1,'AppWren.cpp']]]
 ];
