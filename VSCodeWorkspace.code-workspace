@@ -50,7 +50,9 @@
 			"wren_compiler.h": "c",
 			"wren.h": "c",
 			"*.inc": "c",
-			"wren_primitive.h": "c"
+			"wren_primitive.h": "c",
+			"lz4.h": "c",
+			"smalloc.h": "c"
 		},
 		"git.ignoreLimitWarning": true
 	}
