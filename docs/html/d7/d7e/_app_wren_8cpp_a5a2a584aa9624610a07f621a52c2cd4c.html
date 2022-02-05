@@ -107,13 +107,13 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a5a2a584aa962461
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00157">157</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                    {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">//callback params can be found in the slots</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">//return value goes into slot 0</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  wrenSetSlotBool(vm, 0, am-&gt;<a class="code" href="../../da/d96/class_app_manager_aa4f7649ae1aa1a567286d73981f00090.html#aa4f7649ae1aa1a567286d73981f00090">sendMessage</a>(am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>),wrenGetSlotString(vm, 1),wrenGetSlotString(vm, 2)));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00165">165</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                    {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">//callback params can be found in the slots</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">//return value goes into slot 0</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  wrenSetSlotBool(vm, 0, am-&gt;<a class="code" href="../../da/d96/class_app_manager_aa4f7649ae1aa1a567286d73981f00090.html#aa4f7649ae1aa1a567286d73981f00090">sendMessage</a>(am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>),wrenGetSlotString(vm, 1),wrenGetSlotString(vm, 2)));</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
 <div class="ttc" id="aclass_app_manager_a08daaf40a3ddaa938603039eb1e67d09_html_a08daaf40a3ddaa938603039eb1e67d09"><div class="ttname"><a href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">AppManager::getAppByName</a></div><div class="ttdeci">AppBaseClass * getAppByName(const char *appName)</div><div class="ttdoc">Get the App pointer By Name. Returns NULL if not found.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager.cpp:449</a></div></div>
 <div class="ttc" id="aclass_app_manager_aa4f7649ae1aa1a567286d73981f00090_html_aa4f7649ae1aa1a567286d73981f00090"><div class="ttname"><a href="../../da/d96/class_app_manager_aa4f7649ae1aa1a567286d73981f00090.html#aa4f7649ae1aa1a567286d73981f00090">AppManager::sendMessage</a></div><div class="ttdeci">bool sendMessage(AppBaseClass *sender, const char *to_app, const char *message)</div><div class="ttdoc">provides an interface for apps to send messages to other apps</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d40/_app_manager_8cpp_source.html#l00429">AppManager.cpp:429</a></div></div>
 <div class="ttc" id="aclass_app_manager_aa76d9691e8d029656413590fbe4dee86_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager.h:64</a></div></div>
@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a5a2a584aa962461
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager::getAppByName()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager::getInstance()</a>, and <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00429">AppManager::sendMessage()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00578">bindForeignMethod()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00606">bindForeignMethod()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

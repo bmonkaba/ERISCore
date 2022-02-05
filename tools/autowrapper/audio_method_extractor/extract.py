@@ -168,9 +168,9 @@ for file in filenames:
             line = line.replace(':','')
             line = line.replace('const','')
             line = line.replace("unsigned int","uint32_t")
+            #print(line)
             
-            
-            if line.find("=")>0 or line.find("update")>0 \
+            if line.find("update")>0 \
                 or line.find("static")>-1 or line.find("inline")>-1 or \
                 line.find("*")>-1 or line.find("&")>-1 :
                  pass

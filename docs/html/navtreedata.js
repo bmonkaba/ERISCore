@@ -27,7 +27,7 @@ var NAVTREE =
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
       [ "What is Eris Core:", "index.html#autotoc_md5", null ],
-      [ "3rd party code", "index.html#autotoc_md6", [
+      [ "3rd party software", "index.html#autotoc_md6", [
         [ "Licence", "index.html#autotoc_md7", null ],
         [ "External dependancies", "index.html#autotoc_md8", null ]
       ] ],
@@ -83,11 +83,11 @@ var NAVTREEINDEX =
 "d3/daf/classeris_audio_mixer8.html#a760fb58e212788dbec27664ea23bbd32",
 "d4/dd5/class_audio_synth_waveform_ab4104997f78ad2349cfb0eed8596c9f2.html#ab4104997f78ad2349cfb0eed8596c9f2",
 "d5/d96/class_audio_stream_af2e5c5dbc5f0b1cf74a2067d6f23a010.html#af2e5c5dbc5f0b1cf74a2067d6f23a010",
-"d8/d5a/class_i_l_i9341__t3___e_r_i_s_a99cda068bb048ccd5bcb41f47bb8043b.html#a99cda068bb048ccd5bcb41f47bb8043b",
-"d9/d03/class_app_template.html#a3d5594a6a0d365be1098e9cdb2748c3d",
-"db/d69/class_app_base_class_ab2dadde94f4c2b9ade4be05b43a251ed.html#ab2dadde94f4c2b9ade4be05b43a251ed",
-"de/d67/class_control_slider.html#a4ac102588c6857a17930b6e0da35b650",
-"df/dc5/classeris_audio_synth_waveform.html#a6f70806d5f6baccccf03482dae743192"
+"d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9779b5c468ede5d64575db30db0845d5.html#a9779b5c468ede5d64575db30db0845d5",
+"d9/d03/class_app_template.html#a3682f17759610f58e60351fe96daa6b2",
+"db/d69/class_app_base_class_ab09a10b13273bf5b5a99c412f3835c0d.html#ab09a10b13273bf5b5a99c412f3835c0d",
+"de/d67/class_control_slider.html#a3d5594a6a0d365be1098e9cdb2748c3d",
+"df/dc5/classeris_audio_synth_waveform.html#a61f36ead45d4188e26aee0bb1ebe4496"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -44,7 +44,7 @@ void setup() {
             while(1);
   }
   while(!Serial && millis() < 5000); //DEBUG - wait for serial connection
-  //delay(500);
+  delay(2500);
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
   Serial.println(F("M Setup: Initalizing"));

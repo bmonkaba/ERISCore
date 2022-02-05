@@ -1,12 +1,11 @@
 # ERISCore
 
-[![Build Status](https://app.travis-ci.com/bmonkaba/ERISCore.svg?branch=master)](https://app.travis-ci.com/bmonkaba/ERISCore)
-<a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a>
-<img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg">
-<br>
+<img alt="Language Count" src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore"> <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore"> <img alt="TravisCI" src="https://img.shields.io/travis/com/bmonkaba/ErisCore"> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg"> [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d)](https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bmonkaba/ERISCore&amp;utm_campaign=Badge_Grade)
+
 # What is Eris Core:
 
 Eris core is:
+
 * an AI/ML Audio focused "crossover operating system" for a crossover microcontroller
 * a rapid application development & test framework
 * a subsystem component complete with mechanical housing examples
@@ -14,14 +13,13 @@ Eris core is:
 * intended as a foundation for further integration into projects & products
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
-<br>
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
-<br>
-pre-alpha sys stress, integration, regression testing / demo:
 
-[![youtube video](https://i9.ytimg.com/vi_webp/QZLU7C8BaJI/mqdefault.webp?sqp=CLiwzI8G&rs=AOn4CLB2NgaH1Qb9FbgtQtrb76kH-IHBeA)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
+**youtube video demo - pre-alpha sys stress, integration & regression testing:**
 
-# 3rd party code 
+[![youtube video](https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
+
+# 3rd party software
 
 ## Licence
 
@@ -32,8 +30,10 @@ pre-alpha sys stress, integration, regression testing / demo:
 
 ## External dependancies
 
-    densaugeo/base64@^1.2.0
-	fraunhofer-ims/AIfES for Arduino@^2.1.1
+```
+densaugeo/base64@^1.2.0
+fraunhofer-ims/AIfES for Arduino@^2.1.1
+```
 
 # 3D print, STL & housing graphics
 
@@ -41,13 +41,11 @@ pre-alpha sys stress, integration, regression testing / demo:
 
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20v158.png?raw=true" width="300"> <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">
 <br>
-
 # ErisCore software
 
 * web based serial interface - MIT Licence
 * other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.
 * Software Documentation (WIP): https://bmonkaba.github.io/ERISCore/html/
-
 
 ## Development State
 
@@ -64,8 +62,9 @@ pre-alpha sys stress, integration, regression testing / demo:
 * SCI refactoring into individual message handlers w/enumerated states
 
 ## TODO
+
 * wren wrappers for AIeFS?
-* decide on concept for the virtual VM filesystem 
+* decide on concept for the virtual VM filesystem
 * define an access concept for requesting assets from the actual filesystem.
 * import a custom genetic algo module from an older project and port from from python to wren
 * import a custom chord identification/scoring module from an older project
@@ -173,5 +172,5 @@ pre-alpha sys stress, integration, regression testing / demo:
 
 # mvp-01
 
-The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.<br>
+The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">

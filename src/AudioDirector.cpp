@@ -81,10 +81,10 @@ FLASHMEM AudioDirector::AudioDirector(){
   Serial.println(category_count);
   for (uint16_t j = 0; j < category_count; j++)Serial.printf("M %s\n",*functionsList[j]);
 
-  AudioStream* test = getAudioStreamObjByName("mixer_2");
+  AudioStream* test = getAudioStreamObjByName("mixer:2");
   Serial.println(F("M AudioDirector::AudioDirector() getAudioStreamObjByName test: (should be mixer #2)"));
   Serial.print(test->short_name);
-  Serial.print(F("_"));
+  Serial.print(F(":"));
   Serial.println(test->instance);
 
   Serial.println(F("M AudioDirector::AudioDirector() building AudioConnection pool"));
@@ -148,7 +148,7 @@ void FLASHMEM AudioDirector::printStats(){
       
       for(uint16_t i=0; i < obj_count;i++){
         sci->print(F("\""));
-        sci->print(p_audiostream_obj_pool[i]->short_name);sci->print(F("_"));
+        sci->print(p_audiostream_obj_pool[i]->short_name);sci->print(F(":"));
         sci->print(p_audiostream_obj_pool[i]->instance);
         sci->print(F("\":{\"cpu\":"));
         sci->print(p_audiostream_obj_pool[i]->processorUsage());
@@ -301,8 +301,8 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
   //string name needs to be deccompsed to type and instance
   char *pch;
   char *ptr;
-  pch = strstr (AudioStreamObjName,"_");
-  uint8_t instance = (uint8_t)strtoul(pch+1,&ptr,10);//instance starts 1 char from '_' and is always base 10
+  pch = strstr (AudioStreamObjName,":");
+  uint8_t instance = (uint8_t)strtoul(pch+1,&ptr,10);//instance starts 1 char from ':' and is always base 10
 
   for (uint16_t i = 0; i < obj_count; i++){
     //test the index first, then the string
@@ -321,7 +321,7 @@ bool AudioDirector::getAudioStreamString(uint16_t streamIndex, char* streamStrin
     strcpy(streamStringBuffer,"");
     return false;
   }
-  sprintf(streamStringBuffer,"%s %s_%d",p_audiostream_obj_pool[streamIndex]->category,p_audiostream_obj_pool[streamIndex]->short_name,p_audiostream_obj_pool[streamIndex]->instance);
+  sprintf(streamStringBuffer,"%s %s:%d",p_audiostream_obj_pool[streamIndex]->category,p_audiostream_obj_pool[streamIndex]->short_name,p_audiostream_obj_pool[streamIndex]->instance);
   return true;
 }
 
@@ -337,7 +337,7 @@ bool AudioDirector::getConnectionString(uint16_t connectionIndex, char* connecti
     if (p_cord[i]->isConnected == true){
       if(count == connectionIndex){
         //build connection string into the buffer
-        sprintf(connectionStringBuffer,"connect(%s_%d,%d,%s_%d,%d);",
+        sprintf(connectionStringBuffer,"connect(%s:%d,%d,%s:%d,%d);",
           p_cord[i]->pSrc->short_name,
           p_cord[i]->pSrc->instance,
           p_cord[i]->src_index,
@@ -372,7 +372,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
     if (NULL!=p_cord[i]){
       if (p_cord[i]->isConnected == false){
         Serial.printf(F("M AudioDirector::connect() connection index: %hu\n"),i);
-        //Serial.printf("%s_%d:%d -> %s_%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
+        //Serial.printf("%s:%d:%d -> %s:%d:%d  ",source->shortName,source->instance,sourceOutput,destination->shortName,destination->instance,destinationInput);
         //Serial.flush();
         if(p_cord[i]->rewire(source, (unsigned char)sourceOutput,destination, (unsigned char)destinationInput)) active_connections++;
         return true;
@@ -405,8 +405,8 @@ bool AudioDirector::connect(const char* from,uint8_t from_port,const char* to,ui
 
 void AudioDirector::ParseConnectString(const char* connectionString,ParsedConnection *p){
 //parse connectionString 
-  //format: "SRCTYPE(CHAR)_INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR)_INSTANCE(INT) DESTPORT(INT)"
-  //example: "MIXER_2 0 CHORUS_1 1"
+  //format: "SRCTYPE(CHAR):INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR):INSTANCE(INT) DESTPORT(INT)"
+  //example: "MIXER:2 0 CHORUS:2 1"
   //the example above connects mixer instance 2 output 0 with chorus instance 1 input 1
   char buffer[MAX_CONNECTION_STRING_LENGTH];
   char *token;

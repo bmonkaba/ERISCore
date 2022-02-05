@@ -120,8 +120,8 @@ $(document).ready(function(){initNavTree('d8/d1c/class_audio_director_a632071166
 <p class="definition">Definition at line <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00406">406</a> of file <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html">AudioDirector.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                                                                                      {</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">//parse connectionString </span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">//format: &quot;SRCTYPE(CHAR)_INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR)_INSTANCE(INT) DESTPORT(INT)&quot;</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">//example: &quot;MIXER_2 0 CHORUS_1 1&quot;</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">//format: &quot;SRCTYPE(CHAR):INSTANCE(INT) SRCPORT(INT) DESTTYPE(CHAR):INSTANCE(INT) DESTPORT(INT)&quot;</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">//example: &quot;MIXER:2 0 CHORUS:2 1&quot;</span></div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="comment">//the example above connects mixer instance 2 output 0 with chorus instance 1 input 1</span></div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  <span class="keywordtype">char</span> buffer[MAX_CONNECTION_STRING_LENGTH];</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordtype">char</span> *<a class="code" href="../../da/d7d/_svc_serial_command_interface_8cpp_a1d71425d9df28667d528833a4db10432.html#a1d71425d9df28667d528833a4db10432">token</a>;</div>

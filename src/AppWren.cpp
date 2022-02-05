@@ -45,7 +45,15 @@ extern "C" {
  * @param text 
  */
 static void writeFn(WrenVM* vm, const char* text) {
-  SerialUSB1.printf("VM %s", text);
+  //SerialUSB1.printf("VM %s", text);
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)am->getAppByName("SCI");
+  while(!sci->requestStartLZ4Message()){
+    delayMicroseconds(100);
+  };
+  sci->printf("VM %s", text);
+  sci->sendLZ4Message();
 }
 
 /**
@@ -390,6 +398,26 @@ void audioDirectorGetTypeInstanceCountCallback(WrenVM* vm){
   wrenSetSlotDouble(vm, 0,ad->getTypeInstanceCount(type));
 }
 
+/**
+ * @brief AudioDirector callback for wren
+ * 
+ * @param vm 
+ */
+void audioDirectorDisableAudioInterrupts(WrenVM* vm){
+  //()
+  AudioNoInterrupts();
+}
+
+/**
+ * @brief AudioDirector callback for wren
+ * 
+ * @param vm 
+ */
+void audioDirectorEnableAudioInterrupts(WrenVM* vm){
+  //()
+  AudioInterrupts();
+}
+
 // DATA DICT CALLBACKS
 /**
  * @brief SvcDataDictionary exported method which can be called from within a Wren VM instance
@@ -636,6 +664,10 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return audioDirectorGetTypeListCallback;
       }else if (strcmp(signature, "getTypeInstanceCount(_)") == 0){
         return audioDirectorGetTypeInstanceCountCallback;
+      }else if (strcmp(signature, "enableInterrupts()") == 0){
+        return audioDirectorEnableAudioInterrupts;
+      }else if (strcmp(signature, "disableInterrupts()") == 0){
+        return audioDirectorDisableAudioInterrupts;
       }
     }else if (strcmp(className, "Draw") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){

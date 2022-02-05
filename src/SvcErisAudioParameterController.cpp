@@ -15,10 +15,84 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     total_read = sscanf(message, "%s %s %s %s" , c, i, m, p);
     sci->printf("M APC Request: class: %64s instance: %64s method:%64s params: %64s\n" , c, i, m, p);//"%64s %64s %64s %64s" , c, i, m, p
     sci->send();
-    if(0){}else if(strncmp(gPC_ERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISAUDIOANALYZEFFT1024)) == 0 &&\
+    if(0){}else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETLOWPASS,m,sizeof(gPM_SETLOWPASS)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float q;
+            total_read = sscanf(p, "%lu,%f,%f" , &stage,&frequency,&q); // ['uint32_t stage', 'float frequency', 'float q = 0.7071f']
+            eac->setLowpass(stage,frequency,q);
+        }
+    }else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETHIGHPASS,m,sizeof(gPM_SETHIGHPASS)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float q;
+            total_read = sscanf(p, "%lu,%f,%f" , &stage,&frequency,&q); // ['uint32_t stage', 'float frequency', 'float q = 0.7071']
+            eac->setHighpass(stage,frequency,q);
+        }
+    }else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETBANDPASS,m,sizeof(gPM_SETBANDPASS)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float q;
+            total_read = sscanf(p, "%lu,%f,%f" , &stage,&frequency,&q); // ['uint32_t stage', 'float frequency', 'float q = 1.0']
+            eac->setBandpass(stage,frequency,q);
+        }
+    }else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETNOTCH,m,sizeof(gPM_SETNOTCH)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float q;
+            total_read = sscanf(p, "%lu,%f,%f" , &stage,&frequency,&q); // ['uint32_t stage', 'float frequency', 'float q = 1.0']
+            eac->setNotch(stage,frequency,q);
+        }
+    }else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETLOWSHELF,m,sizeof(gPM_SETLOWSHELF)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float gain;
+			float slope;
+            total_read = sscanf(p, "%lu,%f,%f,%f" , &stage,&frequency,&gain,&slope); // ['uint32_t stage', 'float frequency', 'float gain', 'float slope = 1.0f']
+            eac->setLowShelf(stage,frequency,gain,slope);
+        }
+    }else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
+        strncmp(gPM_SETHIGHSHELF,m,sizeof(gPM_SETHIGHSHELF)) == 0){
+        strcpy(objName,erisAudioFilterBiquad::short_name_lookup);
+        strcat(objName,"_");strcat(objName,i);
+        erisAudioFilterBiquad* eac = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName(objName));
+        if (eac != NULL){
+			uint32_t stage;
+			float frequency;
+			float gain;
+			float slope;
+            total_read = sscanf(p, "%lu,%f,%f,%f" , &stage,&frequency,&gain,&slope); // ['uint32_t stage', 'float frequency', 'float gain', 'float slope = 1.0f']
+            eac->setHighShelf(stage,frequency,gain,slope);
+        }
+    }else if(strncmp(gPC_ERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISAUDIOANALYZEFFT1024)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT1024::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT1024* eac = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -27,7 +101,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEFFT1024,c,sizeof(gPC_ERISAUDIOANALYZEFFT1024)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT1024::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT1024* eac = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint16_t binNumber;
@@ -37,7 +111,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEFFT256,c,sizeof(gPC_ERISAUDIOANALYZEFFT256)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT256::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT256* eac = (erisAudioAnalyzeFFT256*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -46,7 +120,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEFFT256,c,sizeof(gPC_ERISAUDIOANALYZEFFT256)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT256::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT256* eac = (erisAudioAnalyzeFFT256*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t binNumber;
@@ -56,7 +130,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEFFT256,c,sizeof(gPC_ERISAUDIOANALYZEFFT256)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT256::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT256* eac = (erisAudioAnalyzeFFT256*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t binFirst;
@@ -67,7 +141,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEFFT256,c,sizeof(gPC_ERISAUDIOANALYZEFFT256)) == 0 &&\
         strncmp(gPM_AVERAGETOGETHER,m,sizeof(gPM_AVERAGETOGETHER)) == 0){
         strcpy(objName,erisAudioAnalyzeFFT256::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeFFT256* eac = (erisAudioAnalyzeFFT256*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t n;
@@ -77,7 +151,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZENOTEFREQUENCY,c,sizeof(gPC_ERISAUDIOANALYZENOTEFREQUENCY)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioAnalyzeNoteFrequency::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeNoteFrequency* eac = (erisAudioAnalyzeNoteFrequency*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             float thresh;
@@ -87,7 +161,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZENOTEFREQUENCY,c,sizeof(gPC_ERISAUDIOANALYZENOTEFREQUENCY)) == 0 &&\
         strncmp(gPM_THRESHOLD,m,sizeof(gPM_THRESHOLD)) == 0){
         strcpy(objName,erisAudioAnalyzeNoteFrequency::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeNoteFrequency* eac = (erisAudioAnalyzeNoteFrequency*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             float thresh;
@@ -97,7 +171,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZENOTEFREQUENCY,c,sizeof(gPC_ERISAUDIOANALYZENOTEFREQUENCY)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeNoteFrequency::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeNoteFrequency* eac = (erisAudioAnalyzeNoteFrequency*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // [' void ']
@@ -106,7 +180,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZENOTEFREQUENCY,c,sizeof(gPC_ERISAUDIOANALYZENOTEFREQUENCY)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeNoteFrequency::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeNoteFrequency* eac = (erisAudioAnalyzeNoteFrequency*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // [' void ']
@@ -115,7 +189,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZENOTEFREQUENCY,c,sizeof(gPC_ERISAUDIOANALYZENOTEFREQUENCY)) == 0 &&\
         strncmp(gPM_PROBABILITY,m,sizeof(gPM_PROBABILITY)) == 0){
         strcpy(objName,erisAudioAnalyzeNoteFrequency::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeNoteFrequency* eac = (erisAudioAnalyzeNoteFrequency*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // [' void ']
@@ -124,7 +198,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEPEAK,c,sizeof(gPC_ERISAUDIOANALYZEPEAK)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzePeak::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzePeak* eac = (erisAudioAnalyzePeak*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -133,7 +207,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEPEAK,c,sizeof(gPC_ERISAUDIOANALYZEPEAK)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzePeak::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzePeak* eac = (erisAudioAnalyzePeak*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -142,7 +216,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEPEAK,c,sizeof(gPC_ERISAUDIOANALYZEPEAK)) == 0 &&\
         strncmp(gPM_READPEAKTOPEAK,m,sizeof(gPM_READPEAKTOPEAK)) == 0){
         strcpy(objName,erisAudioAnalyzePeak::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzePeak* eac = (erisAudioAnalyzePeak*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -151,7 +225,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     /*}else if(strncmp(gPC_ERISAUDIOANALYZEPRINT,c,sizeof(gPC_ERISAUDIOANALYZEPRINT)) == 0 &&\
         strncmp(gPM_TRIGGER,m,sizeof(gPM_TRIGGER)) == 0){
         strcpy(objName,erisAudioAnalyzePrint::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzePrint* eac = (erisAudioAnalyzePrint*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -160,7 +234,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZEPRINT,c,sizeof(gPC_ERISAUDIOANALYZEPRINT)) == 0 &&\
         strncmp(gPM_TRIGGER,m,sizeof(gPM_TRIGGER)) == 0){
         strcpy(objName,erisAudioAnalyzePrint::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzePrint* eac = (erisAudioAnalyzePrint*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float level;
@@ -171,7 +245,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZERMS,c,sizeof(gPC_ERISAUDIOANALYZERMS)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeRMS::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeRMS* eac = (erisAudioAnalyzeRMS*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -180,7 +254,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZERMS,c,sizeof(gPC_ERISAUDIOANALYZERMS)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeRMS::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeRMS* eac = (erisAudioAnalyzeRMS*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -189,7 +263,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZETONEDETECT,c,sizeof(gPC_ERISAUDIOANALYZETONEDETECT)) == 0 &&\
         strncmp(gPM_SET_PARAMS,m,sizeof(gPM_SET_PARAMS)) == 0){
         strcpy(objName,erisAudioAnalyzeToneDetect::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeToneDetect* eac = (erisAudioAnalyzeToneDetect*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int32_t coef;
@@ -201,7 +275,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZETONEDETECT,c,sizeof(gPC_ERISAUDIOANALYZETONEDETECT)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioAnalyzeToneDetect::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeToneDetect* eac = (erisAudioAnalyzeToneDetect*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -210,7 +284,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZETONEDETECT,c,sizeof(gPC_ERISAUDIOANALYZETONEDETECT)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioAnalyzeToneDetect::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeToneDetect* eac = (erisAudioAnalyzeToneDetect*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -219,7 +293,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOANALYZETONEDETECT,c,sizeof(gPC_ERISAUDIOANALYZETONEDETECT)) == 0 &&\
         strncmp(gPM_THRESHOLD,m,sizeof(gPM_THRESHOLD)) == 0){
         strcpy(objName,erisAudioAnalyzeToneDetect::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAnalyzeToneDetect* eac = (erisAudioAnalyzeToneDetect*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float level;
@@ -229,7 +303,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }/*else if(strncmp(gPC_ERISASYNCAUDIOINPUTSPDIF3,c,sizeof(gPC_ERISASYNCAUDIOINPUTSPDIF3)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAsyncAudioInputSPDIF3::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAsyncAudioInputSPDIF3* eac = (erisAsyncAudioInputSPDIF3*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -238,7 +312,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }*/else if(strncmp(gPC_ERISAUDIOEFFECTBITCRUSHER,c,sizeof(gPC_ERISAUDIOEFFECTBITCRUSHER)) == 0 &&\
         strncmp(gPM_BITS,m,sizeof(gPM_BITS)) == 0){
         strcpy(objName,erisAudioEffectBitcrusher::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectBitcrusher* eac = (erisAudioEffectBitcrusher*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t b;
@@ -248,7 +322,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTBITCRUSHER,c,sizeof(gPC_ERISAUDIOEFFECTBITCRUSHER)) == 0 &&\
         strncmp(gPM_SAMPLERATE,m,sizeof(gPM_SAMPLERATE)) == 0){
         strcpy(objName,erisAudioEffectBitcrusher::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectBitcrusher* eac = (erisAudioEffectBitcrusher*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float hz;
@@ -258,7 +332,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTCHORUS,c,sizeof(gPC_ERISAUDIOEFFECTCHORUS)) == 0 &&\
         strncmp(gPM_VOICES,m,sizeof(gPM_VOICES)) == 0){
         strcpy(objName,erisAudioEffectChorus::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectChorus* eac = (erisAudioEffectChorus*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t n_chorus;
@@ -268,7 +342,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTDIGITALCOMBINE,c,sizeof(gPC_ERISAUDIOEFFECTDIGITALCOMBINE)) == 0 &&\
         strncmp(gPM_SETCOMBINEMODE,m,sizeof(gPM_SETCOMBINEMODE)) == 0){
         strcpy(objName,erisAudioEffectDigitalCombine::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectDigitalCombine* eac = (erisAudioEffectDigitalCombine*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t mode_in;
@@ -278,7 +352,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTDELAY,c,sizeof(gPC_ERISAUDIOEFFECTDELAY)) == 0 &&\
         strncmp(gPM_DELAY,m,sizeof(gPM_DELAY)) == 0){
         strcpy(objName,erisAudioEffectDelay::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectDelay* eac = (erisAudioEffectDelay*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t channel;
@@ -289,7 +363,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTDELAY,c,sizeof(gPC_ERISAUDIOEFFECTDELAY)) == 0 &&\
         strncmp(gPM_DISABLE,m,sizeof(gPM_DISABLE)) == 0){
         strcpy(objName,erisAudioEffectDelay::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectDelay* eac = (erisAudioEffectDelay*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t channel;
@@ -299,7 +373,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTDELAYEXTERNAL,c,sizeof(gPC_ERISAUDIOEFFECTDELAYEXTERNAL)) == 0 &&\
         strncmp(gPM_DELAY,m,sizeof(gPM_DELAY)) == 0){
         strcpy(objName,erisAudioEffectDelayExternal::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectDelayExternal* eac = (erisAudioEffectDelayExternal*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t channel;
@@ -310,7 +384,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTDELAYEXTERNAL,c,sizeof(gPC_ERISAUDIOEFFECTDELAYEXTERNAL)) == 0 &&\
         strncmp(gPM_DISABLE,m,sizeof(gPM_DISABLE)) == 0){
         strcpy(objName,erisAudioEffectDelayExternal::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectDelayExternal* eac = (erisAudioEffectDelayExternal*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint8_t channel;
@@ -320,7 +394,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_NOTEON,m,sizeof(gPM_NOTEON)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -329,7 +403,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_NOTEOFF,m,sizeof(gPM_NOTEOFF)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -338,7 +412,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_DELAY,m,sizeof(gPM_DELAY)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -348,7 +422,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_ATTACK,m,sizeof(gPM_ATTACK)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -358,7 +432,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_HOLD,m,sizeof(gPM_HOLD)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -368,7 +442,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_DECAY,m,sizeof(gPM_DECAY)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -378,7 +452,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_SUSTAIN,m,sizeof(gPM_SUSTAIN)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float level;
@@ -388,7 +462,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_RELEASE,m,sizeof(gPM_RELEASE)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -398,7 +472,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_RELEASENOTEON,m,sizeof(gPM_RELEASENOTEON)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float milliseconds;
@@ -408,7 +482,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_ISACTIVE,m,sizeof(gPM_ISACTIVE)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -417,7 +491,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTENVELOPE,c,sizeof(gPC_ERISAUDIOEFFECTENVELOPE)) == 0 &&\
         strncmp(gPM_ISSUSTAIN,m,sizeof(gPM_ISSUSTAIN)) == 0){
         strcpy(objName,erisAudioEffectEnvelope::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectEnvelope* eac = (erisAudioEffectEnvelope*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -426,7 +500,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFADE,c,sizeof(gPC_ERISAUDIOEFFECTFADE)) == 0 &&\
         strncmp(gPM_FADEIN,m,sizeof(gPM_FADEIN)) == 0){
         strcpy(objName,erisAudioEffectFade::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFade* eac = (erisAudioEffectFade*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t milliseconds;
@@ -436,7 +510,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFADE,c,sizeof(gPC_ERISAUDIOEFFECTFADE)) == 0 &&\
         strncmp(gPM_FADEOUT,m,sizeof(gPM_FADEOUT)) == 0){
         strcpy(objName,erisAudioEffectFade::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFade* eac = (erisAudioEffectFade*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t milliseconds;
@@ -446,7 +520,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFLANGE,c,sizeof(gPC_ERISAUDIOEFFECTFLANGE)) == 0 &&\
         strncmp(gPM_VOICES,m,sizeof(gPM_VOICES)) == 0){
         strcpy(objName,erisAudioEffectFlange::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFlange* eac = (erisAudioEffectFlange*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t delay_offset;
@@ -458,7 +532,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFREEVERB,c,sizeof(gPC_ERISAUDIOEFFECTFREEVERB)) == 0 &&\
         strncmp(gPM_ROOMSIZE,m,sizeof(gPM_ROOMSIZE)) == 0){
         strcpy(objName,erisAudioEffectFreeverb::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFreeverb* eac = (erisAudioEffectFreeverb*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -468,7 +542,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFREEVERB,c,sizeof(gPC_ERISAUDIOEFFECTFREEVERB)) == 0 &&\
         strncmp(gPM_DAMPING,m,sizeof(gPM_DAMPING)) == 0){
         strcpy(objName,erisAudioEffectFreeverb::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFreeverb* eac = (erisAudioEffectFreeverb*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -478,7 +552,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFREEVERBSTEREO,c,sizeof(gPC_ERISAUDIOEFFECTFREEVERBSTEREO)) == 0 &&\
         strncmp(gPM_ROOMSIZE,m,sizeof(gPM_ROOMSIZE)) == 0){
         strcpy(objName,erisAudioEffectFreeverbStereo::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFreeverbStereo* eac = (erisAudioEffectFreeverbStereo*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -488,7 +562,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTFREEVERBSTEREO,c,sizeof(gPC_ERISAUDIOEFFECTFREEVERBSTEREO)) == 0 &&\
         strncmp(gPM_DAMPING,m,sizeof(gPM_DAMPING)) == 0){
         strcpy(objName,erisAudioEffectFreeverbStereo::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectFreeverbStereo* eac = (erisAudioEffectFreeverbStereo*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -498,7 +572,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTGRANULAR,c,sizeof(gPC_ERISAUDIOEFFECTGRANULAR)) == 0 &&\
         strncmp(gPM_SETSPEED,m,sizeof(gPM_SETSPEED)) == 0){
         strcpy(objName,erisAudioEffectGranular::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectGranular* eac = (erisAudioEffectGranular*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float ratio;
@@ -508,7 +582,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTGRANULAR,c,sizeof(gPC_ERISAUDIOEFFECTGRANULAR)) == 0 &&\
         strncmp(gPM_BEGINFREEZE,m,sizeof(gPM_BEGINFREEZE)) == 0){
         strcpy(objName,erisAudioEffectGranular::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectGranular* eac = (erisAudioEffectGranular*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float grain_length;
@@ -518,7 +592,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTGRANULAR,c,sizeof(gPC_ERISAUDIOEFFECTGRANULAR)) == 0 &&\
         strncmp(gPM_BEGINPITCHSHIFT,m,sizeof(gPM_BEGINPITCHSHIFT)) == 0){
         strcpy(objName,erisAudioEffectGranular::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectGranular* eac = (erisAudioEffectGranular*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float grain_length;
@@ -528,7 +602,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTGRANULAR,c,sizeof(gPC_ERISAUDIOEFFECTGRANULAR)) == 0 &&\
         strncmp(gPM_STOP,m,sizeof(gPM_STOP)) == 0){
         strcpy(objName,erisAudioEffectGranular::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectGranular* eac = (erisAudioEffectGranular*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -537,7 +611,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOEFFECTREVERB,c,sizeof(gPC_ERISAUDIOEFFECTREVERB)) == 0 &&\
         strncmp(gPM_REVERBTIME,m,sizeof(gPM_REVERBTIME)) == 0){
         strcpy(objName,erisAudioEffectReverb::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioEffectReverb* eac = (erisAudioEffectReverb*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             float time;
@@ -547,7 +621,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOFILTERFIR,c,sizeof(gPC_ERISAUDIOFILTERFIR)) == 0 &&\
         strncmp(gPM_END,m,sizeof(gPM_END)) == 0){
         strcpy(objName,erisAudioFilterFIR::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioFilterFIR* eac = (erisAudioFilterFIR*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -556,7 +630,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOFILTERSTATEVARIABLE,c,sizeof(gPC_ERISAUDIOFILTERSTATEVARIABLE)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioFilterStateVariable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioFilterStateVariable* eac = (erisAudioFilterStateVariable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -566,7 +640,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOFILTERSTATEVARIABLE,c,sizeof(gPC_ERISAUDIOFILTERSTATEVARIABLE)) == 0 &&\
         strncmp(gPM_RESONANCE,m,sizeof(gPM_RESONANCE)) == 0){
         strcpy(objName,erisAudioFilterStateVariable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioFilterStateVariable* eac = (erisAudioFilterStateVariable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float q;
@@ -576,7 +650,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOFILTERSTATEVARIABLE,c,sizeof(gPC_ERISAUDIOFILTERSTATEVARIABLE)) == 0 &&\
         strncmp(gPM_OCTAVECONTROL,m,sizeof(gPM_OCTAVECONTROL)) == 0){
         strcpy(objName,erisAudioFilterStateVariable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioFilterStateVariable* eac = (erisAudioFilterStateVariable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -586,7 +660,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2S,c,sizeof(gPC_ERISAUDIOINPUTI2S)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2S::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2S* eac = (erisAudioInputI2S*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -595,7 +669,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2SSLAVE,c,sizeof(gPC_ERISAUDIOINPUTI2SSLAVE)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2Sslave::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2Sslave* eac = (erisAudioInputI2Sslave*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -604,7 +678,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2S2,c,sizeof(gPC_ERISAUDIOINPUTI2S2)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2S2::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2S2* eac = (erisAudioInputI2S2*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -613,7 +687,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2SHEX,c,sizeof(gPC_ERISAUDIOINPUTI2SHEX)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2SHex::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2SHex* eac = (erisAudioInputI2SHex*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -622,7 +696,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2SOCT,c,sizeof(gPC_ERISAUDIOINPUTI2SOCT)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2SOct::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2SOct* eac = (erisAudioInputI2SOct*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -631,7 +705,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOINPUTI2SQUAD,c,sizeof(gPC_ERISAUDIOINPUTI2SQUAD)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioInputI2SQuad::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioInputI2SQuad* eac = (erisAudioInputI2SQuad*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -640,7 +714,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOMIXER4,c,sizeof(gPC_ERISAUDIOMIXER4)) == 0 &&\
         strncmp(gPM_GAIN,m,sizeof(gPM_GAIN)) == 0){
         strcpy(objName,erisAudioMixer4::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioMixer4* eac = (erisAudioMixer4*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t channel;
@@ -651,7 +725,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOMIXER4,c,sizeof(gPC_ERISAUDIOMIXER4)) == 0 &&\
         strncmp(gPM_GAIN,m,sizeof(gPM_GAIN)) == 0){
         strcpy(objName,erisAudioMixer4::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioMixer4* eac = (erisAudioMixer4*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			uint32_t channel;
@@ -662,7 +736,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOAMPLIFIER,c,sizeof(gPC_ERISAUDIOAMPLIFIER)) == 0 &&\
         strncmp(gPM_GAIN,m,sizeof(gPM_GAIN)) == 0){
         strcpy(objName,erisAudioAmplifier::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioAmplifier* eac = (erisAudioAmplifier*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -673,7 +747,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTADAT,c,sizeof(gPC_ERISAUDIOOUTPUTADAT)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputADAT::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputADAT* eac = (erisAudioOutputADAT*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -683,7 +757,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTANALOG,c,sizeof(gPC_ERISAUDIOOUTPUTANALOG)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputAnalog::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputAnalog* eac = (erisAudioOutputAnalog*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -692,7 +766,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTANALOG,c,sizeof(gPC_ERISAUDIOOUTPUTANALOG)) == 0 &&\
         strncmp(gPM_ANALOGREFERENCE,m,sizeof(gPM_ANALOGREFERENCE)) == 0){
         strcpy(objName,erisAudioOutputAnalog::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputAnalog* eac = (erisAudioOutputAnalog*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t ref;
@@ -703,7 +777,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTANALOGSTEREO,c,sizeof(gPC_ERISAUDIOOUTPUTANALOGSTEREO)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputAnalogStereo::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputAnalogStereo* eac = (erisAudioOutputAnalogStereo*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -712,7 +786,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTANALOGSTEREO,c,sizeof(gPC_ERISAUDIOOUTPUTANALOGSTEREO)) == 0 &&\
         strncmp(gPM_ANALOGREFERENCE,m,sizeof(gPM_ANALOGREFERENCE)) == 0){
         strcpy(objName,erisAudioOutputAnalogStereo::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputAnalogStereo* eac = (erisAudioOutputAnalogStereo*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t ref;
@@ -722,7 +796,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2S,c,sizeof(gPC_ERISAUDIOOUTPUTI2S)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2S::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2S* eac = (erisAudioOutputI2S*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -731,7 +805,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2SSLAVE,c,sizeof(gPC_ERISAUDIOOUTPUTI2SSLAVE)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2Sslave::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2Sslave* eac = (erisAudioOutputI2Sslave*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -740,7 +814,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2S,c,sizeof(gPC_ERISAUDIOOUTPUTI2S)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2S::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2S* eac = (erisAudioOutputI2S*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -749,7 +823,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2SSLAVE,c,sizeof(gPC_ERISAUDIOOUTPUTI2SSLAVE)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2Sslave::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2Sslave* eac = (erisAudioOutputI2Sslave*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -758,7 +832,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2S2,c,sizeof(gPC_ERISAUDIOOUTPUTI2S2)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2S2::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2S2* eac = (erisAudioOutputI2S2*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -767,7 +841,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2SHEX,c,sizeof(gPC_ERISAUDIOOUTPUTI2SHEX)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2SHex::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2SHex* eac = (erisAudioOutputI2SHex*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -776,7 +850,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2SOCT,c,sizeof(gPC_ERISAUDIOOUTPUTI2SOCT)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2SOct::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2SOct* eac = (erisAudioOutputI2SOct*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -785,7 +859,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTI2SQUAD,c,sizeof(gPC_ERISAUDIOOUTPUTI2SQUAD)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputI2SQuad::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputI2SQuad* eac = (erisAudioOutputI2SQuad*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -794,7 +868,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }/*else if(strncmp(gPC_ERISAUDIOOUTPUTMQS,c,sizeof(gPC_ERISAUDIOOUTPUTMQS)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputMQS::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputMQS* eac = (erisAudioOutputMQS*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -803,7 +877,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTPT8211,c,sizeof(gPC_ERISAUDIOOUTPUTPT8211)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputPT8211::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputPT8211* eac = (erisAudioOutputPT8211*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -812,7 +886,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTPT8211,c,sizeof(gPC_ERISAUDIOOUTPUTPT8211)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputPT8211::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputPT8211* eac = (erisAudioOutputPT8211*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -821,7 +895,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTPT8211_2,c,sizeof(gPC_ERISAUDIOOUTPUTPT8211_2)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputPT8211_2::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputPT8211_2* eac = (erisAudioOutputPT8211_2*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -830,7 +904,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTSPDIF,c,sizeof(gPC_ERISAUDIOOUTPUTSPDIF)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputSPDIF::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputSPDIF* eac = (erisAudioOutputSPDIF*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -839,7 +913,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTSPDIF2,c,sizeof(gPC_ERISAUDIOOUTPUTSPDIF2)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputSPDIF2::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputSPDIF2* eac = (erisAudioOutputSPDIF2*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -848,7 +922,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTSPDIF3,c,sizeof(gPC_ERISAUDIOOUTPUTSPDIF3)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputSPDIF3::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputSPDIF3* eac = (erisAudioOutputSPDIF3*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -857,7 +931,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTTDM,c,sizeof(gPC_ERISAUDIOOUTPUTTDM)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputTDM::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputTDM* eac = (erisAudioOutputTDM*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -866,7 +940,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOOUTPUTTDM2,c,sizeof(gPC_ERISAUDIOOUTPUTTDM2)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioOutputTDM2::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioOutputTDM2* eac = (erisAudioOutputTDM2*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -875,7 +949,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }*/else if(strncmp(gPC_ERISAUDIOPLAYMEMORY,c,sizeof(gPC_ERISAUDIOPLAYMEMORY)) == 0 &&\
         strncmp(gPM_STOP,m,sizeof(gPM_STOP)) == 0){
         strcpy(objName,erisAudioPlayMemory::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayMemory* eac = (erisAudioPlayMemory*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -884,7 +958,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYMEMORY,c,sizeof(gPC_ERISAUDIOPLAYMEMORY)) == 0 &&\
         strncmp(gPM_ISPLAYING,m,sizeof(gPM_ISPLAYING)) == 0){
         strcpy(objName,erisAudioPlayMemory::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayMemory* eac = (erisAudioPlayMemory*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -893,7 +967,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYMEMORY,c,sizeof(gPC_ERISAUDIOPLAYMEMORY)) == 0 &&\
         strncmp(gPM_POSITIONMILLIS,m,sizeof(gPM_POSITIONMILLIS)) == 0){
         strcpy(objName,erisAudioPlayMemory::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayMemory* eac = (erisAudioPlayMemory*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -902,7 +976,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYMEMORY,c,sizeof(gPC_ERISAUDIOPLAYMEMORY)) == 0 &&\
         strncmp(gPM_LENGTHMILLIS,m,sizeof(gPM_LENGTHMILLIS)) == 0){
         strcpy(objName,erisAudioPlayMemory::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayMemory* eac = (erisAudioPlayMemory*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -911,7 +985,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     /*}else if(strncmp(gPC_ERISAUDIOPLAYQUEUE,c,sizeof(gPC_ERISAUDIOPLAYQUEUE)) == 0 &&\
         strncmp(gPM_PLAY,m,sizeof(gPM_PLAY)) == 0){
         strcpy(objName,erisAudioPlayQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayQueue* eac = (erisAudioPlayQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int16_t data;
@@ -921,7 +995,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYQUEUE,c,sizeof(gPC_ERISAUDIOPLAYQUEUE)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioPlayQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayQueue* eac = (erisAudioPlayQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -930,7 +1004,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYQUEUE,c,sizeof(gPC_ERISAUDIOPLAYQUEUE)) == 0 &&\
         strncmp(gPM_PLAYBUFFER,m,sizeof(gPM_PLAYBUFFER)) == 0){
         strcpy(objName,erisAudioPlayQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayQueue* eac = (erisAudioPlayQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -939,7 +1013,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     /*}else if(strncmp(gPC_ERISAUDIOPLAYQUEUE,c,sizeof(gPC_ERISAUDIOPLAYQUEUE)) == 0 &&\
         strncmp(gPM_STOP,m,sizeof(gPM_STOP)) == 0){
         strcpy(objName,erisAudioPlayQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlayQueue* eac = (erisAudioPlayQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -948,7 +1022,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYSERIALFLASHRAW,c,sizeof(gPC_ERISAUDIOPLAYSERIALFLASHRAW)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioPlaySerialflashRaw::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlaySerialflashRaw* eac = (erisAudioPlaySerialflashRaw*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -957,7 +1031,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYSERIALFLASHRAW,c,sizeof(gPC_ERISAUDIOPLAYSERIALFLASHRAW)) == 0 &&\
         strncmp(gPM_STOP,m,sizeof(gPM_STOP)) == 0){
         strcpy(objName,erisAudioPlaySerialflashRaw::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlaySerialflashRaw* eac = (erisAudioPlaySerialflashRaw*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -966,7 +1040,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYSERIALFLASHRAW,c,sizeof(gPC_ERISAUDIOPLAYSERIALFLASHRAW)) == 0 &&\
         strncmp(gPM_ISPLAYING,m,sizeof(gPM_ISPLAYING)) == 0){
         strcpy(objName,erisAudioPlaySerialflashRaw::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlaySerialflashRaw* eac = (erisAudioPlaySerialflashRaw*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -975,7 +1049,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYSERIALFLASHRAW,c,sizeof(gPC_ERISAUDIOPLAYSERIALFLASHRAW)) == 0 &&\
         strncmp(gPM_POSITIONMILLIS,m,sizeof(gPM_POSITIONMILLIS)) == 0){
         strcpy(objName,erisAudioPlaySerialflashRaw::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlaySerialflashRaw* eac = (erisAudioPlaySerialflashRaw*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -984,7 +1058,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOPLAYSERIALFLASHRAW,c,sizeof(gPC_ERISAUDIOPLAYSERIALFLASHRAW)) == 0 &&\
         strncmp(gPM_LENGTHMILLIS,m,sizeof(gPM_LENGTHMILLIS)) == 0){
         strcpy(objName,erisAudioPlaySerialflashRaw::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioPlaySerialflashRaw* eac = (erisAudioPlaySerialflashRaw*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -993,7 +1067,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIORECORDQUEUE,c,sizeof(gPC_ERISAUDIORECORDQUEUE)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioRecordQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioRecordQueue* eac = (erisAudioRecordQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1002,7 +1076,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIORECORDQUEUE,c,sizeof(gPC_ERISAUDIORECORDQUEUE)) == 0 &&\
         strncmp(gPM_AVAILABLE,m,sizeof(gPM_AVAILABLE)) == 0){
         strcpy(objName,erisAudioRecordQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioRecordQueue* eac = (erisAudioRecordQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1011,7 +1085,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIORECORDQUEUE,c,sizeof(gPC_ERISAUDIORECORDQUEUE)) == 0 &&\
         strncmp(gPM_CLEAR,m,sizeof(gPM_CLEAR)) == 0){
         strcpy(objName,erisAudioRecordQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioRecordQueue* eac = (erisAudioRecordQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1020,7 +1094,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIORECORDQUEUE,c,sizeof(gPC_ERISAUDIORECORDQUEUE)) == 0 &&\
         strncmp(gPM_FREEBUFFER,m,sizeof(gPM_FREEBUFFER)) == 0){
         strcpy(objName,erisAudioRecordQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioRecordQueue* eac = (erisAudioRecordQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1029,7 +1103,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIORECORDQUEUE,c,sizeof(gPC_ERISAUDIORECORDQUEUE)) == 0 &&\
         strncmp(gPM_END,m,sizeof(gPM_END)) == 0){
         strcpy(objName,erisAudioRecordQueue::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioRecordQueue* eac = (erisAudioRecordQueue*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1038,7 +1112,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMDC,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMDC)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformDc::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformDc* eac = (erisAudioSynthWaveformDc*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1048,7 +1122,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMDC,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMDC)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformDc::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformDc* eac = (erisAudioSynthWaveformDc*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1059,7 +1133,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMDC,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMDC)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioSynthWaveformDc::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformDc* eac = (erisAudioSynthWaveformDc*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1068,7 +1142,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHKARPLUSSTRONG,c,sizeof(gPC_ERISAUDIOSYNTHKARPLUSSTRONG)) == 0 &&\
         strncmp(gPM_NOTEON,m,sizeof(gPM_NOTEON)) == 0){
         strcpy(objName,erisAudioSynthKarplusStrong::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthKarplusStrong* eac = (erisAudioSynthKarplusStrong*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float frequency;
@@ -1079,7 +1153,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHKARPLUSSTRONG,c,sizeof(gPC_ERISAUDIOSYNTHKARPLUSSTRONG)) == 0 &&\
         strncmp(gPM_NOTEOFF,m,sizeof(gPM_NOTEOFF)) == 0){
         strcpy(objName,erisAudioSynthKarplusStrong::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthKarplusStrong* eac = (erisAudioSynthKarplusStrong*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float velocity;
@@ -1089,7 +1163,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHNOISEPINK,c,sizeof(gPC_ERISAUDIOSYNTHNOISEPINK)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthNoisePink::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthNoisePink* eac = (erisAudioSynthNoisePink*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1099,7 +1173,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMPWM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMPWM)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveformPWM::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformPWM* eac = (erisAudioSynthWaveformPWM*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1109,7 +1183,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMPWM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMPWM)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformPWM::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformPWM* eac = (erisAudioSynthWaveformPWM*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1119,7 +1193,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHSIMPLEDRUM,c,sizeof(gPC_ERISAUDIOSYNTHSIMPLEDRUM)) == 0 &&\
         strncmp(gPM_NOTEON,m,sizeof(gPM_NOTEON)) == 0){
         strcpy(objName,erisAudioSynthSimpleDrum::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthSimpleDrum* eac = (erisAudioSynthSimpleDrum*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['']
@@ -1128,7 +1202,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHSIMPLEDRUM,c,sizeof(gPC_ERISAUDIOSYNTHSIMPLEDRUM)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthSimpleDrum::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthSimpleDrum* eac = (erisAudioSynthSimpleDrum*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1138,7 +1212,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHSIMPLEDRUM,c,sizeof(gPC_ERISAUDIOSYNTHSIMPLEDRUM)) == 0 &&\
         strncmp(gPM_LENGTH,m,sizeof(gPM_LENGTH)) == 0){
         strcpy(objName,erisAudioSynthSimpleDrum::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthSimpleDrum* eac = (erisAudioSynthSimpleDrum*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			int32_t milliseconds;
@@ -1148,7 +1222,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHSIMPLEDRUM,c,sizeof(gPC_ERISAUDIOSYNTHSIMPLEDRUM)) == 0 &&\
         strncmp(gPM_SECONDMIX,m,sizeof(gPM_SECONDMIX)) == 0){
         strcpy(objName,erisAudioSynthSimpleDrum::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthSimpleDrum* eac = (erisAudioSynthSimpleDrum*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float level;
@@ -1158,7 +1232,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHSIMPLEDRUM,c,sizeof(gPC_ERISAUDIOSYNTHSIMPLEDRUM)) == 0 &&\
         strncmp(gPM_PITCHMOD,m,sizeof(gPM_PITCHMOD)) == 0){
         strcpy(objName,erisAudioSynthSimpleDrum::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthSimpleDrum* eac = (erisAudioSynthSimpleDrum*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float depth;
@@ -1168,7 +1242,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINE,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINE)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveformSine::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSine* eac = (erisAudioSynthWaveformSine*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1178,7 +1252,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINE,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINE)) == 0 &&\
         strncmp(gPM_PHASE,m,sizeof(gPM_PHASE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSine::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSine* eac = (erisAudioSynthWaveformSine*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float angle;
@@ -1188,7 +1262,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINE,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINE)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSine::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSine* eac = (erisAudioSynthWaveformSine*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1198,7 +1272,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineHires::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineHires* eac = (erisAudioSynthWaveformSineHires*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1208,7 +1282,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES)) == 0 &&\
         strncmp(gPM_PHASE,m,sizeof(gPM_PHASE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineHires::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineHires* eac = (erisAudioSynthWaveformSineHires*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float angle;
@@ -1218,7 +1292,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEHIRES)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineHires::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineHires* eac = (erisAudioSynthWaveformSineHires*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1228,7 +1302,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineModulated* eac = (erisAudioSynthWaveformSineModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1238,7 +1312,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED)) == 0 &&\
         strncmp(gPM_PHASE,m,sizeof(gPM_PHASE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineModulated* eac = (erisAudioSynthWaveformSineModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float angle;
@@ -1248,7 +1322,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformSineModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformSineModulated* eac = (erisAudioSynthWaveformSineModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1258,7 +1332,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHTONESWEEP,c,sizeof(gPC_ERISAUDIOSYNTHTONESWEEP)) == 0 &&\
         strncmp(gPM_PLAY,m,sizeof(gPM_PLAY)) == 0){
         strcpy(objName,erisAudioSynthToneSweep::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         Serial.print("M ");Serial.println(objName);
         erisAudioSynthToneSweep* eac = (erisAudioSynthToneSweep*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
@@ -1272,7 +1346,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHTONESWEEP,c,sizeof(gPC_ERISAUDIOSYNTHTONESWEEP)) == 0 &&\
         strncmp(gPM_ISPLAYING,m,sizeof(gPM_ISPLAYING)) == 0){
         strcpy(objName,erisAudioSynthToneSweep::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthToneSweep* eac = (erisAudioSynthToneSweep*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1281,7 +1355,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHTONESWEEP,c,sizeof(gPC_ERISAUDIOSYNTHTONESWEEP)) == 0 &&\
         strncmp(gPM_READ,m,sizeof(gPM_READ)) == 0){
         strcpy(objName,erisAudioSynthToneSweep::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthToneSweep* eac = (erisAudioSynthToneSweep*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1290,7 +1364,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1300,7 +1374,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_PHASE,m,sizeof(gPM_PHASE)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float angle;
@@ -1310,7 +1384,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1320,7 +1394,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_OFFSET,m,sizeof(gPM_OFFSET)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1330,7 +1404,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_PULSEWIDTH,m,sizeof(gPM_PULSEWIDTH)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1340,7 +1414,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             short t_type;
@@ -1350,7 +1424,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORM,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORM)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioSynthWaveform::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveform* eac = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float t_amp;
@@ -1362,7 +1436,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_FREQUENCY,m,sizeof(gPM_FREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1372,7 +1446,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1382,7 +1456,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_OFFSET,m,sizeof(gPM_OFFSET)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;
@@ -1392,7 +1466,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             short t_type;
@@ -1402,7 +1476,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_BEGIN,m,sizeof(gPM_BEGIN)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float t_amp;
@@ -1414,7 +1488,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_FREQUENCYMODULATION,m,sizeof(gPM_FREQUENCYMODULATION)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float octaves;
@@ -1424,7 +1498,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED,c,sizeof(gPC_ERISAUDIOSYNTHWAVEFORMMODULATED)) == 0 &&\
         strncmp(gPM_PHASEMODULATION,m,sizeof(gPM_PHASEMODULATION)) == 0){
         strcpy(objName,erisAudioSynthWaveformModulated::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWaveformModulated* eac = (erisAudioSynthWaveformModulated*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float degrees;
@@ -1434,7 +1508,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVETABLE,c,sizeof(gPC_ERISAUDIOSYNTHWAVETABLE)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthWavetable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWavetable* eac = (erisAudioSynthWavetable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float v;
@@ -1444,7 +1518,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVETABLE,c,sizeof(gPC_ERISAUDIOSYNTHWAVETABLE)) == 0 &&\
         strncmp(gPM_STOP,m,sizeof(gPM_STOP)) == 0){
         strcpy(objName,erisAudioSynthWavetable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWavetable* eac = (erisAudioSynthWavetable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1453,7 +1527,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVETABLE,c,sizeof(gPC_ERISAUDIOSYNTHWAVETABLE)) == 0 &&\
         strncmp(gPM_SETFREQUENCY,m,sizeof(gPM_SETFREQUENCY)) == 0){
         strcpy(objName,erisAudioSynthWavetable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWavetable* eac = (erisAudioSynthWavetable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float freq;
@@ -1463,7 +1537,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHWAVETABLE,c,sizeof(gPC_ERISAUDIOSYNTHWAVETABLE)) == 0 &&\
         strncmp(gPM_GETENVSTATE,m,sizeof(gPM_GETENVSTATE)) == 0){
         strcpy(objName,erisAudioSynthWavetable::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthWavetable* eac = (erisAudioSynthWavetable*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
             //total_read = sscanf(p, "" , ); // ['void']
@@ -1472,7 +1546,7 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     }else if(strncmp(gPC_ERISAUDIOSYNTHNOISEWHITE,c,sizeof(gPC_ERISAUDIOSYNTHNOISEWHITE)) == 0 &&\
         strncmp(gPM_AMPLITUDE,m,sizeof(gPM_AMPLITUDE)) == 0){
         strcpy(objName,erisAudioSynthNoiseWhite::short_name_lookup);
-        strcat(objName,"_");strcat(objName,i);
+        strcat(objName,":");strcat(objName,i);
         erisAudioSynthNoiseWhite* eac = (erisAudioSynthNoiseWhite*) (ad->getAudioStreamObjByName(objName));
         if (eac != NULL){
 			float n;

@@ -826,7 +826,7 @@ $(document).ready(function () {
     $("#PINK_NOISE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT amp_2 0\nCONNECT pink_1 0 amp_2 0\nDISCONNECT mixer_5 3"
+            "data": "DISCONNECT amp:2 0\nCONNECT pink:1 0 amp:2 0\nDISCONNECT mixer:5 3"
         });
         $("#received").empty();
     });
@@ -834,7 +834,7 @@ $(document).ready(function () {
     $("#TONE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT amp_2\nCONNECT tonesweep_1 0 amp_2 0\nAPC erisAudioSynthToneSweep 1 play 0.15,20,2100,10.0"
+            "data": "DISCONNECT amp:2\nCONNECT tonesweep:1 0 amp:2 0\nAPC erisAudioSynthToneSweep 1 play 0.15,20,2100,10.0"
         });
         $("#received").empty();
     });
@@ -842,7 +842,7 @@ $(document).ready(function () {
     $("#MUTE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT i2s-out_1 0"
+            "data": "DISCONNECT i2s-out:1 0"
         });
         $("#received").empty();
     });
@@ -1174,8 +1174,8 @@ function renderAudioBlocks() {
             source_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].srcType;
             dest_name = watch.AudioDirector.AudioConnectionPool[(c).toString()].destType;
 
-            source_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].srcInstance;
-            dest_name += "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            source_name += ":" + watch.AudioDirector.AudioConnectionPool[(c).toString()].srcInstance;
+            dest_name += ":" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
 
             watch.AudioDirector.AudioStreams[source_name].graph_node.
             connect(watch.AudioDirector.AudioConnectionPool[(c).toString()].srcPort,
@@ -1313,9 +1313,9 @@ function renderAudioBlocksByFlow() {
         x -= 400;
         for (c in watch.AudioDirector.AudioConnectionPool) {
             //for each connection in the pool
-            i = watch.AudioDirector.AudioConnectionPool[(c).toString()].destType + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
+            i = watch.AudioDirector.AudioConnectionPool[(c).toString()].destType + ":" + watch.AudioDirector.AudioConnectionPool[(c).toString()].destInstance;
             if (rank.includes(i)) {
-                s = watch.AudioDirector.AudioConnectionPool[(c).toString()].srcType + "_" + watch.AudioDirector.AudioConnectionPool[(c).toString()].srcInstance;
+                s = watch.AudioDirector.AudioConnectionPool[(c).toString()].srcType + ":" + watch.AudioDirector.AudioConnectionPool[(c).toString()].srcInstance;
                 next_rank.push(s);
             }
         }

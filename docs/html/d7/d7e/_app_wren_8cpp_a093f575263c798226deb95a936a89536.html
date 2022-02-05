@@ -107,17 +107,17 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a093f575263c7982
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00382">382</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                                          {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="comment">//(char* type)</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordtype">int</span> num_slots;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordtype">int</span> slot = 0;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <a class="code" href="../../d8/d1c/class_audio_director.html">AudioDirector</a>* ad = app-&gt;<a class="code" href="../../d0/da0/class_app_wren_a5b7bb694345971558aff2dc19fc1eaa4.html#a5b7bb694345971558aff2dc19fc1eaa4">getAudioDirector</a>();</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * type = wrenGetSlotString(vm, 1);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  wrenSetSlotDouble(vm, 0,ad-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a38f7750195fe509a250469f2359400ac.html#a38f7750195fe509a250469f2359400ac">getTypeInstanceCount</a>(type));</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00390">390</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                                          {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="comment">//(char* type)</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <span class="keywordtype">int</span> num_slots;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordtype">int</span> slot = 0;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <a class="code" href="../../da/d96/class_app_manager.html">AppManager</a>* am = <a class="code" href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a>();</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>* app = (<a class="code" href="../../d0/da0/class_app_wren.html">AppWren</a>*)am-&gt;<a class="code" href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">getAppByName</a>(<span class="stringliteral">&quot;AppWren&quot;</span>);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  <a class="code" href="../../d8/d1c/class_audio_director.html">AudioDirector</a>* ad = app-&gt;<a class="code" href="../../d0/da0/class_app_wren_a5b7bb694345971558aff2dc19fc1eaa4.html#a5b7bb694345971558aff2dc19fc1eaa4">getAudioDirector</a>();</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * type = wrenGetSlotString(vm, 1);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  wrenSetSlotDouble(vm, 0,ad-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a38f7750195fe509a250469f2359400ac.html#a38f7750195fe509a250469f2359400ac">getTypeInstanceCount</a>(type));</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
 <div class="ttc" id="aclass_app_manager_a08daaf40a3ddaa938603039eb1e67d09_html_a08daaf40a3ddaa938603039eb1e67d09"><div class="ttname"><a href="../../da/d96/class_app_manager_a08daaf40a3ddaa938603039eb1e67d09.html#a08daaf40a3ddaa938603039eb1e67d09">AppManager::getAppByName</a></div><div class="ttdeci">AppBaseClass * getAppByName(const char *appName)</div><div class="ttdoc">Get the App pointer By Name. Returns NULL if not found.</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager.cpp:449</a></div></div>
 <div class="ttc" id="aclass_app_manager_aa76d9691e8d029656413590fbe4dee86_html_aa76d9691e8d029656413590fbe4dee86"><div class="ttname"><a href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86">AppManager::getInstance</a></div><div class="ttdeci">static AppManager * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager.h:64</a></div></div>
 <div class="ttc" id="aclass_app_manager_html"><div class="ttname"><a href="../../da/d96/class_app_manager.html">AppManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00033">AppManager.h:33</a></div></div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a093f575263c7982
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00449">AppManager::getAppByName()</a>, <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00264">AppWren::getAudioDirector()</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00064">AppManager::getInstance()</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00276">AudioDirector::getTypeInstanceCount()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00578">bindForeignMethod()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00606">bindForeignMethod()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

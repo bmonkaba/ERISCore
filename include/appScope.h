@@ -15,7 +15,7 @@
 class AppScope:public AppBaseClass {
   public:
     AppScope():AppBaseClass(){
-        scope = (erisAudioAnalyzeScope*) (ad->getAudioStreamObjByName("scope_1"));
+        scope = (erisAudioAnalyzeScope*) (ad->getAudioStreamObjByName("scope:1"));
         scope->trigger();
         strcpy(name,"AppScope");
         scale = 0;

@@ -98,6 +98,7 @@ const char gPC_ERISAUDIOSYNTHWAVEFORM[] PROGMEM = "erisAudioSynthWaveform";
 const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED[] PROGMEM = "erisAudioSynthWaveformModulated";
 const char gPC_ERISAUDIOSYNTHWAVETABLE[] PROGMEM = "erisAudioSynthWavetable";
 const char gPC_ERISAUDIOSYNTHNOISEWHITE[] PROGMEM = "erisAudioSynthNoiseWhite";
+const char gPC_ERISAUDIOFILTERBIQUAD[] PROGMEM = "erisAudioFilterBiquad";
 
 //globals - parameter methods
 const char gPM_AVAILABLE[] PROGMEM = "available";
@@ -255,7 +256,12 @@ const char gPM_PHASEMODULATION[] PROGMEM = "phaseModulation";
 const char gPM_SETFREQUENCY[] PROGMEM = "setFrequency";
 const char gPM_GETENVSTATE[] PROGMEM = "getEnvState";
 const char gPM_SETSTATE[] PROGMEM = "setState";
-
+const char gPM_SETLOWPASS[] PROGMEM = "setLowpass";
+const char gPM_SETHIGHPASS[] PROGMEM = "setHighpass";
+const char gPM_SETBANDPASS[] PROGMEM = "setBandpass";
+const char gPM_SETNOTCH[] PROGMEM = "setNotch";
+const char gPM_SETLOWSHELF[] PROGMEM = "setLowShelf";
+const char gPM_SETHIGHSHELF[] PROGMEM = "setHighShelf";
 
 
 /**

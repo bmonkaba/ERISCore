@@ -82,7 +82,7 @@ class AppCQT:public AppBaseClass {
       sprintf(name, "AppCQT"); //set the applications name
       AudioNoInterrupts();
       for (int16_t i=0; i < osc_bank_size; i++){
-        sprintf(buffer, "waveform_%d", i+1);
+        sprintf(buffer, "waveform:%d", i+1);
         //request the object from the audio director
         osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
         //init the object to the default state
@@ -91,8 +91,8 @@ class AppCQT:public AppBaseClass {
       
       AudioInterrupts();
       //take care to downcast fetched objects to the correct type!
-      fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_1"));
-      fft2 = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024_2"));
+      fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024:1"));
+      fft2 = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024:2"));
       fft2->toggleActiveRange(); //switch to low range
       //zero out the data variables
       memset(&fftRVal,0,sizeof(FFTReadRange));
