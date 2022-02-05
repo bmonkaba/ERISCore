@@ -1,5 +1,6 @@
 # ERISCore
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6281e4f51c234ce0ae55e4fb6f51ce17)](https://app.codacy.com/gh/bmonkaba/ERISCore?utm_source=github.com&utm_medium=referral&utm_content=bmonkaba/ERISCore&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://app.travis-ci.com/bmonkaba/ERISCore.svg?branch=master)](https://app.travis-ci.com/bmonkaba/ERISCore)
 <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a>
 <img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg">
