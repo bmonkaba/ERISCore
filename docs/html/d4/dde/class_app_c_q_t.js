@@ -7,7 +7,7 @@ var class_app_c_q_t =
     [ "__attribute__", "d4/dde/class_app_c_q_t_a1ca4e432022b3dd9486e057df6656d05.html#a1ca4e432022b3dd9486e057df6656d05", null ],
     [ "_updatePosition", "d4/dde/class_app_c_q_t.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "d4/dde/class_app_c_q_t.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "d4/dde/class_app_c_q_t.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "d4/dde/class_app_c_q_t.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "init", "d4/dde/class_app_c_q_t_a5b262ebd84f1446cb830f3e1c5437791.html#a5b262ebd84f1446cb830f3e1c5437791", null ],
     [ "isName", "d4/dde/class_app_c_q_t.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "d4/dde/class_app_c_q_t_a5c33a48120697387e5435ae9d80aeb7c.html#a5c33a48120697387e5435ae9d80aeb7c", null ],

@@ -1,6 +1,29 @@
+/**
+ * @file ErisGlobals.h
+ * @author Brian Monkaba (brian.monkaba@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-02-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <Arduino.h>
 #ifndef _GlobalDefines_
 #define _GlobalDefines_
+
+/**
+ * @brief TFT screen width (pixels)
+ * 
+ */
+#define SCREEN_WIDTH 320
+
+/**
+ * @brief TFT screen height (pixels)
+ * 
+ */
+#define SCREEN_HEIGHT 240
 
 /**
  * @brief uncomment if using external ram /n
@@ -14,19 +37,19 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 720000000
+#define CPU_BASE_FREQ 740000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 600000000
+#define CPU_LOW_POWER_MODE_FREQ 700000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 740000000
+#define CPU_BOOST_MAX_FREQ 760000000
 
 /**
  * @brief thermal throttle trip point temp
@@ -88,12 +111,12 @@
  * @brief min delta threshold after a throttle event which will trigger an output flush
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 500
+#define SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD 128
 /**
  * @brief throttle delay used to capture the delta change used in the delta threshold check
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 100
+#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 6
 /**
  * @brief max tx header size\n
  *  this is used to support multipart transmissions by capturing the start of message header
@@ -147,7 +170,7 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 283
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 683
 /**
  * @brief transmission rate of the stats
  * 
@@ -241,8 +264,8 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 64000
-#define WREN_FRAME_BUFFER_SIZE 320*240
+#define WREN_VM_HEAP_SIZE 42000
+#define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT
 #else
 #define WREN_VM_HEAP_SIZE 16000
 #define WREN_FRAME_BUFFER_SIZE 120*120

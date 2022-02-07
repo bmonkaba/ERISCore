@@ -17,7 +17,6 @@
 #include "AppBaseClass.h"
 #include <SdFat.h>
 #include <Print.h>
-//#include <SdFat.h>
 
 /**
  * @brief  Serial communication service and interface
@@ -79,7 +78,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
         stream_pos = 0;
         p_SD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
-        memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE+1);
+        memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
         memset(received_chars,0,SERIAL_RX_BUFFER_SIZE);
     }; 
     
@@ -130,7 +129,16 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     elapsedMillis et_since_periodic_data_dict_tx;
     elapsedMillis et_since_periodic_stats_tx;
     uint16_t checksum(const char *msg);
-    void streamHandler();
+    void streamTransmitHandler();
+    void streamReceiveHandler();
+    void messageHandler_LS();
+    void messageHandler_GET();
+    void messageHandler_WREN_SCRIPT_START();
+    void messageHandler_WREN_SCRIPT_COMPILE();
+    void messageHandler_WREN_SCRIPT_EXECUTE();
+    void messageHandler_WREN_SCRIPT_SAVE();
+    void messageHandler_UPDATE_DD();
+    void messageHandler_GET_RAM2();
     void render() override{};    //called only when the app is active
     void update() override;
     void txOverflowHandler();

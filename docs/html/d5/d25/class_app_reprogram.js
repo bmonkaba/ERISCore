@@ -3,7 +3,7 @@ var class_app_reprogram =
     [ "AppReprogram", "d5/d25/class_app_reprogram_a634035268338e296c0c8569f101998cd.html#a634035268338e296c0c8569f101998cd", null ],
     [ "_updatePosition", "d5/d25/class_app_reprogram.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "d5/d25/class_app_reprogram.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "d5/d25/class_app_reprogram.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "d5/d25/class_app_reprogram.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "d5/d25/class_app_reprogram.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "d5/d25/class_app_reprogram.html#ae1c0e3873bd65919752776311c7c509b", null ],
     [ "onAnalog1", "d5/d25/class_app_reprogram.html#a9690562f1ed92ae4544190d68be66c1e", null ],

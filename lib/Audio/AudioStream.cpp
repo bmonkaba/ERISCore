@@ -244,15 +244,14 @@ bool AudioConnection::disconnect(void)
 	if (!isConnected) return false;
 	if (dest_index > pDst->num_inputs) return false;
 	//Serial.flush();
-	Serial.println(F("M (eris)AudioConnection:disconnect()"));
-	Serial.print(F("M \tsrc name:"));Serial.println(pSrc->short_name);
-	Serial.print(F("M \tsrc ptr:"));Serial.println((uint32_t)pSrc);
-	Serial.print(F("M \tsrc index:"));Serial.println((uint32_t)src_index);
-	Serial.print(F("M \tdst name:"));Serial.println(pDst->short_name);
-	Serial.print(F("M \tdst ptr:"));Serial.println((uint32_t)pDst);
-	Serial.print(F("M \tdst index:"));Serial.println((uint32_t)dest_index);
-	Serial.print(F("M \tpSrc->destination_list:"));Serial.println((uint32_t)pSrc->destination_list);
-	//Serial.flush();
+	//Serial.print(F("M (eris)AudioConnection:disconnect()"));
+	//Serial.print(F(" src: "));Serial.print(pSrc->short_name);
+	//Serial.print(F(" src ptr:"));Serial.print((uint32_t)pSrc);
+	//Serial.print(F(":"));Serial.print((uint32_t)src_index);
+	//Serial.print(F(" dst: "));Serial.print(pDst->short_name);
+	//Serial.print(F(" dst ptr:"));Serial.print((uint32_t)pDst);
+	//Serial.print(F(":"));Serial.println((uint32_t)dest_index);
+
 	//__disable_irq();
 	// Remove destination from source list
 	p = pSrc->destination_list;

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 4457;
+var viewWidth = 4519;
 var viewHeight = 3634;
 var sectionId = 'dynsection-0';
 </script>
@@ -102,7 +102,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="1935.5" y="-2831.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass()</text>
 <text text-anchor="start" x="1935.5" y="-2811.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass(const AppBaseClass &amp;)=delete</text>
 <text text-anchor="start" x="1935.5" y="-2791.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void getFocus()</text>
-<text text-anchor="start" x="1935.5" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getId()</text>
+<text text-anchor="start" x="1935.5" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getID()</text>
 <text text-anchor="start" x="1935.5" y="-2751.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool isName(const char *name_string)</text>
 <text text-anchor="start" x="1935.5" y="-2731.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void messageHandler(AppBaseClass</text>
 <text text-anchor="start" x="1935.5" y="-2711.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *sender, const char *message)</text>
@@ -614,52 +614,61 @@ var sectionId = 'dynsection-0';
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:href="../../d2/da8/class_svc_serial_command_interface.html" target="_top" xlink:title="Serial communication service and interface Serial commands (rx): &#160;.">
-<polygon fill="none" stroke="black" points="4062.5,-620.5 4062.5,-1344.5 4448.5,-1344.5 4448.5,-620.5 4062.5,-620.5"/>
-<text text-anchor="middle" x="4255.5" y="-1326.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
-<polyline fill="none" stroke="black" points="4062.5,-1316.5 4448.5,-1316.5 "/>
-<text text-anchor="start" x="4070.5" y="-1298.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_data_dict_tx</text>
-<text text-anchor="start" x="4070.5" y="-1278.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_stats_tx</text>
-<text text-anchor="start" x="4070.5" y="-1258.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_poll</text>
-<text text-anchor="start" x="4070.5" y="-1238.1" font-family="Helvetica,sans-Serif" font-size="18.00"># FsFile file</text>
-<text text-anchor="start" x="4070.5" y="-1218.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint32_t index_capture_buffer</text>
-<text text-anchor="start" x="4070.5" y="-1198.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_rx_buffer</text>
-<text text-anchor="start" x="4070.5" y="-1178.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_tx_buffer</text>
-<text text-anchor="start" x="4070.5" y="-1158.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_capturing_bulk_data</text>
-<text text-anchor="start" x="4070.5" y="-1138.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_periodic_messages_enabled</text>
-<text text-anchor="start" x="4070.5" y="-1118.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_streaming_file</text>
-<text text-anchor="start" x="4070.5" y="-1098.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char multipart_header</text>
-<text text-anchor="start" x="4070.5" y="-1078.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
-<text text-anchor="start" x="4070.5" y="-1058.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
-<text text-anchor="start" x="4070.5" y="-1038.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
-<text text-anchor="start" x="4070.5" y="-1018.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char received_chars</text>
-<text text-anchor="start" x="4070.5" y="-998.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_file</text>
-<text text-anchor="start" x="4070.5" y="-978.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_path</text>
-<text text-anchor="start" x="4070.5" y="-958.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
-<text text-anchor="start" x="4070.5" y="-938.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char tx_Buffer</text>
-<text text-anchor="start" x="4070.5" y="-918.1" font-family="Helvetica,sans-Serif" font-size="18.00"># volatile bool tx_buffer_overflow_flag</text>
-<polyline fill="none" stroke="black" points="4062.5,-908.5 4448.5,-908.5 "/>
-<text text-anchor="start" x="4070.5" y="-890.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
-<text text-anchor="start" x="4070.5" y="-870.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
-<text text-anchor="start" x="4070.5" y="-850.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
-<text text-anchor="start" x="4070.5" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
-<text text-anchor="start" x="4070.5" y="-810.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
-<text text-anchor="start" x="4070.5" y="-790.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
-<text text-anchor="start" x="4070.5" y="-770.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
-<text text-anchor="start" x="4070.5" y="-750.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
-<text text-anchor="start" x="4070.5" y="-730.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
-<text text-anchor="start" x="4070.5" y="-710.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
-<text text-anchor="start" x="4070.5" y="-690.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamHandler()</text>
-<text text-anchor="start" x="4070.5" y="-670.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
-<text text-anchor="start" x="4070.5" y="-650.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
-<text text-anchor="start" x="4070.5" y="-630.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
+<polygon fill="none" stroke="black" points="4062,-530.5 4062,-1434.5 4511,-1434.5 4511,-530.5 4062,-530.5"/>
+<text text-anchor="middle" x="4286.5" y="-1416.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
+<polyline fill="none" stroke="black" points="4062,-1406.5 4511,-1406.5 "/>
+<text text-anchor="start" x="4070" y="-1388.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_data_dict_tx</text>
+<text text-anchor="start" x="4070" y="-1368.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_stats_tx</text>
+<text text-anchor="start" x="4070" y="-1348.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_poll</text>
+<text text-anchor="start" x="4070" y="-1328.1" font-family="Helvetica,sans-Serif" font-size="18.00"># FsFile file</text>
+<text text-anchor="start" x="4070" y="-1308.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint32_t index_capture_buffer</text>
+<text text-anchor="start" x="4070" y="-1288.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_rx_buffer</text>
+<text text-anchor="start" x="4070" y="-1268.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_tx_buffer</text>
+<text text-anchor="start" x="4070" y="-1248.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_capturing_bulk_data</text>
+<text text-anchor="start" x="4070" y="-1228.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_periodic_messages_enabled</text>
+<text text-anchor="start" x="4070" y="-1208.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_streaming_file</text>
+<text text-anchor="start" x="4070" y="-1188.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char multipart_header</text>
+<text text-anchor="start" x="4070" y="-1168.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
+<text text-anchor="start" x="4070" y="-1148.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
+<text text-anchor="start" x="4070" y="-1128.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
+<text text-anchor="start" x="4070" y="-1108.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char received_chars</text>
+<text text-anchor="start" x="4070" y="-1088.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_file</text>
+<text text-anchor="start" x="4070" y="-1068.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_path</text>
+<text text-anchor="start" x="4070" y="-1048.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
+<text text-anchor="start" x="4070" y="-1028.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char tx_Buffer</text>
+<text text-anchor="start" x="4070" y="-1008.1" font-family="Helvetica,sans-Serif" font-size="18.00"># volatile bool tx_buffer_overflow_flag</text>
+<polyline fill="none" stroke="black" points="4062,-998.5 4511,-998.5 "/>
+<text text-anchor="start" x="4070" y="-980.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
+<text text-anchor="start" x="4070" y="-960.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
+<text text-anchor="start" x="4070" y="-940.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
+<text text-anchor="start" x="4070" y="-920.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
+<text text-anchor="start" x="4070" y="-900.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
+<text text-anchor="start" x="4070" y="-880.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
+<text text-anchor="start" x="4070" y="-860.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
+<text text-anchor="start" x="4070" y="-840.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
+<text text-anchor="start" x="4070" y="-820.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET()</text>
+<text text-anchor="start" x="4070" y="-800.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM2()</text>
+<text text-anchor="start" x="4070" y="-780.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_LS()</text>
+<text text-anchor="start" x="4070" y="-760.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_UPDATE_DD()</text>
+<text text-anchor="start" x="4070" y="-740.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_COMPILE()</text>
+<text text-anchor="start" x="4070" y="-720.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_EXECUTE()</text>
+<text text-anchor="start" x="4070" y="-700.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_SAVE()</text>
+<text text-anchor="start" x="4070" y="-680.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_START()</text>
+<text text-anchor="start" x="4070" y="-660.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
+<text text-anchor="start" x="4070" y="-640.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
+<text text-anchor="start" x="4070" y="-620.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamReceiveHandler()</text>
+<text text-anchor="start" x="4070" y="-600.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamTransmitHandler()</text>
+<text text-anchor="start" x="4070" y="-580.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
+<text text-anchor="start" x="4070" y="-560.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
+<text text-anchor="start" x="4070" y="-540.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node1&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M2343.67,-2783.06C2744.92,-2715.82 3611.66,-2512.14 4053.5,-1965 4193.34,-1791.84 4243.86,-1546.62 4259.41,-1344.61"/>
-<polygon fill="none" stroke="midnightblue" points="2342.99,-2779.63 2333.7,-2784.72 2344.13,-2786.54 2342.99,-2779.63"/>
+<path fill="none" stroke="midnightblue" d="M2343.72,-2781.57C2743.1,-2711.97 3604.05,-2504.73 4053.5,-1965 4176.29,-1817.55 4236.65,-1616.53 4265.53,-1434.81"/>
+<polygon fill="none" stroke="midnightblue" points="2343.04,-2778.13 2333.78,-2783.29 2344.23,-2785.03 2343.04,-2778.13"/>
 </g>
 </g>
 </svg>

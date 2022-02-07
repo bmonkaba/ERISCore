@@ -4,7 +4,7 @@ var class_app_audio_to_polyphonic =
     [ "_updatePosition", "dc/d27/class_app_audio_to_polyphonic.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "changeVoice", "dc/d27/class_app_audio_to_polyphonic_a3d364aed0498754d8e63c082205be0a2.html#a3d364aed0498754d8e63c082205be0a2", null ],
     [ "getFocus", "dc/d27/class_app_audio_to_polyphonic.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "dc/d27/class_app_audio_to_polyphonic.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "dc/d27/class_app_audio_to_polyphonic.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "initalize", "dc/d27/class_app_audio_to_polyphonic_aee6cbedf9885036f5fbb8d560e9a931b.html#aee6cbedf9885036f5fbb8d560e9a931b", null ],
     [ "isName", "dc/d27/class_app_audio_to_polyphonic.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "makeAudioConnections", "dc/d27/class_app_audio_to_polyphonic_a805fac8a86e2d7b45054a818f79b45ac.html#a805fac8a86e2d7b45054a818f79b45ac", null ],

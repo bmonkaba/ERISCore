@@ -49,7 +49,7 @@ static void writeFn(WrenVM* vm, const char* text) {
   AppManager* am = AppManager::getInstance();
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)am->getAppByName("SCI");
   while(!sci->requestStartLZ4Message()){
-    delayMicroseconds(100);
+    delay(150);
   };
   sci->printf("VM %s", text);
   sci->sendLZ4Message();

@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    Serial.println(an-&gt;<a class="code" href="../../d4/d7c/class_animation_a1335e53d40b9068999c5e2a03722db83.html#a1335e53d40b9068999c5e2a03722db83">getFileName</a>());</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="comment">//for (unsigned long i = (320 * 64) ; i &lt; (320 * 240); i += 32){</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="comment">//for (unsigned long i = (SCREEN_WIDTH * 64) ; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){</span></div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  uint32_t chunk_size = (_width * _height)/ANIMATION_CHUNKS_PER_FRAME;</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  uint32_t i = an-&gt;<a class="code" href="../../d4/d7c/class_animation_a7b2fcf64d28c6938687ceef45110299b.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a> * chunk_size;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.seekSet(15 + (i*2)); <span class="comment">//skip the header - header will always be 15 bytes for full screen wallpaper</span></div>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00214">Animation::chunk</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00267">file</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00208">Animation::getFileName()</a>, <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00209">Animation::getPath()</a>, and <a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_source.html#l00266">p_SD</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00118">AppManager::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00136">AppManager::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

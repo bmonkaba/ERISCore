@@ -1,3 +1,21 @@
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
 Touch
 setCalibrationInputs
 erisAudioMixer8
@@ -14,20 +32,6 @@ erisAudioInputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioInputI2S2
 update call:[update] noreturn:[update]
-erisAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAsyncAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioInputAnalog
-update call:[update] noreturn:[update]
-erisAudioInputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioInputPDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM2
-update call:[update] noreturn:[update]
 erisAudioOutputI2S
 update call:[update] noreturn:[update]
 erisAudioOutputI2SQuad
@@ -39,30 +43,6 @@ update call:[update] noreturn:[update]
 erisAudioOutputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioOutputI2S2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211_2
-update call:[update] noreturn:[update]
-erisAudioOutputAnalog
-update call:[update] noreturn:[update]
-erisAudioOutputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioOutputPWM
-update call:[update] noreturn:[update]
-erisAudioOutputMQS
-update call:[update] noreturn:[update]
-erisAudioOutputTDM
-update call:[update] noreturn:[update]
-erisAudioOutputTDM2
-update call:[update] noreturn:[update]
-erisAudioOutputADAT
 update call:[update] noreturn:[update]
 erisAudioAmplifier
 update call:[update] noreturn:[update]
@@ -150,8 +130,6 @@ erisAudioAnalyzeToneDetect
 update call:[update] noreturn:[update]
 erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
-erisAudioAnalyzePrint
-update call:[update] noreturn:[update]
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
 update call:[abs,analogRead]
 readAN1 call:[return]
@@ -162,25 +140,7 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
-Surface
-Surface
-Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
-requestSubSurfaceBufferP call:[F,print,println]
-getSurfaceBufferP
-getWidth
-getHeight
-hash
-Animation call:[memset,sizeof] noreturn:[memset]
-setPath call:[strcpy,strlen] noreturn:[strcpy]
-isFrameComplete
-getFileName
-getPath
-ILI9341_t3_ERIS
-getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
-getId
+getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
@@ -200,17 +160,6 @@ onAnalog2
 onAnalog3
 onAnalog4
 messageHandler
-getInstance call:[AppManager] noreturn:[AppManager]
-chdir call:[chdir] noreturn:[chdir]
-chdir call:[chdir] noreturn:[chdir]
-ls call:[ls] noreturn:[ls]
-SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
-empty call:[memset]
-requestStartLZ4Message call:[startLZ4Message]
-render
-startLZ4Message call:[empty,print] noreturn:[print]
-write call:[txOverflowHandler] noreturn:[txOverflowHandler]
-flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 SvcErisAudioParameterController call:[strcpy] noreturn:[strcpy]
 render
 update
@@ -226,7 +175,22 @@ onAnalog4
 connectionCount
 setSCI
 setAPC
+getFunctionCount call:[generateFunctionList]
+getFunctionListItem call:[generateFunctionList]
+getTypeCountByFunction call:[queryTypesByFunction]
+getInstance call:[AppManager] noreturn:[AppManager]
+chdir call:[chdir] noreturn:[chdir]
+chdir call:[chdir] noreturn:[chdir]
+ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+requestStartLZ4Message call:[startLZ4Message]
+render
+startLZ4Message call:[empty,print] noreturn:[print]
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 AppManager global:[UI_ANIMATED_WALLPAPER_PATH,UI_BUTTON_ACTIVE_BORDER_COLOR,UI_BUTTON_FILL_COLOR,UI_BUTTON_INACTIVE_BORDER_COLOR,UI_BUTTON_SHADE_COLOR,UI_BUTTON_TEXT_COLOR,UI_SLIDER_BORDER_COLOR,UI_SLIDER_FILL_COLOR,UI_SLIDER_SHADE_COLOR,UI_SLIDER_TEXT_COLOR,touch] call:[F,SdioConfig,Surface,begin,create,initErrorHalt,memset,println,setCalibrationInputs,setFrameBuffer,setPWMPin,setPath,setRotation,setSD,sizeof,tempmon_init,useFrameBuffer] noreturn:[initErrorHalt,println]
+setup call:[CCM_CBCMR_FLEXSPI2_CLK_SEL,CCM_CBCMR_FLEXSPI2_PODF,CCM_CCGR7_FLEXSPI2,F,initAudioHardware,println,setAPC,setSCI] noreturn:[setAPC]
 update global:[AM_AN1,AM_AN2,AM_AN3,AM_AN4,AM_AUDIO_CPU,AM_AUDIO_CPU_MAX,AM_AUDIO_MEM,AM_AUDIO_MEM_MAX,AM_LOOP_TIME,AM_REDRAW_BG,AM_SERIAL_AVAIL,CPU_TEMP,FREE_HEAP,FREE_LOCAL,FREE_MEM,FREE_STACK,RENDER,RENDER_FRAME,RENDER_PERIOD,RT_CALLS,UPDATE_CALLS,touch] call:[AudioMemoryUsage,AudioMemoryUsageMax,AudioMemoryUsageMaxReset,AudioProcessorUsage,AudioProcessorUsageMax,AudioProcessorUsageMaxReset,F,FreeStack,availableForWrite,bltSDAnimationFullScreen,busy,freadAN1,freadAN2,freadAN3,freadAN4,free,getApp,getNextFrameChunk,getPoint,increment,isFrameComplete,malloc,memset,onAnalog1,onAnalog2,onAnalog3,onAnalog4,onFocus,onFocusLost,onTouch,onTouchDrag,onTouchRelease,println,read,readAN1,readAN2,readAN3,readAN4,render,requestArmSetClock,tempmonGetTemp,touched,update,updateScreenAsync,while] noreturn:[AudioMemoryUsageMaxReset,malloc,onAnalog4,onFocusLost,onTouchDrag,onTouchRelease,println,render,update,while]
 getSD
 getApp call:[while]
@@ -239,5 +203,5 @@ getActiveApp
 sendMessage call:[isName,messageHandler,while]
 getAppByName call:[isName,while]
 printStats call:[F,getAppByName,print,println,requestStartLZ4Message,sendLZ4Message,while] noreturn:[print]
-registerApp global:[_ad,sci]
+registerApp
 requestArmSetClock call:[set_arm_clock,tempmonGetTemp,update]

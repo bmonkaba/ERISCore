@@ -1,5 +1,14 @@
 var NAVTREEINDEX2 =
 {
+"d3/daf/classeris_audio_mixer8.html#a362f8375c64deaef923207f442b674db":[2,0,110,1],
+"d3/daf/classeris_audio_mixer8.html#a3a97d8e3b9d63b1cb6c4544d3aa040f2":[2,0,110,6],
+"d3/daf/classeris_audio_mixer8.html#a42fd2255b8482d626528cb8cbbedba9f":[2,0,110,13],
+"d3/daf/classeris_audio_mixer8.html#a43ccf2427001ee57a44a0998226f8e38":[2,0,110,31],
+"d3/daf/classeris_audio_mixer8.html#a61f36ead45d4188e26aee0bb1ebe4496":[2,0,110,22],
+"d3/daf/classeris_audio_mixer8.html#a643f654eb80d440b0535cd0e6244a85c":[2,0,110,38],
+"d3/daf/classeris_audio_mixer8.html#a6f70806d5f6baccccf03482dae743192":[2,0,110,28],
+"d3/daf/classeris_audio_mixer8.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[2,0,110,4],
+"d3/daf/classeris_audio_mixer8.html#a743e19367946485719cd96436da38970":[2,0,110,30],
 "d3/daf/classeris_audio_mixer8.html#a760fb58e212788dbec27664ea23bbd32":[2,0,110,27],
 "d3/daf/classeris_audio_mixer8.html#a76e57ea7b1d52d78545f1a35e287d10c":[2,0,110,16],
 "d3/daf/classeris_audio_mixer8.html#a7b7229bf13432eed30b08bfaf3d7a7ce":[2,0,110,25],
@@ -240,14 +249,5 @@ var NAVTREEINDEX2 =
 "d4/dd5/class_audio_synth_waveform.html#af9cd6c94cd50aa817ed928bc4a2d71e8":[2,0,67,41],
 "d4/dd5/class_audio_synth_waveform.html#afd0f87125aecd2222c87ab2f57cde6f9":[2,0,67,26],
 "d4/dd5/class_audio_synth_waveform.html#aff732b4ba2fa71f3a47b16247d024a92":[2,0,67,14],
-"d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab":[2,0,67,35],
-"d4/dd5/class_audio_synth_waveform_a26b58de690a697940d2441f7d73401b2.html#a26b58de690a697940d2441f7d73401b2":[2,0,67,4],
-"d4/dd5/class_audio_synth_waveform_a395cff98439e97ba08854b343eed4317.html#a395cff98439e97ba08854b343eed4317":[2,0,67,6],
-"d4/dd5/class_audio_synth_waveform_a61d94d86e578cc851270e6d50a993c6f.html#a61d94d86e578cc851270e6d50a993c6f":[2,0,67,5],
-"d4/dd5/class_audio_synth_waveform_a7c4d9340bcbe72c1e77cf3c8fd03ea2d.html#a7c4d9340bcbe72c1e77cf3c8fd03ea2d":[2,0,67,25],
-"d4/dd5/class_audio_synth_waveform_a8ce788d9982b1dd31429c8e84976b707.html#a8ce788d9982b1dd31429c8e84976b707":[2,0,67,45],
-"d4/dd5/class_audio_synth_waveform_a8f721d44e5cbda20dfd536ecd7539a7a.html#a8f721d44e5cbda20dfd536ecd7539a7a":[2,0,67,20],
-"d4/dd5/class_audio_synth_waveform_a9b3b6d96d89686e45376c2dd6fb1fb9a.html#a9b3b6d96d89686e45376c2dd6fb1fb9a":[2,0,67,50],
-"d4/dd5/class_audio_synth_waveform_aac2a3bafe78c684f9a7600eb0d62ddef.html#aac2a3bafe78c684f9a7600eb0d62ddef":[2,0,67,48],
-"d4/dd5/class_audio_synth_waveform_ab161845e669fd163c2c240963437fc19.html#ab161845e669fd163c2c240963437fc19":[2,0,67,15]
+"d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab":[2,0,67,35]
 };

@@ -30,20 +30,6 @@ erisAudioInputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioInputI2S2
 update call:[update] noreturn:[update]
-erisAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAsyncAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioInputAnalog
-update call:[update] noreturn:[update]
-erisAudioInputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioInputPDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM2
-update call:[update] noreturn:[update]
 erisAudioOutputI2S
 update call:[update] noreturn:[update]
 erisAudioOutputI2SQuad
@@ -55,30 +41,6 @@ update call:[update] noreturn:[update]
 erisAudioOutputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioOutputI2S2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211_2
-update call:[update] noreturn:[update]
-erisAudioOutputAnalog
-update call:[update] noreturn:[update]
-erisAudioOutputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioOutputPWM
-update call:[update] noreturn:[update]
-erisAudioOutputMQS
-update call:[update] noreturn:[update]
-erisAudioOutputTDM
-update call:[update] noreturn:[update]
-erisAudioOutputTDM2
-update call:[update] noreturn:[update]
-erisAudioOutputADAT
 update call:[update] noreturn:[update]
 erisAudioAmplifier
 update call:[update] noreturn:[update]
@@ -166,8 +128,6 @@ erisAudioAnalyzeToneDetect
 update call:[update] noreturn:[update]
 erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
-erisAudioAnalyzePrint
-update call:[update] noreturn:[update]
 Touch
 setCalibrationInputs
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
@@ -180,7 +140,7 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-getId
+getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
@@ -226,9 +186,12 @@ onAnalog4
 connectionCount
 setSCI
 setAPC
+getFunctionCount call:[generateFunctionList]
+getFunctionListItem call:[generateFunctionList]
+getTypeCountByFunction call:[queryTypesByFunction]
 AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
 AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
-shutdownVM call:[delete,releasePopUp,releaseWrenHandles,wrenFreeVM]
+shutdownVM call:[releasePopUp,releaseWrenHandles,wrenFreeVM]
 restartVM call:[shutdownVM,startVM] noreturn:[startVM]
 haltCallForwarding
 loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
@@ -246,7 +209,7 @@ setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[
 getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
 drawLine call:[CL,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel,drawSurfaceLine]
 drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
-isWrenResultOK call:[F,getAppByName,getInstance,printf]
+isWrenResultOK call:[F,printf]
 onFocus call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
 onFocusLost call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
 onTouch call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
@@ -260,12 +223,12 @@ _kill
 _getpid
 _times
 _gettimeofday call:[millis]
-writeFn call:[printf] noreturn:[printf]
+writeFn call:[delayMicroseconds,getAppByName,getInstance,printf,requestStartLZ4Message,sendLZ4Message] noreturn:[delayMicroseconds,sendLZ4Message]
 errorFn call:[printf]
 getSourceForModule call:[getAppByName,getInstance,loadModuleSource] noreturn:[loadModuleSource]
 loadModuleComplete call:[freeModuleSource,getAppByName,getInstance] noreturn:[freeModuleSource]
 loadModule call:[getSourceForModule,printf]
-wrenFastMemoryAllocator global:[wrenFastVMRam] call:[return]
+wrenFastMemoryAllocator call:[extmem_realloc] noreturn:[extmem_realloc]
 sendMessageCallback call:[getAppByName,getInstance,sendMessage,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
 setPositionCallback call:[getAppByName,getInstance,setPosition,wrenGetSlotDouble] noreturn:[setPosition]
 setDimensionCallback call:[getAppByName,getInstance,setDimension,wrenGetSlotDouble] noreturn:[setDimension]
@@ -281,6 +244,11 @@ restartVMCallback call:[getAppByName,getInstance,rebootRequest,wrenGetSlotString
 audioDirectorConnectCallback call:[connect,getAppByName,getAudioDirector,getInstance,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
 audioDirectorDisconnectCallback call:[disconnect,getAppByName,getAudioDirector,getInstance,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
 audioDirectorDisconnectAllCallback call:[disconnectAll,getAppByName,getAudioDirector,getInstance,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
+audioDirectorGetFunctionListCallback call:[getAppByName,getAudioDirector,getFunctionCount,getFunctionListItem,getInstance,wrenEnsureSlots,wrenInsertInList,wrenSetSlotNewList,wrenSetSlotString] noreturn:[wrenInsertInList]
+audioDirectorGetTypeListCallback call:[getAppByName,getAudioDirector,getInstance,getTypeCountByFunction,getTypeListItem,wrenEnsureSlots,wrenGetSlotString,wrenInsertInList,wrenSetSlotNewList,wrenSetSlotString] noreturn:[wrenInsertInList]
+audioDirectorGetTypeInstanceCountCallback call:[getAppByName,getAudioDirector,getInstance,getTypeInstanceCount,wrenGetSlotString,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
+audioDirectorDisableAudioInterrupts call:[AudioNoInterrupts] noreturn:[AudioNoInterrupts]
+audioDirectorEnableAudioInterrupts call:[AudioInterrupts] noreturn:[AudioInterrupts]
 dataDictUpdateCallback call:[getInstance,update,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
 dataDictReadCallback call:[getInstance,read,wrenGetSlotString,wrenSetSlotDouble] noreturn:[wrenSetSlotDouble]
 dataDictUpdateFloatCallback call:[getInstance,update,wrenGetSlotDouble,wrenGetSlotString,wrenSetSlotBool] noreturn:[wrenSetSlotBool]
@@ -301,7 +269,7 @@ vmConstructor call:[getWrenHandles,isWrenResultOK,loadScript,startVM,wrenCall,wr
 startVM call:[F,println,wrenInitConfiguration,wrenNewVM] noreturn:[wrenNewVM]
 messageHandler call:[F,chdir,close,getFocus,isName,isWrenResultOK,loadScript,open,print,println,remove,restartVM,returnFocus,sscanf,strcat,strlen,strncmp,wrenCall,wrenEnsureSlots,wrenSetSlotHandle,wrenSetSlotString,write] noreturn:[isWrenResultOK,println,restartVM,returnFocus]
 dynamicSurfaceManager call:[Surface,delete,getFrameAddress,getHeight,getWidth,memset,sizeof] noreturn:[memset]
-render call:[F,bltMem,drawRoundRect,dynamicSurfaceManager,fillRoundRect,freeModuleSource,isWrenResultOK,loadModuleSource,loadScript,println,read,releaseWrenHandles,restartVM,setCursor,setFont,setTextColor,wrenCall,wrenCollectGarbage,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[bltMem,drawRoundRect,fillRoundRect,println,releaseWrenHandles,restartVM,setFont,wrenCollectGarbage]
+render call:[F,bltMem,drawRoundRect,dynamicSurfaceManager,fillRoundRect,freeModuleSource,isWrenResultOK,loadModuleSource,loadScript,println,read,releaseWrenHandles,restartVM,setCursor,setFont,setTextColor,update,wrenCall,wrenCollectGarbage,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[bltMem,drawRoundRect,fillRoundRect,println,releaseWrenHandles,restartVM,setFont,update]
 update call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
 releaseWrenHandles call:[F,printf,wrenReleaseHandle]
 getWrenHandles call:[F,println,wrenEnsureSlots,wrenGetSlotHandle,wrenGetVariable,wrenMakeCallHandle] noreturn:[wrenMakeCallHandle]

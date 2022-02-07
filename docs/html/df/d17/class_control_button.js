@@ -3,7 +3,7 @@ var class_control_button =
     [ "ControlButton", "df/d17/class_control_button_af28f5829bfcd32a46727dd7b4eab89f0.html#af28f5829bfcd32a46727dd7b4eab89f0", null ],
     [ "_updatePosition", "df/d17/class_control_button.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "df/d17/class_control_button.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "df/d17/class_control_button.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "df/d17/class_control_button.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "df/d17/class_control_button.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "df/d17/class_control_button.html#ae1c0e3873bd65919752776311c7c509b", null ],
     [ "onAnalog1", "df/d17/class_control_button.html#a9690562f1ed92ae4544190d68be66c1e", null ],

@@ -107,19 +107,19 @@ $(document).ready(function(){initNavTree('d5/d96/class_audio_stream_ac5378800d56
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00381">381</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01">update_scheduled</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    attachInterruptVector(IRQ_SOFTWARE, <a class="code" href="../../d5/d96/class_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf.html#ad6b33ba52cfa5558c7b031b854e4bcdf">software_isr</a>);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    NVIC_SET_PRIORITY(IRQ_SOFTWARE, 208); <span class="comment">// 255 = lowest priority</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    NVIC_ENABLE_IRQ(IRQ_SOFTWARE);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="../../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01">update_scheduled</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00380">380</a> of file <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html">AudioStream.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;{</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01">update_scheduled</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    attachInterruptVector(IRQ_SOFTWARE, <a class="code" href="../../d5/d96/class_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf.html#ad6b33ba52cfa5558c7b031b854e4bcdf">software_isr</a>);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    NVIC_SET_PRIORITY(IRQ_SOFTWARE, 208); <span class="comment">// 255 = lowest priority</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    NVIC_ENABLE_IRQ(IRQ_SOFTWARE);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="../../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01">update_scheduled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;}</div>
 <div class="ttc" id="aclass_audio_stream_aba25b939ec5ee19afe4d607391a82c01_html_aba25b939ec5ee19afe4d607391a82c01"><div class="ttname"><a href="../../d5/d96/class_audio_stream_aba25b939ec5ee19afe4d607391a82c01.html#aba25b939ec5ee19afe4d607391a82c01">AudioStream::update_scheduled</a></div><div class="ttdeci">static bool update_scheduled</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6c/_audio_stream_8h_source.html#l00207">AudioStream.h:207</a></div></div>
-<div class="ttc" id="aclass_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf_html_ad6b33ba52cfa5558c7b031b854e4bcdf"><div class="ttname"><a href="../../d5/d96/class_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf.html#ad6b33ba52cfa5558c7b031b854e4bcdf">AudioStream::software_isr</a></div><div class="ttdeci">friend void software_isr(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7e/_audio_stream_8cpp_source.html#l00399">AudioStream.cpp:399</a></div></div>
+<div class="ttc" id="aclass_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf_html_ad6b33ba52cfa5558c7b031b854e4bcdf"><div class="ttname"><a href="../../d5/d96/class_audio_stream_ad6b33ba52cfa5558c7b031b854e4bcdf.html#ad6b33ba52cfa5558c7b031b854e4bcdf">AudioStream::software_isr</a></div><div class="ttdeci">friend void software_isr(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7e/_audio_stream_8cpp_source.html#l00398">AudioStream.cpp:398</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00399">AudioStream::software_isr</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00207">AudioStream::update_scheduled</a>.</p>
+<p class="reference">References <a class="el" href="../../d3/d7e/_audio_stream_8cpp_source.html#l00398">AudioStream::software_isr</a>, and <a class="el" href="../../df/d6c/_audio_stream_8h_source.html#l00207">AudioStream::update_scheduled</a>.</p>
 
 </div>
 </div>

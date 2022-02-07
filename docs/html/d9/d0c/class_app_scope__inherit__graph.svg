@@ -122,7 +122,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="8" y="-1091.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass()</text>
 <text text-anchor="start" x="8" y="-1071.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass(const AppBaseClass &amp;)=delete</text>
 <text text-anchor="start" x="8" y="-1051.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void getFocus()</text>
-<text text-anchor="start" x="8" y="-1031.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getId()</text>
+<text text-anchor="start" x="8" y="-1031.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getID()</text>
 <text text-anchor="start" x="8" y="-1011.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool isName(const char *name_string)</text>
 <text text-anchor="start" x="8" y="-991.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void messageHandler(AppBaseClass</text>
 <text text-anchor="start" x="8" y="-971.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *sender, const char *message)</text>

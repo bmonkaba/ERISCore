@@ -163,7 +163,7 @@
 <text text-anchor="start" x="10" y="-2831.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass()</text>
 <text text-anchor="start" x="10" y="-2811.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass(const AppBaseClass &amp;)=delete</text>
 <text text-anchor="start" x="10" y="-2791.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void getFocus()</text>
-<text text-anchor="start" x="10" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getId()</text>
+<text text-anchor="start" x="10" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getID()</text>
 <text text-anchor="start" x="10" y="-2751.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool isName(const char *name_string)</text>
 <text text-anchor="start" x="10" y="-2731.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void messageHandler(AppBaseClass</text>
 <text text-anchor="start" x="10" y="-2711.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *sender, const char *message)</text>

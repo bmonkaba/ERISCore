@@ -123,17 +123,17 @@ $(document).ready(function(){initNavTree('d7/d7e/_app_wren_8cpp_a9d291325e8690d8
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00144">144</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">if</span> (newSize == 0) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">if</span>(64000 &lt; newSize) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="comment">//realloc(ptr, newSize);</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="comment">//ram is fixed in this integration. </span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">//therfore all memory allocation requests will return the fast ram vm buffer</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="comment">//unless the request size is too large. </span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="comment">//return (void*)&amp;wrenFastVMRam[0];</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> extmem_realloc(ptr,newSize);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">if</span> (newSize == 0) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">if</span>(64000 &lt; newSize) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">//realloc(ptr, newSize);</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="comment">//ram is fixed in this integration. </span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="comment">//therfore all memory allocation requests will return the fast ram vm buffer</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">//unless the request size is too large. </span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="comment">//return (void*)&amp;wrenFastVMRam[0];</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">return</span> extmem_realloc(ptr,newSize);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

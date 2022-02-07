@@ -9,18 +9,19 @@
  * 
  */
 #include <Arduino.h>
+
 #include "ErisGlobals.h"
-#include "HSI.h"
+#include "SvcSerialCommandInterface.h"
+#include "ILI9341_t3_ERIS.h"
 #include "touch.h"
 #include "AnalogInputs.h"
-#include "ILI9341_t3_ERIS.h"
-//#include "font_Arial.h"
 #include "AudioDirector.h"
 #include "AppBaseClass.h"
 #include "svcDataDictionary.h"
+//#include "SvcErisAudioParameterController.h"
+
 #ifndef _AppManager_
 #define _AppManager_
-
 
 enum loopState{
   redraw_wait,
@@ -64,10 +65,17 @@ class AppManager {
     static AppManager* getInstance() //public access to get a reference to the singleton instance
     {
       if (NULL==obj) {
+        
         obj = new AppManager(); //create the object instance if not yet available
       }
       return obj;
     }
+    /**
+     * @brief intended to be called from the arduino setup() function, this method initalizes and sets up the "ErisCore"
+     * 
+     */
+    void static setup();
+    
     /**
      * @brief this is the main update loop for ErisCore
      * 

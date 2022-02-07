@@ -12,20 +12,6 @@ erisAudioInputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioInputI2S2
 update call:[update] noreturn:[update]
-erisAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAsyncAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioInputAnalog
-update call:[update] noreturn:[update]
-erisAudioInputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioInputPDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM2
-update call:[update] noreturn:[update]
 erisAudioOutputI2S
 update call:[update] noreturn:[update]
 erisAudioOutputI2SQuad
@@ -37,30 +23,6 @@ update call:[update] noreturn:[update]
 erisAudioOutputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioOutputI2S2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211_2
-update call:[update] noreturn:[update]
-erisAudioOutputAnalog
-update call:[update] noreturn:[update]
-erisAudioOutputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioOutputPWM
-update call:[update] noreturn:[update]
-erisAudioOutputMQS
-update call:[update] noreturn:[update]
-erisAudioOutputTDM
-update call:[update] noreturn:[update]
-erisAudioOutputTDM2
-update call:[update] noreturn:[update]
-erisAudioOutputADAT
 update call:[update] noreturn:[update]
 erisAudioAmplifier
 update call:[update] noreturn:[update]
@@ -148,20 +110,6 @@ erisAudioAnalyzeToneDetect
 update call:[update] noreturn:[update]
 erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
-erisAudioAnalyzePrint
-update call:[update] noreturn:[update]
-Touch
-setCalibrationInputs
-AnalogInputs call:[analogReadAveraging,analogReadResolution]
-update call:[abs,analogRead]
-readAN1 call:[return]
-readAN2 call:[return]
-readAN3 call:[return]
-readAN4 call:[return]
-freadAN1
-freadAN2
-freadAN3
-freadAN4
 Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
 Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
 Surface
@@ -180,7 +128,19 @@ getPath
 ILI9341_t3_ERIS
 getFrameAddress call:[return]
 busy call:[_busy] noreturn:[_busy]
-getId
+Touch
+setCalibrationInputs
+AnalogInputs call:[analogReadAveraging,analogReadResolution]
+update call:[abs,analogRead]
+readAN1 call:[return]
+readAN2 call:[return]
+readAN3 call:[return]
+readAN4 call:[return]
+freadAN1
+freadAN2
+freadAN3
+freadAN4
+getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
@@ -226,22 +186,28 @@ onAnalog4
 connectionCount
 setSCI
 setAPC
+getFunctionCount call:[generateFunctionList]
+getFunctionListItem call:[generateFunctionList]
+getTypeCountByFunction call:[queryTypesByFunction]
 I2CReset call:[begin,delay,delayMicroseconds,digitalWrite,pinMode] noreturn:[begin,delayMicroseconds]
 ExtADCReadReg call:[beginTransmission,endTransmission,read,requestFrom,write] noreturn:[read]
 ExtADCPrintStatus call:[ExtADCReadReg,F,print,printf] noreturn:[print,printf]
 ExtADCConfig call:[beginTransmission,delay,endTransmission,requestFrom,write] noreturn:[endTransmission]
 I2CBusScan call:[F,beginTransmission,endTransmission,print,println] noreturn:[print,println]
-AudioDirector global:[nullStr] call:[AudioConnection,F,addAudioStreamObj,erisAudioInputI2S,generateCategoryList,getAudioStreamObjByName,initialize_memory,print,println] noreturn:[AudioConnection,addAudioStreamObj,println]
+AudioDirector call:[AudioConnection,F,addAudioStreamObj,erisAudioInputI2S,generateFunctionList,getAudioStreamObjByName,initialize_memory,print,printf,println] noreturn:[AudioConnection,addAudioStreamObj,printf,println]
 initAudioHardware call:[ExtADCConfig,I2CReset]
 addAudioStreamObj call:[F,print,println,strcmp]
 printStats call:[ExtADCPrintStatus,F,print,println,processorUsage,processorUsageMax,requestStartLZ4Message,sendLZ4Message] noreturn:[print,sendLZ4Message]
-generateCategoryList call:[strcmp]
+generateFunctionList call:[strcmp]
+queryTypesByFunction call:[strcmp]
+getTypeInstanceCount call:[strcmp]
+getTypeListItem global:[nullStr] call:[queryTypesByFunction,return]
 getAudioStreamObjByName call:[F,print,println,strlen,strncmp,strstr,strtoul]
 getAudioStreamString call:[sprintf,strcpy]
 getConnectionString call:[sprintf,strcpy]
-connect call:[AudioConnection,F,print,println,reconnect,rewire]
+connect call:[AudioConnection,F,print,printf,reconnect,rewire]
 connect call:[connect,getAudioStreamObjByName] noreturn:[connect]
-ParseConnectString call:[atoi,memset,sizeof,strcpy,strlen,strtok]
+ParseConnectString call:[F,atoi,memset,print,println,sizeof,strcpy,strlen,strtok]
 connect call:[ParseConnectString,connect]
 disconnect call:[disconnect,getAudioStreamObjByName] noreturn:[disconnect]
 disconnect call:[F,disconnect,print,println]

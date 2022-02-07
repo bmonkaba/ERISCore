@@ -3,7 +3,7 @@ var class_control_slider =
     [ "ControlSlider", "de/d67/class_control_slider_af82e979d08da074aa3b73ac5592bfcb0.html#af82e979d08da074aa3b73ac5592bfcb0", null ],
     [ "_updatePosition", "de/d67/class_control_slider.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "de/d67/class_control_slider.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "de/d67/class_control_slider.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "de/d67/class_control_slider.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "getValue", "de/d67/class_control_slider_a0f0bf44e9b49f745c95843f1e97d2386.html#a0f0bf44e9b49f745c95843f1e97d2386", null ],
     [ "isName", "de/d67/class_control_slider.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "de/d67/class_control_slider.html#ae1c0e3873bd65919752776311c7c509b", null ],

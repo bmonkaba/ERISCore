@@ -36,13 +36,13 @@
 //periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
 
 //transmit period in msec
-#define TX_PERIOD 62
+#define TX_PERIOD 22
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 51
+#define TX_CQT_PERIOD 29
 
 // Constant Q Transform App
 //
@@ -159,10 +159,12 @@ class AppCQT:public AppBaseClass {
     }; 
 
     void FLASHMEM render (){
+      
       if (!is_active) return;
+      am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
       update_calls++;
       #ifdef TX_PERIODIC_FFT
-        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5000){
+        if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5900){
           if(sci->requestStartLZ4Message()){
             fft_buffer_serial_transmit_elapsed = 0;
             if(fft_buffer_select_for_serial_transmit < 2){
@@ -186,7 +188,7 @@ class AppCQT:public AppBaseClass {
           }
         } 
       #endif
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5000){
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5900){
         if(sci->requestStartLZ4Message()){
           for (uint16_t i=0;i < osc_bank_size;i++){
             if (oscBank[i].cqtBin < high_range) sci->printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
@@ -197,6 +199,7 @@ class AppCQT:public AppBaseClass {
         }
         //Serial.flush();
         cqt_serial_transmit_elapsed = 0;
+        am->requestArmSetClock(CPU_BASE_FREQ);
       }
       
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);

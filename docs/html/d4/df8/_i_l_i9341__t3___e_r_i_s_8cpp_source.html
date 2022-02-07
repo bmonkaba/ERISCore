@@ -261,8 +261,8 @@ $(document).ready(function(){initNavTree('d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_s
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  _height = dest-&gt;<a class="code" href="../../d1/d1a/class_surface_a552bec1e25c262bbd74eafdea43dc438.html#a552bec1e25c262bbd74eafdea43dc438">getHeight</a>();</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  drawLine(start_x, start_y, end_x, end_y, color);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  _pfbtft = save;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  _width = 320;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  _height = 240;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  _width = SCREEN_WIDTH;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  _height = SCREEN_HEIGHT;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9779b5c468ede5d64575db30db0845d5.html#a9779b5c468ede5d64575db30db0845d5">  179</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9779b5c468ede5d64575db30db0845d5.html#a9779b5c468ede5d64575db30db0845d5">ILI9341_t3_ERIS::drawSurfaceFill</a>(<a class="code" href="../../d1/d1a/class_surface.html">Surface</a> *dest,uint16_t color){</div>
@@ -274,8 +274,8 @@ $(document).ready(function(){initNavTree('d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_s
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  _height = dest-&gt;<a class="code" href="../../d1/d1a/class_surface_a552bec1e25c262bbd74eafdea43dc438.html#a552bec1e25c262bbd74eafdea43dc438">getHeight</a>();</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  fillScreen(color);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  _pfbtft = save;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  _width = 320;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  _height = 240;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  _width = SCREEN_WIDTH;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  _height = SCREEN_HEIGHT;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
@@ -290,7 +290,7 @@ $(document).ready(function(){initNavTree('d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_s
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  int16_t mx;        <span class="comment">//left clip x offset</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  int16_t nx;        <span class="comment">//right clip x offset</span></div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ifb; <span class="comment">//frame buffer index</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="comment">//uint16_t dwbf[320];//file read pixel row input buffer</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="comment">//uint16_t dwbf[SCREEN_WIDTH];//file read pixel row input buffer</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  uint16_t dw;       <span class="comment">//pixel data</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordtype">char</span> str[16];      <span class="comment">//char buffer</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordtype">char</span> *c;           <span class="comment">//char pointer</span></div>
@@ -367,7 +367,7 @@ $(document).ready(function(){initNavTree('d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_s
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    Serial.println(an-&gt;<a class="code" href="../../d4/d7c/class_animation_a1335e53d40b9068999c5e2a03722db83.html#a1335e53d40b9068999c5e2a03722db83">getFileName</a>());</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="comment">//for (unsigned long i = (320 * 64) ; i &lt; (320 * 240); i += 32){</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="comment">//for (unsigned long i = (SCREEN_WIDTH * 64) ; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){</span></div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  uint32_t chunk_size = (_width * _height)/ANIMATION_CHUNKS_PER_FRAME;</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  uint32_t i = an-&gt;<a class="code" href="../../d4/d7c/class_animation_a7b2fcf64d28c6938687ceef45110299b.html#a7b2fcf64d28c6938687ceef45110299b">chunk</a> * chunk_size;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.seekSet(15 + (i*2)); <span class="comment">//skip the header - header will always be 15 bytes for full screen wallpaper</span></div>
@@ -387,8 +387,8 @@ $(document).ready(function(){initNavTree('d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_s
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.seekSet(15); <span class="comment">//skip the header - header will always be 15 bytes for full screen wallpaper</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">//for (unsigned long i = (320 * 64) ; i &lt; (320 * 240); i += 32){</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; (320 * 240); i += 32){ <span class="comment">//32,64</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">//for (unsigned long i = (SCREEN_WIDTH * 64) ; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){ <span class="comment">//32,64</span></div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.read(&amp;_pfbtft[i],64);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  }</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.close();</div>

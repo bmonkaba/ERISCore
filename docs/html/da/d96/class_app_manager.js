@@ -18,6 +18,7 @@ var class_app_manager =
     [ "requestPopUp", "da/d96/class_app_manager_a82ecc96146ee297d433f34a57ed14130.html#a82ecc96146ee297d433f34a57ed14130", null ],
     [ "returnFocus", "da/d96/class_app_manager_aa046bad75942b1512618728fdac559b7.html#aa046bad75942b1512618728fdac559b7", null ],
     [ "sendMessage", "da/d96/class_app_manager_aa4f7649ae1aa1a567286d73981f00090.html#aa4f7649ae1aa1a567286d73981f00090", null ],
+    [ "setup", "da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45", null ],
     [ "update", "da/d96/class_app_manager_ab4352bf5559866e77c333e74af7c2210.html#ab4352bf5559866e77c333e74af7c2210", null ],
     [ "active_app_id", "da/d96/class_app_manager_afcf3eb16acabe78d89fa3f8cb4fc5b0d.html#afcf3eb16acabe78d89fa3f8cb4fc5b0d", null ],
     [ "ad", "da/d96/class_app_manager_af95be835bf532841c80d19904a5b14a4.html#af95be835bf532841c80d19904a5b14a4", null ],

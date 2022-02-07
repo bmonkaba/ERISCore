@@ -1,3 +1,21 @@
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
 Touch
 setCalibrationInputs
 erisAudioMixer8
@@ -14,20 +32,6 @@ erisAudioInputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioInputI2S2
 update call:[update] noreturn:[update]
-erisAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAsyncAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioInputAnalog
-update call:[update] noreturn:[update]
-erisAudioInputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioInputPDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM2
-update call:[update] noreturn:[update]
 erisAudioOutputI2S
 update call:[update] noreturn:[update]
 erisAudioOutputI2SQuad
@@ -39,30 +43,6 @@ update call:[update] noreturn:[update]
 erisAudioOutputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioOutputI2S2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211_2
-update call:[update] noreturn:[update]
-erisAudioOutputAnalog
-update call:[update] noreturn:[update]
-erisAudioOutputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioOutputPWM
-update call:[update] noreturn:[update]
-erisAudioOutputMQS
-update call:[update] noreturn:[update]
-erisAudioOutputTDM
-update call:[update] noreturn:[update]
-erisAudioOutputTDM2
-update call:[update] noreturn:[update]
-erisAudioOutputADAT
 update call:[update] noreturn:[update]
 erisAudioAmplifier
 update call:[update] noreturn:[update]
@@ -150,8 +130,6 @@ erisAudioAnalyzeToneDetect
 update call:[update] noreturn:[update]
 erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
-erisAudioAnalyzePrint
-update call:[update] noreturn:[update]
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
 update call:[abs,analogRead]
 readAN1 call:[return]
@@ -162,25 +140,7 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
-Surface
-Surface
-Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
-requestSubSurfaceBufferP call:[F,print,println]
-getSurfaceBufferP
-getWidth
-getHeight
-hash
-Animation call:[memset,sizeof] noreturn:[memset]
-setPath call:[strcpy,strlen] noreturn:[strcpy]
-isFrameComplete
-getFileName
-getPath
-ILI9341_t3_ERIS
-getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
-getId
+getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
@@ -200,17 +160,6 @@ onAnalog2
 onAnalog3
 onAnalog4
 messageHandler
-getInstance call:[AppManager] noreturn:[AppManager]
-chdir call:[chdir] noreturn:[chdir]
-chdir call:[chdir] noreturn:[chdir]
-ls call:[ls] noreturn:[ls]
-SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
-empty call:[memset]
-requestStartLZ4Message call:[startLZ4Message]
-render
-startLZ4Message call:[empty,print] noreturn:[print]
-write call:[txOverflowHandler] noreturn:[txOverflowHandler]
-flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
 SvcErisAudioParameterController call:[strcpy] noreturn:[strcpy]
 render
 update
@@ -226,9 +175,53 @@ onAnalog4
 connectionCount
 setSCI
 setAPC
-AppTemplate
-messageHandler call:[isName]
+getFunctionCount call:[generateFunctionList]
+getFunctionListItem call:[generateFunctionList]
+getTypeCountByFunction call:[queryTypesByFunction]
+getInstance call:[AppManager] noreturn:[AppManager]
+chdir call:[chdir] noreturn:[chdir]
+chdir call:[chdir] noreturn:[chdir]
+ls call:[ls] noreturn:[ls]
+SvcSerialCommandInterface call:[extmem_malloc,getInstance,getSD,memset,strcpy] noreturn:[memset]
+empty call:[memset]
+requestStartLZ4Message call:[startLZ4Message]
 render
+startLZ4Message call:[empty,print] noreturn:[print]
+write call:[txOverflowHandler] noreturn:[txOverflowHandler]
+flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
+AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
+AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
+shutdownVM call:[releasePopUp,releaseWrenHandles,wrenFreeVM]
+restartVM call:[shutdownVM,startVM] noreturn:[startVM]
+haltCallForwarding
+loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
+rebootRequest call:[printf,safer_strncpy,sizeof] noreturn:[safer_strncpy]
+setParent call:[setParent] noreturn:[setParent]
+getFocus call:[getFocus] noreturn:[getFocus]
+returnFocus call:[returnFocus] noreturn:[returnFocus]
+requestPopUp call:[requestPopUp] noreturn:[requestPopUp]
+releasePopUp call:[releasePopUp] noreturn:[releasePopUp]
+getDraw
+getAudioDirector
+bltSD2Surface call:[bltSDB,dynamicSurfaceManager,getHeight,getSurfaceBufferP,getWidth] noreturn:[bltSDB]
+bltSurface2FrameBuffer call:[bltMem,dest,dynamicSurfaceManager,getFrameBuffer,getSurfaceBufferP,getWidth,source] noreturn:[bltMem]
+setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel]
+getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
+drawLine call:[CL,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel,drawSurfaceLine]
+drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
+isWrenResultOK call:[F,printf]
+onFocus call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onFocusLost call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouch call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouchDrag call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onTouchRelease call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog1 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog2 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog3 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+onAnalog4 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
+AppAIfES call:[AILAYER_DENSE_F32_A,AILAYER_INPUT_F32_A,AILAYER_LEAKY_RELU_F32_A,AILAYER_SIGMOID_F32_A,AIOPTI_ADAM_F32,aialgo_compile_model,aialgo_distribute_parameter_memory,aialgo_schedule_training_memory,aialgo_sizeof_parameter_memory,aialgo_sizeof_training_memory,ailayer_dense_f32_default,ailayer_input_f32_default,ailayer_leaky_relu_f32_default,ailayer_sigmoid_f32_default,ailoss_crossentropy_f32_default,aimath_f32_default_init_glorot_uniform,aimath_f32_default_init_he_uniform,aimath_f32_default_init_zeros,aiopti_adam_f32_default,extmem_malloc,srand,strcpy,time] noreturn:[aialgo_schedule_training_memory]
+messageHandler call:[isName]
+render call:[AITENSOR_2D_F32,aialgo_calc_loss_model_f32,aialgo_train_model] noreturn:[aialgo_calc_loss_model_f32]
 update
 onFocus
 onFocusLost
@@ -286,52 +279,9 @@ onAnalog1 call:[gain,getAudioStreamObjByName,log1p] noreturn:[gain]
 onAnalog2 call:[getAudioStreamObjByName,setLowpass] noreturn:[setLowpass]
 onAnalog3 call:[gain,getAudioStreamObjByName,log1p,setHighpass,setLowpass] noreturn:[gain]
 onAnalog4 call:[gain,getAudioStreamObjByName,log1p] noreturn:[gain]
-makeAudioConnections call:[AudioInterrupts,AudioNoInterrupts,connect,delay,disconnectAll] noreturn:[delay]
+makeAudioConnections call:[AudioInterrupts,AudioNoInterrupts,connect,disconnectAll] noreturn:[AudioInterrupts]
 changeVoice call:[begin,getAudioStreamObjByName,sprintf] noreturn:[begin]
-AppWren global:[g_wrenScript] call:[strcpy,vmConstructor]
-AppWren call:[wrenFreeVM] noreturn:[wrenFreeVM]
-shutdownVM call:[delete,releasePopUp,releaseWrenHandles,wrenFreeVM]
-restartVM call:[shutdownVM,startVM] noreturn:[startVM]
-haltCallForwarding
-loadScript call:[F,getWrenHandles,isWrenResultOK,printf,println,strlen,wrenEnsureSlots,wrenInterpret,wrenSetSlotHandle] noreturn:[wrenSetSlotHandle]
-rebootRequest call:[printf,safer_strncpy,sizeof] noreturn:[safer_strncpy]
-setParent call:[setParent] noreturn:[setParent]
-getFocus call:[getFocus] noreturn:[getFocus]
-returnFocus call:[returnFocus] noreturn:[returnFocus]
-requestPopUp call:[requestPopUp] noreturn:[requestPopUp]
-releasePopUp call:[releasePopUp] noreturn:[releasePopUp]
-getDraw
-getAudioDirector
-bltSD2Surface call:[bltSDB,dynamicSurfaceManager,getHeight,getSurfaceBufferP,getWidth] noreturn:[bltSDB]
-bltSurface2FrameBuffer call:[bltMem,dest,dynamicSurfaceManager,getFrameBuffer,getSurfaceBufferP,getWidth,source] noreturn:[bltMem]
-setPixel call:[CL,drawPixel,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel]
-getPixel call:[getHeight,getWidth,readSurfacePixel] noreturn:[readSurfacePixel]
-drawLine call:[CL,drawPixel,drawSurfaceLine,dynamicSurfaceManager,getHeight,getWidth] noreturn:[drawPixel,drawSurfaceLine]
-drawFill call:[CL,dynamicSurfaceManager,fillScreen,fillSurface] noreturn:[fillScreen,fillSurface]
-isWrenResultOK call:[F,getAppByName,getInstance,printf]
-onFocus call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onFocusLost call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onTouch call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onTouchDrag call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onTouchRelease call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onAnalog1 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onAnalog2 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onAnalog3 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
-onAnalog4 call:[isWrenResultOK,releaseWrenHandles,wrenCall,wrenEnsureSlots,wrenSetSlotDouble,wrenSetSlotHandle] noreturn:[releaseWrenHandles]
 AppReprogram call:[pinMode,sprintf] noreturn:[pinMode]
 update call:[asm,delay,digitalRead,println]
-AppAIfES call:[AILAYER_DENSE_F32_A,AILAYER_INPUT_F32_A,AILAYER_LEAKY_RELU_F32_A,AILAYER_SIGMOID_F32_A,AIOPTI_ADAM_F32,aialgo_compile_model,aialgo_distribute_parameter_memory,aialgo_schedule_training_memory,aialgo_sizeof_parameter_memory,aialgo_sizeof_training_memory,ailayer_dense_f32_default,ailayer_input_f32_default,ailayer_leaky_relu_f32_default,ailayer_sigmoid_f32_default,ailoss_crossentropy_f32_default,aimath_f32_default_init_glorot_uniform,aimath_f32_default_init_he_uniform,aimath_f32_default_init_zeros,aiopti_adam_f32_default,extmem_malloc,srand,strcpy,time]
-messageHandler call:[isName]
-render call:[AITENSOR_2D_F32,aialgo_calc_loss_model_f32,aialgo_train_model] noreturn:[aialgo_calc_loss_model_f32]
-update
-onFocus
-onFocusLost
-onTouch
-onTouchDrag
-onTouchRelease
-onAnalog1
-onAnalog2
-onAnalog3
-onAnalog4
-setup global:[_ad,appPoly,appWren,sci] call:[AppWren,CCM_CBCMR_FLEXSPI2_CLK_SEL,CCM_CBCMR_FLEXSPI2_PODF,CCM_CCGR7_FLEXSPI2,F,asm,begin,delay,digitalRead,getFocus,initAudioHardware,millis,pinMode,print,println,setAPC,setParent,setSCI] noreturn:[print,println]
+setup call:[AppWren,F,asm,begin,delay,digitalRead,getFocus,millis,pinMode,print,println,setParent,setup] noreturn:[print,println]
 loop call:[getInstance,update] noreturn:[update]

@@ -111,8 +111,8 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  }</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.seekSet(15); <span class="comment">//skip the header - header will always be 15 bytes for full screen wallpaper</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">//for (unsigned long i = (320 * 64) ; i &lt; (320 * 240); i += 32){</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; (320 * 240); i += 32){ <span class="comment">//32,64</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="comment">//for (unsigned long i = (SCREEN_WIDTH * 64) ; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){ <span class="comment">//32,64</span></div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.read(&amp;_pfbtft[i],64);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  }</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a9a8d517bf0bf41b70753df125937fb7d.html#a9a8d517bf0bf41b70753df125937fb7d">file</a>.close();</div>

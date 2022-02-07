@@ -3,7 +3,7 @@ var class_app_a_if_e_s =
     [ "AppAIfES", "d8/deb/class_app_a_if_e_s_a73d47391b53fa1d1f1d8586af2cf270d.html#a73d47391b53fa1d1f1d8586af2cf270d", null ],
     [ "_updatePosition", "d8/deb/class_app_a_if_e_s.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "d8/deb/class_app_a_if_e_s.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "d8/deb/class_app_a_if_e_s.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "d8/deb/class_app_a_if_e_s.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "d8/deb/class_app_a_if_e_s.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "d8/deb/class_app_a_if_e_s_ae1e6e093c9903554910d899db89789c6.html#ae1e6e093c9903554910d899db89789c6", null ],
     [ "onAnalog1", "d8/deb/class_app_a_if_e_s_a74fabb9a0a323363db01ee6ef2c9aeea.html#a74fabb9a0a323363db01ee6ef2c9aeea", null ],

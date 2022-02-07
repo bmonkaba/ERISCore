@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1550;
+var viewWidth = 1495;
 var viewHeight = 413;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-0';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="0,-118.5 0,-146.5 62,-146.5 62,-118.5 0,-118.5"/>
-<text text-anchor="middle" x="31" y="-128.1" font-family="Helvetica,sans-Serif" font-size="18.00">setup</text>
+<polygon fill="#bfbfbf" stroke="black" points="0,-165.5 0,-193.5 62,-193.5 62,-165.5 0,-165.5"/>
+<text text-anchor="middle" x="31" y="-175.1" font-family="Helvetica,sans-Serif" font-size="18.00">setup</text>
 </a>
 </g>
 </g>
@@ -67,391 +67,406 @@ var sectionId = 'dynsection-0';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../db/d69/class_app_base_class_afcd9194843e5eb3f6140e28cc3c9e8f9.html#afcd9194843e5eb3f6140e28cc3c9e8f9" target="_top" xlink:title="Get focus from the AppManager.">
-<polygon fill="none" stroke="black" points="128.5,-235.5 128.5,-263.5 348.5,-263.5 348.5,-235.5 128.5,-235.5"/>
-<text text-anchor="middle" x="238.5" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::getFocus</text>
+<polygon fill="none" stroke="black" points="98,-259.5 98,-287.5 318,-287.5 318,-259.5 98,-259.5"/>
+<text text-anchor="middle" x="208" y="-269.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::getFocus</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M41.87,-146.54C53.58,-162.25 74.51,-187.45 98,-202.5 118.33,-215.53 142.66,-225.34 165.27,-232.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="164.25,-235.89 174.84,-235.47 166.3,-229.2 164.25,-235.89"/>
+<path fill="none" stroke="midnightblue" d="M41.38,-193.72C52.79,-209.84 73.59,-235.66 98,-249.5 102,-251.77 106.19,-253.82 110.5,-255.67"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="109.53,-259.05 120.12,-259.44 112.08,-252.53 109.53,-259.05"/>
 </g>
 <!-- Node21 -->
 <g id="node21" class="node">
 <title>Node21</title>
-<g id="a_node21"><a xlink:href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="98,-165.5 98,-193.5 379,-193.5 379,-165.5 98,-165.5"/>
-<text text-anchor="middle" x="238.5" y="-175.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::initAudioHardware</text>
+<g id="a_node21"><a xlink:href="../../d8/d1c/class_audio_director_a15e84c9c6ecc656e6f7df4d445baabb7.html#a15e84c9c6ecc656e6f7df4d445baabb7" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="110.5,-212.5 110.5,-240.5 305.5,-240.5 305.5,-212.5 110.5,-212.5"/>
+<text text-anchor="middle" x="208" y="-222.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::setAPC</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node21 -->
 <g id="edge20" class="edge">
 <title>Node1&#45;&gt;Node21</title>
-<path fill="none" stroke="midnightblue" d="M62.24,-144.21C73.36,-148.21 86.13,-152.43 98,-155.5 109.34,-158.43 121.29,-161.1 133.23,-163.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="132.76,-166.98 143.25,-165.47 134.11,-160.11 132.76,-166.98"/>
+<path fill="none" stroke="midnightblue" d="M62.32,-190.91C73.45,-194.88 86.21,-199.16 98,-202.5 107.51,-205.19 117.55,-207.77 127.55,-210.16"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="126.96,-213.62 137.5,-212.49 128.56,-206.8 126.96,-213.62"/>
+</g>
+<!-- Node22 -->
+<g id="node22" class="node">
+<title>Node22</title>
+<g id="a_node22"><a xlink:href="../../d0/da0/class_app_wren_a7f43ff2f48f72d186161822ed1917f5b.html#a7f43ff2f48f72d186161822ed1917f5b" target="_top" xlink:title="Set the Parent object.">
+<polygon fill="none" stroke="black" points="118,-165.5 118,-193.5 298,-193.5 298,-165.5 118,-165.5"/>
+<text text-anchor="middle" x="208" y="-175.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::setParent</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node22 -->
+<g id="edge21" class="edge">
+<title>Node1&#45;&gt;Node22</title>
+<path fill="none" stroke="midnightblue" d="M62.08,-179.5C75.03,-179.5 90.98,-179.5 107.52,-179.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="107.87,-183 117.87,-179.5 107.87,-176 107.87,-183"/>
 </g>
 <!-- Node24 -->
 <g id="node24" class="node">
 <title>Node24</title>
-<g id="a_node24"><a xlink:href="../../d8/d1c/class_audio_director_a15e84c9c6ecc656e6f7df4d445baabb7.html#a15e84c9c6ecc656e6f7df4d445baabb7" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="141,-118.5 141,-146.5 336,-146.5 336,-118.5 141,-118.5"/>
-<text text-anchor="middle" x="238.5" y="-128.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::setAPC</text>
+<g id="a_node24"><a xlink:href="../../d8/d1c/class_audio_director_acd117427f6c9a7a6cdae4f7ba340eefa.html#acd117427f6c9a7a6cdae4f7ba340eefa" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="114,-118.5 114,-146.5 302,-146.5 302,-118.5 114,-118.5"/>
+<text text-anchor="middle" x="208" y="-128.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::setSCI</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node24 -->
 <g id="edge23" class="edge">
 <title>Node1&#45;&gt;Node24</title>
-<path fill="none" stroke="midnightblue" d="M62.32,-132.5C80.67,-132.5 105.29,-132.5 130.27,-132.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="130.59,-136 140.59,-132.5 130.59,-129 130.59,-136"/>
+<path fill="none" stroke="midnightblue" d="M62.26,-167.48C73.39,-163.33 86.16,-158.88 98,-155.5 106.24,-153.14 114.9,-150.92 123.57,-148.84"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="124.42,-152.24 133.36,-146.56 122.83,-145.42 124.42,-152.24"/>
 </g>
 <!-- Node25 -->
 <g id="node25" class="node">
 <title>Node25</title>
-<g id="a_node25"><a xlink:href="../../d0/da0/class_app_wren_a7f43ff2f48f72d186161822ed1917f5b.html#a7f43ff2f48f72d186161822ed1917f5b" target="_top" xlink:title="Set the Parent object.">
-<polygon fill="none" stroke="black" points="148.5,-71.5 148.5,-99.5 328.5,-99.5 328.5,-71.5 148.5,-71.5"/>
-<text text-anchor="middle" x="238.5" y="-81.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::setParent</text>
+<g id="a_node25"><a xlink:href="../../da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45" target="_top" xlink:title="intended to be called from the arduino setup() function, this method initalizes and sets up the &quot;Eris...">
+<polygon fill="none" stroke="black" points="120.5,-71.5 120.5,-99.5 295.5,-99.5 295.5,-71.5 120.5,-71.5"/>
+<text text-anchor="middle" x="208" y="-81.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::setup</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node25 -->
 <g id="edge24" class="edge">
 <title>Node1&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M62.19,-120.19C73.3,-116.01 86.09,-111.62 98,-108.5 110.99,-105.1 124.81,-102.1 138.49,-99.49"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="139.23,-102.91 148.42,-97.65 137.95,-96.03 139.23,-102.91"/>
-</g>
-<!-- Node27 -->
-<g id="node27" class="node">
-<title>Node27</title>
-<g id="a_node27"><a xlink:href="../../d8/d1c/class_audio_director_acd117427f6c9a7a6cdae4f7ba340eefa.html#acd117427f6c9a7a6cdae4f7ba340eefa" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="144.5,-24.5 144.5,-52.5 332.5,-52.5 332.5,-24.5 144.5,-24.5"/>
-<text text-anchor="middle" x="238.5" y="-34.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::setSCI</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node27 -->
-<g id="edge26" class="edge">
-<title>Node1&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M40.81,-118.43C51.96,-101.9 72.79,-75.03 98,-61.5 109.29,-55.44 121.77,-50.9 134.5,-47.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="135.37,-50.89 144.26,-45.12 133.71,-44.09 135.37,-50.89"/>
+<path fill="none" stroke="midnightblue" d="M41.11,-165.33C52.41,-148.96 73.25,-122.51 98,-108.5 102.15,-106.15 106.51,-104.04 111,-102.15"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="112.29,-105.4 120.38,-98.56 109.79,-98.87 112.29,-105.4"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="../../db/d69/class_app_base_class_a32e44666dd58b3cd733c8ac64957dce3.html#a32e44666dd58b3cd733c8ac64957dce3" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="415,-306.5 415,-334.5 690,-334.5 690,-306.5 415,-306.5"/>
-<text text-anchor="middle" x="552.5" y="-316.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::_updatePosition</text>
+<polygon fill="none" stroke="black" points="357,-306.5 357,-334.5 632,-334.5 632,-306.5 357,-306.5"/>
+<text text-anchor="middle" x="494.5" y="-316.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::_updatePosition</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M287.27,-263.51C322.4,-273.51 371.42,-286.85 415,-296.5 427.82,-299.34 441.38,-302.06 454.79,-304.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="454.52,-308.09 464.99,-306.47 455.79,-301.21 454.52,-308.09"/>
+<path fill="none" stroke="midnightblue" d="M293.97,-287.54C326.91,-292.98 364.76,-299.23 398.58,-304.82"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="398.04,-308.28 408.47,-306.45 399.18,-301.37 398.04,-308.28"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../da/d96/class_app_manager_add0cb3ca55868f2af725a2c71ae20e3c.html#add0cb3ca55868f2af725a2c71ae20e3c" target="_top" xlink:title="provides an interface for apps to request focus">
-<polygon fill="none" stroke="black" points="450,-259.5 450,-287.5 655,-287.5 655,-259.5 450,-259.5"/>
-<text text-anchor="middle" x="552.5" y="-269.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getFocus</text>
+<polygon fill="none" stroke="black" points="392,-259.5 392,-287.5 597,-287.5 597,-259.5 392,-259.5"/>
+<text text-anchor="middle" x="494.5" y="-269.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getFocus</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M348.62,-257.89C378.02,-260.16 409.86,-262.6 439.41,-264.88"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="439.53,-268.4 449.76,-265.67 440.06,-261.42 439.53,-268.4"/>
+<path fill="none" stroke="midnightblue" d="M318.18,-273.5C338.92,-273.5 360.65,-273.5 381.48,-273.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="381.62,-277 391.62,-273.5 381.62,-270 381.62,-277"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="../../da/d96/class_app_manager_aa76d9691e8d029656413590fbe4dee86.html#aa76d9691e8d029656413590fbe4dee86" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="440.5,-212.5 440.5,-240.5 664.5,-240.5 664.5,-212.5 440.5,-212.5"/>
-<text text-anchor="middle" x="552.5" y="-222.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getInstance</text>
+<polygon fill="none" stroke="black" points="382.5,-212.5 382.5,-240.5 606.5,-240.5 606.5,-212.5 382.5,-212.5"/>
+<text text-anchor="middle" x="494.5" y="-222.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getInstance</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node2&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M348.62,-241.46C374.96,-239.51 403.25,-237.43 430.11,-235.45"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="430.61,-238.92 440.33,-234.7 430.1,-231.94 430.61,-238.92"/>
+<path fill="none" stroke="midnightblue" d="M293.72,-259.47C313.5,-256.19 334.49,-252.72 354,-249.5 368.27,-247.14 383.35,-244.65 398.13,-242.22"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="398.99,-245.62 408.29,-240.54 397.86,-238.71 398.99,-245.62"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="../../da/d96/class_app_manager_a9853cc712c3a2efca6a982937cc97c44.html#a9853cc712c3a2efca6a982937cc97c44" target="_top" xlink:title="provides an interface for apps to request another app object by id">
-<polygon fill="none" stroke="black" points="756,-329.5 756,-357.5 944,-357.5 944,-329.5 756,-329.5"/>
-<text text-anchor="middle" x="850" y="-339.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getApp</text>
+<polygon fill="none" stroke="black" points="701,-329.5 701,-357.5 889,-357.5 889,-329.5 701,-329.5"/>
+<text text-anchor="middle" x="795" y="-339.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::getApp</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M655.36,-285.99C667.23,-288.81 679.01,-292.27 690,-296.5 707.72,-303.33 708.37,-312.45 726,-319.5 732.74,-322.19 739.8,-324.6 747,-326.73"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="746.31,-330.17 756.88,-329.48 748.19,-323.43 746.31,-330.17"/>
+<path fill="none" stroke="midnightblue" d="M597.37,-285.34C610.25,-288.27 623.08,-291.93 635,-296.5 652.73,-303.29 653.37,-312.45 671,-319.5 677.74,-322.19 684.8,-324.6 692,-326.73"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="691.31,-330.17 701.88,-329.48 693.19,-323.43 691.31,-330.17"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="../../db/d69/class_app_base_class_a53c663808513ec64776645ee98da4a1f.html#a53c663808513ec64776645ee98da4a1f" target="_top" xlink:title="triggered when focus is gained from the AppManager">
-<polygon fill="none" stroke="black" points="742.5,-282.5 742.5,-310.5 957.5,-310.5 957.5,-282.5 742.5,-282.5"/>
-<text text-anchor="middle" x="850" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocus</text>
+<polygon fill="none" stroke="black" points="687.5,-282.5 687.5,-310.5 902.5,-310.5 902.5,-282.5 687.5,-282.5"/>
+<text text-anchor="middle" x="795" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocus</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node4&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M655.19,-281.42C680.03,-283.35 706.79,-285.43 732.27,-287.41"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="732.09,-290.91 742.34,-288.2 732.64,-283.93 732.09,-290.91"/>
+<path fill="none" stroke="midnightblue" d="M597.39,-281.35C623.15,-283.34 651.01,-285.48 677.43,-287.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="677.24,-291.01 687.48,-288.29 677.78,-284.03 677.24,-291.01"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d.html#a3937393335f8a7eab2ec16697925d93d" target="_top" xlink:title="triggered when focus is taken from the AppManager">
-<polygon fill="none" stroke="black" points="726,-235.5 726,-263.5 974,-263.5 974,-235.5 726,-235.5"/>
-<text text-anchor="middle" x="850" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocusLost</text>
+<g id="a_node7"><a xlink:href="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d.html#a3937393335f8a7eab2ec16697925d93d" target="_top" xlink:title="triggered when focus is taken by the AppManager">
+<polygon fill="none" stroke="black" points="671,-235.5 671,-263.5 919,-263.5 919,-235.5 671,-235.5"/>
+<text text-anchor="middle" x="795" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocusLost</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node4&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M655.19,-265.24C674.78,-263.65 695.56,-261.96 715.97,-260.3"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="716.26,-263.79 725.95,-259.49 715.7,-256.82 716.26,-263.79"/>
+<path fill="none" stroke="midnightblue" d="M597.39,-265.31C617.8,-263.67 639.53,-261.92 660.82,-260.21"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="661.21,-263.69 670.9,-259.4 660.65,-256.71 661.21,-263.69"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="../../da/d96/class_app_manager_a9439da981933119c49a83a507d64eb23.html#a9439da981933119c49a83a507d64eb23" target="_top" xlink:title="Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)">
-<polygon fill="none" stroke="black" points="733.5,-188.5 733.5,-216.5 966.5,-216.5 966.5,-188.5 733.5,-188.5"/>
-<text text-anchor="middle" x="850" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::AppManager</text>
+<polygon fill="none" stroke="black" points="678.5,-188.5 678.5,-216.5 911.5,-216.5 911.5,-188.5 678.5,-188.5"/>
+<text text-anchor="middle" x="795" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::AppManager</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node8&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M664.79,-217.46C683.88,-215.91 703.83,-214.29 723.27,-212.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="723.69,-216.19 733.37,-211.89 723.12,-209.21 723.69,-216.19"/>
+<path fill="none" stroke="midnightblue" d="M606.65,-217.56C626.74,-215.95 647.81,-214.25 668.27,-212.61"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="668.58,-216.1 678.27,-211.81 668.02,-209.12 668.58,-216.1"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a8c8c09d5ca51d5b4c611875df643bef6.html#a8c8c09d5ca51d5b4c611875df643bef6" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1034,-376.5 1034,-404.5 1240,-404.5 1240,-376.5 1034,-376.5"/>
-<text text-anchor="middle" x="1137" y="-386.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::begin</text>
+<polygon fill="none" stroke="black" points="979,-376.5 979,-404.5 1185,-404.5 1185,-376.5 979,-376.5"/>
+<text text-anchor="middle" x="1082" y="-386.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::begin</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M962.41,-216.66C966.54,-219.23 970.43,-222.16 974,-225.5 1021.2,-269.72 962.88,-322.2 1010,-366.5 1014.47,-370.7 1019.44,-374.28 1024.74,-377.31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1023.45,-380.58 1033.96,-381.92 1026.58,-374.32 1023.45,-380.58"/>
+<path fill="none" stroke="midnightblue" d="M907.42,-216.65C911.55,-219.22 915.44,-222.16 919,-225.5 966.47,-270.06 907.43,-323.05 955,-367.5 959.48,-371.68 964.45,-375.23 969.76,-378.23"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="968.46,-381.5 978.98,-382.79 971.56,-375.22 968.46,-381.5"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="../../d1/dff/class_touch_a057f1914b96362769a5384dbbfdb4195.html#a057f1914b96362769a5384dbbfdb4195" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1076,-329.5 1076,-357.5 1198,-357.5 1198,-329.5 1076,-329.5"/>
-<text text-anchor="middle" x="1137" y="-339.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::begin</text>
+<polygon fill="none" stroke="black" points="1021,-329.5 1021,-357.5 1143,-357.5 1143,-329.5 1021,-329.5"/>
+<text text-anchor="middle" x="1082" y="-339.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::begin</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node9&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M960.81,-216.55C965.48,-219.13 969.91,-222.09 974,-225.5 1008.36,-254.15 975.69,-290.8 1010,-319.5 1025.56,-332.52 1046,-339.31 1065.89,-342.66"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1065.49,-346.14 1075.89,-344.07 1066.48,-339.21 1065.49,-346.14"/>
+<path fill="none" stroke="midnightblue" d="M905.81,-216.55C910.48,-219.13 914.91,-222.09 919,-225.5 953.36,-254.15 920.69,-290.8 955,-319.5 970.56,-332.52 991,-339.31 1010.89,-342.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1010.49,-346.14 1020.89,-344.07 1011.48,-339.21 1010.49,-346.14"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:href="../../dc/d43/class_svc_data_dictionary_a3b09dc582adbb4d5c6f99f6e983a81f1.html#a3b09dc582adbb4d5c6f99f6e983a81f1" target="_top" xlink:title="create a record with ownership">
-<polygon fill="none" stroke="black" points="1025.5,-282.5 1025.5,-310.5 1248.5,-310.5 1248.5,-282.5 1025.5,-282.5"/>
-<text text-anchor="middle" x="1137" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::create</text>
+<polygon fill="none" stroke="black" points="970.5,-282.5 970.5,-310.5 1193.5,-310.5 1193.5,-282.5 970.5,-282.5"/>
+<text text-anchor="middle" x="1082" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::create</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node9&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M956.04,-216.52C962.31,-219.06 968.35,-222.03 974,-225.5 996.42,-239.28 987.61,-258.69 1010,-272.5 1013.42,-274.61 1016.98,-276.54 1020.66,-278.31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1019.41,-281.59 1029.98,-282.38 1022.21,-275.17 1019.41,-281.59"/>
+<path fill="none" stroke="midnightblue" d="M901.04,-216.52C907.31,-219.06 913.35,-222.03 919,-225.5 941.42,-239.28 932.61,-258.69 955,-272.5 958.42,-274.61 961.98,-276.54 965.66,-278.31"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="964.41,-281.59 974.98,-282.38 967.21,-275.17 964.41,-281.59"/>
 </g>
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
 <g id="a_node15"><a xlink:href="../../dc/d40/_app_manager_8cpp_a5db3dd95011fd6a678ae291290091314.html#a5db3dd95011fd6a678ae291290091314" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1109,-235.5 1109,-263.5 1165,-263.5 1165,-235.5 1109,-235.5"/>
-<text text-anchor="middle" x="1137" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">draw</text>
+<polygon fill="none" stroke="black" points="1054,-235.5 1054,-263.5 1110,-263.5 1110,-235.5 1054,-235.5"/>
+<text text-anchor="middle" x="1082" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">draw</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node15 -->
 <g id="edge14" class="edge">
 <title>Node9&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M936.12,-216.54C990.29,-225.47 1057.74,-236.59 1098.8,-243.37"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1098.46,-246.86 1108.9,-245.03 1099.6,-239.95 1098.46,-246.86"/>
+<path fill="none" stroke="midnightblue" d="M881.12,-216.54C935.29,-225.47 1002.74,-236.59 1043.8,-243.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1043.46,-246.86 1053.9,-245.03 1044.6,-239.95 1043.46,-246.86"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
 <g id="a_node16"><a xlink:href="../../d1/dff/class_touch_a61a5d056f07ab08cb5924fa573dc3497.html#a61a5d056f07ab08cb5924fa573dc3497" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1018,-188.5 1018,-216.5 1256,-216.5 1256,-188.5 1018,-188.5"/>
-<text text-anchor="middle" x="1137" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::setCalibrationInputs</text>
+<polygon fill="none" stroke="black" points="963,-188.5 963,-216.5 1201,-216.5 1201,-188.5 963,-188.5"/>
+<text text-anchor="middle" x="1082" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::setCalibrationInputs</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node16 -->
 <g id="edge15" class="edge">
 <title>Node9&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M966.51,-202.5C979.91,-202.5 993.64,-202.5 1007.21,-202.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1007.54,-206 1017.54,-202.5 1007.54,-199 1007.54,-206"/>
+<path fill="none" stroke="midnightblue" d="M911.51,-202.5C924.91,-202.5 938.64,-202.5 952.21,-202.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="952.54,-206 962.54,-202.5 952.54,-199 952.54,-206"/>
 </g>
 <!-- Node17 -->
 <g id="node17" class="node">
 <title>Node17</title>
 <g id="a_node17"><a xlink:href="../../d4/d7c/class_animation_a997d1203ae9418f121f355a5bd0700f0.html#a997d1203ae9418f121f355a5bd0700f0" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1053,-141.5 1053,-169.5 1221,-169.5 1221,-141.5 1053,-141.5"/>
-<text text-anchor="middle" x="1137" y="-151.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setPath</text>
+<polygon fill="none" stroke="black" points="998,-141.5 998,-169.5 1166,-169.5 1166,-141.5 998,-141.5"/>
+<text text-anchor="middle" x="1082" y="-151.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setPath</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node17 -->
 <g id="edge16" class="edge">
 <title>Node9&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M936.12,-188.46C969.71,-182.92 1008.41,-176.54 1042.75,-170.88"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1043.49,-174.3 1052.79,-169.22 1042.35,-167.4 1043.49,-174.3"/>
+<path fill="none" stroke="midnightblue" d="M881.12,-188.46C914.71,-182.92 953.41,-176.54 987.75,-170.88"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="988.49,-174.3 997.79,-169.22 987.35,-167.4 988.49,-174.3"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node">
 <title>Node18</title>
 <g id="a_node18"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a33f0105b1eecc4c37195900fcf0d5fd8.html#a33f0105b1eecc4c37195900fcf0d5fd8" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1010,-94.5 1010,-122.5 1264,-122.5 1264,-94.5 1010,-94.5"/>
-<text text-anchor="middle" x="1137" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setPWMPin</text>
+<polygon fill="none" stroke="black" points="955,-94.5 955,-122.5 1209,-122.5 1209,-94.5 955,-94.5"/>
+<text text-anchor="middle" x="1082" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setPWMPin</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node18 -->
 <g id="edge17" class="edge">
 <title>Node9&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M877.25,-188.42C908.17,-172.4 961.48,-146.52 1010,-131.5 1017.94,-129.04 1026.25,-126.81 1034.64,-124.79"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1035.56,-128.17 1044.53,-122.52 1034,-121.35 1035.56,-128.17"/>
+<path fill="none" stroke="midnightblue" d="M839.71,-188.47C863.69,-180.12 893.61,-168.61 919,-155.5 936.09,-146.68 937.17,-138.71 955,-131.5 960.55,-129.26 966.32,-127.23 972.21,-125.4"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="973.58,-128.65 982.21,-122.51 971.63,-121.93 973.58,-128.65"/>
 </g>
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
 <g id="a_node19"><a xlink:href="../../d4/d7c/class_animation_ab5af4d2f56dce439c18ba9c4655f98f0.html#ab5af4d2f56dce439c18ba9c4655f98f0" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1059.5,-47.5 1059.5,-75.5 1214.5,-75.5 1214.5,-47.5 1059.5,-47.5"/>
-<text text-anchor="middle" x="1137" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setSD</text>
+<polygon fill="none" stroke="black" points="1004.5,-47.5 1004.5,-75.5 1159.5,-75.5 1159.5,-47.5 1004.5,-47.5"/>
+<text text-anchor="middle" x="1082" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setSD</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node19 -->
 <g id="edge18" class="edge">
 <title>Node9&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M865.31,-188.2C891.52,-162.91 950.09,-110.5 1010,-84.5 1022.39,-79.12 1036,-75 1049.55,-71.84"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1050.35,-75.25 1059.38,-69.71 1048.87,-68.41 1050.35,-75.25"/>
+<path fill="none" stroke="midnightblue" d="M858.44,-188.46C879.53,-181.32 902.02,-170.8 919,-155.5 945.29,-131.82 926.64,-105.66 955,-84.5 966.58,-75.86 980.41,-70.12 994.59,-66.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="995.49,-69.75 1004.44,-64.08 993.91,-62.94 995.49,-69.75"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a2bfdbf675a570c74b787fd222185f25f.html#a2bfdbf675a570c74b787fd222185f25f" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1032.5,-0.5 1032.5,-28.5 1241.5,-28.5 1241.5,-0.5 1032.5,-0.5"/>
-<text text-anchor="middle" x="1137" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setSD</text>
+<polygon fill="none" stroke="black" points="977.5,-0.5 977.5,-28.5 1186.5,-28.5 1186.5,-0.5 977.5,-0.5"/>
+<text text-anchor="middle" x="1082" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setSD</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node20 -->
 <g id="edge19" class="edge">
 <title>Node9&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M860.11,-188.16C881.7,-155.46 939.53,-75.29 1010,-37.5 1014.08,-35.31 1018.33,-33.33 1022.69,-31.53"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1024.27,-34.67 1032.4,-27.88 1021.81,-28.12 1024.27,-34.67"/>
+<path fill="none" stroke="midnightblue" d="M864.77,-188.39C884.51,-181.38 904.57,-170.96 919,-155.5 956.41,-115.42 914.05,-73.97 955,-37.5 959.15,-33.8 963.69,-30.61 968.51,-27.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="970.09,-30.98 977.45,-23.36 966.95,-24.72 970.09,-30.98"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:href="../../dc/d43/class_svc_data_dictionary_a7c7bd48b97fbcf18ef64337e12022619.html#a7c7bd48b97fbcf18ef64337e12022619" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1300,-305.5 1300,-333.5 1542,-333.5 1542,-305.5 1300,-305.5"/>
-<text text-anchor="middle" x="1421" y="-315.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::copyKey</text>
+<polygon fill="none" stroke="black" points="1245,-305.5 1245,-333.5 1487,-333.5 1487,-305.5 1245,-305.5"/>
+<text text-anchor="middle" x="1366" y="-315.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::copyKey</text>
 </a>
 </g>
 </g>
 <!-- Node12&#45;&gt;Node13 -->
 <g id="edge12" class="edge">
 <title>Node12&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1248.64,-305.52C1262.18,-306.63 1276.1,-307.76 1289.89,-308.89"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1289.65,-312.38 1299.9,-309.7 1290.21,-305.4 1289.65,-312.38"/>
+<path fill="none" stroke="midnightblue" d="M1193.64,-305.52C1207.18,-306.63 1221.1,-307.76 1234.89,-308.89"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1234.65,-312.38 1244.9,-309.7 1235.21,-305.4 1234.65,-312.38"/>
 </g>
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ae2f81369b9db1eb6558036740fb1986c.html#ae2f81369b9db1eb6558036740fb1986c" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1314.5,-258.5 1314.5,-286.5 1527.5,-286.5 1527.5,-258.5 1314.5,-258.5"/>
-<text text-anchor="middle" x="1421" y="-268.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::hash</text>
+<g id="a_node14"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ae2f81369b9db1eb6558036740fb1986c.html#ae2f81369b9db1eb6558036740fb1986c" target="_top" xlink:title="hashing function used to accelerate searches">
+<polygon fill="none" stroke="black" points="1259.5,-258.5 1259.5,-286.5 1472.5,-286.5 1472.5,-258.5 1259.5,-258.5"/>
+<text text-anchor="middle" x="1366" y="-268.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::hash</text>
 </a>
 </g>
 </g>
 <!-- Node12&#45;&gt;Node14 -->
 <g id="edge13" class="edge">
 <title>Node12&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M1248.64,-287.08C1266.87,-285.53 1285.81,-283.92 1304.16,-282.36"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1304.62,-285.83 1314.29,-281.5 1304.02,-278.86 1304.62,-285.83"/>
-</g>
-<!-- Node22 -->
-<g id="node22" class="node">
-<title>Node22</title>
-<g id="a_node22"><a xlink:href="../../dc/d47/_p_c_m1863_8h_a9956c2ea4162d70e6ee8db10139e2d2e.html#a9956c2ea4162d70e6ee8db10139e2d2e" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="487,-165.5 487,-193.5 618,-193.5 618,-165.5 487,-165.5"/>
-<text text-anchor="middle" x="552.5" y="-175.1" font-family="Helvetica,sans-Serif" font-size="18.00">ExtADCConfig</text>
-</a>
-</g>
-</g>
-<!-- Node21&#45;&gt;Node22 -->
-<g id="edge21" class="edge">
-<title>Node21&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M379.07,-179.5C412.75,-179.5 447.45,-179.5 476.82,-179.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="476.97,-183 486.97,-179.5 476.97,-176 476.97,-183"/>
+<path fill="none" stroke="midnightblue" d="M1193.64,-287.08C1211.87,-285.53 1230.81,-283.92 1249.16,-282.36"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1249.62,-285.83 1259.29,-281.5 1249.02,-278.86 1249.62,-285.83"/>
 </g>
 <!-- Node23 -->
 <g id="node23" class="node">
 <title>Node23</title>
-<g id="a_node23"><a xlink:href="../../dc/d47/_p_c_m1863_8h_a0d9ccf7656803723e1115c96b21820aa.html#a0d9ccf7656803723e1115c96b21820aa" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="507.5,-118.5 507.5,-146.5 597.5,-146.5 597.5,-118.5 507.5,-118.5"/>
-<text text-anchor="middle" x="552.5" y="-128.1" font-family="Helvetica,sans-Serif" font-size="18.00">I2CReset</text>
+<g id="a_node23"><a xlink:href="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9.html#af66b6dc0a061770fcb4c8425987d9ea9" target="_top" xlink:title="Set the Parent object.">
+<polygon fill="none" stroke="black" points="383.5,-165.5 383.5,-193.5 605.5,-193.5 605.5,-165.5 383.5,-165.5"/>
+<text text-anchor="middle" x="494.5" y="-175.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::setParent</text>
 </a>
 </g>
 </g>
-<!-- Node21&#45;&gt;Node23 -->
+<!-- Node22&#45;&gt;Node23 -->
 <g id="edge22" class="edge">
-<title>Node21&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M332.69,-165.46C386.44,-157.36 452.14,-147.47 497.44,-140.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="497.99,-144.1 507.35,-139.15 496.94,-137.18 497.99,-144.1"/>
+<title>Node22&#45;&gt;Node23</title>
+<path fill="none" stroke="midnightblue" d="M298.24,-179.5C321.94,-179.5 347.94,-179.5 373.01,-179.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="373.31,-183 383.31,-179.5 373.31,-176 373.31,-183"/>
 </g>
 <!-- Node26 -->
 <g id="node26" class="node">
 <title>Node26</title>
-<g id="a_node26"><a xlink:href="../../db/d69/class_app_base_class_af66b6dc0a061770fcb4c8425987d9ea9.html#af66b6dc0a061770fcb4c8425987d9ea9" target="_top" xlink:title="Set the Parent object.">
-<polygon fill="none" stroke="black" points="441.5,-71.5 441.5,-99.5 663.5,-99.5 663.5,-71.5 441.5,-71.5"/>
-<text text-anchor="middle" x="552.5" y="-81.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::setParent</text>
+<g id="a_node26"><a xlink:href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="354,-71.5 354,-99.5 635,-99.5 635,-71.5 354,-71.5"/>
+<text text-anchor="middle" x="494.5" y="-81.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::initAudioHardware</text>
 </a>
 </g>
 </g>
 <!-- Node25&#45;&gt;Node26 -->
 <g id="edge25" class="edge">
 <title>Node25&#45;&gt;Node26</title>
-<path fill="none" stroke="midnightblue" d="M328.91,-85.5C360.78,-85.5 397.23,-85.5 431.27,-85.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="431.27,-89 441.27,-85.5 431.27,-82 431.27,-89"/>
+<path fill="none" stroke="midnightblue" d="M295.52,-85.5C310.82,-85.5 327.14,-85.5 343.59,-85.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="343.85,-89 353.85,-85.5 343.85,-82 343.85,-89"/>
+</g>
+<!-- Node27 -->
+<g id="node27" class="node">
+<title>Node27</title>
+<g id="a_node27"><a xlink:href="../../dc/d47/_p_c_m1863_8h_a9956c2ea4162d70e6ee8db10139e2d2e.html#a9956c2ea4162d70e6ee8db10139e2d2e" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="729.5,-118.5 729.5,-146.5 860.5,-146.5 860.5,-118.5 729.5,-118.5"/>
+<text text-anchor="middle" x="795" y="-128.1" font-family="Helvetica,sans-Serif" font-size="18.00">ExtADCConfig</text>
+</a>
+</g>
+</g>
+<!-- Node26&#45;&gt;Node27 -->
+<g id="edge26" class="edge">
+<title>Node26&#45;&gt;Node27</title>
+<path fill="none" stroke="midnightblue" d="M584.66,-99.54C627.67,-106.31 678.67,-114.34 719.56,-120.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="719.04,-124.24 729.46,-122.34 720.13,-117.33 719.04,-124.24"/>
+</g>
+<!-- Node28 -->
+<g id="node28" class="node">
+<title>Node28</title>
+<g id="a_node28"><a xlink:href="../../dc/d47/_p_c_m1863_8h_a0d9ccf7656803723e1115c96b21820aa.html#a0d9ccf7656803723e1115c96b21820aa" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="750,-71.5 750,-99.5 840,-99.5 840,-71.5 750,-71.5"/>
+<text text-anchor="middle" x="795" y="-81.1" font-family="Helvetica,sans-Serif" font-size="18.00">I2CReset</text>
+</a>
+</g>
+</g>
+<!-- Node26&#45;&gt;Node28 -->
+<g id="edge27" class="edge">
+<title>Node26&#45;&gt;Node28</title>
+<path fill="none" stroke="midnightblue" d="M635.14,-85.5C672.33,-85.5 710.32,-85.5 739.82,-85.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="739.88,-89 749.88,-85.5 739.88,-82 739.88,-89"/>
 </g>
 </g>
 </svg>

@@ -1,19 +1,21 @@
 # ERISCore
 
-<img alt="Language Count" src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore"> <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore"> <img alt="TravisCI" src="https://img.shields.io/travis/com/bmonkaba/ErisCore"> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg"> [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d)](https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&utm_medium=referral&utm_content=bmonkaba/ERISCore&utm_campaign=Badge_Grade)
+<img alt="Language Count" src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore"> <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore"> <img alt="TravisCI" src="https://img.shields.io/travis/com/bmonkaba/ErisCore"> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg"> [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d)](https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&utm_medium=referral&utm_content=bmonkaba/ERISCore&utm_campaign=Badge_Grade)<a href="https://codeclimate.com/github/bmonkaba/ERISCore/maintainability"><img src="https://api.codeclimate.com/v1/badges/2efa7ff8f3a25347fabf/maintainability" /></a>
 
 # What is Eris Core:
 
 Eris core is:
 
-* an AI/ML Audio focused "crossover operating system" for a crossover microcontroller
-* a rapid application development & test framework
+* an Artifical Intelligence and Machine Learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in signal procressing audio signals.
+* a virtual machine host and extentions for Wren https://wren.io/ 
+* an integrated rapid application development & test framework
 * a subsystem component complete with mechanical housing examples
 * supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
-* intended as a foundation for further integration into projects & products
+* built for reuse; intended as a foundation for further integration into projects & products
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
+
 **youtube video demo - pre-alpha sys stress, integration & regression testing:**
 
 [![youtube video](https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")

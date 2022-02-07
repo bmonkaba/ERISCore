@@ -12,7 +12,7 @@ var class_app_wren =
     [ "getAudioDirector", "d0/da0/class_app_wren_a5b7bb694345971558aff2dc19fc1eaa4.html#a5b7bb694345971558aff2dc19fc1eaa4", null ],
     [ "getDraw", "d0/da0/class_app_wren_ad7d27edc5e5b53b98175c5882e822854.html#ad7d27edc5e5b53b98175c5882e822854", null ],
     [ "getFocus", "d0/da0/class_app_wren_abfe45ee73ddb0f8d35c5e45342a5fe05.html#abfe45ee73ddb0f8d35c5e45342a5fe05", null ],
-    [ "getId", "d0/da0/class_app_wren.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "d0/da0/class_app_wren.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "getPixel", "d0/da0/class_app_wren_aeea1fb2273947441e89ee259d0eec139.html#aeea1fb2273947441e89ee259d0eec139", null ],
     [ "getWrenHandles", "d0/da0/class_app_wren_adb53a44e9d80fddb8fd27cde67c9047a.html#adb53a44e9d80fddb8fd27cde67c9047a", null ],
     [ "haltCallForwarding", "d0/da0/class_app_wren_a419bda31ade1bb699179253ea95c6e6c.html#a419bda31ade1bb699179253ea95c6e6c", null ],

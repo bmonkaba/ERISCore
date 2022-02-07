@@ -4,7 +4,7 @@ var class_app_base_class =
     [ "AppBaseClass", "db/d69/class_app_base_class_a5528b67a6df75a6e6d1f3d8ac671a493.html#a5528b67a6df75a6e6d1f3d8ac671a493", null ],
     [ "_updatePosition", "db/d69/class_app_base_class_a32e44666dd58b3cd733c8ac64957dce3.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "db/d69/class_app_base_class_afcd9194843e5eb3f6140e28cc3c9e8f9.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "db/d69/class_app_base_class_aacbb5f3bae12ca03970d0b10b3bbd2de.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "db/d69/class_app_base_class_a608fbc9c63a4213af74b9ea5090ad875.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "db/d69/class_app_base_class_aa989ddf4bdc4cbd9a61791ca45082177.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "db/d69/class_app_base_class_ae1c0e3873bd65919752776311c7c509b.html#ae1c0e3873bd65919752776311c7c509b", null ],
     [ "onAnalog1", "db/d69/class_app_base_class_a9690562f1ed92ae4544190d68be66c1e.html#a9690562f1ed92ae4544190d68be66c1e", null ],

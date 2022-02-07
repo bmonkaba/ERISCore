@@ -176,8 +176,8 @@ bool SvcSerialCommandInterface::throttle(){
         uint16_t msec_delay_counter = 0;
         //serial tx buffer not available
         do{
-            delay(80);
-            msec_delay_counter += 80;
+            delay(2);
+            msec_delay_counter += 2;
             delta_avail = Serial.availableForWrite();
             if (delta_avail > SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) break;
         } while (msec_delay_counter < SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY);
@@ -221,14 +221,40 @@ void SvcSerialCommandInterface::txOverflowHandler(){
     s = strrchr(tx_Buffer,'\r');//find last new line
     //s = strrchr(s,'\r');//find last new line
     s+=2;
-    SerialUSB1.printf("VM %s %s\n",&multipart_header[0],s);
-    //SerialUSB1.flush();
+    Serial.printf("VM %s %s\n",&multipart_header[0],s);
+    //Serial.flush();
     index_tx_buffer = strlen(s);
     safer_strncpy(tx_Buffer,s,sizeof(tx_Buffer));
-    //SerialUSB1.printf("VM remainder %s",txBuffer);
+    //Serial.printf("VM remainder %s",txBuffer);
 }
 
-void SvcSerialCommandInterface::streamHandler(){
+
+void SvcSerialCommandInterface::streamReceiveHandler(){
+    Serial.println(F("M SvcSerialCommandInterface::updateRT isCapturingBulkData"));
+    char* f;
+    do{
+        do{
+            p_capture_buffer[index_capture_buffer] = Serial.read();
+            if(p_capture_buffer[index_capture_buffer] != 0xFF) index_capture_buffer++;
+        }while (Serial.available() && index_capture_buffer < SERIAL_RX_CAPTURE_BUFFER_SIZE-1);//in case were asking for the streaming data faster than it's being sent
+        if(index_capture_buffer == SERIAL_RX_CAPTURE_BUFFER_SIZE-1){
+            Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script ERROR: Input buffer full"));
+            Serial.flush();
+            is_capturing_bulk_data = false;
+            index_capture_buffer = 0;
+        }
+        f = strstr(p_capture_buffer,"WREN_SCRIPT_END");
+        if (f > 0){
+            Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script Received"));
+            memset(f,0,strlen("WREN_SCRIPT_END"));//remove the EOF marker
+            //stream complete
+            is_capturing_bulk_data = false;
+        }
+    }while(is_capturing_bulk_data);
+}
+
+
+void SvcSerialCommandInterface::streamTransmitHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
@@ -280,6 +306,7 @@ void SvcSerialCommandInterface::streamHandler(){
             is_periodic_messages_enabled = true;
             stream_pos = 0;
             update_priority = 0;
+            delayMicroseconds(3000);
             return;
         }
         else if (payload_len < SERIAL_FILESTREAM_PAYLOAD_SIZE) {
@@ -290,7 +317,7 @@ void SvcSerialCommandInterface::streamHandler(){
             is_periodic_messages_enabled = true;
             stream_pos = 0;
             update_priority = 0;
-            //delayMicroseconds(3000);
+            delayMicroseconds(3000);
             return;
         } else{
             //send file chunk
@@ -308,146 +335,293 @@ void SvcSerialCommandInterface::streamHandler(){
 };
 
 
+void FASTRUN SvcSerialCommandInterface::messageHandler_GET_RAM2(){
+    char* mp = 0;
+    char c;
+#ifdef USE_EXTMEM
+    char tmp[1000];
+    //tmp = (char*)extmem_malloc(1000);
+#else
+    char* tmp;
+    tmp = (char*)malloc(1000);
+#endif
+    while(throttle()){delay(100);}
+    if(!requestStartLZ4Message()) return;
+    strcpy(tmp,"");
+    printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
+    //RAM2 always ends at 0x20280000
+    for(uint32_t i = 0x20000000; i < 0x20280000; i+=1){
+        if (i == 0x20010000) i = 0x20200000;
+        mp = (char*)i;
+        c = *mp;
+        c = (c & 0xFF);
+        if(i%32==0 && i != 0x20000000){
+            print(F("\",\"decode\":\""));
+            print(tmp);
+            println(F("\"}}"));
+            sendLZ4Message();
+            strcpy(tmp,"");
+            while(throttle()){delay(50);}
+            if(i%1024==0){
+                float32_t pct;
+                pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
+                Serial.printf(F("CLS\nM GET_RAM2 %08X %.0f pct "),i,pct);
+                for(uint16_t div = 0; div < (uint16_t)pct; div += 5){
+                    Serial.printf("*");
+                }
+                Serial.println("");
+            }
+            startLZ4Message();
+            printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),i);
+        }
+
+        printf("%02X ",(uint8_t)c);
+        const char* escape = "\\";
+        if (c=='"'){                        
+            strncat(tmp, escape, 1);
+            strncat(tmp, &c, 1);
+        }else if (c=='\''){
+            strncat(tmp, escape, 1);
+            strncat(tmp, &c, 1);
+        }else if (isprint((int)c)){ 
+            strncat(tmp, &c, 1);
+        }else if (iscntrl((int)c)){
+            c = '.';
+            strncat(tmp, &c, 1);
+        }else{
+            c = '?';
+            strncat(tmp, &c, 1);
+        }
+    }
+    println("\n");
+    println(F("RAM END"));
+    sendLZ4Message();
+#ifdef USE_EXTMEM
+    //do nothing - local var
+#else       
+    free(tmp);
+#endif
+}
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
+    int total_read;
+    char cmd[128], param[128],param2[128];
+    int32_t val;
+    float32_t fval;
+    total_read = sscanf(received_chars, "%127s %127s %d" , cmd, param,(int*)&val);
+    if (total_read < 3){
+        total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
+        if (total_read < 3){
+            Serial.print(F("M WRONG PARAM COUNT"));
+            Serial.println(total_read);
+        } else am->data->update(param,fval); 
+    }else if(!am->data->update(param,val)){
+        total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
+        am->data->update(param,fval);
+    }
+}
+
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_SAVE(){
+    if(p_capture_buffer != NULL){
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: script save request"));
+        am->sendMessage(this,"AppWren",received_chars);//"WREN_SCRIPT_SAVE [modulename]");
+        am->sendMessage(this,"AppWren",p_capture_buffer);
+    #ifndef USE_EXTMEM
+        captureBuffer = (char*)realloc(captureBuffer,0);
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+    #endif
+    } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+}
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_EXECUTE(){
+    if(p_capture_buffer != NULL){
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: script execute request"));
+        am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
+        am->sendMessage(this,"AppWren",p_capture_buffer);
+#ifndef USE_EXTMEM
+        captureBuffer = (char*)realloc(captureBuffer,0);
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+#endif
+    } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+}
+
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_COMPILE(){
+    if(p_capture_buffer != NULL){
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: script compile request"));
+        am->sendMessage(this,"AppWren","WREN_SCRIPT_COMPILE");
+        am->sendMessage(this,"AppWren",p_capture_buffer);
+#ifndef USE_EXTMEM
+        captureBuffer = (char*)realloc(captureBuffer,0);
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
+#endif
+    } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+}
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START(){
+    is_capturing_bulk_data = true;
+#ifndef USE_EXTMEM
+    char* tmp;
+    tmp = (char*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);
+    if(tmp==NULL){
+        //realloc failed; release the pointer and try again
+        free(captureBuffer);
+        captureBuffer = (char*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
+    } else captureBuffer = tmp;
+#endif
+    if(p_capture_buffer!=NULL){
+        memset(p_capture_buffer,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);
+        index_capture_buffer = 0;
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer allocated and initalized"));
+    } else{
+        is_capturing_bulk_data = false;
+        Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: realloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
+        Serial.flush();
+    }
+}
+
+void FASTRUN SvcSerialCommandInterface::messageHandler_GET(){
+    int total_read;
+    char cmd[128], param[128],param2[128];
+    total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
+    if (total_read < 3){
+        Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
+        Serial.println(param);
+    } else{
+        //file streaming request ok
+        //init the transfer
+        Serial.print(F("M GET_OK ")); 
+        Serial.print(param);
+        Serial.print(" ");
+        Serial.println(param2);
+        strcpy(stream_path,param);
+        strcpy(stream_file,param2);
+        Serial.println(F("FS_START"));
+        is_streaming_file = true;
+        is_periodic_messages_enabled = false;
+        stream_pos = 0;
+    }
+}
+void FASTRUN SvcSerialCommandInterface::messageHandler_LS(){
+    bool first;
+    int total_read;
+    char cmd[128], param[128],param2[128];
+    total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
+    if (total_read < 2){
+        //send the root directory
+        //delay(100);
+        empty();
+        println(F("DIR"));
+        print(F("LS . ["));
+#ifdef USE_EXTMEM
+        //do nothing - one time malloc in the constructor
+#else
+        workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
+#endif
+        strcpy(p_working_buffer,tx_Buffer);
+        empty();
+        Serial.print(p_working_buffer);
+        sd->chdir();
+        tx_buffer_overflow_flag = false;
+        sd->ls(this);
+        memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
+        strcpy(p_working_buffer,tx_Buffer);
+        empty();
+        first = true;
+        token = strtok(p_working_buffer, &newline);
+        while( token != NULL ) {
+            if (first && !tx_buffer_overflow_flag) Serial.print(F("\""));
+            else Serial.print(F(",\""));
+            Serial.print(token);
+            Serial.print(F("\""));
+            token = strtok(NULL, &newline);
+            first = false;
+        }
+        Serial.println(F("]"));
+        Serial.println(F("DIR_EOF"));
+#ifdef USE_EXTMEM                    
+        //do nothing - one time malloc in the constructor
+#else
+        free(workingBuffer);
+#endif
+        //delay(200);
+    } else{
+        //send the requested path
+        replacechar(param,':',' '); //replace space token used to tx the path
+        empty();
+        print(F("M "));
+        println(param);
+        println(F("DIR"));
+        send();
+        sd->chdir();
+        replacechar(param,' ',':'); //replace any spaces in the transmitted path to ':'
+        sprintf(multipart_header, "LS %s [", param);
+        Serial.print(multipart_header);
+        replacechar(param,':',' '); // put the spaces back in time for the ls command
+        sd->ls(this,param,false);
+        first = true;
+        token = strtok(tx_Buffer, &newline);
+        while( token != NULL && index_tx_buffer > 1) {                        
+            if (first && !tx_buffer_overflow_flag) Serial.print(F("\""));
+            else Serial.print(F(",\""));
+            replacechar(token,'\r',0);
+            Serial.print(token);
+            Serial.print(F("\""));
+            token = strtok(NULL, &newline);
+            first = false;
+            while(throttle()){
+                delay(50);
+            }
+        }
+        Serial.println(F("]"));
+        Serial.println(F("DIR_EOF"));
+    }
+}
+
 void FASTRUN SvcSerialCommandInterface::update(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
-    if(is_capturing_bulk_data){
-        Serial.println(F("M SvcSerialCommandInterface::updateRT isCapturingBulkData"));
-        char* f;
+    if(is_capturing_bulk_data){ //bulk data state handler
+        streamReceiveHandler();
+    }else if (is_streaming_file){ //streaming file handler
+        streamTransmitHandler();
+    }else if (Serial.available() > 0 && false == newRxMsg ) { //check for incomming data
+        //This is the incomming message handler - it collects the message one byte at a time until 
+        //the end of message marker. If a full message is received the newRxMsg flag is set true.
+        //if a partial message is received the flag remains false.
+        //if the receiving buffer reaches an overflow condition, reset the buffer and clear in remaining serial input
         do{
-            do{
-                p_capture_buffer[index_capture_buffer] = Serial.read();
-                if(p_capture_buffer[index_capture_buffer] != 0xFF) index_capture_buffer++;
-            }while (Serial.available() && index_capture_buffer < SERIAL_RX_CAPTURE_BUFFER_SIZE-1);//in case were asking for the streaming data faster than it's being sent
-            if(index_capture_buffer == SERIAL_RX_CAPTURE_BUFFER_SIZE-1){
-                Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script ERROR: Input buffer full"));
-                Serial.flush();
-                is_capturing_bulk_data = false;
-                index_capture_buffer = 0;
-            }
-            f = strstr(p_capture_buffer,"WREN_SCRIPT_END");
-            if (f > 0){
-                Serial.println(F("M SvcSerialCommandInterface::updateRT Wren Script Received"));
-                memset(f,0,strlen("WREN_SCRIPT_END"));//remove the EOF marker
-                //stream complete
-                is_capturing_bulk_data = false;
-            }
-        }while(is_capturing_bulk_data);
-    }else if (is_streaming_file){
-        streamHandler();
-    }else if (Serial.available() > 0 && false == newRxMsg ) {
-        bufferChr = Serial.read();
-        received_chars[index_rx_buffer++] = bufferChr;
+            bufferChr = Serial.read();
+            received_chars[index_rx_buffer++] = bufferChr;
 
-        if(index_rx_buffer >= (SERIAL_RX_BUFFER_SIZE-16)){
-            //input overflow - clear serial input and reset the index
-            index_rx_buffer = 0;
-            Serial.clear();
-            Serial.clearReadError();
-            return;
-        }
+            if(index_rx_buffer >= (SERIAL_RX_BUFFER_SIZE-2)){
+                //input overflow - clear serial input and reset the index
+                index_rx_buffer = 0;
+                Serial.clear();
+                Serial.clearReadError();
+                return;
+            }
 
-        if (bufferChr == endMarker){
-            received_chars[--index_rx_buffer] = '\0'; //remove the end marker and null terminate the string
-            index_rx_buffer = 0; //reset the input write index
-            newRxMsg = true;
-        }
+            if (bufferChr == endMarker){
+                received_chars[--index_rx_buffer] = '\0'; //remove the end marker and null terminate the string
+                index_rx_buffer = 0; //reset the input write index
+                newRxMsg = true;
+            }
+        } while (Serial.available() > 0 && false == newRxMsg);
 
         if (newRxMsg){
+            //Once a new message is received, first the command is parsed out from the message
+            // this first split into cmd and param is for the purpose of identifying the requested command
+            // each individual message handler is then responsible for parsing out thier own parameters if required.
             char cmd[128], param[128],param2[128];
             int total_read;
             total_read = sscanf(received_chars, "%127s %127s" , cmd, param);
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
-                bool first;
-                if (total_read < 2){
-                    //send the root directory
-                    //delay(100);
-                    empty();
-                    println(F("DIR"));
-                    print(F("LS . ["));
-#ifdef USE_EXTMEM
-                    //do nothing - one time malloc in the constructor
-#else
-                    workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
-#endif
-                    strcpy(p_working_buffer,tx_Buffer);
-                    empty();
-                    Serial.print(p_working_buffer);
-                    sd->chdir();
-                    tx_buffer_overflow_flag = false;
-                    sd->ls(this);
-                    memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
-                    strcpy(p_working_buffer,tx_Buffer);
-                    empty();
-                    first = true;
-                    token = strtok(p_working_buffer, &newline);
-                    while( token != NULL ) {
-                        if (first && !tx_buffer_overflow_flag) Serial.print(F("\""));
-                        else Serial.print(F(",\""));
-                        Serial.print(token);
-                        Serial.print(F("\""));
-                        token = strtok(NULL, &newline);
-                        first = false;
-                    }
-                    Serial.println(F("]"));
-                    Serial.println(F("DIR_EOF"));
-#ifdef USE_EXTMEM                    
-                    //do nothing - one time malloc in the constructor
-#else
-                    free(workingBuffer);
-#endif
-                    //delay(200);
-                } else{
-                    //send the requested path
-                    replacechar(param,':',' '); //replace space token used to tx the path
-                    empty();
-                    print(F("M "));
-                    println(param);
-                    println(F("DIR"));
-                    send();
-                    sd->chdir();
-                    replacechar(param,' ',':'); //replace any spaces in the transmitted path to ':'
-                    sprintf(multipart_header, "LS %s [", param);
-                    Serial.print(multipart_header);
-                    replacechar(param,':',' '); // put the spaces back in time for the ls command
-                    sd->ls(this,param,false);
-                    first = true;
-                    token = strtok(tx_Buffer, &newline);
-                    while( token != NULL && index_tx_buffer > 1) {                        
-                        if (first && !tx_buffer_overflow_flag) Serial.print(F("\""));
-                        else Serial.print(F(",\""));
-                        replacechar(token,'\r',0);
-                        Serial.print(token);
-                        Serial.print(F("\""));
-                        token = strtok(NULL, &newline);
-                        first = false;
-                        while(throttle()){
-                            delay(50);
-                        }
-                    }
-                    Serial.println(F("]"));
-                    Serial.println(F("DIR_EOF"));
-                }
+                messageHandler_LS();
             }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
-                total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
-                if (total_read < 3){
-                    Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
-                    Serial.println(param);
-                } else{
-                    //file streaming request ok
-                    //init the transfer
-                    Serial.print(F("M GET_OK ")); 
-                    Serial.print(param);
-                    Serial.print(" ");
-                    Serial.println(param2);
-                    strcpy(stream_path,param);
-                    strcpy(stream_file,param2);
-                    Serial.println(F("FS_START"));
-                    is_streaming_file = true;
-                    is_periodic_messages_enabled = false;
-                    stream_pos = 0;
-                }
+                messageHandler_GET();
             }else if (strncmp(cmd, "ACON",sizeof(cmd)) == 0){ //audio connections
                 uint16_t i;  
                 char csBuffer[128];
@@ -505,69 +679,15 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 println("#WREN_EOF!");
                 sendLZ4Message();
             }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
-                is_capturing_bulk_data = true;
-#ifndef USE_EXTMEM
-                char* tmp;
-                tmp = (char*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);
-                if(tmp==NULL){
-                    //realloc failed; release the pointer and try again
-                    free(captureBuffer);
-                    captureBuffer = (char*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
-                } else captureBuffer = tmp;
-#endif
-                if(p_capture_buffer!=NULL){
-                    memset(p_capture_buffer,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);
-                    index_capture_buffer = 0;
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer allocated and initalized"));
-                } else{
-                    is_capturing_bulk_data = false;
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: ERROR: realloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed"));
-                    Serial.flush();
-                }
+                messageHandler_WREN_SCRIPT_START();
             }else if (strncmp(cmd, "WREN_SCRIPT_COMPILE",sizeof(cmd)) == 0){
-                if(p_capture_buffer != NULL){
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script compile request"));
-                    am->sendMessage(this,"AppWren","WREN_SCRIPT_COMPILE");
-                    am->sendMessage(this,"AppWren",p_capture_buffer);
-#ifndef USE_EXTMEM
-                    captureBuffer = (char*)realloc(captureBuffer,0);
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
-#endif
-                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));    
+                messageHandler_WREN_SCRIPT_COMPILE();  
             }else if (strncmp(cmd, "WREN_SCRIPT_EXECUTE",sizeof(cmd)) == 0){
-                if(p_capture_buffer != NULL){
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script execute request"));
-                    am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
-                    am->sendMessage(this,"AppWren",p_capture_buffer);
-#ifndef USE_EXTMEM
-                    captureBuffer = (char*)realloc(captureBuffer,0);
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
-#endif
-                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+                messageHandler_WREN_SCRIPT_EXECUTE();
             }else if (strncmp(cmd, "WREN_SCRIPT_SAVE",sizeof(cmd)) == 0){
-                if(p_capture_buffer != NULL){
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: script save request"));
-                    am->sendMessage(this,"AppWren",received_chars);//"WREN_SCRIPT_SAVE [modulename]");
-                    am->sendMessage(this,"AppWren",p_capture_buffer);
-#ifndef USE_EXTMEM
-                    captureBuffer = (char*)realloc(captureBuffer,0);
-                    Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer released"));
-#endif
-                } else Serial.println(F("M SvcSerialCommandInterface::updateRT: captureBuffer is NULL"));
+                messageHandler_WREN_SCRIPT_SAVE();
             }else if (strncmp(cmd, "UPDATE_DD",sizeof(cmd)) == 0){
-                int32_t val;
-                float32_t fval;
-                total_read = sscanf(received_chars, "%127s %127s %d" , cmd, param,(int*)&val);
-                if (total_read < 3){
-                    total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
-                    if (total_read < 3){
-                        Serial.print(F("M WRONG PARAM COUNT"));
-                        Serial.println(total_read);
-                    } else am->data->update(param,fval); 
-                }else if(!am->data->update(param,val)){
-                    total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
-                    am->data->update(param,fval);
-                }
+                messageHandler_UPDATE_DD();
             }else if (strncmp(cmd, "HELO",sizeof(cmd)) == 0){ 
                 if(requestStartLZ4Message()){
                     println(gWelcomeMessage);
@@ -580,71 +700,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 mp = (char*)num;
                 Serial.printf("M GET_RAM {\"addr\":\"%08X\",\"data\":\"%02X\"}\n",num,(uint8_t)*mp);
             }else if (strncmp(cmd, "GET_RAM2",sizeof(cmd)) == 0){ 
-                char* mp = 0;
-                char c;
-#ifdef USE_EXTMEM
-                char tmp[1000];
-                //tmp = (char*)extmem_malloc(1000);
-#else
-                char* tmp;
-                tmp = (char*)malloc(1000);
-#endif
-                while(throttle()){delay(100);}
-                if(!requestStartLZ4Message()) return;
-                strcpy(tmp,"");
-                printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),0x20000000);
-                //RAM2 always ends at 0x20280000
-                for(uint32_t i = 0x20000000; i < 0x20280000; i+=1){
-                    if (i == 0x20010000) i = 0x20200000;
-                    mp = (char*)i;
-                    c = *mp;
-                    c = (c & 0xFF);
-                    if(i%32==0 && i != 0x20000000){
-                        print(F("\",\"decode\":\""));
-                        print(tmp);
-                        println(F("\"}}"));
-                        sendLZ4Message();
-                        strcpy(tmp,"");
-                        while(throttle()){delay(50);}
-                        if(i%1024==0){
-                            float32_t pct;
-                            pct = 100.0 * ((float)(i-0x20000000)/(float)(0x20280000-0x20000000));
-                            Serial.printf(F("CLS\nM GET_RAM2 %08X %.0f pct "),i,pct);
-                            for(uint16_t div = 0; div < (uint16_t)pct; div += 5){
-                                Serial.printf("*");
-                            }
-                            Serial.println("");
-                        }
-                        startLZ4Message();
-                        printf(F("RAM {\"RAM2\":{\"addr\":\"%08X\",\"chunk\":\""),i);
-                    }
-
-                    printf("%02X ",(uint8_t)c);
-                    const char* escape = "\\";
-                    if (c=='"'){                        
-                        strncat(tmp, escape, 1);
-                        strncat(tmp, &c, 1);
-                    }else if (c=='\''){
-                        strncat(tmp, escape, 1);
-                        strncat(tmp, &c, 1);
-                    }else if (isprint((int)c)){ 
-                        strncat(tmp, &c, 1);
-                    }else if (iscntrl((int)c)){
-                        c = '.';
-                        strncat(tmp, &c, 1);
-                    }else{
-                        c = '?';
-                        strncat(tmp, &c, 1);
-                    }
-                }
-                println("\n");
-                println(F("RAM END"));
-                sendLZ4Message();
-#ifdef USE_EXTMEM
-                //do nothing - local var
-#else       
-                free(tmp);
-#endif
+                messageHandler_GET_RAM2();
             }else if (strncmp(cmd, "GET_RAM1",sizeof(cmd)) == 0){ 
                 char* mp = 0;
                 char c;

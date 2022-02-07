@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 513;
+var viewWidth = 724;
 var viewHeight = 37;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-0';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="415,-0.5 415,-28.5 505,-28.5 505,-0.5 415,-0.5"/>
-<text text-anchor="middle" x="460" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">I2CReset</text>
+<polygon fill="#bfbfbf" stroke="black" points="626,-0.5 626,-28.5 716,-28.5 716,-0.5 626,-0.5"/>
+<text text-anchor="middle" x="671" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">I2CReset</text>
 </a>
 </g>
 </g>
@@ -67,31 +67,46 @@ var sectionId = 'dynsection-0';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="98,-0.5 98,-28.5 379,-28.5 379,-0.5 98,-0.5"/>
-<text text-anchor="middle" x="238.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::initAudioHardware</text>
+<polygon fill="none" stroke="black" points="309,-0.5 309,-28.5 590,-28.5 590,-0.5 309,-0.5"/>
+<text text-anchor="middle" x="449.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::initAudioHardware</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M404.65,-14.5C396.65,-14.5 388.12,-14.5 379.31,-14.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="404.84,-18 414.84,-14.5 404.84,-11 404.84,-18"/>
+<path fill="none" stroke="midnightblue" d="M615.65,-14.5C607.65,-14.5 599.12,-14.5 590.31,-14.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="615.84,-18 625.84,-14.5 615.84,-11 615.84,-18"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d6/dd8/_eris_core_8cpp_a4fc01d736fe50cf5b977f755b675f11d.html#a4fc01d736fe50cf5b977f755b675f11d" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="0,-0.5 0,-28.5 62,-28.5 62,-0.5 0,-0.5"/>
-<text text-anchor="middle" x="31" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">setup</text>
+<g id="a_node3"><a xlink:href="../../da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45" target="_top" xlink:title="intended to be called from the arduino setup() function, this method initalizes and sets up the &quot;Eris...">
+<polygon fill="none" stroke="black" points="98,-0.5 98,-28.5 273,-28.5 273,-0.5 98,-0.5"/>
+<text text-anchor="middle" x="185.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppManager::setup</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M87.63,-14.5C78.4,-14.5 69.83,-14.5 62.3,-14.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="87.87,-18 97.87,-14.5 87.87,-11 87.87,-18"/>
+<path fill="none" stroke="midnightblue" d="M298.53,-14.5C289.91,-14.5 281.41,-14.5 273.18,-14.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="298.68,-18 308.68,-14.5 298.68,-11 298.68,-18"/>
+</g>
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="../../d6/dd8/_eris_core_8cpp_a4fc01d736fe50cf5b977f755b675f11d.html#a4fc01d736fe50cf5b977f755b675f11d" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="0,-0.5 0,-28.5 62,-28.5 62,-0.5 0,-0.5"/>
+<text text-anchor="middle" x="31" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">setup</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M87.54,-14.5C78.44,-14.5 69.77,-14.5 62.09,-14.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="87.56,-18 97.56,-14.5 87.56,-11 87.56,-18"/>
 </g>
 </g>
 </svg>

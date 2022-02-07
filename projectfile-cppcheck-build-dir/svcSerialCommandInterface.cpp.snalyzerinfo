@@ -1,3 +1,21 @@
+Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
+Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
+Surface
+Surface
+Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
+requestSubSurfaceBufferP call:[F,print,println]
+getSurfaceBufferP
+getWidth
+getHeight
+hash
+Animation call:[memset,sizeof] noreturn:[memset]
+setPath call:[strcpy,strlen] noreturn:[strcpy]
+isFrameComplete
+getFileName
+getPath
+ILI9341_t3_ERIS
+getFrameAddress call:[return]
+busy call:[_busy] noreturn:[_busy]
 Touch
 setCalibrationInputs
 erisAudioMixer8
@@ -14,20 +32,6 @@ erisAudioInputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioInputI2S2
 update call:[update] noreturn:[update]
-erisAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAsyncAudioInputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioInputAnalog
-update call:[update] noreturn:[update]
-erisAudioInputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioInputPDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM
-update call:[update] noreturn:[update]
-erisAudioInputTDM2
-update call:[update] noreturn:[update]
 erisAudioOutputI2S
 update call:[update] noreturn:[update]
 erisAudioOutputI2SQuad
@@ -39,30 +43,6 @@ update call:[update] noreturn:[update]
 erisAudioOutputI2Sslave
 update call:[update] noreturn:[update]
 erisAudioOutputI2S2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF2
-update call:[update] noreturn:[update]
-erisAudioOutputSPDIF3
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211
-update call:[update] noreturn:[update]
-erisAudioOutputPT8211_2
-update call:[update] noreturn:[update]
-erisAudioOutputAnalog
-update call:[update] noreturn:[update]
-erisAudioOutputAnalogStereo
-update call:[update] noreturn:[update]
-erisAudioOutputPWM
-update call:[update] noreturn:[update]
-erisAudioOutputMQS
-update call:[update] noreturn:[update]
-erisAudioOutputTDM
-update call:[update] noreturn:[update]
-erisAudioOutputTDM2
-update call:[update] noreturn:[update]
-erisAudioOutputADAT
 update call:[update] noreturn:[update]
 erisAudioAmplifier
 update call:[update] noreturn:[update]
@@ -150,8 +130,6 @@ erisAudioAnalyzeToneDetect
 update call:[update] noreturn:[update]
 erisAudioAnalyzeNoteFrequency
 update call:[update] noreturn:[update]
-erisAudioAnalyzePrint
-update call:[update] noreturn:[update]
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
 update call:[abs,analogRead]
 readAN1 call:[return]
@@ -162,25 +140,7 @@ freadAN1
 freadAN2
 freadAN3
 freadAN4
-Surface call:[F,atol,available,chdir,close,fgets,hash,open,print,println,requestSubSurfaceBufferP,sizeof,strtok] noreturn:[requestSubSurfaceBufferP]
-Surface call:[requestSubSurfaceBufferP] noreturn:[requestSubSurfaceBufferP]
-Surface
-Surface
-Surface call:[F,Surface,malloc,print,println,sizeof] noreturn:[println]
-requestSubSurfaceBufferP call:[F,print,println]
-getSurfaceBufferP
-getWidth
-getHeight
-hash
-Animation call:[memset,sizeof] noreturn:[memset]
-setPath call:[strcpy,strlen] noreturn:[strcpy]
-isFrameComplete
-getFileName
-getPath
-ILI9341_t3_ERIS
-getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
-getId
+getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
 setParent
@@ -215,6 +175,9 @@ onAnalog4
 connectionCount
 setSCI
 setAPC
+getFunctionCount call:[generateFunctionList]
+getFunctionListItem call:[generateFunctionList]
+getTypeCountByFunction call:[queryTypesByFunction]
 getInstance call:[AppManager] noreturn:[AppManager]
 chdir call:[chdir] noreturn:[chdir]
 chdir call:[chdir] noreturn:[chdir]

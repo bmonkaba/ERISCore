@@ -11,6 +11,7 @@
 
 //#define SERIAL_PRINT_APP_LOOP_TIME
 #include <Arduino.h>
+
 #include "HSI.h"
 #include "Touch.h"
 #include "AnalogInputs.h"
@@ -18,25 +19,28 @@
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
 #include "ErisGlobals.h"
-#include "SvcSerialCommandInterface.h"
+//#include "SvcSerialCommandInterface.h"
+
 #include <pgmspace.h>
 #include "FreeStack.h"
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);
+
 extern AudioDirector _ad;
 extern SvcSerialCommandInterface sci;
+extern SvcErisAudioParameterController apc;
+
 
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 #ifdef USE_EXTMEM
-uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
+uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
 uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (8)));
 #else
-uint16_t DMAMEM FB1[320 * 240] __attribute__ ((aligned (16)));
+uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
 uint16_t DMAMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
 #endif
 SvcDataDictionary FASTRUN _data; 
-
 
 /**
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
@@ -54,7 +58,7 @@ FLASHMEM AppManager:: AppManager(){
   //attach the global imgCache buffer to a surface
   memset(imgCache,0,sizeof(imgCache));
   p_fast_img_cache_surface = new Surface(&imgCache[0],AM_IMG_CACHE_SIZE);
-  p_display_surface = new Surface(&FB1[0],320,240);
+  p_display_surface = new Surface(&FB1[0],SCREEN_WIDTH,SCREEN_HEIGHT);
 
   //init the app focus and app stacks
   memset(&app_focus_stack,0,sizeof(app_focus_stack));
@@ -110,6 +114,20 @@ FLASHMEM AppManager:: AppManager(){
   #endif
   
 };
+
+void AppManager::setup(){
+  //////////////////////////////////////////////////////////////////////////////////////
+  //reset the i2c bus and config the external ADC
+  Serial.println(F("M AppManager::setup Configuring Audio Hardware"));
+  _ad.initAudioHardware();
+
+  //I2CBusScan();  
+  //Reset PSRAM clock to 132 Mhz
+    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_OFF);
+    CCM_CBCMR = (CCM_CBCMR & ~(CCM_CBCMR_FLEXSPI2_PODF_MASK | CCM_CBCMR_FLEXSPI2_CLK_SEL_MASK))
+      | CCM_CBCMR_FLEXSPI2_PODF(4) | CCM_CBCMR_FLEXSPI2_CLK_SEL(2); // 528/5 = 132 MHz
+    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_ON);
+}
 
 /**
  * @brief AppManager update executes single update of the state machine

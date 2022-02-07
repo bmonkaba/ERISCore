@@ -3,7 +3,7 @@ var class_app_scope =
     [ "AppScope", "d8/dbe/class_app_scope_a963ae83979bbfdfd46c0b1d063406361.html#a963ae83979bbfdfd46c0b1d063406361", null ],
     [ "_updatePosition", "d8/dbe/class_app_scope.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "d8/dbe/class_app_scope.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
-    [ "getId", "d8/dbe/class_app_scope.html#aacbb5f3bae12ca03970d0b10b3bbd2de", null ],
+    [ "getID", "d8/dbe/class_app_scope.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "d8/dbe/class_app_scope.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "messageHandler", "d8/dbe/class_app_scope.html#ae1c0e3873bd65919752776311c7c509b", null ],
     [ "onAnalog1", "d8/dbe/class_app_scope.html#a9690562f1ed92ae4544190d68be66c1e", null ],
