@@ -106,12 +106,12 @@ class AppAudioToPolyphonic:public AppBaseClass {
  
       //cqt = new AppCQT;
       cqt.setWidgetPosition(125,5);
-      cqt.setWidgetDimension(320-10-125,50);
+      cqt.setWidgetDimension(SCREEN_WIDTH-10-125,50);
       cqt.setParent(this);
       
       slider = new ControlSlider(this);
       slider->setWidgetPosition(0,65);
-      slider->setWidgetDimension(320,10);
+      slider->setWidgetDimension(SCREEN_WIDTH,10);
       slider->setName("SLIDER");
       slider->setText("");
       slider->setValue(0);
@@ -122,7 +122,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       uint16_t by = 90;
       for (uint16_t i=0;i<sizeof(s)/16;i+=1){
         button = new ControlButton(this); //reuse the button var to create many instances
-        if(bx>(320-78)){
+        if(bx>(SCREEN_WIDTH-78)){
           bx=5;by+=78;
         }
         button->setWidgetPosition(bx,by);

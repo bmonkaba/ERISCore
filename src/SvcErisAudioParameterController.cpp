@@ -12,8 +12,8 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
     //class,instance,method,params
     sci->printf("M ");sci->println(message);
 
-    total_read = sscanf(message, "%s %s %s %s" , c, i, m, p);
-    sci->printf("M APC Request: class: %64s instance: %64s method:%64s params: %64s\n" , c, i, m, p);//"%64s %64s %64s %64s" , c, i, m, p
+    total_read = sscanf(message, "%63s %63s %63s %63s" , c, i, m, p);
+    sci->printf("M APC Request: class: %63s instance: %63s method:%63s params: %63s\n" , c, i, m, p);
     sci->send();
     if(0){}else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
         strncmp(gPM_SETLOWPASS,m,sizeof(gPM_SETLOWPASS)) == 0){

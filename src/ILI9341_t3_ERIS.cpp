@@ -172,8 +172,8 @@ void ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int16_t sta
   _height = dest->getHeight();
   drawLine(start_x, start_y, end_x, end_y, color);
   _pfbtft = save;
-  _width = 320;
-  _height = 240;
+  _width = SCREEN_WIDTH;
+  _height = SCREEN_HEIGHT;
 }
 
 void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
@@ -185,8 +185,8 @@ void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
   _height = dest->getHeight();
   fillScreen(color);
   _pfbtft = save;
-  _width = 320;
-  _height = 240;
+  _width = SCREEN_WIDTH;
+  _height = SCREEN_HEIGHT;
 }
 
 
@@ -201,7 +201,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
   int16_t mx;        //left clip x offset
   int16_t nx;        //right clip x offset
   unsigned long ifb; //frame buffer index
-  //uint16_t dwbf[320];//file read pixel row input buffer
+  //uint16_t dwbf[SCREEN_WIDTH];//file read pixel row input buffer
   uint16_t dw;       //pixel data
   char str[16];      //char buffer
   char *c;           //char pointer
@@ -278,7 +278,7 @@ void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
     Serial.println(an->getFileName());
     return;
   }
-  //for (unsigned long i = (320 * 64) ; i < (320 * 240); i += 32){
+  //for (unsigned long i = (SCREEN_WIDTH * 64) ; i < (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){
   uint32_t chunk_size = (_width * _height)/ANIMATION_CHUNKS_PER_FRAME;
   uint32_t i = an->chunk * chunk_size;
   file.seekSet(15 + (i*2)); //skip the header - header will always be 15 bytes for full screen wallpaper
@@ -298,8 +298,8 @@ void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
     return;
   }
   file.seekSet(15); //skip the header - header will always be 15 bytes for full screen wallpaper
-  //for (unsigned long i = (320 * 64) ; i < (320 * 240); i += 32){
-  for (uint32_t i = 0; i < (320 * 240); i += 32){ //32,64
+  //for (unsigned long i = (SCREEN_WIDTH * 64) ; i < (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){
+  for (uint32_t i = 0; i < (SCREEN_WIDTH * SCREEN_HEIGHT); i += 32){ //32,64
     file.read(&_pfbtft[i],64);
   }
   file.close();

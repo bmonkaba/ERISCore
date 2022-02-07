@@ -17,6 +17,8 @@ class AppAIfES:public AppBaseClass {
   public:
     AppAIfES():AppBaseClass(){
         strcpy(name,"AI");
+        x_test = NULL;
+        y_test = NULL;
         // The layer structures for F32 data type and their configurations
         input_layer_shape[0] = 1;
         input_layer_shape[1] = 3;
@@ -68,8 +70,8 @@ class AppAIfES:public AppBaseClass {
 
         
         // One epoch of training. Iterates through the whole data once
-        float loss;
-        int batch_size = 3;
+        //float loss;
+        //int batch_size = 3;
         //aialgo_train_model(&model, &x_train, &y_train, optimizer, batch_size);
         //aialgo_calc_loss_model_f32(&model, x_test, y_test, &loss);
             

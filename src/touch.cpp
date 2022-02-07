@@ -1,5 +1,6 @@
 #include "touch.h"
 #include "HSI.h"
+#include "ErisGlobals.h"
 
 #define Z_THRESHOLD     600
 #define Z_THRESHOLD_INT	75
@@ -125,9 +126,9 @@ TS_Point Touch::getPoint()
 	fx = (xraw - _raw_minx)/(1.0 * (_raw_maxx - _raw_minx));
 	fy = (yraw - _raw_miny)/(1.0 * (_raw_maxy - _raw_miny));
 	//convert normalized values to screen space
-	x = (int16_t)(fx * 320); 
-	y = (int16_t)(fy * 240);
+	x = (int16_t)(fx * SCREEN_WIDTH); 
+	y = (int16_t)(fy * SCREEN_HEIGHT);
 	(x < 0)?x=0:x=x;
 	(y < 0)?y=0:y=y;	
-	return TS_Point(320-x, 240-y, zraw);
+	return TS_Point(SCREEN_WIDTH-x, SCREEN_HEIGHT-y, zraw);
 }

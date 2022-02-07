@@ -21,6 +21,7 @@
 
 
 FLASHMEM AudioDirector::AudioDirector(){
+  parameter_controller = NULL;
   sci = NULL;
   obj_count=0;
   active_connections = 0;
@@ -358,7 +359,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
     if(source==p_cord[i]->pSrc && destination==p_cord[i]->pDst && sourceOutput==p_cord[i]->src_index && destinationInput==p_cord[i]->dest_index){
-      Serial.printf(F("M AudioDirector::connect() found existing connection; reconnecting at index %hu\n"),i);
+      Serial.printf(F("M AudioDirector::connect() reconnecting at index %hu\n"),i);
       //Serial.println(i);
       //Serial.flush();
       if(p_cord[i]->reconnect()) active_connections++;
@@ -379,7 +380,7 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       }
     }
     if (NULL==p_cord[i]){
-      Serial.printf(F("M AudioDirector::connect() making a new AudioConnection at index %hu\n"),i);
+      Serial.printf(F("M AudioDirector::connect() new connection at index %hu\n"),i);
       /*
       Serial.print(source->shortName);Serial.print(F(":"));
       Serial.print(sourceOutput);
@@ -465,8 +466,7 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
       Serial.println(i);
       //disconnect the audio connection
       if(p_cord[i]->disconnect()) active_connections--;
-      Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
-      //Serial.flush();
+      //Serial.println(F("M AudioDirector::disconnect() disconnect complete"));
       return true; 
     }
   }

@@ -39,15 +39,14 @@ extern "C" {
 }
 
 /**
- * @brief write function system callback for the Wren VM. Stdout/Stderr is SerialUSB1
+ * @brief write function system callback for the Wren VM. Stdout/Stderr is Serial
  * 
  * @param vm 
  * @param text 
  */
 static void writeFn(WrenVM* vm, const char* text) {
-  //SerialUSB1.printf("VM %s", text);
+  //Serial.printf("VM %s", text);
   AppManager* am = AppManager::getInstance();
-  AppWren* app = (AppWren*)am->getAppByName("AppWren");
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)am->getAppByName("SCI");
   while(!sci->requestStartLZ4Message()){
     delayMicroseconds(100);
@@ -57,7 +56,7 @@ static void writeFn(WrenVM* vm, const char* text) {
 }
 
 /**
- * @brief error function system callback for the Wren VM. Stdout/Stderr is SerialUSB1
+ * @brief error function system callback for the Wren VM. Stdout/Stderr is Serial
  * 
  * @param vm 
  * @param errorType 
@@ -73,17 +72,17 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
   {
     case WREN_ERROR_COMPILE:
     {
-      SerialUSB1.printf("VM WREN_ERR [%s line %d] [Error] %s\n", module, line, msg);
+      Serial.printf("VM WREN_ERR [%s line %d] [Error] %s\n", module, line, msg);
       break;
     } 
     case WREN_ERROR_STACK_TRACE:
     {
-      SerialUSB1.printf("VM WREN_ERR [%s line %d] in %s\n", module, line, msg);
+      Serial.printf("VM WREN_ERR [%s line %d] in %s\n", module, line, msg);
       break;
     } 
     case WREN_ERROR_RUNTIME:
     {
-      SerialUSB1.printf("VM WREN_ERR [Runtime Error] %s\n", msg);
+      Serial.printf("VM WREN_ERR [Runtime Error] %s\n", msg);
       break;
     } 
   }
@@ -389,8 +388,6 @@ void audioDirectorGetTypeListCallback(WrenVM* vm){
  */
 void audioDirectorGetTypeInstanceCountCallback(WrenVM* vm){
   //(char* type)
-  int num_slots;
-	int slot = 0;
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   AudioDirector* ad = app->getAudioDirector();
@@ -793,7 +790,7 @@ void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message)
         }
     } else{
       //All other messages from senders other than the SCI will be forwarded to the VM
-      //SerialUSB1 is dedicated to serial comms with the VM for stdio/stderr
+      //Serial is dedicated to serial comms with the VM for stdio/stderr
       wrenEnsureSlots(vm, 3);
       wrenSetSlotHandle(vm, 0, h_slot0);//App
       wrenSetSlotString(vm, 1, sender->name);//sender

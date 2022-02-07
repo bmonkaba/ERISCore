@@ -88,10 +88,17 @@ typedef struct svcDataDictionaryRecord
  * 
  */
 class SvcDataDictionary{
-    
+    protected:
+        /**
+         * @brief hashing function used to accelerate searches
+         * 
+         * @param s 
+         * @return uint32_t 
+         */
+        uint32_t hash(const char* s);
     public:
         SvcDataDictionary();
-        uint32_t hash(const char* s);
+        
         /**
          * @brief create a record with ownership
          * 

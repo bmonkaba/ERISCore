@@ -63,8 +63,8 @@ class AppWren:public AppBaseClass {
         vmConstructor(&g_wrenScript[0]);
         widget_width = 64;
         widget_height = 64;
-        widget_origin_x = 320 - 64 - 5;
-        widget_origin_y = 240 - 64 - 5;
+        widget_origin_x = SCREEN_WIDTH - 64 - 5;
+        widget_origin_y = SCREEN_HEIGHT - 64 - 5;
         //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
     };
 
@@ -283,7 +283,7 @@ class AppWren:public AppBaseClass {
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
-        Surface dest(draw->getFrameBuffer(),320,240);
+        Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
         //bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type)
         draw->bltMem(&dest,&source,to_x,to_y,AT_NONE);
     }
@@ -419,16 +419,14 @@ class AppWren:public AppBaseClass {
     void getWrenHandles();
     
     bool isWrenResultOK(WrenInterpretResult res){
-        AppManager* am = AppManager::getInstance();
-        AppWren* app = (AppWren*)am->getAppByName("AppWren");
         switch (res){
             case WREN_RESULT_COMPILE_ERROR:
                 Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_COMPILE_ERROR\n"));
-                SerialUSB1.printf(F("VM WREN_ERR Compilation Failed\n"));
+                Serial.printf(F("VM WREN_ERR Compilation Failed\n"));
                 return false;
             case WREN_RESULT_RUNTIME_ERROR:
                 Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_RUNTIME_ERROR\n"));
-                SerialUSB1.printf(F("VM WREN_WRN [Implementation Warning] call forwarding will be disabled until next script load.\n"));
+                Serial.printf(F("VM WREN_WRN [Implementation Warning] call forwarding will be disabled until next script load.\n"));
                 return false;
             case WREN_RESULT_SUCCESS:
                 return true;

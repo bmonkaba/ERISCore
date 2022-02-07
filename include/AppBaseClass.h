@@ -22,6 +22,7 @@
 #define _AppBase_
 
 //forward declaration of the AppManager class to be defined later
+
 class AppManager;
 class AudioDirector;
 class SvcSerialCommandInterface;
@@ -73,7 +74,12 @@ class AppBaseClass {
     char name[MAX_NAME_LENGTH];
     AppBaseClass();
     AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
-    uint16_t getId(){return id;};
+    /**
+     * @brief Get the ID object
+     * 
+     * @return uint16_t 
+     */
+    uint16_t getID(){return id;};
     /**
      * @brief Compares the name_string to the app class instance name (string)
      * 
@@ -157,7 +163,7 @@ class AppBaseClass {
      */
     virtual void onFocus(){};
     /**
-     * @brief triggered when focus is taken from the AppManager
+     * @brief triggered when focus is taken by the AppManager
      * 
      */
     virtual void onFocusLost(){};
