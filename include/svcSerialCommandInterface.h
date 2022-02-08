@@ -138,6 +138,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     void messageHandler_WREN_SCRIPT_EXECUTE();
     void messageHandler_WREN_SCRIPT_SAVE();
     void messageHandler_UPDATE_DD();
+    void messageHandler_GET_RAM1();
     void messageHandler_GET_RAM2();
     void render() override{};    //called only when the app is active
     void update() override;
@@ -156,7 +157,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     };
     void flush(){
       while(throttle()){
-        delay(50);
+        delay(1);
       }
       if (strlen(tx_Buffer) > 0 ) Serial.print(tx_Buffer);
       memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);

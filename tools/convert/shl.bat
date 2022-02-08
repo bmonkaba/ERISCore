@@ -1,1 +1,2 @@
-cmd run convert.bat
+./ffmpeg -i "in.mp4" ".\INPUT\%03d.png"
+pause

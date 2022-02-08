@@ -85,14 +85,14 @@ if __name__ == '__main__':
     print("warning: this app is running an open access local static webserver and USB serial websocket")
     ###
     ## start the serial worker in background (as a deamon)
-    sp = serialworker.SerialProcess('COM9',input_queue, output_queue)
+    sp = serialworker.SerialProcess('COM12',input_queue, output_queue)
     x = threading.Thread(target=sp.run)
     x.start()
 
     #connection to the virtual machine
-    sp = serialworker.SerialProcess('COM10',vm_input_queue, vm_output_queue)
-    x = threading.Thread(target=sp.run)
-    x.start()
+    #sp = serialworker.SerialProcess('COM10',vm_input_queue, vm_output_queue)
+    #x = threading.Thread(target=sp.run)
+    #x.start()
 
     #sp.daemon = True
     #sp.start()

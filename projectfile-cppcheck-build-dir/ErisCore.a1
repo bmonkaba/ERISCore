@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="1611530174">
+<analyzerinfo checksum="4173707901">
         <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_poll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_poll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/ErisCore.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="57" column="9"/>
             <symbol>et_since_poll</symbol>
@@ -25,12 +25,7 @@
             <symbol>ControlSlider</symbol>
         </error>
         <error id="missingOverride" severity="style" msg="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppWren.h" line="161" column="10" info="Function in derived class"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="225" column="18" info="Virtual function in base class"/>
-            <symbol>messageHandler</symbol>
-        </error>
-        <error id="missingOverride" severity="style" msg="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppAIfES.h" line="89" column="10" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppTemplate.h" line="22" column="10" info="Function in derived class"/>
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="225" column="18" info="Virtual function in base class"/>
             <symbol>messageHandler</symbol>
         </error>
@@ -80,12 +75,17 @@
             <symbol>onTouchRelease</symbol>
         </error>
         <error id="missingOverride" severity="style" msg="The function &apos;onTouchRelease&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;onTouchRelease&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="314" column="10" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="317" column="10" info="Function in derived class"/>
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="190" column="18" info="Virtual function in base class"/>
             <symbol>onTouchRelease</symbol>
         </error>
         <error id="missingOverride" severity="style" msg="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="438" column="8" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="441" column="8" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="225" column="18" info="Virtual function in base class"/>
+            <symbol>messageHandler</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppWren.h" line="161" column="10" info="Function in derived class"/>
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="225" column="18" info="Virtual function in base class"/>
             <symbol>messageHandler</symbol>
         </error>
@@ -93,6 +93,11 @@
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppReprogram.h" line="25" column="10" info="Function in derived class"/>
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="158" column="18" info="Virtual function in base class"/>
             <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;messageHandler&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." file0="src/ErisCore.cpp">
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppAIfES.h" line="89" column="10" info="Function in derived class"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppBaseClass.h" line="225" column="18" info="Virtual function in base class"/>
+            <symbol>messageHandler</symbol>
         </error>
         <error id="duplicateCondition" severity="style" msg="The if condition is the same as the previous if condition" verbose="The if condition is the same as the previous if condition" cwe="398" file0="src/ErisCore.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppScope.h" line="54" column="19" info="Second condition"/>
@@ -169,13 +174,13 @@
             <location file="D:\brian\Dev\Eris\ERISCore\include\AppAudioToPolyphonic.h" line="361" column="11"/>
         </error>
         <error id="redundantAssignment" severity="style" msg="Variable &apos;pll_f&apos; is reassigned a value before the old one has been used." verbose="Variable &apos;pll_f&apos; is reassigned a value before the old one has been used." cwe="563" file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="392" column="13" info="pll_f is overwritten"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="363" column="23" info="pll_f is assigned"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="395" column="13" info="pll_f is overwritten"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="366" column="23" info="pll_f is assigned"/>
             <symbol>pll_f</symbol>
         </error>
         <error id="redundantAssignment" severity="style" msg="Variable &apos;pll_f&apos; is reassigned a value before the old one has been used." verbose="Variable &apos;pll_f&apos; is reassigned a value before the old one has been used." cwe="563" file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="392" column="13" info="pll_f is overwritten"/>
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="383" column="23" info="pll_f is assigned"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="395" column="13" info="pll_f is overwritten"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="386" column="23" info="pll_f is assigned"/>
             <symbol>pll_f</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;flow&apos; can be reduced." verbose="The scope of the variable &apos;flow&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/ErisCore.cpp">
@@ -187,11 +192,11 @@
             <symbol>fhigh</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;a&apos; can be reduced." verbose="The scope of the variable &apos;a&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="408" column="15"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="411" column="15"/>
             <symbol>a</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;f&apos; can be reduced." verbose="The scope of the variable &apos;f&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/ErisCore.cpp">
-            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="408" column="17"/>
+            <location file="D:\brian\Dev\Eris\ERISCore\include\AppCQT.h" line="411" column="17"/>
             <symbol>f</symbol>
         </error>
         <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/ErisCore.cpp">
@@ -212,7 +217,7 @@
             <symbol>end_y</symbol>
         </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="152" col="22" call-argexpr="wren_module_name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="40" col="27" call-argexpr="text" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="53" col="27" call-argexpr="img_filename" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="59" col="27" call-argexpr="img_path" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h" line="32" col="27" call-argexpr="text" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:317:19" call-funcname="updateOscillatorBank" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="278" col="29" call-argexpr="false" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="40" col="27" call-argexpr="text" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="53" col="27" call-argexpr="img_filename" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="59" col="27" call-argexpr="img_path" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h" line="32" col="27" call-argexpr="text" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:320:19" call-funcname="updateOscillatorBank" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="281" col="29" call-argexpr="false" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="152" col="22" call-argexpr="wren_module_name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:85:14" call-funcname="queryTypesByFunction" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="63" col="60" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:63:14" my-argnr="1"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:115:10" call-funcname="setParent" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="23" col="9" my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:22:5" my-argnr="1"/>
@@ -280,27 +285,29 @@
 <class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="1569662565653300258"/>
 <class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="23" col="9" hash="5139491191325099632"/>
 <class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h" line="71" col="9" hash="2911627910700264153"/>
-<class name="AppAIfES" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="16" col="1" hash="2546399445987537788"/>
+<class name="AppTemplate" file="D:/brian/Dev/Eris/ERISCore/include/AppTemplate.h" line="16" col="1" hash="15590884543703347089"/>
 <class name="ControlButton" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="20" col="1" hash="3440312064417783500"/>
 <class name="ControlSlider" file="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h" line="16" col="1" hash="11205398875105945799"/>
 <class name="AppScope" file="D:/brian/Dev/Eris/ERISCore/include/AppScope.h" line="15" col="1" hash="8676601631008683162"/>
-<class name="AppCQT" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="54" col="1" hash="5919380842884225638"/>
+<class name="AppCQT" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="54" col="1" hash="5338312581327374085"/>
 <class name="AppAudioToPolyphonic" file="D:/brian/Dev/Eris/ERISCore/include/AppAudioToPolyphonic.h" line="28" col="1" hash="14134519427774076367"/>
 <class name="AppReprogram" file="D:/brian/Dev/Eris/ERISCore/include/AppReprogram.h" line="16" col="1" hash="9608629708965179394"/>
+<class name="AppAIfES" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="16" col="1" hash="2546399445987537788"/>
   </FileInfo>
   <FileInfo check="Null pointer">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:90:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="92" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:100:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="101" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:129:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="132" col="88" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h:89:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="90" col="12" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppTemplate.h:22:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppTemplate.h" line="23" col="12" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:38:19" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="39" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:51:19" my-argnr="1" my-argname="filename" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="52" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:57:19" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="58" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h:30:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h" line="31" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:438:8" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="445" col="8" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:438:8" my-argnr="2" my-argname="message" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="439" col="15" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:441:8" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="448" col="8" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:441:8" my-argnr="2" my-argname="message" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="442" col="15" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:129:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="132" col="88" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h:89:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="90" col="12" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
@@ -311,18 +318,19 @@
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:197:14" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="198" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:90:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="92" col="24" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:100:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="101" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:129:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="132" col="88" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h:89:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="90" col="12" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppTemplate.h:22:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppTemplate.h" line="23" col="12" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:38:19" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="39" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:51:19" my-argnr="1" my-argname="filename" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="52" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h:57:19" my-argnr="1" my-argname="path" file="D:/brian/Dev/Eris/ERISCore/include/ControlButton.h" line="58" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h:30:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/ControlSlider.h" line="31" col="18" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:438:8" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="445" col="8" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:438:8" my-argnr="2" my-argname="message" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="439" col="15" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:441:8" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="448" col="8" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h:441:8" my-argnr="2" my-argname="message" file="D:/brian/Dev/Eris/ERISCore/include/AppCQT.h" line="442" col="15" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppWren.h:129:10" my-argnr="1" my-argname="script" file="D:/brian/Dev/Eris/ERISCore/include/AppWren.h" line="132" col="88" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h:89:10" my-argnr="1" my-argname="sender" file="D:/brian/Dev/Eris/ERISCore/include/AppAIfES.h" line="90" col="12" value="0"/>
   </FileInfo>
   <FileInfo check="CheckUnusedFunctions">
-    <functiondecl functionName="setup" lineNumber="16"/>
-    <functiondecl functionName="loop" lineNumber="53"/>
+    <functiondecl functionName="setup" lineNumber="27"/>
+    <functiondecl functionName="loop" lineNumber="61"/>
     <functioncall functionName="AILAYER_DENSE_F32_A"/>
     <functioncall functionName="AILAYER_INPUT_F32_A"/>
     <functioncall functionName="AILAYER_LEAKY_RELU_F32_A"/>
@@ -481,6 +489,7 @@
     <functioncall functionName="analogReadAveraging"/>
     <functioncall functionName="analogReadResolution"/>
     <functioncall functionName="analyze"/>
+    <functioncall functionName="apc"/>
     <functioncall functionName="appPoly"/>
     <functioncall functionName="asm"/>
     <functioncall functionName="atoi"/>
@@ -687,6 +696,7 @@
     <functioncall functionName="redraw_wait"/>
     <functioncall functionName="releasePopUp"/>
     <functioncall functionName="releaseWrenHandles"/>
+    <functioncall functionName="requestArmSetClock"/>
     <functioncall functionName="requestPopUp"/>
     <functioncall functionName="requestStartLZ4Message"/>
     <functioncall functionName="requestSubSurfaceBufferP"/>
@@ -699,6 +709,7 @@
     <functioncall functionName="safer_strncpy"/>
     <functioncall functionName="sb"/>
     <functioncall functionName="scale"/>
+    <functioncall functionName="sci"/>
     <functioncall functionName="sclk"/>
     <functioncall functionName="script"/>
     <functioncall functionName="script_name"/>
@@ -706,6 +717,7 @@
     <functioncall functionName="sendLZ4Message"/>
     <functioncall functionName="sendMessage"/>
     <functioncall functionName="serialCommandInterface"/>
+    <functioncall functionName="setAPC"/>
     <functioncall functionName="setCursor"/>
     <functioncall functionName="setDimension"/>
     <functioncall functionName="setFile"/>
@@ -718,6 +730,7 @@
     <functioncall functionName="setParent"/>
     <functioncall functionName="setPath"/>
     <functioncall functionName="setPosition"/>
+    <functioncall functionName="setSCI"/>
     <functioncall functionName="setText"/>
     <functioncall functionName="setTextColor"/>
     <functioncall functionName="setValue"/>

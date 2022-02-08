@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="2655655192">
+<analyzerinfo checksum="3049863732">
         <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_poll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_poll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/AudioDirector.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="57" column="9"/>
             <symbol>et_since_poll</symbol>
@@ -38,11 +38,11 @@
             <symbol>Surface</symbol>
         </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="447" col="21" call-argexpr="&amp;p" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="447" col="21" call-argexpr="p" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="436" col="21" call-argexpr="&amp;p" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="2" file="src/AudioDirector.cpp" line="436" col="21" call-argexpr="p" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:85:14" call-funcname="queryTypesByFunction" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="63" col="60" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:63:14" my-argnr="1"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:85:14" call-funcname="queryTypesByFunction" call-argnr="1" file="src/AudioDirector.cpp" line="294" col="20" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:64:11" my-argnr="1"/>
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="1" file="src/AudioDirector.cpp" line="447" col="3" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:42:10" my-argnr="1"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" call-funcname="ParseConnectString" call-argnr="1" file="src/AudioDirector.cpp" line="436" col="3" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:42:10" my-argnr="1"/>
   </FileInfo>
   <FileInfo check="Class">
 <class name="erisAudioMixer8" file="D:/brian/Dev/Eris/ERISCore/include/ErisAudio.h" line="40" col="1" hash="2404511787732881590"/>
@@ -112,7 +112,7 @@
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:100:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="101" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/PCM1863.h:57:6" my-argnr="1" my-argname="p" file="D:/brian/Dev/Eris/ERISCore/include/PCM1863.h" line="58" col="3" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:50:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="305" col="17" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="415" col="13" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="404" col="13" value="0"/>
   </FileInfo>
   <FileInfo check="Uninitialized variables">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
@@ -125,7 +125,7 @@
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h:100:10" my-argnr="1" my-argname="name_string" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="101" col="18" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/PCM1863.h:57:6" my-argnr="1" my-argname="p" file="D:/brian/Dev/Eris/ERISCore/include/PCM1863.h" line="58" col="3" value="0"/>
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:50:18" my-argnr="1" my-argname="AudioStreamObjName" file="src/AudioDirector.cpp" line="305" col="17" value="0"/>
-    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="415" col="13" value="0"/>
+    <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:86:10" my-argnr="1" my-argname="connectionString" file="src/AudioDirector.cpp" line="404" col="13" value="0"/>
   </FileInfo>
   <FileInfo check="CheckUnusedFunctions">
     <functiondecl functionName="initAudioHardware" lineNumber="103"/>
@@ -139,13 +139,13 @@
     <functiondecl functionName="getAudioStreamString" lineNumber="320"/>
     <functiondecl functionName="getConnectionString" lineNumber="329"/>
     <functiondecl functionName="connect" lineNumber="356"/>
-    <functiondecl functionName="connect" lineNumber="403"/>
-    <functiondecl functionName="ParseConnectString" lineNumber="407"/>
-    <functiondecl functionName="connect" lineNumber="445"/>
-    <functiondecl functionName="disconnect" lineNumber="452"/>
-    <functiondecl functionName="disconnect" lineNumber="456"/>
-    <functiondecl functionName="disconnect" lineNumber="481"/>
-    <functiondecl functionName="disconnectAll" lineNumber="485"/>
+    <functiondecl functionName="connect" lineNumber="392"/>
+    <functiondecl functionName="ParseConnectString" lineNumber="396"/>
+    <functiondecl functionName="connect" lineNumber="434"/>
+    <functiondecl functionName="disconnect" lineNumber="441"/>
+    <functiondecl functionName="disconnect" lineNumber="445"/>
+    <functiondecl functionName="disconnect" lineNumber="467"/>
+    <functiondecl functionName="disconnectAll" lineNumber="471"/>
     <functioncall functionName="AT_HATCHBLK"/>
     <functioncall functionName="AT_HATCHXOR"/>
     <functioncall functionName="AT_NONE"/>

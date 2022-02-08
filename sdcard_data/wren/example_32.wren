@@ -44,7 +44,6 @@ class App {
         //double underscores indicate static vars
 
         App.requestPopUp(true)
-        Draw.fill(100,0,0)
         __x = 0
         __y = 0
         __w = 320
@@ -63,12 +62,12 @@ class App {
         _g = 0
         _b = 0
         _Gain = 1
-        _MaxIters = 40
-        _Zoom = 1.125
+        _MaxIters = 180
+        _Zoom = 0.25
         _MoveX = 0
         _MoveY = 0
-        _CX = -0.7
-        _CY = 0.27015
+        _CX = -0.017
+        _CY = 0.17015
         _jx = 0
         _jy = 0
         _dx = 0.02
@@ -114,61 +113,40 @@ class App {
             _jy = _jy + 1
             if (_jy >= __h){
                 _jy = 0
-                _Zoom = _Zoom + (_Zoom * 0.025)
-                _CY = _CY + 0.0103
-                _CX = _CX + 0.01
-                _Gain = _Gain + 0.018
-                _MaxIters = (80 + (_Zoom * _Zoom * _Zoom)/2.0) 
-                if (_MaxIters > 150){
-                    _MaxIters = 150
-                    _Zoom = 1
+                _Zoom = _Zoom + ( 0.01)
+                _CY = _CY + 0.3
+                _CX = _CX + 0.3
+                _Gain = _Gain + 0.058
+                _MaxIters = (_MaxIters + (_Zoom * _Zoom * _Zoom)) * _Gain 
+                if (_MaxIters > 200){
+                    _MaxIters = 200
+                    _Zoom = 0.9
+                    _Gain = 1
                 }
             }
         } else _jx = _jx + 1
-        var r = (50 * i*_jx)%(220)
-        var g = (5 * i*_jy/__h)%(220)
-        var b = (i*30)%220
+        var r = (i*_jx/(__w*2))%(400)
+        var g = (400-_jx * i)%(400)
+        var b = (i/10)%400
         if (r < 0) r = 0
-        if (g < 0) g = 20
+        if (g < 0) g = 0
         if (b < 0) b = 0
+        if (r > 200) r = 200 - (r - 200)
+        if (g > 200) g = 200 - (g - 200)
+        if (b > 200) b = 200 - (b - 200)
+        
         var pc
-        pc = Draw.getPixel(_jx-1,_jy-1)
+        pc = Draw.getPixel(_jx,_jy)
         //CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-        var ar = ( (i * 1 * r) + (i * 12 * (pc >> 8)))/(i*13)
-        var ag = ( (i * 1 * g) + (i * 12 * ((pc >> 3) & 252)))/(i*13)
-        var ab = ( (i * 1 * b) + (i * 12 * ((pc << 3)  & 255)))/(i*13)
+        var ar = ( (i * 3 * r) + (i * 1 * (pc >> 8)))/(4*i)
+        var ag = ( (i * 3 * g) + (i * 1 * ((pc >> 3) & 252)))/(4*i)
+        var ab = ( (i * 3 * b) + (i * 1 * ((pc << 3)  & 255)))/(4)
+        //if (g > ag) ag = (g + ag)/2
+        //ar = ag
         Draw.setPixel(_jx, _jy,ar,ag,ab)
     }
     
-    spiral() {
-        var x = 0
-        var y = 0
-        _theta = _theta + 0.2
-        if (_theta > 120.0) { 
-            _theta = 0.0
-        }
-        x = (((_theta/Num.pi).cos * _theta/3.0) + __w/2).truncate
-        y = (((_theta/Num.pi).sin * _theta/3.0) + __h/2).truncate
-        var offset = 5/Data.readf("OSCOPE_SCALE")
-        var lt = Data.read("AM_LOOP_TIME")/100
-        //Draw.line(x,y,x+offset,y+offset,(x)%220,0%220,(0)%220)
-        var r = (lt)%220
-        var g = (_count)%220
-        var b = (_theta/offset)%220
-        Draw.setPixel(x,y,r,g,b)
-        //Draw.setPixel(x,y,0,0,255)
-        var pc = Draw.getPixel(x,y)
-        //CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-        r = pc >> 8
-        g = (pc >> 3) & 252
-        b = (pc << 3)  & 255
-        for (i in 1...(6)) {
-            r = r * 0.65
-            g = g * 0.75
-            b = b * 0.85
-            Draw.setPixel(x+i,y+i,r,g,b)
-        }
-    }
+    
     
     //
     //  required methods - the VM host (C++ side) provides the AppBase class 
@@ -177,7 +155,7 @@ class App {
     update() {
         _count = _count + 1
         if (_count > 10000){
-            System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
+            System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP"),"iter",_MaxIters])
             _count = 0
             _demo_loops = _demo_loops - 1
             
@@ -188,14 +166,14 @@ class App {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
-        App.setClockSpeed(740000000)
+        App.setClockSpeed(760000000)
         for (y in 0...(512)) {
             createJulia()
         }
         //for (y in 0...(5)) {
         //    spiral()
         //}
-        App.setClockSpeed(600000000)
+        App.setClockSpeed(700000000)
     }
     onFocus() {
         var a = "test"
@@ -239,7 +217,9 @@ class App {
 //type class App it's this object instance for which the event methods 
 //will be called
 var ErisApp = App.new()
-System.print("example_17")
+System.print("example_31")
+
+
 
 
 

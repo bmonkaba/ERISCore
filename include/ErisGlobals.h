@@ -37,25 +37,25 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 740000000
+#define CPU_BASE_FREQ 720000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 700000000
+#define CPU_LOW_POWER_MODE_FREQ 600000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 760000000
+#define CPU_BOOST_MAX_FREQ 740000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 65.0
+#define CPU_THERMAL_THROTTLE_TEMP 69.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES

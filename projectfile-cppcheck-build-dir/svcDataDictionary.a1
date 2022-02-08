@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="1126724876">
+<analyzerinfo checksum="2920992071">
         <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_poll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_poll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/SvcDataDictionary.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="57" column="9"/>
             <symbol>et_since_poll</symbol>

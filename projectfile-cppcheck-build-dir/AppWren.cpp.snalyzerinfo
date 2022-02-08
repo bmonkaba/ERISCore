@@ -223,7 +223,7 @@ _kill
 _getpid
 _times
 _gettimeofday call:[millis]
-writeFn call:[delayMicroseconds,getAppByName,getInstance,printf,requestStartLZ4Message,sendLZ4Message] noreturn:[delayMicroseconds,sendLZ4Message]
+writeFn call:[delay,getAppByName,getInstance,printf,requestStartLZ4Message,sendLZ4Message] noreturn:[delay,sendLZ4Message]
 errorFn call:[printf]
 getSourceForModule call:[getAppByName,getInstance,loadModuleSource] noreturn:[loadModuleSource]
 loadModuleComplete call:[freeModuleSource,getAppByName,getInstance] noreturn:[freeModuleSource]

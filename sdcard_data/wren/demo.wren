@@ -34,10 +34,10 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
          
     }
-    update() {
+    render() {
         _count = _count + 1
         if (_count > 5){
             App.restartVM("example")
@@ -81,8 +81,8 @@ var current_time = System.clock
 var is_already_in_demo_mode = Data.read("DEMO_MODE")
 var ErisApp = App.new()
 if (is_already_in_demo_mode == 1){
-    Data.update("DEMO_MODE",0)    
-    Data.updatef("DEMO_LOOP_TIME",0)
+    Data.update("DEMO_MODE",1)    
+    Data.updatef("DEMO_LOOP_TIME",current_time)
     System.print("/////////////////////////////////////////////////////////")
     System.print("-------------------* DEMO COMPLETE *---------------------")
     System.print(".........................................................")
@@ -103,6 +103,8 @@ if (is_already_in_demo_mode == 1){
     Data.updatef("DEMO_LOOP_TIME",current_time)
     
 }
+
+
 
 
 

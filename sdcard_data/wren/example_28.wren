@@ -33,7 +33,7 @@ class Draw {
 class App {
     construct new() {
         //double underscores indicate static vars
-        __x = 64
+        __x = -164
         __y = 64
         __w = 120
         __h = 120
@@ -72,7 +72,7 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 2900){
             System.print(["UP_TIME",System.clock,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
@@ -87,7 +87,7 @@ class App {
         }
     }
     
-    update() {
+    render() {
         App.setWidgetPosition(__x, __y)
         var start = System.clock
         var x = App.random(120)
@@ -103,9 +103,11 @@ class App {
             Draw.loadImageToSurface("/I/U/L/","green.ile",x,y)
         }
         
-        x = App.random(320)
-        y = App.random(240)
-        Draw.blt(x, y, 120, 120, 0,0)
+        for (i in 1...(16)) {
+            x = App.random(320)
+            y = App.random(240)
+            Draw.blt(0, 0, 120, 120, x, y)
+        }
     }
     onFocus() {
         //System.print(["onFocus"])
@@ -150,6 +152,9 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_28")
+
+
+
 
 
 

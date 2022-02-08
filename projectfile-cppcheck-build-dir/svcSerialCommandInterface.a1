@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<analyzerinfo checksum="325425417">
+<analyzerinfo checksum="887673700">
         <error id="useInitializationList" severity="performance" msg="Variable &apos;et_since_poll&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;et_since_poll&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="src/SvcSerialCommandInterface.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\SvcSerialCommandInterface.h" line="57" column="9"/>
             <symbol>et_since_poll</symbol>
@@ -17,20 +17,20 @@
             <symbol>Touch</symbol>
         </error>
         <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;false==newRxMsg&apos; is always true" verbose="Condition &apos;false==newRxMsg&apos; is always true" cwe="571" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="339" column="47" info="Condition &apos;false==newRxMsg&apos; is always true"/>
-            <location file="src\SvcSerialCommandInterface.cpp" line="313" column="24" info="Assignment &apos;newRxMsg=false&apos;, assigned value is 0"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="590" column="47" info="Condition &apos;false==newRxMsg&apos; is always true"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="584" column="24" info="Assignment &apos;newRxMsg=false&apos;, assigned value is 0"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;f&apos; can be reduced." verbose="The scope of the variable &apos;f&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/SvcSerialCommandInterface.cpp">
+            <location file="src\SvcSerialCommandInterface.cpp" line="234" column="11"/>
+            <symbol>f</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;hexBuffer&apos; can be reduced." verbose="The scope of the variable &apos;hexBuffer&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="233" column="10"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="259" column="10"/>
             <symbol>hexBuffer</symbol>
         </error>
         <error id="variableScope" severity="style" msg="The scope of the variable &apos;payload_len&apos; can be reduced." verbose="The scope of the variable &apos;payload_len&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="234" column="14"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="260" column="14"/>
             <symbol>payload_len</symbol>
-        </error>
-        <error id="variableScope" severity="style" msg="The scope of the variable &apos;f&apos; can be reduced." verbose="The scope of the variable &apos;f&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="317" column="15"/>
-            <symbol>f</symbol>
         </error>
         <error id="shadowVariable" severity="style" msg="Local variable &apos;h&apos; shadows outer variable" verbose="Local variable &apos;h&apos; shadows outer variable" cwe="398" file0="src/SvcSerialCommandInterface.cpp">
             <location file="D:\brian\Dev\Eris\ERISCore\include\ILI9341_t3_ERIS.h" line="176" column="18" info="Shadow variable"/>
@@ -42,27 +42,31 @@
             <symbol>Surface</symbol>
         </error>
         <error id="unusedVariable" severity="style" msg="Unused variable: compressed_len" verbose="Unused variable: compressed_len" cwe="563" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="235" column="14"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="261" column="14"/>
             <symbol>compressed_len</symbol>
         </error>
         <error id="unusedVariable" severity="style" msg="Unused variable: uncompressed_len" verbose="Unused variable: uncompressed_len" cwe="563" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="235" column="29"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="261" column="29"/>
             <symbol>uncompressed_len</symbol>
         </error>
         <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="583" column="26"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="339" column="14"/>
             <symbol>mp</symbol>
         </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: param2" verbose="Unused variable: param2" cwe="563" file0="src/SvcSerialCommandInterface.cpp">
+            <location file="src\SvcSerialCommandInterface.cpp" line="408" column="31"/>
+            <symbol>param2</symbol>
+        </error>
         <error id="unreadVariable" severity="style" msg="Variable &apos;mp&apos; is assigned a value that is never used." verbose="Variable &apos;mp&apos; is assigned a value that is never used." cwe="563" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="649" column="26"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="705" column="26"/>
             <symbol>mp</symbol>
         </error>
         <error id="unreadVariable" severity="style" msg="Variable &apos;newRxMsg&apos; is assigned a value that is never used." verbose="Variable &apos;newRxMsg&apos; is assigned a value that is never used." cwe="563" file0="src/SvcSerialCommandInterface.cpp">
-            <location file="src\SvcSerialCommandInterface.cpp" line="720" column="22"/>
+            <location file="src\SvcSerialCommandInterface.cpp" line="776" column="22"/>
             <symbol>newRxMsg</symbol>
         </error>
   <FileInfo check="ctu">
-<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="227" col="18" call-argexpr="tx_Buffer" call-argvaluetype="7" call-argvalue="6000"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="403" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="410" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="413" col="32" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="3" file="src/SvcSerialCommandInterface.cpp" line="420" col="36" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
+<function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AppBaseClass.h" line="102" col="27" call-argexpr="name" call-argvaluetype="7" call-argvalue="24"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ErisUtils.h:7:6" call-funcname="safer_strncpy" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="227" col="18" call-argexpr="tx_Buffer" call-argvaluetype="7" call-argvalue="6000"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="551" col="20" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="558" col="20" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="1" file="src/SvcSerialCommandInterface.cpp" line="561" col="20" call-argexpr="param" call-argvaluetype="7" call-argvalue="128"/><function-call call-id="src/SvcSerialCommandInterface.cpp:91:5" call-funcname="replacechar" call-argnr="3" file="src/SvcSerialCommandInterface.cpp" line="568" col="24" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="16" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="3"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:174:14" call-funcname="hash" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="39" col="29" my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="4"/>
 <function-call call-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:85:14" call-funcname="queryTypesByFunction" call-argnr="1" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="63" col="60" my-id="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h:63:14" my-argnr="1"/>
   </FileInfo>
@@ -126,7 +130,7 @@
 <class name="AnalogInputs" file="D:/brian/Dev/Eris/ERISCore/include/AnalogInputs.h" line="25" col="1" hash="1569662565653300258"/>
 <class name="ParsedConnection" file="D:/brian/Dev/Eris/ERISCore/include/AudioDirector.h" line="23" col="9" hash="5139491191325099632"/>
 <class name="svcDataDictionaryRecord" file="D:/brian/Dev/Eris/ERISCore/include/SvcDataDictionary.h" line="71" col="9" hash="2911627910700264153"/>
-<class name="SvcSerialCommandInterface" file="D:/brian/Dev/Eris/ERISCore/include/SvcSerialCommandInterface.h" line="53" col="1" hash="12006861011984327394"/>
+<class name="SvcSerialCommandInterface" file="D:/brian/Dev/Eris/ERISCore/include/SvcSerialCommandInterface.h" line="53" col="1" hash="16642781662693724999"/>
   </FileInfo>
   <FileInfo check="Null pointer">
     <unsafe-usage my-id="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h:35:5" my-argnr="2" my-argname="pSD" file="D:/brian/Dev/Eris/ERISCore/include/ILI9341_t3_ERIS.h" line="47" col="14" value="0"/>
@@ -153,8 +157,17 @@
     <functiondecl functionName="send" lineNumber="151"/>
     <functiondecl functionName="throttle" lineNumber="170"/>
     <functiondecl functionName="txOverflowHandler" lineNumber="197"/>
-    <functiondecl functionName="streamHandler" lineNumber="231"/>
-    <functiondecl functionName="update" lineNumber="311"/>
+    <functiondecl functionName="streamReceiveHandler" lineNumber="232"/>
+    <functiondecl functionName="streamTransmitHandler" lineNumber="257"/>
+    <functiondecl functionName="messageHandler_GET_RAM2" lineNumber="338"/>
+    <functiondecl functionName="messageHandler_UPDATE_DD" lineNumber="406"/>
+    <functiondecl functionName="messageHandler_WREN_SCRIPT_SAVE" lineNumber="425"/>
+    <functiondecl functionName="messageHandler_WREN_SCRIPT_EXECUTE" lineNumber="437"/>
+    <functiondecl functionName="messageHandler_WREN_SCRIPT_COMPILE" lineNumber="450"/>
+    <functiondecl functionName="messageHandler_WREN_SCRIPT_START" lineNumber="462"/>
+    <functiondecl functionName="messageHandler_GET" lineNumber="484"/>
+    <functiondecl functionName="messageHandler_LS" lineNumber="506"/>
+    <functiondecl functionName="update" lineNumber="582"/>
     <functioncall functionName="AT_HATCHBLK"/>
     <functioncall functionName="AT_HATCHXOR"/>
     <functioncall functionName="AT_NONE"/>
@@ -274,6 +287,7 @@
     <functioncall functionName="cspin"/>
     <functioncall functionName="dc"/>
     <functioncall functionName="delay"/>
+    <functioncall functionName="delayMicroseconds"/>
     <functioncall functionName="delete"/>
     <functioncall functionName="delta_avail"/>
     <functioncall functionName="dest_port"/>
@@ -327,6 +341,14 @@
     <functioncall functionName="malloc"/>
     <functioncall functionName="memset"/>
     <functioncall functionName="messageHandler"/>
+    <functioncall functionName="messageHandler_GET"/>
+    <functioncall functionName="messageHandler_GET_RAM2"/>
+    <functioncall functionName="messageHandler_LS"/>
+    <functioncall functionName="messageHandler_UPDATE_DD"/>
+    <functioncall functionName="messageHandler_WREN_SCRIPT_COMPILE"/>
+    <functioncall functionName="messageHandler_WREN_SCRIPT_EXECUTE"/>
+    <functioncall functionName="messageHandler_WREN_SCRIPT_SAVE"/>
+    <functioncall functionName="messageHandler_WREN_SCRIPT_START"/>
     <functioncall functionName="miso"/>
     <functioncall functionName="mosi"/>
     <functioncall functionName="msg"/>
@@ -393,7 +415,8 @@
     <functioncall functionName="str"/>
     <functioncall functionName="strchr"/>
     <functioncall functionName="strcpy"/>
-    <functioncall functionName="streamHandler"/>
+    <functioncall functionName="streamReceiveHandler"/>
+    <functioncall functionName="streamTransmitHandler"/>
     <functioncall functionName="stream_file"/>
     <functioncall functionName="stream_path"/>
     <functioncall functionName="stream_pos"/>

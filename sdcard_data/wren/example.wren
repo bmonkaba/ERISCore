@@ -68,7 +68,7 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 2900){
             System.print(["UP_TIME",System.clock,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
@@ -83,7 +83,8 @@ class App {
         }
     }
     
-    update() {
+    render() {
+        App.setClockSpeed(780000000)
         App.setWidgetPosition(__x, __y)
         var start = System.clock
         for (x in 0...(__w)) {
@@ -98,6 +99,7 @@ class App {
             }
         }
         _pixels = _pixels + (__x*__y)
+        App.setClockSpeed(720000000)
     }
     onFocus() {
         //System.print(["onFocus"])
@@ -142,6 +144,8 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example")
+
+
 
 
 

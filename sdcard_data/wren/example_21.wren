@@ -59,16 +59,16 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 5000){
             _count = 0
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
             //Draw.fill(0,0,0)
             var AD = AudioDirector
-            var source_streams = ["pink_1","i2s-in_1","waveform_1","waveform_2","waveform_3","waveform_4","waveform_5"]
-            var sink_streams = ["scope_1", "i2s-out_1"]
-            var io_streams = ["mixer_1", "mixer_2","delay_1","biquad_1","biquad_2","amp_2", "console_1","console_2"]
+            var source_streams = ["pink:1","i2s-in:1","waveform:1","waveform:2","waveform:3","waveform:4","waveform:5"]
+            var sink_streams = ["scope:1", "i2s-out:1"]
+            var io_streams = ["mixer:1", "mixer:2","delay:1","biquad:1","biquad:2","amp:2", "console:1","console:2"]
             AD.disconnectAll()
             
             
@@ -98,7 +98,7 @@ class App {
             if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_22")
         }
     }
-    update() {
+    render() {
         
     }
     onFocus() {
@@ -144,6 +144,8 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_21")
+
+
 
 
 
