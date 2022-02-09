@@ -10,9 +10,12 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#include <LittleFS.h>
 #include "AppBaseClass.h"
 #include "wren.hpp"
 #include "ErisGlobals.h"
+
+
 /**
  * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and hosts a VM.\n 
  * \n  
@@ -28,6 +31,9 @@
 
 class AppWren:public AppBaseClass {
   public:
+    LittleFS_RAM wren_file_system;//public access for callback
+    File wren_file;//public access for callback
+
     AppWren():AppBaseClass(){
         strcpy(name,"AppWren");
         strcpy(img_filename,"");
@@ -66,6 +72,9 @@ class AppWren:public AppBaseClass {
         widget_origin_x = SCREEN_WIDTH - 64 - 5;
         widget_origin_y = SCREEN_HEIGHT - 64 - 5;
         //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
+        wren_file_system.begin(1400000);//init the shared ext_ram drive
+        wren_file_system.quickFormat();
+        wren_file = 0;
     };
 
     ~AppWren(){
@@ -502,8 +511,8 @@ class AppWren:public AppBaseClass {
             } else{
                 wrenEnsureSlots(vm, 3);
                 wrenSetSlotHandle(vm, 0, h_slot0);//App
-                wrenSetSlotDouble(vm, 0, t_x);//param
-                wrenSetSlotDouble(vm, 0, t_y);//param
+                wrenSetSlotDouble(vm, 1, t_x);//param
+                wrenSetSlotDouble(vm, 2, t_y);//param
                 if (!isWrenResultOK(wrenCall(vm,h_onTouch))){
                     releaseWrenHandles();
                 };
@@ -523,8 +532,8 @@ class AppWren:public AppBaseClass {
         } else{
             wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-            wrenSetSlotDouble(vm, 0, t_x);//param
-            wrenSetSlotDouble(vm, 0, t_y);//param
+            wrenSetSlotDouble(vm, 1, t_x);//param
+            wrenSetSlotDouble(vm, 2, t_y);//param
             if (!isWrenResultOK(wrenCall(vm,h_onTouchDrag))){
                 releaseWrenHandles();
             };
@@ -543,8 +552,8 @@ class AppWren:public AppBaseClass {
         } else{
             wrenEnsureSlots(vm, 3);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-            wrenSetSlotDouble(vm, 0, t_x);//param
-            wrenSetSlotDouble(vm, 0, t_y);//param
+            wrenSetSlotDouble(vm, 1, t_x);//param
+            wrenSetSlotDouble(vm, 2, t_y);//param
             if (!isWrenResultOK(wrenCall(vm,h_onTouchRelease))){
                 releaseWrenHandles();
             };
@@ -626,6 +635,7 @@ class AppWren:public AppBaseClass {
             };
         }
     };
+
  protected:
     bool compile_only;
     bool save_module;
@@ -642,6 +652,7 @@ class AppWren:public AppBaseClass {
     bool image_loaded;
     elapsedMillis time_active;
     bool show_active;
+
  private:
     WrenVM* vm;
     WrenHandle* h_slot0;

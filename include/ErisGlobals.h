@@ -229,6 +229,8 @@ const char PROGMEM p[][16] = {"DOUBLE.ile","GRAIN.ile","PHASER.ile","BITCRUSH.il
 const char INPUT_PEAK[] PROGMEM = "INPUT_PEAK";
 
 //STRINGS - ERIS CORE
+const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/YELLOWHOLE";
+
 const char nullStr[] PROGMEM = "NULL";
 const char FREE_MEM[] PROGMEM = "FREE_MEM";
 const char FREE_HEAP[] PROGMEM = "FREE_HEAP";
@@ -251,7 +253,6 @@ const char AM_AUDIO_CPU_MAX[] PROGMEM = "AM_AUDIO_CPU_MAX";
 const char AM_AUDIO_CPU[] PROGMEM = "AM_AUDIO_CPU";
 const char AM_AUDIO_MEM_MAX[] PROGMEM = "AM_AUDIO_MEM_MAX";
 const char AM_AUDIO_MEM[] PROGMEM = "AM_AUDIO_MEM";
-const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/WRMMM";
 const char UI_BUTTON_FILL_COLOR[] PROGMEM = "UI_BUTTON_FILL_COLOR";
 const char UI_BUTTON_SHADE_COLOR[] PROGMEM = "UI_BUTTON_SHADE_COLOR";
 const char UI_BUTTON_ACTIVE_BORDER_COLOR[] PROGMEM = "UI_BUTTON_ACTIVE_BORDER_COLOR";
@@ -305,6 +306,38 @@ class Draw {
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
     foreign static print(string)
+}
+
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+}
+
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
 }
 
 //AppBase Class interface for implementing the scripts actions & behaviors
@@ -363,13 +396,13 @@ class App {
     onFocusLost() {
         var a = "test"
     }
-    onTouch() {
+    onTouch(x,y) {
         System.print(["Touch_Press",x,y])
     }
-    onTouchDrag() {
+    onTouchDrag(x,y) {
         System.print(["Touch_Drag",x,y])
     }
-    onTouchRelease() {
+    onTouchRelease(x,y) {
         System.print(["Touch_Release",x,y])
     }
     onAnalog1(fval) {

@@ -10,9 +10,7 @@
  */
 #include "AppWren.h"
 #include "ErisGlobals.h"
-
-#include <AppManager.h>
-//#include <boarddefs.h>
+#include "AppManager.h"
 #include "ErisUtils.h"
 
 
@@ -139,22 +137,12 @@ WrenLoadModuleResult loadModule(WrenVM* vm, const char* name){
   return result;
 }
 
-
-static void* wrenFastMemoryAllocator(void* ptr, size_t newSize, void* _)
-{
-  if (newSize == 0) return NULL;
-  if(64000 < newSize) return NULL;
-  //realloc(ptr, newSize);
-  //ram is fixed in this integration. 
-  //therfore all memory allocation requests will return the fast ram vm buffer
-  //unless the request size is too large. 
-  //return (void*)&wrenFastVMRam[0];
-  return extmem_realloc(ptr,newSize);
-}
-
-
-
-//EXPORTED STATIC FUNCTIONS
+//
+//
+// APP EXTENTIONS FOR WREN
+//
+//
+//
 
 /**
  * @brief AppWren exported method which can be called from within a Wren VM instance
@@ -295,6 +283,12 @@ void restartVMCallback(WrenVM* vm){
   app->rebootRequest(script);
 }
 
+//
+//
+// AUDIO DIRECTOR EXTENTIONS FOR WREN
+//
+//
+//
 
 /**
  * @brief AudioDirector callback for wren
@@ -415,7 +409,13 @@ void audioDirectorEnableAudioInterrupts(WrenVM* vm){
   AudioInterrupts();
 }
 
-// DATA DICT CALLBACKS
+//
+//
+// DATA DICTIONARY EXTENTIONS FOR WREN
+//
+//
+//
+
 /**
  * @brief SvcDataDictionary exported method which can be called from within a Wren VM instance
  * 
@@ -458,8 +458,13 @@ void dataDictReadFloatCallback(WrenVM* vm){
   wrenSetSlotDouble(vm, 0,f);
 }
 
+//
+//
+// DRAW EXTENTIONS FOR WREN
+//
+//
+//
 
-//Draw Callbacks
 /**
  * @brief VM callback for extention method
  * 
@@ -589,7 +594,333 @@ void drawFillCallback(WrenVM* vm){
 }
 
 
-//EXPORTED FUNCTION BINDINGS
+//
+//
+// FILE SYSTEM EXTENTIONS FOR WREN
+//
+//
+//
+
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsOpenCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  uint8_t mode = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  if(strcmp("r",wrenGetSlotString(vm,2))==0){
+    mode = 0;
+  }else if(strcmp("w",wrenGetSlotString(vm,2))==0){
+    mode = 1;
+  }else if(strcmp("a",wrenGetSlotString(vm,2))==0){
+    mode = 2;
+  }
+  app->wren_file = app->wren_file_system.open(wrenGetSlotString(vm,1),mode);
+  if (app->wren_file){
+    wrenSetSlotBool(vm, 0,true);
+  }else wrenSetSlotBool(vm, 0,false);
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsExistsCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file_system.exists(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsMkdirCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file_system.mkdir(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsRenameCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file_system.rename(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsRemoveCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file_system.remove(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsRmdirCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file_system.rmdir(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsUsedSizeCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->wren_file_system.usedSize()); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsTotalSizeCallback(WrenVM* vm){
+  //(char* file, uint8_t mode)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize()); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+}
+
+//
+//
+// FILE EXTENTIONS FOR WREN
+//
+//
+//
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileReadCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  uint16_t size = wrenGetSlotDouble(vm,2);
+  char* buffer;
+  buffer = (char*)extmem_malloc(size);
+  app->wren_file.read(buffer,size);
+  wrenSetSlotString(vm,0,buffer);
+  extmem_free(buffer);
+}
+
+void fileReadBytesCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  uint16_t size = wrenGetSlotDouble(vm,2);
+  char* buffer;
+  buffer = (char*)extmem_malloc(size);
+  size = app->wren_file.readBytes(buffer,size);
+  wrenSetSlotBytes(vm,0,buffer,size);
+  extmem_free(buffer);
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileWriteCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->wren_file.write(wrenGetSlotString(vm,1));
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileAvailableCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file.available());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void filePeekCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->wren_file.peek());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileFlushCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->wren_file.flush();
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileTruncateCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file.truncate(wrenGetSlotDouble(vm,1)));
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileSeekCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file.seek(wrenGetSlotDouble(vm,1)));
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void filePositionCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->wren_file.position());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileSizeCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotDouble(vm,0,app->wren_file.size());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileCloseCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->wren_file.close();
+  app->wren_file = 0;
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileIsOpenCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  if(app->wren_file){
+    wrenSetSlotBool(vm,0,true);
+  }else{
+    wrenSetSlotBool(vm,0,false);
+  }
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileNameCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotString(vm,0,app->wren_file.name());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileIsDirectoryCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  wrenSetSlotBool(vm,0,app->wren_file.isDirectory());
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileOpenNextCallback(WrenVM* vm){
+  uint8_t mode = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  if(strcmp("r",wrenGetSlotString(vm,1))==0){
+    mode = 0;
+  }else if(strcmp("w",wrenGetSlotString(vm,1))==0){
+    mode = 1;
+  }else if(strcmp("a",wrenGetSlotString(vm,1))==0){
+    mode = 2;
+  }
+  app->wren_file = app->wren_file.openNextFile(mode);
+  if (app->wren_file){
+    wrenSetSlotBool(vm, 0,true);
+  }else wrenSetSlotBool(vm, 0,false);
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fileRewindDirectoryCallback(WrenVM* vm){
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->wren_file.rewindDirectory();
+}
+
+//
+//
+//
+// EXPORTED FUNCTION BINDINGS
+//
+//
+//
+
 /**
  * @brief callback function for Wren to request an exported function bindings
  * 
@@ -690,6 +1021,59 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
       }else if (strcmp(signature, "fill(_,_,_)") == 0){
         return drawFillCallback;
       }
+    }else if (strcmp(className, "FileSystem") == 0){
+      if (strcmp(signature, "open(_,_)") == 0){
+        return fsOpenCallback;
+      }else if (strcmp(signature, "exists(_)") == 0){
+        return fsExistsCallback;
+      }else if (strcmp(signature, "mkdir(_)") == 0){
+        return fsMkdirCallback;
+      }else if (strcmp(signature, "rename(_,_)") == 0){
+        return fsRenameCallback;
+      }else if (strcmp(signature, "remove(_)") == 0){
+        return fsRemoveCallback;
+      }else if (strcmp(signature, "rmdir(_)") == 0){
+        return fsRmdirCallback;
+      }else if (strcmp(signature, "usedSize()") == 0){
+        return fsUsedSizeCallback;
+      }else if (strcmp(signature, "totalSize()") == 0){
+        return fsTotalSizeCallback;
+      }
+    }else if (strcmp(className, "File") == 0){
+      if (strcmp(signature, "read(_)") == 0){
+        return fileReadCallback;
+      }else if (strcmp(signature, "readBytes(_)") == 0){
+        return fileReadBytesCallback;
+      }else if (strcmp(signature, "write(_)") == 0){
+        return fileWriteCallback;
+      }else if (strcmp(signature, "available()") == 0){
+        return fileAvailableCallback;
+      }else if (strcmp(signature, "peek()") == 0){
+        return filePeekCallback;
+      }else if (strcmp(signature, "flush()") == 0){
+        return fileFlushCallback;
+      }else if (strcmp(signature, "truncate(_)") == 0){
+        return fileTruncateCallback;
+      }else if (strcmp(signature, "seek(_,_)") == 0){
+        return fileSeekCallback;
+      }else if (strcmp(signature, "position()") == 0){
+        return filePositionCallback;
+      }else if (strcmp(signature, "size()") == 0){
+        return fileSizeCallback;
+      }else if (strcmp(signature, "close()") == 0){
+        return fileCloseCallback;
+      }else if (strcmp(signature, "isOpen()") == 0){
+        return fileIsOpenCallback;
+      }else if (strcmp(signature, "name()") == 0){
+        return fileNameCallback;
+      }else if (strcmp(signature, "isDirectory()") == 0){
+        return fileIsDirectoryCallback;
+      }else if (strcmp(signature, "openNextFile(_)") == 0){
+        return fileOpenNextCallback;
+      }else if (strcmp(signature, "rewindDirectory()") == 0){
+        return fileRewindDirectoryCallback;
+      }
+
     }
     // Other classes in main...
   }
