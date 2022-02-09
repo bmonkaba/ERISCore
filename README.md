@@ -2,7 +2,7 @@
 
 <img alt="Language Count" src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore"> <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore"> <img alt="TravisCI" src="https://img.shields.io/travis/com/bmonkaba/ErisCore"> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/21765/badge.svg"> [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d)](https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&utm_medium=referral&utm_content=bmonkaba/ERISCore&utm_campaign=Badge_Grade)<a href="https://codeclimate.com/github/bmonkaba/ERISCore/maintainability"><img src="https://api.codeclimate.com/v1/badges/2efa7ff8f3a25347fabf/maintainability" /></a>
 
-# What is Eris Core:
+## What is Eris Core?
 
 Eris core is:
 
@@ -20,23 +20,23 @@ Eris core is:
 
 [![youtube video](https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
 
-# 3rd party software
+### 3rd party software
 
-## Licence
+#### Licence
 
 * Wren - MIT Licence
 * LZ4 - BSD 2-Clause License
 * AIeFS - GNU Affero General Public License
 * Arduino/Teensyduino - MIT Licence
 
-## External dependancies
+#### External dependancies
 
 ```
 densaugeo/base64@^1.2.0
 fraunhofer-ims/AIfES for Arduino@^2.1.1
 ```
 
-# 3D print, STL & housing graphics
+### 3D print, STL & housing graphics
 
 * Creative Commons Attribution 4.0 International Public License
 
@@ -48,30 +48,27 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 * other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.
 * Software Documentation (WIP): https://bmonkaba.github.io/ERISCore/html/
 
-## Development State
+#### Development State
 
 * System is currently pre-alpha.
 * Software is currently pre-alpha
 * Hardware design is currently beta 2
 * SLA Mechanical design is currently beta 2
 
-## WIP / Known issues
+#### WIP / Known issues
 
 * Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy
 * Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion
-* API interface changes - update and updateRT methods will be renamed render and update. consistency changes/ naming conventions to be applied
-* SCI refactoring into individual message handlers w/enumerated states
 
-## TODO
+#### TODO
 
 * wren wrappers for AIeFS?
-* decide on concept for the virtual VM filesystem
 * define an access concept for requesting assets from the actual filesystem.
 * import a custom genetic algo module from an older project and port from from python to wren
 * import a custom chord identification/scoring module from an older project
 * etc...
 
-## Hardware Features:
+#### Hardware Features:
 
 * 192khz@32bit stereo I/O\* (hardware capable)
 * Low noise linear power supply section with a balanced thermal design
@@ -81,21 +78,24 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 * The audio front end supports single-ended input levels from small-mV microphone inputs to 2.1-VRMS line inputs
 * The front-end mixer (MIX), multiplexer (MUX), and programable gain amplifier (PGA) also supports differential (Diff), pseudo-differential, and single-ended (SE) inputs
 
-## Software Features:
+#### Software Features:
 
 * Custom crossover single threaded cooperative multitasking system
 * Coperative scheduler with granular realtime priority control
 * Integrated Wren compiler & virtual machine (VM) - 32K for the extended PSRAM variant or 16K RAM for the base variant
-    * [WIP] Sandboxed filesystem with indirect access methods for utilizing system assets.
+    * Sandboxed 1.4MB RAM filesystem with indirect access methods for utilizing system assets.
+    * TODO volume save/load to SD card
 * VM extention allows scripts to 'request' a VM reboot to pass control to another script.
-* Rapid application development framework
+* Rapid application development framework includes dynamically editable gui controls
 * Dynamic CPU clock scaling automatically maintains maximum performance while remaining within thermal limits
 * Universal 'human readable' string based messaging
 * Shared Data Dictionary - int32\_t / float32\_t hash based lookup key value store with key buffer storage (again 'human readable')
 * Extends the standard Teensy 4.1 Audio library to allow full dynamic control of audio connections
 * Audio block parameter controller exposes most public methods to the universal messaging system without using run time reflectors
-* (New) Sliding window 32 bit FFT Audio Block with subsampling control
-* 2xFFT CQT Polyphonic application example
+* Sliding window 32 bit FFT Audio Block with subsampling control
+* Oscilloscope w/ autoscale and x-y plot C++ application example
+* 2xFFT CQT Polyphonic C++ application example
+* 30+ VM application examples
 * Transparent LZ4 compression/decompression transport layer between the device and the web socket interface (wsi) can improve both latency and and bandwith
 * Configurable animated or static wallpaper automatically rendered at the start of each frame by the system.
 * Single frame buffer. Secondary buffers implemented as surfaces.
@@ -114,9 +114,9 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
     * Scripting editor & dedicated VM serial terminal
     * And more...
 
-# Hardware Specs:
+### Hardware Specs:
 
-## Microcontroller:
+#### Microcontroller:
 
 * NXP IMXRT1060
 * ARM Cortex-M7 600 MHz w/overclock to 720 Mhz (within design enclosure)
@@ -128,16 +128,16 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 * Programmable FlexIO
 * Pixel Processing Pipeline
 
-## Mass Storage:
+#### Mass Storage:
 
 * 32GB SD Card
 
-## Power:
+#### Power:
 
 * 9v DC center negative power jack
 * Low noise thermaly balanced serial power supply design.
 
-## Analog to Digital Converter:
+#### Analog to Digital Converter:
 
 * TI PCM1864
 * Resolution (Max)(Bits)	32
@@ -146,7 +146,7 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 * ADC SNR (Typ) (dB)	103
 * Power Dissipation < 145mW
 
-## Digital to Audio Converter:
+#### Digital to Audio Converter:
 
 * TI PCM5100A
 * Architecture	Delta Sigma with line driver
@@ -160,18 +160,18 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 * SW-Controlled Gain: –12 dB to +32 dB
 * Power Dissipation < 145mW
 
-## MIDI
+#### MIDI
 
 * MIDI In/Out Type-A connectors
 
-## Display
+#### Display
 
 * 3rd party various
 * 320x240 TFT w/ Touch
 * IC driver: ILI9341
 * Serial Interface
 
-# mvp-01
+### mvp-01
 
 The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
 

@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['x_866',['x',['../db/d69/class_app_base_class_a3d5594a6a0d365be1098e9cdb2748c3d.html#a3d5594a6a0d365be1098e9cdb2748c3d',1,'AppBaseClass']]],
-  ['x_5fend_867',['x_end',['../dc/d27/class_app_audio_to_polyphonic_ad9a5e5ed381185019ea6a1cf26311e69.html#ad9a5e5ed381185019ea6a1cf26311e69',1,'AppAudioToPolyphonic']]],
-  ['x_5flast_868',['x_last',['../dc/d27/class_app_audio_to_polyphonic_a2df465d28f7911897cfa0464c331fa4f.html#a2df465d28f7911897cfa0464c331fa4f',1,'AppAudioToPolyphonic']]],
-  ['x_5flayer_869',['x_layer',['../d8/deb/class_app_a_if_e_s_ac84808a352b3c6bad842db080f09a96f.html#ac84808a352b3c6bad842db080f09a96f',1,'AppAIfES']]],
-  ['x_5fstart_870',['x_start',['../dc/d27/class_app_audio_to_polyphonic_a33ec2ce0edb5dd54fc374fcadd4a0f22.html#a33ec2ce0edb5dd54fc374fcadd4a0f22',1,'AppAudioToPolyphonic']]],
-  ['x_5ftest_871',['x_test',['../d8/deb/class_app_a_if_e_s_ab49b5cd512a0b57413e88b3c7a539794.html#ab49b5cd512a0b57413e88b3c7a539794',1,'AppAIfES']]],
-  ['x_5ftrain_872',['x_train',['../d8/deb/class_app_a_if_e_s_a09f4fccb0ba2fd6256bd57bb0f31466b.html#a09f4fccb0ba2fd6256bd57bb0f31466b',1,'AppAIfES']]],
-  ['xpt2046_5ftouchscreen_873',['XPT2046_Touchscreen',['../d8/d45/class_x_p_t2046___touchscreen.html',1,'']]],
-  ['xraw_874',['xraw',['../d1/dff/class_touch_afa7c3f3af79310502eaaf18a73287c8f.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
+  ['x_892',['x',['../db/d69/class_app_base_class_a3d5594a6a0d365be1098e9cdb2748c3d.html#a3d5594a6a0d365be1098e9cdb2748c3d',1,'AppBaseClass']]],
+  ['x_5fend_893',['x_end',['../dc/d27/class_app_audio_to_polyphonic_ad9a5e5ed381185019ea6a1cf26311e69.html#ad9a5e5ed381185019ea6a1cf26311e69',1,'AppAudioToPolyphonic']]],
+  ['x_5flast_894',['x_last',['../dc/d27/class_app_audio_to_polyphonic_a2df465d28f7911897cfa0464c331fa4f.html#a2df465d28f7911897cfa0464c331fa4f',1,'AppAudioToPolyphonic']]],
+  ['x_5flayer_895',['x_layer',['../d8/deb/class_app_a_if_e_s_ac84808a352b3c6bad842db080f09a96f.html#ac84808a352b3c6bad842db080f09a96f',1,'AppAIfES']]],
+  ['x_5fstart_896',['x_start',['../dc/d27/class_app_audio_to_polyphonic_a33ec2ce0edb5dd54fc374fcadd4a0f22.html#a33ec2ce0edb5dd54fc374fcadd4a0f22',1,'AppAudioToPolyphonic']]],
+  ['x_5ftest_897',['x_test',['../d8/deb/class_app_a_if_e_s_ab49b5cd512a0b57413e88b3c7a539794.html#ab49b5cd512a0b57413e88b3c7a539794',1,'AppAIfES']]],
+  ['x_5ftrain_898',['x_train',['../d8/deb/class_app_a_if_e_s_a09f4fccb0ba2fd6256bd57bb0f31466b.html#a09f4fccb0ba2fd6256bd57bb0f31466b',1,'AppAIfES']]],
+  ['xpt2046_5ftouchscreen_899',['XPT2046_Touchscreen',['../d8/d45/class_x_p_t2046___touchscreen.html',1,'']]],
+  ['xraw_900',['xraw',['../d1/dff/class_touch_afa7c3f3af79310502eaaf18a73287c8f.html#afa7c3f3af79310502eaaf18a73287c8f',1,'Touch']]]
 ];

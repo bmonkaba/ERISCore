@@ -268,34 +268,35 @@ var sectionId = 'dynsection-1';
 <g id="node33" class="node">
 <title>Node33</title>
 <g id="a_node33"><a xlink:href="../../d2/da8/class_svc_serial_command_interface.html" target="_top" xlink:title="Serial communication service and interface Serial commands (rx): &#160;.">
-<polygon fill="none" stroke="black" points="3435,-10.5 3435,-534.5 3884,-534.5 3884,-10.5 3435,-10.5"/>
-<text text-anchor="middle" x="3659.5" y="-516.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
-<polyline fill="none" stroke="black" points="3435,-506.5 3884,-506.5 "/>
-<text text-anchor="middle" x="3659.5" y="-488.1" font-family="Helvetica,sans-Serif" font-size="18.00"> </text>
-<polyline fill="none" stroke="black" points="3435,-478.5 3884,-478.5 "/>
-<text text-anchor="start" x="3443" y="-460.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
-<text text-anchor="start" x="3443" y="-440.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
-<text text-anchor="start" x="3443" y="-420.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
-<text text-anchor="start" x="3443" y="-400.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
-<text text-anchor="start" x="3443" y="-380.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
-<text text-anchor="start" x="3443" y="-360.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
-<text text-anchor="start" x="3443" y="-340.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
-<text text-anchor="start" x="3443" y="-320.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
-<text text-anchor="start" x="3443" y="-300.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET()</text>
-<text text-anchor="start" x="3443" y="-280.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM2()</text>
-<text text-anchor="start" x="3443" y="-260.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_LS()</text>
-<text text-anchor="start" x="3443" y="-240.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_UPDATE_DD()</text>
-<text text-anchor="start" x="3443" y="-220.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_COMPILE()</text>
-<text text-anchor="start" x="3443" y="-200.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_EXECUTE()</text>
-<text text-anchor="start" x="3443" y="-180.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_SAVE()</text>
-<text text-anchor="start" x="3443" y="-160.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_START()</text>
-<text text-anchor="start" x="3443" y="-140.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
-<text text-anchor="start" x="3443" y="-120.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
-<text text-anchor="start" x="3443" y="-100.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamReceiveHandler()</text>
-<text text-anchor="start" x="3443" y="-80.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamTransmitHandler()</text>
-<text text-anchor="start" x="3443" y="-60.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
-<text text-anchor="start" x="3443" y="-40.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
-<text text-anchor="start" x="3443" y="-20.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
+<polygon fill="none" stroke="black" points="3435,-0.5 3435,-544.5 3884,-544.5 3884,-0.5 3435,-0.5"/>
+<text text-anchor="middle" x="3659.5" y="-526.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
+<polyline fill="none" stroke="black" points="3435,-516.5 3884,-516.5 "/>
+<text text-anchor="middle" x="3659.5" y="-498.1" font-family="Helvetica,sans-Serif" font-size="18.00"> </text>
+<polyline fill="none" stroke="black" points="3435,-488.5 3884,-488.5 "/>
+<text text-anchor="start" x="3443" y="-470.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
+<text text-anchor="start" x="3443" y="-450.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
+<text text-anchor="start" x="3443" y="-430.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
+<text text-anchor="start" x="3443" y="-410.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
+<text text-anchor="start" x="3443" y="-390.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
+<text text-anchor="start" x="3443" y="-370.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
+<text text-anchor="start" x="3443" y="-350.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
+<text text-anchor="start" x="3443" y="-330.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
+<text text-anchor="start" x="3443" y="-310.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET()</text>
+<text text-anchor="start" x="3443" y="-290.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM1()</text>
+<text text-anchor="start" x="3443" y="-270.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM2()</text>
+<text text-anchor="start" x="3443" y="-250.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_LS()</text>
+<text text-anchor="start" x="3443" y="-230.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_UPDATE_DD()</text>
+<text text-anchor="start" x="3443" y="-210.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_COMPILE()</text>
+<text text-anchor="start" x="3443" y="-190.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_EXECUTE()</text>
+<text text-anchor="start" x="3443" y="-170.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_SAVE()</text>
+<text text-anchor="start" x="3443" y="-150.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_START()</text>
+<text text-anchor="start" x="3443" y="-130.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
+<text text-anchor="start" x="3443" y="-110.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
+<text text-anchor="start" x="3443" y="-90.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamReceiveHandler()</text>
+<text text-anchor="start" x="3443" y="-70.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamTransmitHandler()</text>
+<text text-anchor="start" x="3443" y="-50.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
+<text text-anchor="start" x="3443" y="-30.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
+<text text-anchor="start" x="3443" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
 </a>
 </g>
 </g>
@@ -1120,8 +1121,8 @@ var sectionId = 'dynsection-1';
 <!-- Node18&#45;&gt;Node33 -->
 <g id="edge69" class="edge">
 <title>Node18&#45;&gt;Node33</title>
-<path fill="none" stroke="#404040" d="M2555.06,-4425.44C2574.33,-4377.82 2613.19,-4301.23 2674.5,-4265 2702.05,-4248.72 3800.84,-4192.55 3822.5,-4169 3895.47,-4089.68 3824.64,-3791.76 3822.5,-3684 3815.61,-3336.68 3904.91,-3231.35 3791.5,-2903 3788.28,-2893.67 3781.54,-2894.39 3778.5,-2885 3759.36,-2825.8 3738.72,-2792.84 3778.5,-2745 3806.53,-2711.29 3847.47,-2760.71 3875.5,-2727 3952.58,-2634.3 3884.57,-1762.21 3875.5,-1642 3846.62,-1259.29 3769.82,-822 3716.06,-546.85"/>
-<polygon fill="none" stroke="#404040" points="3715.99,-546.46 3710.91,-541.34 3713.68,-534.69 3718.76,-539.81 3715.99,-546.46"/>
+<path fill="none" stroke="#404040" d="M2555.06,-4425.44C2574.33,-4377.82 2613.19,-4301.23 2674.5,-4265 2702.05,-4248.72 3800.84,-4192.55 3822.5,-4169 3895.47,-4089.68 3824.64,-3791.76 3822.5,-3684 3815.61,-3336.68 3904.91,-3231.35 3791.5,-2903 3788.28,-2893.67 3781.54,-2894.39 3778.5,-2885 3759.36,-2825.8 3738.72,-2792.84 3778.5,-2745 3806.53,-2711.29 3847.47,-2760.71 3875.5,-2727 3952.58,-2634.3 3884.57,-1762.21 3875.5,-1642 3846.95,-1263.68 3771.58,-832.03 3717.92,-556.39"/>
+<polygon fill="none" stroke="#404040" points="3717.92,-556.38 3712.85,-551.26 3715.62,-544.61 3720.7,-549.73 3717.92,-556.38"/>
 <text text-anchor="middle" x="3854.5" y="-2870.6" font-family="Helvetica,sans-Serif" font-size="18.00"> #multipart_header</text>
 <text text-anchor="middle" x="3854.5" y="-2850.6" font-family="Helvetica,sans-Serif" font-size="18.00">#p_capture_buffer</text>
 <text text-anchor="middle" x="3854.5" y="-2830.6" font-family="Helvetica,sans-Serif" font-size="18.00">#p_working_buffer</text>
@@ -1504,8 +1505,8 @@ var sectionId = 'dynsection-1';
 <!-- Node36&#45;&gt;Node33 -->
 <g id="edge71" class="edge">
 <title>Node36&#45;&gt;Node33</title>
-<path fill="none" stroke="#404040" d="M3374.04,-3103.37C3364.16,-2927.08 3330.98,-2218.19 3398.5,-1642 3399.45,-1633.86 3401.46,-1632.13 3402.5,-1624 3459.12,-1181.54 3306.18,-1046.99 3438.5,-621 3446.35,-595.72 3456.55,-570.49 3468.26,-545.81"/>
-<polygon fill="none" stroke="#404040" points="3468.32,-545.69 3467.34,-538.55 3473.56,-534.9 3474.54,-542.04 3468.32,-545.69"/>
+<path fill="none" stroke="#404040" d="M3374.04,-3103.37C3364.16,-2927.08 3330.98,-2218.19 3398.5,-1642 3399.45,-1633.86 3401.46,-1632.13 3402.5,-1624 3459.12,-1181.54 3306.18,-1046.99 3438.5,-621 3445.27,-599.2 3453.79,-577.42 3463.52,-556.02"/>
+<polygon fill="none" stroke="#404040" points="3463.65,-555.74 3462.56,-548.61 3468.72,-544.86 3469.81,-551.98 3463.65,-555.74"/>
 <text text-anchor="middle" x="3426" y="-1599.6" font-family="Helvetica,sans-Serif" font-size="18.00"> #file</text>
 </g>
 <!-- Node36&#45;&gt;Node38 -->

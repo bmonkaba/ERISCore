@@ -724,9 +724,10 @@ void fsTotalSizeCallback(WrenVM* vm){
 void fileReadCallback(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  uint16_t size = wrenGetSlotDouble(vm,2);
+  uint16_t size = wrenGetSlotDouble(vm,1);
   char* buffer;
-  buffer = (char*)extmem_malloc(size);
+  buffer = (char*)extmem_malloc(size+1);
+  memset(buffer,0,size+1);
   app->wren_file.read(buffer,size);
   wrenSetSlotString(vm,0,buffer);
   extmem_free(buffer);
@@ -735,7 +736,7 @@ void fileReadCallback(WrenVM* vm){
 void fileReadBytesCallback(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  uint16_t size = wrenGetSlotDouble(vm,2);
+  uint16_t size = wrenGetSlotDouble(vm,1);
   char* buffer;
   buffer = (char*)extmem_malloc(size);
   size = app->wren_file.readBytes(buffer,size);

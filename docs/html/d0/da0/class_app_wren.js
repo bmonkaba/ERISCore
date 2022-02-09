@@ -114,6 +114,8 @@ var class_app_wren =
     [ "widget_origin_y", "d0/da0/class_app_wren.html#a6c4b0270ec71171609d675fb8fdbb2aa", null ],
     [ "widget_width", "d0/da0/class_app_wren.html#af7f8d7d2e26895cbd304112f41aa3e22", null ],
     [ "width", "d0/da0/class_app_wren.html#ab09a10b13273bf5b5a99c412f3835c0d", null ],
+    [ "wren_file", "d0/da0/class_app_wren_a9715c26ae22261822b3c28300d43871c.html#a9715c26ae22261822b3c28300d43871c", null ],
+    [ "wren_file_system", "d0/da0/class_app_wren_ad51dc6995f39cb9b45f1b8dd64d4d8e6.html#ad51dc6995f39cb9b45f1b8dd64d4d8e6", null ],
     [ "wren_module_name", "d0/da0/class_app_wren_a177719148ea60e521d0e8608fafdaed3.html#a177719148ea60e521d0e8608fafdaed3", null ],
     [ "x", "d0/da0/class_app_wren.html#a3d5594a6a0d365be1098e9cdb2748c3d", null ],
     [ "y", "d0/da0/class_app_wren.html#a3351e0160fb9d0fc79e5ac6db652645a", null ]

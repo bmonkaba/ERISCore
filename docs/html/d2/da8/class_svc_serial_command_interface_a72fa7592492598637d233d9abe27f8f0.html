@@ -103,40 +103,39 @@ $(document).ready(function(){initNavTree('d2/da8/class_svc_serial_command_interf
 <dd>
 false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00170">170</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                        {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    uint16_t avail;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    avail = Serial.availableForWrite();</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">if</span>(avail &lt; SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD){</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        uint16_t delta_avail;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        uint16_t msec_delay_counter = 0;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">//serial tx buffer not available</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">do</span>{</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            delay(2);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            msec_delay_counter += 2;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            delta_avail = Serial.availableForWrite();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">if</span> (delta_avail &gt; SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        } <span class="keywordflow">while</span> (msec_delay_counter &lt; SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span>(avail == delta_avail){</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            Serial.flush();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;M WRN flush&quot;</span>));</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="comment">//Serial.println(F(&quot;M WRN throttling&quot;));//use this for debug only!</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="../../db/d69/class_app_base_class_a6baed35a61a4cae1b3c67113aa6ec1dd.html#a6baed35a61a4cae1b3c67113aa6ec1dd">am</a>-&gt;<a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300.html#aab72733da062e89f277308ca64daf300">increment</a>(<span class="stringliteral">&quot;SERIAL_THROTTLE_EVENTS&quot;</span>);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span>(avail &lt; SERIAL_THROTTLE_BUFFER_THRESHOLD) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00169">169</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    uint16_t avail;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    avail = Serial.availableForWrite();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span>(avail &lt; SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD){</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        uint16_t delta_avail;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        uint16_t msec_delay_counter = 0;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">//serial tx buffer not available</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            delay(0.5);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            msec_delay_counter += 2;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            delta_avail = Serial.availableForWrite();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">if</span> (delta_avail &gt; SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        } <span class="keywordflow">while</span> (msec_delay_counter &lt; SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">if</span>(avail == delta_avail){</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        } <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="comment">//Serial.println(F(&quot;M WRN throttling&quot;));//use this for debug only!</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <a class="code" href="../../db/d69/class_app_base_class_a6baed35a61a4cae1b3c67113aa6ec1dd.html#a6baed35a61a4cae1b3c67113aa6ec1dd">am</a>-&gt;<a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300.html#aab72733da062e89f277308ca64daf300">increment</a>(<span class="stringliteral">&quot;SERIAL_THROTTLE_EVENTS&quot;</span>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span>(avail &lt; SERIAL_THROTTLE_BUFFER_THRESHOLD) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
 <div class="ttc" id="aclass_app_base_class_a6baed35a61a4cae1b3c67113aa6ec1dd_html_a6baed35a61a4cae1b3c67113aa6ec1dd"><div class="ttname"><a href="../../db/d69/class_app_base_class_a6baed35a61a4cae1b3c67113aa6ec1dd.html#a6baed35a61a4cae1b3c67113aa6ec1dd">AppBaseClass::am</a></div><div class="ttdeci">AppManager * am</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00038">AppBaseClass.h:38</a></div></div>
 <div class="ttc" id="aclass_app_manager_a702921f08484c897380064116a4a23a6_html_a702921f08484c897380064116a4a23a6"><div class="ttname"><a href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">AppManager::data</a></div><div class="ttdeci">SvcDataDictionary * data</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00062">AppManager.h:62</a></div></div>
 <div class="ttc" id="aclass_svc_data_dictionary_aab72733da062e89f277308ca64daf300_html_aab72733da062e89f277308ca64daf300"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300.html#aab72733da062e89f277308ca64daf300">SvcDataDictionary::increment</a></div><div class="ttdeci">bool increment(const char *key)</div><div class="ttdoc">increments the value of a global record  creates a new record if one does not exist and  initalizes i...</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dc4/_svc_data_dictionary_8cpp_source.html#l00196">SvcDataDictionary.cpp:196</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/d3e/_app_base_class_8h_source.html#l00038">AppBaseClass::am</a>, <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00062">AppManager::data</a>, and <a class="el" href="../../dc/dc4/_svc_data_dictionary_8cpp_source.html#l00196">SvcDataDictionary::increment()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00157">flush()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00338">messageHandler_GET_RAM2()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00506">messageHandler_LS()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00151">send()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00115">sendLZ4Message()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00197">txOverflowHandler()</a>, and <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00582">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00158">flush()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00336">messageHandler_GET_RAM1()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00404">messageHandler_GET_RAM2()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00572">messageHandler_LS()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00150">send()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00195">txOverflowHandler()</a>, and <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00648">update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -150,7 +149,7 @@ false </dd></dl>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0_a72fa7592492598637d233d9abe27f8f0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0_a72fa7592492598637d233d9abe27f8f0_icgraph.svg" width="100%" height="594"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

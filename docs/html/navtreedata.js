@@ -26,29 +26,14 @@ var NAVTREE =
 [
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
-      [ "What is Eris Core:", "index.html#autotoc_md5", null ],
-      [ "3rd party software", "index.html#autotoc_md6", [
-        [ "Licence", "index.html#autotoc_md7", null ],
-        [ "External dependancies", "index.html#autotoc_md8", null ]
+      [ "What is Eris Core:", "index.html#autotoc_md5", [
+        [ "3rd party software", "index.html#autotoc_md6", [
+          [ "Licence", "index.html#autotoc_md7", null ],
+          [ "External dependancies", "index.html#autotoc_md8", null ]
+        ] ],
+        [ "3D print, STL & housing graphics", "index.html#autotoc_md9", null ]
       ] ],
-      [ "3D print, STL & housing graphics", "index.html#autotoc_md9", null ],
-      [ "ErisCore software", "index.html#autotoc_md10", [
-        [ "Development State", "index.html#autotoc_md11", null ],
-        [ "WIP / Known issues", "index.html#autotoc_md12", null ],
-        [ "TODO", "index.html#autotoc_md13", null ],
-        [ "Hardware Features:", "index.html#autotoc_md14", null ],
-        [ "Software Features:", "index.html#autotoc_md15", null ]
-      ] ],
-      [ "Hardware Specs:", "index.html#autotoc_md16", [
-        [ "Microcontroller:", "index.html#autotoc_md17", null ],
-        [ "Mass Storage:", "index.html#autotoc_md18", null ],
-        [ "Power:", "index.html#autotoc_md19", null ],
-        [ "Analog to Digital Converter:", "index.html#autotoc_md20", null ],
-        [ "Digital to Audio Converter:", "index.html#autotoc_md21", null ],
-        [ "MIDI", "index.html#autotoc_md22", null ],
-        [ "Display", "index.html#autotoc_md23", null ]
-      ] ],
-      [ "mvp-01", "index.html#autotoc_md24", null ]
+      [ "ErisCore software", "index.html#autotoc_md10", null ]
     ] ],
     [ "Welcome to GitHub Pages", "d8/d48/md__e_r_i_s_core_docs_index.html", null ],
     [ "Classes", "annotated.html", [
@@ -79,15 +64,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/da6/classeris_audio_synth_karplus_strong_afaa74e633c42abfcb4a86a95d907379e.html#afaa74e633c42abfcb4a86a95d907379e",
-"d3/daf/classeris_audio_mixer8.html#a362f8375c64deaef923207f442b674db",
-"d4/dd5/class_audio_synth_waveform_a26b58de690a697940d2441f7d73401b2.html#a26b58de690a697940d2441f7d73401b2",
-"d5/d96/class_audio_stream_ac5378800d560b26c9bfe64e1a5e75eb7.html#ac5378800d560b26c9bfe64e1a5e75eb7",
-"d8/d5a/class_i_l_i9341__t3___e_r_i_s_a6e80c34247b19417581147faa3f0676c.html#a6e80c34247b19417581147faa3f0676c",
-"d8/deb/class_app_a_if_e_s_af0cad87a8a4ecb5e310c0508dbacfe4c.html#af0cad87a8a4ecb5e310c0508dbacfe4c",
-"db/d69/class_app_base_class_a8dcf375c6659741078b08b90ad500090.html#a8dcf375c6659741078b08b90ad500090",
-"de/d67/class_control_slider.html",
-"df/dc5/classeris_audio_synth_waveform.html#a0fbd971a0b1108295ae44f1ae4c6b627"
+"d0/da6/classeris_audio_synth_karplus_strong_aba92893568576dbdbab63e9e648b283b.html#aba92893568576dbdbab63e9e648b283b",
+"d3/daf/classeris_audio_mixer8.html#a132a5948323a2f94a6f53e42a64411dc",
+"d4/dd5/class_audio_synth_waveform.html#afd0f87125aecd2222c87ab2f57cde6f9",
+"d5/d96/class_audio_stream_aae8e555ac9f257e10abbd3545a78f88c.html#aae8e555ac9f257e10abbd3545a78f88c",
+"d8/d1c/class_audio_director_ad4df3988cf97f1ec847ae4eff638fe84.html#ad4df3988cf97f1ec847ae4eff638fe84",
+"d8/deb/class_app_a_if_e_s_a1c1fe3646ac68df45ee0a0c8609ac704.html#a1c1fe3646ac68df45ee0a0c8609ac704",
+"db/d69/class_app_base_class_a3351e0160fb9d0fc79e5ac6db652645a.html#a3351e0160fb9d0fc79e5ac6db652645a",
+"dd/d7d/classeris_audio_filter_biquad_aa3e8630fd1f1196c3b52bcb23fb4a9a7.html#aa3e8630fd1f1196c3b52bcb23fb4a9a7",
+"df/d17/class_control_button_af1b7b1726863135d38c58843ee898f30.html#af1b7b1726863135d38c58843ee898f30"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"d3/daf/classeris_audio_mixer8.html#a132a5948323a2f94a6f53e42a64411dc":[2,0,110,19],
+"d3/daf/classeris_audio_mixer8.html#a1ca258955ea281b46625381746c733f5":[2,0,110,39],
+"d3/daf/classeris_audio_mixer8.html#a29a40aab8fe15aeee2f0a131da381424":[2,0,110,10],
 "d3/daf/classeris_audio_mixer8.html#a362f8375c64deaef923207f442b674db":[2,0,110,1],
 "d3/daf/classeris_audio_mixer8.html#a3a97d8e3b9d63b1cb6c4544d3aa040f2":[2,0,110,6],
 "d3/daf/classeris_audio_mixer8.html#a42fd2255b8482d626528cb8cbbedba9f":[2,0,110,13],
@@ -35,9 +38,9 @@ var NAVTREEINDEX2 =
 "d3/daf/classeris_audio_mixer8_a5117c098d7f25006f8eeb8fbc2279a16.html#a5117c098d7f25006f8eeb8fbc2279a16":[2,0,110,12],
 "d3/daf/classeris_audio_mixer8_a94e461e611151ea90e8b7f99ac9da683.html#a94e461e611151ea90e8b7f99ac9da683":[2,0,110,0],
 "d3/db2/class____eris_audio_analyze_f_f_t1024.html":[2,0,3],
-"d3/db2/class____eris_audio_analyze_f_f_t1024_a4a44bcf6dcb127087ca3582bac4c2540.html#a4a44bcf6dcb127087ca3582bac4c2540":[2,0,3,2],
-"d3/db2/class____eris_audio_analyze_f_f_t1024_aa73c3ea77e47923884faf78937cdfb8d.html#aa73c3ea77e47923884faf78937cdfb8d":[2,0,3,1],
-"d3/db2/class____eris_audio_analyze_f_f_t1024_aaaf62108016fe5842ed2d143a5796886.html#aaaf62108016fe5842ed2d143a5796886":[2,0,3,0],
+"d3/db2/class____eris_audio_analyze_f_f_t1024_a4a44bcf6dcb127087ca3582bac4c2540.html#a4a44bcf6dcb127087ca3582bac4c2540":[2,0,3,4],
+"d3/db2/class____eris_audio_analyze_f_f_t1024_aa73c3ea77e47923884faf78937cdfb8d.html#aa73c3ea77e47923884faf78937cdfb8d":[2,0,3,3],
+"d3/db2/class____eris_audio_analyze_f_f_t1024_aaaf62108016fe5842ed2d143a5796886.html#aaaf62108016fe5842ed2d143a5796886":[2,0,3,2],
 "d3/dd5/class_audio_play_memory.html":[2,0,57],
 "d3/ddb/_analog_inputs_8h.html":[3,0,0,1,0],
 "d3/ddb/_analog_inputs_8h_source.html":[3,0,0,1,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX2 =
 "d4/dd5/class_audio_synth_waveform.html#aebe02d4f0b44b700dece5f6732ecc6fe":[2,0,67,30],
 "d4/dd5/class_audio_synth_waveform.html#aedbf0b4a808724dc4f4115c60b615622":[2,0,67,17],
 "d4/dd5/class_audio_synth_waveform.html#af7181e76a78bd065d4242eb201fadd80":[2,0,67,33],
-"d4/dd5/class_audio_synth_waveform.html#af9cd6c94cd50aa817ed928bc4a2d71e8":[2,0,67,41],
-"d4/dd5/class_audio_synth_waveform.html#afd0f87125aecd2222c87ab2f57cde6f9":[2,0,67,26],
-"d4/dd5/class_audio_synth_waveform.html#aff732b4ba2fa71f3a47b16247d024a92":[2,0,67,14],
-"d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab":[2,0,67,35]
+"d4/dd5/class_audio_synth_waveform.html#af9cd6c94cd50aa817ed928bc4a2d71e8":[2,0,67,41]
 };
