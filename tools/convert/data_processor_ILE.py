@@ -51,7 +51,7 @@ def Gen565Stream(in_file,out_file):
 def GenTextTag(text,out_file,font_size=64):
     print (text + " " + out_file)
     img = Image.new('RGB', (320, font_size), color = (0, 0, 0))    
-    fnt = ImageFont.truetype('C:\\Windows\\FontsFonts\\heavy_data.ttf', font_size)    
+    fnt = ImageFont.truetype(r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\HEAVY_DATA.TTF", font_size)    
     d = ImageDraw.Draw(img)
     d.text((0,0), text, font=fnt, fill=(255,255,255))
     img.save(out_file)
