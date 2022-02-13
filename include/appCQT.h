@@ -76,7 +76,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
 
     void FLASHMEM init(){
-      update_priority = 0; //set to high priority
+      update_priority = 5; //set to high priority
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name

@@ -19,7 +19,7 @@ class AppScope:public AppBaseClass {
         scope->trigger();
         strcpy(name,"AppScope");
         scale = 0;
-        update_priority = 0;
+        update_priority = 5;
     }; 
 
   protected:

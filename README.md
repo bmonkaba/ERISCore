@@ -6,12 +6,17 @@
 
 Eris core is:
 
-* an Artifical Intelligence and Machine Learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in signal procressing audio signals.
+* Designed to stand alone but architected for reuse; intended as a foundation for bootstrapping product line development across many commercial domains while remaining accessable to makers.
+* an artifical tntelligence and machine learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in audio signal procressing.
 * a virtual machine host and extentions for Wren https://wren.io/ 
 * an integrated rapid application development & test framework
+* a standardized graphics and audio asset library including:
+    * 60+ video backgrounds, 100+ oversized backgrounds which can be repositioned
+    * 100+ sprite based fonts (8pt-39pt) with digraph sorted kearning files
+    * 4000+ single cycle waveforms, 30MB spectraly sorted single cycle wavetable database w/index file
+    * 100's of sprites: ~100 icons, multiple single and double value radial gauges, virtual led indicators, etc.
 * a subsystem component complete with mechanical housing examples
 * supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
-* built for reuse; intended as a foundation for further integration into projects & products
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
@@ -20,14 +25,19 @@ Eris core is:
 
 [![youtube video](https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
 
-### 3rd party software
+### 3rd party
 
 #### Licence
+
+Software:
 
 * Wren - MIT Licence
 * LZ4 - BSD 2-Clause License
 * AIeFS - GNU Affero General Public License
 * Arduino/Teensyduino - MIT Licence
+
+Audio:
+    https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE - http://creativecommons.org/publicdomain/zero/1.0/
 
 #### External dependancies
 

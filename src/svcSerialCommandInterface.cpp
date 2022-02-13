@@ -268,7 +268,6 @@ void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
             stream_pos = 0;
             return;
         }
-        //updateRT_priority = 10;
         startLZ4Message();
         print("FS ");
         file.seek(stream_pos);
@@ -303,7 +302,6 @@ void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
             is_streaming_file = false;
             is_periodic_messages_enabled = true;
             stream_pos = 0;
-            update_priority = 0;
             delayMicroseconds(3000);
             return;
         }
@@ -314,7 +312,6 @@ void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
             is_streaming_file = false;
             is_periodic_messages_enabled = true;
             stream_pos = 0;
-            update_priority = 0;
             delayMicroseconds(3000);
             return;
         } else{

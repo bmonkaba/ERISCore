@@ -146,7 +146,7 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 2900){
             _theta = 10000
@@ -173,7 +173,7 @@ class App {
             
         }
     }
-    update() {
+    render() {
         App.setClockSpeed(600000000)
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
@@ -250,6 +250,7 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_22")
+
 
 
 

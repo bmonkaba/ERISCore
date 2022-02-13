@@ -141,7 +141,7 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 1000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
@@ -156,7 +156,7 @@ class App {
             if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_7")
         }
     }
-    update() {
+    render() {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
@@ -225,6 +225,7 @@ App.setWidgetDimension(64, 64)
 //will be called
 var ErisApp = App.new()
 System.print("example_6")
+
 
 
 

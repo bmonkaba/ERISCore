@@ -135,7 +135,7 @@ class App {
     //  required methods - the VM host (C++ side) provides the AppBase class 
     //  wrappers which will forward the method calls here for execution
     //
-    updateRT() {
+    update() {
         _count = _count + 1
         if (_count > 5000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
@@ -144,7 +144,7 @@ class App {
             if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_11")
         }
     }
-    update() {
+    render() {
         __w = __w + __dw
         __h = __h + __dh
         if (__w > 120){
@@ -225,6 +225,7 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_10")
+
 
 
 

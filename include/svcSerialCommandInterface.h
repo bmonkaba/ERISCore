@@ -53,7 +53,7 @@
 class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:
     SvcSerialCommandInterface():AppBaseClass(){
-        update_priority = 0;  //set to max priority
+        update_priority = 25;  //set to max priority
         et_since_poll = 0;
         et_since_periodic_data_dict_tx = 0;
         et_since_periodic_stats_tx = 0;
