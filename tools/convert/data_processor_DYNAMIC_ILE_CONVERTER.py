@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageDraw,ImageFont
 from array import array
-import json
+
 
   
 
@@ -25,7 +25,7 @@ def Gen565Stream(in_file,out_file):
         else:               #if not a comment then this line is the dimensions
             dim = l
         #print 
-        bits = f.readline() #get bit depth
+        f.readline() #get bit depth
         #print bits
         dim = dim.decode("utf-8")
         x = int(dim.split(' ')[0])
@@ -43,13 +43,14 @@ def Gen565Stream(in_file,out_file):
         f.write('ILE565\n'.encode('utf-8')) #image little endian 565 formated data
         f.write(dim.encode('utf-8'))      #width height dimensions      
         f.write(out_data) #565 packed data 
+        
     #print len(out_data), x * y
     #print str(out_data[1])
     return
 
 
 def GenTextTag(text,out_file,font_size=64):
-    print (text + " " + out_file)
+    #print (text + " " + out_file)
     img = Image.new('RGB', (320, font_size), color = (0, 0, 0))    
     fnt = ImageFont.truetype(r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\HEAVY_DATA.TTF", font_size)    
     d = ImageDraw.Draw(img)
@@ -63,18 +64,19 @@ if __name__ == "__main__":
     #
     # Convert png graphics to ile (inline 565 bitmap encoding)
     #
+    manifest = open("manifest.txt","w") #save a list of converted files
     dstruct = {}    
     for root, directory, files in os.walk(".\\SMART_CONVERT\\"):
-        #for d in directory:
+        #print(directory)
         for f in files:
             fp = root + "\\" + f
             if fp[-4:] == ".png":
-                print (fp)
+                #print (fp)
                 ppm = fp[:-4] + ".ppm"
                 ile = fp[:-4] + ".ile"
                 #batch convert images with PIL
                 #print ppm
-                #print ile
+               #print ("\t"+ile)
                 #print size
                 try:
                     im = Image.open(fp).convert("RGB")
@@ -107,7 +109,8 @@ if __name__ == "__main__":
                     while True:
                         im.save(ppm)
                         Gen565Stream(ppm,ile)
-                        #os.remove(ppm)
+                        manifest.write(ile + "\n")
+                        os.remove(ppm)
                         if width > 16:
                             zoom_out = zoom_out * 2
                             ppm = fp[:-4] + "_nz" + str(zoom_out) + ".ppm"
@@ -121,5 +124,5 @@ if __name__ == "__main__":
                             im = im.resize((width,height), Image.BILINEAR)
                         else:
                             break
-                        
-                    #print "done."
+    manifest.close()
+                   

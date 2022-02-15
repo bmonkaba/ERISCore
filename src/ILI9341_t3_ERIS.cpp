@@ -96,7 +96,7 @@ void ILI9341_t3_ERIS::flipBuffer(){
   }
 };
 */
-void FLASHMEM ILI9341_t3_ERIS::bltMem(Surface *dest, Surface *source,int16_t dest_x,int16_t dest_y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltAlphaType alpha_type){
   bool toggle = false;
   int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
@@ -190,11 +190,199 @@ void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
 }
 
 
+/**
+ * @brief blt directly from the SD card to the screen frame buffer at destination
+ * 
+ * @param path 
+ * @param filename 
+ * @param x dest coord 
+ * @param y dest coord
+ * @param alpha_type 
+ */
 void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   bltSDB(_pfbtft, _width, _height, path, filename,x,y,alpha_type);
   return;
 }
 
+
+
+
+
+
+void FLASHMEM ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
+ uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltAlphaType alpha_type){
+  int16_t iy; // x & y index
+  int16_t w;int16_t h; //width & height
+  int16_t mx;        //left clip x offset
+  int16_t nx;        //right clip x offset
+  unsigned long ifb; //frame buffer index
+  //uint16_t dwbf[SCREEN_WIDTH];//file read pixel row input buffer
+  uint16_t dw;       //pixel data
+  char str[16];      //char buffer
+  char *c;           //char pointer
+  bool toggle = false;
+
+  file.open(file_name, O_READ);        //open image to read
+  if (file.available() == 0){ //file not found
+    Serial.print(F("M ILI9341_t3_ERIS::bltSD File Not Found: "));
+    Serial.println(file_name);
+    //pSD->ls();
+    return;
+  }
+  
+  file.fgets(str,sizeof(str)); //read the header data
+  file.fgets(str,sizeof(str)); //to get the image dimensions
+  strtok(str," ");             //convert dimension text to numbers
+  w = atol(str);
+  
+  c = strtok(NULL, " ");
+  h = atol(c);
+
+  //seek to the source row
+  if (src_y > 0) { 
+    for (iy = 0; iy < src_y; iy += 1L){ //for each off screen row
+      file.seekCur(w*2L);
+      h -= 1; //reduce bitmap hight by 1 row
+    }
+    src_y = 0;
+  }
+
+  //clip in y dimension (top)
+  if (dest_y < 0) { //throw away rows which are off screen
+    for (iy = 0; iy < (-1L * dest_y); iy += 1L){ //for each off screen row
+      file.seekCur(w*2L);
+      h -= 1; //reduce bitmap hight by 1 row
+    }
+    dest_y = 0; //set y pos to 0 for the remaining portion of the bitmap
+  }
+  
+  
+  //for each row
+  for (iy = dest_y; iy < (dest_y + src_height); iy += 1){ 
+    toggle ^= true;
+    
+    if (iy >= dest_buffer_height) break; //clip in y dimension (bottom) - simply don't draw anything
+    mx = 0; nx = 0;
+    //if (dest_x < 0L){file.seekCur(dest_x * -2L);mx += -1L * dest_x;} //clip in x dimension (left) - skip offscreen data
+    ifb = (iy * dest_buffer_width) + dest_x + mx; //32bit index
+    //if ((dest_x + src_width) > w){nx = (dest_x + src_width) - dest_buffer_width;}//clip in x dimension (right) - truncate copy to screen bounds
+
+    //inital x offset
+    file.seekCur(src_x * 2L); //seek to start_x
+
+    //read the data for the row
+    for (uint16_t z = 0; z < src_width; z += 1){
+      file.read(&dw,2);
+      toggle ^= true;
+      //if alpha is enabled mask any colors close to black
+      if (alpha_type == AT_NONE){dest_buffer[ifb + z] = dw;}
+      else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+      else if (alpha_type == AT_HATCHBLK){
+        if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+        else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
+      }
+      else if (alpha_type == AT_HATCHXOR){
+        if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+        else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
+      }
+      //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
+    }
+    file.seekCur(2L* (w - (src_width + src_x))); //skip to the start of the next row
+  }
+  file.close();
+}
+
+
+void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt){
+  char font_file_path[256];
+  char font_kerning_file_path[256];
+  char tmp[64];//tmp buffer to build the file name
+  strcpy(font_file_path,"/I/U/F/");
+  strcat(font_file_path,font);
+  strcat(font_file_path,"/");
+  setCursor(0,10);
+  if (!p_SD->chdir(font_file_path)){
+    print("FONT PATH NOT FOUND! ");  
+  }
+  //print(font_file_path);
+  //print("\n");
+  memset(font_file_path,0,256);
+  sprintf(tmp,"%2hu",pt);//file name is just the pt number to two digits
+  strcat(font_file_path,tmp);
+  strcpy(font_kerning_file_path,font_file_path);//copy
+  strcat(font_file_path,".ile");//add the file name sufixes
+  strcat(font_kerning_file_path,".krn");
+  
+  setTextSize(pt);
+  //print(font_kerning_file_path);
+  //print("\n");
+  //print(font_file_path);
+  
+  
+  FsFile kern = p_SD->open(font_kerning_file_path,O_RDONLY); //if so open the fiile
+  if (kern!=NULL){ //see if the requested font exists
+    
+    for(int16_t i = 0;i < strlen(string_buffer);i++){ //now walk the string buffer
+      uint16_t start_x;
+      uint16_t stop_x;
+      String line;
+      start_x = 0;
+      stop_x = 0;
+      const String end_of_index = "KEARNING\n";
+      const char c = string_buffer[i]; //for each char
+      //kern = p_SD->open(font_kerning_file_path,O_RDONLY);
+      kern.seek(0);//move to the start of the file
+      do{
+        char terminator;
+        terminator = '\n';
+        //search the kern file
+        line = kern.readStringUntil(terminator,256);
+        if (c == line[0]){ //once the match is found
+          //print("\n");
+          //print(line);
+          //get the start and stop x coords
+          char j;
+          const char *cline = line.c_str();
+          sscanf(cline,"%c %hu %hu\n",&j,&start_x,&stop_x); //load the coords
+          //kern.close();
+          break;//break out from this do loop
+        }
+      }while(line!=end_of_index);//end of index reached
+      //check stop_x it should be greater than zero.. if not the char was not found
+      //else blt the font char
+      if(stop_x > 0){
+        //print("\n");
+        //print(stop_x);
+
+        bltSDAreaSurfaceDest(getFrameBuffer(),x,y, \
+          320,240,font_file_path,start_x,0,stop_x-start_x,pt,AT_TRANS);
+        x += pt/2;//move index to the next char
+      }else{
+        //print("\n");
+        //print(stop_x);
+      }
+    }
+  }else{ //kerning file not found
+    print("\n");
+    print("kerning file not found");
+  }
+  kern.close();
+}
+
+
+
+/**
+ * @brief blt from the SD card to a memory buffer x,y destination
+ * 
+ * @param dest_buffer 
+ * @param dest_buffer_width 
+ * @param dest_buffer_height 
+ * @param path 
+ * @param filename 
+ * @param x 
+ * @param y 
+ * @param alpha_type 
+ */
 void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
@@ -269,6 +457,12 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
   file.close();
 }
 
+/**
+ * @brief renders an image chunk using the information provided by Animation parameter
+ * This function is used to render the animated backgrounds
+ * 
+ * @param an 
+ */
 void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
   //full screen block transfer with no clipping - used for full screen images matching the screen resolution
   p_SD->chdir(an->getPath());
@@ -287,8 +481,12 @@ void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
   file.close();
 }
 
+/**
+ * @brief full screen block transfer with no clipping - used for full screen images matching the screen resolution
+ * 
+ * @param filename 
+ */
 void ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
-  //full screen block transfer with no clipping - used for full screen images matching the screen resolution
   p_SD->chdir("/I/U/W");
   file.open(filename, O_READ);
   if (file.available() == 0){ //file not found

@@ -46,11 +46,10 @@ static void writeFn(WrenVM* vm, const char* text) {
   //Serial.printf("VM %s", text);
   AppManager* am = AppManager::getInstance();
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)am->getAppByName("SCI");
-  while(!sci->requestStartLZ4Message()){
-    delay(150);
+  if(sci->requestStartLZ4Message()){
+    sci->printf("VM %s", text);
+    sci->sendLZ4Message();
   };
-  sci->printf("VM %s", text);
-  sci->sendLZ4Message();
 }
 
 /**
@@ -505,6 +504,25 @@ void printCallback(WrenVM* vm){
  * 
  * @param vm 
  */
+void printWithFontCallback(WrenVM* vm){
+  //(char* string)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  const char *string_buffer = wrenGetSlotString(vm,1);
+  uint16_t x = wrenGetSlotDouble(vm,2);
+  uint16_t y = wrenGetSlotDouble(vm,3);
+  const char *font_name = wrenGetSlotString(vm,4);
+  uint16_t pt = wrenGetSlotDouble(vm,5); //font size
+  
+  app->getDraw()->printWithFont(string_buffer,x,y,font_name,pt);
+  
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
 void setFontSizeCallback(WrenVM* vm){
   //TODO
 }
@@ -518,7 +536,7 @@ void loadImageCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_NONE);
+  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_TRANS);
 }
 
 /**
@@ -530,7 +548,7 @@ void loadImageSurfaceCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_NONE);
+  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_TRANS);
 }
 
 /**
@@ -542,7 +560,21 @@ void bltCallback(WrenVM* vm){
   //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),AT_NONE);
+  int32_t alpha_request = wrenGetSlotDouble(vm, 7);
+  bltAlphaType alpha_type;
+  switch (alpha_request){
+    case 0:
+      alpha_type = AT_NONE;
+    case 1:
+      alpha_type = AT_TRANS;
+    case 2:
+      alpha_type = AT_HATCHBLK;
+    case 3:
+      alpha_type = AT_HATCHXOR;
+    default:
+      alpha_type = AT_NONE;
+  }
+  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),alpha_type);
 }
 
 /**
@@ -1009,13 +1041,15 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return setCursorCallback;
       }else if (strcmp(signature, "print(_)") == 0){
         return printCallback;
+      }else if (strcmp(signature, "print(_,_,_,_,_)") == 0){
+        return printWithFontCallback;
       }else if (strcmp(signature, "setFontSize(_)") == 0){
         return setFontSizeCallback;
       }else if (strcmp(signature, "loadImage(_,_,_,_)") == 0){
         return loadImageCallback;
       }else if (strcmp(signature, "loadImageToSurface(_,_,_,_)") == 0){
         return loadImageSurfaceCallback;
-      }else if (strcmp(signature, "blt(_,_,_,_,_,_)") == 0){
+      }else if (strcmp(signature, "blt(_,_,_,_,_,_,_)") == 0){
         return bltCallback;
       }else if (strcmp(signature, "line(_,_,_,_,_,_,_)") == 0){
         return drawLineCallback;
@@ -1250,7 +1284,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
                     if(has_pop || has_focus){
                       //do nothing
                     }else{
-                      draw->bltMem(am->p_display_surface,surface_cache,x,y,AT_NONE);
+                      draw->bltSurface2Surface(am->p_display_surface,x,y,surface_cache,0,0,surface_cache->getWidth(),surface_cache->getHeight(),AT_NONE);
                     }
                   }
               }else{

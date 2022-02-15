@@ -95,7 +95,7 @@ class ControlButton:public AppBaseClass {
                     return;
                 }
             } else{
-                draw->bltMem(am->p_display_surface,img_cache,x,y,AT_NONE);
+                draw->bltSurface2Surface(am->p_display_surface,x,y,img_cache,0,0,img_cache->getWidth(),img_cache->getHeight(),AT_NONE);
             }
         }else{
             draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));

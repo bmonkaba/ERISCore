@@ -138,14 +138,20 @@ class AppWren:public AppBaseClass {
     bool loadScript(const char* script){
         const char* module = "main";
         bool res;
-        Serial.printf("M AppWren:loadScript: Loading script (size: %d bytes)\n",strlen(script));
         res = isWrenResultOK(wrenInterpret(vm, module, script));
-        if (res){
-            Serial.println(F("M AppWren::loadScript: OK"));
+        if(res){
             getWrenHandles();
             wrenEnsureSlots(vm, 1);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
-        };
+        }
+
+        if(sci->requestStartLZ4Message()){
+            sci->printf("M AppWren:loadScript: Loading script (size: %d bytes)\n",strlen(script));
+            if (res){ 
+                sci->println(F("M AppWren::loadScript: OK"));
+            }else sci->println(F("M AppWren::loadScript: NOT OK"));
+            sci->sendLZ4Message();
+        }
         return res;
     }
 
@@ -156,7 +162,10 @@ class AppWren:public AppBaseClass {
      */
     void rebootRequest(char* script_name){
         //the actual reboot load request will be completed in the AppWren::update loop.
-        Serial.printf("M AppWren:rebootRequest: %s\n",script_name);
+        if(sci->requestStartLZ4Message()){
+            sci->printf("M AppWren:rebootRequest: %s\n",script_name);
+            sci->sendLZ4Message();
+        }
         reboot_request = true;
         safer_strncpy(wren_module_name,script_name,sizeof(wren_module_name));
     }
@@ -293,8 +302,9 @@ class AppWren:public AppBaseClass {
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
-        //bltMem(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type)
-        draw->bltMem(&dest,&source,to_x,to_y,AT_NONE);
+        
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type)
+        draw->bltSurface2Surface(&dest,to_x,to_y,&source,0,0,source.getWidth(),source.getHeight(),alpha_type);
     }
 
     /**
@@ -430,17 +440,26 @@ class AppWren:public AppBaseClass {
     bool isWrenResultOK(WrenInterpretResult res){
         switch (res){
             case WREN_RESULT_COMPILE_ERROR:
-                Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_COMPILE_ERROR\n"));
-                Serial.printf(F("VM WREN_ERR Compilation Failed\n"));
+                if(sci->requestStartLZ4Message()){
+                    sci->printf(F("M AppWren::isWrenResultOK WREN_RESULT_COMPILE_ERROR\n"));
+                    sci->printf(F("VM WREN_ERR Compilation Failed\n"));
+                    sci->sendLZ4Message();
+                }
                 return false;
             case WREN_RESULT_RUNTIME_ERROR:
-                Serial.printf(F("M AppWren::isWrenResultOK WREN_RESULT_RUNTIME_ERROR\n"));
-                Serial.printf(F("VM WREN_WRN [Implementation Warning] call forwarding will be disabled until next script load.\n"));
+                if(sci->requestStartLZ4Message()){
+                    sci->printf(F("M AppWren::isWrenResultOK WREN_RESULT_RUNTIME_ERROR\n"));
+                    sci->printf(F("VM WREN_WRN [Implementation Warning] call forwarding will be disabled until next script load.\n"));
+                    sci->sendLZ4Message();
+                }
                 return false;
             case WREN_RESULT_SUCCESS:
                 return true;
             default:
-                Serial.printf(F("M AppWren::isWrenResultOK UNDEFINED RESULT!\n"));
+                if(sci->requestStartLZ4Message()){
+                    sci->printf(F("M AppWren::isWrenResultOK UNDEFINED RESULT!\n"));
+                    sci->sendLZ4Message();
+                }
                 return false; //should never execute
         } 
     }

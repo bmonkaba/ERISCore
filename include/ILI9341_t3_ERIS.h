@@ -235,7 +235,9 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //void flipBuffer();
         //void flipWritePointer();
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
-        
+        void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt);
+        void bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
+            uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltAlphaType alpha_type);
         void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
         void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);  
         void bltSDFullScreen(const char *filename);
@@ -244,7 +246,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         bool updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont);
         //wrappers for drawing to a designated surface other than the main frame buffer(s)
         //write methods
-        void bltMem(Surface *dest, Surface *source,int16_t x,int16_t y,bltAlphaType alpha_type);
+        void bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltAlphaType alpha_type);
         void fillSurface(Surface *dest,uint16_t color);
         void drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color);
         void drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color);
