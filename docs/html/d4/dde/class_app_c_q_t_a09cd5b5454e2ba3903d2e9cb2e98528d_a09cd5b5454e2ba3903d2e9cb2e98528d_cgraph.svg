@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="triggered when focus is gained from the AppManager">
+<g id="a_node1"><a xlink:title="Event handler called when the app gains focus.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-28.5 167,-28.5 167,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="83.5" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppCQT::onFocus</text>
 </a>

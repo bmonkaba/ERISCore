@@ -89,30 +89,39 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_ERISCore_README"></a> <img src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore" alt="Language Count" class="inline"/> <img src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore" alt="Code Size" class="inline"/> <img src="https://img.shields.io/travis/com/bmonkaba/ErisCore" alt="TravisCI" class="inline"/> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img src="https://scan.coverity.com/projects/21765/badge.svg" alt="Coverity Scan Build Status" style="pointer-events: none;" class="inline"/> <a href="https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bmonkaba/ERISCore&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d" alt="Codacy Badge" class="inline"/></a><a href="https://codeclimate.com/github/bmonkaba/ERISCore/maintainability"><img src="https://api.codeclimate.com/v1/badges/2efa7ff8f3a25347fabf/maintainability" alt="" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md5"></a>
-What is Eris Core:</h1>
+What is Eris Core?</h1>
 <p>Eris core is:</p>
 <ul>
-<li>an Artifical Intelligence and Machine Learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in signal procressing audio signals.</li>
+<li>Designed to stand alone but architected for reuse; intended as a foundation for bootstrapping product line development across many commercial domains while remaining accessable to makers.</li>
+<li>an artifical tntelligence and machine learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in audio signal procressing.</li>
 <li>a virtual machine host and extentions for Wren <a href="https://wren.io/">https://wren.io/</a></li>
 <li>an integrated rapid application development &amp; test framework</li>
+<li>a standardized graphics and audio asset library including:<ul>
+<li>60+ video backgrounds, 100+ oversized backgrounds which can be repositioned</li>
+<li>100+ sprite based fonts (8pt-39pt) with digraph sorted kearning files</li>
+<li>4000+ single cycle waveforms, 30MB spectraly sorted single cycle wavetable database w/index file</li>
+<li>95K+ sprites: icons, radial gauges, virtual led indicators, game theme sprites and animations, etc.</li>
+</ul>
+</li>
 <li>a subsystem component complete with mechanical housing examples</li>
 <li>supported by a crossplatform serial to web socket interface (python) &amp; editor software (html/websocket)</li>
-<li>built for reuse; intended as a foundation for further integration into projects &amp; products</li>
 <li>a low-cost high performance design for intended for use by anyone from beginners to advanced developers</li>
 </ul>
 <p><img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" alt="" width="300" class="inline"/></p>
 <p><b>youtube video demo - pre-alpha sys stress, integration &amp; regression testing:</b></p>
 <p><a href="https://www.youtube.com/watch?v=QZLU7C8BaJI" title="pre alpha video demo"><img src="https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&amp;sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw" alt="youtube video" class="inline"/></a></p>
 <h2><a class="anchor" id="autotoc_md6"></a>
-3rd party software</h2>
+3rd party</h2>
 <h3><a class="anchor" id="autotoc_md7"></a>
 Licence</h3>
+<p>Software:</p>
 <ul>
 <li>Wren - MIT Licence</li>
 <li>LZ4 - BSD 2-Clause License</li>
 <li>AIeFS - GNU Affero General Public License</li>
 <li>Arduino/Teensyduino - MIT Licence</li>
 </ul>
+<p>Audio: <a href="https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE">https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE</a> - <a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></p>
 <h3><a class="anchor" id="autotoc_md8"></a>
 External dependancies</h3>
 <div class="fragment"><div class="line">densaugeo/base64@^1.2.0</div>
@@ -192,8 +201,8 @@ Software Features:</h4>
 <li>Multiple source/destination image block transfer (blt) interfaces:<ul>
 <li>SD card to framebuffer</li>
 <li>SD card to surface</li>
-<li><a class="el" href="d1/d1a/class_surface.html">Surface</a> to surface</li>
-<li><a class="el" href="d1/d1a/class_surface.html">Surface</a> to framebuffer</li>
+<li><a class="el" href="d1/d1a/class_surface.html" title="a Surface object manages a memory block with defined width and height dimensions">Surface</a> to surface</li>
+<li><a class="el" href="d1/d1a/class_surface.html" title="a Surface object manages a memory block with defined width and height dimensions">Surface</a> to framebuffer</li>
 </ul>
 </li>
 <li>Web based development tool provides:<ul>

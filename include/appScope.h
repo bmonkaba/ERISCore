@@ -9,9 +9,11 @@
  * 
  */
 #include "AppManager.h"
-// Basic Oscilloscope App
-//
 
+/**
+ * @brief Basic Oscilloscope Applicaiton
+ * 
+ */
 class AppScope:public AppBaseClass {
   public:
     AppScope():AppBaseClass(){

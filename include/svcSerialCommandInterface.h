@@ -103,6 +103,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
       startLZ4Message();
       return true;
     }
+    
     void sendLZ4Message();
     void send();
     bool throttle();

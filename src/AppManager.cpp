@@ -435,6 +435,7 @@ uint16_t AppManager::peekAppFocus(){return active_app_id;}
  * @return AppBaseClass* 
  */
 AppBaseClass* AppManager::getActiveApp(){ return p_active_app;}
+
 /**
  * @brief provides an interface for apps to send messages to other apps
  * 
@@ -548,6 +549,14 @@ void AppManager::registerApp(AppBaseClass *app){
   }
 };
 
+/**
+ * @brief provides an interface for apps to request cpu freq change
+ * note: this is only a request. the actual frequency will vary based on the allowed 
+ * freq range and current cpu temp
+ * @param requested_cpu_frequency 
+ * @return true 
+ * @return false 
+ */
 bool AppManager::requestArmSetClock(uint32_t requested_cpu_frequency){
     //set cpu freq based on thermal performance
     if(tempmonGetTemp() > CPU_THERMAL_THROTTLE_TEMP){
@@ -564,6 +573,9 @@ bool AppManager::requestArmSetClock(uint32_t requested_cpu_frequency){
 }
 
 
-
+/**
+ * @brief singleton AppManager object is initalized on first call to AppManager::getInstance()
+ * 
+ */
 AppManager* AppManager::obj = 0; // or NULL, or nullptr in c++11
 

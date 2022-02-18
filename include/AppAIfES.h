@@ -10,9 +10,12 @@
  */
 #include "AppBaseClass.h"
 #include <aifes.h>
-// Basic App Template
-//
 
+
+/**
+ * @brief initalizes and trains a neural net
+ * implements an AIfES example within the context of the Eris Core class framework
+ */
 class AppAIfES:public AppBaseClass {
   public:
     AppAIfES():AppBaseClass(){

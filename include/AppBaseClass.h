@@ -74,12 +74,14 @@ class AppBaseClass {
     char name[MAX_NAME_LENGTH];
     AppBaseClass();
     AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
+
     /**
      * @brief Get the ID object
      * 
      * @return uint16_t 
      */
     uint16_t getID(){return id;};
+
     /**
      * @brief Compares the name_string to the app class instance name (string)
      * 
@@ -92,6 +94,7 @@ class AppBaseClass {
       (0==strncmp(name,name_string,sizeof(name)))?is=true:is=false;
       return is; 
     };
+
     /**
      * @brief Set the app class instance name (string)
      * 
@@ -101,18 +104,21 @@ class AppBaseClass {
       if (strlen(name_string) < MAX_NAME_LENGTH - 1){strcpy(name,name_string);
       } else safer_strncpy(name,name_string,MAX_NAME_LENGTH - 1);
     }
+
     /**
      * @brief registers the app instance with the AppManager
      * 
      * @param app 
      */
     void registerApp(AppBaseClass *app);
+    
     /**
      * @brief Set the Parent object
      * 
      * @param parent 
      */
     void setParent(AppBaseClass *parent){parent_node = parent;};
+    
     /**
      * @brief Set the Position object
      * 
@@ -120,6 +126,7 @@ class AppBaseClass {
      * @param new_origin_y 
      */
     void setPosition(int16_t new_origin_x, int16_t new_origin_y){origin_x=new_origin_x;origin_y=new_origin_y;_updatePosition();}
+    
     /**
      * @brief Set the Dimension object
      * 
@@ -127,6 +134,7 @@ class AppBaseClass {
      * @param new_height 
      */
     void setDimension(int16_t new_width, int16_t new_height){width=new_width;height=new_height;_updatePosition();}
+
     /**
      * @brief Set the Widget Position object
      * 
@@ -134,6 +142,7 @@ class AppBaseClass {
      * @param new_origin_y 
      */
     void setWidgetPosition(int16_t new_origin_x, int16_t new_origin_y){widget_origin_x=new_origin_x;widget_origin_y=new_origin_y;_updatePosition();}
+
     /**
      * @brief Set the Widget Dimension object
      * 
@@ -141,81 +150,94 @@ class AppBaseClass {
      * @param new_height 
      */
     void setWidgetDimension(int16_t new_width, int16_t new_height){widget_width=new_width;widget_height=new_height;_updatePosition();}
+
     /**
      * @brief Get focus from the AppManager
      * 
      */
     void getFocus();
+
     /**
      * @brief render loop
      * 
      */
     virtual void render(){};  //will be called only when the app has the screen focus and the screen isnt busy redrawing
+
     /**
      * @brief update loop
      * 
      */
     virtual void update(){}; //will be called every loop and prior to a potential update call
+
     //Event handlers
     /**
-     * @brief triggered when focus is gained from the AppManager
-     * 
+     * @brief Event handler
+     * called when the app gains focus
      */
     virtual void onFocus(){};
+
     /**
-     * @brief triggered when focus is taken by the AppManager
-     * 
+     * @brief Event handler
+     * called when the app loses focus
      */
     virtual void onFocusLost(){};
+
     /**
-     * @brief triggered on touch event
-     * 
+     * @brief Event handler
+     * called on touch
      * @param t_x 
      * @param t_y 
      */
     virtual void onTouch(uint16_t t_x, uint16_t t_y){};
+
     /**
-     * @brief triggered on touch drag event
+     * @brief Event handler for touch drag
      * 
      * @param t_x 
      * @param t_y 
      */
+
     virtual void onTouchDrag(uint16_t t_x, uint16_t t_y){};
     /**
-     * @brief triggered on touch release event
+     * @brief Event handler for touch release
      * 
      * @param t_x 
      * @param t_y 
      */
     virtual void onTouchRelease(uint16_t t_x, uint16_t t_y){};
+
     /**
-     * @brief triggered on analog 1 event
+     * @brief Event handler for analog 1 event
      * 
      * @param uval 
      * @param fval 
      */
     virtual void onAnalog1(uint16_t uval, float fval){};
+
     /**
-     * @brief triggered on analog 2 event
+     * @brief Event handler for analog 2 event
      * 
      * @param uval 
      * @param fval 
      */
     virtual void onAnalog2(uint16_t uval, float fval){};
+
     /**
-     * @brief triggered on analog 3 event
+     * @brief Event handler for analog 3 event
      * 
      * @param uval 
      * @param fval 
      */
     virtual void onAnalog3(uint16_t uval, float fval){};
+
     /**
-     * @brief triggered on analog 4 event
+     * @brief Event handler for analog 4 event
      * 
      * @param uval 
      * @param fval 
      */
     virtual void onAnalog4(uint16_t uval, float fval){};
+
     /**
      * @brief receiver method for inter-app string based communication
      * 
@@ -223,14 +245,16 @@ class AppBaseClass {
      * @param fval 
      */
     virtual void messageHandler(AppBaseClass *sender, const char *message){};
+
   protected:
     bool has_focus;
     bool has_pop;
     /**
-     * @brief gives up focus
+     * @brief give up focus
      * 
      */
     void returnFocus();
+
     /**
      * @brief request popup from the AppManager\n
      * will be activated by the next render loop  
@@ -240,11 +264,13 @@ class AppBaseClass {
      * @param exclusive 
      */
     void requestPopUp(bool exclusive=false);
+
     /**
      * @brief gives up popup
      * 
      */
     void releasePopUp();
+
     /**
      * @brief Set the update priority\n 
      * the level sets the number of update opportunities before the update method is actually called
@@ -252,6 +278,7 @@ class AppBaseClass {
      * @param level 
      */
     void setUpdatePriority(uint16_t level);
+    
     /**
      * @brief self register the instance with the AppManager
      * 

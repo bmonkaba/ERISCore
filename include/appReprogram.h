@@ -13,6 +13,10 @@
 // Enter Programming Mode
 //
 
+/**
+ * @brief helper class for forcing the teensy into programming mode
+ * this is usefull in applications where the reset button is not so easily accessible
+ */
 class AppReprogram:public AppBaseClass {
   public:
     AppReprogram():AppBaseClass(){

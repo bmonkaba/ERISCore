@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('dc/d27/class_app_audio_to_polyphonic_a
 </table>
 </div><div class="memdoc">
 
-<p>triggered on analog 3 event </p>
+<p>Event handler for analog 3 event. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uval</td><td></td></tr>
@@ -128,20 +128,20 @@ $(document).ready(function(){initNavTree('dc/d27/class_app_audio_to_polyphonic_a
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class_a8dcf375c6659741078b08b90ad500090.html#a8dcf375c6659741078b08b90ad500090">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00257">257</a> of file <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html">AppAudioToPolyphonic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                                      {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <span class="keywordtype">float</span> lp,hp,gain;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="comment">//Serial.print(&quot;AN3 &quot;);Serial.printf(&quot;%0.4f\n&quot;,fval);</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="comment">//analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad:4&quot;</span>));</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>* mixer = (<a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>*)(<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;mixer:1&quot;</span>));</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      lp = 300.0 + (18000.0 * log1p(fval));</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      hp = 210.0 + (100.0 * log1p(fval));</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      gain = log1p(fval);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      filter-&gt;setLowpass(0,lp);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      filter-&gt;setHighpass(1,hp);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      mixer-&gt;gain(2,gain);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    };</div>
+<p class="definition">Definition at line <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00261">261</a> of file <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html">AppAudioToPolyphonic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                      {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <span class="keywordtype">float</span> lp,hp,gain;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="comment">//Serial.print(&quot;AN3 &quot;);Serial.printf(&quot;%0.4f\n&quot;,fval);</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="comment">//analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>* filter = (<a class="code" href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a>*) (<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;biquad:4&quot;</span>));</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      <a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>* mixer = (<a class="code" href="../../d1/da2/classeris_audio_mixer4.html">erisAudioMixer4</a>*)(<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;mixer:1&quot;</span>));</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      lp = 300.0 + (18000.0 * log1p(fval));</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      hp = 210.0 + (100.0 * log1p(fval));</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      gain = log1p(fval);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      filter-&gt;setLowpass(0,lp);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      filter-&gt;setHighpass(1,hp);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      mixer-&gt;gain(2,gain);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    };</div>
 <div class="ttc" id="aclass_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f_html_ad66a3cbbe4a3b973dea5c83a068bc79f"><div class="ttname"><a href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">AppBaseClass::ad</a></div><div class="ttdeci">AudioDirector * ad</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00037">AppBaseClass.h:37</a></div></div>
 <div class="ttc" id="aclass_audio_director_a578f1deac0695f2db3ba245aaedc62df_html_a578f1deac0695f2db3ba245aaedc62df"><div class="ttname"><a href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">AudioDirector::getAudioStreamObjByName</a></div><div class="ttdeci">AudioStream * getAudioStreamObjByName(const char *AudioStreamObjName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2c/_audio_director_8cpp_source.html#l00301">AudioDirector.cpp:301</a></div></div>
 <div class="ttc" id="aclasseris_audio_filter_biquad_html"><div class="ttname"><a href="../../dd/d7d/classeris_audio_filter_biquad.html">erisAudioFilterBiquad</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/da2/_eris_audio_8h_source.html#l00946">ErisAudio.h:946</a></div></div>

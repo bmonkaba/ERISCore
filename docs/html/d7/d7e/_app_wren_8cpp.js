@@ -54,6 +54,7 @@ var _app_wren_8cpp =
     [ "loadModule", "d7/d7e/_app_wren_8cpp_a8862be3048f99b67cf6ccc12d2c2ae74.html#a8862be3048f99b67cf6ccc12d2c2ae74", null ],
     [ "loadModuleComplete", "d7/d7e/_app_wren_8cpp_a085afb683548c1082208ee513452dd24.html#a085afb683548c1082208ee513452dd24", null ],
     [ "printCallback", "d7/d7e/_app_wren_8cpp_a0631bad43a765513733dbc934ebc5620.html#a0631bad43a765513733dbc934ebc5620", null ],
+    [ "printWithFontCallback", "d7/d7e/_app_wren_8cpp_a1c27113adf9e52bc14f0dc8c55876ec8.html#a1c27113adf9e52bc14f0dc8c55876ec8", null ],
     [ "releasePopUpCallback", "d7/d7e/_app_wren_8cpp_a25d25f1406cc969202b654e1b0ff5eec.html#a25d25f1406cc969202b654e1b0ff5eec", null ],
     [ "requestPopUpCallback", "d7/d7e/_app_wren_8cpp_a8156eadb16530b87de97824abd487921.html#a8156eadb16530b87de97824abd487921", null ],
     [ "restartVMCallback", "d7/d7e/_app_wren_8cpp_a6f9be9275117d2c40ad5806defa0841e.html#a6f9be9275117d2c40ad5806defa0841e", null ],

@@ -147,7 +147,7 @@ var sectionId = 'dynsection-0';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../d8/deb/class_app_a_if_e_s.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="../../d8/deb/class_app_a_if_e_s.html" target="_top" xlink:title="initalizes and trains a neural net implements an AIfES example within the context of the Eris Core cl...">
 <polygon fill="none" stroke="black" points="0,-610.5 0,-1394.5 403,-1394.5 403,-610.5 0,-610.5"/>
 <text text-anchor="middle" x="201.5" y="-1376.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAIfES</text>
 <polyline fill="none" stroke="black" points="0,-1366.5 403,-1366.5 "/>
@@ -201,7 +201,7 @@ var sectionId = 'dynsection-0';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic.html" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic.html" target="_top" xlink:title="this is the main example application here you can see how to make audio connections,...">
 <polygon fill="none" stroke="black" points="421,-620.5 421,-1384.5 854,-1384.5 854,-620.5 421,-620.5"/>
 <text text-anchor="middle" x="637.5" y="-1366.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAudioToPolyphonic</text>
 <polyline fill="none" stroke="black" points="421,-1356.5 854,-1356.5 "/>
@@ -254,7 +254,7 @@ var sectionId = 'dynsection-0';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d4/dde/class_app_c_q_t.html" target="_top" xlink:title="Implements the AppCQT class.">
+<g id="a_node4"><a xlink:href="../../d4/dde/class_app_c_q_t.html" target="_top" xlink:title="Implements the AppCQT class Constant Q Transform Application.">
 <polygon fill="none" stroke="black" points="872,-640.5 872,-1364.5 1323,-1364.5 1323,-640.5 872,-640.5"/>
 <text text-anchor="middle" x="1097.5" y="-1346.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppCQT</text>
 <polyline fill="none" stroke="black" points="872,-1336.5 1323,-1336.5 "/>
@@ -305,7 +305,7 @@ var sectionId = 'dynsection-0';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d5/d25/class_app_reprogram.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="../../d5/d25/class_app_reprogram.html" target="_top" xlink:title="helper class for forcing the teensy into programming mode this is usefull in applications where the r...">
 <polygon fill="none" stroke="black" points="1341,-950.5 1341,-1054.5 1508,-1054.5 1508,-950.5 1341,-950.5"/>
 <text text-anchor="middle" x="1424.5" y="-1036.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppReprogram</text>
 <polyline fill="none" stroke="black" points="1341,-1026.5 1508,-1026.5 "/>
@@ -325,7 +325,7 @@ var sectionId = 'dynsection-0';
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d8/dbe/class_app_scope.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="../../d8/dbe/class_app_scope.html" target="_top" xlink:title="Basic Oscilloscope Applicaiton.">
 <polygon fill="none" stroke="black" points="1526.5,-890.5 1526.5,-1114.5 1910.5,-1114.5 1910.5,-890.5 1526.5,-890.5"/>
 <text text-anchor="middle" x="1718.5" y="-1096.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppScope</text>
 <polyline fill="none" stroke="black" points="1526.5,-1086.5 1910.5,-1086.5 "/>
@@ -430,11 +430,11 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="2358.5" y="-1310.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ ~AppWren()</text>
 <text text-anchor="start" x="2358.5" y="-1290.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void bltSD2Surface(const char *path,</text>
 <text text-anchor="start" x="2358.5" y="-1270.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const char *filename, int16_t x, int16</text>
-<text text-anchor="start" x="2358.5" y="-1250.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t y, bltAlphaType alpha_type)</text>
+<text text-anchor="start" x="2358.5" y="-1250.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t y, bltMode alpha_type)</text>
 <text text-anchor="start" x="2358.5" y="-1230.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void bltSurface2FrameBuffer(int16</text>
 <text text-anchor="start" x="2358.5" y="-1210.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t from_x, int16_t from_y, int16_t</text>
 <text text-anchor="start" x="2358.5" y="-1190.1" font-family="Helvetica,sans-Serif" font-size="18.00"> width, int16_t height, int16_t to_x,</text>
-<text text-anchor="start" x="2358.5" y="-1170.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t to_y, bltAlphaType alpha_type)</text>
+<text text-anchor="start" x="2358.5" y="-1170.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t to_y, bltMode alpha_type)</text>
 <text text-anchor="start" x="2358.5" y="-1150.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void drawFill(int16_t r, int16_t g,</text>
 <text text-anchor="start" x="2358.5" y="-1130.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t b)</text>
 <text text-anchor="start" x="2358.5" y="-1110.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void drawLine(int16_t start_x, int16</text>

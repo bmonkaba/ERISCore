@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('dc/d27/class_app_audio_to_polyphonic_a
 </table>
 </div><div class="memdoc">
 
-<p>triggered on analog 4 event </p>
+<p>Event handler for analog 4 event. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uval</td><td></td></tr>
@@ -128,14 +128,14 @@ $(document).ready(function(){initNavTree('dc/d27/class_app_audio_to_polyphonic_a
 
 <p>Reimplemented from <a class="el" href="../../db/d69/class_app_base_class_aef1d60f75d914b3a7abd0d44b0c266c3.html#aef1d60f75d914b3a7abd0d44b0c266c3">AppBaseClass</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00271">271</a> of file <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html">AppAudioToPolyphonic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                                      {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      <span class="comment">//Serial.print(&quot;AN4 &quot;);Serial.printf(&quot;%0.4f\n&quot;,fval);</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      <span class="comment">//output volume</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp:1&quot;</span>));</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      <span class="keywordtype">float</span> gain = log1p(fval);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      amp-&gt;gain(1.0 + gain);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    };</div>
+<p class="definition">Definition at line <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html#l00275">275</a> of file <a class="el" href="../../d9/db6/_app_audio_to_polyphonic_8h_source.html">AppAudioToPolyphonic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                                      {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      <span class="comment">//Serial.print(&quot;AN4 &quot;);Serial.printf(&quot;%0.4f\n&quot;,fval);</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      <span class="comment">//output volume</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>* amp = (<a class="code" href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a>*)(<a class="code" href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">ad</a>-&gt;<a class="code" href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">getAudioStreamObjByName</a>(<span class="stringliteral">&quot;amp:1&quot;</span>));</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <span class="keywordtype">float</span> gain = log1p(fval);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      amp-&gt;gain(1.0 + gain);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    };</div>
 <div class="ttc" id="aclass_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f_html_ad66a3cbbe4a3b973dea5c83a068bc79f"><div class="ttname"><a href="../../db/d69/class_app_base_class_ad66a3cbbe4a3b973dea5c83a068bc79f.html#ad66a3cbbe4a3b973dea5c83a068bc79f">AppBaseClass::ad</a></div><div class="ttdeci">AudioDirector * ad</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3e/_app_base_class_8h_source.html#l00037">AppBaseClass.h:37</a></div></div>
 <div class="ttc" id="aclass_audio_director_a578f1deac0695f2db3ba245aaedc62df_html_a578f1deac0695f2db3ba245aaedc62df"><div class="ttname"><a href="../../d8/d1c/class_audio_director_a578f1deac0695f2db3ba245aaedc62df.html#a578f1deac0695f2db3ba245aaedc62df">AudioDirector::getAudioStreamObjByName</a></div><div class="ttdeci">AudioStream * getAudioStreamObjByName(const char *AudioStreamObjName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2c/_audio_director_8cpp_source.html#l00301">AudioDirector.cpp:301</a></div></div>
 <div class="ttc" id="aclasseris_audio_amplifier_html"><div class="ttname"><a href="../../d0/ddd/classeris_audio_amplifier.html">erisAudioAmplifier</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/da2/_eris_audio_8h_source.html#l00504">ErisAudio.h:504</a></div></div>

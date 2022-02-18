@@ -25,6 +25,10 @@ const char APPNAME[] PROGMEM = "POLY";
 const char REVERB_ROOM_SIZE[] PROGMEM = "REVERB_ROOM_SIZE";
 const char REVERB_DAMPING[] PROGMEM = "REVERB_DAMPING";
 
+/**
+ * @brief this is the main example application
+ * here you can see how to make audio connections, respond to events and messages, etc..
+ */
 class AppAudioToPolyphonic:public AppBaseClass {
   public:
     AppCQT cqt;

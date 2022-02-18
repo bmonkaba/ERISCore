@@ -99,28 +99,39 @@ $(document).ready(function(){initNavTree('da/d96/class_app_manager_abe1aaa39fc99
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00551">551</a> of file <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html">AppManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="comment">//set cpu freq based on thermal performance</span></div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="keywordflow">if</span>(tempmonGetTemp() &gt; CPU_THERMAL_THROTTLE_TEMP){</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;      <a class="code" href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a>(CPU_LOW_POWER_MODE_FREQ);<span class="comment">//thermal guard (safer but not failsafe)</span></div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;      <a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056">update</a>(<span class="stringliteral">&quot;F_CPU_ACTUAL&quot;</span>,(int32_t)F_CPU_ACTUAL);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;      <span class="comment">//silently cap the requested freq </span></div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;      <span class="keywordflow">if</span>(requested_cpu_frequency &gt; CPU_BOOST_MAX_FREQ) requested_cpu_frequency = CPU_BOOST_MAX_FREQ;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;      <a class="code" href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a>(requested_cpu_frequency);</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;      <a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056">update</a>(<span class="stringliteral">&quot;F_CPU_ACTUAL&quot;</span>,(int32_t)F_CPU_ACTUAL);</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    }</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;}</div>
+<p>provides an interface for apps to request cpu freq change note: this is only a request. the actual frequency will vary based on the allowed freq range and current cpu temp </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requested_cpu_frequency</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00560">560</a> of file <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html">AppManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    <span class="comment">//set cpu freq based on thermal performance</span></div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">if</span>(tempmonGetTemp() &gt; CPU_THERMAL_THROTTLE_TEMP){</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;      <a class="code" href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a>(CPU_LOW_POWER_MODE_FREQ);<span class="comment">//thermal guard (safer but not failsafe)</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      <a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056">update</a>(<span class="stringliteral">&quot;F_CPU_ACTUAL&quot;</span>,(int32_t)F_CPU_ACTUAL);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;      <span class="comment">//silently cap the requested freq </span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;      <span class="keywordflow">if</span>(requested_cpu_frequency &gt; CPU_BOOST_MAX_FREQ) requested_cpu_frequency = CPU_BOOST_MAX_FREQ;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      <a class="code" href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a>(requested_cpu_frequency);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;      <a class="code" href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">data</a>-&gt;<a class="code" href="../../dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056">update</a>(<span class="stringliteral">&quot;F_CPU_ACTUAL&quot;</span>,(int32_t)F_CPU_ACTUAL);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    }</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;}</div>
 <div class="ttc" id="a_app_manager_8cpp_a01f554db1c07c31f60f5167060279699_html_a01f554db1c07c31f60f5167060279699"><div class="ttname"><a href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock</a></div><div class="ttdeci">uint32_t set_arm_clock(uint32_t frequency)</div></div>
 <div class="ttc" id="aclass_app_manager_a702921f08484c897380064116a4a23a6_html_a702921f08484c897380064116a4a23a6"><div class="ttname"><a href="../../da/d96/class_app_manager_a702921f08484c897380064116a4a23a6.html#a702921f08484c897380064116a4a23a6">AppManager::data</a></div><div class="ttdeci">SvcDataDictionary * data</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_app_manager_8h_source.html#l00062">AppManager.h:62</a></div></div>
 <div class="ttc" id="aclass_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056_html_abcac7202c3bd21801ab64e48eee44056"><div class="ttname"><a href="../../dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056">SvcDataDictionary::update</a></div><div class="ttdeci">bool update(const char *key, int32_t val, uint32_t *owner)</div><div class="ttdoc">update the value of an owned record  creates a new record if one does not exist and  initalizes its v...</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dc4/_svc_data_dictionary_8cpp_source.html#l00120">SvcDataDictionary.cpp:120</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../df/d72/_app_manager_8h_source.html#l00062">data</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699">set_arm_clock()</a>, and <a class="el" href="../../dc/dc4/_svc_data_dictionary_8cpp_source.html#l00120">SvcDataDictionary::update()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d8/db0/_app_c_q_t_8h_source.html#l00161">AppCQT::render()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00256">setClockSpeedCallback()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00136">update()</a>, and <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00648">SvcSerialCommandInterface::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d8/db0/_app_c_q_t_8h_source.html#l00162">AppCQT::render()</a>, <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00255">setClockSpeedCallback()</a>, <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00136">update()</a>, and <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00645">SvcSerialCommandInterface::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

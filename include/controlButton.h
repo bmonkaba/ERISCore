@@ -90,12 +90,12 @@ class ControlButton:public AppBaseClass {
                     delete(img_cache);
                     return;
                 }else{
-                    draw->bltSDB(img_cache->getSurfaceBufferP(), img_cache->getWidth(), img_cache->getHeight(), img_path, img_filename, 0, 0, AT_NONE); //load img into cache      
+                    draw->bltSDB(img_cache->getSurfaceBufferP(), img_cache->getWidth(), img_cache->getHeight(), img_path, img_filename, 0, 0, BLT_COPY); //load img into cache      
                     img_loaded = true;
                     return;
                 }
             } else{
-                draw->bltSurface2Surface(am->p_display_surface,x,y,img_cache,0,0,img_cache->getWidth(),img_cache->getHeight(),AT_NONE);
+                draw->bltSurface2Surface(am->p_display_surface,x,y,img_cache,0,0,img_cache->getWidth(),img_cache->getHeight(),BLT_COPY);
             }
         }else{
             draw->fillRoundRect(x,y,w,h/2+3,3,am->data->read("UI_BUTTON_FILL_COLOR"));

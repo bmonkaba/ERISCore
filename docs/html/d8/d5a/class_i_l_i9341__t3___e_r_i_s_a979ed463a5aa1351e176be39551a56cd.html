@@ -109,10 +109,20 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00161">161</a> of file <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                                       { </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordflow">return</span> _pfbtft[(y * _width) + x];</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<p>reads the pixel data from the frame buffer note the data is packed in the 565 RGB format </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00163">163</a> of file <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                       { </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">return</span> _pfbtft[(y * _width) + x];</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

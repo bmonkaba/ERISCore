@@ -47,9 +47,10 @@
 // Constant Q Transform App
 //
 
+
 /**
  * @brief Implements the AppCQT class
- * 
+ * Constant Q Transform Application
  */
 class AppCQT:public AppBaseClass {
   public:

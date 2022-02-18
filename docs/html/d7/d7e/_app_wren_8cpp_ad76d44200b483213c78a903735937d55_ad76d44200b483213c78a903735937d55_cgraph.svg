@@ -192,7 +192,7 @@ var sectionId = 'dynsection-0';
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class_a53c663808513ec64776645ee98da4a1f.html#a53c663808513ec64776645ee98da4a1f" target="_top" xlink:title="triggered when focus is gained from the AppManager">
+<g id="a_node9"><a xlink:href="../../db/d69/class_app_base_class_a53c663808513ec64776645ee98da4a1f.html#a53c663808513ec64776645ee98da4a1f" target="_top" xlink:title="Event handler called when the app gains focus.">
 <polygon fill="none" stroke="black" points="1072.5,-282.5 1072.5,-310.5 1287.5,-310.5 1287.5,-282.5 1072.5,-282.5"/>
 <text text-anchor="middle" x="1180" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocus</text>
 </a>
@@ -207,7 +207,7 @@ var sectionId = 'dynsection-0';
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d.html#a3937393335f8a7eab2ec16697925d93d" target="_top" xlink:title="triggered when focus is taken by the AppManager">
+<g id="a_node10"><a xlink:href="../../db/d69/class_app_base_class_a3937393335f8a7eab2ec16697925d93d.html#a3937393335f8a7eab2ec16697925d93d" target="_top" xlink:title="Event handler called when the app loses focus.">
 <polygon fill="none" stroke="black" points="1056,-235.5 1056,-263.5 1304,-263.5 1304,-235.5 1056,-235.5"/>
 <text text-anchor="middle" x="1180" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::onFocusLost</text>
 </a>

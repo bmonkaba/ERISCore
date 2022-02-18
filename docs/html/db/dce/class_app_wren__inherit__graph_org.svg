@@ -51,11 +51,11 @@
 <text text-anchor="start" x="8" y="-1310.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ ~AppWren()</text>
 <text text-anchor="start" x="8" y="-1290.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void bltSD2Surface(const char *path,</text>
 <text text-anchor="start" x="8" y="-1270.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const char *filename, int16_t x, int16</text>
-<text text-anchor="start" x="8" y="-1250.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t y, bltAlphaType alpha_type)</text>
+<text text-anchor="start" x="8" y="-1250.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t y, bltMode alpha_type)</text>
 <text text-anchor="start" x="8" y="-1230.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void bltSurface2FrameBuffer(int16</text>
 <text text-anchor="start" x="8" y="-1210.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t from_x, int16_t from_y, int16_t</text>
 <text text-anchor="start" x="8" y="-1190.1" font-family="Helvetica,sans-Serif" font-size="18.00"> width, int16_t height, int16_t to_x,</text>
-<text text-anchor="start" x="8" y="-1170.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t to_y, bltAlphaType alpha_type)</text>
+<text text-anchor="start" x="8" y="-1170.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t to_y, bltMode alpha_type)</text>
 <text text-anchor="start" x="8" y="-1150.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void drawFill(int16_t r, int16_t g,</text>
 <text text-anchor="start" x="8" y="-1130.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t b)</text>
 <text text-anchor="start" x="8" y="-1110.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void drawLine(int16_t start_x, int16</text>

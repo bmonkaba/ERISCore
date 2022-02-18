@@ -26,8 +26,8 @@ var NAVTREE =
 [
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
-      [ "What is Eris Core:", "index.html#autotoc_md5", [
-        [ "3rd party software", "index.html#autotoc_md6", [
+      [ "What is Eris Core?", "index.html#autotoc_md5", [
+        [ "3rd party", "index.html#autotoc_md6", [
           [ "Licence", "index.html#autotoc_md7", null ],
           [ "External dependancies", "index.html#autotoc_md8", null ]
         ] ],
@@ -65,14 +65,14 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d0/da6/classeris_audio_synth_karplus_strong_aba92893568576dbdbab63e9e648b283b.html#aba92893568576dbdbab63e9e648b283b",
-"d3/daf/classeris_audio_mixer8.html#a132a5948323a2f94a6f53e42a64411dc",
-"d4/dd5/class_audio_synth_waveform.html#afd0f87125aecd2222c87ab2f57cde6f9",
-"d5/d96/class_audio_stream_aae8e555ac9f257e10abbd3545a78f88c.html#aae8e555ac9f257e10abbd3545a78f88c",
-"d8/d1c/class_audio_director_ad4df3988cf97f1ec847ae4eff638fe84.html#ad4df3988cf97f1ec847ae4eff638fe84",
-"d8/deb/class_app_a_if_e_s_a1c1fe3646ac68df45ee0a0c8609ac704.html#a1c1fe3646ac68df45ee0a0c8609ac704",
-"db/d69/class_app_base_class_a3351e0160fb9d0fc79e5ac6db652645a.html#a3351e0160fb9d0fc79e5ac6db652645a",
-"dd/d7d/classeris_audio_filter_biquad_aa3e8630fd1f1196c3b52bcb23fb4a9a7.html#aa3e8630fd1f1196c3b52bcb23fb4a9a7",
-"df/d17/class_control_button_af1b7b1726863135d38c58843ee898f30.html#af1b7b1726863135d38c58843ee898f30"
+"d3/d7e/_audio_stream_8cpp_source.html",
+"d4/dd5/class_audio_synth_waveform.html#ad357cfab8a25e27826f111b7c1b8b6b4",
+"d5/d96/class_audio_stream_a760fb58e212788dbec27664ea23bbd32.html#a760fb58e212788dbec27664ea23bbd32",
+"d8/d1c/class_audio_director_aae48fff50fc2763f06611db46ae7c94e.html#aae48fff50fc2763f06611db46ae7c94e",
+"d8/deb/class_app_a_if_e_s.html#adcfa66b4b82e0a35d7f559ed00608e2c",
+"db/d4d/_control_slider_8h.html",
+"dc/df6/classeris_audio_effect_digital_combine_ac988531c0f0717c6d11e311f5ddb9f0a.html#ac988531c0f0717c6d11e311f5ddb9f0a",
+"df/d17/class_control_button_a4badded3b186e03d98d1d290fce09a28.html#a4badded3b186e03d98d1d290fce09a28"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

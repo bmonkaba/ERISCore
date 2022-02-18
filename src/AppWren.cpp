@@ -534,7 +534,7 @@ void loadImageCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_TRANS);
+  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),BLT_BLK_COLOR_KEY);
 }
 
 /**
@@ -546,7 +546,7 @@ void loadImageSurfaceCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),AT_TRANS);
+  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),BLT_BLK_COLOR_KEY);
 }
 
 /**
@@ -558,21 +558,21 @@ void bltCallback(WrenVM* vm){
   //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  int32_t alpha_request = wrenGetSlotDouble(vm, 7);
-  bltAlphaType alpha_type;
-  switch (alpha_request){
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
+  bltMode blt_mode;
+  switch (blt_mode_request){
     case 0:
-      alpha_type = AT_NONE;
+      blt_mode = BLT_COPY;
     case 1:
-      alpha_type = AT_TRANS;
+      blt_mode = BLT_BLK_COLOR_KEY;
     case 2:
-      alpha_type = AT_HATCHBLK;
+      blt_mode = BLT_HATCH_BLK;
     case 3:
-      alpha_type = AT_HATCHXOR;
+      blt_mode = BLT_HATCH_XOR;
     default:
-      alpha_type = AT_NONE;
+      blt_mode = BLT_COPY;
   }
-  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),alpha_type);
+  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),blt_mode);
 }
 
 /**
@@ -1282,7 +1282,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
                     if(has_pop || has_focus){
                       //do nothing
                     }else{
-                      draw->bltSurface2Surface(am->p_display_surface,x,y,surface_cache,0,0,surface_cache->getWidth(),surface_cache->getHeight(),AT_NONE);
+                      draw->bltSurface2Surface(am->p_display_surface,x,y,surface_cache,0,0,surface_cache->getWidth(),surface_cache->getHeight(),BLT_COPY);
                     }
                   }
               }else{

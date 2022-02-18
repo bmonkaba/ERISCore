@@ -30,6 +30,12 @@ bool _busy();
 // min alloc size - lazy attemmpt to reduce potental memory fragmentation issues
 #define SURFACE_MIN_ALLOC_SIZE 256
 
+
+
+/**
+ * @brief a Surface object manages a memory block with defined width and height dimensions
+ * 
+ */
 class Surface {
   public:
     Surface(Surface *SubSurfaceFrom, SdFs* pSD, const char* path, const char* fileName){
@@ -183,8 +189,11 @@ class Surface {
 };
 
 
-//animation helper class
 
+/**
+ * @brief helper class used to render the animated wallpaper in chunks
+ * 
+ */
 class Animation{
     friend class ILI9341_t3_ERIS;
     public:
@@ -216,8 +225,17 @@ class Animation{
         char _path[128];
 };
 
-enum bltAlphaType{AT_NONE, AT_TRANS, AT_HATCHBLK,AT_HATCHXOR};
+/**
+ * @brief block transfer operation
+ * 
+ */
+enum bltMode{BLT_COPY,BLT_BLK_COLOR_KEY,BLT_HATCH_BLK,BLT_HATCH_XOR,BLT_ADD,BLT_SUB,BLT_MULT,BLT_DIV,BLT_AND,BLT_OR,BLT_XOR};
 
+
+/**
+ * @brief Eris class extentions to the ILI9341_t3n base class 
+ * This class is resposible for managing the tft display and providing functional extentions and interfaces for working with Surface class parameters
+ */
 class ILI9341_t3_ERIS : public ILI9341_t3n {
     public:
         //simply pass the constructor input parameters to the base class
@@ -234,32 +252,236 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void begin();
         //void flipBuffer();
         //void flipWritePointer();
+        
+        /**
+         * @brief Get the Frame Address object
+         * 
+         * @return uint32_t 
+         */
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
+
+        /**
+         * @brief prints the string buffer using the provided sprite library name and pt size
+         * 
+         * @param string_buffer 
+         * @param x 
+         * @param y 
+         * @param font 
+         * @param pt 
+         */
         void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt);
-        void bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
-            uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltAlphaType alpha_type);
-        void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);
-        void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type);  
+
+        /**
+         * @brief image block transfer from the area given by src_x, src_y, src_width, src_height to the destination given similar parameters
+         * used for composing image areas from one buffer to another. no scaling is applied.
+         * 
+         * @param dest_buffer 
+         * @param dest_x 
+         * @param dest_y 
+         * @param dest_buffer_width 
+         * @param dest_buffer_height 
+         * @param file_name 
+         * @param src_x 
+         * @param src_y 
+         * @param src_width 
+         * @param src_height 
+         * @param blt_mode 
+         */
+        void bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width, \
+            uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode);
+        
+        /**
+         * @brief image block transfer from the SD card to a buffer at the given x,y coords
+         * 
+         * @param dest_buffer 
+         * @param dest_buffer_width 
+         * @param dest_buffer_height 
+         * @param path 
+         * @param filename 
+         * @param x 
+         * @param y 
+         * @param blt_mode 
+         */
+        void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode);
+        
+        void bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode);  
+        
+        /**
+         * @brief used for block transfer from the SD to the frame buffer
+         * images should be the same dimensions as the display
+         * @param filename 
+         */
         void bltSDFullScreen(const char *filename);
+        
+        /**
+         * @brief renders an image chunk using the information provided by Animation parameter
+         * This function is used to render the animated backgrounds
+         * 
+         * @param an 
+         */
         void bltSDAnimationFullScreen(Animation *an);
+        
+        /**
+         * @brief tft busy check
+         * 
+         * @return true 
+         * @return false 
+         */
         bool busy(){return _busy();} //(_dma_state & ILI9341_DMA_ACTIVE);}
+        
         bool updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont);
+        
         //wrappers for drawing to a designated surface other than the main frame buffer(s)
         //write methods
-        void bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltAlphaType alpha_type);
+        
+        /**
+         * @brief block transfer from source to dest with the given parameters
+         * 
+         * @param dest 
+         * @param dest_x 
+         * @param dest_y 
+         * @param source 
+         * @param from_x 
+         * @param from_y 
+         * @param from_width 
+         * @param from_height 
+         * @param blt_mode 
+         */
+        void bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode blt_mode);
+        
+        /**
+         * @brief
+         * 
+         * @param dest 
+         * @param color 
+         */
         void fillSurface(Surface *dest,uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param color 
+         */
         void drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param start_x 
+         * @param start_y 
+         * @param end_x 
+         * @param end_y 
+         * @param color 
+         */
         void drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param color 
+         */
         void drawSurfaceFill(Surface *dest,uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param h 
+         * @param color 
+         */
         void drawFastVLine(Surface *dest,int16_t x, int16_t y, int16_t h, uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param color 
+         */
         void drawFastHLine(Surface *dest,int16_t x, int16_t y, int16_t w, uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
+         * @param color 
+         */
         void fillRect(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
+         * @param color1 
+         * @param color2 
+         */
         void fillRectHGradient(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color1, uint16_t color2);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
+         * @param color1 
+         * @param color2 
+         */
         void fillRectVGradient(Surface *dest,int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color1, uint16_t color2);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param color1 
+         * @param color2 
+         */
         void fillScreenVGradient(Surface *dest,uint16_t color1, uint16_t color2);
+
+        /**
+         * @brief 
+         * 
+         * @param dest 
+         * @param color1 
+         * @param color2 
+         */
         void fillScreenHGradient(Surface *dest,uint16_t color1, uint16_t color2);
-        //read methods
-        uint16_t readSurfacePixel(Surface *dest,int16_t x, int16_t y);
+
+        /**
+         * @brief reads the pixel data from the surface object
+         * note the data is packed in the 565 RGB format
+         * @param source 
+         * @param x 
+         * @param y 
+         * @return uint16_t 
+         */
+        uint16_t readSurfacePixel(Surface *source,int16_t x, int16_t y);
+        
+        /**
+         * @brief reads the pixel data from the frame buffer
+         * note the data is packed in the 565 RGB format
+         * @param x 
+         * @param y 
+         * @return uint16_t 
+         */
         uint16_t readPixel(int16_t x, int16_t y);
 
     protected:

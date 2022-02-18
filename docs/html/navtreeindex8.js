@@ -1,5 +1,15 @@
 var NAVTREEINDEX8 =
 {
+"dc/df6/classeris_audio_effect_digital_combine_ac988531c0f0717c6d11e311f5ddb9f0a.html#ac988531c0f0717c6d11e311f5ddb9f0a":[2,0,89,0],
+"dd/d04/classeris_audio_analyze_peak.html":[2,0,81],
+"dd/d04/classeris_audio_analyze_peak_a32ccb4e6c964ee800848362938eaa965.html#a32ccb4e6c964ee800848362938eaa965":[2,0,81,0],
+"dd/d04/classeris_audio_analyze_peak_a5edf1b3f4f011422c99d9e6d47576c24.html#a5edf1b3f4f011422c99d9e6d47576c24":[2,0,81,2],
+"dd/d04/classeris_audio_analyze_peak_aee245744924635147222f27aa26d492d.html#aee245744924635147222f27aa26d492d":[2,0,81,1],
+"dd/d15/class_audio_synth_waveform_p_w_m.html":[2,0,70],
+"dd/d25/class_audio_analyze_tone_detect.html":[2,0,22],
+"dd/d6c/class_audio_analyze_f_f_t1024.html":[2,0,17],
+"dd/d75/class_audio_effect_waveshaper.html":[2,0,39],
+"dd/d7d/classeris_audio_filter_biquad.html":[2,0,100],
 "dd/d7d/classeris_audio_filter_biquad_aa3e8630fd1f1196c3b52bcb23fb4a9a7.html#aa3e8630fd1f1196c3b52bcb23fb4a9a7":[2,0,100,1],
 "dd/d7d/classeris_audio_filter_biquad_ae00418911e775f5e52106f4915fec8a6.html#ae00418911e775f5e52106f4915fec8a6":[2,0,100,2],
 "dd/d7d/classeris_audio_filter_biquad_ae450ccf4e0caaa7b1d1ada136d98b0ef.html#ae450ccf4e0caaa7b1d1ada136d98b0ef":[2,0,100,0],
@@ -239,15 +249,5 @@ var NAVTREEINDEX8 =
 "df/d17/class_control_button_a32648faf06bcd3bae3986ec24e8663de.html#a32648faf06bcd3bae3986ec24e8663de":[2,0,75,46],
 "df/d17/class_control_button_a329f7c38c2d9d0a11650e57540667bee.html#a329f7c38c2d9d0a11650e57540667bee":[2,0,75,14],
 "df/d17/class_control_button_a3b6a68df5c432a8828cb077689ffb7f2.html#a3b6a68df5c432a8828cb077689ffb7f2":[2,0,75,50],
-"df/d17/class_control_button_a44c8765c36ab96384ac6eb46aad94413.html#a44c8765c36ab96384ac6eb46aad94413":[2,0,75,12],
-"df/d17/class_control_button_a4badded3b186e03d98d1d290fce09a28.html#a4badded3b186e03d98d1d290fce09a28":[2,0,75,47],
-"df/d17/class_control_button_a4d6442baec567b87cb44adcc7bce0eb8.html#a4d6442baec567b87cb44adcc7bce0eb8":[2,0,75,62],
-"df/d17/class_control_button_a522b01fbb2ee8a5510fe68476bd30914.html#a522b01fbb2ee8a5510fe68476bd30914":[2,0,75,48],
-"df/d17/class_control_button_a5d22f76fb4440386e8c149bec0812429.html#a5d22f76fb4440386e8c149bec0812429":[2,0,75,28],
-"df/d17/class_control_button_a6061296f96a47ce1982957139e01efd4.html#a6061296f96a47ce1982957139e01efd4":[2,0,75,11],
-"df/d17/class_control_button_a88c1917353db74a50c70ccb46c9dd432.html#a88c1917353db74a50c70ccb46c9dd432":[2,0,75,71],
-"df/d17/class_control_button_aac9f073d1205f1e97873a19db1e1c315.html#aac9f073d1205f1e97873a19db1e1c315":[2,0,75,22],
-"df/d17/class_control_button_abd81dcfa9fb55956536ff414f8291e99.html#abd81dcfa9fb55956536ff414f8291e99":[2,0,75,23],
-"df/d17/class_control_button_adb73cef3ce1e68a3fdfbdf6523e4d675.html#adb73cef3ce1e68a3fdfbdf6523e4d675":[2,0,75,49],
-"df/d17/class_control_button_aeec9825d71fcb7e8fb0254babc9dd41a.html#aeec9825d71fcb7e8fb0254babc9dd41a":[2,0,75,63]
+"df/d17/class_control_button_a44c8765c36ab96384ac6eb46aad94413.html#a44c8765c36ab96384ac6eb46aad94413":[2,0,75,12]
 };

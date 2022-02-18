@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="triggered on touch event">
+<g id="a_node1"><a xlink:title="Event handler called on touch.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-211.5 0,-239.5 181,-239.5 181,-211.5 0,-211.5"/>
 <text text-anchor="middle" x="90.5" y="-221.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppScope::onTouch</text>
 </a>

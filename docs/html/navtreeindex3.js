@@ -1,5 +1,12 @@
 var NAVTREEINDEX3 =
 {
+"d4/dd5/class_audio_synth_waveform.html#ad357cfab8a25e27826f111b7c1b8b6b4":[2,0,67,49],
+"d4/dd5/class_audio_synth_waveform.html#adc3bac67eb13d51375cc49a48c3328b1":[2,0,67,42],
+"d4/dd5/class_audio_synth_waveform.html#ae55a08c2b5815749c06ac5d0f39b1e48":[2,0,67,19],
+"d4/dd5/class_audio_synth_waveform.html#aebe02d4f0b44b700dece5f6732ecc6fe":[2,0,67,30],
+"d4/dd5/class_audio_synth_waveform.html#aedbf0b4a808724dc4f4115c60b615622":[2,0,67,17],
+"d4/dd5/class_audio_synth_waveform.html#af7181e76a78bd065d4242eb201fadd80":[2,0,67,33],
+"d4/dd5/class_audio_synth_waveform.html#af9cd6c94cd50aa817ed928bc4a2d71e8":[2,0,67,41],
 "d4/dd5/class_audio_synth_waveform.html#afd0f87125aecd2222c87ab2f57cde6f9":[2,0,67,26],
 "d4/dd5/class_audio_synth_waveform.html#aff732b4ba2fa71f3a47b16247d024a92":[2,0,67,14],
 "d4/dd5/class_audio_synth_waveform_a02d636961692dc5e3434764d1cc0a4ab.html#a02d636961692dc5e3434764d1cc0a4ab":[2,0,67,35],
@@ -242,12 +249,5 @@ var NAVTREEINDEX3 =
 "d5/d96/class_audio_stream_a643f654eb80d440b0535cd0e6244a85c.html#a643f654eb80d440b0535cd0e6244a85c":[2,0,61,37],
 "d5/d96/class_audio_stream_a6f70806d5f6baccccf03482dae743192.html#a6f70806d5f6baccccf03482dae743192":[2,0,61,29],
 "d5/d96/class_audio_stream_a7329b2b8dcb44e76c7f397d4d8fc1a84.html#a7329b2b8dcb44e76c7f397d4d8fc1a84":[2,0,61,4],
-"d5/d96/class_audio_stream_a743e19367946485719cd96436da38970.html#a743e19367946485719cd96436da38970":[2,0,61,31],
-"d5/d96/class_audio_stream_a760fb58e212788dbec27664ea23bbd32.html#a760fb58e212788dbec27664ea23bbd32":[2,0,61,28],
-"d5/d96/class_audio_stream_a76e57ea7b1d52d78545f1a35e287d10c.html#a76e57ea7b1d52d78545f1a35e287d10c":[2,0,61,18],
-"d5/d96/class_audio_stream_a871d776e57f1dff63e1d2121bd1d6bf3.html#a871d776e57f1dff63e1d2121bd1d6bf3":[2,0,61,25],
-"d5/d96/class_audio_stream_a8b64af9348ca38d5374514343fb78382.html#a8b64af9348ca38d5374514343fb78382":[2,0,61,5],
-"d5/d96/class_audio_stream_a9599ba022ef3e214243ce4dee9717019.html#a9599ba022ef3e214243ce4dee9717019":[2,0,61,8],
-"d5/d96/class_audio_stream_aa72f44429aba6e488e03206740594a4a.html#aa72f44429aba6e488e03206740594a4a":[2,0,61,16],
-"d5/d96/class_audio_stream_aae750491f0dbedac3bd763d6dc62c1bb.html#aae750491f0dbedac3bd763d6dc62c1bb":[2,0,61,3]
+"d5/d96/class_audio_stream_a743e19367946485719cd96436da38970.html#a743e19367946485719cd96436da38970":[2,0,61,31]
 };

@@ -290,20 +290,20 @@ class AppWren:public AppBaseClass {
      * @param x 
      * @param y 
      */
-    void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltAlphaType alpha_type){
+    void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode alpha_type){
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         draw->bltSDB(sb,surface_cache->getWidth(),surface_cache->getHeight(),path,filename,x,y,alpha_type);
     }
 
 
-    void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltAlphaType alpha_type){
+    void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode alpha_type){
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
         
-        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltAlphaType alpha_type)
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode alpha_type)
         draw->bltSurface2Surface(&dest,to_x,to_y,&source,0,0,source.getWidth(),source.getHeight(),alpha_type);
     }
 

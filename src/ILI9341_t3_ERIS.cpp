@@ -96,7 +96,9 @@ void ILI9341_t3_ERIS::flipBuffer(){
   }
 };
 */
-void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltAlphaType alpha_type){
+
+
+void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode alpha_type){
   bool toggle = false;
   int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
@@ -120,12 +122,12 @@ void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,
       read_index = (source_y * source->getWidth()) + source_x;
       if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
         //if in bounds then ok to write
-        if (AT_NONE == alpha_type){
+        if (BLT_COPY == alpha_type){
           dstBuffer[write_index] = srcBuffer[read_index];
-        }else if(AT_HATCHXOR){
+        }else if(BLT_HATCH_XOR){
           if (toggle) dstBuffer[write_index] = srcBuffer[read_index];
           toggle ^= true;
-        }else if(AT_TRANS){
+        }else if(BLT_BLK_COLOR_KEY){
           //TODO: unpack both source and dest, average the rgb values, repack and store in dest
         }
       }
@@ -152,10 +154,10 @@ void ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t col
   dstBuffer[(y * dest->getWidth()) + x] = color;
 }
 
-uint16_t ILI9341_t3_ERIS::readSurfacePixel(Surface *dest,int16_t x, int16_t y){
-  uint16_t *dstBuffer;
-  dstBuffer = dest->getSurfaceBufferP();
-  return dstBuffer[(y * dest->getWidth()) + x];
+uint16_t ILI9341_t3_ERIS::readSurfacePixel(Surface *source,int16_t x, int16_t y){
+  uint16_t *srcBuffer;
+  srcBuffer = source->getSurfaceBufferP();
+  return srcBuffer[(y * source->getWidth()) + x];
 }
 
 uint16_t ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){ 
@@ -199,7 +201,7 @@ void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
  * @param y dest coord
  * @param alpha_type 
  */
-void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode alpha_type){
   bltSDB(_pfbtft, _width, _height, path, filename,x,y,alpha_type);
   return;
 }
@@ -209,8 +211,8 @@ void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int1
 
 
 
-void ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
- uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltAlphaType alpha_type){
+void ILI9341_t3_ERIS::bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
+ uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -268,13 +270,13 @@ void ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x
       file.read(&dw,2);
       toggle ^= true;
       //if alpha is enabled mask any colors close to black
-      if (alpha_type == AT_NONE){dest_buffer[ifb + z] = dw;}
-      else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
-      else if (alpha_type == AT_HATCHBLK){
+      if (alpha_type == BLT_COPY){dest_buffer[ifb + z] = dw;}
+      else if (alpha_type == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+      else if (alpha_type == BLT_HATCH_BLK){
         if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
         else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
       }
-      else if (alpha_type == AT_HATCHXOR){
+      else if (alpha_type == BLT_HATCH_XOR){
         if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
         else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
       }
@@ -343,8 +345,8 @@ void ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_
         //print("\n");
         //print(stop_x);
 
-        bltSDAreaSurfaceDest(getFrameBuffer(),x,y, \
-          320,240,font_file_path,start_x,0,stop_x-start_x,pt + pt/2,AT_TRANS);
+        bltSDAreaBufferDest(getFrameBuffer(),x,y, \
+          320,240,font_file_path,start_x,0,stop_x-start_x,pt + pt/2,BLT_BLK_COLOR_KEY);
         x += pt/2;//move index to the next char
       }else{
         //print("\n");
@@ -372,7 +374,7 @@ void ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_
  * @param y 
  * @param alpha_type 
  */
-void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltAlphaType alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -424,13 +426,13 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
         file.read(&dw,2);
         toggle ^= true;
         //if alpha is enabled mask any colors close to black
-        if (alpha_type == AT_NONE){dest_buffer[ifb + z] = dw;}
-        else if (alpha_type == AT_TRANS && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
-        else if (alpha_type == AT_HATCHBLK){
+        if (alpha_type == BLT_COPY){dest_buffer[ifb + z] = dw;}
+        else if (alpha_type == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+        else if (alpha_type == BLT_HATCH_BLK){
           if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
           else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
         }
-        else if (alpha_type == AT_HATCHXOR){
+        else if (alpha_type == BLT_HATCH_XOR){
           if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
           else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
         }
@@ -446,14 +448,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
   file.close();
 }
 
-/**
- * @brief renders an image chunk using the information provided by Animation parameter
- * This function is used to render the animated backgrounds
- * 
- * @param an 
- */
 void ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
-  //full screen block transfer with no clipping - used for full screen images matching the screen resolution
   p_SD->chdir(an->getPath());
   file.open(an->getFileName(), O_READ);
   if (file.available() == 0){ //file not found
