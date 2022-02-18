@@ -20,7 +20,7 @@ class Data {
 class Draw {
     foreign static loadImage(path,filename,x,y)
     foreign static loadImageToSurface(path,filename,x,y)
-    foreign static blt(from_x, from_y, width, height, dest_x, dest_y)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,alpha_type)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
@@ -41,7 +41,7 @@ class App {
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
         //App.requestPopUp(true)
-        Draw.fill(0,90,0)
+        //Draw.fill(0,90,0)
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
@@ -106,7 +106,7 @@ class App {
         for (i in 1...(16)) {
             x = App.random(320)
             y = App.random(240)
-            Draw.blt(0, 0, 120, 120, x, y)
+            Draw.blt(0, 0, 120, 120, x, y,1)
         }
     }
     onFocus() {
@@ -152,6 +152,8 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_28")
+
+
 
 
 

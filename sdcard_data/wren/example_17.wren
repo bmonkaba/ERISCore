@@ -42,15 +42,17 @@ class Draw {
 class App {
     construct new() {
         //double underscores indicate static vars
-
+        App.setDimension(0,0)
         App.requestPopUp(true)
-        Draw.fill(100,0,0)
+        Draw.fill(0,0,0)
+        App.setWidgetPosition(-100,240)
         __x = 0
         __y = 0
         __w = 320
         __h = 240
-        App.setDimension(__w, __h)
+        
 
+        _start_render = false
         
         
         __dw = 10.23
@@ -63,8 +65,8 @@ class App {
         _g = 0
         _b = 0
         _Gain = 1
-        _MaxIters = 40
-        _Zoom = 1.125
+        _MaxIters = 120
+        _Zoom = 1.725
         _MoveX = 0
         _MoveY = 0
         _CX = -0.7
@@ -114,29 +116,29 @@ class App {
             _jy = _jy + 1
             if (_jy >= __h){
                 _jy = 0
-                _Zoom = _Zoom + (_Zoom * 0.025)
-                _CY = _CY + 0.0103
-                _CX = _CX + 0.01
-                _Gain = _Gain + 0.018
-                _MaxIters = (80 + (_Zoom * _Zoom * _Zoom)/2.0) 
-                if (_MaxIters > 150){
+                _Zoom = _Zoom - (_Zoom * 0.025)
+                //_CY = _CY + 0.0103
+                //_CX = _CX + 0.01
+                _Gain = _Gain + 0.18
+                _MaxIters = _MaxIters + 1
+                if (_MaxIters > 350){
                     _MaxIters = 150
                     _Zoom = 1
                 }
             }
         } else _jx = _jx + 1
-        var r = (50 * i*_jx)%(220)
-        var g = (5 * i*_jy/__h)%(220)
-        var b = (i*30)%220
+        var r = (_jx/__w)%(220)
+        var g = (_jy/__h)%(220)
+        var b = (i)%220
         if (r < 0) r = 0
-        if (g < 0) g = 20
+        if (g < 0) g = 0
         if (b < 0) b = 0
         var pc
-        pc = Draw.getPixel(_jx-1,_jy-1)
+        pc = Draw.getPixel(_jx+1,_jy+1)
         //CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-        var ar = ( (i * 1 * r) + (i * 12 * (pc >> 8)))/(i*13)
-        var ag = ( (i * 1 * g) + (i * 12 * ((pc >> 3) & 252)))/(i*13)
-        var ab = ( (i * 1 * b) + (i * 12 * ((pc << 3)  & 255)))/(i*13)
+        var ar = ( (i * 4 * r) + (i * 8 * (pc >> 8)))/(12)
+        var ag = ( (i * 4 * g) + (i * 8 * ((pc >> 3) & 252)))/(12)
+        var ab = ( (i * 4 * b) + (i * 8 * ((pc << 3)  & 255)))/(12)
         Draw.setPixel(_jx, _jy,ar,ag,ab)
     }
     
@@ -175,6 +177,7 @@ class App {
     //  wrappers which will forward the method calls here for execution
     //
     update() {
+        App.setWidgetPosition(-100,240)
         _count = _count + 1
         if (_count > 10000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
@@ -185,20 +188,26 @@ class App {
         }
     }
     render() {
-        App.setWidgetPosition(__x, __y)
+        
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
         App.setClockSpeed(740000000)
-        for (y in 0...(512)) {
-            createJulia()
+        if (_start_render) {
+            for (y in 0...(512)) {
+                createJulia()
+            }
+        } else {
+            _start_render = true
         }
+        
         //for (y in 0...(5)) {
         //    spiral()
         //}
-        App.setClockSpeed(600000000)
+        //App.setClockSpeed(600000000)
     }
     onFocus() {
         var a = "test"
+         Draw.fill(100,0,0)
     }
     onFocusLost() {
         var a = "test"
@@ -240,6 +249,11 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_17")
+
+
+
+
+
 
 
 

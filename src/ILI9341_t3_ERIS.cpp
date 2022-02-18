@@ -209,7 +209,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int1
 
 
 
-void FLASHMEM ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
+void ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
  uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltAlphaType alpha_type){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
@@ -222,22 +222,19 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16
   char *c;           //char pointer
   bool toggle = false;
 
-  file.open(file_name, O_READ);        //open image to read
+  file.open(file_name, O_READ);//open image to read
   if (file.available() == 0){ //file not found
     Serial.print(F("M ILI9341_t3_ERIS::bltSD File Not Found: "));
     Serial.println(file_name);
     //pSD->ls();
     return;
   }
-  
   file.fgets(str,sizeof(str)); //read the header data
   file.fgets(str,sizeof(str)); //to get the image dimensions
   strtok(str," ");             //convert dimension text to numbers
-  w = atol(str);
-  
+  w = atol(str);  //image width
   c = strtok(NULL, " ");
-  h = atol(c);
-
+  h = atol(c);    //image height
   //seek to the source row
   if (src_y > 0) { 
     for (iy = 0; iy < src_y; iy += 1L){ //for each off screen row
@@ -256,20 +253,16 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16
     dest_y = 0; //set y pos to 0 for the remaining portion of the bitmap
   }
   
-  
   //for each row
   for (iy = dest_y; iy < (dest_y + src_height); iy += 1){ 
     toggle ^= true;
-    
     if (iy >= dest_buffer_height) break; //clip in y dimension (bottom) - simply don't draw anything
     mx = 0; nx = 0;
     //if (dest_x < 0L){file.seekCur(dest_x * -2L);mx += -1L * dest_x;} //clip in x dimension (left) - skip offscreen data
     ifb = (iy * dest_buffer_width) + dest_x + mx; //32bit index
     //if ((dest_x + src_width) > w){nx = (dest_x + src_width) - dest_buffer_width;}//clip in x dimension (right) - truncate copy to screen bounds
-
     //inital x offset
     file.seekCur(src_x * 2L); //seek to start_x
-
     //read the data for the row
     for (uint16_t z = 0; z < src_width; z += 1){
       file.read(&dw,2);
@@ -293,7 +286,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDAreaSurfaceDest(uint16_t *dest_buffer, int16
 }
 
 
-void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt){
+void ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt){
   char font_file_path[256];
   char font_kerning_file_path[256];
   char tmp[64];//tmp buffer to build the file name
@@ -312,16 +305,12 @@ void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t 
   strcpy(font_kerning_file_path,font_file_path);//copy
   strcat(font_file_path,".ile");//add the file name sufixes
   strcat(font_kerning_file_path,".krn");
-  
   setTextSize(pt);
   //print(font_kerning_file_path);
   //print("\n");
   //print(font_file_path);
-  
-  
   FsFile kern = p_SD->open(font_kerning_file_path,O_RDONLY); //if so open the fiile
   if (kern!=NULL){ //see if the requested font exists
-    
     for(int16_t i = 0;i < strlen(string_buffer);i++){ //now walk the string buffer
       uint16_t start_x;
       uint16_t stop_x;
@@ -355,7 +344,7 @@ void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t 
         //print(stop_x);
 
         bltSDAreaSurfaceDest(getFrameBuffer(),x,y, \
-          320,240,font_file_path,start_x,0,stop_x-start_x,pt,AT_TRANS);
+          320,240,font_file_path,start_x,0,stop_x-start_x,pt + pt/2,AT_TRANS);
         x += pt/2;//move index to the next char
       }else{
         //print("\n");

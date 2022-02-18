@@ -14,7 +14,7 @@ Eris core is:
     * 60+ video backgrounds, 100+ oversized backgrounds which can be repositioned
     * 100+ sprite based fonts (8pt-39pt) with digraph sorted kearning files
     * 4000+ single cycle waveforms, 30MB spectraly sorted single cycle wavetable database w/index file
-    * 100's of sprites: ~100 icons, multiple single and double value radial gauges, virtual led indicators, etc.
+    * 95K+ sprites: icons, radial gauges, virtual led indicators, game theme sprites and animations, etc.
 * a subsystem component complete with mechanical housing examples
 * supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket)
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers

@@ -32,10 +32,10 @@ class Draw {
 class App {
     construct new() {
         //double underscores indicate static vars
-        __x = 128
-        __y = 64
-        __w = 120
-        __h = 120
+        __x = 60
+        __y = 0
+        __w = 200
+        __h = 200
         App.setDimension(__w, __h)
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
@@ -43,7 +43,7 @@ class App {
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
-        _demo_loops = 2
+        _demo_loops = 10
         _pixels = 0
         _timer = System.clock
     }
@@ -90,16 +90,9 @@ class App {
         var start = System.clock
         var x = App.random(120)
         var y = App.random(120)
-        var z = App.random(100)
-        if(z < 25){
-            Draw.loadImageToSurface("/I/U/L/","red.ile",x,y)
-        }else if (z < 50){
-            Draw.loadImageToSurface("/I/U/L/","yellow.ile",x,y)
-        }else if (z < 75){
-            Draw.loadImageToSurface("/I/U/L/","grey.ile",x,y)
-        }else{
-            Draw.loadImageToSurface("/I/U/L/","green.ile",x,y)
-        }
+        var z = App.random(84)+1
+        var filename = "portrait%(z)_nz2.ile"
+        Draw.loadImageToSurface("/I/U/S/TOON/DHP_Revised/",filename,x,y)
     }
     onFocus() {
         //System.print(["onFocus"])
@@ -144,19 +137,5 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_27")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

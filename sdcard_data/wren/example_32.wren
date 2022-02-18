@@ -57,7 +57,7 @@ class App {
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
-        _demo_loops = 5
+        _demo_loops = 12
         _r = 0
         _g = 0
         _b = 0
@@ -159,7 +159,7 @@ class App {
             _count = 0
             _demo_loops = _demo_loops - 1
             
-            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_18")
+            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_33")
         }
     }
     render() {
@@ -217,7 +217,8 @@ class App {
 //type class App it's this object instance for which the event methods 
 //will be called
 var ErisApp = App.new()
-System.print("example_31")
+System.print("example_32")
+
 
 
 

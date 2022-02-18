@@ -70,21 +70,25 @@ if __name__ == "__main__":
         #print(directory)
         for f in files:
             fp = root + "\\" + f
-            if fp[-4:] == ".png":
-                #print (fp)
-                ppm = fp[:-4] + ".ppm"
-                ile = fp[:-4] + ".ile"
+            if fp[-4:] == ".png" or fp[-4:] == ".jpg":
+                print (fp)
+                
                 #batch convert images with PIL
                 #print ppm
                #print ("\t"+ile)
                 #print size
                 try:
-                    im = Image.open(fp).convert("RGB")
+                    im = Image.open(fp).convert("RGBA")
                     skip = False
                 except:
                     skip = True
+                    print("skipping " + fp )
                 
-                if not skip: 
+                if not skip:
+                    fp = fp.replace("(","-").replace(")","-").replace(" ","_")
+                    ppm = fp[:-4] + ".ppm"
+                    ile = fp[:-4] + ".ile"
+                    
                     width = im.width
                     height = im.height
                     if (width < 64 and height < 64):
@@ -102,15 +106,18 @@ if __name__ == "__main__":
                         height = int(height * ratio)
                         
                     if ratio != 1:
-                        im = im.resize((width,height), Image.BILINEAR)
+                        image = im.resize((width,height), Image.BILINEAR)
                     #im.thumbnail(size, Image.ANTIALIAS)
                     #im = im.resize(size, Image.BILINEAR)
+                    im = Image.new("RGBA", image.size, "BLACK") #covert alpha
+                    im.paste(image, mask=image)
+                    
                     zoom_out = 1
                     while True:
                         im.save(ppm)
                         Gen565Stream(ppm,ile)
                         manifest.write(ile + "\n")
-                        os.remove(ppm)
+                        #os.remove(ppm)
                         if width > 16:
                             zoom_out = zoom_out * 2
                             ppm = fp[:-4] + "_nz" + str(zoom_out) + ".ppm"

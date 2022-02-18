@@ -20,7 +20,7 @@ class Data {
 class Draw {
     foreign static loadImage(path,filename,x,y)
     foreign static loadImageToSurface(path,filename,x,y)
-    foreign static blt(from_x, from_y, width, height, dest_x, dest_y)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,alpha_type)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
@@ -37,11 +37,13 @@ class App {
         __y = 64
         __w = 120
         __h = 120
-        App.setDimension(__w, __h)
+        App.setDimension(320, 240)
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
         App.requestPopUp(true)
-        Draw.fill(0,90,0)
+        Draw.fill(0,0,0)
+        App.setDimension(120, 120)
+        
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
@@ -83,15 +85,15 @@ class App {
             _timer = System.clock
             _count = 0
             _demo_loops = _demo_loops - 1
-            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("demo")
+            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_31")
         }
     }
     
     render() {
-        App.setWidgetPosition(__x, __y)
+        //App.setWidgetPosition(__x, __y)
         var start = System.clock
-        var x = App.random(120)
-        var y = App.random(120)
+        var x = App.random(__w/2) + __w/2
+        var y = App.random(__h/2) + __h/2
         var z = App.random(100)
         if(z < 25){
             Draw.loadImageToSurface("/I/U/L/","red.ile",x,y)
@@ -103,12 +105,12 @@ class App {
             Draw.loadImageToSurface("/I/U/L/","green.ile",x,y)
         }
         
-        x = App.random(320)
-        y = App.random(240)
+        x = App.random(__w)
+        y = App.random(__h)
         //Draw.blt(x/3, y/3,120,120,x,y)
-        x = App.random(320)
-        y = App.random(200)
-        Draw.blt(40, 40, 120, 80, x,y)
+        x = App.random(__w)
+        y = App.random(__h)
+        Draw.blt(40, 40, 120, 80, __w/2,__h/2,2)
         _i = _i + 1
     }
     onFocus() {
@@ -154,6 +156,13 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_29")
+
+
+
+
+
+
+
 
 
 

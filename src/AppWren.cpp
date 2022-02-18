@@ -513,9 +513,7 @@ void printWithFontCallback(WrenVM* vm){
   uint16_t y = wrenGetSlotDouble(vm,3);
   const char *font_name = wrenGetSlotString(vm,4);
   uint16_t pt = wrenGetSlotDouble(vm,5); //font size
-  
   app->getDraw()->printWithFont(string_buffer,x,y,font_name,pt);
-  
 }
 
 /**
