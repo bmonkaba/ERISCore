@@ -1,13 +1,53 @@
-## Welcome to GitHub Pages
+# Eris Core
 
-You can use the [editor on GitHub](https://github.com/bmonkaba/ERISCore/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+[software documentation](https://bmonkaba.github.io/ERISCore/html/index.html)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Executive Overview
 
-### Markdown
+(Teensy 4.1 core + 2x PSRAM chips) + custom PCB + off the shelf TFT module = Eris Core electronic assembly
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The electronis assembly + Eris Core software = Eris Core
 
+# design goals
+
+Stero audio signal processor assembly built around a Teensy 4.1 combined with a custom TFT ready PCB with integrated power supply, MIDI and ADC/DAC chipset
+Real time polyphonic analysis (constant q-transform)
+No 3rd party operating system
+No threads
+AI capabilility for offline audio training and 'realtime' deployment
+MIDI in/out capable
+Should be able to load and unload applications
+
+# design methodology
+
+Agile... but like this:
+
+Use cases identify needed features.
+Features from the use cases drive functions.
+Implementation of features is scripted in Wren
+Functions to support the features are implemented as callback C extentions
+The AppWren class is found by the callbacks through the AppManager interface
+System/Integration testing is the abuse of the implemented use cases in wren
+Regression/load testing is the continuous cycling of the test cases
+Calls from the VM are sometimes bounds checked to avoid crashes where as the C++ interface may be unprotected for performance (no training wheels)
+Plan static code analysis clean up, refactoring, formatting after every major feature implementation
+Documentation is constantly updated but always could be better.
+Automate as much as possible. Then automate more.
+
+# Why
+
+The thing I wanted didn't exist. So I made it.
+Following the philosophy of 'there is no such thing as an original idea' there must be other's who may find this usefull or at least interesting.
+
+More info to come.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ``` markdown
 Syntax highlighted code block
 
@@ -25,22 +65,3 @@ Syntax highlighted code block
 
 [Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bmonkaba/ERISCore/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
-<br>
-Software Documentation
-FDM & SLA 3D Printer Fabrication Files
-Electrical Schematic
-BOM
-
-<br>
-<br>
