@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: Welcome to GitHub Pages</title>
+<title>ERIS CORE: Eris Core</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,15 +84,33 @@ $(document).ready(function(){initNavTree('d8/d48/md__e_r_i_s_core_docs_index.htm
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Welcome to GitHub Pages </div>  </div>
+<div class="title">Eris Core </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>You can use the <a href="https://github.com/bmonkaba/ERISCore/edit/master/docs/index.md">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
-<p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
-<h2><a class="anchor" id="autotoc_md1"></a>
-Markdown</h2>
-<p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
-<div class="fragment"><div class="line">Syntax highlighted code block</div>
+<div class="textblock"><p><a href="https://bmonkaba.github.io/ERISCore/html/index.html">software documentation</a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Executive Overview</h1>
+<p>(Teensy 4.1 core + 2x PSRAM chips) + custom PCB + off the shelf TFT module = Eris Core electronic assembly</p>
+<p>The electronis assembly + Eris Core software = Eris Core</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+design goals</h1>
+<p>Stero audio signal processor assembly built around a Teensy 4.1 combined with a custom TFT ready PCB with integrated power supply, MIDI and ADC/DAC chipset Real time polyphonic analysis (constant q-transform) No 3rd party operating system No threads AI capabilility for offline audio training and 'realtime' deployment MIDI in/out capable Should be able to load and unload applications</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+design methodology</h1>
+<p>Agile... but like this:</p>
+<p>Use cases identify needed features. Features from the use cases drive functions. Implementation of features is scripted in Wren Functions to support the features are implemented as callback C extentions The <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...">AppWren</a> class is found by the callbacks through the <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> interface System/Integration testing is the abuse of the implemented use cases in wren Regression/load testing is the continuous cycling of the test cases Calls from the VM are sometimes bounds checked to avoid crashes where as the C++ interface may be unprotected for performance (no training wheels) Plan static code analysis clean up, refactoring, formatting after every major feature implementation Documentation is constantly updated but always could be better. Automate as much as possible. Then automate more.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Why</h1>
+<p>The thing I wanted didn't exist. So I made it. Following the philosophy of 'there is no such thing as an original idea' there must be other's who may find this usefull or at least interesting.</p>
+<p>More info to come.</p>
+<p><br  />
+ <br  />
+ <br  />
+ <br  />
+ <br  />
+ <br  />
+ <br  />
+ </p><div class="fragment"><div class="line">Syntax highlighted code block</div>
 <div class="line"> </div>
 <div class="line"># Header 1</div>
 <div class="line">## Header 2</div>
@@ -107,19 +125,7 @@ Markdown</h2>
 <div class="line">**Bold** and _Italic_ and `Code` text</div>
 <div class="line"> </div>
 <div class="line">[Link](url) and ![Image](src)</div>
-</div><!-- fragment --><p>For more details see <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a>.</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
-Jekyll Themes</h2>
-<p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/bmonkaba/ERISCore/settings/pages">repository settings</a>. The name of this theme is saved in the Jekyll <code>_config.yml</code> configuration file.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Support or Contact</h2>
-<p>Having trouble with Pages? Check out our <a href="https://docs.github.com/categories/github-pages-basics/">documentation</a> or <a href="https://support.github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-<p><br  />
- Software Documentation FDM &amp; SLA 3D Printer Fabrication Files Electrical Schematic BOM</p>
-<p><br  />
- <br  />
- </p>
-</div></div><!-- contents -->
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

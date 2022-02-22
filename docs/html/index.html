@@ -88,31 +88,29 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_ERISCore_README"></a> <img src="https://img.shields.io/github/languages/count/bmonkaba/ErisCore" alt="Language Count" class="inline"/> <img src="https://img.shields.io/github/languages/code-size/bmonkaba/ErisCore" alt="Code Size" class="inline"/> <img src="https://img.shields.io/travis/com/bmonkaba/ErisCore" alt="TravisCI" class="inline"/> <a href="https://scan.coverity.com/projects/bmonkaba-eriscore"></a><img src="https://scan.coverity.com/projects/21765/badge.svg" alt="Coverity Scan Build Status" style="pointer-events: none;" class="inline"/> <a href="https://www.codacy.com/gh/bmonkaba/ERISCore/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bmonkaba/ERISCore&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/7e4ec1dd77634c3eaa9aa471c54fbe6d" alt="Codacy Badge" class="inline"/></a><a href="https://codeclimate.com/github/bmonkaba/ERISCore/maintainability"><img src="https://api.codeclimate.com/v1/badges/2efa7ff8f3a25347fabf/maintainability" alt="" class="inline"/></a></p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 What is Eris Core?</h1>
 <p>Eris core is:</p>
 <ul>
-<li>Designed to stand alone but architected for reuse; intended as a foundation for bootstrapping product line development across many commercial domains while remaining accessable to makers.</li>
-<li>an artifical tntelligence and machine learning (AI/ML) "crossover operating system" for a crossover microcontroller specializing in audio signal procressing.</li>
-<li>a virtual machine host and extentions for Wren <a href="https://wren.io/">https://wren.io/</a></li>
+<li>an artifical intelligence and machine learning (AI/ML) capable system specializing in audio signal procressing.</li>
+<li>An electronic sub-assembly module designed to stand alone but architected for reuse;</li>
 <li>an integrated rapid application development &amp; test framework</li>
-<li>a standardized graphics and audio asset library including:<ul>
+<li>a standardized 565 encoded graphics and audio asset library including:<ul>
 <li>60+ video backgrounds, 100+ oversized backgrounds which can be repositioned</li>
 <li>100+ sprite based fonts (8pt-39pt) with digraph sorted kearning files</li>
+<li>95K+ sprites: icons, radial gauges, virtual led indicators, game genre theme sprites and animations, etc.</li>
 <li>4000+ single cycle waveforms, 30MB spectraly sorted single cycle wavetable database w/index file</li>
-<li>95K+ sprites: icons, radial gauges, virtual led indicators, game theme sprites and animations, etc.</li>
 </ul>
 </li>
-<li>a subsystem component complete with mechanical housing examples</li>
-<li>supported by a crossplatform serial to web socket interface (python) &amp; editor software (html/websocket)</li>
+<li>supported by a crossplatform serial to web socket interface (python) &amp; editor software (html/websocket based)</li>
 <li>a low-cost high performance design for intended for use by anyone from beginners to advanced developers</li>
 </ul>
 <p><img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" alt="" width="300" class="inline"/></p>
 <p><b>youtube video demo - pre-alpha sys stress, integration &amp; regression testing:</b></p>
 <p><a href="https://www.youtube.com/watch?v=QZLU7C8BaJI" title="pre alpha video demo"><img src="https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&amp;sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw" alt="youtube video" class="inline"/></a></p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 3rd party</h2>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md8"></a>
 Licence</h3>
 <p>Software:</p>
 <ul>
@@ -122,25 +120,26 @@ Licence</h3>
 <li>Arduino/Teensyduino - MIT Licence</li>
 </ul>
 <p>Audio: <a href="https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE">https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE</a> - <a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></p>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<p>Graphics: selected by availbility for commercial reuse. see asset folders for licence details.</p>
+<h3><a class="anchor" id="autotoc_md9"></a>
 External dependancies</h3>
 <div class="fragment"><div class="line">densaugeo/base64@^1.2.0</div>
 <div class="line">fraunhofer-ims/AIfES for Arduino@^2.1.1</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 3D print, STL &amp; housing graphics</h2>
 <ul>
 <li>Creative Commons Attribution 4.0 International Public License</li>
 </ul>
 <p><img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20v158.png?raw=true" alt="" width="300" class="inline"/> <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" alt="" width="300" class="inline"/> <br  />
  </p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 ErisCore software</h1>
 <ul>
 <li>web based serial interface - MIT Licence</li>
 <li>other components - Due to 3rd party mixed licence, individual sw component PENDING compliance review before formal licence identification.</li>
 <li>Software Documentation (WIP): <a href="https://bmonkaba.github.io/ERISCore/html/">https://bmonkaba.github.io/ERISCore/html/</a></li>
 </ul>
-<h4><a class="anchor" id="autotoc_md11"></a>
+<h4><a class="anchor" id="autotoc_md12"></a>
 Development State</h4>
 <ul>
 <li>System is currently pre-alpha.</li>
@@ -148,20 +147,11 @@ Development State</h4>
 <li>Hardware design is currently beta 2</li>
 <li>SLA Mechanical design is currently beta 2</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md12"></a>
+<h4><a class="anchor" id="autotoc_md13"></a>
 WIP / Known issues</h4>
 <ul>
 <li>Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy</li>
 <li>Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion</li>
-</ul>
-<h4><a class="anchor" id="autotoc_md13"></a>
-TODO</h4>
-<ul>
-<li>wren wrappers for AIeFS?</li>
-<li>define an access concept for requesting assets from the actual filesystem.</li>
-<li>import a custom genetic algo module from an older project and port from from python to wren</li>
-<li>import a custom chord identification/scoring module from an older project</li>
-<li>etc...</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md14"></a>
 Hardware Features:</h4>

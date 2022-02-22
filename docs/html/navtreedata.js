@@ -26,16 +26,21 @@ var NAVTREE =
 [
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
-      [ "What is Eris Core?", "index.html#autotoc_md5", [
-        [ "3rd party", "index.html#autotoc_md6", [
-          [ "Licence", "index.html#autotoc_md7", null ],
-          [ "External dependancies", "index.html#autotoc_md8", null ]
+      [ "What is Eris Core?", "index.html#autotoc_md6", [
+        [ "3rd party", "index.html#autotoc_md7", [
+          [ "Licence", "index.html#autotoc_md8", null ],
+          [ "External dependancies", "index.html#autotoc_md9", null ]
         ] ],
-        [ "3D print, STL & housing graphics", "index.html#autotoc_md9", null ]
+        [ "3D print, STL & housing graphics", "index.html#autotoc_md10", null ]
       ] ],
-      [ "ErisCore software", "index.html#autotoc_md10", null ]
+      [ "ErisCore software", "index.html#autotoc_md11", null ]
     ] ],
-    [ "Welcome to GitHub Pages", "d8/d48/md__e_r_i_s_core_docs_index.html", null ],
+    [ "Eris Core", "d8/d48/md__e_r_i_s_core_docs_index.html", [
+      [ "Executive Overview", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
+      [ "design goals", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
+      [ "design methodology", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", null ],
+      [ "Why", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md4", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -64,15 +69,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/da6/classeris_audio_synth_karplus_strong_aba92893568576dbdbab63e9e648b283b.html#aba92893568576dbdbab63e9e648b283b",
-"d3/d7e/_audio_stream_8cpp_source.html",
-"d4/dd5/class_audio_synth_waveform.html#ad357cfab8a25e27826f111b7c1b8b6b4",
-"d5/d96/class_audio_stream_a760fb58e212788dbec27664ea23bbd32.html#a760fb58e212788dbec27664ea23bbd32",
-"d8/d1c/class_audio_director_aae48fff50fc2763f06611db46ae7c94e.html#aae48fff50fc2763f06611db46ae7c94e",
-"d8/deb/class_app_a_if_e_s.html#adcfa66b4b82e0a35d7f559ed00608e2c",
-"db/d4d/_control_slider_8h.html",
-"dc/df6/classeris_audio_effect_digital_combine_ac988531c0f0717c6d11e311f5ddb9f0a.html#ac988531c0f0717c6d11e311f5ddb9f0a",
-"df/d17/class_control_button_a4badded3b186e03d98d1d290fce09a28.html#a4badded3b186e03d98d1d290fce09a28"
+"d0/da0/class_app_wren_af432685cfe347e1d7b730c48b4a2f650.html#af432685cfe347e1d7b730c48b4a2f650",
+"d3/d7a/class_audio_effect_granular.html",
+"d4/dd5/class_audio_synth_waveform.html#ac5378800d560b26c9bfe64e1a5e75eb7",
+"d5/d96/class_audio_stream_a6f70806d5f6baccccf03482dae743192.html#a6f70806d5f6baccccf03482dae743192",
+"d8/d1c/class_audio_director_a9de1cf23f6dc44a8aefad83cb9402c9b.html#a9de1cf23f6dc44a8aefad83cb9402c9b",
+"d8/deb/class_app_a_if_e_s.html#ab2dadde94f4c2b9ade4be05b43a251ed",
+"db/d31/class_audio_effect_envelope.html",
+"dc/dc4/_svc_data_dictionary_8cpp_source.html",
+"df/d17/class_control_button.html#af66b6dc0a061770fcb4c8425987d9ea9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

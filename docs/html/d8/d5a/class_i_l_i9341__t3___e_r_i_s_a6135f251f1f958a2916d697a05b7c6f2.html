@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191">bltMode</a>&#160;</td>
-          <td class="paramname"><em>alpha_type</em>&#160;</td>
+          <td class="paramname"><em>blt_mode</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,21 +134,21 @@ $(document).ready(function(){initNavTree('d8/d5a/class_i_l_i9341__t3___e_r_i_s_a
     <tr><td class="paramname">filename</td><td></td></tr>
     <tr><td class="paramname">x</td><td>dest coord </td></tr>
     <tr><td class="paramname">y</td><td>dest coord </td></tr>
-    <tr><td class="paramname">alpha_type</td><td></td></tr>
+    <tr><td class="paramname">blt_mode</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00204">204</a> of file <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html">ILI9341_t3_ERIS.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                                                                                                 {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7.html#ae01c5ddf82ba27aa46334e0f9a9b21e7">bltSDB</a>(_pfbtft, _width, _height, path, filename,x,y,alpha_type);</div>
+<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                                                                                               {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <a class="code" href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7.html#ae01c5ddf82ba27aa46334e0f9a9b21e7">bltSDB</a>(_pfbtft, _width, _height, path, filename,x,y,blt_mode); <span class="comment">//blt from sd to buffer using the frame buffer as the destination</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
-<div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7_html_ae01c5ddf82ba27aa46334e0f9a9b21e7"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7.html#ae01c5ddf82ba27aa46334e0f9a9b21e7">ILI9341_t3_ERIS::bltSDB</a></div><div class="ttdeci">void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename, int16_t x, int16_t y, bltMode blt_mode)</div><div class="ttdoc">image block transfer from the SD card to a buffer at the given x,y coords</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00377">ILI9341_t3_ERIS.cpp:377</a></div></div>
+<div class="ttc" id="aclass_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7_html_ae01c5ddf82ba27aa46334e0f9a9b21e7"><div class="ttname"><a href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7.html#ae01c5ddf82ba27aa46334e0f9a9b21e7">ILI9341_t3_ERIS::bltSDB</a></div><div class="ttdeci">void bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename, int16_t x, int16_t y, bltMode blt_mode)</div><div class="ttdoc">image block transfer from the SD card to a buffer at the given x,y coords</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00486">ILI9341_t3_ERIS.cpp:486</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00377">bltSDB()</a>.</p>
+<p class="reference">References <a class="el" href="../../d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp_source.html#l00486">bltSDB()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00533">loadImageCallback()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00549">loadImageCallback()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

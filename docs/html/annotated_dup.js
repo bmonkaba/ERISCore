@@ -1,8 +1,5 @@
 var annotated_dup =
 [
-    [ "Markdown", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
-    [ "Jekyll Themes", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
-    [ "Support or Contact", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", null ],
     [ "__erisAudioAnalyzeFFT1024", "d3/db2/class____eris_audio_analyze_f_f_t1024.html", "d3/db2/class____eris_audio_analyze_f_f_t1024" ],
     [ "AnalogInputs", "d5/d8f/class_analog_inputs.html", "d5/d8f/class_analog_inputs" ],
     [ "Animation", "d4/d7c/class_animation.html", "d4/d7c/class_animation" ],

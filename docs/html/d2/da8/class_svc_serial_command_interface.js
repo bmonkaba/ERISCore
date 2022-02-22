@@ -45,7 +45,7 @@ var class_svc_serial_command_interface =
     [ "setWidgetPosition", "d2/da8/class_svc_serial_command_interface.html#a37ad4da7f5396aad9651b7958bee83b7", null ],
     [ "startLZ4Message", "d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50", null ],
     [ "streamReceiveHandler", "d2/da8/class_svc_serial_command_interface_af60825bc951540893c7a97a0c019c322.html#af60825bc951540893c7a97a0c019c322", null ],
-    [ "streamTransmitHandler", "d2/da8/class_svc_serial_command_interface_a21abae9a64d142255e764e857efe50b4.html#a21abae9a64d142255e764e857efe50b4", null ],
+    [ "streamTransmitHandler", "d2/da8/class_svc_serial_command_interface_a54101230504682fd074ffc5fbcbcc088.html#a54101230504682fd074ffc5fbcbcc088", null ],
     [ "throttle", "d2/da8/class_svc_serial_command_interface_a72fa7592492598637d233d9abe27f8f0.html#a72fa7592492598637d233d9abe27f8f0", null ],
     [ "txOverflowHandler", "d2/da8/class_svc_serial_command_interface_ad90206ca0d83334fb9ce0cc4633d97dc.html#ad90206ca0d83334fb9ce0cc4633d97dc", null ],
     [ "update", "d2/da8/class_svc_serial_command_interface_af993c07bcbc2bdb566c5660eeb31f1ca.html#af993c07bcbc2bdb566c5660eeb31f1ca", null ],

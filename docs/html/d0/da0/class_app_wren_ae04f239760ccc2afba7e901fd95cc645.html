@@ -100,24 +100,24 @@ $(document).ready(function(){initNavTree('d0/da0/class_app_wren_ae04f239760ccc2a
 
 <p>receiver for the wren c callback function loadModuleComplete indicating it's now ok to release the module_load_buffer </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l01389">1389</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;                                       {</div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160; </div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM </span></div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> != NULL){</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;    extmem_free(<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a>);</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;  }</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> != NULL) free(<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a>);</div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> = NULL;</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;}</div>
-<div class="ttc" id="aclass_app_wren_a9af7972f7fceb2faed342b31c5fc0e97_html_a9af7972f7fceb2faed342b31c5fc0e97"><div class="ttname"><a href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">AppWren::module_load_buffer</a></div><div class="ttdeci">char * module_load_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00666">AppWren.h:666</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l01509">1509</a> of file <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html">AppWren.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;                                       {</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160; </div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM </span></div>
+<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> != NULL){</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;    extmem_free(<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a>);</div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;  }</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> != NULL) free(<a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a>);</div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;  <a class="code" href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">module_load_buffer</a> = NULL;</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;}</div>
+<div class="ttc" id="aclass_app_wren_a9af7972f7fceb2faed342b31c5fc0e97_html_a9af7972f7fceb2faed342b31c5fc0e97"><div class="ttname"><a href="../../d0/da0/class_app_wren_a9af7972f7fceb2faed342b31c5fc0e97.html#a9af7972f7fceb2faed342b31c5fc0e97">AppWren::module_load_buffer</a></div><div class="ttdeci">char * module_load_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d58/_app_wren_8h_source.html#l00705">AppWren.h:705</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00666">module_load_buffer</a>.</p>
+<p class="reference">References <a class="el" href="../../d5/d58/_app_wren_8h_source.html#l00705">module_load_buffer</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00108">loadModuleComplete()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l01250">render()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l00108">loadModuleComplete()</a>, and <a class="el" href="../../d7/d7e/_app_wren_8cpp_source.html#l01370">render()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

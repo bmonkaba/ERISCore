@@ -288,7 +288,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt);
 
         /**
-         * @brief blt from an open TinyFS file pointer to a destination buffer
+         * @brief blt from an open TinyFS open file pointer to a destination buffer
          * 
          * @param dest_buffer 
          * @param dest_buffer_width 

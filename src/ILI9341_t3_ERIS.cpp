@@ -416,11 +416,6 @@ void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_
   c = strtok(NULL, " ");
   h = atol(c);
 
- 
-
-  setCursor(60,100);
-  println(w);
-  print(h);
   //clip in y dimension (top)
   if (y<0) { //throw away rows which are off screen
     for (iy = 0; iy < -1L * y; iy += 1L){ //for each off screen row
