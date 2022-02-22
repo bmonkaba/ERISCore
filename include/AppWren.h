@@ -33,16 +33,18 @@ class AppWren:public AppBaseClass {
   public:
     LittleFS_RAM wren_file_system;//public access for callback
     File wren_file;//public access for callback
+    bool useNativeFS;
 
     AppWren():AppBaseClass(){
         strcpy(name,"AppWren");
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 0; 
+        update_priority = 1; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
+        useNativeFS = true;
         vm = 0;
         h_render = 0;
         h_update = 0;
@@ -282,6 +284,43 @@ class AppWren:public AppBaseClass {
     AudioDirector* getAudioDirector(){return ad;} 
     
 
+
+    /**
+     * @brief block tramsfer from ram drive file to surface
+     * 
+     * @param path 
+     * @param filename 
+     * @param x 
+     * @param y 
+     */
+    void bltRAMDrive2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
+        dynamicSurfaceManager();
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        File file = wren_file_system.open(filename,O_RDONLY);
+        if(file != NULL){
+            draw->bltRAMFileB(sb,surface_cache->getWidth(),surface_cache->getHeight(),&file,x,y,blt_mode);
+            file.close();
+        }
+    }
+
+    /**
+     * @brief block tramsfer from ram drive filei to the frame buffer
+     * 
+     * @param path 
+     * @param filename 
+     * @param x 
+     * @param y 
+     * @param blt_mode 
+     */
+    void bltRAMDrive2FrameBuffer(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
+        dynamicSurfaceManager();
+        File file = wren_file_system.open(filename,O_RDONLY);
+        if(file != NULL){
+            draw->bltRAMFileB(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT,&file,x,y,blt_mode);
+            file.close();
+        }
+    }
+    
     /**
      * @brief block tramsfer from SD to surface
      * 
@@ -290,21 +329,21 @@ class AppWren:public AppBaseClass {
      * @param x 
      * @param y 
      */
-    void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode alpha_type){
+    void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
-        draw->bltSDB(sb,surface_cache->getWidth(),surface_cache->getHeight(),path,filename,x,y,alpha_type);
+        draw->bltSDB(sb,surface_cache->getWidth(),surface_cache->getHeight(),path,filename,x,y,blt_mode);
     }
 
 
-    void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode alpha_type){
+    void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode blt_mode){
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
         
-        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode alpha_type)
-        draw->bltSurface2Surface(&dest,to_x,to_y,&source,0,0,source.getWidth(),source.getHeight(),alpha_type);
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode blt_mode)
+        draw->bltSurface2Surface(&dest,to_x,to_y,&source,0,0,source.getWidth(),source.getHeight(),blt_mode);
     }
 
     /**
@@ -671,6 +710,7 @@ class AppWren:public AppBaseClass {
     bool image_loaded;
     elapsedMillis time_active;
     bool show_active;
+    
 
  private:
     WrenVM* vm;

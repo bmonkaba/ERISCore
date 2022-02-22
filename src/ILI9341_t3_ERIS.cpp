@@ -58,8 +58,8 @@ void ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
 void ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 840);
-    analogWrite(backlight, 180);
+    analogWriteFrequency(backlight, 240);
+    analogWrite(backlight, 240);
 }
 
 void FLASHMEM ILI9341_t3_ERIS::begin(){
@@ -98,7 +98,7 @@ void ILI9341_t3_ERIS::flipBuffer(){
 */
 
 
-void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode blt_mode){
   bool toggle = false;
   int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
@@ -122,7 +122,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,
       read_index = (source_y * source->getWidth()) + source_x;
       if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
         //if in bounds then ok to write
-        if (BLT_COPY == alpha_type){
+        if (BLT_COPY == blt_mode){
           dstBuffer[write_index] = srcBuffer[read_index];
         }else if(BLT_HATCH_XOR){
           if (toggle) dstBuffer[write_index] = srcBuffer[read_index];
@@ -199,20 +199,18 @@ void ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
  * @param filename 
  * @param x dest coord 
  * @param y dest coord
- * @param alpha_type 
+ * @param blt_mode 
  */
-void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode alpha_type){
-  bltSDB(_pfbtft, _width, _height, path, filename,x,y,alpha_type);
+void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
+  bltSDB(_pfbtft, _width, _height, path, filename,x,y,blt_mode); //blt from sd to buffer using the frame buffer as the destination
   return;
 }
 
 
 
 
-
-
-void ILI9341_t3_ERIS::bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
- uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,\
+ uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -255,7 +253,7 @@ void ILI9341_t3_ERIS::bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,
     dest_y = 0; //set y pos to 0 for the remaining portion of the bitmap
   }
   
-  //for each row
+  //for each remaining row
   for (iy = dest_y; iy < (dest_y + src_height); iy += 1){ 
     toggle ^= true;
     if (iy >= dest_buffer_height) break; //clip in y dimension (bottom) - simply don't draw anything
@@ -268,98 +266,214 @@ void ILI9341_t3_ERIS::bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,
     //read the data for the row
     for (uint16_t z = 0; z < src_width; z += 1){
       file.read(&dw,2);
-      toggle ^= true;
+      
       //if alpha is enabled mask any colors close to black
-      if (alpha_type == BLT_COPY){dest_buffer[ifb + z] = dw;}
-      else if (alpha_type == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
-      else if (alpha_type == BLT_HATCH_BLK){
+      if (blt_mode == BLT_COPY){dest_buffer[ifb + z] = dw;}
+      else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+      else if (blt_mode == BLT_HATCH_BLK){
+        toggle ^= true;
         if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
         else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
       }
-      else if (alpha_type == BLT_HATCH_XOR){
+      else if (blt_mode == BLT_HATCH_XOR){
+        toggle ^= true;
         if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
         else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
+      }else if (blt_mode == BLT_ADD){
+        dest_buffer[ifb + z] += dw;
+      }else if (blt_mode == BLT_SUB){
+        dest_buffer[ifb + z] -= dw;
+      }else if (blt_mode == BLT_MULT){
+        dest_buffer[ifb + z] *= dw;
+      }else if (blt_mode == BLT_DIV){
+        if(dw > 0) dest_buffer[ifb + z] /= dw;
+      }else if (blt_mode == BLT_AND){
+        if(dw > 0) dest_buffer[ifb + z] = dw & dest_buffer[ifb + z];
+      }else if (blt_mode == BLT_OR){
+        if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
+      }else if (blt_mode == BLT_XOR){
+        if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
       }
       //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
     }
     file.seekCur(2L* (w - (src_width + src_x))); //skip to the start of the next row
+    toggle ^= true;
   }
   file.close();
 }
 
+bool FLASHMEM ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height){
+  if (!p_SD->chdir(path)){ //change file path
+    Serial.print(F("M ILI9341_t3_ERIS::bltSD Path not found: "));
+    Serial.println(path);
+    return false;             
+  }
+  file.open(filename, O_READ);        //open image to read
+  if (file.available() == 0){ //file not found
+    Serial.print(F("M ILI9341_t3_ERIS::bltSD File Not Found: "));
+    Serial.println(filename);
+    //pSD->ls();
+    return false;
+  }
+  char *p;
+  char str[16];      //char buffer
 
-void ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt){
-  char font_file_path[256];
-  char font_kerning_file_path[256];
+  file.fgets(str,sizeof(str)); //read the header data
+  file.fgets(str,sizeof(str)); //to get the image dimensions
+  strtok(str," ");             //convert dimension text to numbers
+  *width = atol(str);
+  p = strtok(NULL, " ");
+  *height = atol(p);
+  file.close();
+  return true;
+}
+
+void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt){
+  int16_t j;
+  const String end_of_index = "KEARNING\n";
+  char terminator = '\n';
+  char font_file_path[64];
+  char font_kerning_file_path[64];
   char tmp[64];//tmp buffer to build the file name
+  char *character;//[102];//storage for the loaded start stop x indexes from the kerning file
+  int16_t startx[102];
+  int16_t stopx[102];
+  String line;
+  
+  //make sure the font exists
   strcpy(font_file_path,"/I/U/F/");
   strcat(font_file_path,font);
   strcat(font_file_path,"/");
-  setCursor(0,10);
   if (!p_SD->chdir(font_file_path)){
-    print("FONT PATH NOT FOUND! ");  
+    setCursor(0,10);
+    print("FONT PATH NOT FOUND! "); 
+    return;
   }
-  //print(font_file_path);
-  //print("\n");
-  memset(font_file_path,0,256);
+  //build the kerning and font filenames
   sprintf(tmp,"%2hu",pt);//file name is just the pt number to two digits
   strcat(font_file_path,tmp);
   strcpy(font_kerning_file_path,font_file_path);//copy
   strcat(font_file_path,".ile");//add the file name sufixes
   strcat(font_kerning_file_path,".krn");
   setTextSize(pt);
-  //print(font_kerning_file_path);
-  //print("\n");
-  //print(font_file_path);
-  FsFile kern = p_SD->open(font_kerning_file_path,O_RDONLY); //if so open the fiile
-  if (kern!=NULL){ //see if the requested font exists
-    for(int16_t i = 0;i < strlen(string_buffer);i++){ //now walk the string buffer
-      uint16_t start_x;
-      uint16_t stop_x;
-      String line;
-      start_x = 0;
-      stop_x = 0;
-      const String end_of_index = "KEARNING\n";
-      const char c = string_buffer[i]; //for each char
-      //kern = p_SD->open(font_kerning_file_path,O_RDONLY);
-      kern.seek(0);//move to the start of the file
-      do{
-        char terminator;
-        terminator = '\n';
-        //search the kern file
-        line = kern.readStringUntil(terminator,256);
-        if (c == line[0]){ //once the match is found
-          //print("\n");
-          //print(line);
-          //get the start and stop x coords
-          char j;
-          const char *cline = line.c_str();
-          sscanf(cline,"%c %hu %hu\n",&j,&start_x,&stop_x); //load the coords
-          //kern.close();
-          break;//break out from this do loop
-        }
-      }while(line!=end_of_index);//end of index reached
-      //check stop_x it should be greater than zero.. if not the char was not found
-      //else blt the font char
-      if(stop_x > 0){
-        //print("\n");
-        //print(stop_x);
-
-        bltSDAreaBufferDest(getFrameBuffer(),x,y, \
-          320,240,font_file_path,start_x,0,stop_x-start_x,pt + pt/2,BLT_BLK_COLOR_KEY);
-        x += pt/2;//move index to the next char
-      }else{
-        //print("\n");
-        //print(stop_x);
-      }
-    }
-  }else{ //kerning file not found
-    print("\n");
-    print("kerning file not found");
-  }
+  
+  //open the kerning file
+  FsFile kern = p_SD->open(font_kerning_file_path,O_RDONLY); 
+  if (!kern) return;
+  
+  line = kern.readStringUntil(terminator,256);//throw away the header line
+  //load the x start and stop indexes one time
+  line = kern.readStringUntil(terminator,256); //get the first record
+  j = 0;
+  character = (char*)extmem_malloc(102);
+  do{
+    sscanf(line.c_str(),"%c %hu %hu\n",&character[j],&startx[j],&stopx[j]); //load the coords
+    j+=1;
+    line = kern.readStringUntil(terminator,256);
+  }while(j<102);//end of index reached
   kern.close();
+
+  //now walk the string buffer and 'print' 
+  for(int16_t i = 0;i < strlen(string_buffer);i++){
+    const char c = string_buffer[i]; //for each char
+    j = -1;
+    do{
+      //search the kern x index
+      j++;
+      if (j>102) break;
+    }while(c!=character[j]);
+
+    //check stop_x it should be greater than zero.. if not the char was not found
+    //else blt the font char
+    if(j < 102){
+      //bltSDAreaBufferDest(getFrameBuffer(),x,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,start_x,0,stop_x-start_x,pt * 2,BLT_BLK_COLOR_KEY);
+      bltSDAreaBufferDest(_pfbtft,x,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,startx[j],0,stopx[j]-startx[j],pt * 2,BLT_BLK_COLOR_KEY);
+      x += pt/1.75;//move index to the next char
+    }else{
+      //print("\n");
+      //print(stop_x);
+    }
+  }
+  extmem_free(character);
 }
 
+void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
+  int16_t iy; // x & y index
+  int16_t mx;        //left clip x offset
+  int16_t nx;        //right clip x offset
+  unsigned long ifb; //frame buffer index
+  uint16_t dw;       //pixel data
+  int16_t w,h;
+  char *c;
+  char str[16];
+
+  bool toggle = false;
+  file->readBytesUntil('\n',&str[0],16);//read the file type (should be ILE565)
+  file->readBytesUntil('\n',&str[0],16); //to get the image dimensions
+ 
+  strtok(str," ");             //convert dimension text to numbers
+  w = atol(str);
+  c = strtok(NULL, " ");
+  h = atol(c);
+
+ 
+
+  setCursor(60,100);
+  println(w);
+  print(h);
+  //clip in y dimension (top)
+  if (y<0) { //throw away rows which are off screen
+    for (iy = 0; iy < -1L * y; iy += 1L){ //for each off screen row
+      file->seek(w*2L, SeekCur);
+      h -= 1; //reduce bitmap hight by 1 row
+    }
+    y = 0; //set y pos to 0 for the remaining portion of the bitmap
+  }
+  for (iy = y; iy < y + h; iy += 1){ //for each row
+    toggle ^= true;
+    if (iy < dest_buffer_height) //clip in y dimension (bottom) - simply don't draw anything
+    {
+      mx = 0; nx = 0;
+      if (x < 0L){file->seek(file->position() + (x * -2L));mx = -1L * x;} //clip in x dimension (left) - skip offscreen data
+      ifb = (iy * dest_buffer_width) + x + mx; //32bit index
+      if (x + w > dest_buffer_width){nx = x + w - dest_buffer_width;}//clip in x dimension (right) - truncate copy to screen bounds
+      for (uint16_t z = 0; z < (w - mx - nx); z += 1){
+        file->readBytes((char*)&dw,2);
+        toggle ^= true;
+        //if alpha is enabled mask any colors close to black
+        if (blt_mode == BLT_COPY){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_HATCH_BLK){
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+          else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
+        }
+        else if (blt_mode == BLT_HATCH_XOR){
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+          else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_ADD){
+          dest_buffer[ifb + z] += dw;
+        }else if (blt_mode == BLT_SUB){
+          dest_buffer[ifb + z] -= dw;
+        }else if (blt_mode == BLT_MULT){
+          dest_buffer[ifb + z] *= dw;
+        }else if (blt_mode == BLT_DIV){
+          if(dw > 0) dest_buffer[ifb + z] /= dw;
+        }else if (blt_mode == BLT_AND){
+          if(dw > 0) dest_buffer[ifb + z] = dw & dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_OR){
+          if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_XOR){
+          if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
+        }
+      }
+      if (x + w > dest_buffer_width){file->seek((x + w - dest_buffer_width) * 2, SeekCur);} //clip in x dimension (right) - skip unused data
+    }
+    else{
+      //since y index is now off screen return
+      return;
+    }
+  }
+}
 
 
 /**
@@ -372,9 +486,9 @@ void ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_
  * @param filename 
  * @param x 
  * @param y 
- * @param alpha_type 
+ * @param blt_mode 
  */
-void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode alpha_type){
+void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -426,15 +540,29 @@ void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffe
         file.read(&dw,2);
         toggle ^= true;
         //if alpha is enabled mask any colors close to black
-        if (alpha_type == BLT_COPY){dest_buffer[ifb + z] = dw;}
-        else if (alpha_type == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
-        else if (alpha_type == BLT_HATCH_BLK){
+        if (blt_mode == BLT_COPY){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_HATCH_BLK){
           if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
           else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
         }
-        else if (alpha_type == BLT_HATCH_XOR){
+        else if (blt_mode == BLT_HATCH_XOR){
           if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
           else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_ADD){
+          dest_buffer[ifb + z] += dw;
+        }else if (blt_mode == BLT_SUB){
+          dest_buffer[ifb + z] -= dw;
+        }else if (blt_mode == BLT_MULT){
+          dest_buffer[ifb + z] *= dw;
+        }else if (blt_mode == BLT_DIV){
+          if(dw > 0) dest_buffer[ifb + z] /= dw;
+        }else if (blt_mode == BLT_AND){
+          if(dw > 0) dest_buffer[ifb + z] = dw & dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_OR){
+          if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_XOR){
+          if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
         }
       }
       if (x + w > dest_buffer_width){file.seekCur( (x + w - dest_buffer_width) * 2);} //clip in x dimension (right) - skip unused data

@@ -6,15 +6,14 @@
 
 Eris core is:
 
+* an artifical intelligence and machine learning (AI/ML) capable system specializing in audio signal procressing.
 * An electronic sub-assembly module designed to stand alone but architected for reuse;
-* an artifical intelligence and machine learning (AI/ML) capable "crossover operating system" specializing in audio signal procressing.
-* an embedded Wren virtual machine host and extentions
 * an integrated rapid application development & test framework
-* a standardized graphics and audio asset library including:
+* a standardized 565 encoded graphics and audio asset library including:
     * 60+ video backgrounds, 100+ oversized backgrounds which can be repositioned
     * 100+ sprite based fonts (8pt-39pt) with digraph sorted kearning files
+    * 95K+ sprites: icons, radial gauges, virtual led indicators, game genre theme sprites and animations, etc.
     * 4000+ single cycle waveforms, 30MB spectraly sorted single cycle wavetable database w/index file
-    * 95K+ sprites: icons, radial gauges, virtual led indicators, game theme sprites and animations, etc.
 * supported by a crossplatform serial to web socket interface (python) & editor software (html/websocket based)
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
@@ -39,7 +38,7 @@ Audio:
     https://github.com/KristofferKarlAxelEkstrand/AKWF-FREE - http://creativecommons.org/publicdomain/zero/1.0/
 
 Graphics:
-    various; see asset folders, selected for commercial reuse
+    selected by availbility for commercial reuse. see asset folders for licence details. 
 
 #### External dependancies
 
@@ -71,14 +70,6 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 
 * Minor optimizations of the shell internal thin wall supports to improve SLA 3D printing accuracy
 * Multi-format Serial Data (SDIO) access port / connector interface for external connectivity of sensors or HMI expansion
-
-#### TODO
-
-* wren wrappers for AIeFS?
-* define an access concept for requesting assets from the actual filesystem.
-* import a custom genetic algo module from an older project and port from from python to wren
-* import a custom chord identification/scoring module from an older project
-* etc...
 
 #### Hardware Features:
 

@@ -296,16 +296,19 @@ class Data {
 
 //Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static loadImageToSurface(path,filename,x,y)
-    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,alpha_type)
+    foreign static useWrenFileSystem()
+    foreign static useSDFileSystem()
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
     foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
-    foreign static setFontSize(_)
+    foreign static setFontSize(pt)
     foreign static print(string)
     foreign static print(string,x,y,font,font_point)
 }
@@ -320,6 +323,7 @@ class FileSystem{
     foreign static remove(file_name)
     foreign static usedSize()
     foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
 }
 
 //RAM drive file interface

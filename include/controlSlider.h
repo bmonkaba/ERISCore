@@ -17,7 +17,7 @@ class ControlSlider:public AppBaseClass {
   public:
     ControlSlider(AppBaseClass *parent):AppBaseClass(){
         setParent(parent);
-        update_priority = 253;
+        update_priority = 90;
         is_pressed = false;
         is_dirty = true;
         strcpy(text,"ControlSlider");

@@ -46,7 +46,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
 
     void FLASHMEM initalize(){
       sprintf(name, APPNAME);
-      update_priority = 5800; //set to higher priority
+      update_priority = 10; //set to higher priority
       id = 1;
       t_lastupdate = micros();
 

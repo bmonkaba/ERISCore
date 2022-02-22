@@ -252,7 +252,7 @@ void FASTRUN SvcSerialCommandInterface::streamReceiveHandler(){
 }
 
 
-void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
+void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;

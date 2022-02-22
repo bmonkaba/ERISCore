@@ -504,7 +504,7 @@ void printCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void printWithFontCallback(WrenVM* vm){
+void FASTRUN printWithFontCallback(WrenVM* vm){
   //(char* string)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -525,6 +525,22 @@ void setFontSizeCallback(WrenVM* vm){
   //TODO
 }
 
+
+
+void getImageSizeCallback(WrenVM* vm){
+  //(char* path,char* filename,int16_t x, int16_t y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  int32_t width, height;
+  app->getDraw()->getImageSize(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),&width,&height);
+  wrenEnsureSlots(vm, 3);
+  wrenSetSlotNewList(vm, 0);
+  wrenSetSlotDouble(vm,1,width);
+  wrenInsertInList(vm, 0, -1, 1);//insert the width from slot 1 
+  wrenSetSlotDouble(vm,2,height);
+  wrenInsertInList(vm, 0, -1, 2);//insert the height from slot 1
+}
+
 /**
  * @brief VM callback for extention method
  * 
@@ -534,7 +550,25 @@ void loadImageCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),BLT_BLK_COLOR_KEY);
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 5);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else return;
+  if(app->useNativeFS){
+    app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
+  }else{
+    app->bltRAMDrive2FrameBuffer(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
+  }
 }
 
 /**
@@ -546,7 +580,25 @@ void loadImageSurfaceCallback(WrenVM* vm){
   //(char* path,char* filename,int16_t x, int16_t y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),BLT_BLK_COLOR_KEY);
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 5);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else return;
+  if(app->useNativeFS){
+    app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
+  }else{
+    app->bltRAMDrive2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
+  }
 }
 
 /**
@@ -558,21 +610,21 @@ void bltCallback(WrenVM* vm){
   //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
-  bltMode blt_mode;
-  switch (blt_mode_request){
-    case 0:
-      blt_mode = BLT_COPY;
-    case 1:
-      blt_mode = BLT_BLK_COLOR_KEY;
-    case 2:
-      blt_mode = BLT_HATCH_BLK;
-    case 3:
-      blt_mode = BLT_HATCH_XOR;
-    default:
-      blt_mode = BLT_COPY;
-  }
-  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),blt_mode);
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 5);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else return;
+  app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
 }
 
 /**
@@ -623,6 +675,29 @@ void drawFillCallback(WrenVM* vm){
   app->drawFill(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3));
 }
 
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void drawUseWrenFileSystem(WrenVM* vm){
+  //()
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->useNativeFS = false;
+}
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void drawUseSDFileSystem(WrenVM* vm){
+  //()
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->useNativeFS = true;
+}
 
 //
 //
@@ -664,7 +739,7 @@ void fsExistsCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotBool(vm,0,app->wren_file_system.exists(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotBool(vm,0,app->wren_file_system.exists(wrenGetSlotString(vm,1)));
 }
 
 /**
@@ -676,7 +751,7 @@ void fsMkdirCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotBool(vm,0,app->wren_file_system.mkdir(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotBool(vm,0,app->wren_file_system.mkdir(wrenGetSlotString(vm,1)));
 }
 
 /**
@@ -688,7 +763,7 @@ void fsRenameCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotBool(vm,0,app->wren_file_system.rename(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotBool(vm,0,app->wren_file_system.rename(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2)));
 }
 
 /**
@@ -700,7 +775,7 @@ void fsRemoveCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotBool(vm,0,app->wren_file_system.remove(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotBool(vm,0,app->wren_file_system.remove(wrenGetSlotString(vm,1)));
 }
 
 /**
@@ -712,7 +787,7 @@ void fsRmdirCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotBool(vm,0,app->wren_file_system.rmdir(wrenGetSlotString(vm,1))); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotBool(vm,0,app->wren_file_system.rmdir(wrenGetSlotString(vm,1)));
 }
 
 /**
@@ -724,7 +799,7 @@ void fsUsedSizeCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotDouble(vm,0,app->wren_file_system.usedSize()); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotDouble(vm,0,app->wren_file_system.usedSize());
 }
 
 /**
@@ -736,8 +811,44 @@ void fsTotalSizeCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize()); //TODO FIND ENUMERATED MODES AND SWITCH BY CHAR
+  wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize());
 }
+
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsimportFromSD(WrenVM* vm){
+  //(src_path,src_file,dest_path,dst_file)
+  char c[16];
+  FsFile source; //The source is the SD card
+  File dest; //The destination is the VM file system located in ext_ram
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  
+  const char* src_path;
+  const char* src_filename;
+  const char* dst_path;
+  const char* dst_filename;
+  src_path = wrenGetSlotString(vm,1);
+  src_filename = wrenGetSlotString(vm,2);
+  dst_path = wrenGetSlotString(vm,3);
+  dst_filename = wrenGetSlotString(vm,4);
+  am->requestArmSetClock(600000000);
+  am->getSD()->chdir(src_path);
+  source = am->getSD()->open(src_filename,O_RDONLY);
+  dest = app->wren_file_system.open(dst_filename,O_RDWR);
+  //c[2]=0; //null termination
+  for(int32_t i= source.available(); i > 0; i--){
+    source.readBytes(c,1);//read char
+    dest.write(c,1);
+  }
+  source.close();
+  dest.close();
+  wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize());
+}
+
 
 //
 //
@@ -1043,9 +1154,11 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return printWithFontCallback;
       }else if (strcmp(signature, "setFontSize(_)") == 0){
         return setFontSizeCallback;
-      }else if (strcmp(signature, "loadImage(_,_,_,_)") == 0){
+      }else if (strcmp(signature, "getImageSize(_,_)") == 0){
+        return getImageSizeCallback;
+      }else if (strcmp(signature, "loadImage(_,_,_,_,_)") == 0){
         return loadImageCallback;
-      }else if (strcmp(signature, "loadImageToSurface(_,_,_,_)") == 0){
+      }else if (strcmp(signature, "loadImageToSurface(_,_,_,_,_)") == 0){
         return loadImageSurfaceCallback;
       }else if (strcmp(signature, "blt(_,_,_,_,_,_,_)") == 0){
         return bltCallback;
@@ -1053,6 +1166,10 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return drawLineCallback;
       }else if (strcmp(signature, "fill(_,_,_)") == 0){
         return drawFillCallback;
+      }else if (strcmp(signature, "useWrenFileSystem()") == 0){
+        return drawUseWrenFileSystem;
+      }else if (strcmp(signature, "useSDFileSystem()") == 0){
+        return drawUseSDFileSystem;
       }
     }else if (strcmp(className, "FileSystem") == 0){
       if (strcmp(signature, "open(_,_)") == 0){
@@ -1071,6 +1188,8 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return fsUsedSizeCallback;
       }else if (strcmp(signature, "totalSize()") == 0){
         return fsTotalSizeCallback;
+      }else if (strcmp(signature, "importFromSD(_,_,_,_)") == 0){
+        return fsimportFromSD;
       }
     }else if (strcmp(className, "File") == 0){
       if (strcmp(signature, "read(_)") == 0){
@@ -1128,6 +1247,7 @@ void FLASHMEM AppWren::vmConstructor(const char* initial_script){
 
 void FLASHMEM AppWren::startVM(){
     Serial.println(F("\nM AppWren::startVM()"));
+    useNativeFS = true;
     WrenConfiguration config;
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
@@ -1352,9 +1472,9 @@ void FLASHMEM AppWren::getWrenHandles(){
   h_update = wrenMakeCallHandle(vm, "update()");  
   h_onFocus = wrenMakeCallHandle(vm, "onFocus()");
   h_onFocusLost = wrenMakeCallHandle(vm, "onFocusLost()");
-  h_onTouch = wrenMakeCallHandle(vm, "onTouch(x,y)");
-  h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag(x,y)");
-  h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease(x,y)");
+  h_onTouch = wrenMakeCallHandle(vm, "onTouch(_,_)");
+  h_onTouchDrag = wrenMakeCallHandle(vm, "onTouchDrag(_,_)");
+  h_onTouchRelease = wrenMakeCallHandle(vm, "onTouchRelease(_,_)");
   h_onAnalog1 = wrenMakeCallHandle(vm, "onAnalog1(_)");
   h_onAnalog2 = wrenMakeCallHandle(vm, "onAnalog2(_)");
   h_onAnalog3 = wrenMakeCallHandle(vm, "onAnalog3(_)");

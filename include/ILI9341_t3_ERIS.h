@@ -10,7 +10,7 @@
  */
 #ifndef _ILI9341_t3ERIS_
 #define _ILI9341_t3ERIS_
-
+#include <LittleFS.h>
 #include "ILI9341_t3n.h"
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
@@ -241,7 +241,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 79000000;
+            tft_write_speed = 74000000;
             tft_read_speed = 25000000;
             p_SD = NULL;
             backlight = 0;
@@ -260,6 +260,22 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          */
         uint32_t getFrameAddress(){return (uint32_t)(void *)_pfbtft;}
 
+        
+        /**
+         * @brief loads the width and height parameters from the given image
+         * returns true if the values have been loaded
+         * returns false if the file could not be found 
+         * 
+         * @param path 
+         * @param filename 
+         * @param width 
+         * @param height 
+         * @return true 
+         * @return false 
+         */
+        bool getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height);
+
+
         /**
          * @brief prints the string buffer using the provided sprite library name and pt size
          * 
@@ -270,6 +286,17 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @param pt 
          */
         void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt);
+
+        /**
+         * @brief blt from an open TinyFS file pointer to a destination buffer
+         * 
+         * @param dest_buffer 
+         * @param dest_buffer_width 
+         * @param dest_buffer_height 
+         * @param file 
+         * @param blt_mode 
+         */
+        void bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode);
 
         /**
          * @brief image block transfer from the area given by src_x, src_y, src_width, src_height to the destination given similar parameters
