@@ -88,7 +88,7 @@ const char* gWelcomeMessage =
 "M Connected to the Serial Command Interface           \n";
 
 
-int replacechar(char *str, char orig, char rep) {
+int FASTRUN replacechar(char *str, char orig, char rep) {
     char *ix = str;
     int n = 0;
     while((ix = strchr(ix, orig)) != NULL) {
@@ -98,7 +98,7 @@ int replacechar(char *str, char orig, char rep) {
     return n;
 }
 
-uint16_t SvcSerialCommandInterface::checksum(const char *msg){
+uint16_t FASTRUN SvcSerialCommandInterface::checksum(const char *msg){
     uint16_t csum;
     csum=0;
     for(uint16_t i = 0;i<strlen(msg);i++){
@@ -112,7 +112,7 @@ uint16_t SvcSerialCommandInterface::checksum(const char *msg){
  * The txBuffer contents are lz4 compressed, base64 encoded and finaly sent.\n 
  * The serial message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
  */
-void SvcSerialCommandInterface::sendLZ4Message(){
+void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
 #ifdef USE_EXTMEM
     //do nothing - one time malloc in the constructor
@@ -121,7 +121,7 @@ void SvcSerialCommandInterface::sendLZ4Message(){
 #endif
     memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = index_tx_buffer;
-    compressed_len = LZ4_compress_fast(tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,1);
+    compressed_len = LZ4_compress_fast(tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,10);
     empty();
     encode_base64((unsigned char *)p_working_buffer, compressed_len, (unsigned char *)tx_Buffer);
     //while(throttle()){
@@ -147,7 +147,7 @@ void SvcSerialCommandInterface::sendLZ4Message(){
  * @brief immediately transmit then clear the txBuffer
  * 
  */
-void SvcSerialCommandInterface::send(){
+void FASTRUN SvcSerialCommandInterface::send(){
     while(throttle()){
         delay(50);
     }
@@ -166,7 +166,7 @@ void SvcSerialCommandInterface::send(){
  * @return true 
  * @return false 
  */
-bool SvcSerialCommandInterface::throttle(){
+bool FASTRUN SvcSerialCommandInterface::throttle(){
     uint16_t avail;
     avail = Serial.availableForWrite();
 
@@ -192,7 +192,7 @@ bool SvcSerialCommandInterface::throttle(){
     return false;
 }
 
-void SvcSerialCommandInterface::txOverflowHandler(){
+void FASTRUN SvcSerialCommandInterface::txOverflowHandler(){
     char* s;
     s = strrchr(tx_Buffer,'\r');//find last new line
     s[0] = 0;
@@ -252,7 +252,7 @@ void FASTRUN SvcSerialCommandInterface::streamReceiveHandler(){
 }
 
 
-void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
+void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
@@ -466,7 +466,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_GET_RAM2(){
 #endif
 }
 
-void FASTRUN SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
+void FLASHMEM SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
     int total_read;
     char cmd[128], param[128],param2[128];
     int32_t val;
@@ -497,7 +497,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_SAVE(){
     } else Serial.println(F("M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_SAVE: captureBuffer is NULL"));
 }
 
-void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_EXECUTE(){
+void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_EXECUTE(){
     if(p_capture_buffer != NULL){
         Serial.println(F("M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_EXECUTE: script execute request"));
         am->sendMessage(this,"AppWren","WREN_SCRIPT_EXECUTE");
@@ -522,7 +522,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_COMPILE(){
     } else Serial.println(F("M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_COMPILE: captureBuffer is NULL"));
 }
 
-void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START(){
+void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START(){
     is_capturing_bulk_data = true;
 #ifndef USE_EXTMEM
     char* tmp;
@@ -544,7 +544,7 @@ void FASTRUN SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START(){
     }
 }
 
-void FASTRUN SvcSerialCommandInterface::messageHandler_GET(){
+void FLASHMEM SvcSerialCommandInterface::messageHandler_GET(){
     int total_read;
     char cmd[128], param[128],param2[128];
     total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
@@ -566,7 +566,7 @@ void FASTRUN SvcSerialCommandInterface::messageHandler_GET(){
         stream_pos = 0;
     }
 }
-void FASTRUN SvcSerialCommandInterface::messageHandler_LS(){
+void FLASHMEM SvcSerialCommandInterface::messageHandler_LS(){
     bool first;
     int total_read;
     char cmd[128], param[128],param2[128];

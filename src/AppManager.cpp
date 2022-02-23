@@ -32,7 +32,7 @@ extern SvcErisAudioParameterController apc;
 
 
 Touch touch(CS_TOUCH);
-ILI9341_t3_ERIS FASTRUN draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
+ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 #ifdef USE_EXTMEM
 uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
 uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (8)));
@@ -40,7 +40,7 @@ uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (8)));
 uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
 uint16_t DMAMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
 #endif
-SvcDataDictionary FASTRUN _data; 
+SvcDataDictionary _data; 
 
 /**
  * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
@@ -480,7 +480,7 @@ AppBaseClass* AppManager::getAppByName(const char *appName){
  * @brief prints out some stats in JSON format to the serial port
  * 
  */
-void FLASHMEM AppManager::printStats (){
+void FASTRUN AppManager::printStats (){
   SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
   if(sci->requestStartLZ4Message()){
     AppBaseClass *node = root;

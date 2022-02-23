@@ -1293,7 +1293,7 @@ LZ4_FORCE_INLINE int LZ4_compress_generic(
 }
 
 
-int FLASHMEM LZ4_compress_fast_extState(void* state, const char* source, char* dest, int inputSize, int maxOutputSize, int acceleration)
+int FASTRUN LZ4_compress_fast_extState(void* state, const char* source, char* dest, int inputSize, int maxOutputSize, int acceleration)
 {
     LZ4_stream_t_internal* const ctx = & LZ4_initStream(state, sizeof(LZ4_stream_t)) -> internal_donotuse;
     assert(ctx != NULL);
@@ -1363,7 +1363,7 @@ int LZ4_compress_fast_extState_fastReset(void* state, const char* src, char* dst
 }
 
 
-int LZ4_compress_fast(const char* source, char* dest, int inputSize, int maxOutputSize, int acceleration)
+int FASTRUN LZ4_compress_fast(const char* source, char* dest, int inputSize, int maxOutputSize, int acceleration)
 {
     int result;
 #if (LZ4_HEAPMODE)

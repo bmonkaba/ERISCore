@@ -56,7 +56,7 @@ SvcDataDictionary::SvcDataDictionary(){
             }
 }
 
-uint32_t SvcDataDictionary::hash(const char* s){
+uint32_t FASTRUN SvcDataDictionary::hash(const char* s){
     //uint32 djb2 string hash
     uint32_t h = 5381;
     int c;
@@ -95,7 +95,7 @@ bool SvcDataDictionary::create(const char* key,float32_t val){
     return true;
 }
 
-int32_t SvcDataDictionary::read(const char* key){
+int32_t FASTRUN SvcDataDictionary::read(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -106,7 +106,7 @@ int32_t SvcDataDictionary::read(const char* key){
     return 0;
 }
 
-float32_t SvcDataDictionary::readf(const char* key){
+float32_t FASTRUN SvcDataDictionary::readf(const char* key){
     uint32_t h;
     h = hash(key);
     for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
@@ -155,7 +155,7 @@ bool SvcDataDictionary::update(const char* key,float32_t val,uint32_t* owner){
     return create(key, val, owner);
 }
 
-bool SvcDataDictionary::update(const char* key,int32_t val){
+bool FASTRUN SvcDataDictionary::update(const char* key,int32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -174,7 +174,7 @@ bool SvcDataDictionary::update(const char* key,int32_t val){
     return create(key, val);
 }
 
-bool SvcDataDictionary::update(const char* key,float32_t val){
+bool FASTRUN SvcDataDictionary::update(const char* key,float32_t val){
     uint32_t h;
     h = hash(key);
 
@@ -223,7 +223,7 @@ void SvcDataDictionary::printStats(){
 
 }
 
-void SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
+void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
     if(sci->requestStartLZ4Message()){

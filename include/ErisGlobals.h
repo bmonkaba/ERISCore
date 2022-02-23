@@ -49,13 +49,13 @@
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 740000000
+#define CPU_BOOST_MAX_FREQ 760000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 69.0
+#define CPU_THERMAL_THROTTLE_TEMP 66.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -170,12 +170,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 683
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 1683
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 251
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 1251
 
 //Audio Director
 /**
@@ -207,14 +207,14 @@
  * @brief max audio connection string length
  * 
  */
-#define MAX_CONNECTION_STRING_LENGTH 96
+#define MAX_CONNECTION_STRING_LENGTH 64
 
 //ILI9341_t3_ERIS
 /**
  * @brief defines how many slices per image\n
  * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 3
+#define ANIMATION_CHUNKS_PER_FRAME 2
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -315,6 +315,7 @@ class Draw {
 
 //RAM drive file system
 class FileSystem{
+    foreign static format()
     foreign static mkdir(dir_name)
     foreign static rmdir(dir_name)
     foreign static open(file_name,mode)
@@ -384,14 +385,14 @@ class App {
     //  - in case these methods are not found in a scrip, method forwarding will halt
     //    until the next restartVM() call or external script load event 
 
-    render() {
+    update() {
         _count = _count + 1
         if (_count > 15000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
             _count = 0
         }
     }
-    update() {
+    render() {
         App.setWidgetPosition(__x, __y)
         Draw.setCursor(5 + __x,__y -9)
         Draw.print("Hello World!")

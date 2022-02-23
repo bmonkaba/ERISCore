@@ -849,6 +849,20 @@ void fsimportFromSD(WrenVM* vm){
   wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize());
 }
 
+/**
+ * @brief VM callback for extention method
+ * 
+ * @param vm 
+ */
+void fsFormat(WrenVM* vm){
+  //()
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->wren_file_system.quickFormat();
+}
+
+
+
 
 //
 //
@@ -1190,6 +1204,8 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return fsTotalSizeCallback;
       }else if (strcmp(signature, "importFromSD(_,_,_,_)") == 0){
         return fsimportFromSD;
+      }else if (strcmp(signature, "format()") == 0){
+        return fsFormat;
       }
     }else if (strcmp(className, "File") == 0){
       if (strcmp(signature, "read(_)") == 0){
@@ -1336,7 +1352,7 @@ void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message)
     }
 }
 
-bool FLASHMEM AppWren::dynamicSurfaceManager(){
+bool FASTRUN AppWren::dynamicSurfaceManager(){
   if(!surface_cache){
     surface_mempool = wrenFastRam;
     if (has_pop || has_focus){
@@ -1367,7 +1383,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void AppWren::render(){
+ void FASTRUN AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
@@ -1431,7 +1447,7 @@ bool FLASHMEM AppWren::dynamicSurfaceManager(){
     };    //called only when the app is active
 
 
-void AppWren::update(){
+void FASTRUN AppWren::update(){
   if (enable_call_forwarding == false){ //if no script loaded
       return;
   } else{

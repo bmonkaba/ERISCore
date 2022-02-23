@@ -137,7 +137,7 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   return false;
 };
 
-void FLASHMEM AudioDirector::printStats(){
+void FASTRUN AudioDirector::printStats(){
 
   if (sci==NULL) return;
 
