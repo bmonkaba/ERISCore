@@ -16,17 +16,54 @@ class Data {
     foreign static readf(key)
     foreign static updatef(key,float_value)
 }
-//Drawing interface for writing to the framebuffer
+//Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static loadImageToSurface(path,filename,x,y)
+    foreign static useWrenFileSystem()
+    foreign static useSDFileSystem()
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
     foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
+    foreign static print(string,x,y,font,font_point)
+}
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
+}
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
 }
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
@@ -38,8 +75,9 @@ class App {
         __h = 200
         
         __hero_animation_index = 0
-        __mtn_path = "/I/U/S/ARCADE/PARALLAX/MOUNTAINS"
+        __mtn_path = "/I/U/S/ARCADE/PARALLAX/MOUNTAINS/"
         
+        __BLT_OPERATIONS = ["BLT_COPY","BLT_BLK_COLOR_KEY","BLT_HATCH_BLK","BLT_HATCH_XOR","BLT_ADD","BLT_SUB","BLT_MULT","BLT_DIV","BLT_AND","BLT_OR","BLT_XOR"]
         App.setDimension(__w, __h)
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
@@ -47,7 +85,10 @@ class App {
         
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
+        Draw.useSDFileSystem()
+        _size = Draw.getImageSize(__mtn_path,"glacial_mountains.ile")
         _count = 0
+        _blt_op = 0
         _demo_loops = 10
         __dx = 0
         _timer = System.clock
@@ -78,12 +119,14 @@ class App {
     update() {
         _count = _count + 1
         if (_count > 2900){
-            System.print(["UP_TIME",System.clock,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
+            var width
+            var height 
+            System.print(["IMG_SIZE",_size,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
             var elapsed_time = System.clock - _timer
             _timer = System.clock
             _count = 0
-            _demo_loops = _demo_loops - 1
-            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_35")
+            
+            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_40")
         }
     }
     
@@ -93,32 +136,50 @@ class App {
         var x = App.random(120)
         var y = App.random(120)
         
-        Draw.fill(0,0,0)
         
-        Draw.loadImage("/I/U/S/SIDE/DAWN/","2_nz2.ile",__dx/1,0)
+        
+        
+        Draw.loadImage("/I/U/S/SIDE/DAWN/","2.ile",__dx/8,0,0)
         var mush = App.random(6).truncate.toString
-        Draw.loadImage(__mtn_path,"glacial_mountains.ile",600 + __dx/1,-100)
-        //Draw.loadImageToSurface("/I/U/S/SIDE/DAWN/","6_nz2.ile",__dx/60,0)
-        __dx = __dx - 1
-        if (__dx < -1100){
-            __dx = 320
+        
+        Draw.loadImage(__mtn_path,"glacial_mountains.ile",__dx/4,-30,_blt_op)
+        Draw.loadImage(__mtn_path,"glacial_mountains.ile",0.5 + _size[0] + __dx/4,-30,_blt_op)
+        //Draw.loadImage(__mtn_path,"glacial_mountains.ile",0.5 - _size[0] + __dx/6,-30,7)
+        
+        for (x in 0...(16)) {
+            Draw.loadImage("/I/U/S/TOON/POLY/","Ground-02_nz2.ile",__dx + (x * 80),165,0)
         }
         
-        __hero_animation_index = __hero_animation_index + 1
+        //Draw.loadImageToSurface("/I/U/S/SIDE/DAWN/","6_nz2.ile",__dx/60,0)
+        __dx = __dx - 12
+        if (__dx < -_size[0] * 3){
+            __dx = 0
+            _blt_op = _blt_op + 1
+            if (_blt_op > 10) _blt_op = 0
+            _demo_loops = _demo_loops - 1
+        }
+        
+        __hero_animation_index = __hero_animation_index + 4
         if (__hero_animation_index > 51) __hero_animation_index = 1
         
         var filename = ""
         
         if(__hero_animation_index < 10){
-            filename = "animation_speed_0000%(__hero_animation_index.toString)_nz2.ile"    
+            filename = "animation_speed_0000%(__hero_animation_index.toString).ile"    
         } else{
-            filename = "animation_speed_000%(__hero_animation_index.toString)_nz2.ile"    
+            filename = "animation_speed_000%(__hero_animation_index.toString).ile"    
         }
         
-        Draw.loadImage("/I/U/S/ANIME/Amria/speed/",filename,0,100)
+        Draw.loadImage("/I/U/S/ANIME/Amria/speed/",filename,0,35,1)
         
-        Draw.setCursor(220,220)
-        Draw.print(__hero_animation_index.toString)
+        Draw.loadImage("/I/U/S/UI/WenrexaUI/","MainPanel03_nz2.ile",40,200,0)
+        
+        Draw.setCursor(55,210)
+        Draw.print("Mountain SD BLT operation:\n")
+        Draw.setCursor(55,225)
+        Draw.print(__BLT_OPERATIONS[_blt_op])
+        //Draw.setCursor(220,220)
+        //Draw.print(__hero_animation_index.toString)
     }
     onFocus() {
         //System.print(["onFocus"])
@@ -163,6 +224,7 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_38")
+
 
 
 

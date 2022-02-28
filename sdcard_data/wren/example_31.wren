@@ -12,7 +12,6 @@
     into the Eris Core framework
 */
 //audio director interface for making/breaking audiostream connections
-
 class AudioDirector{
     //foreign methods are implemented in C/C++
     foreign static connect(source_audio_stream,source_port,
@@ -27,29 +26,68 @@ class Data {
     foreign static readf(key)
     foreign static updatef(key,float_value)
 }
-//Drawing interface for writing to the framebuffer
+//Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static fill(r,g,b)
+    foreign static useWrenFileSystem()
+    foreign static useSDFileSystem()
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
+    foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
+    foreign static print(string,x,y,font,font_point)
+}
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
+}
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
 }
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
     construct new() {
         //double underscores indicate static vars
-
-        App.requestPopUp(true)
         __x = 0
         __y = 0
         __w = 320
         __h = 240
         App.setDimension(__w, __h)
-
+        App.setWidgetDimension(__w, __h)
+        //App.requestPopUp(false)
+        Draw.fill(0,0,0)
+        
         
         
         __dw = 10.23
@@ -57,17 +95,17 @@ class App {
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
-        _demo_loops = 20
+        _demo_loops = 4
         _r = 0
         _g = 0
         _b = 0
-        _Gain = 1
-        _MaxIters = 180
-        _Zoom = 0.75
+        _Gain = 3.51
+        _MaxIters = 100
+        _Zoom = 1
         _MoveX = 0
         _MoveY = 0
-        _CX = -0.017
-        _CY = 0.17015
+        _CX = 0.01
+        _CY = 0.6015
         _jx = 0
         _jy = 0
         _dx = 0.02
@@ -112,23 +150,24 @@ class App {
             _jx = 0
             _jy = _jy + 1
             if (_jy >= __h){
+                _demo_loops = _demo_loops - 1
                 _jy = 0
-                _Zoom = _Zoom + ( 0.01)
-                _CY = _CY + 0.1
-                _CX = _CX - 0.11
+                _Zoom = _Zoom + ( _Zoom * 1.1)
+                _CY = _CY + 0.02
+                _CX = _CX - (_CX * 0.02)
                 _Gain = _Gain + 1.58
-                _MaxIters = (_MaxIters + (_Zoom * _Zoom * _Zoom)) * _Gain 
-                if (_MaxIters > 200){
-                    _MaxIters = 200
-                    _Zoom = 0.9
-                    _Gain = 1
+                _MaxIters = (_MaxIters + (_Zoom  )) * _Gain 
+                if (_MaxIters > 100){
+                    _MaxIters = 100
+                    //_Zoom = 0.9
+                    //_Gain = 1
                 }
             }
         } else _jx = _jx + 1
         var r = (i*_jx/(__w*2))%(400)
         var g = (400-_jx)%(400)/2
         var b = (i)%400
-        g = (g * b)/10
+        g = (g * b)
         if (r < 0) r = 0
         if (g < 0) g = 0
         if (b < 0) b = 0
@@ -155,10 +194,10 @@ class App {
     //
     update() {
         _count = _count + 1
-        if (_count > 10000){
+        if (_count > 1000){
             System.print(["FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP"),"iter",_MaxIters])
             _count = 0
-            _demo_loops = _demo_loops - 1
+            
             
             if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_32")
         }
@@ -167,8 +206,8 @@ class App {
         App.setWidgetPosition(__x, __y)
         //every pixel is calculated by many iterations
         //kick up the clock speed for this section
-        App.setClockSpeed(760000000)
-        for (y in 0...(512)) {
+        App.setClockSpeed(740000000)
+        for (y in 0...(1024)) {
             createJulia()
         }
         //for (y in 0...(5)) {
@@ -219,23 +258,5 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_31")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

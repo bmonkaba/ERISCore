@@ -12,7 +12,6 @@
     into the Eris Core framework
 */
 //audio director interface for making/breaking audiostream connections
-
 class AudioDirector{
     //foreign methods are implemented in C/C++
     foreign static connect(source_audio_stream,source_port,
@@ -27,13 +26,52 @@ class Data {
     foreign static readf(key)
     foreign static updatef(key,float_value)
 }
-//Drawing interface for writing to the framebuffer
+//Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
+    foreign static getPixel(x,y)
+    foreign static line(x,y,x2,y2,r,g,b)
+    foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
+    foreign static print(string,x,y,font,font_point)
+}
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
+}
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
 }
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
@@ -220,6 +258,8 @@ App.setWidgetDimension(64, 64)
 var ErisApp = App.new()
 
 System.print("example_2")
+
+
 
 
 

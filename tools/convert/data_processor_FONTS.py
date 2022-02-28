@@ -108,7 +108,7 @@ free_fonts = ['!PaulMaul-b.ttf', \
  'zenda.ttf' \
 ]
 
-TEXT_FONT_SIZE = 36
+TEXT_FONT_SIZE = 72
 
 #convert 8 bit r,g,b values into 16 bit 565 format 
 def color565(r,g,b):
@@ -258,15 +258,15 @@ def GenTextTag(font_ttf,text,out_file,font_size):
         startx = startx + fnt.getsize(t)[0]
         
     width = startx
-    height = fnt.getsize(text)[1]
+    height = fnt.getsize(string.printable)[1]
     
-    img = Image.new('RGB', (width, height), color = (0, 0, 0))
+    img = Image.new('RGB', (width, height+font_size), color = (0, 0, 0))
     d = ImageDraw.Draw(img)
     startx = 0
     start_char_index = []
     for t in text:
         #d.line([(startx,0),(startx,1000),(startx,0)], fill ="green", width = 1)
-        d.text((startx,0), t, font=fnt, fill=(255,255,255))
+        d.text((startx,font_size/2), t, font=fnt, fill=(255,255,255))
         start_char_index.append([t,startx,startx + fnt.getsize(t)[0]])
         startx = startx + fnt.getsize(t)[0]
         #d.line([(startx,0),(startx,1000),(startx,0)], fill ="red", width = 1)
@@ -347,29 +347,34 @@ def GenTextProof(sprite_font,kern_file,text):
     return
 
 if __name__ == "__main__":
-    fonts = [r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\HEAVY_DATA.TTF", \
-             r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\MajorMonoDisplay-Regular.ttf", \
-             r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\RobotoMono-VariableFont_wght.ttf", \
-             r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\RobotoMono-Italic-VariableFont_wght.ttf" \
-             ]
+    fonts = []
+    # include any selected system installed fonts
+    #
+    #fonts = [r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\HEAVY_DATA.TTF", \
+    #         r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\MajorMonoDisplay-Regular.ttf", \
+    #         r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\RobotoMono-VariableFont_wght.ttf", \
+    #         r"C:\Users\brian\AppData\Local\Microsoft\Windows\Fonts\RobotoMono-Italic-VariableFont_wght.ttf" \
+    #         ]
     
     fonts = fonts + free_fonts
     
+    prefix = "D:\\brian\\Dev\\Eris\\ERISCore\\tools\\convert\\TTF_SOURCE\\" 
+    fonts = os.listdir(prefix)
+    
     for font in fonts:
-        if(font.find("C:") == -1):
-            prefix = "D:\\brian\\Dev\\Eris\\ERISCore\\tools\\convert\\TTF_SOURCE\\" 
+        if(font.find("C:") == -1):        
+            #font = prefix + font 
             font = prefix + font 
         
         #wrangle the font full file path to a friendly consistent file prefix for the output files
         f = font.split("\\")[-1].split(".")[0].replace("_","-")
         path = ".\\FONTS\\" + f
         print(path)
-        
         try:
             os.mkdir(path)
         except:
+            #folder prob already exists
             pass
-        
         somekeywords = [string.printable.replace("\n","")]
         
         #create number text tags for the UI
@@ -378,9 +383,9 @@ if __name__ == "__main__":
         #        GenTextTag(font,str(i),".\\NUMBERS\%s_%02d_%02d.png"%(f,TEXT_FONT_SIZE,i),TEXT_FONT_SIZE) 
         
         for akey in somekeywords:
-            for TEXT_FONT_SIZE in range(8,40,1):
+            for font_size in range(8,TEXT_FONT_SIZE+1,1):
                 #print( "Generating text tag for " + akey)
-                GenTextTag(font,akey,"%s\%02d.png"%(path,TEXT_FONT_SIZE),TEXT_FONT_SIZE)
+                GenTextTag(font,akey,"%s\%02d.png"%(path,font_size),font_size)
                 
         #generate proof file
         GenTextProof("%s\%02d.png"%(path,TEXT_FONT_SIZE), "%s\%02d.krn"%(path,TEXT_FONT_SIZE),"The Quick Brown Fox Jumps Over The Lazy Dog. {!1234.56789} #proof_file")

@@ -16,18 +16,54 @@ class Data {
     foreign static readf(key)
     foreign static updatef(key,float_value)
 }
-//Drawing interface for writing to the framebuffer
+//Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static loadImageToSurface(path,filename,x,y)
+    foreign static useWrenFileSystem()
+    foreign static useSDFileSystem()
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
     foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
     foreign static print(string,x,y,font,font_point)
+}
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
+}
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
 }
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
@@ -35,12 +71,11 @@ class App {
         //double underscores indicate static vars
         __x = 864
         __y = 64
-        __w = 120
-        __h = 120
+        __w = 0
+        __h = 0
         
         __path = "/I/U/S/TOON/ANIMALS/Square/"
-        __fonts = ["'!PaulMaul'",
-            "'!PaulMaul-b'",
+        __fonts = [
             "ArchitectsDaughter",
             "Blokletters-Balpen",
             "Blokletters-Potlood",
@@ -143,97 +178,7 @@ class App {
             "teutonic3",
             "teutonic4",
             "zenda"]
-        __files = ["bear.ile",
-            "bear_nz2.ile",
-            "bear_nz4.ile",
-            "buffalo.ile",
-            "buffalo_nz2.ile",
-            "buffalo_nz4.ile",
-            "chick.ile",
-            "chick_nz2.ile",
-            "chick_nz4.ile",
-            "chicken.ile",
-            "chicken_nz2.ile",
-            "chicken_nz4.ile",
-            "cow.ile",
-            "cow_nz2.ile",
-            "cow_nz4.ile",
-            "crocodile.ile",
-            "crocodile_nz2.ile",
-            "crocodile_nz4.ile",
-            "dog.ile",
-            "dog_nz2.ile",
-            "dog_nz4.ile",
-            "duck.ile",
-            "duck_nz2.ile",
-            "duck_nz4.ile",
-            "elephant.ile",
-            "elephant_nz2.ile",
-            "elephant_nz4.ile",
-            "frog.ile",
-            "frog_nz2.ile",
-            "frog_nz4.ile",
-            "giraffe.ile",
-            "giraffe_nz2.ile",
-            "giraffe_nz4.ile",
-            "goat.ile",
-            "goat_nz2.ile",
-            "goat_nz4.ile",
-            "gorilla.ile",
-            "gorilla_nz2.ile",
-            "gorilla_nz4.ile",
-            "hippo.ile",
-            "hippo_nz2.ile",
-            "hippo_nz4.ile",
-            "horse.ile",
-            "horse_nz2.ile",
-            "horse_nz4.ile",
-            "monkey.ile",
-            "monkey_nz2.ile",
-            "monkey_nz4.ile",
-            "moose.ile",
-            "moose_nz2.ile",
-            "moose_nz4.ile",
-            "narwhal.ile",
-            "narwhal_nz2.ile",
-            "narwhal_nz4.ile",
-            "owl.ile",
-            "owl_nz2.ile",
-            "owl_nz4.ile",
-            "panda.ile",
-            "panda_nz2.ile",
-            "panda_nz4.ile",
-            "parrot.ile",
-            "parrot_nz2.ile",
-            "parrot_nz4.ile",
-            "penguin.ile",
-            "penguin_nz2.ile",
-            "penguin_nz4.ile",
-            "pig.ile",
-            "pig_nz2.ile",
-            "pig_nz4.ile",
-            "rabbit.ile",
-            "rabbit_nz2.ile",
-            "rabbit_nz4.ile",
-            "rhino.ile",
-            "rhino_nz2.ile",
-            "rhino_nz4.ile",
-            "sloth.ile",
-            "sloth_nz2.ile",
-            "sloth_nz4.ile",
-            "snake.ile",
-            "snake_nz2.ile",
-            "snake_nz4.ile",
-            "walrus.ile",
-            "walrus_nz2.ile",
-            "walrus_nz4.ile",
-            "whale.ile",
-            "whale_nz2.ile",
-            "whale_nz4.ile",
-            "zebra.ile",
-            "zebra_nz2.ile",
-            "zebra_nz4.ile"]
-        
+
         App.setDimension(__w, __h)
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
@@ -241,8 +186,9 @@ class App {
         
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
+        _file_index = 0
         _count = 0
-        _demo_loops = 100
+        _demo_loops = 1
         _pixels = 0
         _timer = System.clock
     }
@@ -271,28 +217,37 @@ class App {
     //
     update() {
         _count = _count + 1
-        if (_count > 290){
-            System.print(["UP_TIME",System.clock,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
-            var elapsed_time = System.clock - _timer
-            _pixels = 0
-            _timer = System.clock
+        if (_count > 10){
+            //System.print(["UP_TIME",System.clock,"FREE_MEM",Data.read("FREE_MEM"),"CPU_TEMP",Data.readf("CPU_TEMP")])
             _count = 0
-            _demo_loops = _demo_loops - 1
-            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("demo")
+            if (_demo_loops == 0 &&  Data.read("DEMO_MODE") == 1) App.restartVM("example_36")
         }
     }
     
     render() {
         App.setWidgetPosition(__x, __y)
-        var start = System.clock
+        
+        _timer = System.clock
         var x = App.random(120)
         var y = App.random(120)
-        var z = App.random(__files.count)
-        var filename = "portrait%(z)_nz2.ile"
+        var z = App.random(__fonts.count)
         Draw.fill(0,0,0)
         //Draw.loadImageToSurface(__path,__files[z],x,y)
-        Draw.print(__fonts[_demo_loops],10,95,__fonts[_demo_loops],18)
-        Draw.print(System.clock.truncate.toString,10,220,__fonts[z],10)
+        _file_index = _file_index + 1
+        if (_file_index >= __fonts.count){
+            _file_index = 0
+        }
+        if (_file_index > 6){
+            _demo_loops = _demo_loops - 1
+        }
+        var f = __fonts[_file_index].split("-")
+        Draw.print(f[0],10,25,__fonts[_file_index],26)
+        if (f.count > 1) Draw.print(f[-1],10,60,__fonts[_file_index],16)
+        
+        Draw.print("The Quick Brown Fox",10,90,__fonts[_file_index],25)
+        Draw.print("Jumps Over The Lazy Dog.",10,125,__fonts[_file_index],20)
+        var elapsed_time = System.clock - _timer
+        Draw.print(elapsed_time.toString,10,185,__fonts[_file_index],30)
     }
     onFocus() {
         //System.print(["onFocus"])
@@ -340,22 +295,5 @@ System.print("-"*98)
 System.print("example_35")
 System.print("This is a demonstration of the system fonts available.Kerning not applied.")
 System.print("-"*98)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

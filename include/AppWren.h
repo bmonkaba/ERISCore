@@ -40,7 +40,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 1; 
+        update_priority = 0; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
@@ -74,8 +74,9 @@ class AppWren:public AppBaseClass {
         widget_origin_x = SCREEN_WIDTH - 64 - 5;
         widget_origin_y = SCREEN_HEIGHT - 64 - 5;
         //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
-        wren_file_system.begin(1400000);//init the shared ext_ram drive
-        wren_file_system.quickFormat();
+        wren_file_system.begin(8000000);//init the shared ext_ram drive
+        wren_file_system.quickFormat();  
+        wren_file_system.mkdir("system");//system folder
         wren_file = 0;
     };
 
@@ -113,6 +114,7 @@ class AppWren:public AppBaseClass {
      */
     void restartVM(){
         shutdownVM();
+        useNativeFS = true;
         startVM();
     }
 
@@ -297,7 +299,7 @@ class AppWren:public AppBaseClass {
         dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         File file = wren_file_system.open(filename,O_RDONLY);
-        if(file != NULL){
+        if(file.available()>0){
             draw->bltRAMFileB(sb,surface_cache->getWidth(),surface_cache->getHeight(),&file,x,y,blt_mode);
             file.close();
         }
@@ -315,7 +317,7 @@ class AppWren:public AppBaseClass {
     void bltRAMDrive2FrameBuffer(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
         dynamicSurfaceManager();
         File file = wren_file_system.open(filename,O_RDONLY);
-        if(file != NULL){
+        if(file.available()>0){
             draw->bltRAMFileB(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT,&file,x,y,blt_mode);
             file.close();
         }

@@ -20,19 +20,25 @@ class Data {
 }
 //Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static loadImageToSurface(path,filename,x,y)
-    foreign static blt(from_x, from_y, width, height, dest_x, dest_y)
+    foreign static useWrenFileSystem()
+    foreign static useSDFileSystem()
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
     foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
+    foreign static print(string,x,y,font,font_point)
 }
 //RAM drive file system
 class FileSystem{
+    foreign static format()
     foreign static mkdir(dir_name)
     foreign static rmdir(dir_name)
     foreign static open(file_name,mode)
@@ -41,6 +47,7 @@ class FileSystem{
     foreign static remove(file_name)
     foreign static usedSize()
     foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
 }
 //RAM drive file interface
 class File{
@@ -61,6 +68,7 @@ class File{
     foreign static openNextFile(mode)
     foreign static rewindDirectory()
 }
+
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
     construct new() {
@@ -145,12 +153,14 @@ class App {
     //example setter
     count=(value) { _count = value }
 }
+
 System.print("-"*98)
 System.print("example_40 - File System")
 System.print("-"*98)
 //static methods can be called directly on the class object
 App.setDimension(120, 120)
 App.setWidgetDimension(120, 120)
+FileSystem.format()
 //or a class instance may be created
 //The host (C/C++ side) expects a top level variable named ErisApp of 
 //type class App it's this object instance for which the event methods 
@@ -170,9 +180,14 @@ Nulla porttitor nisi sit amet tincidunt elementum. Suspendisse vehicula efficitu
 
 Donec ac nisl a quam facilisis cursus. Phasellus quis magna massa. Vivamus imperdiet ipsum et accumsan vehicula. Praesent commodo arcu auctor tellus ornare, sed convallis est ultrices. Quisque non aliquam risus. Integer id imperdiet massa, eget pellentesque mi. Cras vehicula rutrum lorem, et porta ante malesuada non. Sed consequat placerat rhoncus. Mauris dapibus imperdiet purus sed laoreet. Pellentesque ut lobortis libero, sit amet euismod neque. Quisque dapibus tristique elit, congue dapibus erat viverra a. Nam varius risus nibh. In viverra consequat justo et scelerisque. Proin venenatis dictum mi nec pretium.
 """
-FileSystem.open("test.txt","w")
-File.write(w)
-File.flush()
+
+FileSystem.open("test.txt","a")
+
+for (y in 0...(300)) {
+    File.write(w)
+}
+
+//File.flush()
 File.close()
 
 FileSystem.open("test.txt","r")
@@ -180,22 +195,29 @@ System.print(["isOpen",File.isOpen()])
 System.print(["available",File.available()])
 System.print(["position",File.position()])
 System.print(["size",File.size()])
-var r = File.read(File.size())
-System.write(r)
+var r = File.read(20)
+System.write(r + "..." + "\n")
 File.close()
 System.print(["isOpen",File.isOpen()])
-FileSystem.remove("test.txt")
+//FileSystem.remove("test.txt")
 
 System.print(["File System totalSize",FileSystem.totalSize()])
 System.print(["File System usedSize",FileSystem.usedSize()])
+System.print(["File System remainingSize",FileSystem.totalSize() - FileSystem.usedSize()])
+
+FileSystem.importFromSD("/I/U/","UI.json",".","UI.json")
+FileSystem.open("UI.json","r")
+r = File.read(200)
+System.write(r + "..." + "\n")
+r = File.read(200)
+System.write(r + "..." + "\n")
+r = File.read(200)
+System.write(r + "..." + "\n")
+File.close()
+System.print(["File System remainingSize",FileSystem.totalSize() - FileSystem.usedSize()])
 
 System.print("Done")
-
-
-
-
-
-
+if (Data.read("DEMO_MODE") == 1) App.restartVM("demo")
 
 
 

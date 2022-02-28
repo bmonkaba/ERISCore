@@ -91,22 +91,26 @@ if __name__ == "__main__":
                     
                     width = im.width
                     height = im.height
-                    if (width < 64 and height < 64):
+                    if (width < 8 and height < 8):
+                        break
+                    elif (width < 64 and height < 64):
                         ratio = 1
                     elif (width < 128 and height < 128):
                         width = int(width/2)
                         height = int(height/2)
+                    elif (width <= 512 and height <= 512):
+                        pass
                     elif (width < 800 and height < 600):
-                        ratio = 240/height
+                        ratio = 320/width
                         width = int(width * ratio)
                         height = int(height * ratio)
                     else:
-                        ratio = 0.25
+                        ratio = 1.0
                         width = int(width * ratio)
                         height = int(height * ratio)
-                        
-                    if ratio != 1:
-                        image = im.resize((width,height), Image.BILINEAR)
+                    if (width < 8 and height < 8):
+                        break    
+                    image = im.resize((width,height),Image.LANCZOS)
                     #im.thumbnail(size, Image.ANTIALIAS)
                     #im = im.resize(size, Image.BILINEAR)
                     im = Image.new("RGBA", image.size, "BLACK") #covert alpha
@@ -128,7 +132,7 @@ if __name__ == "__main__":
                                 break
                             if height < 4:
                                 break
-                            im = im.resize((width,height), Image.BILINEAR)
+                            im = im.resize((width,height),Image.LANCZOS)
                         else:
                             break
     manifest.close()

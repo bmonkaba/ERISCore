@@ -3,6 +3,7 @@
 #include <float.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 
 #include "wren_common.h"
 #include "wren_core.h"
@@ -11,7 +12,6 @@
 #include "wren_value.h"
 
 #include "wren_core.wren.inc"
-
 
 DEF_PRIMITIVE(bool_not)
 {
@@ -62,8 +62,7 @@ DEF_PRIMITIVE(fiber_new)
   ObjClosure* closure = AS_CLOSURE(args[1]);
   if (closure->fn->arity > 1)
   {
-    const char msg[] = "Function cannot take more than one parameter.";
-    RETURN_ERROR(msg);
+    RETURN_ERROR("Function cannot take more than one parameter.");
   }
   
   RETURN_OBJ(wrenNewFiber(vm, closure));
@@ -1198,15 +1197,10 @@ DEF_PRIMITIVE(string_toString)
   RETURN_VAL(args[0]);
 }
 
-
-
 DEF_PRIMITIVE(system_clock)
 {
-  //modified to suppport integration into eris core
-  float fakeclock;
-  fakeclock = millis()/1000.00;
   //RETURN_NUM((double)clock() / CLOCKS_PER_SEC);
-  RETURN_NUM(fakeclock);
+  RETURN_NUM(millis()/1000.00);
 }
 
 DEF_PRIMITIVE(system_gc)

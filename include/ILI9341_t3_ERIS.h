@@ -15,6 +15,7 @@
 #include <SdCard/SdioCard.h>
 #include <SdFatConfig.h>
 #include <SdFat.h>
+#include <LittleFS.h>
 
 // ERIS SD Graphics extention 
 // Implements 2d image transfer from an SD card to a RAM framebuffer viewport 
@@ -270,10 +271,11 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @param filename 
          * @param width 
          * @param height 
+         * @param file_system optional pointer to a LittleFS file system, otherwise the SD card is used 
          * @return true 
          * @return false 
          */
-        bool getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height);
+        bool getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system = NULL);
 
 
         /**
@@ -285,7 +287,20 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @param font 
          * @param pt 
          */
-        void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt);
+        void printWithRAMFileSystemFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system);
+
+        /**
+         * @brief prints the string buffer using the provided sprite library name and pt size
+         * 
+         * @param string_buffer 
+         * @param x 
+         * @param y 
+         * @param font 
+         * @param pt 
+         * @param useKernFile apply kerning using the font .krn file; default is disable (false)
+         * @param file_system optional pointer to a LittleFS file system, otherwise the SD card is used 
+         */
+        void printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system = NULL);
 
         /**
          * @brief blt from an open TinyFS open file pointer to a destination buffer
@@ -314,8 +329,9 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @param src_height 
          * @param blt_mode 
          */
-        void bltSDAreaBufferDest(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width, \
-            uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode);
+        void bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width, \
+            uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, \
+             uint16_t src_height,bltMode blt_mode, LittleFS_RAM* file_system = NULL);
         
         /**
          * @brief image block transfer from the SD card to a buffer at the given x,y coords

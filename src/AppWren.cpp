@@ -513,7 +513,11 @@ void FASTRUN printWithFontCallback(WrenVM* vm){
   uint16_t y = wrenGetSlotDouble(vm,3);
   const char *font_name = wrenGetSlotString(vm,4);
   uint16_t pt = wrenGetSlotDouble(vm,5); //font size
-  app->getDraw()->printWithFont(string_buffer,x,y,font_name,pt);
+  if(app->useNativeFS){
+    app->getDraw()->printWithFont(string_buffer,x,y,font_name,pt,0);
+  }else{
+    app->getDraw()->printWithFont(string_buffer,x,y,font_name,pt,&app->wren_file_system);
+  }
 }
 
 /**
@@ -532,7 +536,11 @@ void getImageSizeCallback(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   int32_t width, height;
-  app->getDraw()->getImageSize(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),&width,&height);
+  if(app->useNativeFS == true){
+    app->getDraw()->getImageSize(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),&width,&height,0);
+  }else{
+    app->getDraw()->getImageSize(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),&width,&height,&app->wren_file_system);
+  }
   wrenEnsureSlots(vm, 3);
   wrenSetSlotNewList(vm, 0);
   wrenSetSlotDouble(vm,1,width);
@@ -821,7 +829,7 @@ void fsTotalSizeCallback(WrenVM* vm){
  */
 void fsimportFromSD(WrenVM* vm){
   //(src_path,src_file,dest_path,dst_file)
-  char c[16];
+  char c[64];
   FsFile source; //The source is the SD card
   File dest; //The destination is the VM file system located in ext_ram
   AppManager* am = AppManager::getInstance();
@@ -838,7 +846,9 @@ void fsimportFromSD(WrenVM* vm){
   am->requestArmSetClock(600000000);
   am->getSD()->chdir(src_path);
   source = am->getSD()->open(src_filename,O_RDONLY);
-  dest = app->wren_file_system.open(dst_filename,O_RDWR);
+  strcpy(c,dst_path);
+  strcat(c,dst_filename);
+  dest = app->wren_file_system.open(c,O_RDWR);
   //c[2]=0; //null termination
   for(int32_t i= source.available(); i > 0; i--){
     source.readBytes(c,1);//read char
@@ -859,9 +869,8 @@ void fsFormat(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   app->wren_file_system.quickFormat();
+  app->wren_file_system.mkdir("system"); //add the system folder
 }
-
-
 
 
 //
@@ -1263,14 +1272,13 @@ void FLASHMEM AppWren::vmConstructor(const char* initial_script){
 
 void FLASHMEM AppWren::startVM(){
     Serial.println(F("\nM AppWren::startVM()"));
-    useNativeFS = true;
     WrenConfiguration config;
     wrenInitConfiguration(&config);
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
     config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = 32000;
+    config.minHeapSize = 120000;
     config.heapGrowthPercent = 5;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
 #else

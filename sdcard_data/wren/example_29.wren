@@ -16,38 +16,73 @@ class Data {
     foreign static readf(key)
     foreign static updatef(key,float_value)
 }
-//Drawing interface for writing to the framebuffer
+//Drawing interface
 class Draw {
-    foreign static loadImage(path,filename,x,y)
-    foreign static loadImageToSurface(path,filename,x,y)
-    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,alpha_type)
+    foreign static getImageSize(path,filename)
+    foreign static loadImage(path,filename,x,y,blt_op)
+    foreign static loadImageToSurface(path,filename,x,y,blt_op)
+    foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)
     foreign static fill(r,g,b)
     foreign static setTextColor(r,g,b)
     foreign static setCursor(x,y)
+    foreign static setFontSize(pt)
     foreign static print(string)
+    foreign static print(string,x,y,font,font_point)
 }
+//RAM drive file system
+class FileSystem{
+    foreign static mkdir(dir_name)
+    foreign static rmdir(dir_name)
+    foreign static open(file_name,mode)
+    foreign static exists(file_name)
+    foreign static rename(old_name,new_name)
+    foreign static remove(file_name)
+    foreign static usedSize()
+    foreign static totalSize()
+    foreign static importFromSD(src_path,src_file_name,dst_path,dst_file_name)
+}
+//RAM drive file interface
+class File{
+    foreign static read(nbytes)
+    foreign static readBytes(nbytes)
+    foreign static write(data)
+    foreign static available()
+    foreign static peek()
+    foreign static flush()
+    foreign static truncate(size)
+    foreign static seek(pos,mode)
+    foreign static position()
+    foreign static size()
+    foreign static close()
+    foreign static isOpen()
+    foreign static name()
+    foreign static isDirectory()
+    foreign static openNextFile(mode)
+    foreign static rewindDirectory()
+}
+
 //AppBase Class interface for implementing the scripts actions & behaviors
 class App {
     construct new() {
         //double underscores indicate static vars
-        __x = 64
-        __y = 64
-        __w = 120
+        __x = 20
+        __y = 60
+        __w = 280
         __h = 120
-        App.setDimension(320, 240)
+        App.setDimension(__w, __h)
         App.setWidgetDimension(__w, __h)
         App.setWidgetPosition(__x, __y)
-        App.requestPopUp(true)
+        //App.requestPopUp(false)
         Draw.fill(0,0,0)
-        App.setDimension(120, 120)
+        //App.setDimension(120, 120)
         
         //single underscores indicate class instance vars
         //in wren the class itself is an object so it will also have instance vars
         _count = 0
-        _demo_loops = 50
+        _demo_loops = 20
         _i = 0
         _timer = System.clock
     }
@@ -92,17 +127,17 @@ class App {
     render() {
         //App.setWidgetPosition(__x, __y)
         var start = System.clock
-        var x = App.random(__w/2) + __w/2
-        var y = App.random(__h/2) + __h/2
+        var x = App.random(__w/2) + __w/4 
+        var y = App.random(__h/2) + __h/4
         var z = App.random(100)
         if(z < 25){
-            Draw.loadImageToSurface("/I/U/L/","red.ile",x,y)
+            Draw.loadImageToSurface("/I/U/L/","red.ile",x,y,1)
         }else if (z < 50){
-            Draw.loadImageToSurface("/I/U/L/","yellow.ile",x,y)
+            Draw.loadImageToSurface("/I/U/L/","yellow.ile",x,y,1)
         }else if (z < 75){
-            Draw.loadImageToSurface("/I/U/L/","grey.ile",x,y)
+            Draw.loadImageToSurface("/I/U/L/","grey.ile",x,y,1)
         }else{
-            Draw.loadImageToSurface("/I/U/L/","green.ile",x,y)
+            Draw.loadImageToSurface("/I/U/L/","green.ile",x,y,1)
         }
         
         x = App.random(__w)
@@ -156,32 +191,4 @@ class App {
 //will be called
 var ErisApp = App.new()
 System.print("example_29")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

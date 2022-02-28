@@ -22,7 +22,7 @@ SvcSerialCommandInterface FASTRUN sci;
 SvcErisAudioParameterController EXTMEM apc;
 AppReprogram EXTMEM appReprogram;
 AppWren* FASTRUN appWren;
-AppAIfES EXTMEM ai;
+//AppAIfES EXTMEM ai;
 
 void setup() {
   //////////////////////////////////////////////////////////////////////////////////////
