@@ -303,32 +303,61 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
         tinyFile.read(&dw,2);
       }
       //if alpha is enabled mask any colors close to black
-      if (blt_mode == BLT_COPY){dest_buffer[ifb + z] = dw;}
-      else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
-      else if (blt_mode == BLT_HATCH_BLK){
-        toggle ^= true;
-        if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
-        else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
-      }
-      else if (blt_mode == BLT_HATCH_XOR){
-        toggle ^= true;
-        if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
-        else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z]^dest_buffer[ifb + z];
-      }else if (blt_mode == BLT_ADD){
-        dest_buffer[ifb + z] += dw;
-      }else if (blt_mode == BLT_SUB){
-        dest_buffer[ifb + z] -= dw;
-      }else if (blt_mode == BLT_MULT){
-        dest_buffer[ifb + z] *= dw;
-      }else if (blt_mode == BLT_DIV){
-        if(dw > 0) dest_buffer[ifb + z] /= dw;
-      }else if (blt_mode == BLT_AND){
-        if(dw > 0) dest_buffer[ifb + z] = dw & dest_buffer[ifb + z];
-      }else if (blt_mode == BLT_OR){
-        if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
-      }else if (blt_mode == BLT_XOR){
-        if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
-      }
+        int16_t r,g,b;
+        if (blt_mode == BLT_COPY){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[ifb + z] = dw;}
+        else if (blt_mode == BLT_HATCH_BLK){
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw;
+          else if (toggle) dest_buffer[ifb + z] = 0; //pFB[i] ^= pFB[i];
+        }
+        else if (blt_mode == BLT_HATCH_XOR){
+          if ((dw & 0xE79C) != 0) dest_buffer[ifb + z] = dw^dest_buffer[ifb + z];
+          else if (toggle) dest_buffer[ifb + z] = dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_ADD){
+          //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+          //unpack the color channels from the 565 RGB format
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) + (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) + (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) + (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[ifb + z] = CL(r,g,b);
+          //dest_buffer[ifb + z] += dw;
+        }else if (blt_mode == BLT_SUB){
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) - (0x255 & (dw >> 8));
+          if (r < 0) r = 0; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) - (0x255 & (dw >> 3));
+          if (g < 0) g = 0;
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) - (0x255 & (dw << 3));
+          if (b < 0) b = 0;
+          dest_buffer[ifb + z] = CL(r,g,b);
+          //dest_buffer[ifb + z] -= dw;
+        }else if (blt_mode == BLT_MULT){
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) * (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) * (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) * (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[ifb + z] = CL(r,g,b);
+          //dest_buffer[ifb + z] *= dw;
+        }else if (blt_mode == BLT_DIV){
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) / (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) / (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) / (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[ifb + z] = CL(r,g,b);
+          //if(dw > 0) dest_buffer[ifb + z] /= dw;
+        }else if (blt_mode == BLT_AND){
+          if(dw > 0) dest_buffer[ifb + z] = dw & dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_OR){
+          if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_XOR){
+          if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
+        }
       //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
     }
     if(file_system == NULL){
@@ -600,38 +629,38 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
         }else if (blt_mode == BLT_ADD){
           //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
           //unpack the color channels from the 565 RGB format
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) + (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) + (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) + (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) + (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) + (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) + (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] += dw;
         }else if (blt_mode == BLT_SUB){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) - (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) - (0x255 & (dw >> 8));
           if (r < 0) r = 0; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) - (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) - (0x255 & (dw >> 3));
           if (g < 0) g = 0;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) - (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) - (0x255 & (dw << 3));
           if (b < 0) b = 0;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] -= dw;
         }else if (blt_mode == BLT_MULT){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) * (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) * (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) * (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) * (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) * (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) * (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] *= dw;
         }else if (blt_mode == BLT_DIV){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) / (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) / (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) / (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) / (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) / (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) / (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //if(dw > 0) dest_buffer[ifb + z] /= dw;
@@ -730,38 +759,38 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
         }else if (blt_mode == BLT_ADD){
           //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
           //unpack the color channels from the 565 RGB format
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) + (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) + (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) + (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) + (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) + (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) + (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] += dw;
         }else if (blt_mode == BLT_SUB){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) - (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) - (0x255 & (dw >> 8));
           if (r < 0) r = 0; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) - (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) - (0x255 & (dw >> 3));
           if (g < 0) g = 0;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) - (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) - (0x255 & (dw << 3));
           if (b < 0) b = 0;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] -= dw;
         }else if (blt_mode == BLT_MULT){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) * (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) * (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) * (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) * (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) * (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) * (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //dest_buffer[ifb + z] *= dw;
         }else if (blt_mode == BLT_DIV){
-          r = (0x31 & (dest_buffer[ifb + z] >> 8)) / (0x31 & (dw >> 8));
+          r = (0x255 & (dest_buffer[ifb + z] >> 8)) / (0x255 & (dw >> 8));
           if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x63 & (dest_buffer[ifb + z] >> 3)) / (0x63 & (dw >> 3));
+          g = (0x255 & (dest_buffer[ifb + z] >> 3)) / (0x255 & (dw >> 3));
           if (g > 255) g = 255;
-          b = (0x31 & (dest_buffer[ifb + z] << 3)) / (0x31 & (dw << 3));
+          b = (0x255 & (dest_buffer[ifb + z] << 3)) / (0x255 & (dw << 3));
           if (b > 255) b = 255;
           dest_buffer[ifb + z] = CL(r,g,b);
           //if(dw > 0) dest_buffer[ifb + z] /= dw;
