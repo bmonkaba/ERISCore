@@ -1,6 +1,6 @@
 #include "ILI9341_t3_ERIS.h"
 #include "ErisGlobals.h"
-
+#include <arm_math.h>
 
 static volatile bool dmabusy;
 
@@ -59,7 +59,7 @@ void FLASHMEM ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
     analogWriteFrequency(backlight, 1000);
-    analogWrite(backlight, 110);
+    analogWrite(backlight, 200);
 }
 
 void FLASHMEM ILI9341_t3_ERIS::begin(){
@@ -357,6 +357,19 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
           if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
         }else if (blt_mode == BLT_XOR){
           if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_MEAN){
+          q7_t res[3];
+          q7_t a[2];
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0xFF & (dw >> 8));
+          arm_mean_q7(a,2,&res[0]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0xFF & (dw >> 3));
+          arm_mean_q7(a,2,&res[1]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
+          a[1] = (0xFF & (dw << 3));
+          arm_mean_q7(a,2,&res[2]);
+          dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
         }
       //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
     }
@@ -670,6 +683,19 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
           if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
         }else if (blt_mode == BLT_XOR){
           if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
+        }else if (blt_mode == BLT_MEAN){
+          q7_t res[3];
+          q7_t a[2];
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0xFF & (dw >> 8));
+          arm_mean_q7(a,2,&res[0]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0xFF & (dw >> 3));
+          arm_mean_q7(a,2,&res[1]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
+          a[1] = (0xFF & (dw << 3));
+          arm_mean_q7(a,2,&res[2]);
+          dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
         }
       }
       if (x + w > dest_buffer_width){file->seek((x + w - dest_buffer_width) * 2, SeekCur);} //clip in x dimension (right) - skip unused data
@@ -800,7 +826,20 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
           if(dw > 0) dest_buffer[ifb + z] = dw | dest_buffer[ifb + z];
         }else if (blt_mode == BLT_XOR){
           if(dw > 0) dest_buffer[ifb + z] = dw ^ dest_buffer[ifb + z];
-        }
+        }else if (blt_mode == BLT_MEAN){
+          q7_t res[3];
+          q7_t a[2];
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0xFF & (dw >> 8));
+          arm_mean_q7(a,2,&res[0]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0xFF & (dw >> 3));
+          arm_mean_q7(a,2,&res[1]);
+          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
+          a[1] = (0xFF & (dw << 3));
+          arm_mean_q7(a,2,&res[2]);
+          dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
+        } 
       }
       if (x + w > dest_buffer_width){file.seekCur( (x + w - dest_buffer_width) * 2);} //clip in x dimension (right) - skip unused data
     }

@@ -571,6 +571,7 @@ void loadImageCallback(WrenVM* vm){
   }else if (blt_mode_request == 8){ bm = BLT_AND;
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
   }else return;
   if(app->useNativeFS){
     app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
