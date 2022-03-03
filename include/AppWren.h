@@ -40,7 +40,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 0; 
+        update_priority = 2; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
@@ -78,6 +78,10 @@ class AppWren:public AppBaseClass {
         wren_file_system.quickFormat();  
         wren_file_system.mkdir("system");//system folder
         wren_file = 0;
+
+        //subscribe to MIDI messages
+        am->sendMessage(this,"MIDI","SUB");
+        
     };
 
     ~AppWren(){
@@ -164,7 +168,7 @@ class AppWren:public AppBaseClass {
      * 
      * @param script_name 
      */
-    void rebootRequest(char* script_name){
+    void rebootRequest(const char* script_name){
         //the actual reboot load request will be completed in the AppWren::update loop.
         if(sci->requestStartLZ4Message()){
             sci->printf("M AppWren:rebootRequest: %s\n",script_name);
@@ -306,7 +310,7 @@ class AppWren:public AppBaseClass {
     }
 
     /**
-     * @brief block tramsfer from ram drive filei to the frame buffer
+     * @brief block tramsfer from ram drive file to the frame buffer
      * 
      * @param path 
      * @param filename 
@@ -425,7 +429,7 @@ class AppWren:public AppBaseClass {
             return;
         }else if (draw){
             if (has_pop){
-                //draw->ILI9341_t3n::drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
+                draw->drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
             }else{
                 dynamicSurfaceManager();
                 if (!surface_cache) return;
@@ -455,7 +459,7 @@ class AppWren:public AppBaseClass {
         dynamicSurfaceManager();
         if (draw){
             if (has_pop){
-                draw->ILI9341_t3n::fillScreen(CL(r,g,b));
+                draw->fillScreen(CL(r,g,b));
             } else{
                 if (!surface_cache) return;
                 draw->fillSurface(surface_cache,CL(r,g,b));

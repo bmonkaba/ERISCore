@@ -103,12 +103,12 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
   uint16_t *srcBuffer;
-  uint16_t *dstBuffer;
+  uint16_t *dest_buffer;
   srcBuffer = source->getSurfaceBufferP();
-  dstBuffer = dest->getSurfaceBufferP();
+  dest_buffer = dest->getSurfaceBufferP();
   //check for null
   if (!srcBuffer) return;
-  if (!dstBuffer) return;
+  if (!dest_buffer) return;
   //check for off surface blt attempt
   if ((dest_x > dest->getWidth()) || (0 > (dest->getWidth() + dest_x))) return;
   if ((dest_y > dest->getHeight()) || (0 > (dest->getHeight() + dest_y))) return;
@@ -121,14 +121,77 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
       write_index = (d_y * dest->getWidth()) + d_x;
       read_index = (source_y * source->getWidth()) + source_x;
       if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
-        //if in bounds then ok to write
-        if (BLT_COPY == blt_mode){
-          dstBuffer[write_index] = srcBuffer[read_index];
-        }else if(BLT_HATCH_XOR){
-          if (toggle) dstBuffer[write_index] = srcBuffer[read_index];
-          toggle ^= true;
-        }else if(BLT_BLK_COLOR_KEY){
-          //TODO: unpack both source and dest, average the rgb values, repack and store in dest
+        int16_t dw;
+        int16_t r,g,b;
+        dw = srcBuffer[read_index];
+        toggle ^= true;
+        if (blt_mode == BLT_COPY){dest_buffer[write_index] = dw;
+        }else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[write_index] = dw;
+        }else if (blt_mode == BLT_HATCH_BLK){
+          if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
+          } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
+        }else if (blt_mode == BLT_HATCH_XOR){
+          if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
+          else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
+        }else if (blt_mode == BLT_ADD){
+          //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+          //unpack the color channels from the 565 RGB format
+          r = (0x255 & (dest_buffer[write_index] >> 8)) + (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[write_index] >> 3)) + (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[write_index] << 3)) + (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[write_index] = CL(r,g,b);
+          //dest_buffer[write_index] += dw;
+        }else if (blt_mode == BLT_SUB){
+          r = (0x255 & (dest_buffer[write_index] >> 8)) - (0x255 & (dw >> 8));
+          if (r < 0) r = 0; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[write_index] >> 3)) - (0x255 & (dw >> 3));
+          if (g < 0) g = 0;
+          b = (0x255 & (dest_buffer[write_index] << 3)) - (0x255 & (dw << 3));
+          if (b < 0) b = 0;
+          dest_buffer[write_index] = CL(r,g,b);
+          //dest_buffer[write_index] -= dw;
+        }else if (blt_mode == BLT_MULT){
+          r = (0x255 & (dest_buffer[write_index] >> 8)) * (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[write_index] >> 3)) * (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[write_index] << 3)) * (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[write_index] = CL(r,g,b);
+          //dest_buffer[write_index] *= dw;
+        }else if (blt_mode == BLT_DIV){
+          r = (0x255 & (dest_buffer[write_index] >> 8)) / (0x255 & (dw >> 8));
+          if (r > 255) r = 255; //clip the max value for each channel
+          g = (0x255 & (dest_buffer[write_index] >> 3)) / (0x255 & (dw >> 3));
+          if (g > 255) g = 255;
+          b = (0x255 & (dest_buffer[write_index] << 3)) / (0x255 & (dw << 3));
+          if (b > 255) b = 255;
+          dest_buffer[write_index] = CL(r,g,b);
+          //if(dw > 0) dest_buffer[write_index] /= dw;
+        }else if (blt_mode == BLT_AND){
+          if(dw > 0) dest_buffer[write_index] = dw & dest_buffer[write_index];
+        }else if (blt_mode == BLT_OR){
+          if(dw > 0) dest_buffer[write_index] = dw | dest_buffer[write_index];
+        }else if (blt_mode == BLT_XOR){
+          if(dw > 0) dest_buffer[write_index] = dw ^ dest_buffer[write_index];
+        }else if (blt_mode == BLT_MEAN){
+          q7_t res[3];
+          q7_t a[2];
+          a[0] = (0x7F & (dest_buffer[write_index] >> 8));
+          a[1] = (0x7F & (dw >> 8));
+          arm_mean_q7(a,2,&res[0]);
+          a[0] = (0x7F & (dest_buffer[write_index] >> 3));
+          a[1] = (0x7F & (dw >> 3));
+          arm_mean_q7(a,2,&res[1]);
+          a[0] = (0x7F & (dest_buffer[write_index] << 3));
+          a[1] = (0x7F & (dw << 3));
+          arm_mean_q7(a,2,&res[2]);
+          dest_buffer[write_index] = CL(res[0],res[1],res[2]);
+        } else{
+          dest_buffer[write_index] = dw;
         }
       }
     }
@@ -360,14 +423,14 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
         }else if (blt_mode == BLT_MEAN){
           q7_t res[3];
           q7_t a[2];
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
-          a[1] = (0xFF & (dw >> 8));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0x7F & (dw >> 8));
           arm_mean_q7(a,2,&res[0]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
-          a[1] = (0xFF & (dw >> 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0x7F & (dw >> 3));
           arm_mean_q7(a,2,&res[1]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
-          a[1] = (0xFF & (dw << 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] << 3));
+          a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
         }
@@ -686,14 +749,14 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
         }else if (blt_mode == BLT_MEAN){
           q7_t res[3];
           q7_t a[2];
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
-          a[1] = (0xFF & (dw >> 8));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0x7F & (dw >> 8));
           arm_mean_q7(a,2,&res[0]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
-          a[1] = (0xFF & (dw >> 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0x7F & (dw >> 3));
           arm_mean_q7(a,2,&res[1]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
-          a[1] = (0xFF & (dw << 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] << 3));
+          a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
         }
@@ -829,14 +892,14 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
         }else if (blt_mode == BLT_MEAN){
           q7_t res[3];
           q7_t a[2];
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 8));
-          a[1] = (0xFF & (dw >> 8));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 8));
+          a[1] = (0x7F & (dw >> 8));
           arm_mean_q7(a,2,&res[0]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] >> 3));
-          a[1] = (0xFF & (dw >> 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] >> 3));
+          a[1] = (0x7F & (dw >> 3));
           arm_mean_q7(a,2,&res[1]);
-          a[0] = (0xFF & (dest_buffer[ifb + z] << 3));
-          a[1] = (0xFF & (dw << 3));
+          a[0] = (0x7F & (dest_buffer[ifb + z] << 3));
+          a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
         } 

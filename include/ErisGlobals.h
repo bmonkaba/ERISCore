@@ -37,19 +37,19 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 720000000
+#define CPU_BASE_FREQ 760000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 500000000
+#define CPU_LOW_POWER_MODE_FREQ 740000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 720000000
+#define CPU_BOOST_MAX_FREQ 780000000
 
 /**
  * @brief thermal throttle trip point temp
@@ -89,6 +89,26 @@
  * 
  */
 #define MAX_TEXT_LENGTH 24
+
+
+
+/**
+ * @brief uncomment to use USB MIDI otherwise TODO: HW MIDI will be used 
+ * 
+ */
+#define USE_USB_MIDI
+
+/**
+ * @brief default MIDI LISTEN CHANNEL
+ * 
+ */
+#define MIDI_LISTEN_CHANNEL 7
+
+/**
+ * @brief the max number of app instances which can be subscribed to  receive MIDI messages
+ * 
+ */
+#define MAX_MIDI_MESSAGE_APP_SUBSCRIPTIONS 16
 
 /**
  * @brief control activation display time\n 
@@ -266,7 +286,7 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 //WREN
 #ifdef USE_EXTMEM
 #define WREN_VM_HEAP_SIZE 42000
-#define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT
+#define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT*4
 #else
 #define WREN_VM_HEAP_SIZE 16000
 #define WREN_FRAME_BUFFER_SIZE 120*120
@@ -424,8 +444,8 @@ class App {
     onAnalog4(fval) {
         //System.print(["ANALOG_4",fval])
     }
-    MessageHandler(sender,message) {
-        System.println([sender,message])
+    messageHandler(sender,message) {
+        System.print([sender,message])
     }
     //example getter
     count { _count }

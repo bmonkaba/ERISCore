@@ -602,6 +602,7 @@ void loadImageSurfaceCallback(WrenVM* vm){
   }else if (blt_mode_request == 8){ bm = BLT_AND;
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
   }else return;
   if(app->useNativeFS){
     app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
@@ -620,7 +621,7 @@ void bltCallback(WrenVM* vm){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   bltMode bm;
-  int32_t blt_mode_request = wrenGetSlotDouble(vm, 5);
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
   if (blt_mode_request == 0){ bm = BLT_COPY;
   }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
   }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
@@ -632,7 +633,9 @@ void bltCallback(WrenVM* vm){
   }else if (blt_mode_request == 8){ bm = BLT_AND;
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
   }else return;
+  
   app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
 }
 
@@ -1293,72 +1296,78 @@ void FLASHMEM AppWren::startVM(){
     vm = wrenNewVM(&config);
 }
 
-void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){   
-    if(sender->isName("SCI")){
-        if(0 == strncmp(message,"WREN_SCRIPT_EXECUTE",strlen("WREN_SCRIPT_EXECUTE"))) {
-            Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_COMPILE -> compileOnly = false"));
-            compile_only = false;
-            return;
-        }else if(0 == strncmp(message,"WREN_SCRIPT_COMPILE",strlen("WREN_SCRIPT_COMPILE"))) {
-            Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_EXECUTE -> compileOnly = true"));
-            compile_only = true;
-            return;
-        }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
-            char cmd[128];
-            int total_read;
-            total_read = sscanf(message, "%127s %23s\n" , cmd, wren_module_name);
-            if (total_read==2){
-              strcat(wren_module_name,".wren");
-              Serial.print(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE as: "));
-              Serial.println(wren_module_name);
-              save_module = true;
-            }
-            return;
-        }else{ //if the message payload is not a command then assume its the data
-            if(save_module){
-              FsFile file;
-              sd->chdir("/wren");
-              sd->remove(wren_module_name);
-              file = sd->open(wren_module_name, O_WRONLY|O_CREAT);
-              file.write(message,strlen(message));
-              file.close();
-              save_module = false;
-              Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
-            }else if(compile_only){
-              Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
-              return;
-            }else{ //execute the script
-                Serial.println(F("M ************************************************************************"));
-                Serial.println(F("M AppWren::MessageHandler: Restarting the VM"));
-                if(!has_focus){ 
-                  //cycling the focus triggers the parent app to recover any system changes made by the VM
-                  getFocus(); 
-                  returnFocus();
-                }else{
-                  returnFocus();
-                }
-                restartVM();
-                Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
-                if(!loadScript(message)){
-                    enable_call_forwarding = false;
-                    restartVM();
-                } else enable_call_forwarding = true;
-                
-                
-                Serial.println(F("M AppWren::MessageHandler: request complete"));
-                Serial.println(F("M ************************************************************************"));
-                return;
-            }
+void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
+  if(0 == strncmp(message,"DEMO",strlen("DEMO"))){
+    Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
+    rebootRequest("demo");
+    return;
+  }
+  
+  if(sender->isName("SCI")){
+    if(0 == strncmp(message,"WREN_SCRIPT_EXECUTE",strlen("WREN_SCRIPT_EXECUTE"))) {
+        Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_COMPILE -> compileOnly = false"));
+        compile_only = false;
+        return;
+    }else if(0 == strncmp(message,"WREN_SCRIPT_COMPILE",strlen("WREN_SCRIPT_COMPILE"))) {
+        Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_EXECUTE -> compileOnly = true"));
+        compile_only = true;
+        return;
+    }else if(0 == strncmp(message,"WREN_SCRIPT_SAVE",strlen("WREN_SCRIPT_SAVE"))){
+        char cmd[128];
+        int total_read;
+        total_read = sscanf(message, "%127s %23s\n" , cmd, wren_module_name);
+        if (total_read==2){
+          strcat(wren_module_name,".wren");
+          Serial.print(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE as: "));
+          Serial.println(wren_module_name);
+          save_module = true;
         }
-    } else{
-      //All other messages from senders other than the SCI will be forwarded to the VM
-      //Serial is dedicated to serial comms with the VM for stdio/stderr
-      wrenEnsureSlots(vm, 3);
-      wrenSetSlotHandle(vm, 0, h_slot0);//App
-      wrenSetSlotString(vm, 1, sender->name);//sender
-      wrenSetSlotString(vm, 2, message);//message
-      isWrenResultOK(wrenCall(vm,h_messageHandler));
+        return;
+    }else{ //if the message payload is not a command then assume its the data
+        if(save_module){
+          FsFile file;
+          sd->chdir("/wren");
+          sd->remove(wren_module_name);
+          file = sd->open(wren_module_name, O_WRONLY|O_CREAT);
+          file.write(message,strlen(message));
+          file.close();
+          save_module = false;
+          Serial.println(F("M AppWren::MessageHandler: WREN_SCRIPT_SAVE complete"));
+          return;
+        }else if(compile_only){
+          Serial.println(F("M AppWren::MessageHandler: Compiling the received script"));
+          return;
+        }else{ //execute the script
+            Serial.println(F("M ************************************************************************"));
+            Serial.println(F("M AppWren::MessageHandler: Restarting the VM"));
+            if(!has_focus){ 
+              //cycling the focus triggers the parent app to recover any system changes made by the VM
+              getFocus(); 
+              returnFocus();
+            }else{
+              returnFocus();
+            }
+            restartVM();
+            Serial.println(F("M AppWren::MessageHandler: Loading the received script"));
+            if(!loadScript(message)){
+                enable_call_forwarding = false;
+                restartVM();
+            } else enable_call_forwarding = true;
+            
+            Serial.println(F("M AppWren::MessageHandler: request complete"));
+            Serial.println(F("M ************************************************************************"));
+            return;
+        }
     }
+  }  
+  //All other messages from senders other than the SCI will be forwarded to the VM
+  //Serial is dedicated to serial comms with the VM for stdio/stderr
+  wrenEnsureSlots(vm, 3);
+  wrenSetSlotHandle(vm, 0, h_slot0);//App
+  wrenSetSlotString(vm, 1, sender->name);//sender
+  wrenSetSlotString(vm, 2, message);//message
+  isWrenResultOK(wrenCall(vm,h_messageHandler));
+    
 }
 
 bool FASTRUN AppWren::dynamicSurfaceManager(){

@@ -13,12 +13,14 @@
 #include "AppWren.h"
 #include "AppReprogram.h"
 #include "SvcSerialCommandInterface.h"
+#include "SvcMIDI.h"
 #include "SvcErisAudioParameterController.h"
 #include "AppAIfES.h"
 
 AudioDirector DMAMEM _ad;
 AppAudioToPolyphonic EXTMEM appPoly;
 SvcSerialCommandInterface FASTRUN sci;
+SvcMIDI DMAMEM m;
 SvcErisAudioParameterController EXTMEM apc;
 AppReprogram EXTMEM appReprogram;
 AppWren* FASTRUN appWren;
@@ -41,7 +43,6 @@ void setup() {
             while(1);
   }
   while(!Serial && millis() < 5000); //DEBUG - wait for serial connection
-  //delay(2500);
   AppManager::setup();
 
   Serial.println(F("M Setup: Loading Applications"));
@@ -55,6 +56,7 @@ void setup() {
   if (CrashReport){
       //Serial.print(CrashReport);
   }
+
   Serial.println(F("M Setup: Done"));
 }
 
@@ -65,3 +67,5 @@ void loop(void) {
   //calls updateRT for all apps
   AppManager::getInstance()->update();
 }
+
+

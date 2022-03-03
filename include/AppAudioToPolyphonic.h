@@ -229,13 +229,8 @@ class AppAudioToPolyphonic:public AppBaseClass {
           wav->amplitude(0.01);
           //AudioNoInterrupts();
         }
-        else if(sender->isName("TEST")){
-          AudioNoInterrupts();
-          ad->disconnect("fft1024:1 0");
-          ad->disconnect("fft1024:2 0");
-          ad->connect("waveform:17 0 fft1024:1 0");
-          ad->connect("waveform:17 0 fft1024:2 0");
-          AudioInterrupts();
+        else if(sender->isName("BACK")){
+           am->sendMessage(this,"AppWren","DEMO");
         }
     }
 
