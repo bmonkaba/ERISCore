@@ -40,7 +40,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 2; 
+        update_priority = 1; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;

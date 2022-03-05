@@ -681,13 +681,14 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 }
             } while (Serial.available() > 0 && false == newRxMsg);
         }
-        if (newRxMsg && !throttle()){
+        if (newRxMsg){
             //Once a new message is received, first the command is parsed out from the message
             // this first split into cmd and param is for the purpose of identifying the requested command
             // each individual message handler is then responsible for parsing out thier own parameters if required.
             char cmd[128], param[128],param2[128];
             int total_read;
             total_read = sscanf(received_chars, "%127s %127s" , cmd, param);
+            while(throttle()){delay(1);}; //let the transmitt buffer clear out
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 messageHandler_LS();
             }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
@@ -798,5 +799,5 @@ void FASTRUN SvcSerialCommandInterface::update(){
         }
     }
     #endif
-    am->requestArmSetClock(CPU_LOW_POWER_MODE_FREQ);
+    am->requestArmSetClock(CPU_BASE_FREQ);
 }; //allways called even if app is not active

@@ -665,7 +665,7 @@ table.dataTable td {
     grid-area: sidebar;
     border: 1px solid #0e0e0e;
     background-color: #202020;
-    background: radial-gradient(circle, rgb(193 193 193 / 9%) 10%, #071829 100%);
+    background: radial-gradient(circle, rgb(32 32 45 / 79%) 10%, #071829 100%);
     font-family: 'Cutive Mono', monospace;
     font-size: 0.75em;
     border-radius: 7px;
@@ -676,6 +676,9 @@ table.dataTable td {
     padding-right: 5px;
     padding-bottom: 1px;
     fill: #101c2a94;
+    overflow: auto;
+    resize: horizontal;
+    z-index: 100;
 }
 
 .svg_text {
@@ -797,6 +800,9 @@ table.dataTable td {
     border: 1px solid #0e0e0e;
     border-radius: 7px;
     background: radial-gradient(circle, rgb(1 5 6 / 36%) 10%, rgb(0 0 0 / 67%) 100%);
+    overflow: auto;
+    resize: vertical;
+    z-index: 90;
 }
 
 .editor {
@@ -806,6 +812,8 @@ table.dataTable td {
     width: 95%;
     height: 100%%;
     border-radius: 7px;
+    overflow: auto;
+    resize: horizontal;
 }
 }
 
@@ -896,7 +904,7 @@ table.dataTable td {
     stroke: #3d85de;
     background: linear-gradient(rgb(253 254 202 / 15%) 0%, rgb(19 34 54) 100%);
     border: 1px solid #0e0e0e;
-    width: 170px;
+    width: 2048px;
     height: 15px;
     font-size: 1em;
     font-weight: normal;

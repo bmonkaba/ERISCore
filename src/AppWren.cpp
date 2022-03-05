@@ -1296,7 +1296,7 @@ void FLASHMEM AppWren::startVM(){
     vm = wrenNewVM(&config);
 }
 
-void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
+void FASTRUN AppWren::messageHandler(AppBaseClass *sender, const char *message){
   if(0 == strncmp(message,"DEMO",strlen("DEMO"))){
     Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
     rebootRequest("demo");

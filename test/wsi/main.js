@@ -76,12 +76,12 @@ $(document).ready(function () {
     editor.setReadOnly(false);
     editor.setOptions({
         theme: "ace/theme/twilight",
-        useWorker: true,
+        useWorker: false,
     });
     /*https://ace.c9.io/#nav=howto
     */
 
-    editor.setValue("Hello.");
+    editor.setValue("System.print(\"Hello World.\")");
     
     const pickr = Pickr.create({
         el: ".pickr",
@@ -250,14 +250,16 @@ $(document).ready(function () {
 
     setInterval(function () {
         document.querySelectorAll(".sparkline").forEach(function (svg) {
+            //var w = $("#sidebar").width();
             try {
+                //svg.width(w);
                 sparkline.sparkline(svg, sparks[svg.id]);
                 //svg.innerHTML += "<text x=\"15\" y=\"15\" class=\"svg_text\">"+svg.id+": "+sparks[svg.id][0]+"</text>";
             } catch (e) {
 
             }
         });
-    }, 120);
+    }, 250);
 
     $("#file_explorer").jstree();
     $("#fancy_explorer").fancytree({
@@ -638,11 +640,12 @@ $(document).ready(function () {
                     break;
                 }
                 //sidebar.empty();
+                var width = 1024;
                 for (var key in data_dict) {
                     //sidebar.append(data_dict[key] + "<br>");
                     if ($("#" + key).length < 1) {
                         sidebar.append("<br><br>" + key + ": <b id=" + key + "_VAL>val</b><br>");
-                        sidebar.append("<svg class=\"sparkline\" id=" + key + " width=\"170\" height=\"15\" stroke-width=\"1\"></svg>");
+                        sidebar.append("<svg class=\"sparkline\" id=" + key + " width=\""+ width +"\" height=\"15\" stroke-width=\"1\"></svg>");
                         sparks[key] = new Array(1024);
                         sparks[key].fill(0.01);
                     }

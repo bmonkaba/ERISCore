@@ -37,19 +37,19 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 760000000
+#define CPU_BASE_FREQ 740000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 740000000
+#define CPU_LOW_POWER_MODE_FREQ 720000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 780000000
+#define CPU_BOOST_MAX_FREQ 760000000
 
 /**
  * @brief thermal throttle trip point temp
@@ -126,7 +126,7 @@
  * @brief threshold at which point serial transmission is throttled
  * 
  */
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 600
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 400
 /**
  * @brief min delta threshold after a throttle event which will trigger an output flush
  * 
@@ -136,7 +136,7 @@
  * @brief throttle delay used to capture the delta change used in the delta threshold check
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 6
+#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 5
 /**
  * @brief max tx header size\n
  *  this is used to support multipart transmissions by capturing the start of message header
@@ -190,12 +190,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 1683
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 151
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 1251
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 77
 
 //Audio Director
 /**
