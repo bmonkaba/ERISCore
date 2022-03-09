@@ -1375,7 +1375,7 @@ bool FASTRUN AppWren::dynamicSurfaceManager(){
     surface_mempool = wrenFastRam;
     if (has_pop || has_focus){
       surface_cache = new Surface((uint16_t *)draw->getFrameAddress(),width,height);
-      memset((uint16_t *)draw->getFrameAddress(),200,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
+      memset((uint16_t *)draw->getFrameAddress(),0,sizeof(uint16_t)*WREN_FRAME_BUFFER_SIZE);
     }else{
       surface_cache = new Surface(surface_mempool, widget_width, widget_height);
       memset(surface_mempool,0,sizeof(uint16_t)*widget_width*widget_height);
@@ -1429,9 +1429,9 @@ bool FASTRUN AppWren::dynamicSurfaceManager(){
                   if(!surface_cache){                        
                       //surface_cache = new Surface(am->p_fast_img_cache_surface, widget_width, widget_height);
                       if(!dynamicSurfaceManager()){ 
-                          Serial.println(F("M AppWren::update() VM ERROR: Surface not available"));
+                          Serial.println(F("M AppWren::render() VM ERROR: Surface not available"));
                           return;
-                      }else Serial.println(F("M AppWren::update() Surface created"));
+                      }else Serial.println(F("M AppWren::render() Surface created"));
                   } else{
                     if(has_pop || has_focus){
                       //do nothing

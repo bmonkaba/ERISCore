@@ -112,86 +112,113 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   //check for off surface blt attempt
   if ((dest_x > dest->getWidth()) || (0 > (dest->getWidth() + dest_x))) return;
   if ((dest_y > dest->getHeight()) || (0 > (dest->getHeight() + dest_y))) return;
-  //for each pixel in the source buffer, write to the dest buffer if the x,y coords are within bounds
-  for (source_y=0; source_y < source->getHeight();source_y +=1){
-    for (source_x=0; source_x < source->getWidth();source_x +=1){
-      //translate the source coords to the destination coords
-      d_x = dest_x + source_x; 
-      d_y = dest_y + source_y;
-      write_index = (d_y * dest->getWidth()) + d_x;
-      read_index = (source_y * source->getWidth()) + source_x;
-      if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
-        int16_t dw;
-        int16_t r,g,b;
-        dw = srcBuffer[read_index];
-        toggle ^= true;
-        if (blt_mode == BLT_COPY){dest_buffer[write_index] = dw;
-        }else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[write_index] = dw;
-        }else if (blt_mode == BLT_HATCH_BLK){
-          if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
-          } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
-        }else if (blt_mode == BLT_HATCH_XOR){
-          if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
-          else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
-        }else if (blt_mode == BLT_ADD){
-          //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-          //unpack the color channels from the 565 RGB format
-          r = (0x255 & (dest_buffer[write_index] >> 8)) + (0x255 & (dw >> 8));
-          if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x255 & (dest_buffer[write_index] >> 3)) + (0x255 & (dw >> 3));
-          if (g > 255) g = 255;
-          b = (0x255 & (dest_buffer[write_index] << 3)) + (0x255 & (dw << 3));
-          if (b > 255) b = 255;
-          dest_buffer[write_index] = CL(r,g,b);
-          //dest_buffer[write_index] += dw;
-        }else if (blt_mode == BLT_SUB){
-          r = (0x255 & (dest_buffer[write_index] >> 8)) - (0x255 & (dw >> 8));
-          if (r < 0) r = 0; //clip the max value for each channel
-          g = (0x255 & (dest_buffer[write_index] >> 3)) - (0x255 & (dw >> 3));
-          if (g < 0) g = 0;
-          b = (0x255 & (dest_buffer[write_index] << 3)) - (0x255 & (dw << 3));
-          if (b < 0) b = 0;
-          dest_buffer[write_index] = CL(r,g,b);
-          //dest_buffer[write_index] -= dw;
-        }else if (blt_mode == BLT_MULT){
-          r = (0x255 & (dest_buffer[write_index] >> 8)) * (0x255 & (dw >> 8));
-          if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x255 & (dest_buffer[write_index] >> 3)) * (0x255 & (dw >> 3));
-          if (g > 255) g = 255;
-          b = (0x255 & (dest_buffer[write_index] << 3)) * (0x255 & (dw << 3));
-          if (b > 255) b = 255;
-          dest_buffer[write_index] = CL(r,g,b);
-          //dest_buffer[write_index] *= dw;
-        }else if (blt_mode == BLT_DIV){
-          r = (0x255 & (dest_buffer[write_index] >> 8)) / (0x255 & (dw >> 8));
-          if (r > 255) r = 255; //clip the max value for each channel
-          g = (0x255 & (dest_buffer[write_index] >> 3)) / (0x255 & (dw >> 3));
-          if (g > 255) g = 255;
-          b = (0x255 & (dest_buffer[write_index] << 3)) / (0x255 & (dw << 3));
-          if (b > 255) b = 255;
-          dest_buffer[write_index] = CL(r,g,b);
-          //if(dw > 0) dest_buffer[write_index] /= dw;
-        }else if (blt_mode == BLT_AND){
-          if(dw > 0) dest_buffer[write_index] = dw & dest_buffer[write_index];
-        }else if (blt_mode == BLT_OR){
-          if(dw > 0) dest_buffer[write_index] = dw | dest_buffer[write_index];
-        }else if (blt_mode == BLT_XOR){
-          if(dw > 0) dest_buffer[write_index] = dw ^ dest_buffer[write_index];
-        }else if (blt_mode == BLT_MEAN){
-          q7_t res[3];
-          q7_t a[2];
-          a[0] = (0x7F & (dest_buffer[write_index] >> 8));
-          a[1] = (0x7F & (dw >> 8));
-          arm_mean_q7(a,2,&res[0]);
-          a[0] = (0x7F & (dest_buffer[write_index] >> 3));
-          a[1] = (0x7F & (dw >> 3));
-          arm_mean_q7(a,2,&res[1]);
-          a[0] = (0x7F & (dest_buffer[write_index] << 3));
-          a[1] = (0x7F & (dw << 3));
-          arm_mean_q7(a,2,&res[2]);
-          dest_buffer[write_index] = CL(res[0],res[1],res[2]);
-        } else{
-          dest_buffer[write_index] = dw;
+  if(0 && blt_mode == BLT_COPY){ //WIP
+    //PXP TEST
+    uint16_t dw,dh;
+    dw = dest_x + from_width;
+    if(dw>SCREEN_WIDTH) dw=SCREEN_WIDTH;
+    dh = dest_y + from_height;
+    if(dh>SCREEN_HEIGHT) dh=SCREEN_HEIGHT;
+
+    PXP_input_buffer(srcBuffer, 2, source->getWidth(), source->getHeight());
+    PXP_input_format(PXP_RGB565,0,0,0);
+    PXP_input_position(dest_x, dest_y, dw, dh);
+    PXP_input_background_color(0,0,0);
+
+    PXP_overlay_buffer(srcBuffer, 2, source->getWidth()-1, source->getHeight()-1);
+    PXP_overlay_format(PXP_RGB565,0,true,0,PXP_MERGEAS,false);
+    PXP_overlay_color_key_low(0);
+    PXP_overlay_color_key_high(20,20,20);
+    PXP_overlay_position(dest_x, dest_y, dw, dh);
+
+    PXP_output_buffer(dest_buffer, 2, dest->getWidth(), dest->getHeight());
+    PXP_output_format();
+    PXP_output_clip(SCREEN_WIDTH, SCREEN_HEIGHT);
+    //PXP_flip_horizontally(true); //testing - for visual confirmation
+    PXP_process();
+    return;
+  }else{
+    //for each pixel in the source buffer, write to the dest buffer if the x,y coords are within bounds
+    for (source_y=0; source_y < source->getHeight();source_y +=1){
+      for (source_x=0; source_x < source->getWidth();source_x +=1){
+        //translate the source coords to the destination coords
+        d_x = dest_x + source_x; 
+        d_y = dest_y + source_y;
+        write_index = (d_y * dest->getWidth()) + d_x;
+        read_index = (source_y * source->getWidth()) + source_x;
+        if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
+          int16_t dw;
+          int16_t r,g,b;
+          dw = srcBuffer[read_index];
+          toggle ^= true;
+          if (blt_mode == BLT_COPY){dest_buffer[write_index] = dw;
+          }else if (blt_mode == BLT_BLK_COLOR_KEY && (dw & 0xE79C) != 0){dest_buffer[write_index] = dw;
+          }else if (blt_mode == BLT_HATCH_BLK){
+            if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
+            } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
+          }else if (blt_mode == BLT_HATCH_XOR){
+            if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
+            else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
+          }else if (blt_mode == BLT_ADD){
+            //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+            //unpack the color channels from the 565 RGB format
+            r = (0x255 & (dest_buffer[write_index] >> 8)) + (0x255 & (dw >> 8));
+            if (r > 255) r = 255; //clip the max value for each channel
+            g = (0x255 & (dest_buffer[write_index] >> 3)) + (0x255 & (dw >> 3));
+            if (g > 255) g = 255;
+            b = (0x255 & (dest_buffer[write_index] << 3)) + (0x255 & (dw << 3));
+            if (b > 255) b = 255;
+            dest_buffer[write_index] = CL(r,g,b);
+            //dest_buffer[write_index] += dw;
+          }else if (blt_mode == BLT_SUB){
+            r = (0x255 & (dest_buffer[write_index] >> 8)) - (0x255 & (dw >> 8));
+            if (r < 0) r = 0; //clip the max value for each channel
+            g = (0x255 & (dest_buffer[write_index] >> 3)) - (0x255 & (dw >> 3));
+            if (g < 0) g = 0;
+            b = (0x255 & (dest_buffer[write_index] << 3)) - (0x255 & (dw << 3));
+            if (b < 0) b = 0;
+            dest_buffer[write_index] = CL(r,g,b);
+            //dest_buffer[write_index] -= dw;
+          }else if (blt_mode == BLT_MULT){
+            r = (0x255 & (dest_buffer[write_index] >> 8)) * (0x255 & (dw >> 8));
+            if (r > 255) r = 255; //clip the max value for each channel
+            g = (0x255 & (dest_buffer[write_index] >> 3)) * (0x255 & (dw >> 3));
+            if (g > 255) g = 255;
+            b = (0x255 & (dest_buffer[write_index] << 3)) * (0x255 & (dw << 3));
+            if (b > 255) b = 255;
+            dest_buffer[write_index] = CL(r,g,b);
+            //dest_buffer[write_index] *= dw;
+          }else if (blt_mode == BLT_DIV){
+            r = (0x255 & (dest_buffer[write_index] >> 8)) / (0x255 & (dw >> 8));
+            if (r > 255) r = 255; //clip the max value for each channel
+            g = (0x255 & (dest_buffer[write_index] >> 3)) / (0x255 & (dw >> 3));
+            if (g > 255) g = 255;
+            b = (0x255 & (dest_buffer[write_index] << 3)) / (0x255 & (dw << 3));
+            if (b > 255) b = 255;
+            dest_buffer[write_index] = CL(r,g,b);
+            //if(dw > 0) dest_buffer[write_index] /= dw;
+          }else if (blt_mode == BLT_AND){
+            if(dw > 0) dest_buffer[write_index] = dw & dest_buffer[write_index];
+          }else if (blt_mode == BLT_OR){
+            if(dw > 0) dest_buffer[write_index] = dw | dest_buffer[write_index];
+          }else if (blt_mode == BLT_XOR){
+            if(dw > 0) dest_buffer[write_index] = dw ^ dest_buffer[write_index];
+          }else if (blt_mode == BLT_MEAN){
+            q7_t res[3];
+            q7_t a[2];
+            a[0] = (0x7F & (dest_buffer[write_index] >> 8));
+            a[1] = (0x7F & (dw >> 8));
+            arm_mean_q7(a,2,&res[0]);
+            a[0] = (0x7F & (dest_buffer[write_index] >> 3));
+            a[1] = (0x7F & (dw >> 3));
+            arm_mean_q7(a,2,&res[1]);
+            a[0] = (0x7F & (dest_buffer[write_index] << 3));
+            a[1] = (0x7F & (dw << 3));
+            arm_mean_q7(a,2,&res[2]);
+            dest_buffer[write_index] = CL(res[0],res[1],res[2]);
+          } else{
+            dest_buffer[write_index] = dw;
+          }
         }
       }
     }

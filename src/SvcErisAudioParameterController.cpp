@@ -1,7 +1,7 @@
 #include "ErisAudio.h"
 #include "SvcErisAudioParameterController.h"
 
-void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
+void FASTRUN SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
     char c[64];
     char i[64];
     char m[64];
@@ -10,11 +10,10 @@ void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *send
 
     int total_read;
     //class,instance,method,params
-    sci->printf("M ");sci->println(message);
-
     total_read = sscanf(message, "%63s %63s %63s %63s" , c, i, m, p);
-    sci->printf("M APC Request: class: %63s instance: %63s method:%63s params: %63s\n" , c, i, m, p);
-    sci->send();
+    //sci->printf("M ");sci->println(message);
+    //sci->printf("M APC Request: class: %63s instance: %63s method:%63s params: %63s\n" , c, i, m, p);
+    //sci->send();
     if(0){}else if(strncmp(gPC_ERISAUDIOFILTERBIQUAD,c,sizeof(gPC_ERISAUDIOFILTERBIQUAD)) == 0 &&\
         strncmp(gPM_SETLOWPASS,m,sizeof(gPM_SETLOWPASS)) == 0){
         strcpy(objName,erisAudioFilterBiquad::short_name_lookup);

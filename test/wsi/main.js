@@ -829,7 +829,7 @@ $(document).ready(function () {
     $("#PINK_NOISE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT amp:2 0\nCONNECT pink:1 0 amp:2 0\nDISCONNECT mixer:5 3"
+            "data": "DISCONNECT amp:2 0\nCONNECT pink:1 0 amp:2 0\n"
         });
         $("#received").empty();
     });
@@ -837,7 +837,7 @@ $(document).ready(function () {
     $("#TONE").click(function (ev) {
         ev.preventDefault();
         sendMessage({
-            "data": "DISCONNECT amp:2\nCONNECT tonesweep:1 0 amp:2 0\nAPC erisAudioSynthToneSweep 1 play 0.15,20,2100,10.0"
+            "data": "DISCONNECT amp:2 0\nCONNECT tonesweep:1 0 amp:2 0\nAPC erisAudioSynthToneSweep 1 play 0.15,20,2100,10.0\n"
         });
         $("#received").empty();
     });

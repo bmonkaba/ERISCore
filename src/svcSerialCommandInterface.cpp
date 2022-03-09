@@ -552,6 +552,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_GET(){
         Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
         Serial.println(param);
     } else{
+        while(throttle()){ delay(1);}
         //file streaming request ok
         //init the transfer
         Serial.print(F("M GET_OK ")); 
@@ -737,18 +738,20 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 am->getAppByName("APC")->messageHandler(this,received_chars + 4);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 ad->printStats();
-                while(throttle()){delay(2);}
+                while(throttle()){delay(1);}
                 am->printStats();
             }else if (strncmp(cmd, "CQT_CFG",sizeof(cmd)) == 0){ 
                 am->sendMessage(this,"AppCQT","CQT_INFO");
             }else if (strncmp(cmd, "GET_DD",sizeof(cmd)) == 0){ 
                 am->data->printDictionary(this);
             }else if (strncmp(cmd, "GET_WREN_SCRIPT",sizeof(cmd)) == 0){ 
-                if(!requestStartLZ4Message()) return;
-                println("#WREN_START!"); 
-                println(g_wrenScript);
-                println("#WREN_EOF!");
-                sendLZ4Message();
+                while(throttle()){delay(100);}
+                if(requestStartLZ4Message()){
+                    println("#WREN_START!"); 
+                    println(g_wrenScript);
+                    println("#WREN_EOF!");
+                    sendLZ4Message();
+                }
             }else if (strncmp(cmd, "WREN_SCRIPT_START",sizeof(cmd)) == 0){
                 messageHandler_WREN_SCRIPT_START();
             }else if (strncmp(cmd, "WREN_SCRIPT_COMPILE",sizeof(cmd)) == 0){
@@ -788,14 +791,14 @@ void FASTRUN SvcSerialCommandInterface::update(){
     //tx periodic messages
     #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
     if(is_periodic_messages_enabled && !is_streaming_file){
-        if (et_since_periodic_stats_tx > SERIAL_AUTO_TRANSMIT_STATS_PERIOD && !throttle()){
+        if (et_since_periodic_stats_tx > SERIAL_AUTO_TRANSMIT_STATS_PERIOD){
             et_since_periodic_stats_tx = 0; 
             AppManager::getInstance()->printStats();
-            ad->printStats();
-        }else if (et_since_periodic_data_dict_tx > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD && !throttle()){
-            et_since_periodic_data_dict_tx = 0;
-            et_since_periodic_stats_tx = 0; 
-            AppManager::getInstance()->data->printDictionary(this);
+            ad->printStats();            
+        }else if (et_since_periodic_data_dict_tx > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
+                et_since_periodic_data_dict_tx = 0;
+                et_since_periodic_stats_tx = 0; 
+                AppManager::getInstance()->data->printDictionary(this);
         }
     }
     #endif

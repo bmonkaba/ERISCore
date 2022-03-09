@@ -104,7 +104,7 @@ void ExtADCConfig(){
   // 0100 0010: VINL2[SE] 42
   // 0100 0100: VINL3[SE] 44
   // 0100 1000: VINL4[SE] 48 <-----
-  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x42); //68
+  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x41); //68
   Wire.endTransmission(I2C_STOP);
 
   //ADC 1 Input Channel Select (ADC1R):
@@ -128,7 +128,7 @@ void ExtADCConfig(){
   //0100 0010: VINR2[SE] <-----
   //0100 0100: VINR3[SE]
   //0100 1000: VINR4[SE]
-  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x41);//72
+  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x42);//72
   Wire.endTransmission(I2C_STOP);
 
   //PGA

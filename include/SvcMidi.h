@@ -17,7 +17,7 @@
 class SvcMIDI:public AppBaseClass {
   public:
     SvcMIDI():AppBaseClass(){
-        update_priority = 0;
+        update_priority = 1;
         strcpy(name,"MIDI");
         midi_init = false;
         memset(&subscriptions,0, sizeof(uint16_t)*MAX_MIDI_MESSAGE_APP_SUBSCRIPTIONS);

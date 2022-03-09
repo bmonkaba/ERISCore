@@ -144,7 +144,7 @@ void AppManager::update(){
     
     monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
-    drt = display_refresh_time;
+    drt = display_refresh_time; 
     touch_updated = false;
     node = root;
 
@@ -155,9 +155,6 @@ void AppManager::update(){
       return;
     }
 
-    //update analog inputs
-    update_analog = analog.update();
-    
     //update loop is directed by the state variable 
     switch(state){
       case redraw_background:
@@ -176,12 +173,18 @@ void AppManager::update(){
         break;
         
       case redraw_wait://idle render time to give the screen refresh a head start
-        if (drt > 22){ //magic number is to tune the delay between frame buffer writes
+        if (drt > 42){ //magic number is to tune the delay between frame buffer writes
                        //as the data is simutaniously being written out to SPI.
                        //This ensures we are not overwritting the current frame 
                        //with the next frame. 
           if(exclusive_app_render) state = redraw_objects;
           else state = redraw_background;
+
+          //update analog inputs
+          update_analog = analog.update();
+          touch.update();
+          touch_updated = true;    
+
         };
         //note: this is  a good place for application manager housekeeping tasks where screen access is not required
         data->update(AM_AUDIO_CPU_MAX,(float32_t)AudioProcessorUsageMax());
@@ -193,11 +196,12 @@ void AppManager::update(){
         break;
 
       case redraw_render:
-        app_time=0;      
+        PXP_finish(); //make sure any PXP operations are complete
+        draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
         data->update(RENDER_PERIOD,(int32_t)drt);
         data->update(RENDER,(int32_t)4);
         data->increment(RENDER_FRAME);
-        draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
+        app_time=0;
         state = redraw_wait;
         display_refresh_time = 0;
         break;
@@ -238,8 +242,7 @@ void AppManager::update(){
         break;
     }
     //always call the apps updateRT function on every loop
-    touch.update();
-    touch_updated = true;    
+    
     data->increment(RT_CALLS);
     node = root;
     bool isactive_child;

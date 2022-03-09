@@ -49,8 +49,10 @@ void handleNoteOnCallback(byte channel, byte note, byte velocity){
     char msg[32];
     AppManager* am = AppManager::getInstance();
     SvcMIDI* m = (SvcMIDI*)am->getAppByName("MIDI");
-    sprintf(msg,"NOTE_ON %d %d %d",channel,note,velocity);
-    m->publish(msg);
+    if (note > 12){
+        sprintf(msg,"NOTE_ON %d %d %d %f",channel,note,velocity,note_freq[note-12]);
+        m->publish(msg);
+    }
 }
 
 void handleAfterTouchPolyCallback(byte channel, byte note, byte velocity){}
@@ -91,11 +93,11 @@ void handleClockCallback(){
     midi_clock_counter = 0;
     tempo = round(60.0 * (1.0 / ((float)(t - last_quarter_note_time) / 1000000.0)));
     if (tempo > 240.0) tempo = 240.0;
+    AppManager* am = AppManager::getInstance();
+    am->data->update("TEMPO",tempo);
     last_quarter_note_time = t;
     quarter_note_count += 1;
   }
-  AppManager* am = AppManager::getInstance();
-  am->data->update("TEMPO",tempo);
 }
 
 void handleStartCallback(void){}
