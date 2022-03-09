@@ -79,7 +79,7 @@
 <text text-anchor="start" x="8" y="-890.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool loadScript(const char *script)</text>
 <text text-anchor="start" x="8" y="-870.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void messageHandler(AppBaseClass *sender,</text>
 <text text-anchor="start" x="8" y="-850.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const char *message)</text>
-<text text-anchor="start" x="8" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void rebootRequest(char *script_name)</text>
+<text text-anchor="start" x="8" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void rebootRequest(const char *script_name)</text>
 <text text-anchor="start" x="8" y="-810.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void releasePopUp()</text>
 <text text-anchor="start" x="8" y="-790.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void requestPopUp(bool exclusive=false)</text>
 <text text-anchor="start" x="8" y="-770.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void restartVM()</text>

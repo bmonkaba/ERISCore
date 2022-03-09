@@ -193,7 +193,7 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">// 0100 0010: VINL2[SE] 42</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="comment">// 0100 0100: VINL3[SE] 44</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">// 0100 1000: VINL4[SE] 48 &lt;-----</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x42); <span class="comment">//68</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  Wire.beginTransmission(74);Wire.write(6);Wire.write(0x41); <span class="comment">//68</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  Wire.endTransmission(I2C_STOP);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">//ADC 1 Input Channel Select (ADC1R):</span></div>
@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="comment">//0100 0010: VINR2[SE] &lt;-----</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="comment">//0100 0100: VINR3[SE]</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="comment">//0100 1000: VINR4[SE]</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x41);<span class="comment">//72</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  Wire.beginTransmission(74);Wire.write(9);Wire.write(0x42);<span class="comment">//72</span></div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  Wire.endTransmission(I2C_STOP);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="comment">//PGA</span></div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('dc/d47/_p_c_m1863_8h_source.html','../
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_eris_globals_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d46/_eris_globals_8h_source.html#l00228">ErisGlobals.h:228</a></div></div>
+<div class="ttc" id="a_eris_globals_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d46/_eris_globals_8h_source.html#l00247">ErisGlobals.h:247</a></div></div>
 <div class="ttc" id="a_h_s_i_8h_html"><div class="ttname"><a href="../../de/d10/_h_s_i_8h.html">HSI.h</a></div></div>
 <div class="ttc" id="a_p_c_m1863_8h_a0d9ccf7656803723e1115c96b21820aa_html_a0d9ccf7656803723e1115c96b21820aa"><div class="ttname"><a href="../../dc/d47/_p_c_m1863_8h_a0d9ccf7656803723e1115c96b21820aa.html#a0d9ccf7656803723e1115c96b21820aa">I2CReset</a></div><div class="ttdeci">void I2CReset()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d47/_p_c_m1863_8h_source.html#l00024">PCM1863.h:24</a></div></div>
 <div class="ttc" id="a_p_c_m1863_8h_a355d3b0e208bf224635b70280298fcf8_html_a355d3b0e208bf224635b70280298fcf8"><div class="ttname"><a href="../../dc/d47/_p_c_m1863_8h_a355d3b0e208bf224635b70280298fcf8.html#a355d3b0e208bf224635b70280298fcf8">ExtADCReadReg</a></div><div class="ttdeci">uint8_t ExtADCReadReg(uint8_t control_register)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d47/_p_c_m1863_8h_source.html#l00050">PCM1863.h:50</a></div></div>

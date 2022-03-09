@@ -99,6 +99,9 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
     [ "PCM1863.h", "dc/d47/_p_c_m1863_8h.html", "dc/d47/_p_c_m1863_8h" ],
     [ "SvcDataDictionary.h", "d7/d5f/_svc_data_dictionary_8h.html", "d7/d5f/_svc_data_dictionary_8h" ],
     [ "SvcErisAudioParameterController.h", "d6/d59/_svc_eris_audio_parameter_controller_8h.html", "d6/d59/_svc_eris_audio_parameter_controller_8h" ],
+    [ "SvcMidi.h", "d2/ddf/_svc_midi_8h.html", [
+      [ "SvcMIDI", "d8/dec/class_svc_m_i_d_i.html", "d8/dec/class_svc_m_i_d_i" ]
+    ] ],
     [ "SvcSerialCommandInterface.h", "de/d46/_svc_serial_command_interface_8h.html", [
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", "d2/da8/class_svc_serial_command_interface" ]
     ] ],

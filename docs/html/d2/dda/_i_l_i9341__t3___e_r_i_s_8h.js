@@ -14,7 +14,8 @@ var _i_l_i9341__t3___e_r_i_s_8h =
       [ "BLT_DIV", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191a1c64aa4a8baafba0975d59a4b30aed44", null ],
       [ "BLT_AND", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191a259c6127de1ac14a592b36127617d3f4", null ],
       [ "BLT_OR", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191acd5731d1f546a4014a54fa08e144fed4", null ],
-      [ "BLT_XOR", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191ade2087c9ecfe0830c6ba0988945e9c99", null ]
+      [ "BLT_XOR", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191ade2087c9ecfe0830c6ba0988945e9c99", null ],
+      [ "BLT_MEAN", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae439dcf4f9fec36f1fb419647b317191.html#ae439dcf4f9fec36f1fb419647b317191a37d49686b051ddc9a628ca90135413c8", null ]
     ] ],
     [ "_busy", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae07cd862ac00b225d04bbd47df672f0b.html#ae07cd862ac00b225d04bbd47df672f0b", null ],
     [ "renderCompleteCB", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae966c802b910090f40a76496dd82cd4f.html#ae966c802b910090f40a76496dd82cd4f", null ]

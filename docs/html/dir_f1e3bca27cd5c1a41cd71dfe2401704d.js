@@ -10,6 +10,7 @@ var dir_f1e3bca27cd5c1a41cd71dfe2401704d =
     [ "ILI9341_t3_ERIS.cpp", "d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp.html", "d4/df8/_i_l_i9341__t3___e_r_i_s_8cpp" ],
     [ "SvcDataDictionary.cpp", "dc/dc4/_svc_data_dictionary_8cpp.html", null ],
     [ "SvcErisAudioParameterController.cpp", "d5/d06/_svc_eris_audio_parameter_controller_8cpp.html", null ],
+    [ "SvcMIDI.cpp", "d2/d08/_svc_m_i_d_i_8cpp.html", "d2/d08/_svc_m_i_d_i_8cpp" ],
     [ "SvcSerialCommandInterface.cpp", "da/d7d/_svc_serial_command_interface_8cpp.html", "da/d7d/_svc_serial_command_interface_8cpp" ],
     [ "touch.cpp", "db/dfc/touch_8cpp.html", "db/dfc/touch_8cpp" ]
 ];

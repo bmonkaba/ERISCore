@@ -11,7 +11,7 @@ var class_app_manager =
     [ "getSD", "da/d96/class_app_manager_a821aeaa51455976c0fa5ffe304cae89b.html#a821aeaa51455976c0fa5ffe304cae89b", null ],
     [ "ls", "da/d96/class_app_manager_a394ebd4ce08e43eb85f6211e52ccfc17.html#a394ebd4ce08e43eb85f6211e52ccfc17", null ],
     [ "peekAppFocus", "da/d96/class_app_manager_a670f012b624cb34002cc2e5bbd3d9ac3.html#a670f012b624cb34002cc2e5bbd3d9ac3", null ],
-    [ "printStats", "da/d96/class_app_manager_a648bf66164619cfcc0f0b41e7b3a022f.html#a648bf66164619cfcc0f0b41e7b3a022f", null ],
+    [ "printStats", "da/d96/class_app_manager_aacf1d952bc251446451954d4a7171f3c.html#aacf1d952bc251446451954d4a7171f3c", null ],
     [ "registerApp", "da/d96/class_app_manager_a080b2a5362ee0f49033786da9f942b17.html#a080b2a5362ee0f49033786da9f942b17", null ],
     [ "releasePopUp", "da/d96/class_app_manager_a06b2e46b0f44765b857e9dad91dfe822.html#a06b2e46b0f44765b857e9dad91dfe822", null ],
     [ "requestArmSetClock", "da/d96/class_app_manager_abe1aaa39fc99564c257c256f5df6aec4.html#abe1aaa39fc99564c257c256f5df6aec4", null ],

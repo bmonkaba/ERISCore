@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="block tramsfer from ram drive filei to the frame buffer">
+<g id="a_node1"><a xlink:title="block tramsfer from ram drive file to the frame buffer">
 <polygon fill="#bfbfbf" stroke="black" points="0,-70.5 0,-98.5 312,-98.5 312,-70.5 0,-70.5"/>
 <text text-anchor="middle" x="156" y="-80.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::bltRAMDrive2FrameBuffer</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a7ecadfd5c8126cdc71d76e3b48e035a0.html#a7ecadfd5c8126cdc71d76e3b48e035a0" target="_top" xlink:title="blt from an open TinyFS open file pointer to a destination buffer">
+<g id="a_node2"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a4ca6d98ffc159eab2a04a9d35173a24e.html#a4ca6d98ffc159eab2a04a9d35173a24e" target="_top" xlink:title="blt from an open TinyFS open file pointer to a destination buffer">
 <polygon fill="none" stroke="black" points="369.5,-94.5 369.5,-122.5 629.5,-122.5 629.5,-94.5 369.5,-94.5"/>
 <text text-anchor="middle" x="499.5" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::bltRAMFileB</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_a743e89bcfef0064cc5aaae3863ba2ac3.html#a743e89bcfef0064cc5aaae3863ba2ac3" target="_top" xlink:title="responsible for managing the surface buffer memory allocation">
+<g id="a_node3"><a xlink:href="../../d0/da0/class_app_wren_a9bdaddde36b9c603188214b09ce39a06.html#a9bdaddde36b9c603188214b09ce39a06" target="_top" xlink:title="responsible for managing the surface buffer memory allocation">
 <polygon fill="none" stroke="black" points="348,-47.5 348,-75.5 651,-75.5 651,-47.5 348,-47.5"/>
 <text text-anchor="middle" x="499.5" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::dynamicSurfaceManager</text>
 </a>

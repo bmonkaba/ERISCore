@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ERIS CORE: Eris Core</title>
+<title>ERIS CORE: Eris Core Software Overview</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,48 +84,196 @@ $(document).ready(function(){initNavTree('d8/d48/md__e_r_i_s_core_docs_index.htm
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Eris Core </div>  </div>
+<div class="title">Eris Core Software Overview </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="https://bmonkaba.github.io/ERISCore/html/index.html">software documentation</a></p>
+<div class="textblock"><p><a href="https://bmonkaba.github.io/ERISCore/html/index.html">software documentation</a> <br  />
+ </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Executive Overview</h1>
-<p>(Teensy 4.1 core + 2x PSRAM chips) + custom PCB + off the shelf TFT module = Eris Core electronic assembly</p>
-<p>The electronis assembly + Eris Core software = Eris Core</p>
+Design goals</h1>
+<ul>
+<li>Stereo audio signal processor assembly built around a Teensy 4.1 combined with a custom TFT ready PCB with integrated power supply, MIDI and independent ADC/DAC</li>
+<li>Real time polyphonic analysis (constant q-transform)</li>
+<li>No 3rd party operating system</li>
+<li>No threads</li>
+<li>AI capability for offline audio training and 'realtime' deployment</li>
+<li>MIDI in/out capable</li>
+<li>Should be able to load and unload applications</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
-design goals</h1>
-<p>Stero audio signal processor assembly built around a Teensy 4.1 combined with a custom TFT ready PCB with integrated power supply, MIDI and ADC/DAC chipset Real time polyphonic analysis (constant q-transform) No 3rd party operating system No threads AI capabilility for offline audio training and 'realtime' deployment MIDI in/out capable Should be able to load and unload applications</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-design methodology</h1>
-<p>Agile... but like this:</p>
-<p>Use cases identify needed features. Features from the use cases drive functions. Implementation of features is scripted in Wren Functions to support the features are implemented as callback C extentions The <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...">AppWren</a> class is found by the callbacks through the <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> interface System/Integration testing is the abuse of the implemented use cases in wren Regression/load testing is the continuous cycling of the test cases Calls from the VM are sometimes bounds checked to avoid crashes where as the C++ interface may be unprotected for performance (no training wheels) Plan static code analysis clean up, refactoring, formatting after every major feature implementation Documentation is constantly updated but always could be better. Automate as much as possible. Then automate more.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Why</h1>
-<p>The thing I wanted didn't exist. So I made it. Following the philosophy of 'there is no such thing as an original idea' there must be other's who may find this usefull or at least interesting.</p>
-<p>More info to come.</p>
+Design methodology</h1>
+<p>Agile... but like this: <br  />
+</p><ul>
+<li>Use cases identify needed features.</li>
+<li>Features from the use cases drive functions.</li>
+<li>Implementation of features is scripted in Wren</li>
+<li>Functions to support the features are implemented as callback C extensions</li>
+<li>The <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...">AppWren</a> class is requested by the callbacks through the <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> interface</li>
+<li>System/Integration testing is the abuse of the implemented use cases in wren</li>
+<li>Regression/load testing is the continuous cycling of the previous abuse test cases</li>
+</ul>
 <p><br  />
- <br  />
- <br  />
- <br  />
- <br  />
- <br  />
- <br  />
- </p><div class="fragment"><div class="line">Syntax highlighted code block</div>
+ Calls from the VM are sometimes bounds checked to avoid crashes whereas the C++ interface may be unprotected for performance reasons (no training wheels)</p>
+<p>Plan static code analysis clean up, refactoring, formatting after every major feature implementation as needed</p>
+<p>Documentation is constantly updated but always could be better.</p>
+<p>Automate as much as possible. Then automate more.</p>
+<p><br  />
+ </p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Overview for Software Developers</h1>
+<p><br  />
+ Fundamentally this is an arduino class library which provides an abstracted framework for rapid application development.</p>
+<p>Modifications have been implemented in the teensy audio library to replace reference passing with pointers.</p>
+<p>These modifications can be found in the /lib/Audio folder; Specifically the <a class="el" href="../../d5/d96/class_audio_stream.html">AudioStream</a> sw unit.</p>
+<p>Wrappers for the standard teensy audio blocks serve the simple purpose of holding string constants for both the short name and class names, along with the count of inputs and outputs per block</p>
+<p>These wrappers are what enable string based messaging for audio block connection and parameter control.</p>
+<p>Functionally there are no changes to behavior. The audio blocks update function calls are simply passed to the base class.</p>
+<p><br  />
+ Within this folder are also modified and/or new audio blocks.</p>
+<p>For example the eris_analyze_fft1024 unit is a custom 32bit floating point, overlapping window implementation with an interface</p>
+<p>for querying peak frequency amd power by bin ranges, enabling simple constant q transforms by using precalculated fft bin ranges.</p>
+<p>C++ "Applications" are created using the class framework. Specifically an application is a sub class of&#160;<span class="colour" style="color:rgb(78, 201, 176)"><a class="el" href="../../db/d69/class_app_base_class.html" title="base class definition / implementation from which all app classes will be derived and override">AppBaseClass</a></span></p>
+<p>The /include/AppTemplate.h file is provided as a template which contains empty virtual function implementations required by the framework.</p>
+<p>What does required by the framework mean? How are apps executed? initialization? what about my own libraries and arduino code... etc??? Lets take a step back and look at a standard arduino application structure:</p>
+<p><br  />
+ </p><div class="fragment"><div class="line">void setup() {</div>
+<div class="line">  // put your setup code here, to run once:</div>
 <div class="line"> </div>
-<div class="line"># Header 1</div>
-<div class="line">## Header 2</div>
-<div class="line">### Header 3</div>
+<div class="line">}</div>
 <div class="line"> </div>
-<div class="line">- Bulleted</div>
-<div class="line">- List</div>
+<div class="line">void loop() {</div>
+<div class="line">  // put your main code here, to run repeatedly:</div>
 <div class="line"> </div>
-<div class="line">1. Numbered</div>
-<div class="line">2. List</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> <br  />
+ <br  />
+ Now with Eris Core (simplified to highlight the structure): <br  />
+ </p><div class="fragment"><div class="line">AudioDirector DMAMEM _ad;</div>
+<div class="line">AppAudioToPolyphonic EXTMEM appPoly;</div>
+<div class="line">SvcSerialCommandInterface FASTRUN sci;</div>
+<div class="line">SvcMIDI DMAMEM m;</div>
+<div class="line">SvcErisAudioParameterController EXTMEM apc;</div>
+<div class="line">AppReprogram EXTMEM appReprogram;</div>
+<div class="line">AppWren* FASTRUN appWren;</div>
 <div class="line"> </div>
-<div class="line">**Bold** and _Italic_ and `Code` text</div>
+<div class="line">void setup() {</div>
+<div class="line">  Serial.begin(3000000);//baud rate is ignored by the library as it&#39;s fixed at max USB speed</div>
+<div class="line">  AppManager::setup();</div>
+<div class="line">  appWren = new AppWren();//note: The AppBaseClass constructor self registers with the app manager</div>
+<div class="line">  appWren-&gt;setParent(&amp;appPoly);</div>
+<div class="line">  _ad.setSCI(&amp;sci);//give the audio director a pointer to the sci class</div>
+<div class="line">  _ad.setAPC(&amp;apc);//give the audio director a pointer to the apc class</div>
+<div class="line">  appPoly.getFocus();</div>
+<div class="line">  }</div>
+<div class="line">  Serial.println(F(&quot;M Setup: Done&quot;));</div>
+<div class="line">}</div>
 <div class="line"> </div>
-<div class="line">[Link](url) and ![Image](src)</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+<div class="line">void loop(void) {</div>
+<div class="line">  //The appManager will...</div>
+<div class="line">  //call the handlers of the active app for any triggered events,</div>
+<div class="line">  //calls update for the active app</div>
+<div class="line">  //calls updateRT for all apps</div>
+<div class="line">  AppManager::getInstance()-&gt;update();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> <br  />
+ As can bee clearly seen. The arduino application structure of <a class="el" href="../../d6/dd8/_eris_core_8cpp_a4fc01d736fe50cf5b977f755b675f11d.html#a4fc01d736fe50cf5b977f755b675f11d">setup()</a> and <a class="el" href="../../d6/dd8/_eris_core_8cpp_a0b33edabd7f1c4e4a0bf32c67269be2f.html#a0b33edabd7f1c4e4a0bf32c67269be2f">loop()</a> functions remains unchanged within the main sw unit.</p>
+<p>Therefore, one's own arduino code and libraries can be integrated with Eris core or, execute independently.</p>
+<p>Care of course is still required to ensure no resource conflicts. <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Resources Owned</h2>
+<p><br  />
+ It should be considered that Eris Core owns: <br  />
+</p><ul>
+<li>TFT display buffers and associated HW signals</li>
+<li><a class="el" href="../../d1/dff/class_touch.html">Touch</a> and associated HW signals</li>
+<li>MIDI and associated HW signals</li>
+<li>Serial comms</li>
+<li>Audio and I2S HW signals</li>
+<li>Analog control inputs</li>
+<li>SD card</li>
+<li>EXT_RAM - a significant portion is owned by ErisCore 8MB dedicated RAM drive for the VM, display buffers, audio mem</li>
+</ul>
+<p><br  />
+ Note: C/C++ based applications may take control of digital io and additional EXT_RAM</p>
+<p>Note: HW signal to teensy 4.1 output pin map can be found in <a class="el" href="../../de/d10/_h_s_i_8h.html">HSI.h</a> <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Initialization</h2>
+<p><br  />
+ The Appmanager::setup() call within the <a class="el" href="../../d6/dd8/_eris_core_8cpp_a4fc01d736fe50cf5b977f755b675f11d.html#a4fc01d736fe50cf5b977f755b675f11d">setup()</a> function initializes Eris Core.</p>
+<p>Applications can be static or dynamically created with new</p>
+<p>A few points to note here:</p>
+<ul>
+<li><a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> is a singleton object instance</li>
+<li>Applications self register with the <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> on creation by way of the AppBase class constructor</li>
+</ul>
+<p><br  />
+ Many apps could be loaded on setup therefore a method is required to tell Eris Core which one to give focus. This is done with the <a class="el" href="../../db/d69/class_app_base_class.html" title="base class definition / implementation from which all app classes will be derived and override">AppBaseClass</a> method getFocus():</p>
+<p>From the <a class="el" href="../../d6/dd8/_eris_core_8cpp_a4fc01d736fe50cf5b977f755b675f11d.html#a4fc01d736fe50cf5b977f755b675f11d">setup()</a> example above:</p>
+<div class="fragment"><div class="line">appPoly.getFocus();</div>
+</div><!-- fragment --><p> <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Main Loop</h2>
+<p><br  />
+ Eris Core is updated from within the arduino main loop like so:</p>
+<p><br  />
+ </p><div class="fragment"><div class="line">AppManager::getInstance()-&gt;update;</div>
+</div><!-- fragment --><p> <br  />
+ This requests the singleton object from the static method getInstance() then calls update on it.</p>
+<p>This is akin to a sys tick(), however there is no context switching as this is a cooperatively scheduled and not a preemptive 'operating system'. The point to be made here is that update does not mean anything other than to update the internal state machine and make appropriate application method calls in the process. <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Application Requirements &amp; Interfaces</h2>
+<p><br  />
+ Application interfaces are specified by the implementation of <a class="el" href="../../db/d69/class_app_base_class.html" title="base class definition / implementation from which all app classes will be derived and override">AppBaseClass</a></p>
+<p>If using the <a class="el" href="../../d9/d03/class_app_template.html" title="application template containing the required methods for implementation">AppTemplate</a>, which contains empty implementations of the required virtual functions there is only one requirement:</p>
+<ul>
+<li>Requirement: Every application must have a unique name</li>
+</ul>
+<p><br  />
+ Within the Application constructor set the object name like so:</p>
+<div class="fragment"><div class="line">sprintf(name, &quot;MyApplication&quot;); //set the applications name</div>
+</div><!-- fragment --><p> <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Inter-Application Communication</h2>
+<p><br  />
+ Message based communication is sent through the string based messageHandler of the receiver object</p>
+<p>From <a class="el" href="../../df/d17/class_control_button.html">ControlButton</a> <br  />
+ </p><div class="fragment"><div class="line">void FLASHMEM onTouchRelease(uint16_t t_x, uint16_t t_y) override{</div>
+<div class="line">    if (t_x &gt; x &amp;&amp; t_x &lt; (x + w) &amp;&amp; t_y &gt; y &amp;&amp; t_y &lt; (y + h)){</div>
+<div class="line">        parent_node-&gt;messageHandler(this,&quot;Pressed&quot;);</div>
+<div class="line">    }</div>
+<div class="line">    is_pressed = false;</div>
+<div class="line">    time_active = 0;</div>
+<div class="line">    is_dirty = true;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p> <br  />
+ This was a design trade-off in that the obvious first thought was to use enumerated message IDs. However, there is one single reason which drove the decision for a string bassed messaging system: Universal communication.</p>
+<p>What is meant by that is that inter-app, virtual machine, serial &amp; MIDI are all routed through the same interface with no need for managing enum tables across multiple environments &amp; programming languages.</p>
+<p>Note: In case the receiver is unknown, the <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> provides a method for requesting a pointer to an application</p>
+<p>From <a class="el" href="../../d0/da0/class_app_wren.html" title="Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and host...">AppWren</a> <br  />
+ </p><div class="fragment"><div class="line">AppManager* am = AppManager::getInstance();</div>
+<div class="line">AppWren* app = (AppWren*)am-&gt;getAppByName(&quot;AppWren&quot;);</div>
+</div><!-- fragment --><p> <br  />
+ This is how c callback functions are implemented within Eris core. <br  />
+ </p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Shared Data and Signaling</h2>
+<p><br  />
+ <a class="el" href="../../da/d96/class_app_manager.html">AppManager</a> hosts a hash map shared data dictionary service with a CRUD (create, read, update, destroy) interface as specified in <a class="el" href="../../d7/d5f/_svc_data_dictionary_8h.html" title="Data Dictionary service provides an interface to a data dictionary service the service shall provide ...">SvcDataDictionary.h</a></p>
+<p>Here is an example of usage from <a class="el" href="../../df/d17/class_control_button.html">ControlButton</a> <br  />
+ </p><div class="fragment"><div class="line">if (show_active){</div>
+<div class="line">    draw-&gt;drawRoundRect(x,y,w,h,4,am-&gt;data-&gt;read(&quot;UI_BUTTON_ACTIVE_BORDER_COLOR&quot;));</div>
+<div class="line">} else{</div>
+<div class="line">    draw-&gt;drawRoundRect(x,y,w,h,4,am-&gt;data-&gt;read(&quot;UI_BUTTON_INACTIVE_BORDER_COLOR&quot;));</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> <br  />
+ <br  />
+ </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

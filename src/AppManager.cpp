@@ -43,7 +43,7 @@ uint16_t DMAMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
 SvcDataDictionary _data; 
 
 /**
- * @brief Construct a new App Manager:: App Manager object using a private constuctor (lazy singleton pattern)
+ * @brief Construct a new App Manager:: App Manager object using a private constructor (lazy singleton pattern)
  * 
  */
 FLASHMEM AppManager:: AppManager(){
@@ -174,7 +174,7 @@ void AppManager::update(){
         
       case redraw_wait://idle render time to give the screen refresh a head start
         if (drt > 42){ //magic number is to tune the delay between frame buffer writes
-                       //as the data is simutaniously being written out to SPI.
+                       //as the data is simultaneously being written out to SPI.
                        //This ensures we are not overwritting the current frame 
                        //with the next frame. 
           if(exclusive_app_render) state = redraw_objects;

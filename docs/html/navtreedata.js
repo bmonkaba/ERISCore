@@ -26,20 +26,26 @@ var NAVTREE =
 [
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
-      [ "What is Eris Core?", "index.html#autotoc_md6", [
-        [ "3rd party", "index.html#autotoc_md7", [
-          [ "Licence", "index.html#autotoc_md8", null ],
-          [ "External dependancies", "index.html#autotoc_md9", null ]
+      [ "What is Eris Core?", "index.html#autotoc_md11", [
+        [ "3rd party", "index.html#autotoc_md12", [
+          [ "License", "index.html#autotoc_md13", null ],
+          [ "External dependencies", "index.html#autotoc_md14", null ]
         ] ],
-        [ "3D print, STL & housing graphics", "index.html#autotoc_md10", null ]
+        [ "3D print, STL & housing graphics", "index.html#autotoc_md15", null ]
       ] ],
-      [ "ErisCore software", "index.html#autotoc_md11", null ]
+      [ "ErisCore software", "index.html#autotoc_md16", null ]
     ] ],
-    [ "Eris Core", "d8/d48/md__e_r_i_s_core_docs_index.html", [
-      [ "Executive Overview", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
-      [ "design goals", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
-      [ "design methodology", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", null ],
-      [ "Why", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md4", null ]
+    [ "Eris Core Software Overview", "d8/d48/md__e_r_i_s_core_docs_index.html", [
+      [ "Design goals", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
+      [ "Design methodology", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
+      [ "Overview for Software Developers", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", [
+        [ "Resources Owned", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md4", null ],
+        [ "Initialization", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md5", null ],
+        [ "Main Loop", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md6", null ],
+        [ "Application Requirements & Interfaces", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md7", null ],
+        [ "Inter-Application Communication", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md8", null ],
+        [ "Shared Data and Signaling", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md9", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -55,7 +61,7 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
@@ -70,14 +76,15 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d0/da0/class_app_wren_af432685cfe347e1d7b730c48b4a2f650.html#af432685cfe347e1d7b730c48b4a2f650",
-"d3/d7a/class_audio_effect_granular.html",
-"d4/dd5/class_audio_synth_waveform.html#ac5378800d560b26c9bfe64e1a5e75eb7",
-"d5/d96/class_audio_stream_a6f70806d5f6baccccf03482dae743192.html#a6f70806d5f6baccccf03482dae743192",
-"d8/d1c/class_audio_director_a9de1cf23f6dc44a8aefad83cb9402c9b.html#a9de1cf23f6dc44a8aefad83cb9402c9b",
-"d8/deb/class_app_a_if_e_s.html#ab2dadde94f4c2b9ade4be05b43a251ed",
-"db/d31/class_audio_effect_envelope.html",
-"dc/dc4/_svc_data_dictionary_8cpp_source.html",
-"df/d17/class_control_button.html#af66b6dc0a061770fcb4c8425987d9ea9"
+"d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d",
+"d4/d81/classeris_audio_analyze_scope_aa35264591665450ef44fefc166e0daf2.html#aa35264591665450ef44fefc166e0daf2",
+"d4/de4/_t4___p_x_p_8cpp_source.html",
+"d7/d5f/_svc_data_dictionary_8h_ad86fa9822c5136dd63651f82b9db8f37.html#ad86fa9822c5136dd63651f82b9db8f37a903dc6752384420f11e73a1832b1b408",
+"d8/dbe/class_app_scope.html#ab52309ab6ada18b53b674f23b01dded2",
+"d8/dec/class_svc_m_i_d_i_a9e70be83956c0a7bb083badbea753058.html#a9e70be83956c0a7bb083badbea753058",
+"db/d46/_eris_globals_8h.html",
+"dc/dcf/class_audio_analyze_r_m_s.html",
+"df/d17/class_control_button_a313f562c1003b24c9713b4e991b2c181.html#a313f562c1003b24c9713b4e991b2c181"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 4519;
+var viewWidth = 4940;
 var viewHeight = 3814;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,89 +58,89 @@ var sectionId = 'dynsection-0';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="base class definition / implementation from which all app classes will be derived and override">
-<polygon fill="#bfbfbf" stroke="black" points="1927.5,-2181.5 1927.5,-3805.5 2333.5,-3805.5 2333.5,-2181.5 1927.5,-2181.5"/>
-<text text-anchor="middle" x="2130.5" y="-3787.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass</text>
-<polyline fill="none" stroke="black" points="1927.5,-3777.5 2333.5,-3777.5 "/>
-<text text-anchor="start" x="1935.5" y="-3759.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t h</text>
-<text text-anchor="start" x="1935.5" y="-3739.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t height</text>
-<text text-anchor="start" x="1935.5" y="-3719.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ char name</text>
-<text text-anchor="start" x="1935.5" y="-3699.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t origin_x</text>
-<text text-anchor="start" x="1935.5" y="-3679.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t origin_y</text>
-<text text-anchor="start" x="1935.5" y="-3659.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t w</text>
-<text text-anchor="start" x="1935.5" y="-3639.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_height</text>
-<text text-anchor="start" x="1935.5" y="-3619.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_origin_x</text>
-<text text-anchor="start" x="1935.5" y="-3599.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_origin_y</text>
-<text text-anchor="start" x="1935.5" y="-3579.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_width</text>
-<text text-anchor="start" x="1935.5" y="-3559.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t width</text>
-<text text-anchor="start" x="1935.5" y="-3539.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t x</text>
-<text text-anchor="start" x="1935.5" y="-3519.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t y</text>
-<text text-anchor="start" x="1935.5" y="-3499.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AudioDirector * ad</text>
-<text text-anchor="start" x="1935.5" y="-3479.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppManager * am</text>
-<text text-anchor="start" x="1935.5" y="-3459.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t cycle_time</text>
-<text text-anchor="start" x="1935.5" y="-3439.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t cycle_time_max</text>
-<text text-anchor="start" x="1935.5" y="-3419.1" font-family="Helvetica,sans-Serif" font-size="18.00"># ILI9341_t3_ERIS * draw</text>
-<text text-anchor="start" x="1935.5" y="-3399.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMicros et_render_period</text>
-<text text-anchor="start" x="1935.5" y="-3379.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMicros et_update_period</text>
-<text text-anchor="start" x="1935.5" y="-3359.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool has_focus</text>
-<text text-anchor="start" x="1935.5" y="-3339.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool has_pop</text>
-<text text-anchor="start" x="1935.5" y="-3319.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t id</text>
-<text text-anchor="start" x="1935.5" y="-3299.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * next_app_node</text>
-<text text-anchor="start" x="1935.5" y="-3279.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * parent_node</text>
-<text text-anchor="start" x="1935.5" y="-3259.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * previous_app_node</text>
-<text text-anchor="start" x="1935.5" y="-3239.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_cpu_time</text>
-<text text-anchor="start" x="1935.5" y="-3219.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_cpu_time_max</text>
-<text text-anchor="start" x="1935.5" y="-3199.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_period_max</text>
-<text text-anchor="start" x="1935.5" y="-3179.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SvcSerialCommandInterface * sci</text>
-<text text-anchor="start" x="1935.5" y="-3159.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * sd</text>
-<text text-anchor="start" x="1935.5" y="-3139.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool touch_state</text>
-<text text-anchor="start" x="1935.5" y="-3119.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_cpu_time</text>
-<text text-anchor="start" x="1935.5" y="-3099.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_cpu_time_max</text>
-<text text-anchor="start" x="1935.5" y="-3079.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_period_max</text>
-<text text-anchor="start" x="1935.5" y="-3059.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_priority</text>
-<text text-anchor="start" x="1935.5" y="-3039.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_priority_counter</text>
-<polyline fill="none" stroke="black" points="1927.5,-3029.5 2333.5,-3029.5 "/>
-<text text-anchor="start" x="1935.5" y="-3011.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass()</text>
-<text text-anchor="start" x="1935.5" y="-2991.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass(const AppBaseClass &amp;)=delete</text>
-<text text-anchor="start" x="1935.5" y="-2971.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void getFocus()</text>
-<text text-anchor="start" x="1935.5" y="-2951.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getID()</text>
-<text text-anchor="start" x="1935.5" y="-2931.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool isName(const char *name_string)</text>
-<text text-anchor="start" x="1935.5" y="-2911.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void messageHandler(AppBaseClass</text>
-<text text-anchor="start" x="1935.5" y="-2891.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *sender, const char *message)</text>
-<text text-anchor="start" x="1935.5" y="-2871.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog1(uint16_t uval,</text>
-<text text-anchor="start" x="1935.5" y="-2851.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
-<text text-anchor="start" x="1935.5" y="-2831.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog2(uint16_t uval,</text>
-<text text-anchor="start" x="1935.5" y="-2811.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
-<text text-anchor="start" x="1935.5" y="-2791.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog3(uint16_t uval,</text>
-<text text-anchor="start" x="1935.5" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
-<text text-anchor="start" x="1935.5" y="-2751.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog4(uint16_t uval,</text>
-<text text-anchor="start" x="1935.5" y="-2731.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
-<text text-anchor="start" x="1935.5" y="-2711.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onFocus()</text>
-<text text-anchor="start" x="1935.5" y="-2691.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onFocusLost()</text>
-<text text-anchor="start" x="1935.5" y="-2671.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouch(uint16_t t_x,</text>
-<text text-anchor="start" x="1935.5" y="-2651.1" font-family="Helvetica,sans-Serif" font-size="18.00"> uint16_t t_y)</text>
-<text text-anchor="start" x="1935.5" y="-2631.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouchDrag(uint16_t</text>
-<text text-anchor="start" x="1935.5" y="-2611.1" font-family="Helvetica,sans-Serif" font-size="18.00"> t_x, uint16_t t_y)</text>
-<text text-anchor="start" x="1935.5" y="-2591.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouchRelease(uint16</text>
-<text text-anchor="start" x="1935.5" y="-2571.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t t_x, uint16_t t_y)</text>
-<text text-anchor="start" x="1935.5" y="-2551.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void registerApp(AppBaseClass *app)</text>
-<text text-anchor="start" x="1935.5" y="-2531.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void render()</text>
-<text text-anchor="start" x="1935.5" y="-2511.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setDimension(int16_t new_width,</text>
-<text text-anchor="start" x="1935.5" y="-2491.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t new_height)</text>
-<text text-anchor="start" x="1935.5" y="-2471.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setName(const char *name_string)</text>
-<text text-anchor="start" x="1935.5" y="-2451.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setParent(AppBaseClass *parent)</text>
-<text text-anchor="start" x="1935.5" y="-2431.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setPosition(int16_t new_origin</text>
-<text text-anchor="start" x="1935.5" y="-2411.1" font-family="Helvetica,sans-Serif" font-size="18.00">_x, int16_t new_origin_y)</text>
-<text text-anchor="start" x="1935.5" y="-2391.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetDimension(int16_t new</text>
-<text text-anchor="start" x="1935.5" y="-2371.1" font-family="Helvetica,sans-Serif" font-size="18.00">_width, int16_t new_height)</text>
-<text text-anchor="start" x="1935.5" y="-2351.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetPosition(int16_t new</text>
-<text text-anchor="start" x="1935.5" y="-2331.1" font-family="Helvetica,sans-Serif" font-size="18.00">_origin_x, int16_t new_origin_y)</text>
-<text text-anchor="start" x="1935.5" y="-2311.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void update()</text>
-<text text-anchor="start" x="1935.5" y="-2291.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void _updatePosition()</text>
-<text text-anchor="start" x="1935.5" y="-2271.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void releasePopUp()</text>
-<text text-anchor="start" x="1935.5" y="-2251.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void requestPopUp(bool exclusive=false)</text>
-<text text-anchor="start" x="1935.5" y="-2231.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void returnFocus()</text>
-<text text-anchor="start" x="1935.5" y="-2211.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void selfRegister()</text>
-<text text-anchor="start" x="1935.5" y="-2191.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void setUpdatePriority(uint16_t level)</text>
+<polygon fill="#bfbfbf" stroke="black" points="2139.5,-2181.5 2139.5,-3805.5 2545.5,-3805.5 2545.5,-2181.5 2139.5,-2181.5"/>
+<text text-anchor="middle" x="2342.5" y="-3787.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass</text>
+<polyline fill="none" stroke="black" points="2139.5,-3777.5 2545.5,-3777.5 "/>
+<text text-anchor="start" x="2147.5" y="-3759.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t h</text>
+<text text-anchor="start" x="2147.5" y="-3739.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t height</text>
+<text text-anchor="start" x="2147.5" y="-3719.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ char name</text>
+<text text-anchor="start" x="2147.5" y="-3699.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t origin_x</text>
+<text text-anchor="start" x="2147.5" y="-3679.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t origin_y</text>
+<text text-anchor="start" x="2147.5" y="-3659.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t w</text>
+<text text-anchor="start" x="2147.5" y="-3639.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_height</text>
+<text text-anchor="start" x="2147.5" y="-3619.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_origin_x</text>
+<text text-anchor="start" x="2147.5" y="-3599.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_origin_y</text>
+<text text-anchor="start" x="2147.5" y="-3579.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t widget_width</text>
+<text text-anchor="start" x="2147.5" y="-3559.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t width</text>
+<text text-anchor="start" x="2147.5" y="-3539.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t x</text>
+<text text-anchor="start" x="2147.5" y="-3519.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t y</text>
+<text text-anchor="start" x="2147.5" y="-3499.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AudioDirector * ad</text>
+<text text-anchor="start" x="2147.5" y="-3479.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppManager * am</text>
+<text text-anchor="start" x="2147.5" y="-3459.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t cycle_time</text>
+<text text-anchor="start" x="2147.5" y="-3439.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t cycle_time_max</text>
+<text text-anchor="start" x="2147.5" y="-3419.1" font-family="Helvetica,sans-Serif" font-size="18.00"># ILI9341_t3_ERIS * draw</text>
+<text text-anchor="start" x="2147.5" y="-3399.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMicros et_render_period</text>
+<text text-anchor="start" x="2147.5" y="-3379.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMicros et_update_period</text>
+<text text-anchor="start" x="2147.5" y="-3359.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool has_focus</text>
+<text text-anchor="start" x="2147.5" y="-3339.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool has_pop</text>
+<text text-anchor="start" x="2147.5" y="-3319.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t id</text>
+<text text-anchor="start" x="2147.5" y="-3299.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * next_app_node</text>
+<text text-anchor="start" x="2147.5" y="-3279.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * parent_node</text>
+<text text-anchor="start" x="2147.5" y="-3259.1" font-family="Helvetica,sans-Serif" font-size="18.00"># AppBaseClass * previous_app_node</text>
+<text text-anchor="start" x="2147.5" y="-3239.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_cpu_time</text>
+<text text-anchor="start" x="2147.5" y="-3219.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_cpu_time_max</text>
+<text text-anchor="start" x="2147.5" y="-3199.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t render_period_max</text>
+<text text-anchor="start" x="2147.5" y="-3179.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SvcSerialCommandInterface * sci</text>
+<text text-anchor="start" x="2147.5" y="-3159.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * sd</text>
+<text text-anchor="start" x="2147.5" y="-3139.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool touch_state</text>
+<text text-anchor="start" x="2147.5" y="-3119.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_cpu_time</text>
+<text text-anchor="start" x="2147.5" y="-3099.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_cpu_time_max</text>
+<text text-anchor="start" x="2147.5" y="-3079.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_period_max</text>
+<text text-anchor="start" x="2147.5" y="-3059.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_priority</text>
+<text text-anchor="start" x="2147.5" y="-3039.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t update_priority_counter</text>
+<polyline fill="none" stroke="black" points="2139.5,-3029.5 2545.5,-3029.5 "/>
+<text text-anchor="start" x="2147.5" y="-3011.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass()</text>
+<text text-anchor="start" x="2147.5" y="-2991.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AppBaseClass(const AppBaseClass &amp;)=delete</text>
+<text text-anchor="start" x="2147.5" y="-2971.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void getFocus()</text>
+<text text-anchor="start" x="2147.5" y="-2951.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t getID()</text>
+<text text-anchor="start" x="2147.5" y="-2931.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool isName(const char *name_string)</text>
+<text text-anchor="start" x="2147.5" y="-2911.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void messageHandler(AppBaseClass</text>
+<text text-anchor="start" x="2147.5" y="-2891.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *sender, const char *message)</text>
+<text text-anchor="start" x="2147.5" y="-2871.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog1(uint16_t uval,</text>
+<text text-anchor="start" x="2147.5" y="-2851.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
+<text text-anchor="start" x="2147.5" y="-2831.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog2(uint16_t uval,</text>
+<text text-anchor="start" x="2147.5" y="-2811.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
+<text text-anchor="start" x="2147.5" y="-2791.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog3(uint16_t uval,</text>
+<text text-anchor="start" x="2147.5" y="-2771.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
+<text text-anchor="start" x="2147.5" y="-2751.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onAnalog4(uint16_t uval,</text>
+<text text-anchor="start" x="2147.5" y="-2731.1" font-family="Helvetica,sans-Serif" font-size="18.00"> float fval)</text>
+<text text-anchor="start" x="2147.5" y="-2711.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onFocus()</text>
+<text text-anchor="start" x="2147.5" y="-2691.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onFocusLost()</text>
+<text text-anchor="start" x="2147.5" y="-2671.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouch(uint16_t t_x,</text>
+<text text-anchor="start" x="2147.5" y="-2651.1" font-family="Helvetica,sans-Serif" font-size="18.00"> uint16_t t_y)</text>
+<text text-anchor="start" x="2147.5" y="-2631.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouchDrag(uint16_t</text>
+<text text-anchor="start" x="2147.5" y="-2611.1" font-family="Helvetica,sans-Serif" font-size="18.00"> t_x, uint16_t t_y)</text>
+<text text-anchor="start" x="2147.5" y="-2591.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void onTouchRelease(uint16</text>
+<text text-anchor="start" x="2147.5" y="-2571.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t t_x, uint16_t t_y)</text>
+<text text-anchor="start" x="2147.5" y="-2551.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void registerApp(AppBaseClass *app)</text>
+<text text-anchor="start" x="2147.5" y="-2531.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void render()</text>
+<text text-anchor="start" x="2147.5" y="-2511.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setDimension(int16_t new_width,</text>
+<text text-anchor="start" x="2147.5" y="-2491.1" font-family="Helvetica,sans-Serif" font-size="18.00"> int16_t new_height)</text>
+<text text-anchor="start" x="2147.5" y="-2471.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setName(const char *name_string)</text>
+<text text-anchor="start" x="2147.5" y="-2451.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setParent(AppBaseClass *parent)</text>
+<text text-anchor="start" x="2147.5" y="-2431.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setPosition(int16_t new_origin</text>
+<text text-anchor="start" x="2147.5" y="-2411.1" font-family="Helvetica,sans-Serif" font-size="18.00">_x, int16_t new_origin_y)</text>
+<text text-anchor="start" x="2147.5" y="-2391.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetDimension(int16_t new</text>
+<text text-anchor="start" x="2147.5" y="-2371.1" font-family="Helvetica,sans-Serif" font-size="18.00">_width, int16_t new_height)</text>
+<text text-anchor="start" x="2147.5" y="-2351.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setWidgetPosition(int16_t new</text>
+<text text-anchor="start" x="2147.5" y="-2331.1" font-family="Helvetica,sans-Serif" font-size="18.00">_origin_x, int16_t new_origin_y)</text>
+<text text-anchor="start" x="2147.5" y="-2311.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void update()</text>
+<text text-anchor="start" x="2147.5" y="-2291.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void _updatePosition()</text>
+<text text-anchor="start" x="2147.5" y="-2271.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void releasePopUp()</text>
+<text text-anchor="start" x="2147.5" y="-2251.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void requestPopUp(bool exclusive=false)</text>
+<text text-anchor="start" x="2147.5" y="-2231.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void returnFocus()</text>
+<text text-anchor="start" x="2147.5" y="-2211.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void selfRegister()</text>
+<text text-anchor="start" x="2147.5" y="-2191.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void setUpdatePriority(uint16_t level)</text>
 </a>
 </g>
 </g>
@@ -195,8 +195,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1917.22,-2951.32C1548.21,-2868.28 793.59,-2644.34 411.5,-2145 264.05,-1952.3 211.55,-1684.42 195.91,-1464.72"/>
-<polygon fill="none" stroke="midnightblue" points="1916.69,-2954.78 1927.21,-2953.55 1918.22,-2947.95 1916.69,-2954.78"/>
+<path fill="none" stroke="midnightblue" d="M2129.15,-2963.92C1725.98,-2898.02 853.14,-2696.33 411.5,-2145 259.21,-1954.89 206.89,-1685.66 192.56,-1464.64"/>
+<polygon fill="none" stroke="midnightblue" points="2128.75,-2967.4 2139.18,-2965.55 2129.87,-2960.49 2128.75,-2967.4"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -248,8 +248,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M1918.12,-2911.28C1631.06,-2790.02 1125.03,-2533.48 862.5,-2145 725.54,-1942.33 669.42,-1672.66 647.47,-1454.56"/>
-<polygon fill="none" stroke="midnightblue" points="1916.82,-2914.53 1927.39,-2915.19 1919.53,-2908.08 1916.82,-2914.53"/>
+<path fill="none" stroke="midnightblue" d="M2129.88,-2932.6C1803.12,-2828.99 1181.89,-2584.1 862.5,-2145 717.85,-1946.13 661.93,-1674.6 642.01,-1454.65"/>
+<polygon fill="none" stroke="midnightblue" points="2128.87,-2935.95 2139.46,-2935.62 2130.98,-2929.27 2128.87,-2935.95"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -299,8 +299,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M1919.51,-2826.62C1735.73,-2670.49 1476.62,-2420.05 1331.5,-2145 1215.49,-1925.12 1156.95,-1650.82 1127.43,-1434.79"/>
-<polygon fill="none" stroke="midnightblue" points="1917.49,-2829.5 1927.38,-2833.29 1922.01,-2824.16 1917.49,-2829.5"/>
+<path fill="none" stroke="midnightblue" d="M2130.85,-2873.98C1897.48,-2731.85 1528.97,-2471.41 1331.5,-2145 1201.77,-1930.56 1143.58,-1653.37 1117.67,-1434.65"/>
+<polygon fill="none" stroke="midnightblue" points="2129.08,-2877 2139.44,-2879.19 2132.71,-2871.01 2129.08,-2877"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
@@ -319,8 +319,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M1920.58,-2773.74C1780.36,-2613.25 1605.98,-2382.67 1517.5,-2145 1379.39,-1774.02 1406.25,-1282.65 1419.56,-1124.7"/>
-<polygon fill="none" stroke="midnightblue" points="1918.01,-2776.12 1927.23,-2781.33 1923.27,-2771.5 1918.01,-2776.12"/>
+<path fill="none" stroke="midnightblue" d="M2131.03,-2844.15C1934.47,-2693.09 1652.37,-2439.65 1517.5,-2145 1352.36,-1784.21 1397.3,-1284.09 1417.34,-1124.55"/>
+<polygon fill="none" stroke="midnightblue" points="2129.08,-2847.07 2139.15,-2850.37 2133.34,-2841.51 2129.08,-2847.07"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
@@ -345,8 +345,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M1925.29,-2171.37C1923.34,-2162.54 1921.41,-2153.75 1919.5,-2145 1843.43,-1796.19 1770.34,-1379.68 1737.13,-1184.61"/>
-<polygon fill="none" stroke="midnightblue" points="1921.93,-2172.36 1927.51,-2181.36 1928.76,-2170.84 1921.93,-2172.36"/>
+<path fill="none" stroke="midnightblue" d="M2134.53,-2631.39C2057.33,-2484.43 1975.1,-2310.47 1919.5,-2145 1805.4,-1805.47 1750.15,-1382.36 1729.1,-1184.8"/>
+<polygon fill="none" stroke="midnightblue" points="2131.62,-2633.37 2139.37,-2640.59 2137.81,-2630.11 2131.62,-2633.37"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
@@ -384,8 +384,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M2130.5,-2171.35C2130.5,-1861 2130.5,-1530.93 2130.5,-1314.69"/>
-<polygon fill="none" stroke="midnightblue" points="2127,-2171.45 2130.5,-2181.45 2134,-2171.45 2127,-2171.45"/>
+<path fill="none" stroke="midnightblue" d="M2251.78,-2171.35C2217.5,-1861 2181.03,-1530.93 2157.15,-1314.69"/>
+<polygon fill="none" stroke="midnightblue" points="2248.32,-2171.9 2252.9,-2181.45 2255.28,-2171.13 2248.32,-2171.9"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
@@ -458,7 +458,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="2358.5" y="-890.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool loadScript(const char *script)</text>
 <text text-anchor="start" x="2358.5" y="-870.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void messageHandler(AppBaseClass *sender,</text>
 <text text-anchor="start" x="2358.5" y="-850.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const char *message)</text>
-<text text-anchor="start" x="2358.5" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void rebootRequest(char *script_name)</text>
+<text text-anchor="start" x="2358.5" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void rebootRequest(const char *script_name)</text>
 <text text-anchor="start" x="2358.5" y="-810.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void releasePopUp()</text>
 <text text-anchor="start" x="2358.5" y="-790.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void requestPopUp(bool exclusive=false)</text>
 <text text-anchor="start" x="2358.5" y="-770.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void restartVM()</text>
@@ -506,8 +506,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M2335.56,-2171.34C2337.56,-2162.52 2339.54,-2153.73 2341.5,-2145 2344.48,-2131.7 2347.47,-2118.29 2350.45,-2104.81"/>
-<polygon fill="none" stroke="midnightblue" points="2332.1,-2170.79 2333.29,-2181.32 2338.92,-2172.34 2332.1,-2170.79"/>
+<path fill="none" stroke="midnightblue" d="M2433.64,-2171.38C2434.63,-2162.44 2435.63,-2153.5 2436.62,-2144.54"/>
+<polygon fill="none" stroke="midnightblue" points="2430.15,-2171.13 2432.52,-2181.45 2437.1,-2171.9 2430.15,-2171.13"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
@@ -545,8 +545,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M2340.31,-2771.56C2482.27,-2610.05 2662.72,-2379.15 2769.5,-2145 2892.26,-1875.81 2950.02,-1538.11 2976.44,-1314.57"/>
-<polygon fill="none" stroke="midnightblue" points="2337.56,-2769.39 2333.58,-2779.2 2342.82,-2774.01 2337.56,-2769.39"/>
+<path fill="none" stroke="midnightblue" d="M2550.49,-2630.9C2628.15,-2483.87 2711.48,-2309.99 2769.5,-2145 2866.99,-1867.8 2929.85,-1534.92 2964.37,-1314.52"/>
+<polygon fill="none" stroke="midnightblue" points="2547.2,-2629.62 2545.62,-2640.1 2553.39,-2632.9 2547.2,-2629.62"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
@@ -577,8 +577,8 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node1&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M2342.68,-2889.53C2595.66,-2755.07 3011.09,-2494.95 3225.5,-2145 3397.98,-1863.48 3429.67,-1468.34 3432.35,-1244.97"/>
-<polygon fill="none" stroke="midnightblue" points="2340.95,-2886.48 2333.75,-2894.26 2344.23,-2892.67 2340.95,-2886.48"/>
+<path fill="none" stroke="midnightblue" d="M2554.08,-2850.07C2759.62,-2699.8 3063.67,-2443.66 3225.5,-2145 3382.22,-1855.77 3419.72,-1465.56 3427.63,-1244.68"/>
+<polygon fill="none" stroke="midnightblue" points="2551.91,-2847.31 2545.9,-2856.03 2556.04,-2852.97 2551.91,-2847.31"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
@@ -616,69 +616,112 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node1&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M2343.4,-2935.01C2674.72,-2833.89 3309.05,-2591.34 3631.5,-2145 3807.69,-1901.12 3846.52,-1547.87 3850.59,-1314.55"/>
-<polygon fill="none" stroke="midnightblue" points="2342.24,-2931.71 2333.69,-2937.96 2344.27,-2938.4 2342.24,-2931.71"/>
+<path fill="none" stroke="midnightblue" d="M2555.09,-2914.36C2846.96,-2795.49 3365.73,-2540.38 3631.5,-2145 3798.68,-1896.28 3839.85,-1546.22 3846.89,-1314.77"/>
+<polygon fill="none" stroke="midnightblue" points="2553.61,-2911.19 2545.66,-2918.19 2556.25,-2917.67 2553.61,-2911.19"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="../../d2/da8/class_svc_serial_command_interface.html" target="_top" xlink:title="Serial communication service and interface Serial commands (rx): &#160;.">
-<polygon fill="none" stroke="black" points="4062,-610.5 4062,-1534.5 4511,-1534.5 4511,-610.5 4062,-610.5"/>
-<text text-anchor="middle" x="4286.5" y="-1516.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
-<polyline fill="none" stroke="black" points="4062,-1506.5 4511,-1506.5 "/>
-<text text-anchor="start" x="4070" y="-1488.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_data_dict_tx</text>
-<text text-anchor="start" x="4070" y="-1468.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_stats_tx</text>
-<text text-anchor="start" x="4070" y="-1448.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_poll</text>
-<text text-anchor="start" x="4070" y="-1428.1" font-family="Helvetica,sans-Serif" font-size="18.00"># FsFile file</text>
-<text text-anchor="start" x="4070" y="-1408.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint32_t index_capture_buffer</text>
-<text text-anchor="start" x="4070" y="-1388.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_rx_buffer</text>
-<text text-anchor="start" x="4070" y="-1368.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_tx_buffer</text>
-<text text-anchor="start" x="4070" y="-1348.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_capturing_bulk_data</text>
-<text text-anchor="start" x="4070" y="-1328.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_periodic_messages_enabled</text>
-<text text-anchor="start" x="4070" y="-1308.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_streaming_file</text>
-<text text-anchor="start" x="4070" y="-1288.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char multipart_header</text>
-<text text-anchor="start" x="4070" y="-1268.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
-<text text-anchor="start" x="4070" y="-1248.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
-<text text-anchor="start" x="4070" y="-1228.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
-<text text-anchor="start" x="4070" y="-1208.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char received_chars</text>
-<text text-anchor="start" x="4070" y="-1188.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_file</text>
-<text text-anchor="start" x="4070" y="-1168.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_path</text>
-<text text-anchor="start" x="4070" y="-1148.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
-<text text-anchor="start" x="4070" y="-1128.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char tx_Buffer</text>
-<text text-anchor="start" x="4070" y="-1108.1" font-family="Helvetica,sans-Serif" font-size="18.00"># volatile bool tx_buffer_overflow_flag</text>
-<polyline fill="none" stroke="black" points="4062,-1098.5 4511,-1098.5 "/>
-<text text-anchor="start" x="4070" y="-1080.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
-<text text-anchor="start" x="4070" y="-1060.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
-<text text-anchor="start" x="4070" y="-1040.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
-<text text-anchor="start" x="4070" y="-1020.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
-<text text-anchor="start" x="4070" y="-1000.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
-<text text-anchor="start" x="4070" y="-980.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
-<text text-anchor="start" x="4070" y="-960.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
-<text text-anchor="start" x="4070" y="-940.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
-<text text-anchor="start" x="4070" y="-920.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET()</text>
-<text text-anchor="start" x="4070" y="-900.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM1()</text>
-<text text-anchor="start" x="4070" y="-880.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM2()</text>
-<text text-anchor="start" x="4070" y="-860.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_LS()</text>
-<text text-anchor="start" x="4070" y="-840.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_UPDATE_DD()</text>
-<text text-anchor="start" x="4070" y="-820.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_COMPILE()</text>
-<text text-anchor="start" x="4070" y="-800.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_EXECUTE()</text>
-<text text-anchor="start" x="4070" y="-780.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_SAVE()</text>
-<text text-anchor="start" x="4070" y="-760.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_START()</text>
-<text text-anchor="start" x="4070" y="-740.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
-<text text-anchor="start" x="4070" y="-720.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
-<text text-anchor="start" x="4070" y="-700.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamReceiveHandler()</text>
-<text text-anchor="start" x="4070" y="-680.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamTransmitHandler()</text>
-<text text-anchor="start" x="4070" y="-660.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
-<text text-anchor="start" x="4070" y="-640.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
-<text text-anchor="start" x="4070" y="-620.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
+<g id="a_node12"><a xlink:href="../../d8/dec/class_svc_m_i_d_i.html" target="_top" xlink:title="basic MIDI pub/sub service which is delivered through the subscribed objects message handler method....">
+<polygon fill="none" stroke="black" points="4062,-790.5 4062,-1354.5 4465,-1354.5 4465,-790.5 4062,-790.5"/>
+<text text-anchor="middle" x="4263.5" y="-1336.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcMIDI</text>
+<polyline fill="none" stroke="black" points="4062,-1326.5 4465,-1326.5 "/>
+<text text-anchor="start" x="4070" y="-1308.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool midi_init</text>
+<text text-anchor="start" x="4070" y="-1288.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t subscriptions</text>
+<polyline fill="none" stroke="black" points="4062,-1278.5 4465,-1278.5 "/>
+<text text-anchor="start" x="4070" y="-1260.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcMIDI()</text>
+<text text-anchor="start" x="4070" y="-1240.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void messageHandler(AppBaseClass *sender,</text>
+<text text-anchor="start" x="4070" y="-1220.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const char *message)</text>
+<text text-anchor="start" x="4070" y="-1200.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void publish(const char *message)</text>
+<text text-anchor="start" x="4070" y="-1180.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool subscribe(uint16_t app_id)</text>
+<text text-anchor="start" x="4070" y="-1160.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void midiInit()</text>
+<text text-anchor="start" x="4070" y="-1140.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onAnalog1(uint16_t uval, float</text>
+<text text-anchor="start" x="4070" y="-1120.1" font-family="Helvetica,sans-Serif" font-size="18.00"> fval) override</text>
+<text text-anchor="start" x="4070" y="-1100.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onAnalog2(uint16_t uval, float</text>
+<text text-anchor="start" x="4070" y="-1080.1" font-family="Helvetica,sans-Serif" font-size="18.00"> fval) override</text>
+<text text-anchor="start" x="4070" y="-1060.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onAnalog3(uint16_t uval, float</text>
+<text text-anchor="start" x="4070" y="-1040.1" font-family="Helvetica,sans-Serif" font-size="18.00"> fval) override</text>
+<text text-anchor="start" x="4070" y="-1020.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onAnalog4(uint16_t uval, float</text>
+<text text-anchor="start" x="4070" y="-1000.1" font-family="Helvetica,sans-Serif" font-size="18.00"> fval) override</text>
+<text text-anchor="start" x="4070" y="-980.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onFocus() override</text>
+<text text-anchor="start" x="4070" y="-960.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onFocusLost() override</text>
+<text text-anchor="start" x="4070" y="-940.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onTouch(uint16_t t_x, uint16</text>
+<text text-anchor="start" x="4070" y="-920.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t t_y) override</text>
+<text text-anchor="start" x="4070" y="-900.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onTouchDrag(uint16_t t_x, uint16</text>
+<text text-anchor="start" x="4070" y="-880.1" font-family="Helvetica,sans-Serif" font-size="18.00">_t t_y) override</text>
+<text text-anchor="start" x="4070" y="-860.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void onTouchRelease(uint16_t t_x,</text>
+<text text-anchor="start" x="4070" y="-840.1" font-family="Helvetica,sans-Serif" font-size="18.00"> uint16_t t_y) override</text>
+<text text-anchor="start" x="4070" y="-820.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
+<text text-anchor="start" x="4070" y="-800.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node1&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M2343.5,-2962.55C2743.97,-2894.47 3608.76,-2689.49 4053.5,-2145 4192.37,-1974.98 4253.41,-1740.73 4278.56,-1534.6"/>
-<polygon fill="none" stroke="midnightblue" points="2342.82,-2959.11 2333.54,-2964.23 2343.99,-2966.01 2342.82,-2959.11"/>
+<path fill="none" stroke="midnightblue" d="M2555.53,-2950.84C2923.12,-2867.19 3673.55,-2642.5 4053.5,-2145 4226.51,-1918.45 4268.73,-1588.34 4274.11,-1354.5"/>
+<polygon fill="none" stroke="midnightblue" points="2554.56,-2947.47 2545.58,-2953.09 2556.1,-2954.3 2554.56,-2947.47"/>
+</g>
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="../../d2/da8/class_svc_serial_command_interface.html" target="_top" xlink:title="Serial communication service and interface Serial commands (rx): &#160;.">
+<polygon fill="none" stroke="black" points="4483,-610.5 4483,-1534.5 4932,-1534.5 4932,-610.5 4483,-610.5"/>
+<text text-anchor="middle" x="4707.5" y="-1516.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcSerialCommandInterface</text>
+<polyline fill="none" stroke="black" points="4483,-1506.5 4932,-1506.5 "/>
+<text text-anchor="start" x="4491" y="-1488.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_data_dict_tx</text>
+<text text-anchor="start" x="4491" y="-1468.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_periodic_stats_tx</text>
+<text text-anchor="start" x="4491" y="-1448.1" font-family="Helvetica,sans-Serif" font-size="18.00"># elapsedMillis et_since_poll</text>
+<text text-anchor="start" x="4491" y="-1428.1" font-family="Helvetica,sans-Serif" font-size="18.00"># FsFile file</text>
+<text text-anchor="start" x="4491" y="-1408.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint32_t index_capture_buffer</text>
+<text text-anchor="start" x="4491" y="-1388.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_rx_buffer</text>
+<text text-anchor="start" x="4491" y="-1368.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t index_tx_buffer</text>
+<text text-anchor="start" x="4491" y="-1348.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_capturing_bulk_data</text>
+<text text-anchor="start" x="4491" y="-1328.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_periodic_messages_enabled</text>
+<text text-anchor="start" x="4491" y="-1308.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_streaming_file</text>
+<text text-anchor="start" x="4491" y="-1288.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char multipart_header</text>
+<text text-anchor="start" x="4491" y="-1268.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
+<text text-anchor="start" x="4491" y="-1248.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
+<text text-anchor="start" x="4491" y="-1228.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
+<text text-anchor="start" x="4491" y="-1208.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char received_chars</text>
+<text text-anchor="start" x="4491" y="-1188.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_file</text>
+<text text-anchor="start" x="4491" y="-1168.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_path</text>
+<text text-anchor="start" x="4491" y="-1148.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
+<text text-anchor="start" x="4491" y="-1128.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char tx_Buffer</text>
+<text text-anchor="start" x="4491" y="-1108.1" font-family="Helvetica,sans-Serif" font-size="18.00"># volatile bool tx_buffer_overflow_flag</text>
+<polyline fill="none" stroke="black" points="4483,-1098.5 4932,-1098.5 "/>
+<text text-anchor="start" x="4491" y="-1080.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>
+<text text-anchor="start" x="4491" y="-1060.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void empty()</text>
+<text text-anchor="start" x="4491" y="-1040.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool requestStartLZ4Message()</text>
+<text text-anchor="start" x="4491" y="-1020.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void send()</text>
+<text text-anchor="start" x="4491" y="-1000.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void sendLZ4Message()</text>
+<text text-anchor="start" x="4491" y="-980.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool throttle()</text>
+<text text-anchor="start" x="4491" y="-960.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint16_t checksum(const char *msg)</text>
+<text text-anchor="start" x="4491" y="-940.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void flush()</text>
+<text text-anchor="start" x="4491" y="-920.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET()</text>
+<text text-anchor="start" x="4491" y="-900.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM1()</text>
+<text text-anchor="start" x="4491" y="-880.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_GET_RAM2()</text>
+<text text-anchor="start" x="4491" y="-860.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_LS()</text>
+<text text-anchor="start" x="4491" y="-840.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_UPDATE_DD()</text>
+<text text-anchor="start" x="4491" y="-820.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_COMPILE()</text>
+<text text-anchor="start" x="4491" y="-800.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_EXECUTE()</text>
+<text text-anchor="start" x="4491" y="-780.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_SAVE()</text>
+<text text-anchor="start" x="4491" y="-760.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void messageHandler_WREN_SCRIPT_START()</text>
+<text text-anchor="start" x="4491" y="-740.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void render() override</text>
+<text text-anchor="start" x="4491" y="-720.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void startLZ4Message()</text>
+<text text-anchor="start" x="4491" y="-700.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamReceiveHandler()</text>
+<text text-anchor="start" x="4491" y="-680.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void streamTransmitHandler()</text>
+<text text-anchor="start" x="4491" y="-660.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void txOverflowHandler()</text>
+<text text-anchor="start" x="4491" y="-640.1" font-family="Helvetica,sans-Serif" font-size="18.00"># void update() override</text>
+<text text-anchor="start" x="4491" y="-620.1" font-family="Helvetica,sans-Serif" font-size="18.00"># size_t write(uint8_t c)</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node13 -->
+<g id="edge12" class="edge">
+<title>Node1&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M2555.62,-2972.8C2987.9,-2920.94 3969.56,-2740.51 4474.5,-2145 4617.01,-1976.93 4678.28,-1741.79 4702.64,-1534.59"/>
+<polygon fill="none" stroke="midnightblue" points="2555.02,-2969.35 2545.51,-2974 2555.85,-2976.3 2555.02,-2969.35"/>
 </g>
 </g>
 </svg>

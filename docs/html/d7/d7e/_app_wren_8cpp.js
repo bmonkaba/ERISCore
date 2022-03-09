@@ -41,6 +41,7 @@ var _app_wren_8cpp =
     [ "fileTruncateCallback", "d7/d7e/_app_wren_8cpp_a2c43209d5c56732e9ad32cd65fc30146.html#a2c43209d5c56732e9ad32cd65fc30146", null ],
     [ "fileWriteCallback", "d7/d7e/_app_wren_8cpp_a8b7cfbf2501f22da958022c4c3271a01.html#a8b7cfbf2501f22da958022c4c3271a01", null ],
     [ "fsExistsCallback", "d7/d7e/_app_wren_8cpp_ae75a4d73e694faa91d685ebb450ce6a9.html#ae75a4d73e694faa91d685ebb450ce6a9", null ],
+    [ "fsFormat", "d7/d7e/_app_wren_8cpp_a36088ffecbbbf93ae0a57c4d402ba0c6.html#a36088ffecbbbf93ae0a57c4d402ba0c6", null ],
     [ "fsimportFromSD", "d7/d7e/_app_wren_8cpp_aa59d78053396804789a9ceef7601e25e.html#aa59d78053396804789a9ceef7601e25e", null ],
     [ "fsMkdirCallback", "d7/d7e/_app_wren_8cpp_a3519457379a1d1d8e12c04dd7de28433.html#a3519457379a1d1d8e12c04dd7de28433", null ],
     [ "fsOpenCallback", "d7/d7e/_app_wren_8cpp_a957f4d4ddaefe31188cba83335264ccf.html#a957f4d4ddaefe31188cba83335264ccf", null ],

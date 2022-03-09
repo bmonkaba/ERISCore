@@ -23,7 +23,7 @@ var class_audio_director =
     [ "initAudioHardware", "d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4", null ],
     [ "linkGroup", "d8/d1c/class_audio_director_a063dd9da4c6abd5b19d77e1722228a4e.html#a063dd9da4c6abd5b19d77e1722228a4e", null ],
     [ "ParseConnectString", "d8/d1c/class_audio_director_a632071166d2460d377ca926fe1ca26c8.html#a632071166d2460d377ca926fe1ca26c8", null ],
-    [ "printStats", "d8/d1c/class_audio_director_a0e1e6093fa5c9c76f11483ac5c9cc776.html#a0e1e6093fa5c9c76f11483ac5c9cc776", null ],
+    [ "printStats", "d8/d1c/class_audio_director_a82953897bd90367b6f5467985d873bc1.html#a82953897bd90367b6f5467985d873bc1", null ],
     [ "queryTypesByFunction", "d8/d1c/class_audio_director_afe90669de5bdc35d0be22f2187f8ff04.html#afe90669de5bdc35d0be22f2187f8ff04", null ],
     [ "setAPC", "d8/d1c/class_audio_director_a15e84c9c6ecc656e6f7df4d445baabb7.html#a15e84c9c6ecc656e6f7df4d445baabb7", null ],
     [ "setSCI", "d8/d1c/class_audio_director_acd117427f6c9a7a6cdae4f7ba340eefa.html#acd117427f6c9a7a6cdae4f7ba340eefa", null ],

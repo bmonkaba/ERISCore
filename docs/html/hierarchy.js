@@ -13,6 +13,7 @@ var hierarchy =
       [ "ControlButton", "df/d17/class_control_button.html", null ],
       [ "ControlSlider", "de/d67/class_control_slider.html", null ],
       [ "SvcErisAudioParameterController", "d8/de8/class_svc_eris_audio_parameter_controller.html", null ],
+      [ "SvcMIDI", "d8/dec/class_svc_m_i_d_i.html", null ],
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", null ]
     ] ],
     [ "AppManager", "da/d96/class_app_manager.html", null ],
@@ -195,6 +196,7 @@ var hierarchy =
     [ "ILI9341_t3n", "d5/d0e/class_i_l_i9341__t3n.html", [
       [ "ILI9341_t3_ERIS", "d8/d5a/class_i_l_i9341__t3___e_r_i_s.html", null ]
     ] ],
+    [ "IMXRT_NEXT_PXP_t", "d3/dca/struct_i_m_x_r_t___n_e_x_t___p_x_p__t.html", null ],
     [ "ParsedConnection", "da/dca/struct_parsed_connection.html", null ],
     [ "pointer_container", "de/d5d/unionpointer__container.html", null ],
     [ "Print", "d8/d90/class_print.html", [
