@@ -35,8 +35,8 @@ INCOMMING MESSAGES:
     GET_RAM2    reqquest a dump of ram2
     WREN_SCRIPT_START   indicates the start of a bulk text transfer
     WREN_SCRIPT_END     ends the bulk text transfer
-    WREN_SCRIPT_EXECUTE executes the transfered script
-    WREN_SCRIPT_COMPILE compiles the transfered script and reports any errors
+    WREN_SCRIPT_EXECUTE executes the transferred script
+    WREN_SCRIPT_COMPILE compiles the transferred script and reports any errors
 
 OUTPUT MESSAGES:
 
@@ -109,7 +109,7 @@ uint16_t FASTRUN SvcSerialCommandInterface::checksum(const char *msg){
 
 /**
  * @brief Calling this function signals the end of a compressed message.\n 
- * The txBuffer contents are lz4 compressed, base64 encoded and finaly sent.\n 
+ * The txBuffer contents are lz4 compressed, base64 encoded and finally sent.\n 
  * The serial message format is "LZ4 [UNCOMPRESSED_SIZE] [BASE64 encoded LZ4 compressed message]" 
  */
 void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
@@ -256,7 +256,6 @@ void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
-    uint16_t compressed_len,uncompressed_len;
     if(Serial.availableForWrite() < 6000) return;
     p_SD->chdir(stream_path);
     if (p_SD->exists(stream_file)){
@@ -468,7 +467,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_GET_RAM2(){
 
 void FLASHMEM SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
     int total_read;
-    char cmd[128], param[128],param2[128];
+    char cmd[128], param[128];
     int32_t val;
     float32_t fval;
     total_read = sscanf(received_chars, "%127s %127s %d" , cmd, param,(int*)&val);
@@ -656,8 +655,8 @@ void FASTRUN SvcSerialCommandInterface::update(){
     
     if(is_capturing_bulk_data){ //bulk data state handler
         streamReceiveHandler();
-    }else { //check for incomming data
-        //This is the incomming message handler - it collects the message one byte at a time until 
+    }else { //check for incoming data
+        //This is the incoming message handler - it collects the message one byte at a time until 
         //the end of message marker. If a full message is received the newRxMsg flag is set true.
         //if a partial message is received the flag remains false.
         //if the receiving buffer reaches an overflow condition, reset the buffer and clear in remaining serial input
@@ -685,7 +684,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
         if (newRxMsg){
             //Once a new message is received, first the command is parsed out from the message
             // this first split into cmd and param is for the purpose of identifying the requested command
-            // each individual message handler is then responsible for parsing out thier own parameters if required.
+            // each individual message handler is then responsible for parsing out their own parameters if required.
             char cmd[128], param[128],param2[128];
             int total_read;
             total_read = sscanf(received_chars, "%127s %127s" , cmd, param);
@@ -797,7 +796,6 @@ void FASTRUN SvcSerialCommandInterface::update(){
             ad->printStats();            
         }else if (et_since_periodic_data_dict_tx > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
                 et_since_periodic_data_dict_tx = 0;
-                et_since_periodic_stats_tx = 0; 
                 AppManager::getInstance()->data->printDictionary(this);
         }
     }

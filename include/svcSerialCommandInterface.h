@@ -99,7 +99,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
      * @return false
      */
     bool requestStartLZ4Message(){
-      if(is_streaming_file) return false;
+      if(is_streaming_file || throttle()) return false;
       startLZ4Message();
       return true;
     }

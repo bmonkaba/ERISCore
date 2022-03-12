@@ -17,13 +17,13 @@
 class SvcMIDI:public AppBaseClass {
   public:
     SvcMIDI():AppBaseClass(){
-        update_priority = 1;
+        update_priority = 0;
         strcpy(name,"MIDI");
         midi_init = false;
         memset(&subscriptions,0, sizeof(uint16_t)*MAX_MIDI_MESSAGE_APP_SUBSCRIPTIONS);
     };
     /**
-     * @brief interface for apps to request a subscription to receive incomming MIDI messages through thier message handlers
+     * @brief interface for apps to request a subscription to receive incoming MIDI messages through theIr message handlers
      * 
      * @param app_id 
      * @return true 
@@ -32,14 +32,14 @@ class SvcMIDI:public AppBaseClass {
     bool subscribe(uint16_t app_id);
 
     /**
-     * @brief public interface for the midi callback functions to publish messages to subscribers through thier message handlers
+     * @brief public interface for the midi callback functions to publish messages to subscribers through their message handlers
      * 
      * @param message 
      */
     void publish(const char *message);
 
     /**
-     * @brief messageHandler for recieving subscription (SUB) request messages
+     * @brief messageHandler for receiving subscription (SUB) request messages
      * 
      * @param sender 
      * @param message 

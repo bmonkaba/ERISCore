@@ -16,18 +16,21 @@
 
 Agile... but like this:
 <br>
-* Use cases identify needed features.
-* Features from the use cases drive functions.
-* Implementation of features is scripted in Wren
-* Functions to support the features are implemented as callback C extensions
-* The AppWren class is requested by the callbacks through the AppManager interface
+* Use cases identify needed functions
+* Functions from the use cases drive features.
+* Implementation of functions are scripted in Wren
+* Features to support the functions are implemented in C++ and accessed through C callback extensions from Wren
+* C callbacks interact with the C++ framework by requesting the AppWren object from the AppManager singleton
 * System/Integration testing is the abuse of the implemented use cases in wren
 * Regression/load testing is the continuous cycling of the previous abuse test cases
+* Before a function/feature set is checked in it must pass system, integration, regression and load testing with no major issues.
+* Note: many test cases are visual or audio in nature therefore pass/fail criteria will be subjective in cases where objective measurements can be made.
+* Note: test cases also serve as demonstrations of current functionality
 
 <br>
 Calls from the VM are sometimes bounds checked to avoid crashes whereas the C++ interface may be unprotected for performance reasons (no training wheels)
 
-Plan static code analysis clean up, refactoring, formatting after every major feature implementation as needed
+Plan static code analysis clean up, refactoring, formatting after every major feature implementation; as needed
 
 Documentation is constantly updated but always could be better.
 
@@ -59,7 +62,7 @@ C++ "Applications" are created using the class framework. Specifically an applic
 
 The /include/AppTemplate.h file is provided as a template which contains empty virtual function implementations required by the framework.
 
-What does required by the framework mean? How are apps executed? initialization? what about my own libraries and arduino code... etc??? Lets take a step back and look at a standard arduino application structure:
+What does required by the framework mean? How are apps executed? initialization? what about my own libraries and arduino code... etc??? Lets take a step back and look at a standard arduino application structure
 
 <br>
 ```
@@ -153,16 +156,15 @@ appPoly.getFocus();
 <br>
 ### Main Loop
 <br>
-Eris Core is updated from within the arduino main loop like so:
-
+Eris Core is updated by the AppManager from within the arduino main loop like so:
 <br>
 ```
 AppManager::getInstance()->update;
 ```
 <br>
-This requests the singleton object from the static method getInstance() then calls update on it.
+This statement requests a pointer to the singleton AppManager then calls update on it.
 
-This is akin to a sys tick(), however there is no context switching as this is a cooperatively scheduled and not a preemptive 'operating system'. The point to be made here is that update does not mean anything other than to update the internal state machine and make appropriate application method calls in the process.
+This is akin to a sys tick(), however there is no context switching as this is a cooperatively scheduled and not a preemptive 'operating system'. The point to be made here is that update does not mean anything other than to update the internal state machine and make appropriate application and core method calls in the process.
 <br>
 ### Application Requirements & Interfaces
 <br>
@@ -196,7 +198,7 @@ void FLASHMEM onTouchRelease(uint16_t t_x, uint16_t t_y) override{
 };
 ```
 <br>
-This was a design trade-off in that the obvious first thought was to use enumerated message IDs. However, there is one single reason which drove the decision for a string bassed messaging system: Universal communication.
+This was a design trade-off in that the obvious first thought was to use enumerated message IDs. However, there is one single reason which drove the decision for a string based messaging system: Universal communication.
 
 What is meant by that is that inter-app, virtual machine, serial & MIDI are all routed through the same interface with no need for managing enum tables across multiple environments & programming languages.
 
@@ -209,13 +211,13 @@ AppManager* am = AppManager::getInstance();
 AppWren* app = (AppWren*)am->getAppByName("AppWren");
 ```
 <br>
-This is how c callback functions are implemented within Eris core.
+This is how c callback functions are able to interact with Eris core C++ objects.
 <br>
 ### Shared Data and Signaling
 <br>
 AppManager hosts a hash map shared data dictionary service with a CRUD (create, read, update, destroy) interface as specified in SvcDataDictionary.h
 
-Here is an example of usage from ControlButton
+Here is an example reading data from the data service; from ControlButton
 <br>
 ```
 if (show_active){
@@ -224,5 +226,26 @@ if (show_active){
     draw->drawRoundRect(x,y,w,h,4,am->data->read("UI_BUTTON_INACTIVE_BORDER_COLOR"));
 }
 ```
+<br>
+Note: The data dictionary service can store multiple data types. check the documentation for specific access methods for each type. (currently float and int32\_t types are supported)
+<br>
+### Core Services
+<br>
+Eris Core includes services such as the <span class="colour" style="color: rgb(210, 219, 222);">SvcSerialCommandInterface, SvcMIDI, SvcErisAudioParameterController</span>
+<br>
+### Standardized Apps
+<br>
+Eris Core includes standard apps such as ControlButton<span class="colour" style="color: rgb(210, 219, 222);">, Slider</span>
+<br>
+### Default Apps
+<br>
+Default Apps are not required but rather flagship examples of application development within the Eris Core framework.
+
+See AppPoly, AppCQT, AppWren
+<br>
+### Standard Components
+<br>
+Basic input output components include <span class="colour" style="color: rgb(210, 219, 222);"><span class="colour" style="color: rgb(210, 219, 222);">Touch, AnalogInputs, </span>ILI9341\_t3\_ERIS</span>
+
 <br>
 <br>

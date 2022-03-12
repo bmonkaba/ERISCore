@@ -52,11 +52,6 @@ void setup() {
   _ad.setAPC(&apc);//give the audio director a pointer to the apc class
   appPoly.getFocus();
   Serial.println(F("M Setup: Init Complete"));
-  Serial.println(F("M Setup: Checking for crash report"));
-  if (CrashReport){
-      //Serial.print(CrashReport);
-  }
-
   Serial.println(F("M Setup: Done"));
 }
 

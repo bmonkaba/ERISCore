@@ -28,7 +28,7 @@ typedef struct{
 } ParsedConnection;
 
 /*
-Audio director class is responsible for proving an interface for the managment 
+Audio director class is responsible for proving an interface for the management 
 of the audio blocks, associated controllers and connection sets.
 */
 class AudioDirector{
@@ -66,15 +66,18 @@ class AudioDirector{
    protected:
     SvcSerialCommandInterface* sci;
     SvcErisAudioParameterController* parameter_controller;
-    void*  p_heap_start;  //used to estamate total heap allocation size
+    void*  p_heap_start;  //used to estimate total heap allocation size
     void*  p_heap_end;    //
     AudioStream* p_audiostream_obj_pool[MAX_AUDIO_STREAM_OBJECTS]; //Generic Object Pool
     AudioStream* p_audiostream_input_port; //ADC Audio Input(s)
     erisAudioOutputI2S p_audiostream_output_port; //DAC Audio Output(s)
-    uint8_t printstats_select; 
+    uint8_t printstats_select;
+    uint8_t printstats_block;
     uint16_t active_connections; 
     uint16_t obj_count;
-    uint16_t category_count;
+    uint16_t category_count; 
+      
+      
     uint16_t query_result_count;
     char** functionsList[MAX_AUDIO_FUNCTION_CATEGORIES];
     char** query_result[MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT];

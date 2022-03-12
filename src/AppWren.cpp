@@ -1523,20 +1523,25 @@ const char * FLASHMEM AppWren::loadModuleSource(const char * name){
   safer_strncpy(file_name,name,sizeof(file_name));
   strcat(file_name,".wren");
   sd->chdir("/wren");
-  file = sd->open(file_name, O_RDONLY);
-  file_size = file.available() + 1;
-#ifdef USE_EXTMEM  
-  module_load_buffer = (char*)extmem_malloc(file_size);
-#else
-  module_load_buffer = (char*)malloc(file_size);
-#endif
-  if (module_load_buffer == NULL){
-    Serial.println(F("M AppWren::loadModuleSource ERROR: Not Enough Memory"));
-    return NULL;
+  if(!sd->exists(file_name)){
+    sd->chdir("/wren/lib");
   }
-  memset(module_load_buffer,0,file_size);
-  file.read(module_load_buffer,file_size);
-  file.close();
+  if(sd->exists(file_name)){
+    file = sd->open(file_name, O_RDONLY);
+    file_size = file.available() + 1;
+#ifdef USE_EXTMEM  
+    module_load_buffer = (char*)extmem_malloc(file_size);
+#else
+    module_load_buffer = (char*)malloc(file_size);
+#endif
+    if (module_load_buffer == NULL){
+      Serial.println(F("M AppWren::loadModuleSource ERROR: Not Enough Memory"));
+      return NULL;
+    }
+    memset(module_load_buffer,0,file_size);
+    file.read(module_load_buffer,file_size);
+    file.close();
+  }
   return module_load_buffer;
 }
 

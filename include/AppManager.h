@@ -60,8 +60,8 @@ class AppManager {
     SdFs sd;
     AudioDirector* ad;
     SvcDataDictionary* data;//data dictionary service;
-    Surface* p_fast_img_cache_surface; //FAST MEM img cashe
-    Surface* p_display_surface; //FAST MEM img cashe
+    Surface* p_fast_img_cache_surface; //FAST MEM img cache
+    Surface* p_display_surface; //FAST MEM img cache
     static AppManager* getInstance() //public access to get a reference to the singleton instance
     {
       if (NULL==obj) {
@@ -71,7 +71,7 @@ class AppManager {
       return obj;
     }
     /**
-     * @brief intended to be called from the arduino setup() function, this method initalizes and sets up the "ErisCore"
+     * @brief intended to be called from the arduino setup() function, this method initializes and sets up the "ErisCore"
      * 
      */
     void static setup();

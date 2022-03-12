@@ -43,7 +43,7 @@
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 720000000
+#define CPU_LOW_POWER_MODE_FREQ 700000000
 
 /**
  * @brief max boost operating frequency of the system
@@ -55,7 +55,7 @@
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 64.0
+#define CPU_THERMAL_THROTTLE_TEMP 62.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -64,7 +64,7 @@
  * @brief rate at which the app manager will update the data dictionary
  * 
  */
-#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 500 
+#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 100 
 /**
  * @brief application manager shared image cache size\n
  * note: the reason for the multiplication here is to easily get an idea of\n 
@@ -113,7 +113,7 @@
  * @brief control activation display time\n 
  * for example this defines how long a button will display as pressed
  */
-#define SHOW_ACTIVE_TIME_MILLISEC 150
+#define SHOW_ACTIVE_TIME_MILLISEC 250
 
 //AppSCI
 /**
@@ -189,19 +189,19 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 510
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 151
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 400
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 171
 
 //Audio Director
 /**
  * @brief max number of audio stream objects
  * 
  */
-#define MAX_AUDIO_STREAM_OBJECTS 52
+#define MAX_AUDIO_STREAM_OBJECTS 200
 /**
  * @brief max number of audio memory blocks
  * 
@@ -213,7 +213,7 @@
  */
 #define MAX_AUDIO_FUNCTION_CATEGORIES 16
 /**
- * @brief max number of catagory types - query result container size
+ * @brief max number of category types - query result container size
  * 
  */
 #define MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT 24
@@ -231,9 +231,9 @@
 //ILI9341_t3_ERIS
 /**
  * @brief defines how many slices per image\n
- * used to acccelerate the wallpaper rendering by only drawing 1/n of the image at a time
+ * used to accelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 8
+#define ANIMATION_CHUNKS_PER_FRAME 2
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -248,7 +248,7 @@ const char PROGMEM p[][16] = {"DOUBLE.ile","GRAIN.ile","PHASER.ile","BITCRUSH.il
 const char INPUT_PEAK[] PROGMEM = "INPUT_PEAK";
 
 //STRINGS - ERIS CORE
-const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/YELLOWHOLE";
+const char UI_ANIMATED_WALLPAPER_PATH[] PROGMEM = "/V/INK";
 
 const char nullStr[] PROGMEM = "NULL";
 const char FREE_MEM[] PROGMEM = "FREE_MEM";

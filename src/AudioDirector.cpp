@@ -28,6 +28,7 @@ FLASHMEM AudioDirector::AudioDirector(){
   category_count=0;
   query_result_count=0;
   printstats_select = 0;
+  printstats_block = 0;
   AudioMemory(MAX_AUDIO_MEMORY_BLOCKS);
   //init pointer arrays
   for (uint16_t i=0; i < MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT; i++){
@@ -42,28 +43,24 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(p_audiostream_input_port);
   addAudioStreamObj(&p_audiostream_output_port);
 
-  
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeScope);
   //addAudioStreamObj(new erisAudioAnalyzeNoteFrequency);
   addAudioStreamObj(new erisAudioEffectFreeverb);
   addAudioStreamObj(new erisAudioSynthNoisePink);
-
+  //addAudioStreamObj(new erisAudioSynthNoiseWhite);
   addAudioStreamObj(new erisAudioSynthToneSweep);
-  addAudioStreamObj(new erisAudioSynthWaveformSineHires);
   addAudioStreamObj(new erisAudioSynthWaveformSineModulated);
   
-  //generate audio component pool
   for (int i=0; i < 17; i++){
-    //addAudioStreamObj(new erisAudioEffectEnvelope);
-    //addAudioStreamObj(new erisAudioSynthWaveformModulated);
+    addAudioStreamObj(new erisAudioEffectEnvelope);
+    addAudioStreamObj(new erisAudioSynthWaveformModulated);
     addAudioStreamObj(new erisAudioSynthWaveform);
   }
 
   for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
-    //addAudioStreamObj(new erisAudioFilterStateVariable);
     addAudioStreamObj(new erisAudioFilterBiquad);
     addAudioStreamObj(new erisAudioAmplifier);
   }
@@ -73,6 +70,9 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioMixer8);
 
   addAudioStreamObj(new erisAudioEffectDelay);
+  addAudioStreamObj(new erisAudioFilterStateVariable);
+  
+  //addAudioStreamObj(new erisAudioEffectDelay);
   
   Serial.print(F("M AudioDirector::AudioDirector() objects: "));
   Serial.println(obj_count);
@@ -103,15 +103,14 @@ FLASHMEM AudioDirector::AudioDirector(){
 bool AudioDirector::initAudioHardware(){
   I2CReset();
   ExtADCConfig();
-  //ExtADCPrintStatus(sci);
-  //todo check values
   return true;
 }
 
 
 bool AudioDirector::addAudioStreamObj(AudioStream* obj){
+  //note that the Serial print interface is used directly here. 
+  //This is because the serial communication interface (sci) is not available on startup (where this function is used)
   uint8_t count = 0; 
-
   if (obj !=0 && obj_count < MAX_AUDIO_STREAM_OBJECTS){
     p_audiostream_obj_pool[obj_count++] = obj;
     Serial.print(F("M AudioDirector::addAudioStreamObj adding obj :"));
@@ -131,23 +130,28 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
     Serial.print(F(" ptr: "));
     Serial.println((uint32_t)obj);
     p_heap_end = (void *)obj;
-    //Serial.flush();
     return true;
   }
   return false;
 };
 
 void FASTRUN AudioDirector::printStats(){
-
   if (sci==NULL) return;
 
   if (printstats_select == 0){
     if(sci->requestStartLZ4Message()){
-      printstats_select += 1;
       sci->print(F("STATS {\"AudioDirector\":{"));  
       sci->print(F("\"AudioStreams\":{"));
       
-      for(uint16_t i=0; i < obj_count;i++){
+      uint16_t from, to;
+      from = printstats_block++ * 8; //block size
+      to = printstats_block * 8;
+      if (to >= obj_count){
+        to = obj_count;
+        printstats_select++;
+        printstats_block = 0;
+      }
+      for(uint16_t i=from; i < to;i++){ //transmitt in blocks
         sci->print(F("\""));
         sci->print(p_audiostream_obj_pool[i]->short_name);sci->print(F(":"));
         sci->print(p_audiostream_obj_pool[i]->instance);
@@ -162,19 +166,28 @@ void FASTRUN AudioDirector::printStats(){
         sci->print(F(",\"outputs\":"));
         sci->print(p_audiostream_obj_pool[i]->unum_outputs);
         sci->print("}"); //close obj
-        if ( i < (obj_count -1)) sci->print(",");
+        if ( i < (to -1)) sci->print(",");
       }
       sci->print("}}}");
       sci->sendLZ4Message();
     }
   }else if (printstats_select == 1){ 
     if(sci->requestStartLZ4Message()){
-      printstats_select += 1;
       sci->print(F("STATS {\"AudioDirector\":{"));  
       sci->print(F("\"AudioConnectionPool\":{"));
       sci->print(F("\"active_connections\":"));
       sci->print(active_connections);
-      for(uint16_t i=0; i < MAX_CONNECTIONS;i++){ //for each...
+
+      uint16_t from, to;
+      from = printstats_block++ * 4;
+      to = printstats_block * 4;
+      if (to >= MAX_CONNECTIONS){
+        to = MAX_CONNECTIONS;
+        printstats_select++;
+        printstats_block = 0;
+      }
+
+      for(uint16_t i=from; i < to;i++){ //transmitt in blocks
         sci->print(F(",\""));
         sci->print(i); //connection index used as a container
         sci->print(F("\":{"));
@@ -187,7 +200,6 @@ void FASTRUN AudioDirector::printStats(){
             sci->print(p_cord[i]->pSrc->instance);
             sci->print(F(",\"srcPort\":"));
             sci->print(p_cord[i]->src_index);
-
             sci->print(F(",\"destType\":\""));
             sci->print(p_cord[i]->pDst->short_name);
             sci->print(F("\",\"destInstance\":"));
@@ -202,7 +214,7 @@ void FASTRUN AudioDirector::printStats(){
       sci->println(F("}}}")); //close the connection container
       sci->sendLZ4Message();
     }
-  }else{
+  }else if (printstats_select == 2){
     if(sci->requestStartLZ4Message()){
       printstats_select = 0;
       sci->print(F("STATS {"));  
@@ -211,15 +223,6 @@ void FASTRUN AudioDirector::printStats(){
       sci->sendLZ4Message();
     }
   }
-  //sci->startLZ4Message();
-  //sci->print(F("}")); // close the coonection pool container
-  //throw in some audio director stats
-  //sci->print(F(",\"AudioStreamObjCount\":")); sci->print(obj_count);
-  //sci->print(F(",\"memory\":"));
-  //sci->print(e-s);
-  //sci->println(F("}}"));
-  //sci->endLZ4Message();
-  
 }
 
 
@@ -238,7 +241,7 @@ void AudioDirector::generateFunctionList(){
     bool found;
     found = false;
     for (uint16_t j = 0; j < MAX_AUDIO_FUNCTION_CATEGORIES; j++){   //check if cat name is already in the list
-      if (functionsList[j] != 0){ //dont test unitialized string pointers
+      if (functionsList[j] != 0){ //dont test uninitialized string pointers
         if (strcmp(*functionsList[j],p_audiostream_obj_pool[i]->category)==0) found = true;
       } 
     }
@@ -263,7 +266,7 @@ uint16_t AudioDirector::queryTypesByFunction(const char * function){
     bool found;
     found = false;
     for (uint16_t j = 0; j < MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT; j++){   //check if cat name is already in the list
-      if (query_result[j] != 0){ //dont test unitialized string pointers
+      if (query_result[j] != 0){ //dont test uninitialized string pointers
         if ((strcmp(*query_result[j],p_audiostream_obj_pool[i]->short_name)==0)) found = true;
       } 
     }
@@ -312,8 +315,11 @@ AudioStream* AudioDirector::getAudioStreamObjByName(const char* AudioStreamObjNa
     }
   }
   //not found return null
-  Serial.print(F("M AudioDirector::getAudioStreamObjByName Not Found: "));
-  Serial.println(AudioStreamObjName);
+  if(sci->requestStartLZ4Message()){
+    sci->print(F("M AudioDirector::getAudioStreamObjByName Not Found: "));
+    sci->println(AudioStreamObjName);
+    sci->sendLZ4Message();
+  }
   return 0;
 }
 

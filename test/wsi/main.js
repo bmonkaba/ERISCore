@@ -626,7 +626,7 @@ $(document).ready(function () {
                 } catch (e) {
                     //do nothing - bad data?
                 }
-                if (Math.random() > 0.05) {
+                if (Math.random() > 0.975) {
                     //don"t need to redraw every time data is received" 
                     if (!$("#flow_container").is(":hidden")) renderAudioBlocks();
                 }
@@ -1192,12 +1192,12 @@ function renderAudioBlocks() {
 function renderAudioBlocksByType() {
     var x = 0;
     var y = 0;
-    var zonex = [0, 20, 620, 620, 1000, 1400];
-    var zonex_start = [0, 20, 620, 620, 1000, 1400];
-    var zone_width = [400, 400, 400, 820, 1400, 200];
+    var zonex = [0, 20, 620, 1100, 1700, 2200];
+    var zonex_start = [0, 20, 620, 1100, 1700, 2200];
+    var zone_width = [400, 400, 800, 800, 400, 400];
     var zonex_gap = [90, 90, 90, 90, 90, 90];
-    var zoney = [0, 300, 50, 300, 300, 0];
-    var zoney_gap = [75, 125, 125, 200, 125, 125];
+    var zoney = [0, 100, 50, 50, 0, 0];
+    var zoney_gap = [75, 125, 125, 125, 125, 125];
 
     var column_color = ["#213A55", "#2F2A34", "##18181F", "#40474E", "#551234", "#371B32"];
     var zi = 0;

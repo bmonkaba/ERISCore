@@ -60,6 +60,12 @@ class AnalogInputs {
             ai[3] = (ai[3] * 0.4) + (analogRead(AN4) * 0.6);
             //AudioInterrupts();
 
+            //DEBUG REMOVE!!!
+            ai[0] = 1000;
+            ai[1] = 512;
+            ai[2] = 1000;
+            ai[3] = 1000;
+
             if (abs(ai[0] - old_ai[0])>TRIGGER_DELTA) trigger = true;
             if (abs(ai[1] - old_ai[1])>TRIGGER_DELTA) trigger = true;
             if (abs(ai[2] - old_ai[2])>TRIGGER_DELTA) trigger = true;

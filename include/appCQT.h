@@ -21,7 +21,7 @@
 #define CQT_HIGHRANGE_SPLIT_AT_BIN 48
 
 /**
- * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthisize the input signal (LIMIT OF 16!)
+ * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthesize the input signal (LIMIT OF 16!)
  * 
  */
 #define OSC_BANK_SIZE 12
@@ -77,7 +77,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
 
     void FLASHMEM init(){
-      update_priority = 4; 
+      update_priority = 10; 
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
@@ -108,7 +108,7 @@ class AppCQT:public AppBaseClass {
         flow = 0;
         fhigh = 0;
         if (i > 0 && i < NOTE_ARRAY_LENGTH){
-          //calculate the high and low frequencys for the given note
+          //calculate the high and low frequencies for the given note
           //this is done by splitting the frequency differences from the music note above and below 
           flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
           fhigh = note_freq[i] + (note_freq[i+1] - note_freq[i])/2.0;
@@ -405,7 +405,7 @@ class AppCQT:public AppBaseClass {
           dominantPhase = fftLowRR[0].phase;
       } else dominantPhase = fftHighRR[0].phase;;
 
-      //actually update the oscilators -- IF the data is not TOO old
+      //actually update the oscillators -- IF the data is not TOO old
       //if (updateRT_call_period > am->data->read(FFT_AGE_THRESHOLD)) return;
       AudioNoInterrupts();
       for(int16_t i=0; i < osc_bank_size; i++){

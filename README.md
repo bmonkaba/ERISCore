@@ -17,7 +17,11 @@ Eris core is:
 * supported by a cross-platform serial to web socket interface (python) & editor software (html/websocket based)
 * a low-cost high performance design for intended for use by anyone from beginners to advanced developers
 
-<img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300"> \*\*youtube video demo - pre-alpha sys stress, integration & regression testing:\*\*
+<br>
+<img src="https://github.com/bmonkaba/ERISCore/blob/master/pcb/Screenshot%202022-01-04%20005753.png?raw=true" width="300">
+
+\*\*youtube video demo - pre-alpha sys stress, integration & regression testing:\*\*
+
 [![youtube video](https://i.ytimg.com/sb/QZLU7C8BaJI/storyboard3_L1/M1.jpg?sqp=-oaymwENSDfyq4qpAwVwAcABBqLzl_8DBgiSycOPBg==&sigh=rs$AOn4CLCZF1EsGS1Y0ClavNFBQ0P9sU5UMw)](https://www.youtube.com/watch?v=QZLU7C8BaJI "pre alpha video demo")
 
 ### 3rd party
@@ -59,9 +63,9 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 #### Development State
 
 * System is currently pre-alpha.
-* Software is currently pre-alpha
+* Software is currently pre-alpha. Interfaces may change.
 * Hardware design is currently beta 2
-* SLA Mechanical design is currently beta 2
+* SLA Mechanical design is currently beta 2.
 
 #### WIP / Known issues
 
@@ -174,4 +178,5 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 ### mvp-01
 
 The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
+
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">

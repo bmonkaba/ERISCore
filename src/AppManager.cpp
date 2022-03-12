@@ -19,7 +19,6 @@
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
 #include "ErisGlobals.h"
-//#include "SvcSerialCommandInterface.h"
 
 #include <pgmspace.h>
 #include "FreeStack.h"
@@ -112,7 +111,15 @@ FLASHMEM AppManager:: AppManager(){
   //render.updateScreenAsync(true);
   display_refresh_time = 0;
   #endif
-  
+  //log any crash reports
+  Serial.println(F("M AppManager: Checking for crash report"));
+  if (CrashReport){
+      //Serial.print(CrashReport);
+      FsFile f = sd.open("/crashreport.txt",O_CREAT|O_WRITE);
+      f.print(CrashReport);
+      f.flush();
+      f.close();
+  }
 };
 
 void AppManager::setup(){
@@ -146,6 +153,7 @@ void AppManager::update(){
     cycle_time=0;
     drt = display_refresh_time; 
     touch_updated = false;
+    update_analog = false;
     node = root;
 
     requestArmSetClock(CPU_BASE_FREQ);
@@ -180,12 +188,13 @@ void AppManager::update(){
           if(exclusive_app_render) state = redraw_objects;
           else state = redraw_background;
 
-          //update analog inputs
-          update_analog = analog.update();
-          touch.update();
-          touch_updated = true;    
+
 
         };
+        //update analog inputs
+        update_analog = analog.update();
+        touch.update();
+        touch_updated = true;    
         //note: this is  a good place for application manager housekeeping tasks where screen access is not required
         data->update(AM_AUDIO_CPU_MAX,(float32_t)AudioProcessorUsageMax());
         float32_t cpu;
@@ -484,48 +493,48 @@ AppBaseClass* AppManager::getAppByName(const char *appName){
  * 
  */
 void FASTRUN AppManager::printStats (){
-  SvcSerialCommandInterface* sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
-  if(sci->requestStartLZ4Message()){
+  SvcSerialCommandInterface* sci;
+  sci = (SvcSerialCommandInterface*)getAppByName("SCI"); //request the serial command interface
+  if(sci!=NULL){
     AppBaseClass *node = root;
     if (node == NULL) return;
-    sci->print(F("STATS {\"APPS\":{"));
-    do{
-      sci->print(F("\""));
-      sci->print(node->name);
-      sci->print(F("\":{"));
-      sci->print(F("\"render_period_max\":"));sci->print(node->render_period_max);sci->print(F(","));
-      sci->print(F("\"render_cpu_time_max\":"));sci->print(node->render_cpu_time_max);sci->print(F(","));
-      sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
-      sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);
-      sci->print(F("},"));
-      //clear the stats
-      node->render_cpu_time_max = 0;
-      node->update_cpu_time_max = 0;
-      node->cycle_time_max = 0;
-      node->render_period_max = 0;
-      node->update_period_max = 0;
-      node=node->next_app_node;//check next node
-    }while(node !=NULL);
-    if (root != 0){
-      sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
-    }else{
-      sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
+    if(sci->requestStartLZ4Message()){  
+      sci->print(F("STATS {\"APPS\":{"));
+      do{
+        sci->print(F("\""));
+        sci->print(node->name);
+        sci->print(F("\":{"));
+        sci->print(F("\"render_period_max\":"));sci->print(node->render_period_max);sci->print(F(","));
+        sci->print(F("\"render_cpu_time_max\":"));sci->print(node->render_cpu_time_max);sci->print(F(","));
+        sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
+        sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);
+        sci->print(F("},"));
+        //clear the stats
+        node->render_cpu_time_max = 0;
+        node->update_cpu_time_max = 0;
+        node->cycle_time_max = 0;
+        node->render_period_max = 0;
+        node->update_period_max = 0;
+        node=node->next_app_node;//check next node
+      }while(node !=NULL);
+      if (root != 0){
+        sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
+      }else{
+        sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
+      }
+      sci->println(F("}}"));
+      
+      sci->print(F("STATS {\"APPMANAGER\":{"));
+      sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
+      sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
+      sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
+      sci->print(F("\"active_app_id\":"));sci->print(active_app_id);sci->print(F(","));
+      sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
+      sci->println(F("}}"));
+      sci->sendLZ4Message();
+      //clear the app manager stats
+      cycle_time_max = 0;
     }
-    sci->println(F("}}"));
-    //sci->endLZ4Message();
-
-    //print app manager stats
-    //sci->startLZ4Message();
-    sci->print(F("STATS {\"APPMANAGER\":{"));
-    sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
-    sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
-    sci->print(F("\"touch_state\":"));sci->print(touch_state);sci->print(F(","));
-    sci->print(F("\"active_app_id\":"));sci->print(active_app_id);sci->print(F(","));
-    sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
-    sci->println(F("}}"));
-    sci->sendLZ4Message();
-    //clear the app manager stats
-    cycle_time_max = 0;
   }
   return;
 }

@@ -9,11 +9,11 @@
  * @brief Data Dictionary service 
  * provides an interface to a data dictionary service\n
  * the service shall provide a CRUD (create,read,update,destroy) interface\n
- * data shall be globaly readable\n
+ * data shall be globally readable\n
  * create operation shall offer an ownership interface requiring a pointer to the owner\n
  * update and destroy operations on owned keys can only be made by the owner\n
  * the owner pointer shall never be dereferenced or accessed by the service; it only serves as an owner ID\n
- * NULL pointers are OK. They can be utilized to create globaly modifiable (update,destroy) records\n
+ * NULL pointers are OK. They can be utilized to create globally modifiable (update,destroy) records\n
  * 
  * 
  * @version 0.1
@@ -144,7 +144,7 @@ class SvcDataDictionary{
         /**
          * @brief update the value of an owned record\n 
          * creates a new record if one does not exist and\n 
-         * initalizes its value to zero
+         * initializes its value to zero
          * 
          * @param key 
          * @param val 
@@ -156,7 +156,7 @@ class SvcDataDictionary{
         /**
          * @brief update the value of an owned record\n 
          * creates a new record if one does not exist and\n 
-         * initalizes its value to zero
+         * initializes its value to zero
          * 
          * @param key 
          * @param val 
@@ -168,7 +168,7 @@ class SvcDataDictionary{
         /**
          * @brief update the value of a global record\n 
          * creates a new record if one does not exist and\n 
-         * initalizes its value to zero
+         * initializes its value to zero
          * 
          * @param key 
          * @param val 
@@ -180,7 +180,7 @@ class SvcDataDictionary{
         /**
          * @brief update the value of a global record\n 
          * creates a new record if one does not exist and\n 
-         * initalizes its value to zero
+         * initializes its value to zero
          * 
          * @param key 
          * @param val 
@@ -192,7 +192,7 @@ class SvcDataDictionary{
         /**
          * @brief increments the value of a global record\n 
          * creates a new record if one does not exist and\n 
-         * initalizes its value to zero
+         * initializes its value to zero
          * 
          * @param key 
          * @return true 
@@ -214,6 +214,7 @@ class SvcDataDictionary{
     private:
         svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
         uint16_t next;
+        uint8_t dd_transmitt_block;
         bool copyKey(const char* key);
 
 };

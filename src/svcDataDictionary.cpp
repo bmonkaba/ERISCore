@@ -6,11 +6,11 @@
  * @brief Data Dictionary service 
  * provides an interface to a data dictionary service
  * the service shall provide a CRUD (create,read,update,destroy) interface
- * data shall be globaly readable
+ * data shall be globally readable
  * create operation shall require a pointer to the owner
  * update and destroy operations can only be made by the owner
  * the owner pointer shall never be dereferenced or accessed by the service; it only serves as an ID
- * NULL pointers are OK. They can be utilized to create globaly modifiable (update,destroy) records
+ * NULL pointers are OK. They can be utilized to create globally modifiable (update,destroy) records
  * 
  * 
  * @version 0.1
@@ -29,7 +29,7 @@ bool SvcDataDictionary::copyKey(const char* key){
     if (record[next].key == NULL) return false;
     /*
         strndup doesn't ensure null termination of strings! meaning it will fill
-        the entire buffer with chars ommiting the null ternimation to indicate the
+        the entire buffer with chars omitting the null ternimation to indicate the
         end of a string.
 
         strndup however does fill the buffer with null chars if given a string is shorter than the buffer len 
@@ -42,6 +42,7 @@ bool SvcDataDictionary::copyKey(const char* key){
 
 SvcDataDictionary::SvcDataDictionary(){
             next=0;
+            dd_transmitt_block = 0;
             for(int i=0;i<DATADICT_KEYVALUE_PAIRS;i++){
                 record[i].owner = 0;
                 record[i].val.int32_val = 0;
@@ -63,6 +64,7 @@ uint32_t FASTRUN SvcDataDictionary::hash(const char* s){
     while (c = (*s++)){h = ((h << 5) + h) + c;}
     return h;
 }
+
 bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
@@ -228,13 +230,23 @@ void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //Serial.flush();
     if(sci->requestStartLZ4Message()){
         sci->print(F("DD {"));
-        for(int i=0;i<next;i++){
+
+        dd_transmitt_block;
+        uint16_t from, to;
+        from = dd_transmitt_block++ * 4; //block size
+        to = dd_transmitt_block * 4;
+        if (to >= next){
+            to = next;
+            dd_transmitt_block = 0;
+        }
+
+        for(int i=from;i<to;i++){
             if (record[i].data_type == DDDT_INT32){
                 sci->printf("\"%s\":%d",record[i].key,record[i].val.int32_val);
             }else if (record[i].data_type == DDDT_FLOAT32){
                 sci->printf("\"%s\":%f",record[i].key,record[i].val.float32_val);
             }
-            if (i != next-1) sci->print(",");
+            if (i != to-1) sci->print(",");
         }
         sci->println("}");
         sci->sendLZ4Message();
