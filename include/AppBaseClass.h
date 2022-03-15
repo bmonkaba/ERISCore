@@ -9,7 +9,7 @@
  * 
  */
 
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include <Arduino.h>
 #include <elapsedMillis.h>
 #include "HSI.h"

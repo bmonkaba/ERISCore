@@ -9,7 +9,7 @@
  * 
  */
 #include "AppWren.h"
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include "AppManager.h"
 #include "ErisUtils.h"
 
@@ -572,6 +572,7 @@ void loadImageCallback(WrenVM* vm){
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
   }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
   }else return;
   if(app->useNativeFS){
     app->getDraw()->bltSD(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
@@ -603,6 +604,7 @@ void loadImageSurfaceCallback(WrenVM* vm){
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
   }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
   }else return;
   if(app->useNativeFS){
     app->bltSD2Surface(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),bm);
@@ -634,6 +636,7 @@ void bltCallback(WrenVM* vm){
   }else if (blt_mode_request == 9){ bm = BLT_OR;
   }else if (blt_mode_request == 10){bm = BLT_XOR;
   }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
   }else return;
   
   app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);

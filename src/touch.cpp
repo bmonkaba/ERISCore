@@ -1,6 +1,6 @@
 #include "touch.h"
 #include "HSI.h"
-#include "ErisGlobals.h"
+#include "Eris.h"
 
 #define Z_THRESHOLD     600
 #define Z_THRESHOLD_INT	75

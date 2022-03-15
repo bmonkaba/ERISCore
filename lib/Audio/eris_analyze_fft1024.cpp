@@ -155,11 +155,16 @@ void erisAudioAnalyzeFFT1024::analyze(void)
 	for(int16_t i=0;i < 1024;i+=2){
 		p = normalized_atan2(tmp_buffer[i],tmp_buffer[i+1]);
 		if (!std::isfinite(p)) p = 0;
-		phase[i/2] = 360.0 * (p/4.0);
+		phase[i/2] = (phase[i/2] + (360.0 * (p/4.0)))/2.0;
 	}
 	
 	// Process the data through the Complex Magnitude Module for calculating the magnitude at each bin 
-	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
+	arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)tmp_buffer, 1024);
+	for(int16_t i=0;i < 1024;i+=2){
+		//arm_cmplx_mag_f32((float32_t*)tmp_buffer, (float32_t*)output, 1024);
+		output[i] = (output[i] + tmp_buffer[i]) / 2.0;
+	}
+	
 
 	//(NVIC_ENABLE_IRQ(IRQ_SOFTWARE));
 

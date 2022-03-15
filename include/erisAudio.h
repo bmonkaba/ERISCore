@@ -22,8 +22,7 @@
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"
 
-
-#include <Audio.h>
+#include "Audio.h"
 #include "AudioStream.h"
 
 #include "eris_mixer_ext.h"
@@ -657,31 +656,56 @@ public:
 };
 
 
-class erisAudioSynthWaveform:public AudioSynthWaveform{
+//standard oscillators silently upgraded to support 2K arb waveforms
+class erisAudioSynthWaveform:public AudioSynthWaveform2k{
 public:
-	erisAudioSynthWaveform():AudioSynthWaveform(){
+	erisAudioSynthWaveform():AudioSynthWaveform2k(){
 		short_name="waveform";
 		unum_inputs=0;
 		unum_outputs=1;
 		category="synth-function";
 	}
 	static const char* short_name_lookup;
-	void update(){this->AudioSynthWaveform::update();}
+	void update(){this->AudioSynthWaveform2k::update();}
 };
 
 
-class erisAudioSynthWaveformModulated:public AudioSynthWaveformModulated{
+class erisAudioSynthWaveformModulated:public AudioSynthWaveformModulated2k{
 public:
-	erisAudioSynthWaveformModulated():AudioSynthWaveformModulated(){
-		short_name=short_name_lookup;
+	erisAudioSynthWaveformModulated():AudioSynthWaveformModulated2k(){
+		short_name="waveformMod";
 		unum_inputs=2;
 		unum_outputs=1;
 		category="synth-function";
 	}
 	static const char* short_name_lookup;
-	void update(){this->AudioSynthWaveformModulated::update();}
+	void update(){this->AudioSynthWaveformModulated2k::update();}
 };
 
+class erisAudioSynthWaveform2k:public AudioSynthWaveform2k{
+public:
+	erisAudioSynthWaveform2k():AudioSynthWaveform2k(){
+		short_name="waveform2k";
+		unum_inputs=0;
+		unum_outputs=1;
+		category="synth-function";
+	}
+	static const char* short_name_lookup;
+	void update(){this->AudioSynthWaveform2k::update();}
+};
+
+
+class erisAudioSynthWaveformModulated2k:public AudioSynthWaveformModulated2k{
+public:
+	erisAudioSynthWaveformModulated2k():AudioSynthWaveformModulated2k(){
+		short_name="waveformMod2K";
+		unum_inputs=2;
+		unum_outputs=1;
+		category="synth-function";
+	}
+	static const char* short_name_lookup;
+	void update(){this->AudioSynthWaveformModulated2k::update();}
+};
 
 class erisAudioSynthWaveformPWM:public AudioSynthWaveformPWM{
 public:

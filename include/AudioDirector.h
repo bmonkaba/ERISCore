@@ -11,7 +11,7 @@
 #ifndef __AudioDirector
 #define  __AudioDirector
 
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include <string.h>
 #include "ErisAudio.h"
 #include "SvcSerialCommandInterface.h"

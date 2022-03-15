@@ -10,7 +10,7 @@
  */
 #include <Arduino.h>
 
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include "SvcSerialCommandInterface.h"
 #include "ILI9341_t3_ERIS.h"
 #include "touch.h"

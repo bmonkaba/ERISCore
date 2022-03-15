@@ -11,7 +11,7 @@
 #ifndef _AppSCI_
 #define _AppSCI_
 
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include <string.h>
 #include "AppManager.h"
 #include "AppBaseClass.h"

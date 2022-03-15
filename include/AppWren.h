@@ -13,7 +13,7 @@
 #include <LittleFS.h>
 #include "AppBaseClass.h"
 #include "wren.hpp"
-#include "ErisGlobals.h"
+#include "Eris.h"
 
 
 /**

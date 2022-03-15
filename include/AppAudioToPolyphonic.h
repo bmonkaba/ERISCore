@@ -69,7 +69,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       filter->setLowpass(0, 300);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
-      filter->setLowpass(0,8052);
+      filter->setLowpass(0,12052);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:4"));
       filter->setLowpass(0,18400);
@@ -91,10 +91,10 @@ class AppAudioToPolyphonic:public AppBaseClass {
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay:1"));
-      delay->delay(0,30);
-      delay->delay(1,60);
-      delay->delay(2,100);
-      delay->delay(3,300);
+      delay->delay(0,250);
+      delay->delay(1,300);
+      delay->delay(2,500);
+      delay->delay(3,900);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
       mix->gain(0,0.3);
       mix->gain(1,0.001);
@@ -250,7 +250,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthesized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
-      filter->setLowpass(0,220.0 + (5000.0 * fval));
+      filter->setLowpass(0,220.0 + (15000.0 * fval));
     };
     
     void FLASHMEM onAnalog3(uint16_t uval, float fval){

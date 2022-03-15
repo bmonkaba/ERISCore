@@ -232,7 +232,7 @@ class Animation{
  * @brief block transfer operation
  * 
  */
-enum bltMode{BLT_COPY,BLT_BLK_COLOR_KEY,BLT_HATCH_BLK,BLT_HATCH_XOR,BLT_ADD,BLT_SUB,BLT_MULT,BLT_DIV,BLT_AND,BLT_OR,BLT_XOR,BLT_MEAN};
+enum bltMode{BLT_COPY,BLT_BLK_COLOR_KEY,BLT_HATCH_BLK,BLT_HATCH_XOR,BLT_ADD,BLT_SUB,BLT_MULT,BLT_DIV,BLT_AND,BLT_OR,BLT_XOR,BLT_MEAN,BLT_1ST_PIXEL_COLOR_KEY};
 
 /**
  * @brief Eris class extentions to the ILI9341_t3n base class 

@@ -18,7 +18,7 @@
 #include "ILI9341_t3_ERIS.h"
 #include "ili9341_t3n_font_Arial.h"
 #include "AppManager.h"
-#include "ErisGlobals.h"
+#include "Eris.h"
 
 #include <pgmspace.h>
 #include "FreeStack.h"

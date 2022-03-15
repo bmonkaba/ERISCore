@@ -53,10 +53,18 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioSynthToneSweep);
   addAudioStreamObj(new erisAudioSynthWaveformSineModulated);
   
+  erisAudioSynthWaveform * tmp_asw;
+  erisAudioSynthWaveformModulated *tmp_aswm;
   for (int i=0; i < 17; i++){
     addAudioStreamObj(new erisAudioEffectEnvelope);
-    addAudioStreamObj(new erisAudioSynthWaveformModulated);
-    addAudioStreamObj(new erisAudioSynthWaveform);
+    tmp_asw = new erisAudioSynthWaveform;
+    tmp_aswm = new erisAudioSynthWaveformModulated;
+    
+    tmp_asw->arbitraryProgram(80);
+    tmp_aswm->arbitraryProgram(80);
+    
+    addAudioStreamObj(tmp_aswm);
+    addAudioStreamObj(tmp_asw);
   }
 
   for (int i=0; i < 6; i++){

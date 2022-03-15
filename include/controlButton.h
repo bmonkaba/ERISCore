@@ -9,7 +9,7 @@
  * 
  */
 #include "AppManager.h"
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include "ErisUtils.h"
 
 extern const ILI9341_t3_font_t Arial_9;

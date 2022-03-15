@@ -1,5 +1,5 @@
 #include "ILI9341_t3_ERIS.h"
-#include "ErisGlobals.h"
+#include "Eris.h"
 #include <arm_math.h>
 
 static volatile bool dmabusy;
@@ -104,6 +104,8 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   uint32_t read_index,write_index;
   uint16_t *srcBuffer;
   uint16_t *dest_buffer;
+  uint16_t first_pixel;
+  
   srcBuffer = source->getSurfaceBufferP();
   dest_buffer = dest->getSurfaceBufferP();
   //check for null
@@ -112,9 +114,11 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   //check for off surface blt attempt
   if ((dest_x > dest->getWidth()) || (0 > (dest->getWidth() + dest_x))) return;
   if ((dest_y > dest->getHeight()) || (0 > (dest->getHeight() + dest_y))) return;
+  
+  first_pixel = srcBuffer[0];
   if(0 && blt_mode == BLT_COPY){ //WIP
     //PXP TEST
-    uint16_t dw,dh;
+    uint16_t dw,dh,first_pixel;
     dw = dest_x + from_width;
     if(dw>SCREEN_WIDTH) dw=SCREEN_WIDTH;
     dh = dest_y + from_height;
@@ -147,7 +151,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
         write_index = (d_y * dest->getWidth()) + d_x;
         read_index = (source_y * source->getWidth()) + source_x;
         if(d_x < dest->getWidth() && d_x >= 0 && d_y < dest->getHeight() && d_y >= 0){
-          int16_t dw;
+          uint16_t dw;
           int16_t r,g,b;
           dw = srcBuffer[read_index];
           toggle ^= true;
@@ -216,7 +220,9 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
             a[1] = (0x7F & (dw << 3));
             arm_mean_q7(a,2,&res[2]);
             dest_buffer[write_index] = CL(res[0],res[1],res[2]);
-          } else{
+          }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+            if (dw != first_pixel) dest_buffer[write_index] = dw;
+          }else{
             dest_buffer[write_index] = dw;
           }
         }
@@ -320,6 +326,7 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
   unsigned long ifb; //frame buffer index
   //uint16_t dwbf[SCREEN_WIDTH];//file read pixel row input buffer
   uint16_t dw;       //pixel data
+  uint16_t first_pixel;
   char str[16];      //char buffer
   char *c;           //char pointer
   bool toggle = false;
@@ -346,6 +353,11 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
   w = atol(str);  //image width
   c = strtok(NULL, " ");
   h = atol(c);    //image height
+
+  //get first pixel value in case of color key by pixel
+  file.readBytes((char*)&first_pixel,2);
+  file.seek(file.position()-2L); //rewind the read pointer
+
   //seek to the source row
   if (src_y > 0) { 
     for (iy = 0; iy < src_y; iy += 1L){ //for each off screen row
@@ -460,6 +472,8 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
           a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
+        }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+            if (dw != first_pixel) dest_buffer[ifb + z] = dw;
         }
       //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
     }
@@ -686,6 +700,7 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
   int16_t nx;        //right clip x offset
   unsigned long ifb; //frame buffer index
   uint16_t dw;       //pixel data
+  uint16_t first_pixel;
   int16_t w,h;
   char *c;
   char str[16];
@@ -698,6 +713,10 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
   w = atol(str);
   c = strtok(NULL, " ");
   h = atol(c);
+
+  //get first pixel value in case of color key by pixel
+  file->readBytes((char*)&first_pixel,2);
+  file->seek(file->position()-2L, SeekSet); //rewind the read pointer
 
   //clip in y dimension (top)
   if (y<0) { //throw away rows which are off screen
@@ -786,6 +805,8 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
           a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
+        }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+            if (dw != first_pixel) dest_buffer[ifb + z] = dw;
         }
       }
       if (x + w > dest_buffer_width){file->seek((x + w - dest_buffer_width) * 2, SeekCur);} //clip in x dimension (right) - skip unused data
@@ -818,6 +839,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
   unsigned long ifb; //frame buffer index
   //uint16_t dwbf[SCREEN_WIDTH];//file read pixel row input buffer
   uint16_t dw;       //pixel data
+  uint16_t first_pixel;
   char str[16];      //char buffer
   char *c;           //char pointer
   bool toggle = false;
@@ -841,6 +863,10 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
   w = atol(str);
   c = strtok(NULL, " ");
   h = atol(c);
+
+  //get first pixel value in case of color key by pixel
+  file.readBytes((char*)&first_pixel,2);
+  file.seek(file.position()-2L); //rewind the read pointer
 
   //clip in y dimension (top)
   if (y<0) { //throw away rows which are off screen
@@ -929,6 +955,8 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
           a[1] = (0x7F & (dw << 3));
           arm_mean_q7(a,2,&res[2]);
           dest_buffer[ifb + z] = CL(res[0],res[1],res[2]);
+        }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+            if (dw != first_pixel) dest_buffer[ifb + z] = dw;
         } 
       }
       if (x + w > dest_buffer_width){file.seekCur( (x + w - dest_buffer_width) * 2);} //clip in x dimension (right) - skip unused data

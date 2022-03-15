@@ -1,5 +1,5 @@
 /**
- * @file ErisGlobals.h
+ * @file Eris.h
  * @author Brian Monkaba (brian.monkaba@gmail.com)
  * @brief 
  * @version 0.1
