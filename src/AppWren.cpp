@@ -115,6 +115,7 @@ static void loadModuleComplete(WrenVM* vm,
     //free((void*)result.source);
     AppManager* am = AppManager::getInstance();
     AppWren* app = (AppWren*)am->getAppByName("AppWren");
+    Serial.printf("M VM: loadModule complete %s freeing memory\n", module);
     return app->freeModuleSource();
   }
 }
@@ -504,7 +505,7 @@ void printCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void FASTRUN printWithFontCallback(WrenVM* vm){
+void printWithFontCallback(WrenVM* vm){
   //(char* string)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -690,6 +691,37 @@ void drawFillCallback(WrenVM* vm){
   app->drawFill(wrenGetSlotDouble(vm,1),wrenGetSlotDouble(vm,2),wrenGetSlotDouble(vm, 3));
 }
 
+
+void drawEnablePixelOp(WrenVM* vm){
+  //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  pixelOPMode pom;
+  int32_t pixel_mode_request = wrenGetSlotDouble(vm, 2);
+  if(pixel_mode_request==0) pom = PXOP_COPY;
+  else if(pixel_mode_request==1) pom =  PXOP_BLK_COLOR_KEY;
+  else if(pixel_mode_request==2) pom = PXOP_HATCH_BLK;
+  else if(pixel_mode_request==3) pom = PXOP_HATCH_XOR;
+  else if(pixel_mode_request==4) pom = PXOP_ADD;
+  else if(pixel_mode_request==5) pom = PXOP_SUB;
+  else if(pixel_mode_request==6) pom = PXOP_MULT;
+  else if(pixel_mode_request==7) pom = PXOP_DIV;
+  else if(pixel_mode_request==8) pom = PXOP_AND;
+  else if(pixel_mode_request==9) pom = PXOP_OR;
+  else if(pixel_mode_request==10) pom = PXOP_XOR;
+  else if(pixel_mode_request==11) pom = PXOP_MEAN;
+  else if(pixel_mode_request==12) pom = PXOP_1ST_PIXEL_COLOR_KEY;  
+  app->enablePixelOP(wrenGetSlotDouble(vm, 1),pom);
+}
+
+void drawDisablePixelOp(WrenVM* vm){
+  //(int16_t start_x, int16_t start_y, int16_t end_x, int16_t end_y, int16_t r, int16_t g, int16_t b)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  app->disablePixelOP();
+}
+
+
 /**
  * @brief VM callback for extention method
  * 
@@ -850,13 +882,14 @@ void fsimportFromSD(WrenVM* vm){
   src_filename = wrenGetSlotString(vm,2);
   dst_path = wrenGetSlotString(vm,3);
   dst_filename = wrenGetSlotString(vm,4);
-  am->requestArmSetClock(600000000);
+  //am->requestArmSetClock(600000000);
   am->getSD()->chdir(src_path);
   source = am->getSD()->open(src_filename,O_RDONLY);
   strcpy(c,dst_path);
   strcat(c,dst_filename);
   dest = app->wren_file_system.open(c,O_RDWR);
   //c[2]=0; //null termination
+  
   for(int32_t i= source.available(); i > 0; i--){
     source.readBytes(c,1);//read char
     dest.write(c,1);
@@ -1200,6 +1233,10 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
         return drawUseWrenFileSystem;
       }else if (strcmp(signature, "useSDFileSystem()") == 0){
         return drawUseSDFileSystem;
+      }else if (strcmp(signature, "enablePixelOP(_,_)") == 0){
+        return drawEnablePixelOp;
+      }else if (strcmp(signature, "disablePixelOP()") == 0){
+        return drawDisablePixelOp;
       }
     }else if (strcmp(className, "FileSystem") == 0){
       if (strcmp(signature, "open(_,_)") == 0){
@@ -1285,7 +1322,7 @@ void FLASHMEM AppWren::startVM(){
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
     config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = 120000;
+    config.minHeapSize = WREN_VM_HEAP_SIZE/2;
     config.heapGrowthPercent = 5;
     //config.reallocateFn = &wrenFastMemoryAllocator; 
 #else
@@ -1299,7 +1336,7 @@ void FLASHMEM AppWren::startVM(){
     vm = wrenNewVM(&config);
 }
 
-void FASTRUN AppWren::messageHandler(AppBaseClass *sender, const char *message){
+void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
   if(0 == strncmp(message,"DEMO",strlen("DEMO"))){
     Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
     rebootRequest("demo");
@@ -1373,7 +1410,7 @@ void FASTRUN AppWren::messageHandler(AppBaseClass *sender, const char *message){
     
 }
 
-bool FASTRUN AppWren::dynamicSurfaceManager(){
+bool AppWren::dynamicSurfaceManager(){
   if(!surface_cache){
     surface_mempool = wrenFastRam;
     if (has_pop || has_focus){
@@ -1404,10 +1441,11 @@ bool FASTRUN AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void FASTRUN AppWren::render(){
+ void AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
+          dynamicSurfaceManager();
           if(reboot_request){
             reboot_request = false;
             //handle the reboot request from the running wren script
@@ -1464,11 +1502,12 @@ bool FASTRUN AppWren::dynamicSurfaceManager(){
               }
           }
         }
-        am->data->update("VM_BYTES_ALLOCATED",(int32_t)wrenCollectGarbage(vm));
+        if(am->data->read("AM_RENDER_FRAME")%30 == 0) am->data->update("VM_BYTES_ALLOCATED",(int32_t)wrenCollectGarbage(vm));
+        draw->disablePixelOP();//disable pixel op and the end of the render cycle
     };    //called only when the app is active
 
 
-void FASTRUN AppWren::update(){
+void AppWren::update(){
   if (enable_call_forwarding == false){ //if no script loaded
       return;
   } else{
@@ -1568,6 +1607,7 @@ void AppWren::setPosition(int16_t newOriginX, int16_t newOriginY){
 void AppWren::setDimension(int16_t new_width, int16_t new_height){
   width = new_width;
   height = new_height;
+  dynamicSurfaceManager();
 }
 
 void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
@@ -1577,4 +1617,15 @@ void AppWren::setWidgetPosition(int16_t newOriginX, int16_t newOriginY){
 void AppWren::setWidgetDimension(int16_t new_width, int16_t new_height){
   widget_width = new_width;
   widget_height = new_height;
+  dynamicSurfaceManager();
 }
+    
+void AppWren::enablePixelOP(uint16_t param,pixelOPMode operation){
+    am->data->update("DEBUG_PIXOP",(int32_t)operation);
+    draw->enablePixelOP(param,operation);
+}; 
+
+
+void AppWren::disablePixelOP(){
+    draw->disablePixelOP();
+}; 

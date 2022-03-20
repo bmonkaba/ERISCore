@@ -646,8 +646,6 @@ void FASTRUN SvcSerialCommandInterface::update(){
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
-    am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
-    
     
     if (is_streaming_file){ //streaming file handler
         streamTransmitHandler();
@@ -670,7 +668,6 @@ void FASTRUN SvcSerialCommandInterface::update(){
                     index_rx_buffer = 0;
                     Serial.clear();
                     Serial.clearReadError();
-                    am->requestArmSetClock(CPU_LOW_POWER_MODE_FREQ);
                     return;
                 }
 
@@ -800,5 +797,4 @@ void FASTRUN SvcSerialCommandInterface::update(){
         }
     }
     #endif
-    am->requestArmSetClock(CPU_BASE_FREQ);
 }; //allways called even if app is not active

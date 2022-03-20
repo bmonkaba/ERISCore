@@ -2,16 +2,26 @@
 
 [software documentation](https://bmonkaba.github.io/ERISCore/html/index.html)
 <br>
-## Design goals
+## Original Design Goals - Met
 
 * Stereo audio signal processor assembly built around a Teensy 4.1 combined with a custom TFT ready PCB with integrated power supply, MIDI and independent ADC/DAC
-* Real time polyphonic analysis (constant q-transform)
+* Real time polyphonic analysis (constant q-transform of 2x 32bit 1024 bin FFTs w/ sub-sampling control)
 * No 3rd party operating system
 * No threads
 * AI capability for offline audio training and 'realtime' deployment
 * MIDI in/out capable
-* Should be able to load and unload applications
+* Should be able to activate and deactivate C++ 'applications'
 
+<br>
+## Stretch Goals - Met
+
+* Embedded VM integration
+* RAM Drive VM File System
+* 2D SW library BitBlt extentions to support multiple image composition operations
+* Sprite based Fonts
+* Curated open asset libary (graphics, 2k single-cycle arbitrarty waveforms, samples)
+
+<br>
 ## Design methodology
 
 Agile... but like this:
@@ -78,7 +88,7 @@ void loop() {
 ```
 <br>
 <br>
-Now with Eris Core (simplified to highlight the structure):
+Now with ErisCore.cpp (simplified to highlight the structure):
 <br>
 ```
 AudioDirector DMAMEM _ad;
@@ -110,7 +120,7 @@ void loop(void) {
 }
 ```
 <br>
-As can bee clearly seen. The arduino application structure of setup() and loop() functions remains unchanged within the main sw unit.
+As can be clearly seen, the arduino 'main' application structure of setup() and loop() functions remains unchanged within the main sw unit.
 
 Therefore, one's own arduino code and libraries can be integrated with Eris core or, execute independently.
 
@@ -130,6 +140,8 @@ It should be considered that Eris Core owns:
 * EXT\_RAM - a significant portion is owned by ErisCore 8MB dedicated RAM drive for the VM, display buffers, audio mem
 
 <br>
+Teensy 4.1 pin assignments can be found in HSI.h
+
 Note: C/C++ based applications may take control of digital io and additional EXT\_RAM
 
 Note: HW signal to teensy 4.1 output pin map can be found in HSI.h
@@ -142,11 +154,11 @@ Applications can be static or dynamically created with new
 
 A few points to note here:
 
-* AppManager is a singleton object instance
-* Applications self register with the AppManager on creation by way of the AppBase class constructor
+* AppManager is a lazy singleton object
+* Applications automatically self register with the AppManager on creation by the AppBase class constructor
 
 <br>
-Many apps could be loaded on setup therefore a method is required to tell Eris Core which one to give focus. This is done with the AppBaseClass method getFocus():
+Note: Many apps could be loaded or running. Therefore a method is required to tell Eris Core which one to give focus. This is done with the method getFocus():
 
 From the setup() example above:
 
@@ -164,7 +176,8 @@ AppManager::getInstance()->update;
 <br>
 This statement requests a pointer to the singleton AppManager then calls update on it.
 
-This is akin to a sys tick(), however there is no context switching as this is a cooperatively scheduled and not a preemptive 'operating system'. The point to be made here is that update does not mean anything other than to update the internal state machine and make appropriate application and core method calls in the process.
+This is akin to a sys tick(). However, there is no context switching as this is a cooperatively scheduled and not a preemptive 'operating system'.
+The point to be made here is that update does not mean anything other than to update the internal state machine and make appropriate application and core method calls in the process.
 <br>
 ### Application Requirements & Interfaces
 <br>
@@ -172,7 +185,7 @@ Application interfaces are specified by the implementation of AppBaseClass
 
 If using the AppTemplate, which contains empty implementations of the required virtual functions there is only one requirement:
 
-* Requirement: Every application must have a unique name
+* **Requirement: Every application must have a unique name**
 
 <br>
 Within the Application constructor set the object name like so:
@@ -227,15 +240,15 @@ if (show_active){
 }
 ```
 <br>
-Note: The data dictionary service can store multiple data types. check the documentation for specific access methods for each type. (currently float and int32\_t types are supported)
+Note: The data dictionary service can store multiple data types. Check the documentation for specific access methods for each type. (currently float and int32\_t types are supported)
 <br>
 ### Core Services
 <br>
-Eris Core includes services such as the <span class="colour" style="color: rgb(210, 219, 222);">SvcSerialCommandInterface, SvcMIDI, SvcErisAudioParameterController</span>
+Eris Core includes services such as the <span class="colour" style="color:rgb(210, 219, 222)">SvcSerialCommandInterface, SvcMIDI, SvcErisAudioParameterController</span>
 <br>
 ### Standardized Apps
 <br>
-Eris Core includes standard apps such as ControlButton<span class="colour" style="color: rgb(210, 219, 222);">, Slider</span>
+Eris Core includes standard apps such as ControlButton<span class="colour" style="color:rgb(210, 219, 222)">, Slider</span>
 <br>
 ### Default Apps
 <br>
@@ -245,7 +258,4 @@ See AppPoly, AppCQT, AppWren
 <br>
 ### Standard Components
 <br>
-Basic input output components include <span class="colour" style="color: rgb(210, 219, 222);"><span class="colour" style="color: rgb(210, 219, 222);">Touch, AnalogInputs, </span>ILI9341\_t3\_ERIS</span>
-
-<br>
-<br>
+Basic sw input output components include <span class="colour" style="color:rgb(210, 219, 222)"><span class="colour" style="color:rgb(210, 219, 222)">Touch, AnalogInputs, </span>ILI9341\_t3\_ERIS</span>

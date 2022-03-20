@@ -178,5 +178,4 @@ fraunhofer-ims/AIfES for Arduino@^2.1.1
 ### mvp-01
 
 The reference product design codename "mvp-01" (minimum viable product) is a single chanel audio i/o *device* with two footswitches, four potentiometers, touch screen and MIDI I/O.
-
 <img src="https://github.com/bmonkaba/ERISCore/blob/master/housing/ERIS%20CORE%20angle%20v116.png?raw=true" width="300">

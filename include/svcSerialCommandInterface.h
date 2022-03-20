@@ -53,7 +53,7 @@
 class SvcSerialCommandInterface:public AppBaseClass, public Print {
   public:
     SvcSerialCommandInterface():AppBaseClass(){
-        update_priority = 3;
+        update_priority = 20;
         et_since_poll = 0;
         et_since_periodic_data_dict_tx = 0;
         et_since_periodic_stats_tx = 0;
@@ -99,7 +99,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
      * @return false
      */
     bool requestStartLZ4Message(){
-      if(is_streaming_file || throttle()) return false;
+      if(is_streaming_file) return false;
       startLZ4Message();
       return true;
     }

@@ -51,21 +51,19 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioSynthNoisePink);
   //addAudioStreamObj(new erisAudioSynthNoiseWhite);
   addAudioStreamObj(new erisAudioSynthToneSweep);
-  addAudioStreamObj(new erisAudioSynthWaveformSineModulated);
   
   erisAudioSynthWaveform * tmp_asw;
   erisAudioSynthWaveformModulated *tmp_aswm;
-  for (int i=0; i < 17; i++){
-    addAudioStreamObj(new erisAudioEffectEnvelope);
+  tmp_aswm = new erisAudioSynthWaveformModulated;
+  tmp_aswm->arbitraryProgram(80);
+  addAudioStreamObj(tmp_aswm);
+  for (int i=0; i < 18; i++){
+    //addAudioStreamObj(new erisAudioEffectEnvelope);
     tmp_asw = new erisAudioSynthWaveform;
-    tmp_aswm = new erisAudioSynthWaveformModulated;
-    
     tmp_asw->arbitraryProgram(80);
-    tmp_aswm->arbitraryProgram(80);
-    
-    addAudioStreamObj(tmp_aswm);
     addAudioStreamObj(tmp_asw);
   }
+
 
   for (int i=0; i < 6; i++){
     addAudioStreamObj(new erisAudioMixer4);
@@ -223,8 +221,9 @@ void FASTRUN AudioDirector::printStats(){
       sci->sendLZ4Message();
     }
   }else if (printstats_select == 2){
-    if(sci->requestStartLZ4Message()){
-      printstats_select = 0;
+    printstats_select = 0;
+    //only check 'once in a great while' as the ADC serial link is relatively slow  
+    if(random(100) > 80 && sci->requestStartLZ4Message()){
       sci->print(F("STATS {"));  
       ExtADCPrintStatus(sci);
       sci->println(F("}"));

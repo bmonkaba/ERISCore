@@ -233,6 +233,7 @@ class Animation{
  * 
  */
 enum bltMode{BLT_COPY,BLT_BLK_COLOR_KEY,BLT_HATCH_BLK,BLT_HATCH_XOR,BLT_ADD,BLT_SUB,BLT_MULT,BLT_DIV,BLT_AND,BLT_OR,BLT_XOR,BLT_MEAN,BLT_1ST_PIXEL_COLOR_KEY};
+enum pixelOPMode{PXOP_COPY,PXOP_BLK_COLOR_KEY,PXOP_HATCH_BLK,PXOP_HATCH_XOR,PXOP_ADD,PXOP_SUB,PXOP_MULT,PXOP_DIV,PXOP_AND,PXOP_OR,PXOP_XOR,PXOP_MEAN,PXOP_1ST_PIXEL_COLOR_KEY};
 
 /**
  * @brief Eris class extentions to the ILI9341_t3n base class 
@@ -247,7 +248,13 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
             tft_read_speed = 25000000;
             p_SD = NULL;
             backlight = 0;
-            pFB = NULL;   
+            pFB = NULL;
+            pixel_op = PXOP_MEAN;
+            pixel_op_param = 0;
+            pixel_op_param_r = 0;
+            pixel_op_param_g = 0;
+            pixel_op_param_b = 0;
+            pixel_op_enable = false;  
             PXP_init(); 
         };
         void setSD(SdFs *ptr); //pointer to the SD Class
@@ -256,6 +263,26 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //void flipBuffer();
         //void flipWritePointer();
         
+        /**
+         * @brief enable literal pixel operations on the source buffer within the rendering pipeline
+         * 
+         * @param param is the literal value to be applied to the source buffer during BitBlts
+         * @param operation is an enumerated pixel operation mode (for math operations like: and, or, add, sub, mult, etc.)
+         */
+        void enablePixelOP(uint16_t param,pixelOPMode operation){
+            pixel_op_param = param;
+            pixel_op = operation;
+            pixel_op_enable = true;
+            //unpack the color channels from the 565 RGB format
+            pixel_op_param_r = 0xF8 & (param >> 8); 
+            pixel_op_param_g = 0xFC & (param >> 3);
+            pixel_op_param_b = 0xF8 & (param << 3); 
+        }; 
+
+        void disablePixelOP(){
+            pixel_op_enable = false; 
+        }; 
+
         /**
          * @brief Get the Frame Address object
          * 
@@ -536,6 +563,12 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         FsFile file;
         uint16_t *pFB;  //framebuffer pointer     
         uint8_t backlight;
+        uint16_t pixel_op_param;
+        uint16_t pixel_op_param_r;
+        uint16_t pixel_op_param_g;
+        uint16_t pixel_op_param_b;
+        pixelOPMode pixel_op;
+        bool pixel_op_enable;
 };
 
 

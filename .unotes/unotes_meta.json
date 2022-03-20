@@ -147,7 +147,38 @@
     "lib": {
       "name": "lib",
       "isOrdered": true,
-      "folders": {},
+      "folders": {
+        "Audio": {
+          "name": "Audio",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "ILI9341_t3n-master": {
+          "name": "ILI9341_t3n-master",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "lz4": {
+          "name": "lz4",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "T4_PXP-master": {
+          "name": "T4_PXP-master",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "wren": {
+          "name": "wren",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
       "files": {}
     },
     "projectfile-cppcheck-build-dir": {

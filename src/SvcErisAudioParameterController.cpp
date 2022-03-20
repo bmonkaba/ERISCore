@@ -1,7 +1,7 @@
 #include "ErisAudio.h"
 #include "SvcErisAudioParameterController.h"
 
-void FASTRUN SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
+void FLASHMEM SvcErisAudioParameterController::messageHandler(AppBaseClass *sender, const char *message){
     char c[64];
     char i[64];
     char m[64];
@@ -719,7 +719,9 @@ void FASTRUN SvcErisAudioParameterController::messageHandler(AppBaseClass *sende
 			uint32_t channel;
 			float gain;
             total_read = sscanf(p, "%lu,%f" , &channel,&gain); // ['uint32_t channel', 'float gain']
+            AudioNoInterrupts();
             eac->gain(channel,gain);
+            AudioInterrupts();
         }
     }else if(strncmp(gPC_ERISAUDIOMIXER4,c,sizeof(gPC_ERISAUDIOMIXER4)) == 0 &&\
         strncmp(gPM_GAIN,m,sizeof(gPM_GAIN)) == 0){

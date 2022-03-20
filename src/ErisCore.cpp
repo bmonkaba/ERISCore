@@ -19,7 +19,7 @@
 
 AudioDirector DMAMEM _ad;
 AppAudioToPolyphonic EXTMEM appPoly;
-SvcSerialCommandInterface FASTRUN sci;
+SvcSerialCommandInterface DMAMEM sci;
 SvcMIDI DMAMEM m;
 SvcErisAudioParameterController EXTMEM apc;
 AppReprogram EXTMEM appReprogram;

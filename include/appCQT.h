@@ -77,7 +77,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
 
     void FLASHMEM init(){
-      update_priority = 10; 
+      update_priority = 1; 
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
@@ -159,7 +159,7 @@ class AppCQT:public AppBaseClass {
       AudioInterrupts();
     }; 
 
-    void FLASHMEM render (){
+    void render(){
       
       if (!is_active) return;
       am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
@@ -269,7 +269,7 @@ class AppCQT:public AppBaseClass {
       }
     }; //called only when the app is active
     
-    void FLASHMEM update(){
+    void update(){
       if (!is_active) return;
       rt_calls++;
       //if (rt_calls < 10000) return;    
@@ -318,7 +318,7 @@ class AppCQT:public AppBaseClass {
     void onTouchRelease(uint16_t x, uint16_t y){
     };
 
-    void FLASHMEM updateOscillatorBank(bool low_range_switch){
+    void updateOscillatorBank(bool low_range_switch){
       bool found;
       float peak_read=-1000;
       float peak;

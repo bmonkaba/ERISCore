@@ -156,7 +156,7 @@ void AppManager::update(){
     update_analog = false;
     node = root;
 
-    requestArmSetClock(CPU_BASE_FREQ);
+    //requestArmSetClock(CPU_BASE_FREQ);
 
     if (node == 0){
       Serial.println(F("AppManager::update called without an application initalized"));
@@ -167,13 +167,15 @@ void AppManager::update(){
     switch(state){
       case redraw_background:
         app_time=0;
-        if (!draw.busy()){
+        if (!draw.busy() || 1){
             data->update(RENDER,(int32_t)0);
           if (animated_wallpaper.getNextFrameChunk()){
+              requestArmSetClock(CPU_BOOST_MAX_FREQ);
               draw.bltSDAnimationFullScreen(&animated_wallpaper);
+              requestArmSetClock(CPU_BASE_FREQ);
               data->update(AM_REDRAW_BG,(int32_t)app_time);
           } else Serial.println(F("M bad chunk"));
-        } else Serial.println(F("M draw busy"));
+        }
         if ((data->read(RENDER) == 0) && animated_wallpaper.isFrameComplete()){
           data->update(RENDER,(int32_t)1);
           state = redraw_objects;

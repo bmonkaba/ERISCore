@@ -91,10 +91,10 @@ class AppAudioToPolyphonic:public AppBaseClass {
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay:1"));
-      delay->delay(0,250);
-      delay->delay(1,300);
-      delay->delay(2,500);
-      delay->delay(3,900);
+      delay->delay(0,160);
+      delay->delay(1,200);
+      delay->delay(2,340);
+      delay->delay(3,500);
       mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
       mix->gain(0,0.3);
       mix->gain(1,0.001);
@@ -144,14 +144,14 @@ class AppAudioToPolyphonic:public AppBaseClass {
       reverb->damping(am->data->readf(REVERB_DAMPING));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
       if(am->data->read(INPUT_PEAK) < 200){
-        mixer->gain(0,0.3);
-        mixer->gain(1,0.0);
-        mixer->gain(2,0.0);
-        mixer->gain(3,0.3);
+        mixer->gain(0,0.1);
+        mixer->gain(1,0.2);
+        mixer->gain(2,0.2);
+        mixer->gain(3,0.2);
       }else{
-        mixer->gain(0,0.3);
-        mixer->gain(1,0.0);
-        mixer->gain(2,0.0);
+        mixer->gain(0,0.1);
+        mixer->gain(1,0.2);
+        mixer->gain(2,0.2);
         mixer->gain(3,0.3);
       }
 

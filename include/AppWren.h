@@ -40,7 +40,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 6; 
+        update_priority = 3; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
@@ -71,10 +71,14 @@ class AppWren:public AppBaseClass {
         vmConstructor(&g_wrenScript[0]);
         widget_width = 64;
         widget_height = 64;
-        widget_origin_x = SCREEN_WIDTH - 64 - 5;
-        widget_origin_y = SCREEN_HEIGHT - 64 - 5;
+        widget_origin_x = 0;
+        widget_origin_y = 0;
+        width = SCREEN_WIDTH;
+        height = SCREEN_HEIGHT;
+        origin_x = 0;
+        origin_y = 0;
         //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
-        wren_file_system.begin(8000000);//init the shared ext_ram drive
+        wren_file_system.begin(WREN_VM_FILE_SYSTEM_SIZE);//init the shared ext_ram drive
         wren_file_system.quickFormat();  
         wren_file_system.mkdir("system");//system folder
         wren_file = 0;
@@ -102,6 +106,7 @@ class AppWren:public AppBaseClass {
     void shutdownVM(){
         if(has_pop){
             am->releasePopUp();
+            draw->disablePixelOP();
             has_pop = false;
         }
         releaseWrenHandles();
@@ -246,13 +251,19 @@ class AppWren:public AppBaseClass {
      * 
      * @param exclusive 
      */
-    void requestPopUp(bool exclusive=false){AppBaseClass::requestPopUp(exclusive);}
+    void requestPopUp(bool exclusive=false){
+        AppBaseClass::requestPopUp(exclusive);
+        dynamicSurfaceManager();
+    }
     
     /**
      * @brief 
      * 
      */
-    void releasePopUp(){AppBaseClass::releasePopUp();}
+    void releasePopUp(){
+        AppBaseClass::releasePopUp();
+        dynamicSurfaceManager();
+    }
     
     /**
      * @brief 
@@ -301,12 +312,14 @@ class AppWren:public AppBaseClass {
      */
     void bltRAMDrive2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
         dynamicSurfaceManager();
+        AudioNoInterrupts();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         File file = wren_file_system.open(filename,O_RDONLY);
         if(file.available()>0){
             draw->bltRAMFileB(sb,surface_cache->getWidth(),surface_cache->getHeight(),&file,x,y,blt_mode);
             file.close();
         }
+        AudioInterrupts();
     }
 
     /**
@@ -319,7 +332,6 @@ class AppWren:public AppBaseClass {
      * @param blt_mode 
      */
     void bltRAMDrive2FrameBuffer(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
-        dynamicSurfaceManager();
         File file = wren_file_system.open(filename,O_RDONLY);
         if(file.available()>0){
             draw->bltRAMFileB(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT,&file,x,y,blt_mode);
@@ -336,14 +348,12 @@ class AppWren:public AppBaseClass {
      * @param y 
      */
     void bltSD2Surface(const char *path, const char *filename, int16_t x, int16_t y,bltMode blt_mode){
-        dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         draw->bltSDB(sb,surface_cache->getWidth(),surface_cache->getHeight(),path,filename,x,y,blt_mode);
     }
 
 
     void bltSurface2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode blt_mode){
-        dynamicSurfaceManager();
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -366,7 +376,6 @@ class AppWren:public AppBaseClass {
             if (has_pop){
                 draw->ILI9341_t3n::drawPixel(x,y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
             }else{
-                dynamicSurfaceManager();
                 if (!surface_cache) return;
                 if (x >= surface_cache->getWidth()) return;
                 if (y >= surface_cache->getHeight()) return;
@@ -412,7 +421,6 @@ class AppWren:public AppBaseClass {
                 if (has_pop){
                     //draw->ILI9341_t3n::drawPixel(start_x,start_y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
                 } else{
-                    dynamicSurfaceManager();
                     if (!surface_cache) return;
                     if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
                     if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
@@ -431,7 +439,6 @@ class AppWren:public AppBaseClass {
             if (has_pop){
                 draw->drawLine(start_x, start_y, end_x, end_y, CL(r,g,b));
             }else{
-                dynamicSurfaceManager();
                 if (!surface_cache) return;
                 if (start_x >= surface_cache->getWidth()) start_x = surface_cache->getWidth()-1;
                 if (start_y >= surface_cache->getHeight()) start_y = surface_cache->getHeight()-1;
@@ -467,6 +474,22 @@ class AppWren:public AppBaseClass {
         }
         return;
     }
+
+    /**
+     * @brief wren callback interface to enable pixel operations \n 
+     * forwards the call to ILI9341_t3_ERIS which has a matching interface
+     * 
+     * @param param 
+     * @param operation 
+     */
+    void enablePixelOP(uint16_t param,pixelOPMode operation);
+
+    /**
+     * @brief wren callback interface to disable pixel operations \n 
+     * forwards the call to ILI9341_t3_ERIS which has a matching interface
+     * 
+     */
+    void disablePixelOP(); 
 
   protected:
     
