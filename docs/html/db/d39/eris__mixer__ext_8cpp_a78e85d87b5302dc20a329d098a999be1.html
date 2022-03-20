@@ -119,21 +119,21 @@ $(document).ready(function(){initNavTree('db/d39/eris__mixer__ext_8cpp_a78e85d87
 
 <p class="definition">Definition at line <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html">eris_mixer_ext.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a> = (uint32_t *)data;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    uint32_t *<a class="code" href="../../df/dd8/_eris_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a> = (uint32_t *)data;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">const</span> uint32_t *end = (uint32_t *)(data + AUDIO_BLOCK_SAMPLES);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        uint32_t tmp32 = *<a class="code" href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>; <span class="comment">// read 2 samples from *data</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        uint32_t tmp32 = *<a class="code" href="../../df/dd8/_eris_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>; <span class="comment">// read 2 samples from *data</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        int32_t val1 = signed_multiply_32x16b(mult, tmp32);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        int32_t val2 = signed_multiply_32x16t(mult, tmp32);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        val1 = signed_saturate_rshift(val1, 16, 0);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        val2 = signed_saturate_rshift(val2, 16, 0);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        *<a class="code" href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>++ = pack_16b_16b(val2, val1);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (<a class="code" href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a> &lt; end);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        *<a class="code" href="../../df/dd8/_eris_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a>++ = pack_16b_16b(val2, val1);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (<a class="code" href="../../df/dd8/_eris_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a> &lt; end);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="ttc" id="a_eris_globals_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../db/d46/_eris_globals_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d46/_eris_globals_8h_source.html#l00247">ErisGlobals.h:247</a></div></div>
+<div class="ttc" id="a_eris_8h_afd28d6122a77394af9280cd72366345f_html_afd28d6122a77394af9280cd72366345f"><div class="ttname"><a href="../../df/dd8/_eris_8h_afd28d6122a77394af9280cd72366345f.html#afd28d6122a77394af9280cd72366345f">p</a></div><div class="ttdeci">const char PROGMEM p[][16]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd8/_eris_8h_source.html#l00247">Eris.h:247</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../db/d46/_eris_globals_8h_source.html#l00247">p</a>.</p>
+<p class="reference">References <a class="el" href="../../df/dd8/_eris_8h_source.html#l00247">p</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../db/d39/eris__mixer__ext_8cpp_source.html#l00049">AudioMixer8::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">

@@ -106,26 +106,26 @@ $(document).ready(function(){initNavTree('da/d96/class_app_manager_a805b55106bd6
 </table>
 </div><div class="memdoc">
 
-<p>intended to be called from the arduino <a class="el" href="../../da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45" title="intended to be called from the arduino setup() function, this method initalizes and sets up the &quot;Eris...">setup()</a> function, this method initalizes and sets up the "ErisCore" </p>
+<p>intended to be called from the arduino <a class="el" href="../../da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45" title="intended to be called from the arduino setup() function, this method initializes and sets up the &quot;Eri...">setup()</a> function, this method initializes and sets up the "ErisCore" </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00118">118</a> of file <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html">AppManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                      {<span class="comment"></span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">  //////////////////////////////////////////////////////////////////////////////////////</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"></span>  <span class="comment">//reset the i2c bus and config the external ADC</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  Serial.println(F(<span class="stringliteral">&quot;M AppManager::setup Configuring Audio Hardware&quot;</span>));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="../../dc/d40/_app_manager_8cpp_a157365f8e98c70c9d571a9840268c25d.html#a157365f8e98c70c9d571a9840268c25d">_ad</a>.<a class="code" href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4">initAudioHardware</a>();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">//I2CBusScan();  </span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="comment">//Reset PSRAM clock to 132 Mhz</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_OFF);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    CCM_CBCMR = (CCM_CBCMR &amp; ~(CCM_CBCMR_FLEXSPI2_PODF_MASK | CCM_CBCMR_FLEXSPI2_CLK_SEL_MASK))</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      | CCM_CBCMR_FLEXSPI2_PODF(4) | CCM_CBCMR_FLEXSPI2_CLK_SEL(2); <span class="comment">// 528/5 = 132 MHz</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_ON);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../dc/d40/_app_manager_8cpp_source.html">AppManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                      {<span class="comment"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">  //////////////////////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"></span>  <span class="comment">//reset the i2c bus and config the external ADC</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  Serial.println(F(<span class="stringliteral">&quot;M AppManager::setup Configuring Audio Hardware&quot;</span>));</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="../../dc/d40/_app_manager_8cpp_a157365f8e98c70c9d571a9840268c25d.html#a157365f8e98c70c9d571a9840268c25d">_ad</a>.<a class="code" href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4">initAudioHardware</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="comment">//I2CBusScan();  </span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="comment">//Reset PSRAM clock to 132 Mhz</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_OFF);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    CCM_CBCMR = (CCM_CBCMR &amp; ~(CCM_CBCMR_FLEXSPI2_PODF_MASK | CCM_CBCMR_FLEXSPI2_CLK_SEL_MASK))</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      | CCM_CBCMR_FLEXSPI2_PODF(4) | CCM_CBCMR_FLEXSPI2_CLK_SEL(2); <span class="comment">// 528/5 = 132 MHz</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_ON);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
 <div class="ttc" id="a_app_manager_8cpp_a157365f8e98c70c9d571a9840268c25d_html_a157365f8e98c70c9d571a9840268c25d"><div class="ttname"><a href="../../dc/d40/_app_manager_8cpp_a157365f8e98c70c9d571a9840268c25d.html#a157365f8e98c70c9d571a9840268c25d">_ad</a></div><div class="ttdeci">AudioDirector _ad</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd8/_eris_core_8cpp_source.html#l00020">ErisCore.cpp:20</a></div></div>
-<div class="ttc" id="aclass_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4_html_ab2aa63e647ab4a2f2cf5bcba76c8a9b4"><div class="ttname"><a href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4">AudioDirector::initAudioHardware</a></div><div class="ttdeci">bool initAudioHardware()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2c/_audio_director_8cpp_source.html#l00103">AudioDirector.cpp:103</a></div></div>
+<div class="ttc" id="aclass_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4_html_ab2aa63e647ab4a2f2cf5bcba76c8a9b4"><div class="ttname"><a href="../../d8/d1c/class_audio_director_ab2aa63e647ab4a2f2cf5bcba76c8a9b4.html#ab2aa63e647ab4a2f2cf5bcba76c8a9b4">AudioDirector::initAudioHardware</a></div><div class="ttdeci">bool initAudioHardware()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2c/_audio_director_8cpp_source.html#l00109">AudioDirector.cpp:109</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="../../d6/dd8/_eris_core_8cpp_source.html#l00020">_ad</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00103">AudioDirector::initAudioHardware()</a>.</p>
+<p class="reference">References <a class="el" href="../../d6/dd8/_eris_core_8cpp_source.html#l00020">_ad</a>, and <a class="el" href="../../d1/d2c/_audio_director_8cpp_source.html#l00109">AudioDirector::initAudioHardware()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="../../d6/dd8/_eris_core_8cpp_source.html#l00029">setup()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">

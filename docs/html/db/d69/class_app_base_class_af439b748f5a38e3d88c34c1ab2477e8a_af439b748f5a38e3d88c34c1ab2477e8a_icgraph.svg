@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1930;
+var viewWidth = 1933;
 var viewHeight = 131;
 var sectionId = 'dynsection-1';
 </script>
@@ -58,40 +58,40 @@ var sectionId = 'dynsection-1';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Set the Position object.">
-<polygon fill="#bfbfbf" stroke="black" points="1689,-46.5 1689,-74.5 1922,-74.5 1922,-46.5 1689,-46.5"/>
-<text text-anchor="middle" x="1805.5" y="-56.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::setPosition</text>
+<polygon fill="#bfbfbf" stroke="black" points="1692,-46.5 1692,-74.5 1925,-74.5 1925,-46.5 1692,-46.5"/>
+<text text-anchor="middle" x="1808.5" y="-56.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppBaseClass::setPosition</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic_aee6cbedf9885036f5fbb8d560e9a931b.html#aee6cbedf9885036f5fbb8d560e9a931b" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1378,-70.5 1378,-98.5 1653,-98.5 1653,-70.5 1378,-70.5"/>
-<text text-anchor="middle" x="1515.5" y="-80.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAudioToPolyphonic::initalize</text>
+<g id="a_node2"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic_a14f4b4c6b41d38d7640267ea57752a8b.html#a14f4b4c6b41d38d7640267ea57752a8b" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="1378,-70.5 1378,-98.5 1656,-98.5 1656,-70.5 1378,-70.5"/>
+<text text-anchor="middle" x="1517" y="-80.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAudioToPolyphonic::initialize</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M1678.52,-71C1670.21,-71.69 1661.82,-72.39 1653.46,-73.09"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1678.93,-74.48 1688.6,-70.16 1678.35,-67.5 1678.93,-74.48"/>
+<path fill="none" stroke="midnightblue" d="M1681.67,-70.93C1673.29,-71.63 1664.83,-72.33 1656.4,-73.03"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1682.16,-74.4 1691.83,-70.09 1681.58,-67.43 1682.16,-74.4"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d0/da0/class_app_wren_ac60892eccc79d5e682f6c287d0743fe4.html#ac60892eccc79d5e682f6c287d0743fe4" target="_top" xlink:title="Set the Position object/n receiver for the wren c callback function setPositionCallback.">
-<polygon fill="none" stroke="black" points="1420,-23.5 1420,-51.5 1611,-51.5 1611,-23.5 1420,-23.5"/>
-<text text-anchor="middle" x="1515.5" y="-33.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::setPosition</text>
+<polygon fill="none" stroke="black" points="1421.5,-23.5 1421.5,-51.5 1612.5,-51.5 1612.5,-23.5 1421.5,-23.5"/>
+<text text-anchor="middle" x="1517" y="-33.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::setPosition</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M1678.33,-50.42C1655.87,-48.63 1632.82,-46.79 1611.42,-45.08"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1678.36,-53.94 1688.6,-51.24 1678.91,-46.96 1678.36,-53.94"/>
+<path fill="none" stroke="midnightblue" d="M1681.6,-50.5C1658.45,-48.66 1634.63,-46.77 1612.59,-45.01"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1681.59,-54.01 1691.83,-51.31 1682.14,-47.03 1681.59,-54.01"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -105,8 +105,8 @@ var sectionId = 'dynsection-1';
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M1367.67,-84.5C1359.23,-84.5 1350.67,-84.5 1342.07,-84.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1367.91,-88 1377.91,-84.5 1367.91,-81 1367.91,-88"/>
+<path fill="none" stroke="midnightblue" d="M1367.63,-84.5C1359.25,-84.5 1350.75,-84.5 1342.22,-84.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1367.8,-88 1377.8,-84.5 1367.8,-81 1367.8,-88"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
@@ -120,8 +120,8 @@ var sectionId = 'dynsection-1';
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M1409.37,-37.5C1352.13,-37.5 1282.18,-37.5 1228.19,-37.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1409.54,-41 1419.54,-37.5 1409.54,-34 1409.54,-41"/>
+<path fill="none" stroke="midnightblue" d="M1410.89,-37.5C1353.19,-37.5 1282.53,-37.5 1228.12,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1411.14,-41 1421.14,-37.5 1411.14,-34 1411.14,-41"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
@@ -186,7 +186,7 @@ var sectionId = 'dynsection-1';
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d0/da0/class_app_wren_a58c50f31204e4ca1028599ed5ad64d04.html#a58c50f31204e4ca1028599ed5ad64d04" target="_top" xlink:title="handles messages from other sw components">
+<g id="a_node9"><a xlink:href="../../d0/da0/class_app_wren_aaa5357f4f5b7d4ffdd9f804e95d4a8e9.html#aaa5357f4f5b7d4ffdd9f804e95d4a8e9" target="_top" xlink:title="handles messages from other sw components">
 <polygon fill="none" stroke="black" points="0,-94.5 0,-122.5 239,-122.5 239,-94.5 0,-94.5"/>
 <text text-anchor="middle" x="119.5" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::messageHandler</text>
 </a>
@@ -201,7 +201,7 @@ var sectionId = 'dynsection-1';
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="../../d0/da0/class_app_wren_a315a1bf3d46af16f7973fc316e907399.html#a315a1bf3d46af16f7973fc316e907399" target="_top" xlink:title="class specific update implementation">
+<g id="a_node10"><a xlink:href="../../d0/da0/class_app_wren_a14a1f7886fa9338a1eedebf1d0c6768e.html#a14a1f7886fa9338a1eedebf1d0c6768e" target="_top" xlink:title="class specific update implementation">
 <polygon fill="none" stroke="black" points="42,-47.5 42,-75.5 197,-75.5 197,-47.5 42,-47.5"/>
 <text text-anchor="middle" x="119.5" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppWren::render</text>
 </a>

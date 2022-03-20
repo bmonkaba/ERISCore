@@ -26,25 +26,30 @@ var NAVTREE =
 [
   [ "ERIS CORE", "index.html", [
     [ "ERISCore", "index.html", [
-      [ "What is Eris Core?", "index.html#autotoc_md11", [
-        [ "3rd party", "index.html#autotoc_md12", [
-          [ "License", "index.html#autotoc_md13", null ],
-          [ "External dependencies", "index.html#autotoc_md14", null ]
+      [ "What is Eris Core?", "index.html#autotoc_md16", [
+        [ "3rd party", "index.html#autotoc_md17", [
+          [ "License", "index.html#autotoc_md18", null ],
+          [ "External dependencies", "index.html#autotoc_md19", null ]
         ] ],
-        [ "3D print, STL & housing graphics", "index.html#autotoc_md15", null ]
+        [ "3D print, STL & housing graphics", "index.html#autotoc_md20", null ]
       ] ],
-      [ "ErisCore software", "index.html#autotoc_md16", null ]
+      [ "ErisCore software", "index.html#autotoc_md21", null ]
     ] ],
     [ "Eris Core Software Overview", "d8/d48/md__e_r_i_s_core_docs_index.html", [
-      [ "Design goals", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
-      [ "Design methodology", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
-      [ "Overview for Software Developers", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", [
-        [ "Resources Owned", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md4", null ],
-        [ "Initialization", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md5", null ],
-        [ "Main Loop", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md6", null ],
-        [ "Application Requirements & Interfaces", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md7", null ],
-        [ "Inter-Application Communication", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md8", null ],
-        [ "Shared Data and Signaling", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md9", null ]
+      [ "Original Design Goals - Met", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md1", null ],
+      [ "Stretch Goals - Met", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md2", null ],
+      [ "Design methodology", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md3", null ],
+      [ "Overview for Software Developers", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md4", [
+        [ "Resources Owned", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md5", null ],
+        [ "Initialization", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md6", null ],
+        [ "Main Loop", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md7", null ],
+        [ "Application Requirements & Interfaces", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md8", null ],
+        [ "Inter-Application Communication", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md9", null ],
+        [ "Shared Data and Signaling", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md10", null ],
+        [ "Core Services", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md11", null ],
+        [ "Standardized Apps", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md12", null ],
+        [ "Default Apps", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md13", null ],
+        [ "Standard Components", "d8/d48/md__e_r_i_s_core_docs_index.html#autotoc_md14", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -63,7 +68,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
+        [ "Variables", "globals_vars.html", "globals_vars" ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ]
@@ -75,16 +80,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/da0/class_app_wren_af432685cfe347e1d7b730c48b4a2f650.html#af432685cfe347e1d7b730c48b4a2f650",
-"d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d",
-"d4/d81/classeris_audio_analyze_scope_aa35264591665450ef44fefc166e0daf2.html#aa35264591665450ef44fefc166e0daf2",
-"d4/de4/_t4___p_x_p_8cpp_source.html",
-"d7/d5f/_svc_data_dictionary_8h_ad86fa9822c5136dd63651f82b9db8f37.html#ad86fa9822c5136dd63651f82b9db8f37a903dc6752384420f11e73a1832b1b408",
-"d8/dbe/class_app_scope.html#ab52309ab6ada18b53b674f23b01dded2",
-"d8/dec/class_svc_m_i_d_i_a9e70be83956c0a7bb083badbea753058.html#a9e70be83956c0a7bb083badbea753058",
-"db/d46/_eris_globals_8h.html",
-"dc/dcf/class_audio_analyze_r_m_s.html",
-"df/d17/class_control_button_a313f562c1003b24c9713b4e991b2c181.html#a313f562c1003b24c9713b4e991b2c181"
+"d0/da0/class_app_wren_aeea1fb2273947441e89ee259d0eec139.html#aeea1fb2273947441e89ee259d0eec139",
+"d2/da8/class_svc_serial_command_interface_a80229feee4cd0f6a7676374b0c3f73d3.html#a80229feee4cd0f6a7676374b0c3f73d3",
+"d4/d81/classeris_audio_analyze_scope.html#a0bfdc8888172e1256c35d3b6bdc7799d",
+"d4/de4/_t4___p_x_p_8cpp_a8d23f57c4fccf6b2d63e2d15c7894272.html#a8d23f57c4fccf6b2d63e2d15c7894272",
+"d7/d4f/_control_button_8h_source.html",
+"d8/daa/class_audio_synth_waveform_modulated2k.html#a132a5948323a2f94a6f53e42a64411dc",
+"d8/de8/class_svc_eris_audio_parameter_controller_a6d44fd68c0ab21f759bdff85a2dd51dd.html#a6d44fd68c0ab21f759bdff85a2dd51dd",
+"d9/ded/_t4___p_x_p_8h_a3652006be844372e7a7709ade08361a4.html#a3652006be844372e7a7709ade08361a4",
+"dc/d08/classeris_audio_effect_freeverb_stereo_a162273dbe8b0a8e7eb4e85dfd4a8e1a1.html#a162273dbe8b0a8e7eb4e85dfd4a8e1a1",
+"de/d67/class_control_slider.html#af7f8d7d2e26895cbd304112f41aa3e22",
+"df/d5d/eris__waveshapes_8h_a7e2d7cc47409039a8528c882190fa394.html#a7e2d7cc47409039a8528c882190fa394",
+"globals.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

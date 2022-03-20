@@ -34,6 +34,7 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
     [ "ControlSlider.h", "db/d4d/_control_slider_8h.html", [
       [ "ControlSlider", "de/d67/class_control_slider.html", "de/d67/class_control_slider" ]
     ] ],
+    [ "Eris.h", "df/dd8/_eris_8h.html", "df/dd8/_eris_8h" ],
     [ "ErisAudio.h", "dd/da2/_eris_audio_8h.html", [
       [ "__erisAudioAnalyzeFFT1024", "d3/db2/class____eris_audio_analyze_f_f_t1024.html", "d3/db2/class____eris_audio_analyze_f_f_t1024" ],
       [ "erisAudioAmplifier", "d0/ddd/classeris_audio_amplifier.html", "d0/ddd/classeris_audio_amplifier" ],
@@ -84,15 +85,16 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
       [ "erisAudioSynthSimpleDrum", "dc/d7c/classeris_audio_synth_simple_drum.html", "dc/d7c/classeris_audio_synth_simple_drum" ],
       [ "erisAudioSynthToneSweep", "d2/dd3/classeris_audio_synth_tone_sweep.html", "d2/dd3/classeris_audio_synth_tone_sweep" ],
       [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", "df/dc5/classeris_audio_synth_waveform" ],
+      [ "erisAudioSynthWaveform2k", "d2/daf/classeris_audio_synth_waveform2k.html", "d2/daf/classeris_audio_synth_waveform2k" ],
       [ "erisAudioSynthWaveformDc", "d7/d66/classeris_audio_synth_waveform_dc.html", "d7/d66/classeris_audio_synth_waveform_dc" ],
       [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html", "df/d13/classeris_audio_synth_waveform_modulated" ],
+      [ "erisAudioSynthWaveformModulated2k", "db/d47/classeris_audio_synth_waveform_modulated2k.html", "db/d47/classeris_audio_synth_waveform_modulated2k" ],
       [ "erisAudioSynthWaveformPWM", "d2/d43/classeris_audio_synth_waveform_p_w_m.html", "d2/d43/classeris_audio_synth_waveform_p_w_m" ],
       [ "erisAudioSynthWaveformSine", "d1/d9f/classeris_audio_synth_waveform_sine.html", "d1/d9f/classeris_audio_synth_waveform_sine" ],
       [ "erisAudioSynthWaveformSineHires", "d5/d99/classeris_audio_synth_waveform_sine_hires.html", "d5/d99/classeris_audio_synth_waveform_sine_hires" ],
       [ "erisAudioSynthWaveformSineModulated", "d5/d33/classeris_audio_synth_waveform_sine_modulated.html", "d5/d33/classeris_audio_synth_waveform_sine_modulated" ],
       [ "erisAudioSynthWavetable", "d7/d42/classeris_audio_synth_wavetable.html", "d7/d42/classeris_audio_synth_wavetable" ]
     ] ],
-    [ "ErisGlobals.h", "db/d46/_eris_globals_8h.html", "db/d46/_eris_globals_8h" ],
     [ "ErisUtils.h", "df/d51/_eris_utils_8h.html", "df/d51/_eris_utils_8h" ],
     [ "HSI.h", "de/d10/_h_s_i_8h.html", null ],
     [ "ILI9341_t3_ERIS.h", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h.html", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h" ],

@@ -70,7 +70,7 @@ void FASTRUN ILI9341_t3_ERIS::begin(){
     setTextColor(CL(174, 143, 255));
     setTextSize(1);
     setRotation(1);
-    println("Display Initalized.");      
+    println("Display Initialized.");      
     updateScreen();
     dmabusy=false;
 }

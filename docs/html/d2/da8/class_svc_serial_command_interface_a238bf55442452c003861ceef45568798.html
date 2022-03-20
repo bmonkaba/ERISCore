@@ -106,35 +106,35 @@ $(document).ready(function(){initNavTree('d2/da8/class_svc_serial_command_interf
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00525">525</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                                                                         {</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    <a class="code" href="../../d2/da8/class_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5.html#aac499491449cd984d318a1166fbec4e5">is_capturing_bulk_data</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="preprocessor">#ifndef USE_EXTMEM</span></div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    <span class="keywordtype">char</span>* tmp;</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    tmp = (<span class="keywordtype">char</span>*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="keywordflow">if</span>(tmp==NULL){</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        <span class="comment">//realloc failed; release the pointer and try again</span></div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        free(captureBuffer);</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        captureBuffer = (<span class="keywordtype">char</span>*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    } <span class="keywordflow">else</span> captureBuffer = tmp;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d">p_capture_buffer</a>!=NULL){</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        memset(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d">p_capture_buffer</a>,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        <a class="code" href="../../d2/da8/class_svc_serial_command_interface_af010243244540ea1407475bf0865682c.html#af010243244540ea1407475bf0865682c">index_capture_buffer</a> = 0;</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START&quot;</span>));</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        <a class="code" href="../../d2/da8/class_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5.html#aac499491449cd984d318a1166fbec4e5">is_capturing_bulk_data</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START ERROR: realloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed&quot;</span>));</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        Serial.flush();</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    }</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00524">524</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <a class="code" href="../../d2/da8/class_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5.html#aac499491449cd984d318a1166fbec4e5">is_capturing_bulk_data</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="preprocessor">#ifndef USE_EXTMEM</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    <span class="keywordtype">char</span>* tmp;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    tmp = (<span class="keywordtype">char</span>*)realloc(captureBuffer,SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    <span class="keywordflow">if</span>(tmp==NULL){</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        <span class="comment">//realloc failed; release the pointer and try again</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        free(captureBuffer);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        captureBuffer = (<span class="keywordtype">char</span>*)malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    } <span class="keywordflow">else</span> captureBuffer = tmp;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d">p_capture_buffer</a>!=NULL){</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        memset(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d">p_capture_buffer</a>,0,SERIAL_RX_CAPTURE_BUFFER_SIZE);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        <a class="code" href="../../d2/da8/class_svc_serial_command_interface_af010243244540ea1407475bf0865682c.html#af010243244540ea1407475bf0865682c">index_capture_buffer</a> = 0;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START&quot;</span>));</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    } <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        <a class="code" href="../../d2/da8/class_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5.html#aac499491449cd984d318a1166fbec4e5">is_capturing_bulk_data</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        Serial.println(F(<span class="stringliteral">&quot;M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START ERROR: realloc(SERIAL_RX_CAPTURE_BUFFER_SIZE) failed&quot;</span>));</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        Serial.flush();</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;}</div>
 <div class="ttc" id="aclass_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d_html_a840b78c06a070b8245fb851073834f4d"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_a840b78c06a070b8245fb851073834f4d.html#a840b78c06a070b8245fb851073834f4d">SvcSerialCommandInterface::p_capture_buffer</a></div><div class="ttdeci">char * p_capture_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00123">SvcSerialCommandInterface.h:123</a></div></div>
 <div class="ttc" id="aclass_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5_html_aac499491449cd984d318a1166fbec4e5"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_aac499491449cd984d318a1166fbec4e5.html#aac499491449cd984d318a1166fbec4e5">SvcSerialCommandInterface::is_capturing_bulk_data</a></div><div class="ttdeci">bool is_capturing_bulk_data</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00126">SvcSerialCommandInterface.h:126</a></div></div>
 <div class="ttc" id="aclass_svc_serial_command_interface_af010243244540ea1407475bf0865682c_html_af010243244540ea1407475bf0865682c"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_af010243244540ea1407475bf0865682c.html#af010243244540ea1407475bf0865682c">SvcSerialCommandInterface::index_capture_buffer</a></div><div class="ttdeci">uint32_t index_capture_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00114">SvcSerialCommandInterface.h:114</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00114">index_capture_buffer</a>, <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00126">is_capturing_bulk_data</a>, and <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00123">p_capture_buffer</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00646">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00645">update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

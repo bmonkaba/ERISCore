@@ -15,5 +15,7 @@ var dir_d72faa1937f9f5039d6273b8fa1c3fff =
     [ "eris_mixer_ext.h", "d4/dd6/eris__mixer__ext_8h.html", [
       [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", "d0/d3d/class_audio_mixer8" ]
     ] ],
-    [ "eris_synth_waveform.h", "de/db5/eris__synth__waveform_8h.html", "de/db5/eris__synth__waveform_8h" ]
+    [ "eris_synth_waveform.cpp", "d6/d18/eris__synth__waveform_8cpp.html", null ],
+    [ "eris_synth_waveform.h", "de/db5/eris__synth__waveform_8h.html", "de/db5/eris__synth__waveform_8h" ],
+    [ "eris_waveshapes.h", "df/d5d/eris__waveshapes_8h.html", "df/d5d/eris__waveshapes_8h" ]
 ];

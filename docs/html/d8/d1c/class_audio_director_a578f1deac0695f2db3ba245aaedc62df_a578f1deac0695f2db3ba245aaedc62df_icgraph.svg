@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 1275;
 var viewHeight = 640;
-var sectionId = 'dynsection-0';
+var sectionId = 'dynsection-1';
 </script>
 <script xlink:href="../../svgpan.js"/>
 <svg id="graph" class="graph">
@@ -171,22 +171,22 @@ var sectionId = 'dynsection-0';
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic_aee6cbedf9885036f5fbb8d560e9a931b.html#aee6cbedf9885036f5fbb8d560e9a931b" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="516,-282.5 516,-310.5 791,-310.5 791,-282.5 516,-282.5"/>
-<text text-anchor="middle" x="653.5" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAudioToPolyphonic::initalize</text>
+<g id="a_node10"><a xlink:href="../../dc/d27/class_app_audio_to_polyphonic_a14f4b4c6b41d38d7640267ea57752a8b.html#a14f4b4c6b41d38d7640267ea57752a8b" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="514.5,-282.5 514.5,-310.5 792.5,-310.5 792.5,-282.5 514.5,-282.5"/>
+<text text-anchor="middle" x="653.5" y="-292.1" font-family="Helvetica,sans-Serif" font-size="18.00">AppAudioToPolyphonic::initialize</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node1&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M894.64,-309.33C859.83,-307.47 824.14,-305.56 791.28,-303.81"/>
+<path fill="none" stroke="midnightblue" d="M894.77,-309.34C860.38,-307.5 825.13,-305.62 792.59,-303.88"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="894.75,-312.84 904.92,-309.88 895.12,-305.85 894.75,-312.84"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="../../d8/de8/class_svc_eris_audio_parameter_controller_a8cdc592f3c134bfe96d25583af07c9a2.html#a8cdc592f3c134bfe96d25583af07c9a2" target="_top" xlink:title="receiver method for inter&#45;app string based communication">
+<g id="a_node12"><a xlink:href="../../d8/de8/class_svc_eris_audio_parameter_controller_a2efbe2224702a0003965c3b61164f289.html#a2efbe2224702a0003965c3b61164f289" target="_top" xlink:title="receiver method for inter&#45;app string based communication">
 <polygon fill="none" stroke="black" points="438,-235.5 438,-263.5 869,-263.5 869,-235.5 438,-235.5"/>
 <text text-anchor="middle" x="653.5" y="-245.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcErisAudioParameterController::messageHandler</text>
 </a>
@@ -306,8 +306,8 @@ var sectionId = 'dynsection-0';
 <!-- Node10&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node10&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M505.63,-296.5C472.56,-296.5 436.92,-296.5 402.09,-296.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="505.81,-300 515.81,-296.5 505.81,-293 505.81,-300"/>
+<path fill="none" stroke="midnightblue" d="M504.22,-296.5C471.57,-296.5 436.46,-296.5 402.14,-296.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="504.27,-300 514.27,-296.5 504.27,-293 504.27,-300"/>
 </g>
 </g>
 </svg>

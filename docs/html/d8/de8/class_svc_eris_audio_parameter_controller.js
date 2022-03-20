@@ -5,7 +5,7 @@ var class_svc_eris_audio_parameter_controller =
     [ "getFocus", "d8/de8/class_svc_eris_audio_parameter_controller.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
     [ "getID", "d8/de8/class_svc_eris_audio_parameter_controller.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "isName", "d8/de8/class_svc_eris_audio_parameter_controller.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
-    [ "messageHandler", "d8/de8/class_svc_eris_audio_parameter_controller_a8cdc592f3c134bfe96d25583af07c9a2.html#a8cdc592f3c134bfe96d25583af07c9a2", null ],
+    [ "messageHandler", "d8/de8/class_svc_eris_audio_parameter_controller_a2efbe2224702a0003965c3b61164f289.html#a2efbe2224702a0003965c3b61164f289", null ],
     [ "onAnalog1", "d8/de8/class_svc_eris_audio_parameter_controller_a6c40a8a06b08492777b5dfee3cecba16.html#a6c40a8a06b08492777b5dfee3cecba16", null ],
     [ "onAnalog2", "d8/de8/class_svc_eris_audio_parameter_controller_a753f002f52964d420ba9a462b45ca81e.html#a753f002f52964d420ba9a462b45ca81e", null ],
     [ "onAnalog3", "d8/de8/class_svc_eris_audio_parameter_controller_a4f1285ea01d687684cf25815fc648be4.html#a4f1285ea01d687684cf25815fc648be4", null ],

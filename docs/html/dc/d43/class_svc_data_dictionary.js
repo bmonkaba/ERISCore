@@ -15,6 +15,7 @@ var class_svc_data_dictionary =
     [ "update", "dc/d43/class_svc_data_dictionary_a63e530a9eff51b5f26553b787af5a9a2.html#a63e530a9eff51b5f26553b787af5a9a2", null ],
     [ "update", "dc/d43/class_svc_data_dictionary_a6e175f58c53be85ca54f6b3d01918bcd.html#a6e175f58c53be85ca54f6b3d01918bcd", null ],
     [ "update", "dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056", null ],
+    [ "dd_transmitt_block", "dc/d43/class_svc_data_dictionary_a4ea8f638cd342774e5876f24ad6c81b8.html#a4ea8f638cd342774e5876f24ad6c81b8", null ],
     [ "next", "dc/d43/class_svc_data_dictionary_a27f3d033c0751ccf72bcb370191f5bf3.html#a27f3d033c0751ccf72bcb370191f5bf3", null ],
     [ "record", "dc/d43/class_svc_data_dictionary_a3c8460846f0d515c2ea79084cb850f02.html#a3c8460846f0d515c2ea79084cb850f02", null ]
 ];

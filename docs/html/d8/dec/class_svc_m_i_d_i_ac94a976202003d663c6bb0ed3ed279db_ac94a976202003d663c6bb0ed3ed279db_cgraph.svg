@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="messageHandler for recieving subscription (SUB) request messages">
+<g id="a_node1"><a xlink:title="messageHandler for receiving subscription (SUB) request messages">
 <polygon fill="#bfbfbf" stroke="black" points="0,-23.5 0,-51.5 229,-51.5 229,-23.5 0,-23.5"/>
 <text text-anchor="middle" x="114.5" y="-33.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcMIDI::messageHandler</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d8/dec/class_svc_m_i_d_i_a8fc6fbc1bb92a2aeedf8c4cc02185b5f.html#a8fc6fbc1bb92a2aeedf8c4cc02185b5f" target="_top" xlink:title="interface for apps to request a subscription to receive incomming MIDI messages through thier message...">
+<g id="a_node3"><a xlink:href="../../d8/dec/class_svc_m_i_d_i_a8fc6fbc1bb92a2aeedf8c4cc02185b5f.html#a8fc6fbc1bb92a2aeedf8c4cc02185b5f" target="_top" xlink:title="interface for apps to request a subscription to receive incoming MIDI messages through theIr message ...">
 <polygon fill="none" stroke="black" points="274,-0.5 274,-28.5 444,-28.5 444,-0.5 274,-0.5"/>
 <text text-anchor="middle" x="359" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcMIDI::subscribe</text>
 </a>

@@ -39,6 +39,7 @@ var class_audio_director =
     [ "p_heap_end", "d8/d1c/class_audio_director_aa85b49316c4b6c7ac4f9b4cbf2f2a4fd.html#aa85b49316c4b6c7ac4f9b4cbf2f2a4fd", null ],
     [ "p_heap_start", "d8/d1c/class_audio_director_a7ccba159ffb8f576ef072b4b528e7835.html#a7ccba159ffb8f576ef072b4b528e7835", null ],
     [ "parameter_controller", "d8/d1c/class_audio_director_ab0314fa8dfc3e972e98922db268c4714.html#ab0314fa8dfc3e972e98922db268c4714", null ],
+    [ "printstats_block", "d8/d1c/class_audio_director_afeba66f48e465f634aef69e9b971b09f.html#afeba66f48e465f634aef69e9b971b09f", null ],
     [ "printstats_select", "d8/d1c/class_audio_director_a078763984cc4146841c9ff753513fc36.html#a078763984cc4146841c9ff753513fc36", null ],
     [ "query_result", "d8/d1c/class_audio_director_aa22b4f7197b4d00402df47b53b320425.html#aa22b4f7197b4d00402df47b53b320425", null ],
     [ "query_result_count", "d8/d1c/class_audio_director_a4e48d89b1a766a2bab1f602da4c53942.html#a4e48d89b1a766a2bab1f602da4c53942", null ],

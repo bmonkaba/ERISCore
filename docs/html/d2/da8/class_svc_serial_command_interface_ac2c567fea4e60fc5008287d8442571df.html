@@ -106,74 +106,74 @@ $(document).ready(function(){initNavTree('d2/da8/class_svc_serial_command_interf
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00333">333</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                                                                {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">char</span>* mp = 0;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordtype">char</span> tmp[1000];</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">//tmp = (char*)extmem_malloc(1000);</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">char</span>* tmp;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    tmp = (<span class="keywordtype">char</span>*)malloc(1000);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">while</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47">throttle</a>()){delay(100);}</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e.html#a0793f597a16bd5e1b99084354ac0415e">requestStartLZ4Message</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    strcpy(tmp,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    printf(F(<span class="stringliteral">&quot;RAM {\&quot;RAM1\&quot;:{\&quot;addr\&quot;:\&quot;%08X\&quot;,\&quot;chunk\&quot;:\&quot;&quot;</span>),0x000000);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">for</span>(uint32_t i = 0x00070000; i &lt; 0x0007F000; i+=1){</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="comment">//if (i == 0x20010000) i = 0x20200000;</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        mp = (<span class="keywordtype">char</span>*)i;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        c = *mp;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        c = (c &amp; 0xFF);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">if</span>(i%32==0 &amp;&amp; i != 0x00070000){</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            print(F(<span class="stringliteral">&quot;\&quot;,\&quot;decode\&quot;:\&quot;&quot;</span>));</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            print(tmp);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            println(F(<span class="stringliteral">&quot;\&quot;}}&quot;</span>));</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <a class="code" href="../../d2/da8/class_svc_serial_command_interface_ac5de4f7e73f6375361f79492955c101e.html#ac5de4f7e73f6375361f79492955c101e">sendLZ4Message</a>();</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            strcpy(tmp,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordflow">while</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47">throttle</a>()){delay(150);}</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">if</span>(i%1024==0){</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                float32_t pct;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                pct = 100.0 * ((float)(i-0x00070000)/(float)(0x0007F000));</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                Serial.printf(F(<span class="stringliteral">&quot;CLS\nM GET_RAM1 %08X %.0f pct &quot;</span>),i,pct);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                <span class="keywordflow">for</span>(uint16_t div = 0; div &lt; (uint16_t)pct; div += 5){</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    Serial.printf(<span class="stringliteral">&quot;*&quot;</span>);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <a class="code" href="../../d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50">startLZ4Message</a>();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            printf(F(<span class="stringliteral">&quot;RAM {\&quot;RAM1\&quot;:{\&quot;addr\&quot;:\&quot;%08X\&quot;,\&quot;chunk\&quot;:\&quot;&quot;</span>),i);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        printf(<span class="stringliteral">&quot;%02X &quot;</span>,(uint8_t)c);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* escape = <span class="stringliteral">&quot;\\&quot;</span>;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">if</span> (c==<span class="charliteral">&#39;&quot;&#39;</span>){                        </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            strncat(tmp, escape, 1);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            strncat(tmp, &amp;c, 1);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (c==<span class="charliteral">&#39;\&#39;&#39;</span>){</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            strncat(tmp, escape, 1);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            strncat(tmp, &amp;c, 1);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (isprint((<span class="keywordtype">int</span>)c)){ </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            strncat(tmp, &amp;c, 1);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (iscntrl((<span class="keywordtype">int</span>)c)){</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            c = <span class="charliteral">&#39;.&#39;</span>;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            strncat(tmp, &amp;c, 1);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            c = <span class="charliteral">&#39;?&#39;</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            strncat(tmp, &amp;c, 1);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    println(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    println(F(<span class="stringliteral">&quot;RAM END&quot;</span>));</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="../../d2/da8/class_svc_serial_command_interface_ac5de4f7e73f6375361f79492955c101e.html#ac5de4f7e73f6375361f79492955c101e">sendLZ4Message</a>();</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="comment">//do nothing - local var</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#else       </span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    free(tmp);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00332">332</a> of file <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html">SvcSerialCommandInterface.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                                                                {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordtype">char</span>* mp = 0;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">char</span> c;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordtype">char</span> tmp[1000];</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">//tmp = (char*)extmem_malloc(1000);</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordtype">char</span>* tmp;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    tmp = (<span class="keywordtype">char</span>*)malloc(1000);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">while</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47">throttle</a>()){delay(100);}</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e.html#a0793f597a16bd5e1b99084354ac0415e">requestStartLZ4Message</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    strcpy(tmp,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    printf(F(<span class="stringliteral">&quot;RAM {\&quot;RAM1\&quot;:{\&quot;addr\&quot;:\&quot;%08X\&quot;,\&quot;chunk\&quot;:\&quot;&quot;</span>),0x000000);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">for</span>(uint32_t i = 0x00070000; i &lt; 0x0007F000; i+=1){</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="comment">//if (i == 0x20010000) i = 0x20200000;</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        mp = (<span class="keywordtype">char</span>*)i;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        c = *mp;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        c = (c &amp; 0xFF);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">if</span>(i%32==0 &amp;&amp; i != 0x00070000){</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            print(F(<span class="stringliteral">&quot;\&quot;,\&quot;decode\&quot;:\&quot;&quot;</span>));</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            print(tmp);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            println(F(<span class="stringliteral">&quot;\&quot;}}&quot;</span>));</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <a class="code" href="../../d2/da8/class_svc_serial_command_interface_ac5de4f7e73f6375361f79492955c101e.html#ac5de4f7e73f6375361f79492955c101e">sendLZ4Message</a>();</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            strcpy(tmp,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keywordflow">while</span>(<a class="code" href="../../d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47">throttle</a>()){delay(150);}</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordflow">if</span>(i%1024==0){</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                float32_t pct;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                pct = 100.0 * ((float)(i-0x00070000)/(float)(0x0007F000));</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                Serial.printf(F(<span class="stringliteral">&quot;CLS\nM GET_RAM1 %08X %.0f pct &quot;</span>),i,pct);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                <span class="keywordflow">for</span>(uint16_t div = 0; div &lt; (uint16_t)pct; div += 5){</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    Serial.printf(<span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <a class="code" href="../../d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50">startLZ4Message</a>();</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            printf(F(<span class="stringliteral">&quot;RAM {\&quot;RAM1\&quot;:{\&quot;addr\&quot;:\&quot;%08X\&quot;,\&quot;chunk\&quot;:\&quot;&quot;</span>),i);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        printf(<span class="stringliteral">&quot;%02X &quot;</span>,(uint8_t)c);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* escape = <span class="stringliteral">&quot;\\&quot;</span>;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">if</span> (c==<span class="charliteral">&#39;&quot;&#39;</span>){                        </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            strncat(tmp, escape, 1);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            strncat(tmp, &amp;c, 1);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (c==<span class="charliteral">&#39;\&#39;&#39;</span>){</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            strncat(tmp, escape, 1);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            strncat(tmp, &amp;c, 1);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (isprint((<span class="keywordtype">int</span>)c)){ </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            strncat(tmp, &amp;c, 1);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (iscntrl((<span class="keywordtype">int</span>)c)){</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            c = <span class="charliteral">&#39;.&#39;</span>;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            strncat(tmp, &amp;c, 1);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            c = <span class="charliteral">&#39;?&#39;</span>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            strncat(tmp, &amp;c, 1);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    println(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    println(F(<span class="stringliteral">&quot;RAM END&quot;</span>));</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <a class="code" href="../../d2/da8/class_svc_serial_command_interface_ac5de4f7e73f6375361f79492955c101e.html#ac5de4f7e73f6375361f79492955c101e">sendLZ4Message</a>();</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#ifdef USE_EXTMEM</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="comment">//do nothing - local var</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#else       </span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    free(tmp);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
 <div class="ttc" id="aclass_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e_html_a0793f597a16bd5e1b99084354ac0415e"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_a0793f597a16bd5e1b99084354ac0415e.html#a0793f597a16bd5e1b99084354ac0415e">SvcSerialCommandInterface::requestStartLZ4Message</a></div><div class="ttdeci">bool requestStartLZ4Message()</div><div class="ttdoc">request to start a lz4 compressed message  starts the message and returns true if available returns f...</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00101">SvcSerialCommandInterface.h:101</a></div></div>
 <div class="ttc" id="aclass_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47_html_a0bf93d9b4e8fbc4f7ed89e908fc47e47"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47">SvcSerialCommandInterface::throttle</a></div><div class="ttdeci">bool throttle()</div><div class="ttdoc">returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if...</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00169">SvcSerialCommandInterface.cpp:169</a></div></div>
 <div class="ttc" id="aclass_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50_html_a42055ffe62395b2d4ee7ca7ef44f1a50"><div class="ttname"><a href="../../d2/da8/class_svc_serial_command_interface_a42055ffe62395b2d4ee7ca7ef44f1a50.html#a42055ffe62395b2d4ee7ca7ef44f1a50">SvcSerialCommandInterface::startLZ4Message</a></div><div class="ttdeci">void startLZ4Message()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00147">SvcSerialCommandInterface.h:147</a></div></div>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('d2/da8/class_svc_serial_command_interf
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00101">requestStartLZ4Message()</a>, <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00115">sendLZ4Message()</a>, <a class="el" href="../../de/d46/_svc_serial_command_interface_8h_source.html#l00147">startLZ4Message()</a>, and <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00169">throttle()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00646">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../da/d7d/_svc_serial_command_interface_8cpp_source.html#l00645">update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
