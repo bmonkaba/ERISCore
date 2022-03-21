@@ -1502,7 +1502,7 @@ bool AppWren::dynamicSurfaceManager(){
               }
           }
         }
-        if(am->data->read("AM_RENDER_FRAME")%30 == 0) am->data->update("VM_BYTES_ALLOCATED",(int32_t)wrenCollectGarbage(vm));
+        am->data->update("VM_BYTES_ALLOCATED",(int32_t)wrenCollectGarbage(vm));
         draw->disablePixelOP();//disable pixel op and the end of the render cycle
     };    //called only when the app is active
 

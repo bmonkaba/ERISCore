@@ -183,38 +183,36 @@ void AppManager::update(){
         break;
         
       case redraw_wait://idle render time to give the screen refresh a head start
-        if (drt > 42){ //magic number is to tune the delay between frame buffer writes
-                       //as the data is simultaneously being written out to SPI.
-                       //This ensures we are not overwritting the current frame 
-                       //with the next frame. 
-          if(exclusive_app_render) state = redraw_objects;
-          else state = redraw_background;
-
-
-
-        };
-        //update analog inputs
-        update_analog = analog.update();
-        touch.update();
-        touch_updated = true;    
-        //note: this is  a good place for application manager housekeeping tasks where screen access is not required
-        data->update(AM_AUDIO_CPU_MAX,(float32_t)AudioProcessorUsageMax());
-        float32_t cpu;
-        cpu = AudioProcessorUsage();
-        data->update(AM_AUDIO_CPU,(float32_t)cpu);
-        data->update(AM_AUDIO_MEM_MAX,(int32_t)AudioMemoryUsageMax());
-        data->update(AM_AUDIO_MEM,(int32_t)AudioMemoryUsage());
+        if(exclusive_app_render && (draw.busy()==false || drt > 40)) state = redraw_objects;
+        else if(!exclusive_app_render && (draw.busy()==false || drt > 24)) state = redraw_background;
+        //execute on next state transition
+        if (state != redraw_wait){
+          //update analog inputs
+          update_analog = analog.update();
+          touch.update();
+          touch_updated = true;    
+          //note: this is  a good place for application manager housekeeping tasks where screen access is not required
+          data->update(AM_AUDIO_CPU_MAX,(float32_t)AudioProcessorUsageMax());
+          float32_t cpu;
+          cpu = AudioProcessorUsage();
+          data->update(AM_AUDIO_CPU,(float32_t)cpu);
+          data->update(AM_AUDIO_MEM_MAX,(int32_t)AudioMemoryUsageMax());
+          data->update(AM_AUDIO_MEM,(int32_t)AudioMemoryUsage());
+        }
         break;
 
       case redraw_render:
         PXP_finish(); //make sure any PXP operations are complete
-        draw.updateScreenAsync(false);//updateScreenAsyncFrom(&draw,false);
-        data->update(RENDER_PERIOD,(int32_t)drt);
-        data->update(RENDER,(int32_t)4);
-        data->increment(RENDER_FRAME);
-        app_time=0;
-        state = redraw_wait;
-        display_refresh_time = 0;
+        //draw.updateScreenAsync(false);
+        if(draw.busy()==false){
+          draw.updateScreenAsyncFrom(&draw,false);
+          data->update(RENDER_PERIOD,(int32_t)drt);
+          data->update(RENDER,(int32_t)4);
+          data->increment(RENDER_FRAME);
+          app_time=0;
+          state = redraw_wait;
+          display_refresh_time = 0;
+        }
         break;
 
       case redraw_objects:      
@@ -541,9 +539,9 @@ void FASTRUN AppManager::printStats (){
   return;
 }
 /**
- * @brief provides an interface for apps to register themselves with the AppManager
- * 
- * @param app 
+ * @brief provides an interface for apps to register themselves with the AppManager \n
+ * once registered the AppManager will include the app in the update loop 
+ * @param app to be added to the update loop
  */
 void AppManager::registerApp(AppBaseClass *app){
   //assign a unique id to the object
@@ -561,6 +559,33 @@ void AppManager::registerApp(AppBaseClass *app){
     endNode->next_app_node = app;
     app->previous_app_node = endNode;
   }
+};
+
+
+/**
+ * @brief provides an interface for apps to unregister themselves with the AppManager \n
+ * once unregistered the AppManager will no longer include the app in the update loop
+ * 
+ * @param app 
+ * @return true if app was removed
+ * @return false if app could not be found
+ */
+bool AppManager::unregisterApp(AppBaseClass *app){
+  if (root == 0) return false;
+  else{
+    AppBaseClass *endNode = root;
+    //walk the linked list to find a match
+    while(endNode != app && endNode != NULL){endNode=endNode->next_app_node;}
+    if (endNode->next_app_node != app) return false;//no match; just return
+    //remove the node
+    endNode = endNode->next_app_node;
+    if(endNode!=NULL){
+      if(endNode->next_app_node!=NULL){
+        endNode->next_app_node->previous_app_node = endNode;
+      }
+    }
+  }
+  return true;
 };
 
 /**

@@ -11,8 +11,6 @@
 #include "AppBaseClass.h"
 #include "AppManager.h"
 
-
-
 AppBaseClass::AppBaseClass(){
   //ad = &_ad;
   draw = 0;
@@ -49,6 +47,10 @@ AppBaseClass::AppBaseClass(){
   update_priority_counter = 0;
   strcpy(name,"NONE");
   selfRegister();
+}
+
+AppBaseClass::~AppBaseClass(){
+  AppManager::getInstance()->unregisterApp(this);
 }
 
 void AppBaseClass::selfRegister(){AppManager::getInstance()->registerApp(this); }//self register on construction

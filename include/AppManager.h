@@ -102,7 +102,7 @@ class AppManager {
     uint16_t peekAppFocus();//used by apps to find out which has focus
 
     void registerApp(AppBaseClass *app);
-    
+    bool unregisterApp(AppBaseClass *app);
     bool requestArmSetClock(uint32_t requested_cpu_frequency);
 };
 

@@ -74,6 +74,7 @@ class AppBaseClass {
     char name[MAX_NAME_LENGTH];
     AppBaseClass();
     AppBaseClass(const AppBaseClass &) = delete;	//delete the copy constructor
+    ~AppBaseClass();
 
     /**
      * @brief Get the ID object

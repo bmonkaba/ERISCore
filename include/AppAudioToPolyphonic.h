@@ -44,6 +44,15 @@ class AppAudioToPolyphonic:public AppBaseClass {
       initialize();
     };
 
+    ~AppAudioToPolyphonic(){
+      uint8_t si = 0;
+      for (uint16_t i=0;i<sizeof(s)/16;i+=1){
+        button = (ControlButton*)am->getAppByName(s[si]);//new ControlButton(this); //reuse the button var to create many instances
+        if(button!=NULL) delete(button);
+      }
+      if(slider!=NULL) delete(slider);
+    };
+
     void FLASHMEM initialize(){
       sprintf(name, APPNAME);
       update_priority = 10; //set to higher priority
@@ -58,68 +67,78 @@ class AppAudioToPolyphonic:public AppBaseClass {
       y_last = 0;
       y_last_scope = 0;
       
+      if (ad == NULL) return; // if the audio director is somehow not available, return
+
       erisAudioSynthNoisePink* pink = (erisAudioSynthNoisePink*) (ad->getAudioStreamObjByName("pink:1"));
-      pink->amplitude(1.0);
+      if(pink != NULL) pink->amplitude(1.0);
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:1"));
-      filter->setLowpass(0, 1100);
-      filter->setHighpass(1, 270);
+      if(filter != NULL){ 
+        filter->setLowpass(0, 1100);
+        filter->setHighpass(1, 270);
+      }
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:2"));
-      filter->setLowpass(0, 300);
+      if(filter != NULL) filter->setLowpass(0, 300);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
-      filter->setLowpass(0,12052);
+      if(filter != NULL) filter->setLowpass(0,12052);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:4"));
-      filter->setLowpass(0,18400);
+      if(filter != NULL) filter->setLowpass(0,18400);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:5"));
-      filter->setNotch(0,475,2.0);
+      if(filter != NULL) filter->setNotch(0,475,2.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
-      am->data->create("REVERB_ROOM_SIZE",(float32_t)0.88);
-      am->data->create("REVERB_DAMPING",(float32_t)0.37);
-      reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
-      reverb->damping(am->data->readf("REVERB_DAMPING"));
+      if(reverb != NULL){
+        am->data->create("REVERB_ROOM_SIZE",(float32_t)0.88);
+        am->data->create("REVERB_DAMPING",(float32_t)0.37);
+        reverb->roomsize(am->data->readf("REVERB_ROOM_SIZE"));
+        reverb->damping(am->data->readf("REVERB_DAMPING"));
+      }
       
-      erisAudioMixer4* mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:1"));
-      mix->gain(0,1.0);
-      mix->gain(1,0.40);
-      mix->gain(3,0.40);
-
+      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:1"));
+      if(mixer){
+        mixer->gain(0,1.0);
+        mixer->gain(1,0.40);
+        mixer->gain(3,0.40);
+      }
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay:1"));
-      delay->delay(0,160);
-      delay->delay(1,200);
-      delay->delay(2,340);
-      delay->delay(3,500);
-      mix = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
-      mix->gain(0,0.3);
-      mix->gain(1,0.001);
-      mix->gain(2,0.0001);
-      mix->gain(3,0.7);
-      
-      //oscope = new AppScope;
+      if (delay != NULL){
+        delay->delay(0,160);
+        delay->delay(1,200);
+        delay->delay(2,340);
+        delay->delay(3,500);
+      }
+      mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
+      if (mixer != NULL){
+        mixer->gain(0,0.3);
+        mixer->gain(1,0.001);
+        mixer->gain(2,0.0001);
+        mixer->gain(3,0.7);
+      }
+ 
       oscope.setWidgetPosition(5,5);
       oscope.setWidgetDimension(110,50);
       oscope.setPosition(5,20);
       oscope.setDimension(315,100);
       oscope.setParent(this);
  
-      //cqt = new AppCQT;
       cqt.setWidgetPosition(125,5);
       cqt.setWidgetDimension(SCREEN_WIDTH-10-125,50);
       cqt.setParent(this);
       
       slider = new ControlSlider(this);
-      slider->setWidgetPosition(0,65);
-      slider->setWidgetDimension(SCREEN_WIDTH,10);
-      slider->setName("SLIDER");
-      slider->setText("");
-      slider->setValue(0);
-
+      if (slider != NULL){
+        slider->setWidgetPosition(0,65);
+        slider->setWidgetDimension(SCREEN_WIDTH,10);
+        slider->setName("SLIDER");
+        slider->setText("");
+        slider->setValue(0);
+      }
 
       uint8_t si = 0;
       uint16_t bx = 5;
@@ -129,47 +148,57 @@ class AppAudioToPolyphonic:public AppBaseClass {
         if(bx>(SCREEN_WIDTH-78)){
           bx=5;by+=78;
         }
-        button->setWidgetPosition(bx,by);
-        button->setWidgetDimension(66,66);
-        button->setName(s[si]);
-        button->setText(s[si]);
-        button->setImage("/I/U/I",p[si++]);
+        if (button != NULL){
+          button->setWidgetPosition(bx,by);
+          button->setWidgetDimension(66,66);
+          button->setName(s[si]);
+          button->setText(s[si]);
+          button->setImage("/I/U/I",p[si++]);
+        }
         bx+=78;
       }
     } 
     //define event handlers
     void FLASHMEM render(){
-      erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
-      reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
-      reverb->damping(am->data->readf(REVERB_DAMPING));
-      erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
-      if(am->data->read(INPUT_PEAK) < 200){
-        mixer->gain(0,0.1);
-        mixer->gain(1,0.2);
-        mixer->gain(2,0.2);
-        mixer->gain(3,0.2);
-      }else{
-        mixer->gain(0,0.1);
-        mixer->gain(1,0.2);
-        mixer->gain(2,0.2);
-        mixer->gain(3,0.3);
+      if(ad!=NULL && am!= NULL){
+        erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
+        if (reverb != NULL){
+          reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
+          reverb->damping(am->data->readf(REVERB_DAMPING));
+        }
+        erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
+        if (mixer != NULL){
+          if(am->data->read(INPUT_PEAK) < 200){
+            mixer->gain(0,0.1);
+            mixer->gain(1,0.2);
+            mixer->gain(2,0.2);
+            mixer->gain(3,0.2);
+          }else{
+            mixer->gain(0,0.1);
+            mixer->gain(1,0.2);
+            mixer->gain(2,0.2);
+            mixer->gain(3,0.3);
+          }
+        }
+
+        mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:6"));
+        if (mixer != NULL){
+          if(am->data->read(INPUT_PEAK) < 300){
+            mixer->gain(0,0.3);
+            mixer->gain(1,0.3);
+            mixer->gain(2,0.0);
+            mixer->gain(3,0.3);
+          }else{
+            mixer->gain(0,0.3);
+            mixer->gain(1,0.3);
+            mixer->gain(2,0.0);
+            mixer->gain(3,0.3);
+          }
+        }
+        
+        ControlSlider* cs = (ControlSlider*)am->getAppByName("SLIDER");
+        if(cs!=NULL) cs->setValue((int16_t)(100 * ((float)am->data->read(INPUT_PEAK))/16384.0));
       }
-
-      mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:6"));
-      if(am->data->read(INPUT_PEAK) < 300){
-        mixer->gain(0,0.3);
-        mixer->gain(1,0.3);
-        mixer->gain(2,0.0);
-        mixer->gain(3,0.3);
-      }else{
-        mixer->gain(0,0.3);
-        mixer->gain(1,0.3);
-        mixer->gain(2,0.0);
-        mixer->gain(3,0.3);
-
-      }
-
-      slider->setValue((int16_t)(100 * ((float)am->data->read(INPUT_PEAK))/16384.0));
     }
 
     void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
@@ -199,8 +228,10 @@ class AppAudioToPolyphonic:public AppBaseClass {
       x_last = t_x;
       y_last = t_y;
     }
-    void FLASHMEM messageHandler(AppBaseClass *sender, const char *message){   
-        if (sender == slider){ //can detect message sender by ptr...
+
+    void FLASHMEM messageHandler(AppBaseClass *sender, const char *message){
+        if (am == NULL) return;
+        if (sender->isName("SLIDER")){
           //erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
           //filter->setLowpass(0,100.0 + (8000.0 * (slider->value/100.0)));
         }
@@ -220,62 +251,66 @@ class AppAudioToPolyphonic:public AppBaseClass {
           changeVoice(WAVEFORM_SQUARE);
         }
         else if(sender->isName("SCI")){
-          //Serial.print(F("M appExample::MessageHandler SCI param: "));
-          //Serial.println(message);
-          //Serial.flush();
           erisAudioSynthWaveform* wav = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform:17"));
-          //AudioNoInterrupts();
-          wav->frequency(atoi(message));
-          wav->amplitude(0.01);
-          //AudioNoInterrupts();
+          if (wav!=NULL){
+            wav->frequency(atoi(message));
+            wav->amplitude(0.01);
+          }
         }
         else if(sender->isName("BACK")){
-           am->sendMessage(this,"AppWren","DEMO");
+           am->sendMessage(this,"AppWren","demo");
         }
     }
 
     void FLASHMEM onFocus(){
       makeAudioConnections();
-      am->sendMessage(this,"CQT","ENABLE");
+      if (am != NULL) am->sendMessage(this,"CQT","ENABLE");
     }
     
     void FLASHMEM onAnalog1(uint16_t uval, float fval){
+      if (ad == NULL) return;
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp:2"));
-      amp->gain(1 + log1p(fval));
+      if (amp != NULL) amp->gain(1 + log1p(fval));
     };
     
     void FLASHMEM onAnalog2(uint16_t uval, float fval){
+      if (ad == NULL) return;
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthesized signal biquad output filter
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
-      filter->setLowpass(0,220.0 + (15000.0 * fval));
+      if (filter != NULL) filter->setLowpass(0,220.0 + (15000.0 * fval));
     };
     
     void FLASHMEM onAnalog3(uint16_t uval, float fval){
       float lp,hp,gain;
       //Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
+      if (ad == NULL) return;
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:4"));
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:1"));
-      lp = 300.0 + (18000.0 * log1p(fval));
-      hp = 210.0 + (100.0 * log1p(fval));
-      gain = log1p(fval);
-      filter->setLowpass(0,lp);
-      filter->setHighpass(1,hp);
-      mixer->gain(2,gain);
+      if (filter != NULL && mixer != NULL){ 
+        lp = 300.0 + (18000.0 * log1p(fval));
+        hp = 210.0 + (100.0 * log1p(fval));
+        gain = log1p(fval);
+        filter->setLowpass(0,lp);
+        filter->setHighpass(1,hp);
+        mixer->gain(2,gain);
+      }
     };
 
     void FLASHMEM onAnalog4(uint16_t uval, float fval){
       //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
+      if (ad == NULL) return;
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp:1"));
       float gain = log1p(fval);
-      amp->gain(1.0 + gain);
+      if (amp != NULL) amp->gain(1.0 + gain);
     };
     
     void FLASHMEM makeAudioConnections(){
+      if (ad == NULL) return;
       AudioNoInterrupts();
       ad->disconnectAll();      
       //input to input amplifier      
@@ -349,16 +384,16 @@ class AppAudioToPolyphonic:public AppBaseClass {
     void FLASHMEM changeVoice(uint16_t voice_type){
       char buffer[32];
       erisAudioSynthWaveform* w;
-      
+      if (ad == NULL) return;
       for (int16_t i=1; i <= OSC_BANK_SIZE; i++){
         sprintf(buffer, "waveform:%d", i);
         w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
-        w->begin(voice_type);
+        if (w != NULL) w->begin(voice_type);
       }
       
       //change the voice of the test signal too
       w = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName("waveform:17"));
-      w->begin(voice_type);
+      if (w != NULL) w->begin(voice_type);
       return;
     }
   protected:

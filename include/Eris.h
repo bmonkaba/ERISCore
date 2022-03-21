@@ -113,7 +113,7 @@
  * @brief control activation display time\n 
  * for example this defines how long a button will display as pressed
  */
-#define SHOW_ACTIVE_TIME_MILLISEC 250
+#define SHOW_ACTIVE_TIME_MILLISEC 550
 
 //AppSCI
 /**
@@ -189,12 +189,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 351
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 551
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 371
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 571
 
 //Audio Director
 /**
@@ -284,7 +284,7 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 180000
+#define WREN_VM_HEAP_SIZE 100000
 #define WREN_VM_FILE_SYSTEM_SIZE 12000000
 #define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT*2
 #else

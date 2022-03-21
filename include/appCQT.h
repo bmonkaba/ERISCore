@@ -81,19 +81,21 @@ class AppCQT:public AppBaseClass {
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
+      if (ad == NULL || am== NULL) return;
       AudioNoInterrupts();
       for (int16_t i=0; i < osc_bank_size; i++){
         sprintf(buffer, "waveform:%d", i+1);
         //request the object from the audio director
         osc[i] = (erisAudioSynthWaveform*) (ad->getAudioStreamObjByName(buffer));
         //init the object to the default state
-        osc[i]->begin(0.0, 0, WAVEFORM_SINE);
+        if (osc[i]!=NULL) osc[i]->begin(0.0, 0, WAVEFORM_SINE);
       }
       
       AudioInterrupts();
       //take care to downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024:1"));
       fft2 = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024:2"));
+      if(fft == NULL || fft2 == NULL) return;
       fft2->toggleActiveRange(); //switch to low range
       //zero out the data variables
       memset(&fftRVal,0,sizeof(FFTReadRange));
@@ -160,12 +162,11 @@ class AppCQT:public AppBaseClass {
     }; 
 
     void render(){
-      
-      if (!is_active) return;
-      am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
+      if (!is_active || draw == NULL) return;
       update_calls++;
       #ifdef TX_PERIODIC_FFT
         if (fft_buffer_serial_transmit_elapsed > TX_PERIOD && Serial.availableForWrite() > 5900){
+          if(sci==NULL) return;
           if(sci->requestStartLZ4Message()){
             fft_buffer_serial_transmit_elapsed = 0;
             if(fft_buffer_select_for_serial_transmit < 2){
@@ -200,12 +201,12 @@ class AppCQT:public AppBaseClass {
         }
         //Serial.flush();
         cqt_serial_transmit_elapsed = 0;
-        am->requestArmSetClock(CPU_BASE_FREQ);
       }
       
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
       erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(oscBank,osc_bank_size);
+      if (draw == NULL) return;
       draw->fillRoundRect(x,y,w,h,3,CL(0x07,0x00,0x10));
       //draw the scale lines
       draw->setFont(Arial_8);
@@ -272,7 +273,9 @@ class AppCQT:public AppBaseClass {
     void update(){
       if (!is_active) return;
       rt_calls++;
-      //if (rt_calls < 10000) return;    
+      //if (rt_calls < 10000) return;
+      if (fft == NULL || fft2 == NULL) return;
+
       if (fft2->capture() && fft->capture()){
         //AudioNoInterrupts();
         fft2->analyze();
@@ -286,18 +289,17 @@ class AppCQT:public AppBaseClass {
     }; //allways called even if app is not active
     
     void FLASHMEM onFocus(){ //called when given focus
+      if (fft == NULL || fft2 == NULL) return;
       fft->enableFFT(true);
       fft2->enableFFT(true);
       is_active = true;
-      Serial.println(F("M ** CQT ON FOCUS"));
-
     };
 
     void FLASHMEM onFocusLost(){ //called when focus is taken
+      if (fft == NULL || fft2 == NULL) return;
       fft->enableFFT(false);
       fft2->enableFFT(false);
       is_active = false;
-      Serial.println(F("M ** CQT LOST FOCUS"));
     };
 
     void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
@@ -323,6 +325,7 @@ class AppCQT:public AppBaseClass {
       float peak_read=-1000;
       float peak;
       
+      if(fft==NULL || fft2==NULL) return;
       //sort the FFTReadRange array by cqt bin number
       if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
       else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -414,42 +417,37 @@ class AppCQT:public AppBaseClass {
         if( ( (oscBank[i].cqtBin <= high_range) && (low_range_switch == true)) || ((oscBank[i].cqtBin > high_range) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = sqrt(oscBank[i].avgValueFast)/5.0;//(log1pf(oscBank[i].avgValueFast)/(log1pf(osc_bank_size)));
+            a = sqrt(oscBank[i].avgValueFast)/5.0;
             if(!isnan(a)){
-              //if (a > (1.0/(float)OSC_BANK_SIZE)) a = (1.0/(float)OSC_BANK_SIZE);
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
               if(!isnan(phase_aligner)) phase_aligner=0;
               f = (pll_f * f * octave_down[am->data->read(OCTAVE_DOWN_INTERVAL)]);
               if (f < 20) f = 20;
               if (f > 20000) f = 20000;
-              osc[i]->frequency(f);
-              osc[i]->amplitude(a);
-              osc[i]->phase(phase_aligner);
-            }; //else osc[i]->amplitude(0.0);
+              if(osc[i] != NULL){
+                osc[i]->frequency(f);
+                osc[i]->amplitude(a);
+                osc[i]->phase(phase_aligner);
+              }
+            };
           }
         }
       }
       AudioInterrupts();
-
-      //resort so we leave the arrays in order by cqt bin
-      //if (low_range_switch) {erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);}
-      //else erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftHighRR,NOTE_ARRAY_LENGTH);
-
       return;
     }
 
   void messageHandler(AppBaseClass *sender, const char *message){
     if(strcmp(message,ENABLE)==0){
-      onFocus();
+      onFocus();//reusing the onFocus function to ENABLE processing
     }else if(strcmp(message,DISABLE)==0){
-      onFocusLost();
+      onFocusLost();//reusing the onFocusLost function to DISABLE processing
     }
 
     if(sender->isName("SCI")){
       Serial.print(F("M appCQT::MessageHandler SCI param: "));
       Serial.println(message);
-      //Serial.flush();
       if (strcmp(message,CQT_INFO)==0){
         //sort the bins to transmit them in order
         erisAudioAnalyzeFFT1024::sort_fftrr_by_cqt_bin(fftLowRR,NOTE_ARRAY_LENGTH);
@@ -461,7 +459,6 @@ class AppCQT:public AppBaseClass {
             sci->sendLZ4Message();
           }
         }
-        //Serial.flush();
       }
     }
   }

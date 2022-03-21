@@ -5,7 +5,6 @@
 static volatile bool dmabusy;
 
 void renderCompleteCB(){
-    Serial.println(F("renderCompleteCB"));
     dmabusy=false;
 }
 
@@ -58,7 +57,7 @@ void FLASHMEM ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
 void FLASHMEM ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
-    analogWriteFrequency(backlight, 12000);
+    analogWriteFrequency(backlight, 16000);
     analogWrite(backlight, 180);
 }
 
@@ -384,7 +383,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16
  * @param blt_mode  transfer operation
  * @param file_system this is the optional pointer to a TinyFS object
  */
-void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,LittleFS_RAM* file_system){
+void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows,LittleFS_RAM* file_system){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -442,6 +441,45 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
     src_y = 0;
   }
 
+  //strip empty rows (black unless first pixel)
+  if(strip_color_key_rows){
+    for (iy = dest_y; iy < (dest_y + src_height); iy += 1){
+      ifb = (iy * dest_buffer_width) + dest_x; //32bit index
+      if(file_system == NULL){
+        file.seekCur(src_x * 2L); //seek to start_x
+      } else {
+        tinyFile.seek(src_x * 2L,SeekCur);
+      }
+      //read the data for the row
+      bool found_nonkeyed_pixel;
+      found_nonkeyed_pixel = false;
+      for (uint16_t z = 0; z < src_width; z += 1){
+        if (file_system == NULL){
+          file.read(&dw,2);
+        }else tinyFile.read(&dw,2);
+        if ((dw & 0xE79C) != 0) found_nonkeyed_pixel = true;
+      }
+      if (found_nonkeyed_pixel){
+        //rewind to the begining of the row and continue to render sections
+        if(file_system == NULL){
+          file.seekCur((src_width + src_x) * -2L); 
+        } else {
+          tinyFile.seek(tinyFile.position() - ((src_width + src_x) * 2L),SeekSet);
+        } 
+        break;
+      }else{
+        h -= 1; //reduce bitmap hight by 1 row
+        dest_y += 1;
+        //seek to the end of the row and continue with the next
+        if(file_system == NULL){
+          file.seekCur(2L* (w - (src_width + src_x))); //skip to the start of the next row
+        }else{
+          tinyFile.seek(2L* (w - (src_width + src_x)),SeekCur); //skip to the start of the next row
+        }
+      }
+    }
+  }
+  
   //clip in y dimension (top)
   if (dest_y < 0) { //throw away rows which are off screen
     for (iy = 0; iy < (-1L * dest_y); iy += 1L){ //for each off screen row
@@ -454,11 +492,22 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
     }
     dest_y = 0; //set y pos to 0 for the remaining portion of the bitmap
   }
-  
+
   //for each remaining row
+  bool pixel_detector;
+  int16_t src_height_remaining;
+
+  pixel_detector = false;
+  src_height_remaining = h;
   for (iy = dest_y; iy < (dest_y + src_height); iy += 1){ 
+    if(pixel_detector==false && ((h - src_height_remaining) > (h*0.4))){
+      break;
+    }else{
+      pixel_detector = false;//reset the detector
+    }
+
     toggle ^= true;
-    if (iy >= dest_buffer_height) break; //clip in y dimension (bottom) - simply don't draw anything
+    if (iy >= dest_buffer_height || src_height_remaining == 0) break; //clip in y dimension (bottom) - simply don't do anything
     mx = 0; nx = 0;
     //if (dest_x < 0L){file.seekCur(dest_x * -2L);mx += -1L * dest_x;} //clip in x dimension (left) - skip offscreen data
     ifb = (iy * dest_buffer_width) + dest_x + mx; //32bit index
@@ -476,166 +525,174 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
         tinyFile.read(&dw,2);
       }
       //if alpha is enabled mask any colors close to black
-        int16_t r,g,b;
-          
-        toggle ^= true;//toggle for hatch operations
+      int16_t r,g,b;
+        
+      toggle ^= true;//toggle for hatch operations
 
-        //
-        //pixel operation section
-        //
-        if (pixel_op_enable){
-          int16_t src_r,src_g,src_b;
-          //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-          //unpack the color channels from the 565 RGB format
-          src_r = 0xFF & (dw >> 8); 
-          if (src_r > 255) src_r = 255; //clip the max value for each channel
-          src_g = 0xFF & (dw >> 3);
-          if (src_g > 255) src_g = 255;
-          src_b = 0xFF & (dw << 3);
+      if ((dw & 0xE79C) != 0) pixel_detector=true;
 
-          switch(pixel_op){
-            case PXOP_1ST_PIXEL_COLOR_KEY:
-              if (first_pixel != dw){
-                //dw = dw;
-              } else dw = pixel_op_param;
-              break;
-            case PXOP_BLK_COLOR_KEY:
-              if ((dw & 0xE79C) == 0){
-                //dw = dw;
-              } else dw = pixel_op_param;
-              break;
-            case PXOP_HATCH_BLK:
-              if (toggle){
-                if ((dw & 0xE79C) != 0){
-                  dw = pixel_op_param;
-                }//else dw;
-              }else dw = 0;
-              break;
-            case PXOP_HATCH_XOR:
-              if (toggle){
-                if ((dw & 0xE79C) != 0){
-                  dw = pixel_op_param^dw;
-                };//else srcBuffer[read_index];
-              }else dw = pixel_op_param ^ dw;
-              break;
-            case PXOP_COPY:
-              dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
-              break;
-            case PXOP_ADD:
-              dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
-              break;
-            case PXOP_AND:
-              dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
-              break;
-            case PXOP_DIV:
-              dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
-              break;
-            case PXOP_MEAN:
-              dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
-              break;
-            case PXOP_MULT:
-              dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
-              break;
-            case PXOP_OR:
-              dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
-              break;
-            case PXOP_SUB:
-              dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
-              break;
-            case PXOP_XOR:
-              dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
-              break;
-            //default:
-              //dw = dw;//unknown op - just read the pixel
-          };
-        }//else dw = dw; //pixel op disabled so simply read the source pixel
+      //
+      //pixel operation section
+      //
+      if (pixel_op_enable){
+        int16_t src_r,src_g,src_b;
+        //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+        //unpack the color channels from the 565 RGB format
+        src_r = 0xFF & (dw >> 8); 
+        if (src_r > 255) src_r = 255; //clip the max value for each channel
+        src_g = 0xFF & (dw >> 3);
+        if (src_g > 255) src_g = 255;
+        src_b = 0xFF & (dw << 3);
 
-        //bit transfer operation
-        uint32_t write_index;
-        write_index = ifb + z;
-        if (blt_mode == BLT_COPY){
-          dest_buffer[write_index] = dw;
-        }else if (blt_mode == BLT_BLK_COLOR_KEY && ((dw & 0xE79C) != 0)){dest_buffer[write_index] = dw;
-        }else if (blt_mode == BLT_HATCH_BLK){
-          if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
-          } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
-        }else if (blt_mode == BLT_HATCH_XOR){
-          if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
-          else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
-        }else if (blt_mode == BLT_ADD){
-          r = (dest_buffer[write_index] >> 8) + (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) + (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) + (0xFF & (dw << 3));
-          if(r>0xFF) r = 0xFF; //clip the result to 8bit
-          if(g>0xFF) g = 0xFF;
-          if(b>0xFF) b = 0xFF;
-          dest_buffer[write_index] = CL(r,g,b); //convert back to 565 format and write the result
-        }else if (blt_mode == BLT_SUB){
-          r = (dest_buffer[write_index] >> 8) - (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) - (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) - (0xFF & (dw << 3));
-          if (r < 0) r = 0; //clamp the result to zero
-          if (g < 0) g = 0;
-          if (b < 0) b = 0;
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_MULT){
-          r = (dest_buffer[write_index] >> 8) * (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) * (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) * (0xFF & (dw << 3));
-          if (r > 255) r = 255; //clip the max value for each channel
-          if (g > 255) g = 255;
-          if (b > 255) b = 255;
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_DIV){
-          r = (dest_buffer[write_index] >> 8) / (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) / (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) / (0xFF & (dw << 3));
-          if (r > 255) r = 255; //clip the max value for each channel
-          if (g > 255) g = 255;
-          if (b > 255) b = 255;
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_AND){
-          r = (dest_buffer[write_index] >> 8) & (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) & (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) & (0xFF & (dw << 3));
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_OR){
-          r = (dest_buffer[write_index] >> 8) | (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) | (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) | (0xFF & (dw << 3));
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_XOR){
-          r = (dest_buffer[write_index] >> 8) ^ (0xFF & (dw >> 8));
-          g = (dest_buffer[write_index] >> 3) ^ (0xFF & (dw >> 3));
-          b = (dest_buffer[write_index] << 3) ^ (0xFF & (dw << 3));
-          dest_buffer[write_index] = CL(r,g,b);
-        }else if (blt_mode == BLT_MEAN){
-          q7_t res[3];
-          q7_t a[2];
-          a[0] = (0x7F & (dest_buffer[write_index] >> 8));
-          a[1] = (0x7F & (dw >> 8));
-          arm_mean_q7(a,2,&res[0]);
-          a[0] = (0x7F & (dest_buffer[write_index] >> 3));
-          a[1] = (0x7F & (dw >> 3));
-          arm_mean_q7(a,2,&res[1]);
-          a[0] = (0x7F & (dest_buffer[write_index] << 3));
-          a[1] = (0x7F & (dw << 3));
-          arm_mean_q7(a,2,&res[2]);
-          dest_buffer[write_index] = CL(res[0],res[1],res[2]);
-        }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
-          if (dw != first_pixel) dest_buffer[write_index] = dw;
-        }else{
-          dest_buffer[write_index] = dw;
-        }
-      //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
+        switch(pixel_op){
+          case PXOP_1ST_PIXEL_COLOR_KEY:
+            if (first_pixel != dw){
+              //dw = dw;
+            } else dw = pixel_op_param;
+            break;
+          case PXOP_BLK_COLOR_KEY:
+            if ((dw & 0xE79C) == 0){
+              //dw = dw;
+            } else dw = pixel_op_param;
+            break;
+          case PXOP_HATCH_BLK:
+            if (toggle){
+              if ((dw & 0xE79C) != 0){
+                dw = pixel_op_param;
+              }//else dw;
+            }else dw = 0;
+            break;
+          case PXOP_HATCH_XOR:
+            if (toggle){
+              if ((dw & 0xE79C) != 0){
+                dw = pixel_op_param^dw;
+              };//else srcBuffer[read_index];
+            }else dw = pixel_op_param ^ dw;
+            break;
+          case PXOP_COPY:
+            dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
+            break;
+          case PXOP_ADD:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
+            break;
+          case PXOP_AND:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
+            break;
+          case PXOP_DIV:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
+            break;
+          case PXOP_MEAN:
+            if ((dw & 0xE79C) != 0) dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
+            break;
+          case PXOP_MULT:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
+            break;
+          case PXOP_OR:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
+            break;
+          case PXOP_SUB:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
+            break;
+          case PXOP_XOR:
+            if ((dw & 0xE79C) != 0) dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
+            break;
+          //default:
+            //dw = dw;//unknown op - just read the pixel
+        };
+      }//else dw = dw; //pixel op disabled so simply read the source pixel
+      
+      //
+      //bit transfer operation
+      //
+      uint32_t write_index;
+      write_index = ifb + z;
+      if (blt_mode == BLT_COPY){
+        dest_buffer[write_index] = dw;
+      }else if (blt_mode == BLT_BLK_COLOR_KEY && ((dw & 0xE79C) != 0)){dest_buffer[write_index] = dw;
+      }else if (blt_mode == BLT_HATCH_BLK){
+        if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
+        } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
+      }else if (blt_mode == BLT_HATCH_XOR){
+        if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
+        else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
+      }else if (blt_mode == BLT_ADD){
+        r = (dest_buffer[write_index] >> 8) + (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) + (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) + (0xFF & (dw << 3));
+        if(r>0xFF) r = 0xFF; //clip the result to 8bit
+        if(g>0xFF) g = 0xFF;
+        if(b>0xFF) b = 0xFF;
+        dest_buffer[write_index] = CL(r,g,b); //convert back to 565 format and write the result
+      }else if (blt_mode == BLT_SUB){
+        r = (dest_buffer[write_index] >> 8) - (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) - (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) - (0xFF & (dw << 3));
+        if (r < 0) r = 0; //clamp the result to zero
+        if (g < 0) g = 0;
+        if (b < 0) b = 0;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_MULT){
+        r = (dest_buffer[write_index] >> 8) * (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) * (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) * (0xFF & (dw << 3));
+        if (r > 255) r = 255; //clip the max value for each channel
+        if (g > 255) g = 255;
+        if (b > 255) b = 255;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_DIV){
+        r = (dest_buffer[write_index] >> 8) / (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) / (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) / (0xFF & (dw << 3));
+        if (r > 255) r = 255; //clip the max value for each channel
+        if (g > 255) g = 255;
+        if (b > 255) b = 255;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_AND){
+        r = (dest_buffer[write_index] >> 8) & (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) & (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) & (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_OR){
+        r = (dest_buffer[write_index] >> 8) | (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) | (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) | (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_XOR){
+        r = (dest_buffer[write_index] >> 8) ^ (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) ^ (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) ^ (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_MEAN){
+        q7_t res[3];
+        q7_t a[2];
+        a[0] = (0x7F & (dest_buffer[write_index] >> 8));
+        a[1] = (0x7F & (dw >> 8));
+        arm_mean_q7(a,2,&res[0]);
+        a[0] = (0x7F & (dest_buffer[write_index] >> 3));
+        a[1] = (0x7F & (dw >> 3));
+        arm_mean_q7(a,2,&res[1]);
+        a[0] = (0x7F & (dest_buffer[write_index] << 3));
+        a[1] = (0x7F & (dw << 3));
+        arm_mean_q7(a,2,&res[2]);
+        dest_buffer[write_index] = CL(res[0],res[1],res[2]);
+      }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+        if (dw != first_pixel) dest_buffer[write_index] = dw;
+      }else{
+        dest_buffer[write_index] = dw;
+      }
+    //if ( (dest_x + src_width) < w){file.seekCur( ((w - (dest_x + src_width)) * 2));} //clip in x dimension (right) - skip unused data
     }
+  
     if(file_system == NULL){
       file.seekCur(2L* (w - (src_width + src_x))); //skip to the start of the next row
     }else{
       tinyFile.seek(2L* (w - (src_width + src_x)),SeekCur); //skip to the start of the next row
     }
     toggle ^= true;
+    src_height_remaining -= 1; //reduce bitmap hight by 1 row
   }
+  
+  
   if(file_system == NULL){
     file.close();
   }else{
@@ -682,7 +739,7 @@ bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename
 
 void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
   uint64_t position;
-  const String end_of_index = "KEARNING\n";
+  const String end_of_index = "KEARNING\n"; //yeah, its spelled wrong in the file format
   float fx;
   int32_t width,height;
   int16_t j;
@@ -803,9 +860,9 @@ void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x
     if(j < 102 && string_c != ' '){ 
       //fx -= pt/6.0;
       if(file_system == NULL){ 
-        bltArea2Buffer(_pfbtft,fx,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,startx[j],0,stopx[j]-startx[j],height,BLT_1ST_PIXEL_COLOR_KEY,NULL);
+        bltArea2Buffer(_pfbtft,fx,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,startx[j],0,stopx[j]-startx[j],height * 0.40,BLT_1ST_PIXEL_COLOR_KEY,true,NULL);
       }else{
-        bltArea2Buffer(_pfbtft,fx,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,startx[j],0,stopx[j]-startx[j],height,BLT_1ST_PIXEL_COLOR_KEY,file_system);
+        bltArea2Buffer(_pfbtft,fx,y,SCREEN_WIDTH,SCREEN_HEIGHT,font_file_path,startx[j],0,stopx[j]-startx[j],height * 0.40,BLT_1ST_PIXEL_COLOR_KEY,true,file_system);
       }
       fx += (stopx[j]-startx[j])+1;
     } else{

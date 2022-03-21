@@ -244,8 +244,8 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 79000000;
-            tft_read_speed = 25000000;
+            tft_write_speed = 78000000;
+            tft_read_speed = 30000000;
             p_SD = NULL;
             backlight = 0;
             pFB = NULL;
@@ -360,7 +360,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          */
         void bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width, \
             uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, \
-             uint16_t src_height,bltMode blt_mode, LittleFS_RAM* file_system = NULL);
+             uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows, LittleFS_RAM* file_system = NULL);
         
         /**
          * @brief image block transfer from the SD card to a buffer at the given x,y coords
@@ -399,7 +399,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @return true 
          * @return false 
          */
-        bool busy(){return _busy();} //(_dma_state & ILI9341_DMA_ACTIVE);}
+        bool busy(){return _dma_state & ILI9341_DMA_ACTIVE;}//{return _busy();} //
         
         bool updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont);
         

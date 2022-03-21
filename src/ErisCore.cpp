@@ -47,10 +47,12 @@ void setup() {
 
   Serial.println(F("M Setup: Loading Applications"));
   appWren = new AppWren();//note: The AppBaseClass constructor self registers with the app manager
+  
   appWren->setParent(&appPoly);
   _ad.setSCI(&sci);//give the audio director a pointer to the sci class
   _ad.setAPC(&apc);//give the audio director a pointer to the apc class
   appPoly.getFocus();
+  //appWren->getFocus();
   Serial.println(F("M Setup: Init Complete"));
   Serial.println(F("M Setup: Done"));
 }
