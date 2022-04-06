@@ -37,25 +37,25 @@
  * @brief base operating frequency of the system
  * 
  */
-#define CPU_BASE_FREQ 740000000
+#define CPU_BASE_FREQ 760000000
 
 /**
  * @brief thermal throttled operating frequency of the system
  * 
  */
-#define CPU_LOW_POWER_MODE_FREQ 720000000
+#define CPU_LOW_POWER_MODE_FREQ 740000000
 
 /**
  * @brief max boost operating frequency of the system
  * 
  */
-#define CPU_BOOST_MAX_FREQ 760000000
+#define CPU_BOOST_MAX_FREQ 780000000
 
 /**
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 64.0
+#define CPU_THERMAL_THROTTLE_TEMP 70.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -135,7 +135,7 @@
  * @brief throttle delay used to capture the delta change used in the delta threshold check
  * 
  */
-#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 5
+#define SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY 20
 /**
  * @brief max tx header size\n
  *  this is used to support multipart transmissions by capturing the start of message header
@@ -151,7 +151,7 @@
  * 
  */
 #ifdef USE_EXTMEM
-#define SERIAL_RX_CAPTURE_BUFFER_SIZE 32000
+#define SERIAL_RX_CAPTURE_BUFFER_SIZE 48000
 #else
 #define SERIAL_RX_CAPTURE_BUFFER_SIZE 10000
 #endif
@@ -189,12 +189,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 551
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 251
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 571
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 272
 
 //Audio Director
 /**
@@ -206,7 +206,7 @@
  * @brief max number of audio memory blocks
  * 
  */
-#define MAX_AUDIO_MEMORY_BLOCKS 1000
+#define MAX_AUDIO_MEMORY_BLOCKS 400
 /**
  * @brief max number of audio stream catagories
  * 
@@ -216,7 +216,7 @@
  * @brief max number of category types - query result container size
  * 
  */
-#define MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT 24
+#define MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT 64
 /**
  * @brief max number of audio connections
  * 
@@ -226,14 +226,14 @@
  * @brief max audio connection string length
  * 
  */
-#define MAX_CONNECTION_STRING_LENGTH 64
+#define MAX_CONNECTION_STRING_LENGTH 48
 
 //ILI9341_t3_ERIS
 /**
  * @brief defines how many slices per image\n
  * used to accelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 6
+#define ANIMATION_CHUNKS_PER_FRAME 1
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -284,8 +284,8 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 100000
-#define WREN_VM_FILE_SYSTEM_SIZE 12000000
+#define WREN_VM_HEAP_SIZE 150000
+#define WREN_VM_FILE_SYSTEM_SIZE 12485760
 #define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT*2
 #else
 #define WREN_VM_HEAP_SIZE 16000

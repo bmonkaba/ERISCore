@@ -13,9 +13,11 @@ setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
 getPath
-ILI9341_t3_ERIS
+ILI9341_t3_ERIS call:[PXP_init] noreturn:[PXP_init]
+enablePixelOP
+disablePixelOP
 getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
+busy
 Touch
 setCalibrationInputs
 erisAudioMixer8
@@ -71,6 +73,10 @@ update call:[update] noreturn:[update]
 erisAudioSynthWaveform
 update call:[update] noreturn:[update]
 erisAudioSynthWaveformModulated
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformhd
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformModulated2k
 update call:[update] noreturn:[update]
 erisAudioSynthWaveformPWM
 update call:[update] noreturn:[update]

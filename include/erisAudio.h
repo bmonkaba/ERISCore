@@ -44,7 +44,7 @@ public:
 		unum_outputs=1;
 		category="mixer-function";
 	}
-	const char* short_name_lookup = "console";
+	static const char* short_name_lookup;
 	void update(){this->AudioMixer8::update();}
 };
 
@@ -657,16 +657,16 @@ public:
 
 
 //standard oscillators silently upgraded to support 2K arb waveforms
-class erisAudioSynthWaveform:public AudioSynthWaveform2k{
+class erisAudioSynthWaveform:public AudioSynthWaveformhd{
 public:
-	erisAudioSynthWaveform():AudioSynthWaveform2k(){
+	erisAudioSynthWaveform():AudioSynthWaveformhd(){
 		short_name="waveform";
 		unum_inputs=0;
 		unum_outputs=1;
 		category="synth-function";
 	}
 	static const char* short_name_lookup;
-	void update(){this->AudioSynthWaveform2k::update();}
+	void update(){this->AudioSynthWaveformhd::update();}
 };
 
 
@@ -682,16 +682,16 @@ public:
 	void update(){this->AudioSynthWaveformModulated2k::update();}
 };
 
-class erisAudioSynthWaveform2k:public AudioSynthWaveform2k{
+class erisAudioSynthWaveformhd:public AudioSynthWaveformhd{
 public:
-	erisAudioSynthWaveform2k():AudioSynthWaveform2k(){
-		short_name="waveform2k";
+	erisAudioSynthWaveformhd():AudioSynthWaveformhd(){
+		short_name="waveformHD";
 		unum_inputs=0;
 		unum_outputs=1;
 		category="synth-function";
 	}
 	static const char* short_name_lookup;
-	void update(){this->AudioSynthWaveform2k::update();}
+	void update(){this->AudioSynthWaveformhd::update();}
 };
 
 

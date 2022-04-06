@@ -93,6 +93,7 @@ FLASHMEM AppManager:: AppManager(){
   touch.setRotation(3);
   touch.begin();
   touch_state = 0;
+  touched_elapsed =0;
   //enable cpu temp monitoring
   tempmon_init();
   //set the default template colors for the gui
@@ -130,17 +131,21 @@ void AppManager::setup(){
 
   //I2CBusScan();  
   //Reset PSRAM clock to 132 Mhz
+
+  /*
     CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_OFF);
     CCM_CBCMR = (CCM_CBCMR & ~(CCM_CBCMR_FLEXSPI2_PODF_MASK | CCM_CBCMR_FLEXSPI2_CLK_SEL_MASK))
       | CCM_CBCMR_FLEXSPI2_PODF(4) | CCM_CBCMR_FLEXSPI2_CLK_SEL(2); // 528/5 = 132 MHz
     CCM_CCGR7 |= CCM_CCGR7_FLEXSPI2(CCM_CCGR_ON);
+
+  */
 }
 
 /**
  * @brief AppManager update executes single update of the state machine
  * 
  */
-void AppManager::update(){
+void FASTRUN AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
     uint32_t drt;
@@ -148,6 +153,9 @@ void AppManager::update(){
     bool update_analog;
     AppBaseClass *node;
     bool monitor_update;
+    int32_t te; 
+    
+    te = touched_elapsed;
     
     monitor_update = (monitor_dd_update_timer > APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC);
     cycle_time=0;
@@ -172,8 +180,8 @@ void AppManager::update(){
           if (animated_wallpaper.getNextFrameChunk()){
               requestArmSetClock(CPU_BOOST_MAX_FREQ);
               draw.bltSDAnimationFullScreen(&animated_wallpaper);
-              requestArmSetClock(CPU_BASE_FREQ);
               data->update(AM_REDRAW_BG,(int32_t)app_time);
+              requestArmSetClock(CPU_BASE_FREQ);
           } else Serial.println(F("M bad chunk"));
         }
         if ((data->read(RENDER) == 0) && animated_wallpaper.isFrameComplete()){
@@ -290,14 +298,15 @@ void AppManager::update(){
             node->onAnalog3(analog.readAN3(),analog.freadAN3());
             node->onAnalog4(analog.readAN4(),analog.freadAN4());
           }
+          data->update("TOUCHED_ELAPSED",(int32_t)te);
           if (touch_updated == true && touch.touched()) {
             p = touch.getPoint();
-            //data->update("TOUCH_X",(int32_t)p.x);
-            //data->update("TOUCH_Y",(int32_t)p.y);
             data->update("TOUCH_Z",(int32_t)p.z);
-            if (node->touch_state == 0){
+            
+            if ((node->touch_state == 0) && (te > 250) ){
                 node->onTouch(p.x, p.y);
                 node->touch_state=1;
+                touched_elapsed = 0;
             } else{
                 node->onTouchDrag(p.x, p.y);
             }
@@ -331,7 +340,7 @@ void AppManager::update(){
       cycle_time_max*=0.999;
       htop = malloc(1000);
       while (htop){
-        memset(htop,0x5A,1000);
+        //memset(htop,0x5A,1000);
         heapTop = (uint32_t) htop;
         free(htop);
         free_mem += 1000;

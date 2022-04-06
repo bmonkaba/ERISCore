@@ -13,8 +13,10 @@
  */
 #include "AppBaseClass.h"
 
+//AUTOGEN CODE
 
 //globals - parameter class
+const char gPC_ERISAUDIOMIXER8[] PROGMEM = "console";
 const char gPC_ERISAUDIOANALYZEFFT1024[] PROGMEM = "erisAudioAnalyzeFFT1024";
 const char gPC_ERISAUDIOANALYZEFFT256[] PROGMEM = "erisAudioAnalyzeFFT256";
 const char gPC_ERISAUDIOANALYZENOTEFREQUENCY[] PROGMEM = "erisAudioAnalyzeNoteFrequency";
@@ -56,7 +58,8 @@ const char gPC_ERISAUDIOINPUTPDM2[] PROGMEM = "erisAudioInputPDM2";
 const char gPC_ERISAUDIOINPUTSPDIF3[] PROGMEM = "erisAudioInputSPDIF3";
 const char gPC_ERISAUDIOINPUTTDM[] PROGMEM = "erisAudioInputTDM";
 const char gPC_ERISAUDIOINPUTTDM2[] PROGMEM = "erisAudioInputTDM2";
-const char gPC_ERISAUDIOMIXER4[] PROGMEM = "erisAudioMixer4";
+//const char gPC_ERISAUDIOMIXER4[] PROGMEM = "erisAudioMixer4";
+const char gPC_ERISAUDIOMIXER4[] PROGMEM = "mixer";
 const char gPC_ERISAUDIOAMPLIFIER[] PROGMEM = "erisAudioAmplifier";
 const char gPC_ERISAUDIOOUTPUTADAT[] PROGMEM = "erisAudioOutputADAT";
 const char gPC_ERISAUDIOOUTPUTANALOG[] PROGMEM = "erisAudioOutputAnalog";
@@ -96,8 +99,11 @@ const char gPC_ERISAUDIOSYNTHWAVEFORMSINEMODULATED[] PROGMEM = "erisAudioSynthWa
 const char gPC_ERISAUDIOSYNTHTONESWEEP[] PROGMEM = "erisAudioSynthToneSweep";
 const char gPC_ERISAUDIOSYNTHWAVEFORM[] PROGMEM = "erisAudioSynthWaveform";
 const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED[] PROGMEM = "erisAudioSynthWaveformModulated";
-const char gPC_ERISAUDIOSYNTHWAVEFORM2k[] PROGMEM = "erisAudioSynthWaveform2k";
-const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED2k[] PROGMEM = "erisAudioSynthWaveformModulated2k";
+//const char gPC_ERISAUDIOSYNTHWAVEFORMHD[] PROGMEM = "erisAudioSynthWaveformhd";
+const char gPC_ERISAUDIOSYNTHWAVEFORMHD[] PROGMEM = "waveformHD";
+//const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED2k[] PROGMEM = "erisAudioSynthWaveformModulated2k";
+const char gPC_ERISAUDIOSYNTHWAVEFORMMODULATED2k[] PROGMEM = "waveformModHD";
+
 const char gPC_ERISAUDIOSYNTHWAVETABLE[] PROGMEM = "erisAudioSynthWavetable";
 const char gPC_ERISAUDIOSYNTHNOISEWHITE[] PROGMEM = "erisAudioSynthNoiseWhite";
 const char gPC_ERISAUDIOFILTERBIQUAD[] PROGMEM = "erisAudioFilterBiquad";

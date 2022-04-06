@@ -15,8 +15,8 @@
 
 
 #ifdef USE_EXTMEM
-uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
-//char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (16)));
+uint16_t EXTMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE];
+
 #else
 uint16_t DMAMEM wrenFastRam[WREN_FRAME_BUFFER_SIZE]__attribute__ ((aligned (16)));
 //char wrenFastVMRam[WREN_VM_HEAP_SIZE]__attribute__ ((aligned (16)));
@@ -710,7 +710,9 @@ void drawEnablePixelOp(WrenVM* vm){
   else if(pixel_mode_request==9) pom = PXOP_OR;
   else if(pixel_mode_request==10) pom = PXOP_XOR;
   else if(pixel_mode_request==11) pom = PXOP_MEAN;
-  else if(pixel_mode_request==12) pom = PXOP_1ST_PIXEL_COLOR_KEY;  
+  else if(pixel_mode_request==12) pom = PXOP_1ST_PIXEL_COLOR_KEY;
+  else if(pixel_mode_request==13) pom = PXOP_NOT_BLK_COLOR_KEY;
+  else if(pixel_mode_request==14) pom = PXOP_NOT_1ST_PIXEL_COLOR_KEY;
   app->enablePixelOP(wrenGetSlotDouble(vm, 1),pom);
 }
 
@@ -862,13 +864,14 @@ void fsTotalSizeCallback(WrenVM* vm){
 }
 
 /**
- * @brief VM callback for extention method
- * 
+ * @brief imports a file from the SD card to the RAM drive
+ * returns the file size if ok, else returns -1 to indicate an error
  * @param vm 
  */
 void fsimportFromSD(WrenVM* vm){
   //(src_path,src_file,dest_path,dst_file)
   char c[64];
+  int32_t file_size;
   FsFile source; //The source is the SD card
   File dest; //The destination is the VM file system located in ext_ram
   AppManager* am = AppManager::getInstance();
@@ -882,25 +885,48 @@ void fsimportFromSD(WrenVM* vm){
   src_filename = wrenGetSlotString(vm,2);
   dst_path = wrenGetSlotString(vm,3);
   dst_filename = wrenGetSlotString(vm,4);
-  //am->requestArmSetClock(600000000);
   am->getSD()->chdir(src_path);
   source = am->getSD()->open(src_filename,O_RDONLY);
+  //make sure the destination drive has enough space
+  file_size = source.available();
+  if (file_size > (WREN_VM_FILE_SYSTEM_SIZE - app->wren_file_system.usedSize())){
+    //if not return -1 to wren to indicate a destination size error
+    source.close();
+    wrenSetSlotDouble(vm,0,-1);
+    return;
+  }else if (file_size == 0){
+     //if not return -2 to wren to indicate a source file error or empty file
+    source.close();
+    wrenSetSlotDouble(vm,0,-2);
+    return;
+  }
+  
+  
+  //file exists and the destination has enough space, continue..
   strcpy(c,dst_path);
   strcat(c,dst_filename);
   dest = app->wren_file_system.open(c,O_RDWR);
   //c[2]=0; //null termination
   
-  for(int32_t i= source.available(); i > 0; i--){
+  for(int32_t i = file_size; i > 0; i--){
     source.readBytes(c,1);//read char
     dest.write(c,1);
   }
   source.close();
   dest.close();
-  wrenSetSlotDouble(vm,0,app->wren_file_system.totalSize());
+  wrenSetSlotDouble(vm,0,file_size);
 }
 
+//
+//
+// FILE EXTENTIONS FOR WREN
+//
+//
+//
+
+
 /**
- * @brief VM callback for extention method
+ * @brief VM callback for extention method formats the RAM drive and creates the system folder
  * 
  * @param vm 
  */
@@ -912,16 +938,8 @@ void fsFormat(WrenVM* vm){
   app->wren_file_system.mkdir("system"); //add the system folder
 }
 
-
-//
-//
-// FILE EXTENTIONS FOR WREN
-//
-//
-//
-
 /**
- * @brief VM callback for extention method
+ * @brief VM callback for extention method reads and returns the requested 
  * 
  * @param vm 
  */
@@ -1321,12 +1339,12 @@ void FLASHMEM AppWren::startVM(){
     config.writeFn = &writeFn;
     config.errorFn = &errorFn;
 #ifdef USE_EXTMEM
-    config.initialHeapSize = WREN_VM_HEAP_SIZE;//WREN_VM_HEAP_SIZE;
-    config.minHeapSize = WREN_VM_HEAP_SIZE/2;
-    config.heapGrowthPercent = 5;
-    //config.reallocateFn = &wrenFastMemoryAllocator; 
+    config.initialHeapSize = WREN_VM_HEAP_SIZE;
+    config.minHeapSize = WREN_VM_HEAP_SIZE;
+    config.heapGrowthPercent = 1;
+    //config.reallocateFn = &vmReallocate;
 #else
-    config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;//WREN_VM_HEAP_SIZE;
+    config.initialHeapSize = WREN_VM_HEAP_SIZE * 2;
     config.minHeapSize = WREN_VM_HEAP_SIZE;
     config.heapGrowthPercent = 10;
 #endif
@@ -1337,7 +1355,7 @@ void FLASHMEM AppWren::startVM(){
 }
 
 void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
-  if(0 == strncmp(message,"DEMO",strlen("DEMO"))){
+  if(0 == strncmp(message,"demo",strlen("demo"))){
     Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
     rebootRequest("demo");
     return;
@@ -1441,7 +1459,7 @@ bool AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void AppWren::render(){
+ void FLASHMEM AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{

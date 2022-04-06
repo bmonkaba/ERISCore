@@ -230,7 +230,16 @@ $(document).ready(function () {
         change: function (event, ui) {}
     });
 
-    setInterval(sweepFreq, 100);
+    setInterval(sweepFreq, 1000);
+    
+    setInterval(function(){
+        try {
+            $("#watch_received").jsonViewer(watch);
+        } catch (e) {
+            //do nothing - bad data?
+        }
+    },1500)
+    
     setInterval(function () {
         var now = Date.now();
         kbs.empty();
@@ -312,6 +321,7 @@ $(document).ready(function () {
     socket.onmessage = function (message_block) {
         if (message_block.data.length == 0){ return;}
         var message_list = message_block.data.replaceAll("\r", "").split("\n");
+        //message_list.pop()
         /* remove any empty messages */
         message_list = message_list.filter(e => e);
         for (message of message_list) {
@@ -384,6 +394,7 @@ $(document).ready(function () {
                 // handled in the ls capture state
                 break;
             case "CQT_EOF":
+                if ($("#graph_container").is(":hidden")) break;
                 var canvas = $("#stage")[0];
                 var ctx = canvas.getContext("2d");
                 osi = 0;
@@ -434,6 +445,7 @@ $(document).ready(function () {
                 display_note += 1;
                 break;
             case "CQT_L":
+                if ($("#graph_container").is(":hidden")) break;
                 var canvas = $("#stage")[0];
                 var ctx = canvas.getContext("2d");
                 osi += 1;
@@ -464,6 +476,7 @@ $(document).ready(function () {
                 //ctx.putImageData(imageData, 0, 1);
                 break;
             case "CQT_H":
+                if ($("#graph_container").is(":hidden")) break;
                 var canvas = $("#stage")[0];
                 var ctx = canvas.getContext("2d");
                 osi += 1;
@@ -495,6 +508,7 @@ $(document).ready(function () {
                 break;
 
             case "S":
+                if ($("#graph_container").is(":hidden")) break;
                 s = res[1].split(",");
                 canvas = document.getElementById("oscope_hidden");
                 ctx = canvas.getContext("2d");
@@ -621,16 +635,8 @@ $(document).ready(function () {
                 }
                 //$.extend(watch, data_dict);
                 _.merge(watch, data_dict);
-                try {
-                    $("#watch_received").jsonViewer(watch);
-                } catch (e) {
-                    //do nothing - bad data?
-                }
-                if (Math.random() > 0.975) {
-                    //don"t need to redraw every time data is received" 
-                    if (!$("#flow_container").is(":hidden")) renderAudioBlocks();
-                }
-                renderMonitor();
+
+                if (!$("#monitor_container").is(":hidden")) renderMonitor();
                 break;
             case "DD":
                 try {
@@ -871,11 +877,13 @@ $(document).ready(function () {
     $("#df_orderby_type").click(function (ev) {
         ev.preventDefault();
         dataflow_render_by = "type";
+        renderAudioBlocks();
     });
 
     $("#df_orderby_flow").click(function (ev) {
         ev.preventDefault();
         dataflow_render_by = "flow";
+        renderAudioBlocks();
     });
 
 
@@ -1262,7 +1270,7 @@ function renderAudioBlocksByFlow() {
     var zoney = [0, 300, 50, 300, 300, 0];
     var zoney_gap = [75, 125, 125, 200, 125, 125];
 
-    var column_color = ["#213A55", "#2F2A34", "##18181F", "#40474E", "#551234", "#371B32"];
+    var column_color = ["#F13A55", "#2FFA34", "#1818FF", "#40F4E", "#F1234", "#371BF"];
     var zi = 0;
     var erist_test;
     var rank = [];
@@ -1284,7 +1292,8 @@ function renderAudioBlocksByFlow() {
             for (i = 0; i < outport; i += 1) {
                 erist_test.addOutput(i.toString(), "number");
             };
-            erist_test.title = obj;
+            erist_test.title = obj;   
+                   
             zi = 5;
             rank.push(obj);
             break;
@@ -1301,7 +1310,10 @@ function renderAudioBlocksByFlow() {
                 zonex[zi] = zonex_start[zi];
                 zoney[zi] += zoney_gap[zi];
             } else zonex[zi] += zonex_gap[zi];
-
+            
+            if (obj.startsWith("i2")) erist_test.bgcolor = "#7e3b96";
+            else if (obj.startsWith("fft")) erist_test.bgcolor = "#5e5b56";
+            else if (obj.startsWith("scope")) erist_test.bgcolor = "#948d63";
             lgraph.add(erist_test);
             watch.AudioDirector.AudioStreams[obj].graph_node = erist_test;
             watch.AudioDirector.AudioStreams[obj].placed = 1;
@@ -1336,6 +1348,18 @@ function renderAudioBlocksByFlow() {
                 for (i = 0; i < outport; i += 1) {
                     erist_test.addOutput(i.toString(), "number");
                 };
+                if (name.startsWith("mixer")) erist_test.bgcolor = "#075538";
+                else if (name.startsWith("console")) erist_test.bgcolor = "#075538";
+                else if (name.startsWith("amp")) erist_test.bgcolor = "#075538";
+                else if (name.startsWith("biquad")) erist_test.bgcolor = "#7F3717";
+                else if (name.startsWith("filter")) erist_test.bgcolor = "#b06231";
+                else if (name.startsWith("wave")) erist_test.bgcolor = "#968b0c";
+                else if (name.startsWith("free")) erist_test.bgcolor = "#03b6fc";
+                else if (name.startsWith("delay")) erist_test.bgcolor = "#80092b";
+                else if (name.startsWith("i2")) erist_test.bgcolor = "#7e3b96";
+                else if (name.startsWith("fft")) erist_test.bgcolor = "#5e5b56";
+                
+                
                 erist_test.title = name;
                 erist_test.pos = [x, y];
                 y += 50 + ((inport + outport) * 20);

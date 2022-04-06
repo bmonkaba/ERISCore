@@ -18,13 +18,13 @@
  * 
  */
 
-#define CQT_HIGHRANGE_SPLIT_AT_BIN 48
+#define CQT_HIGHRANGE_SPLIT_AT_BIN 58
 
 /**
  * @brief OSC_BANK_SIZE defins the MAX number of 'voices' used to resynthesize the input signal (LIMIT OF 16!)
  * 
  */
-#define OSC_BANK_SIZE 12
+#define OSC_BANK_SIZE 10
 
 /**
  * @brief periodically transmit the fft output buffer to the serial port
@@ -33,16 +33,23 @@
 #define TX_PERIODIC_FFT
 
 
-//periods below selected from primes https://en.wikipedia.org/wiki/Periodical_cicadas
+//periods below selected from co-primes https://en.wikipedia.org/wiki/Periodical_cicadas
+/*
+53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 
+157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 
+263, 269, 271, 277, 281, 283, 293
+
+does it matter? no. just trying to load balance serial useage
+*/
 
 //transmit period in msec
-#define TX_PERIOD 22
+#define TX_PERIOD 157
 
 /**
  * @brief the period at which the some quantized voice data is sent to the serial port
  * 
  */
-#define TX_CQT_PERIOD 29
+#define TX_CQT_PERIOD 163
 
 // Constant Q Transform App
 //
@@ -71,13 +78,13 @@ class AppCQT:public AppBaseClass {
     erisAudioSynthWaveform* osc[OSC_BANK_SIZE];
     erisAudioAnalyzeFFT1024* fft;
     erisAudioAnalyzeFFT1024* fft2;
-    FFTReadRange fftRVal __attribute__ ((aligned (4)));
-    FFTReadRange fftHighRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (16)));
-    FFTReadRange fftLowRR[NOTE_ARRAY_LENGTH] __attribute__ ((aligned (16)));
-    FFTReadRange oscBank[OSC_BANK_SIZE] __attribute__ ((aligned (16)));
+    FFTReadRange fftRVal;
+    FFTReadRange fftHighRR[NOTE_ARRAY_LENGTH];
+    FFTReadRange fftLowRR[NOTE_ARRAY_LENGTH];
+    FFTReadRange oscBank[OSC_BANK_SIZE];
 
     void FLASHMEM init(){
-      update_priority = 1; 
+      update_priority = 0; 
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
       sprintf(name, "AppCQT"); //set the applications name
@@ -90,7 +97,6 @@ class AppCQT:public AppBaseClass {
         //init the object to the default state
         if (osc[i]!=NULL) osc[i]->begin(0.0, 0, WAVEFORM_SINE);
       }
-      
       AudioInterrupts();
       //take care to downcast fetched objects to the correct type!
       fft = (erisAudioAnalyzeFFT1024*) (ad->getAudioStreamObjByName("fft1024:1"));
@@ -109,7 +115,7 @@ class AppCQT:public AppBaseClass {
       for (uint16_t i=0;i < NOTE_ARRAY_LENGTH;i++){
         flow = 0;
         fhigh = 0;
-        if (i > 0 && i < NOTE_ARRAY_LENGTH){
+        if (i > 0 && i < NOTE_ARRAY_LENGTH-1){
           //calculate the high and low frequencies for the given note
           //this is done by splitting the frequency differences from the music note above and below 
           flow = note_freq[i] - (note_freq[i] - note_freq[i-1])/2.0;
@@ -161,7 +167,7 @@ class AppCQT:public AppBaseClass {
       AudioInterrupts();
     }; 
 
-    void render(){
+    void FLASHMEM render(){
       if (!is_active || draw == NULL) return;
       update_calls++;
       #ifdef TX_PERIODIC_FFT
@@ -190,7 +196,7 @@ class AppCQT:public AppBaseClass {
           }
         } 
       #endif
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 5900){
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 3900){
         if(sci->requestStartLZ4Message()){
           for (uint16_t i=0;i < osc_bank_size;i++){
             if (oscBank[i].cqtBin < high_range) sci->printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
@@ -227,14 +233,14 @@ class AppCQT:public AppBaseClass {
         
       for (uint16_t i=0;i< sizeof(note_freq)/sizeof(note_freq[0])-1;i++){  
         amp = fftHighRR[i].peakValue;//fft->read(&fftHighRR[i]);
-        signal = (log1p((amp))) * h;
+        signal = (log1p(amp)) * h;
         if (signal>(h-1)) signal = h-1;
         if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftHighRR[i].cqtBin);
         //draw->fillRoundRect(x+nx,y,2,(uint16_t)signal,1,ILI9341_ORANGE); 
         draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,(uint16_t)signal,1,ILI9341_CYAN);
         amp = fftLowRR[i].avgValueFast;//fft2->read(&fftLowRR[i]);
-        signal = (log1p((amp))) * h;
+        signal = (log1p(amp)) * h;
         if (signal>(h-1)) signal = h-1;
         if (signal<0) signal = 0;
         nx = (uint16_t)(im*fftLowRR[i].cqtBin);
@@ -245,15 +251,15 @@ class AppCQT:public AppBaseClass {
       draw->setTextColor(ILI9341_GREENYELLOW);
       for (uint16_t i=0;i < osc_bank_size;i++){
         amp = oscBank[i].avgValueFast;//fft->read(&fftHighRR[i]);
-        signal = (log1p((amp))) * h;
+        signal = (log1p(amp)) * h;
         if (signal<0) signal = 0;
         if (signal>(h-1)) signal = h-1;
         nx = (uint16_t)(im*oscBank[i].cqtBin);
         if ((y+h - (uint16_t)signal) < h && signal > 1) draw->fillRoundRect(x+nx,y+h - (uint16_t)signal,2,4,1,CL(0xFF,0xA0,(uint8_t)(300*oscBank[i].transientValue)));
         if ((y+h - (uint16_t)signal) < h && has_pop){
-          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 15);
+          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 35);
           draw->print(note_name[oscBank[i].cqtBin]);
-          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 25);  
+          draw->setCursor(x+nx - 5,y+h - (uint16_t)signal - 50);  
           draw->printf("%.0f",oscBank[i].peakFrequency); 
         }
       }
@@ -270,7 +276,7 @@ class AppCQT:public AppBaseClass {
       }
     }; //called only when the app is active
     
-    void update(){
+    void FLASHMEM update(){
       if (!is_active) return;
       rt_calls++;
       //if (rt_calls < 10000) return;
@@ -397,7 +403,7 @@ class AppCQT:public AppBaseClass {
             
       pll_p = 0.0;
       pll_f = 1.0;
-
+      
       //sort the updated cqt bins by peakValue
       if (low_range_switch){erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftLowRR,NOTE_ARRAY_LENGTH);
       } else erisAudioAnalyzeFFT1024::sort_fftrr_by_value(fftHighRR,NOTE_ARRAY_LENGTH);
@@ -410,14 +416,14 @@ class AppCQT:public AppBaseClass {
 
       //actually update the oscillators -- IF the data is not TOO old
       //if (updateRT_call_period > am->data->read(FFT_AGE_THRESHOLD)) return;
-      AudioNoInterrupts();
+      
       for(int16_t i=0; i < osc_bank_size; i++){
         float a,f;
         float64_t phase_aligner;    
         if( ( (oscBank[i].cqtBin <= high_range) && (low_range_switch == true)) || ((oscBank[i].cqtBin > high_range) && (low_range_switch == false))){
           if (oscBank[i].peakFrequency > 30.0){
             f = oscBank[i].peakFrequency;           
-            a = sqrt(oscBank[i].avgValueFast)/5.0;
+            a = sqrt(oscBank[i].avgValueFast)/OSC_BANK_SIZE;
             if(!isnan(a)){
               phase_aligner = ((dominantPhase - oscBank[i].phase)/dominantPhase);
               phase_aligner = (phase_aligner * (float64_t)osc[i]->getPhase()) + pll_p;
@@ -434,7 +440,7 @@ class AppCQT:public AppBaseClass {
           }
         }
       }
-      AudioInterrupts();
+      
       return;
     }
 

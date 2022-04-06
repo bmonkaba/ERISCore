@@ -36,10 +36,10 @@ extern "C" {
 extern const int16_t AudioWaveformSine[257];
 }
 
-class AudioSynthWaveform2k : public AudioStream
+class AudioSynthWaveformhd : public AudioStream
 {
 public:
-	AudioSynthWaveform2k(void) : AudioStream(0,NULL),
+	AudioSynthWaveformhd(void) : AudioStream(0,NULL),
 		phase_accumulator(0), phase_increment(0), phase_offset(0),
 		magnitude(0), pulse_width(0x40000000),
 		arbdata(NULL), sample(0), tone_type(WAVEFORM_SINE),

@@ -74,21 +74,21 @@ class AppAudioToPolyphonic:public AppBaseClass {
       
       erisAudioFilterBiquad* filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:1"));
       if(filter != NULL){ 
-        filter->setLowpass(0, 1100);
+        filter->setLowpass(0, 4200);
         filter->setHighpass(1, 270);
       }
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:2"));
-      if(filter != NULL) filter->setLowpass(0, 300);
+      if(filter != NULL) filter->setLowpass(0, 1800);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:3"));
       if(filter != NULL) filter->setLowpass(0,12052);
       
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:4"));
-      if(filter != NULL) filter->setLowpass(0,18400);
+      if(filter != NULL) filter->setLowpass(0,14400);
 
       filter = (erisAudioFilterBiquad*) (ad->getAudioStreamObjByName("biquad:5"));
-      if(filter != NULL) filter->setNotch(0,475,2.0);
+      if(filter != NULL) filter->setNotch(0,4750,5.0);
       
       erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
       if(reverb != NULL){
@@ -100,25 +100,26 @@ class AppAudioToPolyphonic:public AppBaseClass {
       
       erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:1"));
       if(mixer){
-        mixer->gain(0,1.0);
-        mixer->gain(1,0.40);
-        mixer->gain(3,0.40);
+        mixer->gain(0,0.5);//synth 
+        mixer->gain(1,0.0);
+        mixer->gain(2,0.3);//input blend
+        mixer->gain(3,0.0);//reverb
       }
       output_gate = 1.0;
 
       erisAudioEffectDelay* delay = (erisAudioEffectDelay*)(ad->getAudioStreamObjByName("delay:1"));
       if (delay != NULL){
-        delay->delay(0,160);
-        delay->delay(1,200);
-        delay->delay(2,340);
-        delay->delay(3,500);
+        delay->delay(0,0);
+        delay->delay(1,0);
+        delay->delay(2,0);
+        delay->delay(3,120);
       }
       mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
       if (mixer != NULL){
-        mixer->gain(0,0.3);
-        mixer->gain(1,0.001);
+        mixer->gain(0,0.000001);
+        mixer->gain(1,0.00001);
         mixer->gain(2,0.0001);
-        mixer->gain(3,0.7);
+        mixer->gain(3,0.01);
       }
  
       oscope.setWidgetPosition(5,5);
@@ -161,11 +162,14 @@ class AppAudioToPolyphonic:public AppBaseClass {
     //define event handlers
     void FLASHMEM render(){
       if(ad!=NULL && am!= NULL){
+        /*
         erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
         if (reverb != NULL){
           reverb->roomsize(am->data->readf(REVERB_ROOM_SIZE));
           reverb->damping(am->data->readf(REVERB_DAMPING));
         }
+        
+        
         erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
         if (mixer != NULL){
           if(am->data->read(INPUT_PEAK) < 200){
@@ -180,8 +184,9 @@ class AppAudioToPolyphonic:public AppBaseClass {
             mixer->gain(3,0.3);
           }
         }
+        
 
-        mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:6"));
+        erisAudioMixer4* mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:6"));
         if (mixer != NULL){
           if(am->data->read(INPUT_PEAK) < 300){
             mixer->gain(0,0.3);
@@ -195,7 +200,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
             mixer->gain(3,0.3);
           }
         }
-        
+        */
         ControlSlider* cs = (ControlSlider*)am->getAppByName("SLIDER");
         if(cs!=NULL) cs->setValue((int16_t)(100 * ((float)am->data->read(INPUT_PEAK))/16384.0));
       }
@@ -272,7 +277,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
       erisAudioAmplifier* amp = (erisAudioAmplifier*)(ad->getAudioStreamObjByName("amp:2"));
-      if (amp != NULL) amp->gain(1 + log1p(fval));
+      if (amp != NULL) amp->gain(2 + log1p(fval));
     };
     
     void FLASHMEM onAnalog2(uint16_t uval, float fval){
@@ -296,7 +301,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
         gain = log1p(fval);
         filter->setLowpass(0,lp);
         filter->setHighpass(1,hp);
-        mixer->gain(2,gain);
+        //mixer->gain(2,gain);
       }
     };
 
@@ -377,7 +382,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       ad->connect("delay:1 3 mixer:2 3");
       
       ad->connect("mixer:2 0 biquad:5 0");
-      ad->connect("biquad:5 0 mixer:6 3");
+      ad->connect("biquad:5 0 mixer:1 3");
       AudioInterrupts();
     }
 

@@ -37,6 +37,7 @@ const char* erisAudioOutputADAT::short_name_lookup PROGMEM = "adat";
 */
 const char* erisAudioAmplifier::short_name_lookup PROGMEM = "amp";
 const char* erisAudioMixer4::short_name_lookup PROGMEM = "mixer";
+const char* erisAudioMixer8::short_name_lookup PROGMEM = "console";
 
 const char* erisAudioPlayMemory::short_name_lookup PROGMEM = "playMem";
 const char* erisAudioPlaySerialflashRaw::short_name_lookup PROGMEM = "playFlashRaw";
@@ -51,7 +52,7 @@ const char* erisAudioSynthWaveformSineHires::short_name_lookup PROGMEM = "sine_h
 const char* erisAudioSynthWaveformSineModulated::short_name_lookup PROGMEM = "sine_fm";
 const char* erisAudioSynthWaveform::short_name_lookup PROGMEM = "waveform";
 const char* erisAudioSynthWaveformModulated::short_name_lookup PROGMEM = "waveformMod";
-const char* erisAudioSynthWaveform2k::short_name_lookup PROGMEM = "waveform2k";
+const char* erisAudioSynthWaveformhd::short_name_lookup PROGMEM = "waveformHD";
 const char* erisAudioSynthWaveformModulated2k::short_name_lookup PROGMEM = "waveformMod2k";
 const char* erisAudioSynthWaveformPWM::short_name_lookup PROGMEM = "pwm";
 const char* erisAudioSynthToneSweep::short_name_lookup PROGMEM = "tonesweep";

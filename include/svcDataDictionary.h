@@ -25,8 +25,8 @@
 #ifndef _svcDataDictionary_
 #define _svcDataDictionary_
 
-#define DATADICT_KEYVALUE_PAIRS 80
-#define DATADICT_MAX_KEY_LEN 48
+#define DATADICT_KEYVALUE_PAIRS 48
+#define DATADICT_MAX_KEY_LEN 32
 
 #define DATADICT_USE_MALLOC
 enum svcDataDictionaryRecordType{
@@ -81,7 +81,7 @@ typedef struct svcDataDictionaryRecord
     uint32_t *owner;
     svcDataDictionaryRecordType record_type;
     svcDataDictionaryDataType data_type;
-} svcDataDictionaryRecord __attribute__ ((aligned (4)));
+} svcDataDictionaryRecord;
 
 /**
  * @brief implements a data dictionary (map) service

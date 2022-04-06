@@ -43,6 +43,7 @@ class AppManager {
     elapsedMillis display_refresh_time;
     elapsedMicros cycle_time;
     elapsedMillis monitor_dd_update_timer;
+    elapsedMillis touched_elapsed;
     Animation animated_wallpaper;
     loopState state;
     TS_Point p;

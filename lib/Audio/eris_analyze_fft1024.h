@@ -100,7 +100,7 @@ public:
 		BLOCKS_PER_FFT = (1024 / AUDIO_BLOCK_SAMPLES) * subsample_by;
 		BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;
 		subsample_lowfreqrange = 16;//ratio should be 2:1; bw is fc of the low range
-		subsample_highfreqrange = 8;//
+		subsample_highfreqrange = 8;// l,
 		ssr = SS_HIGHFREQ;	
 		//memset(&output_packed,0,sizeof(uint32_t)*512);
 		memset(&buffer,0,sizeof(int16_t)*2048);
@@ -188,7 +188,7 @@ public:
 		arm_power_f32((float32_t*)&output[binFirst], span, &powerf);
 		arm_max_f32((float32_t*)&output[binFirst], span, &maxf, &peak_index);	
 		if(fftRR){
-			arm_sqrt_f32(powerf*span,&fftRR->peakValue);
+			arm_sqrt_f32((powerf)/(32768.0/subsample_by),&fftRR->peakValue);
 			fftRR->peakBin = peak_index + binFirst;
 			if(fftRR->phase < phase[fftRR->peakBin]){
 				fftRR->phase = phase[fftRR->peakBin];
@@ -249,21 +249,15 @@ public:
 			return 0;
 		}
 
-
 		float rval = read(start_bin,stop_bin,fftRR);
 		if(fftRR){
-			//if(SS_LOWFREQ)fftRR->peakValue *= (subsample_highfreqrange* 10) / (float)subsample_lowfreqrange; //adjust volume of the low range
-			if (fftRR->peakValue > 0){
-				//fftRR->peakValue *= 1 + (((float)fftRR->peakBin/4096.0f) * ((float)fftRR->peakBin/4096.0f));
-				fftRR->peakValue = fftRR->peakValue/40.96;
-			}
 			
 			//from the peak bin calc the freq
-			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the bin
+			fftRR->peakFrequency = (fftRR->peakBin * bin_size) -  (bin_size/2.0); //center of the fft bin
 			if (fftRR->peakFrequency < 0) fftRR->peakFrequency = 0.01;
+			float ratio = 1;
 			if ((fftRR->peakBin > 1) && (fftRR->peakBin < 510)){
 				//from the balance of the side lobes, estimate the actual frequency
-				float ratio = 1;
 				float lobeFrequency = 1;
 				if ((output[fftRR->peakBin+1]-output[fftRR->peakBin-1]) > 0.1 && (output[fftRR->peakBin] > 0)){
 					//pos lobe
@@ -278,23 +272,20 @@ public:
 				 //clamp estimate
 				 if (fftRR->estimatedFrequency > fftRR->stopFrequency)fftRR->estimatedFrequency = fftRR->stopFrequency;
 				 if (fftRR->estimatedFrequency < fftRR->startFrequency)fftRR->estimatedFrequency = fftRR->startFrequency;
-
-				
-				ratio = 0.60;
+			}
+				if (ssr == SS_HIGHFREQ) ratio = 0.5;
+				else ratio = 0.995;
 				fftRR->avgValueFast = (fftRR->avgValueFast * ratio) + (fftRR->peakValue * (1.0f -ratio));	//used to calc moving average convergence / divergence (MACD) 
 				//fftRR->avgValueFast = fftRR->peakValue;
-				ratio = 0.65;
+				ratio = 0.285;
 				fftRR->avgValueSlow = (fftRR->avgValueSlow * ratio) + (fftRR->avgValueFast * (1.0f -ratio)); 	//by comparing a short and long moving average; slow transient detection
 				if(fftRR->peakValue > fftRR->avgValueFast) fftRR->avgValueFast = (fftRR->avgValueFast/7.0 )+(fftRR->peakValue/3.0);
-				
-				//if(fftRR->peakValue > fftRR->avgValueSlow) fftRR->avgValueSlow = (fftRR->avgValueSlow * 0.9) + (fftRR->peakValue * 0.1);
 				if (fftRR->avgValueFast > 0){
-					fftRR->transientValue = (fftRR->transientValue  + (fftRR->avgValueFast - fftRR->avgValueSlow)/(0.00001 + fftRR->avgValueFast))/2.0;
+				fftRR->transientValue = (fftRR->transientValue  + (fftRR->avgValueFast - fftRR->avgValueSlow)/(0.00001 + fftRR->avgValueFast))* 0.5;
 				} else fftRR->transientValue = 0;
 				fftRR->transientValue *= 0.95;
-				fftRR->avgValueFast *= 0.95;
-				fftRR->avgValueSlow *= 0.95;
-			}
+				fftRR->avgValueFast *= 0.998;
+				fftRR->avgValueSlow *= 0.998;
 		}
 			
 		return rval; 
@@ -360,15 +351,14 @@ public:
 	uint16_t subsample_lowfreqrange;
 	uint16_t subsample_highfreqrange;
 	subsample_range ssr;
+	volatile float32_t output[1024] __attribute__ ((aligned (4)));
 private:	
 	volatile bool outputflag;
 	volatile bool is_analyzed = false;
 	audio_block_t *inputQueueArray[1];
-public: //tmp for debug
 	#ifdef ENABLE_F32_FFT
 	arm_cfft_radix4_instance_f32 fft_inst;
 	volatile float32_t tmp_buffer[2048] __attribute__ ((aligned (4)));
-	volatile float32_t output[1024] __attribute__ ((aligned (4)));
 	float32_t phase[512] __attribute__ ((aligned (4)));
 	#else
 	arm_cfft_radix4_instance_q15 fft_inst;

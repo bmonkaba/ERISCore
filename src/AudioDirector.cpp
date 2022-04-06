@@ -37,11 +37,9 @@ FLASHMEM AudioDirector::AudioDirector(){
   for (uint16_t j = 0; j < MAX_AUDIO_FUNCTION_CATEGORIES; j++){
     functionsList[j] =0;
   }
-  p_audiostream_input_port = new erisAudioInputI2S();
-  p_heap_start = p_audiostream_input_port;
+  addAudioStreamObj(&audiostream_output_port);
+  addAudioStreamObj(&audiostream_input_port);
 
-  addAudioStreamObj(p_audiostream_input_port);
-  addAudioStreamObj(&p_audiostream_output_port);
 
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
   addAudioStreamObj(new erisAudioAnalyzeFFT1024);
@@ -53,14 +51,16 @@ FLASHMEM AudioDirector::AudioDirector(){
   addAudioStreamObj(new erisAudioSynthToneSweep);
   
   erisAudioSynthWaveform * tmp_asw;
-  erisAudioSynthWaveformModulated *tmp_aswm;
-  tmp_aswm = new erisAudioSynthWaveformModulated;
-  tmp_aswm->arbitraryProgram(80);
-  addAudioStreamObj(tmp_aswm);
+  erisAudioSynthWaveformhd *tmp_asw2k;
+  for (int i=0; i < 8; i++){
+    tmp_asw2k = new erisAudioSynthWaveformhd;
+    tmp_asw2k->arbitraryProgram(35);
+    addAudioStreamObj(tmp_asw2k);
+  }
+
   for (int i=0; i < 18; i++){
     //addAudioStreamObj(new erisAudioEffectEnvelope);
     tmp_asw = new erisAudioSynthWaveform;
-    tmp_asw->arbitraryProgram(80);
     addAudioStreamObj(tmp_asw);
   }
 
@@ -69,11 +69,12 @@ FLASHMEM AudioDirector::AudioDirector(){
     addAudioStreamObj(new erisAudioMixer4);
     addAudioStreamObj(new erisAudioFilterBiquad);
     addAudioStreamObj(new erisAudioAmplifier);
+    addAudioStreamObj(new erisAudioMixer8);
   }
 
-  addAudioStreamObj(new erisAudioMixer8);
-  addAudioStreamObj(new erisAudioMixer8);
-  addAudioStreamObj(new erisAudioMixer8);
+  //addAudioStreamObj(new erisAudioMixer8);
+  //addAudioStreamObj(new erisAudioMixer8);
+  //addAudioStreamObj(new erisAudioMixer8);
 
   addAudioStreamObj(new erisAudioEffectDelay);
   addAudioStreamObj(new erisAudioFilterStateVariable);
@@ -150,8 +151,8 @@ void FASTRUN AudioDirector::printStats(){
       sci->print(F("\"AudioStreams\":{"));
       
       uint16_t from, to;
-      from = printstats_block++ * 8; //block size
-      to = printstats_block * 8;
+      from = printstats_block++ * 16; //block size
+      to = printstats_block * 16;
       if (to >= obj_count){
         to = obj_count;
         printstats_select++;
@@ -185,8 +186,8 @@ void FASTRUN AudioDirector::printStats(){
       sci->print(active_connections);
 
       uint16_t from, to;
-      from = printstats_block++ * 4;
-      to = printstats_block * 4;
+      from = printstats_block++ * 16;
+      to = printstats_block * 16;
       if (to >= MAX_CONNECTIONS){
         to = MAX_CONNECTIONS;
         printstats_select++;

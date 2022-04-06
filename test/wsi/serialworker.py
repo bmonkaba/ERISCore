@@ -22,7 +22,7 @@ import unicodedata
 import base64
 import lz4.block
 
-SERIAL_BAUDRATE = 1500000
+SERIAL_BAUDRATE = 5500000
 SERIAL_PORT = ''
 
 class SerialProcess():
@@ -37,7 +37,7 @@ class SerialProcess():
  
     def writeSerial(self, data):
         e = data.encode()
-        if e != None:
+        if e != None and len(e) > 1:
             self.sp.write(e)
         
     def readSerial(self):

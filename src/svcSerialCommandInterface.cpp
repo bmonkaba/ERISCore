@@ -119,9 +119,10 @@ void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
 #else
     char workingBuffer[SERIAL_WORKING_BUFFER_SIZE];
 #endif
+    am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
     memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = index_tx_buffer;
-    compressed_len = LZ4_compress_fast(tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,10);
+    compressed_len = LZ4_compress_fast(tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,1);
     empty();
     encode_base64((unsigned char *)p_working_buffer, compressed_len, (unsigned char *)tx_Buffer);
     //while(throttle()){
@@ -131,10 +132,7 @@ void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
     Serial.print(uncompressed_len);
     Serial.print(" ");
     Serial.println(tx_Buffer);
-    //empty();
-    //while(throttle()){
-    //    delay(50);
-    //};
+    am->requestArmSetClock(CPU_BASE_FREQ);
 
 #ifdef USE_EXTMEM
     //do nothing - one time malloc in the constructor
@@ -175,7 +173,7 @@ bool FASTRUN SvcSerialCommandInterface::throttle(){
         uint16_t msec_delay_counter = 0;
         //serial tx buffer not available
         do{
-            delay(0.5);
+            delay(1);
             msec_delay_counter += 2;
             delta_avail = Serial.availableForWrite();
             if (delta_avail > SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) break;
@@ -252,11 +250,12 @@ void FASTRUN SvcSerialCommandInterface::streamReceiveHandler(){
 }
 
 
-void FASTRUN SvcSerialCommandInterface::streamTransmitHandler(){
+void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
     char bufferChr; //only need one char - 512 size is due to a potential bug in the teensy library identified by covintry static analysis
     char hexBuffer[8];
     uint16_t payload_len;
-    if(Serial.availableForWrite() < 6000) return;
+    //if(Serial.availableForWrite() < 6000) return;
+    if(throttle()) return;
     p_SD->chdir(stream_path);
     if (p_SD->exists(stream_file)){
         payload_len = 0;
@@ -685,7 +684,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
             char cmd[128], param[128],param2[128];
             int total_read;
             total_read = sscanf(received_chars, "%127s %127s" , cmd, param);
-            while(throttle()){delay(1);}; //let the transmitt buffer clear out
+            while(throttle()){delay(10);}; //let the transmitt buffer clear out
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 messageHandler_LS();
             }else if (strncmp(cmd, "GET",sizeof(cmd)) == 0){
@@ -780,21 +779,21 @@ void FASTRUN SvcSerialCommandInterface::update(){
             }
             //END
             newRxMsg = false;
+        
+        #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
+        } else if(is_periodic_messages_enabled && !is_streaming_file){
+            if (et_since_periodic_stats_tx > SERIAL_AUTO_TRANSMIT_STATS_PERIOD){
+                et_since_periodic_stats_tx = 0; 
+                AppManager::getInstance()->printStats();
+                ad->printStats();            
+            }else if (et_since_periodic_data_dict_tx > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
+                    et_since_periodic_data_dict_tx = 0;
+                    AppManager::getInstance()->data->printDictionary(this);
+            }
         }
+        #else
+        }
+        #endif
     }
     et_since_poll = 0;
-    
-    //tx periodic messages
-    #ifdef SERIAL_AUTO_TRANSMIT_DATA_PERIODICALLY
-    if(is_periodic_messages_enabled && !is_streaming_file){
-        if (et_since_periodic_stats_tx > SERIAL_AUTO_TRANSMIT_STATS_PERIOD){
-            et_since_periodic_stats_tx = 0; 
-            AppManager::getInstance()->printStats();
-            ad->printStats();            
-        }else if (et_since_periodic_data_dict_tx > SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD){
-                et_since_periodic_data_dict_tx = 0;
-                AppManager::getInstance()->data->printDictionary(this);
-        }
-    }
-    #endif
 }; //allways called even if app is not active

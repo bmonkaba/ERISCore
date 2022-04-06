@@ -37,14 +37,14 @@
 
 
 //added for Eris Core
-void AudioSynthWaveform2k::arbitraryProgram(uint8_t program) {
+void AudioSynthWaveformhd::arbitraryProgram(uint8_t program) {
 	//select from an array of static waveforms stored in program memory
 	if (program < 128){
 		arbdata = wt[program];
 	}
 }
 
-void AudioSynthWaveform2k::update(void)
+void AudioSynthWaveformhd::update(void)
 {
 	audio_block_t *block;
 	int16_t *bp, *end;
@@ -68,7 +68,7 @@ void AudioSynthWaveform2k::update(void)
 	switch(tone_type) {
 	case WAVEFORM_SINE:
 		for (i=0; i < AUDIO_BLOCK_SAMPLES; i++) {
-			index = ph >> 21;
+			index = ph >> 24;
 			val1 = AudioWaveformSine[index];
 			val2 = AudioWaveformSine[index+1];
 			scale = (ph >> 8) & 0xFFFF;
@@ -89,7 +89,7 @@ void AudioSynthWaveform2k::update(void)
 		for (i=0; i < AUDIO_BLOCK_SAMPLES; i++) {
 			index = ph >> 21;
 			index2 = index + 1;
-			if (index2 >= 256) index2 = 0;
+			if (index2 >= 2048) index2 = 0;
 			val1 = *(arbdata + index);
 			val2 = *(arbdata + index2);
 			scale = (ph >> 8) & 0xFFFF;
@@ -326,7 +326,7 @@ void AudioSynthWaveformModulated2k::update(void)
 	case WAVEFORM_SINE:
 		for (i=0; i < AUDIO_BLOCK_SAMPLES; i++) {
 			ph = phasedata[i];
-			index = ph >> 21;
+			index = ph >> 24;
 			val1 = AudioWaveformSine[index];
 			val2 = AudioWaveformSine[index+1];
 			scale = (ph >> 8) & 0xFFFF;
@@ -347,7 +347,7 @@ void AudioSynthWaveformModulated2k::update(void)
 			ph = phasedata[i];
 			index = ph >> 21;//ERIS CORE -- change from 24 (256 sample) to 21 (2048 samples)
 			index2 = index + 1;
-			if (index2 >= 256) index2 = 0;
+			if (index2 >= 2048) index2 = 0;
 			val1 = *(arbdata + index);
 			val2 = *(arbdata + index2);
 			scale = (ph >> 8) & 0xFFFF;

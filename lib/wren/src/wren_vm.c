@@ -10,6 +10,7 @@
 #include "wren_vm.h"
 
 #include <HardwareSerial.h>
+
 #if WREN_OPT_META
   #include "wren_opt_meta.h"
 #endif
@@ -33,7 +34,7 @@ static void* defaultReallocate(void* ptr, size_t newSize, void* _)
     extmem_free(ptr);
     return NULL;
   }
-
+  
   return extmem_realloc(ptr, newSize);
 }
 

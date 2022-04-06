@@ -233,7 +233,8 @@ class Animation{
  * 
  */
 enum bltMode{BLT_COPY,BLT_BLK_COLOR_KEY,BLT_HATCH_BLK,BLT_HATCH_XOR,BLT_ADD,BLT_SUB,BLT_MULT,BLT_DIV,BLT_AND,BLT_OR,BLT_XOR,BLT_MEAN,BLT_1ST_PIXEL_COLOR_KEY};
-enum pixelOPMode{PXOP_COPY,PXOP_BLK_COLOR_KEY,PXOP_HATCH_BLK,PXOP_HATCH_XOR,PXOP_ADD,PXOP_SUB,PXOP_MULT,PXOP_DIV,PXOP_AND,PXOP_OR,PXOP_XOR,PXOP_MEAN,PXOP_1ST_PIXEL_COLOR_KEY};
+enum pixelOPMode{PXOP_COPY,PXOP_BLK_COLOR_KEY,PXOP_HATCH_BLK,PXOP_HATCH_XOR,PXOP_ADD,PXOP_SUB,PXOP_MULT,PXOP_DIV,PXOP_AND,PXOP_OR,PXOP_XOR,PXOP_MEAN,PXOP_1ST_PIXEL_COLOR_KEY, PXOP_NOT_1ST_PIXEL_COLOR_KEY, PXOP_NOT_BLK_COLOR_KEY};
+
 
 /**
  * @brief Eris class extentions to the ILI9341_t3n base class 
@@ -244,7 +245,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
         //simply pass the constructor input parameters to the base class
         ILI9341_t3_ERIS(uint8_t cs, uint8_t dc, uint8_t rst = 255, uint8_t mosi=11, uint8_t sclk=13, uint8_t miso=12): ILI9341_t3n(cs,dc,rst,mosi,sclk,miso){
             //_SPI_CLOCK = 1000000;
-            tft_write_speed = 78000000;
+            tft_write_speed = 76000000;
             tft_read_speed = 30000000;
             p_SD = NULL;
             backlight = 0;
@@ -427,7 +428,7 @@ class ILI9341_t3_ERIS : public ILI9341_t3n {
          * @param dest 
          * @param color 
          */
-        void fillSurface(Surface *dest,uint16_t color);
+        void fillSurface(Surface *dest,uint16_t color,bltMode blt_mode = BLT_COPY);
 
         /**
          * @brief 

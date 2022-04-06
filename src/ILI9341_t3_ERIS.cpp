@@ -61,12 +61,12 @@ void FLASHMEM ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     analogWrite(backlight, 180);
 }
 
-void FASTRUN ILI9341_t3_ERIS::begin(){
+void FLASHMEM ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
     fillScreen(ILI9341_BLACK);
     setClipRect();
     setOrigin();
-    setTextColor(CL(174, 143, 255));
+    setTextColor(CL(244, 183, 255));
     setTextSize(1);
     setRotation(1);
     println("Display Initialized.");      
@@ -146,11 +146,14 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
           
           toggle ^= true;//toggle for hatch operations
 
+          dw = srcBuffer[read_index];
+
           //
           //pixel operation section
           //
           if (pixel_op_enable){
             int16_t src_r,src_g,src_b;
+            bool is_not_color_keyed;
              //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
             //unpack the color channels from the 565 RGB format
             src_r = 0xFF & (srcBuffer[read_index] >> 8); 
@@ -158,64 +161,52 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
             src_g = 0xFF & (srcBuffer[read_index] >> 3);
             if (src_g > 255) src_g = 255;
             src_b = 0xFF & (srcBuffer[read_index] << 3);
-
+            
+            is_not_color_keyed = (blt_mode == BLT_BLK_COLOR_KEY && ((dw & 0xE79C) != 0)) && \
+              ( (blt_mode == BLT_1ST_PIXEL_COLOR_KEY) && (dw != first_pixel) );
+            
             switch(pixel_op){
               case PXOP_1ST_PIXEL_COLOR_KEY:
-                if (first_pixel != srcBuffer[read_index]){
-                  dw = srcBuffer[read_index];
-                } else dw = pixel_op_param;
+                if (first_pixel != dw) dw = pixel_op_param;
                 break;
               case PXOP_BLK_COLOR_KEY:
-                if ((srcBuffer[read_index] & 0xE79C) == 0){
-                  dw = srcBuffer[read_index];
-                } else dw = pixel_op_param;
+                if (!is_not_color_keyed) dw = pixel_op_param;
                 break;
               case PXOP_HATCH_BLK:
-                if (toggle){
-                   if ((srcBuffer[read_index] & 0xE79C) == 0){
-                    dw = pixel_op_param;
-                  }else dw = srcBuffer[read_index];
-                }else dw = 0;
+                if (toggle && is_not_color_keyed) dw = 0;
                 break;
               case PXOP_HATCH_XOR:
-                if (toggle){
-                   if ((srcBuffer[read_index] & 0xE79C) == 0){
-                    dw = pixel_op_param;
-                  }else dw = srcBuffer[read_index];
-                }else dw = pixel_op_param ^ srcBuffer[read_index];
+                  if (toggle && is_not_color_keyed) dw = pixel_op_param^dw;
                 break;
               case PXOP_COPY:
-                dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking
+                dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
                 break;
               case PXOP_ADD:
-                dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
                 break;
               case PXOP_AND:
-                dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
                 break;
               case PXOP_DIV:
-                dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
                 break;
               case PXOP_MEAN:
-                dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
+                if (is_not_color_keyed) dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
                 break;
               case PXOP_MULT:
-                dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
                 break;
               case PXOP_OR:
-                dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
                 break;
               case PXOP_SUB:
-                dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
+                if (is_not_color_keyed) dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
                 break;
               case PXOP_XOR:
-                dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
-                break;
-              default:
-                dw = srcBuffer[read_index];//unknown op - just read the pixel
+                if (is_not_color_keyed) dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
                 break;
             };
-          }else dw = srcBuffer[read_index]; //pixel op disabled so simply read the source pixel
+          }
 
           //bit transfer operation
           if (blt_mode == BLT_COPY){
@@ -296,29 +287,126 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   }
 }
 
-void FASTRUN ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color){
+void FASTRUN ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color,bltMode blt_mode){
   int16_t dest_x,dest_y;
-  uint16_t *dstBuffer;
-  uint32_t write_index;
-  dstBuffer = dest->getSurfaceBufferP();
+  uint16_t *dest_buffer;
+  bool toggle, is_not_color_keyed;
+  uint16_t dw, first_pixel,w;
+  
+  toggle = false;
+  dest_buffer = dest->getSurfaceBufferP();
+  first_pixel = dest_buffer[0];
+
+  int16_t r,g,b;
+  //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+  //unpack the color channels from the 565 RGB format
+  r = 0xFF & (color >> 8); 
+  if (r > 255) r = 255; //clip the max value for each channel
+  g = 0xFF & (color >> 3);
+  if (g > 255) g = 255;
+  b = 0xFF & (color << 3);
+  dw = color;
+
+  if ( (blt_mode == BLT_BLK_COLOR_KEY) && ((dw & 0xE79C) == 0) ) is_not_color_keyed = false;
+      else is_not_color_keyed = true;
+  w =  dest->getWidth();
   for (dest_y=0; dest_y < dest->getHeight();dest_y +=1){
     for (dest_x=0; dest_x < dest->getWidth();dest_x +=1){
-      write_index = (dest_y * dest->getWidth()) + dest_x;
-      dstBuffer[write_index] = color;
+      uint32_t write_index;
+
+      toggle ^= toggle;
+      write_index = (dest_y * w) + dest_x;
+  
+      if (blt_mode == BLT_COPY){
+        dest_buffer[write_index] = dw;
+      }else if (blt_mode == BLT_BLK_COLOR_KEY && ((dw & 0xE79C) != 0)){dest_buffer[write_index] = dw;
+      }else if (blt_mode == BLT_HATCH_BLK){
+        if ((dw & 0xE79C) != 0){ dest_buffer[write_index] = dw;
+        } else if (toggle) dest_buffer[write_index] = 0; //pFB[i] ^= pFB[i];
+      }else if (blt_mode == BLT_HATCH_XOR){
+        if ((dw & 0xE79C) != 0) dest_buffer[write_index] = dw^dest_buffer[write_index];
+        else if (toggle) dest_buffer[write_index] = dest_buffer[write_index];
+      }else if (blt_mode == BLT_ADD){
+        r = (dest_buffer[write_index] >> 8) + (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) + (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) + (0xFF & (dw << 3));
+        if(r>0xFF) r = 0xFF; //clip the result to 8bit
+        if(g>0xFF) g = 0xFF;
+        if(b>0xFF) b = 0xFF;
+        dest_buffer[write_index] = CL(r,g,b); //convert back to 565 format and write the result
+      }else if (blt_mode == BLT_SUB){
+        r = (dest_buffer[write_index] >> 8) - (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) - (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) - (0xFF & (dw << 3));
+        if (r < 0) r = 0; //clamp the result to zero
+        if (g < 0) g = 0;
+        if (b < 0) b = 0;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_MULT){
+        r = (dest_buffer[write_index] >> 8) * (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) * (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) * (0xFF & (dw << 3));
+        if (r > 255) r = 255; //clip the max value for each channel
+        if (g > 255) g = 255;
+        if (b > 255) b = 255;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_DIV){
+        r = (dest_buffer[write_index] >> 8) / (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) / (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) / (0xFF & (dw << 3));
+        if (r > 255) r = 255; //clip the max value for each channel
+        if (g > 255) g = 255;
+        if (b > 255) b = 255;
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_AND){
+        r = (dest_buffer[write_index] >> 8) & (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) & (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) & (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_OR){
+        r = (dest_buffer[write_index] >> 8) | (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) | (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) | (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_XOR){
+        r = (dest_buffer[write_index] >> 8) ^ (0xFF & (dw >> 8));
+        g = (dest_buffer[write_index] >> 3) ^ (0xFF & (dw >> 3));
+        b = (dest_buffer[write_index] << 3) ^ (0xFF & (dw << 3));
+        dest_buffer[write_index] = CL(r,g,b);
+      }else if (blt_mode == BLT_MEAN){
+        q7_t res[3];
+        q7_t a[2];
+        a[0] = (0x7F & (dest_buffer[write_index] >> 8));
+        a[1] = (0x7F & (dw >> 8));
+        arm_mean_q7(a,2,&res[0]);
+        a[0] = (0x7F & (dest_buffer[write_index] >> 3));
+        a[1] = (0x7F & (dw >> 3));
+        arm_mean_q7(a,2,&res[1]);
+        a[0] = (0x7F & (dest_buffer[write_index] << 3));
+        a[1] = (0x7F & (dw << 3));
+        arm_mean_q7(a,2,&res[2]);
+        dest_buffer[write_index] = CL(res[0],res[1],res[2]);
+      }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
+        if (dw != first_pixel) dest_buffer[write_index] = dw;
+      }else{
+        dest_buffer[write_index] = dw;
+      }      
     }
   }
 };
 
 void FASTRUN ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color){
-  uint16_t *dstBuffer;
-  dstBuffer = dest->getSurfaceBufferP();
-  dstBuffer[(y * dest->getWidth()) + x] = color;
+  //uint16_t *dstBuffer;
+  //dstBuffer = dest->getSurfaceBufferP();
+  //dstBuffer[(y * dest->getWidth()) + x] = color;
+  ((uint16_t *)(dest->getSurfaceBufferP()))[(y * dest->getWidth()) + x] = color;
 }
 
 uint16_t FASTRUN ILI9341_t3_ERIS::readSurfacePixel(Surface *source,int16_t x, int16_t y){
-  uint16_t *srcBuffer;
-  srcBuffer = source->getSurfaceBufferP();
-  return srcBuffer[(y * source->getWidth()) + x];
+  //uint16_t *srcBuffer;
+  //srcBuffer = source->getSurfaceBufferP();
+  //return srcBuffer[(y * source->getWidth()) + x];
+  return ((uint16_t*)source->getSurfaceBufferP())[(y * source->getWidth()) + x];
 }
 
 uint16_t FASTRUN ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){ 
@@ -526,7 +614,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t des
       }
       //if alpha is enabled mask any colors close to black
       int16_t r,g,b;
-        
+      bool is_not_color_keyed;  
       toggle ^= true;//toggle for hatch operations
 
       if ((dw & 0xE79C) != 0) pixel_detector=true;
@@ -543,58 +631,56 @@ void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t des
         src_g = 0xFF & (dw >> 3);
         if (src_g > 255) src_g = 255;
         src_b = 0xFF & (dw << 3);
-
+        
+        if ( (blt_mode == BLT_BLK_COLOR_KEY) && ((dw & 0xE79C) == 0) ) is_not_color_keyed = false;
+        else if ( (blt_mode == BLT_1ST_PIXEL_COLOR_KEY) && (dw == first_pixel) ) is_not_color_keyed = false;
+        else is_not_color_keyed = true;
+        
         switch(pixel_op){
           case PXOP_1ST_PIXEL_COLOR_KEY:
-            if (first_pixel != dw){
-              //dw = dw;
-            } else dw = pixel_op_param;
+            if (is_not_color_keyed) dw = pixel_op_param;
             break;
           case PXOP_BLK_COLOR_KEY:
-            if ((dw & 0xE79C) == 0){
-              //dw = dw;
-            } else dw = pixel_op_param;
+            if (is_not_color_keyed) dw = pixel_op_param;
             break;
           case PXOP_HATCH_BLK:
-            if (toggle){
-              if ((dw & 0xE79C) != 0){
-                dw = pixel_op_param;
-              }//else dw;
-            }else dw = 0;
+            if (toggle && is_not_color_keyed) dw = 0;
             break;
           case PXOP_HATCH_XOR:
-            if (toggle){
-              if ((dw & 0xE79C) != 0){
-                dw = pixel_op_param^dw;
-              };//else srcBuffer[read_index];
-            }else dw = pixel_op_param ^ dw;
+              if (toggle && is_not_color_keyed) dw = pixel_op_param^dw;
             break;
           case PXOP_COPY:
-            dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
+            if (is_not_color_keyed) dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
             break;
           case PXOP_ADD:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
             break;
           case PXOP_AND:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
             break;
           case PXOP_DIV:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
             break;
           case PXOP_MEAN:
-            if ((dw & 0xE79C) != 0) dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
+            if (is_not_color_keyed) dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
             break;
           case PXOP_MULT:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
             break;
           case PXOP_OR:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
             break;
           case PXOP_SUB:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
             break;
           case PXOP_XOR:
-            if ((dw & 0xE79C) != 0) dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
+            if (is_not_color_keyed) dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
+            break;
+          case PXOP_NOT_1ST_PIXEL_COLOR_KEY:
+            if (!is_not_color_keyed) dw = pixel_op_param;
+            break;
+          case PXOP_NOT_BLK_COLOR_KEY:
+            if (!is_not_color_keyed) dw = pixel_op_param;
             break;
           //default:
             //dw = dw;//unknown op - just read the pixel
@@ -700,7 +786,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t des
   }
 }
 
-bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
+bool FLASHMEM ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
   char str[16];      //char buffer
   char *c;           //char pointer
   char file_name[64];
@@ -737,7 +823,7 @@ bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename
 }
 
 
-void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
+void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
   uint64_t position;
   const String end_of_index = "KEARNING\n"; //yeah, its spelled wrong in the file format
   float fx;
@@ -872,7 +958,7 @@ void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x
   }
 }
 
-void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t mx;        //left clip x offset
   int16_t nx;        //right clip x offset
@@ -1009,7 +1095,7 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
  * @param y 
  * @param blt_mode 
  */
-void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -1066,76 +1152,75 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
       for (uint16_t z = 0; z < (w - mx - nx); z += 1){
         file.read(&dw,2);
         toggle ^= true;
-        //
-        //pixel operation section
-        //
-        if (pixel_op_enable){
-          int16_t src_r,src_g,src_b;
-            //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
-          //unpack the color channels from the 565 RGB format
-          src_r = 0xFF & (dw >> 8); 
-          if (src_r > 255) src_r = 255; //clip the max value for each channel
-          src_g = 0xFF & (dw >> 3);
-          if (src_g > 255) src_g = 255;
-          src_b = 0xFF & (dw << 3);
-
-          switch(pixel_op){
-            case PXOP_1ST_PIXEL_COLOR_KEY:
-              if (first_pixel != dw){
-                //dw = srcBuffer[read_index];
-              } else dw = pixel_op_param;
-              break;
-            case PXOP_BLK_COLOR_KEY:
-              if ((dw & 0xE79C) == 0){
-                //dw = srcBuffer[read_index];
-              } else dw = pixel_op_param;
-              break;
-            case PXOP_HATCH_BLK:
-              if (toggle){
-                  if ((dw & 0xE79C) == 0){
-                  dw = pixel_op_param;
-                }//else dw = dw;
-              }else dw = 0;
-              break;
-            case PXOP_HATCH_XOR:
-              if (toggle){
-                if ((dw & 0xE79C) == 0){
-                  dw = pixel_op_param;
-                }//else dw = dw;
-              }else dw = pixel_op_param ^ dw;
-              break;
-            case PXOP_COPY:
-              dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking
-              break;
-            case PXOP_ADD:
-              dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
-              break;
-            case PXOP_AND:
-              dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
-              break;
-            case PXOP_DIV:
-              dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
-              break;
-            case PXOP_MEAN:
-              dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
-              break;
-            case PXOP_MULT:
-              dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
-              break;
-            case PXOP_OR:
-              dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
-              break;
-            case PXOP_SUB:
-              dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
-              break;
-            case PXOP_XOR:
-              dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
-              break;
-            default:
-              //dw = dw;//unknown op - just read the pixel
-              break;
-          };
-        }//else dw = dw; //pixel op disabled so simply read the source pixel
+      
+      //
+      //pixel operation section
+      //
+      if (pixel_op_enable){
+        int16_t src_r,src_g,src_b;
+        bool is_not_color_keyed;
+        //#define CL(_r, _g, _b) ((((_r)&0xF8) << 8) | (((_g)&0xFC) << 3) | ((_b) >> 3))
+        //unpack the color channels from the 565 RGB format
+        src_r = 0xFF & (dw >> 8); 
+        if (src_r > 255) src_r = 255; //clip the max value for each channel
+        src_g = 0xFF & (dw >> 3);
+        if (src_g > 255) src_g = 255;
+        src_b = 0xFF & (dw << 3);
+        
+        if ( (blt_mode == BLT_BLK_COLOR_KEY) && ((dw & 0xE79C) == 0) ) is_not_color_keyed = false;
+        else if ( (blt_mode == BLT_1ST_PIXEL_COLOR_KEY) && (dw == first_pixel) ) is_not_color_keyed = false;
+        else is_not_color_keyed = true;
+        
+        switch(pixel_op){
+          case PXOP_1ST_PIXEL_COLOR_KEY:
+            if (is_not_color_keyed) dw = pixel_op_param;
+            break;
+          case PXOP_BLK_COLOR_KEY:
+            if (is_not_color_keyed) dw = pixel_op_param;
+            break;
+          case PXOP_HATCH_BLK:
+            if (toggle && is_not_color_keyed) dw = 0;
+            break;
+          case PXOP_HATCH_XOR:
+              if (toggle && is_not_color_keyed) dw = pixel_op_param^dw;
+            break;
+          case PXOP_COPY:
+            if (is_not_color_keyed) dw = pixel_op_param; //note: same result as a fill function - could be used for benchmarking 
+            break;
+          case PXOP_ADD:
+            if (is_not_color_keyed) dw = CL(src_r + pixel_op_param_r,src_g + pixel_op_param_g, src_b + pixel_op_param_b);
+            break;
+          case PXOP_AND:
+            if (is_not_color_keyed) dw = CL(src_r & pixel_op_param_r,src_g & pixel_op_param_g, src_b & pixel_op_param_b);
+            break;
+          case PXOP_DIV:
+            if (is_not_color_keyed) dw = CL(src_r / pixel_op_param_r,src_g / pixel_op_param_g, src_b / pixel_op_param_b);
+            break;
+          case PXOP_MEAN:
+            if (is_not_color_keyed) dw = CL((src_r + pixel_op_param_r)/2,(src_g + pixel_op_param_g)/2, (src_b + pixel_op_param_b)/2);
+            break;
+          case PXOP_MULT:
+            if (is_not_color_keyed) dw = CL(src_r * pixel_op_param_r,src_g * pixel_op_param_g, src_b * pixel_op_param_b);
+            break;
+          case PXOP_OR:
+            if (is_not_color_keyed) dw = CL(src_r | pixel_op_param_r,src_g | pixel_op_param_g, src_b | pixel_op_param_b);
+            break;
+          case PXOP_SUB:
+            if (is_not_color_keyed) dw = CL(src_r - pixel_op_param_r,src_g - pixel_op_param_g, src_b - pixel_op_param_b);
+            break;
+          case PXOP_XOR:
+            if (is_not_color_keyed) dw = CL(src_r ^ pixel_op_param_r,src_g ^ pixel_op_param_g, src_b ^ pixel_op_param_b);
+            break;
+          case PXOP_NOT_1ST_PIXEL_COLOR_KEY:
+            if (!is_not_color_keyed) dw = pixel_op_param;
+            break;
+          case PXOP_NOT_BLK_COLOR_KEY:
+            if (!is_not_color_keyed) dw = pixel_op_param;
+            break;
+          //default:
+            //dw = dw;//unknown op - just read the pixel
+        };
+      }//else dw = dw; //pixel op disabled so simply read the source pixel
 
         //bit transfer operation
         uint32_t write_index;

@@ -52,6 +52,10 @@ erisAudioSynthWaveform
 update call:[update] noreturn:[update]
 erisAudioSynthWaveformModulated
 update call:[update] noreturn:[update]
+erisAudioSynthWaveformhd
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformModulated2k
+update call:[update] noreturn:[update]
 erisAudioSynthWaveformPWM
 update call:[update] noreturn:[update]
 erisAudioSynthToneSweep
@@ -125,9 +129,11 @@ setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
 getPath
-ILI9341_t3_ERIS
+ILI9341_t3_ERIS call:[PXP_init] noreturn:[PXP_init]
+enablePixelOP
+disablePixelOP
 getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
+busy
 Touch
 setCalibrationInputs
 AnalogInputs call:[analogReadAveraging,analogReadResolution]
@@ -194,15 +200,15 @@ ExtADCReadReg call:[beginTransmission,endTransmission,read,requestFrom,write] no
 ExtADCPrintStatus call:[ExtADCReadReg,F,print,printf] noreturn:[print,printf]
 ExtADCConfig call:[beginTransmission,delay,endTransmission,requestFrom,write] noreturn:[endTransmission]
 I2CBusScan call:[F,beginTransmission,endTransmission,print,println] noreturn:[print,println]
-AudioDirector call:[AudioConnection,F,addAudioStreamObj,erisAudioInputI2S,generateFunctionList,getAudioStreamObjByName,initialize_memory,print,printf,println] noreturn:[AudioConnection,addAudioStreamObj,printf,println]
+AudioDirector call:[AudioConnection,F,addAudioStreamObj,arbitraryProgram,generateFunctionList,getAudioStreamObjByName,initialize_memory,print,printf,println] noreturn:[AudioConnection,addAudioStreamObj,printf,println]
 initAudioHardware call:[ExtADCConfig,I2CReset]
 addAudioStreamObj call:[F,print,println,strcmp]
-printStats call:[ExtADCPrintStatus,F,print,println,processorUsage,processorUsageMax,requestStartLZ4Message,sendLZ4Message] noreturn:[print,sendLZ4Message]
+printStats call:[ExtADCPrintStatus,F,print,println,processorUsage,processorUsageMax,random,requestStartLZ4Message,sendLZ4Message] noreturn:[print,sendLZ4Message]
 generateFunctionList call:[strcmp]
 queryTypesByFunction call:[strcmp]
 getTypeInstanceCount call:[strcmp]
 getTypeListItem global:[nullStr] call:[queryTypesByFunction,return]
-getAudioStreamObjByName call:[F,print,println,strlen,strncmp,strstr,strtoul]
+getAudioStreamObjByName call:[F,print,println,requestStartLZ4Message,sendLZ4Message,strlen,strncmp,strstr,strtoul] noreturn:[sendLZ4Message]
 getAudioStreamString call:[sprintf,strcpy]
 getConnectionString call:[sprintf,strcpy]
 connect call:[AudioConnection,F,print,reconnect,rewire]

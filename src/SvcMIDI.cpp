@@ -49,8 +49,8 @@ void handleNoteOnCallback(byte channel, byte note, byte velocity){
     char msg[32];
     AppManager* am = AppManager::getInstance();
     SvcMIDI* m = (SvcMIDI*)am->getAppByName("MIDI");
-    if (note >= 24){
-        sprintf(msg,"NOTE_ON %d %d %d %f",channel,note,velocity,note_freq[note]);
+    if (note >= 12){
+        sprintf(msg,"NOTE_ON %d %d %d %f",channel,note,velocity,note_freq[note-12]);
         m->publish(msg);
     }
 }

@@ -15,7 +15,6 @@
 #include "wren.hpp"
 #include "Eris.h"
 
-
 /**
  * @brief Wren is a scripting language. This class is a proxy which mirrors the AppBaseClass into wren and hosts a VM.\n 
  * \n  
@@ -40,7 +39,7 @@ class AppWren:public AppBaseClass {
         strcpy(img_filename,"");
         strcpy(img_path,"");
         strcpy(wren_module_name,"");
-        update_priority = 3; 
+        update_priority = 5; 
         surface_mempool = NULL;
         image_loaded = false;
         h_slot0 = 0;
@@ -68,7 +67,8 @@ class AppWren:public AppBaseClass {
         time_active = 0;
         surface_cache = NULL;
         module_load_buffer = NULL;
-        vmConstructor(&g_wrenScript[0]);
+        
+        vmConstructor(g_wrenScript);
         widget_width = 64;
         widget_height = 64;
         widget_origin_x = 0;
@@ -77,12 +77,12 @@ class AppWren:public AppBaseClass {
         height = SCREEN_HEIGHT;
         origin_x = 0;
         origin_y = 0;
-        //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
+        //init the ram drive first (fixed size)
         wren_file_system.begin(WREN_VM_FILE_SYSTEM_SIZE);//init the shared ext_ram drive
         wren_file_system.quickFormat();  
-        wren_file_system.mkdir("system");//system folder
+        wren_file_system.mkdir("system");//add a system folder
         wren_file = 0;
-
+        //surface_mempool = (uint16_t*)malloc(sizeof(uint16_t)*128*128);
         //subscribe to MIDI messages
         am->sendMessage(this,"MIDI","SUB");
         
@@ -91,6 +91,7 @@ class AppWren:public AppBaseClass {
     ~AppWren(){
         wrenFreeVM(vm);
     };
+
 
     /**
      * @brief start, load and configure the handles of the VM
@@ -469,7 +470,7 @@ class AppWren:public AppBaseClass {
                 draw->fillScreen(CL(r,g,b));
             } else{
                 if (!surface_cache) return;
-                draw->fillSurface(surface_cache,CL(r,g,b));
+                draw->fillSurface(surface_cache,CL(r,g,b),BLT_MEAN);
             }
         }
         return;

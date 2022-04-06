@@ -13,10 +13,12 @@ setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
 getPath
-ILI9341_t3_ERIS
+ILI9341_t3_ERIS call:[PXP_init] noreturn:[PXP_init]
+enablePixelOP
+disablePixelOP
 getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
-renderCompleteCB global:[dmabusy] call:[F,println]
+busy
+renderCompleteCB global:[dmabusy]
 _busy global:[dmabusy]
 updateScreenAsyncFrom global:[dmabusy] call:[setFrameCompleteCB,updateScreenAsync]
 getNextFrameChunk call:[F,chdir,exists,printf,sprintf]
@@ -24,14 +26,18 @@ setSD
 setSD
 setPWMPin call:[analogWrite,analogWriteFrequency] noreturn:[analogWrite]
 begin global:[dmabusy] call:[CL,begin,fillScreen,println,setClipRect,setOrigin,setRotation,setTextColor,setTextSize,updateScreen]
-bltMem call:[getHeight,getSurfaceBufferP,getWidth]
-fillSurface call:[getHeight,getSurfaceBufferP,getWidth]
+bltSurface2Surface call:[CL,PXP_input_background_color,PXP_input_buffer,PXP_input_format,PXP_input_position,PXP_output_buffer,PXP_output_clip,PXP_output_format,PXP_overlay_buffer,PXP_overlay_color_key_high,PXP_overlay_color_key_low,PXP_overlay_format,PXP_overlay_position,PXP_process,arm_mean_q7,getHeight,getSurfaceBufferP,getWidth] noreturn:[CL]
+fillSurface call:[CL,arm_mean_q7,getHeight,getSurfaceBufferP,getWidth] noreturn:[CL]
 drawPixel call:[getSurfaceBufferP,getWidth]
-readSurfacePixel call:[getSurfaceBufferP,getWidth]
+readSurfacePixel call:[getSurfaceBufferP,getWidth,return]
 readPixel
 drawSurfaceLine call:[drawLine,getHeight,getSurfaceBufferP,getWidth]
 drawSurfaceFill call:[fillScreen,getHeight,getSurfaceBufferP,getWidth]
 bltSD call:[bltSDB]
-bltSDB call:[F,atol,available,chdir,close,fgets,open,print,println,read,seekCur,sizeof,strtok] noreturn:[close,seekCur]
+bltArea2Buffer call:[CL,F,arm_mean_q7,atol,available,close,fgets,open,position,print,println,read,readBytes,readBytesUntil,seek,seekCur,sizeof,strtok] noreturn:[CL,close,fgets,open,read,readBytesUntil,seek,seekCur]
+getImageSize call:[F,atol,available,close,fgets,open,print,println,readBytesUntil,sizeof,strcat,strcpy,strtok] noreturn:[close,open]
+printWithFont call:[bltArea2Buffer,c_str,close,exists,getImageSize,open,position,print,println,readStringUntil,setCursor,setTextSize,sprintf,sscanf,strcat,strcpy,strlen,while] noreturn:[bltArea2Buffer,close,getImageSize,position,readStringUntil]
+bltRAMFileB call:[CL,arm_mean_q7,atol,position,readBytes,readBytesUntil,seek,strtok] noreturn:[CL,seek]
+bltSDB call:[CL,F,arm_mean_q7,atol,available,chdir,close,fgets,open,position,print,println,read,readBytes,seek,seekCur,sizeof,strtok] noreturn:[CL,close,seekCur]
 bltSDAnimationFullScreen call:[F,available,chdir,close,getFileName,getPath,open,print,println,read,seekSet] noreturn:[close]
 bltSDFullScreen call:[F,available,chdir,close,ls,open,print,println,read,seekSet] noreturn:[close,read]

@@ -54,6 +54,10 @@ erisAudioSynthWaveform
 update call:[update] noreturn:[update]
 erisAudioSynthWaveformModulated
 update call:[update] noreturn:[update]
+erisAudioSynthWaveformhd
+update call:[update] noreturn:[update]
+erisAudioSynthWaveformModulated2k
+update call:[update] noreturn:[update]
 erisAudioSynthWaveformPWM
 update call:[update] noreturn:[update]
 erisAudioSynthToneSweep
@@ -137,9 +141,11 @@ setPath call:[strcpy,strlen] noreturn:[strcpy]
 isFrameComplete
 getFileName
 getPath
-ILI9341_t3_ERIS
+ILI9341_t3_ERIS call:[PXP_init] noreturn:[PXP_init]
+enablePixelOP
+disablePixelOP
 getFrameAddress call:[return]
-busy call:[_busy] noreturn:[_busy]
+busy
 getID
 isName call:[sizeof,strncmp]
 setName call:[safer_strncpy,strcpy,strlen] noreturn:[safer_strncpy,strcpy]
@@ -189,9 +195,9 @@ render
 startLZ4Message call:[empty,print] noreturn:[print]
 write call:[txOverflowHandler] noreturn:[txOverflowHandler]
 flush call:[delay,memset,print,strlen,throttle] noreturn:[delay,print]
-AppManager global:[UI_ANIMATED_WALLPAPER_PATH,UI_BUTTON_ACTIVE_BORDER_COLOR,UI_BUTTON_FILL_COLOR,UI_BUTTON_INACTIVE_BORDER_COLOR,UI_BUTTON_SHADE_COLOR,UI_BUTTON_TEXT_COLOR,UI_SLIDER_BORDER_COLOR,UI_SLIDER_FILL_COLOR,UI_SLIDER_SHADE_COLOR,UI_SLIDER_TEXT_COLOR,touch] call:[F,SdioConfig,Surface,begin,create,initErrorHalt,memset,println,setCalibrationInputs,setFrameBuffer,setPWMPin,setPath,setRotation,setSD,sizeof,tempmon_init,useFrameBuffer] noreturn:[initErrorHalt,println]
-setup global:[_ad] call:[CCM_CBCMR_FLEXSPI2_CLK_SEL,CCM_CBCMR_FLEXSPI2_PODF,CCM_CCGR7_FLEXSPI2,F,initAudioHardware,println] noreturn:[CCM_CCGR7_FLEXSPI2]
-update global:[AM_AN1,AM_AN2,AM_AN3,AM_AN4,AM_AUDIO_CPU,AM_AUDIO_CPU_MAX,AM_AUDIO_MEM,AM_AUDIO_MEM_MAX,AM_LOOP_TIME,AM_REDRAW_BG,AM_SERIAL_AVAIL,CPU_TEMP,FREE_HEAP,FREE_LOCAL,FREE_MEM,FREE_STACK,RENDER,RENDER_FRAME,RENDER_PERIOD,RT_CALLS,UPDATE_CALLS,touch] call:[AudioMemoryUsage,AudioMemoryUsageMax,AudioMemoryUsageMaxReset,AudioProcessorUsage,AudioProcessorUsageMax,AudioProcessorUsageMaxReset,F,FreeStack,availableForWrite,bltSDAnimationFullScreen,busy,freadAN1,freadAN2,freadAN3,freadAN4,free,getApp,getNextFrameChunk,getPoint,increment,isFrameComplete,malloc,memset,onAnalog1,onAnalog2,onAnalog3,onAnalog4,onFocus,onFocusLost,onTouch,onTouchDrag,onTouchRelease,println,read,readAN1,readAN2,readAN3,readAN4,render,requestArmSetClock,tempmonGetTemp,touched,update,updateScreenAsync,while] noreturn:[AudioMemoryUsageMaxReset,malloc,onAnalog4,onFocusLost,onTouchDrag,onTouchRelease,println,render,update,while]
+AppManager global:[UI_ANIMATED_WALLPAPER_PATH,UI_BUTTON_ACTIVE_BORDER_COLOR,UI_BUTTON_FILL_COLOR,UI_BUTTON_INACTIVE_BORDER_COLOR,UI_BUTTON_SHADE_COLOR,UI_BUTTON_TEXT_COLOR,UI_SLIDER_BORDER_COLOR,UI_SLIDER_FILL_COLOR,UI_SLIDER_SHADE_COLOR,UI_SLIDER_TEXT_COLOR,_data,draw,touch] call:[F,SdioConfig,Surface,begin,close,create,flush,initErrorHalt,memset,open,print,println,setCalibrationInputs,setFrameBuffer,setPWMPin,setPath,setRotation,setSD,sizeof,tempmon_init,useFrameBuffer] noreturn:[close,initErrorHalt,println]
+setup global:[_ad] call:[F,initAudioHardware,println] noreturn:[initAudioHardware]
+update global:[AM_AN1,AM_AN2,AM_AN3,AM_AN4,AM_AUDIO_CPU,AM_AUDIO_CPU_MAX,AM_AUDIO_MEM,AM_AUDIO_MEM_MAX,AM_LOOP_TIME,AM_REDRAW_BG,AM_SERIAL_AVAIL,CPU_TEMP,FREE_HEAP,FREE_LOCAL,FREE_MEM,FREE_STACK,RENDER,RENDER_FRAME,RENDER_PERIOD,RT_CALLS,UPDATE_CALLS,draw,touch] call:[AudioMemoryUsage,AudioMemoryUsageMax,AudioMemoryUsageMaxReset,AudioProcessorUsage,AudioProcessorUsageMax,AudioProcessorUsageMaxReset,F,FreeStack,PXP_finish,availableForWrite,bltSDAnimationFullScreen,busy,freadAN1,freadAN2,freadAN3,freadAN4,free,getApp,getNextFrameChunk,getPoint,increment,isFrameComplete,malloc,onAnalog1,onAnalog2,onAnalog3,onAnalog4,onFocus,onFocusLost,onTouch,onTouchDrag,onTouchRelease,println,read,readAN1,readAN2,readAN3,readAN4,render,requestArmSetClock,tempmonGetTemp,touched,update,updateScreenAsyncFrom,while] noreturn:[AudioMemoryUsageMaxReset,malloc,onAnalog4,onFocusLost,onTouchDrag,onTouchRelease,println,render,requestArmSetClock,update,while]
 getSD
 getApp call:[while]
 requestPopUp
@@ -203,5 +209,6 @@ getActiveApp
 sendMessage call:[isName,messageHandler,while]
 getAppByName call:[isName,while]
 printStats call:[F,getAppByName,print,println,requestStartLZ4Message,sendLZ4Message,while] noreturn:[print]
-registerApp global:[_ad,sci]
+registerApp global:[_ad,draw,sci]
+unregisterApp
 requestArmSetClock call:[set_arm_clock,tempmonGetTemp,update]

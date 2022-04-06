@@ -200,8 +200,8 @@ void erisAudioAnalyzeFFT1024::update(void)
 		subsample_by = (int)subsample_highfreqrange;
 	}
 	BLOCKS_PER_FFT = ((1024 / AUDIO_BLOCK_SAMPLES) * subsample_by);
-	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/16;
-	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/8;//((subsample_lowfreqrange/subsample_highfreqrange) * 2);//BLOCK_REFRESH_SIZE/(subsample_lowfreqrange/2);//BLOCKS_PER_FFT/4;
+	BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT;
+	if (ssr == SS_LOWFREQ) BLOCK_REFRESH_SIZE = BLOCKS_PER_FFT/2;//((subsample_lowfreqrange/subsample_highfreqrange) * 2);//BLOCK_REFRESH_SIZE/(subsample_lowfreqrange/2);//BLOCKS_PER_FFT/4;
 
 	ofs = (AUDIO_BLOCK_SAMPLES/subsample_by) * (sample_block);
 
