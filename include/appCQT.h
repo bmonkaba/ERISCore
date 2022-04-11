@@ -83,7 +83,7 @@ class AppCQT:public AppBaseClass {
     FFTReadRange fftLowRR[NOTE_ARRAY_LENGTH];
     FFTReadRange oscBank[OSC_BANK_SIZE];
 
-    void FLASHMEM init(){
+    void FASTRUN init(){
       update_priority = 0; 
       osc_bank_size = OSC_BANK_SIZE;
       char buffer[32]; //used to build the stream names
@@ -167,7 +167,7 @@ class AppCQT:public AppBaseClass {
       AudioInterrupts();
     }; 
 
-    void FLASHMEM render(){
+    void FASTRUN render(){
       if (!is_active || draw == NULL) return;
       update_calls++;
       #ifdef TX_PERIODIC_FFT
@@ -196,14 +196,14 @@ class AppCQT:public AppBaseClass {
           }
         } 
       #endif
-      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 3900){
-        if(sci->requestStartLZ4Message()){
+      if (cqt_serial_transmit_elapsed > TX_CQT_PERIOD && Serial.availableForWrite() > 1024){
+        if(1){
           for (uint16_t i=0;i < osc_bank_size;i++){
             if (oscBank[i].cqtBin < high_range) sci->printf(F("CQT_L %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
             if (oscBank[i].cqtBin >= high_range) sci->printf(F("CQT_H %d,%s,%.0f,%.0f,%.2f,%.3f,%.3f\n"),oscBank[i].cqtBin,note_name[oscBank[i].cqtBin],oscBank[i].peakFrequency,note_freq[oscBank[i].cqtBin],oscBank[i].phase,oscBank[i].avgValueFast,oscBank[i].avgValueSlow*1000.0,oscBank[i].transientValue*100.0);
           }
           sci->printf(F("CQT_EOF\n"));
-          sci->sendLZ4Message();
+          sci->send();
         }
         //Serial.flush();
         cqt_serial_transmit_elapsed = 0;
@@ -276,7 +276,7 @@ class AppCQT:public AppBaseClass {
       }
     }; //called only when the app is active
     
-    void FLASHMEM update(){
+    void FASTRUN update(){
       if (!is_active) return;
       rt_calls++;
       //if (rt_calls < 10000) return;
@@ -294,21 +294,21 @@ class AppCQT:public AppBaseClass {
       //Serial.flush();
     }; //allways called even if app is not active
     
-    void FLASHMEM onFocus(){ //called when given focus
+    void FASTRUN onFocus(){ //called when given focus
       if (fft == NULL || fft2 == NULL) return;
       fft->enableFFT(true);
       fft2->enableFFT(true);
       is_active = true;
     };
 
-    void FLASHMEM onFocusLost(){ //called when focus is taken
+    void FASTRUN onFocusLost(){ //called when focus is taken
       if (fft == NULL || fft2 == NULL) return;
       fft->enableFFT(false);
       fft2->enableFFT(false);
       is_active = false;
     };
 
-    void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
+    void FASTRUN onTouch(uint16_t t_x, uint16_t t_y){
       //check if touch point is within the application bounding box
       if (t_x > x && t_x < (x + w) && t_y > y && t_y < (y + h)){
           //is touched

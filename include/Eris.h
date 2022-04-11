@@ -125,7 +125,7 @@
  * @brief threshold at which point serial transmission is throttled
  * 
  */
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 400
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 4096
 /**
  * @brief min delta threshold after a throttle event which will trigger an output flush
  * 
@@ -201,12 +201,12 @@
  * @brief max number of audio stream objects
  * 
  */
-#define MAX_AUDIO_STREAM_OBJECTS 120
+#define MAX_AUDIO_STREAM_OBJECTS 90
 /**
  * @brief max number of audio memory blocks
  * 
  */
-#define MAX_AUDIO_MEMORY_BLOCKS 400
+#define MAX_AUDIO_MEMORY_BLOCKS 200
 /**
  * @brief max number of audio stream catagories
  * 
@@ -226,7 +226,7 @@
  * @brief max audio connection string length
  * 
  */
-#define MAX_CONNECTION_STRING_LENGTH 48
+#define MAX_CONNECTION_STRING_LENGTH 32
 
 //ILI9341_t3_ERIS
 /**
@@ -284,9 +284,9 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 150000
-#define WREN_VM_FILE_SYSTEM_SIZE 12485760
-#define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT*2
+#define WREN_VM_HEAP_SIZE 100000
+#define WREN_VM_FILE_SYSTEM_SIZE 10000000
+#define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT
 #else
 #define WREN_VM_HEAP_SIZE 16000
 #define WREN_VM_FILE_SYSTEM_SIZE 0

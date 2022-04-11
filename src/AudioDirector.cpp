@@ -142,7 +142,7 @@ bool AudioDirector::addAudioStreamObj(AudioStream* obj){
   return false;
 };
 
-void FASTRUN AudioDirector::printStats(){
+void FLASHMEM AudioDirector::printStats(){
   if (sci==NULL) return;
 
   if (printstats_select == 0){
@@ -186,8 +186,8 @@ void FASTRUN AudioDirector::printStats(){
       sci->print(active_connections);
 
       uint16_t from, to;
-      from = printstats_block++ * 16;
-      to = printstats_block * 16;
+      from = printstats_block++ * 32;
+      to = printstats_block * 32;
       if (to >= MAX_CONNECTIONS){
         to = MAX_CONNECTIONS;
         printstats_select++;
@@ -215,6 +215,18 @@ void FASTRUN AudioDirector::printStats(){
             sci->print(p_cord[i]->dest_index);
         }else{
             //unassigned connections
+            sci->print(F(",\"srcType\":\""));
+            sci->print("None");
+            sci->print(F("\",\"srcInstance\":\""));
+            sci->print("None");
+            sci->print(F("\",\"srcPort\":\""));
+            sci->print("None");
+            sci->print(F("\",\"destType\":\""));
+            sci->print("None");
+            sci->print(F("\",\"destInstance\":\""));
+            sci->print("None");
+            sci->print(F("\",\"destPort\":\""));
+            sci->print("None\"");
         }
         sci->print(F("}")); //close the connection container
       }
@@ -224,11 +236,11 @@ void FASTRUN AudioDirector::printStats(){
   }else if (printstats_select == 2){
     printstats_select = 0;
     //only check 'once in a great while' as the ADC serial link is relatively slow  
-    if(random(100) > 80 && sci->requestStartLZ4Message()){
+    if( (random(100) > 80) && (!sci->throttle())){
       sci->print(F("STATS {"));  
       ExtADCPrintStatus(sci);
       sci->println(F("}"));
-      sci->sendLZ4Message();
+      sci->send();
     }
   }
 }
@@ -370,6 +382,7 @@ bool AudioDirector::getConnectionString(uint16_t connectionIndex, char* connecti
 bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* destination,int destinationInput){
   uint16_t i;
   if (NULL==source||NULL==destination) return false;
+
   //check if already existing
   for(i=0; i < MAX_CONNECTIONS;i++){
     if(source==p_cord[i]->pSrc && destination==p_cord[i]->pDst && sourceOutput==p_cord[i]->src_index && destinationInput==p_cord[i]->dest_index){
@@ -378,6 +391,9 @@ bool AudioDirector::connect(AudioStream* source, int sourceOutput, AudioStream* 
       return true;
     }
   }
+
+  //make sure the destination input is not already connected to something else
+  this->disconnect(destination,destinationInput);
   
   //find a free connection from the pool
   for(i=0; i < MAX_CONNECTIONS;i++){
@@ -472,9 +488,7 @@ bool AudioDirector::disconnect(AudioStream* destination,int destinationInput){
       return true; 
     }
   }
-  Serial.println(F("M AudioDirector::disconnect() Warning: AudioConnection not found"));
-  Serial.println(destination->short_name);
-  Serial.println(destination->instance);
+  Serial.printf(F("M AudioDirector::disconnect() Warning: AudioConnection not found at %s:%d\n"),destination->short_name,destination->instance);
   return false; 
 }
 

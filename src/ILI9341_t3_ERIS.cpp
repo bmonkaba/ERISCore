@@ -50,18 +50,18 @@ bool FASTRUN Animation::getNextFrameChunk(){
   return true;
 }
 
-void FLASHMEM Animation::setSD(SdFs *ptr){p_SD = ptr;}
+void FASTRUN Animation::setSD(SdFs *ptr){p_SD = ptr;}
 
-void FLASHMEM ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
+void FASTRUN ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
 
-void FLASHMEM ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
+void FASTRUN ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
     analogWriteFrequency(backlight, 16000);
     analogWrite(backlight, 180);
 }
 
-void FLASHMEM ILI9341_t3_ERIS::begin(){
+void FASTRUN ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
     fillScreen(ILI9341_BLACK);
     setClipRect();
@@ -471,7 +471,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16
  * @param blt_mode  transfer operation
  * @param file_system this is the optional pointer to a TinyFS object
  */
-void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows,LittleFS_RAM* file_system){
+void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows,LittleFS_RAM* file_system){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -786,7 +786,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t des
   }
 }
 
-bool FLASHMEM ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
+bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
   char str[16];      //char buffer
   char *c;           //char pointer
   char file_name[64];
@@ -823,7 +823,7 @@ bool FLASHMEM ILI9341_t3_ERIS::getImageSize(const char* path,const char* filenam
 }
 
 
-void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
+void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
   uint64_t position;
   const String end_of_index = "KEARNING\n"; //yeah, its spelled wrong in the file format
   float fx;
@@ -958,7 +958,7 @@ void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t 
   }
 }
 
-void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
+void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t mx;        //left clip x offset
   int16_t nx;        //right clip x offset
@@ -1095,7 +1095,7 @@ void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_
  * @param y 
  * @param blt_mode 
  */
-void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
+void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset

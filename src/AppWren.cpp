@@ -650,9 +650,9 @@ void bltCallback(WrenVM* vm){
  */
 void setPixelCallback(WrenVM* vm){
   //(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b)
-  AppManager* am = AppManager::getInstance();
-  AppWren* app = (AppWren*)am->getAppByName("AppWren");
-  app->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
+  //AppManager* am = AppManager::getInstance();
+  //AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  ((AppWren*)AppManager::getInstance()->getAppByName("AppWren"))->setPixel(wrenGetSlotDouble(vm, 1),wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5));
 }
 
 /**
@@ -1154,7 +1154,7 @@ void fileRewindDirectoryCallback(WrenVM* vm){
  * @param signature 
  * @return WrenForeignMethodFn 
  */
-WrenForeignMethodFn FLASHMEM bindForeignMethod(
+WrenForeignMethodFn  bindForeignMethod(
     WrenVM* vm,
     const char* module,
     const char* className,
@@ -1323,7 +1323,7 @@ WrenForeignMethodFn FLASHMEM bindForeignMethod(
 
 //end wren callbacks
 
-void FLASHMEM AppWren::vmConstructor(const char* initial_script){
+void AppWren::vmConstructor(const char* initial_script){
     startVM();
     loadScript(initial_script);
     getWrenHandles();
@@ -1332,7 +1332,7 @@ void FLASHMEM AppWren::vmConstructor(const char* initial_script){
     isWrenResultOK(wrenCall(vm,h_update));
 }
 
-void FLASHMEM AppWren::startVM(){
+void AppWren::startVM(){
     Serial.println(F("\nM AppWren::startVM()"));
     WrenConfiguration config;
     wrenInitConfiguration(&config);
@@ -1354,7 +1354,7 @@ void FLASHMEM AppWren::startVM(){
     vm = wrenNewVM(&config);
 }
 
-void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
+void AppWren::messageHandler(AppBaseClass *sender, const char *message){
   if(0 == strncmp(message,"demo",strlen("demo"))){
     Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
     rebootRequest("demo");
@@ -1459,7 +1459,7 @@ bool AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void FLASHMEM AppWren::render(){
+ void AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
@@ -1537,7 +1537,7 @@ void AppWren::update(){
   }
 }; //allways called even if app is not active
 
-void FLASHMEM AppWren::releaseWrenHandles(){
+void AppWren::releaseWrenHandles(){
   Serial.printf(F("M AppWren::releaseWrenHandles\n"));
   //release any existing handles
   if (h_slot0!=NULL) {wrenReleaseHandle(vm, h_slot0); h_slot0=NULL;}
@@ -1556,7 +1556,7 @@ void FLASHMEM AppWren::releaseWrenHandles(){
   enable_call_forwarding = false;
 }
 
-void FLASHMEM AppWren::getWrenHandles(){
+void AppWren::getWrenHandles(){
   Serial.println(F("M AppWren::getWrenHandles"));
   wrenEnsureSlots(vm, 1);
   wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
@@ -1576,7 +1576,7 @@ void FLASHMEM AppWren::getWrenHandles(){
   h_messageHandler = wrenMakeCallHandle(vm, "messageHandler(_,_)");
 }
 
-const char * FLASHMEM AppWren::loadModuleSource(const char * name){
+const char *  AppWren::loadModuleSource(const char * name){
   char file_name[128]; 
   FsFile file;
   int16_t file_size; //max file size 32K
@@ -1605,7 +1605,7 @@ const char * FLASHMEM AppWren::loadModuleSource(const char * name){
   return module_load_buffer;
 }
 
-void FLASHMEM AppWren::freeModuleSource(){
+void AppWren::freeModuleSource(){
 
 #ifdef USE_EXTMEM 
   if (module_load_buffer != NULL){

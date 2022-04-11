@@ -17,13 +17,13 @@
 #include "SvcErisAudioParameterController.h"
 #include "AppAIfES.h"
 
-AudioDirector EXTMEM _ad;
-AppAudioToPolyphonic EXTMEM appPoly;
-SvcSerialCommandInterface EXTMEM sci;
-SvcMIDI EXTMEM m;
-SvcErisAudioParameterController EXTMEM apc;
-AppReprogram EXTMEM appReprogram;
-AppWren EXTMEM appWren;
+AudioDirector _ad;
+AppAudioToPolyphonic appPoly;
+SvcSerialCommandInterface sci;
+SvcMIDI m;
+SvcErisAudioParameterController apc;
+AppReprogram appReprogram;
+AppWren appWren;
 //AppAIfES EXTMEM ai;
 
 void setup() {

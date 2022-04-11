@@ -373,14 +373,16 @@ class AppWren:public AppBaseClass {
      * @param b 
      */
     void setPixel(int16_t x, int16_t y, int16_t r, int16_t g, int16_t b){
+        if (x < 0 || y < 0) return;
         if (draw){
             if (has_pop){
-                draw->ILI9341_t3n::drawPixel(x,y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
+                //draw->ILI9341_t3n::drawPixel(x,y,CL((uint16_t)r,(uint16_t)g,(uint16_t)b));
+                if(y > SCREEN_HEIGHT || x > SCREEN_WIDTH) return;
+                draw->getFrameBuffer()[(SCREEN_WIDTH * y)+x] = CL((uint16_t)r,(uint16_t)g,(uint16_t)b);
             }else{
                 if (!surface_cache) return;
                 if (x >= surface_cache->getWidth()) return;
                 if (y >= surface_cache->getHeight()) return;
-                if (x < 0 || y < 0) return;
                 draw->drawPixel(surface_cache,x,y,CL(r,g,b));
             }
         } 
@@ -394,12 +396,18 @@ class AppWren:public AppBaseClass {
      * @return uint16_t 
      */
     uint16_t getPixel(int16_t x, int16_t y){
+        if (x < 0 || y < 0) return ILI9341_MAGENTA;
         if (draw){
-            if (!surface_cache) return ILI9341_MAGENTA;
-            if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;
-            if (y >= surface_cache->getHeight()) return ILI9341_MAGENTA;
-            if (x < 0 || y < 0) return ILI9341_MAGENTA;
-            return draw->readSurfacePixel(surface_cache,x,y);
+            if (has_pop){
+                if(y > SCREEN_HEIGHT || x > SCREEN_WIDTH) return ILI9341_MAGENTA;
+                return draw->getFrameBuffer()[(SCREEN_WIDTH * y)+x];
+            }else{
+                if (!surface_cache) return ILI9341_MAGENTA;
+                if (x >= surface_cache->getWidth()) return ILI9341_MAGENTA;
+                if (y >= surface_cache->getHeight()) return ILI9341_MAGENTA;
+                
+                return draw->readSurfacePixel(surface_cache,x,y);
+            }
         }
         return 0; 
     }
@@ -470,7 +478,7 @@ class AppWren:public AppBaseClass {
                 draw->fillScreen(CL(r,g,b));
             } else{
                 if (!surface_cache) return;
-                draw->fillSurface(surface_cache,CL(r,g,b),BLT_MEAN);
+                draw->fillSurface(surface_cache,CL(r,g,b),BLT_COPY);
             }
         }
         return;

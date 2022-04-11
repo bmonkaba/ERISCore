@@ -228,13 +228,11 @@ void SvcDataDictionary::printStats(){
 void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
-    if(sci->requestStartLZ4Message()){
+    if(!sci->throttle()){
         sci->print(F("DD {"));
-
-        dd_transmitt_block;
         uint16_t from, to;
-        from = dd_transmitt_block++ * 4; //block size
-        to = dd_transmitt_block * 4;
+        from = dd_transmitt_block++ * 32; //block size
+        to = dd_transmitt_block * 32;
         if (to >= next){
             to = next;
             dd_transmitt_block = 0;
@@ -249,7 +247,7 @@ void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
             if (i != to-1) sci->print(",");
         }
         sci->println("}");
-        sci->sendLZ4Message();
+        sci->send();
     }
 }
 

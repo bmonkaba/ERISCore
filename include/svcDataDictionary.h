@@ -214,7 +214,7 @@ class SvcDataDictionary{
     private:
         svcDataDictionaryRecord record[DATADICT_KEYVALUE_PAIRS];
         uint16_t next;
-        uint8_t dd_transmitt_block;
+        uint16_t dd_transmitt_block;
         bool copyKey(const char* key);
 
 };

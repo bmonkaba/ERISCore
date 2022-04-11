@@ -72,7 +72,7 @@ class AudioDirector{
     erisAudioInputI2S audiostream_input_port; //ADC Audio Input(s)
     erisAudioOutputI2S audiostream_output_port; //DAC Audio Output(s)
     uint8_t printstats_select;
-    uint8_t printstats_block;
+    uint16_t printstats_block;
     uint16_t active_connections; 
     uint16_t obj_count;
     uint16_t category_count; 

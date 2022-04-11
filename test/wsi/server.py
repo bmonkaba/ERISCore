@@ -17,6 +17,8 @@
 ###
 
 
+#requires: tornado, serial, and lz4 packages to be installed
+
 import sys
 sys.dont_write_bytecode = True
 
@@ -69,9 +71,11 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 def checkQueue():
     message = ""
     while not output_queue.empty():
-        message += output_queue.get()
-    for c in clients:
-        c.write_message(message)
+        message = output_queue.get()
+        for c in clients:
+            c.write_message(message)
+            #print(message)
+    
     message = ""
     while not vm_output_queue.empty():
         message += vm_output_queue.get()

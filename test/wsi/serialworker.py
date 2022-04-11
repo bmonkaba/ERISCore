@@ -62,9 +62,11 @@ class SerialProcess():
             #print(d)
             
             try:
+                msg_len = len(d)
                 d = d.decode()
               
             except:
+                msg_len = 1
                 if(len(d) > 0):
                     print("First ring decode failure on MSG:")
                     print (d)
@@ -86,10 +88,12 @@ class SerialProcess():
                 except:
                     print("base64.b64decode err")
                     break
-                
-                #print("decode> ")
-                #print(d)
-                #print(size)
+                if (msg_len/size)> 1.0:
+                    print("decode> ")
+                    print(d[:16])
+                    print(size)
+                    print(msg_len)
+                    print(msg_len/size)
                 try:
                     d = lz4.block.decompress(d, uncompressed_size=size)
                 except:
