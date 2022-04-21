@@ -33,8 +33,8 @@ extern SvcErisAudioParameterController apc;
 Touch touch(CS_TOUCH);
 ILI9341_t3_ERIS draw(TFT_CS, TFT_DC,TFT_RESET,TFT_MOSI,TFT_SCLK,TFT_MISO);
 #ifdef USE_EXTMEM
-uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
-uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (8)));
+uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT];
+uint16_t EXTMEM imgCache[AM_IMG_CACHE_SIZE];
 #else
 uint16_t DMAMEM FB1[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__ ((aligned (16)));
 uint16_t DMAMEM imgCache[AM_IMG_CACHE_SIZE] __attribute__ ((aligned (16)));
@@ -123,7 +123,7 @@ FLASHMEM AppManager:: AppManager(){
   }
 };
 
-void AppManager::setup(){
+void FLASHMEM AppManager::setup(){
   //////////////////////////////////////////////////////////////////////////////////////
   //reset the i2c bus and config the external ADC
   Serial.println(F("M AppManager::setup Configuring Audio Hardware"));
@@ -145,7 +145,7 @@ void AppManager::setup(){
  * @brief AppManager update executes single update of the state machine
  * 
  */
-void FASTRUN AppManager::update(){
+void FLASHMEM AppManager::update(){
     elapsedMicros app_time;
     uint32_t heapTop;
     uint32_t drt;
@@ -507,32 +507,27 @@ void FASTRUN AppManager::printStats (){
   if(sci!=NULL){
     AppBaseClass *node = root;
     if (node == NULL) return;
-    if(sci->requestStartLZ4Message()){  
-      sci->print(F("STATS {\"APPS\":{"));
-      do{
-        sci->print(F("\""));
+    do{
+      if(sci->requestStartLZ4Message()==true){
+        sci->print(F("STATS {\"APPS\":{\""));
         sci->print(node->name);
         sci->print(F("\":{"));
-        sci->print(F("\"render_period_max\":"));sci->print(node->render_period_max);sci->print(F(","));
-        sci->print(F("\"render_cpu_time_max\":"));sci->print(node->render_cpu_time_max);sci->print(F(","));
-        sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(F(","));
+        sci->print(F("\"render_period_max\":"));sci->print(node->render_period_max);sci->print(",");
+        sci->print(F("\"render_cpu_time_max\":"));sci->print(node->render_cpu_time_max);sci->print(",");
+        sci->print(F("\"update_period_max\":"));sci->print(node->update_period_max);sci->print(",");
         sci->print(F("\"update_cpu_time_max\":"));sci->print(node->update_cpu_time_max);
-        sci->print(F("},"));
-        //clear the stats
-        node->render_cpu_time_max = 0;
-        node->update_cpu_time_max = 0;
-        node->cycle_time_max = 0;
-        node->render_period_max = 0;
-        node->update_period_max = 0;
-        node=node->next_app_node;//check next node
-      }while(node !=NULL);
-      if (root != 0){
-        sci->print(F("\"root\":\""));sci->print(root->name);sci->print(F("\""));
-      }else{
-        sci->print(F("\"root\":"));sci->print(F("\"NULL\""));
+        sci->println("}}}");
+        sci->sendLZ4Message();
       }
-      sci->println(F("}}"));
-      
+      //clear the stats
+      node->render_cpu_time_max = 0;
+      node->update_cpu_time_max = 0;
+      node->cycle_time_max = 0;
+      node->render_period_max = 0;
+      node->update_period_max = 0;
+      node=node->next_app_node;//check next node
+    }while(node !=NULL);
+    if(sci->requestStartLZ4Message()==true){
       sci->print(F("STATS {\"APPMANAGER\":{"));
       sci->print(F("\"cycle_time\":"));sci->print(cycle_time);sci->print(F(","));
       sci->print(F("\"cycle_time_max\":"));sci->print(cycle_time_max);sci->print(F(","));
@@ -541,9 +536,9 @@ void FASTRUN AppManager::printStats (){
       sci->print(F("\"exclusive_app_render\":"));sci->print(exclusive_app_render);
       sci->println(F("}}"));
       sci->sendLZ4Message();
-      //clear the app manager stats
-      cycle_time_max = 0;
     }
+    //clear the app manager stats
+    cycle_time_max = 0;
   }
   return;
 }
@@ -579,7 +574,7 @@ void AppManager::registerApp(AppBaseClass *app){
  * @return true if app was removed
  * @return false if app could not be found
  */
-bool AppManager::unregisterApp(AppBaseClass *app){
+bool FLASHMEM AppManager::unregisterApp(AppBaseClass *app){
   if (root == 0) return false;
   else{
     AppBaseClass *endNode = root;

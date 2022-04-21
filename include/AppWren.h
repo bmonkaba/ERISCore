@@ -104,7 +104,7 @@ class AppWren:public AppBaseClass {
      * @brief shutdown the VM
      * 
      */
-    void shutdownVM(){
+    void FLASHMEM shutdownVM(){
         if(has_pop){
             am->releasePopUp();
             draw->disablePixelOP();
@@ -122,7 +122,7 @@ class AppWren:public AppBaseClass {
      * @brief shutsdown then starts the VM
      * 
      */
-    void restartVM(){
+    void FLASHMEM restartVM(){
         shutdownVM();
         useNativeFS = true;
         startVM();
@@ -132,13 +132,13 @@ class AppWren:public AppBaseClass {
      * @brief start the VM
      * 
      */
-    void startVM();
+    void FLASHMEM startVM();
 
     /**
      * @brief halts forwarding of the AppBase class method calls/n
      * this allows scripts to run without utilizing the App interface within wren\n 
      */
-    void haltCallForwarding(){
+    void inline haltCallForwarding(){
         enable_call_forwarding = false;
     }
 
@@ -149,13 +149,12 @@ class AppWren:public AppBaseClass {
      * @return true wrenInterpret result is ok
      * @return false wrenInterpret result is not ok
      */
-    bool loadScript(const char* script){
+    bool FASTRUN loadScript(const char* script){
         const char* module = "main";
         bool res;
         res = isWrenResultOK(wrenInterpret(vm, module, script));
         if(res){
             getWrenHandles();
-            wrenEnsureSlots(vm, 1);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
         }
 
@@ -174,7 +173,7 @@ class AppWren:public AppBaseClass {
      * 
      * @param script_name 
      */
-    void rebootRequest(const char* script_name){
+    void FLASHMEM rebootRequest(const char* script_name){
         //the actual reboot load request will be completed in the AppWren::update loop.
         if(sci->requestStartLZ4Message()){
             sci->printf("M AppWren:rebootRequest: %s\n",script_name);
@@ -200,7 +199,7 @@ class AppWren:public AppBaseClass {
      * 
      * @param parent 
      */
-    void setParent(AppBaseClass *parent){AppBaseClass::setParent(parent);}
+    void FLASHMEM setParent(AppBaseClass *parent){AppBaseClass::setParent(parent);}
     
     /**
      * @brief Set the Position object/n
@@ -209,7 +208,7 @@ class AppWren:public AppBaseClass {
      * @param newOriginX 
      * @param newOriginY 
      */
-    void setPosition(int16_t newOriginX, int16_t newOriginY);
+    void FLASHMEM setPosition(int16_t newOriginX, int16_t newOriginY);
     
     /**
      * @brief Set the Dimension object\n
@@ -217,7 +216,7 @@ class AppWren:public AppBaseClass {
      * @param new_width 
      * @param new_height 
      */
-    void setDimension(int16_t new_width, int16_t new_height);
+    void FLASHMEM setDimension(int16_t new_width, int16_t new_height);
     
     /**
      * @brief Set the Widget Position object\n
@@ -358,6 +357,33 @@ class AppWren:public AppBaseClass {
         uint16_t *sb = surface_cache->getSurfaceBufferP();
         Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
+        
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode blt_mode)
+        draw->bltSurface2Surface(&dest,to_x,to_y,&source,from_x,from_y,width,height,blt_mode);
+    }
+    
+    void bltFrameBuffer2Surface(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode blt_mode){
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        Surface dest((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
+        Surface source(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
+        
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode blt_mode)
+        draw->bltSurface2Surface(&dest,to_x,to_y,&source,from_x,from_y,width,height,blt_mode);
+    }
+
+    void bltFrameBuffer2FrameBuffer(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode blt_mode){
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        Surface dest(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
+        Surface source(draw->getFrameBuffer(),SCREEN_WIDTH,SCREEN_HEIGHT);
+        
+        //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode blt_mode)
+        draw->bltSurface2Surface(&dest,to_x,to_y,&source,from_x,from_y,width,height,blt_mode);
+    }
+
+    void bltSurface2Surface(int16_t from_x, int16_t from_y,int16_t width,int16_t height,int16_t to_x, int16_t to_y,bltMode blt_mode){
+        uint16_t *sb = surface_cache->getSurfaceBufferP();
+        Surface dest((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
+        Surface source((uint16_t*)(sb + from_x + (from_y * surface_cache->getWidth())),width,height);
         
         //bltSurface2Surface(Surface *dest, Surface *source,int16_t pos_x,int16_t pos_y,bltMode blt_mode)
         draw->bltSurface2Surface(&dest,to_x,to_y,&source,0,0,source.getWidth(),source.getHeight(),blt_mode);
@@ -569,7 +595,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onFocus==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             if (!isWrenResultOK(wrenCall(vm,h_onFocus))){
                 releaseWrenHandles();
@@ -585,7 +611,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onFocusLost==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 1);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             if (!isWrenResultOK(wrenCall(vm,h_onFocusLost))){
                 releaseWrenHandles();
@@ -605,7 +631,7 @@ class AppWren:public AppBaseClass {
             if (!enable_call_forwarding || h_onTouch==0){ //if no script loaded
                 return;
             } else{
-                wrenEnsureSlots(vm, 3);
+                wrenEnsureSlots(vm, 4);
                 wrenSetSlotHandle(vm, 0, h_slot0);//App
                 wrenSetSlotDouble(vm, 1, t_x);//param
                 wrenSetSlotDouble(vm, 2, t_y);//param
@@ -626,7 +652,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onTouchDrag==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 3);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, t_x);//param
             wrenSetSlotDouble(vm, 2, t_y);//param
@@ -646,7 +672,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onTouchRelease==0){ //if no script loaded
             return;
         } else{
-            wrenEnsureSlots(vm, 3);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, t_x);//param
             wrenSetSlotDouble(vm, 2, t_y);//param
@@ -666,7 +692,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onAnalog1==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 2);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
             if (!isWrenResultOK(wrenCall(vm,h_onAnalog1))){
@@ -685,7 +711,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onAnalog2==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 2);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
             if (!isWrenResultOK(wrenCall(vm,h_onAnalog2))){
@@ -704,7 +730,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onAnalog3==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 2);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
             if (!isWrenResultOK(wrenCall(vm,h_onAnalog3))){
@@ -723,7 +749,7 @@ class AppWren:public AppBaseClass {
         if (!enable_call_forwarding || h_onAnalog4==0){
             return;
         } else{
-            wrenEnsureSlots(vm, 2);
+            wrenEnsureSlots(vm, 4);
             wrenSetSlotHandle(vm, 0, h_slot0);//App
             wrenSetSlotDouble(vm, 1, fval);//param
             if (!isWrenResultOK(wrenCall(vm,h_onAnalog4))){

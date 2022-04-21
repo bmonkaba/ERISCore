@@ -31,6 +31,7 @@ class SerialProcess():
         self.input_queue = input_queue
         self.output_queue = output_queue
         self.sp = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=5000)
+        print("> init serial port complete")
 
     def close(self):
         self.sp.close()
@@ -52,6 +53,7 @@ class SerialProcess():
  
     def run(self):
         while True:
+            error = False
             if not self.input_queue.empty():
                 d = self.input_queue.get()
                 #print ("writing to serial port: "+ d)
@@ -71,6 +73,7 @@ class SerialProcess():
                     print("First ring decode failure on MSG:")
                     print (d)
                     d = ""
+                    error = True
             
             
             if (d.find("LZ4") == 0):
@@ -79,26 +82,30 @@ class SerialProcess():
                 try:
                     size = int(sp[1])
                 except:
-                    self.sp.close()
-                    self.sp = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=5000)
+                    print("bad LZ4 message")
+                    #self.sp.close()
+                    #self.sp = serial.Serial(SERIAL_PORT, SERIAL_BAUDRATE, timeout=5000)
+                    error = True
                     
                 d = ''.join(sp[2:])
                 try:
                     d = base64.b64decode(d,validate=False)
                 except:
                     print("base64.b64decode err")
+                    error = True
                     break
-                if (msg_len/size)> 1.0:
-                    print("decode> ")
-                    print(d[:16])
-                    print(size)
-                    print(msg_len)
-                    print(msg_len/size)
+                #if (msg_len/size)> 1.0:
+                #    print("decode> ")
+                #    print(d[:16])
+                #    print(size)
+                #    print(msg_len)
+                #    print(msg_len/size)
                 try:
                     d = lz4.block.decompress(d, uncompressed_size=size)
                 except:
                     print("lz4.block.decompress err")
                     print (d)
+                    error = True
                 else:
                     #print("decompress> ")
                     #print(d)
@@ -107,9 +114,10 @@ class SerialProcess():
                     except:
                         print("WRN: bad lz4 block")
                         print(d)
-                
+                        error = True
+                #print("-"*80)
             try:
-                if (len(d) > 1 ):#and isinstance(d,str)
+                if (len(d) > 1 and error == False):#and isinstance(d,str)
                    self.output_queue.put(d)
             except:
                d = "?" * len(d) 
@@ -118,7 +126,7 @@ class SerialProcess():
             try:
                 if (d.find("M ") == 0 or d.find("LS ") == 0 or d.find("F") == 0):
                     d = ''.join(s for s in d if unicodedata.category(s)[0]!="C")
-                    #print (d)
+                    #print(d+'\n')
             except:
                 pass
             

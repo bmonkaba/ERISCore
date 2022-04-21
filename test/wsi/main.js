@@ -55,7 +55,7 @@ $(document).ready(function () {
     var sidebar = $("#sidebar");
     var scroll = $("#scroll_me");
     var kbs = $("#kbs");
-    var socket = new WebSocket("ws://ryzen:8088/ws");
+    var socket = new WebSocket("ws://localhost:8088/ws");
     var osi;
     var si = 0;
     var rx_bytes = 0;
@@ -631,10 +631,13 @@ $(document).ready(function () {
                     data_dict = JSON.parse(res.slice(1).join(" "));
                 } catch (e) {
                     //bad message throw it out
+                    console.log("BAD STATS message:");
+                    console.log(data_dict);
                     break;
                 }
                 //$.extend(watch, data_dict);
                 _.merge(watch, data_dict);
+                
 
                 if (!$("#monitor_container").is(":hidden")) renderMonitor();
                 break;

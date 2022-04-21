@@ -264,7 +264,7 @@ typedef struct
   // frequent garbage collections.
   //
   // If zero, defaults to 50.
-  int heapGrowthPercent;
+  float heapGrowthPercent;
 
   // User-defined data associated with the VM.
   void* userData;

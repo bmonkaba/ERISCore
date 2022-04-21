@@ -92,7 +92,7 @@ void errorFn(WrenVM* vm, WrenErrorType errorType,
  * @param name 
  * @return const char* 
  */
-const char * getSourceForModule(const char * name){
+const char * FLASHMEM getSourceForModule(const char * name){
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   return app->loadModuleSource(name);
@@ -105,7 +105,7 @@ const char * getSourceForModule(const char * name){
  * @param module 
  * @param result 
  */
-static void loadModuleComplete(WrenVM* vm, 
+static void FLASHMEM loadModuleComplete(WrenVM* vm, 
                                const char* module,
                                WrenLoadModuleResult result) 
 {
@@ -161,7 +161,7 @@ void sendMessageCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void setPositionCallback(WrenVM* vm){
+void FLASHMEM setPositionCallback(WrenVM* vm){
   //(int16_t newOriginX, int16_t newOriginY)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -173,7 +173,7 @@ void setPositionCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void setDimensionCallback(WrenVM* vm){
+void FLASHMEM setDimensionCallback(WrenVM* vm){
   //(int16_t new_width, int16_t new_height)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -185,7 +185,7 @@ void setDimensionCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void setWidgetPositionCallback(WrenVM* vm){
+void FLASHMEM setWidgetPositionCallback(WrenVM* vm){
   //(int16_t newOriginX, int16_t newOriginY)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -197,7 +197,7 @@ void setWidgetPositionCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void setWidgetDimensionCallback(WrenVM* vm){
+void FLASHMEM setWidgetDimensionCallback(WrenVM* vm){
   //(int16_t new_width, int16_t new_height)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -208,7 +208,7 @@ void setWidgetDimensionCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void requestPopUpCallback(WrenVM* vm){
+void FLASHMEM requestPopUpCallback(WrenVM* vm){
   //(void)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -219,7 +219,7 @@ void requestPopUpCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void releasePopUpCallback(WrenVM* vm){
+void FLASHMEM releasePopUpCallback(WrenVM* vm){
   //(void)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -230,7 +230,7 @@ void releasePopUpCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void getFocusCallback(WrenVM* vm){
+void FLASHMEM getFocusCallback(WrenVM* vm){
   //(void)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -241,7 +241,7 @@ void getFocusCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void returnFocusCallback(WrenVM* vm){
+void FLASHMEM returnFocusCallback(WrenVM* vm){
   //(void)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -341,7 +341,7 @@ void audioDirectorGetFunctionListCallback(WrenVM* vm){
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   AudioDirector* ad = app->getAudioDirector();
   num_slots = ad->getFunctionCount()+1;
-  wrenEnsureSlots(vm, num_slots);
+  //wrenEnsureSlots(vm, num_slots); <- known reentrancy issue
   wrenSetSlotNewList(vm, slot);
   while(++slot < num_slots) {
     char* cat_list;
@@ -365,7 +365,7 @@ void audioDirectorGetTypeListCallback(WrenVM* vm){
   AudioDirector* ad = app->getAudioDirector();
   const char * function = wrenGetSlotString(vm, 1);
   num_slots = ad->getTypeCountByFunction(function)+1;
-  wrenEnsureSlots(vm, num_slots);
+  //wrenEnsureSlots(vm, num_slots); <- known reentrancy issue
   wrenSetSlotNewList(vm, slot);
   while(++slot < num_slots) {
     char* cat_list;
@@ -373,6 +373,20 @@ void audioDirectorGetTypeListCallback(WrenVM* vm){
 		wrenSetSlotString(vm, slot, cat_list);
 		wrenInsertInList(vm, 0, -1, slot);
 	}
+}
+
+void audioDirectorGetArbWaveFormCallback(WrenVM* vm){
+	//waveform program, sample index
+  int slot = 0;
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  AudioDirector* ad = app->getAudioDirector();
+  double program_index = wrenGetSlotDouble(vm, 1);
+  double sample_index = wrenGetSlotDouble(vm, 2);
+  if(program_index>120)program_index = 120;
+  if(program_index<0)program_index = 0;
+  const int16_t *wt = ad->getArbWaveForm(program_index);
+	wrenSetSlotDouble(vm, 0, wt[(int)sample_index]);
 }
 
 /**
@@ -542,7 +556,6 @@ void getImageSizeCallback(WrenVM* vm){
   }else{
     app->getDraw()->getImageSize(wrenGetSlotString(vm,1),wrenGetSlotString(vm,2),&width,&height,&app->wren_file_system);
   }
-  wrenEnsureSlots(vm, 3);
   wrenSetSlotNewList(vm, 0);
   wrenSetSlotDouble(vm,1,width);
   wrenInsertInList(vm, 0, -1, 1);//insert the width from slot 1 
@@ -615,7 +628,7 @@ void loadImageSurfaceCallback(WrenVM* vm){
 }
 
 /**
- * @brief VM callback for extention method
+ * @brief VM callback for extention method - block transfers an area from the available widget image surface to the display frame buffer
  * 
  * @param vm 
  */
@@ -641,6 +654,93 @@ void bltCallback(WrenVM* vm){
   }else return;
   
   app->bltSurface2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
+}
+
+/**
+ * @brief VM callback for extention method - block transfers an area from the display image frame buffer to the widget image surface
+ * 
+ * @param vm 
+ */
+void bltFBCallback(WrenVM* vm){
+  //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
+  }else return;
+  
+  app->bltFrameBuffer2Surface(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
+}
+
+/**
+ * @brief VM callback for extention method - block transfers an area from the display image frame buffer to the widget image surface
+ * 
+ * @param vm 
+ */
+void bltInPlaceCallback(WrenVM* vm){
+  //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
+  }else return;
+  
+  app->bltFrameBuffer2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
+}
+
+/**
+ * @brief VM callback for extention method - block transfers an area from the display image frame buffer to the widget image surface
+ * 
+ * @param vm 
+ */
+void bltInPlaceFBCallback(WrenVM* vm){
+  //(int16_t from_x, int16_t from_y, int16_t width, int16_t height, int16_t dest_x, int16_t dest_y)
+  AppManager* am = AppManager::getInstance();
+  AppWren* app = (AppWren*)am->getAppByName("AppWren");
+  bltMode bm;
+  int32_t blt_mode_request = wrenGetSlotDouble(vm, 7);
+  if (blt_mode_request == 0){ bm = BLT_COPY;
+  }else if (blt_mode_request == 1){ bm = BLT_BLK_COLOR_KEY;
+  }else if (blt_mode_request == 2){ bm = BLT_HATCH_BLK;
+  }else if (blt_mode_request == 3){ bm = BLT_HATCH_XOR;
+  }else if (blt_mode_request == 4){ bm = BLT_ADD;
+  }else if (blt_mode_request == 5){ bm = BLT_SUB;
+  }else if (blt_mode_request == 6){ bm = BLT_MULT;
+  }else if (blt_mode_request == 7){ bm = BLT_DIV;
+  }else if (blt_mode_request == 8){ bm = BLT_AND;
+  }else if (blt_mode_request == 9){ bm = BLT_OR;
+  }else if (blt_mode_request == 10){bm = BLT_XOR;
+  }else if (blt_mode_request == 11){bm = BLT_MEAN;
+  }else if (blt_mode_request == 12){bm = BLT_1ST_PIXEL_COLOR_KEY;
+  }else return;
+  
+  app->bltFrameBuffer2FrameBuffer(wrenGetSlotDouble(vm, 1), wrenGetSlotDouble(vm, 2),wrenGetSlotDouble(vm, 3),wrenGetSlotDouble(vm, 4),wrenGetSlotDouble(vm, 5), wrenGetSlotDouble(vm, 6),bm);
 }
 
 /**
@@ -698,6 +798,7 @@ void drawEnablePixelOp(WrenVM* vm){
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
   pixelOPMode pom;
   int32_t pixel_mode_request = wrenGetSlotDouble(vm, 2);
+  pom = PXOP_COPY; //default
   if(pixel_mode_request==0) pom = PXOP_COPY;
   else if(pixel_mode_request==1) pom =  PXOP_BLK_COLOR_KEY;
   else if(pixel_mode_request==2) pom = PXOP_HATCH_BLK;
@@ -784,7 +885,7 @@ void fsOpenCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsExistsCallback(WrenVM* vm){
+void FLASHMEM fsExistsCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -796,7 +897,7 @@ void fsExistsCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsMkdirCallback(WrenVM* vm){
+void FLASHMEM fsMkdirCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -808,7 +909,7 @@ void fsMkdirCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsRenameCallback(WrenVM* vm){
+void FLASHMEM fsRenameCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -820,7 +921,7 @@ void fsRenameCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsRemoveCallback(WrenVM* vm){
+void FLASHMEM fsRemoveCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -832,7 +933,7 @@ void fsRemoveCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsRmdirCallback(WrenVM* vm){
+void FLASHMEM fsRmdirCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -844,7 +945,7 @@ void fsRmdirCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsUsedSizeCallback(WrenVM* vm){
+void FLASHMEM fsUsedSizeCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -856,7 +957,7 @@ void fsUsedSizeCallback(WrenVM* vm){
  * 
  * @param vm 
  */
-void fsTotalSizeCallback(WrenVM* vm){
+void FLASHMEM fsTotalSizeCallback(WrenVM* vm){
   //(char* file, uint8_t mode)
   AppManager* am = AppManager::getInstance();
   AppWren* app = (AppWren*)am->getAppByName("AppWren");
@@ -868,7 +969,7 @@ void fsTotalSizeCallback(WrenVM* vm){
  * returns the file size if ok, else returns -1 to indicate an error
  * @param vm 
  */
-void fsimportFromSD(WrenVM* vm){
+void FLASHMEM fsimportFromSD(WrenVM* vm){
   //(src_path,src_file,dest_path,dst_file)
   char c[64];
   int32_t file_size;
@@ -1154,7 +1255,7 @@ void fileRewindDirectoryCallback(WrenVM* vm){
  * @param signature 
  * @return WrenForeignMethodFn 
  */
-WrenForeignMethodFn  bindForeignMethod(
+WrenForeignMethodFn FLASHMEM bindForeignMethod(
     WrenVM* vm,
     const char* module,
     const char* className,
@@ -1219,6 +1320,8 @@ WrenForeignMethodFn  bindForeignMethod(
         return audioDirectorEnableAudioInterrupts;
       }else if (strcmp(signature, "disableInterrupts()") == 0){
         return audioDirectorDisableAudioInterrupts;
+      }else if (strcmp(signature, "getArbSample(_,_)") == 0){
+        return audioDirectorGetArbWaveFormCallback;
       }
     }else if (strcmp(className, "Draw") == 0){ //these are static methods... attach them to the class, not an instance
       if (strcmp(signature, "setPixel(_,_,_,_,_)") == 0){
@@ -1243,6 +1346,12 @@ WrenForeignMethodFn  bindForeignMethod(
         return loadImageSurfaceCallback;
       }else if (strcmp(signature, "blt(_,_,_,_,_,_,_)") == 0){
         return bltCallback;
+      }else if (strcmp(signature, "bltFB(_,_,_,_,_,_,_)") == 0){
+        return bltFBCallback;
+      }else if (strcmp(signature, "bltInPlace(_,_,_,_,_,_,_)") == 0){
+        return bltInPlaceCallback;
+      }else if (strcmp(signature, "bltInPlaceFB(_,_,_,_,_,_,_)") == 0){
+        return bltInPlaceFBCallback;
       }else if (strcmp(signature, "line(_,_,_,_,_,_,_)") == 0){
         return drawLineCallback;
       }else if (strcmp(signature, "fill(_,_,_)") == 0){
@@ -1323,16 +1432,16 @@ WrenForeignMethodFn  bindForeignMethod(
 
 //end wren callbacks
 
-void AppWren::vmConstructor(const char* initial_script){
+void FLASHMEM AppWren::vmConstructor(const char* initial_script){
     startVM();
     loadScript(initial_script);
     getWrenHandles();
-    wrenEnsureSlots(vm, 1);
+    wrenEnsureSlots(vm, 4);
     wrenSetSlotHandle(vm, 0, h_slot0);//App
     isWrenResultOK(wrenCall(vm,h_update));
 }
 
-void AppWren::startVM(){
+void FLASHMEM AppWren::startVM(){
     Serial.println(F("\nM AppWren::startVM()"));
     WrenConfiguration config;
     wrenInitConfiguration(&config);
@@ -1352,9 +1461,10 @@ void AppWren::startVM(){
     config.loadModuleFn = &loadModule;
     
     vm = wrenNewVM(&config);
+    wrenEnsureSlots(vm, 4);
 }
 
-void AppWren::messageHandler(AppBaseClass *sender, const char *message){
+void FLASHMEM AppWren::messageHandler(AppBaseClass *sender, const char *message){
   if(0 == strncmp(message,"demo",strlen("demo"))){
     Serial.println(F("M AppWren::MessageHandler: Demo Mode Request"));
     rebootRequest("demo");
@@ -1420,7 +1530,7 @@ void AppWren::messageHandler(AppBaseClass *sender, const char *message){
   }  
   //All other messages from senders other than the SCI will be forwarded to the VM
   //Serial is dedicated to serial comms with the VM for stdio/stderr
-  wrenEnsureSlots(vm, 3);
+  wrenEnsureSlots(vm, 4);
   wrenSetSlotHandle(vm, 0, h_slot0);//App
   wrenSetSlotString(vm, 1, sender->name);//sender
   wrenSetSlotString(vm, 2, message);//message
@@ -1459,7 +1569,7 @@ bool AppWren::dynamicSurfaceManager(){
   return true;
 }
 
- void AppWren::render(){
+ void FLASHMEM AppWren::render(){
         if (enable_call_forwarding == false){ //if no script loaded
             return;
         } else{
@@ -1475,7 +1585,7 @@ bool AppWren::dynamicSurfaceManager(){
             freeModuleSource();
             return;
           }
-          wrenEnsureSlots(vm, 1);
+          wrenEnsureSlots(vm, 4);
           wrenSetSlotHandle(vm, 0, h_slot0);//App
           if (!isWrenResultOK(wrenCall(vm,h_render))){
             releaseWrenHandles();
@@ -1529,12 +1639,13 @@ void AppWren::update(){
   if (enable_call_forwarding == false){ //if no script loaded
       return;
   } else{
-    wrenEnsureSlots(vm, 1);
+    wrenEnsureSlots(vm,8);
     wrenSetSlotHandle(vm, 0, h_slot0);//App
     if (!isWrenResultOK(wrenCall(vm,h_update))){
         releaseWrenHandles();
     };
   }
+  wrenCollectGarbage(vm);
 }; //allways called even if app is not active
 
 void AppWren::releaseWrenHandles(){
@@ -1558,7 +1669,7 @@ void AppWren::releaseWrenHandles(){
 
 void AppWren::getWrenHandles(){
   Serial.println(F("M AppWren::getWrenHandles"));
-  wrenEnsureSlots(vm, 1);
+  wrenEnsureSlots(vm, 4);
   wrenGetVariable(vm, "main", "ErisApp", 0); //get the instance to call the methods on
   //get the handles
   h_slot0 = wrenGetSlotHandle(vm, 0);

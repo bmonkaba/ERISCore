@@ -69,7 +69,7 @@ typedef struct FFTReadRangeStruct{
 	uint16_t startBin;		
 	uint16_t stopBin;		
 	uint16_t peakBin;	
-} FFTReadRange;
+} FFTReadRange __attribute__ ((aligned(32)));;
 
 
 class erisAudioAnalyzeFFT1024 : public AudioStream

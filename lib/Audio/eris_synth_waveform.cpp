@@ -29,8 +29,6 @@
 #include "arm_math.h"
 #include "utility/dspinst.h"
 
-#include "eris_waveshapes.h"
-
 // uncomment for more accurate but more computationally expensive frequency modulation
 //#define IMPROVE_EXPONENTIAL_ACCURACY
 #define BASE_AMPLITUDE 0x6000  // 0x7fff won't work due to Gibb's phenomenon, so use 3/4 of full range.

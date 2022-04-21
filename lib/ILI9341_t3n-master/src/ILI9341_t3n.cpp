@@ -1412,14 +1412,14 @@ void FLASHMEM ILI9341_t3n::setRotation(uint8_t m) {
   cursor_y = 0;
 }
 
-void FLASHMEM ILI9341_t3n::setScroll(uint16_t offset) {
+void ILI9341_t3n::setScroll(uint16_t offset) {
   beginSPITransaction(_SPI_CLOCK);
   writecommand_cont(ILI9341_VSCRSADD);
   writedata16_last(offset);
   endSPITransaction();
 }
 
-void FLASHMEM ILI9341_t3n::invertDisplay(boolean i) {
+void ILI9341_t3n::invertDisplay(boolean i) {
   beginSPITransaction(_SPI_CLOCK);
   writecommand_last(i ? ILI9341_INVON : ILI9341_INVOFF);
   endSPITransaction();
@@ -1794,7 +1794,7 @@ void ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
   endSPITransaction();
 }
 #elif defined(__IMXRT1052__) || defined(__IMXRT1062__) // Teensy 4.x
-void FLASHMEM ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
+void ILI9341_t3n::readRect(int16_t x, int16_t y, int16_t w, int16_t h,
                            uint16_t *pcolors) {
   // Use our Origin.
   x += _originx;

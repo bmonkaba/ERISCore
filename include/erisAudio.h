@@ -17,7 +17,6 @@
 #define play_sd_wav_h_
 //a modified synth waveform header is contained in the eris library
 //block the import from audio.h
-
 #include "eris_synth_waveform.h"
 #include "eris_analyze_fft1024.h"
 #include "eris_analyze_scope.h"

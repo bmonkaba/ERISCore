@@ -15,7 +15,7 @@
 #ifdef USE_USB_MIDI
 
 #else
-MIDI_CREATE_INSTANCE(HardwareSerial, Serial8, usbMIDI);
+MIDI_CREATE_INSTANCE(HardwareSerial, Serial8, hwMIDI);
 #endif
 
 unsigned long last_midi_clock_rxtime;
@@ -107,13 +107,12 @@ void handleStopCallback(void){}
 void handleActiveSensingCallback(void){}
 void handleSystemResetCallback(void){}
 
-void SvcMIDI::midiInit(){
+void FLASHMEM SvcMIDI::midiInit(){
     //start midi
-    #ifndef USE_USB_MIDI
-    usbMIDI.begin(MIDI_CHANNEL_OMNI); //MIDI_LISTEN_CHANNEL - default listen on channel 7 (set to MIDI_CHANNEL_OMNI to receive all)
-    usbMIDI.setHandlePitchBend(handlePitchBendCallback);
-    usbMIDI.setHandleError(handleErrorCallback);
-    #endif
+    
+    hwMIDI.setHandlePitchBend(handlePitchBendCallback);
+    hwMIDI.setHandleError(handleErrorCallback);
+    hwMIDI.begin(MIDI_CHANNEL_OMNI); //MIDI_LISTEN_CHANNEL - default listen on channel 7 (set to MIDI_CHANNEL_OMNI to receive all)
     
     usbMIDI.setHandleNoteOff(handleNoteOffCallback);
     usbMIDI.setHandleNoteOn(handleNoteOnCallback);
@@ -121,10 +120,8 @@ void SvcMIDI::midiInit(){
     usbMIDI.setHandleControlChange(handleControlChangeCallback);
     usbMIDI.setHandleProgramChange(handleProgramChangeCallback);
     usbMIDI.setHandleAfterTouchChannel(handleAfterTouchChannelCallback);
-    #ifdef USE_USB_MIDI
     usbMIDI.setHandlePitchChange(handlePitchBendCallback);
     usbMIDI.setHandleSongPosition(handleSongPositionCallback);
-    #endif
     usbMIDI.setHandleSystemExclusive(handleSystemExclusiveCallback);
     usbMIDI.setHandleTimeCodeQuarterFrame(handleTimeCodeQuarterFrameCallback);
     usbMIDI.setHandleSongSelect(handleSongSelectCallback);
@@ -155,7 +152,7 @@ void SvcMIDI::midiInit(){
     usbMIDI.begin();
 }; 
 
-bool SvcMIDI::subscribe(uint16_t app_id){
+bool FLASHMEM SvcMIDI::subscribe(uint16_t app_id){
     //find the next available slot
     for(uint16_t i = 0; i < MAX_MIDI_MESSAGE_APP_SUBSCRIPTIONS; i ++){
         if (subscriptions[i] == 0 || subscriptions[i] == app_id){

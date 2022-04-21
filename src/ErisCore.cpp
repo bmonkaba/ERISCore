@@ -6,7 +6,7 @@
 #include <SdFat.h>
 #include "HSI.h"
 #include "SPI.h"
-#include "AppTemplate.h"
+//#include "AppTemplate.h"
 #include "AppManager.h"
 //Compiled in ErisCore Apps include files:
 #include "AppAudioToPolyphonic.h"
@@ -17,13 +17,13 @@
 #include "SvcErisAudioParameterController.h"
 #include "AppAIfES.h"
 
-AudioDirector _ad;
-AppAudioToPolyphonic appPoly;
-SvcSerialCommandInterface sci;
-SvcMIDI m;
-SvcErisAudioParameterController apc;
-AppReprogram appReprogram;
-AppWren appWren;
+AudioDirector EXTMEM _ad;
+AppAudioToPolyphonic EXTMEM appPoly;
+SvcSerialCommandInterface EXTMEM sci;
+SvcMIDI EXTMEM m;
+SvcErisAudioParameterController EXTMEM apc;
+AppReprogram EXTMEM appReprogram;
+AppWren EXTMEM appWren;
 //AppAIfES EXTMEM ai;
 
 void setup() {
@@ -34,7 +34,6 @@ void setup() {
   //power on/reset bootrequest check
   pinMode(TAP_INPUT, INPUT);
   pinMode(SW_D, INPUT);
- //delay(500);
   Serial.begin(3000000);//baud rate is ignored by the library as it's fixed at max USB speed
   if (digitalRead(TAP_INPUT) == LOW && digitalRead(SW_D) == LOW){
             Serial.println(F("setup: Power on reset request to enter programming mode in 5 seconds."));

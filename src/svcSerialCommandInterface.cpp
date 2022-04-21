@@ -88,7 +88,7 @@ const char* gWelcomeMessage =
 "M Connected to the Serial Command Interface           \n";
 
 
-int FASTRUN replacechar(char *str, char orig, char rep) {
+int FLASHMEM replacechar(char *str, char orig, char rep) {
     char *ix = str;
     int n = 0;
     while((ix = strchr(ix, orig)) != NULL) {
@@ -98,7 +98,7 @@ int FASTRUN replacechar(char *str, char orig, char rep) {
     return n;
 }
 
-uint16_t FASTRUN SvcSerialCommandInterface::checksum(const char *msg){
+uint16_t FLASHMEM SvcSerialCommandInterface::checksum(const char *msg){
     uint16_t csum;
     csum=0;
     for(uint16_t i = 0;i<strlen(msg);i++){
@@ -114,6 +114,10 @@ uint16_t FASTRUN SvcSerialCommandInterface::checksum(const char *msg){
  */
 void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
     uint16_t compressed_len,uncompressed_len;
+
+    while(throttle()){
+        delay(5);
+    };
 #ifdef USE_EXTMEM
     //do nothing - one time malloc in the constructor
 #else
@@ -122,16 +126,14 @@ void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
     am->requestArmSetClock(CPU_BOOST_MAX_FREQ);
     memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
     uncompressed_len = index_tx_buffer;
-    compressed_len = LZ4_compress_fast(tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,1);
+    compressed_len = LZ4_compress_fast(p_tx_Buffer,p_working_buffer,index_tx_buffer,SERIAL_WORKING_BUFFER_SIZE,1);
     empty();
-    encode_base64((unsigned char *)p_working_buffer, compressed_len, (unsigned char *)tx_Buffer);
-    //while(throttle()){
-    //    delay(5);
-    //};
-    Serial.print(" ");
+    encode_base64((unsigned char *)p_working_buffer, compressed_len, (unsigned char *)p_tx_Buffer);
+
+    Serial.print("LZ4 ");
     Serial.print(uncompressed_len);
     Serial.print(" ");
-    Serial.println(tx_Buffer);
+    Serial.println(p_tx_Buffer);
     am->requestArmSetClock(CPU_BASE_FREQ);
 
 #ifdef USE_EXTMEM
@@ -147,10 +149,10 @@ void FASTRUN SvcSerialCommandInterface::sendLZ4Message(){
  */
 void FASTRUN SvcSerialCommandInterface::send(){
     while(throttle()){
-        delay(50);
+        delay(5);
     }
-    if (strlen(tx_Buffer) > 0 ) Serial.print(tx_Buffer);
-    memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+    if (strlen(p_tx_Buffer) > 0 ) Serial.print(p_tx_Buffer);
+    memset(p_tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
     index_tx_buffer = 0;
     tx_buffer_overflow_flag = false;
 }
@@ -173,8 +175,8 @@ bool FASTRUN SvcSerialCommandInterface::throttle(){
         uint16_t msec_delay_counter = 0;
         //serial tx buffer not available
         do{
-            delay(1);
-            msec_delay_counter += 2;
+            delay(5);
+            msec_delay_counter += 5;
             delta_avail = Serial.availableForWrite();
             if (delta_avail > SERIAL_THROTTLE_CHECK_CONNECTION_BUFFER_THRESHOLD) break;
         } while (msec_delay_counter < SERIAL_THROTTLE_CHECK_CONNECTION_MAX_DELAY);
@@ -190,11 +192,11 @@ bool FASTRUN SvcSerialCommandInterface::throttle(){
     return false;
 }
 
-void FASTRUN SvcSerialCommandInterface::txOverflowHandler(){
+void FLASHMEM SvcSerialCommandInterface::txOverflowHandler(){
     char* s;
-    s = strrchr(tx_Buffer,'\r');//find last new line
+    s = strrchr(p_tx_Buffer,'\r');//find last new line
     s[0] = 0;
-    token = strtok(tx_Buffer, &newline);
+    token = strtok(p_tx_Buffer, &newline);
     while( token != NULL ) {     
         while(throttle()){
             delay(50);
@@ -212,20 +214,21 @@ void FASTRUN SvcSerialCommandInterface::txOverflowHandler(){
     }
     //close the tag
     Serial.println("]");
+    delay(120);
+    Serial.printf("VM remainder %s",p_tx_Buffer);
     //start the next part of the multipart message
-    Serial.print(&multipart_header[0]);
-    s = strrchr(tx_Buffer,'\r');//find last new line
+    Serial.print(&p_multipart_header[0]);
+    s = strrchr(p_tx_Buffer,'\r');//find last new line
     //s = strrchr(s,'\r');//find last new line
     s+=2;
-    Serial.printf("VM %s %s\n",&multipart_header[0],s);
     //Serial.flush();
     index_tx_buffer = strlen(s);
-    safer_strncpy(tx_Buffer,s,sizeof(tx_Buffer));
-    //Serial.printf("VM remainder %s",txBuffer);
+    safer_strncpy(p_tx_Buffer,s,sizeof(p_tx_Buffer));
+    
 }
 
 
-void FASTRUN SvcSerialCommandInterface::streamReceiveHandler(){
+void FLASHMEM SvcSerialCommandInterface::streamReceiveHandler(){
     Serial.println(F("M SvcSerialCommandInterface::streamReceiveHandler isCapturingBulkData"));
     char* f;
     do{
@@ -256,10 +259,10 @@ void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
     uint16_t payload_len;
     //if(Serial.availableForWrite() < 6000) return;
     if(throttle()) return;
-    p_SD->chdir(stream_path);
-    if (p_SD->exists(stream_file)){
+    p_SD->chdir(p_stream_path);
+    if (p_SD->exists(p_stream_file)){
         payload_len = 0;
-        if(!file.open(stream_file, O_READ)){ 
+        if(!file.open(p_stream_file, O_READ)){ 
             Serial.println(F("M GET_ERR FILE OPEN ERROR"));
             is_streaming_file = false;
             is_periodic_messages_enabled = true;
@@ -288,7 +291,7 @@ void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
                 sprintf(hexBuffer,"%02X,",(unsigned int)bufferChr);
                 print(hexBuffer);
             }
-            if(index_tx_buffer > 0) tx_Buffer[--index_tx_buffer] = '\0'; //remove last comma
+            if(index_tx_buffer > 0) p_tx_Buffer[--index_tx_buffer] = '\0'; //remove last comma
             stream_pos = file.position();
             println("");
         }
@@ -320,7 +323,7 @@ void FLASHMEM SvcSerialCommandInterface::streamTransmitHandler(){
     } 
     else{
         Serial.print(F("M GET_ERR FILE NOT FOUND "));
-        Serial.println(stream_file);
+        Serial.println(p_stream_file);
         is_streaming_file = false;
         stream_pos = 0;
         return;
@@ -469,15 +472,15 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
     char cmd[128], param[128];
     int32_t val;
     float32_t fval;
-    total_read = sscanf(received_chars, "%127s %127s %d" , cmd, param,(int*)&val);
+    total_read = sscanf(p_received_chars, "%127s %127s %d" , cmd, param,(int*)&val);
     if (total_read < 3){
-        total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
+        total_read = sscanf(p_received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
         if (total_read < 3){
             Serial.print(F("M SvcSerialCommandInterface::messageHandler_UPDATE_DD ERROR WRONG PARAM COUNT"));
             Serial.println(total_read);
         } else am->data->update(param,fval); 
     }else if(!am->data->update(param,val)){
-        total_read = sscanf(received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
+        total_read = sscanf(p_received_chars, "%127s %127s %f" , cmd, param,(float32_t*)&fval);
         am->data->update(param,fval);
     }
 }
@@ -486,7 +489,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_UPDATE_DD(){
 void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_SAVE(){
     if(p_capture_buffer != NULL){
         Serial.println(F("M SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_SAVE: script save request"));
-        am->sendMessage(this,"AppWren",received_chars);//"WREN_SCRIPT_SAVE [modulename]");
+        am->sendMessage(this,"AppWren",p_received_chars);//"WREN_SCRIPT_SAVE [modulename]");
         am->sendMessage(this,"AppWren",p_capture_buffer);
     #ifndef USE_EXTMEM
         captureBuffer = (char*)realloc(captureBuffer,0);
@@ -545,7 +548,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_WREN_SCRIPT_START(){
 void FLASHMEM SvcSerialCommandInterface::messageHandler_GET(){
     int total_read;
     char cmd[128], param[128],param2[128];
-    total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
+    total_read = sscanf(p_received_chars, "%127s %127s %127s" , cmd, param,param2);
     if (total_read < 3){
         Serial.print(F("M GET_ERR WRONG PARAM COUNT"));
         Serial.println(param);
@@ -557,8 +560,8 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_GET(){
         Serial.print(param);
         Serial.print(" ");
         Serial.println(param2);
-        strcpy(stream_path,param);
-        strcpy(stream_file,param2);
+        strcpy(p_stream_path,param);
+        strcpy(p_stream_file,param2);
         Serial.println(F("FS_START"));
         is_streaming_file = true;
         is_periodic_messages_enabled = false;
@@ -569,7 +572,10 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_LS(){
     bool first;
     int total_read;
     char cmd[128], param[128],param2[128];
-    total_read = sscanf(received_chars, "%127s %127s %127s" , cmd, param,param2);
+    total_read = sscanf(p_received_chars, "%127s %127s %127s" , cmd, param,param2);
+    while(Serial.availableForWrite() < 6000){
+        delay(20);
+    }
     if (total_read < 2){
         //send the root directory
         //delay(100);
@@ -581,14 +587,14 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_LS(){
 #else
         workingBuffer = (char*)malloc(SERIAL_WORKING_BUFFER_SIZE);
 #endif
-        strcpy(p_working_buffer,tx_Buffer);
+        strcpy(p_working_buffer,p_tx_Buffer);
         empty();
         Serial.print(p_working_buffer);
         sd->chdir();
         tx_buffer_overflow_flag = false;
         sd->ls(this);
         memset(p_working_buffer,0,SERIAL_WORKING_BUFFER_SIZE);
-        strcpy(p_working_buffer,tx_Buffer);
+        strcpy(p_working_buffer,p_tx_Buffer);
         empty();
         first = true;
         token = strtok(p_working_buffer, &newline);
@@ -618,12 +624,12 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_LS(){
         send();
         sd->chdir();
         replacechar(param,' ',':'); //replace any spaces in the transmitted path to ':'
-        sprintf(multipart_header, "LS %s [", param);
-        Serial.print(multipart_header);
+        sprintf(p_multipart_header, "LS %s [", param);
+        Serial.print(p_multipart_header);
         replacechar(param,':',' '); // put the spaces back in time for the ls command
         sd->ls(this,param,false);
         first = true;
-        token = strtok(tx_Buffer, &newline);
+        token = strtok(p_tx_Buffer, &newline);
         while( token != NULL && index_tx_buffer > 1) {                        
             if (first && !tx_buffer_overflow_flag) Serial.print(F("\""));
             else Serial.print(F(",\""));
@@ -641,7 +647,7 @@ void FLASHMEM SvcSerialCommandInterface::messageHandler_LS(){
     }
 }
 
-void FASTRUN SvcSerialCommandInterface::update(){ 
+void FLASHMEM SvcSerialCommandInterface::update(){ 
     char endMarker = '\n';
     boolean newRxMsg = false;
     char bufferChr;
@@ -660,7 +666,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
         if (Serial.available() > 0 && false == newRxMsg ){
             do{
                 bufferChr = Serial.read();
-                received_chars[index_rx_buffer++] = bufferChr;
+                p_received_chars[index_rx_buffer++] = bufferChr;
 
                 if(index_rx_buffer >= (SERIAL_RX_BUFFER_SIZE-2)){
                     //input overflow - clear serial input and reset the index
@@ -671,7 +677,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 }
 
                 if (bufferChr == endMarker){
-                    received_chars[--index_rx_buffer] = '\0'; //remove the end marker and null terminate the string
+                    p_received_chars[--index_rx_buffer] = '\0'; //remove the end marker and null terminate the string
                     index_rx_buffer = 0; //reset the input write index
                     newRxMsg = true;
                 }
@@ -683,7 +689,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
             // each individual message handler is then responsible for parsing out their own parameters if required.
             char cmd[128], param[128],param2[128];
             int total_read;
-            total_read = sscanf(received_chars, "%127s %127s" , cmd, param);
+            total_read = sscanf(p_received_chars, "%127s %127s" , cmd, param);
             while(throttle()){delay(10);}; //let the transmitt buffer clear out
             if (strncmp(cmd, "LS",sizeof(cmd)) == 0){
                 messageHandler_LS();
@@ -706,19 +712,19 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 int source_port;
                 int dest_port;
                 
-                total_read = sscanf(received_chars, "%127s %127s %d %127s %d" , cmd, param,&source_port,param2,&dest_port);
+                total_read = sscanf(p_received_chars, "%127s %127s %d %127s %d" , cmd, param,&source_port,param2,&dest_port);
                 if (total_read < 3){
                     Serial.print(F("M CONNECT WRONG PARAM COUNT "));
-                    Serial.println(received_chars);
+                    Serial.println(p_received_chars);
                 } else{
                     ad->connect(param,source_port,param2,dest_port);
                 }
             }else if (strncmp(cmd, "DISCONNECT",sizeof(cmd)) == 0){
                 int dest_port;
-                total_read = sscanf(received_chars, "%127s %127s %d" , cmd, param,&dest_port);
+                total_read = sscanf(p_received_chars, "%127s %127s %d" , cmd, param,&dest_port);
                 if (total_read < 2){
                     Serial.print(F("M DISCONNECT WRONG PARAM COUNT "));
-                    Serial.println(received_chars);
+                    Serial.println(p_received_chars);
                 } else{
                     if (ad->disconnect(param,dest_port)){
                         Serial.printf(F("M DISCONNECTED %s %d\n"),param,dest_port);
@@ -730,7 +736,7 @@ void FASTRUN SvcSerialCommandInterface::update(){
                 if (total_read > 1) am->getActiveApp()->messageHandler(this,param);
             }else if (strncmp(cmd, "APC",sizeof(cmd)) == 0){
                 //forward the message to the SvcErisAudioParameterController
-                am->getAppByName("APC")->messageHandler(this,received_chars + 4);
+                am->getAppByName("APC")->messageHandler(this,p_received_chars + 4);
             }else if (strncmp(cmd, "STATS",sizeof(cmd)) == 0){
                 ad->printStats();
                 while(throttle()){delay(1);}

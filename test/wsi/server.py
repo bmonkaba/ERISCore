@@ -17,8 +17,6 @@
 ###
 
 
-#requires: tornado, serial, and lz4 packages to be installed
-
 import sys
 sys.dont_write_bytecode = True
 
@@ -71,16 +69,15 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 def checkQueue():
     message = ""
     while not output_queue.empty():
-        message = output_queue.get()
+        message += output_queue.get()
+    if len(message) > 0:
         for c in clients:
             c.write_message(message)
-            #print(message)
-    
-    message = ""
+        message = ""
     while not vm_output_queue.empty():
         message += vm_output_queue.get()
-    for c in clients:
-        if(len(message)>1):
+    if(len(message) > 0):
+        for c in clients:
             #message = "VM "+ message
             c.write_message(message)
 
@@ -89,7 +86,7 @@ if __name__ == '__main__':
     print("warning: this app is running an open access local static webserver and USB serial websocket")
     ###
     ## start the serial worker in background (as a deamon)
-    sp = serialworker.SerialProcess('COM12',input_queue, output_queue)
+    sp = serialworker.SerialProcess('/dev/cu.usbmodem110967101',input_queue, output_queue)
     x = threading.Thread(target=sp.run)
     x.start()
 
@@ -117,7 +114,7 @@ if __name__ == '__main__':
 
     mainLoop = tornado.ioloop.IOLoop.instance()
     ## adjust the scheduler_interval according to the frames sent by the serial port
-    scheduler_interval = 20
+    scheduler_interval = 10
     scheduler = tornado.ioloop.PeriodicCallback(checkQueue, scheduler_interval)
     scheduler.start()
     #s_scheduler = tornado.ioloop.PeriodicCallback(sp.run, scheduler_interval)

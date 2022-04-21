@@ -12,7 +12,7 @@ bool _busy(){
     return dmabusy;
 }
 
-bool FASTRUN ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
+bool FLASHMEM ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool update_cont){
   bool rval;
   //Serial.printf("%u\n",(uint32_t)(void*)draw->_pfbtft);
   //Serial.flush();
@@ -22,7 +22,7 @@ bool FASTRUN ILI9341_t3_ERIS::updateScreenAsyncFrom(ILI9341_t3_ERIS* draw,bool u
   return rval;
 }
 
-bool FASTRUN Animation::getNextFrameChunk(){
+bool FLASHMEM Animation::getNextFrameChunk(){
   if (p_SD == NULL) return false;
   if (chunk==0){
     chunk++;
@@ -50,18 +50,18 @@ bool FASTRUN Animation::getNextFrameChunk(){
   return true;
 }
 
-void FASTRUN Animation::setSD(SdFs *ptr){p_SD = ptr;}
+void Animation::setSD(SdFs *ptr){p_SD = ptr;}
 
-void FASTRUN ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
+void ILI9341_t3_ERIS::setSD(SdFs *ptr){p_SD = ptr;}
 
-void FASTRUN ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
+void FLASHMEM ILI9341_t3_ERIS::setPWMPin(uint8_t pin){
     backlight = pin;
     //pinMode(backlight, OUTPUT);
     analogWriteFrequency(backlight, 16000);
-    analogWrite(backlight, 180);
+    analogWrite(backlight, 80);
 }
 
-void FASTRUN ILI9341_t3_ERIS::begin(){
+void FLASHMEM ILI9341_t3_ERIS::begin(){
     ILI9341_t3n::begin(tft_write_speed,tft_read_speed);
     fillScreen(ILI9341_BLACK);
     setClipRect();
@@ -86,7 +86,7 @@ void ILI9341_t3_ERIS::flipBuffer(){
 };
 */
 
-void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,int16_t dest_y, Surface *source, int16_t from_x, int16_t from_y, int16_t from_width, int16_t from_height,bltMode blt_mode){
   bool toggle = false;
   int16_t source_x,source_y, d_x,d_y;
   uint32_t read_index,write_index;
@@ -132,11 +132,11 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
     return;
   }else{
     //for each pixel by x,y coords...
-    for (source_y=0; source_y < source->getHeight();source_y +=1){
-      for (source_x=0; source_x < source->getWidth();source_x +=1){
+    for (source_y=from_y; source_y < (from_y + from_height);source_y +=1){
+      for (source_x=from_x; source_x < (from_x + from_width);source_x +=1){
         //translate the source coords to the destination coords and calculate the indexes
-        d_x = dest_x + source_x; 
-        d_y = dest_y + source_y;
+        d_x = dest_x + (source_x - from_x); 
+        d_y = dest_y + (source_y - from_y);
         write_index = (d_y * dest->getWidth()) + d_x;
         read_index = (source_y * source->getWidth()) + source_x;
 
@@ -267,16 +267,26 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
             dest_buffer[write_index] = CL(r,g,b);
           }else if (blt_mode == BLT_MEAN){
             q7_t res[3];
-            q7_t a[2];
-            a[0] = (0x7F & (dest_buffer[write_index] >> 8));
+            q7_t a[5];
             a[1] = (0x7F & (dw >> 8));
-            arm_mean_q7(a,2,&res[0]);
-            a[0] = (0x7F & (dest_buffer[write_index] >> 3));
+            a[0] = ((0x7F & (dest_buffer[write_index] >> 8)) + a[1])/2;
+            a[2] = a[1];
+            a[3] = a[1];
+            a[4] = a[1];
+            arm_mean_q7(a,5,&res[0]);
+
             a[1] = (0x7F & (dw >> 3));
-            arm_mean_q7(a,2,&res[1]);
-            a[0] = (0x7F & (dest_buffer[write_index] << 3));
+            a[0] = ((0x7F & (dest_buffer[write_index] >> 3)) + a[1])/2;
+            a[2] = a[1];
+            a[3] = a[1];
+            a[4] = a[1];
+            arm_mean_q7(a,5,&res[1]);
             a[1] = (0x7F & (dw << 3));
-            arm_mean_q7(a,2,&res[2]);
+            a[0] = ((0x7F & (dest_buffer[write_index] << 3)) + a[1])/2;
+            a[2] = a[1];
+            a[3] = a[1];
+            a[4] = a[1];
+            arm_mean_q7(a,5,&res[2]);
             dest_buffer[write_index] = CL(res[0],res[1],res[2]);
           }else if (blt_mode == BLT_1ST_PIXEL_COLOR_KEY){
             if (dw != first_pixel) dest_buffer[write_index] = dw;
@@ -287,7 +297,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSurface2Surface(Surface *dest, int16_t dest_x,i
   }
 }
 
-void FASTRUN ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color,bltMode blt_mode){
   int16_t dest_x,dest_y;
   uint16_t *dest_buffer;
   bool toggle, is_not_color_keyed;
@@ -395,26 +405,26 @@ void FASTRUN ILI9341_t3_ERIS::fillSurface(Surface *dest,uint16_t color,bltMode b
   }
 };
 
-void FASTRUN ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color){
+void FLASHMEM ILI9341_t3_ERIS::drawPixel(Surface *dest,int16_t x, int16_t y, uint16_t color){
   //uint16_t *dstBuffer;
   //dstBuffer = dest->getSurfaceBufferP();
   //dstBuffer[(y * dest->getWidth()) + x] = color;
   ((uint16_t *)(dest->getSurfaceBufferP()))[(y * dest->getWidth()) + x] = color;
 }
 
-uint16_t FASTRUN ILI9341_t3_ERIS::readSurfacePixel(Surface *source,int16_t x, int16_t y){
+uint16_t FLASHMEM ILI9341_t3_ERIS::readSurfacePixel(Surface *source,int16_t x, int16_t y){
   //uint16_t *srcBuffer;
   //srcBuffer = source->getSurfaceBufferP();
   //return srcBuffer[(y * source->getWidth()) + x];
   return ((uint16_t*)source->getSurfaceBufferP())[(y * source->getWidth()) + x];
 }
 
-uint16_t FASTRUN ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){ 
+uint16_t FLASHMEM ILI9341_t3_ERIS::readPixel(int16_t x, int16_t y){ 
   return _pfbtft[(y * _width) + x];
 }
 
 
-void FASTRUN ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color){
+void FLASHMEM ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int16_t start_y,int16_t end_x, int16_t end_y, uint16_t color){
   uint16_t *dstBuffer;
   dstBuffer = dest->getSurfaceBufferP();
   uint16_t* save = _pfbtft;
@@ -427,7 +437,7 @@ void FASTRUN ILI9341_t3_ERIS::drawSurfaceLine(Surface *dest,int16_t start_x, int
   _height = SCREEN_HEIGHT;
 }
 
-void FASTRUN ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
+void FLASHMEM ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
   uint16_t *dstBuffer;
   dstBuffer = dest->getSurfaceBufferP();
   uint16_t* save = _pfbtft;
@@ -450,7 +460,7 @@ void FASTRUN ILI9341_t3_ERIS::drawSurfaceFill(Surface *dest,uint16_t color){
  * @param y 
  * @param blt_mode 
  */
-void FASTRUN ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
   bltSDB(_pfbtft, _width, _height, path, filename,x,y,blt_mode); //blt from sd to buffer using the frame buffer as the destination
   return;
 }
@@ -471,7 +481,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSD(const char *path, const char *filename,int16
  * @param blt_mode  transfer operation
  * @param file_system this is the optional pointer to a TinyFS object
  */
-void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows,LittleFS_RAM* file_system){
+void FLASHMEM ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest_x,int16_t dest_y, uint16_t dest_buffer_width,uint16_t dest_buffer_height, const char *file_name,int16_t src_x,int16_t src_y, uint16_t src_width, uint16_t src_height,bltMode blt_mode,bool strip_color_key_rows,LittleFS_RAM* file_system){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -786,7 +796,7 @@ void FASTRUN ILI9341_t3_ERIS::bltArea2Buffer(uint16_t *dest_buffer, int16_t dest
   }
 }
 
-bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
+bool FLASHMEM ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename,int32_t* width,int32_t* height, LittleFS_RAM* file_system){
   char str[16];      //char buffer
   char *c;           //char pointer
   char file_name[64];
@@ -823,7 +833,7 @@ bool FASTRUN ILI9341_t3_ERIS::getImageSize(const char* path,const char* filename
 }
 
 
-void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
+void FLASHMEM ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x,uint16_t y,const char* font,uint16_t pt,LittleFS_RAM* file_system){
   uint64_t position;
   const String end_of_index = "KEARNING\n"; //yeah, its spelled wrong in the file format
   float fx;
@@ -958,7 +968,7 @@ void FASTRUN ILI9341_t3_ERIS::printWithFont(const char* string_buffer,uint16_t x
   }
 }
 
-void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, File* file,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t mx;        //left clip x offset
   int16_t nx;        //right clip x offset
@@ -1095,7 +1105,7 @@ void FASTRUN ILI9341_t3_ERIS::bltRAMFileB(uint16_t *dest_buffer, uint16_t dest_b
  * @param y 
  * @param blt_mode 
  */
-void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
+void FLASHMEM ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer_width, uint16_t dest_buffer_height, const char *path, const char *filename,int16_t x,int16_t y,bltMode blt_mode){
   int16_t iy; // x & y index
   int16_t w;int16_t h; //width & height
   int16_t mx;        //left clip x offset
@@ -1309,7 +1319,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSDB(uint16_t *dest_buffer, uint16_t dest_buffer
   file.close();
 }
 
-void FASTRUN ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
+void FLASHMEM ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
   p_SD->chdir(an->getPath());
   file.open(an->getFileName(), O_READ);
   if (file.available() == 0){ //file not found
@@ -1331,7 +1341,7 @@ void FASTRUN ILI9341_t3_ERIS::bltSDAnimationFullScreen(Animation *an){
  * 
  * @param filename 
  */
-void FASTRUN ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
+void FLASHMEM ILI9341_t3_ERIS::bltSDFullScreen(const char *filename){
   p_SD->chdir("/I/U/W");
   file.open(filename, O_READ);
   if (file.available() == 0){ //file not found

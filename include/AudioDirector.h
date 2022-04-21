@@ -55,10 +55,10 @@ class AudioDirector{
     
     char* getFunctionListItem(uint16_t i){
       generateFunctionList();
-      char* p;
-      p = *functionsList[i];
-      return p;
+      return *functionsList[i];
     }
+
+    const int16_t* getArbWaveForm(uint16_t i);
 
     uint16_t getTypeCountByFunction(const char * function){queryTypesByFunction(function);return query_result_count;}
     char* getTypeListItem(const char* function,uint16_t i);
@@ -76,11 +76,9 @@ class AudioDirector{
     uint16_t active_connections; 
     uint16_t obj_count;
     uint16_t category_count; 
-      
-      
     uint16_t query_result_count;
-    char** functionsList[MAX_AUDIO_FUNCTION_CATEGORIES];
-    char** query_result[MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT];
+    char** volatile functionsList[MAX_AUDIO_FUNCTION_CATEGORIES];
+    char** volatile query_result[MAX_AUDIO_TYPES_BY_FUNCTION_QUERY_RESULT];
     AudioConnection* p_cord[MAX_CONNECTIONS];
     void unlinkAll();
     void linkGroup();

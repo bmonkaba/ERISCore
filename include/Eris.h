@@ -55,7 +55,7 @@
  * @brief thermal throttle trip point temp
  * 
  */
-#define CPU_THERMAL_THROTTLE_TEMP 70.0
+#define CPU_THERMAL_THROTTLE_TEMP 68.0
 
 
 #define ENABLE_ASYNC_SCREEN_UPDATES
@@ -64,7 +64,7 @@
  * @brief rate at which the app manager will update the data dictionary
  * 
  */
-#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 100 
+#define APPMANAGER_MONITOR_DD_UPDATE_RATE_MSEC 50 
 /**
  * @brief application manager shared image cache size\n
  * note: the reason for the multiplication here is to easily get an idea of\n 
@@ -95,7 +95,7 @@
  * @brief uncomment to use USB MIDI otherwise TODO: HW MIDI will be used 
  * 
  */
-#define USE_USB_MIDI
+//#define USE_USB_MIDI
 
 /**
  * @brief default MIDI LISTEN CHANNEL
@@ -125,7 +125,7 @@
  * @brief threshold at which point serial transmission is throttled
  * 
  */
-#define SERIAL_THROTTLE_BUFFER_THRESHOLD 4096
+#define SERIAL_THROTTLE_BUFFER_THRESHOLD 5896
 /**
  * @brief min delta threshold after a throttle event which will trigger an output flush
  * 
@@ -164,13 +164,13 @@
  * @brief output buffer size
  * 
  */
-#define SERIAL_OUTPUT_BUFFER_SIZE 6000
+#define SERIAL_OUTPUT_BUFFER_SIZE 32000
 /**
  * @brief working buffer size
  * 
  */
 #ifdef USE_EXTMEM
-#define SERIAL_WORKING_BUFFER_SIZE 6000
+#define SERIAL_WORKING_BUFFER_SIZE 32000
 #else
 #define SERIAL_WORKING_BUFFER_SIZE 6000
 #endif
@@ -179,7 +179,7 @@
  * @brief filestream payload size\n
  * used for multipart transmission of files
  */
-#define SERIAL_FILESTREAM_PAYLOAD_SIZE 768
+#define SERIAL_FILESTREAM_PAYLOAD_SIZE 8000
 /**
  * @brief enables periodic messages to be transmitted
  * 
@@ -189,12 +189,12 @@
  * @brief transmission rate of the data dictionary
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 251
+#define SERIAL_AUTO_TRANSMIT_DATA_DICT_PERIOD 51
 /**
  * @brief transmission rate of the stats
  * 
  */
-#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 272
+#define SERIAL_AUTO_TRANSMIT_STATS_PERIOD 2048
 
 //Audio Director
 /**
@@ -206,7 +206,7 @@
  * @brief max number of audio memory blocks
  * 
  */
-#define MAX_AUDIO_MEMORY_BLOCKS 200
+#define MAX_AUDIO_MEMORY_BLOCKS 1000
 /**
  * @brief max number of audio stream catagories
  * 
@@ -233,7 +233,7 @@
  * @brief defines how many slices per image\n
  * used to accelerate the wallpaper rendering by only drawing 1/n of the image at a time
  */
-#define ANIMATION_CHUNKS_PER_FRAME 1
+#define ANIMATION_CHUNKS_PER_FRAME 2
 
 //STRINGS - APPS
 const char OCTAVE_DOWN_INTERVAL[] PROGMEM = "OCTAVE_DOWN_INTERVAL";
@@ -284,8 +284,8 @@ const char UI_SLIDER_TEXT_COLOR[] PROGMEM = "UI_SLIDER_TEXT_COLOR";
 
 //WREN
 #ifdef USE_EXTMEM
-#define WREN_VM_HEAP_SIZE 100000
-#define WREN_VM_FILE_SYSTEM_SIZE 10000000
+#define WREN_VM_HEAP_SIZE 150000
+#define WREN_VM_FILE_SYSTEM_SIZE 8100000
 #define WREN_FRAME_BUFFER_SIZE SCREEN_WIDTH*SCREEN_HEIGHT
 #else
 #define WREN_VM_HEAP_SIZE 16000
@@ -306,6 +306,12 @@ class AudioDirector{
         dest_audio_stream,dest_port)
     foreign static disconnect(audio_stream,port)
     foreign static disconnectAll()
+    foreign static getFunctionList()
+    foreign static getTypeList(function)
+    foreign static getTypeInstanceCount(type)
+    foreign static enableInterrupts()
+    foreign static disableInterrupts()
+    foreign static getArbSample(program,sample_index)
 }
 //SvcDataDictionary interface for accessing & sharing variables between components
 class Data {
@@ -323,6 +329,9 @@ class Draw {
     foreign static loadImage(path,filename,x,y,blt_op)
     foreign static loadImageToSurface(path,filename,x,y,blt_op)
     foreign static blt(from_x, from_y, width, height, dest_x, dest_y,blt_op)
+    foreign static bltFB(from_x, from_y, width, height, dest_x, dest_y,blt_op)
+    foreign static bltInPlace(from_x, from_y, width, height, dest_x, dest_y,blt_op)
+    foreign static bltInPlaceFB(from_x, from_y, width, height, dest_x, dest_y,blt_op)
     foreign static setPixel(x,y,r,g,b)
     foreign static getPixel(x,y)
     foreign static line(x,y,x2,y2,r,g,b)

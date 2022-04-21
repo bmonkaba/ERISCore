@@ -175,7 +175,7 @@ void FLASHMEM AudioDirector::printStats(){
         sci->print("}"); //close obj
         if ( i < (to -1)) sci->print(",");
       }
-      sci->print("}}}");
+      sci->print(F("}}}"));
       sci->sendLZ4Message();
     }
   }else if (printstats_select == 1){ 
@@ -216,17 +216,17 @@ void FLASHMEM AudioDirector::printStats(){
         }else{
             //unassigned connections
             sci->print(F(",\"srcType\":\""));
-            sci->print("None");
+            sci->print(F("None"));
             sci->print(F("\",\"srcInstance\":\""));
-            sci->print("None");
+            sci->print(F("None"));
             sci->print(F("\",\"srcPort\":\""));
-            sci->print("None");
+            sci->print(F("None"));
             sci->print(F("\",\"destType\":\""));
-            sci->print("None");
+            sci->print(F("None"));
             sci->print(F("\",\"destInstance\":\""));
-            sci->print("None");
+            sci->print(F("None"));
             sci->print(F("\",\"destPort\":\""));
-            sci->print("None\"");
+            sci->print(F("None\""));
         }
         sci->print(F("}")); //close the connection container
       }
@@ -245,6 +245,9 @@ void FLASHMEM AudioDirector::printStats(){
   }
 }
 
+const int16_t* AudioDirector::getArbWaveForm(uint16_t i){
+  return wt[i];
+}    
 
 /**
  * @brief get the list of function types in the obj pool

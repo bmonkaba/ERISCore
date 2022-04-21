@@ -68,18 +68,24 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
 #ifdef USE_EXTMEM
         p_capture_buffer = (char*)extmem_malloc(SERIAL_RX_CAPTURE_BUFFER_SIZE);
         p_working_buffer = (char*)extmem_malloc(SERIAL_WORKING_BUFFER_SIZE);
+
+        p_multipart_header = (char*)extmem_malloc(SERIAL_TX_HEADER_BUFFER_SIZE);
+        p_received_chars = (char*)extmem_malloc(SERIAL_RX_BUFFER_SIZE);   // an array to store the received data
+        p_stream_path = (char*)extmem_malloc(SERIAL_PARAM_BUFFER_SIZE);
+        p_stream_file = (char*)extmem_malloc(SERIAL_PARAM_BUFFER_SIZE);
+        p_tx_Buffer = (char*)extmem_malloc(SERIAL_OUTPUT_BUFFER_SIZE);
 #else
         captureBuffer = 0;
         workingBuffer = 0;
 #endif
-        strcpy(multipart_header,"");
-        strcpy(stream_path,"");
-        strcpy(stream_file,"");
+        strcpy(p_multipart_header,"");
+        strcpy(p_stream_path,"");
+        strcpy(p_stream_file,"");
         stream_pos = 0;
         p_SD = AppManager::getInstance()->getSD();
         strcpy(name,"SCI");
-        memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
-        memset(received_chars,0,SERIAL_RX_BUFFER_SIZE);
+        memset(p_tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+        memset(p_received_chars,0,SERIAL_RX_BUFFER_SIZE);
     }; 
     
     /**
@@ -87,7 +93,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
      * 
      */
     void empty(){
-      memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      memset(p_tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
       index_tx_buffer = 0;
     }
 
@@ -100,6 +106,7 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
      */
     bool requestStartLZ4Message(){
       if(is_streaming_file) return false;
+      if (Serial.availableForWrite() < 6000) return false;
       startLZ4Message();
       return true;
     }
@@ -113,11 +120,11 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     uint16_t index_rx_buffer;
     uint32_t index_capture_buffer;
     uint16_t index_tx_buffer;
-    char multipart_header[SERIAL_TX_HEADER_BUFFER_SIZE];
-    char received_chars[SERIAL_RX_BUFFER_SIZE];   // an array to store the received data
-    char stream_path[SERIAL_PARAM_BUFFER_SIZE];
-    char stream_file[SERIAL_PARAM_BUFFER_SIZE];
-    char tx_Buffer[SERIAL_OUTPUT_BUFFER_SIZE];
+    char *p_multipart_header;
+    char *p_received_chars;   // an array to store the received data
+    char *p_stream_path;
+    char *p_stream_file;
+    char *p_tx_Buffer;
     //used for lz4 tx compressor
     char *p_working_buffer;
     char *p_capture_buffer;
@@ -146,12 +153,11 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
     void txOverflowHandler();
     void startLZ4Message(){ 
       empty();
-      Serial.print("LZ4");
     }
     size_t write(uint8_t c){
-      tx_Buffer[index_tx_buffer++] = c;
+      p_tx_Buffer[index_tx_buffer++] = c;
       if (index_tx_buffer == SERIAL_OUTPUT_BUFFER_SIZE-10){
-        tx_Buffer[index_tx_buffer++] = 0; //make sure the buffer is null terminated
+        p_tx_Buffer[index_tx_buffer++] = 0; //make sure the buffer is null terminated
         txOverflowHandler();
       }
       return 1;
@@ -160,8 +166,8 @@ class SvcSerialCommandInterface:public AppBaseClass, public Print {
       while(throttle()){
         delay(1);
       }
-      if (strlen(tx_Buffer) > 0 ) Serial.print(tx_Buffer);
-      memset(tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
+      if (strlen(p_tx_Buffer) > 0 ) Serial.print(p_tx_Buffer);
+      memset(p_tx_Buffer,0,SERIAL_OUTPUT_BUFFER_SIZE);
       index_tx_buffer = 0;
       tx_buffer_overflow_flag = false;
     };

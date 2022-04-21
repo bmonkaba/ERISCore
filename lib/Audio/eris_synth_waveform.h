@@ -26,10 +26,12 @@
 
 #ifndef eris_synth_waveform_h_
 #define eris_synth_waveform_h_
-#include "synth_waveform.h"
 #include <Arduino.h>
+#include "eris_waveshapes.h"
+#include "synth_waveform.h"
 #include "AudioStream.h"
 #include "arm_math.h"
+
 
 // waveforms.c
 extern "C" {

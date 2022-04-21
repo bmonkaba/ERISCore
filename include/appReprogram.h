@@ -31,7 +31,7 @@ class AppReprogram:public AppBaseClass {
         //Enter program mode if both TAP_INPUT and SW_D 
         //switches are pressed at the same time.
         if (digitalRead(TAP_INPUT) == LOW && digitalRead(SW_D) == LOW){
-            sci->println("M AppReprogram:update Entering Programming Mode");
+            sci->println(F("M AppReprogram:update Entering Programming Mode"));
             delay(100);
             __asm__ volatile ("bkpt #251"); //enter the bootloader
             while(1);//wait for reset

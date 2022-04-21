@@ -20,24 +20,9 @@
  * 
  */
 
-
 bool SvcDataDictionary::copyKey(const char* key){
-    //if dictionary full
     if (next == DATADICT_KEYVALUE_PAIRS) return false;
-    record[next].key = strndup(key,DATADICT_MAX_KEY_LEN);
-    //check for strndup malloc failure
-    if (record[next].key == NULL) return false;
-    /*
-        strndup doesn't ensure null termination of strings! meaning it will fill
-        the entire buffer with chars omitting the null ternimation to indicate the
-        end of a string.
-
-        strndup however does fill the buffer with null chars if given a string is shorter than the buffer len 
-
-        The simple guard for null termination loss is to always write a null char at the end of the buffer
-        */
-    record[next].key[strlen(key)]=0;
-    return true;
+    return safer_strncpy(record[next].key,key,DATADICT_MAX_KEY_LEN);
 }
 
 SvcDataDictionary::SvcDataDictionary(){
@@ -50,7 +35,7 @@ SvcDataDictionary::SvcDataDictionary(){
                 record[i].data_type = DDDT_INT32;
                 record[i].key_hash = 48879; //0xBEEF
                 #ifdef DATADICT_USE_MALLOC
-                record[i].key = NULL;
+                record[i].key = (char*)extmem_malloc(DATADICT_MAX_KEY_LEN+1);
                 #else
                 memset(record[i].key,0,sizeof(record[i].key));
                 #endif
@@ -75,7 +60,7 @@ bool SvcDataDictionary::create(const char* key,int32_t val,uint32_t* owner){
     return true;
 }
 
-bool SvcDataDictionary::create(const char* key,int32_t val){
+bool FLASHMEM SvcDataDictionary::create(const char* key,int32_t val){
     if (!copyKey(key)) return false;
     record[next].val.int32_val = val;
     record[next].owner = 0;
@@ -86,7 +71,7 @@ bool SvcDataDictionary::create(const char* key,int32_t val){
     return true;
 }
 
-bool SvcDataDictionary::create(const char* key,float32_t val){
+bool FLASHMEM SvcDataDictionary::create(const char* key,float32_t val){
     if (!copyKey(key)) return false;
     record[next].val.float32_val = val;
     record[next].owner = 0;
@@ -221,18 +206,18 @@ bool SvcDataDictionary::increment(const char* key){
 }
 
 //serial interface
-void SvcDataDictionary::printStats(){
+void FLASHMEM SvcDataDictionary::printStats(){
 
 }
 
-void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
+void FLASHMEM SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
     //todo: print out in JSON format
     //Serial.flush();
-    if(!sci->throttle()){
+    if(sci->requestStartLZ4Message()){
         sci->print(F("DD {"));
         uint16_t from, to;
-        from = dd_transmitt_block++ * 32; //block size
-        to = dd_transmitt_block * 32;
+        from = dd_transmitt_block++ * 16; //block size
+        to = dd_transmitt_block * 16;
         if (to >= next){
             to = next;
             dd_transmitt_block = 0;
@@ -247,7 +232,7 @@ void FASTRUN SvcDataDictionary::printDictionary(SvcSerialCommandInterface* sci){
             if (i != to-1) sci->print(",");
         }
         sci->println("}");
-        sci->send();
+        sci->sendLZ4Message();
     }
 }
 

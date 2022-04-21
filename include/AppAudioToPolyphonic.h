@@ -53,7 +53,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       if(slider!=NULL) delete(slider);
     };
 
-    void FASTRUN initialize(){
+    void FLASHMEM initialize(){
       sprintf(name, APPNAME);
       update_priority = 10; //set to higher priority
       id = 1;
@@ -112,7 +112,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
         delay->delay(0,0);
         delay->delay(1,0);
         delay->delay(2,0);
-        delay->delay(3,16);
+        delay->delay(3,230);
       }
       mixer = (erisAudioMixer4*)(ad->getAudioStreamObjByName("mixer:2"));
       if (mixer != NULL){
@@ -160,7 +160,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     } 
     //define event handlers
-    void FASTRUN render(){
+    void FLASHMEM render(){
       if(ad!=NULL && am!= NULL){
         /*
         erisAudioEffectFreeverb* reverb = (erisAudioEffectFreeverb*)(ad->getAudioStreamObjByName("freeverb:1"));
@@ -206,7 +206,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     }
 
-    void FASTRUN onTouch(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouch(uint16_t t_x, uint16_t t_y){
       x_start = t_x;
       y_start = t_y;
       x_last = t_x;
@@ -215,7 +215,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     }
 
-    void FASTRUN onTouchRelease(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouchRelease(uint16_t t_x, uint16_t t_y){
       x_end = t_x;
       y_end = t_y;
       x_last = t_x;
@@ -223,7 +223,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       //draw->drawLine(x_start,y_start,x_end,y_end,ILI9341_ORANGE);
     }
 
-    void FASTRUN onTouchDrag(uint16_t t_x, uint16_t t_y){
+    void FLASHMEM onTouchDrag(uint16_t t_x, uint16_t t_y){
       //Serial.println("MyApp:onTouchDrag");
       //draw->drawPixel(x,y,ILI9341_BLUE);
       //draw->drawPixel(x-1,y,ILI9341_RED);
@@ -267,12 +267,12 @@ class AppAudioToPolyphonic:public AppBaseClass {
         }
     }
 
-    void FASTRUN onFocus(){
+    void FLASHMEM onFocus(){
       makeAudioConnections();
       if (am != NULL) am->sendMessage(this,"CQT","ENABLE");
     }
     
-    void FASTRUN onAnalog1(uint16_t uval, float fval){
+    void FLASHMEM onAnalog1(uint16_t uval, float fval){
       if (ad == NULL) return;
      // Serial.print("AN1 ");Serial.printf("%0.4f\n",fval);
       //analog 1 controls the dry signal input to the fft blocks (used by the cqt app)
@@ -280,7 +280,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       if (amp != NULL) amp->gain(2 + log1p(fval));
     };
     
-    void FASTRUN onAnalog2(uint16_t uval, float fval){
+    void FLASHMEM onAnalog2(uint16_t uval, float fval){
       if (ad == NULL) return;
       //Serial.print("AN2 ");Serial.printf("%0.4f\n",fval);
       //analog 2 controls the resynthesized signal biquad output filter
@@ -288,7 +288,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       if (filter != NULL) filter->setLowpass(0,220.0 + (15000.0 * fval));
     };
     
-    void FASTRUN onAnalog3(uint16_t uval, float fval){
+    void FLASHMEM onAnalog3(uint16_t uval, float fval){
       float lp,hp,gain;
       //Serial.print("AN3 ");Serial.printf("%0.4f\n",fval);
       //analog 3 controls the dry signal biquad output filter and additional gain stage (post cqt)
@@ -305,7 +305,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       }
     };
 
-    void FASTRUN onAnalog4(uint16_t uval, float fval){
+    void FLASHMEM onAnalog4(uint16_t uval, float fval){
       //Serial.print("AN4 ");Serial.printf("%0.4f\n",fval);
       //output volume
       if (ad == NULL) return;
@@ -314,7 +314,7 @@ class AppAudioToPolyphonic:public AppBaseClass {
       if (amp != NULL) amp->gain(1.0 + gain);
     };
     
-    void FASTRUN makeAudioConnections(){
+    void FLASHMEM makeAudioConnections(){
       if (ad == NULL) return;
       AudioNoInterrupts();
       ad->disconnectAll();      

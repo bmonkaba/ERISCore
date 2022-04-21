@@ -38,7 +38,7 @@ class AppScope:public AppBaseClass {
         scale = 30000.0 / ((float)scope->getPeakValue() + 0.0001);
         if (scale > 10.0) scale = 10.0;
         am->data->update("OSCOPE_SCALE",scale);
-        draw->fillRoundRect(x,y,w,h,3,CL(0,0,0));
+        if (has_pop) draw->fillRoundRect(x,y,w,h,3,CL(0,0,0));
         for (int16_t i=0;i<w;i++){
             int16_t v;
             float f;
@@ -51,7 +51,7 @@ class AppScope:public AppBaseClass {
             v = scope->read(1,i) * scale;
             f = ((v * 0.000030517578125) + 1.0) * 0.5;
             ch2 = y + (uint16_t)(f * h);
-            if (i > 0) draw->drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_CYAN);
+            if (i > 0) draw->drawLine(x + i-1,y_last_scope_ch2,x + i,ch2,ILI9341_GREEN);
             //draw x-y plot
             if (i > 0) draw->drawLine(y_last_scope_ch2,y_last_scope,ch2,ch1,ILI9341_GREENYELLOW);
             y_last_scope = ch1; 
