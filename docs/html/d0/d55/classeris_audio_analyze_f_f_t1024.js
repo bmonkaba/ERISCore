@@ -2,8 +2,8 @@ var classeris_audio_analyze_f_f_t1024 =
 [
     [ "erisAudioAnalyzeFFT1024", "d0/d55/classeris_audio_analyze_f_f_t1024_af8705f408ddbccf855a53e88933e506f.html#af8705f408ddbccf855a53e88933e506f", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_a5b98b7b6d5fd30a7e1aa56e90eff8699.html#a5b98b7b6d5fd30a7e1aa56e90eff8699", null ],
-    [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_ad5828db6b0f32067282146976b559b70.html#ad5828db6b0f32067282146976b559b70", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_a707b94f214928898fea242ccbcd4ba31.html#a707b94f214928898fea242ccbcd4ba31", null ],
+    [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_ad5828db6b0f32067282146976b559b70.html#ad5828db6b0f32067282146976b559b70", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_a8ca8dce06854a577e392e54ecb0c1b6a.html#a8ca8dce06854a577e392e54ecb0c1b6a", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_a7fa950dc09f62d999270235c137e0ec8.html#a7fa950dc09f62d999270235c137e0ec8", null ],
     [ "__attribute__", "d0/d55/classeris_audio_analyze_f_f_t1024_afa0ef2ef33da82e927f5f0a96c0cae3e.html#afa0ef2ef33da82e927f5f0a96c0cae3e", null ],

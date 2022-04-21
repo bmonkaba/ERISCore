@@ -10,14 +10,14 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
     [ "AppBaseClass.h", "d9/d3e/_app_base_class_8h.html", [
       [ "AppBaseClass", "db/d69/class_app_base_class.html", "db/d69/class_app_base_class" ]
     ] ],
-    [ "AppCQT.h", "d8/db0/_app_c_q_t_8h.html", [
+    [ "appCQT.h", "d4/d75/app_c_q_t_8h.html", [
       [ "AppCQT", "d4/dde/class_app_c_q_t.html", "d4/dde/class_app_c_q_t" ]
     ] ],
     [ "AppManager.h", "df/d72/_app_manager_8h.html", "df/d72/_app_manager_8h" ],
-    [ "AppReprogram.h", "d5/d98/_app_reprogram_8h.html", [
+    [ "appReprogram.h", "dd/d93/app_reprogram_8h.html", [
       [ "AppReprogram", "d5/d25/class_app_reprogram.html", "d5/d25/class_app_reprogram" ]
     ] ],
-    [ "AppScope.h", "d7/d07/_app_scope_8h.html", [
+    [ "appScope.h", "d8/d1f/app_scope_8h.html", [
       [ "AppScope", "d8/dbe/class_app_scope.html", "d8/dbe/class_app_scope" ]
     ] ],
     [ "AppTemplate.h", "d4/d0d/_app_template_8h.html", [
@@ -35,7 +35,7 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
       [ "ControlSlider", "de/d67/class_control_slider.html", "de/d67/class_control_slider" ]
     ] ],
     [ "Eris.h", "df/dd8/_eris_8h.html", "df/dd8/_eris_8h" ],
-    [ "ErisAudio.h", "dd/da2/_eris_audio_8h.html", [
+    [ "erisAudio.h", "d2/ded/eris_audio_8h.html", [
       [ "__erisAudioAnalyzeFFT1024", "d3/db2/class____eris_audio_analyze_f_f_t1024.html", "d3/db2/class____eris_audio_analyze_f_f_t1024" ],
       [ "erisAudioAmplifier", "d0/ddd/classeris_audio_amplifier.html", "d0/ddd/classeris_audio_amplifier" ],
       [ "erisAudioAnalyzeFFT256", "d7/d2f/classeris_audio_analyze_f_f_t256.html", "d7/d2f/classeris_audio_analyze_f_f_t256" ],
@@ -85,8 +85,8 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
       [ "erisAudioSynthSimpleDrum", "dc/d7c/classeris_audio_synth_simple_drum.html", "dc/d7c/classeris_audio_synth_simple_drum" ],
       [ "erisAudioSynthToneSweep", "d2/dd3/classeris_audio_synth_tone_sweep.html", "d2/dd3/classeris_audio_synth_tone_sweep" ],
       [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", "df/dc5/classeris_audio_synth_waveform" ],
-      [ "erisAudioSynthWaveform2k", "d2/daf/classeris_audio_synth_waveform2k.html", "d2/daf/classeris_audio_synth_waveform2k" ],
       [ "erisAudioSynthWaveformDc", "d7/d66/classeris_audio_synth_waveform_dc.html", "d7/d66/classeris_audio_synth_waveform_dc" ],
+      [ "erisAudioSynthWaveformhd", "d0/df8/classeris_audio_synth_waveformhd.html", "d0/df8/classeris_audio_synth_waveformhd" ],
       [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html", "df/d13/classeris_audio_synth_waveform_modulated" ],
       [ "erisAudioSynthWaveformModulated2k", "db/d47/classeris_audio_synth_waveform_modulated2k.html", "db/d47/classeris_audio_synth_waveform_modulated2k" ],
       [ "erisAudioSynthWaveformPWM", "d2/d43/classeris_audio_synth_waveform_p_w_m.html", "d2/d43/classeris_audio_synth_waveform_p_w_m" ],
@@ -104,7 +104,7 @@ var dir_7c9e12122da30d3e5d9d6f0a254bf254 =
     [ "SvcMidi.h", "d2/ddf/_svc_midi_8h.html", [
       [ "SvcMIDI", "d8/dec/class_svc_m_i_d_i.html", "d8/dec/class_svc_m_i_d_i" ]
     ] ],
-    [ "SvcSerialCommandInterface.h", "de/d46/_svc_serial_command_interface_8h.html", [
+    [ "svcSerialCommandInterface.h", "db/db5/svc_serial_command_interface_8h.html", [
       [ "SvcSerialCommandInterface", "d2/da8/class_svc_serial_command_interface.html", "d2/da8/class_svc_serial_command_interface" ]
     ] ],
     [ "Touch.h", "d4/dfc/_touch_8h.html", [

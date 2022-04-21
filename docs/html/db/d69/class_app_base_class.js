@@ -2,6 +2,7 @@ var class_app_base_class =
 [
     [ "AppBaseClass", "db/d69/class_app_base_class_afc31089c73d88d7b768aa71cbabf0465.html#afc31089c73d88d7b768aa71cbabf0465", null ],
     [ "AppBaseClass", "db/d69/class_app_base_class_a5528b67a6df75a6e6d1f3d8ac671a493.html#a5528b67a6df75a6e6d1f3d8ac671a493", null ],
+    [ "~AppBaseClass", "db/d69/class_app_base_class_aad30ec1ed456fdc166c910fe2c407b74.html#aad30ec1ed456fdc166c910fe2c407b74", null ],
     [ "_updatePosition", "db/d69/class_app_base_class_a32e44666dd58b3cd733c8ac64957dce3.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
     [ "getFocus", "db/d69/class_app_base_class_afcd9194843e5eb3f6140e28cc3c9e8f9.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
     [ "getID", "db/d69/class_app_base_class_a608fbc9c63a4213af74b9ea5090ad875.html#a608fbc9c63a4213af74b9ea5090ad875", null ],

@@ -2,11 +2,11 @@ var class_animation =
 [
     [ "Animation", "d4/d7c/class_animation_a83f0a16cef7117f187ad596de38dd9d6.html#a83f0a16cef7117f187ad596de38dd9d6", null ],
     [ "getFileName", "d4/d7c/class_animation_a1335e53d40b9068999c5e2a03722db83.html#a1335e53d40b9068999c5e2a03722db83", null ],
-    [ "getNextFrameChunk", "d4/d7c/class_animation_aa45b0cfe9aaeeb60e538c42310d21aee.html#aa45b0cfe9aaeeb60e538c42310d21aee", null ],
+    [ "getNextFrameChunk", "d4/d7c/class_animation_afbec8d2e288a5702d93cef625bca07e5.html#afbec8d2e288a5702d93cef625bca07e5", null ],
     [ "getPath", "d4/d7c/class_animation_ae19aa3ff603adae2590d52041422c0c8.html#ae19aa3ff603adae2590d52041422c0c8", null ],
     [ "isFrameComplete", "d4/d7c/class_animation_a74a3bca95fe6f9bed1673bba9631cedd.html#a74a3bca95fe6f9bed1673bba9631cedd", null ],
     [ "setPath", "d4/d7c/class_animation_a997d1203ae9418f121f355a5bd0700f0.html#a997d1203ae9418f121f355a5bd0700f0", null ],
-    [ "setSD", "d4/d7c/class_animation_a8475c70c384b7e488cff185e7bcb5dd7.html#a8475c70c384b7e488cff185e7bcb5dd7", null ],
+    [ "setSD", "d4/d7c/class_animation_ab5af4d2f56dce439c18ba9c4655f98f0.html#ab5af4d2f56dce439c18ba9c4655f98f0", null ],
     [ "ILI9341_t3_ERIS", "d4/d7c/class_animation_ad0a0f7899f9e4c9f9aecf73fe69ebae7.html#ad0a0f7899f9e4c9f9aecf73fe69ebae7", null ],
     [ "_path", "d4/d7c/class_animation_ad890e742613a81ce42a096b0ea6be37f.html#ad890e742613a81ce42a096b0ea6be37f", null ],
     [ "chunk", "d4/d7c/class_animation_a7b2fcf64d28c6938687ceef45110299b.html#a7b2fcf64d28c6938687ceef45110299b", null ],

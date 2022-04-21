@@ -71,9 +71,9 @@ var sectionId = 'dynsection-0';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="../../d8/dd0/class_audio_synth_waveform2k.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="../../d3/d94/class_audio_synth_waveformhd.html" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="1,-141.5 1,-665.5 385,-665.5 385,-141.5 1,-141.5"/>
-<text text-anchor="middle" x="193" y="-647.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioSynthWaveform2k</text>
+<text text-anchor="middle" x="193" y="-647.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioSynthWaveformhd</text>
 <polyline fill="none" stroke="black" points="1,-637.5 385,-637.5 "/>
 <text text-anchor="start" x="9" y="-619.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; const int16_t * arbdata</text>
 <text text-anchor="start" x="9" y="-599.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; BandLimitedWaveform band_limit_waveform</text>
@@ -86,7 +86,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="9" y="-459.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; int16_t tone_offset</text>
 <text text-anchor="start" x="9" y="-439.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; short tone_type</text>
 <polyline fill="none" stroke="black" points="1,-429.5 385,-429.5 "/>
-<text text-anchor="start" x="9" y="-411.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AudioSynthWaveform2k(void)</text>
+<text text-anchor="start" x="9" y="-411.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ AudioSynthWaveformhd(void)</text>
 <text text-anchor="start" x="9" y="-391.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void amplitude(float n)</text>
 <text text-anchor="start" x="9" y="-371.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void arbitraryProgram(uint8_t program)</text>
 <text text-anchor="start" x="9" y="-351.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void arbitraryWaveform(const int16</text>

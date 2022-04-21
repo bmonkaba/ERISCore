@@ -20,7 +20,7 @@ var _svc_m_i_d_i_8cpp =
     [ "handleTickCallback", "d2/d08/_svc_m_i_d_i_8cpp_a3af0e54011a10b4106a6dc86d864eda9.html#a3af0e54011a10b4106a6dc86d864eda9", null ],
     [ "handleTimeCodeQuarterFrameCallback", "d2/d08/_svc_m_i_d_i_8cpp_a0175ad98d30296b068c5758c511c38d6.html#a0175ad98d30296b068c5758c511c38d6", null ],
     [ "handleTuneRequestCallback", "d2/d08/_svc_m_i_d_i_8cpp_a47e291983831e37a2cf3ed37034599e4.html#a47e291983831e37a2cf3ed37034599e4", null ],
-    [ "MIDI_CREATE_INSTANCE", "d2/d08/_svc_m_i_d_i_8cpp_a95a31678d943ef7aacfb79fa6cd98f76.html#a95a31678d943ef7aacfb79fa6cd98f76", null ],
+    [ "MIDI_CREATE_INSTANCE", "d2/d08/_svc_m_i_d_i_8cpp_ac53b79064a89d4bd7b53a25d3caa2c0a.html#ac53b79064a89d4bd7b53a25d3caa2c0a", null ],
     [ "eighth_note_count", "d2/d08/_svc_m_i_d_i_8cpp_a10d8f6de6462e9944254e271c95b46d3.html#a10d8f6de6462e9944254e271c95b46d3", null ],
     [ "eighth_note_tick", "d2/d08/_svc_m_i_d_i_8cpp_a3c2587a5a8b29f1a413d8c80f327de59.html#a3c2587a5a8b29f1a413d8c80f327de59", null ],
     [ "last_arp_note_count", "d2/d08/_svc_m_i_d_i_8cpp_a0bac9cb3953dd6357439b7b3426d4962.html#a0bac9cb3953dd6357439b7b3426d4962", null ],

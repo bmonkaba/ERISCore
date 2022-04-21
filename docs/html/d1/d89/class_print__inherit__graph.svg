@@ -84,15 +84,15 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="8" y="-738.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_capturing_bulk_data</text>
 <text text-anchor="start" x="8" y="-718.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_periodic_messages_enabled</text>
 <text text-anchor="start" x="8" y="-698.1" font-family="Helvetica,sans-Serif" font-size="18.00"># bool is_streaming_file</text>
-<text text-anchor="start" x="8" y="-678.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char multipart_header</text>
-<text text-anchor="start" x="8" y="-658.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
-<text text-anchor="start" x="8" y="-638.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
-<text text-anchor="start" x="8" y="-618.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
-<text text-anchor="start" x="8" y="-598.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char received_chars</text>
-<text text-anchor="start" x="8" y="-578.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_file</text>
-<text text-anchor="start" x="8" y="-558.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char stream_path</text>
-<text text-anchor="start" x="8" y="-538.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
-<text text-anchor="start" x="8" y="-518.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char tx_Buffer</text>
+<text text-anchor="start" x="8" y="-678.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_capture_buffer</text>
+<text text-anchor="start" x="8" y="-658.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_multipart_header</text>
+<text text-anchor="start" x="8" y="-638.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_received_chars</text>
+<text text-anchor="start" x="8" y="-618.1" font-family="Helvetica,sans-Serif" font-size="18.00"># SdFs * p_SD</text>
+<text text-anchor="start" x="8" y="-598.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_stream_file</text>
+<text text-anchor="start" x="8" y="-578.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_stream_path</text>
+<text text-anchor="start" x="8" y="-558.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_tx_Buffer</text>
+<text text-anchor="start" x="8" y="-538.1" font-family="Helvetica,sans-Serif" font-size="18.00"># char * p_working_buffer</text>
+<text text-anchor="start" x="8" y="-518.1" font-family="Helvetica,sans-Serif" font-size="18.00"># uint64_t stream_pos</text>
 <text text-anchor="start" x="8" y="-498.1" font-family="Helvetica,sans-Serif" font-size="18.00"># volatile bool tx_buffer_overflow_flag</text>
 <polyline fill="none" stroke="black" points="0,-488.5 449,-488.5 "/>
 <text text-anchor="start" x="8" y="-470.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ SvcSerialCommandInterface()</text>

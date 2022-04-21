@@ -17,5 +17,6 @@ var dir_d72faa1937f9f5039d6273b8fa1c3fff =
     ] ],
     [ "eris_synth_waveform.cpp", "d6/d18/eris__synth__waveform_8cpp.html", null ],
     [ "eris_synth_waveform.h", "de/db5/eris__synth__waveform_8h.html", "de/db5/eris__synth__waveform_8h" ],
+    [ "eris_waveshapes.cpp", "d2/db0/eris__waveshapes_8cpp.html", "d2/db0/eris__waveshapes_8cpp" ],
     [ "eris_waveshapes.h", "df/d5d/eris__waveshapes_8h.html", "df/d5d/eris__waveshapes_8h" ]
 ];

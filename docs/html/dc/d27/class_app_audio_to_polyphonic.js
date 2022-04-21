@@ -1,14 +1,15 @@
 var class_app_audio_to_polyphonic =
 [
     [ "AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic_a3f4679d883227d6293effc4eed5cea06.html#a3f4679d883227d6293effc4eed5cea06", null ],
+    [ "~AppAudioToPolyphonic", "dc/d27/class_app_audio_to_polyphonic_acc0b6a17b293a7aaaf3c1b0a4b40f135.html#acc0b6a17b293a7aaaf3c1b0a4b40f135", null ],
     [ "_updatePosition", "dc/d27/class_app_audio_to_polyphonic.html#a32e44666dd58b3cd733c8ac64957dce3", null ],
-    [ "changeVoice", "dc/d27/class_app_audio_to_polyphonic_a3d364aed0498754d8e63c082205be0a2.html#a3d364aed0498754d8e63c082205be0a2", null ],
+    [ "changeVoice", "dc/d27/class_app_audio_to_polyphonic_abb46b30e3e167d44b4d8135475be9cfb.html#abb46b30e3e167d44b4d8135475be9cfb", null ],
     [ "getFocus", "dc/d27/class_app_audio_to_polyphonic.html#afcd9194843e5eb3f6140e28cc3c9e8f9", null ],
     [ "getID", "dc/d27/class_app_audio_to_polyphonic.html#a608fbc9c63a4213af74b9ea5090ad875", null ],
     [ "initialize", "dc/d27/class_app_audio_to_polyphonic_a14f4b4c6b41d38d7640267ea57752a8b.html#a14f4b4c6b41d38d7640267ea57752a8b", null ],
     [ "isName", "dc/d27/class_app_audio_to_polyphonic.html#aa989ddf4bdc4cbd9a61791ca45082177", null ],
     [ "makeAudioConnections", "dc/d27/class_app_audio_to_polyphonic_a805fac8a86e2d7b45054a818f79b45ac.html#a805fac8a86e2d7b45054a818f79b45ac", null ],
-    [ "messageHandler", "dc/d27/class_app_audio_to_polyphonic_a07757c615d81725236318fa3825d4e23.html#a07757c615d81725236318fa3825d4e23", null ],
+    [ "messageHandler", "dc/d27/class_app_audio_to_polyphonic_ae68d2ccd483087c4b7ecd303f8b18696.html#ae68d2ccd483087c4b7ecd303f8b18696", null ],
     [ "onAnalog1", "dc/d27/class_app_audio_to_polyphonic_a9ce317d28f95391ac32bf335c35d04a9.html#a9ce317d28f95391ac32bf335c35d04a9", null ],
     [ "onAnalog2", "dc/d27/class_app_audio_to_polyphonic_ae81754e73d2f415b3906727b6c0c3009.html#ae81754e73d2f415b3906727b6c0c3009", null ],
     [ "onAnalog3", "dc/d27/class_app_audio_to_polyphonic_ab02258ccc069dbec717a098d9272c02b.html#ab02258ccc069dbec717a098d9272c02b", null ],

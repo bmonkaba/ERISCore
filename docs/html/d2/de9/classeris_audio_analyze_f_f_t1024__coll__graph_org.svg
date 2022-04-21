@@ -18,46 +18,46 @@
 <text text-anchor="middle" x="1747.55" y="-898.1" font-family="Helvetica,sans-Serif" font-size="18.00"> </text>
 <polyline fill="none" stroke="black" points="1546.05,-888.5 1949.05,-888.5 "/>
 <text text-anchor="start" x="1554.05" y="-870.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ erisAudioAnalyzeFFT1024()</text>
-<text text-anchor="start" x="1554.05" y="-850.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t buffer[2048] __attribute_</text>
-<text text-anchor="start" x="1554.05" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(2)))</text>
-<text text-anchor="start" x="1554.05" y="-810.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ volatile float32_t tmp_buffer[2048]</text>
-<text text-anchor="start" x="1554.05" y="-790.1" font-family="Helvetica,sans-Serif" font-size="18.00"> __attribute__((aligned(4)))</text>
-<text text-anchor="start" x="1554.05" y="-770.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ volatile float32_t output[1024] _</text>
-<text text-anchor="start" x="1554.05" y="-750.1" font-family="Helvetica,sans-Serif" font-size="18.00">_attribute__((aligned(4)))</text>
-<text text-anchor="start" x="1554.05" y="-730.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float32_t phase[512] __attribute_</text>
-<text text-anchor="start" x="1554.05" y="-710.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(4)))</text>
-<text text-anchor="start" x="1554.05" y="-690.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ int16_t tmp_buffer[2048] __attribute</text>
-<text text-anchor="start" x="1554.05" y="-670.1" font-family="Helvetica,sans-Serif" font-size="18.00">__((aligned(4)))</text>
-<text text-anchor="start" x="1554.05" y="-650.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ uint16_t output[512] __attribute_</text>
-<text text-anchor="start" x="1554.05" y="-630.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(4)))</text>
-<text text-anchor="start" x="1554.05" y="-610.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void analyze(void)</text>
-<text text-anchor="start" x="1554.05" y="-590.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool available()</text>
-<text text-anchor="start" x="1554.05" y="-570.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void averageTogether(uint8_t n)</text>
-<text text-anchor="start" x="1554.05" y="-550.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool capture(void)</text>
-<text text-anchor="start" x="1554.05" y="-530.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void configSubsample(uint16_t subsample,</text>
-<text text-anchor="start" x="1554.05" y="-510.1" font-family="Helvetica,sans-Serif" font-size="18.00"> subsample_range range)</text>
-<text text-anchor="start" x="1554.05" y="-490.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void enableFFT(bool enable_state)</text>
-<text text-anchor="start" x="1554.05" y="-470.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(FFTReadRange *fftRR)</text>
-<text text-anchor="start" x="1554.05" y="-450.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(float freq_from, float</text>
-<text text-anchor="start" x="1554.05" y="-430.1" font-family="Helvetica,sans-Serif" font-size="18.00"> freq_to, FFTReadRange *fftRR=NULL)</text>
-<text text-anchor="start" x="1554.05" y="-410.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(unsigned int binFirst,</text>
-<text text-anchor="start" x="1554.05" y="-390.1" font-family="Helvetica,sans-Serif" font-size="18.00"> unsigned int binLast, FFTReadRange</text>
-<text text-anchor="start" x="1554.05" y="-370.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *fftRR=NULL)</text>
-<text text-anchor="start" x="1554.05" y="-350.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(unsigned int binNumber)</text>
-<text text-anchor="start" x="1554.05" y="-330.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void reset()</text>
-<text text-anchor="start" x="1554.05" y="-310.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setActiveRange(subsample_range range)</text>
-<text text-anchor="start" x="1554.05" y="-290.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void spectralFilter()</text>
-<text text-anchor="start" x="1554.05" y="-270.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void toggleActiveRange()</text>
-<text text-anchor="start" x="1554.05" y="-250.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void update(void)</text>
-<text text-anchor="start" x="1554.05" y="-230.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void windowFunction(const int16_t *w)</text>
-<text text-anchor="start" x="1554.05" y="-210.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static int compare_fftrr_cqt_bin(const</text>
-<text text-anchor="start" x="1554.05" y="-190.1" font-family="Helvetica,sans-Serif" font-size="18.00"> void *p, const void *q)</text>
-<text text-anchor="start" x="1554.05" y="-170.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static int compare_fftrr_value(const</text>
-<text text-anchor="start" x="1554.05" y="-150.1" font-family="Helvetica,sans-Serif" font-size="18.00"> void *p, const void *q)</text>
-<text text-anchor="start" x="1554.05" y="-130.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static void sort_fftrr_by_cqt_bin</text>
-<text text-anchor="start" x="1554.05" y="-110.1" font-family="Helvetica,sans-Serif" font-size="18.00">(FFTReadRange *a, size_t n)</text>
-<text text-anchor="start" x="1554.05" y="-90.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static void sort_fftrr_by_value(FFTReadRange</text>
-<text text-anchor="start" x="1554.05" y="-70.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *a, size_t n)</text>
+<text text-anchor="start" x="1554.05" y="-850.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ volatile float32_t output[1024] _</text>
+<text text-anchor="start" x="1554.05" y="-830.1" font-family="Helvetica,sans-Serif" font-size="18.00">_attribute__((aligned(4)))</text>
+<text text-anchor="start" x="1554.05" y="-810.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void analyze(void)</text>
+<text text-anchor="start" x="1554.05" y="-790.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool available()</text>
+<text text-anchor="start" x="1554.05" y="-770.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void averageTogether(uint8_t n)</text>
+<text text-anchor="start" x="1554.05" y="-750.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ bool capture(void)</text>
+<text text-anchor="start" x="1554.05" y="-730.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void configSubsample(uint16_t subsample,</text>
+<text text-anchor="start" x="1554.05" y="-710.1" font-family="Helvetica,sans-Serif" font-size="18.00"> subsample_range range)</text>
+<text text-anchor="start" x="1554.05" y="-690.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void enableFFT(bool enable_state)</text>
+<text text-anchor="start" x="1554.05" y="-670.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(FFTReadRange *fftRR)</text>
+<text text-anchor="start" x="1554.05" y="-650.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(float freq_from, float</text>
+<text text-anchor="start" x="1554.05" y="-630.1" font-family="Helvetica,sans-Serif" font-size="18.00"> freq_to, FFTReadRange *fftRR=NULL)</text>
+<text text-anchor="start" x="1554.05" y="-610.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(unsigned int binFirst,</text>
+<text text-anchor="start" x="1554.05" y="-590.1" font-family="Helvetica,sans-Serif" font-size="18.00"> unsigned int binLast, FFTReadRange</text>
+<text text-anchor="start" x="1554.05" y="-570.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *fftRR=NULL)</text>
+<text text-anchor="start" x="1554.05" y="-550.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ float read(unsigned int binNumber)</text>
+<text text-anchor="start" x="1554.05" y="-530.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void reset()</text>
+<text text-anchor="start" x="1554.05" y="-510.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void setActiveRange(subsample_range range)</text>
+<text text-anchor="start" x="1554.05" y="-490.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void spectralFilter()</text>
+<text text-anchor="start" x="1554.05" y="-470.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void toggleActiveRange()</text>
+<text text-anchor="start" x="1554.05" y="-450.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ virtual void update(void)</text>
+<text text-anchor="start" x="1554.05" y="-430.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ void windowFunction(const int16_t *w)</text>
+<text text-anchor="start" x="1554.05" y="-410.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static int compare_fftrr_cqt_bin(const</text>
+<text text-anchor="start" x="1554.05" y="-390.1" font-family="Helvetica,sans-Serif" font-size="18.00"> void *p, const void *q)</text>
+<text text-anchor="start" x="1554.05" y="-370.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static int compare_fftrr_value(const</text>
+<text text-anchor="start" x="1554.05" y="-350.1" font-family="Helvetica,sans-Serif" font-size="18.00"> void *p, const void *q)</text>
+<text text-anchor="start" x="1554.05" y="-330.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static void sort_fftrr_by_cqt_bin</text>
+<text text-anchor="start" x="1554.05" y="-310.1" font-family="Helvetica,sans-Serif" font-size="18.00">(FFTReadRange *a, size_t n)</text>
+<text text-anchor="start" x="1554.05" y="-290.1" font-family="Helvetica,sans-Serif" font-size="18.00">+ static void sort_fftrr_by_value(FFTReadRange</text>
+<text text-anchor="start" x="1554.05" y="-270.1" font-family="Helvetica,sans-Serif" font-size="18.00"> *a, size_t n)</text>
+<text text-anchor="start" x="1554.05" y="-250.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; int16_t buffer[2048] __attribute_</text>
+<text text-anchor="start" x="1554.05" y="-230.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(2)))</text>
+<text text-anchor="start" x="1554.05" y="-210.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; volatile float32_t tmp_buffer[2048]</text>
+<text text-anchor="start" x="1554.05" y="-190.1" font-family="Helvetica,sans-Serif" font-size="18.00"> __attribute__((aligned(4)))</text>
+<text text-anchor="start" x="1554.05" y="-170.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; float32_t phase[512] __attribute_</text>
+<text text-anchor="start" x="1554.05" y="-150.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(4)))</text>
+<text text-anchor="start" x="1554.05" y="-130.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; int16_t tmp_buffer[2048] __attribute</text>
+<text text-anchor="start" x="1554.05" y="-110.1" font-family="Helvetica,sans-Serif" font-size="18.00">__((aligned(4)))</text>
+<text text-anchor="start" x="1554.05" y="-90.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; uint16_t output[512] __attribute_</text>
+<text text-anchor="start" x="1554.05" y="-70.1" font-family="Helvetica,sans-Serif" font-size="18.00">_((aligned(4)))</text>
 <text text-anchor="start" x="1554.05" y="-50.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; void copy_to_fft_buffer(void *destination,</text>
 <text text-anchor="start" x="1554.05" y="-30.1" font-family="Helvetica,sans-Serif" font-size="18.00"> const void *source, int subsample)</text>
 <text text-anchor="start" x="1554.05" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">&#45; void init(void)</text>
@@ -401,7 +401,7 @@
 <title>Node11&#45;&gt;Node1</title>
 <path fill="none" stroke="#404040" d="M1180.04,-1221.47C1205.2,-1172.36 1250.24,-1088.32 1296.55,-1021 1369.66,-914.71 1458.46,-803.72 1537.87,-709.69"/>
 <polygon fill="none" stroke="#404040" points="1538.02,-709.51 1538.84,-702.35 1545.77,-700.35 1544.95,-707.51 1538.02,-709.51"/>
-<text text-anchor="middle" x="1365.55" y="-978.6" font-family="Helvetica,sans-Serif" font-size="18.00"> +fft_inst</text>
+<text text-anchor="middle" x="1363.55" y="-978.6" font-family="Helvetica,sans-Serif" font-size="18.00"> &#45;fft_inst</text>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
@@ -419,9 +419,9 @@
 <!-- Node12&#45;&gt;Node1 -->
 <g id="edge18" class="edge">
 <title>Node12&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M1432.74,-1221.2C1435.48,-1162.4 1444.55,-1051.84 1474.55,-963 1492.13,-910.93 1515.25,-858.01 1540.59,-807.14"/>
-<polygon fill="none" stroke="#404040" points="1540.64,-807.04 1539.77,-799.88 1546.04,-796.32 1546.91,-803.48 1540.64,-807.04"/>
-<text text-anchor="middle" x="1509.55" y="-978.6" font-family="Helvetica,sans-Serif" font-size="18.00"> +fft_inst</text>
+<path fill="none" stroke="#404040" d="M1433.51,-1221.22C1437.31,-1162.44 1448.19,-1051.91 1478.55,-963 1495.37,-913.73 1516.97,-863.6 1540.6,-815.13"/>
+<polygon fill="none" stroke="#404040" points="1540.7,-814.93 1539.76,-807.78 1546,-804.16 1546.94,-811.31 1540.7,-814.93"/>
+<text text-anchor="middle" x="1511.55" y="-978.6" font-family="Helvetica,sans-Serif" font-size="18.00"> &#45;fft_inst</text>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">

@@ -150,13 +150,13 @@ var hierarchy =
       [ "AudioMixer8", "d0/d3d/class_audio_mixer8.html", [
         [ "erisAudioMixer8", "d3/daf/classeris_audio_mixer8.html", null ]
       ] ],
-      [ "AudioSynthWaveform2k", "d8/dd0/class_audio_synth_waveform2k.html", [
-        [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", null ],
-        [ "erisAudioSynthWaveform2k", "d2/daf/classeris_audio_synth_waveform2k.html", null ]
-      ] ],
       [ "AudioSynthWaveformModulated2k", "d8/daa/class_audio_synth_waveform_modulated2k.html", [
         [ "erisAudioSynthWaveformModulated", "df/d13/classeris_audio_synth_waveform_modulated.html", null ],
         [ "erisAudioSynthWaveformModulated2k", "db/d47/classeris_audio_synth_waveform_modulated2k.html", null ]
+      ] ],
+      [ "AudioSynthWaveformhd", "d3/d94/class_audio_synth_waveformhd.html", [
+        [ "erisAudioSynthWaveform", "df/dc5/classeris_audio_synth_waveform.html", null ],
+        [ "erisAudioSynthWaveformhd", "d0/df8/classeris_audio_synth_waveformhd.html", null ]
       ] ],
       [ "erisAudioAnalyzeFFT1024", "d0/d55/classeris_audio_analyze_f_f_t1024.html", null ],
       [ "erisAudioAnalyzeScope", "d4/d81/classeris_audio_analyze_scope.html", null ]

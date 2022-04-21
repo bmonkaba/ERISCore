@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1390;
+var viewWidth = 1551;
 var viewHeight = 389;
 var sectionId = 'dynsection-0';
 </script>
@@ -81,7 +81,7 @@ var sectionId = 'dynsection-0';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae80be2195a94f4699b1c5b331aed83d5.html#ae80be2195a94f4699b1c5b331aed83d5" target="_top" xlink:title="blt directly from the SD card to the screen frame buffer at destination">
+<g id="a_node4"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a6135f251f1f958a2916d697a05b7c6f2.html#a6135f251f1f958a2916d697a05b7c6f2" target="_top" xlink:title="blt directly from the SD card to the screen frame buffer at destination">
 <polygon fill="none" stroke="black" points="259,-305.5 259,-333.5 465,-333.5 465,-305.5 259,-305.5"/>
 <text text-anchor="middle" x="362" y="-315.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::bltSD</text>
 </a>
@@ -135,13 +135,13 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M104.85,-258.46C127.59,-242.27 167.58,-216.13 206,-202.5 216.83,-198.66 228.29,-195.43 239.9,-192.72"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="240.66,-196.14 249.67,-190.57 239.15,-189.3 240.66,-196.14"/>
+<path fill="none" stroke="midnightblue" d="M104.8,-258.21C127.5,-241.74 167.44,-215.17 206,-201.5 216.71,-197.7 228.05,-194.53 239.53,-191.88"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="240.61,-195.23 249.64,-189.69 239.13,-188.39 240.61,-195.23"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a4ca6d98ffc159eab2a04a9d35173a24e.html#a4ca6d98ffc159eab2a04a9d35173a24e" target="_top" xlink:title="blt from an open TinyFS open file pointer to a destination buffer">
+<g id="a_node3"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a7ecadfd5c8126cdc71d76e3b48e035a0.html#a7ecadfd5c8126cdc71d76e3b48e035a0" target="_top" xlink:title="blt from an open TinyFS open file pointer to a destination buffer">
 <polygon fill="none" stroke="black" points="554,-352.5 554,-380.5 814,-380.5 814,-352.5 554,-352.5"/>
 <text text-anchor="middle" x="684" y="-362.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::bltRAMFileB</text>
 </a>
@@ -156,7 +156,7 @@ var sectionId = 'dynsection-0';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a67896d090bd87223dbafb8331f35e788.html#a67896d090bd87223dbafb8331f35e788" target="_top" xlink:title="image block transfer from the SD card to a buffer at the given x,y coords">
+<g id="a_node5"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ae01c5ddf82ba27aa46334e0f9a9b21e7.html#ae01c5ddf82ba27aa46334e0f9a9b21e7" target="_top" xlink:title="image block transfer from the SD card to a buffer at the given x,y coords">
 <polygon fill="none" stroke="black" points="575,-305.5 575,-333.5 793,-333.5 793,-305.5 575,-305.5"/>
 <text text-anchor="middle" x="684" y="-315.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::bltSDB</text>
 </a>
@@ -201,7 +201,7 @@ var sectionId = 'dynsection-0';
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_ad48711d2b7b847c3dbb5782d251ae3c0.html#ad48711d2b7b847c3dbb5782d251ae3c0" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a8c8c09d5ca51d5b4c611875df643bef6.html#a8c8c09d5ca51d5b4c611875df643bef6" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="874,-329.5 874,-357.5 1080,-357.5 1080,-329.5 874,-329.5"/>
 <text text-anchor="middle" x="977" y="-339.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::begin</text>
 </a>
@@ -243,80 +243,80 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M728.79,-192.57C761.86,-202.87 808.48,-216.7 850,-226.5 860.44,-228.96 871.42,-231.32 882.36,-233.51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="881.9,-236.99 892.38,-235.48 883.25,-230.12 881.9,-236.99"/>
 </g>
-<!-- Node16 -->
-<g id="node16" class="node">
-<title>Node16</title>
-<g id="a_node16"><a xlink:href="../../d1/dff/class_touch_a61a5d056f07ab08cb5924fa573dc3497.html#a61a5d056f07ab08cb5924fa573dc3497" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="858,-188.5 858,-216.5 1096,-216.5 1096,-188.5 858,-188.5"/>
-<text text-anchor="middle" x="977" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::setCalibrationInputs</text>
-</a>
-</g>
-</g>
-<!-- Node10&#45;&gt;Node16 -->
-<g id="edge15" class="edge">
-<title>Node10&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M800.85,-188.05C816.19,-189.32 831.99,-190.62 847.53,-191.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="847.44,-195.41 857.69,-192.74 848.02,-188.43 847.44,-195.41"/>
-</g>
 <!-- Node17 -->
 <g id="node17" class="node">
 <title>Node17</title>
-<g id="a_node17"><a xlink:href="../../d4/d7c/class_animation_a997d1203ae9418f121f355a5bd0700f0.html#a997d1203ae9418f121f355a5bd0700f0" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="893,-141.5 893,-169.5 1061,-169.5 1061,-141.5 893,-141.5"/>
-<text text-anchor="middle" x="977" y="-151.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setPath</text>
+<g id="a_node17"><a xlink:href="../../d1/dff/class_touch_a61a5d056f07ab08cb5924fa573dc3497.html#a61a5d056f07ab08cb5924fa573dc3497" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="858,-188.5 858,-216.5 1096,-216.5 1096,-188.5 858,-188.5"/>
+<text text-anchor="middle" x="977" y="-198.1" font-family="Helvetica,sans-Serif" font-size="18.00">Touch::setCalibrationInputs</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node17 -->
 <g id="edge16" class="edge">
 <title>Node10&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M800.85,-169.34C827.99,-167.2 856.58,-164.94 882.6,-162.88"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="883.12,-166.35 892.81,-162.07 882.57,-159.37 883.12,-166.35"/>
+<path fill="none" stroke="midnightblue" d="M800.85,-188.05C816.19,-189.32 831.99,-190.62 847.53,-191.9"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="847.44,-195.41 857.69,-192.74 848.02,-188.43 847.44,-195.41"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node">
 <title>Node18</title>
-<g id="a_node18"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a449053e8db3672d4902d76f093e52b14.html#a449053e8db3672d4902d76f093e52b14" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="850,-94.5 850,-122.5 1104,-122.5 1104,-94.5 850,-94.5"/>
-<text text-anchor="middle" x="977" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setPWMPin</text>
+<g id="a_node18"><a xlink:href="../../d4/d7c/class_animation_a997d1203ae9418f121f355a5bd0700f0.html#a997d1203ae9418f121f355a5bd0700f0" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="893,-141.5 893,-169.5 1061,-169.5 1061,-141.5 893,-141.5"/>
+<text text-anchor="middle" x="977" y="-151.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setPath</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node18 -->
 <g id="edge17" class="edge">
 <title>Node10&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M731.32,-164.47C764.24,-154.77 809.61,-141.96 850,-132.5 861.89,-129.72 874.47,-127.02 886.89,-124.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="887.69,-127.92 896.81,-122.53 886.32,-121.06 887.69,-127.92"/>
+<path fill="none" stroke="midnightblue" d="M800.85,-169.34C827.99,-167.2 856.58,-164.94 882.6,-162.88"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="883.12,-166.35 892.81,-162.07 882.57,-159.37 883.12,-166.35"/>
 </g>
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node19"><a xlink:href="../../d4/d7c/class_animation_a8475c70c384b7e488cff185e7bcb5dd7.html#a8475c70c384b7e488cff185e7bcb5dd7" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="899.5,-47.5 899.5,-75.5 1054.5,-75.5 1054.5,-47.5 899.5,-47.5"/>
-<text text-anchor="middle" x="977" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setSD</text>
+<g id="a_node19"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a449053e8db3672d4902d76f093e52b14.html#a449053e8db3672d4902d76f093e52b14" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="850,-94.5 850,-122.5 1104,-122.5 1104,-94.5 850,-94.5"/>
+<text text-anchor="middle" x="977" y="-104.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setPWMPin</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node19 -->
 <g id="edge18" class="edge">
 <title>Node10&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M704.8,-164.5C734.77,-143.97 794.11,-105.95 850,-85.5 862.42,-80.96 875.85,-77.23 889.16,-74.19"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="890.26,-77.53 899.3,-71.99 888.78,-70.69 890.26,-77.53"/>
+<path fill="none" stroke="midnightblue" d="M729.86,-164.45C762.87,-154.42 808.95,-141.07 850,-131.5 860.53,-129.05 871.6,-126.69 882.63,-124.49"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="883.6,-127.87 892.74,-122.52 882.25,-121 883.6,-127.87"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node">
 <title>Node20</title>
-<g id="a_node20"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a8e35cc006a1235c71cb344af9df65e1e.html#a8e35cc006a1235c71cb344af9df65e1e" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="872.5,-0.5 872.5,-28.5 1081.5,-28.5 1081.5,-0.5 872.5,-0.5"/>
-<text text-anchor="middle" x="977" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setSD</text>
+<g id="a_node20"><a xlink:href="../../d4/d7c/class_animation_ab5af4d2f56dce439c18ba9c4655f98f0.html#ab5af4d2f56dce439c18ba9c4655f98f0" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="899.5,-47.5 899.5,-75.5 1054.5,-75.5 1054.5,-47.5 899.5,-47.5"/>
+<text text-anchor="middle" x="977" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">Animation::setSD</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node20 -->
 <g id="edge19" class="edge">
 <title>Node10&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M696.99,-164.27C722.14,-135.45 783.57,-70.26 850,-38.5 855.28,-35.98 860.8,-33.72 866.46,-31.7"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="867.69,-34.98 876.09,-28.52 865.5,-28.33 867.69,-34.98"/>
+<path fill="none" stroke="midnightblue" d="M704.75,-164.28C734.66,-143.45 793.93,-104.92 850,-84.5 862.4,-79.98 875.83,-76.32 889.14,-73.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="890.21,-76.72 899.28,-71.24 888.77,-69.87 890.21,-76.72"/>
+</g>
+<!-- Node21 -->
+<g id="node21" class="node">
+<title>Node21</title>
+<g id="a_node21"><a xlink:href="../../d8/d5a/class_i_l_i9341__t3___e_r_i_s_a2bfdbf675a570c74b787fd222185f25f.html#a2bfdbf675a570c74b787fd222185f25f" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="872.5,-0.5 872.5,-28.5 1081.5,-28.5 1081.5,-0.5 872.5,-0.5"/>
+<text text-anchor="middle" x="977" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">ILI9341_t3_ERIS::setSD</text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node21 -->
+<g id="edge20" class="edge">
+<title>Node10&#45;&gt;Node21</title>
+<path fill="none" stroke="midnightblue" d="M696.95,-164.12C722.02,-135.02 783.3,-69.21 850,-37.5 854.35,-35.43 858.87,-33.55 863.5,-31.83"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="864.79,-35.09 873.12,-28.54 862.53,-28.46 864.79,-35.09"/>
 </g>
 <!-- Node14 -->
 <g id="node14" class="node">
@@ -333,20 +333,35 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M1088.64,-258.52C1102.18,-259.63 1116.1,-260.76 1129.89,-261.89"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1129.65,-265.38 1139.9,-262.7 1130.21,-258.4 1129.65,-265.38"/>
 </g>
-<!-- Node15 -->
-<g id="node15" class="node">
-<title>Node15</title>
-<g id="a_node15"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ac4b80e87e8e9cf82926af2105b4e424a.html#ac4b80e87e8e9cf82926af2105b4e424a" target="_top" xlink:title="hashing function used to accelerate searches">
+<!-- Node16 -->
+<g id="node16" class="node">
+<title>Node16</title>
+<g id="a_node16"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ac4b80e87e8e9cf82926af2105b4e424a.html#ac4b80e87e8e9cf82926af2105b4e424a" target="_top" xlink:title="hashing function used to accelerate searches">
 <polygon fill="none" stroke="black" points="1154.5,-211.5 1154.5,-239.5 1367.5,-239.5 1367.5,-211.5 1154.5,-211.5"/>
 <text text-anchor="middle" x="1261" y="-221.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::hash</text>
 </a>
 </g>
 </g>
-<!-- Node13&#45;&gt;Node15 -->
-<g id="edge14" class="edge">
-<title>Node13&#45;&gt;Node15</title>
+<!-- Node13&#45;&gt;Node16 -->
+<g id="edge15" class="edge">
+<title>Node13&#45;&gt;Node16</title>
 <path fill="none" stroke="midnightblue" d="M1088.64,-240.08C1106.87,-238.53 1125.81,-236.92 1144.16,-235.36"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1144.62,-238.83 1154.29,-234.5 1144.02,-231.86 1144.62,-238.83"/>
+</g>
+<!-- Node15 -->
+<g id="node15" class="node">
+<title>Node15</title>
+<g id="a_node15"><a xlink:href="../../df/d51/_eris_utils_8h_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1" target="_top" xlink:title="a safer strncpy">
+<polygon fill="none" stroke="black" points="1418,-258.5 1418,-286.5 1543,-286.5 1543,-258.5 1418,-258.5"/>
+<text text-anchor="middle" x="1480.5" y="-268.1" font-family="Helvetica,sans-Serif" font-size="18.00">safer_strncpy</text>
+</a>
+</g>
+</g>
+<!-- Node14&#45;&gt;Node15 -->
+<g id="edge14" class="edge">
+<title>Node14&#45;&gt;Node15</title>
+<path fill="none" stroke="midnightblue" d="M1382.2,-272.5C1390.84,-272.5 1399.37,-272.5 1407.59,-272.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1407.82,-276 1417.82,-272.5 1407.82,-269 1407.82,-276"/>
 </g>
 </g>
 </svg>

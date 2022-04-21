@@ -31,7 +31,9 @@ var _i_l_i9341__t3___e_r_i_s_8h =
       [ "PXOP_OR", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4ada3d3dc519942f6d78a6dab8004bc9bd20", null ],
       [ "PXOP_XOR", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4ada652b41d70fbe57ea8a6fb0a28c469771", null ],
       [ "PXOP_MEAN", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4adae4320793f500b59dbcfda6d04c5ce341", null ],
-      [ "PXOP_1ST_PIXEL_COLOR_KEY", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4adaf2b9eb5efe47ecc32f228687af2f4f24", null ]
+      [ "PXOP_1ST_PIXEL_COLOR_KEY", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4adaf2b9eb5efe47ecc32f228687af2f4f24", null ],
+      [ "PXOP_NOT_1ST_PIXEL_COLOR_KEY", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4ada98652809224b7a2af139e12ed0c5af3e", null ],
+      [ "PXOP_NOT_BLK_COLOR_KEY", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_a415c42972c3a6308cae906ae5686f4ad.html#a415c42972c3a6308cae906ae5686f4adafbb6afbf5395ec8d6c7ffee4777e848c", null ]
     ] ],
     [ "_busy", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae07cd862ac00b225d04bbd47df672f0b.html#ae07cd862ac00b225d04bbd47df672f0b", null ],
     [ "renderCompleteCB", "d2/dda/_i_l_i9341__t3___e_r_i_s_8h_ae966c802b910090f40a76496dd82cd4f.html#ae966c802b910090f40a76496dd82cd4f", null ]

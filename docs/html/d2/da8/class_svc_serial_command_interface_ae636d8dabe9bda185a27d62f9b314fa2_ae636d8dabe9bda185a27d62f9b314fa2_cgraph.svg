@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1619;
+var viewWidth = 1780;
 var viewHeight = 84;
 var sectionId = 'dynsection-0';
 </script>
@@ -108,18 +108,18 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M1074.15,-45.66C1082.56,-46.34 1091.03,-47.03 1099.41,-47.71"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1099.35,-51.21 1109.6,-48.53 1099.91,-44.24 1099.35,-51.21"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ac4b80e87e8e9cf82926af2105b4e424a.html#ac4b80e87e8e9cf82926af2105b4e424a" target="_top" xlink:title="hashing function used to accelerate searches">
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="../../dc/d43/class_svc_data_dictionary_ac4b80e87e8e9cf82926af2105b4e424a.html#ac4b80e87e8e9cf82926af2105b4e424a" target="_top" xlink:title="hashing function used to accelerate searches">
 <polygon fill="none" stroke="black" points="1383.5,-0.5 1383.5,-28.5 1596.5,-28.5 1596.5,-0.5 1383.5,-0.5"/>
 <text text-anchor="middle" x="1490" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">SvcDataDictionary::hash</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node6 -->
-<g id="edge6" class="edge">
-<title>Node3&#45;&gt;Node6</title>
+<!-- Node3&#45;&gt;Node7 -->
+<g id="edge7" class="edge">
+<title>Node3&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M1074.2,-30.62C1164.45,-27.11 1285.17,-22.42 1373.1,-19"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1373.26,-22.5 1383.11,-18.61 1372.98,-15.5 1373.26,-22.5"/>
 </g>
@@ -138,11 +138,26 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M1333.2,-59.16C1341.63,-59.29 1350.19,-59.42 1358.72,-59.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1358.68,-63.04 1368.73,-59.69 1358.78,-56.04 1358.68,-63.04"/>
 </g>
-<!-- Node4&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node4&#45;&gt;Node6</title>
+<!-- Node4&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node4&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M1309.39,-43.48C1335.91,-39.2 1365.22,-34.47 1392.34,-30.1"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1392.91,-33.55 1402.22,-28.5 1391.79,-26.64 1392.91,-33.55"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../df/d51/_eris_utils_8h_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1" target="_top" xlink:title="a safer strncpy">
+<polygon fill="none" stroke="black" points="1647,-47.5 1647,-75.5 1772,-75.5 1772,-47.5 1647,-47.5"/>
+<text text-anchor="middle" x="1709.5" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">safer_strncpy</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M1611.2,-61.5C1619.84,-61.5 1628.37,-61.5 1636.59,-61.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1636.82,-65 1646.82,-61.5 1636.82,-58 1636.82,-65"/>
 </g>
 </g>
 </svg>

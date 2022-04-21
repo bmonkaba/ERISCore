@@ -21,76 +21,82 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="../../d8/d1c/class_audio_director_ab4957e373e5d9078454d07da471f1d94.html#ab4957e373e5d9078454d07da471f1d94" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="461.5,-47.5 461.5,-75.5 660.5,-75.5 660.5,-47.5 461.5,-47.5"/>
-<text text-anchor="middle" x="561" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::connect</text>
+<polygon fill="none" stroke="black" points="461.5,-0.5 461.5,-28.5 660.5,-28.5 660.5,-0.5 461.5,-0.5"/>
+<text text-anchor="middle" x="561" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::connect</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M404.19,-51.03C420.28,-52.11 436.11,-53.17 451.16,-54.18"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="451.23,-57.7 461.45,-54.87 451.7,-50.71 451.23,-57.7"/>
+<path fill="none" stroke="midnightblue" d="M404.19,-24.54C420.28,-23.5 436.11,-22.48 451.16,-21.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="451.69,-24.99 461.45,-20.85 451.24,-18 451.69,-24.99"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d8/d1c/class_audio_director_a0ee0c50bcd3cb021f77a10e5999c3c2f.html#a0ee0c50bcd3cb021f77a10e5999c3c2f" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="440,-0.5 440,-28.5 682,-28.5 682,-0.5 440,-0.5"/>
-<text text-anchor="middle" x="561" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::disconnectAll</text>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="../../d8/d1c/class_audio_director_a0ee0c50bcd3cb021f77a10e5999c3c2f.html#a0ee0c50bcd3cb021f77a10e5999c3c2f" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="440,-47.5 440,-75.5 682,-75.5 682,-47.5 440,-47.5"/>
+<text text-anchor="middle" x="561" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::disconnectAll</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M404.19,-24.54C412.75,-23.99 421.24,-23.44 429.57,-22.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="429.9,-26.39 439.66,-22.25 429.45,-19.4 429.9,-26.39"/>
+<!-- Node1&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node1&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M404.19,-51.03C412.75,-51.6 421.24,-52.17 429.57,-52.73"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="429.44,-56.23 439.66,-53.41 429.91,-49.25 429.44,-56.23"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f.html#a4208c4c7f60da78ae1daede7a6bfeb3f" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="723,-47.5 723,-75.5 935,-75.5 935,-47.5 723,-47.5"/>
-<text text-anchor="middle" x="829" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioConnection::rewire</text>
+<g id="a_node3"><a xlink:href="../../d8/d1c/class_audio_director_aae48fff50fc2763f06611db46ae7c94e.html#aae48fff50fc2763f06611db46ae7c94e" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="718,-47.5 718,-75.5 940,-75.5 940,-47.5 718,-47.5"/>
+<text text-anchor="middle" x="829" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::disconnect</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M660.67,-61.5C677.6,-61.5 695.33,-61.5 712.66,-61.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="712.8,-65 722.8,-61.5 712.8,-58 712.8,-65"/>
+<path fill="none" stroke="midnightblue" d="M641.45,-28.54C671.98,-33.93 707.02,-40.12 738.44,-45.68"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="738.05,-49.16 748.5,-47.45 739.26,-42.27 738.05,-49.16"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d2/d7c/class_audio_connection_ab86753a735bd46a3924035617b0c3623.html#ab86753a735bd46a3924035617b0c3623" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="976,-47.5 976,-75.5 1220,-75.5 1220,-47.5 976,-47.5"/>
-<text text-anchor="middle" x="1098" y="-57.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioConnection::reconnect</text>
+<g id="a_node4"><a xlink:href="../../d2/d7c/class_audio_connection_a4208c4c7f60da78ae1daede7a6bfeb3f.html#a4208c4c7f60da78ae1daede7a6bfeb3f" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="723,-0.5 723,-28.5 935,-28.5 935,-0.5 723,-0.5"/>
+<text text-anchor="middle" x="829" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioConnection::rewire</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node4 -->
+<!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M935.14,-61.5C945.1,-61.5 955.28,-61.5 965.45,-61.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="965.6,-65 975.6,-61.5 965.6,-58 965.6,-65"/>
+<title>Node2&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M660.67,-14.5C677.6,-14.5 695.33,-14.5 712.66,-14.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="712.8,-18 722.8,-14.5 712.8,-11 712.8,-18"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d8/d1c/class_audio_director_aae48fff50fc2763f06611db46ae7c94e.html#aae48fff50fc2763f06611db46ae7c94e" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="718,-0.5 718,-28.5 940,-28.5 940,-0.5 718,-0.5"/>
-<text text-anchor="middle" x="829" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioDirector::disconnect</text>
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="../../d2/d7c/class_audio_connection_ab86753a735bd46a3924035617b0c3623.html#ab86753a735bd46a3924035617b0c3623" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="976,-0.5 976,-28.5 1220,-28.5 1220,-0.5 976,-0.5"/>
+<text text-anchor="middle" x="1098" y="-10.1" font-family="Helvetica,sans-Serif" font-size="18.00">AudioConnection::reconnect</text>
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M682.16,-14.5C690.58,-14.5 699.06,-14.5 707.48,-14.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="707.71,-18 717.71,-14.5 707.71,-11 707.71,-18"/>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M935.14,-14.5C945.1,-14.5 955.28,-14.5 965.45,-14.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="965.6,-18 975.6,-14.5 965.6,-11 965.6,-18"/>
+</g>
+<!-- Node6&#45;&gt;Node3 -->
+<g id="edge6" class="edge">
+<title>Node6&#45;&gt;Node3</title>
+<path fill="none" stroke="midnightblue" d="M682.16,-61.5C690.58,-61.5 699.06,-61.5 707.48,-61.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="707.71,-65 717.71,-61.5 707.71,-58 707.71,-65"/>
 </g>
 </g>
 </svg>

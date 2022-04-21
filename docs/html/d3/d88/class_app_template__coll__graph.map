@@ -1,43 +1,45 @@
 <map id="AppTemplate" name="AppTemplate">
-<area shape="rect" id="node1" title="application template containing the required methods for implementation" alt="" coords="4571,4129,5108,4776"/>
-<area shape="rect" id="node2" href="$db/d69/class_app_base_class.html" title="base class definition / implementation from which all app classes will be derived and override" alt="" coords="4562,2648,5103,3908"/>
-<area shape="rect" id="node3" href="$da/d96/class_app_manager.html" title=" " alt="" coords="5071,6225,5597,6952"/>
-<area shape="rect" id="node33" href="$d8/de8/class_svc_eris_audio_parameter_controller.html" title="Parameter controller for interacting with the audio components through the SvcSerialCommandInterface ..." alt="" coords="3912,4129,4449,4776"/>
-<area shape="rect" id="node34" href="$d2/da8/class_svc_serial_command_interface.html" title="Serial communication service and interface Serial commands (rx): &#160;." alt="" coords="5235,4089,5833,4816"/>
-<area shape="rect" id="node4" title=" " alt="" coords="328,5477,452,5591"/>
-<area shape="rect" id="node5" title=" " alt="" coords="2784,5,2892,119"/>
-<area shape="rect" id="node8" href="$dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service" alt="" coords="1181,5251,1793,5817"/>
-<area shape="rect" id="node15" href="$de/d5d/unionpointer__container.html" title=" " alt="" coords="1034,1340,1242,1453"/>
-<area shape="rect" id="node22" href="$d1/d1a/class_surface.html" title="a Surface object manages a memory block with defined width and height dimensions" alt="" coords="527,1127,1010,1667"/>
-<area shape="rect" id="node24" href="$d4/d7c/class_animation.html" title="helper class used to render the animated wallpaper in chunks" alt="" coords="5605,3141,5972,3415"/>
-<area shape="rect" id="node27" href="$d8/d1c/class_audio_director.html" title=" " alt="" coords="3266,4917,3805,6151"/>
-<area shape="rect" id="node31" href="$d5/d96/class_audio_stream.html" title=" " alt="" coords="2937,2955,3443,3601"/>
-<area shape="rect" id="node32" href="$de/dd6/structaudio__block__struct.html" title=" " alt="" coords="2985,1340,3209,1453"/>
-<area shape="rect" id="node39" href="$d8/d5a/class_i_l_i9341__t3___e_r_i_s.html" title="Eris class extentions to the ILI9341_t3n base class This class is resposible for managing the tft dis..." alt="" coords="5083,300,5625,2493"/>
-<area shape="rect" id="node6" title=" " alt="" coords="6385,3221,6545,3335"/>
-<area shape="rect" id="node26" href="$d5/d8f/class_analog_inputs.html" title="Used for filtering the analog inputs and change detection." alt="" coords="6225,4276,6470,4629"/>
-<area shape="rect" id="node7" title=" " alt="" coords="6001,1340,6177,1453"/>
-<area shape="rect" id="node9" title=" " alt="" coords="2081,5,2176,119"/>
-<area shape="rect" id="node10" href="$d7/dd5/structsvc_data_dictionary_record.html" title=" " alt="" coords="1261,4396,1551,4509"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1161,3221,1477,3335"/>
-<area shape="rect" id="node12" title=" " alt="" coords="1501,3221,1844,3335"/>
-<area shape="rect" id="node13" href="$da/d2d/unionvalue__container.html" title=" " alt="" coords="251,3221,441,3335"/>
-<area shape="rect" id="node14" title=" " alt="" coords="644,5,739,119"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1587,5,1695,119"/>
-<area shape="rect" id="node17" title=" " alt="" coords="4525,5,4620,119"/>
-<area shape="rect" id="node18" title=" " alt="" coords="286,5,401,119"/>
-<area shape="rect" id="node19" title=" " alt="" coords="3877,1340,3946,1453"/>
-<area shape="rect" id="node28" href="$dc/d96/classeris_audio_output_i2_s.html" title=" " alt="" coords="2645,3208,2913,3348"/>
-<area shape="rect" id="node30" href="$d2/d7c/class_audio_connection.html" title=" " alt="" coords="2813,4249,3337,4656"/>
-<area shape="rect" id="node20" title=" " alt="" coords="5083,5,5151,119"/>
-<area shape="rect" id="node21" title=" " alt="" coords="6975,5477,7095,5591"/>
-<area shape="rect" id="node23" title=" " alt="" coords="6645,5,6724,119"/>
-<area shape="rect" id="node25" title=" " alt="" coords="5649,1340,5744,1453"/>
-<area shape="rect" id="node29" href="$d0/d68/class_audio_output_i2_s.html" title=" " alt="" coords="2131,1340,2324,1453"/>
-<area shape="rect" id="node35" href="$d8/d90/class_print.html" title=" " alt="" coords="5377,3221,5449,3335"/>
-<area shape="rect" id="node36" title=" " alt="" coords="5473,3221,5581,3335"/>
-<area shape="rect" id="node37" title=" " alt="" coords="5982,5,6070,119"/>
-<area shape="rect" id="node38" title=" " alt="" coords="2341,4396,2423,4509"/>
-<area shape="rect" id="node40" href="$d5/d0e/class_i_l_i9341__t3n.html" title=" " alt="" coords="5281,5,5427,119"/>
-<area shape="rect" id="node41" title=" " alt="" coords="5451,5,5617,119"/>
+<area shape="rect" id="node1" title="application template containing the required methods for implementation" alt="" coords="2596,4209,3133,4856"/>
+<area shape="rect" id="node2" href="$db/d69/class_app_base_class.html" title="base class definition / implementation from which all app classes will be derived and override" alt="" coords="2730,2701,3271,3988"/>
+<area shape="rect" id="node3" href="$da/d96/class_app_manager.html" title=" " alt="" coords="1845,6359,2370,7112"/>
+<area shape="rect" id="node35" href="$d8/de8/class_svc_eris_audio_parameter_controller.html" title="Parameter controller for interacting with the audio components through the SvcSerialCommandInterface ..." alt="" coords="3255,4209,3792,4856"/>
+<area shape="rect" id="node36" href="$d2/da8/class_svc_serial_command_interface.html" title="Serial communication service and interface Serial commands (rx): &#160;." alt="" coords="3816,4169,4415,4896"/>
+<area shape="rect" id="node4" title=" " alt="" coords="773,5597,897,5711"/>
+<area shape="rect" id="node5" title=" " alt="" coords="2423,5,2531,119"/>
+<area shape="rect" id="node8" href="$dc/d43/class_svc_data_dictionary.html" title="implements a data dictionary (map) service" alt="" coords="1080,5371,1692,5937"/>
+<area shape="rect" id="node14" href="$de/d5d/unionpointer__container.html" title=" " alt="" coords="386,1367,594,1480"/>
+<area shape="rect" id="node22" href="$d1/d1a/class_surface.html" title="a Surface object manages a memory block with defined width and height dimensions" alt="" coords="1962,1153,2445,1693"/>
+<area shape="rect" id="node24" href="$d4/d7c/class_animation.html" title="helper class used to render the animated wallpaper in chunks" alt="" coords="396,3208,763,3481"/>
+<area shape="rect" id="node27" href="$d8/d1c/class_audio_director.html" title=" " alt="" coords="4338,5024,4877,6284"/>
+<area shape="rect" id="node31" href="$d5/d96/class_audio_stream.html" title=" " alt="" coords="4504,3021,5009,3668"/>
+<area shape="rect" id="node32" href="$de/dd6/structaudio__block__struct.html" title=" " alt="" coords="3250,1367,3474,1480"/>
+<area shape="rect" id="node41" href="$d8/d5a/class_i_l_i9341__t3___e_r_i_s.html" title="Eris class extentions to the ILI9341_t3n base class This class is resposible for managing the tft dis..." alt="" coords="3498,300,4039,2547"/>
+<area shape="rect" id="node6" title=" " alt="" coords="2022,3288,2182,3401"/>
+<area shape="rect" id="node26" href="$d5/d8f/class_analog_inputs.html" title="Used for filtering the analog inputs and change detection." alt="" coords="1702,4356,1947,4709"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1549,1367,1725,1480"/>
+<area shape="rect" id="node9" href="$d7/dd5/structsvc_data_dictionary_record.html" title=" " alt="" coords="1222,4476,1513,4589"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1205,3288,1521,3401"/>
+<area shape="rect" id="node11" title=" " alt="" coords="839,3288,1181,3401"/>
+<area shape="rect" id="node12" href="$da/d2d/unionvalue__container.html" title=" " alt="" coords="129,3288,320,3401"/>
+<area shape="rect" id="node13" title=" " alt="" coords="5,5,100,119"/>
+<area shape="rect" id="node15" title=" " alt="" coords="2899,5,3007,119"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1227,5,1321,119"/>
+<area shape="rect" id="node17" title=" " alt="" coords="199,5,314,119"/>
+<area shape="rect" id="node18" title=" " alt="" coords="4801,1367,4870,1480"/>
+<area shape="rect" id="node28" href="$dc/d96/classeris_audio_output_i2_s.html" title=" " alt="" coords="5496,3275,5764,3415"/>
+<area shape="rect" id="node30" href="$d2/d7c/class_audio_connection.html" title=" " alt="" coords="4773,4329,5297,4736"/>
+<area shape="rect" id="node33" href="$d8/d01/classeris_audio_input_i2_s.html" title=" " alt="" coords="5866,3275,6114,3415"/>
+<area shape="rect" id="node19" title=" " alt="" coords="5269,5,5364,119"/>
+<area shape="rect" id="node20" title=" " alt="" coords="4665,5,4733,119"/>
+<area shape="rect" id="node21" title=" " alt="" coords="2211,5597,2331,5711"/>
+<area shape="rect" id="node23" title=" " alt="" coords="4757,5,4836,119"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1379,1367,1473,1480"/>
+<area shape="rect" id="node29" href="$d0/d68/class_audio_output_i2_s.html" title=" " alt="" coords="5785,1367,5979,1480"/>
+<area shape="rect" id="node34" href="$d3/d7e/class_audio_input_i2_s.html" title=" " alt="" coords="6003,1367,6177,1480"/>
+<area shape="rect" id="node37" href="$d8/d90/class_print.html" title=" " alt="" coords="3902,3288,3974,3401"/>
+<area shape="rect" id="node38" title=" " alt="" coords="3999,3288,4107,3401"/>
+<area shape="rect" id="node39" title=" " alt="" coords="4021,5,4109,119"/>
+<area shape="rect" id="node40" title=" " alt="" coords="5860,4476,5941,4589"/>
+<area shape="rect" id="node42" href="$d5/d0e/class_i_l_i9341__t3n.html" title=" " alt="" coords="3585,5,3731,119"/>
+<area shape="rect" id="node43" title=" " alt="" coords="3755,5,3921,119"/>
 </map>

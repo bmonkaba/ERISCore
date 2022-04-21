@@ -18,8 +18,9 @@ var class_app_manager =
     [ "requestPopUp", "da/d96/class_app_manager_a82ecc96146ee297d433f34a57ed14130.html#a82ecc96146ee297d433f34a57ed14130", null ],
     [ "returnFocus", "da/d96/class_app_manager_aa046bad75942b1512618728fdac559b7.html#aa046bad75942b1512618728fdac559b7", null ],
     [ "sendMessage", "da/d96/class_app_manager_aa4f7649ae1aa1a567286d73981f00090.html#aa4f7649ae1aa1a567286d73981f00090", null ],
-    [ "setup", "da/d96/class_app_manager_a805b55106bd607e705881da2326e0e45.html#a805b55106bd607e705881da2326e0e45", null ],
-    [ "update", "da/d96/class_app_manager_ab4352bf5559866e77c333e74af7c2210.html#ab4352bf5559866e77c333e74af7c2210", null ],
+    [ "setup", "da/d96/class_app_manager_a58a9317f61d223c4087c5f16e3730838.html#a58a9317f61d223c4087c5f16e3730838", null ],
+    [ "unregisterApp", "da/d96/class_app_manager_a4a21bd7163a3ca6a9db82b8145c9489b.html#a4a21bd7163a3ca6a9db82b8145c9489b", null ],
+    [ "update", "da/d96/class_app_manager_a372b9416454458e576a1ac79ae8d5649.html#a372b9416454458e576a1ac79ae8d5649", null ],
     [ "active_app_id", "da/d96/class_app_manager_afcf3eb16acabe78d89fa3f8cb4fc5b0d.html#afcf3eb16acabe78d89fa3f8cb4fc5b0d", null ],
     [ "ad", "da/d96/class_app_manager_af95be835bf532841c80d19904a5b14a4.html#af95be835bf532841c80d19904a5b14a4", null ],
     [ "analog", "da/d96/class_app_manager_a4997dbe10e82475280e893230425975a.html#a4997dbe10e82475280e893230425975a", null ],
@@ -43,5 +44,6 @@ var class_app_manager =
     [ "root", "da/d96/class_app_manager_a1609289f7b35f217c9f9aec1a1948832.html#a1609289f7b35f217c9f9aec1a1948832", null ],
     [ "sd", "da/d96/class_app_manager_aefb1b88fd22eb9aa1c5309658a00cac7.html#aefb1b88fd22eb9aa1c5309658a00cac7", null ],
     [ "state", "da/d96/class_app_manager_a65b36ee3b46c24fd07bc5b92aaafee50.html#a65b36ee3b46c24fd07bc5b92aaafee50", null ],
-    [ "touch_state", "da/d96/class_app_manager_a5caa0396d49e80d9ad1e1ad7354209fd.html#a5caa0396d49e80d9ad1e1ad7354209fd", null ]
+    [ "touch_state", "da/d96/class_app_manager_a5caa0396d49e80d9ad1e1ad7354209fd.html#a5caa0396d49e80d9ad1e1ad7354209fd", null ],
+    [ "touched_elapsed", "da/d96/class_app_manager_a3372f6491f94e8230c5530c05006a735.html#a3372f6491f94e8230c5530c05006a735", null ]
 ];

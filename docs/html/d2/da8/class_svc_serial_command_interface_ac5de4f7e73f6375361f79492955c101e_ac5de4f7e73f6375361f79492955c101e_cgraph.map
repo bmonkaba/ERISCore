@@ -1,4 +1,13 @@
 <map id="SvcSerialCommandInterface::sendLZ4Message" name="SvcSerialCommandInterface::sendLZ4Message">
-<area shape="rect" id="node1" title="Calling this function signals the end of a compressed message. &#160;The txBuffer contents are lz4 compres..." alt="" coords="5,5,536,44"/>
-<area shape="rect" id="node2" href="$d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0" title="zero out the transmit buffer and reset the write index" alt="" coords="584,5,991,44"/>
+<area shape="rect" id="node1" title="Calling this function signals the end of a compressed message. &#160;The txBuffer contents are lz4 compres..." alt="" coords="5,68,536,107"/>
+<area shape="rect" id="node2" href="$d2/da8/class_svc_serial_command_interface_a809cc3d22320bdd8c54044e278e188f0.html#a809cc3d22320bdd8c54044e278e188f0" title="zero out the transmit buffer and reset the write index" alt="" coords="588,5,995,44"/>
+<area shape="rect" id="node3" href="$da/d96/class_app_manager_abe1aaa39fc99564c257c256f5df6aec4.html#abe1aaa39fc99564c257c256f5df6aec4" title="provides an interface for apps to request cpu freq change note: this is only a request...." alt="" coords="595,131,988,169"/>
+<area shape="rect" id="node10" href="$d2/da8/class_svc_serial_command_interface_a0bf93d9b4e8fbc4f7ed89e908fc47e47.html#a0bf93d9b4e8fbc4f7ed89e908fc47e47" title="returns true if the available serial buffer falls below SERIAL_THROTTLE_BUFFER_REMAINING_THRESHOLD if..." alt="" coords="584,68,999,107"/>
+<area shape="rect" id="node4" href="$dc/d40/_app_manager_8cpp_a01f554db1c07c31f60f5167060279699.html#a01f554db1c07c31f60f5167060279699" title=" " alt="" coords="1127,193,1303,232"/>
+<area shape="rect" id="node5" href="$dc/d43/class_svc_data_dictionary_abcac7202c3bd21801ab64e48eee44056.html#abcac7202c3bd21801ab64e48eee44056" title="update the value of an owned record &#160;creates a new record if one does not exist and &#160;initializes its ..." alt="" coords="1062,131,1369,169"/>
+<area shape="rect" id="node6" href="$dc/d43/class_svc_data_dictionary_a3b09dc582adbb4d5c6f99f6e983a81f1.html#a3b09dc582adbb4d5c6f99f6e983a81f1" title="create a record with ownership" alt="" coords="1432,99,1729,137"/>
+<area shape="rect" id="node9" href="$dc/d43/class_svc_data_dictionary_ac4b80e87e8e9cf82926af2105b4e424a.html#ac4b80e87e8e9cf82926af2105b4e424a" title="hashing function used to accelerate searches" alt="" coords="1797,71,2081,109"/>
+<area shape="rect" id="node7" href="$dc/d43/class_svc_data_dictionary_a7c7bd48b97fbcf18ef64337e12022619.html#a7c7bd48b97fbcf18ef64337e12022619" title=" " alt="" coords="1777,133,2100,172"/>
+<area shape="rect" id="node8" href="$df/d51/_eris_utils_8h_acf90b2b3b47174f2ad15f9397a36dca1.html#acf90b2b3b47174f2ad15f9397a36dca1" title="a safer strncpy" alt="" coords="2148,133,2315,172"/>
+<area shape="rect" id="node11" href="$dc/d43/class_svc_data_dictionary_aab72733da062e89f277308ca64daf300.html#aab72733da062e89f277308ca64daf300" title="increments the value of a global record &#160;creates a new record if one does not exist and &#160;initializes ..." alt="" coords="1047,68,1384,107"/>
 </map>
